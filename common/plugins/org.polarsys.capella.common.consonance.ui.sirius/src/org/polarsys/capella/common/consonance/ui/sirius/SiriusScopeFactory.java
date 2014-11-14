@@ -15,18 +15,19 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
-import org.eclipse.emf.diffmerge.ui.gmf.GMFScopeFactory;
-import org.eclipse.emf.diffmerge.ui.specification.IScopeSpecification;
-import org.eclipse.emf.diffmerge.ui.specification.ext.FileScopeSpecification;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
+import org.eclipse.emf.diffmerge.ui.gmf.GMFScopeDefinitionFactory;
+import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
+import org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+
 
 
 /**
  * A factory for comparison scopes within Viewpoint models.
  */
-public class SiriusScopeFactory extends GMFScopeFactory {
+public class SiriusScopeFactory extends GMFScopeDefinitionFactory {
   
   /** The file extension for AIRD fragments */
   public static final String SESSION_RESOURCE_FRAGMENT_EXTENSION = "airdfragment"; //$NON-NLS-1$
@@ -41,15 +42,15 @@ public class SiriusScopeFactory extends GMFScopeFactory {
    * @see org.eclipse.emf.diffmerge.ui.specification.ext.FileScopeSpecificationFactory#createScopeSpecificationFromUri(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
    */
   @Override
-  protected IScopeSpecification createScopeSpecificationFromUri(URI uri_p, String label_p,
+  protected IModelScopeDefinition createScopeDefinitionFromURI(URI uri_p, String label_p,
       boolean editable_p) {
-    return new FileScopeSpecification(uri_p, label_p, editable_p) {
+    return new URIScopeDefinition(uri_p, label_p, editable_p) {
       /**
-       * @see org.eclipse.emf.diffmerge.ui.specification.ext.FileScopeSpecification#createScope(org.eclipse.emf.edit.domain.EditingDomain)
+       * @see org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition#createScopeOnEditingDomain(org.eclipse.emf.edit.domain.EditingDomain)
        */
       @Override
-      public IFeaturedModelScope createScope(EditingDomain domain_p) {
-        return new SiriusScope(getEntrypointResource(domain_p));
+      protected IEditableModelScope createScopeOnEditingDomain(EditingDomain editingDomain_p) {
+        return new SiriusScope(getEntrypoint(), editingDomain_p, !isEditable());
       }
     };
   }
@@ -59,7 +60,7 @@ public class SiriusScopeFactory extends GMFScopeFactory {
    */
   @Override
   public Collection<? extends Class<?>> getOverridenClasses() {
-    return Collections.<Class<?>>singleton(GMFScopeFactory.class);
+    return Collections.<Class<?>>singleton(GMFScopeDefinitionFactory.class);
   }
   
 }

@@ -10,14 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.es2es.rules;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 
@@ -66,6 +68,10 @@ public class Rule_Message extends CommonRule {
     TigerRelationshipHelper.attachTransformedRelatedElements(element_p, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END, transfo_p);
     TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_MESSAGES,
         transfo_p);
+
+    AbstractEventOperation toperation = ScenarioHelper.getTransitionedOperation(((SequenceMessage) element_p).getSendingEnd(), transfo_p);
+    CommonScenarioHelper.attachToBestAndValidElements(element_p, InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGED_ITEMS,
+        (Collection) CommonScenarioHelper.getExchangeItems(toperation), transfo_p);
   }
 
   @Override

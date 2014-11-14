@@ -20,7 +20,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.PropertySheet;
 
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * Open a property wizard for a ModelElement inside a command.

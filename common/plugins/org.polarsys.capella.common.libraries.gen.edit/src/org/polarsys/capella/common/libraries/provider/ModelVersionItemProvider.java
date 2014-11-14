@@ -70,6 +70,9 @@ public class ModelVersionItemProvider extends LibraryAbstractElementItemProvider
 			addMinorVersionNumberPropertyDescriptor(object);
 			addLastModifiedFileStampPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 

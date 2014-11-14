@@ -37,17 +37,24 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
@@ -60,7 +67,6 @@ import org.polarsys.capella.common.ui.services.helper.IUserEnforcedHelper2;
 import org.polarsys.capella.core.model.handler.AbortedTransactionException;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
-import org.polarsys.capella.core.model.handler.internal.session.SessionsWatchDog;
 import org.polarsys.capella.core.model.handler.pre.condition.IFileModificationPreconditionChecker;
 
 /**
@@ -68,7 +74,7 @@ import org.polarsys.capella.core.model.handler.pre.condition.IFileModificationPr
  * When resources are in RO, a dialog is prompted to the end-user to make the file writable.<br>
  * If the resources are not writable, an {@link AbortedTransactionException} is thrown in order to roll back the transaction.
  */
-public class FileModificationPreCommitListener extends ResourceSetListenerImpl {
+public class FileModificationPreCommitListener extends ResourceSetListenerImpl implements IEditingDomainListener, SessionManagerListener {
   private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
   /**
    * Disable the validate edit check.
@@ -77,7 +83,7 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl {
   /**
    * Flag to register this pre commit listener as session listener without direct dependencies to avoid {@link ClassCircularityError}.
    */
-  private volatile boolean _needRegistration;
+//  private volatile boolean _needRegistration;
   /**
    * File modification precondition checker used before files are made writable.
    */
@@ -93,7 +99,8 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl {
    */
   public FileModificationPreCommitListener() {
     super();
-    _needRegistration = true;
+//    _needRegistration = true;
+    SessionManager.INSTANCE.addSessionsListener(this);
   }
 
   /**
@@ -117,14 +124,14 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl {
    */
   @Override
   public Command transactionAboutToCommit(ResourceSetChangeEvent event_p) throws RollbackException {
-    if (_needRegistration) {
+//    if (_needRegistration) {
       // Used to avoid a ClassCircularityError: This class must not implement SessionListener.
-      SessionsWatchDog.enableSessionMonitoring(this);
+//      SessionsWatchDog.enableSessionMonitoring(this);
       // Workaround
-      SessionsWatchDog.getResourceAccessPolicyListener().transactionAboutToCommit(event_p);
+//      SessionsWatchDog.getResourceAccessPolicyListener().transactionAboutToCommit(event_p);
       // END Workaround
-      _needRegistration = false;
-    }
+//      _needRegistration = false;
+//    }
     // Precondition.
     if (event_p.getTransaction().isReadOnly()) {
       return null;
@@ -452,5 +459,76 @@ public class FileModificationPreCommitListener extends ResourceSetListenerImpl {
    */
   public void setDisableValidateEdit(boolean disableValidateEdit_p) {
     _disableValidateEdit = disableValidateEdit_p;
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
+   */
+  @Override
+  public void createdEditingDomain(EditingDomain editingDomain) {
+    ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
+  }
+	
+  /**
+   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
+   */
+  @Override
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+	((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
+  }
+
+  /**
+   * Allows monitoring sessions to enable / disable the Capella pre commit listener on SessionListener.ABOUT_TO_BE_REPLACED / SessionListener.REPLACED
+   * 
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(Session, int)
+   */
+  @Override
+  public void notify(Session updated, int notification) {
+    switch (notification) {
+      case SessionListener.ABOUT_TO_BE_REPLACED:
+        // Deactivate the validateEdit check as the session is unloading / reloading some fragments.
+        if (null != getTarget() && getTarget().equals(updated.getTransactionalEditingDomain())) {
+          setDisableValidateEdit(true);
+        }
+      break;
+      case SessionListener.REPLACED:
+        // Activate the validateEdit check as the session completed unloading / reloading some fragments.
+        if (null != getTarget() && getTarget().equals(updated.getTransactionalEditingDomain())) {
+          setDisableValidateEdit(false);
+        }
+      break;
+    }
+  }
+
+  /**
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyAddSession(Session)
+   */
+  @Override
+  public void notifyAddSession(Session newSession) {
+	// unused
+  }
+
+  /**
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyRemoveSession(Session)
+   */
+  @Override
+  public void notifyRemoveSession(Session removedSession) {
+	// unused
+  }
+
+  /**
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(Viewpoint)
+   */
+  @Override
+  public void viewpointSelected(Viewpoint selectedSirius) {
+	// unused
+  }
+
+  /**
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(Viewpoint)
+   */
+  @Override
+  public void viewpointDeselected(Viewpoint deselectedSirius) {
+	// unused
   }
 }

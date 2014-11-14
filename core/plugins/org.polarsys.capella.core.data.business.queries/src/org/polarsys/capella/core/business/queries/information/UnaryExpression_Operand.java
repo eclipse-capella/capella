@@ -10,102 +10,41 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.information;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue;
-import org.polarsys.capella.core.data.information.datavalue.BooleanReference;
-import org.polarsys.capella.core.data.information.datavalue.ComplexValueReference;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
-import org.polarsys.capella.core.data.information.datavalue.EnumerationReference;
-import org.polarsys.capella.core.data.information.datavalue.NumericReference;
-import org.polarsys.capella.core.data.information.datavalue.StringReference;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
-public class UnaryExpression_Operand extends AbstractExpression_Operand implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery {
+public class UnaryExpression_Operand extends AbstractExpression_Operand implements IBusinessQuery {
 
-  public List<CapellaElement> getOldCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof AbstractExpressionValue) {
-      Object data = element_p.eGet(getEStructuralFeatures().get(0));
-      if (data instanceof BooleanReference) {
-        currentElements.add(((BooleanReference) data).getReferencedValue());
-      } else if (data instanceof ComplexValueReference) {
-        currentElements.add(((ComplexValueReference) data).getReferencedValue());
-      } else if (data instanceof EnumerationReference) {
-        currentElements.add(((EnumerationReference) data).getReferencedValue());
-      } else if (data instanceof NumericReference) {
-        currentElements.add(((NumericReference) data).getReferencedValue());
-      } else if (data instanceof StringReference) {
-        currentElements.add(((StringReference) data).getReferencedValue());
-      } else if ((null != data) && (data instanceof CapellaElement)) {
-        currentElements.add((CapellaElement) data);
-      }
-    }
-    return currentElements;
-  }
-
-  public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element_p);
-    SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element_p);
-    OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
-    returnValue.addAll(getDataFromLevel(operationalAnalysis, element_p));
-    if (!(currentBlockArchitecture instanceof OperationalAnalysis)) {
-      SystemAnalysis systemAnalysis = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-      returnValue.addAll(getDataFromLevel(systemAnalysis, element_p));
-      if (!(currentBlockArchitecture instanceof SystemAnalysis)) {
-        LogicalArchitecture logicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-        returnValue.addAll(getDataFromLevel(logicalArchitecture, element_p));
-        if (!(currentBlockArchitecture instanceof LogicalArchitecture)) {
-          PhysicalArchitecture physicalArchitecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-          returnValue.addAll(getDataFromLevel(physicalArchitecture, element_p));
-          if (!(currentBlockArchitecture instanceof PhysicalArchitecture)) {
-            EPBSArchitecture epbsArchitecture = SystemEngineeringExt.getEPBSArchitecture((systemEngineering));
-            returnValue.addAll(getDataFromLevel(epbsArchitecture, element_p));
-          }
-        }
-      }
-    }
-    returnValue.addAll(getUnlevelizedData(element_p));
-    returnValue.addAll(getDataFromComponentHierarchy(element_p));
-    returnValue.addAll(getDataFromRealizedComponentsHierarchy(element_p));
-    returnValue.addAll(getTypesFromComponentHierarchy(element_p));
-    returnValue = filterUnNamedElements(returnValue);
-    return returnValue;
-  }
-
-  public EClass getEClass() {
+  @Override
+	public EClass getEClass() {
     return DatavaluePackage.Literals.UNARY_EXPRESSION;
   }
 
-  public List<EReference> getEStructuralFeatures() {
+  @Override
+	public List<EReference> getEStructuralFeatures() {
     return Collections.singletonList(DatavaluePackage.Literals.UNARY_EXPRESSION__OWNED_OPERAND);
   }
 
   @Override
   public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    return RefactorDebugger.callAndTestQuery(
-        "GetAvailable_AbstractExpressionValue_Operand__Lib", element_p, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__OPERAND___LIB, element_p, context);
   }
 
   @Override
   public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    return RefactorDebugger.callAndTestQuery("GetCurrent_UnaryExpression_Operand", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__UNARY_EXPRESSION__OPERAND, element_p, context);
   }
 }

@@ -16,11 +16,10 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -66,9 +65,9 @@ public class PostDiffMergeActivity extends AbstractActivity implements ITranspos
           }
         }
         AttachmentHelper.getInstance(context_p).removeElements(toDelete, context_p);
-
       }
     }
+
   }
 
   /**

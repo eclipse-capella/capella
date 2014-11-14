@@ -21,8 +21,8 @@ import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypedElement
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 public class PropertyHelper {
   private static PropertyHelper instance;
@@ -76,7 +76,7 @@ public class PropertyHelper {
     if (!isCrossReferencing(element_p)) {
       try {
         markAsCrossReferenced(element_p);
-        TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain(element_p);
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
         if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
           Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
 

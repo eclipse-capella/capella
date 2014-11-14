@@ -24,12 +24,11 @@ import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
-
+import org.polarsys.capella.core.transition.common.capellaHelpers.HashMapSet;
 import org.polarsys.capella.core.transition.common.handlers.filter.AbstractFilterItem.FilterAction;
 import org.polarsys.capella.core.transition.common.handlers.log.IDiffModelType.DiffScope;
 import org.polarsys.capella.core.transition.common.handlers.log.IDiffModelViewer;
 import org.polarsys.capella.core.transition.common.handlers.log.IDiffModelViewerFactory;
-import org.polarsys.capella.core.transition.common.capellaHelpers.HashMapSet;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -37,31 +36,37 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class DefaultFilteringDifferencesHandler implements IFilteringDifferencesHandler, CompoundFilteringItems {
 
+  private static final String VIEWS_TO_DISPLAY = "getViewsToDisplay"; //$NON-NLS-1$
+
+  private static final String VIEWS_TO_MERGE = "getViewsToMerge"; //$NON-NLS-1$
+
+  private static final String REQUIRING_DIFFERENCES = "getRequiringDifferences"; //$NON-NLS-1$
+
   protected Collection<IFilterItem> filterItems;
 
   public Collection<IDiffModelViewer> getViewsToDisplay(IContext context) {
-    Collection handler = (Collection) context.get("getViewsToDisplay");
+    Collection handler = (Collection) context.get(VIEWS_TO_DISPLAY);
     if (handler == null) {
       handler = new ArrayList<IDiffModelViewer>();
-      context.put("getViewsToDisplay", handler);
+      context.put(VIEWS_TO_DISPLAY, handler);
     }
     return handler;
   }
 
   public HashMap<IDifference, IDiffModelViewer> getViewsToMerge(IContext context) {
-    HashMap<IDifference, IDiffModelViewer> handler = (HashMap) context.get("getViewsToMerge");
+    HashMap<IDifference, IDiffModelViewer> handler = (HashMap) context.get(VIEWS_TO_MERGE);
     if (handler == null) {
       handler = new HashMap<IDifference, IDiffModelViewer>();
-      context.put("getViewsToMerge", handler);
+      context.put(VIEWS_TO_MERGE, handler);
     }
     return handler;
   }
 
   public HashMapSet<IDifference, IDifference> getRequiringDifferences(IContext context) {
-    HashMapSet<IDifference, IDifference> handler = (HashMapSet) context.get("getRequiringDifferences");
+    HashMapSet<IDifference, IDifference> handler = (HashMapSet) context.get(REQUIRING_DIFFERENCES);
     if (handler == null) {
       handler = new HashMapSet<IDifference, IDifference>();
-      context.put("getRequiringDifferences", handler);
+      context.put(REQUIRING_DIFFERENCES, handler);
     }
     return handler;
   }
@@ -180,6 +185,15 @@ public class DefaultFilteringDifferencesHandler implements IFilteringDifferences
     if (filterItems != null) {
       filterItems.clear();
       filterItems = null;
+    }
+    if (context_p.exists(VIEWS_TO_MERGE)) {
+      ((HashMap) context_p.get(VIEWS_TO_MERGE)).clear();
+    }
+    if (context_p.exists(REQUIRING_DIFFERENCES)) {
+      ((HashMapSet) context_p.get(REQUIRING_DIFFERENCES)).clear();
+    }
+    if (context_p.exists(VIEWS_TO_DISPLAY)) {
+      ((Collection) context_p.get(VIEWS_TO_DISPLAY)).clear();
     }
 
     return Status.OK_STATUS;

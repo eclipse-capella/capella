@@ -12,8 +12,8 @@ package org.polarsys.capella.core.libraries.ui.views.libraryManager.activeStateM
 
 import org.eclipse.swt.widgets.Composite;
 
-import org.polarsys.capella.core.libraries.flexibilityProperties.FlexibilityIds;
-import org.polarsys.capella.core.libraries.flexibilityProperties.LibraryManagerModel;
+import org.polarsys.capella.core.libraries.properties.FlexibilityIds;
+import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.renderer.AbstractRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;

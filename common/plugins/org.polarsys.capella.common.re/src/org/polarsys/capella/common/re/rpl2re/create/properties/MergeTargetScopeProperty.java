@@ -16,15 +16,16 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -42,7 +43,7 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
     IContext context = (IContext) context_p.getSource();
     Collection<EObject> scopeElements = new HashSet<EObject>();
     CatalogElement target =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET));
 
     scopeElements.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllElements(target));
 
@@ -55,6 +56,13 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
         (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS));
     if (invalidSharedElements != null) {
       scopeElements.removeAll(invalidSharedElements);
+    }
+
+    for (CatalogElementLink link : (Collection<CatalogElementLink>) (Collection) ContextScopeHandlerHelper.getInstance(context).getCollection(
+        IReConstants.VIRTUAL_LINKS, context)) {
+      if (!ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS_TO_KEEP, link, context)) {
+        scopeElements.remove(link.getTarget());
+      }
     }
 
     return scopeElements;
@@ -97,7 +105,7 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET, IReConstants.PROPERTY__SHARED_ELEMENTS,
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET, IReConstants.PROPERTY__SHARED_ELEMENTS,
                          IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS };
   }
 

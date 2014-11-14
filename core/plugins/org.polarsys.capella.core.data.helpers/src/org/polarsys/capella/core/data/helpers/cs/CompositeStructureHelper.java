@@ -13,7 +13,8 @@ package org.polarsys.capella.core.data.helpers.cs;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
@@ -40,6 +41,8 @@ import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.cs.PhysicalPortRealization;
 import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.AbstractActorHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.ActorCapabilityRealizationInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.ArchitectureAllocationHelper;
@@ -64,10 +67,6 @@ import org.polarsys.capella.core.data.helpers.cs.delegates.PhysicalPortHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.PhysicalPortRealizationHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.SystemComponentCapabilityRealizationInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.cs.delegates.SystemComponentHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class CompositeStructureHelper implements IHelper {
 
@@ -79,7 +78,7 @@ public class CompositeStructureHelper implements IHelper {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.model.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature,
+   * @see org.polarsys.capella.common.model.helpers.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature,
    *      org.eclipse.emf.ecore.EAnnotation)
    */
   public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {

@@ -18,16 +18,14 @@ import java.util.Set;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.IState;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.data.modellingcore.IState;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
 
 public class DWF_SM_03Resolver extends AbstractCapellaMarkerResolution {
 
@@ -71,10 +69,8 @@ public class DWF_SM_03Resolver extends AbstractCapellaMarkerResolution {
 	public void run(IMarker marker_p) {
 		List<EObject> tgts = getModelElements(marker_p);
 		
-		DWF_SM_03ResolverCommand cmd = new DWF_SM_03ResolverCommand(
-				tgts);
-		ExecutionManager em = ExecutionManagerRegistry.getInstance()
-				.getExecutionManager(TigEfProvider.getExecutionManagerName());
+		DWF_SM_03ResolverCommand cmd = new DWF_SM_03ResolverCommand(tgts);
+		ExecutionManager em = TransactionHelper.getExecutionManager(tgts);
 		em.execute(cmd);
 		try {
 			marker_p.delete();

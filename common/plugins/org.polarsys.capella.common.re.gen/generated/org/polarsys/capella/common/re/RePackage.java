@@ -31,6 +31,7 @@ import org.polarsys.kitalpha.emde.model.EmdePackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.common.re.ReFactory
  * @model kind="package"
+ *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension extensibleProviderFactory='true' childCreationExtenders='true'"
  * @generated
  */
 public interface RePackage extends EPackage {
@@ -240,7 +241,7 @@ public interface RePackage extends EPackage {
 	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getCatalogElementPkg()
 	 * @generated
 	 */
-	int CATALOG_ELEMENT_PKG = 5;
+	int CATALOG_ELEMENT_PKG = 4;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -304,7 +305,7 @@ public interface RePackage extends EPackage {
 	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getRecCatalog()
 	 * @generated
 	 */
-	int REC_CATALOG = 4;
+	int REC_CATALOG = 5;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -370,6 +371,70 @@ public interface RePackage extends EPackage {
 	int REC_CATALOG_FEATURE_COUNT = CATALOG_ELEMENT_PKG_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.polarsys.capella.common.re.impl.GroupingElementPkgImpl <em>Grouping Element Pkg</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.common.re.impl.GroupingElementPkgImpl
+	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getGroupingElementPkg()
+	 * @generated
+	 */
+	int GROUPING_ELEMENT_PKG = 6;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUPING_ELEMENT_PKG__OWNED_EXTENSIONS = CATALOG_ELEMENT_PKG__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUPING_ELEMENT_PKG__ID = CATALOG_ELEMENT_PKG__ID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUPING_ELEMENT_PKG__NAME = CATALOG_ELEMENT_PKG__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Owned Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUPING_ELEMENT_PKG__OWNED_ELEMENTS = CATALOG_ELEMENT_PKG__OWNED_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Element Pkgs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUPING_ELEMENT_PKG__OWNED_ELEMENT_PKGS = CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS;
+
+	/**
+	 * The number of structural features of the '<em>Grouping Element Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUPING_ELEMENT_PKG_FEATURE_COUNT = CATALOG_ELEMENT_PKG_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.re.impl.CatalogElementLinkImpl <em>Catalog Element Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -377,7 +442,7 @@ public interface RePackage extends EPackage {
 	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getCatalogElementLink()
 	 * @generated
 	 */
-	int CATALOG_ELEMENT_LINK = 6;
+	int CATALOG_ELEMENT_LINK = 7;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -450,7 +515,7 @@ public interface RePackage extends EPackage {
 	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getCatalogElement()
 	 * @generated
 	 */
-	int CATALOG_ELEMENT = 7;
+	int CATALOG_ELEMENT = 8;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -525,13 +590,22 @@ public interface RePackage extends EPackage {
 	int CATALOG_ELEMENT__ENVIRONMENT = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Purpose</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG_ELEMENT__PURPOSE = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Tags</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__TAGS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 4;
+	int CATALOG_ELEMENT__TAGS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Origin</b></em>' reference.
@@ -540,7 +614,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__ORIGIN = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 5;
+	int CATALOG_ELEMENT__ORIGIN = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Current Compliancy</b></em>' reference.
@@ -549,7 +623,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__CURRENT_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 6;
+	int CATALOG_ELEMENT__CURRENT_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Default Replica Compliancy</b></em>' reference.
@@ -558,7 +632,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 7;
+	int CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Owned Links</b></em>' containment reference list.
@@ -567,7 +641,25 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT__OWNED_LINKS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 8;
+	int CATALOG_ELEMENT__OWNED_LINKS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Referenced Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG_ELEMENT__REFERENCED_ELEMENTS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>Replicated Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG_ELEMENT__REPLICATED_ELEMENTS = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Catalog Element</em>' class.
@@ -576,7 +668,7 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_ELEMENT_FEATURE_COUNT = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 9;
+	int CATALOG_ELEMENT_FEATURE_COUNT = RE_DESCRIPTION_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.re.impl.CompliancyDefinitionPkgImpl <em>Compliancy Definition Pkg</em>}' class.
@@ -586,7 +678,7 @@ public interface RePackage extends EPackage {
 	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getCompliancyDefinitionPkg()
 	 * @generated
 	 */
-	int COMPLIANCY_DEFINITION_PKG = 8;
+	int COMPLIANCY_DEFINITION_PKG = 9;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -641,7 +733,7 @@ public interface RePackage extends EPackage {
 	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getCompliancyDefinition()
 	 * @generated
 	 */
-	int COMPLIANCY_DEFINITION = 9;
+	int COMPLIANCY_DEFINITION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -696,7 +788,7 @@ public interface RePackage extends EPackage {
 	 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getCatalogElementKind()
 	 * @generated
 	 */
-	int CATALOG_ELEMENT_KIND = 10;
+	int CATALOG_ELEMENT_KIND = 11;
 
 
 	/**
@@ -803,6 +895,16 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRecCatalog_OwnedCompliancyDefinitionPkg();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.common.re.GroupingElementPkg <em>Grouping Element Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Grouping Element Pkg</em>'.
+	 * @see org.polarsys.capella.common.re.GroupingElementPkg
+	 * @generated
+	 */
+	EClass getGroupingElementPkg();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.common.re.CatalogElementPkg <em>Catalog Element Pkg</em>}'.
@@ -923,6 +1025,17 @@ public interface RePackage extends EPackage {
 	EAttribute getCatalogElement_Environment();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.common.re.CatalogElement#getPurpose <em>Purpose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Purpose</em>'.
+	 * @see org.polarsys.capella.common.re.CatalogElement#getPurpose()
+	 * @see #getCatalogElement()
+	 * @generated
+	 */
+	EAttribute getCatalogElement_Purpose();
+
+	/**
 	 * Returns the meta object for the attribute list '{@link org.polarsys.capella.common.re.CatalogElement#getTags <em>Tags</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -976,6 +1089,28 @@ public interface RePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCatalogElement_OwnedLinks();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.common.re.CatalogElement#getReferencedElements <em>Referenced Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Referenced Elements</em>'.
+	 * @see org.polarsys.capella.common.re.CatalogElement#getReferencedElements()
+	 * @see #getCatalogElement()
+	 * @generated
+	 */
+	EReference getCatalogElement_ReferencedElements();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.common.re.CatalogElement#getReplicatedElements <em>Replicated Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Replicated Elements</em>'.
+	 * @see org.polarsys.capella.common.re.CatalogElement#getReplicatedElements()
+	 * @see #getCatalogElement()
+	 * @generated
+	 */
+	EReference getCatalogElement_ReplicatedElements();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.common.re.CompliancyDefinitionPkg <em>Compliancy Definition Pkg</em>}'.
@@ -1131,6 +1266,16 @@ public interface RePackage extends EPackage {
 		EReference REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG = eINSTANCE.getRecCatalog_OwnedCompliancyDefinitionPkg();
 
 		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.common.re.impl.GroupingElementPkgImpl <em>Grouping Element Pkg</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.common.re.impl.GroupingElementPkgImpl
+		 * @see org.polarsys.capella.common.re.impl.RePackageImpl#getGroupingElementPkg()
+		 * @generated
+		 */
+		EClass GROUPING_ELEMENT_PKG = eINSTANCE.getGroupingElementPkg();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.re.impl.CatalogElementPkgImpl <em>Catalog Element Pkg</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1225,6 +1370,14 @@ public interface RePackage extends EPackage {
 		EAttribute CATALOG_ELEMENT__ENVIRONMENT = eINSTANCE.getCatalogElement_Environment();
 
 		/**
+		 * The meta object literal for the '<em><b>Purpose</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CATALOG_ELEMENT__PURPOSE = eINSTANCE.getCatalogElement_Purpose();
+
+		/**
 		 * The meta object literal for the '<em><b>Tags</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1263,6 +1416,22 @@ public interface RePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CATALOG_ELEMENT__OWNED_LINKS = eINSTANCE.getCatalogElement_OwnedLinks();
+
+		/**
+		 * The meta object literal for the '<em><b>Referenced Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CATALOG_ELEMENT__REFERENCED_ELEMENTS = eINSTANCE.getCatalogElement_ReferencedElements();
+
+		/**
+		 * The meta object literal for the '<em><b>Replicated Elements</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CATALOG_ELEMENT__REPLICATED_ELEMENTS = eINSTANCE.getCatalogElement_ReplicatedElements();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.re.impl.CompliancyDefinitionPkgImpl <em>Compliancy Definition Pkg</em>}' class.

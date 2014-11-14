@@ -24,7 +24,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
@@ -63,7 +63,6 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#isIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#isIsPartOfKey <em>Is Part Of Key</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#getValueConstraint <em>Value Constraint</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.PropertyImpl#getAssociation <em>Association</em>}</li>
  * </ul>
  * </p>
@@ -419,33 +418,6 @@ public class PropertyImpl extends FeatureImpl implements Property {
 
 
 	/**
-	 * The default value of the '{@link #getValueConstraint() <em>Value Constraint</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueConstraint()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VALUE_CONSTRAINT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValueConstraint() <em>Value Constraint</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueConstraint()
-	 * @generated
-	 * @ordered
-	 */
-	protected String valueConstraint = VALUE_CONSTRAINT_EDEFAULT;
-
-
-
-
-
-
-
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -562,10 +534,10 @@ public class PropertyImpl extends FeatureImpl implements Property {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.TYPED_ELEMENT__TYPE.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.TYPED_ELEMENT__TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE, annotation);
 		
 		try {
@@ -1348,38 +1320,6 @@ public class PropertyImpl extends FeatureImpl implements Property {
 	 * @generated
 	 */
 
-	public String getValueConstraint() {
-
-		return valueConstraint;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setValueConstraint(String newValueConstraint) {
-
-		String oldValueConstraint = valueConstraint;
-		valueConstraint = newValueConstraint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.PROPERTY__VALUE_CONSTRAINT, oldValueConstraint, valueConstraint));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public Association getAssociation() {
 
 		Association association = basicGetAssociation();
@@ -1413,10 +1353,10 @@ public class PropertyImpl extends FeatureImpl implements Property {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.PROPERTY__ASSOCIATION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.PROPERTY__ASSOCIATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PROPERTY__ASSOCIATION, annotation);
 		
 		try {
@@ -1507,8 +1447,6 @@ public class PropertyImpl extends FeatureImpl implements Property {
 				return isIsReadOnly();
 			case InformationPackage.PROPERTY__IS_PART_OF_KEY:
 				return isIsPartOfKey();
-			case InformationPackage.PROPERTY__VALUE_CONSTRAINT:
-				return getValueConstraint();
 			case InformationPackage.PROPERTY__ASSOCIATION:
 				if (resolve) return getAssociation();
 				return basicGetAssociation();
@@ -1686,15 +1624,6 @@ public class PropertyImpl extends FeatureImpl implements Property {
 				}
 				// end-extension-code
 				return;
-			case InformationPackage.PROPERTY__VALUE_CONSTRAINT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setValueConstraint((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -1762,9 +1691,6 @@ public class PropertyImpl extends FeatureImpl implements Property {
 			case InformationPackage.PROPERTY__IS_PART_OF_KEY:
 				setIsPartOfKey(IS_PART_OF_KEY_EDEFAULT);
 				return;
-			case InformationPackage.PROPERTY__VALUE_CONSTRAINT:
-				setValueConstraint(VALUE_CONSTRAINT_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -1817,8 +1743,6 @@ public class PropertyImpl extends FeatureImpl implements Property {
 				return isReadOnly != IS_READ_ONLY_EDEFAULT;
 			case InformationPackage.PROPERTY__IS_PART_OF_KEY:
 				return isPartOfKey != IS_PART_OF_KEY_EDEFAULT;
-			case InformationPackage.PROPERTY__VALUE_CONSTRAINT:
-				return VALUE_CONSTRAINT_EDEFAULT == null ? valueConstraint != null : !VALUE_CONSTRAINT_EDEFAULT.equals(valueConstraint);
 			case InformationPackage.PROPERTY__ASSOCIATION:
 				return basicGetAssociation() != null;
 		}
@@ -1944,8 +1868,6 @@ public class PropertyImpl extends FeatureImpl implements Property {
 		result.append(isReadOnly);
 		result.append(", isPartOfKey: "); //$NON-NLS-1$
 		result.append(isPartOfKey);
-		result.append(", valueConstraint: "); //$NON-NLS-1$
-		result.append(valueConstraint);
 		result.append(')');
 		return result.toString();
 	}

@@ -14,24 +14,15 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.command.DeleteStructureCommand;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractCommand;
 
 /**
  * Utility class for Merge
  *
  */
 public class MergeUtils {
-
-  /**
-   * Execute a command...
-   * @param cmd_p the command to execute
-   */
-  public static void executeCmd(final AbstractCommand cmd_p) {
-    MDEAdapterFactory.getExecutionManager().execute(cmd_p);
-  }
   
   /**
    * Delete an {@link EObject}
@@ -51,8 +42,11 @@ public class MergeUtils {
    */
   public static void deleteElements(List<EObject> eObjects_p) {
     if ( null != eObjects_p && !eObjects_p.isEmpty() ) {
-      DeleteStructureCommand cmd = new DeleteStructureCommand(MDEAdapterFactory.getEditingDomain(), eObjects_p, false);
-      cmd.execute();
+      EditingDomain editingDomain = TransactionHelper.getEditingDomain(eObjects_p);
+      if (null != editingDomain) {
+        DeleteStructureCommand cmd = new DeleteStructureCommand(editingDomain, eObjects_p, false);
+        cmd.execute();
+      }
     }
   }
 }

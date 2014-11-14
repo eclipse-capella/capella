@@ -15,12 +15,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
@@ -31,7 +31,7 @@ import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.ctx.System;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveContextFilter;
@@ -44,10 +44,10 @@ public class GetIBShowHideComponent__Lib extends AbstractQuery {
   public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
     List<Object> result = new ArrayList<Object>();
     EObject target = getIBTarget((DSemanticDecorator) input_p);
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(target);
-    Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-    for (IAbstractLibrary library : libraries) {
-      EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(target, (CapellaLibrary) library);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(target);
+    Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+    for (IModel library : libraries) {
+      EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(target, (CapellaModel) library);
       result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPONENTS, correspondingInput, context_p, new RemoveActorsFilter()));
     }
     return QueryInterpretor.executeFilter(result, new MultiFilter(new IQueryFilter[] { new RemoveActorsFilter(), new RemoveContextFilter() }));

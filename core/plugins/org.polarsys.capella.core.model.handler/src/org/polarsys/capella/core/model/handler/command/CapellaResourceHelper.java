@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
@@ -13,17 +13,26 @@ package org.polarsys.capella.core.model.handler.command;
 import java.util.Collection;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.model.handler.helpers.ICapellaResourceHelper;
+import org.polarsys.kitalpha.emde.model.Element;
 
 /**
  * Helper that deal with Capella resources.
@@ -51,6 +60,12 @@ public class CapellaResourceHelper {
   public static final String FRAGMENTS_DEFAULT_FOLDER = "fragments"; //$NON-NLS-1$
 
   private static ICapellaResourceHelper __delegatedCapellaResourceHelper;
+
+  public static final String CAPELLA_PROJECT_NATURE = "org.polarsys.capella.project.nature"; //$NON-NLS-1$
+
+  public static final String CAPELLA_LIBRARY_PROJECT_NATURE = "org.polarsys.capella.library.nature";//$NON-NLS-1$
+
+  public static final String CAPELLA_CONFIGURATION_PROJECT_NATURE = "org.polarsys.capella.core.preferences.project.nature.configNature"; //$NON-NLS-1$
 
   /**
    * Ensure given resource is writable.<br>
@@ -201,6 +216,22 @@ public class CapellaResourceHelper {
   }
 
   /**
+   * Create a new capella resource and loads it in the given editing domain
+   */
+  public static Resource createCapellaResource(IProject project_p, String filename_p, TransactionalEditingDomain domain_p) {
+    // Creates the XMI serialization file.
+    String fullPath =
+        project_p.getFullPath().toString() + ICommonConstants.SLASH_CHARACTER + filename_p + ICommonConstants.POINT_CHARACTER + CAPELLA_MODEL_FILE_EXTENSION;
+    URI capellaModelURI = URI.createPlatformResourceURI(fullPath, true);
+
+    // create a resource
+    ResourceSet set = domain_p.getResourceSet();
+    Resource xmiResource = set.createResource(capellaModelURI);
+
+    return xmiResource;
+  }
+
+  /**
    * Load the unique delegated Capella Resource Helper.
    */
   private static ICapellaResourceHelper loadDelegatedCapellaResourceHelper() {
@@ -214,4 +245,41 @@ public class CapellaResourceHelper {
     }
     return delegatedHelper;
   }
+
+  /**
+   * Retrieve editable attribute
+   * @param selectedElement_p
+   * @return a changeable, no-transient, no-derived, no-isMany attribute, or null
+   */
+  public static EAttribute getEditableAttribute(EObject selectedElement_p) {
+    EAttribute attribute = null;
+    if (selectedElement_p != null) {
+
+      //We should externalize that when Project Explorer will be MDK compliant
+      if (selectedElement_p instanceof AbstractNamedElement) {
+        attribute = ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME;
+        //} else if (.....) {
+        // FIXME should read some extension point somewhere
+      } else if (selectedElement_p.eClass() != null) {
+        //try default feature if exist
+        EStructuralFeature feature = selectedElement_p.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
+        if ((feature != null) && (feature instanceof EAttribute)) {
+          attribute = (EAttribute) feature;
+        }
+      }
+    }
+    return attribute;
+  }
+
+  /**
+   * Returns whether the given project is a Capella project (project or library)
+   */
+  public static boolean isCapellaProject(IProject targetProject_p) {
+    try {
+      return targetProject_p.hasNature(CAPELLA_PROJECT_NATURE) || targetProject_p.hasNature(CAPELLA_LIBRARY_PROJECT_NATURE);
+    } catch (CoreException exception_p) {
+      return false;
+    }
+  }
+
 }

@@ -12,12 +12,12 @@ package org.polarsys.capella.core.sirius.ui.copylayout;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * Specific key for {@link DEdge}.
@@ -38,7 +38,7 @@ public class CapellaEdgeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
     if (decorator_p.getTargetNode() != null) {
       addDecoration(decorator_p.getTargetNode());
     }
-    addDecoration(ViewpointPackage.Literals.DEDGE);
+    addDecoration(DiagramPackage.Literals.DEDGE);
   }
 
   /**

@@ -124,6 +124,63 @@ Rule is only applicable for all ExchangeItem of EPBS Architecture Layer.
                <target class="ExchangeItem">
                </target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemsWithAnInheritanceRelationshipHaveTheSameExchangeMechanism"
+                  id="TC_I_11"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_I_11 - Exchange Items with an inheritance relationship have the same exchange mechanism"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (ExchangeItem) must have the same Exchange Mechanism of {1} (ExchangeItem) since it inherits from it.
+               </message>
+               <description>
+                  This rule checks that Exchange Items with an inheritance relationship have the same exchange mechanism.
+               </description>
+               <target
+                     class="ExchangeItem">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeitem.InheritanceConstraintForExchangeItemElement"
+                  id="TC_I_12"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_I_12 - Inheritance Constraint for Exchange Item Element"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Inheritance rule between Exchange Item Elements of Exchange Item hierarchy is violated for {0} ({1}).
+               </message>
+               <description>
+                  This rule checks that an Exchange Item (EI 2) with Exchange Item Element (EIE 2) of Type T2, which inherits from an Exchange Item EI (EI 1) with an Exchange Item Element (EIE 1) of Type T1,verifies that T2 inherits from T1.
+               </description>
+               <target
+                     class="ExchangeItem">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.validation.exchangeitem.InheritanceConstraint2ForExchangeItemElement"
+                  id="TC_I_13"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_I_13 - Inheritance Constraint for Exchange Item Element"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Inheritance rule between Exchange Item Elements of Exchange Item hierarchy is violated for {0} ({1}).
+               </message>
+               <description>
+                  This rule checks that two exchange items involved in an inheritance relationship must define an exchange item element.
+               </description>
+               <target
+                     class="ExchangeItem">
+               </target>
+            </constraint>
          </constraints>
          <constraints categories="capella.category/integrity">
             <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_Unnaming" id="I_01" isEnabledByDefault="false" lang="Java" mode="Batch" name="I_01 - Unnamed Association" severity="WARNING" statusCode="1">
@@ -218,16 +275,6 @@ This rule checks that an element doesn&apos;t contain a naming conflict between 
                   This rule ensures that Union has a discriminant.
                </description>
                <target class="Union">
-               </target>
-            </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_NavigableMembers" id="DWF_D_09" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_09 - Association navigable members check" severity="WARNING" statusCode="1">
-               <message>
-                  {0} (Association) should have at least one navigable member.
-               </message>
-               <description>
-                  This rule checks that an Association has at least one navigable member.
-               </description>
-               <target class="Association">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.information.validation.association.MDCHK_Association_NavigableAgggregationComposition" id="DWF_D_10" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_D_10 - Aggregation/Composition navigability check" severity="WARNING" statusCode="1">
@@ -540,6 +587,52 @@ contains the partition {2} (Partitionable Element)  typed by {0} (Partitionable 
                  This rule ensures that enumeration literals domain values are typed according to the type of their container enumeration domain type.
               </description>
               <target class="Enumeration">
+              </target>
+           </constraint>
+        </constraints>
+     </constraintProvider>
+     <constraintProvider>
+        <package
+              namespaceUri="http://www.polarsys.org/capella/core/information/communication/0.8.0">
+        </package>
+        <constraints
+              categories="capella.category/design/completeness">
+           <constraint
+                 class="org.polarsys.capella.core.data.information.validation.information.CommunicationLinkIsDelegatedByOneSubcomponentAtLeast"
+                 id="DC_CL_01"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="DC_CL_01  Communication Link is delegated by one subcomponent at least"
+                 severity="WARNING"
+                 statusCode="1">
+              <message>
+                 Communication Link {0} from {1} (Component) to {2} (ExchangeItem) is not delegated by one of its sub-components.
+              </message>
+              <description>
+                 Model Validation shall check that Exchange Items referenced by a Communication Link is delegated to one or many subcomponents of the source Component.
+              </description>
+              <target
+                    class="CommunicationLink">
+              </target>
+           </constraint>
+           <constraint
+                 class="org.polarsys.capella.core.data.information.validation.information.CommunicationLinkForComponentIsDefinedInItsParent"
+                 id="DC_CL_02"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="DC_CL_02 Communication Link for a component is defined in its parent"
+                 severity="WARNING"
+                 statusCode="1">
+              <message>
+                 Communication Link {0} from {1} (Component) to {2} (ExchangeItem) must be also defined in the following parents of this component : {3}.
+              </message>
+              <description>
+                 Model Validation shall check that an Exchange Item referenced by a Communication Link from a SubComponent is also referenced by a Communication Link from owning Components.
+              </description>
+              <target
+                    class="CommunicationLink">
               </target>
            </constraint>
         </constraints>

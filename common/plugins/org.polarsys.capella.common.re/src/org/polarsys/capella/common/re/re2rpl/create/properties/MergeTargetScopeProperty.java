@@ -44,7 +44,7 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
     IContext context = (IContext) context_p.getSource();
     Collection<EObject> scopeElements = new HashSet<EObject>();
     CatalogElement target =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET));
 
     scopeElements.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllElements(target));
 
@@ -104,7 +104,7 @@ public class MergeTargetScopeProperty extends AbstractProperty implements IEdita
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET, IReConstants.PROPERTY__SHARED_ELEMENTS,
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET, IReConstants.PROPERTY__SHARED_ELEMENTS,
                          IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS };
   }
 

@@ -13,7 +13,13 @@ package org.polarsys.capella.core.business.queries.queries.interaction;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.queries.AbstractQuery;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -24,15 +30,9 @@ import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 
 public class GetAvailable_InstanceRole_RepresentedInstance extends AbstractQuery {
 

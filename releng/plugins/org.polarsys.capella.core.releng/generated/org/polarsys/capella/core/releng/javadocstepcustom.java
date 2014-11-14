@@ -1,4 +1,4 @@
-//Generated on Wed Jun 04 10:56:54 CEST 2014 with EGF 1.1.0.v20140514-0645
+//Generated with EGF 1.2.0.v20140805-0858
 package org.polarsys.capella.core.releng;
 
 import org.eclipse.egf.common.helper.*;

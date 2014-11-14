@@ -15,7 +15,7 @@ import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.skeleton.Messages;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * The business command allowing to create the system engineering root element, <b>ONLY</b>.
@@ -51,7 +51,7 @@ public class CreateEngSystemCmd extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand#run()
+   * @see org.polarsys.capella.common.ef.command.AbstractReadWriteCommand#run()
    */
   public void run() {
     // 1 - Builds the system engineering with the specified name.
@@ -62,7 +62,7 @@ public class CreateEngSystemCmd extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+   * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
    */
   @Override
   public String getName() {

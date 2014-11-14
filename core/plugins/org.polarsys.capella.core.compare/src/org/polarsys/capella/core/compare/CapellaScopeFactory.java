@@ -14,9 +14,10 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
-import org.eclipse.emf.diffmerge.ui.specification.IScopeSpecification;
-import org.eclipse.emf.diffmerge.ui.specification.ext.FileScopeSpecification;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
+import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
+import org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.common.consonance.ui.sirius.SiriusScopeFactory;
 
@@ -30,15 +31,22 @@ public class CapellaScopeFactory extends SiriusScopeFactory {
    * @see org.eclipse.emf.diffmerge.ui.specification.ext.FileScopeSpecificationFactory#createScopeSpecificationFromUri(org.eclipse.emf.common.util.URI, java.lang.String, boolean)
    */
   @Override
-  protected IScopeSpecification createScopeSpecificationFromUri(URI uri_p, String label_p,
+  protected IModelScopeDefinition createScopeDefinitionFromURI(URI uri_p, String label_p,
       boolean editable_p) {
-    return new FileScopeSpecification(uri_p, label_p, editable_p) {
+    return new URIScopeDefinition(uri_p, label_p, editable_p) {
       /**
-       * @see org.eclipse.emf.diffmerge.ui.specification.ext.FileScopeSpecification#createScope(org.eclipse.emf.edit.domain.EditingDomain)
+       * @see org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition#createScopeOnEditingDomain(org.eclipse.emf.edit.domain.EditingDomain)
        */
       @Override
-      public IFeaturedModelScope createScope(EditingDomain domain_p) {
-        return new CapellaScope(getEntrypointResource(domain_p));
+      protected IEditableModelScope createScopeOnEditingDomain(EditingDomain domain_p) {
+        return new CapellaScope(getEntrypoint(), domain_p, !isEditable());
+      }
+      /**
+       * @see org.eclipse.emf.diffmerge.ui.specification.ext.URIScopeDefinition#createScopeOnResourceSet(org.eclipse.emf.ecore.resource.ResourceSet)
+       */
+      @Override
+      protected IEditableModelScope createScopeOnResourceSet(ResourceSet resourceSet_p) {
+        return new CapellaScope(getEntrypoint(), resourceSet_p, !isEditable());
       }
     };
   }

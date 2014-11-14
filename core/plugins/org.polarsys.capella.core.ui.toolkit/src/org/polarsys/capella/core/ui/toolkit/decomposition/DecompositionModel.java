@@ -18,6 +18,7 @@ import org.eclipse.jface.resource.ImageRegistry;
 
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
 
 /**
@@ -90,6 +91,8 @@ public class DecompositionModel {
 
   }
 
+  protected boolean hideTechnicalInterfaces = true;
+  
   private List<DecompositionItem> _decompositionItemRemoved;
 
   private List<Decomposition> _decompositions;
@@ -126,6 +129,14 @@ public class DecompositionModel {
     setSourceComponent(sourceComponent_p);
   }
 
+  public boolean doesHideTechnicalInterfaces() {
+  	return hideTechnicalInterfaces;
+  }
+  
+  public void setHideTechnicalInterfaces(boolean state) {
+  	hideTechnicalInterfaces = state;
+  }  
+  
   /**
    * Adds a new Decomposition
    * @param decomposition_p the Decomposition
@@ -477,7 +488,7 @@ public class DecompositionModel {
     int count = 0;
     for (DecompositionComponent comp : decomp_p.getTargetComponents()) {
       for (DecompositionItem item : comp.getItems()) {
-        if (item.equals(item_p) && (item.isInterfaceUsage() == item_p.isInterfaceUsage())) {
+        if (item.equals(item_p)) {
           count++;
         }
       }
@@ -1038,5 +1049,10 @@ public class DecompositionModel {
       item_p.setStatusMessage(Messages.getString("LCDecomp.interface.ambiguous.tooltip")); //$NON-NLS-1$
     }
   }
+
+	public boolean isTechnicalInterface(DecompositionItem item) {
+		Object value = item.getValue();
+		return value instanceof Interface && !((Interface)value).isStructural();
+	}
 
 }

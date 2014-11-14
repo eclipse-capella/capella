@@ -11,7 +11,6 @@
 
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers;
 
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.navigator.CommonActionProvider;
@@ -19,7 +18,6 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.sirius.ui.actions.DesignerControlAction;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * The control action provider.
@@ -34,8 +32,7 @@ public class ControlActionProvider extends CommonActionProvider {
   @Override
   public void init(ICommonActionExtensionSite site_p) {
     super.init(site_p);
-    EditingDomain domain = MDEAdapterFactory.getEditingDomain();
-    _controlAction = new DesignerControlAction(domain);
+    _controlAction = new DesignerControlAction();
     SelectionHelper.registerToSelectionChanges(_controlAction, site_p.getViewSite().getSelectionProvider());
   }
 

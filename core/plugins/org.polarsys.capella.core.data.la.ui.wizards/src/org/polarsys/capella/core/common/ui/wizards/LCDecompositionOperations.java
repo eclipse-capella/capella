@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.common.ui.wizards;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,17 +20,19 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.ui.toolkit.decomposition.Decomposition;
-import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionComponent;
-import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionItem;
-import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionItemService;
-import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModel;
-import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelEvent;
-import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelListener;
+import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -38,25 +41,26 @@ import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
+import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.model.handler.command.DeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
-import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.ui.toolkit.decomposition.Decomposition;
+import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionComponent;
+import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionItem;
+import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionItemService;
+import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModel;
+import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelEvent;
+import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelListener;
 
 /**
  * Class <code>LCDecompositionOperations</code> listens for events on <code>DecompositionModel</code> and does all the required operations. Actual business
@@ -421,7 +425,7 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         List<Interface> interfaces = new ArrayList<Interface>();
         for (DecompositionItem decompositionItem : items) {
           Object value = decompositionItem.getValue();
-          if (value != null) {
+          if (value != null && value instanceof Interface) {
             interfaces.add((Interface) value);
           }
         }
@@ -485,7 +489,7 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         return sourceComponent_p.getName();
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(sourceComponent_p).execute(command);
   }
 
   /**
@@ -533,7 +537,7 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         return sourceComponent_p.getName();
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(sourceComponent_p).execute(command);
   }
 
   /**
@@ -602,23 +606,61 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         }
 
         if (!isAlternateDecomposition_p) {
-          // if lc in not in a breakdown structure of sourceComponent_p
+          // if lc is not in a breakdown structure of sourceComponent_p
           if (!sourceComponent_p.getSubLogicalComponents().contains(lc)) {
             // add lc in breakdown structure of sourceComponent_p
             addComponentInstanceToLC(sourceComponent_p, lc);
             sourceComponent_p.getOwnedLogicalComponents().add(lc);
           }
         }
+        List<DecompositionItem> interfaceItems = new ArrayList<DecompositionItem>();
+        List<DecompositionItem> communicationLinkItems = new ArrayList<DecompositionItem>();
+        for (DecompositionItem item : comp.getItems()) {
+					Object value = item.getValue();
+        	if (value instanceof CommunicationLink) {
+        		communicationLinkItems.add(item);
+					} else {
+						interfaceItems.add(item);
+					}
+        }
         // Add or Update Internal Interfaces
-        updateInternalInterfaces(comp.getItems(), lc);
+        updateInternalInterfaces(interfaceItems, lc);
         // Update Realization links and Use links
-        updateInterfacesLinks(comp.getItems(), lc);
-
+        updateInterfacesLinks(interfaceItems, lc);
+        // Update communication links
+        updateCommunicationLinks(communicationLinkItems, lc);
       }
     }
   }
 
-  /**
+  private void updateCommunicationLinks(List<DecompositionItem> communicationLinkItems, LogicalComponent lc) {		
+  	List<CommunicationLink> communicationLinks = new ArrayList<CommunicationLink>();
+  	for (DecompositionItem item : communicationLinkItems) {
+  		communicationLinks.add((CommunicationLink) item.getValue());
+  	}
+  	List<CommunicationLink> intersection = new ArrayList<CommunicationLink>(communicationLinks);
+  	intersection.retainAll(lc.getOwnedCommunicationLinks());
+  	List<CommunicationLink> toBeCloned = new ArrayList<CommunicationLink>(communicationLinks);
+  	toBeCloned.removeAll(intersection);
+  	List<CommunicationLink> toBeRemoved = new ArrayList<CommunicationLink>(lc.getOwnedCommunicationLinks());
+  	toBeRemoved.removeAll(intersection);
+  	
+  	for (CommunicationLink link : toBeCloned) {
+			CommunicationLink clone = CommunicationFactory.eINSTANCE.createCommunicationLink();
+			clone.setExchangeItem(link.getExchangeItem());
+			clone.setKind(link.getKind());
+			clone.setProtocol(link.getProtocol());
+			lc.getOwnedCommunicationLinks().add(clone);
+			CapellaElementExt.creationService(clone);  		
+  	}
+  	for (CommunicationLink link : toBeRemoved) {
+  		((Component) link.eContainer()).getOwnedCommunicationLinks().remove(link);
+  		new DeleteCommand(TransactionHelper.getEditingDomain(link), Collections.singletonList(link)).execute();
+  	}
+	}
+
+  
+	/**
    * Create or Update Internal Interface for current sub-component
    */
   private void updateInternalInterfaces(List<DecompositionItem> ItemInterfacelist, LogicalComponent lc) {

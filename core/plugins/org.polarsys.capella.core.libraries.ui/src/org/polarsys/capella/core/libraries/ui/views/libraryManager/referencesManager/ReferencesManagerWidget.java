@@ -19,21 +19,18 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
-
-import org.polarsys.capella.core.libraries.flexibilityProperties.LibraryManagerModel;
-import org.polarsys.capella.core.libraries.ui.views.libraryManager.LibraryContentProvider;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
+import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
+import org.polarsys.capella.core.libraries.ui.views.libraryManager.LibraryContentProvider;
 
-/**
- * A simple TableViewer to demonstrate usage
- */
 public class ReferencesManagerWidget {
 
   protected Table table;
@@ -55,7 +52,13 @@ public class ReferencesManagerWidget {
       @Override
       public void handleEvent(Event event) {
         TableItem item = (TableItem) event.item;
-        IAbstractLibrary library = (IAbstractLibrary) item.getData();
+        IModel library = (IModel) item.getData();
+
+        if (!LibraryManagerExt.getAllUnavailableReferences(library).isEmpty()) {
+          refreshView();
+          return;
+        }
+
         if ((event.detail == SWT.CHECK)) {
           if (!item.getChecked() && !item.getGrayed()) {
             model.removeReferencedLibrary(library);
@@ -80,12 +83,27 @@ public class ReferencesManagerWidget {
   protected void refreshView() {
     List<TableItem> itemsToBeChecked = new ArrayList<TableItem>();
     List<TableItem> itemsToBeGrayed = new ArrayList<TableItem>();
+    List<TableItem> itemsToBeDisabled = new ArrayList<TableItem>();
     List<TableItem> items = Arrays.asList(table.getItems());
-    Collection<IAbstractLibrary> currentReferencedLibraries = model.getReferencedLibrariesByRootModel();
-    for (IAbstractLibrary library : currentReferencedLibraries) {
-      itemsToBeChecked.add(table.getItem(model.getAllLibraries().indexOf(library)));
+    Collection<IModel> currentReferencedLibraries = model.getReferencedLibrariesByRootModel();
+
+    for (IModel library : currentReferencedLibraries) {
+      int index = model.getAllLibraries().indexOf(library);
+      if (index >= 0) {
+        itemsToBeChecked.add(table.getItem(index));
+      }
     }
-    for (IAbstractModel library : model.getAllReferencedLibrariesByRootModel()) {
+
+    for (IModel library : model.getAllLibraries()) {
+      int index = model.getAllLibraries().indexOf(library);
+      if (index >= 0) {
+        if (!LibraryManagerExt.getAllUnavailableReferences(library).isEmpty()) {
+          itemsToBeDisabled.add(table.getItem(index));
+        }
+      }
+    }
+
+    for (IModel library : model.getAllReferencedLibrariesByRootModel()) {
       if (!currentReferencedLibraries.contains(library)) {
         TableItem item = table.getItem(model.getAllLibraries().indexOf(library));
         itemsToBeChecked.add(item);
@@ -99,10 +117,17 @@ public class ReferencesManagerWidget {
     for (TableItem item : items) {
       item.setGrayed(itemsToBeGrayed.contains(item));
     }
+    for (TableItem item : items) {
+      if (itemsToBeDisabled.contains(item)) {
+        item.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY));
+      } else {
+        item.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_BLACK));
+      }
+    }
   }
 
   protected void notifyValueModification() {
-	// Workaround to indicate that the value has changed
+    // Workaround to indicate that the value has changed
     rendererContext.getPropertyContext().setCurrentValue(property, model);
   }
 }

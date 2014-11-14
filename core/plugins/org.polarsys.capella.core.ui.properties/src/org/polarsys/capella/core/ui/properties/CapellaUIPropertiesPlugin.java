@@ -15,17 +15,16 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.osgi.framework.BundleContext;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.ui.properties.preferences.ITransfertViewerPreferences;
 import org.polarsys.capella.core.ui.properties.preferences.CapellaUIPropertiesPreferencesInitializer;
+import org.polarsys.capella.core.ui.properties.preferences.ITransfertViewerPreferences;
 import org.polarsys.capella.core.ui.properties.sections.IAbstractSection;
 import org.polarsys.capella.core.ui.properties.wizards.CustomPropertyHelper;
 import org.polarsys.capella.core.ui.properties.wizards.CustomWizardHandler;
 import org.polarsys.capella.core.ui.properties.wizards.ICustomWizardHandler;
 import org.polarsys.capella.core.ui.properties.wizards.OpenCustomWizardCommand;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -85,7 +84,7 @@ public class CapellaUIPropertiesPlugin extends AbstractUIActivator {
    */
   private boolean openCustomWizard(EObject object_p) {
     OpenCustomWizardCommand command = new OpenCustomWizardCommand(object_p);
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(object_p).execute(command);
     return !command.isCanceled();
   }
 

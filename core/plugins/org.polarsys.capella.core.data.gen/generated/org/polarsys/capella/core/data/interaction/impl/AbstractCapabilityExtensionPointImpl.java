@@ -41,7 +41,6 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getAbstractCapability <em>Abstract Capability</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getExtendLinks <em>Extend Links</em>}</li>
@@ -71,20 +70,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
 
 
 
@@ -173,24 +158,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 
 	}
 
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
 
 
 
@@ -328,8 +295,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
@@ -364,8 +329,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
 				return getName();
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				return getNamingRules();
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
@@ -394,10 +357,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 				// begin-extension-code
 				}
 				// end-extension-code
-				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				getNamingRules().clear();
@@ -432,9 +391,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				getNamingRules().clear();
 				return;
@@ -460,8 +416,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 		switch (featureID) {
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				return namingRules != null && !namingRules.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
@@ -483,7 +437,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -505,7 +458,6 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}

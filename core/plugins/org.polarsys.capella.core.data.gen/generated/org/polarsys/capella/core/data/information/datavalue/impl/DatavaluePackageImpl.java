@@ -58,6 +58,7 @@ import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
 import org.polarsys.capella.core.data.information.datavalue.LiteralStringValue;
 import org.polarsys.capella.core.data.information.datavalue.NumericReference;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.data.information.datavalue.StringReference;
 import org.polarsys.capella.core.data.information.datavalue.UnaryExpression;
 import org.polarsys.capella.core.data.information.datavalue.UnaryOperator;
@@ -231,6 +232,13 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * @generated
 	 */
 	private EClass unaryExpressionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass opaqueExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -863,6 +871,33 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOpaqueExpression() {
+		return opaqueExpressionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOpaqueExpression_Bodies() {
+		return (EAttribute)opaqueExpressionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOpaqueExpression_Languages() {
+		return (EAttribute)opaqueExpressionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getBinaryOperator() {
 		return binaryOperatorEEnum;
 	}
@@ -980,6 +1015,10 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		createEAttribute(unaryExpressionEClass, UNARY_EXPRESSION__OPERATOR);
 		createEReference(unaryExpressionEClass, UNARY_EXPRESSION__OWNED_OPERAND);
 
+		opaqueExpressionEClass = createEClass(OPAQUE_EXPRESSION);
+		createEAttribute(opaqueExpressionEClass, OPAQUE_EXPRESSION__BODIES);
+		createEAttribute(opaqueExpressionEClass, OPAQUE_EXPRESSION__LANGUAGES);
+
 		// Create enums
 		binaryOperatorEEnum = createEEnum(BINARY_OPERATOR);
 		unaryOperatorEEnum = createEEnum(UNARY_OPERATOR);
@@ -1045,6 +1084,8 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		abstractExpressionValueEClass.getESuperTypes().add(this.getAbstractStringValue());
 		binaryExpressionEClass.getESuperTypes().add(this.getAbstractExpressionValue());
 		unaryExpressionEClass.getESuperTypes().add(this.getAbstractExpressionValue());
+		opaqueExpressionEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
+		opaqueExpressionEClass.getESuperTypes().add(theModellingcorePackage.getValueSpecification());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(dataValueEClass, DataValue.class, "DataValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1123,6 +1164,10 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		initEAttribute(getUnaryExpression_Operator(), this.getUnaryOperator(), "operator", null, 0, 1, UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getUnaryExpression_OwnedOperand(), this.getDataValue(), null, "ownedOperand", null, 0, 1, UnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
+		initEClass(opaqueExpressionEClass, OpaqueExpression.class, "OpaqueExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getOpaqueExpression_Bodies(), ecorePackage.getEString(), "bodies", null, 0, -1, OpaqueExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getOpaqueExpression_Languages(), ecorePackage.getEString(), "languages", null, 0, -1, OpaqueExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
 		// Initialize enums and add enum literals
 		initEEnum(binaryOperatorEEnum, BinaryOperator.class, "BinaryOperator"); //$NON-NLS-1$
 		addEEnumLiteral(binaryOperatorEEnum, BinaryOperator.UNSET);
@@ -1184,7 +1229,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																					
+		   });																																																																																																																																																																																																																																																																																																												
 	}
 
 	/**
@@ -1923,6 +1968,25 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "description", "Used when the unary operator refers to a predecessor operation", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (opaqueExpressionEClass, 
+		   source, 
+		   new String[] {
+			 "description", "An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of\r\nthe languages.\r\nOne predefined language for specifying expressions is OCL. Natural language or programming languages may also be\r\nused.", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "If the language attribute is not empty, then the size of the body and language arrays must be the same." //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getOpaqueExpression_Bodies(), 
+		   source, 
+		   new String[] {
+			 "description", "The text of the expression, possibly in multiple languages." //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (getOpaqueExpression_Languages(), 
+		   source, 
+		   new String[] {
+			 "description", "Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the\r\nlanguages. If the languages are unspecified, they might be implicit from the expression body or the context.\r\nLanguages are matched to body strings by order." //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 	}
 
@@ -2196,7 +2260,22 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		  (unaryOperatorEEnum, 
 		   source, 
 		   new String[] {
-		   });												
+		   });																
+		addAnnotation
+		  (opaqueExpressionEClass, 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getOpaqueExpression_Bodies(), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getOpaqueExpression_Languages(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -2216,7 +2295,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																		
+		   });																																																																																																																																																																																																																																																																																																									
 	}
 
 	/**
@@ -2412,7 +2491,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		   source, 
 		   new String[] {
 			 "Label", "operands" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																														
+		   });																																																					
 	}
 
 	/**
@@ -2657,7 +2736,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		   new String[] {
 			 "featureName", "clientDependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "NamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																															
+		   });																																																						
 	}
 
 	/**
@@ -3289,7 +3368,13 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
+		   });			
+		addAnnotation
+		  (opaqueExpressionEClass, 
+		   source, 
+		   new String[] {
+			 "base metaclass in UML/SysML profile ", "uml::OpaqueExpression" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
 	}
 
 	/**
@@ -3339,7 +3424,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		  (getAbstractExpressionValue_ExpressionType(), 
 		   source, 
 		   new String[] {
-		   });																																																																															
+		   });																																																																																						
 	}
 
 	/**
@@ -3439,7 +3524,7 @@ public class DatavaluePackageImpl extends EPackageImpl implements DatavaluePacka
 		  (getUnaryExpression_OwnedOperand(), 
 		   source, 
 		   new String[] {
-		   });																																													
+		   });																																																				
 	}
 
 } //DatavaluePackageImpl

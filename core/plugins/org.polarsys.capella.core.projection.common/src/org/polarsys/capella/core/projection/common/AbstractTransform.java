@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoEngine;
 import org.polarsys.capella.core.tiger.ITransfoRuleBase;
@@ -60,6 +59,7 @@ public abstract class AbstractTransform implements ITransform {
     } catch (OperationCanceledException e) {
       throw e;
     } catch (Exception e) {
+      e.printStackTrace();
       throw new RuntimeException(e);
     }
 

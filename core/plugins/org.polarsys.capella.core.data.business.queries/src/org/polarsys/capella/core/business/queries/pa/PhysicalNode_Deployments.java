@@ -10,103 +10,44 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.pa;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
-import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalNode;
-import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
-import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.utils.ListExt;
 
 /**
  */
 public class PhysicalNode_Deployments implements IBusinessQuery {
 
-	/**
-	 * get all the PC within current PC's SystemEngineering if currentPC_p is
-	 * not of PhysicalNode, it can not deploy PhysicalNode. Other cases are
-	 * possible
-	 * 
-	 * @param currentPC_p
-	 *            actual element
-	 * @return all PC within currentPC_p's SystemEngineering
-	 */
-	private List<CapellaElement> getRule_MQRY_PN_Deployments_11(PhysicalNode currentPC_p) {
-
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		List<PhysicalComponent> comps = SystemEngineeringExt.getAllPhysicalComponents(currentPC_p);
-
-		for (PhysicalComponent physicalComponent : comps) {
-			if (!(physicalComponent instanceof PhysicalNode)) {
-				availableElements.add(physicalComponent);
-			}
-		}
-
-		return availableElements;
-	}
-
-	/**
-	 * 
-	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-		if (element_p instanceof PhysicalNode) {
-			PhysicalNode pn = (PhysicalNode) element_p;
-			List<CapellaElement> candidates = getRule_MQRY_PN_Deployments_11(pn);
-
-			for (CapellaElement capellaElement : candidates) {
-				if (!PhysicalComponentExt.isDeployedOn(pn, (PhysicalComponent) capellaElement)) {
-					availableElements.add(capellaElement);
-				}
-			}
-		}
-		availableElements = ListExt.removeDuplicates(availableElements);
-		availableElements.remove(element_p.eContainer());
-		availableElements.remove(element_p);
-		availableElements.removeAll(getCurrentElements(element_p, false));
-		return availableElements;
-
-	}
-
-	/**
-	 * 
-	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-		if (element_p instanceof PhysicalComponent) {
-			PhysicalComponent pc = (PhysicalComponent) element_p;
-
-			List<AbstractDeploymentLink> links = pc.getDeploymentLinks();
-			for (AbstractDeploymentLink abstractDeployment : links) {
-				if (abstractDeployment instanceof TypeDeploymentLink) {
-					currentElements.add(abstractDeployment.getDeployedElement());
-				}
-			}
-		}
-		return currentElements;
-	}
-
+	@Override
 	public EClass getEClass() {
 		return PaPackage.Literals.PHYSICAL_NODE;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS);
+		return Collections.singletonList(CsPackage.Literals.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS);
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PHYSICAL_NODE__DEPLOYMENTS, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PHYSICAL_NODE__DEPLOYMENTS, element_p, context);
 	}
 }

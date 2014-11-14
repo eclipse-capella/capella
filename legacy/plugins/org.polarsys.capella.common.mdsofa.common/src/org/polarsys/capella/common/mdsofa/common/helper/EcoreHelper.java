@@ -10,26 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.common.mdsofa.common.helper;
 
-import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.polarsys.capella.common.mdsofa.common.constant.IEmfConstants;
 
 /**
  * Ecore helper that enhances the {@link EcoreUtil} class.
@@ -188,65 +177,5 @@ public class EcoreHelper {
       ownerPackage = ((EClassifier) element_p.eContainer()).getEPackage();
     }
     return ownerPackage;
-  }
-
-  /**
-   * Get generated package Java name for given package.
-   * @param genModelRelativePath_p
-   * @param package_p
-   * @return
-   */
-  public static String getImportedPackageName(EPackage package_p) {
-    String result = null;
-    // Load generation model.
-    GenModel genModel = loadGenModel(package_p);
-    // Precondition.
-    if (null == genModel) {
-      return result;
-    }
-    // Filter to genPackages.
-    Collection<GenPackage> genPackages = genModel.getAllGenPackagesWithClassifiers();
-    for (GenPackage genPackage : genPackages) {
-      // Found corresponding genPackage, get its Java interface name.
-      if (equals(package_p, genPackage.getEcorePackage(), false)) {
-        result = genPackage.getQualifiedPackageName();
-        break;
-      }
-    }
-    return result;
-  }
-
-  /**
-   * Get the generation model for specified element.
-   * @param element_p
-   * @return <code>null</code> if no generation model found for specified element.<br>
-   *         That means the plug-in that hosts the specified element is not installed or 'generated_package' extension is missing.
-   */
-  public static GenModel loadGenModel(EPackage package_p) {
-    GenModel result = null;
-    // Precondition.
-    if (null == package_p) {
-      return result;
-    }
-    EPackage rootPackage = getRootPackage(package_p);
-    String rootPackageNsUri = rootPackage.getNsURI();
-    IConfigurationElement configurationElement =
-                                                 ExtensionPointHelper.getConfigurationElement(IEmfConstants.GENERATED_PACKAGE_EXTENSION_POINT_PLUGIN_ID,
-                                                                                              IEmfConstants.GENERATED_PACKAGE_EXTENSION_POINT_SHORT_ID,
-                                                                                              IEmfConstants.GENERATED_PACKAGE_EXTENSION_POINT_ATT_URI,
-                                                                                              rootPackageNsUri);
-    // Could not find the extension in target platform.
-    if (null == configurationElement) {
-      return result;
-    }
-    // Load root package generation model.
-    IPath genModelRelativePath = new Path(configurationElement.getContributor().getName());
-    genModelRelativePath = genModelRelativePath.append(configurationElement.getAttribute(IEmfConstants.GENERATED_PACKAGE_EXTENSION_POINT_ATT_GEN_MODEL));
-    ResourceSet resourceSet = new ResourceSetImpl();
-    Resource resource = resourceSet.getResource(FileHelper.getFileFullUri(genModelRelativePath.toString()), true);
-    if (null != resource) {
-      result = (GenModel) resource.getContents().get(0);
-    }
-    return result;
   }
 }

@@ -16,10 +16,13 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.capellacore.Classifier;
 import org.polarsys.capella.core.data.information.AggregationKind;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Class;
@@ -28,13 +31,9 @@ import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.ui.quickfix.messages.InformationQuickFixMessages;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Consider 'Class_A' with 'property_p' which is typed by non-Primitive type
@@ -131,7 +130,7 @@ public class CO1218Resolver extends AbstractCapellaMarkerResolution {
 							}
 						};
 						// execute the command
-						MDEAdapterFactory.getExecutionManager().execute(
+						TransactionHelper.getExecutionManager(modelElements).execute(
 								collectElementsCommand);
 					}
 				}
@@ -226,8 +225,7 @@ public class CO1218Resolver extends AbstractCapellaMarkerResolution {
 								}
 							};
 							// execute the command
-							MDEAdapterFactory.getExecutionManager().execute(
-									collectElementsCommand);
+							TransactionHelper.getExecutionManager(property).execute(collectElementsCommand);
 						}
 					}
 				}

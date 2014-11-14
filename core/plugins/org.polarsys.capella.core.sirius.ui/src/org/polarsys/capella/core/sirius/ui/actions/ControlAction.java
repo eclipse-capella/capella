@@ -30,6 +30,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.action.CommandActionHandler;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -47,8 +48,8 @@ import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.sirius.ui.Messages;
 
 /**
@@ -91,6 +92,13 @@ public class ControlAction extends CommandActionHandler {
     _selection = selection_p;
 
     Object object = AdapterFactoryEditingDomain.unwrap(_selection.getFirstElement());
+    
+    // update editing domain according to the current selection
+    domain = TransactionUtil.getEditingDomain(object);
+    if (null == domain) {
+      return false;
+    }
+
     boolean result = domain.isControllable(object);
     _eObject = result ? (EObject) object : null;
 

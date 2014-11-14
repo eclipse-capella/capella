@@ -12,7 +12,6 @@ package org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.viewers.ILabelProvider;
-
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 

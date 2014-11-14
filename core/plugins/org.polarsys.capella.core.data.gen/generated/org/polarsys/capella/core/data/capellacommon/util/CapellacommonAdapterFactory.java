@@ -15,9 +15,11 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.behavior.AbstractBehavior;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
@@ -125,6 +127,10 @@ public class CapellacommonAdapterFactory extends AdapterFactoryImpl {
 				return createTransfoLinkAdapter();
 			}
 			@Override
+			public Adapter caseJustificationLink(JustificationLink object) {
+				return createJustificationLinkAdapter();
+			}
+			@Override
 			public Adapter caseCapabilityRealizationInvolvement(CapabilityRealizationInvolvement object) {
 				return createCapabilityRealizationInvolvementAdapter();
 			}
@@ -191,6 +197,38 @@ public class CapellacommonAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseStateTransitionRealization(StateTransitionRealization object) {
 				return createStateTransitionRealizationAdapter();
+			}
+			@Override
+			public Adapter caseShallowHistoryPseudoState(ShallowHistoryPseudoState object) {
+				return createShallowHistoryPseudoStateAdapter();
+			}
+			@Override
+			public Adapter caseDeepHistoryPseudoState(DeepHistoryPseudoState object) {
+				return createDeepHistoryPseudoStateAdapter();
+			}
+			@Override
+			public Adapter caseEntryPointPseudoState(EntryPointPseudoState object) {
+				return createEntryPointPseudoStateAdapter();
+			}
+			@Override
+			public Adapter caseExitPointPseudoState(ExitPointPseudoState object) {
+				return createExitPointPseudoStateAdapter();
+			}
+			@Override
+			public Adapter caseStateEventRealization(StateEventRealization object) {
+				return createStateEventRealizationAdapter();
+			}
+			@Override
+			public Adapter caseStateEvent(StateEvent object) {
+				return createStateEventAdapter();
+			}
+			@Override
+			public Adapter caseChangeEvent(ChangeEvent object) {
+				return createChangeEventAdapter();
+			}
+			@Override
+			public Adapter caseTimeEvent(TimeEvent object) {
+				return createTimeEventAdapter();
 			}
 			@Override
 			public Adapter caseElement(Element object) {
@@ -269,6 +307,14 @@ public class CapellacommonAdapterFactory extends AdapterFactoryImpl {
 				return createAllocationAdapter();
 			}
 			@Override
+			public Adapter caseAbstractType(AbstractType object) {
+				return createAbstractTypeAdapter();
+			}
+			@Override
+			public Adapter caseAbstractEvent(AbstractEvent object) {
+				return createAbstractEventAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -327,6 +373,20 @@ public class CapellacommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTransfoLinkAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.JustificationLink <em>Justification Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.JustificationLink
+	 * @generated
+	 */
+	public Adapter createJustificationLinkAdapter() {
 		return null;
 	}
 
@@ -565,6 +625,118 @@ public class CapellacommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStateTransitionRealizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState <em>Shallow History Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState
+	 * @generated
+	 */
+	public Adapter createShallowHistoryPseudoStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState <em>Deep History Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState
+	 * @generated
+	 */
+	public Adapter createDeepHistoryPseudoStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState <em>Entry Point Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState
+	 * @generated
+	 */
+	public Adapter createEntryPointPseudoStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState <em>Exit Point Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState
+	 * @generated
+	 */
+	public Adapter createExitPointPseudoStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.StateEventRealization <em>State Event Realization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEventRealization
+	 * @generated
+	 */
+	public Adapter createStateEventRealizationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.StateEvent <em>State Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEvent
+	 * @generated
+	 */
+	public Adapter createStateEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.ChangeEvent <em>Change Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.ChangeEvent
+	 * @generated
+	 */
+	public Adapter createChangeEventAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent <em>Time Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEvent
+	 * @generated
+	 */
+	public Adapter createTimeEventAdapter() {
 		return null;
 	}
 
@@ -831,6 +1003,34 @@ public class CapellacommonAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAllocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.modellingcore.AbstractType <em>Abstract Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.common.data.modellingcore.AbstractType
+	 * @generated
+	 */
+	public Adapter createAbstractTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.data.behavior.AbstractEvent <em>Abstract Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.common.data.behavior.AbstractEvent
+	 * @generated
+	 */
+	public Adapter createAbstractEventAdapter() {
 		return null;
 	}
 

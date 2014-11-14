@@ -20,7 +20,7 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.AddT
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.AddTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer.TraceType;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * <code>AddTraceWizard</code> main wizard to add trace
@@ -65,9 +65,9 @@ public class AddTraceWizard extends Wizard {
     //Add to an existing trace
     if(_selectedTrace!=null){
       if(_traceDestinationType.equals(TraceType.SOURCE_ELEMENT)){
-        MDEAdapterFactory.getExecutionManager().execute(new AddSrcElementToTrace(_selectedTrace,_currentNamedElement));
+        TransactionHelper.getExecutionManager(_selectedTrace).execute(new AddSrcElementToTrace(_selectedTrace,_currentNamedElement));
       } else {
-        MDEAdapterFactory.getExecutionManager().execute(new AddTgtElementToTrace(_selectedTrace,_currentNamedElement));
+        TransactionHelper.getExecutionManager(_selectedTrace).execute(new AddTgtElementToTrace(_selectedTrace,_currentNamedElement));
       }
       return true;
     }
@@ -75,9 +75,9 @@ public class AddTraceWizard extends Wizard {
     //perform add trace
     if(_traceType!=null){
       if(_traceDestinationType.equals(TraceType.SOURCE_ELEMENT)){
-        MDEAdapterFactory.getExecutionManager().execute(new AddTrace(_currentNamedElement,_workingNamedElement,_traceType));
+        TransactionHelper.getExecutionManager(_currentNamedElement).execute(new AddTrace(_currentNamedElement,_workingNamedElement,_traceType));
       } else {
-        MDEAdapterFactory.getExecutionManager().execute(new AddTrace(_workingNamedElement,_currentNamedElement,_traceType));
+        TransactionHelper.getExecutionManager(_workingNamedElement).execute(new AddTrace(_workingNamedElement,_currentNamedElement,_traceType));
       }
     }
     return true;

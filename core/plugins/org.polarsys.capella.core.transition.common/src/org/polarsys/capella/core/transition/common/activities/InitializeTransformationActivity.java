@@ -17,8 +17,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionSteps;
 import org.polarsys.capella.core.transition.common.constants.Messages;
@@ -28,13 +26,14 @@ import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.handlers.notify.INotifyChangeEvent;
 import org.polarsys.capella.core.transition.common.handlers.notify.NotifyHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  * 
  */
-public class InitializeTransformationActivity extends AbstractActivity implements ITransposerWorkflow {
+public abstract class InitializeTransformationActivity extends AbstractActivity implements ITransposerWorkflow {
 
   public static final String ID = "org.polarsys.capella.core.transition.common.activities.InitializeTransformationActivity"; //$NON-NLS-1$
 
@@ -151,9 +150,8 @@ public class InitializeTransformationActivity extends AbstractActivity implement
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
-   * @return
+   * In a common transition, 
+   * TRANSFORMATION_TARGET_ROOT = createTargetTransformationContainer(TRANSITION_TARGET_RESOURCE)
    */
   protected IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p) {
     // Retrieve the target of the transformation, also known as the source of the merge
@@ -162,14 +160,15 @@ public class InitializeTransformationActivity extends AbstractActivity implement
     return Status.OK_STATUS;
   }
 
-  protected EObject createTargetTransformationContainer(Resource source_p, IContext context_p) {
-    return null;
-  }
+  protected abstract EObject createTargetTransformationContainer(Resource source_p, IContext context_p);
 
   /**
-   * @param context_p
-   * @param activityParams_p
-   * @return
+   * SCOPE_SOURCES = TRANSITION_SOURCES
+   * TRANSFORMATION_SOURCES = TRANSITION_SOURCES
+   * TRANSFORMATION_SOURCE_ROOT = TRANSITION_SOURCE_ROOT
+   * 
+   * INITIAL_SOURCE_SCOPE = TRANSITION_SOURCES
+   * SOURCE_SCOPE = INITIAL_SOURCE_SCOPE
    */
   protected IStatus initializeSource(IContext context_p, ActivityParameters activityParams_p) {
     // Retrieve the source of the transformation

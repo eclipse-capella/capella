@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.osgi.util.NLS;
 
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -47,7 +48,6 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 
 /**
@@ -669,7 +669,7 @@ public class PhysicalPathExt {
     PhysicalPath newPath = CsFactory.eINSTANCE.createPhysicalPath();
 
     container_p.getOwnedPhysicalPath().add(newPath);
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(newPath);
     StrictCompoundCommand command = CreationHelper.getAdditionnalCommand(editingDomain, newPath);
     if (command.canExecute()) {
       command.execute();

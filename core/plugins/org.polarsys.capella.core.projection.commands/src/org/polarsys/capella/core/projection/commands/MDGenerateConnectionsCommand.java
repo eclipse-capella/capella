@@ -14,12 +14,12 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.exchanges.ConnectionCreatorFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * For each Functional exchange, incoming or outgoing, the current Component (or sub component), create the corresponding component
@@ -39,7 +39,7 @@ public class MDGenerateConnectionsCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
   public void run() {
     // Send long running operation events.
@@ -72,7 +72,7 @@ public class MDGenerateConnectionsCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#getLabel()
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#getLabel()
    */
   @Override
   public String getName() {

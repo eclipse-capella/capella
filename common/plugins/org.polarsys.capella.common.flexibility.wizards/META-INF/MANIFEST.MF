@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore,
  org.eclipse.emf.transaction,
  org.polarsys.capella.common.ui,
- org.polarsys.capella.common.helpers
+ org.polarsys.capella.common.helpers,
+ org.polarsys.capella.core.model.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.flexibility.wizards,

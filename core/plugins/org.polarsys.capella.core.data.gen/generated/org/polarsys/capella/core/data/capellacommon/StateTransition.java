@@ -12,6 +12,8 @@ package org.polarsys.capella.core.data.capellacommon;
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
+import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.core.data.capellacore.Relationship;
 
@@ -23,14 +25,13 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTriggerDescription <em>Trigger Description</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getSource <em>Source</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTarget <em>Target</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getEffect <em>Effect</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTrigger <em>Trigger</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getOwnedGuardCondition <em>Owned Guard Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTriggers <em>Triggers</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getOwnedStateTransitionRealizations <em>Owned State Transition Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getRealizedStateTransitions <em>Realized State Transitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getRealizingStateTransitions <em>Realizing State Transitions</em>}</li>
@@ -42,14 +43,14 @@ import org.polarsys.capella.core.data.capellacore.Relationship;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Transition' explanation='none' constraints='none'"
  * @generated
  */
-public interface StateTransition extends Relationship {
+public interface StateTransition extends NamedElement, Relationship {
 
 
 
 
 
 	/**
-	 * Returns the value of the '<em><b>Guard</b></em>' attribute.
+	 * Returns the value of the '<em><b>Guard</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -57,33 +58,30 @@ public interface StateTransition extends Relationship {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Guard</em>' attribute.
-	 * @see #setGuard(String)
+	 * @return the value of the '<em>Guard</em>' reference.
+	 * @see #setGuard(Constraint)
 	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Guard()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the guard of the state transition' constraints='none' type='' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
 	 */
 
-	String getGuard();
+	Constraint getGuard();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getGuard <em>Guard</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getGuard <em>Guard</em>}' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Guard</em>' attribute.
+	 * @param value the new value of the '<em>Guard</em>' reference.
 	 * @see #getGuard()
 	 * @generated
 	 */
 
-	void setGuard(String value);
-
-
-
+	void setGuard(Constraint value);
 
 
 
@@ -298,82 +296,23 @@ public interface StateTransition extends Relationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Trigger</b></em>' reference.
+	 * Returns the value of the '<em><b>Triggers</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.data.behavior.AbstractEvent}.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Trigger</em>' reference isn't clear,
+	 * If the meaning of the '<em>Triggers</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Trigger</em>' reference.
-	 * @see #setTrigger(AbstractEvent)
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Trigger()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The event to be triggered' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @return the value of the '<em>Triggers</em>' reference list.
+	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_Triggers()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the triggers that may fire the transition.' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::trigger' explanation='none' constraints='none'"
 	 * @generated
 	 */
 
-	AbstractEvent getTrigger();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTrigger <em>Trigger</em>}' reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Trigger</em>' reference.
-	 * @see #getTrigger()
-	 * @generated
-	 */
-
-	void setTrigger(AbstractEvent value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Guard Condition</b></em>' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Guard Condition</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Guard Condition</em>' containment reference.
-	 * @see #setOwnedGuardCondition(AbstractConstraint)
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getStateTransition_OwnedGuardCondition()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated\r\nwhen an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be\r\nenabled; otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with\r\nside effects are ill formed.\r\n[source:UML Superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Transition::guard' explanation='none' constraints='none'"
-	 * @generated
-	 */
-
-	AbstractConstraint getOwnedGuardCondition();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getOwnedGuardCondition <em>Owned Guard Condition</em>}' containment reference.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Guard Condition</em>' containment reference.
-	 * @see #getOwnedGuardCondition()
-	 * @generated
-	 */
-
-	void setOwnedGuardCondition(AbstractConstraint value);
-
-
-
+	EList<AbstractEvent> getTriggers();
 
 
 

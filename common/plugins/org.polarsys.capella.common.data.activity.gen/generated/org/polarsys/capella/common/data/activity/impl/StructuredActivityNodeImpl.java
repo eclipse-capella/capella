@@ -42,7 +42,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,7 +52,6 @@ import org.polarsys.capella.common.tig.model.IHelper;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getInActivityPartition <em>In Activity Partition</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getInInterruptibleRegion <em>In Interruptible Region</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.StructuredActivityNodeImpl#getInStructuredNode <em>In Structured Node</em>}</li>
@@ -90,40 +89,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -275,24 +240,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	 * @generated
 	 */
 
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public ActivityPartition getInActivityPartition() {
 
 		ActivityPartition inActivityPartition = basicGetInActivityPartition();
@@ -326,10 +273,10 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_ACTIVITY_PARTITION, annotation);
 		
 		try {
@@ -385,10 +332,10 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION, annotation);
 		
 		try {
@@ -444,10 +391,10 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__IN_STRUCTURED_NODE, annotation);
 		
 		try {
@@ -490,10 +437,10 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__OUTGOING, annotation);
 		
 		try {
@@ -537,10 +484,10 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__INCOMING.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_NODE__INCOMING.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_NODE__INCOMING, annotation);
 		
 		try {
@@ -858,8 +805,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_HANDLERS:
 				return ((InternalEList<?>)getOwnedHandlers()).basicRemove(otherEnd, msgs);
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION:
@@ -884,8 +829,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 		switch (featureID) {
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__NAME:
 				return getName();
-			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY_PARTITION:
 				if (resolve) return getInActivityPartition();
 				return basicGetInActivityPartition();
@@ -935,10 +878,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 				// begin-extension-code
 				}
 				// end-extension-code
-				return;
-			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_HANDLERS:
 				getOwnedHandlers().clear();
@@ -995,9 +934,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_HANDLERS:
 				getOwnedHandlers().clear();
 				return;
@@ -1032,8 +968,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 		switch (featureID) {
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY_PARTITION:
 				return basicGetInActivityPartition() != null;
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION:
@@ -1071,7 +1005,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case ActivityPackage.STRUCTURED_ACTIVITY_NODE__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -1114,7 +1047,6 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return ActivityPackage.STRUCTURED_ACTIVITY_NODE__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}

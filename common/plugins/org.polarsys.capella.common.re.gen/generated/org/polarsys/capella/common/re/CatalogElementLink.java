@@ -53,7 +53,7 @@ public interface CatalogElementLink extends ReAbstractElement {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(CatalogElement)
 	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElementLink_Source()
-	 * @model derived="true"
+	 * @model
 	 * @generated
 	 */
 

@@ -21,8 +21,10 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
@@ -35,9 +37,6 @@ import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortRealization;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  */
@@ -127,7 +126,8 @@ public class EIAllocationModelHelpers {
    * @param selection_p
    */
   public static void handleDeletion(Collection<?> selection_p) {
-    CapellaDeleteCommand cmd = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), filterFunctionsAndPorts(selection_p), false, false, false);
+	Collection<EObject> elts = filterFunctionsAndPorts(selection_p);
+    CapellaDeleteCommand cmd = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elts), elts, false, false, false);
     if (cmd.canExecute()) {
       cmd.execute();
     }
@@ -136,7 +136,7 @@ public class EIAllocationModelHelpers {
   /**
    * @param selection_p
    */
-  public static Collection<?> filterFunctionsAndPorts(Collection<?> selection_p) {
+  public static Collection<EObject> filterFunctionsAndPorts(Collection<?> selection_p) {
     Set<EObject> result = new HashSet<EObject>();
     for (Object obj : selection_p) {
       if ((obj instanceof AbstractFunction) || (obj instanceof FunctionPort)) {

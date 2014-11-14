@@ -14,13 +14,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.StructureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -106,17 +105,35 @@ public class DataPkgRule extends org.polarsys.capella.core.transition.system.rul
     super.retrieveGoDeep(source_p, result_p, context_p);
     if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, source_p, context_p)) {
       DataPkg pkg = (DataPkg) source_p;
+      result_p.addAll(pkg.getOwnedDataPkgs());
       ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedDataPkgs(), context_p);
 
       result_p.addAll(pkg.getOwnedExchangeItems());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedExchangeItems(), context_p);
+
       result_p.addAll(pkg.getOwnedAssociations());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedAssociations(), context_p);
+
       result_p.addAll(pkg.getOwnedClasses());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedClasses(), context_p);
+
       result_p.addAll(pkg.getOwnedCollections());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedCollections(), context_p);
+
       result_p.addAll(pkg.getOwnedDataPkgs());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedDataPkgs(), context_p);
+
       result_p.addAll(pkg.getOwnedDataTypes());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedDataTypes(), context_p);
+
       result_p.addAll(pkg.getOwnedDataValues());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedDataValues(), context_p);
+
       result_p.addAll(pkg.getOwnedKeyParts());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedKeyParts(), context_p);
+
       result_p.addAll(pkg.getOwnedUnits());
+      ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, pkg.getOwnedUnits(), context_p);
     }
   }
 

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeMetadataRepository version='1.0.0'?>
+<repository name='&quot;Eclipse Project Test Site&quot;'
+    type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository' version='1.0.0'>
+  <properties size='1'>
+    <property name='p2.timestamp' value='1243822502499'/>
+  </properties>
+  <children size='1'>
+    <child location='file:/d:/updateSites/download.eclipse.org/eclipse/updates/3.8'/>
+    <child location='file:/d:/updateSites/download.eclipse.org/releases/juno'/>
+    <child location='file:/d:/updateSites/download.eclipse.org/sirius/updates/releases/2.0.0-S20140930-084650/juno'/>
+    <child location='file:/d:/updateSites/download.eclipse.org/sirius/updates/legacy'/>
+    <child location='file:/d:/updateSites/integ/kitalpha'/>
+    <child location='file:/d:/updateSites/integ/diffmerge'/>
+    <child location='file:/d:/updateSites/integ/patterns'/>
+    <child location='file:/d:/updateSites/integ/cots-3.8.2'/>
+  </children>
+</repository>

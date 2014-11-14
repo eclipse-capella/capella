@@ -23,6 +23,8 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -51,6 +53,9 @@ public class DecompositionGeneralViewer extends FieldsViewer implements IDecompo
   private DecompositionTargetViewer _targetViewer;
   private boolean isDNDCreated = false;
 
+  protected DecompositionModel model;  
+  protected Button optionHideTechnicalInterfaces_button;
+
   /**
    * Constructor
    * @param parent_p the composite in which components are added
@@ -62,18 +67,15 @@ public class DecompositionGeneralViewer extends FieldsViewer implements IDecompo
     super(parent_p);
     this._decompositionModel = model_p;
     this._isLeftNRight = leftNRight_p;
+    this.model = model_p;
     DecompositionUtil.initializeImages(model_p.getImgRegistry());
     Composite internalComposite = createInternalComposite(getControl());
     createViewer(internalComposite);
+    createOptions(internalComposite);    
   }
 
   public DecompositionGeneralViewer(Composite parent_p, DecompositionModel model_p, boolean leftNRight_p, boolean syschronizeName, boolean syschronizeDeletion) {
-    super(parent_p);
-    this._decompositionModel = model_p;
-    this._isLeftNRight = leftNRight_p;
-    DecompositionUtil.initializeImages(model_p.getImgRegistry());
-    Composite internalComposite = createInternalComposite(getControl());
-    createViewer(internalComposite);
+    this(parent_p, model_p, leftNRight_p);
     DecompositionPreferenceOption.synchronizeName = syschronizeName;
     DecompositionPreferenceOption.synchronizeDeletion = syschronizeDeletion;
 
@@ -148,6 +150,19 @@ public class DecompositionGeneralViewer extends FieldsViewer implements IDecompo
     _sourceDND.setTargetViewer(targetViewer_p);
   }
 
+  protected void createOptions(Composite parent) {
+    optionHideTechnicalInterfaces_button = new Button(parent, SWT.CHECK);
+    optionHideTechnicalInterfaces_button.setText(Messages.getString("LCDecompGeneralViewer.hideTechnicalInterfaces")); //$NON-NLS-1$
+    optionHideTechnicalInterfaces_button.setSelection(model.doesHideTechnicalInterfaces());
+    optionHideTechnicalInterfaces_button.addSelectionListener(new SelectionAdapter() {
+      @Override
+      public void widgetSelected(SelectionEvent event_p) {
+      	model.setHideTechnicalInterfaces(((Button) event_p.widget).getSelection());
+      	refreshItems(_targetViewer.getTargetTreeViewer());
+      }
+    });
+  }
+  
   /**
    * Creates the internal composite.
    * @param parent_p The parent composite.
@@ -162,8 +177,8 @@ public class DecompositionGeneralViewer extends FieldsViewer implements IDecompo
     GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
     composite.setLayoutData(gridData);
     return composite;
-  }
-
+  }	
+  
   /**
    * Creates the left viewer
    * @param composite_p the parent composite
@@ -172,7 +187,7 @@ public class DecompositionGeneralViewer extends FieldsViewer implements IDecompo
     DecompositionSourceViewer sourceViewer = new DecompositionSourceViewer(composite_p);
     _sourceTreeViewer = sourceViewer.getSourceTreeViewer();
     sourceViewer.addSourceTreeLightbulbListener();
-
+    
     addSelectionListenerToViewer(_sourceTreeViewer);
   }
 
@@ -337,7 +352,7 @@ public class DecompositionGeneralViewer extends FieldsViewer implements IDecompo
    * @param isSynthesisCheckPage_p flag for synthesis check
    */
   public void setSourceTreeContentProvider(boolean isSynthesisCheckPage_p) {
-    _sourceTreeViewer.setContentProvider(new DecompositionTreeNodeContentProvider(isSynthesisCheckPage_p));
+    _sourceTreeViewer.setContentProvider(new DecompositionTreeNodeContentProvider(model, isSynthesisCheckPage_p));
     _sourceTreeViewer.setInput(_decompositionModel);
   }
 

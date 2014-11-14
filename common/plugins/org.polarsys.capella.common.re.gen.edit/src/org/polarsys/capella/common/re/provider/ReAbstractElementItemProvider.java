@@ -72,6 +72,9 @@ public class ReAbstractElementItemProvider extends
 
 			addIdPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 
@@ -181,17 +184,18 @@ public class ReAbstractElementItemProvider extends
                 // end-extension-code
 
 
-	}
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
+                         ReFactory.eINSTANCE.createGroupingElementPkg());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
 
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return ReEditPlugin.INSTANCE;
+
 	}
 
 	/**

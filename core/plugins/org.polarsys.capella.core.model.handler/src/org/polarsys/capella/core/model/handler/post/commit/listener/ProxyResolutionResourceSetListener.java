@@ -26,21 +26,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.helpers.modellingcore.utils.HoldingResourceFilter;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SiriusSessionListener;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  *
  */
-public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl {
+public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl implements IEditingDomainListener {
 
   @Override
   public boolean isPrecommitOnly() {
@@ -60,7 +63,7 @@ public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl 
   public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
 
     // pre-condition: not while closing a session
-    if (SiriusSessionListener.getInstance().isClosingSession()) {
+    if (SiriusSessionListener.isClosingSession(event.getEditingDomain())) {
       return null;
     }
 
@@ -86,7 +89,7 @@ public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl 
               element = (EObject) newValue;
             }
           }
-        } else if (notifier instanceof ModelElement) {
+        } else if (notifier instanceof ModelElement && notification.getFeature() instanceof EReference) {
           element = (EObject) newValue;
         }
       } else if ((notification.getEventType() == Notification.REMOVE)) {
@@ -97,7 +100,7 @@ public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl 
               element = (EObject) oldValue;
             }
           }
-        } else if (notifier instanceof ModelElement) {
+        } else if (notifier instanceof ModelElement && notification.getFeature() instanceof EReference) {
           element = (EObject) oldValue;
         }
       }
@@ -129,39 +132,41 @@ public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl 
     }
     toVisit.clear();
 
-    SemanticEditingDomain editingDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
-    ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
+    SemanticEditingDomain editingDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(contents);
+    if (null != editingDomain) {
+      ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
 
-    final HashMap<EObject, EObject> toChange = new HashMap<EObject, EObject>();
+      final HashMap<EObject, EObject> toChange = new HashMap<EObject, EObject>();
 
-    for (EObject eObject : contents) {
-      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObject, false);
-      for (Setting setting : inverseReferences) {
-        Object e = setting.get(false);
-        if ((e instanceof EObject) && (((EObject) e).eIsProxy())) {
-          toChange.put((EObject) e, eObject);
-        } else if (e instanceof EList) {
-          EList<Object> es = (EList) e;
-          for (Object ess : es) {
-            if ((ess instanceof EObject) && (((EObject) ess).eIsProxy())) {
-              toChange.put((EObject) ess, eObject);
+      for (EObject eObject : contents) {
+        Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObject, false);
+        for (Setting setting : inverseReferences) {
+          Object e = setting.get(false);
+          if ((e instanceof EObject) && (((EObject) e).eIsProxy())) {
+            toChange.put((EObject) e, eObject);
+          } else if (e instanceof EList) {
+            EList<Object> es = (EList) e;
+            for (Object ess : es) {
+              if ((ess instanceof EObject) && (((EObject) ess).eIsProxy())) {
+                toChange.put((EObject) ess, eObject);
+              }
             }
           }
         }
       }
-    }
 
-    contents.clear();
+      contents.clear();
 
-    if (!toChange.isEmpty()) {
-      return new RecordingCommand(editingDomain) {
-        @Override
-        protected void doExecute() {
-          for (EObject key : toChange.keySet()) {
-            updateProxyURI(key, toChange.get(key));
+      if (!toChange.isEmpty()) {
+        return new RecordingCommand(editingDomain) {
+          @Override
+          protected void doExecute() {
+            for (EObject key : toChange.keySet()) {
+              updateProxyURI(key, toChange.get(key));
+            }
           }
-        }
-      };
+        };
+      }
     }
 
     return null;
@@ -186,5 +191,21 @@ public class ProxyResolutionResourceSetListener extends ResourceSetListenerImpl 
         }
       }
     }
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
+   */
+  @Override
+  public void createdEditingDomain(EditingDomain editingDomain) {
+    ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
+  }
+	
+  /**
+   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
+   */
+  @Override
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+	((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
   }
 }

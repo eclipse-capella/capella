@@ -11,14 +11,17 @@
 package org.polarsys.capella.common.ui.toolkit.browser.query;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.helpers.query.IQuery;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionManager;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
 
 /**
  */
@@ -52,13 +55,19 @@ public class QueryAdapter {
    */
   @SuppressWarnings("unchecked")
   public List<Object> compute(Object currentElement_p, Object query_p) {
-    QueryComputeCommand queryComputeCommand = new QueryComputeCommand(currentElement_p, query_p);
-    MDEAdapterFactory.getExecutionManager().execute(queryComputeCommand);
-    List<Object> result = new ArrayList<Object>((List<Object>) queryComputeCommand.getResult());
-    // Trim result from useless 'null' values.
-    for (Iterator<Object> iterator = result.iterator(); iterator.hasNext();) {
-      if (null == iterator.next()) {
-        iterator.remove();
+    List<Object> result = Collections.emptyList();
+    if (currentElement_p instanceof EObject) {
+      ExecutionManager executionManager = TransactionHelper.getExecutionManager((EObject) currentElement_p);
+      if (executionManager != null) {
+        QueryComputeCommand queryComputeCommand = new QueryComputeCommand(currentElement_p, query_p);
+        executionManager.execute(queryComputeCommand);
+        result = new ArrayList<Object>((List<Object>) queryComputeCommand.getResult());
+        // Trim result from useless 'null' values.
+        for (Iterator<Object> iterator = result.iterator(); iterator.hasNext();) {
+          if (null == iterator.next()) {
+            iterator.remove();
+          }
+        }
       }
     }
     return result;

@@ -11,18 +11,18 @@
 package org.polarsys.capella.core.transition.system.topdown.handlers.traceability.config;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
+import org.polarsys.capella.core.transition.system.handlers.traceability.LibraryTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.RealizationLinkTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.ReconciliationTraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -51,9 +51,10 @@ public class MergeSourceConfiguration extends org.polarsys.capella.core.transiti
     protected void initializeComponent(Component source_p, Component target_p, IContext context_p, LevelMappingTraceability map_p) {
       super.initializeComponent(source_p, target_p, context_p, map_p);
 
-      addMapping(map_p, ComponentExt.getDataPkg(source_p, false), ComponentExt.getDataPkg(target_p, false), context_p);
-      addMapping(map_p, ComponentExt.getInterfacePkg(source_p, false), ComponentExt.getInterfacePkg(target_p, false), context_p);
-
+      if ((source_p != null) && (target_p != null) && !source_p.eClass().equals(target_p.eClass())) {
+        addMapping(map_p, ComponentExt.getDataPkg(source_p, false), ComponentExt.getDataPkg(target_p, false), context_p);
+        addMapping(map_p, ComponentExt.getInterfacePkg(source_p, false), ComponentExt.getInterfacePkg(target_p, false), context_p);
+      }
     }
 
     /**
@@ -122,6 +123,7 @@ public class MergeSourceConfiguration extends org.polarsys.capella.core.transiti
 
     addHandler(fContext_p, new TopDownSourceSIDTraceabilityHandler(getIdentifier(fContext_p)));
 
+    addHandler(fContext_p, new LibraryTraceabilityHandler());
   }
 
   /**
@@ -143,6 +145,10 @@ public class MergeSourceConfiguration extends org.polarsys.capella.core.transiti
       }
     }
 
+    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
+      return handler_p instanceof LibraryTraceabilityHandler;
+    }
+
     return result;
   }
 
@@ -154,6 +160,10 @@ public class MergeSourceConfiguration extends org.polarsys.capella.core.transiti
 
     boolean result = super.useHandlerForTracedElements(source_p, handler_p, context_p);
     if (result) {
+    }
+
+    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
+      return handler_p instanceof LibraryTraceabilityHandler;
     }
 
     return result;

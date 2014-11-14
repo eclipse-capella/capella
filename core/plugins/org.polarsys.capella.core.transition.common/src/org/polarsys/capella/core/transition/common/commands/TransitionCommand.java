@@ -18,7 +18,7 @@ import java.util.Iterator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */

@@ -12,13 +12,12 @@ package org.polarsys.capella.core.dashboard.hyperlinkadapter.la;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.refinement.commands.GenerateInterfaceDelegationsCommand;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * Perform an automated transition of System Interfaces and Ports.
@@ -38,7 +37,7 @@ public class PerformAutomatedTransitionOfSystemAdapter extends AbstractHyperlink
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
-    MDEAdapterFactory.getExecutionManager().execute(
+    TransactionHelper.getExecutionManager(capellaProject_p).execute(
       new GenerateInterfaceDelegationsCommand(getModelElement(_project)));
   }
 

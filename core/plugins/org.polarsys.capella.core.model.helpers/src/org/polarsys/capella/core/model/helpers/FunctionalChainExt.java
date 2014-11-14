@@ -32,7 +32,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.utils.graph.CycleDetectionUtils;
 import org.polarsys.capella.common.utils.graph.IDirectedGraph;
@@ -649,7 +649,7 @@ public class FunctionalChainExt {
     if (container_p instanceof AbstractCapability) {
       createFunctionalChainAbstractCapabilityInvolvement((AbstractCapability) container_p, newFC);
     }
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(newFC);
     StrictCompoundCommand command = CreationHelper.getAdditionnalCommand(editingDomain, newFC);
     if (command.canExecute()) {
       command.execute();

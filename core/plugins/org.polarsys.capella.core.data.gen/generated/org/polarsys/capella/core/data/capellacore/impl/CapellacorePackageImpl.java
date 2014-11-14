@@ -871,15 +871,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getConstraint_Expression() {
-		return (EReference)constraintEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getKeyValue() {
 		return keyValueEClass;
 	}
@@ -1533,7 +1524,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		createEAttribute(namingRuleEClass, NAMING_RULE__TARGET_TYPE);
 
 		constraintEClass = createEClass(CONSTRAINT);
-		createEReference(constraintEClass, CONSTRAINT__EXPRESSION);
 
 		keyValueEClass = createEClass(KEY_VALUE);
 		createEAttribute(keyValueEClass, KEY_VALUE__KEY);
@@ -1654,7 +1644,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		ModellingcorePackage theModellingcorePackage = (ModellingcorePackage)EPackage.Registry.INSTANCE.getEPackage(ModellingcorePackage.eNS_URI);
 		RequirementPackage theRequirementPackage = (RequirementPackage)EPackage.Registry.INSTANCE.getEPackage(RequirementPackage.eNS_URI);
 		CapellacommonPackage theCapellacommonPackage = (CapellacommonPackage)EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
-		DatavaluePackage theDatavaluePackage = (DatavaluePackage)EPackage.Registry.INSTANCE.getEPackage(DatavaluePackage.eNS_URI);
 		InformationPackage theInformationPackage = (InformationPackage)EPackage.Registry.INSTANCE.getEPackage(InformationPackage.eNS_URI);
 
 		// Create type parameters
@@ -1684,9 +1673,8 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		traceEClass.getESuperTypes().add(theModellingcorePackage.getAbstractTrace());
 		abstractAnnotationEClass.getESuperTypes().add(this.getCapellaElement());
 		namingRuleEClass.getESuperTypes().add(this.getAbstractAnnotation());
-		constraintEClass.getESuperTypes().add(this.getAbstractAnnotation());
+		constraintEClass.getESuperTypes().add(this.getNamedElement());
 		constraintEClass.getESuperTypes().add(theModellingcorePackage.getAbstractConstraint());
-		constraintEClass.getESuperTypes().add(theModellingcorePackage.getAbstractNamedElement());
 		keyValueEClass.getESuperTypes().add(this.getCapellaElement());
 		reuseLinkEClass.getESuperTypes().add(this.getRelationship());
 		reuseableStructureEClass.getESuperTypes().add(this.getStructure());
@@ -1770,7 +1758,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		initEAttribute(getNamingRule_TargetType(), ecorePackage.getEString(), "targetType", null, 0, 1, NamingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getConstraint_Expression(), theDatavaluePackage.getAbstractExpressionValue(), null, "expression", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(keyValueEClass, KeyValue.class, "KeyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getKeyValue_Key(), ecorePackage.getEString(), "key", null, 0, 1, KeyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1988,7 +1975,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "featureName", "targetType", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.NamingRule", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });												
+		   });									
 		addAnnotation
 		  (keyValueEClass, 
 		   source, 
@@ -2139,7 +2126,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																						
+		   });																																																																																																																																																																																																																																																																																																																																																																			
 	}
 
 	/**
@@ -2522,18 +2509,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "description", "A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getConstraint_Expression(), 
-		   source, 
-		   new String[] {
-			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
@@ -3304,11 +3279,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		  (constraintEClass, 
 		   source, 
 		   new String[] {
-		   });				
-		addAnnotation
-		  (getConstraint_Expression(), 
-		   source, 
-		   new String[] {
 		   });						
 		addAnnotation
 		  (keyValueEClass, 
@@ -3492,7 +3462,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																			
+		   });																																																																																																																																																																																																																																																																																																																																																																
 	}
 
 	/**
@@ -3568,7 +3538,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		   source, 
 		   new String[] {
 			 "Label", "NamingRule" //$NON-NLS-1$ //$NON-NLS-2$
-		   });															
+		   });												
 		addAnnotation
 		  (keyValueEClass, 
 		   source, 
@@ -4007,15 +3977,6 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "base metaclass in UML/SysML profile ", "uml::Constraint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getConstraint_Expression(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
@@ -4629,7 +4590,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		  (getTypedElement_Type(), 
 		   source, 
 		   new String[] {
-		   });																																																																																														
+		   });																																																																																											
 		addAnnotation
 		  (getGeneralizableElement_SuperGeneralizations(), 
 		   source, 
@@ -4694,7 +4655,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		  (getNamespace_OwnedTraces(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																						
+		   });																																																																																																			
 		addAnnotation
 		  (getReuseLink_Reused(), 
 		   source, 
@@ -4759,7 +4720,7 @@ public class CapellacorePackageImpl extends EPackageImpl implements CapellacoreP
 		  (traceEClass, 
 		   source, 
 		   new String[] {
-		   });																																								
+		   });																																					
 		addAnnotation
 		  (reuseLinkEClass, 
 		   source, 

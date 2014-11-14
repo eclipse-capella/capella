@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.projection.data,
  org.polarsys.capella.core.projection.statemachine,
  org.polarsys.capella.core.projection.preferences
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.actors.oa2ctx
 Bundle-Localization: plugin

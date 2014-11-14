@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-
-import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
 
 /**
@@ -36,7 +36,7 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public Object execute(EObject context, List scope_p, String wizardMessage_p, boolean multiple_p) {
     String wizardMessage = wizardMessage_p;
-    List scope = scope_p;
+    List<? extends EObject> scope = scope_p;
     if (wizardMessage == null) {
       wizardMessage = ICommonConstants.EMPTY_STRING;
     }
@@ -44,7 +44,7 @@ public class SelectElementFromListWizard extends AbstractExternalJavaAction {
       scope = Collections.emptyList();
     }
     SelectElementsDialog selectionDialog = new SelectElementsDialog(getShell(),
-    		new CapellaTransfertViewerLabelProvider(),
+    		new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(context)),
             Messages.SelectElementFromListWizard_Title,
             wizardMessage,
             new ArrayList<EObject>(scope),

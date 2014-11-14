@@ -121,18 +121,19 @@ public class MDCHKPackageVisibility extends AbstractValidationRule{
 		
 		if (relation instanceof Association) {
 			Association association = (Association) relation;
+			if (association.getNavigableMembers().size()>0){
 			Property navigableMember = association.getNavigableMembers().get(0);
 			Property ownedMemmber = association.getOwnedMembers().get(0);
 			
 			if (isImpactedElement(ownedMemmber.getAbstractType())
 					&& isImpactedElement(navigableMember.getAbstractType())) 
-			{
-				 sourceElement = (GeneralizableElement) ownedMemmber.getAbstractType();
-				 targetElement = (GeneralizableElement) navigableMember.getAbstractType();
-				 sourcePackage = (DataPkg) sourceElement.eContainer();
-				 targetPackage = (DataPkg) targetElement.eContainer();
+				{
+					sourceElement = (GeneralizableElement) ownedMemmber.getAbstractType();
+				 	targetElement = (GeneralizableElement) navigableMember.getAbstractType();
+				 	sourcePackage = (DataPkg) sourceElement.eContainer();
+				 	targetPackage = (DataPkg) targetElement.eContainer();
+				}
 			}
-			
 			
 		}else if (relation instanceof Generalization) {
 			Generalization generalization = (Generalization) relation;

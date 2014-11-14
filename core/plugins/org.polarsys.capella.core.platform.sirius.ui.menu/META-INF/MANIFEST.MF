@@ -5,8 +5,6 @@ Bundle-SymbolicName: org.polarsys.capella.core.platform.sirius.ui.menu;singleton
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.platform.sirius.ui.actions;visibility:=reexport,
- org.polarsys.capella.common.platform.sirius.tig,
- org.polarsys.capella.common.tig.efprovider,
  org.eclipse.sirius.diagram,
  org.eclipse.gmf.runtime.diagram.ui.resources.editor;visibility:=reexport,
  org.eclipse.core.expressions,

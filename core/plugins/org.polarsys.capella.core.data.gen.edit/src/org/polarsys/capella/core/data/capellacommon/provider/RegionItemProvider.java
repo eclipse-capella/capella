@@ -302,6 +302,54 @@ public class RegionItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.REGION__OWNED_STATES,
+                         CapellacommonFactory.eINSTANCE.createShallowHistoryPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.REGION__OWNED_STATES,
+                         CapellacommonFactory.eINSTANCE.createDeepHistoryPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.REGION__OWNED_STATES,
+                         CapellacommonFactory.eINSTANCE.createEntryPointPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacommonPackage.Literals.REGION__OWNED_STATES,
+                         CapellacommonFactory.eINSTANCE.createExitPointPseudoState());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (CapellacommonPackage.Literals.REGION__OWNED_TRANSITIONS,
                          CapellacommonFactory.eINSTANCE.createStateTransition());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {

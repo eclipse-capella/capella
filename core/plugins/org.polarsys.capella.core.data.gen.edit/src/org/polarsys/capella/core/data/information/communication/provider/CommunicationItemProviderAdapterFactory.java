@@ -34,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.information.communication.util.CommunicationAdapterFactory;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.

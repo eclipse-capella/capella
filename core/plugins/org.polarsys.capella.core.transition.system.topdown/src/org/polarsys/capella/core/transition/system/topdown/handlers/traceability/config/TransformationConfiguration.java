@@ -11,13 +11,14 @@
 package org.polarsys.capella.core.transition.system.topdown.handlers.traceability.config;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
+import org.polarsys.capella.core.transition.system.handlers.traceability.LibraryTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.RealizationLinkTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.ReconciliationTraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -88,6 +89,40 @@ public class TransformationConfiguration extends org.polarsys.capella.core.trans
 
     });
 
+    addHandler(fContext_p, new LibraryTraceabilityHandler());
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean useHandlerForAttachment(EObject source_p, EObject target_p, ITraceabilityHandler handler_p, IContext context_p) {
+    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
+      return handler_p instanceof LibraryTraceabilityHandler;
+    }
+    return super.useHandlerForAttachment(source_p, target_p, handler_p, context_p);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean useHandlerForTracedElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
+    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
+      return handler_p instanceof LibraryTraceabilityHandler;
+    }
+    return super.useHandlerForTracedElements(source_p, handler_p, context_p);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public boolean useHandlerForSourceElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
+    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
+      return handler_p instanceof LibraryTraceabilityHandler;
+    }
+    return super.useHandlerForSourceElements(source_p, handler_p, context_p);
   }
 
 }

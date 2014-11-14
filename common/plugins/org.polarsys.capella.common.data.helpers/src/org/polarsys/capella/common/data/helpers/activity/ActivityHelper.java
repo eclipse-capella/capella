@@ -13,7 +13,6 @@ package org.polarsys.capella.common.data.helpers.activity;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.common.data.activity.AbstractActivity;
 import org.polarsys.capella.common.data.activity.ActivityEdge;
 import org.polarsys.capella.common.data.activity.ActivityExchange;
@@ -24,8 +23,8 @@ import org.polarsys.capella.common.data.helpers.activity.delegates.ActivityEdgeH
 import org.polarsys.capella.common.data.helpers.activity.delegates.ActivityExchangeHelper;
 import org.polarsys.capella.common.data.helpers.activity.delegates.ActivityNodeHelper;
 import org.polarsys.capella.common.data.helpers.activity.delegates.ActivityPartitionHelper;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 
 public class ActivityHelper implements IHelper {
 

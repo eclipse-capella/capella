@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.handlers;
 
-import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.core.ui.toolkit.actions.move.AbstractMoveAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
+import org.polarsys.capella.core.ui.toolkit.actions.move.AbstractMoveAction;
 
 /**
  * Move up handler that runs a MoveUpAction.
@@ -23,7 +21,7 @@ public class MoveUpHandler extends AbstractMoveHandler {
    * @see org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.handlers.AbstractMoveHandler#createMoveAction(org.eclipse.emf.edit.domain.EditingDomain)
    */
   @Override
-  protected AbstractMoveAction createMoveAction(EditingDomain domain_p) {
-    return new MoveUpAction(domain_p);
+  protected AbstractMoveAction createMoveAction() {
+    return new MoveUpAction();
   }
 }

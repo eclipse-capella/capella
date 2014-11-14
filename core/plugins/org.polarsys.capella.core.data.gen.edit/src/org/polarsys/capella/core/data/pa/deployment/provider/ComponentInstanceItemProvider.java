@@ -269,7 +269,6 @@ public class ComponentInstanceItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS);
 			childrenFeatures.add(DeploymentPackage.Literals.COMPONENT_INSTANCE__OWNED_ABSTRACT_PHYSICAL_INSTANCES);
 			childrenFeatures.add(DeploymentPackage.Literals.COMPONENT_INSTANCE__OWNED_INSTANCE_DEPLOYMENT_LINKS);
 		}
@@ -339,7 +338,6 @@ public class ComponentInstanceItemProvider
 			case DeploymentPackage.COMPONENT_INSTANCE__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS:
 			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_ABSTRACT_PHYSICAL_INSTANCES:
 			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_INSTANCE_DEPLOYMENT_LINKS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -359,18 +357,6 @@ public class ComponentInstanceItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
-                         CapellacoreFactory.eINSTANCE.createConstraint());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

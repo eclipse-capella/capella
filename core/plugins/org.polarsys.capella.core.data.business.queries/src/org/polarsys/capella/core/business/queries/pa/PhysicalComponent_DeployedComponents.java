@@ -10,85 +10,52 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.pa;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
-import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**
  *
  */
 public class PhysicalComponent_DeployedComponents implements IBusinessQuery {
 
-  public boolean isMultipleDeploymentAllowed() {
-    return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
-  }
-  
-  /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    PhysicalComponent currentPC = (PhysicalComponent) element_p;
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    List<PhysicalComponent> comps = SystemEngineeringExt.getAllPhysicalComponents(currentPC);
+	/**
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return PaPackage.Literals.PHYSICAL_COMPONENT;
+	}
 
-    for (PhysicalComponent physicalComponent : comps) {
-      if (! (currentPC.getNature().equals(PhysicalComponentNature.BEHAVIOR) 
-          && physicalComponent.getNature().equals(PhysicalComponentNature.NODE))
-          && !(!isMultipleDeploymentAllowed() && !physicalComponent.getDeployingLinks().isEmpty())
-          && !physicalComponent.equals(currentPC)
-          && !EcoreUtil.isAncestor(physicalComponent, currentPC)){
-          availableElements.add(physicalComponent);
-      }
-    }
-    availableElements.removeAll(getCurrentElements(element_p, false));
-    return availableElements;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
+	}
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement, boolean)
-   */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PHYSICAL_COMPONENT__DEPLOYED_COMPONENTS, element_p, context);
+	}
 
-    if (element_p instanceof PhysicalComponent) {
-      PhysicalComponent pc = (PhysicalComponent) element_p;
-      for (AbstractDeploymentLink abstractDeployment : pc.getDeploymentLinks()) {
-        if (abstractDeployment instanceof TypeDeploymentLink) {
-          currentElements.add(abstractDeployment.getDeployedElement());
-        }
-      }
-    }
-
-    return currentElements;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return PaPackage.Literals.PHYSICAL_COMPONENT;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEStructuralFeatures()
-   */
-  public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(CsPackage.Literals.ABSTRACT_DEPLOYMENT_LINK__DEPLOYED_ELEMENT);
-  }
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PHYSICAL_COMPONENT__DEPLOYED_COMPONENTS, element_p, context);
+	}
 
 }

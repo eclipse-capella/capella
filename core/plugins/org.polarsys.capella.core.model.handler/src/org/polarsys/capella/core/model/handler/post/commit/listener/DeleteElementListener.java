@@ -18,15 +18,18 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.polarsys.capella.common.ef.domain.IEditingDomainListener;
 
 /**
  * Find elements that have been deleted during a transaction.
  * 
  */
-public abstract class DeleteElementListener extends ResourceSetListenerImpl {
+public abstract class DeleteElementListener extends ResourceSetListenerImpl implements IEditingDomainListener {
 
   public DeleteElementListener() {
     super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.READ.negated()
@@ -100,5 +103,20 @@ public abstract class DeleteElementListener extends ResourceSetListenerImpl {
    * @param orphans
    */
   protected abstract void handleDelete(Set<? extends EObject> deleted);
-  
+
+  /**
+   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
+   */
+  @Override
+  public void createdEditingDomain(EditingDomain editingDomain) {
+    ((TransactionalEditingDomain) editingDomain).addResourceSetListener(this);
+  }
+	
+  /**
+   * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
+   */
+  @Override
+  public void disposedEditingDomain(EditingDomain editingDomain) {
+	((TransactionalEditingDomain) editingDomain).removeResourceSetListener(this);
+  }
 }

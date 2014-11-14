@@ -34,7 +34,13 @@ public class LiteralBooleanValueItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
    */
+  @Override
   public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+
+    if (feature_p == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION){
+      return true;
+    }
+
     boolean select =
         DatatypePackage.Literals.BOOLEAN_TYPE.isInstance(modelElement_p) && !isCardMaxReached(modelElement_p, cls_p, feature_p)
             && !feature_p.equals(DatavaluePackage.Literals.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES)
@@ -99,6 +105,7 @@ public class LiteralBooleanValueItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
    */
+  @Override
   public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p,
       EStructuralFeature feature_p) {
     CompoundCommand cmd = new CompoundCommand();
@@ -115,6 +122,7 @@ public class LiteralBooleanValueItemContribution implements IMDEMenuItemContribu
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()
    */
+  @Override
   public EClass getMetaclass() {
     return DatavaluePackage.Literals.LITERAL_BOOLEAN_VALUE;
   }

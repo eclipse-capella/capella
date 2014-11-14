@@ -15,38 +15,41 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.business.queries.capellacore.AbstractExchangeItem_RealizedInformations;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.InformationRealization;
 
 /**
  */
-public class ExchangeItem_RealizedInformations extends AbstractExchangeItem_RealizedInformations {
+public class ExchangeItem_RealizedInformations extends AbstractExchangeItem_RealizedInformations implements IBusinessQuery {
 
-	/**
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement, boolean)
-	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-		if (element_p instanceof ExchangeItem) {
-		  for (InformationRealization elt : ((ExchangeItem) element_p).getOwnedInformationRealizations()) {
-			  currentElements.add((CapellaElement) elt.getTargetElement());
-		  }
-		}
-
-		return currentElements;
-	}
-
+	@Override
 	public EClass getEClass() {
 		return InformationPackage.Literals.EXCHANGE_ITEM;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
-	  List<EReference> list = new ArrayList<EReference>(1);
-	  list.add(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS);	  
-    return list;
+		List<EReference> list = new ArrayList<EReference>(1);
+		list.add(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS);
+		return list;
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__EXCHANGE_ITEM__REALIZED_INFORMATIONS, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__EXCHANGE_ITEM__REALIZED_INFORMATIONS, element_p, context);
 	}
 }

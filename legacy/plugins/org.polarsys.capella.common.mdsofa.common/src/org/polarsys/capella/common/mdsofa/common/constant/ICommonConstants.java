@@ -102,4 +102,12 @@ public interface ICommonConstants {
    * Templates folder path.
    */
   public static final String TEMPLATES_FOLDER_PATH = "templates"; //$NON-NLS-1$
+  /**
+   * Define source folder where model API are produced.
+   */
+  public static final String SRC_FOLDER = "src"; //$NON-NLS-1$
+  /**
+   * A path to a file that should exist in every hosting project.
+   */
+  public static final String PROJECT_ROOT_FILE = "/META-INF/MANIFEST.MF"; //$NON-NLS-1$
 }

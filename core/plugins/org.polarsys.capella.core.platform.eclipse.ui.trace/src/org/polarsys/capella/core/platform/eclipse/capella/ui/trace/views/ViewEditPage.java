@@ -41,6 +41,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.editors.Editor;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -95,6 +97,18 @@ public class ViewEditPage extends WizardPage {
               image = (null != pngImageDescriptor) ? pngImageDescriptor.createImage() : super.getDefaultPageImage();
             }
             return image;
+          }
+          /**
+           * @see org.eclipse.jface.wizard.Wizard#performFinish()
+           */
+          public boolean performFinish() {
+            // the store must be done in the context of a transaction
+            TransactionHelper.getExecutionManager(currentTrace).execute(new AbstractReadWriteCommand(){
+              public void run() {
+                _page.store();
+              }
+            });
+            return true;
           }
         };
         CapellaWizardDialog dlg = new CapellaWizardDialog(getShell(), traceEditor);

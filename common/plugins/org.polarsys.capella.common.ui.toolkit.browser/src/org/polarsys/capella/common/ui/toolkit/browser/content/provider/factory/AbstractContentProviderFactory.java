@@ -12,9 +12,9 @@ package org.polarsys.capella.common.ui.toolkit.browser.content.provider.factory;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
+import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 
 /**
  * Provide an interface for a content provider factory.
@@ -24,6 +24,7 @@ public abstract class AbstractContentProviderFactory {
    * Singleton.
    */
   protected static AbstractContentProviderFactory _instance = null;
+  protected ISemanticBrowserModel model;
   private static final String CONTENT_PROVIDER_FACTORY = "contentProviderFactory"; //$NON-NLS-1$
 
   public abstract ITreeContentProvider getCurrentContentProvider();
@@ -49,4 +50,9 @@ public abstract class AbstractContentProviderFactory {
     }
     return _instance;
   }
+  
+  public void setModel(ISemanticBrowserModel model_p) {
+    model = model_p;
+  }
+
 }

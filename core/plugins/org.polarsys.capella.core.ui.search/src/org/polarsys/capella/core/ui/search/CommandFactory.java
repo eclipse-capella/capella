@@ -17,9 +17,9 @@ import java.util.regex.Pattern;
 import org.polarsys.kitalpha.emde.model.Element;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.re.ReNamedElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
 
 /**
  */

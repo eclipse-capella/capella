@@ -12,7 +12,7 @@ package org.polarsys.capella.core.common.ui.wizards;
 
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -28,7 +28,7 @@ public class LCDecompositionCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
   public void run() {
     if (_modelElement instanceof LogicalComponent) {
@@ -38,7 +38,7 @@ public class LCDecompositionCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#getLabel()
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#getLabel()
    */
   @Override
   public String getName() {

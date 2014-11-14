@@ -20,8 +20,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 public class InvolvedElementHelper {
   private static InvolvedElementHelper instance;
@@ -75,7 +75,7 @@ public class InvolvedElementHelper {
     if (!isCrossReferencing(element_p)) {
       try {
         markAsCrossReferenced(element_p);
-        TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain(element_p);
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
         if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
           Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
 

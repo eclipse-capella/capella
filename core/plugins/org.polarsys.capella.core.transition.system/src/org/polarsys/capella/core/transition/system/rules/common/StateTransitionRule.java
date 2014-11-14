@@ -14,7 +14,6 @@ import java.util.ArrayList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
@@ -26,8 +25,12 @@ public class StateTransitionRule extends AbstractCapellaElementRule {
   public StateTransitionRule() {
     super();
     registerUpdatedAttribute(CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER_DESCRIPTION);
-    registerUpdatedAttribute(CapellacommonPackage.Literals.STATE_TRANSITION__GUARD);
     registerUpdatedAttribute(CapellacommonPackage.Literals.STATE_TRANSITION__KIND);
+
+    registerUpdatedReference(CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE);
+    registerUpdatedReference(CapellacommonPackage.Literals.STATE_TRANSITION__TARGET);
+    registerUpdatedReference(CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT);
+    registerUpdatedReference(CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS);
   }
 
   @Override
@@ -39,7 +42,8 @@ public class StateTransitionRule extends AbstractCapellaElementRule {
   protected void premicesRelated(EObject element_p, ArrayList<IPremise> needed_p) {
     super.premicesRelated(element_p, needed_p);
     needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT));
-    needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER));
+    needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS));
+    needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.STATE_TRANSITION__GUARD));
     needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE));
     needed_p.addAll(createDefaultPrecedencePremices(element_p, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET));
   }
@@ -47,14 +51,15 @@ public class StateTransitionRule extends AbstractCapellaElementRule {
   @Override
   protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
     super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p)
-        .attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, context_p);
-    AttachmentHelper.getInstance(context_p)
-        .attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET, context_p);
-    AttachmentHelper.getInstance(context_p)
-        .attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER,
-        context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__GUARD, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS, context_p);
   }
 
 }

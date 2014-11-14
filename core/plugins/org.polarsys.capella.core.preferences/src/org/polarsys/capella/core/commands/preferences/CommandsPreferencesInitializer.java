@@ -15,6 +15,10 @@ import java.util.Collection;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.gef.rulers.RulerProvider;
+import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 import org.polarsys.capella.core.commands.preferences.service.IItemDescriptor;
 import org.polarsys.capella.core.commands.preferences.service.PreferencesItemsRegistry;
@@ -37,6 +41,9 @@ public class CommandsPreferencesInitializer extends AbstractPreferenceInitialize
     for (IItemDescriptor capellaPreferenceNode : constraints) {
       eclipsePreferenceNode.put(capellaPreferenceNode.getId(), String.valueOf(capellaPreferenceNode.isEnabledByDefault()));
     }
-
+    
+    IPreferenceStore store = DiagramUIPlugin.getPlugin().getPreferenceStore();
+    store.setDefault(IPreferenceConstants.PREF_RULER_UNITS, RulerProvider.UNIT_PIXELS);
+    store.setDefault(IPreferenceConstants.PREF_GRID_SPACING, 10);
   }
 }

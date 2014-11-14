@@ -38,10 +38,9 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Move a representation between airds owned by the same session.
@@ -170,7 +169,7 @@ public class MoveRepresentationAction extends BaseSelectionListenerAction {
        */
       @Override
       public void run() {
-        MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
+        TransactionHelper.getExecutionManager(movableRepresentations).execute(new AbstractReadWriteCommand() {
           /**
            * @see java.lang.Runnable#run()
            */

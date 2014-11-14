@@ -12,17 +12,16 @@ package org.polarsys.capella.core.transition.diagram.handlers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**

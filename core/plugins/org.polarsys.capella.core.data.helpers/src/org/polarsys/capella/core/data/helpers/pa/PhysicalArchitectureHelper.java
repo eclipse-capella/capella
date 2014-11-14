@@ -13,7 +13,8 @@ package org.polarsys.capella.core.data.helpers.pa;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
@@ -52,8 +53,6 @@ import org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
 import org.polarsys.capella.core.data.pa.deployment.PortInstance;
 import org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class PhysicalArchitectureHelper implements IHelper {
 

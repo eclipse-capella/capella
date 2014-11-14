@@ -15,21 +15,20 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.queries.AbstractQuery;
+import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.AbstractExchangeItemPkgExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 
 public class GetAvailable_Connection_ConvoyedInformation extends AbstractQuery {
 

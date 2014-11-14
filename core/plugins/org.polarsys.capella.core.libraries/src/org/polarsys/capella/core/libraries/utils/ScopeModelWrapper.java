@@ -1,41 +1,36 @@
-/**
- * Copyright (c) THALES, 2011. All rights reserved.
- */
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.core.libraries.utils;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.shared.id.handler.IScope;
 
 public class ScopeModelWrapper implements IScope {
 
-  IAbstractModel _model;
+  IModel _model;
 
-  public ScopeModelWrapper(IAbstractModel model_p) {
+  public ScopeModelWrapper(IModel model_p) {
     _model = model_p;
-
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public List<Resource> getResources() {
-    ArrayList<Resource> resources = new ArrayList<Resource>();
-    for (EObject object : _model.getContents()) {
-      if (object != null) {
-        Resource resource = object.eResource();
-        if (resource != null) {
-          resources.add(resource);
-        }
-      }
+    if (_model instanceof CapellaModel) {
+      return ((CapellaModel) _model).getEditingDomain().getResourceSet().getResources();
     }
-
-    return resources;
+    return Collections.emptyList();
   }
-
 }

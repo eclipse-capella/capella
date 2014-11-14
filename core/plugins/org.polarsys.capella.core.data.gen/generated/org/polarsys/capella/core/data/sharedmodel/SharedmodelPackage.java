@@ -113,15 +113,6 @@ public interface SharedmodelPackage extends EPackage {
 	int SHARED_PKG__CONSTRAINTS = CapellacorePackage.REUSEABLE_STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SHARED_PKG__NAME = CapellacorePackage.REUSEABLE_STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,6 +120,15 @@ public interface SharedmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int SHARED_PKG__OWNED_CONSTRAINTS = CapellacorePackage.REUSEABLE_STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHARED_PKG__NAME = CapellacorePackage.REUSEABLE_STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -393,15 +393,6 @@ public interface SharedmodelPackage extends EPackage {
 	int GENERIC_PKG__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERIC_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -409,6 +400,15 @@ public interface SharedmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int GENERIC_PKG__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.

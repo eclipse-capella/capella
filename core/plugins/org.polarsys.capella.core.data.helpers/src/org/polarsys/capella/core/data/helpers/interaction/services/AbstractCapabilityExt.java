@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.polarsys.capella.core.data.ctx.CapabilityExploitation;
 import org.polarsys.capella.core.data.ctx.Mission;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
@@ -209,16 +208,16 @@ public class AbstractCapabilityExt {
   }
 
   /**
-   * Gets the list of capabilities related to the current capability (by Inheritance / Inclusion / Extension)
+   * Gets the list of capabilities related to the current capability (by Inheritance)
    * @param currentCapability_p the capability for which related capabilities have to be found
    * @return list of related capabilities
    */
-  static public List<AbstractCapability> getRelationshipHierarchy(AbstractCapability currentCapability_p) {
+  static public List<AbstractCapability> getSuperHierarchy(AbstractCapability currentCapability_p) {
     List<AbstractCapability> capabilityList = new ArrayList<AbstractCapability>();
 
     capabilityList.addAll(getInheritanceHierarchy(currentCapability_p));
-    capabilityList.addAll(getIncludedHierarchy(currentCapability_p));
-    capabilityList.addAll(getExtendHierarchy(currentCapability_p));
+    /*capabilityList.addAll(getIncludedHierarchy(currentCapability_p));
+    capabilityList.addAll(getExtendHierarchy(currentCapability_p));*/
 
     return capabilityList;
   }
@@ -266,13 +265,13 @@ public class AbstractCapabilityExt {
   }
 
   /**
-   * This method checks for Extension / Inheritance / Inclusion Relationship between two capabilities and return true if any of the relationships exists.
+   * This method checks for Inheritance Relationship between two capabilities and return true if any of the relationships exists.
    * @param currentCapability_p the first Capability
    * @param capability_p the second Capability
-   * @return if there is Extension / Inheritance / Inclusion Relationship existence
+   * @return if there is an Inheritance Relationship existence
    */
-  static public boolean isRelated(AbstractCapability currentCapability_p, AbstractCapability capability_p) {
-    return getRelationshipHierarchy(currentCapability_p).contains(capability_p);
+  static public boolean isSuperCapability(AbstractCapability currentCapability_p, AbstractCapability capability_p) {
+    return getSuperHierarchy(currentCapability_p).contains(capability_p);
   }
 
   /**

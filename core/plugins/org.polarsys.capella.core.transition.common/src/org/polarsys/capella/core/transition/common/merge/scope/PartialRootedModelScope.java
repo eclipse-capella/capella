@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.diffmerge.impl.scopes.MultiRootTreeIterator;
 import org.eclipse.emf.diffmerge.impl.scopes.RootedModelScope;
 import org.eclipse.emf.diffmerge.util.structures.FArrayList;
 import org.eclipse.emf.diffmerge.util.structures.FHashSet;
@@ -25,7 +24,6 @@ import org.eclipse.emf.diffmerge.util.structures.IEqualityTester;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.polarsys.capella.core.transition.common.merge.MiscUtil;
 
 /**
@@ -33,17 +31,6 @@ import org.polarsys.capella.core.transition.common.merge.MiscUtil;
  * removeFromScope(EObject) for side-effect-free removal.
  */
 public class PartialRootedModelScope extends RootedModelScope {
-
-  @Override
-  public TreeIterator getAllContents() {
-    return new MultiRootTreeIterator(PartialRootedModelScope.this, getContents().iterator()) {
-
-      @Override
-      public EObject next() {
-        return super.next();
-      }
-    };
-  }
 
   /** The elements which actually belong to this scope */
   protected final Set<EObject> _inScope;

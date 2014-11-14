@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.NamingRule;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
@@ -49,7 +49,6 @@ import org.polarsys.capella.core.data.fa.FunctionSpecification;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getExchanges <em>Exchanges</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ExchangeLinkImpl#getExchangeContainmentLinks <em>Exchange Containment Links</em>}</li>
@@ -82,20 +81,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
 
 
 
@@ -237,24 +222,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 	 * @generated
 	 */
 
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public EList<NamingRule> getNamingRules() {
 
 		if (namingRules == null) {
@@ -293,10 +260,10 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.EXCHANGE_LINK__EXCHANGES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.EXCHANGE_LINK__EXCHANGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.EXCHANGE_LINK__EXCHANGES, annotation);
 		
 		try {
@@ -407,8 +374,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
 			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
 				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
 			case FaPackage.EXCHANGE_LINK__EXCHANGE_CONTAINMENT_LINKS:
@@ -429,8 +394,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 		switch (featureID) {
 			case FaPackage.EXCHANGE_LINK__NAME:
 				return getName();
-			case FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
 				return getNamingRules();
 			case FaPackage.EXCHANGE_LINK__EXCHANGES:
@@ -464,10 +427,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 				// begin-extension-code
 				}
 				// end-extension-code
-				return;
-			case FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
 				getNamingRules().clear();
@@ -505,9 +464,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 			case FaPackage.EXCHANGE_LINK__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
 				getNamingRules().clear();
 				return;
@@ -539,8 +495,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 		switch (featureID) {
 			case FaPackage.EXCHANGE_LINK__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
 				return namingRules != null && !namingRules.isEmpty();
 			case FaPackage.EXCHANGE_LINK__EXCHANGES:
@@ -568,7 +522,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case FaPackage.EXCHANGE_LINK__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -590,7 +543,6 @@ public class ExchangeLinkImpl extends RelationshipImpl implements ExchangeLink {
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return FaPackage.EXCHANGE_LINK__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}

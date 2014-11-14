@@ -29,13 +29,6 @@
       </initializer>
    </extension>
 
-   <extension
-         point="org.eclipse.ui.startup">
-      <startup
-            class="org.polarsys.capella.core.flexibility.commands.Startup"></startup>
-   </extension>
-   
-
    <!--extension point="org.eclipse.ui.commands">
 
     <category

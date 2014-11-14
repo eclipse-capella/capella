@@ -37,44 +37,74 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingSpec;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.diagram.description.filter.Filter;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.filter.FilterKind;
+import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
-import org.eclipse.sirius.viewpoint.description.filter.FilterKind;
-import org.eclipse.sirius.viewpoint.description.filter.Filter;
-import org.eclipse.sirius.viewpoint.description.filter.MappingFilter;
 import org.eclipse.ui.commands.ICommandService;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.data.activity.Pin;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.capellacommon.ChangeEvent;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacommon.TimeEvent;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
+import org.polarsys.capella.core.data.capellacore.Allocation;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.capellacore.Feature;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.ModellingBlock;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellacore.Relationship;
+import org.polarsys.capella.core.data.capellacore.Type;
+import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -85,6 +115,8 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.cs.DeploymentTarget;
 import org.polarsys.capella.core.data.cs.Interface;
+import org.polarsys.capella.core.data.cs.InterfaceImplementation;
+import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
@@ -108,11 +140,11 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
-import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -137,22 +169,6 @@ import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
-import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.Allocation;
-import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellacore.ModellingBlock;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
@@ -172,9 +188,6 @@ import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.traceability.DiagramTraceabilityHelper;
 import org.polarsys.capella.core.diagram.helpers.traceability.IDiagramTraceability;
-import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
-import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
-import org.polarsys.capella.core.sirius.analysis.tool.TreeMapSet;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -182,29 +195,25 @@ import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapabilityRealizationExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.helpers.queries.filters.KeepRealActorsFilter;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveActorsFilter;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.common.data.activity.Pin;
-import org.polarsys.capella.common.data.behavior.AbstractEvent;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
+import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
+import org.polarsys.capella.core.sirius.analysis.tool.TreeMapSet;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Provides services for all interfaces diagram.
@@ -213,7 +222,7 @@ public class CsServices {
 
   private static CsServices service = null;
 
-  private static final String TRANSITION_TRACEABILITY = "org.polarsys.capella.core.transition.diagram";
+  private static final String TRANSITION_TRACEABILITY = "org.polarsys.capella.core.transition.diagram"; //$NON-NLS-1$
 
   private static final String TRANSITION_TRACEABILITY_COMMAND = TRANSITION_TRACEABILITY;
 
@@ -556,6 +565,16 @@ public class CsServices {
       }
     }
     return false;
+  }
+
+  /**
+   * Returns true if e1_p is an ancestor of e2_p and vice versa
+   * @param e1_p
+   * @param e2_p
+   * @return
+   */
+  public boolean oneIsAncestorAnother(EObject current_p, EObject e1_p, EObject e2_p) {
+    return EcoreUtil.isAncestor(e1_p, e2_p) || EcoreUtil.isAncestor(e1_p, e2_p);
   }
 
   /**
@@ -1155,7 +1174,6 @@ public class CsServices {
    */
   public Collection<? extends EObject> getFilterHideChildComponents(Component component_p) {
 
-
     // Get components by namespace (return also a set so it's great for checking a contains(component))
     Collection<EObject> list = getAvailableComponentsByNamespaceOfParts(component_p);
 
@@ -1219,19 +1237,19 @@ public class CsServices {
    * Returns available components which are accessible by brothers-part CCEI-Show-Hide-Component.
    */
   public Collection<Component> getCCEIShowHideActors(Component component_p) {
-	    // OLD CODE
-	    Collection<Component> components = new ArrayList<Component>();
+    // OLD CODE
+    Collection<Component> components = new ArrayList<Component>();
 
-	    // Add actors
-	    components.addAll(ComponentExt.getSubDefinedActors(getArchitecture(component_p)));
-	    components = filterActors(components);
+    // Add actors
+    components.addAll(ComponentExt.getSubDefinedActors(getArchitecture(component_p)));
+    components = filterActors(components);
 
-	    // NEW CODE
-	    components =
-	        (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB, getArchitecture(component_p),
-	            components);
-	    // END CODE REFACTOR
-	    return components;
+    // NEW CODE
+    components =
+        (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_CCEI_SHOW_HIDE_ACTORS_FOR_LIB, getArchitecture(component_p),
+            components);
+    // END CODE REFACTOR
+    return components;
   }
 
   /**
@@ -1246,18 +1264,18 @@ public class CsServices {
    * Returns available components which are accessible CCII-Show-Hide-Component.
    */
   public Collection<Component> getCCIIShowHideComponent(DSemanticDecorator decorator_p) {
-	    Collection<Component> components = new ArrayList<Component>();
-	    if (!(decorator_p.getTarget() instanceof Component)) {
-	      return new ArrayList<Component>();
-	    }
-	    EObject target = getCCIITarget(decorator_p);
-	    // OLD CODE
-	    components = getSubComponents(target);
-	    // NEW CODE
-	    components = (List) QueryDebugger.executeQueryWithInclusionDebug("GetCCIIShowHideComponent__Lib", target, components);//$NON-NLS-1$
-	    // END CODE REFACTOR
-	    return components;
-	  }
+    Collection<Component> components = new ArrayList<Component>();
+    if (!(decorator_p.getTarget() instanceof Component)) {
+      return new ArrayList<Component>();
+    }
+    EObject target = getCCIITarget(decorator_p);
+    // OLD CODE
+    components = getSubComponents(target);
+    // NEW CODE
+    components = (List) QueryDebugger.executeQueryWithInclusionDebug("GetCCIIShowHideComponent__Lib", target, components);//$NON-NLS-1$
+    // END CODE REFACTOR
+    return components;
+  }
 
   private Collection<Component> getSubComponents(EObject target) {
     Collection<Component> components = new ArrayList<Component>();
@@ -1613,14 +1631,17 @@ public class CsServices {
    * @return true if newSource_p can be the source of generalization_p
    */
   public boolean canReconnectGeneralization(EObject generalization_p, EObject subObject_p, EObject targetObject_p) {
-
     EObject source = subObject_p;
     EObject target = targetObject_p;
 
     if (!isGeneralizableForReConnect(generalization_p, source, target)) {
-      return false;
+    	return false;
     }
 
+    if (source instanceof FinalizableElement && target instanceof FinalizableElement) {
+    	return !((FinalizableElement)target).isFinal();
+    }
+    
     if (!((source instanceof Component) && (target instanceof Component))) {
 
       source = getParentContainer(source);
@@ -1634,30 +1655,29 @@ public class CsServices {
             (AbstractDependenciesPkg) CapellaServices.getService().getParent(targetObject_p, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
 
         if (AbstractDependenciesPkgExt.isADependencyAvailable(sourcePkg, targetPkg)) {
-          return true;
+        	return true;
         }
 
       } else if ((source instanceof ModellingArchitecture) || (target instanceof ModellingArchitecture)) {
-        return true;
+      	return true;
       }
     }
 
     if ((source instanceof Component) && (target instanceof Component)) {
 
       if (((Component) source).getTypedElements().size() == 0) {
-        return false;
+      	return false;
       }
 
       for (TypedElement element : ((Component) source).getTypedElements()) {
         if (element instanceof Part) {
           if (ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element).contains(target)) {
-            return true;
+          	return true;
           }
         }
       }
 
     }
-
     return false;
   }
 
@@ -2849,7 +2869,7 @@ public class CsServices {
     // compute intersection
     sources.retainAll(targets);
 
-	// ordering is required since we use the crossReferencer to retrieve elements => hash dependent
+    // ordering is required since we use the crossReferencer to retrieve elements => hash dependent
     List<CapellaElement> target2 = new ArrayList<CapellaElement>(sources);
     Collections.sort(target2, getComparator());
     return target2;
@@ -2959,7 +2979,7 @@ public class CsServices {
       } else {
         Component cps = ComponentExchangeExt.getSourceComponent((ComponentExchange) semantic);
         EObject type = viewPart.getAbstractType();
-        if (!cps.equals(type)) {
+        if (cps != null && !cps.equals(type)) {
           return false;
         }
       }
@@ -3712,8 +3732,8 @@ public class CsServices {
     }
 
     // hide the edge if there is not the same node in the view of the part of the same type of the source
-    LinkedList<EObject> sourceParents = getParents(source_p, ViewpointPackage.Literals.DDIAGRAM);
-    LinkedList<EObject> targetParents = getParents(target_p, ViewpointPackage.Literals.DDIAGRAM);
+    LinkedList<EObject> sourceParents = getParents(source_p, DiagramPackage.Literals.DDIAGRAM);
+    LinkedList<EObject> targetParents = getParents(target_p, DiagramPackage.Literals.DDIAGRAM);
 
     sourceParents.remove(sourceElement);
     targetParents.remove(targetElement);
@@ -3880,7 +3900,6 @@ public class CsServices {
     Collection<EObject> sems = ((DRepresentationElement) view_p).getSemanticElements();
     Collection<ComponentExchange> exchanges = Lists.newArrayList();
 
-
     for (EObject semantic : sems) {
       if (semantic instanceof ComponentExchange) {
         if (((ComponentExchange) semantic).getKind() == ComponentExchangeKind.DELEGATION) {
@@ -4037,7 +4056,7 @@ public class CsServices {
       }
     }
 
-	// ordering is required since we use the crossReferencer to retrieve elements => hash dependent
+    // ordering is required since we use the crossReferencer to retrieve elements => hash dependent
     List<CapellaElement> target2 = new ArrayList<CapellaElement>(target);
     Collections.sort(target2, getComparator());
     return target2;
@@ -4127,7 +4146,6 @@ public class CsServices {
   public Collection<? extends EObject> getComponentExchangeByDelegationTargets(EObject related_p) {
     Collection<CapellaElement> target = new ArrayList<CapellaElement>();
     EObject related = related_p;
-
 
     if (related instanceof ComponentPort) {
       ComponentPort port = (ComponentPort) related;
@@ -4407,6 +4425,18 @@ public class CsServices {
     return new Couple<DNode, Boolean>(created, Boolean.TRUE);
   }
 
+  Couple<DNode, Boolean> createViewOrGetPhysicalPort(DNodeContainer parent_p, Port target_p) {
+	    for (DNode node : parent_p.getOwnedBorderedNodes()) {
+	      if ((node.getTarget() != null) && node.getTarget().equals(target_p)) {
+	        return new Couple<DNode, Boolean>(node, Boolean.FALSE);
+	      }
+	    }
+
+	    DNode created = FaServices.getFaServices().createViewPhysicalPort(target_p, parent_p, parent_p.getParentDiagram());
+	    return new Couple<DNode, Boolean>(created, Boolean.TRUE);
+	  }
+
+  
   /**
    * @param aNode_p
    * @param component_p
@@ -4832,13 +4862,13 @@ public class CsServices {
   @Deprecated
   private class ShowABConnection extends ShowABExchange {
     // Principle
-	// We Display the connection between the source and the potential targets.
-	// The targets are either the visible parts
+    // We Display the connection between the source and the potential targets.
+    // The targets are either the visible parts
     // or
     // if they are not present, all the parts that are the target of the connection
     // and which can be displayed
-	// We display the "parts/ports/edges" only if the edge of the connection is valid 
-    // in order to avoid the display of the new  parts with edges that will be removed after the refresh.
+    // We display the "parts/ports/edges" only if the edge of the connection is valid
+    // in order to avoid the display of the new parts with edges that will be removed after the refresh.
 
     AbstractLink link = null;
 
@@ -5999,27 +6029,59 @@ public class CsServices {
    */
   public String getStateTransitionLabel(EObject context_p) {
     String result = ICommonConstants.EMPTY_STRING;
+    
     if ((null != context_p) && (context_p instanceof StateTransition)) {
       StateTransition transition = (StateTransition) context_p;
-      AbstractEvent trigger = transition.getTrigger();
-      String guard = transition.getGuard();
-      AbstractEvent effect = transition.getEffect();
+      
       // Trigger
-      if (trigger != null) {
-        result = trigger.getName();
-      } else {
-        String triggerDescription = transition.getTriggerDescription();
-        if ((null != triggerDescription) && !triggerDescription.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-          result = triggerDescription;
+      EList<AbstractEvent> triggers = transition.getTriggers();
+      for (AbstractEvent trigger : triggers) {
+        if (trigger != null) {
+          String name = trigger.getName();
+          if (trigger instanceof ChangeEvent) {
+            ChangeEvent changeEvent = (ChangeEvent) trigger;
+            name = "(" + changeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
+          }
+          if (trigger instanceof TimeEvent) {
+            TimeEvent timeEvent = (TimeEvent) trigger;
+            name = "(" + timeEvent.getKind() + ") "; //$NON-NLS-1$ //$NON-NLS-2$
+          }
+          result += name;
+          if (trigger instanceof StateEvent) {
+        	Constraint triggerCondition = ((StateEvent) trigger).getCondition();
+	        if (triggerCondition != null){
+	          result += CapellaServices.getService().getConstraintLabel(triggerCondition);
+	        }
+	        else {
+	        	result += trigger.getName();
+	        }
+          }
+          if (trigger != triggers.get(triggers.size() - 1)) {
+            result += ","; //$NON-NLS-1$
+          } else {
+            result += " "; //$NON-NLS-1$
+          }
         }
       }
-      // Guard
-      if ((null != guard) && !guard.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-        result = result + " [" + guard + "] "; //$NON-NLS-1$//$NON-NLS-2$
+
+      if (triggers.isEmpty()) {
+        String triggerDescription = transition.getTriggerDescription();
+        if ((null != triggerDescription) && !triggerDescription.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
+          result += triggerDescription;
+        }
       }
+      
+      if (transition.getGuard() != null){
+          String constraintLabel = CapellaServices.getService().getConstraintLabel(transition.getGuard());
+          if (constraintLabel != null && !constraintLabel.isEmpty()){
+            result += " [" + constraintLabel + "] ";
+          }
+        }
+
+      AbstractEvent effect = transition.getEffect();
       // Effect
       if (effect != null) {
-        result = result + " / " + effect.getName(); //$NON-NLS-1$
+        result += " / " + effect.getName(); //$NON-NLS-1$
       }
     }
 
@@ -6715,5 +6777,125 @@ public class CsServices {
     }
     return false;
   }
+  
+	/** Check if a CommunicationLink (graphically represented by the given object) between a component c1 and an interface is not defined in the children of c1.
+	 *  Return true if the edge does not represents a CommunicationLink as previously defined or if the link is not graphically represented in one of the component children. */
+	public boolean doesCommunicationLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
+	  if (object instanceof DEdge) {
+	  	DEdge currentEdge = (DEdge) object;
+	  	EObject target = currentEdge.getTarget();
+	  	if (target instanceof CommunicationLink) {
+	  		CommunicationLink link = (CommunicationLink) target;
+	  		EdgeTarget sourceNode = currentEdge.getSourceNode();
+	  		if (sourceNode instanceof DNodeContainer) {
+	  			for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+	  	  		if (child.getTarget() instanceof Component && child instanceof DNodeContainer) {
+  	  				for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
+  	  					target = ((DEdge) edge).getTarget();
+  	  					if (target instanceof CommunicationLink) {
+  	  						CommunicationLink childLink = (CommunicationLink) target;
+  	  						if (CommunicationLinkExt.isSameCommunication(childLink, link)) {
+  	  							return false;
+  	  						}
+  	  					}
+  	  				}	  	  				
+	  	  		}						
+					}
+	  		}	  		
+	  	}
+	  }
+  	return true;
+  }
+  
+  public boolean doesUseOrImplementOrRequireOrProvideLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
+  	if (object instanceof DEdge) {
+	  	DEdge currentEdge = (DEdge) object;
+	  	EObject target = currentEdge.getTarget();
+	  	if (target instanceof InterfaceUse || target instanceof InterfaceImplementation) {
+	  		return doesUseOrImplementLinkEdgeIsNotRepresentedInComponentChildren(object);
+	  	} else {
+	  		return doesRequireOrProvideEdgeIsNotRepresentedInComponentChildren(object);
+	  	}
+	  }
+  	return true;
+  }
+	
+	/** Check if a use/implements link (graphically represented by the given object) between a component c1 and an interface is not defined in the children of c1.
+	 *  Return true if the edge does not represents a use/implements link as previously defined or if the link is not graphically represented in one of the component children. */
+  public boolean doesUseOrImplementLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
+  	if (object instanceof DEdge) {
+	  	DEdge currentEdge = (DEdge) object;
+	  	EObject target = currentEdge.getTarget();
+	  	if (target instanceof InterfaceUse || target instanceof InterfaceImplementation) {
+	  		Relationship link = (Relationship) target;
+	  		EdgeTarget sourceNode = currentEdge.getSourceNode();
+	  		if (sourceNode instanceof DNodeContainer) {
+	  			for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+	  				if (child.getTarget() instanceof Component && child instanceof DNodeContainer) {
+	  					for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
+	  						target = ((DEdge) edge).getTarget();
+	  						if (target instanceof InterfaceUse || target instanceof InterfaceImplementation) {
+	  							Relationship childLink = (Relationship) target;
+	  							if (link instanceof InterfaceUse && childLink instanceof InterfaceUse
+	  									&& ((InterfaceUse) link).getUsedInterface() == ((InterfaceUse) childLink).getUsedInterface()
+	  									|| link instanceof InterfaceImplementation && childLink instanceof InterfaceImplementation
+	  									&& ((InterfaceImplementation) link).getImplementedInterface() == ((InterfaceImplementation) childLink).getImplementedInterface()) {
+	  								return false;
+	  							}
+	  						}
+	  					}	  					
+	  				}
+	  			}
+	  		}
+	  	}
+	  }
+  	return true;
+  }
 
+	/** Check if a require/provide link (graphically represented by the given object) between a component c1 and an interface is not defined in the children of c1.
+	 *  Return true if the edge does not represents a require/provide link as previously defined or if the link is not graphically represented in one of the component children.
+	 *  
+	 *  Be careful (for developers only), this code uses the targetFinderExpression of mappings of type EdgeMappingSpec to check if edges represent require/provide link. Since the targetFinderExpression property
+	 *  is a string build with class property name of the metamodel, we use literals of the CsPackage for features 'requiredInterfaces' and 'providedInterfaces' so that a change concerning them in the
+	 *  metamodel will make this code not compiling as a side effect.
+	 *  */
+	@SuppressWarnings("restriction")
+	public boolean doesRequireOrProvideEdgeIsNotRepresentedInComponentChildren(EObject object) {
+  	if (object instanceof DEdge) {
+	  	DEdge currentEdge = (DEdge) object;
+  		EObject target = currentEdge.getTarget();
+  		if (target instanceof ComponentPort) {
+  			IEdgeMapping mapping = currentEdge.getActualMapping();
+  	  	if (mapping instanceof EdgeMappingSpec) {
+  	  		String featureDef = ((EdgeMappingSpec) mapping).getTargetFinderExpression();
+  	  		if (featureDef.equals("feature:"+CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES.getName())  //$NON-NLS-1$
+  	  				|| featureDef.equals("feature:"+CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES.getName())) { //$NON-NLS-1$
+  	  			EObject sourceNode = currentEdge.getSourceNode().eContainer();
+  	  			if (sourceNode instanceof DNodeContainer) {
+  	  				for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+  	  					if (child.getTarget() instanceof Component && child instanceof DNodeContainer) {
+  	  						for (DNode borderedNode : ((DNodeContainer) child).getOwnedBorderedNodes()) {
+  	  							if (borderedNode.getTarget() instanceof ComponentPort) {
+  	  								for (DEdge outgoingEdge : borderedNode.getOutgoingEdges()) {
+  	  									mapping = outgoingEdge.getActualMapping();
+  	  									if (mapping instanceof EdgeMappingSpec) {
+  	  										if (featureDef.equals(((EdgeMappingSpec) mapping).getTargetFinderExpression())) {
+  	  											if (currentEdge.getTargetNode() == outgoingEdge.getTargetNode()) {
+  	  												return false;
+  	  											}
+  	  										}
+  	  									}
+  	  								}  	  							
+  	  							}
+  	  						}
+  	  					}
+  	  				}	  		
+  	  			}  	  			
+  	  		}
+  	  	}	  			
+	  	}	  	
+	  }
+  	return true;
+  }
+  
 }

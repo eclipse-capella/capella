@@ -16,21 +16,20 @@ import java.util.Collections;
 import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
-import org.polarsys.capella.core.sirius.analysis.FaServices;
-import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
+import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
+import org.polarsys.capella.core.sirius.analysis.FaServices;
+import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
  * A ShowHide definition for ABCategory

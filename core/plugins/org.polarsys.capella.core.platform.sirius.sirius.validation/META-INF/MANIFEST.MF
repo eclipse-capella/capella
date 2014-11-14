@@ -8,7 +8,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.polarsys.capella.core.validation,
  org.eclipse.sirius,
  org.polarsys.capella.core.validation.ui.ide,
- org.polarsys.capella.shared.id.handler
+ org.polarsys.capella.shared.id.handler,
+ org.eclipse.sirius.diagram
 Export-Package: org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

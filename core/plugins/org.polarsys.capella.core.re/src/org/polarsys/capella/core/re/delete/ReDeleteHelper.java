@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 
 import org.polarsys.capella.core.model.handler.command.IDeleteHelper;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.RePackage;
@@ -77,7 +77,7 @@ public class ReDeleteHelper implements IDeleteHelper {
           CatalogElement link = (CatalogElement) linkObject_p;
           if (source.getKind() == CatalogElementKind.RPL) {
             if (link.getKind() == CatalogElementKind.REC) {
-              return Collections.singleton(SetCommand.create(MDEAdapterFactory.getEditingDomain(sourceObject_p), sourceObject_p,
+              return Collections.singleton(SetCommand.create(TransactionHelper.getEditingDomain(sourceObject_p), sourceObject_p,
                   RePackage.Literals.CATALOG_ELEMENT__KIND, CatalogElementKind.REC));
             }
           }

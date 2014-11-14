@@ -23,19 +23,18 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 
 public class ScenarioItemContribution implements IMDEMenuItemContribution {
 
@@ -47,7 +46,7 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
     if (createdElement_p instanceof Scenario) {
       Scenario scenario = (Scenario) createdElement_p;
       if (scenario.getKind().equals(ScenarioKind.INTERFACE)) {
-        BlockArchitecture arch = (BlockArchitecture) EcoreUtil2.getFirstContainer(containerElement_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
+        BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(scenario);
         if (arch instanceof SystemAnalysis) {
           SystemAnalysis ca = (SystemAnalysis) arch;
           System sys = ca.getOwnedSystem();
@@ -56,34 +55,47 @@ public class ScenarioItemContribution implements IMDEMenuItemContribution {
             for (Partition cpntInst : sys.getRepresentingPartitions()) {
               inst = cpntInst;
             }
+
             if (inst != null) {
-              final Partition instance = inst;
-              CompoundCommand cmd = new CompoundCommand();
-  
-              // Creates the instance role.
-              final Command createInstanceRoleCmd =
-                  CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
-                      InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES, InteractionFactory.eINSTANCE.createInstanceRole(sys.getName())),
-                      Collections.EMPTY_LIST);
-              cmd.append(createInstanceRoleCmd);
-  
-              // Sets the instance role represented element.
-              Command setInstanceRoleTypeCmd = new CommandWrapper() {
-                @Override
-                public Command createCommand() {
-                  Collection<?> res = createInstanceRoleCmd.getResult();
-                  if (res.size() == 1) {
-                    Object createdPart = res.iterator().next();
-                    if (createdPart instanceof EObject) {
-                      return new SetCommand(editingDomain_p, (EObject) createdPart, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE, instance);
-                    }
-                  }
-                  return null;
+              boolean shouldCreate = true;
+              for (InstanceRole role : scenario.getOwnedInstanceRoles()) {
+                if ((role != null) && (role.getRepresentedInstance() != null) && role.getRepresentedInstance().equals(inst)) {
+                  shouldCreate = false;
+                  break;
                 }
-              };
-              cmd.append(setInstanceRoleTypeCmd);
-  
-              return cmd;
+              }
+
+              if (shouldCreate) {
+
+                final Partition instance = inst;
+                CompoundCommand cmd = new CompoundCommand();
+
+                // Creates the instance role.
+                final Command createInstanceRoleCmd =
+                    CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
+                        InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES, InteractionFactory.eINSTANCE.createInstanceRole(sys.getName())),
+                        Collections.EMPTY_LIST);
+                cmd.append(createInstanceRoleCmd);
+
+                // Sets the instance role represented element.
+                Command setInstanceRoleTypeCmd = new CommandWrapper() {
+                  @Override
+                  public Command createCommand() {
+                    Collection<?> res = createInstanceRoleCmd.getResult();
+                    if (res.size() == 1) {
+                      Object createdPart = res.iterator().next();
+                      if (createdPart instanceof EObject) {
+                        return new SetCommand(editingDomain_p, (EObject) createdPart, InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE, instance);
+                      }
+                    }
+                    return null;
+                  }
+                };
+                cmd.append(setInstanceRoleTypeCmd);
+
+                return cmd;
+
+              }
             }
           }
         }

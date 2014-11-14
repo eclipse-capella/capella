@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.interaction;
 
 import org.eclipse.emf.common.util.EList;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -35,6 +36,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getReceivingPart <em>Receiving Part</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getSendingFunction <em>Sending Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getReceivingFunction <em>Receiving Function</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getOwnedSequenceMessageValuations <em>Owned Sequence Message Valuations</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,7 +98,7 @@ public interface SequenceMessage extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Exchange Context</b></em>' attribute.
+	 * Returns the value of the '<em><b>Exchange Context</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -104,32 +106,29 @@ public interface SequenceMessage extends NamedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Exchange Context</em>' attribute.
-	 * @see #setExchangeContext(String)
+	 * @return the value of the '<em>Exchange Context</em>' reference.
+	 * @see #setExchangeContext(Constraint)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessage_ExchangeContext()
 	 * @model
 	 * @generated
 	 */
 
-	String getExchangeContext();
+	Constraint getExchangeContext();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getExchangeContext <em>Exchange Context</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getExchangeContext <em>Exchange Context</em>}' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Exchange Context</em>' attribute.
+	 * @param value the new value of the '<em>Exchange Context</em>' reference.
 	 * @see #getExchangeContext()
 	 * @generated
 	 */
 
-	void setExchangeContext(String value);
-
-
-
+	void setExchangeContext(Constraint value);
 
 
 
@@ -357,6 +356,27 @@ public interface SequenceMessage extends NamedElement {
 	 */
 
 	AbstractFunction getReceivingFunction();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned Sequence Message Valuations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Sequence Message Valuations</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Sequence Message Valuations</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getSequenceMessage_OwnedSequenceMessageValuations()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+
+	EList<SequenceMessageValuation> getOwnedSequenceMessageValuations();
 
 
 

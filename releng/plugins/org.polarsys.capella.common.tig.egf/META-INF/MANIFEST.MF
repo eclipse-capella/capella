@@ -7,7 +7,7 @@ Bundle-Version: 0.8.0.qualifier
 Require-Bundle: org.eclipse.egf.pattern;visibility:=reexport,
  org.eclipse.egf.pattern.ftask;visibility:=reexport,
  org.eclipse.egf.emf.pattern,
- org.polarsys.capella.common.tig.model,
+ org.polarsys.capella.common.model.helpers,
  org.polarsys.kitalpha.emde.egf
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.polarsys.capella.common.tig.model

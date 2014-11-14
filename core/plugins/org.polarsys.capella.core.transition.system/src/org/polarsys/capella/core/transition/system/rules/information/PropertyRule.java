@@ -41,7 +41,6 @@ public class PropertyRule extends MultiplicityElementRule {
     registerUpdatedAttribute(CapellacorePackage.Literals.FEATURE__IS_STATIC);
     registerUpdatedAttribute(CapellacorePackage.Literals.FEATURE__IS_ABSTRACT);
     registerUpdatedAttribute(CapellacorePackage.Literals.FEATURE__VISIBILITY);
-    registerUpdatedAttribute(InformationPackage.Literals.PROPERTY__VALUE_CONSTRAINT);
     registerUpdatedAttribute(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL);
   }
 

@@ -37,7 +37,7 @@ import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 import org.polarsys.capella.core.model.skeleton.Messages;
 import org.polarsys.capella.core.model.skeleton.helpers.PredefinedTypesHelper;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * The command allowing to create the System Analysis structure skeleton.
@@ -194,7 +194,7 @@ public class CreateCtxArchiCmd extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+   * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
    */
   @Override
   public String getName() {

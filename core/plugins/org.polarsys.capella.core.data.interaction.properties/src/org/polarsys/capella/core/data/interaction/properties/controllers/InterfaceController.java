@@ -37,7 +37,7 @@ public class InterfaceController extends SequenceMessageController {
     SequenceMessage message = (SequenceMessage) semanticElement_p;
     InstanceRole sourceIR = message.getSendingEnd().getCovered();
     InstanceRole targetIR = message.getReceivingEnd().getCovered();
-    for (CapellaElement op : InterfaceHelper.getInstance().getAvailableExchangeItems(sourceIR, targetIR, message.getKind() == MessageKind.SYNCHRONOUS_CALL)) {
+    for (CapellaElement op : InterfaceHelper.getInstance().getAvailableExchangeItemsFromInterfaces(sourceIR, targetIR, message.getKind() == MessageKind.SYNCHRONOUS_CALL)) {
       list.add(op);
     }
     return list;

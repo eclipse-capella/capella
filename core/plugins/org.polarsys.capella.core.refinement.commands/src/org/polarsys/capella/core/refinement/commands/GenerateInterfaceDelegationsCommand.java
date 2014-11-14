@@ -10,12 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.refinement.commands;
 
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
+import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.la.LogicalActor;
+import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.refinement.processor.InterfaceDelegationSCtoLC;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Create interface links which was defined in the system analysis phase into the logical system
@@ -36,7 +40,7 @@ public class GenerateInterfaceDelegationsCommand extends AbstractReadWriteComman
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
   public void run() {
     // Send long running operation events.
@@ -44,10 +48,17 @@ public class GenerateInterfaceDelegationsCommand extends AbstractReadWriteComman
     LongRunningListenersRegistry.getInstance().operationStarting(getClass());
     try {
       if (_modelElement instanceof LogicalComponent) {
-    	  new InterfaceDelegationSCtoLC((LogicalComponent)_modelElement).perform();
-      
+    	  new InterfaceDelegationSCtoLC((LogicalComponent)_modelElement).perform();      
+      } else if (_modelElement instanceof LogicalActor) {
+    	  new InterfaceDelegationSCtoLC((LogicalActor)_modelElement).perform();      
+      } else if (_modelElement instanceof LogicalActorPkg) {
+    	  new InterfaceDelegationSCtoLC((LogicalActorPkg)_modelElement).perform();
       } else if (_modelElement instanceof System) {
         new InterfaceDelegationSCtoLC((System)_modelElement).perform();
+      } else if (_modelElement instanceof Actor) {
+          new InterfaceDelegationSCtoLC((Actor)_modelElement).perform();
+      } else if (_modelElement instanceof ActorPkg) {
+          new InterfaceDelegationSCtoLC((ActorPkg)_modelElement).perform();          
       }
     } finally {
       // Send long running operation events.
@@ -57,7 +68,7 @@ public class GenerateInterfaceDelegationsCommand extends AbstractReadWriteComman
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#getLabel()
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#getLabel()
    */
   @Override
   public String getName() {

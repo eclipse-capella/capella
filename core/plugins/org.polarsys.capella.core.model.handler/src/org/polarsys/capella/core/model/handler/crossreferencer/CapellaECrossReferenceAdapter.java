@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.handler.crossreferencer;
 
+import java.lang.ref.WeakReference;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -21,7 +22,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SiriusSessionListener;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 
@@ -50,7 +52,14 @@ public class CapellaECrossReferenceAdapter extends ECrossReferenceAdapter {
     }
   }
 
-  /**
+  WeakReference<EditingDomain> _editingDomain;
+
+  public CapellaECrossReferenceAdapter(EditingDomain editingDomain) {
+	super();
+	_editingDomain = new WeakReference<EditingDomain>(editingDomain);
+  }
+
+/**
    * Adapt all references of specified object against the inverse cross referencer.<br>
    * Adapted means fake a Notification against the cross referencer to make sure its internal map is correctly filled in.
    * @param object_p
@@ -209,9 +218,10 @@ public class CapellaECrossReferenceAdapter extends ECrossReferenceAdapter {
    */
   @Override
   protected boolean resolve() {
-    if (SiriusSessionListener.getInstance().isClosingSession()) {
+    if (SiriusSessionListener.isClosingSession(_editingDomain.get())) {
       return false;
     }
+    
     if (!CrossReferencerHelper.resolutionEnabled()) {
       return false;
     }

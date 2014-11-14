@@ -11,18 +11,16 @@
 package org.polarsys.capella.core.model.obfuscator;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.lib.IdGenerator;
-import org.polarsys.capella.core.data.ctx.Capability;
-import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.capellacore.AbstractAnnotation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 public class ObfuscatorHelper {
   /**
-   * obfuscate a capella element if apply. Do nothing instead. 
-   * should not be used. use ObfuscateSemanticResourceCommand instead.
+   * Obfuscates a capella element if apply. Do nothing instead.<br>
+   * 
+   * @deprecated should not be used. use ObfuscateSemanticResourceCommand instead.
    */
   @Deprecated
   public static void obfuscateCapellaElement(EObject currentObject) {
@@ -35,11 +33,6 @@ public class ObfuscatorHelper {
       CapellaElement capellaElement = (CapellaElement) currentObject;
       capellaElement.setDescription(generateUnreadableString(capellaElement.getDescription()));
       capellaElement.setSummary(generateUnreadableString(capellaElement.getSummary()));
-    }
-    if (currentObject instanceof AbstractCapability) {
-      Capability capability = (Capability) currentObject;
-      capability.setPostCondition(generateUnreadableString(capability.getPreCondition()));
-      capability.setPreCondition(generateUnreadableString(capability.getPostCondition()));
     }
     if (currentObject instanceof AbstractAnnotation) {
       AbstractAnnotation ann = (AbstractAnnotation) currentObject;
@@ -57,5 +50,4 @@ public class ObfuscatorHelper {
     }
     return IdGenerator.createId().substring(0, 5); // don't generate hyper long string.
   }
-
 }

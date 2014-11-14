@@ -10,42 +10,43 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.fa;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.fa.FaPackage;
 
 public class ComponentPort_Type implements IBusinessQuery {
 
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		return availableElements;
-	}
-
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-		if (element_p instanceof ComponentPort) {
-		  ComponentPort port = (ComponentPort) element_p;
-		  currentElements.add(port);
-		}
-		return currentElements;
-	}
-
+	@Override
 	public EClass getEClass() {
-    return FaPackage.Literals.COMPONENT_PORT;
+		return FaPackage.Literals.COMPONENT_PORT;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
-  }
-	
+		return Collections.singletonList(CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__COMPONENT_PORT__TYPE, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COMPONENT_PORT__TYPE, element_p, context);
+	}
+
 }

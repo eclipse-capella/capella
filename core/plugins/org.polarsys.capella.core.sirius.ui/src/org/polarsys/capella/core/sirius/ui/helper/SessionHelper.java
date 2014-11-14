@@ -18,13 +18,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -33,18 +33,18 @@ import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaModel;
-import org.polarsys.capella.core.libraries.manager.LibraryManager;
+import org.polarsys.capella.core.libraries.utils.IFileRequestor;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.sirius.ui.actions.CloseSessionAction;
-import org.polarsys.capella.core.sirius.ui.session.ISessionActionListener;
 import org.polarsys.capella.core.sirius.ui.session.ISessionAdvisor;
 
 /**
@@ -96,36 +96,11 @@ public class SessionHelper {
     while (resources.hasNext()) {
       IResource resource = (IResource) resources.next();
       if (IResource.PROJECT == resource.getType()) {
-        Session session = SessionHelper.getSessions((IProject) resource);
-        // Workaround: perhaps deletable when TIG will be aligned with Sirius
-        if (session == null) {
-          try {
-            // we must manage a list of model ...
-            CapellaModel model = (CapellaModel) ((LibraryManager) ILibraryManager.INSTANCE).getAbstractModel((IProject) resource, false).get(0);
-            if (model != null) {
-              session = model.getExistingSession();
-              // if (!session.isOpen()) {
-              // session = null;
-              // }
-            } else {
-              Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
-              logger.debug(new EmbeddedMessage("warning in LibraryManager.getAbstractModel(..) : try to get the abstract model from " + resource.toString(), //$NON-NLS-1$
-                  IReportManagerDefaultComponents.UI));
-            }
-          } catch (Exception e) {
-        	// FIXME silent exception
-          }
-        }
-        if (session != null) {
+        for (Session session : getExistingSessions((IProject) resource)) {
           CloseSessionAction closeSessionAction = new CloseSessionAction();
           closeSessionAction.selectionChanged(new StructuredSelection(Collections.singletonList(session).toArray()));
           closeSessionAction.run();
-        } // End of workaround
-        // if (session != null) {
-        // CloseSessionAction closeSessionAction = new CloseSessionAction();
-        // closeSessionAction.selectionChanged(new StructuredSelection(Collections.singletonList(session).toArray()));
-        // closeSessionAction.run();
-        // }
+        }
       }
     }
   }
@@ -245,13 +220,15 @@ public class SessionHelper {
    * Get project all active sessions (among all active sessions) in given project.
    * @param project_p
    * @return a not <code>null</code> array.
+   * use getExistingSessions instead
    */
+  @Deprecated
   public static Session getSessions(IProject project_p) {
     // Sessions are children of IProjects, get all active sessions.
     // Iterate over active sessions to search the ones that semantic
     // resources are contained by the project.
     try {
-      ModelingProject modelingProject = (ModelingProject) project_p.getNature("org.polarsys.capella.project.nature"); //$NON-NLS-1$
+      ModelingProject modelingProject = (ModelingProject) project_p.getNature(CapellaResourceHelper.CAPELLA_PROJECT_NATURE);
 
       if (modelingProject == null) {
         return null;
@@ -263,6 +240,24 @@ public class SessionHelper {
     }
 
     return null;
+  }
+
+  /**
+   * Get active sessions from the given project
+   */
+  public static Collection<Session> getExistingSessions(IProject project_p) {
+    // Sessions are children of IProjects, get all active sessions.
+    // Iterate over active sessions to search the ones that semantic
+    // resources are contained by the project.
+    Collection<Session> sessions = new ArrayList<Session>();
+    List<IFile> files = new IFileRequestor().search(project_p, CapellaResourceHelper.AIRD_FILE_EXTENSION, false);
+    for (IFile mmFile : files) {
+      Session session = SessionManager.INSTANCE.getExistingSession(EcoreUtil2.getURI(mmFile));
+      if (session != null) {
+        sessions.add(session);
+      }
+    }
+    return sessions;
   }
 
   /**
@@ -325,15 +320,35 @@ public class SessionHelper {
    * Get the session advisors.
    * @return a not <code>null</code> list.
    */
-  public static List<ISessionActionListener> getSessionActionListeners() {
-    List<ISessionActionListener> sessionAdvisors = new ArrayList<ISessionActionListener>(0);
-    IConfigurationElement[] configurationElements =
-        ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.sirius.ui", "sessionActionListener"); //$NON-NLS-1$ //$NON-NLS-2$
-    if (configurationElements.length > 0) {
-      ISessionActionListener sessionAdvisor =
-          (ISessionActionListener) ExtensionPointHelper.createInstance(configurationElements[0], ExtensionPointHelper.ATT_CLASS);
-      sessionAdvisors.add(sessionAdvisor);
-    }
-    return sessionAdvisors;
+  //  public static List<ISessionActionListener> getSessionActionListeners() {
+  //    List<ISessionActionListener> sessionAdvisors = new ArrayList<ISessionActionListener>(0);
+  //    IConfigurationElement[] configurationElements =
+  //        ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.sirius.ui", "sessionActionListener"); //$NON-NLS-1$ //$NON-NLS-2$
+  //    if (configurationElements.length > 0) {
+  //      ISessionActionListener sessionAdvisor =
+  //          (ISessionActionListener) ExtensionPointHelper.createInstance(configurationElements[0], ExtensionPointHelper.ATT_CLASS);
+  //      sessionAdvisors.add(sessionAdvisor);
+  //    }
+  //    return sessionAdvisors;
+  //  }
+
+  /**
+   * Activate viewpoints in the given session
+   */
+  public static void activateViewpoints(final Session session_p, final Collection<Viewpoint> viewpoints_p) {
+
+    ExecutionManager manager = TransactionHelper.getExecutionManager(session_p);
+
+    // Select the viewpoints in TED way as of Sirius 4.15
+    manager.execute(new AbstractNonDirtyingCommand() {
+
+      public void run() {
+        ViewpointSelectionCallback viewpointSelectionCallback = new ViewpointSelectionCallback();
+        // Activate all viewpoints
+        for (Viewpoint viewpoint : viewpoints_p) {
+          viewpointSelectionCallback.selectViewpoint(viewpoint, session_p, new NullProgressMonitor());
+        }
+      }
+    });
   }
 }

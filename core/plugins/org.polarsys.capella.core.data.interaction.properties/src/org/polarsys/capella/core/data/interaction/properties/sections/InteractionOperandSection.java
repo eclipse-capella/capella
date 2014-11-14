@@ -11,32 +11,31 @@
 package org.polarsys.capella.core.data.interaction.properties.sections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.properties.Messages;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.TextValueGroup;
+import org.polarsys.capella.core.ui.properties.fields.ConstraintReferenceGroup;
 
 /**
  * The InteractionOperand section.
  */
 public class InteractionOperandSection extends NamedElementSection {
 
-  private TextValueGroup _guardGroup;
+  private ConstraintReferenceGroup _constraintReferences;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
-
-    _guardGroup = new TextValueGroup(_rootParentComposite, Messages.getString("InteractionOperandSection_Guard_Label"), getWidgetFactory()); //$NON-NLS-1$
-    _guardGroup.setDisplayedInWizard(isDisplayedInWizard());
+    _constraintReferences = new ConstraintReferenceGroup(Collections.singletonMap(Messages.getString("InteractionOperandSection_Guard_Label"), InteractionPackage.Literals.INTERACTION_OPERAND__GUARD)); //$NON-NLS-1$
+    _constraintReferences.createControls(_rootParentComposite, getWidgetFactory(), isDisplayedInWizard());
   }
 
   /**
@@ -45,8 +44,7 @@ public class InteractionOperandSection extends NamedElementSection {
   @Override
   public void loadData(CapellaElement capellaElement_p) {
     super.loadData(capellaElement_p);
-
-    _guardGroup.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getInteractionOperand_Guard());
+    _constraintReferences.loadData(capellaElement_p);
   }
 
   /**
@@ -66,7 +64,7 @@ public class InteractionOperandSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
-    fields.add(_guardGroup);
+    fields.addAll(_constraintReferences.getFields());
 
     return fields;
   }

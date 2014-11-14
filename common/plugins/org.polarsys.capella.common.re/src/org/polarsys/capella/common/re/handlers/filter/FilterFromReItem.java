@@ -39,7 +39,10 @@ public class FilterFromReItem extends AbstractFilterItem {
         if (RePackage.Literals.CATALOG_ELEMENT__KIND.equals(((IAttributeValuePresence) diff).getFeature())) {
           return false;
         }
+        if (RePackage.Literals.RE_NAMED_ELEMENT__NAME.equals(((IAttributeValuePresence) diff).getFeature())) {
+          return false;
       }
+    }
     }
 
     return true;
@@ -50,12 +53,6 @@ public class FilterFromReItem extends AbstractFilterItem {
    */
   @Override
   public FilterAction getDestinationRole(IDifference difference_p, Role role_p, IContext context_p) {
-    if (difference_p instanceof IElementRelativeDifference) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference_p;
-      EObject source = diff.getElementMatch().get(role_p);
-      if (source instanceof CatalogElement) {
-      }
-    }
     return super.getDestinationRole(difference_p, role_p, context_p);
   }
 

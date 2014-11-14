@@ -17,15 +17,14 @@ import java.util.Collections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -35,13 +34,13 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -243,6 +242,12 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
         } else if (IMappingNameConstants.SAB_FUNCTION_PORT_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_FUNCTION_PORT_MAPPING_NAME;
 
+        } else if (IMappingNameConstants.SAB_PHYSICAL_PORT_MAPPING_NAME.equals(mappingName)) {
+            targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME;
+
+        } else if (IMappingNameConstants.SAB_PHYSICALLINK_MAPPING_NAME.equals(mappingName)) {
+            targetMappingName = IMappingNameConstants.LAB_PHYSICALLINK_MAPPING_NAME;
+            
         } else if (IMappingNameConstants.SAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME;
 
@@ -252,6 +257,12 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
         } else if (IMappingNameConstants.SAB_FUNCTIONAL_CHAIN_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_FUNCTIONAL_CHAIN_MAPPING_NAME;
 
+        } else if (IMappingNameConstants.SAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME.equals(mappingName)) {
+            targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PATH_INTERNAL_LINK_MAPPING_NAME;
+
+        } else if (IMappingNameConstants.SAB_PHYSICAL_PATH_END.equals(mappingName)) {
+            targetMappingName = IMappingNameConstants.LAB_PHYSICAL_PATH_END;
+          
         } else if (IMappingNameConstants.SAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.LAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
 
@@ -273,7 +284,7 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
         if (IMappingNameConstants.LAB_COMPONENT_CATEGORY_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_MAPPING_NAME;
-
+          
         } else if (IMappingNameConstants.LAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_COMPONENT_CATEGORY_PIN_MAPPING_NAME;
 
@@ -306,7 +317,16 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
         } else if (IMappingNameConstants.LAB_FUNCTIONAL_CHAIN_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_FUNCTIONAL_CHAIN_MAPPING_NAME;
+        
+        } else if (IMappingNameConstants.LAB_PHYSICAL_PATH_END.equals(mappingName)) {
+          targetMappingName = IMappingNameConstants.PAB_PHYSICAL_PATH_END;
+          
+        } else if (IMappingNameConstants.LAB_PHYSICALLINK_MAPPING_NAME.equals(mappingName)) {
+            targetMappingName = IMappingNameConstants.PAB_PHYSICALLINK_MAPPING_NAME;
 
+        } else if (IMappingNameConstants.LAB_INTERNAL_LINK_MAPPING_NAME.equals(mappingName)) {
+          targetMappingName = IMappingNameConstants.PAB_INTERNAL_LINK_MAPPING_NAME;
+              
         } else if (IMappingNameConstants.LAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME;
 
@@ -321,7 +341,10 @@ public class ArchitectureHandler extends AbstractDiagramHandler {
 
         } else if (IMappingNameConstants.LAB_LOGICAL_FUNCTION_MAPPING_NAME.equals(mappingName)) {
           targetMappingName = IMappingNameConstants.PAB_PHYSICAL_FUNCTION_MAPPING_NAME;
-
+          
+        } else if (IMappingNameConstants.LAB_PHYSICAL_PORT_MAPPING_NAME.equals(mappingName)) {
+            targetMappingName = IMappingNameConstants.PAB_PHYSICAL_PORT_MAPPING_NAME;
+            
         }
       }
     }

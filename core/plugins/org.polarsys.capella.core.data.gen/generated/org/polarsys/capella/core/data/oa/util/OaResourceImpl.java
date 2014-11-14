@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl;
 import org.polarsys.kitalpha.emde.xmi.XMIExtensionLoadImpl;
 
@@ -180,30 +179,12 @@ public class OaResourceImpl extends XMIResourceImpl {
 	 */
 	@Override
 	protected void doUnload() {
-    	List< Resource > resourcesToNotUnload = (List<Resource>) MDEAdapterFactory.getResourceSet().getLoadOptions().get("hackDoremi");
-		// Dirty hack to allow libraries to work until TIG is not modified to support multiple ResourceSet (as it should be according to the philosophy of session
-		// management in DOREMI)
-		// Explanation : because TIG does not follow the right way to use DOREMI session, when a session is closed, resources of libraries dependent of the model
-		// session are unloaded. The result is that semantics resources of session become inconsistent.
-		// Let say we have a project P1 referencing a library L1. We open session of L1, then close it. If we open the session of P1, the resources representing
-		// L1 in semantic resources of P1 and L1 are different (which must not be the case) because doremi unload resource of L1 in context of P1 during the
-		// close of L1.
-		// To avoid that behavior, the implementation of session close defines in the resource set (key "hackDoremi") the set of resources not to be unloaded. 
-    	if ((resourcesToNotUnload == null) || !resourcesToNotUnload.contains(this)) {
-    		super.doUnload();
-    	}
-    	this.idToEObjectMap = null;
-
-		// original code
-		//super.doUnload();
-		//this.idToEObjectMap = null;
+		super.doUnload();
+		this.idToEObjectMap = null;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Dirty hack to allow libraries to work until TIG is not modified to support multiple ResourceSet
-	 * (as it should be according to the philosophy of session management in DOREMI)
-	 * Explanation : When we do not the unload (hack of doUnload()), we must discard the fact that the Resource is set as not loaded (pcr00116186)
 	 * <!-- end-user-doc -->
 	 * 
 	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#setLoaded()
@@ -211,12 +192,7 @@ public class OaResourceImpl extends XMIResourceImpl {
 	 */
 	@Override
 	protected Notification setLoaded(boolean isLoaded) {
-		List<Resource> resourcesToNotUnload = (List<Resource>) MDEAdapterFactory.getResourceSet().getLoadOptions().get("hackDoremi");
-		if ((resourcesToNotUnload == null) || !resourcesToNotUnload.contains(this)) {
-			return super.setLoaded(isLoaded);
-		} else {
-			return null;
-		}
+		return super.setLoaded(isLoaded);
 	}
       //end-capella-code
 

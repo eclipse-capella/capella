@@ -41,11 +41,10 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
@@ -223,7 +222,7 @@ public class EPFValidationAction extends CapellaValidateAction {
    * 
    */
   private void doExecute() {
-    ExecutionManager executionManager = ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName());
+    ExecutionManager executionManager = TransactionHelper.getExecutionManager(selectedObjects);
     // Precondition.
     // Need for an execution manager.
     if (null == executionManager) {
@@ -324,9 +323,9 @@ public class EPFValidationAction extends CapellaValidateAction {
         // notifications (especially in transitions)
         // can't use resource_p, see handleDiagnostics below
         if (getEpf() == null) {
-          LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p.getURI(), "Default"); //$NON-NLS-1$
+          LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p, "Default"); //$NON-NLS-1$
         } else {
-          LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p.getURI(), getEpf().getName());
+          LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p, getEpf().getName());
         }
 
       }

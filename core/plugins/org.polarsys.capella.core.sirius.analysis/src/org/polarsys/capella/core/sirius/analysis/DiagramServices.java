@@ -27,57 +27,55 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
-import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
-import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
-import org.eclipse.sirius.business.internal.experimental.sync.DDiagramSynchronizer;
-import org.eclipse.sirius.business.internal.experimental.sync.DEdgeCandidate;
-import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
-import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
+import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
-import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramNamingConstants;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
@@ -458,7 +456,9 @@ public class DiagramServices {
   }
 
   public boolean isBorderedNodeMapping(DiagramElementMapping mapping_p) {
-    return (mapping_p != null) && DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS.equals(mapping_p.eContainingFeature());
+    return (mapping_p != null)
+           && org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS.equals(mapping_p
+               .eContainingFeature());
   }
 
   public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {

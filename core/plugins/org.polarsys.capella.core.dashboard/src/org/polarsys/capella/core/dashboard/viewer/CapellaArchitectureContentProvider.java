@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
@@ -26,13 +27,11 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * Content provider used to display diagrams in the {@link TreeViewer} of Architecture pages.
@@ -57,7 +56,7 @@ public class CapellaArchitectureContentProvider extends AdapterFactoryContentPro
    * @param filteringMetaClassForCommonViewpoint_p EClass used to filter Common viewpoint.
    */
   public CapellaArchitectureContentProvider(String handledViewpoint_p, EClass filteringMetaClassForCommonViewpoint_p) {
-    super(MDEAdapterFactory.getAdapterFactory());
+    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
     _handledViewpoint = handledViewpoint_p;
     _filteringMetaClassForCommonViewpoint = filteringMetaClassForCommonViewpoint_p;
   }

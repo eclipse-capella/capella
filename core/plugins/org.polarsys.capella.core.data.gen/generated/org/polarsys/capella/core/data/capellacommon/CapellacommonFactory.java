@@ -48,6 +48,15 @@ public interface CapellacommonFactory extends EFactory {
 	TransfoLink createTransfoLink();
 
 	/**
+	 * Returns a new object of class '<em>Justification Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Justification Link</em>'.
+	 * @generated
+	 */
+	JustificationLink createJustificationLink();
+
+	/**
 	 * Returns a new object of class '<em>State Machine</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -165,6 +174,69 @@ public interface CapellacommonFactory extends EFactory {
 	StateTransitionRealization createStateTransitionRealization();
 
 	/**
+	 * Returns a new object of class '<em>Shallow History Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Shallow History Pseudo State</em>'.
+	 * @generated
+	 */
+	ShallowHistoryPseudoState createShallowHistoryPseudoState();
+
+	/**
+	 * Returns a new object of class '<em>Deep History Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Deep History Pseudo State</em>'.
+	 * @generated
+	 */
+	DeepHistoryPseudoState createDeepHistoryPseudoState();
+
+	/**
+	 * Returns a new object of class '<em>Entry Point Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Entry Point Pseudo State</em>'.
+	 * @generated
+	 */
+	EntryPointPseudoState createEntryPointPseudoState();
+
+	/**
+	 * Returns a new object of class '<em>Exit Point Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Exit Point Pseudo State</em>'.
+	 * @generated
+	 */
+	ExitPointPseudoState createExitPointPseudoState();
+
+	/**
+	 * Returns a new object of class '<em>State Event Realization</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>State Event Realization</em>'.
+	 * @generated
+	 */
+	StateEventRealization createStateEventRealization();
+
+	/**
+	 * Returns a new object of class '<em>Change Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Change Event</em>'.
+	 * @generated
+	 */
+	ChangeEvent createChangeEvent();
+
+	/**
+	 * Returns a new object of class '<em>Time Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Time Event</em>'.
+	 * @generated
+	 */
+	TimeEvent createTimeEvent();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -225,6 +297,15 @@ public interface CapellacommonFactory extends EFactory {
 	 * @param name_p : default name of created element
 	 * @generated
 	 */
+	StateTransition createStateTransition(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
 	InitialPseudoState createInitialPseudoState(String name_p);
 
 	/**
@@ -262,6 +343,60 @@ public interface CapellacommonFactory extends EFactory {
 	 * @generated
 	 */
 	TerminatePseudoState createTerminatePseudoState(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	ShallowHistoryPseudoState createShallowHistoryPseudoState(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	DeepHistoryPseudoState createDeepHistoryPseudoState(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	EntryPointPseudoState createEntryPointPseudoState(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	ExitPointPseudoState createExitPointPseudoState(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	ChangeEvent createChangeEvent(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	TimeEvent createTimeEvent(String name_p);
 
 	//begin-capella-code
 	//end-capella-code

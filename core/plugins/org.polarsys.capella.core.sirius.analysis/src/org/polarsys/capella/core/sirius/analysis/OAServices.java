@@ -12,6 +12,7 @@ package org.polarsys.capella.core.sirius.analysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -21,24 +22,25 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-
+import org.polarsys.capella.common.data.activity.ActivityEdge;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.information.PartitionableElement;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
@@ -56,10 +58,9 @@ import org.polarsys.capella.core.data.oa.RoleAllocation;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.common.data.activity.ActivityEdge;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 /**
  */
@@ -296,7 +297,7 @@ public class OAServices {
         return OperationalAnalysisExt.getAllEntity(pkg);
       }
     }
-    return new ArrayList<Entity>(0);
+    return Collections.emptyList();
   }
 
   public List<CommunicationMean> getAllCommunicationMeans(OperationalAnalysis arch_p) {
@@ -371,41 +372,53 @@ public class OAServices {
   }
 
   public OperationalActivity getInteractionSourceInDiagram(FunctionalExchange interaction_p, DDiagram diagram_p) {
+    // Precondition: check given FE has an OA as source.
+    AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction(interaction_p);
+    if (!(sourceFunction instanceof OperationalActivity)) {
+      return null;
+    }
+    // Get OAs displayed in diagram.
     Set<OperationalActivity> displayedActivities = new HashSet<OperationalActivity>();
     for (DDiagramElement anElement : diagram_p.getDiagramElements()) {
-      if ((anElement.getTarget() != null) && (anElement.getTarget() instanceof OperationalActivity)) {
+      if (anElement.getTarget() instanceof OperationalActivity) {
         displayedActivities.add((OperationalActivity) anElement.getTarget());
       }
     }
-
-    OperationalActivity source = (OperationalActivity) interaction_p.getSource();
-    EObject parent = source;
-    while ((parent != null) && (parent instanceof OperationalActivity)) {
+    // Get source OA displayed in diagram for FE (it can be a parent of the real source OA).
+    OperationalActivity sourceOA = (OperationalActivity) sourceFunction;
+    EObject parent = sourceOA;
+    while (parent instanceof OperationalActivity) {
       if (displayedActivities.contains(parent)) {
         return ((OperationalActivity) parent);
       }
       parent = parent.eContainer();
     }
-    return source;
+    return sourceOA;
   }
 
   public OperationalActivity getInteractionTargetInDiagram(FunctionalExchange interaction_p, DDiagram diagram_p) {
+    // Precondition: check given FE has an OA as target.
+    AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction(interaction_p);
+    if (!(targetFunction instanceof OperationalActivity)) {
+      return null;
+    }
+    // Get OAs displayed in diagram.
     Set<OperationalActivity> displayedActivities = new HashSet<OperationalActivity>();
     for (DDiagramElement anElement : diagram_p.getDiagramElements()) {
-      if ((anElement.getTarget() != null) && (anElement.getTarget() instanceof OperationalActivity)) {
+      if (anElement.getTarget() instanceof OperationalActivity) {
         displayedActivities.add((OperationalActivity) anElement.getTarget());
       }
     }
-
-    OperationalActivity target = (OperationalActivity) interaction_p.getTarget();
-    EObject parent = target;
-    while ((parent != null) && (parent instanceof OperationalActivity)) {
+    // Get target OA displayed in diagram for FE (it can be a parent of the real target OA).
+    OperationalActivity targetOA = (OperationalActivity) targetFunction;
+    EObject parent = targetOA;
+    while (parent instanceof OperationalActivity) {
       if (displayedActivities.contains(parent)) {
         return ((OperationalActivity) parent);
       }
       parent = parent.eContainer();
     }
-    return target;
+    return targetOA;
   }
 
   public List<CapellaElement> getAvailableOperationalActivityAllocations(Role role_p) {
@@ -443,7 +456,7 @@ public class OAServices {
    */
   @Deprecated
   public boolean isOARootValid(DSemanticDecorator containerView_p, EObject target) {
-    if ((target instanceof AbstractNamedElement) && ((AbstractNamedElement) target).getName().equals("OA2")) {
+    if ((target instanceof AbstractNamedElement) && "OA2".equals(((AbstractNamedElement) target).getName())) { //$NON-NLS-1$
       System.out.println(0);
     }
     // Avoid creation of mapping COAI_OPERATIONAL_ACTIVITY_IMPORT_MAPPING_NAME for internal data flow
@@ -465,7 +478,7 @@ public class OAServices {
    */
   @Deprecated
   public boolean isOARootValidA(DSemanticDecorator containerView_p, EObject target) {
-    if ((target instanceof AbstractNamedElement) && ((AbstractNamedElement) target).getName().equals("OA2")) {
+    if ((target instanceof AbstractNamedElement) && "OA2".equals(((AbstractNamedElement) target).getName())) { //$NON-NLS-1$
       System.out.println(0);
     }
     // Avoid creation of mapping COAI_OPERATIONAL_ACTIVITY_IMPORT_MAPPING_NAME for internal data flow
@@ -480,12 +493,11 @@ public class OAServices {
 
   // return all the operational capabilities
   public List<Object> getAllOperationalCapabilities(CapellaElement element_p) {
-    List<Object> result = new ArrayList<Object>(0);
     BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    if ((null != arch) && (arch instanceof OperationalAnalysis)) {
-      result.addAll(OperationalAnalysisExt.getAllOperationalCapabilities((OperationalAnalysis) arch));
+    if (!(arch instanceof OperationalAnalysis)) {
+      return Collections.emptyList();
     }
-
+    List<Object> result = new ArrayList<Object>(OperationalAnalysisExt.getAllOperationalCapabilities((OperationalAnalysis) arch));
     return result;
   }
 }

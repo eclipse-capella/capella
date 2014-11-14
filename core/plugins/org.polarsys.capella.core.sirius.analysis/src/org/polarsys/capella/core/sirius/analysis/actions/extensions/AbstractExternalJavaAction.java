@@ -13,13 +13,13 @@ package org.polarsys.capella.core.sirius.analysis.actions.extensions;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tools.api.ui.IExternalJavaAction2;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
 /**
  */
-public abstract class AbstractExternalJavaAction implements IExternalJavaAction2 {
+public abstract class AbstractExternalJavaAction implements IExternalJavaAction {
   /**
    * Context tag.
    */
@@ -92,12 +92,5 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction2
   protected Shell getShell() {
     return PlatformUI.getWorkbench().getDisplay().getActiveShell();
   }
-  
-  /* (non-Javadoc)
-   * @see org.eclipse.sirius.tools.api.ui.IExternalJavaAction2#mayDeleteElements()
-   */
-  public boolean mayDeleteElements() {
-	// @see Sirius-2816 - all java action that unherit from AbstractExternalJavaAction are not supposed to delete elements
-	return false;
-  }
+
 }

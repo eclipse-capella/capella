@@ -38,12 +38,12 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramTask;
+import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -51,25 +51,24 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
-import org.polarsys.capella.core.data.ctx.CtxFactory;
-import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceImpl;
-import org.polarsys.capella.core.sirius.analysis.DiagramServices;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
 import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
 import org.polarsys.capella.core.model.handler.command.DeleteStructureCommand;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
  */
@@ -95,7 +94,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action unsynchronizes diagrams and removes hidden elements";
+      return "This action unsynchronizes diagrams and removes hidden elements"; //$NON-NLS-1$
     }
 
     @Override
@@ -105,7 +104,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -123,13 +122,13 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Create Functions";
+      return "Create Functions"; //$NON-NLS-1$
     }
 
     public void proceed(SystemFunction function, int a) {
 
       for (int i = 0; i < 10; i++) {
-        SystemFunction aa = CtxFactory.eINSTANCE.createSystemFunction("SF_" + a + "_" + i);
+        SystemFunction aa = CtxFactory.eINSTANCE.createSystemFunction("SF_" + a + "_" + i); //$NON-NLS-1$ //$NON-NLS-2$
         function.getOwnedFunctions().add(aa);
         if (a > 0) {
           proceed(aa, a - 1);
@@ -147,12 +146,11 @@ public class CreationActionsProvider implements IActionsProvider {
 
     }
 
-  };
+  }
 
-  @SuppressWarnings("nls")
   public class ChangeID extends DefaultAction {
 
-    String SEP = "  ";
+    String SEP = "  "; //$NON-NLS-1$
 
     public ChangeID(Shell shell_p, ISelectionProvider selectionProvider_p) {
       super(shell_p, selectionProvider_p);
@@ -165,17 +163,17 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
     public String getText() {
-      return "Change ID of elements with SID";
+      return "Change ID of elements with SID"; //$NON-NLS-1$
     }
 
     @Override
     public String getCategory() {
-      return "org.polarsys.capella.core.flexibility.tools.clean.id";
+      return "org.polarsys.capella.core.flexibility.tools.clean.id"; //$NON-NLS-1$
     }
 
     @Override
@@ -255,7 +253,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action unsynchronizes diagrams and removes hidden elements";
+      return "This action unsynchronizes diagrams and removes hidden elements"; //$NON-NLS-1$
     }
 
     @Override
@@ -265,7 +263,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -283,7 +281,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Unsynchronize diagrams";
+      return "Unsynchronize diagrams"; //$NON-NLS-1$
     }
 
     List<DDiagram> getDiagrams() {
@@ -318,11 +316,11 @@ public class CreationActionsProvider implements IActionsProvider {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<DDiagram> objects = getDiagrams();
-          getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be opened", IReportManagerDefaultComponents.UI));
+          getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-          monitor_p.beginTask("Open diagrams", objects.size());
+          monitor_p.beginTask("Open diagrams", objects.size()); //$NON-NLS-1$
           for (DDiagram object : objects) {
-            monitor_p.setTaskName("Opening : " + object.getName());
+            monitor_p.setTaskName("Opening : " + object.getName()); //$NON-NLS-1$
             if (process(object)) {
               hasProceed = true;
               nbProceed++;
@@ -331,9 +329,9 @@ public class CreationActionsProvider implements IActionsProvider {
           }
 
           if (!hasProceed) {
-            getLogger().info(new EmbeddedMessage("No diagram have been opened", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage("No diagram have been opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           } else {
-            getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been opened", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
           monitor_p.done();
@@ -360,7 +358,7 @@ public class CreationActionsProvider implements IActionsProvider {
       try {
 
         if (object_p.isSynchronized()) {
-          getLogger().info(new EmbeddedMessage(NLS.bind("{0} to be unsynchronized ", object_p.getName()), IReportManagerDefaultComponents.UI));
+          getLogger().info(new EmbeddedMessage(NLS.bind("{0} to be unsynchronized ", object_p.getName()), IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
           object_p.setSynchronized(false);
 
@@ -373,7 +371,7 @@ public class CreationActionsProvider implements IActionsProvider {
             }
           }
 
-          getLogger().info(new EmbeddedMessage(NLS.bind("{0} diagram elements removed", elements.size()), IReportManagerDefaultComponents.UI));
+          getLogger().info(new EmbeddedMessage(NLS.bind("{0} diagram elements removed", elements.size()), IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           for (DDiagramElement element : elements) {
             if (element instanceof DContainer) {
               DiagramServices.getDiagramServices().removeContainerView((DContainer) element);
@@ -398,10 +396,9 @@ public class CreationActionsProvider implements IActionsProvider {
     }
   };
 
-  @SuppressWarnings("nls")
   public class CleanSID extends DefaultAction {
 
-    String SEP = "  ";
+    String SEP = "  "; //$NON-NLS-1$
 
     public CleanSID(Shell shell_p, ISelectionProvider selectionProvider_p) {
       super(shell_p, selectionProvider_p);
@@ -412,7 +409,7 @@ public class CreationActionsProvider implements IActionsProvider {
      */
     @Override
     public String getDescription() {
-      return "Remove all SID of selected/contained elements";
+      return "Remove all SID of selected/contained elements"; //$NON-NLS-1$
     }
 
     @Override
@@ -422,17 +419,17 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
     public String getText() {
-      return "Remove SID";
+      return "Remove SID"; //$NON-NLS-1$
     }
 
     @Override
     public String getCategory() {
-      return "org.polarsys.capella.core.flexibility.tools.clean";
+      return "org.polarsys.capella.core.flexibility.tools.clean"; //$NON-NLS-1$
     }
 
     @Override
@@ -446,7 +443,7 @@ public class CreationActionsProvider implements IActionsProvider {
         }
       }
       for (EObject object : getSelectedEObjects()) {
-        browse(object, "");
+        browse(object, ""); //$NON-NLS-1$
       }
 
     }
@@ -477,7 +474,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action delete unloaded files";
+      return "This action delete unloaded files"; //$NON-NLS-1$
     }
 
     @Override
@@ -487,7 +484,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -501,7 +498,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Delete unused files";
+      return "Delete unused files"; //$NON-NLS-1$
     }
 
     List<IFile> getFiles() {
@@ -532,7 +529,7 @@ public class CreationActionsProvider implements IActionsProvider {
             public boolean visit(IResource resource_p) throws CoreException {
               if (!filesLoaded.contains(resource_p) && (resource_p instanceof IFile)) {
 
-                if (!".project".equals(resource_p.getName())) {
+                if (!".project".equals(resource_p.getName())) { //$NON-NLS-1$
                   files.add((IFile) resource_p);
 
                 }
@@ -557,8 +554,8 @@ public class CreationActionsProvider implements IActionsProvider {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<IFile> objects = getFiles();
-          getLogger().info(new EmbeddedMessage(objects.size() + " files to be deleted", IReportManagerDefaultComponents.UI));
-          monitor_p.beginTask("Delete files", objects.size());
+          getLogger().info(new EmbeddedMessage(objects.size() + " files to be deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
+          monitor_p.beginTask("Delete files", objects.size()); //$NON-NLS-1$
 
           for (IFile object : objects) {
 
@@ -573,9 +570,9 @@ public class CreationActionsProvider implements IActionsProvider {
           }
 
           if (!hasProceed) {
-            getLogger().info(new EmbeddedMessage("No files have been deleted", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage("No files have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           } else {
-            getLogger().info(new EmbeddedMessage(nbProceed + " files have been deleted", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage(nbProceed + " files have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
           monitor_p.done();
@@ -604,7 +601,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action delete all semantic elements not used into diagrams";
+      return "This action delete all semantic elements not used into diagrams"; //$NON-NLS-1$
     }
 
     @Override
@@ -614,7 +611,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -628,7 +625,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Delete useless semantics for diagrams";
+      return "Delete useless semantics for diagrams"; //$NON-NLS-1$
     }
 
     List<DDiagram> getDiagrams() {
@@ -714,13 +711,13 @@ public class CreationActionsProvider implements IActionsProvider {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<EObject> objects = getToDeleteEObjects();
-          getLogger().info(new EmbeddedMessage(objects.size() + " objects to be deleted", IReportManagerDefaultComponents.UI));
-          monitor_p.beginTask("Delete objects", objects.size());
+          getLogger().info(new EmbeddedMessage(objects.size() + " objects to be deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
+          monitor_p.beginTask("Delete objects", objects.size()); //$NON-NLS-1$
 
           for (EObject object : objects) {
-            DeleteStructureCommand comand = new DeleteStructureCommand(MDEAdapterFactory.getEditingDomain(), Collections.singleton(object), false);
+            DeleteStructureCommand comand = new DeleteStructureCommand(TransactionHelper.getEditingDomain(object), Collections.singleton(object), false);
             if (comand.canExecute()) {
-              monitor_p.setTaskName("Deleting : " + object);
+              monitor_p.setTaskName("Deleting : " + object); //$NON-NLS-1$
               comand.execute();
               hasProceed = true;
             }
@@ -728,9 +725,9 @@ public class CreationActionsProvider implements IActionsProvider {
           }
 
           if (!hasProceed) {
-            getLogger().info(new EmbeddedMessage("No objects have been deleted", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage("No objects have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           } else {
-            getLogger().info(new EmbeddedMessage(nbProceed + " objects have been deleted", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage(nbProceed + " objects have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
           monitor_p.done();
@@ -759,7 +756,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action delete all otehrs diagrams";
+      return "This action delete all others diagrams"; //$NON-NLS-1$
     }
 
     @Override
@@ -769,7 +766,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -783,7 +780,7 @@ public class CreationActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Delete other diagrams";
+      return "Delete other diagrams"; //$NON-NLS-1$
     }
 
     List<DDiagram> getDiagrams() {
@@ -817,11 +814,11 @@ public class CreationActionsProvider implements IActionsProvider {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<DDiagram> objects = getDiagrams();
-          getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be deleted", IReportManagerDefaultComponents.UI));
+          getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-          monitor_p.beginTask("Delete diagrams", objects.size());
+          monitor_p.beginTask("Delete diagrams", objects.size()); //$NON-NLS-1$
           for (DDiagram object : objects) {
-            monitor_p.setTaskName("Deleting : " + object.getName());
+            monitor_p.setTaskName("Deleting : " + object.getName()); //$NON-NLS-1$
             if (process(object)) {
               hasProceed = true;
               nbProceed++;
@@ -830,9 +827,9 @@ public class CreationActionsProvider implements IActionsProvider {
           }
 
           if (!hasProceed) {
-            getLogger().info(new EmbeddedMessage("No diagram have been deleted", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage("No diagram have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           } else {
-            getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been deleted", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
           monitor_p.done();
@@ -857,7 +854,7 @@ public class CreationActionsProvider implements IActionsProvider {
       boolean hasProceed = true;
 
       try {
-        (new DeleteDDiagramTask(object_p)).execute();
+        (new DeleteDRepresentationTask(object_p)).execute();
       } catch (Exception ex_p) {
         getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
 

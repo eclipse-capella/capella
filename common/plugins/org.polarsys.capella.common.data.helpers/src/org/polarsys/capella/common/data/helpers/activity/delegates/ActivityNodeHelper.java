@@ -24,8 +24,8 @@ import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.ActivityPartition;
 import org.polarsys.capella.common.data.activity.InterruptibleActivityRegion;
 import org.polarsys.capella.common.data.activity.StructuredActivityNode;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 public class ActivityNodeHelper {
   private static ActivityNodeHelper instance;
@@ -120,7 +120,7 @@ public class ActivityNodeHelper {
       try {
         markAsCrossReferenced(element_p, true);
 
-        TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain(element_p);
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
         if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
           Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
           for (EStructuralFeature.Setting setting : references) {
@@ -142,7 +142,7 @@ public class ActivityNodeHelper {
     if (!isCrossReferencing(element_p, false)) {
       try {
         markAsCrossReferenced(element_p, false);
-        TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain(element_p);
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
 
         if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
           Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);

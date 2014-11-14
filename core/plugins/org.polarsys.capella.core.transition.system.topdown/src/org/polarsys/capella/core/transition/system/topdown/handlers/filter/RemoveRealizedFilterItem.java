@@ -18,7 +18,6 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -31,6 +30,14 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  *
  */
 public class RemoveRealizedFilterItem extends AbstractFilterItem {
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String getDescription(IDifference difference_p) {
+    return "The referenced element is realized in the target architecture, this reference will be updated to the realizing element";
+  }
 
   protected BlockArchitecture getSourceArchitecture(EObject source_p, IContext context_p) {
 

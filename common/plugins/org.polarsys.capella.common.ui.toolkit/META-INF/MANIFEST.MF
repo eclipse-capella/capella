@@ -15,9 +15,7 @@ Require-Bundle: org.polarsys.capella.common.ui.toolkit.services;visibility:=reex
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.common.helpers;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport,
- org.eclipse.core.databinding;visibility:=reexport,
- org.polarsys.capella.common.tig.ef,
- org.polarsys.capella.common.tig.efprovider
+ org.eclipse.core.databinding;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

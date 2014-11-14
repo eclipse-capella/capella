@@ -14,44 +14,32 @@ import java.util.Collection;
 
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
-public class ReplicableElementProperty extends org.polarsys.capella.common.re.re2rpl.create.properties.ReplicableElementProperty {
+public class ReplicableElementProperty extends org.polarsys.capella.common.re.re2rpl.create.properties.InitialSourceProperty {
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public Object getValue(IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    CatalogElement rootElement = (CatalogElement) context.get("RE");
+  protected Object getInitialValue(IPropertyContext context_p) {
+    Object element = null;
+    IContext context = getContext(context_p);
 
-    if (rootElement == null) {
-      CatalogElement source = (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty("target"));
+    CatalogElement source =
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
 
-      Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(context).getIndirectlySelectedReplicableElements(context);
-
-      for (CatalogElement element : selectedElements) {
-        if (ReplicableElementHandlerHelper.getInstance(context).isReplica(element, source)) {
-          context.put("RE", element);
-          ReplicableElementHandlerHelper.getInstance(context).setSource(context, element);
-          return element;
-        }
+    Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(context).getIndirectlySelectedReplicableElements(context);
+    for (CatalogElement aelement : selectedElements) {
+      if (ReplicableElementHandlerHelper.getInstance(context).isReplica(aelement, source)) {
+        return aelement;
       }
-
-      if (source != null) {
-        rootElement = source.getOrigin();
-      }
-      context.put("RE", rootElement);
-      ReplicableElementHandlerHelper.getInstance(context).setSource(context, rootElement);
-
     }
-
-    return rootElement;
-
+    if (source != null) {
+      element = source.getOrigin();
+    }
+    return element;
   }
 
 }

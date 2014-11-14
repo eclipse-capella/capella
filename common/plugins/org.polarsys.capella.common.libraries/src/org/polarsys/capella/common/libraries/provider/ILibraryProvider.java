@@ -1,0 +1,63 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.libraries.provider;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.IModelIdentifier;
+
+/**
+ * A provider for libraries. 
+ * A library is a IAbstractModel which can be referenced by another models
+ */
+public interface ILibraryProvider {
+
+  /**
+   * Returns all models available through the provider
+   */
+  public Collection<IModelIdentifier> getAvailableModels();
+
+  /**
+   * Returns the related model if the object is linked to a model provided by this provider or null otherwise
+   */
+  public IModel getModel(EObject object_p);
+
+  /**
+   * Returns the root model for the given editing domain
+   */
+  public IModel getModel(TransactionalEditingDomain domain_p);
+
+  /**
+   * Returns a model for the given identifier and the specific editing domain
+   */
+  public IModel getModelDefinition(IModelIdentifier identifier_p, TransactionalEditingDomain domain_p);
+
+  /**
+   * Add a listener to be notified on provider state changed
+   */
+  public void addListener(ILibraryProviderListener listener_p);
+
+  /**
+   * Remove an already registered listener 
+   */
+  public void removeListener(ILibraryProviderListener listener_p);
+
+  /**
+   * @param semanticUri_p
+   * @return
+   */
+  public IModelIdentifier getModelIdentifier(URI semanticUri_p);
+
+}

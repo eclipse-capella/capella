@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.launcher;
 
-import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
-import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
-import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
+import java.util.Iterator;
+
 import org.polarsys.capella.common.re.activities.AttachmentActivity;
 import org.polarsys.capella.common.re.activities.DifferencesComputingActivity;
 import org.polarsys.capella.common.re.activities.FinalizeTransitionActivity;
@@ -22,6 +21,10 @@ import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.re2rpl.activities.DifferencesFilteringActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeDiffMergeUpdateReplicaActivity;
 import org.polarsys.capella.common.re.re2rpl.activities.InitializeTransitionActivity;
+import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
+import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
+import org.polarsys.capella.core.transition.common.launcher.ILoopActivityDispatcher;
+import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
 
 /**
  */
@@ -40,6 +43,16 @@ public class UpdateReplicaLauncher extends ReLauncher {
   @Override
   protected String getKind() {
     return IReConstants.COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE;
+  }
+
+  @Override
+  protected Iterator<String> iteratorWorkflowElements(String workflowId_p) {
+    return new DispatcherArrayIterator(getWorkflowElements(workflowId_p));
+  }
+
+  @Override
+  public ILoopActivityDispatcher createDispatcher() {
+    return new LoopActivityDispatcher();
   }
 
   /**

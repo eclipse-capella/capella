@@ -44,12 +44,26 @@ public interface ITransitionConstants {
   // Transition variables
   public static final String TRANSITION_SCOPE = "TRANSITION_SCOPE";
 
+  /**
+   * Original selection (not semantically filtered)
+   */
+  public static final String TRANSPOSER_SELECTION = "TRANSPOSER_SELECTION";
+
+  /**
+   * Original selection (not semantically filtered)
+   */
   public static final String TRANSITION_SELECTION = "TRANSITION_SELECTION";
+
+  /**
+   * Semantic sources (computed from non filtered selection)
+   */
   public static final String TRANSITION_SOURCES = "TRANSITION_SOURCES";
+
+  public static final String TRANSITION_SOURCE_EDITING_DOMAIN = "TRANSITION_SOURCE_EDITING_DOMAIN";
   public static final String TRANSITION_SOURCE_ROOT = "_TSRo";
-  public static final String TRANSITION_SOURCE_ARCHITECTURE = "_TSA";
   public static final String TRANSITION_SOURCE_RESOURCE = "_T_S_Res";
 
+  public static final String TRANSITION_TARGET_EDITING_DOMAIN = "TRANSITION_TARGET_EDITING_DOMAIN";
   public static final String TRANSITION_TARGET_ROOT = "_TTRo";
   public static final String TRANSITION_TARGET_RESOURCE = "_T_T_Res";
 
@@ -57,6 +71,7 @@ public interface ITransitionConstants {
   public static final String TRANSFORMATION_SCOPE = "TRANSFORMATION_SCOPE";
   public static final String TRANSFORMATION_SOURCES = "TRANSFORMATION_SOURCE";
 
+  public static final String TRANSFORMATION_EDITING_DOMAIN = "TRANSFORMATION_EDITING_DOMAIN";
   public static final String TRANSFORMATION_TARGET_ROOT = "_Tr_T_R";
   public static final String TRANSFORMATION_SOURCE_ROOT = "_Tr_S_R";
 
@@ -77,7 +92,6 @@ public interface ITransitionConstants {
   public static final String MERGE_TARGET_DIFFERENCES_TO_MERGE = "MERGE_TARGET_DIFFERENCES_TO_MERGE";
 
   // Shared variables
-  public static final String RESOURCE_SET = "RESOURCE_SET";
   public static final String SAVE_REQUIRED = "SAVE_REQUIRED";
 
   public static final String DIFFMERGE_DISABLE = "DIFFMERGE_DISABLE";
@@ -102,7 +116,6 @@ public interface ITransitionConstants {
   public static final String NOTIFY__END_TRANSFORMATION = "NOTIFY__END_TRANSFORMATION";
 
   public static final String TRANSPOSER_INSTANCE = "TRANSPOSER_INSTANCE";
-  public static final String TRANSPOSER_SELECTION = "TRANSPOSER_SELECTION";
 
   public static final String SCOPE_SOURCES = "SCOPE_SOURCES";
 

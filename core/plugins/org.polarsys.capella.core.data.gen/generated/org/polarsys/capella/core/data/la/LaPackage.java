@@ -116,15 +116,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_ARCHITECTURE_PKG__CONSTRAINTS = CsPackage.BLOCK_ARCHITECTURE_PKG__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_ARCHITECTURE_PKG__NAME = CsPackage.BLOCK_ARCHITECTURE_PKG__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,6 +123,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_ARCHITECTURE_PKG__OWNED_CONSTRAINTS = CsPackage.BLOCK_ARCHITECTURE_PKG__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ARCHITECTURE_PKG__NAME = CsPackage.BLOCK_ARCHITECTURE_PKG__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -378,15 +378,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_ARCHITECTURE__CONSTRAINTS = CsPackage.COMPONENT_ARCHITECTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_ARCHITECTURE__NAME = CsPackage.COMPONENT_ARCHITECTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -394,6 +385,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_ARCHITECTURE__OWNED_CONSTRAINTS = CsPackage.COMPONENT_ARCHITECTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ARCHITECTURE__NAME = CsPackage.COMPONENT_ARCHITECTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -847,15 +847,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_FUNCTION__CONSTRAINTS = FaPackage.ABSTRACT_FUNCTION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_FUNCTION__NAME = FaPackage.ABSTRACT_FUNCTION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -863,6 +854,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_FUNCTION__OWNED_CONSTRAINTS = FaPackage.ABSTRACT_FUNCTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_FUNCTION__NAME = FaPackage.ABSTRACT_FUNCTION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1241,15 +1241,6 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_FUNCTION__IS_PART_OF_KEY = FaPackage.ABSTRACT_FUNCTION__IS_PART_OF_KEY;
-
-	/**
-	 * The feature id for the '<em><b>Value Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_FUNCTION__VALUE_CONSTRAINT = FaPackage.ABSTRACT_FUNCTION__VALUE_CONSTRAINT;
 
 	/**
 	 * The feature id for the '<em><b>Association</b></em>' reference.
@@ -1676,15 +1667,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_FUNCTION_PKG__CONSTRAINTS = FaPackage.FUNCTION_PKG__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_FUNCTION_PKG__NAME = FaPackage.FUNCTION_PKG__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1692,6 +1674,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_FUNCTION_PKG__OWNED_CONSTRAINTS = FaPackage.FUNCTION_PKG__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_FUNCTION_PKG__NAME = FaPackage.FUNCTION_PKG__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1992,15 +1983,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_COMPONENT__CONSTRAINTS = CsPackage.SYSTEM_COMPONENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_COMPONENT__NAME = CsPackage.SYSTEM_COMPONENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2008,6 +1990,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_COMPONENT__OWNED_CONSTRAINTS = CsPackage.SYSTEM_COMPONENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_COMPONENT__NAME = CsPackage.SYSTEM_COMPONENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -2857,15 +2848,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_COMPONENT_PKG__CONSTRAINTS = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_COMPONENT_PKG__NAME = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2873,6 +2855,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_COMPONENT_PKG__OWNED_CONSTRAINTS = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_COMPONENT_PKG__NAME = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3173,15 +3164,6 @@ public interface LaPackage extends EPackage {
 	int CAPABILITY_REALIZATION__CONSTRAINTS = InteractionPackage.ABSTRACT_CAPABILITY__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_REALIZATION__NAME = InteractionPackage.ABSTRACT_CAPABILITY__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3189,6 +3171,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_REALIZATION__OWNED_CONSTRAINTS = InteractionPackage.ABSTRACT_CAPABILITY__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REALIZATION__NAME = InteractionPackage.ABSTRACT_CAPABILITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3389,7 +3380,7 @@ public interface LaPackage extends EPackage {
 	int CAPABILITY_REALIZATION__OWNED_FUNCTIONAL_CHAINS = InteractionPackage.ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAINS;
 
 	/**
-	 * The feature id for the '<em><b>Pre Condition</b></em>' attribute.
+	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3398,7 +3389,7 @@ public interface LaPackage extends EPackage {
 	int CAPABILITY_REALIZATION__PRE_CONDITION = InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION;
 
 	/**
-	 * The feature id for the '<em><b>Post Condition</b></em>' attribute.
+	 * The feature id for the '<em><b>Post Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3741,15 +3732,6 @@ public interface LaPackage extends EPackage {
 	int CAPABILITY_REALIZATION_PKG__CONSTRAINTS = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_REALIZATION_PKG__NAME = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3757,6 +3739,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_REALIZATION_PKG__OWNED_CONSTRAINTS = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REALIZATION_PKG__NAME = CapellacommonPackage.ABSTRACT_CAPABILITY_PKG__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4012,6 +4003,15 @@ public interface LaPackage extends EPackage {
 	int SYSTEM_ANALYSIS_REALIZATION__CONSTRAINTS = CsPackage.ARCHITECTURE_ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_ANALYSIS_REALIZATION__OWNED_CONSTRAINTS = CsPackage.ARCHITECTURE_ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4245,6 +4245,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SYSTEM_REALIZATION__CONSTRAINTS = CsPackage.COMPONENT_ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_REALIZATION__OWNED_CONSTRAINTS = CsPackage.COMPONENT_ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -4482,6 +4491,15 @@ public interface LaPackage extends EPackage {
 	int CONTEXT_INTERFACE_REALIZATION__CONSTRAINTS = CsPackage.INTERFACE_ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_INTERFACE_REALIZATION__OWNED_CONSTRAINTS = CsPackage.INTERFACE_ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4717,15 +4735,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_ACTOR_PKG__CONSTRAINTS = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_ACTOR_PKG__NAME = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4733,6 +4742,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_ACTOR_PKG__OWNED_CONSTRAINTS = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ACTOR_PKG__NAME = FaPackage.ABSTRACT_FUNCTIONAL_STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -5033,15 +5051,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_ACTOR__CONSTRAINTS = CsPackage.ABSTRACT_ACTOR__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_ACTOR__NAME = CsPackage.ABSTRACT_ACTOR__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5049,6 +5058,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_ACTOR__OWNED_CONSTRAINTS = CsPackage.ABSTRACT_ACTOR__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_ACTOR__NAME = CsPackage.ABSTRACT_ACTOR__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -5844,6 +5862,15 @@ public interface LaPackage extends EPackage {
 	int SYSTEM_ACTOR_REALIZATION__CONSTRAINTS = CsPackage.COMPONENT_ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SYSTEM_ACTOR_REALIZATION__OWNED_CONSTRAINTS = CsPackage.COMPONENT_ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6079,15 +6106,6 @@ public interface LaPackage extends EPackage {
 	int LOGICAL_CONTEXT__CONSTRAINTS = CsPackage.COMPONENT_CONTEXT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOGICAL_CONTEXT__NAME = CsPackage.COMPONENT_CONTEXT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6095,6 +6113,15 @@ public interface LaPackage extends EPackage {
 	 * @ordered
 	 */
 	int LOGICAL_CONTEXT__OWNED_CONSTRAINTS = CsPackage.COMPONENT_CONTEXT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOGICAL_CONTEXT__NAME = CsPackage.COMPONENT_CONTEXT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.

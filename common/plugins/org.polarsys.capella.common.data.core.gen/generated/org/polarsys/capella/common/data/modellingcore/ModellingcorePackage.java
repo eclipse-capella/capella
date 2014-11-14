@@ -116,13 +116,22 @@ public interface ModellingcorePackage extends EPackage {
 	int MODEL_ELEMENT__CONSTRAINTS = EmdePackage.EXTENSIBLE_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__OWNED_CONSTRAINTS = EmdePackage.EXTENSIBLE_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = EmdePackage.EXTENSIBLE_ELEMENT_FEATURE_COUNT + 3;
+	int MODEL_ELEMENT_FEATURE_COUNT = EmdePackage.EXTENSIBLE_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractRelationshipImpl <em>Abstract Relationship</em>}' class.
@@ -169,6 +178,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_RELATIONSHIP__CONSTRAINTS = MODEL_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_RELATIONSHIP__OWNED_CONSTRAINTS = MODEL_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -235,6 +253,15 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_NAMED_ELEMENT__CONSTRAINTS = MODEL_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS = MODEL_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -244,22 +271,13 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_NAMED_ELEMENT__NAME = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Abstract Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.data.modellingcore.impl.InformationsExchangerImpl <em>Informations Exchanger</em>}' class.
@@ -306,6 +324,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int INFORMATIONS_EXCHANGER__CONSTRAINTS = MODEL_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFORMATIONS_EXCHANGER__OWNED_CONSTRAINTS = MODEL_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Information Flows</b></em>' reference list.
@@ -390,6 +417,15 @@ public interface ModellingcorePackage extends EPackage {
 	int TRACEABLE_ELEMENT__CONSTRAINTS = MODEL_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACEABLE_ELEMENT__OWNED_CONSTRAINTS = MODEL_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -463,6 +499,15 @@ public interface ModellingcorePackage extends EPackage {
 	int FINALIZABLE_ELEMENT__CONSTRAINTS = MODEL_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINALIZABLE_ELEMENT__OWNED_CONSTRAINTS = MODEL_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Final</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -525,6 +570,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PUBLISHABLE_ELEMENT__CONSTRAINTS = MODEL_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PUBLISHABLE_ELEMENT__OWNED_CONSTRAINTS = MODEL_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
@@ -600,15 +654,6 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_TYPE__CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TYPE__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -616,6 +661,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_TYPE__OWNED_CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TYPE__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -682,15 +736,6 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_TYPED_ELEMENT__CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TYPED_ELEMENT__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -698,6 +743,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_TYPED_ELEMENT__OWNED_CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TYPED_ELEMENT__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -762,6 +816,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_TRACE__CONSTRAINTS = TRACEABLE_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TRACE__OWNED_CONSTRAINTS = TRACEABLE_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -855,6 +918,15 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_CONSTRAINT__CONSTRAINTS = MODEL_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONSTRAINT__OWNED_CONSTRAINTS = MODEL_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Constrained Elements</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -864,13 +936,31 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_CONSTRAINT__CONSTRAINED_ELEMENTS = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Owned Specification</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONSTRAINT__CONTEXT = MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CONSTRAINT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_CONSTRAINT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.data.modellingcore.ValueSpecification <em>Value Specification</em>}' class.
@@ -919,15 +1009,6 @@ public interface ModellingcorePackage extends EPackage {
 	int VALUE_SPECIFICATION__CONSTRAINTS = ABSTRACT_TYPED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_SPECIFICATION__NAME = ABSTRACT_TYPED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -935,6 +1016,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_SPECIFICATION__OWNED_CONSTRAINTS = ABSTRACT_TYPED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_SPECIFICATION__NAME = ABSTRACT_TYPED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -1001,15 +1091,6 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_PARAMETER__CONSTRAINTS = ABSTRACT_TYPED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_PARAMETER__NAME = ABSTRACT_TYPED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1017,6 +1098,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_PARAMETER__OWNED_CONSTRAINTS = ABSTRACT_TYPED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PARAMETER__NAME = ABSTRACT_TYPED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -1155,15 +1245,6 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_PARAMETER_SET__CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_PARAMETER_SET__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1171,6 +1252,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_PARAMETER_SET__OWNED_CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PARAMETER_SET__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Owned Conditions</b></em>' containment reference list.
@@ -1255,15 +1345,6 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_INFORMATION_FLOW__CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_INFORMATION_FLOW__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1271,6 +1352,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_INFORMATION_FLOW__OWNED_CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_INFORMATION_FLOW__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -1373,15 +1463,6 @@ public interface ModellingcorePackage extends EPackage {
 	int ABSTRACT_EXCHANGE_ITEM__CONSTRAINTS = ABSTRACT_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_EXCHANGE_ITEM__NAME = ABSTRACT_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1389,6 +1470,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_EXCHANGE_ITEM__OWNED_CONSTRAINTS = ABSTRACT_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EXCHANGE_ITEM__NAME = ABSTRACT_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -1455,15 +1545,6 @@ public interface ModellingcorePackage extends EPackage {
 	int ISTATE__CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISTATE__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1471,6 +1552,15 @@ public interface ModellingcorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ISTATE__OWNED_CONSTRAINTS = ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISTATE__NAME = ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Referenced States</b></em>' reference list.
@@ -1482,13 +1572,22 @@ public interface ModellingcorePackage extends EPackage {
 	int ISTATE__REFERENCED_STATES = ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISTATE__AVAILABLE_IN_STATES = ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>IState</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISTATE_FEATURE_COUNT = ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ISTATE_FEATURE_COUNT = ABSTRACT_NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.data.modellingcore.ParameterEffectKind <em>Parameter Effect Kind</em>}' enum.
@@ -1555,6 +1654,17 @@ public interface ModellingcorePackage extends EPackage {
 	EReference getModelElement_Constraints();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.common.data.modellingcore.ModelElement#getOwnedConstraints <em>Owned Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Constraints</em>'.
+	 * @see org.polarsys.capella.common.data.modellingcore.ModelElement#getOwnedConstraints()
+	 * @see #getModelElement()
+	 * @generated
+	 */
+	EReference getModelElement_OwnedConstraints();
+
+	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.common.data.modellingcore.AbstractRelationship <em>Abstract Relationship</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1595,17 +1705,6 @@ public interface ModellingcorePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAbstractNamedElement_Name();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.common.data.modellingcore.AbstractNamedElement#getOwnedConstraints <em>Owned Constraints</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Constraints</em>'.
-	 * @see org.polarsys.capella.common.data.modellingcore.AbstractNamedElement#getOwnedConstraints()
-	 * @see #getAbstractNamedElement()
-	 * @generated
-	 */
-	EReference getAbstractNamedElement_OwnedConstraints();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.common.data.modellingcore.InformationsExchanger <em>Informations Exchanger</em>}'.
@@ -1829,6 +1928,28 @@ public interface ModellingcorePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAbstractConstraint_ConstrainedElements();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint#getOwnedSpecification <em>Owned Specification</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Owned Specification</em>'.
+	 * @see org.polarsys.capella.common.data.modellingcore.AbstractConstraint#getOwnedSpecification()
+	 * @see #getAbstractConstraint()
+	 * @generated
+	 */
+	EReference getAbstractConstraint_OwnedSpecification();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint#getContext <em>Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Context</em>'.
+	 * @see org.polarsys.capella.common.data.modellingcore.AbstractConstraint#getContext()
+	 * @see #getAbstractConstraint()
+	 * @generated
+	 */
+	EReference getAbstractConstraint_Context();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.common.data.modellingcore.ValueSpecification <em>Value Specification</em>}'.
@@ -2067,6 +2188,17 @@ public interface ModellingcorePackage extends EPackage {
 	EReference getIState_ReferencedStates();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.common.data.modellingcore.IState#getAvailableInStates <em>Available In States</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Available In States</em>'.
+	 * @see org.polarsys.capella.common.data.modellingcore.IState#getAvailableInStates()
+	 * @see #getIState()
+	 * @generated
+	 */
+	EReference getIState_AvailableInStates();
+
+	/**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.common.data.modellingcore.ParameterEffectKind <em>Parameter Effect Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2143,6 +2275,14 @@ public interface ModellingcorePackage extends EPackage {
 		EReference MODEL_ELEMENT__CONSTRAINTS = eINSTANCE.getModelElement_Constraints();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Constraints</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_ELEMENT__OWNED_CONSTRAINTS = eINSTANCE.getModelElement_OwnedConstraints();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.data.modellingcore.impl.AbstractRelationshipImpl <em>Abstract Relationship</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2177,14 +2317,6 @@ public interface ModellingcorePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ABSTRACT_NAMED_ELEMENT__NAME = eINSTANCE.getAbstractNamedElement_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Constraints</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS = eINSTANCE.getAbstractNamedElement_OwnedConstraints();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.data.modellingcore.impl.InformationsExchangerImpl <em>Informations Exchanger</em>}' class.
@@ -2369,6 +2501,22 @@ public interface ModellingcorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ABSTRACT_CONSTRAINT__CONSTRAINED_ELEMENTS = eINSTANCE.getAbstractConstraint_ConstrainedElements();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned Specification</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION = eINSTANCE.getAbstractConstraint_OwnedSpecification();
+
+		/**
+		 * The meta object literal for the '<em><b>Context</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_CONSTRAINT__CONTEXT = eINSTANCE.getAbstractConstraint_Context();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.data.modellingcore.ValueSpecification <em>Value Specification</em>}' class.
@@ -2557,6 +2705,14 @@ public interface ModellingcorePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ISTATE__REFERENCED_STATES = eINSTANCE.getIState_ReferencedStates();
+
+		/**
+		 * The meta object literal for the '<em><b>Available In States</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ISTATE__AVAILABLE_IN_STATES = eINSTANCE.getIState_AvailableInStates();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.common.data.modellingcore.ParameterEffectKind <em>Parameter Effect Kind</em>}' enum.

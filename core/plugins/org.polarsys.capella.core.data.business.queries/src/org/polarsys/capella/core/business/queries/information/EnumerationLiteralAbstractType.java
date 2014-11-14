@@ -16,34 +16,45 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 
 /**
  * This is the query for enumeration literal abstract type.
  */
-public class EnumerationLiteralAbstractType extends AbstractValue_Type {
+public class EnumerationLiteralAbstractType extends AbstractValue_Type implements IBusinessQuery {
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.information.AbstractValue_Type#getAvailableEClassForType()
-   */
-  @Override
-  protected List<EClass> getAvailableEClassForType() {
-    return Collections.singletonList(DatatypePackage.Literals.ENUMERATION);
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return DatavaluePackage.Literals.ENUMERATION_LITERAL;
+	}
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return DatavaluePackage.Literals.ENUMERATION_LITERAL;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.information.AbstractValue_Type#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+	}
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.information.AbstractValue_Type#getEStructuralFeatures()
-   */
-  @Override
-  public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
-  }
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ENUMERATION_LITERAL_ABSTRACT_TYPE, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ENUMERATION_LITERAL_ABSTRACT_TYPE, element_p, context);
+	}
 }

@@ -13,13 +13,12 @@ package org.polarsys.capella.core.libraries.ui.views.libraryManager.referencesMa
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.IModelIdentifier;
 
 /**
  */
@@ -28,14 +27,14 @@ public class ReferencesLabelProvider extends LabelProvider {
   @Override
   public String getText(Object element) {
     StringBuffer buffer = new StringBuffer();
-    IAbstractLibrary library = (IAbstractLibrary) element;
-    buffer.append(library.getName());
-    Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getReferencedLibraries(library, false);
-    Iterator<IAbstractLibrary> iterator = libraries.iterator();
+    IModel library = (IModel) element;
+    buffer.append(library.getIdentifier().getName());
+    Collection<IModelIdentifier> libraries = library.getReferences();
+    Iterator<IModelIdentifier> iterator = libraries.iterator();
     if (libraries.size() > 0) {
       buffer.append(" (");
       while (iterator.hasNext()) {
-        IAbstractLibrary referencedLibrary = iterator.next();
+        IModelIdentifier referencedLibrary = iterator.next();
         buffer.append(referencedLibrary.getName());
         if (iterator.hasNext()) {
           buffer.append(", ");
@@ -48,7 +47,10 @@ public class ReferencesLabelProvider extends LabelProvider {
 
   @Override
   public Image getImage(Object element) {
-    CapellaLibrary library = (CapellaLibrary) element;
-    return EObjectLabelProviderHelper.getImage(library.getProject());
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif");
+    if (desc != null) {
+      return desc.createImage();
+    }
+    return null;
   }
 }

@@ -13,6 +13,7 @@ package org.polarsys.capella.core.ui.semantic.browser.view;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,11 +23,13 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.DoubleClickEvent;
@@ -46,6 +49,7 @@ import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
 import org.eclipse.swt.custom.SashForm;
@@ -84,25 +88,14 @@ import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.session.ClosedSessionListener;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
 import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
-import org.polarsys.capella.common.ui.toolkit.viewers.DelegateSelectionProvider;
-import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
-import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
-import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
-import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
-import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserPreferences;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.session.ClosedSessionListener;
 import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserActionFactory;
 import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserHistory;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
@@ -111,8 +104,20 @@ import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.Abst
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory;
+import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
-import org.polarsys.capella.common.ui.toolkit.browser.viewer.BrowserComposite;
+import org.polarsys.capella.common.ui.toolkit.viewers.DelegateSelectionProvider;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
+import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
+import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserPreferences;
+import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
+import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
 
 /**
  * Browser Semantic View. Load by extension point.
@@ -239,6 +244,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   private IDialogSettings _viewSettings;
 
+  protected ISemanticBrowserModel model;
+  
   /**
    * Constructor.
    */
@@ -246,8 +253,14 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     // Get the dialog settings section for this view.
     _viewSettings = getDialogSettingsSection();
     _monitoredSessions = new HashMap<Session, SemanticBrowserView.SemClosedSessionListener>(1);
+    model = new SemanticBrowserModel();
   }
 
+  @Override
+  public ISemanticBrowserModel getModel() {
+  	return model;
+  }
+  
   /**
    * Activate the listening to page selection events.
    */
@@ -271,6 +284,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       /**
        * {@inheritDoc}
        */
+    	@Override
       public void dragSetData(DragSourceEvent event_p) {
         event_p.data = LocalSelectionTransfer.getTransfer().getSelection();
       }
@@ -278,6 +292,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       /**
        * {@inheritDoc}
        */
+    	@Override
       public void dragStart(DragSourceEvent event_p) {
         // Check selection to drag is a CapellaElement.
         ISelection selection = viewer_p.getSelection();
@@ -297,6 +312,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       /**
        * {@inheritDoc}
        */
+    	@Override
       public void dragFinished(DragSourceEvent event_p) {
         // Clean LocalSelectionTranfer.
         LocalSelectionTransfer.getTransfer().setSelection(null);
@@ -315,7 +331,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     // Lazy creation pattern.
     if (null == _viewerSelectionListener) {
       _viewerSelectionListener = new ISelectionChangedListener() {
-        public void selectionChanged(SelectionChangedEvent event) {
+      	@Override
+      	public void selectionChanged(SelectionChangedEvent event) {
           ISelectionProvider provider = event.getSelectionProvider();
           refreshPropertyPage(provider);
         }
@@ -349,6 +366,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     if (null == _viewerDoubleClickListener) {
       _viewerDoubleClickListener = new IDoubleClickListener() {
         @SuppressWarnings("synthetic-access")
+        @Override
         public void doubleClick(DoubleClickEvent event_p) {
           try {
             handleDoubleClick(event_p);
@@ -390,6 +408,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#clean()
    */
+  @Override
   public void clean() {
     // No need to set focus.
     boolean restoreState = _shouldSetFocus ? true : false;
@@ -428,17 +447,20 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     mainSashForm.setLayout(gridLayoutTop);
     mainSashForm.setLayoutData(new GridData(GridData.FILL_BOTH));
 
+    // set the model in the AbstractContentProviderFactory
+    AbstractContentProviderFactory.getInstance().setModel(model);
+
     // Initialize referencing viewer as first element of the main sash form.
     ViewerSorter sorter = new ViewerSorter();
-    _referencingViewer = createViewer(mainSashForm, REFERENCING_ELEMENTS_LABEL_TXT, 3);
-    initializeViewer(_referencingViewer, AbstractContentProviderFactory.getInstance().getReferencingContentProvider(), AbstractLabelProviderFactory
-        .getInstance().getReferencingLabelProvider(), sorter);
+    AbstractContentProvider treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance().getReferencingContentProvider();
+    _referencingViewer = createViewer(mainSashForm, REFERENCING_ELEMENTS_LABEL_TXT, 3, treeProvider.getBrowserId());
+    initializeViewer(_referencingViewer, treeProvider, AbstractLabelProviderFactory.getInstance().getReferencingLabelProvider(), sorter);
 
     // Create a sash form as second element of the main sash form.
     // Initialize current viewer as first element of the center sash form.
-    _currentViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Current_Element_Title, 3);
-    initializeViewer(_currentViewer, AbstractContentProviderFactory.getInstance().getCurrentContentProvider(), AbstractLabelProviderFactory.getInstance()
-        .getCurrentLabelProvider(), new ViewerSorter() {
+    treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance().getCurrentContentProvider();
+    _currentViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Current_Element_Title, 3, treeProvider.getBrowserId());
+    initializeViewer(_currentViewer, treeProvider, AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider(), new ViewerSorter() {
       /**
        * Overridden to force All Related Diagrams and All Related Tables to be located at the end of the tree. {@inheritDoc}
        */
@@ -471,9 +493,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
 
     // Initialize the referenced viewer as third element of the main sash
     // form.
-    _referencedViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Referenced_Elements_Title, 3);
-    initializeViewer(_referencedViewer, AbstractContentProviderFactory.getInstance().getReferencedContentProvider(), AbstractLabelProviderFactory.getInstance()
-        .getReferencedLabelProvider(), sorter);
+    treeProvider = (AbstractContentProvider) AbstractContentProviderFactory.getInstance().getReferencedContentProvider();
+    _referencedViewer = createViewer(mainSashForm, Messages.SemanticBrowserView_Referenced_Elements_Title, 3, treeProvider.getBrowserId());
+    initializeViewer(_referencedViewer, treeProvider, AbstractLabelProviderFactory.getInstance().getReferencedLabelProvider(), sorter);
 
     initializeContextMenus();
     // Create and set a delegate selection provider, initialized on current
@@ -490,10 +512,10 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @param autoExpandLevel_p
    * @return the referenced treeviewer
    */
-  protected TreeViewer createViewer(Composite parent_p, String label_p, int autoExpandLevel_p) {
-    BrowserComposite composite = new BrowserComposite(parent_p, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, label_p);
+  protected TreeViewer createViewer(Composite parent_p, String label_p, int autoExpandLevel_p, String browserID) {
+    BrowserComposite composite = new BrowserComposite(parent_p, model, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, label_p, browserID);
     TreeViewer treeViewer = composite.getTreeviewer();
-    treeViewer.setAutoExpandLevel(autoExpandLevel_p);
+    // treeViewer.setAutoExpandLevel(autoExpandLevel_p);
     treeViewer.setUseHashlookup(true);
     ColumnViewerToolTipSupport.enableFor(treeViewer, ToolTip.RECREATE);
     addListeners(treeViewer);
@@ -559,6 +581,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     _monitoredSessions.clear();
     _monitoredSessions = null;
 
+    model = null;
     super.dispose();
   }
 
@@ -579,6 +602,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @see org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor#getContributorId()
    */
+  @Override
   public String getContributorId() {
     return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
@@ -586,6 +610,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @return the currentViewer
    */
+  @Override
   public TreeViewer getCurrentViewer() {
     return _currentViewer;
   }
@@ -608,13 +633,22 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @see org.eclipse.emf.edit.domain.IEditingDomainProvider#getEditingDomain()
    */
+  @Override
   public EditingDomain getEditingDomain() {
-    return MDEAdapterFactory.getEditingDomain();
+	ISelection selection = getCurrentViewer().getSelection();
+	if (selection instanceof IStructuredSelection) {
+	  Object elt = ((IStructuredSelection) selection).getFirstElement();
+	  if (elt instanceof EObject) {
+		return TransactionHelper.getEditingDomain((EObject) elt);
+	  }
+	}
+    return null;
   }
 
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#getHistory()
    */
+  @Override
   public BrowserHistory getHistory() {
     if (null == _history) {
       _history = new BrowserHistory();
@@ -665,6 +699,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @return the referencedViewer
    */
+  @Override
   public TreeViewer getReferencedViewer() {
     return _referencedViewer;
   }
@@ -672,6 +707,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @return the referencingViewer
    */
+  @Override
   public TreeViewer getReferencingViewer() {
     return _referencingViewer;
   }
@@ -680,6 +716,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Get the current viewer root element.
    * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#getRootElement()
    */
+  @Override
   public EObject getRootElement() {
     return ((AbstractContentProvider) _currentViewer.getContentProvider()).getRootElement();
   }
@@ -694,6 +731,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
        * @see org.eclipse.ui.ISelectionListener#selectionChanged(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
        */
       @SuppressWarnings("synthetic-access")
+      @Override
       public void selectionChanged(IWorkbenchPart part_p, ISelection selection_p) {
         Object newInput = handleWorkbenchPageSelectionEvent(part_p, selection_p);
         // Set the selected object as new input only if it is an EObject
@@ -828,6 +866,16 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     return _isCtrlKeyPressed;
   }
 
+  protected IAction showPatternsAction;
+  protected IAction showDiagramsAction;
+  protected IAction limitateTreeExpansionAction;
+
+  private ImageDescriptor getImage(EObject object) {
+    IItemLabelProvider l = ((IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(object, IItemLabelProvider.class));
+    URL imageUrl = (URL) l.getImage(object);
+    return ImageDescriptor.createFromURL(imageUrl);
+  }
+  
   /**
    * Make actions.
    */
@@ -842,9 +890,38 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     _forwardAction = BrowserActionFactory.FORWARD_HISTORY.create(getViewSite().getWorkbenchWindow(), this);
     _forwardAction.setActionDefinitionId("org.polarsys.capella.core.ui.semantic.browser.forwardNavigation"); //$NON-NLS-1$
     toolBarManager.add(_forwardAction);
+        
+    // Add hide diagrams action.
+    showDiagramsAction = new Action(null, IAction.AS_CHECK_BOX) {
+      @Override
+      public void run() {
+        model.setShowDiagrams(isChecked());
+        Object input = getCurrentViewer().getInput();
+        setInputOnViewers(input);
+      }
+    };
+    showDiagramsAction.setChecked(model.doesShowDiagrams());
+    showDiagramsAction.setToolTipText(Messages.SemanticBrowserView_ShowDiagramsAction_Tooltip);
+    showDiagramsAction.setImageDescriptor(getImage(ViewpointFactory.eINSTANCE.createDAnalysis()));
+    toolBarManager.add(showDiagramsAction);
+
+    // Add limitate tree expansion action.
+    limitateTreeExpansionAction = new Action(null, IAction.AS_CHECK_BOX) {
+      @Override
+      public void run() {
+        model.setLimitateTreeExpansion(isChecked());
+        Object input = getCurrentViewer().getInput();
+        setInputOnViewers(input);
+      }
+    };
+    limitateTreeExpansionAction.setChecked(model.doesLimitateTreeExpansion());
+    limitateTreeExpansionAction.setToolTipText(Messages.SemanticBrowserView_LimitateTreeExpansionAction_Tooltip);
+    limitateTreeExpansionAction.setImageDescriptor(CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_COLLAPSE_CATEGORIES));
+    toolBarManager.add(limitateTreeExpansionAction);    
     
     // Add refresh action.
     IAction refreshAction = new Action(null, CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_REFRESH)) {
+    	@Override
     	public void run() {
     		refreshTitleBar();
     	};
@@ -944,6 +1021,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#refresh()
    */
+  @Override
   public void refresh() {
     ViewerHelper.refresh(_referencingViewer);
     ViewerHelper.refresh(_referencedViewer);
@@ -967,6 +1045,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * {@inheritDoc}
    */
+  @Override
   public void setEnabled(boolean enabled_p) {
     // do nothing
   }
@@ -974,6 +1053,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * {@inheritDoc}
    */
+  @Override
   public void refreshTitleBar() {
     Object input = getCurrentViewer().getInput();
     refreshTitleBar(input);
@@ -984,32 +1064,36 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @param input_p
    */
   @SuppressWarnings("synthetic-access")
-  protected void setInputOnViewers(final Object input_p) {
+  public void setInputOnViewers(final Object input_p) {
     TreeViewer currentViewer = getCurrentViewer();
 
     if ((currentViewer != null) && ((currentViewer.getControl() != null) && !(currentViewer.getControl().isDisposed()))) {
       Display display = currentViewer.getControl().getDisplay();
 
       BusyIndicator.showWhile(display, new Runnable() {
-        public void run() {
+      	@Override
+      	public void run() {
 
           // Broadcast "set input" signal to all viewers.
           ViewerHelper.run(_referencingViewer, new Runnable() {
-            public void run() {
+          	@Override
+          	public void run() {
               if ((_referencingViewer.getControl() != null) && !_referencingViewer.getControl().isDisposed()) {
                 _referencingViewer.setInput(input_p);
               }
             }
           });
           ViewerHelper.run(_referencedViewer, new Runnable() {
-            public void run() {
+          	@Override
+          	public void run() {
               if ((_referencedViewer.getControl() != null) && !_referencedViewer.getControl().isDisposed()) {
                 _referencedViewer.setInput(input_p);
               }
             }
           });
           ViewerHelper.run(_currentViewer, new Runnable() {
-            public void run() {
+          	@Override
+          	public void run() {
               if ((_currentViewer.getControl() != null) && !_currentViewer.getControl().isDisposed()) {
                 _currentViewer.setInput(input_p);
               }
@@ -1127,6 +1211,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#setInput(java.lang.Object)
    */
+  @Override
   public final void setInput(final Object input_p) {
     // Precondition: do not set the same input twice.
     TreeViewer currentViewer = getCurrentViewer();

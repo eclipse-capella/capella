@@ -14,20 +14,24 @@ import java.lang.ref.WeakReference;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.IPersistableElement;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
@@ -49,13 +53,16 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
    */
   private WeakReference<Project> _capellaProjectReference;
 
+  private IStatus _sessionStatus;
+
   /**
    * Constructor.<br>
    * This constructor is used to restore a Capella dashboard editor.
    * @param memento
    * @throws Exception
    */
-  CapellaDashboardEditorInput(IMemento memento_p) throws Exception {
+  CapellaDashboardEditorInput(IMemento memento_p) {
+    _sessionStatus = Status.OK_STATUS;
     loadState(memento_p);
   }
 
@@ -67,6 +74,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
   public CapellaDashboardEditorInput(Session session_p, Project capellaProject_p) {
     _sessionReference = new WeakReference<Session>(session_p);
     _capellaProjectReference = new WeakReference<Project>(capellaProject_p);
+    _sessionStatus = Status.OK_STATUS;
   }
 
   /**
@@ -207,34 +215,57 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
    * @param memento_p
    * @throws Exception
    */
-  protected void loadState(IMemento memento_p) throws Exception {
+  protected void loadState(IMemento memento_p) {
+
     // Get from the memento the diagram file associated to session to restore.
     String firstAnalysisFile = memento_p.getString(FIRST_ANALYSIS_FILE_TAG);
+    if (firstAnalysisFile == null) return;
     IFile diagramFile = FileHelper.getPlatformFile(firstAnalysisFile);
-    Session session = SessionHelper.getSession(diagramFile);
 
-    // Don't open session if already opened (bad performance)
-    if (null == session) {
-      // Instantiate the action responsible for opening a session.
-      OpenSessionAction openSessionAction = new OpenSessionAction();
-      // Disable to open the capella dashboard as we are already restoring a Capella Dashboard editor input i.e a CapellaDashboard editor.
-      openSessionAction.setOpenCapellaDashboard(false);
-      openSessionAction.setRunInProgressService(false);
-      openSessionAction.selectionChanged(new StructuredSelection(diagramFile));
-      // Open the session.
-      openSessionAction.run();
-      session = SessionHelper.getSession(diagramFile);
+    try {
+      Session session = SessionHelper.getSession(diagramFile);
+
+      // Don't open session if already opened (bad performance)
+      if (null == session) {
+        // Instantiate the action responsible for opening a session.
+        OpenSessionAction openSessionAction = new OpenSessionAction();
+        // Disable to open the capella dashboard as we are already restoring a Capella Dashboard editor input i.e a CapellaDashboard editor.
+        openSessionAction.setOpenCapellaDashboard(false);
+        openSessionAction.setRunInProgressService(false);
+        openSessionAction.selectionChanged(new StructuredSelection(diagramFile));
+        // Open the session.
+        openSessionAction.run();
+
+        if (openSessionAction.getFailedOpeningSessions().containsKey(diagramFile)) {
+          IStatus status = openSessionAction.getFailedOpeningSessions().get(diagramFile);
+          _sessionStatus =
+              new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
+                  status.getMessage()), status.getException());
+        }
+
+        session = SessionHelper.getSession(diagramFile);
+      }
+
+      // Get the session.
+      _sessionReference = new WeakReference<Session>(session);
+
+      if (null != _sessionReference.get()) {
+        _capellaProjectReference = new WeakReference<Project>(SessionHelper.getCapellaProject(_sessionReference.get()));
+      }
+
+    } catch (Exception e) {
+      _sessionStatus =
+          new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("Error while opening session {0} [{1}]", firstAnalysisFile,
+              e.getMessage()), e);
+      __logger.error(new EmbeddedMessage(e.getMessage(), IReportManagerDefaultComponents.UI), e);
     }
+  }
 
-    // Get the session.
-    _sessionReference = new WeakReference<Session>(session);
-    session = null;
-
-    if (null != _sessionReference) {
-      _capellaProjectReference = new WeakReference<Project>(SessionHelper.getCapellaProject(_sessionReference.get()));
-    } else {
-      throw new Exception("Failed to instantiate the session for " + firstAnalysisFile); //$NON-NLS-1$
-    }
+  /**
+   * @return the sessionStatus
+   */
+  public IStatus getStatus() {
+    return _sessionStatus;
   }
 
   /**
@@ -257,14 +288,7 @@ public class CapellaDashboardEditorInput implements IEditorInput, IPersistableEl
    * @return
    */
   static CapellaDashboardEditorInput create(IMemento memento_p) {
-    CapellaDashboardEditorInput result = null;
-    try {
-      result = new CapellaDashboardEditorInput(memento_p);
-    } catch (Exception exception_p) {
-      StringBuilder loggerMessage = new StringBuilder("Error while trying to restore a CapellaDashboardEditorInput - "); //$NON-NLS-1$
-      loggerMessage.append(exception_p.getMessage());
-      __logger.error(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception_p);
-    }
+    CapellaDashboardEditorInput result = new CapellaDashboardEditorInput(memento_p);
     return result;
   }
 }

@@ -13,13 +13,12 @@ package org.polarsys.capella.core.dashboard.hyperlinkadapter.pa;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.refinement.commands.ScenarioRefinementCommand;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * Execute a global refinement of all System Analysis Capabilities and Scenarios.
@@ -39,7 +38,7 @@ public class ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter extend
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
-    MDEAdapterFactory.getExecutionManager().execute(
+    TransactionHelper.getExecutionManager(capellaProject_p).execute(
         new ScenarioRefinementCommand(getModelElement(_project), new NullProgressMonitor()));
   }
 

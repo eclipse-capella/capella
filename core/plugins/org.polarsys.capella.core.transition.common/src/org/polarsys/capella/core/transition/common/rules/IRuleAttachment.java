@@ -12,20 +12,24 @@ package org.polarsys.capella.core.transition.common.rules;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IRule;
 
 /**
+ * A transposer rule to retrieve 
  *
+ * This interface will be changed soon to be merged with current AbstractRule
  */
-public interface IRuleAttachment {
+public interface IRuleAttachment extends IRule<EObject> {
 
-  public EObject _getBestContainer(EObject element_p, EObject result_p, IContext context_p);
+  /**
+   * Returns the default container to store the result_p element
+   */
+  public EObject retrieveDefaultContainer(EObject element_p, EObject result_p, IContext context_p);
 
-  public EObject _getDefaultContainer(EObject element_p, EObject result_p, IContext context_p);
-
-  public EStructuralFeature _getSourceContainementFeature(EObject element_p, EObject result_p, IContext context_p);
-
-  public EStructuralFeature _getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p);
+  /**
+   * Returns the containementFeature which should be used for the result_p element when stored into container_p
+   */
+  public EStructuralFeature retrieveTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p);
 
 }

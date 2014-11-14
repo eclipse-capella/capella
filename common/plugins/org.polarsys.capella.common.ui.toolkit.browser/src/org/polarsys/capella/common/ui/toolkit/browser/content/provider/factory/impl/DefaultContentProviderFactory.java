@@ -12,7 +12,6 @@ package org.polarsys.capella.common.ui.toolkit.browser.content.provider.factory.
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.factory.AbstractContentProviderFactory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.CurrentElementCP;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.ReferencedElementCP;
@@ -44,7 +43,7 @@ public abstract class DefaultContentProviderFactory extends AbstractContentProvi
    */
   @Override
   public ITreeContentProvider getCurrentContentProvider() {
-    return new CurrentElementCP(getAdapterFactory());
+    return new CurrentElementCP(getAdapterFactory(), model);
   }
 
   /**
@@ -52,7 +51,7 @@ public abstract class DefaultContentProviderFactory extends AbstractContentProvi
    */
   @Override
   public ITreeContentProvider getReferencedContentProvider() {
-    return new ReferencedElementCP(getAdapterFactory());
+    return new ReferencedElementCP(getAdapterFactory(), model);
   }
 
   /**
@@ -60,6 +59,6 @@ public abstract class DefaultContentProviderFactory extends AbstractContentProvi
    */
   @Override
   public ITreeContentProvider getReferencingContentProvider() {
-    return new ReferencingElementCP(getAdapterFactory());
+    return new ReferencingElementCP(getAdapterFactory(), model);
   }
 }

@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.refinement.commands;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.refinement.framework.ui;visibility:=reexport,
  org.polarsys.capella.core.refinement.scenario;visibility:=reexport,
@@ -12,10 +12,9 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.refinement.subscenario,
  org.polarsys.capella.core.refinement.processor.interfacelinksupdate,
  org.polarsys.capella.common.ui.services;visibility:=reexport,
- org.polarsys.capella.common.tig.efprovider,
  org.polarsys.capella.core.platform.sirius.ui.actions;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.menu
 Export-Package: org.polarsys.capella.core.refinement.commands,
  org.polarsys.capella.core.refinement.commands.actions
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

@@ -27,15 +27,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-
-import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 
 /**
  * This class contains convenient static methods for working with EMF objects.
@@ -191,6 +190,13 @@ public class EcoreUtil2 {
     }
     result = WorkspaceSynchronizer.getFile(resource_p);
     return result;
+  }
+
+  /**
+   * Returns the URI from the path (with compatible encoding for EMF.getResource(URI) method)
+   */
+  public static URI getURI(IFile file_p) {
+    return URI.createPlatformResourceURI(file_p.getFullPath().toOSString(), true);
   }
 
   /**

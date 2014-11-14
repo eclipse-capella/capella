@@ -14,14 +14,13 @@ import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.ui.IWorkbenchPart;
-
+import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.actions.DiagramOpenAction;
 import org.polarsys.capella.core.ui.semantic.browser.sirius.helpers.SiriusSelectionHelper;
 import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
-import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
 
 /**
  * Browser Semantic View. Load by extension point.

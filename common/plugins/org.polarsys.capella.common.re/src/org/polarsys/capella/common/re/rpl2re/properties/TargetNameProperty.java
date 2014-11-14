@@ -37,7 +37,7 @@ public class TargetNameProperty extends AbstractProperty implements ICompoundPro
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET, IReConstants.PROPERTY__LOCATION_TARGET };
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, IReConstants.PROPERTY__LOCATION_TARGET };
   }
 
   /**
@@ -48,7 +48,7 @@ public class TargetNameProperty extends AbstractProperty implements ICompoundPro
     if (_currentName == null) {
       IContext context = (IContext) context_p.getSource();
       CatalogElement source =
-          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
       if (source != null) {
         CatalogElementPkg location =
             (CatalogElementPkg) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET));
@@ -100,7 +100,7 @@ public class TargetNameProperty extends AbstractProperty implements ICompoundPro
   @Override
   public void setValue(IPropertyContext context_p) {
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
     element.setName((String) context_p.getCurrentValue(this));
   }
 

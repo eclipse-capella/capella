@@ -10,72 +10,51 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.fa;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.fa.FunctionalChain;
-import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.data.fa.FaPackage;
 
 /**
  * Return current and available States and Modes of Functional Chain
  */
-public class FunctionalChain_AvailableInStates extends AbstractAvailableInState {
-  
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+public class FunctionalChain_AvailableInStates extends AbstractAvailableInState implements IBusinessQuery {
 
-    if (null == systemEngineering) {
-      return availableElements;
-    }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return FaPackage.Literals.FUNCTIONAL_CHAIN;
+	}
 
-    if (element_p instanceof FunctionalChain) {
-      availableElements.addAll(getAvailableElmentsFromCurrentLevel(systemEngineering, element_p));
-    }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeature()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
+	}
 
-    return availableElements;
-  }
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES, element_p, context);
+	}
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement, boolean)
-   */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-    if (element_p instanceof FunctionalChain) {
-      FunctionalChain ele = (FunctionalChain) element_p;
-      EList<State> availableInStates = ele.getAvailableInStates();
-      for (State abstractStateMode : availableInStates) {
-        currentElements.add(abstractStateMode);
-      }
-    }
-    return currentElements;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return FaPackage.Literals.FUNCTIONAL_CHAIN;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeature()
-   */
-  public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
-  }
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES, element_p, context);
+	}
 
 }

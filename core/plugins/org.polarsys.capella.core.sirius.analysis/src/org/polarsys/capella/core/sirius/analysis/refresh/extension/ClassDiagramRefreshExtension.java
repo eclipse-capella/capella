@@ -16,10 +16,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.refresh.IRefreshExtension;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;

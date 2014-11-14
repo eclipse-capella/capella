@@ -40,7 +40,6 @@ public abstract class AbstractCapellaDropAdapterAssistant extends CommonDropAdap
   }
 
   /**
-   * Code copied from AbstractXMLContentOutlineConfiguration.getHeightInItem class provided by org.eclipse.wst.xml.ui.views.contentoutline plug-in.
    * This returns the location of the mouse in the vertical direction, relative to the item widget, from 0 (top) to 1 (bottom).
    */
   protected float getLocation(DropTargetEvent event) {

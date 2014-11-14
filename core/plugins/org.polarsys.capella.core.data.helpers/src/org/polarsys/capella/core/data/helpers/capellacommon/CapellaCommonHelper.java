@@ -13,22 +13,15 @@ package org.polarsys.capella.core.data.helpers.capellacommon;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.AbstractStateHelper;
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.AbstractStateRealizationHelper;
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.CapabilityRealizationInvolvedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.CapabilityRealizationInvolvementHelper;
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.GenericTraceHelper;
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateHelper;
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateTransitionHelper;
-import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateTransitionRealizationHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvedElement;
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacommon.ChoicePseudoState;
+import org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState;
+import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
+import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.ForkPseudoState;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
@@ -36,13 +29,27 @@ import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
 import org.polarsys.capella.core.data.capellacommon.JoinPseudoState;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
+import org.polarsys.capella.core.data.capellacommon.StateEventRealization;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.StateTransitionRealization;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.AbstractStateHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.AbstractStateRealizationHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.CapabilityRealizationInvolvedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.CapabilityRealizationInvolvementHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.GenericTraceHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateEventHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateEventRealizationHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateTransitionHelper;
+import org.polarsys.capella.core.data.helpers.capellacommon.delegates.StateTransitionRealizationHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
 
 public class CapellaCommonHelper implements IHelper {
 
@@ -79,6 +86,18 @@ public class CapellaCommonHelper implements IHelper {
     else if (object_p instanceof TerminatePseudoState) {
       ret = AbstractStateHelper.getInstance().doSwitch((TerminatePseudoState) object_p, feature_p);
     }
+    else if (object_p instanceof EntryPointPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((EntryPointPseudoState) object_p, feature_p);
+    }
+    else if (object_p instanceof ExitPointPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((ExitPointPseudoState) object_p, feature_p);
+    }
+    else if (object_p instanceof ShallowHistoryPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((ShallowHistoryPseudoState) object_p, feature_p);
+    }
+    else if (object_p instanceof DeepHistoryPseudoState) {
+      ret = AbstractStateHelper.getInstance().doSwitch((DeepHistoryPseudoState) object_p, feature_p);
+    }
     else if (object_p instanceof FinalState) {
       ret = StateHelper.getInstance().doSwitch((FinalState) object_p, feature_p);
     }
@@ -91,6 +110,9 @@ public class CapellaCommonHelper implements IHelper {
     else if (object_p instanceof StateTransition) {
       ret = StateTransitionHelper.getInstance().doSwitch((StateTransition) object_p, feature_p);
     }
+    else if (object_p instanceof StateEvent) {
+      ret = StateEventHelper.getInstance().doSwitch((StateEvent) object_p, feature_p);
+    }
     else if (object_p instanceof GenericTrace) {
       ret = TraceHelper.getInstance().doSwitch((GenericTrace) object_p, feature_p);
     }
@@ -99,6 +121,9 @@ public class CapellaCommonHelper implements IHelper {
     }
     else if (object_p instanceof StateTransitionRealization) {
       ret = StateTransitionRealizationHelper.getInstance().doSwitch((StateTransitionRealization) object_p, feature_p);
+    }
+    else if (object_p instanceof StateEventRealization) {
+      ret = StateEventRealizationHelper.getInstance().doSwitch((StateEventRealization) object_p, feature_p);
     }
 
 		if(null != ret || feature_p.getUpperBound() == 1)

@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.ui.views.libraryManager.accessPolicyManager;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.libraries.flexibilityProperties.LibraryManagerModel;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
 
 public final class AccessPolicyLabelProvider extends LabelProvider implements ITableLabelProvider {
 
@@ -29,10 +28,10 @@ public final class AccessPolicyLabelProvider extends LabelProvider implements IT
 
   @Override
   public String getColumnText(Object element, int columnIndex) {
-    IAbstractLibrary library = (IAbstractLibrary) element;
+    IModel library = (IModel) element;
     switch (columnIndex) {
       case 0:
-        return library.getName();
+        return library.getIdentifier().getName();
       case 1:
         return model.getAccessPolicy(library).getLiteral();
       default:
@@ -42,10 +41,12 @@ public final class AccessPolicyLabelProvider extends LabelProvider implements IT
 
   @Override
   public Image getColumnImage(Object element, int columnIndex) {
-    CapellaLibrary library = (CapellaLibrary) element;
     switch (columnIndex) {
       case 0:
-        return EObjectLabelProviderHelper.getImage(library.getProject());
+        ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif");
+        if (desc != null) {
+          return desc.createImage();
+        }
       case 1:
         return null;
       default:

@@ -14,15 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 public class RemoveInvalidFunctionalExchangeAllocations extends AbstractReadWriteCommand {
 
@@ -61,14 +61,15 @@ public class RemoveInvalidFunctionalExchangeAllocations extends AbstractReadWrit
     }
 
     final boolean flag[] = { false };
+    final ExecutionManager em = TransactionHelper.getExecutionManager(linksToRemove);
     AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
       public void run() {
         // remove component allocation or activity allocation
         if (!linksToRemove.isEmpty()) {
           // execute the command
-          boolean confirmDeletion = CapellaDeleteCommand.confirmDeletion(MDEAdapterFactory.getExecutionManager(), linksToRemove);
+          boolean confirmDeletion = CapellaDeleteCommand.confirmDeletion(em, linksToRemove);
           if (confirmDeletion) {
-            CapellaDeleteCommand command = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), linksToRemove, false, false, true);
+            CapellaDeleteCommand command = new CapellaDeleteCommand(em, linksToRemove, false, false, true);
             if (command.canExecute()) {
               command.execute();
               // flag element deletion
@@ -78,7 +79,6 @@ public class RemoveInvalidFunctionalExchangeAllocations extends AbstractReadWrit
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
-
+    em.execute(abstrctCommand);
   }
 }

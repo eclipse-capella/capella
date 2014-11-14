@@ -21,4 +21,10 @@
       <factory class="org.polarsys.capella.common.libraries.provider.LibrariesItemProviderAdapterFactory" supportedTypes="org.eclipse.emf.edit.provider.IEditingDomainItemProvider                org.eclipse.emf.edit.provider.IStructuredItemContentProvider                org.eclipse.emf.edit.provider.ITreeItemContentProvider                org.eclipse.emf.edit.provider.IItemLabelProvider                org.eclipse.emf.edit.provider.IItemPropertySource" uri="http://www.polarsys.org/capella/common/libraries/1.0.0"/>
    </extension>
 
+   
+<!--@generated-->
+  <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <extender class="org.polarsys.capella.common.libraries.provider.LibrariesItemProviderAdapterFactory$EmdeChildCreationExtender" uri="http://www.polarsys.org/kitalpha/emde/1.0.0"/>
+   </extension>
+
 </plugin>

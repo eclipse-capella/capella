@@ -32,7 +32,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,7 +42,6 @@ import org.polarsys.capella.common.tig.model.IHelper;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#isIsDimension <em>Is Dimension</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link org.polarsys.capella.common.data.activity.impl.ActivityPartitionImpl#getRepresentedElement <em>Represented Element</em>}</li>
@@ -74,20 +73,6 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
 
 
 
@@ -214,24 +199,6 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 
 	}
 
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
 
 
 
@@ -393,10 +360,10 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_PARTITION__SUPER_PARTITION, annotation);
 		
 		try {
@@ -439,10 +406,10 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_PARTITION__SUB_PARTITIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ActivityPackage.Literals.ACTIVITY_PARTITION__SUB_PARTITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ACTIVITY_PARTITION__SUB_PARTITIONS, annotation);
 		
 		try {
@@ -464,26 +431,10 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ActivityPackage.ACTIVITY_PARTITION__NAME:
 				return getName();
-			case ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
 				return isIsDimension();
 			case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
@@ -517,10 +468,6 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 				// begin-extension-code
 				}
 				// end-extension-code
-				return;
-			case ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
 				// begin-extension-code
@@ -565,9 +512,6 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 			case ActivityPackage.ACTIVITY_PARTITION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
 				setIsDimension(IS_DIMENSION_EDEFAULT);
 				return;
@@ -593,8 +537,6 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 		switch (featureID) {
 			case ActivityPackage.ACTIVITY_PARTITION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case ActivityPackage.ACTIVITY_PARTITION__IS_DIMENSION:
 				return isDimension != IS_DIMENSION_EDEFAULT;
 			case ActivityPackage.ACTIVITY_PARTITION__IS_EXTERNAL:
@@ -620,7 +562,6 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case ActivityPackage.ACTIVITY_PARTITION__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -637,7 +578,6 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return ActivityPackage.ACTIVITY_PARTITION__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return ActivityPackage.ACTIVITY_PARTITION__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}

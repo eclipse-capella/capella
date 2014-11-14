@@ -76,14 +76,16 @@ public class DecompositionLabelProvider  extends CapellaElementLabelProvider imp
 							comp.setName(element_p.toString());
 							return element_p.toString() + " : " + element_p.toString() + Messages.getString("LCDecomp.component.compositelabel"); //$NON-NLS-1$ //$NON-NLS-2$
 						} 
-						return part_name + " : " + element_p.toString() + Messages.getString("LCDecomp.component.compositelabel"); //$NON-NLS-1$ //$NON-NLS-2$
+						//return part_name + " : " + element_p.toString() + Messages.getString("LCDecomp.component.compositelabel"); //$NON-NLS-1$ //$NON-NLS-2$
+						return  element_p.toString()+ Messages.getString("LCDecomp.component.compositelabel"); //$NON-NLS-1$ //$NON-NLS-2$
 					}
 				  //if not composite
 					if (comp.isTrigger()) {
 						comp.setName(element_p.toString());
 						return element_p.toString() + " : " + element_p.toString(); //$NON-NLS-1$
 					}
-					return part_name + " : " + element_p.toString();	 //$NON-NLS-1$
+					//return part_name + " : " + element_p.toString(); //$NON-NLS-1$
+					return element_p.toString(); //$NON-NLS-1$
 				}
 				
 				// if not Synchronization Mode Selected
@@ -99,10 +101,12 @@ public class DecompositionLabelProvider  extends CapellaElementLabelProvider imp
 					comp.setName(element_p.toString());
 					return element_p.toString() + " : " + lc_name; //$NON-NLS-1$
 				}
-				return part_name + " : " + element_p.toString();	 //$NON-NLS-1$
+				//return part_name + " : " + element_p.toString();	 //$NON-NLS-1$
+				return element_p.toString();	 //$NON-NLS-1$
 				
 			}
-			return element_p.toString() + " : " + element_p.toString();	 //$NON-NLS-1$
+			//return element_p.toString() + " : " + element_p.toString();	 //$NON-NLS-1$
+			return element_p.toString() ;	 //$NON-NLS-1$
 		} 
 		else if (element_p instanceof DecompositionItem) {
 			DecompositionItem itemItf = (DecompositionItem) element_p;
@@ -172,32 +176,31 @@ public class DecompositionLabelProvider  extends CapellaElementLabelProvider imp
 
 	public Color getForeground(Object element_p) {
 		Color color = Display.getCurrent().getSystemColor(SWT.COLOR_BLACK);
-		
-				int status = -1;
-				if (element_p instanceof DecompositionItem) {
-					DecompositionItem item = (DecompositionItem) element_p;
-					if (isSourceViewer()) {
-						status = item.getStatus();
-					} else {
-						if (item.getParentComponent().isReusedComponent()) {
-							color = Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
-						}
-					}
+		int status = -1;
+		if (element_p instanceof DecompositionItem) {
+			DecompositionItem item = (DecompositionItem) element_p;
+			if (isSourceViewer()) {
+				status = item.getStatus();
+			} else {
+				if (item.getParentComponent().isReusedComponent()) {
+					color = Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
 				}
-				switch (status) {
-				case DecompositionItem.AMBIGUOUS:
-				  color = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_MAGENTA);
-					break;
-				case DecompositionItem.ASSIGNED:
-					color = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GREEN);
-					break;
-				case DecompositionItem.UNASSIGNED:
-					color = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
-					break;
-				default:
-					break;
-				}
-				return color;
+			}
+		}
+		switch (status) {
+		case DecompositionItem.AMBIGUOUS:
+		  color = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_MAGENTA);
+			break;
+		case DecompositionItem.ASSIGNED:
+			color = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GREEN);
+			break;
+		case DecompositionItem.UNASSIGNED:
+			color = Display.getCurrent().getSystemColor(SWT.COLOR_RED);
+			break;
+		default:
+			break;
+		}
+		return color;
 	}
 
 	public Font getFont(Object element_p) {

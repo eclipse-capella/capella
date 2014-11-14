@@ -18,17 +18,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.refresh.IRefreshExtension;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.FoldingFilter;
-import org.eclipse.sirius.viewpoint.FoldingPointFilter;
-import org.eclipse.sirius.viewpoint.GraphicalFilter;
-
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.FoldingFilter;
+import org.eclipse.sirius.diagram.FoldingPointFilter;
+import org.eclipse.sirius.diagram.GraphicalFilter;
+import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;

@@ -42,4 +42,26 @@ public interface IImageKeys {
    * Lock image id.
    */
   public final static String IMG_LOCK = "Lock_8x8.gif"; //$NON-NLS-1$
+  
+  /**
+   * 
+   */
+  public static final String QUICK_EDIT_MIN_CARD_ID = "EOccurrenceZeroToOne.gif";//$NON-NLS-1$
+  /**
+   * 
+   */
+  public static final String QUICK_EDIT_MAX_CARD_ID = "EOccurrenceOneToUnbounded.gif";//$NON-NLS-1$
+  /**
+   * 
+   */
+  public static final String QUICK_EDIT_MIN_LENGTH_ID = "EOccurrenceZero.gif";//$NON-NLS-1$
+  /**
+   * 
+   */
+  public static final String QUICK_EDIT_MAX_LENGTH_ID = "EOccurrenceUnbounded.gif";//$NON-NLS-1$
+  /**
+   * 
+   */
+  public static final String ONE_ID = "EOccurrenceOne.gif";//$NON-NLS-1$
+  
 }

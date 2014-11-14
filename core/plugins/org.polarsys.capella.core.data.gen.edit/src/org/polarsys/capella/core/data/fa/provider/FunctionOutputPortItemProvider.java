@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.modellingcore.ModellingcoreFactory;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
@@ -788,6 +789,18 @@ public class FunctionOutputPortItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

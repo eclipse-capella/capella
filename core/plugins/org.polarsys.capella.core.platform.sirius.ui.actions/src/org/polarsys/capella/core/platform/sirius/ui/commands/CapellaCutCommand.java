@@ -16,9 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.command.CommandWrapper;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.StructuredViewer;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
 import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
@@ -39,7 +37,7 @@ public class CapellaCutCommand extends CommandWrapper {
    * @param parameters_p The parameters.
    * @param command_p The command.
    */
-  public CapellaCutCommand(String label_p, EditingDomain domain_p, Collection<?> selection_p, StructuredViewer viewer_p) {
+  public CapellaCutCommand(String label_p, Collection<?> selection_p, StructuredViewer viewer_p) {
     super(label_p);
     _selection = selection_p;
     _viewer = viewer_p;

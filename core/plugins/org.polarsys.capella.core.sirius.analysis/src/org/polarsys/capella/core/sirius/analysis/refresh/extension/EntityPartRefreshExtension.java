@@ -10,10 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.refresh.extension;
 
-import org.eclipse.sirius.business.api.refresh.IRefreshExtension;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;

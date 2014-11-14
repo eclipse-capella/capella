@@ -34,7 +34,7 @@ import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.information.communication.CommunicationFactory;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
-import org.polarsys.kitalpha.emde.model.edit.provider.ExtensionItemProviderAdapter;
+import org.polarsys.kitalpha.emde.extension.edit.ExtensionItemProviderAdapter;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger} object.

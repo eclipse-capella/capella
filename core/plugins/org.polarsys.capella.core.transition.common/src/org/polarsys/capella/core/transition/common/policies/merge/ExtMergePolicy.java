@@ -15,10 +15,10 @@ import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.diffmerge.impl.policies.DefaultMergePolicy;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.filter.CompoundFilteringItems;
 import org.polarsys.capella.core.transition.common.handlers.filter.FilteringDifferencesHandlerHelper;
@@ -53,7 +53,7 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
    * {@inheritDoc}
    */
   @Override
-  public boolean copyFeature(EStructuralFeature feature_p) {
+  public boolean copyFeature(EStructuralFeature feature_p, IFeaturedModelScope scope_p) {
     IContext context = getContext();
 
     if (getUnwantedFeatures(context).contains(feature_p)) {
@@ -70,7 +70,7 @@ public class ExtMergePolicy extends DefaultMergePolicy implements IHandler, IMer
       }
     }
 
-    return super.copyFeature(feature_p);
+    return super.copyFeature(feature_p, scope_p);
   }
 
   /**

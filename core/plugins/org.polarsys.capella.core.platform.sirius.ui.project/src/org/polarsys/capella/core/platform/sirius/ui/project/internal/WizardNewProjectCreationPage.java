@@ -38,7 +38,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.ProjectApproach;
@@ -192,9 +191,10 @@ public class WizardNewProjectCreationPage extends WizardPage {
     }
     selectedButton.setSelection(true);
 
-    radioRC.setEnabled(CapellaModelPreferencesPlugin.getDefault().isReuseOfComponentsAllowed());
-    radioSC.setEnabled(CapellaModelPreferencesPlugin.getDefault().isReuseOfComponentsAllowed());
-    radioBox.setEnabled(CapellaModelPreferencesPlugin.getDefault().isReuseOfComponentsAllowed());
+    boolean isReuseOfComponentsAllowed = CapellaModelPreferencesPlugin.getDefault().isReuseOfComponentsAllowed();
+    radioRC.setEnabled(isReuseOfComponentsAllowed);
+    radioSC.setEnabled(isReuseOfComponentsAllowed);
+    radioBox.setEnabled(isReuseOfComponentsAllowed);
   }
 
   /**
@@ -231,7 +231,7 @@ public class WizardNewProjectCreationPage extends WizardPage {
   protected void handleProjectApproachSelection(SelectionEvent event) {
     _projectApproachSelection = (ProjectApproach) event.widget.getData();
   }
-  
+
   /**
    * TODO change for Get an error reporter for the receiver.
    * @return IErrorMessageReporter
@@ -389,7 +389,7 @@ public class WizardNewProjectCreationPage extends WizardPage {
       setErrorMessage(IDEWorkbenchMessages.WizardNewProjectCreationPage_projectExistsMessage);
       return false;
     }
-    
+
     String validLocationMessage = locationArea.checkValidLocation();
     if (validLocationMessage != null) { // there is no destination location given
       setErrorMessage(validLocationMessage);

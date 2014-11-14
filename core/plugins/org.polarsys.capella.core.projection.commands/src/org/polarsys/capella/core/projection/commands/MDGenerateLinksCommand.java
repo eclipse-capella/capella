@@ -14,12 +14,12 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.projection.common.TransitionHelper;
 import org.polarsys.capella.core.projection.exchanges.LinkCreatorFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -60,7 +60,7 @@ public class MDGenerateLinksCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#getLabel()
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#getLabel()
    */
   @Override
   public String getName() {

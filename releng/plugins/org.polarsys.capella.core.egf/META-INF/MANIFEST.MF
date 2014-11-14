@@ -12,7 +12,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.egf.emf.pattern,
  org.eclipse.egf.model.ftask;visibility:=reexport,
  org.eclipse.pde.ui,
- org.eclipse.egf.emf.pattern.cdo,
  org.polarsys.kitalpha.emde.egf,
  org.polarsys.kitalpha.emde
 Bundle-ActivationPolicy: lazy
@@ -22,6 +21,5 @@ Export-Package:
  org.polarsys.capella.core.editor,
  org.polarsys.capella.core.egf,
  org.polarsys.capella.core.model,
- org.polarsys.capella.test,
- org.polarsys.capella.common.cdo
+ org.polarsys.capella.test
 Bundle-Localization: plugin

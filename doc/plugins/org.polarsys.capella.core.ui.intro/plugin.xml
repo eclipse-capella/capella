@@ -21,6 +21,10 @@
    <extension
          point="org.eclipse.ui.intro.configExtension">
          <configExtension
+            configId="org.eclipse.ui.intro.universalConfig"
+            content="intro/whatsnewExtensionContent.xml">
+         </configExtension>
+         <configExtension
                configId="org.eclipse.ui.intro.universalConfig"
                content="intro/firststepsExtensionContent-actions.xml">
          </configExtension>
@@ -55,6 +59,8 @@
                       value="$theme$graphics/launchbar/tutorials16.png"/>
             <property name="launchbarSamplesIcon"
                       value="$theme$graphics/launchbar/samples16.png"/>
+            <property name="launchbarWhatsnewIcon"
+                      value="$theme$graphics/launchbar/whatsnew16.png"/>
             <property name="launchbarMigrateIcon"
                       value="$theme$graphics/launchbar/migrate16.png"/>
             <property name="launchbarWebresourcesIcon"
@@ -68,6 +74,8 @@
                       value="$theme$graphics/icons/ctool/tutorials.png"/>
             <property name="highContrast-samples"
                       value="$theme$graphics/icons/ctool/samples.png"/>
+            <property name="highContrast-whatsnew"
+                      value="$theme$graphics/icons/ctool/whatsnew.png"/>
             <property name="highContrast-webresources"
                       value="$theme$graphics/icons/ctool/webresources.png"/>
             <property name="highContrast-migrate"

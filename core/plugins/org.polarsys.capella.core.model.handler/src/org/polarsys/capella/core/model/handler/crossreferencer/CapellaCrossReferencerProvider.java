@@ -12,7 +12,8 @@ package org.polarsys.capella.core.model.handler.crossreferencer;
 
 
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ICrossReferencerProvider;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ICrossReferencerProvider;
 
 /**
  * A cross referencer provider specific to Capella M2.<br>
@@ -21,17 +22,17 @@ import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainF
 public class CapellaCrossReferencerProvider implements ICrossReferencerProvider {
 
   /**
-   * @see org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ICrossReferencerProvider#getCrossReferencer()
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ICrossReferencerProvider#getCrossReferencer()
    */
-  public ECrossReferenceAdapter getCrossReferencer() {
-    return new CapellaECrossReferenceAdapter();
+  public ECrossReferenceAdapter getCrossReferencer(EditingDomain editingDomain) {
+    return new CapellaECrossReferenceAdapter(editingDomain);
   }
 
   /**
-   * @see org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ICrossReferencerProvider#getDerivedCrossReferencer()
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ICrossReferencerProvider#getDerivedCrossReferencer()
    */
-  public ECrossReferenceAdapter getDerivedCrossReferencer() {
-    return new CapellaDerivedECrossReferenceAdapter();
+  public ECrossReferenceAdapter getDerivedCrossReferencer(EditingDomain editingDomain) {
+    return new CapellaDerivedECrossReferenceAdapter(editingDomain);
   }
 
 }

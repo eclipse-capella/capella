@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.information.InformationPackage;
@@ -35,8 +36,11 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
    */
 public class CapellaDerivedECrossReferenceAdapter extends CapellaECrossReferenceAdapter {
 
+  public CapellaDerivedECrossReferenceAdapter(EditingDomain editingDomain) {
+	super(editingDomain);
+  }
+
   /**
-   * Code copied from ECrossReferenceAdapter.getInverseReferences class provided by org.eclipse.emf.ecore.util plug-in.
    * @see org.eclipse.emf.ecore.util.ECrossReferenceAdapter#getInverseReferences(org.eclipse.emf.ecore.EObject, boolean)
    */
   @Override

@@ -21,8 +21,8 @@ import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.DeployableElement;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 public class DeployableElementHelper {
   private static DeployableElementHelper instance;
@@ -77,7 +77,7 @@ public class DeployableElementHelper {
       try {
         markAsCrossReferenced(element_p);
 
-        TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain(element_p);
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
         if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
           Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
 

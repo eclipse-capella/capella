@@ -13,15 +13,13 @@ package org.polarsys.capella.common.ui.providers;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.ui.provider.TransactionalAdapterFactoryLabelProvider;
 import org.eclipse.swt.graphics.Image;
-
-import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.common.ui.MdeCommonUiActivator;
 
 /**
  */
-public class MDEAdapterFactoryLabelProvider extends TransactionalAdapterFactoryLabelProvider {
+public class MDEAdapterFactoryLabelProvider extends CapellaTransactionalAdapterFactoryLabelProvider {
   /**
    * Delegated label provider (shared for all instances).
    */
@@ -31,6 +29,14 @@ public class MDEAdapterFactoryLabelProvider extends TransactionalAdapterFactoryL
    * Flag used to know if ILabelProviderDelegation has been lookup.
    */
   private static boolean __alreadyLookup;
+
+  /**
+   * Constructor.
+   * @param adapterFactory_p
+   */
+  public MDEAdapterFactoryLabelProvider(AdapterFactory adapterFactory_p) {
+    super(adapterFactory_p);
+  }
 
   /**
    * Constructor.

@@ -15,12 +15,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserContentProvider;
 

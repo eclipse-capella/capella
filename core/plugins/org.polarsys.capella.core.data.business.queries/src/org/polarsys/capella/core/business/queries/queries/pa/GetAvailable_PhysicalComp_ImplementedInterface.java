@@ -58,7 +58,7 @@ public class GetAvailable_PhysicalComp_ImplementedInterface extends AbstractQuer
         for (Component cpnt : CapellaElementExt.getComponentHierarchy(currentPC)) {
           InterfacePkg interfacePkg = cpnt.getOwnedInterfacePkg();
           if (interfacePkg != null) {
-            availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(interfacePkg, currentPC, false));
+            availableElements.addAll(InterfacePkgExt.getAllInterfaces(interfacePkg));
           }
         }
         BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(currentPC);
@@ -69,7 +69,6 @@ public class GetAvailable_PhysicalComp_ImplementedInterface extends AbstractQuer
           currentBlock = BlockArchitectureExt.getPreviousBlockArchitecture(currentBlock).get(0);
           allInterfaces = QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, currentBlock, context);
           availableElements.addAll(allInterfaces);
-          availableElements.removeAll(QueryInterpretor.executeQuery("GetCurrent_PhysicalComp_ImplementedInterface", currentPC, context));//$NON-NLS-1$
         } else {
           for (Component logicalComponent : lcs) {
             availableElements.addAll(logicalComponent.getImplementedInterfaces());

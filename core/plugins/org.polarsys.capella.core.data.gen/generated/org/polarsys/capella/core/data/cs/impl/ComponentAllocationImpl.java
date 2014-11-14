@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.impl.AllocationImpl;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentAllocation;
@@ -110,10 +110,10 @@ public abstract class ComponentAllocationImpl extends AllocationImpl implements 
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT, annotation);
 		
 		try {
@@ -169,10 +169,10 @@ public abstract class ComponentAllocationImpl extends AllocationImpl implements 
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT, annotation);
 		
 		try {

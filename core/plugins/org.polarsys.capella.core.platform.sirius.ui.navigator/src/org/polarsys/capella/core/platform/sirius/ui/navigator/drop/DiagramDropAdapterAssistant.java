@@ -22,20 +22,19 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
  * Drop adapter assistant to handle diagram moves in the Capella Explorer.
@@ -66,15 +65,14 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
       List<Object> dropableElements = selection.toList();
       // Create a compound command that contains all SetCommand to change the target of all dropable diagrams.
       CompoundCommand dropCommand = new CompoundCommand();
-      // Get the editing domain.
-      TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
       for (Object object : dropableElements) {
         // valideDrop(..) does not ensure that all dropped ones are DSemanticDiagrams.
         if (object instanceof DSemanticDiagram) {
           DSemanticDiagram diagram = (DSemanticDiagram) object;
+          // Get the editing domain.
+          TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(diagram);
           // Create a command to set the new diagram target element.
           Command setTargetCommand = new SetCommand(editingDomain, diagram, ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, target_p) {
-
             /**
              * Overridden to force a viewer refresh on new & old values. {@inheritDoc}
              */
@@ -112,11 +110,11 @@ public class DiagramDropAdapterAssistant extends AbstractCapellaDropAdapterAssis
             }
           };
           dropCommand.append(setTargetCommand);
+          // Execute the command this way to enable undo redo against the updateViewer methods.
+          // The undo / redo of a RecordingCommand only undo or redo model changes, that's not enough here.
+          editingDomain.getCommandStack().execute(dropCommand);
         }
       }
-      // Execute the command this way to enable undo redo against the updateViewer methods.
-      // The undo / redo of a RecordingCommand only undo or redo model changes, that's not enough here.
-      editingDomain.getCommandStack().execute(dropCommand);
     }
     return status;
   }

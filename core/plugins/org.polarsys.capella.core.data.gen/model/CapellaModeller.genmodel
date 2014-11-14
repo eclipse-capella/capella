@@ -88,9 +88,7 @@
     <genClasses ecoreClass="CapellaCore.ecore#//NamingRule">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCore.ecore#//NamingRule/targetType"/>
     </genClasses>
-    <genClasses ecoreClass="CapellaCore.ecore#//Constraint">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCore.ecore#//Constraint/expression"/>
-    </genClasses>
+    <genClasses ecoreClass="CapellaCore.ecore#//Constraint"/>
     <genClasses ecoreClass="CapellaCore.ecore#//KeyValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCore.ecore#//KeyValue/key"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCore.ecore#//KeyValue/value"/>
@@ -747,6 +745,13 @@
       <genEnumLiterals ecoreEnumLiteral="CapellaCommon.ecore#//TransitionKind/local"/>
       <genEnumLiterals ecoreEnumLiteral="CapellaCommon.ecore#//TransitionKind/external"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CapellaCommon.ecore#//TimeEventKind">
+      <genEnumLiterals ecoreEnumLiteral="CapellaCommon.ecore#//TimeEventKind/AT"/>
+      <genEnumLiterals ecoreEnumLiteral="CapellaCommon.ecore#//TimeEventKind/AFTER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="CapellaCommon.ecore#//ChangeEventKind">
+      <genEnumLiterals ecoreEnumLiteral="CapellaCommon.ecore#//ChangeEventKind/WHEN"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="CapellaCommon.ecore#//AbstractCapabilityPkg"/>
     <genClasses ecoreClass="CapellaCommon.ecore#//GenericTrace">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//GenericTrace/keyValuePairs"/>
@@ -754,6 +759,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//GenericTrace/target"/>
     </genClasses>
     <genClasses ecoreClass="CapellaCommon.ecore#//TransfoLink"/>
+    <genClasses ecoreClass="CapellaCommon.ecore#//JustificationLink"/>
     <genClasses image="false" ecoreClass="CapellaCommon.ecore#//CapabilityRealizationInvolvement">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//CapabilityRealizationInvolvement/involvedCapabilityRealizationInvolvedElement"/>
     </genClasses>
@@ -789,14 +795,13 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//AbstractState/involverRegions"/>
     </genClasses>
     <genClasses ecoreClass="CapellaCommon.ecore#//StateTransition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//StateTransition/guard"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//StateTransition/kind"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//StateTransition/triggerDescription"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/guard"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/effect"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/trigger"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/ownedGuardCondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/triggers"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/ownedStateTransitionRealizations"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/realizedStateTransitions"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransition/realizingStateTransitions"/>
@@ -814,6 +819,25 @@
     <genClasses ecoreClass="CapellaCommon.ecore#//StateTransitionRealization">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransitionRealization/realizedStateTransition"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateTransitionRealization/realizingStateTransition"/>
+    </genClasses>
+    <genClasses ecoreClass="CapellaCommon.ecore#//ShallowHistoryPseudoState"/>
+    <genClasses ecoreClass="CapellaCommon.ecore#//DeepHistoryPseudoState"/>
+    <genClasses ecoreClass="CapellaCommon.ecore#//EntryPointPseudoState"/>
+    <genClasses ecoreClass="CapellaCommon.ecore#//ExitPointPseudoState"/>
+    <genClasses ecoreClass="CapellaCommon.ecore#//StateEventRealization">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEventRealization/realizedEvent"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEventRealization/realizingEvent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="CapellaCommon.ecore#//StateEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEvent/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEvent/ownedStateEventRealizations"/>
+    </genClasses>
+    <genClasses ecoreClass="CapellaCommon.ecore#//ChangeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//ChangeEvent/kind"/>
+    </genClasses>
+    <genClasses ecoreClass="CapellaCommon.ecore#//TimeEvent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//TimeEvent/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//TimeEvent/time"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Information" basePackage="org.polarsys.capella.core.data" resource="XMI"
@@ -856,7 +880,7 @@
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Information.ecore#//ElementKind">
       <genEnumLiterals ecoreEnumLiteral="Information.ecore#//ElementKind/TYPE"/>
-      <genEnumLiterals ecoreEnumLiteral="Information.ecore#//ElementKind/PARAMETER"/>
+      <genEnumLiterals ecoreEnumLiteral="Information.ecore#//ElementKind/MEMBER"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Information.ecore#//CollectionKind">
       <genEnumLiterals ecoreEnumLiteral="Information.ecore#//CollectionKind/ARRAY"/>
@@ -910,6 +934,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Information.ecore#//DataPkg/ownedSignals"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Information.ecore#//DataPkg/ownedMessages"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Information.ecore#//DataPkg/ownedExceptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Information.ecore#//DataPkg/ownedStateEvents"/>
     </genClasses>
     <genClasses ecoreClass="Information.ecore#//DomainElement"/>
     <genClasses ecoreClass="Information.ecore#//KeyPart">
@@ -950,7 +975,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Information.ecore#//Property/isDerived"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Information.ecore#//Property/isReadOnly"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Information.ecore#//Property/isPartOfKey"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Information.ecore#//Property/valueConstraint"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Information.ecore#//Property/association"/>
     </genClasses>
     <genClasses ecoreClass="Information.ecore#//Service">
@@ -1250,6 +1274,10 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Information.ecore#//datavalue/UnaryExpression/operator"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Information.ecore#//datavalue/UnaryExpression/ownedOperand"/>
       </genClasses>
+      <genClasses ecoreClass="Information.ecore#//datavalue/OpaqueExpression">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Information.ecore#//datavalue/OpaqueExpression/bodies"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Information.ecore#//datavalue/OpaqueExpression/languages"/>
+      </genClasses>
     </nestedGenPackages>
   </genPackages>
   <genPackages prefix="Cs" basePackage="org.polarsys.capella.core.data" resource="XMI"
@@ -1321,6 +1349,7 @@
     </genClasses>
     <genClasses ecoreClass="CompositeStructure.ecore#//Interface">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositeStructure.ecore#//Interface/mechanism"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CompositeStructure.ecore#//Interface/structural"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Interface/implementorComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Interface/userComponents"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CompositeStructure.ecore#//Interface/interfaceImplementations"/>
@@ -1720,7 +1749,7 @@
     </genEnums>
     <genClasses ecoreClass="Interaction.ecore#//SequenceMessage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//SequenceMessage/kind"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//SequenceMessage/exchangeContext"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/exchangeContext"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/sendingEnd"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/receivingEnd"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/invokedOperation"/>
@@ -1729,12 +1758,13 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/receivingPart"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/sendingFunction"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/receivingFunction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessage/ownedSequenceMessageValuations"/>
     </genClasses>
     <genClasses ecoreClass="Interaction.ecore#//Scenario">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//Scenario/preCondition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//Scenario/postCondition"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//Scenario/kind"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//Scenario/merged"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//Scenario/preCondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//Scenario/postCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//Scenario/ownedInstanceRoles"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//Scenario/ownedMessages"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//Scenario/ownedInteractionFragments"/>
@@ -1783,8 +1813,8 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapabilityRealization/realizingCapability"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Interaction.ecore#//AbstractCapability">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//AbstractCapability/preCondition"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//AbstractCapability/postCondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/preCondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/postCondition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/ownedScenarios"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/incomingCapabilityAllocation"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Interaction.ecore#//AbstractCapability/outgoingCapabilityAllocation"/>
@@ -1844,8 +1874,8 @@
     </genClasses>
     <genClasses ecoreClass="Interaction.ecore#//Gate"/>
     <genClasses ecoreClass="Interaction.ecore#//InteractionOperand">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//InteractionOperand/guard"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//InteractionOperand/referencedInteractionFragments"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//InteractionOperand/guard"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Interaction.ecore#//TimeLapse">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//TimeLapse/start"/>
@@ -1879,6 +1909,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Interaction.ecore#//ConstraintDuration/duration"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//ConstraintDuration/start"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//ConstraintDuration/finish"/>
+    </genClasses>
+    <genClasses ecoreClass="Interaction.ecore#//SequenceMessageValuation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessageValuation/exchangeItemElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Interaction.ecore#//SequenceMessageValuation/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

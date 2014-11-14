@@ -114,6 +114,15 @@ public interface DeploymentPackage extends EPackage {
 	int ABSTRACT_PHYSICAL_INSTANCE__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -304,6 +313,15 @@ public interface DeploymentPackage extends EPackage {
 	int COMPONENT_INSTANCE__CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_INSTANCE__OWNED_CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -448,22 +466,13 @@ public interface DeploymentPackage extends EPackage {
 	int COMPONENT_INSTANCE__NAME = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_INSTANCE__OWNED_CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Deploying Links</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INSTANCE__DEPLOYING_LINKS = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 2;
+	int COMPONENT_INSTANCE__DEPLOYING_LINKS = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Deployment Links</b></em>' reference list.
@@ -472,7 +481,7 @@ public interface DeploymentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INSTANCE__DEPLOYMENT_LINKS = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 3;
+	int COMPONENT_INSTANCE__DEPLOYMENT_LINKS = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Port Instances</b></em>' reference list.
@@ -481,7 +490,7 @@ public interface DeploymentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INSTANCE__PORT_INSTANCES = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 4;
+	int COMPONENT_INSTANCE__PORT_INSTANCES = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Owned Abstract Physical Instances</b></em>' containment reference list.
@@ -490,7 +499,7 @@ public interface DeploymentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INSTANCE__OWNED_ABSTRACT_PHYSICAL_INSTANCES = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 5;
+	int COMPONENT_INSTANCE__OWNED_ABSTRACT_PHYSICAL_INSTANCES = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Owned Instance Deployment Links</b></em>' containment reference list.
@@ -499,7 +508,7 @@ public interface DeploymentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INSTANCE__OWNED_INSTANCE_DEPLOYMENT_LINKS = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 6;
+	int COMPONENT_INSTANCE__OWNED_INSTANCE_DEPLOYMENT_LINKS = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -508,7 +517,7 @@ public interface DeploymentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INSTANCE__TYPE = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 7;
+	int COMPONENT_INSTANCE__TYPE = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Component Instance</em>' class.
@@ -517,7 +526,7 @@ public interface DeploymentPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_INSTANCE_FEATURE_COUNT = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 8;
+	int COMPONENT_INSTANCE_FEATURE_COUNT = ABSTRACT_PHYSICAL_INSTANCE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.pa.deployment.impl.ConnectionInstanceImpl <em>Connection Instance</em>}' class.
@@ -564,6 +573,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONNECTION_INSTANCE__CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_INSTANCE__OWNED_CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -774,15 +792,6 @@ public interface DeploymentPackage extends EPackage {
 	int DEPLOYMENT_ASPECT__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_ASPECT__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -790,6 +799,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int DEPLOYMENT_ASPECT__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_ASPECT__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1045,15 +1063,6 @@ public interface DeploymentPackage extends EPackage {
 	int DEPLOYMENT_CONFIGURATION__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DEPLOYMENT_CONFIGURATION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1061,6 +1070,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int DEPLOYMENT_CONFIGURATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPLOYMENT_CONFIGURATION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1269,6 +1287,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTANCE_DEPLOYMENT_LINK__CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_DEPLOYMENT_LINK__OWNED_CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -1488,6 +1515,15 @@ public interface DeploymentPackage extends EPackage {
 	int PART_DEPLOYMENT_LINK__CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PART_DEPLOYMENT_LINK__OWNED_CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1705,6 +1741,15 @@ public interface DeploymentPackage extends EPackage {
 	int PORT_INSTANCE__CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PORT_INSTANCE__OWNED_CONSTRAINTS = ABSTRACT_PHYSICAL_INSTANCE__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1920,6 +1965,15 @@ public interface DeploymentPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE_DEPLOYMENT_LINK__CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_DEPLOYMENT_LINK__OWNED_CONSTRAINTS = CsPackage.ABSTRACT_DEPLOYMENT_LINK__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.

@@ -15,7 +15,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.polarsys.capella.common.data.core.gen;visibility:=reexport,
  org.eclipse.emf.validation;visibility:=reexport,
- org.polarsys.capella.common.tig.model;visibility:=reexport,
  org.polarsys.kitalpha.emde.model;visibility:=reexport,
  org.polarsys.kitalpha.emde.xmi
 Bundle-ActivationPolicy: lazy

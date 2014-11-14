@@ -34,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.util.CapellacommonAdapterFactory;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -136,6 +136,29 @@ public class CapellacommonItemProviderAdapterFactory extends CapellacommonAdapte
 		}
 
 		return transfoLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.JustificationLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected JustificationLinkItemProvider justificationLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.JustificationLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createJustificationLinkAdapter() {
+		if (justificationLinkItemProvider == null) {
+			justificationLinkItemProvider = new JustificationLinkItemProvider(this);
+		}
+
+		return justificationLinkItemProvider;
 	}
 
 	/**
@@ -438,6 +461,167 @@ public class CapellacommonItemProviderAdapterFactory extends CapellacommonAdapte
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ShallowHistoryPseudoStateItemProvider shallowHistoryPseudoStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createShallowHistoryPseudoStateAdapter() {
+		if (shallowHistoryPseudoStateItemProvider == null) {
+			shallowHistoryPseudoStateItemProvider = new ShallowHistoryPseudoStateItemProvider(this);
+		}
+
+		return shallowHistoryPseudoStateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DeepHistoryPseudoStateItemProvider deepHistoryPseudoStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDeepHistoryPseudoStateAdapter() {
+		if (deepHistoryPseudoStateItemProvider == null) {
+			deepHistoryPseudoStateItemProvider = new DeepHistoryPseudoStateItemProvider(this);
+		}
+
+		return deepHistoryPseudoStateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EntryPointPseudoStateItemProvider entryPointPseudoStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEntryPointPseudoStateAdapter() {
+		if (entryPointPseudoStateItemProvider == null) {
+			entryPointPseudoStateItemProvider = new EntryPointPseudoStateItemProvider(this);
+		}
+
+		return entryPointPseudoStateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ExitPointPseudoStateItemProvider exitPointPseudoStateItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createExitPointPseudoStateAdapter() {
+		if (exitPointPseudoStateItemProvider == null) {
+			exitPointPseudoStateItemProvider = new ExitPointPseudoStateItemProvider(this);
+		}
+
+		return exitPointPseudoStateItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.StateEventRealization} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StateEventRealizationItemProvider stateEventRealizationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.StateEventRealization}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStateEventRealizationAdapter() {
+		if (stateEventRealizationItemProvider == null) {
+			stateEventRealizationItemProvider = new StateEventRealizationItemProvider(this);
+		}
+
+		return stateEventRealizationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.ChangeEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChangeEventItemProvider changeEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.ChangeEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChangeEventAdapter() {
+		if (changeEventItemProvider == null) {
+			changeEventItemProvider = new ChangeEventItemProvider(this);
+		}
+
+		return changeEventItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.capellacommon.TimeEvent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeEventItemProvider timeEventItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.capellacommon.TimeEvent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeEventAdapter() {
+		if (timeEventItemProvider == null) {
+			timeEventItemProvider = new TimeEventItemProvider(this);
+		}
+
+		return timeEventItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -565,6 +749,7 @@ public class CapellacommonItemProviderAdapterFactory extends CapellacommonAdapte
 	public void dispose() {
 		if (genericTraceItemProvider != null) genericTraceItemProvider.dispose();
 		if (transfoLinkItemProvider != null) transfoLinkItemProvider.dispose();
+		if (justificationLinkItemProvider != null) justificationLinkItemProvider.dispose();
 		if (stateMachineItemProvider != null) stateMachineItemProvider.dispose();
 		if (regionItemProvider != null) regionItemProvider.dispose();
 		if (stateItemProvider != null) stateItemProvider.dispose();
@@ -578,6 +763,13 @@ public class CapellacommonItemProviderAdapterFactory extends CapellacommonAdapte
 		if (terminatePseudoStateItemProvider != null) terminatePseudoStateItemProvider.dispose();
 		if (abstractStateRealizationItemProvider != null) abstractStateRealizationItemProvider.dispose();
 		if (stateTransitionRealizationItemProvider != null) stateTransitionRealizationItemProvider.dispose();
+		if (shallowHistoryPseudoStateItemProvider != null) shallowHistoryPseudoStateItemProvider.dispose();
+		if (deepHistoryPseudoStateItemProvider != null) deepHistoryPseudoStateItemProvider.dispose();
+		if (entryPointPseudoStateItemProvider != null) entryPointPseudoStateItemProvider.dispose();
+		if (exitPointPseudoStateItemProvider != null) exitPointPseudoStateItemProvider.dispose();
+		if (stateEventRealizationItemProvider != null) stateEventRealizationItemProvider.dispose();
+		if (changeEventItemProvider != null) changeEventItemProvider.dispose();
+		if (timeEventItemProvider != null) timeEventItemProvider.dispose();
 	}
 
 }

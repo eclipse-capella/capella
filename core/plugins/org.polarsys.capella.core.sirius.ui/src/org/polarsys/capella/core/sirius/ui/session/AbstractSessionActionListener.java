@@ -14,6 +14,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.session.Session;
 
+/**
+ * @deprecated shall not be used anymore
+ */
+@Deprecated
 public class AbstractSessionActionListener implements ISessionActionListener {
 
   /**

@@ -43,7 +43,7 @@ import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.util.CtxAdapterFactory;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**

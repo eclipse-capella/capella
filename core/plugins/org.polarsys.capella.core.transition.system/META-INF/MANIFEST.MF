@@ -16,11 +16,14 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.preferences
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.transition.system.activities,
+Export-Package: org.polarsys.capella.core.transition.system,
+ org.polarsys.capella.core.transition.system.activities,
  org.polarsys.capella.core.transition.system.constants,
  org.polarsys.capella.core.transition.system.domain,
  org.polarsys.capella.core.transition.system.handlers.attachment,
+ org.polarsys.capella.core.transition.system.handlers.filter,
  org.polarsys.capella.core.transition.system.handlers.log,
+ org.polarsys.capella.core.transition.system.handlers.optimize,
  org.polarsys.capella.core.transition.system.handlers.traceability,
  org.polarsys.capella.core.transition.system.handlers.traceability.config,
  org.polarsys.capella.core.transition.system.handlers.transformation,
@@ -32,5 +35,7 @@ Export-Package: org.polarsys.capella.core.transition.system.activities,
  org.polarsys.capella.core.transition.system.rules.cs,
  org.polarsys.capella.core.transition.system.rules.fa,
  org.polarsys.capella.core.transition.system.rules.information,
+ org.polarsys.capella.core.transition.system.rules.information.datatype,
+ org.polarsys.capella.core.transition.system.rules.information.datavalue,
  org.polarsys.capella.core.transition.system.rules.interaction
 Bundle-Localization: plugin

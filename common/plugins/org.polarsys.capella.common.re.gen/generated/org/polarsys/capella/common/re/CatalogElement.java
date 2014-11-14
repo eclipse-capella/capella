@@ -11,6 +11,7 @@
 package org.polarsys.capella.common.re;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 
 /**
@@ -24,11 +25,14 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getPurpose <em>Purpose</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getTags <em>Tags</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getCurrentCompliancy <em>Current Compliancy</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getDefaultReplicaCompliancy <em>Default Replica Compliancy</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getOwnedLinks <em>Owned Links</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getReferencedElements <em>Referenced Elements</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getReplicatedElements <em>Replicated Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -160,6 +164,42 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 
 
 
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Purpose</b></em>' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Purpose</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Purpose</em>' attribute.
+	 * @see #setPurpose(String)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Purpose()
+	 * @model
+	 * @generated
+	 */
+
+	String getPurpose();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getPurpose <em>Purpose</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Purpose</em>' attribute.
+	 * @see #getPurpose()
+	 * @generated
+	 */
+
+	void setPurpose(String value);
 
 
 
@@ -322,6 +362,49 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 	 */
 
 	EList<CatalogElementLink> getOwnedLinks();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Referenced Elements</b></em>' reference list.
+	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Referenced Elements</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Referenced Elements</em>' reference list.
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReferencedElements()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+
+	EList<EObject> getReferencedElements();
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Replicated Elements</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.re.CatalogElement}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Replicated Elements</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Replicated Elements</em>' reference list.
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_ReplicatedElements()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='retrieve all referencing elements which have the current element as origin'"
+	 * @generated
+	 */
+
+	EList<CatalogElement> getReplicatedElements();
 
 
 

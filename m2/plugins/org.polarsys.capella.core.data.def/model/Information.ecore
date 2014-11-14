@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="information"
-    nsURI="http://www.polarsys.org/capella/core/information/0.8.0" nsPrefix="org.polarsys.capella.core.data.information">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="information" nsURI="http://www.polarsys.org/capella/core/information/0.8.0"
+    nsPrefix="org.polarsys.capella.core.data.information">
   <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
     <details key="trackResourceModification" value="true"/>
     <details key="useUUIDs" value="false"/>
@@ -877,6 +876,24 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStateEvents" upperBound="-1"
+        eType="ecore:EClass CapellaCommon.ecore#//StateEvent" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="ownedStateEvents"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the StateEvent elements contained in the package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DomainElement" eSuperTypes="#//Class">
     <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
@@ -1677,25 +1694,6 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueConstraint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
-        <details key="featureName" value="valueConstraint"/>
-        <details key="featureOwner" value="eng.Property"/>
-        <details key="fromStereotype" value="true"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="a textual specification of a constraint to be applied to the values brought by this property&#xD;&#xA;[source: Capella study]"/>
-        <details key="constraints" value="none"/>
-        <details key="type" value="n/a"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value=""/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="association" eType="#//Association"
         changeable="false" volatile="true" transient="true" derived="true">
       <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
@@ -2423,7 +2421,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExchangeItem" eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractExchangeItem CapellaCore.ecore#//Type ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractSignal ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//FinalizableElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ExchangeItem" eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractExchangeItem ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractEvent ../../org.polarsys.capella.common.data.def/model/Behavior.ecore#//AbstractSignal ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//FinalizableElement CapellaCore.ecore#//GeneralizableElement">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="Defined by functional characteristics that exist at a common boundary with co-functioning items and allow systems equipment to be compatible. &#xD;&#xA;An exchange item describes a required or produced data.&#xD;&#xA;An exchange item has an exchange mechanism&#xD;&#xA;[source:ARCADIA encyclopedia v0.8.0]"/>
       <details key="usage guideline" value="an exchange item should be created whenever there is a need to group data type elements that are bound by an applicative meaning, and should be treated as a whole"/>
@@ -2739,9 +2737,9 @@
         <details key="constraints" value="none"/>
       </eAnnotations>
     </eLiterals>
-    <eLiterals name="PARAMETER" value="1">
+    <eLiterals name="MEMBER" value="1">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="used when ExchangeItemElement is described as a parameter for its ExchangeItem"/>
+        <details key="description" value="used when ExchangeItemElement is described as a member for its ExchangeItem"/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
@@ -5824,6 +5822,30 @@
           <details key="constraints" value="none"/>
         </eAnnotations>
       </eLiterals>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OpaqueExpression" eSuperTypes="CapellaCore.ecore#//CapellaElement ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//ValueSpecification">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="An opaque expression contains language-specific text strings used to describe a value or values, and an optional specification of&#xD;&#xA;the languages.&#xD;&#xA;One predefined language for specifying expressions is OCL. Natural language or programming languages may also be&#xD;&#xA;used."/>
+        <details key="constraints" value="If the language attribute is not empty, then the size of the body and language arrays must be the same."/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="base metaclass in UML/SysML profile " value="uml::OpaqueExpression"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="bodies" unique="false"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+          <details key="description" value="The text of the expression, possibly in multiple languages."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="languages" upperBound="-1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+          <details key="description" value="Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the&#xD;&#xA;languages. If the languages are unspecified, they might be implicit from the expression body or the context.&#xD;&#xA;Languages are matched to body strings by order."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

@@ -14,14 +14,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 /**
  */
 public interface IBusinessQuery {
 
-  /**
+	/**
    * Gets all the available elements for the business query
    *
    * @param element_p the current element

@@ -13,21 +13,8 @@ package org.polarsys.capella.core.data.helpers.capellacore;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.AbstractPropertyValueHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.GeneralizableElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolverElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamespaceHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.PropertyValueGroupHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypeHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypedElementHelper;
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
@@ -46,14 +33,28 @@ import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.AbstractPropertyValueHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.ConstraintHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.GeneralizableElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolvementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.InvolverElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamespaceHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.PropertyValueGroupHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypeHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypedElementHelper;
 
 public class CapellaCoreHelper implements IHelper {
 
 	/**
-	 * @see org.polarsys.capella.common.tig.model.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EAnnotation)
+	 * @see org.polarsys.capella.common.model.helpers.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, org.eclipse.emf.ecore.EAnnotation)
 	 */
+  @Override
   public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
 		Object ret = null;
 
@@ -106,7 +107,7 @@ public class CapellaCoreHelper implements IHelper {
       ret = StructureHelper.getInstance().doSwitch((PropertyValuePkg) object_p, feature_p);
     }
     else if (object_p instanceof Constraint) {
-      ret = CapellaElementHelper.getInstance().doSwitch((Constraint) object_p, feature_p);
+      ret = ConstraintHelper.getInstance().doSwitch((Constraint) object_p, feature_p);
     }
     else if (object_p instanceof Namespace) {
       ret = NamespaceHelper.getInstance().doSwitch((Namespace) object_p, feature_p);

@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -28,8 +30,6 @@ import org.polarsys.capella.core.data.information.PortRealization;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.sirius.ui.copylayout.AbstractCapellaLayoutDataKey;
 import org.polarsys.capella.core.sirius.ui.copylayout.CapellaTraceabilityLayoutDataKey;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * Retrieve for a TraceableElement a key of all its traced elements

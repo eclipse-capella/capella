@@ -22,7 +22,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.IMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -41,7 +41,7 @@ public class MultipleSemanticField extends BrowseSemanticField {
    */
   public MultipleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
       IMultipleSemanticFieldController controller_p) {
-    this(parent_p, label_p, widgetFactory_p, 2, controller_p, false);
+    this(parent_p, label_p, widgetFactory_p, 3, controller_p, false);
   }
 
   /**

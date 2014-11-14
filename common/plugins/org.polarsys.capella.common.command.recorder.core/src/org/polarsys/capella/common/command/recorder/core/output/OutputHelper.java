@@ -25,8 +25,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.tools.ant.taskdefs.Recorder;
-
 import org.polarsys.capella.common.command.recorder.core.preferences.RecorderCorePreferenceServices;
 import org.polarsys.capella.common.command.recorder.core.recorder.IRecorder;
 

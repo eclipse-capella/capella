@@ -11,6 +11,7 @@
 package org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 
 /**
  */
@@ -19,13 +20,14 @@ public class CurrentElementCP extends AbstractContentProvider {
    * Constructor.
    * @param adapterFactory_p
    */
-  public CurrentElementCP(AdapterFactory adapterFactory_p) {
-    super(adapterFactory_p);
+  public CurrentElementCP(AdapterFactory adapterFactory_p, ISemanticBrowserModel model_p) {
+    super(adapterFactory_p, model_p);
   }
 
   /**
    * {@inheritDoc}
    */
+  @Override
   public String getBrowserId() {
     return ID_CURRENT_CP;
   }

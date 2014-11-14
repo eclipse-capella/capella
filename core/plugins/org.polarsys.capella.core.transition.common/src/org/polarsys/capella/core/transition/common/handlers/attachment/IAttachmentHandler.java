@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -61,4 +60,11 @@ public interface IAttachmentHandler extends IHandler {
   void attachTracedElements(EObject sourceElement_p, EObject targetElement_p, EReference reference_p, IContext context_p);
 
   void removeElements(Collection<EObject> objects_p, IContext context_p);
+
+  /**
+   * @param element_p
+   * @param result_p
+   * @param context_p
+   */
+  void createdElement(EObject source_p, EObject createdElement_p, IContext context_p);
 }

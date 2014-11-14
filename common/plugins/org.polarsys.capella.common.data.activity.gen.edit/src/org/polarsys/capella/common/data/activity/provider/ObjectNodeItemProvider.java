@@ -1,25 +1,32 @@
-/*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
  *
- * Contributors:
- *    Thales - initial API and implementation
- *******************************************************************************/
+ *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *     Thales - initial API and implementation
+ */
+
 package org.polarsys.capella.common.data.activity.provider;
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
+
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.edit.command.CopyCommand.Helper;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -29,11 +36,16 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.ObjectNode;
+
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+
 import org.polarsys.capella.common.data.modellingcore.provider.AbstractNamedElementItemProvider;
+
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
+
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 
@@ -95,7 +107,6 @@ public class ObjectNodeItemProvider
 	public ObjectNodeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,7 +175,6 @@ public class ObjectNodeItemProvider
 			}
 		}		
 	}
-
 
 	/**
 	 * This returns the property descriptors for the adapted class.

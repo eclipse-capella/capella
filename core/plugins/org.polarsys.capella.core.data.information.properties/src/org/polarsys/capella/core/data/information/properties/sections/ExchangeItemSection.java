@@ -15,33 +15,35 @@ import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.menu.dynamic.CreationHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.core.properties.sections.GeneralizableElementSection;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.properties.Messages;
 import org.polarsys.capella.core.data.information.properties.controllers.ExchangeItemRealizationsController;
+import org.polarsys.capella.core.data.information.properties.fields.ExchangeItemBooleanPropertiesCheckbox;
 import org.polarsys.capella.core.data.information.properties.fields.ExchangeMechanismGroup;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.ContainmentTableField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.menu.dynamic.CreationHelper;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * The ExchangeItem section.
  */
-public class ExchangeItemSection extends NamedElementSection {
+public class ExchangeItemSection extends GeneralizableElementSection {
 
+  private ExchangeItemBooleanPropertiesCheckbox _exchangeItemBooleanPropertiesCheckbox;	
   private ExchangeMechanismGroup _exchangeMechanismGroup;
   private ContainmentTableField _containmentTableField;
   private MultipleSemanticField _realizedExchangeItemsField;
@@ -52,6 +54,9 @@ public class ExchangeItemSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
+    _exchangeItemBooleanPropertiesCheckbox = new ExchangeItemBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
+    _exchangeItemBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);    
+    
     _exchangeMechanismGroup = new ExchangeMechanismGroup(_rootParentComposite, getWidgetFactory());
     _exchangeMechanismGroup.setDisplayedInWizard(displayedInWizard);
 
@@ -80,20 +85,21 @@ public class ExchangeItemSection extends NamedElementSection {
           public void run() {
             ExchangeItemElement item = InformationFactory.eINSTANCE.createExchangeItemElement();
             ((List<EObject>) _semanticElement.eGet(_semanticFeature)).add(item);
-            Command cmd = CreationHelper.getAdditionnalCommand(MDEAdapterFactory.getEditingDomain(), item);
-            MDEAdapterFactory.getEditingDomain().getCommandStack().execute(cmd);
+            EditingDomain domain = TransactionHelper.getEditingDomain(item);
+            Command cmd = CreationHelper.getAdditionnalCommand(domain, item);
+            domain.getCommandStack().execute(cmd);
 
             CapellaUIPropertiesPlugin.getDefault().openWizard(item);
           }
         };
-        MDEAdapterFactory.getExecutionManager().execute(command);
+        TransactionHelper.getExecutionManager(_semanticElement).execute(command);
         refreshViewer();
       }
     };
     _containmentTableField.setDisplayedInWizard(displayedInWizard);
 
     Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
-    main.setLayout(new GridLayout(5, false));
+    main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     main.setLayoutData(gd);
@@ -109,6 +115,7 @@ public class ExchangeItemSection extends NamedElementSection {
   public void loadData(CapellaElement capellaElement_p) {
     super.loadData(capellaElement_p);
 
+    _exchangeItemBooleanPropertiesCheckbox.loadData(capellaElement_p);
     _exchangeMechanismGroup.loadData(capellaElement_p, InformationPackage.Literals.EXCHANGE_ITEM__EXCHANGE_MECHANISM);
     _containmentTableField.loadData(capellaElement_p, InformationPackage.Literals.EXCHANGE_ITEM__OWNED_ELEMENTS);
     _realizedExchangeItemsField.loadData(capellaElement_p, InformationPackage.Literals.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS);
@@ -131,6 +138,7 @@ public class ExchangeItemSection extends NamedElementSection {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
 
     fields.addAll(super.getSemanticFields());
+    fields.add(_exchangeItemBooleanPropertiesCheckbox);
     fields.add(_exchangeMechanismGroup);
     fields.add(_realizedExchangeItemsField);
     fields.add(_containmentTableField);

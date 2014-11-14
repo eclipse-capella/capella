@@ -13,7 +13,6 @@ package org.polarsys.capella.core.transition.common.handlers.transformation;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.selection.ISelectionContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -55,5 +54,7 @@ public interface ITransformationHandler extends IHandler {
   public EObject getBestTracedElement(EObject root_p, IContext context_p, EClass blockArchitecture_p);
 
   public EObject getBestTracedElement(EObject root_p, IContext context_p, EClass blockArchitecture_p, EObject element_p, EObject result_p);
+
+  public void postTransformElement(EObject element_p, EObject result_p, IContext context_p);
 
 }

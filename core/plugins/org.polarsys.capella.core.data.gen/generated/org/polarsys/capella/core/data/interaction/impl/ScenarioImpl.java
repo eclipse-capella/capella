@@ -31,9 +31,10 @@ import org.polarsys.capella.common.data.behavior.AbstractBehavior;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameter;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.NamingRule;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
@@ -66,10 +67,10 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#isIsControlOperator <em>Is Control Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getOwnedParameterSet <em>Owned Parameter Set</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getOwnedParameter <em>Owned Parameter</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getPreCondition <em>Pre Condition</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#isMerged <em>Merged</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getPreCondition <em>Pre Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getOwnedInstanceRoles <em>Owned Instance Roles</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getOwnedMessages <em>Owned Messages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl#getOwnedInteractionFragments <em>Owned Interaction Fragments</em>}</li>
@@ -179,54 +180,6 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 
 
 	/**
-	 * The default value of the '{@link #getPreCondition() <em>Pre Condition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPreCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String PRE_CONDITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPreCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String preCondition = PRE_CONDITION_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The default value of the '{@link #getPostCondition() <em>Post Condition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPostCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String POST_CONDITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPostCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String postCondition = POST_CONDITION_EDEFAULT;
-
-
-
-
-
-	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -269,6 +222,50 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @ordered
 	 */
 	protected boolean merged = MERGED_EDEFAULT;
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPreCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint preCondition;
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPostCondition()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint postCondition;
 
 
 
@@ -474,10 +471,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
 		
 		try {
@@ -521,10 +518,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
 		
 		try {
@@ -634,8 +631,16 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
-	public String getPreCondition() {
+	public Constraint getPreCondition() {
 
+		if (preCondition != null && preCondition.eIsProxy()) {
+			InternalEObject oldPreCondition = (InternalEObject)preCondition;
+			preCondition = (Constraint)eResolveProxy(oldPreCondition);
+			if (preCondition != oldPreCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SCENARIO__PRE_CONDITION, oldPreCondition, preCondition));
+			}
+		}
 		return preCondition;
 	}
 
@@ -646,19 +651,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
-	public void setPreCondition(String newPreCondition) {
+	public Constraint basicGetPreCondition() {
 
-		String oldPreCondition = preCondition;
-		preCondition = newPreCondition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SCENARIO__PRE_CONDITION, oldPreCondition, preCondition));
-
+		return preCondition;
 	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -666,8 +662,31 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
-	public String getPostCondition() {
+	public void setPreCondition(Constraint newPreCondition) {
 
+		Constraint oldPreCondition = preCondition;
+		preCondition = newPreCondition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SCENARIO__PRE_CONDITION, oldPreCondition, preCondition));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public Constraint getPostCondition() {
+
+		if (postCondition != null && postCondition.eIsProxy()) {
+			InternalEObject oldPostCondition = (InternalEObject)postCondition;
+			postCondition = (Constraint)eResolveProxy(oldPostCondition);
+			if (postCondition != oldPostCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SCENARIO__POST_CONDITION, oldPostCondition, postCondition));
+			}
+		}
 		return postCondition;
 	}
 
@@ -678,19 +697,25 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 	 * @generated
 	 */
 
-	public void setPostCondition(String newPostCondition) {
+	public Constraint basicGetPostCondition() {
 
-		String oldPostCondition = postCondition;
+		return postCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setPostCondition(Constraint newPostCondition) {
+
+		Constraint oldPostCondition = postCondition;
 		postCondition = newPostCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SCENARIO__POST_CONDITION, oldPostCondition, postCondition));
 
 	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -926,10 +951,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SCENARIO__CONTAINED_FUNCTIONS, annotation);
 		
 		try {
@@ -973,10 +998,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SCENARIO__CONTAINED_PARTS, annotation);
 		
 		try {
@@ -1020,10 +1045,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SCENARIO__REFERENCED_SCENARIOS, annotation);
 		
 		try {
@@ -1067,10 +1092,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SCENARIO__REALIZED_SCENARIOS, annotation);
 		
 		try {
@@ -1114,10 +1139,10 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SCENARIO__REALIZING_SCENARIOS, annotation);
 		
 		try {
@@ -1187,14 +1212,16 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				return getOwnedParameterSet();
 			case InteractionPackage.SCENARIO__OWNED_PARAMETER:
 				return getOwnedParameter();
-			case InteractionPackage.SCENARIO__PRE_CONDITION:
-				return getPreCondition();
-			case InteractionPackage.SCENARIO__POST_CONDITION:
-				return getPostCondition();
 			case InteractionPackage.SCENARIO__KIND:
 				return getKind();
 			case InteractionPackage.SCENARIO__MERGED:
 				return isMerged();
+			case InteractionPackage.SCENARIO__PRE_CONDITION:
+				if (resolve) return getPreCondition();
+				return basicGetPreCondition();
+			case InteractionPackage.SCENARIO__POST_CONDITION:
+				if (resolve) return getPostCondition();
+				return basicGetPostCondition();
 			case InteractionPackage.SCENARIO__OWNED_INSTANCE_ROLES:
 				return getOwnedInstanceRoles();
 			case InteractionPackage.SCENARIO__OWNED_MESSAGES:
@@ -1259,24 +1286,6 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				getOwnedParameter().clear();
 				getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
 				return;
-			case InteractionPackage.SCENARIO__PRE_CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setPreCondition((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InteractionPackage.SCENARIO__POST_CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setPostCondition((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
 			case InteractionPackage.SCENARIO__KIND:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof ScenarioKind) {
@@ -1291,6 +1300,24 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				if (newValue == null || newValue instanceof Boolean) {
 				// end-extension-code
 					setMerged((Boolean)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case InteractionPackage.SCENARIO__PRE_CONDITION:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Constraint) {
+				// end-extension-code
+					setPreCondition((Constraint)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case InteractionPackage.SCENARIO__POST_CONDITION:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Constraint) {
+				// end-extension-code
+					setPostCondition((Constraint)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -1355,17 +1382,17 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 			case InteractionPackage.SCENARIO__OWNED_PARAMETER:
 				getOwnedParameter().clear();
 				return;
-			case InteractionPackage.SCENARIO__PRE_CONDITION:
-				setPreCondition(PRE_CONDITION_EDEFAULT);
-				return;
-			case InteractionPackage.SCENARIO__POST_CONDITION:
-				setPostCondition(POST_CONDITION_EDEFAULT);
-				return;
 			case InteractionPackage.SCENARIO__KIND:
 				setKind(KIND_EDEFAULT);
 				return;
 			case InteractionPackage.SCENARIO__MERGED:
 				setMerged(MERGED_EDEFAULT);
+				return;
+			case InteractionPackage.SCENARIO__PRE_CONDITION:
+				setPreCondition((Constraint)null);
+				return;
+			case InteractionPackage.SCENARIO__POST_CONDITION:
+				setPostCondition((Constraint)null);
 				return;
 			case InteractionPackage.SCENARIO__OWNED_INSTANCE_ROLES:
 				getOwnedInstanceRoles().clear();
@@ -1419,14 +1446,14 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
 			case InteractionPackage.SCENARIO__OWNED_PARAMETER:
 				return ownedParameter != null && !ownedParameter.isEmpty();
-			case InteractionPackage.SCENARIO__PRE_CONDITION:
-				return PRE_CONDITION_EDEFAULT == null ? preCondition != null : !PRE_CONDITION_EDEFAULT.equals(preCondition);
-			case InteractionPackage.SCENARIO__POST_CONDITION:
-				return POST_CONDITION_EDEFAULT == null ? postCondition != null : !POST_CONDITION_EDEFAULT.equals(postCondition);
 			case InteractionPackage.SCENARIO__KIND:
 				return kind != KIND_EDEFAULT;
 			case InteractionPackage.SCENARIO__MERGED:
 				return merged != MERGED_EDEFAULT;
+			case InteractionPackage.SCENARIO__PRE_CONDITION:
+				return preCondition != null;
+			case InteractionPackage.SCENARIO__POST_CONDITION:
+				return postCondition != null;
 			case InteractionPackage.SCENARIO__OWNED_INSTANCE_ROLES:
 				return ownedInstanceRoles != null && !ownedInstanceRoles.isEmpty();
 			case InteractionPackage.SCENARIO__OWNED_MESSAGES:
@@ -1506,10 +1533,6 @@ public class ScenarioImpl extends NamedElementImpl implements Scenario {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (isControlOperator: "); //$NON-NLS-1$
 		result.append(isControlOperator);
-		result.append(", preCondition: "); //$NON-NLS-1$
-		result.append(preCondition);
-		result.append(", postCondition: "); //$NON-NLS-1$
-		result.append(postCondition);
 		result.append(", kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(", merged: "); //$NON-NLS-1$

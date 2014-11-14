@@ -10,7 +10,7 @@ Export-Package: org.polarsys.capella.core.refinement.scenarios.core,
 Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.common.tools.report;visibility:=reexport,
  org.polarsys.capella.core.projection.misc
-Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin

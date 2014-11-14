@@ -32,10 +32,10 @@
             uri="platform:/resource/org.polarsys.capella.common.data.behavior.gen/model/Behavior.genmodel"/>
         <domains xmi:type="domain:EMFDomain" xmi:id="_Vfj4dpslEeCtH-yCwLxcDg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
             uri="platform:/resource/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel"/>
-        <domains xmi:type="domain:EMFDomain" xmi:id="_EbzT0PCjEeO0jMQH5knLQg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
-            uri="platform:/resource/org.polarsys.capella.common.re.gen/model/re.genmodel"/>
         <domains xmi:type="domain:EMFDomain" xmi:id="_Eg3aAPCjEeO0jMQH5knLQg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
             uri="platform:/resource/org.polarsys.capella.common.libraries.gen/model/libraries.genmodel"/>
+        <domains xmi:type="domain:EMFDomain" xmi:id="_EbzT0PCjEeO0jMQH5knLQg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/org.polarsys.capella.common.re.gen/model/re.genmodel"/>
       </viewpoints>
     </viewpointContainer>
     <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_WE9rkJslEeCtH-yCwLxcDg">
@@ -70,14 +70,14 @@
       <invocations xmi:id="_H2kxkPCjEeO0jMQH5knLQg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
         <invocationContractContainer xmi:id="_H2kxkfCjEeO0jMQH5knLQg">
           <invocationContracts xmi:id="_H2kxkvCjEeO0jMQH5knLQg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
-            <type xmi:type="domain:TypeDomain" xmi:id="_H2kxk_CjEeO0jMQH5knLQg" domain="#_Eg3aAPCjEeO0jMQH5knLQg"/>
+            <type xmi:type="domain:TypeDomain" xmi:id="_H2kxk_CjEeO0jMQH5knLQg" domain="#_EbzT0PCjEeO0jMQH5knLQg"/>
           </invocationContracts>
         </invocationContractContainer>
       </invocations>
       <invocations xmi:id="_H6HNwPCjEeO0jMQH5knLQg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
         <invocationContractContainer xmi:id="_H6HNwfCjEeO0jMQH5knLQg">
           <invocationContracts xmi:id="_H6HNwvCjEeO0jMQH5knLQg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
-            <type xmi:type="domain:TypeDomain" xmi:id="_H6HNw_CjEeO0jMQH5knLQg" domain="#_Vfj4dpslEeCtH-yCwLxcDg"/>
+            <type xmi:type="domain:TypeDomain" xmi:id="_H6HNw_CjEeO0jMQH5knLQg" domain="#_Eg3aAPCjEeO0jMQH5knLQg"/>
           </invocationContracts>
         </invocationContractContainer>
       </invocations>

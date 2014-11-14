@@ -22,11 +22,9 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  */
@@ -65,7 +63,7 @@ public abstract class AbstractTigAction extends AbstractHandler implements IObje
    * @return
    */
   protected ExecutionManager getExecutionManager() {
-    return ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName());
+    return TransactionHelper.getExecutionManager(getSelectedElement());
   }
 
   /**

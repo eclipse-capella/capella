@@ -13,7 +13,9 @@ package org.polarsys.capella.core.data.helpers.ctx;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
 import org.polarsys.capella.core.data.ctx.ActorMissionInvolvement;
@@ -31,6 +33,9 @@ import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
 import org.polarsys.capella.core.data.ctx.SystemContext;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.ActorCapabilityInvolvementHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.ActorHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.ActorMissionInvolvementHelper;
@@ -45,12 +50,6 @@ import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemContextHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemFunctionHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemHelper;
 import org.polarsys.capella.core.data.helpers.ctx.delegates.SystemMissionInvolvementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class SystemAnalysisHelper implements IHelper {
 

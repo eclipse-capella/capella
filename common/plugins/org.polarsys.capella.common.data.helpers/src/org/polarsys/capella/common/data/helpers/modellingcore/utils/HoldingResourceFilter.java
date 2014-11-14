@@ -11,9 +11,6 @@
 package org.polarsys.capella.common.data.helpers.modellingcore.utils;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.HoldingResource;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  */
@@ -40,9 +37,10 @@ public class HoldingResourceFilter {
   }
 
   public boolean isHoldByHoldingResource(EObject obj_p) {
-    SemanticEditingDomain editDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
-    HoldingResource holdRes = editDomain.getHoldingResource();
+    //    SemanticEditingDomain editDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain(obj_p);
+    //    HoldingResource holdRes = editDomain.getHoldingResource();
 
-    return ((obj_p.eResource() != null) && obj_p.eResource().equals(holdRes));
+    //    return ((obj_p.eResource() != null) && obj_p.eResource().equals(holdRes));
+    return false;
   }
 }

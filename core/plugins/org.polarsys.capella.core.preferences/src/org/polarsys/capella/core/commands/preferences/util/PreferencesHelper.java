@@ -59,6 +59,7 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.commands.preferences.service.PropertyStore;
 import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPreferencesStore;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
 import org.polarsys.capella.core.preferences.Activator;
 
@@ -66,9 +67,9 @@ public class PreferencesHelper {
 
   private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
-  public static final String CONFUGRATION_PROJECT_NATURE_ID = "org.polarsys.capella.core.preferences.project.nature.configNature"; //$NON-NLS-1$
+  public static final String CONFUGRATION_PROJECT_NATURE_ID = CapellaResourceHelper.CAPELLA_CONFIGURATION_PROJECT_NATURE;
 
-  public static final String CAPELLA_PROJECT_NATURE_ID = "org.polarsys.capella.project.nature"; //$NON-NLS-1$
+  public static final String CAPELLA_PROJECT_NATURE_ID = CapellaResourceHelper.CAPELLA_PROJECT_NATURE;
 
   /**
    * @return
@@ -80,9 +81,7 @@ public class PreferencesHelper {
     try {
       IProject[] referencedProjects = sourceProject != null ? sourceProject.getReferencedProjects() : new IProject[] {};
       for (IProject referencedProject : referencedProjects) {
-
         return referencedProject;
-
       }
 
     } catch (Exception exception_p) {
@@ -178,11 +177,11 @@ public class PreferencesHelper {
     IProject[] iProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
     for (IProject targetProject : iProjects) {
       try {
-        if (targetProject.isOpen() && targetProject.isAccessible() && (targetProject.getNature(PreferencesHelper.CAPELLA_PROJECT_NATURE_ID) != null)
+        if (targetProject.isOpen() && targetProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(targetProject))
             && targetProject.getName().equals(name_p)) {
           return targetProject;
         }
-      } catch (CoreException exception_p) {
+      } catch (Exception exception_p) {
         StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getProjectByEditorName(..) _ "); //$NON-NLS-1$
         __logger.error(loggerMessage.toString(), exception_p);
       }
@@ -248,7 +247,7 @@ public class PreferencesHelper {
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
 
-    return new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
 
   }
 
@@ -270,7 +269,7 @@ public class PreferencesHelper {
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
 
-    return new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
 
   }
 
@@ -294,7 +293,7 @@ public class PreferencesHelper {
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
 
-    return new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
 
   }
 
@@ -318,7 +317,7 @@ public class PreferencesHelper {
       return new ScopedPreferenceStore(scope, Activator.PLUGIN_ID);
     }
 
-    return new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID);
+    return new ScopedPreferenceStore(InstanceScope.INSTANCE, Activator.PLUGIN_ID);
 
   }
 
@@ -331,15 +330,14 @@ public class PreferencesHelper {
 
     for (IProject targetProject : iProjects) {
       try {
-        if (targetProject.isOpen() && targetProject.isAccessible() && (targetProject.getNature(PreferencesHelper.CAPELLA_PROJECT_NATURE_ID) != null)) {
+        if (targetProject.isOpen() && targetProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(targetProject))) {
           IScopeContext projectScope = ScopedCapellaPreferencesStore.getProjectScope(targetProject);
           scopes.add(new ScopedPreferenceStore(projectScope, Activator.PLUGIN_ID));
         }
-      } catch (CoreException exception_p) {
+      } catch (Exception exception_p) {
         StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getAllStores(..) _ "); //$NON-NLS-1$
         __logger.error(loggerMessage.toString(), exception_p);
       }
-
     }
     return scopes;
   }
@@ -366,10 +364,10 @@ public class PreferencesHelper {
    */
   public static boolean isCapellaProject(IProject targetProject) {
     try {
-      if (targetProject.isOpen() && targetProject.isAccessible() && (targetProject.getNature(PreferencesHelper.CAPELLA_PROJECT_NATURE_ID) != null)) {
+      if (targetProject.isOpen() && targetProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(targetProject))) {
         return true;
       }
-    } catch (CoreException exception_p) {
+    } catch (Exception exception_p) {
       StringBuilder loggerMessage = new StringBuilder("PreferencesHelper.getAllStores(..) _ "); //$NON-NLS-1$
       __logger.warn(loggerMessage.toString(), exception_p);
     }
@@ -570,7 +568,9 @@ public class PreferencesHelper {
     node.clear();
     String[] names = node.childrenNames();
     for (String name : names) {
-      clearAll(node.node(name));
+      //clearAll(node.node(name));
+    	PlatformUI.getPreferenceStore().setToDefault(name);
+
     }
   }
 

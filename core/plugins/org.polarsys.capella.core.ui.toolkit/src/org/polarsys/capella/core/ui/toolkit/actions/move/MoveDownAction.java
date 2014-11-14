@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * Move down selected elements.<br>
@@ -26,23 +26,23 @@ public class MoveDownAction extends AbstractMoveAction {
    * Constructor.
    * @param text_p
    */
-  public MoveDownAction(EditingDomain domain_p) {
-    super(domain_p, Messages.MoveDownAction_Title);
+  public MoveDownAction() {
+    super(Messages.MoveDownAction_Title);
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.action.CommandActionHandler#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<?> selection_p) {
-    return new CapellaMoveCommand(getEditingDomain(), Messages.MoveDownAction_Title, selection_p, false) {
+  public Command createCommand(Collection<Object> selection_p) {
+    return new CapellaMoveCommand(Messages.MoveDownAction_Title, filterSelection(selection_p), false) {
 
       /**
        * @see org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.AbstractMoveAction.CapellaMoveCommand#getSortedElementsToMove()
        */
       @Override
-      protected List<?> getSortedElementsToMove() {
-        List<?> sortedElementsToMove = super.getSortedElementsToMove();
+      protected List<EObject> getSortedElementsToMove() {
+        List<EObject> sortedElementsToMove = super.getSortedElementsToMove();
         // When moving down, we must iterate over sorted elements in the reverse order.
         Collections.reverse(sortedElementsToMove);
         return sortedElementsToMove;

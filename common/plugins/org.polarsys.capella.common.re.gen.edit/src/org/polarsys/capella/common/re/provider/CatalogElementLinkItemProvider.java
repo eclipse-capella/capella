@@ -33,6 +33,8 @@ import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.common.re.CatalogElementLink} object.
@@ -45,6 +47,26 @@ public class CatalogElementLinkItemProvider extends
 		IStructuredItemContentProvider, ITreeItemContentProvider,
 		IItemLabelProvider, IItemPropertySource {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor sourcePropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor targetPropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor originPropertyDescriptor;
+
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,6 +74,53 @@ public class CatalogElementLinkItemProvider extends
 	 */
 	public CatalogElementLinkItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE
+			if (sourcePropertyDescriptor != null) {
+				Object sourceValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE, true);
+				if (sourceValue != null && sourceValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) sourceValue)) {
+					itemPropertyDescriptors.remove(sourcePropertyDescriptor);
+				} else if (sourceValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__SOURCE) != null) {
+					itemPropertyDescriptors.remove(sourcePropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(sourcePropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(sourcePropertyDescriptor);
+				}
+			}
+			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET
+			if (targetPropertyDescriptor != null) {
+				Object targetValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET, true);
+				if (targetValue != null && targetValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) targetValue)) {
+					itemPropertyDescriptors.remove(targetPropertyDescriptor);
+				} else if (targetValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET) != null) {
+					itemPropertyDescriptors.remove(targetPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(targetPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(targetPropertyDescriptor);
+				}
+			}
+			// Process RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN
+			if (originPropertyDescriptor != null) {
+				Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN, true);
+				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) originValue)) {
+					itemPropertyDescriptors.remove(originPropertyDescriptor);
+				} else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT_LINK__ORIGIN) != null) {
+					itemPropertyDescriptors.remove(originPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(originPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(originPropertyDescriptor);
+				}
+			}
+		}		
 	}
 
 
@@ -71,6 +140,9 @@ public class CatalogElementLinkItemProvider extends
 			addOriginPropertyDescriptor(object);
 			addUnsynchronizedFeaturesPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 
@@ -81,11 +153,9 @@ public class CatalogElementLinkItemProvider extends
 	 * @generated
 	 */
 	protected void addSourcePropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		sourcePropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CatalogElementLink_source_feature"), //$NON-NLS-1$
@@ -97,7 +167,8 @@ public class CatalogElementLinkItemProvider extends
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(sourcePropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -108,11 +179,9 @@ public class CatalogElementLinkItemProvider extends
 	 * @generated
 	 */
 	protected void addTargetPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		targetPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CatalogElementLink_target_feature"), //$NON-NLS-1$
@@ -124,7 +193,8 @@ public class CatalogElementLinkItemProvider extends
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(targetPropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -135,11 +205,9 @@ public class CatalogElementLinkItemProvider extends
 	 * @generated
 	 */
 	protected void addOriginPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		originPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CatalogElementLink_origin_feature"), //$NON-NLS-1$
@@ -151,7 +219,8 @@ public class CatalogElementLinkItemProvider extends
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(originPropertyDescriptor);
 		// end-extension-code
 	}
 

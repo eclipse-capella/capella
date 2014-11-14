@@ -38,16 +38,15 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.ui.properties.helpers.NotificationHelper;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.AbstractNonDirtyingCommand;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
 
 /**
  */
@@ -124,18 +123,25 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   }
 
   /**
+   * Retrieve the execution manager
+   */
+  protected ExecutionManager getExecutionManager() {
+    return TransactionHelper.getExecutionManager(_semanticElement);
+  }
+
+  /**
    * This method verifies if there is an active transaction.<br>
    * If such case, the command is simply run.<br>
    * If not, the command is executed through the execution manager.<br>
    * @param command_p the command to be executed
    */
   protected void verifiedExecution(ICommand command_p) {
-    ExecutionManager executionManager = MDEAdapterFactory.getExecutionManager();
+    ExecutionManager executionManager = getExecutionManager();
     if (null != executionManager) {
       TransactionalEditingDomain editingDomain = executionManager.getEditingDomain();
       if (editingDomain instanceof InternalTransactionalEditingDomain) {
         InternalTransaction activeTransaction = ((InternalTransactionalEditingDomain) editingDomain).getActiveTransaction();
-        if (null != activeTransaction && activeTransaction.isActive()) {
+        if ((null != activeTransaction) && activeTransaction.isActive()) {
           command_p.run();
         } else {
           executionManager.execute(command_p);
@@ -157,7 +163,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       }
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
        */
       @Override
       public Collection<?> getAffectedObjects() {
@@ -165,7 +171,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       }
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
        */
       @Override
       public String getName() {
@@ -173,7 +179,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       }
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandInterrupted()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#commandInterrupted()
        */
       @Override
       public void commandInterrupted() {
@@ -181,7 +187,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       }
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#commandRolledBack()
        */
       @Override
       public void commandRolledBack() {
@@ -204,7 +210,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       }
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandInterrupted()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#commandInterrupted()
        */
       @Override
       public void commandInterrupted() {
@@ -212,7 +218,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       }
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#commandRolledBack()
        */
       @Override
       public void commandRolledBack() {
@@ -463,8 +469,9 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
    * @param object_p
    */
   public static void deleteContainmentValue(EObject object_p) {
-    CapellaDeleteCommand command = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), Collections.singleton(object_p), false, false, true);
-    if (command.canExecute()){
+    CapellaDeleteCommand command =
+        new CapellaDeleteCommand(TransactionHelper.getExecutionManager(object_p), Collections.singleton(object_p), false, false, true);
+    if (command.canExecute()) {
       command.execute();
     }
   }

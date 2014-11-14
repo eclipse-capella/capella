@@ -13,24 +13,34 @@ package org.polarsys.capella.common.data.helpers.modellingcore;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypeHelper;
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.AbstractTypedElementHelper;
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.InformationsExchangerHelper;
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.ModelElementHelper;
 import org.polarsys.capella.common.data.helpers.modellingcore.delegates.TraceableElementHelper;
+import org.polarsys.capella.common.data.helpers.modellingcore.delegates.ValueSpecificationHelper;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.data.modellingcore.ValueSpecification;
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 
 public class ModellingCoreHelper implements IHelper {
 
-	public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
+	@Override
+  public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
 		Object ret = null;
 
-		if (object_p instanceof TraceableElement) {
+		if (object_p instanceof ValueSpecification){
+		  ret = ValueSpecificationHelper.getInstance().doSwitch((ValueSpecification) object_p, feature_p);
+		}
+		else if (object_p instanceof AbstractTypedElement){
+		  ret = AbstractTypedElementHelper.getInstance().doSwitch((AbstractTypedElement) object_p, feature_p);
+		}
+		else if (object_p instanceof TraceableElement) {
 			ret = TraceableElementHelper.getInstance().doSwitch((TraceableElement) object_p, feature_p);
 		}
     else if (object_p instanceof InformationsExchanger) {

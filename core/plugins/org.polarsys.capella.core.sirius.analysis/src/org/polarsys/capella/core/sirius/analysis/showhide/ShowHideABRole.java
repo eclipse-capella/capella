@@ -14,9 +14,8 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.oa.RoleAllocation;

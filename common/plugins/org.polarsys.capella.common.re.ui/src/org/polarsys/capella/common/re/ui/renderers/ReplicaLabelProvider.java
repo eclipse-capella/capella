@@ -46,7 +46,7 @@ public class ReplicaLabelProvider extends DefaultLabelProvider {
 
     if (object_p instanceof CatalogElementLink) {
       if (((CatalogElementLink) object_p).getTarget() instanceof CatalogElement) {
-        IProperty property = _context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+        IProperty property = _context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
         Object replica = _context.getCurrentValue(property);
         return super.getImage(replica);
       }
@@ -54,7 +54,7 @@ public class ReplicaLabelProvider extends DefaultLabelProvider {
     }
 
     if (object_p instanceof CatalogElement) {
-      IProperty property = _context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+      IProperty property = _context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
       Object replica = _context.getCurrentValue(property);
       if (object_p.equals(replica)) {
         return super.getImage(replica);
@@ -71,7 +71,7 @@ public class ReplicaLabelProvider extends DefaultLabelProvider {
     IContext context = (IContext) _context.getSource();
 
     if (object_p instanceof EObject) {
-      return AttributesHandlerHelper.getInstance(context).getName((EObject) object_p, context, _context);
+      return AttributesHandlerHelper.getInstance(context).getCurrentName((EObject) object_p, context, _context);
     }
     return super.getText(object_p);
   }

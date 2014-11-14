@@ -15,12 +15,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
- * A MarkerResolution that delegates resolution to a TIG command.
+ * A MarkerResolution that delegates resolution to a transactional command.
  * 
  * By default, after the command has executed, the marker
  * for which the resolution ran will be deleted, that is,
@@ -39,7 +39,7 @@ public class CommandMarkerResolution extends AbstractCapellaMarkerResolution {
   }
   
   public void run(IMarker marker){
-    getExecutionManager().execute(command);
+    getExecutionManager(marker).execute(command);
     deleteMarker(marker);
   }
   
@@ -48,8 +48,8 @@ public class CommandMarkerResolution extends AbstractCapellaMarkerResolution {
     return command.getName();
   }
   
-  protected ExecutionManager getExecutionManager(){
-    return MDEAdapterFactory.getExecutionManager();
+  protected ExecutionManager getExecutionManager(IMarker marker) {
+    return TransactionHelper.getExecutionManager(getModelElements(marker));
   }
 
   protected void deleteMarker(IMarker marker){

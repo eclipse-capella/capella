@@ -11,9 +11,8 @@
 package org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.platform.sirius.ui.project.CapellaProjectActivator;
 import org.polarsys.capella.core.preferences.Activator;
@@ -43,7 +42,7 @@ public class PreferencesInitializer extends AbstractPreferencesInitializer {
     // Set Sirius UI preferences
     // required since Sirius 5.1 since default behavior is not welcome
     IPreferenceStore siriusUiPreferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-    siriusUiPreferenceStore.setValue(DesignerUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
-    siriusUiPreferenceStore.setValue(DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
+    siriusUiPreferenceStore.setValue(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
+    siriusUiPreferenceStore.setValue(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
   }
 }

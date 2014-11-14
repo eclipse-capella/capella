@@ -16,11 +16,11 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.sirius.ui.copylayout.AbstractCapellaLayoutDataKey;
-import org.polarsys.capella.core.sirius.ui.copylayout.keyproviders.IKeyProvider;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
 import org.polarsys.capella.common.re.helpers.ReplicableElementExt;
+import org.polarsys.capella.core.sirius.ui.copylayout.AbstractCapellaLayoutDataKey;
+import org.polarsys.capella.core.sirius.ui.copylayout.keyproviders.IKeyProvider;
 
 /**
  * Copy Layout traceability for Replicable Element Mechanism

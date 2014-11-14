@@ -19,7 +19,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.delete.IDeleteHook;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences;
 
@@ -54,12 +54,6 @@ public class CapellaDeleteActionHook implements IDeleteHook {
       return Status.CANCEL_STATUS;
     }
 
-    // Precondition.
-    // Is confirmation enabled ?
-    if (!IDeletePreferences.INSTANCE.isConfirmationRequired()) {
-      return Status.OK_STATUS;
-    }
-
     // Get semantic elements from selected ones.
     Collection<EObject> semanticElements = new HashSet<EObject>(selections_p.size());
     for (DSemanticDecorator semanticDecorator : selections_p) {
@@ -70,8 +64,8 @@ public class CapellaDeleteActionHook implements IDeleteHook {
     }
 
     setSelection(semanticElements);
-    // Ask user confirmation.
-    boolean deletionConfirmed = CapellaDeleteCommand.confirmDeletion(MDEAdapterFactory.getExecutionManager(), getSelection());
+    // Ask user confirmation if it is required in preferences.
+    boolean deletionConfirmed = !IDeletePreferences.INSTANCE.isConfirmationRequired() || CapellaDeleteCommand.confirmDeletion(TransactionHelper.getExecutionManager(semanticElements), getSelection());
     if (!deletionConfirmed) {
       removeSelection();
     }

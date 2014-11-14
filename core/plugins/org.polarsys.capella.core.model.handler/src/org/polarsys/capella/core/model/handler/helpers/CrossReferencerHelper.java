@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList.FeatureIterator;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * Cross referencer helper.
@@ -49,12 +49,12 @@ public class CrossReferencerHelper {
        */
       public void run() {
         // Get the cross referencer.
-        ECrossReferenceAdapter crossReferencer = ((SemanticEditingDomain) MDEAdapterFactory.getEditingDomain()).getCrossReferencer();
+        ECrossReferenceAdapter crossReferencer = ((SemanticEditingDomain) TransactionHelper.getEditingDomain(referencedElement_p)).getCrossReferencer();
         referencingElements.addAll(EcoreUtil2.getReferencingElements(referencedElement_p, crossReferencer));
       }
     };
     // Run the command.
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(referencedElement_p).execute(command);
     return referencingElements;
   }
 

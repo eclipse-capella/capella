@@ -65,6 +65,9 @@ public class ReDescriptionElementItemProvider extends
 
 			addDescriptionPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 

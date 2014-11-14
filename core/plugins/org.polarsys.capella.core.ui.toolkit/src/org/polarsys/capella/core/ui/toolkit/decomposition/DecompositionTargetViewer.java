@@ -90,7 +90,6 @@ public class DecompositionTargetViewer extends FieldsViewer implements IDecompos
   private ToolBar _targetToolBar;
   private TreeViewer _targetTreeViewer;
 
-
   /**
    * @param parent_p
    */
@@ -264,7 +263,7 @@ public class DecompositionTargetViewer extends FieldsViewer implements IDecompos
     _targetTreeViewer.setCellEditors(cellEditors);
     _targetTreeViewer.setCellModifier(new DecompositionTreeCellModifier(_targetTreeViewer));
     _targetTreeViewer.setLabelProvider(new DecompositionLabelProvider(false, _generalViewer.getDecompositionModel().getImgRegistry()));
-    _targetTreeViewer.setContentProvider(new DecompositionTreeNodeContentProvider());
+    _targetTreeViewer.setContentProvider(new DecompositionTreeNodeContentProvider(_decompositionModel));
     _generalViewer.addSelectionListenerToViewer(_targetTreeViewer);
   }
 

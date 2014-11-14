@@ -74,7 +74,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="org.eclipse.sirius.diagram">
+            contributorId="org.eclipse.sirius.diagram.ui">
          <propertyTab
                label="%capellaLabel"
                category="semantic &amp; extension"
@@ -171,7 +171,7 @@
       </propertySections>
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
-	  <propertySections contributorId="org.eclipse.sirius.diagram">
+	  <propertySections contributorId="org.eclipse.sirius.diagram.ui">
          <propertySection tab="Management"
                class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
 			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
@@ -187,7 +187,7 @@
 			   filter="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
                id="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection.diagram">
             <input
-                  type="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+                  type="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
             </input>
          </propertySection>
          <propertySection tab="Base"
@@ -195,7 +195,7 @@
                filter="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
                id="org.polarsys.capella.core.ui.properties.section.DiagramRepresentationPropertySection.diagram">
             <input
-                  type="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+                  type="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
             </input>
          </propertySection>
       </propertySections>
@@ -253,7 +253,7 @@
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="org.eclipse.sirius.diagram"
+            contributorId="org.eclipse.sirius.diagram.ui"
             tabDescriptorProvider="org.polarsys.capella.core.ui.properties.tabbed.DiagramTabDescriptorProvider">
       </propertyContributor>
    </extension>
@@ -270,5 +270,11 @@
             id="toolkitBrowseRenderer"
           class="org.polarsys.capella.core.ui.properties.renderer.ToolkitBrowseRenderer">
       </propertyRenderer>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.ef.editingDomainListener">
+      <editingDomainListener
+            class="org.polarsys.capella.core.ui.properties.CapellalEditingDomainListenerForPropertySections">
+      </editingDomainListener>
    </extension>
 </plugin>

@@ -105,6 +105,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/PhysicalComponentInterfaceDiagram.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalComponentInterfaceDiagram.gif
 /icons/full/obj16/Service.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Service.gif
 /icons/full/obj16/Interface.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Interface.gif
+/icons/full/obj16/Interface_Technical.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Interface_Technical.gif
 /icons/full/obj16/KeyValue.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/KeyValue.gif
 /icons/full/obj16/AsyncSequenceMessage.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/AsyncSequenceMessage.gif
 /icons/full/obj16/InterfaceAllocation.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InterfaceAllocation.gif
@@ -518,3 +519,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/SharedPkg.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SharedPkg.gif
 /icons/full/obj16/FunctionKind_Split.gif - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/icons/full/obj16/FunctionKind_Split.gif
 /icons/full/obj16/ShowHide.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/skip_brkp.gif.gif
+/icons/full/obj16/Pseudostate_deepHistory.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif
+/icons/full/obj16/Pseudostate_shallowHistory.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_shallowHistory.gif
+/icons/full/obj16/Pseudostate_entryPoint.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif
+/icons/full/obj16/Pseudostate_exitPoint.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif

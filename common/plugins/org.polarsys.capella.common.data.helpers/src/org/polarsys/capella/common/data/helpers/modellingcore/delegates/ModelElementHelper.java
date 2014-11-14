@@ -16,11 +16,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 public class ModelElementHelper {
   private static ModelElementHelper instance;
@@ -67,9 +68,10 @@ public class ModelElementHelper {
     if (!isCrossReferencing(element_p)) {
       try {
         markAsCrossReferenced(element_p);
-        SemanticEditingDomain editingDomain = (SemanticEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(element_p);
-        if (editingDomain != null) {
-          Collection<Setting> references = editingDomain.getDerivedCrossReferencer().getInverseReferences(element_p, true);
+
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
+        if (editingDomain instanceof SemanticEditingDomain) {
+          Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
           for (EStructuralFeature.Setting setting : references) {
             if (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__CONSTRAINED_ELEMENTS.equals(setting.getEStructuralFeature())) {
               ret.add((AbstractConstraint) setting.getEObject());

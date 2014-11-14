@@ -35,5 +35,11 @@
             class="org.polarsys.capella.core.ui.reportlog.InformationViewSessionListener">
       </listener>
    </extension>
+   <extension
+         point="org.polarsys.capella.common.ef.editingDomainListener">
+      <editingDomainListener
+            class="org.polarsys.capella.core.ui.reportlog.DeleteMarkerListener">
+      </editingDomainListener>
+   </extension>
    
 </plugin>

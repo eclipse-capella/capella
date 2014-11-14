@@ -18,10 +18,9 @@ import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
-
-import org.polarsys.capella.core.libraries.flexibilityProperties.LibraryManagerModel;
 import org.polarsys.capella.common.libraries.AccessPolicy;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
 
 public final class AccessPolicyEditingSupport extends EditingSupport {
 
@@ -48,13 +47,13 @@ public final class AccessPolicyEditingSupport extends EditingSupport {
 
   @Override
   protected boolean canEdit(Object element) {
-    return model.isAccessPolicyModifiable((IAbstractLibrary) element);
+    return model.isAccessPolicyModifiable((IModel) element);
   }
 
   @Override
   protected Object getValue(Object element) {
-    if (element instanceof IAbstractLibrary) {
-      IAbstractLibrary library = (IAbstractLibrary) element;
+    if (element instanceof IModel) {
+      IModel library = (IModel) element;
       return model.getAccessPolicy(library).getLiteral();
     }
     return null;
@@ -62,8 +61,8 @@ public final class AccessPolicyEditingSupport extends EditingSupport {
 
   @Override
   protected void setValue(Object element, Object value) {
-    if ((element instanceof IAbstractLibrary) && (value instanceof AccessPolicy)) {
-      IAbstractLibrary library = (IAbstractLibrary) element;
+    if ((element instanceof IModel) && (value instanceof AccessPolicy)) {
+      IModel library = (IModel) element;
       AccessPolicy newValue = (AccessPolicy) value;
       /* only set new value if it differs from old one */
       if (!model.getAccessPolicy(library).equals(newValue)) {

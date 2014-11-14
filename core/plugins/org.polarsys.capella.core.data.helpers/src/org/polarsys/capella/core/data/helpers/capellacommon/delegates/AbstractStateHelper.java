@@ -16,14 +16,15 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 
 public class AbstractStateHelper {
 	private static AbstractStateHelper instance;
@@ -107,9 +108,10 @@ public class AbstractStateHelper {
     if (!isCrossReferencing(element_p)) {
       try {
         markAsCrossReferenced(element_p);
-        SemanticEditingDomain editingDomain = (SemanticEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(element_p);
-        if (editingDomain != null) {
-          Collection<Setting> references = editingDomain.getDerivedCrossReferencer().getInverseReferences(element_p, true);
+
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
+        if (editingDomain instanceof SemanticEditingDomain) {
+          Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
           for (EStructuralFeature.Setting setting : references) {
             if (CapellacommonPackage.Literals.REGION__INVOLVED_STATES.equals(setting.getEStructuralFeature())) {
               ret.add((Region) setting.getEObject());

@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import org.polarsys.capella.core.re.handlers.UpdateDefHandler;
 import org.polarsys.capella.core.re.ui.commands.UpdateDefUiCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
+import org.polarsys.capella.common.ef.command.ICommand;
 
 /**
  */

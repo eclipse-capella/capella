@@ -32,6 +32,10 @@ public class Properties implements IProperties {
 
   Collection<IProperties> parents;
 
+  LinkedList<IProperty> allProperties = null;
+
+  LinkedList<IPropertyGroup> allGroups = null;
+
   /**
    * @param idProperties_p
    */
@@ -50,11 +54,15 @@ public class Properties implements IProperties {
   public void addParent(IProperties parent_p) {
     if (!parents.contains(parent_p)) {
       parents.add(parent_p);
+      allGroups = null;
+      allProperties = null;
     }
   }
 
   public void removeParent(IProperties parent_p) {
     parents.remove(parent_p);
+    allGroups = null;
+    allProperties = null;
   }
 
   /**
@@ -77,6 +85,7 @@ public class Properties implements IProperties {
         return;
       }
     }
+    allGroups = null;
     groups.add(group);
   }
 
@@ -104,6 +113,10 @@ public class Properties implements IProperties {
    * @return
    */
   public Collection<IPropertyGroup> getAllGroups() {
+    if (allGroups != null) {
+      return allGroups;
+    }
+
     LinkedList<IProperties> toVisit = new LinkedList<IProperties>();
     HashSet<IProperties> visited = new HashSet<IProperties>();
     LinkedList<IPropertyGroup> result = new LinkedList<IPropertyGroup>();
@@ -126,6 +139,8 @@ public class Properties implements IProperties {
       }
       toVisit.addAll(parent.getParents());
     }
+
+    allGroups = result;
     return result;
 
   }
@@ -150,6 +165,10 @@ public class Properties implements IProperties {
   }
 
   public Collection<IProperty> getAllItems() {
+    if (allProperties != null) {
+      return allProperties;
+    }
+
     LinkedList<IProperties> toVisit = new LinkedList<IProperties>();
     HashSet<IProperties> visited = new HashSet<IProperties>();
 
@@ -177,6 +196,8 @@ public class Properties implements IProperties {
         toVisit.addAll(properties.getParents());
       }
     }
+
+    allProperties = result;
     return result;
   }
 
@@ -203,6 +224,7 @@ public class Properties implements IProperties {
    */
   public void addItem(IProperty item_p) {
     items.add(item_p);
+    allProperties = null;
   }
 
 }

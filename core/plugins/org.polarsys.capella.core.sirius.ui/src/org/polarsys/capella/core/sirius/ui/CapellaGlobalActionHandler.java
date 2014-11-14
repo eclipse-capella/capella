@@ -16,7 +16,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.tools.internal.clipboard.SiriusClipboardGlobalActionHandler;
+import org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardGlobalActionHandler;
 
 public class CapellaGlobalActionHandler extends
 		SiriusClipboardGlobalActionHandler {

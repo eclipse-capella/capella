@@ -113,6 +113,17 @@ public class ReSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RePackage.CATALOG_ELEMENT_PKG: {
+				CatalogElementPkg catalogElementPkg = (CatalogElementPkg)theEObject;
+				T result = caseCatalogElementPkg(catalogElementPkg);
+				if (result == null) result = caseReNamedElement(catalogElementPkg);
+				if (result == null) result = caseReElementContainer(catalogElementPkg);
+				if (result == null) result = caseReAbstractElement(catalogElementPkg);
+				if (result == null) result = caseExtensibleElement(catalogElementPkg);
+				if (result == null) result = caseElement(catalogElementPkg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case RePackage.REC_CATALOG: {
 				RecCatalog recCatalog = (RecCatalog)theEObject;
 				T result = caseRecCatalog(recCatalog);
@@ -126,14 +137,16 @@ public class ReSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RePackage.CATALOG_ELEMENT_PKG: {
-				CatalogElementPkg catalogElementPkg = (CatalogElementPkg)theEObject;
-				T result = caseCatalogElementPkg(catalogElementPkg);
-				if (result == null) result = caseReNamedElement(catalogElementPkg);
-				if (result == null) result = caseReElementContainer(catalogElementPkg);
-				if (result == null) result = caseReAbstractElement(catalogElementPkg);
-				if (result == null) result = caseExtensibleElement(catalogElementPkg);
-				if (result == null) result = caseElement(catalogElementPkg);
+			case RePackage.GROUPING_ELEMENT_PKG: {
+				GroupingElementPkg groupingElementPkg = (GroupingElementPkg)theEObject;
+				T result = caseGroupingElementPkg(groupingElementPkg);
+				if (result == null) result = caseCatalogElementPkg(groupingElementPkg);
+				if (result == null) result = caseElementExtension(groupingElementPkg);
+				if (result == null) result = caseReNamedElement(groupingElementPkg);
+				if (result == null) result = caseReElementContainer(groupingElementPkg);
+				if (result == null) result = caseReAbstractElement(groupingElementPkg);
+				if (result == null) result = caseExtensibleElement(groupingElementPkg);
+				if (result == null) result = caseElement(groupingElementPkg);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -255,6 +268,21 @@ public class ReSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseRecCatalog(RecCatalog object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Grouping Element Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Grouping Element Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGroupingElementPkg(GroupingElementPkg object) {
 		return null;
 	}
 

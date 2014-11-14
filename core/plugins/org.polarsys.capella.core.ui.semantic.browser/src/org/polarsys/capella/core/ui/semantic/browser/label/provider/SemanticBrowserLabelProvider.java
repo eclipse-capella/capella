@@ -22,14 +22,13 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
-import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
-import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
+import org.polarsys.capella.core.ui.semantic.browser.CapellaBrowserActivator;
+import org.polarsys.capella.core.ui.semantic.browser.IImageKeys;
 
 /**
  */
@@ -38,6 +37,10 @@ public class SemanticBrowserLabelProvider extends CapellaNavigatorLabelProvider 
    * The font used for category, to not forget to dispose it
    */
   private Font _font;
+
+  public SemanticBrowserLabelProvider(AdapterFactory adapterFactory_p) {
+    super(adapterFactory_p);
+  }
 
   public SemanticBrowserLabelProvider(TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p) {
     super(editingDomain_p, adapterFactory_p);

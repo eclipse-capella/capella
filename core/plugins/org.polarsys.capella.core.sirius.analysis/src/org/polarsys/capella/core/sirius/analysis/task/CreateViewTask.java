@@ -20,38 +20,36 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
-import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.ArrangeConstraint;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.ArrangeConstraint;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 
@@ -98,7 +96,8 @@ public class CreateViewTask extends AbstractCommandTask {
   private AbstractToolDescription getTool(DSemanticDiagram diagram_p, String toolId_p) {
     AbstractToolDescription result = null;
     final Session session = SessionManager.INSTANCE.getSession(diagram.getTarget());
-    final List<AbstractToolDescription> tools = new DiagramComponentizationManager().getAllTools(session.getSelectedViewpoints(false), diagram.getDescription());
+    final List<AbstractToolDescription> tools =
+        new DiagramComponentizationManager().getAllTools(session.getSelectedViewpoints(false), diagram.getDescription());
 
     for (AbstractToolDescription current : tools) {
       if (current.getName().equals(toolId_p)) {
@@ -160,7 +159,7 @@ public class CreateViewTask extends AbstractCommandTask {
     }
     int currentInheritanceDistance = computeInheritanceDistance(createdObj, currentMapping.getDomainClass());
 
-    if (currentInheritanceDistance != -1 && previousInheritanceDistance > currentInheritanceDistance) {
+    if ((currentInheritanceDistance != -1) && (previousInheritanceDistance > currentInheritanceDistance)) {
       return true;
     }
 
@@ -183,7 +182,7 @@ public class CreateViewTask extends AbstractCommandTask {
       }
 
       int current = computeInheritanceDistance(element_p, domainClass);
-      if (current != -1 && (bestIndex == -1 || bestIndex > current)) {
+      if ((current != -1) && ((bestIndex == -1) || (bestIndex > current))) {
         bestIndex = current;
         bestMapping = mapping;
       }
@@ -240,7 +239,7 @@ public class CreateViewTask extends AbstractCommandTask {
 
     if (isDomainValid(element_p, mapping_p) && mapping_p.checkPrecondition(element_p, getDestinationContainer().getTarget(), getDestinationContainer())) {
       // Remove mappings from an inactive layer
-      Layer layer = (Layer) EcoreUtil2.getFirstContainer(mapping_p, DescriptionPackage.Literals.LAYER);
+      Layer layer = (Layer) EcoreUtil2.getFirstContainer(mapping_p, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER);
       if (layer != null) {
         if (!diagram.getActivatedLayers().contains(layer)) {
           return false;
@@ -342,7 +341,8 @@ public class CreateViewTask extends AbstractCommandTask {
   }
 
   protected boolean autoPinOnCreateEnabled() {
-    return Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), true, new IScopeContext[0]);
+    return Platform.getPreferencesService()
+        .getBoolean(SiriusPlugin.ID, SiriusDiagramPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), true, new IScopeContext[0]);
   }
 
   /**

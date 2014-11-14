@@ -6,14 +6,12 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui.navigator;visibility:=reexport,
  org.eclipse.ui.workbench,
- org.polarsys.capella.common.tig.efprovider,
- org.polarsys.capella.common.tig.ef,
  org.polarsys.capella.common.data.core.gen;visibility:=reexport,
  org.polarsys.capella.common.ui.services
 Export-Package: org.polarsys.capella.common.menu.dynamic,
  org.polarsys.capella.common.menu.dynamic.contributions,
  org.polarsys.capella.common.menu.dynamic.utils
-Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Activator: org.polarsys.capella.common.menu.dynamic.DynamicMenuActivator
 Bundle-Localization: plugin

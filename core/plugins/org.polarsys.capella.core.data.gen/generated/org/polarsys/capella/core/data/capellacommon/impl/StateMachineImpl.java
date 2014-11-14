@@ -37,7 +37,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
@@ -71,7 +71,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getFeatures <em>Features</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getAppliedRequirements <em>Applied Requirements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#isIsControlOperator <em>Is Control Operator</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedParameterSet <em>Owned Parameter Set</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateMachineImpl#getOwnedParameter <em>Owned Parameter</em>}</li>
@@ -338,20 +337,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
-
-
-
-
-
-	/**
 	 * The default value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -467,10 +452,10 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, annotation);
 		
 		try {
@@ -514,10 +499,10 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, annotation);
 		
 		try {
@@ -882,10 +867,10 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
 		
 		try {
@@ -930,24 +915,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 
 	}
 
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
 
 
 
@@ -1051,8 +1018,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				return ((InternalEList<?>)getOwnedEnumerationPropertyTypes()).basicRemove(otherEnd, msgs);
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
 				return ((InternalEList<?>)getOwnedPropertyValueGroups()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
 			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
 				return ((InternalEList<?>)getOwnedRegions()).basicRemove(otherEnd, msgs);
 		}
@@ -1100,8 +1065,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				return getAppliedRequirements();
 			case CapellacommonPackage.STATE_MACHINE__NAME:
 				return getName();
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
 				return isIsControlOperator();
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
@@ -1210,10 +1173,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				}
 				// end-extension-code
 				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
-				return;
 			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof Boolean) {
@@ -1287,9 +1246,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 			case CapellacommonPackage.STATE_MACHINE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
 				setIsControlOperator(IS_CONTROL_OPERATOR_EDEFAULT);
 				return;
@@ -1348,8 +1304,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 				return !getAppliedRequirements().isEmpty();
 			case CapellacommonPackage.STATE_MACHINE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case CapellacommonPackage.STATE_MACHINE__IS_CONTROL_OPERATOR:
 				return isControlOperator != IS_CONTROL_OPERATOR_EDEFAULT;
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PARAMETER_SET:
@@ -1380,7 +1334,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case CapellacommonPackage.STATE_MACHINE__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -1412,7 +1365,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return CapellacommonPackage.STATE_MACHINE__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -1443,8 +1395,6 @@ public class StateMachineImpl extends ModelElementImpl implements StateMachine {
 		result.append(visibleInLM);
 		result.append(", summary: "); //$NON-NLS-1$
 		result.append(summary);
-		result.append(", description: "); //$NON-NLS-1$
-		result.append(description);
 		result.append(", review: "); //$NON-NLS-1$
 		result.append(review);
 		result.append(", name: "); //$NON-NLS-1$

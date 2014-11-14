@@ -231,9 +231,9 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 import <%=genPackage.getQualifiedItemProviderAdapterFactoryClassName()%>;
 
 // begin-capella-code
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
+//import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
+//import org.polarsys.capella.common.tig.ef.ExecutionManager;
+//import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
 // end-capella-code
 
 <%genModel.markImportLocation(stringBuffer);%>
@@ -1001,10 +1001,10 @@ public class <%=genPackage.getEditorClassName()%>
 		// Create the editing domain with a special command stack.
 		//
 		// begin-capella-code
-		// editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new <%=_HashMapOfResourceToBoolean%>());
-		String efName = TigEfProvider.getExecutionManagerName();
-		ExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);
-		editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); 
+		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new <%=_HashMapOfResourceToBoolean%>());
+		//String efName = TigEfProvider.getExecutionManagerName();
+		//ExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);
+		//editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); 
    		// end-capella-code
 
 <%if (genPackage.isExtensibleProviderFactory()) {%>

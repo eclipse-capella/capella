@@ -17,42 +17,46 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
-
-import org.polarsys.capella.common.command.recorder.core.manager.AbstractRecorderManager;
-
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.polarsys.capella.common.command.recorder.core.manager.AbstractRecorderManager;
 
 /**
  * Basic implementation for a Recorder based on ResourceSetListener.
  *
  */
-public abstract class AbstractRecorder extends ResourceSetListenerImpl implements IRecorder, SessionManagerListener2 {
+public abstract class AbstractRecorder extends ResourceSetListenerImpl implements IRecorder, SessionManagerListener {
 
   /** For storage purpose */
   public class Data {
-      /** Constructor */
-    public Data(Date d, List<Notification> notifs ) {
+    /** Constructor */
+    public Data(Date d, List<Notification> notifs) {
       _date = d;
       _notifications = new ArrayList<Notification>(notifs);
     }
+
     /** Accessors on date*/
-    public Date getDate() { return _date;}
+    public Date getDate() {
+      return _date;
+    }
+
     /** Accessors on stored notifications */
-    public List<Notification> getNotification() { return _notifications;}
-    
+    public List<Notification> getNotification() {
+      return _notifications;
+    }
+
     /** Date */
     protected Date _date;
     /** Notifications */
     protected List<Notification> _notifications;
   }
-  
+
   /** Manager */
   protected AbstractRecorderManager _manager;
-  
+
   protected List<Data> _events;
-  
+
   /**
    * Constructor 
    */
@@ -60,19 +64,19 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
     _manager = manager;
     _events = new ArrayList<Data>();
   }
-  
+
   /**
    * @see org.eclipse.emf.transaction.ResourceSetListenerImpl#resourceSetChanged(org.eclipse.emf.transaction.ResourceSetChangeEvent)
    */
   @Override
   public void resourceSetChanged(ResourceSetChangeEvent event_p) {
-    
+
     _events.add(new Data(new Date(), event_p.getNotifications()));
-    
+
     if (null != _manager) {
       _manager.recorderChanged(this, event_p);
     }
-    
+
     return;
   }
 
@@ -80,7 +84,7 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
    * {@inheritDoc}
    */
   public void clearRecords() {
-    for (Data data: _events) { // Clear the notifications
+    for (Data data : _events) { // Clear the notifications
       data.getNotification().clear();
     }
     _events.clear();
@@ -98,12 +102,12 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
    * {@inheritDoc}
    */
   public void notify(Session updatedSession_p, int notification_p) {
+    // Do nothing.
   }
 
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("deprecation")
   public void viewpointDeselected(Viewpoint deselectedViewpoint_p) {
     // Do nothing.
   }
@@ -111,7 +115,6 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("deprecation")
   public void viewpointSelected(Viewpoint selectedViewpoint_p) {
     // Do nothing.
   }
@@ -119,7 +122,6 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("deprecation")
   public void notifyAddSession(Session newSession_p) {
     // Do nothing.
   }
@@ -127,7 +129,6 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("deprecation")
   public void notifyRemoveSession(Session removedSession_p) {
     // Do nothing.
   }
@@ -135,7 +136,6 @@ public abstract class AbstractRecorder extends ResourceSetListenerImpl implement
   /**
    * {@inheritDoc}
    */
-  @SuppressWarnings("deprecation")
   public void notifyUpdatedSession(Session updated_p) {
     // Do nothing.
   }

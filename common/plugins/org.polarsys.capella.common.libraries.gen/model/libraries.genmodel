@@ -6,7 +6,8 @@
     containmentProxies="true" complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.polarsys.kitalpha.emde.model/model/eMDE.genmodel#//emde">
   <foreignModel>libraries.ecore</foreignModel>
   <genPackages prefix="Libraries" basePackage="org.polarsys.capella.common" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="libraries.ecore#/">
+      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="libraries.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="libraries.ecore#//AccessPolicy">
       <genEnumLiterals ecoreEnumLiteral="libraries.ecore#//AccessPolicy/readOnly"/>
       <genEnumLiterals ecoreEnumLiteral="libraries.ecore#//AccessPolicy/readAndWrite"/>

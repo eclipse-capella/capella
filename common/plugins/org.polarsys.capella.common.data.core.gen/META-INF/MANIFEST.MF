@@ -14,9 +14,9 @@ Export-Package: org.polarsys.capella.common.data.core.gen.xmi.impl,
 Require-Bundle: org.polarsys.kitalpha.emde;visibility:=reexport,
  org.polarsys.capella.common.model;visibility:=reexport,
  org.polarsys.capella.common.mdsofa.common;visibility:=reexport,
- org.polarsys.capella.common.platform.sirius.tig;visibility:=reexport,
- org.polarsys.capella.common.tig.efprovider;visibility:=reexport,
- org.polarsys.capella.common.tig.model;visibility:=reexport,
+ org.polarsys.capella.common.platform.sirius.ted;visibility:=reexport,
+ org.polarsys.capella.common.ef;visibility:=reexport,
+ org.polarsys.capella.common.model.helpers;visibility:=reexport,
  org.polarsys.kitalpha.emde.model;visibility:=reexport,
  org.polarsys.kitalpha.emde.xmi;visibility:=reexport
 Bundle-ActivationPolicy: lazy

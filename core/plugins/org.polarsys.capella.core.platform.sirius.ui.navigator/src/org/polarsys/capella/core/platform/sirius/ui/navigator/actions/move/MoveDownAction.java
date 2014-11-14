@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move;
 
-import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 
 /**
  * Move down selected elements.<br>
@@ -24,8 +22,8 @@ public class MoveDownAction extends org.polarsys.capella.core.ui.toolkit.actions
    * Constructor.
    * @param text_p
    */
-  public MoveDownAction(EditingDomain domain_p) {
-    super(domain_p);
+  public MoveDownAction() {
+    super();
     setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_ENABLED_MOVE_DOWN));
     setDisabledImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_DISABLED_MOVE_DOWN));
     setActionDefinitionId("org.polarsys.capella.core.platform.sirius.ui.navigator.moveDown"); //$NON-NLS-1$

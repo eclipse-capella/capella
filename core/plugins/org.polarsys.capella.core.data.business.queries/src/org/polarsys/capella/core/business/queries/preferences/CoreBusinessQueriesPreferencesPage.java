@@ -12,7 +12,6 @@ package org.polarsys.capella.core.business.queries.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-
 import org.polarsys.capella.core.business.queries.BusinessQueriesPlugin;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 

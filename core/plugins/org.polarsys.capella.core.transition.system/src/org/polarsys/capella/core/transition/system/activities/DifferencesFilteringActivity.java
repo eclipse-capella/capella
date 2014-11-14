@@ -12,14 +12,15 @@ package org.polarsys.capella.core.transition.system.activities;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.handlers.filter.AttributeValueFromSource;
 import org.polarsys.capella.core.transition.common.handlers.filter.CompoundFilteringItems;
 import org.polarsys.capella.core.transition.common.handlers.filter.ElementPresenceFromSource;
 import org.polarsys.capella.core.transition.system.handlers.filter.AttributeNameValueFromSource;
+import org.polarsys.capella.core.transition.system.handlers.filter.ElementPresenceManyToOne;
+import org.polarsys.capella.core.transition.system.handlers.filter.ElementPresenceOneToMany;
 import org.polarsys.capella.core.transition.system.handlers.filter.PreferenceFilterItem;
 import org.polarsys.capella.core.transition.system.handlers.filter.RootFilterItem;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -43,6 +44,10 @@ public class DifferencesFilteringActivity extends org.polarsys.capella.core.tran
 
     //Filter to avoid name propagation
     handler_p.addFilterItem(new AttributeNameValueFromSource(), context_p);
+
+    handler_p.addFilterItem(new ElementPresenceOneToMany(), context_p);
+    handler_p.addFilterItem(new ElementPresenceManyToOne(), context_p);
+
     return Status.OK_STATUS;
   }
 

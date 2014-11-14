@@ -25,9 +25,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  */
@@ -62,7 +61,7 @@ public class TreeDelegatedViewer extends AbstractDelegatedViewer {
     _tree.setLayoutData(tableLayoutData);
     // Create the tree viewer for created tree.
     _columnViewer = new TreeViewer(_tree);
-    _columnViewer.setContentProvider(new AdapterFactoryContentProvider(MDEAdapterFactory.getAdapterFactory()));
+    _columnViewer.setContentProvider(new AdapterFactoryContentProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()));
     _columnViewer.setLabelProvider(new CapellaElementLabelProvider());
 
     addViewerListeners();
@@ -108,7 +107,7 @@ public class TreeDelegatedViewer extends AbstractDelegatedViewer {
    * {@inheritDoc}
    */
   public void setEnabled(boolean enabled_p) {
-    if (null != _tree && !_tree.isDisposed()) {
+    if ((null != _tree) && !_tree.isDisposed()) {
       _tree.setEnabled(enabled_p);
     }
   }

@@ -10,18 +10,49 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.capellacommon;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.Collections;
+import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 /**
  */
-public class JoinPseudoState_StateRealizations extends AbstractState_AbstractStateRealizations {
+public class JoinPseudoState_StateRealizations extends AbstractState_AbstractStateRealizations implements IBusinessQuery {
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return CapellacommonPackage.Literals.JOIN_PSEUDO_STATE;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEStructuralFeature()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS);
+	}
+
+	/**
+	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return CapellacommonPackage.Literals.JOIN_PSEUDO_STATE;
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__JOIN_PSEUDO_STATE__STATE_REALIZATIONS, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__JOIN_PSEUDO_STATE__STATE_REALIZATIONS, element_p, context);
+	}
 }

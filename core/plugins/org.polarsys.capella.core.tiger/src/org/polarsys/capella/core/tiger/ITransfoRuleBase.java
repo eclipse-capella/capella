@@ -25,6 +25,8 @@ public interface ITransfoRuleBase {
 
   public abstract ITransfoRule findMatchingRule(EObject element_p, ITransfo transfo_p) throws TransfoException;
 
+  public abstract void loadRules(String rulePkgName_p) throws ClassNotFoundException;
+
   public abstract void loadRule(Class<?> ruleClass_p);
 
   public abstract void loadRules(String rulePkgName_p, String[] classNames_p) throws ClassNotFoundException;

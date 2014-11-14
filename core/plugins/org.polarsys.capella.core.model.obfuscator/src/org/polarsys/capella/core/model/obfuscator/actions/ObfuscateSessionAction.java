@@ -26,17 +26,16 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.core.model.obfuscator.CapellaModelObfuscatorActivator;
 import org.polarsys.capella.core.model.obfuscator.IImageKeys;
 import org.polarsys.capella.core.model.obfuscator.IResourceObfuscator;
-import org.polarsys.capella.core.model.obfuscator.CapellaModelObfuscatorActivator;
 import org.polarsys.capella.core.sirius.ui.actions.CloseSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
 
 /**
  * Obfuscate end-user selected Sirius open sessions.
@@ -62,12 +61,11 @@ public class ObfuscateSessionAction extends BaseSelectionListenerAction {
     }
     // Let's start
     List<Couple<Session, IFile>> sessions = SessionHelper.getSessionsFromSelection(getStructuredSelection());
-    ExecutionManager executionManager = ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName());
     // Loop over sessions to obfuscate them.
     for (Couple<Session, IFile> sessionCouple : sessions) {
-
       Session session = sessionCouple.getKey();
       Collection<Resource> semanticResources = session.getSemanticResources();
+      ExecutionManager executionManager = TransactionHelper.getExecutionManager(session);
 
       // Obfuscate semantic resources.
       for (Resource resource : semanticResources) {

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.actions.extensions;
 
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
@@ -18,7 +19,21 @@ import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerL
 /**
  */
 public class CapellaTransfertViewerLabelProviderIDB extends CapellaTransfertViewerLabelProvider {
- 
+	 
+  /**
+   * Constructor
+   */
+  public CapellaTransfertViewerLabelProviderIDB() {
+	super();
+  }
+
+  /**
+   * Constructor
+   */
+  public CapellaTransfertViewerLabelProviderIDB(TransactionalEditingDomain editingDomain) {
+	super(editingDomain);
+  }
+
   /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider#getText(java.lang.Object)
    */

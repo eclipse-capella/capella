@@ -13,16 +13,14 @@ package org.polarsys.capella.core.business.queries.queries.ctx;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.common.queries.AbstractQuery;
+import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
+import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 
 public class GetAvailable_System_UsedInterfaces extends AbstractQuery {
 
@@ -77,15 +75,7 @@ public class GetAvailable_System_UsedInterfaces extends AbstractQuery {
    */
   private List<CapellaElement> getRule_MQRY_System_UsedInterface_11(SystemEngineering sysEng_p, System system_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    List<SharedPkg> sharedPkgs = SystemEngineeringExt.getSharedPkgs(system_p);
-    availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(SystemEngineeringExt.getOwnedSystemAnalysis(sysEng_p).getOwnedInterfacePkg(), system_p,
-        true));
-    for (SharedPkg sharedPkg : sharedPkgs) {
-      GenericPkg genericPkg = sharedPkg.getOwnedGenericPkg();
-      if (genericPkg != null) {
-        availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(genericPkg, system_p, true));
-      }
-    }
+    availableElements.addAll(InterfacePkgExt.getAllInterfaces(SystemEngineeringExt.getOwnedSystemAnalysis(sysEng_p).getOwnedInterfacePkg()));
     return availableElements;
   }
 

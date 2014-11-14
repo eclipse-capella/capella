@@ -1,4 +1,4 @@
-//Generated on Tue Jun 24 15:10:04 CEST 2014 with EGF 1.2.0.v20140623-0645
+//Generated with EGF 1.2.0.v20140805-0858
 package org.polarsys.capella.common.tig.model;
 
 import org.eclipse.egf.common.helper.*;
@@ -102,12 +102,12 @@ public class ClassgetGenFeatureTODOoverride
 			+ NL
 			+ "      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);"
 			+ NL
-			+ "      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException(\"No helper retrieved for nsURI \" + rootPackage.getNsURI()); ";
+			+ "      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException(\"No helper retrieved for nsURI \" + rootPackage.getNsURI()); ";
 	protected final String TEXT_40 = NL + "    } " + NL
 			+ "    // A helper is found, let's use it. ";
 	protected final String TEXT_41 = NL + "    ";
 	protected final String TEXT_42 = " annotation = ";
-	protected final String TEXT_43 = ".getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);"
+	protected final String TEXT_43 = ".getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);"
 			+ NL + "    result = helper.getValue(this, ";
 	protected final String TEXT_44 = ", annotation);" + NL + "\t\t";
 	protected final String TEXT_45 = NL + "\t\ttry {" + NL
@@ -174,7 +174,7 @@ public class ClassgetGenFeatureTODOoverride
 		StringBuffer stringBuffer = new StringBuffer();
 
 		// add initialisation of the pattern variables (declaration has been already done).
-		oclNsURI = org.polarsys.capella.common.tig.model.IModelConstants.OCL_ANNOTATION_SOURCE;
+		oclNsURI = org.polarsys.capella.common.model.helpers.IModelConstants.OCL_ANNOTATION_SOURCE;
 
 	}
 
@@ -434,14 +434,14 @@ public class ClassgetGenFeatureTODOoverride
 			} else {
 				// Check if the feature has the helper annotation.
 				EAnnotation annotationHelper = eFeature
-						.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+						.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
 				if (null != annotationHelper) {
 					// Generate The helper framework code.
 					stringBuffer.append(TEXT_31);
 					stringBuffer.append(TEXT_32);
 					stringBuffer
 							.append(genModel
-									.getImportedName("org.polarsys.capella.common.tig.model.IHelper"));
+									.getImportedName("org.polarsys.capella.common.model.helpers.IHelper"));
 					stringBuffer.append(TEXT_33);
 					stringBuffer
 							.append(genModel

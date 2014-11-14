@@ -17,22 +17,22 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.interaction.RefinementLink;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.core.refinement.preferences.services.RefinementPrefServices;
-import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorException;
-import org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor;
-import org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.interaction.RefinementLink;
+import org.polarsys.capella.core.refinement.preferences.services.RefinementPrefServices;
+import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorException;
+import org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction;
 
 /**
  */

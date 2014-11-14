@@ -38,7 +38,7 @@
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <parser
          type="airdfragment"
-         class="org.eclipse.sirius.diagram.business.internal.parser.AirDResourceFactory">
+         class="org.eclipse.sirius.business.internal.resource.parser.AirDResourceFactory">
       </parser>
    </extension>
    <extension
@@ -75,7 +75,7 @@
    </extension>
    
    <extension
-         point="org.eclipse.sirius.diagram.layoutDataManager">
+         point="org.eclipse.sirius.diagram.ui.layoutDataManager">
       <layoutDataManagerProvider
             class="org.polarsys.capella.core.sirius.ui.copylayout.CapellaLayoutDataManagerProvider"
             id="org.polarsys.capella.core.sirius.ui.layoutDataManagerProvider">

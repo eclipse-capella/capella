@@ -13,11 +13,14 @@ package org.polarsys.capella.common.consonance.ui.sirius;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.diffmerge.gmf.GMFScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -26,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 
 /**
- * A scope for fragmented Sirius files which covers the semantic elements.
+ * A scope for fragmented Viewpoint files which covers the semantic elements.
  */
 public class SiriusScope extends GMFScope {
   
@@ -41,10 +44,22 @@ public class SiriusScope extends GMFScope {
   
   /**
    * Constructor
-   * @param resource_p a non-null resource
+   * @param uri_p a non-null URI
+   * @param domain_p a non-null editing domain
+   * @param readOnly_p whether the scope is read-only
    */
-  public SiriusScope(Resource resource_p) {
-    super(resource_p);
+  public SiriusScope(URI uri_p, EditingDomain editingDomain_p, boolean readOnly_p) {
+    super(uri_p, editingDomain_p, readOnly_p);
+  }
+  
+  /**
+   * Constructor
+   * @param uri_p a non-null URI
+   * @param resourceSet_p a non-null resource set
+   * @param readOnly_p whether the scope is read-only
+   */
+  public SiriusScope(URI uri_p, ResourceSet resourceSet_p, boolean readOnly_p) {
+    super(uri_p, resourceSet_p, readOnly_p);
   }
   
   /**
@@ -57,10 +72,10 @@ public class SiriusScope extends GMFScope {
       // From Viewpoint to semantic
       result.add(ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target());
     } else if (element_p instanceof DAnalysis) {
-      // From Viewpoint analysis to semantic models ...
-      result.add(ViewpointPackage.eINSTANCE.getDAnalysis_Models());
-      // ... and referenced AIRD fragments
+      // From Viewpoint analysis to referenced AIRD fragments
       result.add(ViewpointPackage.eINSTANCE.getDAnalysis_ReferencedAnalysis());
+      // From Viewpoint analysis to semantic models
+      result.add(ViewpointPackage.eINSTANCE.getDAnalysis_Models());
     }
     return result;
   }

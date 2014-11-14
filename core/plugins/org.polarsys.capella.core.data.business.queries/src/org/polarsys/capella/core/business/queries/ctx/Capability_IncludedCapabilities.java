@@ -10,56 +10,22 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.ctx;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.core.data.ctx.Capability;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude;
-import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
 
 /**
  */
-public class Capability_IncludedCapabilities extends Capability_ExtendedCapabilities {
-
-	/**
-	 * <p>
-	 * Gets all the capabilities extended/included/inherited by the current
-	 * capability.
-	 * </p>
-	 * <p>
-	 * Refer MQRY_Capability_Included_1
-	 * </p>
-	 * 
-	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement)
-	 */
-	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-
-		if (null == systemEngineering) {
-			return currentElements;
-		}
-
-		if (element_p instanceof Capability) {
-			Capability currentCapabilityUseCase = (Capability) element_p;
-
-			for (AbstractCapabilityInclude include : currentCapabilityUseCase.getIncludes()) {
-				currentElements.add(include.getIncluded());
-			}
-		}
-
-		return currentElements;
-	}
+public class Capability_IncludedCapabilities implements IBusinessQuery {
 
 	@Override
   public EClass getEClass() {
@@ -71,4 +37,19 @@ public class Capability_IncludedCapabilities extends Capability_ExtendedCapabili
     return Collections.singletonList(InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDED_ABSTRACT_CAPABILITIES);
   }
 
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CAPABILITY__INCLUDED_CAPABILITIES, element_p, context);
+	}
+	
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__CAPABILITY__INCLUDED_CAPABILITIES, element_p, context);
+	}
+
+	
 }

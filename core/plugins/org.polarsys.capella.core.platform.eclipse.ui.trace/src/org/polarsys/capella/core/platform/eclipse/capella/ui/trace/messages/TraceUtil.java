@@ -10,12 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Display;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.UIUtil;
 import org.polarsys.capella.common.ui.toolkit.ToolkitPlugin;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
@@ -31,11 +36,6 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.Remo
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.components.TraceTreeViewer.TraceType;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.SourceElementContentProvider;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TargetElementContentProvider;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 public class TraceUtil {
 
@@ -47,18 +47,18 @@ public class TraceUtil {
       if (element_p instanceof Trace) {
         Trace trace = (Trace) element_p;
         if (traceDestinationType_p.equals(TraceType.SOURCE_ELEMENT)) {
-          executeCommand(new AddSrcElementToTrace(trace, currentElement_p));
+          executeCommand(trace, new AddSrcElementToTrace(trace, currentElement_p));
           setIsVoidTrace(trace.getSourceElement() == null);
         } else {
-          executeCommand(new AddTgtElementToTrace(trace, currentElement_p));
+          executeCommand(trace, new AddTgtElementToTrace(trace, currentElement_p));
           setIsVoidTrace(trace.getTargetElement() == null);
         }
       } else if ((element_p == null) || (element_p instanceof Class)) {
         if (traceType_p != null) {
           if (traceDestinationType_p.equals(TraceType.SOURCE_ELEMENT)) {
-            executeCommand(new AddTrace(currentElement_p, workingElement_p, traceType_p));
+            executeCommand(currentElement_p, new AddTrace(currentElement_p, workingElement_p, traceType_p));
           } else {
-            executeCommand(new AddTrace(workingElement_p, currentElement_p, traceType_p));
+            executeCommand(currentElement_p, new AddTrace(workingElement_p, currentElement_p, traceType_p));
           }
         }
       }
@@ -90,10 +90,10 @@ public class TraceUtil {
           if (parent instanceof Trace) {
             Trace trace = (Trace) parent;
             if (isSourceElement) {
-              executeCommand(new RemoveSourceTraceElement(trace, eltToDelete));
+              executeCommand(trace, new RemoveSourceTraceElement(trace, eltToDelete));
               setIsVoidTrace(trace.getSourceElement() == null);
             } else {
-              executeCommand(new RemoveTargetTraceElement(trace, eltToDelete));
+              executeCommand(trace, new RemoveTargetTraceElement(trace, eltToDelete));
               setIsVoidTrace(trace.getTargetElement() == null);
             }
             // Traceable element is removed now remove its parent
@@ -122,7 +122,7 @@ public class TraceUtil {
    */
   private static void removeTrace(Trace traceToDelete, boolean isSourceElementTraceType) {
     TraceableElement owningElt = (TraceableElement) traceToDelete.eContainer();
-    executeCommand(new DeleteTrace(traceToDelete));
+    executeCommand(owningElt, new DeleteTrace(traceToDelete));
     boolean containsFlag =
         isSourceElementTraceType ? owningElt.getIncomingTraces().contains(traceToDelete) : owningElt.getOutgoingTraces().contains(traceToDelete);
     boolean emptyFlag = isSourceElementTraceType ? traceToDelete.getSourceElement() == null : traceToDelete.getTargetElement() == null;
@@ -214,11 +214,11 @@ public class TraceUtil {
   /**
    * @param command_p
    */
-  public static void executeCommand(AbstractReadWriteCommand command_p) {
+  public static void executeCommand(EObject context_p, AbstractReadWriteCommand command_p) {
     if (ToolkitPlugin.getDefault().isTransactionRunning()) {
       command_p.run();
     } else {
-      MDEAdapterFactory.getExecutionManager().execute(command_p);
+      TransactionHelper.getExecutionManager(context_p).execute(command_p);
     }
   }
 }

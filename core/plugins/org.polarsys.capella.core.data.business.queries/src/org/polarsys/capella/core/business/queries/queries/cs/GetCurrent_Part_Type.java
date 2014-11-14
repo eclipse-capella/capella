@@ -13,11 +13,11 @@ package org.polarsys.capella.core.business.queries.queries.cs;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.Part;
 
 public class GetCurrent_Part_Type extends AbstractQuery {
 

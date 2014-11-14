@@ -24,6 +24,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#getMechanism <em>Mechanism</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.Interface#isStructural <em>Structural</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#getImplementorComponents <em>Implementor Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#getUserComponents <em>User Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.Interface#getInterfaceImplementations <em>Interface Implementations</em>}</li>
@@ -94,6 +95,44 @@ public interface Interface extends GeneralClass, InterfaceAllocator {
 
 
 
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Structural</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Structural</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Structural</em>' attribute.
+	 * @see #setStructural(boolean)
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getInterface_Structural()
+	 * @model default="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
+	 * @generated
+	 */
+
+	boolean isStructural();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Interface#isStructural <em>Structural</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Structural</em>' attribute.
+	 * @see #isStructural()
+	 * @generated
+	 */
+
+	void setStructural(boolean value);
 
 
 

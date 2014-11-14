@@ -12,21 +12,15 @@ package org.polarsys.capella.common.re.re2rpl.update.properties;
 
 import java.util.Collection;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
-
-import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
-import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.common.re.re2rpl.create.properties.InitialTargetProperty;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
-public class ReplicaProperty extends AbstractProperty implements IEditableProperty {
-
-  private static CatalogElement _rootElement = null;
+public class ReplicaProperty extends InitialTargetProperty {
 
   /**
    * {@inheritDoc}
@@ -34,56 +28,16 @@ public class ReplicaProperty extends AbstractProperty implements IEditableProper
   @Override
   public Object getValue(IPropertyContext context_p) {
     IContext context = (IContext) context_p.getSource();
-    CatalogElement rootElement = (CatalogElement) context.get("RPL");
+    CatalogElement rootElement = (CatalogElement) context.get(TARGET);
 
     if (rootElement == null) {
       Collection<CatalogElement> selectedElements = ReplicableElementHandlerHelper.getInstance(context).getIndirectlySelectedReplicableElements(context);
       if (!selectedElements.isEmpty()) {
         rootElement = selectedElements.iterator().next();
-        context.put("RPL", rootElement);
-        ReplicableElementHandlerHelper.getInstance(context).setTarget(context, rootElement);
+        context.put(TARGET, rootElement);
       }
     }
 
     return rootElement;
   }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Object getType() {
-    return CatalogElement.class;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    IContext context = (IContext) context_p.getSource();
-    CatalogElement element = (CatalogElement) context.get("RPL");
-    if (value_p instanceof String) {
-      element.setName((String) value_p);
-      return element;
-    }
-    return value_p;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setValue(IPropertyContext context_p) {
-
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    return Status.OK_STATUS;
-  }
-
 }

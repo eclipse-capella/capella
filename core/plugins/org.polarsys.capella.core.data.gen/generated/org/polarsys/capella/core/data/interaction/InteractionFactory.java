@@ -309,6 +309,15 @@ public interface InteractionFactory extends EFactory {
 	ConstraintDuration createConstraintDuration();
 
 	/**
+	 * Returns a new object of class '<em>Sequence Message Valuation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sequence Message Valuation</em>'.
+	 * @generated
+	 */
+	SequenceMessageValuation createSequenceMessageValuation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

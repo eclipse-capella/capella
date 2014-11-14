@@ -13,9 +13,9 @@ package org.polarsys.capella.core.libraries.extendedqueries.information;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -23,7 +23,7 @@ import org.polarsys.capella.core.business.abstractqueries.helpers.CapellaElement
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveUnnamedElementFilter;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
@@ -37,9 +37,9 @@ public class GetAvailable_Property_Cardinality__Lib extends AbstractQuery {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
     // get all data in the root data package of each allocated architectures in libraries
     BlockArchitecture blockArchitectureInProject = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(element_p);
-    for (IAbstractLibrary library : ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true)) {
-      BlockArchitecture blockArchitecture = QueryExt.getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaLibrary) library);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
+    for (IModel library : LibraryManagerExt.getAllActivesReferences(currentProject)) {
+      BlockArchitecture blockArchitecture = QueryExt.getCorrespondingBlockArchitectureFromLibrary(blockArchitectureInProject, (CapellaModel) library);
       for (BlockArchitecture currentBlockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(blockArchitecture)) {
         DataPkg dataPkg = currentBlockArchitecture.getOwnedDataPkg();
         if (dataPkg != null) {

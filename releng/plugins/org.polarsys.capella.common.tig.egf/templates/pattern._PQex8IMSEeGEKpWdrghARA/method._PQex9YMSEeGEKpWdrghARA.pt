@@ -804,6 +804,7 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
 		StringBuffer result = new StringBuffer(super.toString());
   <%{ boolean first = true;%>
     <%for (GenFeature genFeature : genClass.getToStringGenFeatures()) {%>
+ <%if (!genFeature.getName().equals("description")) {%>
       <%if (first) { first = false;%>
 		result.append(" (<%=genFeature.getName()%>: ");<%=genModel.getNonNLS()%>
       <%} else {%>
@@ -839,6 +840,7 @@ public interface <%=genClass.getInterfaceName()%><%=genClass.getTypeParameters()
         <%}%>
       <%}%>
     <%}%>
+<%}%>
   <%}%>
 		result.append(')');
 		return result.toString();

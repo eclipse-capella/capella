@@ -15,14 +15,14 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
 
 public class GenericGetForLibWithCorrespondingArchitectureElementAndInputAsList extends AbstractQuery {
@@ -32,12 +32,12 @@ public class GenericGetForLibWithCorrespondingArchitectureElementAndInputAsList 
     List<Object> result = new ArrayList<Object>();
     List<EObject> list = (List<EObject>) input_p;
     if (list.size() > 0) {
-      IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(list.get(0));
-      Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getReferencedLibraries(currentProject, true);
-      for (IAbstractLibrary library : libraries) {
+      IModel currentProject = ILibraryManager.INSTANCE.getModel(list.get(0));
+      Collection<IModel> libraries = LibraryManagerExt.getActivesReferences(currentProject);
+      for (IModel library : libraries) {
         List<EObject> objs = new ArrayList<EObject>();
         for (EObject eObject : list) {
-          EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(eObject, (CapellaLibrary) library);
+          EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(eObject, (CapellaModel) library);
           objs.add(correspondingInput);
         }
         result.addAll(QueryInterpretor.executeQuery(getIdentifier(), objs, context_p));

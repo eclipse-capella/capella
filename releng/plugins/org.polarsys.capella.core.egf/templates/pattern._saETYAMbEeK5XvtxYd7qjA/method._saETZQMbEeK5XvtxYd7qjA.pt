@@ -1,9 +1,0 @@
-for(GenPackage genPackage : newGenModel.getUsedGenPackages()) {
-	boolean useCDO = false;
-	for(String pluginVariable : genPackage.getGenModel().getModelPluginVariables()) {
-		useCDO = useCDO || pluginVariable.startsWith("CDO");
-	}
-	if (!useCDO && !"http://www.eclipse.org/emf/2002/Ecore".equals(genPackage.getNSURI()))
-		throw new IllegalStateException("genModel " + EcoreUtil.getURI(genPackage.getGenModel()).trimFragment() + " is not generated for cdo");
-}
-

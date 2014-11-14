@@ -8,8 +8,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
@@ -40,7 +40,7 @@ public class DWF_DF_14_Resolver extends AbstractCapellaMarkerResolution {
       };
 
       // execute the command
-      MDEAdapterFactory.getExecutionManager().execute(collectElementsCommand);
+      TransactionHelper.getExecutionManager(modelElements).execute(collectElementsCommand);
 
       try {
         marker.delete();

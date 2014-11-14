@@ -34,7 +34,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractMessageDialogWithViewer;
@@ -44,6 +43,7 @@ import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.validation.ui.ide.messages.QuickfixMessages;
 
 public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
@@ -77,7 +77,7 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
      * @param foregroundColorForReferencingElements_p must be a {@link SWT#COLOR} constant.
      */
     public ImpactAnalysisLabelProvider(TreeViewer viewer_p, int foregroundColorForReferencingElements_p) {
-      super(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
+      super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
       _foregroundColor = foregroundColorForReferencingElements_p;
       _viewer = viewer_p;
     }

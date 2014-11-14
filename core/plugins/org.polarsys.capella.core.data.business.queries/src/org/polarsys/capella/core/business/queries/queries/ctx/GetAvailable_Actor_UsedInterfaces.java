@@ -13,19 +13,17 @@ package org.polarsys.capella.core.business.queries.queries.ctx;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.common.queries.AbstractQuery;
+import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 
 public class GetAvailable_Actor_UsedInterfaces extends AbstractQuery {
 
@@ -77,15 +75,15 @@ public class GetAvailable_Actor_UsedInterfaces extends AbstractQuery {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     SystemAnalysis sa = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering_p);
     if (sa != null) {
-      availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(sa.getOwnedInterfacePkg(), currentActor_p, true));
+      availableElements.addAll(InterfacePkgExt.getAllInterfaces(sa.getOwnedInterfacePkg()));
     }
     OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering_p);
     if (oa != null) {
-      availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(oa.getOwnedInterfacePkg(), currentActor_p, true));
+      availableElements.addAll(InterfacePkgExt.getAllInterfaces(oa.getOwnedInterfacePkg()));
     }
     List<Actor> allActors = ActorPkgExt.getAllActors(SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering_p).getOwnedActorPkg());
     for (Actor actor : allActors) {
-      availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(actor.getOwnedInterfacePkg(), currentActor_p, true));
+      availableElements.addAll(InterfacePkgExt.getAllInterfaces(actor.getOwnedInterfacePkg()));
     }
     return availableElements;
   }
@@ -106,13 +104,6 @@ public class GetAvailable_Actor_UsedInterfaces extends AbstractQuery {
    */
   private List<CapellaElement> getAllInterfacesFromShared(Actor currentActor_p, SystemEngineering systemEngineering_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    List<SharedPkg> sharedPkgs = SystemEngineeringExt.getSharedPkgs(currentActor_p);
-    for (SharedPkg sharedPkg : sharedPkgs) {
-      GenericPkg genericPkg = sharedPkg.getOwnedGenericPkg();
-      if (genericPkg != null) {
-        availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(genericPkg, currentActor_p, true));
-      }
-    }
     return availableElements;
   }
 

@@ -14,19 +14,19 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.refinement.merge.exception.MergeException;
 import org.polarsys.capella.core.refinement.merge.merger.DefaultScenarioMerger;
 import org.polarsys.capella.core.refinement.merge.merger.IScenarioMerger;
 import org.polarsys.capella.core.refinement.merge.messages.MergeMessages;
 import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorException;
 import org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 
 /**
@@ -135,10 +135,9 @@ final public class ScenarioMergeProcessor implements IProcessor {
           this
       );
     }
-
-    _target.getOwnedScenarios().add(_result);
     
-    return;
+    HoldingResourceHelper.ensureMoveElement(_result, _target);
+    _target.getOwnedScenarios().add(_result);
   }
 
   /**

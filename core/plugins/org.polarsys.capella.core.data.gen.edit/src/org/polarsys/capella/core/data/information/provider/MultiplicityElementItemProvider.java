@@ -695,6 +695,18 @@ public class MultiplicityElementItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS,
+                         CapellacoreFactory.eINSTANCE.createConstraint());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES,
                          CapellacoreFactory.eINSTANCE.createStringPropertyValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {

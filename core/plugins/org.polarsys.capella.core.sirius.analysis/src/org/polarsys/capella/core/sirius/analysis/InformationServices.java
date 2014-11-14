@@ -27,39 +27,51 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.business.internal.metamodel.spec.DNodeContainerSpec;
-import org.eclipse.sirius.business.internal.metamodel.spec.DNodeListSpec;
-import org.eclipse.sirius.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
+import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.Component;
@@ -130,14 +142,6 @@ import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
 import org.polarsys.capella.core.data.la.LogicalContext;
-import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
-import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
@@ -162,11 +166,6 @@ import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.ui.properties.providers.DependencyLabelProvider;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
 
 /**
  * Services for Information.
@@ -198,8 +197,8 @@ public class InformationServices {
    */
   public List<CapellaElement> getExchangeItemElementTypes(ExchangeItemElement parameter_p) {
     IBusinessQuery query =
-        BusinessQueriesProvider.getInstance()
-            .getContribution(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
+        BusinessQueriesProvider.getInstance().getContribution(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT,
+            CapellacorePackage.Literals.TYPED_ELEMENT__TYPE);
     if (query != null) {
       return query.getAvailableElements(parameter_p);
     }
@@ -390,7 +389,7 @@ public class InformationServices {
     if (showName && (null != parameter)) {
       if (parameter instanceof ExchangeItemElement) {
         ExchangeItemElement exchangeItemElement = (ExchangeItemElement) parameter;
-        if (ElementKind.PARAMETER.equals(exchangeItemElement.getKind())) {
+        if (ElementKind.MEMBER.equals(exchangeItemElement.getKind())) {
           parameterToStringAppendDirection(direction_p, showDirection, sb);
         }
       } else if (parameter instanceof Parameter) {
@@ -506,7 +505,7 @@ public class InformationServices {
         if (parameter instanceof ExchangeItemElement) {
           ExchangeItemElement exchangeItemElement = (ExchangeItemElement) parameter;
           ParameterDirection direction = exchangeItemElement.getDirection();
-          if (ElementKind.PARAMETER.equals(exchangeItemElement.getKind())) {
+          if (ElementKind.MEMBER.equals(exchangeItemElement.getKind())) {
             if (null != direction) {
               sb_p.append(direction.getName());
               sb_p.append(ICommonConstants.WHITE_SPACE_CHARACTER);
@@ -618,8 +617,7 @@ public class InformationServices {
   }
 
   /**
-   * convert a multiplicity to a string
-   * FIXME duplicate used in common.odesign and context.odesign
+   * convert a multiplicity to a string FIXME duplicate used in common.odesign and context.odesign
    * @param element
    * @return
    */
@@ -813,15 +811,15 @@ public class InformationServices {
    * @return
    */
   public Property getAssociationSource(Association association) {
-
-    if (association.getNavigableMembers().size() == 1) {
+    int navigableMembersSize = association.getNavigableMembers().size();
+    if (1 == navigableMembersSize) {
       return getOthers(association.getNavigableMembers().get(0), association.getOwnedMembers());
-
-    } else if (association.getNavigableMembers().size() == 2) {
+    } else if (2 == navigableMembersSize) {
       return association.getNavigableMembers().get(1);
-
-    } else {
+    } else if (association.getOwnedMembers().size() > 0) {
       return association.getOwnedMembers().get(0);
+    } else {
+      return null;
     }
   }
 
@@ -843,15 +841,13 @@ public class InformationServices {
    * @return
    */
   public Property getAssociationTarget(Association association) {
-
-    if (association.getNavigableMembers().size() == 1) {
+    int navigableMembersSize = association.getNavigableMembers().size();
+    if ((1 == navigableMembersSize) || (2 == navigableMembersSize)) {
       return association.getNavigableMembers().get(0);
-
-    } else if (association.getNavigableMembers().size() == 2) {
-      return association.getNavigableMembers().get(0);
-
-    } else {
+    } else if (association.getOwnedMembers().size() > 1) {
       return association.getOwnedMembers().get(1);
+    } else {
+      return null;
     }
   }
 
@@ -2404,152 +2400,164 @@ public class InformationServices {
    * @return
    */
   public boolean isHideAssociationLabelEnable(EObject assocation_p, EObject view_p) {
-    return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ASSOCIATION_LABLE);
+    return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ASSOCIATION_LABELS);
   }
+
 
   /**
-   * @used in common.odesign Return true if "Hide Role Label is true"
-   * @param assocation_p
-   * @param view_p
-   * @return
-   */
-  public boolean isHideRoleLabelEnable(EObject assocation_p, EObject view_p) {
-    return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ROLE_LABLE);
-  }
+    * @used in common.odesign Return true if "Hide Role Label is true"
+    * @param assocation_p
+    * @param view_p
+    * @return
+    */
+   public boolean isHideRoleLabelEnable(EObject assocation_p, EObject view_p) {
+     return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ROLE_LABELS);
+   }
+   
+   /**
+    * @used in common.odesign Return true if "Hide Role Label is true"
+    * @param assocation_p
+    * @param view_p
+    * @return
+    */
+   public boolean isHideRoleNameEnable(EObject assocation_p, EObject view_p) {
+     return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ROLE_NAMES);
+   }
 
-  /**
-   * @used in common.odesign Return true if given filter is true
-   * @param assocation_p
-   * @param view_p
-   * @return
-   */
-  private boolean isDiagramFilterEnable(EObject assocation_p, EObject view_p, String filterName_p) {
-    if (null != view_p) {
-      // get Diagram
-      DDiagram diagram = CapellaServices.getService().getDiagramContainer(view_p);
-      if (diagram == null) {
-        Object oDiagram = CsServices.getService().getInterpreterVariable(assocation_p, IInterpreterSiriusVariables.DIAGRAM);
-        if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
-          diagram = (DDiagram) oDiagram;
-        }
-      }
+   /**
+    * @used in common.odesign Return true if given filter is true
+    * @param assocation_p
+    * @param view_p
+    * @return
+    */
+   private boolean isDiagramFilterEnable(EObject assocation_p, EObject view_p, String filterName_p) {
+     if (null != view_p) {
+       // get Diagram
+       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view_p);
+       if (diagram == null) {
+         Object oDiagram = CsServices.getService().getInterpreterVariable(assocation_p, IInterpreterSiriusVariables.DIAGRAM);
+         if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
+           diagram = (DDiagram) oDiagram;
+         }
+       }
 
-      if (diagram != null) {
-        EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
-        for (FilterDescription filterDescription : activatedFilters) {
-          // if given filter is enable return true
-          if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName_p)) {
-            return true;
-          }
-        }
-      }
-    }
+       if (diagram != null) {
+         EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+         for (FilterDescription filterDescription : activatedFilters) {
+           // if given filter is enable return true
+           if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName_p)) {
+             return true;
+           }
+         }
+       }
+     }
 
-    return false;
-  }
+     return false;
+   }
 
-  /**
-   * Return association begin label
-   * @param context_p : context
-   * @param property_p : Property
-   * @param view_p : current diagram element view
-   * @param showRoleName : decide weather to display the role name
-   * @return
-   */
-  public String getAssociationBeginRoleLabel(EObject context_p, EObject property_p, EObject view_p, boolean showRoleName) {
-    StringBuffer beginLabel = new StringBuffer();
-    if ((null != property_p) && (property_p instanceof Property)) {
-      Property pro = (Property) property_p;
-      boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
-      // prefix
-      if (!hideRoleLabelEnable) {
-        beginLabel.append(prefixPropertyLabel(pro));
-      }
-      // multiplicity
-      String multiplicityToString = multiplicityToString(pro);
-      beginLabel.append(multiplicityToString);
-      if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
-        beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-      }
-      // isDerived
-      if (pro.isIsDerived()) {
-        beginLabel.append(ICommonConstants.SLASH_CHARACTER);
-      }
-      // role name (consider only if filter is disable)
-      if (!hideRoleLabelEnable) {
-        // check if role name is to be displayed
-        if (showRoleName) {
-          beginLabel.append(pro.getName());
-        }
-      }
-    }
-    return beginLabel.toString();
-  }
+   /**
+    * Return association begin label
+    * @param context_p : context
+    * @param property_p : Property
+    * @param view_p : current diagram element view
+    * @param showRoleName : decide weather to display the role name
+    * @return
+    */
+   public String getAssociationBeginRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
+     StringBuffer beginLabel = new StringBuffer();
+     if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
+       Association association = (Association) association_p;
+       Property pro = (Property) property_p;
+       if (association.getNavigableMembers().contains(property_p) || (association.getNavigableMembers().size() == 0))
+       	{
+     	  boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
+     	  boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
 
-  /**
-   * Return Association Center label
-   * @param association_p : an Association
-   * @param view_p : an Association view
-   * @return : association center label
-   */
-  public String getAssociationCenterLabel(EObject association_p, EObject view_p) {
-    // why white space char
-    // The manual refresh of the diagram does not take into account the EmptySting
-    String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
-    if ((null != association_p) && (association_p instanceof Association)) {
-      Association association = (Association) association_p;
-      if (!isHideAssociationLabelEnable(association_p, view_p)) {
-        return association.getName();
-      }
-    }
-    return centerLabel;
-  }
+       // prefix
+       if (!hideRoleLabelEnable) {
+         beginLabel.append(prefixPropertyLabel(pro));
+      
+         // multiplicity
+         String multiplicityToString = multiplicityToString(pro);
+         beginLabel.append(multiplicityToString);
+         if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+         	beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+         }
+         // isDerived
+         if (pro.isIsDerived()) {
+         	beginLabel.append(ICommonConstants.SLASH_CHARACTER);
+         }
+         // role name (consider only if filter is disable)
+         if (!hideRoleNameEnable) {
+         		beginLabel.append(pro.getName());
+         	}
+         }
+       }
+       }
+     return beginLabel.toString();
+   }
 
-  /**
-   * Return association end label
-   * @param context_p : context
-   * @param property_p : Property
-   * @param view_p : current diagram element view
-   * @param showRoleName : decide weather to display the role name
-   * @return
-   */
-  public String getAssociationEndRoleLabel(EObject context_p, EObject property_p, EObject view_p, boolean showRoleName) {
-    StringBuffer endLabel = new StringBuffer();
-    if ((null != property_p) && (property_p instanceof Property)) {
-      Property pro = (Property) property_p;
-      boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
-      // prefix
-      if (!hideRoleLabelEnable) {
-        endLabel.append(prefixPropertyLabel(pro));
-      }
-      // multiplicity
-      String multiplicityToString = multiplicityToString(pro);
-      endLabel.append(multiplicityToString);
-      if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
-        endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-      }
-      // suffix for unionProperty
-      if (!hideRoleLabelEnable) {
-        String suffixLabel = suffixLabelForUnionProperty(property_p, property_p);
-        endLabel.append(suffixLabel);
-        if (!suffixLabel.equals(ICommonConstants.EMPTY_STRING)) {
-          endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-        }
-      }
-      // isDerived
-      if (pro.isIsDerived()) {
-        endLabel.append(ICommonConstants.SLASH_CHARACTER);
-      }
-      // role name (consider only if filter is disable)
-      if (!hideRoleLabelEnable) {
-        // check if role name is to be displayed
-        if (showRoleName) {
-          endLabel.append(pro.getName());
-        }
-      }
-    }
-    return endLabel.toString();
-  }
+   /**
+    * Return Association Center label
+    * @param association_p : an Association
+    * @param view_p : an Association view
+    * @return : association center label
+    */
+   public String getAssociationCenterLabel(EObject association_p, EObject view_p) {
+     // why white space char
+     // The manual refresh of the diagram does not take into account the EmptySting
+     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
+     if ((null != association_p) && (association_p instanceof Association)) {
+       Association association = (Association) association_p;
+       if (!isHideAssociationLabelEnable(association_p, view_p)) {
+           System.out.println(association.getName());
+         return association.getName();
+       }
+     }
+     return centerLabel;
+   }
+
+   /**
+    * Return association end label
+    * @param context_p : context
+    * @param property_p : Property
+    * @param view_p : current diagram element view
+    * @return
+    */
+   public String getAssociationEndRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
+ 	    StringBuffer endLabel = new StringBuffer();
+ 	    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
+ 	      Association association = (Association) association_p;
+ 	      Property pro = (Property) property_p;
+ 	      if (association.getNavigableMembers().contains(property_p) || (association.getNavigableMembers().size() == 0))
+ 	      	{
+ 	    	  boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
+ 	    	  boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
+
+ 	      // prefix
+ 	      if (!hideRoleLabelEnable) {
+ 	        endLabel.append(prefixPropertyLabel(pro));
+ 	     
+ 	        // multiplicity
+ 	        String multiplicityToString = multiplicityToString(pro);
+ 	        endLabel.append(multiplicityToString);
+ 	        if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+ 	        	endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+ 	        }
+ 	        // isDerived
+ 	        if (pro.isIsDerived()) {
+ 	        	endLabel.append(ICommonConstants.SLASH_CHARACTER);
+ 	        }
+ 	        // role name (consider only if filter is disable)
+ 	        if (!hideRoleNameEnable) {
+ 	        		endLabel.append(pro.getName());
+ 	        	}
+ 	        }
+ 	      }
+ 	      }
+     return endLabel.toString();
+   }
+
 
   /**
    * Return project explorer label of given element (if element is type NumericType, take into consideration the unit name)
@@ -3277,7 +3285,7 @@ public class InformationServices {
    * @return
    */
   @SuppressWarnings({ "rawtypes", "unchecked" })
-public List<DataValue> getAvailableDataValuesToInsert(final EObject elementView_p) {
+  public List<DataValue> getAvailableDataValuesToInsert(final EObject elementView_p) {
 
     // Initialization
     List<DataPkg> listPackages = new ArrayList<DataPkg>(1);

@@ -10,9 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.actions;
 
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.ui.IObjectActionDelegate;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.MDTraceViewEditCommand;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands.MDTraceViewListener;
@@ -25,14 +26,14 @@ public class MDTraceViewEditAction extends AbstractTigAction implements IObjectA
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
   public void run(IAction action) {
-
+	TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(getSelectedElement());
     MDTraceViewListener listener = new MDTraceViewListener();
-    MDEAdapterFactory.getEditingDomain().addResourceSetListener(listener);
+    domain.addResourceSetListener(listener);
 
     _command = new MDTraceViewEditCommand(getSelectedElement(), listener);
     getExecutionManager().execute(_command);
 
-    MDEAdapterFactory.getEditingDomain().removeResourceSetListener(listener);
+    domain.removeResourceSetListener(listener);
   }
 
   /**

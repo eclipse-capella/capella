@@ -39,7 +39,7 @@ public class SuffixesProperty extends org.polarsys.capella.common.re.properties.
     Collection<EObject> roots = new HashSet<EObject>();
 
     CatalogElement target =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
 
     //For all new elements (not yet linked thorugh a CEL, if it is a root element, we add it automatically as suffixable
     IContext context = (IContext) context_p.getSource();
@@ -90,7 +90,7 @@ public class SuffixesProperty extends org.polarsys.capella.common.re.properties.
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET };
+    return new String[] { IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET };
   }
 
   /**

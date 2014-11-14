@@ -32,8 +32,8 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.CompositionMultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.ContainmentTableField;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * The Interface section.
@@ -57,7 +57,7 @@ public class InterfaceSection extends NamedElementSection {
     _visibilityKindGroup.setDisplayedInWizard(displayedInWizard);
 
     Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
-    main.setLayout(new GridLayout(5, false));
+    main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     main.setLayoutData(gd);
@@ -98,7 +98,7 @@ public class InterfaceSection extends NamedElementSection {
             }
           }
         };
-        MDEAdapterFactory.getExecutionManager().execute(command);
+        TransactionHelper.getExecutionManager(_semanticElement).execute(command);
         return availableElements;
       }
     };

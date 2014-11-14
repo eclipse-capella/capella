@@ -4,5 +4,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
+/icons/full/etool16/delete_element.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/delete_config.gif
+/icons/deleteModel.gif - org.eclipse.search - org.eclipse.search/icons/full/elcl16/search_remall.gif
 /icons/full/etool16/Replica.gif - org.polarsys.capella.common.re - org.polarsys.capella.common.re/icons/full/etool16/Replica.gif
 /icons/full/etool16/ReplicableElement.gif - org.polarsys.capella.common.re - org.polarsys.capella.common.re/icons/full/etool16/ReplicableElement.gif

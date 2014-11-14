@@ -30,10 +30,11 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.capellacore.NamingRule;
@@ -170,48 +171,28 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 
 
 	/**
-	 * The default value of the '{@link #getPreCondition() <em>Pre Condition</em>}' attribute.
+	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PRE_CONDITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPreCondition() <em>Pre Condition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPreCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String preCondition = PRE_CONDITION_EDEFAULT;
+	protected Constraint preCondition;
 
 
 
 
 
 	/**
-	 * The default value of the '{@link #getPostCondition() <em>Post Condition</em>}' attribute.
+	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPostCondition()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String POST_CONDITION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPostCondition() <em>Post Condition</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPostCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected String postCondition = POST_CONDITION_EDEFAULT;
+	protected Constraint postCondition;
 
 
 
@@ -493,10 +474,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
 		
 		try {
@@ -540,10 +521,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
 		
 		try {
@@ -623,10 +604,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, annotation);
 		
 		try {
@@ -668,8 +649,16 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 
-	public String getPreCondition() {
+	public Constraint getPreCondition() {
 
+		if (preCondition != null && preCondition.eIsProxy()) {
+			InternalEObject oldPreCondition = (InternalEObject)preCondition;
+			preCondition = (Constraint)eResolveProxy(oldPreCondition);
+			if (preCondition != oldPreCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION, oldPreCondition, preCondition));
+			}
+		}
 		return preCondition;
 	}
 
@@ -680,19 +669,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 
-	public void setPreCondition(String newPreCondition) {
+	public Constraint basicGetPreCondition() {
 
-		String oldPreCondition = preCondition;
-		preCondition = newPreCondition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION, oldPreCondition, preCondition));
-
+		return preCondition;
 	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -700,8 +680,31 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 
-	public String getPostCondition() {
+	public void setPreCondition(Constraint newPreCondition) {
 
+		Constraint oldPreCondition = preCondition;
+		preCondition = newPreCondition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION, oldPreCondition, preCondition));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public Constraint getPostCondition() {
+
+		if (postCondition != null && postCondition.eIsProxy()) {
+			InternalEObject oldPostCondition = (InternalEObject)postCondition;
+			postCondition = (Constraint)eResolveProxy(oldPostCondition);
+			if (postCondition != oldPostCondition) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.ABSTRACT_CAPABILITY__POST_CONDITION, oldPostCondition, postCondition));
+			}
+		}
 		return postCondition;
 	}
 
@@ -712,19 +715,25 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 	 * @generated
 	 */
 
-	public void setPostCondition(String newPostCondition) {
+	public Constraint basicGetPostCondition() {
 
-		String oldPostCondition = postCondition;
+		return postCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setPostCondition(Constraint newPostCondition) {
+
+		Constraint oldPostCondition = postCondition;
 		postCondition = newPostCondition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY__POST_CONDITION, oldPostCondition, postCondition));
 
 	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -770,10 +779,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCOMING_CAPABILITY_ALLOCATION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCOMING_CAPABILITY_ALLOCATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCOMING_CAPABILITY_ALLOCATION, annotation);
 		
 		try {
@@ -817,10 +826,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__OUTGOING_CAPABILITY_ALLOCATION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__OUTGOING_CAPABILITY_ALLOCATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__OUTGOING_CAPABILITY_ALLOCATION, annotation);
 		
 		try {
@@ -990,10 +999,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUPER.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUPER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUPER, annotation);
 		
 		try {
@@ -1037,10 +1046,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__SUB, annotation);
 		
 		try {
@@ -1084,10 +1093,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDED_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDED_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDED_ABSTRACT_CAPABILITIES, annotation);
 		
 		try {
@@ -1131,10 +1140,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INCLUDING_ABSTRACT_CAPABILITIES, annotation);
 		
 		try {
@@ -1178,10 +1187,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDED_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDED_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDED_ABSTRACT_CAPABILITIES, annotation);
 		
 		try {
@@ -1225,10 +1234,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__EXTENDING_ABSTRACT_CAPABILITIES, annotation);
 		
 		try {
@@ -1344,10 +1353,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_ABSTRACT_FUNCTIONS, annotation);
 		
 		try {
@@ -1391,10 +1400,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.ABSTRACT_CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS, annotation);
 		
 		try {
@@ -1502,9 +1511,11 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAINS:
 				return getOwnedFunctionalChains();
 			case InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION:
-				return getPreCondition();
+				if (resolve) return getPreCondition();
+				return basicGetPreCondition();
 			case InteractionPackage.ABSTRACT_CAPABILITY__POST_CONDITION:
-				return getPostCondition();
+				if (resolve) return getPostCondition();
+				return basicGetPostCondition();
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_SCENARIOS:
 				return getOwnedScenarios();
 			case InteractionPackage.ABSTRACT_CAPABILITY__INCOMING_CAPABILITY_ALLOCATION:
@@ -1580,18 +1591,18 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION:
 				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
+				if (newValue == null || newValue instanceof Constraint) {
 				// end-extension-code
-					setPreCondition((String)newValue);
+					setPreCondition((Constraint)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__POST_CONDITION:
 				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
+				if (newValue == null || newValue instanceof Constraint) {
 				// end-extension-code
-					setPostCondition((String)newValue);
+					setPostCondition((Constraint)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -1670,10 +1681,10 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 				getOwnedFunctionalChains().clear();
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION:
-				setPreCondition(PRE_CONDITION_EDEFAULT);
+				setPreCondition((Constraint)null);
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__POST_CONDITION:
-				setPostCondition(POST_CONDITION_EDEFAULT);
+				setPostCondition((Constraint)null);
 				return;
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_SCENARIOS:
 				getOwnedScenarios().clear();
@@ -1740,9 +1751,9 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAINS:
 				return ownedFunctionalChains != null && !ownedFunctionalChains.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__PRE_CONDITION:
-				return PRE_CONDITION_EDEFAULT == null ? preCondition != null : !PRE_CONDITION_EDEFAULT.equals(preCondition);
+				return preCondition != null;
 			case InteractionPackage.ABSTRACT_CAPABILITY__POST_CONDITION:
-				return POST_CONDITION_EDEFAULT == null ? postCondition != null : !POST_CONDITION_EDEFAULT.equals(postCondition);
+				return postCondition != null;
 			case InteractionPackage.ABSTRACT_CAPABILITY__OWNED_SCENARIOS:
 				return ownedScenarios != null && !ownedScenarios.isEmpty();
 			case InteractionPackage.ABSTRACT_CAPABILITY__INCOMING_CAPABILITY_ALLOCATION:
@@ -1834,24 +1845,6 @@ public abstract class AbstractCapabilityImpl extends NamedElementImpl implements
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (preCondition: "); //$NON-NLS-1$
-		result.append(preCondition);
-		result.append(", postCondition: "); //$NON-NLS-1$
-		result.append(postCondition);
-		result.append(')');
-		return result.toString();
 	}
 
 

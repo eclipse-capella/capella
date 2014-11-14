@@ -16,5 +16,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.tools.report
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.common.libraries
+Export-Package: org.polarsys.capella.common.libraries,
+ org.polarsys.capella.common.libraries.manager,
+ org.polarsys.capella.common.libraries.model,
+ org.polarsys.capella.common.libraries.policy,
+ org.polarsys.capella.common.libraries.provider
 Bundle-Localization: plugin

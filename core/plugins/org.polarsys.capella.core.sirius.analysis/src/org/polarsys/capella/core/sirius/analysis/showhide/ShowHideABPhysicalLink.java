@@ -13,19 +13,18 @@ package org.polarsys.capella.core.sirius.analysis.showhide;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.PortExt;
 
 /**
  * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts variables

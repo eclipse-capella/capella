@@ -14,24 +14,9 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.view;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.EventObject;
 import java.util.Iterator;
-import java.util.List;
 
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -54,14 +39,10 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.business.internal.session.EditingSession;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
@@ -82,52 +63,48 @@ import org.eclipse.ui.navigator.CommonNavigator;
 import org.eclipse.ui.navigator.CommonViewer;
 import org.eclipse.ui.navigator.INavigatorContentExtension;
 import org.eclipse.ui.navigator.INavigatorContentService;
-import org.eclipse.ui.navigator.SaveablesProvider;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.StringMatcherFactory;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.TreePatternFilter;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveDownAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.ICapellaNavigatorPreferences;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaSaveablesProvider;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaSessionManagerListener;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.ICommandStackSelectionProvider;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.NavigatorEditingDomainDispatcher;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.NavigatorSessionManagerListener;
 import org.polarsys.capella.core.preferences.Activator;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * The Capella common navigator.
  */
-public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPropertySheetPageContributor, IEditingDomainProvider, IPropertyChangeListener {
+public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPropertySheetPageContributor, ICommandStackSelectionProvider,
+    IPropertyChangeListener {
 
   /**
    * Capella common viewer.
    */
-  public class CapellaCommonViewer extends CommonViewer implements IAdaptable {
+  public class CapellaCommonViewer extends CommonViewer {
     /**
      * Pretty much self explanatory.
      */
     protected volatile boolean _isRefreshEnabled;
-    /**
-     * The saveable provider.
-     */
-    private CapellaSaveablesProvider _capellaSaveablesProvider;
 
     /**
      * Constructor.
@@ -138,6 +115,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     public CapellaCommonViewer(String aViewerId_p, Composite aParent_p, int aStyle_p) {
       super(aViewerId_p, aParent_p, aStyle_p);
       _isRefreshEnabled = true;
+      NavigatorEditingDomainDispatcher.registerCommandStackSelectionProvider(CapellaCommonNavigator.this);
     }
 
     /**
@@ -156,6 +134,18 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     public void add(Object parentElementOrTreePath, Object[] childElements) {
       getPatternFilter().clearCaches();
       super.add(parentElementOrTreePath, childElements);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ISelection getSelection() {
+      try {
+        return super.getSelection();
+      } catch (Exception e) {
+        return StructuredSelection.EMPTY;
+      }
     }
 
     /**
@@ -282,20 +272,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @SuppressWarnings("rawtypes")
-    public Object getAdapter(Class clazz_p) {
-      if (SaveablesProvider.class == clazz_p) {
-        return _capellaSaveablesProvider;
-      }
-      return null;
-    }
-
-    void setSaveablesProvider(CapellaSaveablesProvider provider_p) {
-      _capellaSaveablesProvider = provider_p;
-    }
   }
 
   /**
@@ -565,10 +541,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * Memento persistence tag.
    */
   private static final String TAG_MEMENTO = "memento"; //$NON-NLS-1$
-  /**
-   * Use to select and reveal most recent command affected objects.
-   */
-  private CommandStackListener _commandStackListener;
+
   /**
    * Filtered tree used by the common viewer.
    */
@@ -578,16 +551,13 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * Actions to move elements.
    */
   private MoveDownAction _moveDown;
+
   private MoveUpAction _moveUp;
-  /**
-   * The saveable provider.
-   */
-  private CapellaSaveablesProvider _saveablesProvider;
 
   /**
    * The Capella session manager listener.
    */
-  private CapellaSessionManagerListener _sessionManagerListener;
+  private NavigatorSessionManagerListener _sessionManagerListener;
   /**
    * Pattern filter used to apply pattern entered by the end-user on the common viewer.
    */
@@ -615,7 +585,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * Contribute view's toolbar actions.
    */
   protected void contributeToolbarActions() {
-    EditingDomain editingDomain = getEditingDomain();
     IViewSite site = getViewSite();
     // Get the view toolbar manager.
     IToolBarManager toolBarManager = site.getActionBars().getToolBarManager();
@@ -623,102 +592,28 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     IContributionItem[] items = toolBarManager.getItems();
     // Remove all contributions to change the items order.
     toolBarManager.removeAll();
+
     // Add the move up & down actions here to get them before action provider initialization to avoid tool bar recomputation.
-    _moveUp = new MoveUpAction(editingDomain);
+    _moveUp = new MoveUpAction();
     toolBarManager.add(_moveUp);
     SelectionHelper.registerToSelectionChanges(_moveUp, site.getSelectionProvider());
-    _moveDown = new MoveDownAction(editingDomain);
+    _moveDown = new MoveDownAction();
     toolBarManager.add(_moveDown);
     SelectionHelper.registerToSelectionChanges(_moveDown, site.getSelectionProvider());
+
     toolBarManager.add(new Separator());
     // Add initial contributions.
     for (IContributionItem contributionItem : items) {
       toolBarManager.add(contributionItem);
     }
+
     // Update enablement state.
     IStructuredSelection selection = (IStructuredSelection) site.getSelectionProvider().getSelection();
     _moveUp.selectionChanged(selection);
     _moveDown.selectionChanged(selection);
   }
 
-  /**
-   * Create the command stack listener.
-   * @return a not <code>null</code> instance.
-   */
-  protected CommandStackListener createCommandStackListener() {
-    return new CommandStackListener() {
-
-      // Field is never null
-      WeakReference<Command> _mostRecent = new WeakReference<Command>(null);
-
-      public void commandStackChanged(final EventObject event_P) {
-        // Temporary solution: Don't expand anything if we're not in the ui thread
-        // FIXME: have the run method below access the model via EditingDomain.runExclusive()
-        if (getViewSite().getShell().getDisplay().getThread() != Thread.currentThread()) {
-          return;
-        }
-
-        // Precondition : the common viewer must be not disposed.
-        if (getCommonViewer().getControl().isDisposed()) {
-          return;
-        }
-        // Get the most recent command.
-        final Command mostRecentCommand = ((CommandStack) event_P.getSource()).getMostRecentCommand();
-
-        // We also get notified on rollbacks, so better verify if we've handled this command before
-        // Not sure if this is the best solution.
-        if (_mostRecent.get() != mostRecentCommand) {
-          _mostRecent = new WeakReference<Command>(mostRecentCommand);
-        } else {
-          return;
-        }
-
-        if (shouldSelectAndReveal(mostRecentCommand)) {
-          getViewSite().getShell().getDisplay().asyncExec(new Runnable() {
-            /**
-             * Handle Delete commands.
-             * @param affectedObjects
-             */
-            private ISelection handleDeleteCommand(Collection<?> affectedObjects_p) {
-              List<EObject> elementsToSelect = new ArrayList<EObject>(0);
-              for (Object affectedObject : affectedObjects_p) {
-                if (affectedObject instanceof EObject) {
-                  EObject parent = null;
-                  try {
-                    parent = ((EObject) affectedObject).eContainer();
-                  } catch (Exception exception_p) {
-                    // With CDO when closing the sirius session, a late event to select a cdo object can occur.
-                    // If the underlying cdo transaction is closed, we can't call eContainer(). in that case don't select something.
-                  }
-                  if (null != parent) {
-                    elementsToSelect.add(parent);
-                  }
-                }
-              }
-              return new StructuredSelection(elementsToSelect);
-            }
-
-            public void run() {
-              // Try to select the affected objects.
-              Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
-              // Select and reveal objects.
-              if ((null != affectedObjects) && !affectedObjects.isEmpty()) {
-                // Take into account the first contained element, we don't want to select the other ones.
-                // For instance, when creating a property for a class, we don't want to select its min & max cards.
-                ISelection selection = new StructuredSelection(affectedObjects.iterator().next());
-                if ((mostRecentCommand instanceof RecordingCommand) && (mostRecentCommand.getLabel().startsWith(CapellaDeleteCommand.ID))) {
-                  handleDeleteCommand(affectedObjects);
-                }
-                selectReveal(selection);
-              }
-            }
-          });
-        }
-      }
-    };
-  }
-
-  /**
+  /** 
    * @see org.eclipse.ui.navigator.CommonNavigator#createCommonViewer(org.eclipse.swt.widgets.Composite)
    */
   @Override
@@ -733,7 +628,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     });
     _filteredTree = new CapellaFilteredTree(parent_p, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL, _patternFilter);
     final CapellaCommonViewer commonViewer = (CapellaCommonViewer) _filteredTree.getViewer();
-    commonViewer.setSaveablesProvider(_saveablesProvider);
+
     initListeners(commonViewer);
     commonViewer.getNavigatorContentService().restoreState(memento);
     // Listen to changes on "group tree items" preferences to refresh the viewer.
@@ -747,6 +642,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
         }
       }
     });
+
     return commonViewer;
   }
 
@@ -755,17 +651,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    */
   @Override
   public void createPartControl(Composite parent_p) {
-    // Create saveable provider.
-    Collection<Session> activeSessions = SessionManager.INSTANCE.getSessions();
-    if (null == _saveablesProvider) {
-      _saveablesProvider = new CapellaSaveablesProvider();
-      // Add existing active Session in the Capella saveable provider.
-      // Must be performed before CNF initialization to have the right saveables computation at CNF initialization.
-      // One use case is to re-open capella with a previous model opened.
-      for (Session activeSession : activeSessions) {
-        _saveablesProvider.notifyAddSession(activeSession);
-      }
-    }
+
     // Create a composite that hosts the view content.
     Composite composite = new Composite(parent_p, SWT.NONE);
     GridLayout layout = new GridLayout();
@@ -775,14 +661,12 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     // Set a layout data for the common tree viewer.
     CommonViewer commonViewer = getCommonViewer();
     commonViewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
+
     // Install a session manager listener.
     if (null == _sessionManagerListener) {
-      _sessionManagerListener = new CapellaSessionManagerListener(commonViewer, this);
-      // Add existing active Session in the saveable provider.
-      for (Session activeSession : activeSessions) {
-        _sessionManagerListener.notify(activeSession, SessionListener.OPENED); /* Use to expand the tree viewer */
-      }
+      _sessionManagerListener = new NavigatorSessionManagerListener(this);
     }
+
     // Add Capella actions in view's toolbar.
     contributeToolbarActions();
     // Install as property change listener.
@@ -813,8 +697,20 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   }
 
   /**
-   * Disable content notifications until {@link #enableContentNotifications()} is called.
+   * Re-enable content notifications.<br>
+   * This is the default behavior, thus this method should not be called at creation time.
    */
+  public void enableContentNotifications() {
+    // Enable refresh...
+    getCommonViewer()._isRefreshEnabled = true;
+    // ...and notifications.
+    CapellaNavigatorContentProvider contentProvider = getContentProvider();
+    if (null == contentProvider) {
+      return;
+    }
+    contentProvider.enableContentNotifications();
+  }
+
   public void disableContentNotifications() {
     // Disable refresh...
     getCommonViewer()._isRefreshEnabled = false;
@@ -824,6 +720,35 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       return;
     }
     contentProvider.disableContentNotifications();
+  }
+
+  /**
+   * Re-enable content notifications.<br>
+   * This is the default behavior, thus this method should not be called at creation time.
+   */
+  public void enableContentNotifications(SemanticEditingDomain editingDomain) {
+    // Enable refresh...
+    getCommonViewer()._isRefreshEnabled = true;
+    // ...and notifications.
+    CapellaNavigatorContentProvider contentProvider = getContentProvider();
+    if (null == contentProvider) {
+      return;
+    }
+    contentProvider.enableContentNotifications(editingDomain);
+  }
+
+  /**
+   * Disable content notifications until {@link #enableContentNotifications()} is called.
+   */
+  public void disableContentNotifications(SemanticEditingDomain editingDomain) {
+    // Disable refresh...
+    getCommonViewer()._isRefreshEnabled = false;
+    // ...and notifications.
+    CapellaNavigatorContentProvider contentProvider = getContentProvider();
+    if (null == contentProvider) {
+      return;
+    }
+    contentProvider.disableContentNotifications(editingDomain);
   }
 
   /**
@@ -840,40 +765,18 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       selectionProvider.removeSelectionChangedListener(_moveDown);
       _moveDown = null;
     }
-    if (null != _commandStackListener) {
-      // Register this command stack listener.
-      getEditingDomain().getCommandStack().removeCommandStackListener(_commandStackListener);
-      _commandStackListener = null;
-    }
-
     if (null != _sessionManagerListener) {
       _sessionManagerListener.dispose();
       _sessionManagerListener = null;
     }
-    if (null != _saveablesProvider) {
-      // No need to dispose the saveable providers as CNF disposes it automatically from content provider.
-      _saveablesProvider = null;
-    }
+
+    NavigatorEditingDomainDispatcher.unregisterCommandStackSelectionProvider(this);
+
     // Remove as property change listener
     CapellaNavigatorPlugin.getDefault().getPreferenceStore().removePropertyChangeListener(this);
     // Save view settings.
     saveViewSettings();
     super.dispose();
-  }
-
-  /**
-   * Re-enable content notifications.<br>
-   * This is the default behavior, thus this method should not be called at creation time.
-   */
-  public void enableContentNotifications() {
-    // Enable refresh...
-    getCommonViewer()._isRefreshEnabled = true;
-    // ...and notifications.
-    CapellaNavigatorContentProvider contentProvider = getContentProvider();
-    if (null == contentProvider) {
-      return;
-    }
-    contentProvider.enableContentNotifications();
   }
 
   /**
@@ -899,7 +802,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
    * Return the content provider used by this view.
    * @return
    */
-  private CapellaNavigatorContentProvider getContentProvider() {
+  public CapellaNavigatorContentProvider getContentProvider() {
     if ((null != _contentProvider) && (null != _contentProvider.getSessionContentProvider())) {
       return _contentProvider;
     }
@@ -932,14 +835,6 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
       section = dialogSettings.addNewSection(sectionName);
     }
     return section;
-  }
-
-  /**
-   * Gets the editing domain.
-   * @return The editing domain
-   */
-  public EditingDomain getEditingDomain() {
-    return MDEAdapterFactory.getEditingDomain();
   }
 
   /**
@@ -1007,9 +902,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     memento = restoreViewSettings(memento_p);
     super.init(site_p, memento);
     // Add a command stack listener to select and reveal affected objects by the most recent command.
-    _commandStackListener = createCommandStackListener();
-    // Register this command stack listener.
-    getEditingDomain().getCommandStack().addCommandStackListener(_commandStackListener);
+
   }
 
   /**
@@ -1054,63 +947,13 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   }
 
   /**
-   * Should handle most recent command to select and reveal elements in current common viewer.<br>
-   * Default implementation filters out :
-   * <ul>
-   * <li> <code>SetCommand</code> performed with new value of String kind.</li>
-   * <li><code>CompoundCommand</code> containing SetCommand matching previous case.</li>
-   * <li><code>RecordingCommand</code> see {@link #shouldSelectAndReveal(RecordingCommand)}.
-   * </ul>
-   * @param mostRecentCommand_p
-   * @return <code>true</code> means selecteAndReveal needed.
-   */
-  protected boolean shouldSelectAndReveal(Command mostRecentCommand_p) {
-    // Precondition
-    if (null == mostRecentCommand_p) {
-      return false;
-    }
-    boolean shouldHandleMostRecentCommand = true;
-    if (mostRecentCommand_p instanceof SetCommand) {
-      SetCommand setCommand = (SetCommand) mostRecentCommand_p;
-      // Filter out eSet with String value.
-      shouldHandleMostRecentCommand = !(setCommand.getValue() instanceof String);
-    } else if (mostRecentCommand_p instanceof CompoundCommand) {
-      CompoundCommand compoundCommand = (CompoundCommand) mostRecentCommand_p;
-      // Loop over contained commands.
-      for (Command command : compoundCommand.getCommandList()) {
-        shouldHandleMostRecentCommand = shouldSelectAndReveal(command);
-        if (!shouldHandleMostRecentCommand) {
-          break;
-        }
-      }
-    } else if (mostRecentCommand_p instanceof RecordingCommand) {
-      shouldHandleMostRecentCommand = shouldSelectAndReveal((RecordingCommand) mostRecentCommand_p);
-    }
-    return shouldHandleMostRecentCommand;
-  }
-
-  /**
-   * Default implementations filters out all recording commands apart from {@link CapellaDeleteCommand} (identified by {@link CapellaDeleteCommand#ID}
-   * @param mostRecentCommand_p
-   * @return
-   */
-  protected boolean shouldSelectAndReveal(RecordingCommand mostRecentCommand_p) {
-    boolean shouldHandleMostRecentCommand;
-    if (mostRecentCommand_p.getLabel().startsWith(CapellaDeleteCommand.ID)) {
-      shouldHandleMostRecentCommand = true;
-    } else {
-      shouldHandleMostRecentCommand = false;
-    }
-    return shouldHandleMostRecentCommand;
-  }
-
-  /**
+   * FIXME MA01 - ensure Sirius-2776 is now fixed
    * {@inheritDoc}
    */
   @Override
   public Saveable[] getActiveSaveables() {
     // Used by "Save" action.
-    return getAllCurrentSaveables(super.getActiveSaveables());
+    return super.getActiveSaveables();
   }
 
   /**
@@ -1119,41 +962,15 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
   @Override
   public Saveable[] getSaveables() {
     // Used by "Save All" action.
-    return getAllCurrentSaveables(super.getSaveables());
+    return super.getSaveables();
   }
 
   /**
-   * This method return existing saveables : CapellaSaveable but also Sirius saveables if any (for example UICollaborativeSessionSaveable in a collaborative
-   * context)
-   * @see Sirius-2776
-   * @return all the existing saveable
+   * {@inheritDoc}
    */
-  protected Saveable[] getAllCurrentSaveables(Saveable[] existingSaveables) {
-    List<Saveable> saveables = new ArrayList<Saveable>();
-
-    // Retrieve Saveable from the UISession if it exists.
-    Collection<IEditingSession> uiSessions = SessionUIManager.INSTANCE.getUISessions();
-    if ((uiSessions == null) || uiSessions.isEmpty()) {
-      Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
-      for (Session session : sessions) {
-        IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
-        // EditingSession implementation provides Saveables
-        if (editingSession instanceof EditingSession) {
-          saveables.addAll(Arrays.asList(((EditingSession) editingSession).getActiveSaveables()));
-        }
-      }
-    } else {
-      for (IEditingSession iEditingSession : uiSessions) {
-        // EditingSession implementation provides Saveables
-        if (iEditingSession instanceof EditingSession) {
-          saveables.addAll(Arrays.asList(((EditingSession) iEditingSession).getActiveSaveables()));
-        }
-      }
-    }
-
-    // Then add the Capella Saveables
-    saveables.addAll(Arrays.asList(existingSaveables));
-
-    return saveables.toArray(new Saveable[saveables.size()]);
+  @Override
+  public void commandStackSelectionChanged(ISelection selection_p) {
+    selectReveal(selection_p);
   }
+
 }

@@ -14,7 +14,7 @@ package org.polarsys.capella.core.services;
 import java.util.List;
 
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * The Capella editing services.

@@ -28,4 +28,6 @@ public interface IValidationConstants {
    * get back to the corresponding Constraint descriptor.
    */
   public static final String TAG_DIAGNOSTIC = "diagnostic"; //$NON-NLS-1$
+
+  public static final String EMF_RESOURCE = "emfResource"; //$NON-NLS-1$
 }

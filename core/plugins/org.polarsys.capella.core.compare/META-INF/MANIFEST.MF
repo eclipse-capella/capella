@@ -10,8 +10,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.team.core,
  org.polarsys.capella.common.consonance.ui.sirius;visibility:=reexport,
  org.polarsys.capella.core.data.gen,
- org.polarsys.capella.core.model.handler
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.platform.sirius
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.compare
 Bundle-Localization: plugin

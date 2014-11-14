@@ -15,11 +15,11 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.commands.UpdateDefCommand;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
 
 /**
  */
@@ -30,9 +30,7 @@ public class UpdateDefHandler extends AbstractReHandler {
    */
   @Override
   protected ICommand createCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
-    return new UpdateDefCommand(selection_p, progressMonitor_p) {
-
-    };
+    return new UpdateDefCommand(selection_p, progressMonitor_p);
   }
 
   /**
@@ -48,17 +46,13 @@ public class UpdateDefHandler extends AbstractReHandler {
 
     if (!elements.isEmpty()) {
       for (CatalogElement element : elements) {
-        if (!((element.getKind() == CatalogElementKind.REC_RPL) || (element.getKind() == CatalogElementKind.RPL))) {
-          setBaseEnabled(false);
+        if ((element.getKind() == CatalogElementKind.REC_RPL) || (element.getKind() == CatalogElementKind.RPL)) {
+          setBaseEnabled(true);
           return;
         }
       }
-      setBaseEnabled(true);
-
-    } else {
-      setBaseEnabled(false);
-
     }
 
+    setBaseEnabled(false);
   }
 }

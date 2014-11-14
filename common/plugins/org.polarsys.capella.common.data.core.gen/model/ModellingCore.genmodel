@@ -23,6 +23,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ModellingCore.ecore#//ModelElement/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ModellingCore.ecore#//ModelElement/sid"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ModellingCore.ecore#//ModelElement/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//ModelElement/ownedConstraints"/>
       <genOperations ecoreOperation="ModellingCore.ecore#//ModelElement/destroy"/>
       <genOperations ecoreOperation="ModellingCore.ecore#//ModelElement/getFullLabel"/>
       <genOperations ecoreOperation="ModellingCore.ecore#//ModelElement/getLabel"/>
@@ -33,7 +34,6 @@
     </genClasses>
     <genClasses image="false" ecoreClass="ModellingCore.ecore#//AbstractNamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ModellingCore.ecore#//AbstractNamedElement/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//AbstractNamedElement/ownedConstraints"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ModellingCore.ecore#//InformationsExchanger">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ModellingCore.ecore#//InformationsExchanger/incomingInformationFlows"/>
@@ -63,6 +63,8 @@
     </genClasses>
     <genClasses image="false" ecoreClass="ModellingCore.ecore#//AbstractConstraint">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//AbstractConstraint/constrainedElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//AbstractConstraint/ownedSpecification"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference ModellingCore.ecore#//AbstractConstraint/context"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ModellingCore.ecore#//ValueSpecification"/>
     <genClasses image="false" ecoreClass="ModellingCore.ecore#//AbstractParameter">
@@ -89,6 +91,7 @@
     <genClasses image="false" ecoreClass="ModellingCore.ecore#//AbstractExchangeItem"/>
     <genClasses image="false" ecoreClass="ModellingCore.ecore#//IState">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//IState/referencedStates"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModellingCore.ecore#//IState/availableInStates"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

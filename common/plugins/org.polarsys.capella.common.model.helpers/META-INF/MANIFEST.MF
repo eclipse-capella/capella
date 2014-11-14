@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.common.model.helpers;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.common.model.helpers,
+ org.polarsys.capella.common.model.helpers.internal
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.polarsys.capella.common.mdsofa.common;visibility:=reexport
+Bundle-Localization: plugin

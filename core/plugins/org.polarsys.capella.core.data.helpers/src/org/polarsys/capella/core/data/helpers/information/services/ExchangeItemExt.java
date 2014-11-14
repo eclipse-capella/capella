@@ -21,9 +21,13 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -41,11 +45,6 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
 import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
-import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 /**
  */
@@ -133,7 +132,7 @@ public class ExchangeItemExt {
   public static List<AbstractType> getExceptions(ExchangeItem item_p) {
     List<AbstractType> types = new ArrayList<AbstractType>();
     for (ExchangeItemElement element : item_p.getOwnedElements()) {
-      if (ElementKind.PARAMETER.equals(element.getKind()) && ParameterDirection.EXCEPTION.equals(element.getDirection())) {
+      if (ElementKind.MEMBER.equals(element.getKind()) && ParameterDirection.EXCEPTION.equals(element.getDirection())) {
         types.add(element.getType());
       }
     }
@@ -215,7 +214,7 @@ public class ExchangeItemExt {
 
     if (item_p instanceof ExchangeItem) {
       for (ExchangeItemElement element : ((ExchangeItem) item_p).getOwnedElements()) {
-        if (ElementKind.PARAMETER.equals(element.getKind())) {
+        if (ElementKind.MEMBER.equals(element.getKind())) {
           types.add(element.getType());
         }
       }

@@ -281,6 +281,10 @@ public class InteractionAdapterFactory extends AdapterFactoryImpl {
 				return createConstraintDurationAdapter();
 			}
 			@Override
+			public Adapter caseSequenceMessageValuation(SequenceMessageValuation object) {
+				return createSequenceMessageValuationAdapter();
+			}
+			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
@@ -903,6 +907,20 @@ public class InteractionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConstraintDurationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation <em>Sequence Message Valuation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.interaction.SequenceMessageValuation
+	 * @generated
+	 */
+	public Adapter createSequenceMessageValuationAdapter() {
 		return null;
 	}
 

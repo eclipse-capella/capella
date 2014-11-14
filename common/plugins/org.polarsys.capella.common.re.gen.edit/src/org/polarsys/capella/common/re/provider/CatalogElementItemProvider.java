@@ -30,12 +30,14 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.common.re.ReFactory;
 import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.ReFactory;
 import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -44,50 +46,118 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CatalogElementItemProvider extends
-		ReDescriptionElementItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
-	/**
-	 * This constructs an instance from a factory and a notifier.
+public class CatalogElementItemProvider extends ReDescriptionElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+    ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+  /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public CatalogElementItemProvider(AdapterFactory adapterFactory) {
+	protected IItemPropertyDescriptor originPropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor currentCompliancyPropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor defaultReplicaCompliancyPropertyDescriptor;
+
+		/**
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public CatalogElementItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-
-	/**
-	 * This returns the property descriptors for the adapted class.
+  /**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process RePackage.Literals.CATALOG_ELEMENT__ORIGIN
+			if (originPropertyDescriptor != null) {
+				Object originValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__ORIGIN, true);
+				if (originValue != null && originValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) originValue)) {
+					itemPropertyDescriptors.remove(originPropertyDescriptor);
+				} else if (originValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__ORIGIN) != null) {
+					itemPropertyDescriptors.remove(originPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(originPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(originPropertyDescriptor);
+				}
+			}
+			// Process RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY
+			if (currentCompliancyPropertyDescriptor != null) {
+				Object currentCompliancyValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY, true);
+				if (currentCompliancyValue != null && currentCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) currentCompliancyValue)) {
+					itemPropertyDescriptors.remove(currentCompliancyPropertyDescriptor);
+				} else if (currentCompliancyValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__CURRENT_COMPLIANCY) != null) {
+					itemPropertyDescriptors.remove(currentCompliancyPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(currentCompliancyPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(currentCompliancyPropertyDescriptor);
+				}
+			}
+			// Process RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY
+			if (defaultReplicaCompliancyPropertyDescriptor != null) {
+				Object defaultReplicaCompliancyValue = eObject.eGet(RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY, true);
+				if (defaultReplicaCompliancyValue != null && defaultReplicaCompliancyValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) defaultReplicaCompliancyValue)) {
+					itemPropertyDescriptors.remove(defaultReplicaCompliancyPropertyDescriptor);
+				} else if (defaultReplicaCompliancyValue == null && ExtensionModelManager.getAnyType(eObject, RePackage.Literals.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY) != null) {
+					itemPropertyDescriptors.remove(defaultReplicaCompliancyPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(defaultReplicaCompliancyPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(defaultReplicaCompliancyPropertyDescriptor);
+				}
+			}
+		}		
+	}
+
+		/**
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addKindPropertyDescriptor(object);
 			addAuthorPropertyDescriptor(object);
 			addEnvironmentPropertyDescriptor(object);
+			addPurposePropertyDescriptor(object);
 			addTagsPropertyDescriptor(object);
 			addOriginPropertyDescriptor(object);
 			addCurrentCompliancyPropertyDescriptor(object);
 			addDefaultReplicaCompliancyPropertyDescriptor(object);
+			addReferencedElementsPropertyDescriptor(object);
+			addReplicatedElementsPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 
-	/**
+  /**
 	 * This adds a property descriptor for the Kind feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addKindPropertyDescriptor(Object object) {
+  protected void addKindPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -108,13 +178,13 @@ public class CatalogElementItemProvider extends
 		// end-extension-code
 	}
 
-	/**
+  /**
 	 * This adds a property descriptor for the Author feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addAuthorPropertyDescriptor(Object object) {
+  protected void addAuthorPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -135,13 +205,13 @@ public class CatalogElementItemProvider extends
 		// end-extension-code
 	}
 
-	/**
+  /**
 	 * This adds a property descriptor for the Environment feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addEnvironmentPropertyDescriptor(Object object) {
+  protected void addEnvironmentPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -162,13 +232,40 @@ public class CatalogElementItemProvider extends
 		// end-extension-code
 	}
 
-	/**
-	 * This adds a property descriptor for the Tags feature.
+  /**
+	 * This adds a property descriptor for the Purpose feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTagsPropertyDescriptor(Object object) {
+  protected void addPurposePropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElement_purpose_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_purpose_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT__PURPOSE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+  /**
+	 * This adds a property descriptor for the Tags feature.
+	 * <!-- begin-user-doc -->
+  * <!-- end-user-doc -->
+	 * @generated
+	 */
+  protected void addTagsPropertyDescriptor(Object object) {
 
 		// begin-extension-code
 		itemPropertyDescriptors.add
@@ -189,18 +286,16 @@ public class CatalogElementItemProvider extends
 		// end-extension-code
 	}
 
-	/**
+  /**
 	 * This adds a property descriptor for the Origin feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addOriginPropertyDescriptor(Object object) {
-
+  protected void addOriginPropertyDescriptor(Object object) {
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		originPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CatalogElement_origin_feature"), //$NON-NLS-1$
@@ -212,22 +307,21 @@ public class CatalogElementItemProvider extends
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(originPropertyDescriptor);
 		// end-extension-code
 	}
 
-	/**
+  /**
 	 * This adds a property descriptor for the Current Compliancy feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCurrentCompliancyPropertyDescriptor(Object object) {
-
+  protected void addCurrentCompliancyPropertyDescriptor(Object object) {
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		currentCompliancyPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CatalogElement_currentCompliancy_feature"), //$NON-NLS-1$
@@ -239,22 +333,21 @@ public class CatalogElementItemProvider extends
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(currentCompliancyPropertyDescriptor);
 		// end-extension-code
 	}
 
-	/**
+  /**
 	 * This adds a property descriptor for the Default Replica Compliancy feature.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addDefaultReplicaCompliancyPropertyDescriptor(Object object) {
-
+  protected void addDefaultReplicaCompliancyPropertyDescriptor(Object object) {
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		defaultReplicaCompliancyPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_CatalogElement_defaultReplicaCompliancy_feature"), //$NON-NLS-1$
@@ -266,21 +359,75 @@ public class CatalogElementItemProvider extends
 				 null,
 				 null,
 		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(defaultReplicaCompliancyPropertyDescriptor);
+		// end-extension-code
+	}
+
+  /**
+	 * This adds a property descriptor for the Referenced Elements feature.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  protected void addReferencedElementsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElement_referencedElements_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_referencedElements_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
 				 null));
 		// end-extension-code
 	}
 
-	/**
+  /**
+	 * This adds a property descriptor for the Replicated Elements feature.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  protected void addReplicatedElementsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CatalogElement_replicatedElements_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_replicatedElements_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+  /**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+  @Override
+  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(RePackage.Literals.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS);
@@ -289,93 +436,82 @@ public class CatalogElementItemProvider extends
 		return childrenFeatures;
 	}
 
-	/**
+  /**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
+  @Override
+  protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
 	}
 
-	/**
-	 * This returns CatalogElement.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public Object getImage(Object object) {
+  /**
+   * This returns CatalogElement.gif.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  @Override
+  public Object getImage(Object object) {
 
-		if (object instanceof CatalogElement) {
-			if (((CatalogElement) object).getKind() == CatalogElementKind.REC) {
-				return overlayImage(
-						object,
-						getResourceLocator().getImage(
-								"full/obj16/ReplicableElement")); //$NON-NLS-1$
-			} else if (((CatalogElement) object).getKind() == CatalogElementKind.RPL) {
-				return overlayImage(object,
-						getResourceLocator().getImage("full/obj16/Replica")); //$NON-NLS-1$
-			} else if (((CatalogElement) object).getKind() == CatalogElementKind.REC_RPL) {
-				return overlayImage(
-						object,
-						getResourceLocator().getImage(
-								"full/obj16/ReplicableElementReplica")); //$NON-NLS-1$
-			} else if (((CatalogElement) object).getKind() == CatalogElementKind.GATHERING) {
-				return overlayImage(
-						object,
-						getResourceLocator().getImage(
-								"full/obj16/GatheringElement")); //$NON-NLS-1$
-			}
-		}
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/CatalogElement")); //$NON-NLS-1$
-	}
+    if (object instanceof CatalogElement) {
+      if (((CatalogElement) object).getKind() == CatalogElementKind.REC) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReplicableElement")); //$NON-NLS-1$
+      } else if (((CatalogElement) object).getKind() == CatalogElementKind.RPL) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/Replica")); //$NON-NLS-1$
+      } else if (((CatalogElement) object).getKind() == CatalogElementKind.REC_RPL) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ReplicableElementReplica")); //$NON-NLS-1$
+      } else if (((CatalogElement) object).getKind() == CatalogElementKind.GROUPING) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/GroupingElement")); //$NON-NLS-1$
+      }
+    }
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/GroupingElement")); //$NON-NLS-1$
+  }
 
-	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public String getText(Object object) {
+  /**
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated NOT
+   */
+  @Override
+  public String getText(Object object) {
 
-		CatalogElement element = (CatalogElement) object;
-		// begin-extension-code
+    CatalogElement element = (CatalogElement) object;
+    // begin-extension-code
 
-		String label = element.getName();
-		label = (label == null) || (label.length() == 0) ? "["
-				+ getString("_UI_CatalogElement_type") + "]" : label;
+    String label = element.getName();
+    label = (label == null) || (label.length() == 0) ? "[" + getString("_UI_CatalogElement_type") + "]" : label;
 
-		if (element.getOrigin() != null) {
-			String labelOrigin = element.getOrigin().getName();
-			label += NLS.bind(" [{0}]", labelOrigin);
-		}
+    if (element.getOrigin() != null) {
+      String labelOrigin = element.getOrigin().getName();
+      label += NLS.bind(" [{0}]", labelOrigin);
+    }
 
-		return label;
-		// end-extension-code
-	}
+    return label;
+    // end-extension-code
+  }
 
-	/**
+  /**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void notifyChanged(Notification notification) {
+  @Override
+  public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CatalogElement.class)) {
 			case RePackage.CATALOG_ELEMENT__KIND:
 			case RePackage.CATALOG_ELEMENT__AUTHOR:
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
@@ -387,16 +523,15 @@ public class CatalogElementItemProvider extends
 		super.notifyChanged(notification);
 	}
 
-
-	/**
+  /**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+  @Override
+  protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
@@ -424,16 +559,14 @@ public class CatalogElementItemProvider extends
 
 	}
 
-
-	/**
+  /**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected Command createInitializeCopyCommand(EditingDomain domain_p, EObject owner_p, Helper helper_p) {
+  @Override
+  protected Command createInitializeCopyCommand(EditingDomain domain_p, EObject owner_p, Helper helper_p) {
 		return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
 	}
-
 
 }

@@ -20,8 +20,14 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
+import org.polarsys.capella.common.re.handlers.location.LocationHandlerHelper;
+import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.common.re.handlers.traceability.MatchConfiguration;
 import org.polarsys.capella.core.transition.common.activities.AbstractActivity;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
@@ -29,19 +35,8 @@ import org.polarsys.capella.core.transition.common.handlers.attachment.Attachmen
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
-import org.polarsys.capella.core.transition.common.rules.AbstractRule;
-import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.common.re.CatalogElementKind;
-import org.polarsys.capella.common.re.CatalogElementLink;
-import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
-import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
-import org.polarsys.capella.common.re.handlers.traceability.MatchConfiguration;
-import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
-import org.polarsys.kitalpha.transposer.rules.handler.exceptions.possibilities.MappingPossibilityResolutionException;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
-import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IRule;
-import org.polarsys.kitalpha.transposer.rules.handler.rules.common.MappingPossibility;
 
 /**
  *
@@ -103,7 +98,7 @@ public class AttachmentActivity extends AbstractActivity {
     }
 
     //Update user-modified features
-    for (EObject custom : AttributesHandlerHelper.getInstance(context).getCustoms(context)) {
+    for (EObject custom : AttributesHandlerHelper.getInstance(context).getCustomNameElements(context)) {
       if (custom instanceof CatalogElementLink) {
         EObject target = ((CatalogElementLink) custom).getTarget();
         if (target != null) {
@@ -214,7 +209,8 @@ public class AttachmentActivity extends AbstractActivity {
       if (((CatalogElementLink) object_p).getOrigin().getUnsynchronizedFeatures().contains("name")) {
         EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
         String name = (String) target.eGet(feature);
-        if (!((name != null) && name.endsWith(suffix))) {
+        //if (!((name != null) && name.endsWith(suffix))) {
+        if (name != null) {
           target.eSet(feature, name + suffix);
         }
       }
@@ -271,20 +267,23 @@ public class AttachmentActivity extends AbstractActivity {
     EObject targetElement = ((CatalogElementLink) source_p).getTarget();
     IMatch match = comparison.getMapping().getMatchFor(targetElement, destinationRole);
 
+    if (match == null) {
+      return;
+    }
     EObject source = match.get(oppositeRole);
     EObject target = match.get(destinationRole);
 
-    CatalogElementLink oppositeLink = AttributesHandlerHelper.getInstance(context_p).getOppositeLink(link, context_p);
+    CatalogElementLink oppositeLink = ReplicableElementHandlerHelper.getInstance(context_p).getOppositeLink(link, context_p);
 
     //For a REC to RPL, all location have been set as current after the first wizard. location should not be null for these modes.
-    EObject location = AttributesHandlerHelper.getInstance(context_p).getCurrentLocation(link, context_p);
+    EObject location = LocationHandlerHelper.getInstance(context_p).getCurrentLocation(link, context_p);
     if (location == null) {
       //For a RPL to REC, we can go in that case.
       //When an element have been added from the RPL to the REC. There is no wizard to set the location (sic)
       //but since we have a new element created, we need to store it somewhere...
-      location = AttributesHandlerHelper.getInstance(context_p).getLocation(link, oppositeLink, context_p);
+      location = LocationHandlerHelper.getInstance(context_p).getLocation(link, oppositeLink, context_p);
       if (location == null) {
-        location = AttributesHandlerHelper.getInstance(context_p).getDefaultLocation(link, oppositeLink, context_p);
+        location = LocationHandlerHelper.getInstance(context_p).getDefaultLocation(link, oppositeLink, context_p);
       }
     }
 
@@ -294,52 +293,22 @@ public class AttachmentActivity extends AbstractActivity {
         if (match2 == null) {
           match2 = comparison.getMapping().getMatchFor(((CatalogElementLink) location).getTarget(), destinationRole);
         }
-        location = match2.get(destinationRole);
+        if (match2 != null) {
+          location = match2.get(destinationRole);
+        } else {
+          //No match, location is not in the scope of the diffmerge.
+          //This can occurs when instanciating sub replicas: a sub replica's element can be located inside 
+          //a super replica's element which is not present in the scope at the time where instanciating the sub replica.
+          //It will be stored when re-updating the super-replica.
+        }
       }
     }
 
     if (location != null) {
-      attachElement(context_p, target, location, getFeature(source, target, location, context_p));
+      EStructuralFeature feature = LocationHandlerHelper.getInstance(context_p).getFeature(source, target, location, context_p);
+      attachElement(context_p, target, location, feature);
     }
 
-  }
-
-  /**
-   * @param source_p
-   * @param target_p
-   * @param currentLocation_p
-   * @return
-   */
-  protected EStructuralFeature getFeature(EObject source_p, EObject target_p, EObject currentLocation_p, IContext context_p) {
-
-    if (source_p == null) {
-      return null;
-    }
-    IRulesHandler ruleHandler = (IRulesHandler) context_p.get(ITransitionConstants.RULES_HANDLER);
-    AbstractRule arule = null;
-    try {
-      if (ruleHandler != null) {
-        MappingPossibility mapping = ruleHandler.getApplicablePossibility(source_p);
-        if (mapping != null) {
-          IRule<?> rule = ruleHandler.getApplicablePossibility(source_p).getCompleteRule();
-          if ((rule != null) && (rule instanceof AbstractRule)) {
-            arule = (AbstractRule) rule;
-          }
-        }
-      }
-    } catch (MappingPossibilityResolutionException exception_p) {
-      //Nothing to report
-    }
-
-    if (arule != null) {
-      EStructuralFeature targetFeature = arule._getTargetContainementFeature(source_p, target_p, currentLocation_p, context_p);
-      if (targetFeature != null) {
-        if (AttachmentHelper.getInstance(context_p).isApplicable(currentLocation_p.eClass(), targetFeature)) {
-          return targetFeature;
-        }
-      }
-    }
-    return source_p.eContainingFeature();
   }
 
   /**
@@ -349,7 +318,7 @@ public class AttachmentActivity extends AbstractActivity {
    */
   protected boolean attachElement(IContext context_p, EObject source_p, EObject container, EStructuralFeature feature) {
 
-    if (container != null) {
+    if ((container != null) && (feature != null)) {
       if (AttachmentHelper.getInstance(context_p).isApplicable(container.eClass(), feature)) {
         AttachmentHelper.getInstance(context_p).attachElementByReference(container, source_p, (EReference) feature);
         return true;

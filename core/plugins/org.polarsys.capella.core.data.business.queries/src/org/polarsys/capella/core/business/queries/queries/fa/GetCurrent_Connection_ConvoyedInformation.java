@@ -14,12 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
 
 public class GetCurrent_Connection_ConvoyedInformation extends AbstractQuery {
 

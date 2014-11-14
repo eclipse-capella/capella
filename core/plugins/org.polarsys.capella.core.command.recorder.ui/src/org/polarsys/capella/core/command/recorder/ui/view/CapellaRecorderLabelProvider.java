@@ -26,7 +26,7 @@ import org.polarsys.capella.common.command.recorder.core.writer.DummyTreeData;
 import org.polarsys.capella.common.command.recorder.ui.view.RecorderSharedImages;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  */
@@ -136,7 +136,7 @@ public class CapellaRecorderLabelProvider implements ITableLabelProvider {
    * @return an {@link ItemProviderAdapter} if any.
    */
   private static ItemProviderAdapter getItemProvider(EObject object_p) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) MDEAdapterFactory.getEditingDomain();
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object_p);
     IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
     return (ItemProviderAdapter) provider;
   }

@@ -137,6 +137,27 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JustificationLink" eSuperTypes="#//GenericTrace">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="JustificationLink"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="specialized trace to keep track of relationships between source elements of a transformation, and destination elements.&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Dependency"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CapabilityRealizationInvolvement" abstract="true"
       eSuperTypes="CapellaCore.ecore#//Involvement">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
@@ -524,7 +545,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StateTransition" eSuperTypes="CapellaCore.ecore#//Relationship">
+  <eClassifiers xsi:type="ecore:EClass" name="StateTransition" eSuperTypes="CapellaCore.ecore#//NamedElement CapellaCore.ecore#//Relationship">
     <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
       <details key="description" value="A transition is a directed relationship between a source vertex and a target vertex. It may be part of a compound&#xD;&#xA;transition, which takes the state machine from one state configuration to another, representing the complete response of&#xD;&#xA;the state machine to an occurrence of an event of a particular type.&#xD;&#xA;[source: UML superstructure v2.2]"/>
       <details key="usage guideline" value="n/a"/>
@@ -541,20 +562,6 @@
       <details key="constraints" value="none"/>
     </eAnnotations>
     <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="guard" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="specifies the guard of the state transition"/>
-        <details key="constraints" value="none"/>
-        <details key="type" value=""/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value=""/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//TransitionKind">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="specifies the type of the state transition (see TransitionKind)&#xD;&#xA;[source: Capella study]"/>
@@ -572,6 +579,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="triggerDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
         <details key="description" value="describes the trigger associated to the transition&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value=""/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="ecore:EClass CapellaCore.ecore#//Constraint">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifies the guard of the state transition"/>
         <details key="constraints" value="none"/>
         <details key="type" value=""/>
         <details key="comment/notes" value="none"/>
@@ -624,28 +645,15 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractEvent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="triggers" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractEvent">
       <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="The event to be triggered"/>
+        <details key="description" value="Specifies the triggers that may fire the transition."/>
         <details key="constraints" value="none"/>
         <details key="comment/notes" value="none"/>
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value=""/>
-        <details key="explanation" value="none"/>
-        <details key="constraints" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedGuardCondition" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint"
-        containment="true">
-      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
-        <details key="description" value="A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated&#xD;&#xA;when an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be&#xD;&#xA;enabled; otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with&#xD;&#xA;side effects are ill formed.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
-        <details key="constraints" value="none"/>
-        <details key="comment/notes" value="none"/>
-      </eAnnotations>
-      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
-        <details key="UML/SysML semantic equivalences" value="uml::Transition::guard"/>
+        <details key="UML/SysML semantic equivalences" value="uml::Transition::trigger"/>
         <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>
@@ -924,6 +932,297 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
         <details key="UML/SysML semantic equivalences" value="uml::TransitionKind::external"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ShallowHistoryPseudoState" eSuperTypes="#//Pseudostate">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Shallow history represents the most recent active substate of its containing state (but not the substates of that substate).&#xD;&#xA;A composite state can have at most one shallow history vertex. A transition coming into the shallow history vertex is&#xD;&#xA;equivalent to a transition coming into the most recent active substate of a state. At most one transition may originate&#xD;&#xA;from the history connector to the default shallow history state. This transition is taken in case the composite state had&#xD;&#xA;never been active before. The entry action of the state represented by the shallow history is performed.&#xD;&#xA;[source: UML superstructure v2.4]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Pseudostate"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="uml::Pseudostate elements for which kind is shallowHistory"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeepHistoryPseudoState" eSuperTypes="#//Pseudostate">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Deep history represents the most recent active configuration of the composite state that directly contains this&#xD;&#xA;pseudostate (e.g., the state configuration that was active when the composite state was last exited). A composite state&#xD;&#xA;can have at most one deep history vertex. At most one transition may originate from the history connector to the default&#xD;&#xA;deep history state. This transition is taken in case the composite state had never been active before. Entry actions of&#xD;&#xA;states entered on the implicit direct path from the deep history to the innermost state(s) represented by a deep history&#xD;&#xA;are performed. The entry action is preformed only once for each state in the active state configuration being restored.&#xD;&#xA;[source: UML superstructure v2.4]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Pseudostate"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="uml::Pseudostate elements for which kind is deepHistory"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntryPointPseudoState" eSuperTypes="#//Pseudostate">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An entry point pseudostate is an entry point of a state machine or composite state. In each region of the state machine or&#xD;&#xA;composite state it has at most a single transition to a vertex within the same region.&#xD;&#xA;[source: UML superstructure v2.4]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Pseudostate"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="uml::Pseudostate elements for which kind is entry point"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExitPointPseudoState" eSuperTypes="#//Pseudostate">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An exit point pseudostate is an exit point of a state machine or composite state. Entering an exit point within any region&#xD;&#xA;of the composite state or state machine referenced by a submachine state implies the exit of this composite state or&#xD;&#xA;submachine state and the triggering of the transition that has this exit point as source in the state machine enclosing the&#xD;&#xA;submachine or composite state.&#xD;&#xA;[source: UML superstructure v2.4]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Pseudostate"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="uml::Pseudostate elements for which kind is exit point"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateEventRealization" eSuperTypes="CapellaCore.ecore#//Allocation">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a StateEventRealization is a specific kind of realization link between two StateEvent (typically of different design levels, or of different nature)&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="none"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Realization"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizedEvent" lowerBound="1"
+        eType="#//StateEvent" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="destination of the realization link : the state event that is being realized&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizingEvent" lowerBound="1"
+        eType="#//StateEvent" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the source of the realization link : the state event that is realizing another abstract state&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateEvent" abstract="true" eSuperTypes="CapellaCore.ecore#//NamedElement ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractEvent">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An event used in statemachine definition which occurs at a given condition. &#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="usage examples" value="../img/usage_examples/example_statemachine.png"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="none"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="ecore:EClass CapellaCore.ecore#//Constraint">
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ChangeEvent::changeExpression if current element is a ChangeEvent&#xD;&#xA;uml::TimeEvent::when if current element is a TimeEvent&#xD;&#xA;"/>
+        <details key="base metaclass in UML/SysML profile " value="uml::ChangeEvent and uml::TimeEvent&#xD;&#xA;"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStateEventRealizations"
+        upperBound="-1" eType="#//StateEventRealization" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the realization links that are owned/contained in this StateEvent&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
+        <details key="explanation" value="Elements are contained in the nearest possible parent container."/>
+        <details key="constraints" value="Some elements on which StateEventRealization stereotype or any stereotype that inherits from it is applied"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChangeEvent" eSuperTypes="#//StateEvent">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A change event occurs when a Boolean-valued expression becomes true. For example, as a result of a change in the value&#xD;&#xA;held in a slot corresponding to an attribute, or a change in the value referenced by a link corresponding to an association.&#xD;&#xA;A change event is raised implicitly and is not the result of an explicit action&#xD;&#xA;[source: UML superstructure v2.4]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::ChangeEvent"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//ChangeEventKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifies the type of the state ChangeEvent (see ChangeEventKind)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="refer to ChangeEventKind definition"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeEvent" eSuperTypes="#//StateEvent">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A time event specifies a point in time by an expression. The expression might be absolute or might be relative to some&#xD;&#xA;other point in time.&#xD;&#xA;[source: UML superstructure v2.4]&#xD;&#xA;"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::TimeEvent"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//TimeEventKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifies the type of the state TimeEvent (see TimeEventKind)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="refer to TimeEventKind definition"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::isRelative"/>
+        <details key="explanation" value="A relative time trigger is specified with the keyword ‘after’ followed by an expression that evaluates to a time value, such&#xD;&#xA;as “after (5 seconds).” An absolute time trigger is specified with the keyword ‘at’ followed by an expression that&#xD;&#xA;evaluates to a time value, such as “Jan. 1, 2000, Noon.&quot;"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Specifies the corresponding time deadline&#xD;&#xA;[source: UML superstructure v2.4]&#xD;&#xA;"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="a string-based time value "/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::when"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeEventKind">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="TimeEventKind is an enumeration type.&#xD;&#xA;[source: Capella study]"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value="uml::TransitionKind"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eLiterals name="AT">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="An absolute time trigger is specified with the keyword ‘at’ followed by an expression that&#xD;&#xA;evaluates to a time value, such as “Jan. 1, 2000, Noon.&quot;&#xD;&#xA;[source: UML superstructure v2.4]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::isRelative = false"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="AFTER" value="1">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="A relative time trigger is specified with the keyword ‘after’ followed by an expression that evaluates to a time value, such&#xD;&#xA;as “after (5 seconds).” &#xD;&#xA;[source: UML superstructure v2.4]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::isRelative = true"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ChangeEventKind">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="ChangeEventKind is an enumeration type.&#xD;&#xA;[source:Capella study]"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value="uml::TransitionKind"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eLiterals name="WHEN">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="A change event occurs when a Boolean-valued expression becomes true.&#xD;&#xA;[source:UML Superstructure v2.4]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
         <details key="explanation" value="none"/>
         <details key="constraints" value="none"/>
       </eAnnotations>

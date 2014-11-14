@@ -22,12 +22,11 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * The action allowing to create new representations.
@@ -81,7 +80,7 @@ public class NewScenarioRepresentationAction extends NewRepresentationAction {
     // Do not call ToggleCanonicalRefresh anymore since Sirius 4.18.
     // Executes the NewRepresentationCommand.
     NewScenarioRepresentationCommand command = new NewScenarioRepresentationCommand(defaultName, _selectedEObject, _description, _session);
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(_session).execute(command);
 
     if (null != command.getRepresentation()) {
       SessionManager.INSTANCE.notifyRepresentationCreated(_session);

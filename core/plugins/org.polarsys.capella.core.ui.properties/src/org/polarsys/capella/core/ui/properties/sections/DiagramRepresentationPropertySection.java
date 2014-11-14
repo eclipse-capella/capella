@@ -23,7 +23,7 @@ import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusAdapter;
@@ -38,14 +38,15 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.ui.properties.controllers.RepresentationContextualElementsController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.RepresentationContextualElementsField;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Section that displays a {@link DRepresentation} properties.<br>
@@ -242,6 +243,11 @@ public class DiagramRepresentationPropertySection extends AbstractSection {
   @Override
   public boolean select(Object toTest_p) {
     return (toTest_p instanceof DRepresentation) || (toTest_p instanceof IDDiagramEditPart);
+  }
+
+  @Override
+  protected ExecutionManager getExecutionManager() {
+    return TransactionHelper.getExecutionManager(_representation.get());
   }
 
   /**

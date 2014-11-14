@@ -20,7 +20,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.Messages;
@@ -51,7 +51,7 @@ public class CapellaDeleteExternalAction implements IExternalJavaAction {
        */
       public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
         monitor_p.beginTask(Messages.CapellaDeleteCommand_Label, IProgressMonitor.UNKNOWN);
-        CapellaDeleteCommand mdc = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), selection, false, false, true);
+        CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(selection), selection, false, false, true);
         if (mdc.canExecute()) {
           // Do execute the command !
           mdc.execute();

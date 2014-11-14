@@ -12,18 +12,33 @@ package org.polarsys.capella.core.sequencediag;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Stack;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.queries.filters.IQueryFilter;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.Component;
@@ -66,20 +81,12 @@ import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacommon.AbstractState;
-import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
-import org.polarsys.capella.core.sirius.analysis.InformationServices;
-import org.polarsys.capella.core.sirius.analysis.SequenceDiagramServices;
+import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
@@ -87,12 +94,10 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SequenceMessageExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.OnlySharedDataOrEventOrUnsetFilter;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.queries.filters.IQueryFilter;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.sirius.analysis.CapellaServices;
+import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
+import org.polarsys.capella.core.sirius.analysis.InformationServices;
+import org.polarsys.capella.core.sirius.analysis.SequenceDiagramServices;
 
 /**
  * Services to manipulate Capella scenario.
@@ -258,9 +263,14 @@ public class ScenarioService {
     boolean showFEParams = false;
     boolean showFEEIParams = false;
 
-
     boolean showCEParams = false;
     boolean showCEEIParams = false;
+
+    boolean showExchangeContext = false;
+    boolean showCEExchangeContext = false;
+    boolean showFEExchangeContext = false;
+
+    boolean hideCallArguments = false;
 
     List<? extends AbstractExchangeItem> eiOnMessage = message.getExchangedItems();
 
@@ -286,16 +296,41 @@ public class ScenarioService {
       if (filter.getName().equals(IMappingNameConstants.SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS_PARAMS)) {
         showFEEIParams = true;
       }
-
       if (filter.getName().equals(IMappingNameConstants.SHOW_COMPONENT_EXCHANGES_PARAMS)) {
         showCEParams = true;
       }
       if (filter.getName().equals(IMappingNameConstants.SHOW_COMPONENT_EXCHANGES_EXCHANGE_ITEMS_PARAMS)) {
         showCEEIParams = true;
       }
-
+      if (filter.getName().equals(IMappingNameConstants.SHOW_EXCHANGE_CONTEXT)) {
+        showExchangeContext = true;
+      }
+      if (filter.getName().equals(IMappingNameConstants.SHOW_CE_EXCHANGE_CONTEXT)) {
+        showExchangeContext = true;
+        showCEExchangeContext = true;
+      }
+      if (filter.getName().equals(IMappingNameConstants.SHOW_FE_EXCHANGE_CONTEXT)) {
+        showExchangeContext = true;
+        showFEExchangeContext = true;
+      }
+      if (filter.getName().equals(IMappingNameConstants.SHOW_EI_EXCHANGE_CONTEXT)){
+        showExchangeContext = true; 
+      }
+      if (filter.getName().equals(IMappingNameConstants.IS_HIDE_CALL_ARGUMENTS)){
+        hideCallArguments = true;
+      }
     }
+
     StringBuilder result = new StringBuilder();
+
+    if (DiagramDescriptionConstants.INTERFACE_SCENARIO.equals(diagram_p.getDescription().getName())){
+      result.append(getMessageName(message, hideCallArguments));
+      if (showExchangeContext){
+        result.append(" "); //$NON-NLS-1$
+        appendExchangeContext(message, result);
+      }
+      return result.toString().trim();
+    }
 
     MessageEnd end = message.getSendingEnd() == null ? message.getReceivingEnd() : message.getSendingEnd();
     Event event = end.getEvent();
@@ -316,7 +351,6 @@ public class ScenarioService {
     if ((op != null) && showCEEIParams) {
       return getShowCEEIParams(op, eiOnMessage);
     }
-
     if ((op != null) && showCEEI) {
       return getCEEIMessageName(op, eiOnMessage);
     }
@@ -327,69 +361,84 @@ public class ScenarioService {
       return showFeEiParams(op, showFEEIParams, eiOnMessage);
     }
     if (showExchangeItems || showFunctionalExchanges || showExchangeItemsParameters) {
-      if (op != null) {
-        if ((op instanceof FunctionalExchange) && (((FunctionalExchange) (op)).getExchangedItems().size() != 0)) {
-          FunctionalExchange fe = (FunctionalExchange) op;
-          int indice = 0;
-          if (showFunctionalExchanges) {
-            result.append(getSafeName(fe));
-          } else {
-            List<? extends AbstractExchangeItem> selectEIList = selectEIList(eiOnMessage, fe.getExchangedItems());
-            if (selectEIList.size() != 0) {
-              result.append("["); //$NON-NLS-1$
-            }
-            for (AbstractExchangeItem ei : selectEIList) {
-              result.append(InformationServices.getEILabel(ei, showExchangeItemsParameters));
-              indice++;
-              if (indice < selectEIList.size()) {
-                result.append(", "); //$NON-NLS-1$
-              }
-            }
-            if (selectEIList.size() != 0) {
-              result.append("]"); //$NON-NLS-1$
-            }
-          }
-        } else if (op instanceof ComponentExchange) {
-          ComponentExchange ce = (ComponentExchange) op;
-          int indice = 0;
-          if (showFunctionalExchanges) {
-            for (ComponentExchangeFunctionalExchangeAllocation fea : ce.getOwnedComponentExchangeFunctionalExchangeAllocations()) {
-              result.append(getSafeName(fea.getAllocatedFunctionalExchange()));
-              indice++;
-              if (indice < ce.getOwnedComponentExchangeFunctionalExchangeAllocations().size()) {
-                result.append(", "); //$NON-NLS-1$
-              }
-            }
-          } else {
-            List<? extends AbstractExchangeItem> selectEIList = selectEIList(eiOnMessage, ce.getConvoyedInformations());
-            if (selectEIList.size() != 0) {
-              result.append("["); //$NON-NLS-1$
-            }
-            for (AbstractExchangeItem ei : selectEIList) {
-              result.append(InformationServices.getEILabel(ei, showExchangeItemsParameters));
-              indice++;
-              if (indice < selectEIList.size()) {
-                result.append(", "); //$NON-NLS-1$
-              }
-            }
-            if (selectEIList.size() != 0) {
-              result.append("]"); //$NON-NLS-1$
-            }
-          }
-
+      if (op instanceof FunctionalExchange) {
+        if (showFunctionalExchanges || ((FunctionalExchange) op).getExchangedItems().isEmpty()) {
+          result.append(getSafeName(op));
         } else {
-          result.append(getSafeName(message));
-          result.append(" "); //$NON-NLS-1$
+          appendExchangeItems(eiOnMessage, op, showExchangeItemsParameters, result);
         }
+      } else if (op instanceof ComponentExchange) {
+        ComponentExchange ce = (ComponentExchange) op;
+        if (showFunctionalExchanges) {
+          appendFunctionalExchanges(ce, result);
+        } else {
+          appendExchangeItems(eiOnMessage, op, showExchangeItemsParameters, result);
+        }
+      } else {
+        result.append(getSafeName(message));
+        result.append(" "); //$NON-NLS-1$
       }
+    } else if (showExchangeContext) {
+      if (showCEExchangeContext && (op instanceof ComponentExchange)) {
+        result.append(getSafeName(op));
+      } else if (showFEExchangeContext) {
+        appendFunctionalExchanges(op, result);
+      }
+      result.append(" "); //$NON-NLS-1$
+      appendExchangeContext(message, result);
     } else {
       result.append(getSafeName(message));
       result.append(" "); //$NON-NLS-1$
     }
-    return result.toString();
+    return result.toString().trim();
   }
 
-  private static Object getSafeName(AbstractNamedElement fe) {
+  private StringBuilder appendFunctionalExchanges(AbstractEventOperation op_p, StringBuilder builder_p) {
+    if (op_p instanceof FunctionalExchange) {
+      builder_p.append(getSafeName(op_p));
+    } else if (op_p instanceof ComponentExchange) {
+      ComponentExchange ce = (ComponentExchange) op_p;
+      int size = ce.getOwnedComponentExchangeFunctionalExchangeAllocations().size();
+      int index = 0;
+      for (ComponentExchangeFunctionalExchangeAllocation fea : ce.getOwnedComponentExchangeFunctionalExchangeAllocations()) {
+        builder_p.append(getSafeName(fea.getAllocatedFunctionalExchange()));
+        if (++index < size) {
+          builder_p.append(", "); //$NON-NLS-1$
+        }
+      }
+    }
+    return builder_p;
+  }
+
+  private static void appendExchangeItems(List<? extends AbstractExchangeItem> eiOnMessage_p, AbstractEventOperation op_p,
+      boolean showExchangeItemParameters_p, StringBuilder builder_p) {
+    List<? extends AbstractExchangeItem> eiOnOperation = Collections.emptyList();
+    if (op_p instanceof ComponentExchange) {
+      eiOnOperation = ((ComponentExchange) op_p).getConvoyedInformations();
+    } else if (op_p instanceof FunctionalExchange) {
+      eiOnOperation = ((FunctionalExchange) op_p).getExchangedItems();
+    }
+    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage_p, eiOnOperation);
+    if (selectEIList.size() != 0) {
+      builder_p.append("["); //$NON-NLS-1$
+    }
+    int index = 0;
+    for (AbstractExchangeItem ei : selectEIList) {
+      builder_p.append(InformationServices.getEILabel(ei, showExchangeItemParameters_p));
+      if (++index < selectEIList.size()) {
+        builder_p.append(", "); //$NON-NLS-1$
+      }
+    }
+    if (selectEIList.size() != 0) {
+      builder_p.append("]"); //$NON-NLS-1$
+    }
+  }
+
+  private static void appendExchangeContext(SequenceMessage message, StringBuilder builder_p) {
+    builder_p.append(String.format("{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
+  }
+
+  private static String getSafeName(AbstractNamedElement fe) {
     if ("".equals(fe.getName()) || (null == fe.getName())) { //$NON-NLS-1$
       return "<undefined>"; //$NON-NLS-1$
     }
@@ -406,7 +455,7 @@ public class ScenarioService {
     result.append(" "); //$NON-NLS-1$
     result.append("["); //$NON-NLS-1$
     int indice = 0;
-    List<? extends AbstractExchangeItem> selectEIList = selectEIList(eiOnMessage, ce.getConvoyedInformations());
+    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage, ce.getConvoyedInformations());
     for (AbstractExchangeItem ei : selectEIList) {
       result.append(InformationServices.getEILabel(ei, true));
       indice++;
@@ -426,7 +475,7 @@ public class ScenarioService {
     ComponentExchange ce = (ComponentExchange) op;
     StringBuilder result = new StringBuilder();
     List<? extends AbstractExchangeItem> selectEIList;
-    selectEIList = selectEIList(eiOnMessage, ce.getConvoyedInformations());
+    selectEIList = firstNonEmpty(eiOnMessage, ce.getConvoyedInformations());
 
     result.append(getSafeName(ce));
     result.append("("); //$NON-NLS-1$
@@ -471,7 +520,7 @@ public class ScenarioService {
     }
     StringBuilder result = new StringBuilder();
     List<? extends AbstractExchangeItem> selectEIList;
-    selectEIList = selectEIList(eiOnMessage, fe.getExchangedItems());
+    selectEIList = firstNonEmpty(eiOnMessage, fe.getExchangedItems());
 
     result.append(getSafeName(fe));
 
@@ -523,7 +572,7 @@ public class ScenarioService {
     List<? extends AbstractExchangeItem> selectEIList;
     if (op instanceof FunctionalExchange) {
       result.append(getSafeName(op));
-      selectEIList = selectEIList(eiOnMessage, ((FunctionalExchange) op).getExchangedItems());
+      selectEIList = firstNonEmpty(eiOnMessage, ((FunctionalExchange) op).getExchangedItems());
     } else {
       ComponentExchange ce = (ComponentExchange) op;
       List<ExchangeItem> itemsOfFe = new ArrayList<ExchangeItem>();
@@ -537,7 +586,7 @@ public class ScenarioService {
           result.append(", "); //$NON-NLS-1$
         }
       }
-      selectEIList = selectEIList(eiOnMessage, itemsOfFe);
+      selectEIList = firstNonEmpty(eiOnMessage, itemsOfFe);
     }
 
     result.append(" "); //$NON-NLS-1$
@@ -567,7 +616,7 @@ public class ScenarioService {
     result.append(" "); //$NON-NLS-1$
     result.append("["); //$NON-NLS-1$
     int indice = 0;
-    List<? extends AbstractExchangeItem> selectEIList = selectEIList(eiOnMessage, ce.getConvoyedInformations());
+    List<? extends AbstractExchangeItem> selectEIList = firstNonEmpty(eiOnMessage, ce.getConvoyedInformations());
     for (AbstractExchangeItem ei : selectEIList) {
       result.append(InformationServices.getEILabel(ei, false));
       indice++;
@@ -580,11 +629,8 @@ public class ScenarioService {
     return result.toString();
   }
 
-  private static List<? extends AbstractExchangeItem> selectEIList(List<? extends AbstractExchangeItem> onMessage, List<? extends AbstractExchangeItem> byModel) {
-    if (onMessage.size() > 0) {
-      return onMessage;
-    }
-    return byModel;
+  private static List<? extends AbstractExchangeItem> firstNonEmpty(List<? extends AbstractExchangeItem> first_p, List<? extends AbstractExchangeItem> second_p) {
+    return first_p.size() > 0 ? first_p : second_p;
   }
 
   /**
@@ -594,6 +640,7 @@ public class ScenarioService {
    */
   public String getMessageName(SequenceMessage message, boolean hideParameters) {
     NamedElement messageOperation = null;
+
     if (InterfaceHelper.isSharedDataAccess(message)) {
       return SequenceMessageExt.getMessageNameForSharedDataAccess(message);
     }
@@ -644,7 +691,7 @@ public class ScenarioService {
     if (messageOperation instanceof ExchangeItem) {
       ExchangeItem item = (ExchangeItem) messageOperation;
       for (ExchangeItemElement element : item.getOwnedElements()) {
-        if (element.getKind() == ElementKind.PARAMETER) {
+        if (element.getKind() == ElementKind.MEMBER) {
           nbParameters++;
           if ((element.getDirection() == ParameterDirection.OUT) || (element.getDirection() == ParameterDirection.INOUT)
               || (element.getDirection() == ParameterDirection.RETURN)) {
@@ -678,7 +725,7 @@ public class ScenarioService {
       if (messageOperation instanceof ExchangeItem) {
         ExchangeItem item = (ExchangeItem) messageOperation;
         for (ExchangeItemElement element : item.getOwnedElements()) {
-          if (element.getKind() == ElementKind.PARAMETER) {
+          if (element.getKind() == ElementKind.MEMBER) {
             String name = getNameParameter(element, element.getType(), element.getDirection(), message);
             if (name != null) {
               paramNames.add(name);
@@ -699,7 +746,7 @@ public class ScenarioService {
       for (String name : paramNames) {
         sb.append(name);
         if (numParam < (paramNames.size() - 1)) {
-          sb.append(", "); //$NON-NLS-1$          
+          sb.append(", "); //$NON-NLS-1$
         }
         numParam++;
       }
@@ -1058,12 +1105,14 @@ public class ScenarioService {
     return result;
   }
 
+  @SuppressWarnings("nls")
   public String getOperandLabel(InteractionOperand operand_p) {
-    String guard = operand_p.getGuard();
-    if ((guard == null) || guard.equals("")) { //$NON-NLS-1$
-      return ""; //$NON-NLS-1$
+    StringBuilder builder = null;
+    if (operand_p.getGuard() != null) {
+      builder = new StringBuilder("[ ");
+      builder.append(CapellaServices.getService().getConstraintLabel(operand_p.getGuard())).append(" ]");
     }
-    return "[" + guard + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+    return builder == null ? "" : builder.toString();
   }
 
   public boolean isValidScenarioDrop(EObject context_p, Scenario scenario_p, EObject element_p) {
@@ -1146,5 +1195,74 @@ public class ScenarioService {
     }
     return false;
   }
+
+
+  /**
+   * Returns a list of exchange context constraints. If the argument is a diagram that
+   * targets a Scenario, the result contains the set of all exchange contexts of
+   * all sequence messages in the scenario. If the argument is a diagram element that
+   * targets a sequence message and that sequence message has an exchange context,
+   * the result will contain exactly that exchange context. Otherwise the result is empty.
+   * @param context_p The sirius invocation context
+   * @return A possibly empty list of constraints
+   **/
+  public List<EObject> getExchangeContextsToInsertInDiagram(EObject context_p) {
+    List<EObject> result = new ArrayList<EObject>(0);
+    if (context_p instanceof DDiagram) {
+      DSemanticDecorator diagram = (DSemanticDecorator) context_p;
+      EObject target = diagram.getTarget();
+      if ((null != target) && (target instanceof Scenario)) {
+        for (SequenceMessage msg : ((Scenario) target).getOwnedMessages()){
+          if (msg.getExchangeContext() != null && !result.contains(msg.getExchangeContext())){
+            result.add(msg.getExchangeContext());
+          }
+        }
+      }
+    } else if (context_p instanceof DDiagramElement) {
+      DDiagramElement element = (DDiagramElement) context_p;
+      EObject target = element.getTarget();
+      if ((null != target) && (target instanceof SequenceMessage) && ((SequenceMessage) target).getExchangeContext() != null) {
+        result.add(((SequenceMessage) target).getExchangeContext());
+      }
+    }
+    return result;
+  }
+  
+  
+  /**
+   * Gets the exchange context constraints currently visible in a given context.
+   * 
+   * 
+   * @param context_p : a diagram element, or a diagram
+   * @return list of visible exchange contexts
+   */
+  public List<EObject> getVisibleExchangeContexts(DSemanticDecorator context_p, DDiagram diagram_p) {
+    
+    Collection<Constraint> allPresentConstraints = new HashSet<Constraint>();
+    Collection<Constraint> allAvailableExchangeContexts = new HashSet<Constraint>();
+    
+    for (DDiagramElement elem : diagram_p.getDiagramElements()){
+      if (elem.getTarget() instanceof Constraint){
+        allPresentConstraints.add((Constraint)elem.getTarget());
+      } else if (elem.getTarget() instanceof SequenceMessage && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)){
+        if (context_p == diagram_p || context_p == elem){
+          allAvailableExchangeContexts.add(((SequenceMessage) elem.getTarget()).getExchangeContext());
+        }
+      }
+      allPresentConstraints.retainAll(allAvailableExchangeContexts);
+    }
+    return new ArrayList<EObject>(allPresentConstraints);
+  }
+  
+  public String getOperatorLabel (EObject context_p) {
+	  String operatorkind = null;
+
+	  if (context_p instanceof CombinedFragment) {
+		  CombinedFragment combfragment=(CombinedFragment) context_p;
+		  operatorkind= " "+ combfragment.getOperator().getLiteral();
+	  }
+	  return operatorkind;
+  }
+  
 
 }

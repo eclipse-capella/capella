@@ -14,10 +14,9 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.re.handlers.attachment.ReAttachmentHandler;
 import org.polarsys.capella.core.re.handlers.attributes.CapellaAttributeHandler;
+import org.polarsys.capella.core.re.handlers.location.CapellaLocationHandler;
 import org.polarsys.capella.core.re.handlers.replicable.ReplicableElementHandler;
 import org.polarsys.capella.core.re.handlers.scope.CapellaDependenciesHandler;
 import org.polarsys.capella.core.re.handlers.transformation.CapellaTransformationHandler;
@@ -25,6 +24,7 @@ import org.polarsys.capella.core.transition.common.constants.ITransitionConstant
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.scope.CompoundScopeRetriever;
 import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -38,26 +38,26 @@ public class InitializeTransitionActivity extends org.polarsys.capella.common.re
     return new CapellaTransformationHandler();
   }
 
-  /**
-   * @return
-   */
   @Override
-  protected IHandler createDefaultDependenciesHandler() {
-    return new CapellaDependenciesHandler();
+  protected IHandler createDefaultAttachmentHandler() {
+    return new ReAttachmentHandler();
   }
-
+  
   @Override
   protected IHandler createDefaultAttributeHandler() {
     return new CapellaAttributeHandler();
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  protected IHandler createDefaultAttachmentHandler() {
-    return new ReAttachmentHandler();
+  protected IHandler createDefaultLocationHandler() {
+    return new CapellaLocationHandler();
   }
+  
+  @Override
+  protected IHandler createDefaultDependenciesHandler() {
+    return new CapellaDependenciesHandler();
+  }
+
 
   @Override
   protected IHandler createDefaultReplicableElementHandler() {

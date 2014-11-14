@@ -26,11 +26,12 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.interaction.InteractionOperand;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.interaction.InteractionOperand} object.
@@ -47,6 +48,13 @@ public class InteractionOperandItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor guardPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -54,6 +62,30 @@ public class InteractionOperandItemProvider
 	 */
 	public InteractionOperandItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process InteractionPackage.Literals.INTERACTION_OPERAND__GUARD
+			if (guardPropertyDescriptor != null) {
+				Object guardValue = eObject.eGet(InteractionPackage.Literals.INTERACTION_OPERAND__GUARD, true);
+				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) guardValue)) {
+					itemPropertyDescriptors.remove(guardPropertyDescriptor);
+				} else if (guardValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.INTERACTION_OPERAND__GUARD) != null) {
+					itemPropertyDescriptors.remove(guardPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(guardPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(guardPropertyDescriptor);
+				}
+			}
+		}		
 	}
 
 	/**
@@ -67,8 +99,8 @@ public class InteractionOperandItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addGuardPropertyDescriptor(object);
 			addReferencedInteractionFragmentsPropertyDescriptor(object);
+			addGuardPropertyDescriptor(object);
 		}
 		// begin-extension-code
 		checkChildCreationExtender(object);
@@ -83,11 +115,9 @@ public class InteractionOperandItemProvider
 	 * @generated
 	 */
 	protected void addGuardPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		guardPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_InteractionOperand_guard_feature"), //$NON-NLS-1$
@@ -95,11 +125,12 @@ public class InteractionOperandItemProvider
 				 InteractionPackage.Literals.INTERACTION_OPERAND__GUARD,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(guardPropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -175,12 +206,6 @@ public class InteractionOperandItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(InteractionOperand.class)) {
-			case InteractionPackage.INTERACTION_OPERAND__GUARD:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

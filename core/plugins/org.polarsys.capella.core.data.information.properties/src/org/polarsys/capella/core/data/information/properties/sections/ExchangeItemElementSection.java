@@ -16,7 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.ElementKind;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.InformationPackage;
@@ -25,7 +25,6 @@ import org.polarsys.capella.core.data.information.properties.controllers.Exchang
 import org.polarsys.capella.core.data.information.properties.fields.ElementKindGroup;
 import org.polarsys.capella.core.data.information.properties.fields.ExchangeItemElementBooleanPropertiesCheckbox;
 import org.polarsys.capella.core.data.information.properties.fields.ParameterDirectionGroup;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 
@@ -59,7 +58,9 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
     exchangeItemElementBooleanPropertiesCheckbox = new ExchangeItemElementBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
     exchangeItemElementBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);
 
-    _referencedProperties = new MultipleSemanticField(getReferencesGroup(), Messages.getString("ExchangeItemElement_ReferencedProperties_Label"), getWidgetFactory(), new ExchangeItemElementController()); //$NON-NLS-1$
+    _referencedProperties =
+        new MultipleSemanticField(getReferencesGroup(),
+            Messages.getString("ExchangeItemElement_ReferencedProperties_Label"), getWidgetFactory(), new ExchangeItemElementController()); //$NON-NLS-1$
     _referencedProperties.setDisplayedInWizard(displayedInWizard);
 
     _elementKindGroup = new ElementKindGroup(_rootParentComposite, getWidgetFactory()) {
@@ -100,13 +101,13 @@ public class ExchangeItemElementSection extends MultiplicityElementSection {
    * @param kind
    */
   protected void updateParameterGroup(ElementKind kind) {
-    if (ElementKind.PARAMETER.equals(kind)) {
+    if (ElementKind.MEMBER.equals(kind)) {
       _parameterDirectionGroup.setEnabled(true);
     } else {
       _parameterDirectionGroup.setEnabled(false);
     }
   }
-  
+
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */

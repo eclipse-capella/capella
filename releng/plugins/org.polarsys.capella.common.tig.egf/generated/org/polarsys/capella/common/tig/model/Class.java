@@ -1,4 +1,4 @@
-//Generated on Tue Jun 24 15:10:03 CEST 2014 with EGF 1.2.0.v20140623-0645
+//Generated with EGF 1.2.0.v20140805-0858
 package org.polarsys.capella.common.tig.model;
 
 import org.eclipse.egf.emf.pattern.base.*;
@@ -2402,149 +2402,159 @@ public class Class extends org.polarsys.kitalpha.emde.egf.model.Class {
 			{
 				boolean first = true;
 				for (GenFeature genFeature : genClass.getToStringGenFeatures()) {
-					if (first) {
-						first = false;
-						stringBuffer.append(TEXT_429);
-						stringBuffer.append(genFeature.getName());
-						stringBuffer.append(TEXT_430);
-						stringBuffer.append(genModel.getNonNLS());
-					} else {
-						stringBuffer.append(TEXT_431);
-						stringBuffer.append(genFeature.getName());
-						stringBuffer.append(TEXT_432);
-						stringBuffer.append(genModel.getNonNLS());
-					}
-					if (genFeature.isUnsettable() && !genFeature.isListType()) {
-						if (genModel.isVirtualDelegation()
-								&& !genFeature.isPrimitiveType()) {
-							stringBuffer.append(TEXT_433);
-							stringBuffer.append(genClass
-									.getQualifiedFeatureID(genFeature));
-							stringBuffer.append(positiveOffsetCorrection);
-							stringBuffer.append(TEXT_434);
-							stringBuffer.append(genClass
-									.getQualifiedFeatureID(genFeature));
-							stringBuffer.append(positiveOffsetCorrection);
-							stringBuffer.append(TEXT_435);
+					if (!genFeature.getName().equals("description")) {
+						if (first) {
+							first = false;
+							stringBuffer.append(TEXT_429);
+							stringBuffer.append(genFeature.getName());
+							stringBuffer.append(TEXT_430);
 							stringBuffer.append(genModel.getNonNLS());
 						} else {
-							if (genClass.isFlag(genFeature)) {
-								if (genFeature.isBooleanType()) {
-									stringBuffer.append(TEXT_436);
-									if (genClass.isESetFlag(genFeature)) {
-										stringBuffer.append(TEXT_437);
-										stringBuffer.append(genClass
-												.getESetFlagsField(genFeature));
-										stringBuffer.append(TEXT_438);
-										stringBuffer.append(genFeature
-												.getUpperName());
-										stringBuffer.append(TEXT_439);
-									} else {
-										stringBuffer.append(genFeature
-												.getUncapName());
-										stringBuffer.append(TEXT_440);
-									}
-									stringBuffer.append(TEXT_441);
-									stringBuffer.append(genClass
-											.getFlagsField(genFeature));
-									stringBuffer.append(TEXT_442);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_443);
-									stringBuffer.append(genModel.getNonNLS());
-								} else {
-									stringBuffer.append(TEXT_444);
-									if (genClass.isESetFlag(genFeature)) {
-										stringBuffer.append(TEXT_445);
-										stringBuffer.append(genClass
-												.getESetFlagsField(genFeature));
-										stringBuffer.append(TEXT_446);
-										stringBuffer.append(genFeature
-												.getUpperName());
-										stringBuffer.append(TEXT_447);
-									} else {
-										stringBuffer.append(genFeature
-												.getUncapName());
-										stringBuffer.append(TEXT_448);
-									}
-									stringBuffer.append(TEXT_449);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_450);
-									stringBuffer.append(genClass
-											.getFlagsField(genFeature));
-									stringBuffer.append(TEXT_451);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_452);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_453);
-									stringBuffer.append(genModel.getNonNLS());
-								}
-							} else {
-								stringBuffer.append(TEXT_454);
-								if (genClass.isESetFlag(genFeature)) {
-									stringBuffer.append(TEXT_455);
-									stringBuffer.append(genClass
-											.getESetFlagsField(genFeature));
-									stringBuffer.append(TEXT_456);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_457);
-								} else {
-									stringBuffer.append(genFeature
-											.getUncapName());
-									stringBuffer.append(TEXT_458);
-								}
-								stringBuffer.append(TEXT_459);
-								stringBuffer.append(genFeature.getSafeName());
-								stringBuffer.append(TEXT_460);
-								stringBuffer.append(genModel.getNonNLS());
-							}
+							stringBuffer.append(TEXT_431);
+							stringBuffer.append(genFeature.getName());
+							stringBuffer.append(TEXT_432);
+							stringBuffer.append(genModel.getNonNLS());
 						}
-					} else {
-						if (genModel.isVirtualDelegation()
-								&& !genFeature.isPrimitiveType()) {
-							stringBuffer.append(TEXT_461);
-							stringBuffer.append(genClass
-									.getQualifiedFeatureID(genFeature));
-							stringBuffer.append(positiveOffsetCorrection);
-							if (!genFeature.isListType()
-									&& !genFeature.isReferenceType()) {
-								stringBuffer.append(TEXT_462);
-								stringBuffer.append(genFeature.getEDefault());
-							}
-							stringBuffer.append(TEXT_463);
-						} else {
-							if (genClass.isFlag(genFeature)) {
-								if (genFeature.isBooleanType()) {
-									stringBuffer.append(TEXT_464);
-									stringBuffer.append(genClass
-											.getFlagsField(genFeature));
-									stringBuffer.append(TEXT_465);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_466);
-								} else {
-									stringBuffer.append(TEXT_467);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_468);
-									stringBuffer.append(genClass
-											.getFlagsField(genFeature));
-									stringBuffer.append(TEXT_469);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_470);
-									stringBuffer.append(genFeature
-											.getUpperName());
-									stringBuffer.append(TEXT_471);
-								}
+						if (genFeature.isUnsettable()
+								&& !genFeature.isListType()) {
+							if (genModel.isVirtualDelegation()
+									&& !genFeature.isPrimitiveType()) {
+								stringBuffer.append(TEXT_433);
+								stringBuffer.append(genClass
+										.getQualifiedFeatureID(genFeature));
+								stringBuffer.append(positiveOffsetCorrection);
+								stringBuffer.append(TEXT_434);
+								stringBuffer.append(genClass
+										.getQualifiedFeatureID(genFeature));
+								stringBuffer.append(positiveOffsetCorrection);
+								stringBuffer.append(TEXT_435);
+								stringBuffer.append(genModel.getNonNLS());
 							} else {
-								stringBuffer.append(TEXT_472);
-								stringBuffer.append(genFeature.getSafeName());
-								stringBuffer.append(TEXT_473);
+								if (genClass.isFlag(genFeature)) {
+									if (genFeature.isBooleanType()) {
+										stringBuffer.append(TEXT_436);
+										if (genClass.isESetFlag(genFeature)) {
+											stringBuffer.append(TEXT_437);
+											stringBuffer
+													.append(genClass
+															.getESetFlagsField(genFeature));
+											stringBuffer.append(TEXT_438);
+											stringBuffer.append(genFeature
+													.getUpperName());
+											stringBuffer.append(TEXT_439);
+										} else {
+											stringBuffer.append(genFeature
+													.getUncapName());
+											stringBuffer.append(TEXT_440);
+										}
+										stringBuffer.append(TEXT_441);
+										stringBuffer.append(genClass
+												.getFlagsField(genFeature));
+										stringBuffer.append(TEXT_442);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_443);
+										stringBuffer.append(genModel
+												.getNonNLS());
+									} else {
+										stringBuffer.append(TEXT_444);
+										if (genClass.isESetFlag(genFeature)) {
+											stringBuffer.append(TEXT_445);
+											stringBuffer
+													.append(genClass
+															.getESetFlagsField(genFeature));
+											stringBuffer.append(TEXT_446);
+											stringBuffer.append(genFeature
+													.getUpperName());
+											stringBuffer.append(TEXT_447);
+										} else {
+											stringBuffer.append(genFeature
+													.getUncapName());
+											stringBuffer.append(TEXT_448);
+										}
+										stringBuffer.append(TEXT_449);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_450);
+										stringBuffer.append(genClass
+												.getFlagsField(genFeature));
+										stringBuffer.append(TEXT_451);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_452);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_453);
+										stringBuffer.append(genModel
+												.getNonNLS());
+									}
+								} else {
+									stringBuffer.append(TEXT_454);
+									if (genClass.isESetFlag(genFeature)) {
+										stringBuffer.append(TEXT_455);
+										stringBuffer.append(genClass
+												.getESetFlagsField(genFeature));
+										stringBuffer.append(TEXT_456);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_457);
+									} else {
+										stringBuffer.append(genFeature
+												.getUncapName());
+										stringBuffer.append(TEXT_458);
+									}
+									stringBuffer.append(TEXT_459);
+									stringBuffer.append(genFeature
+											.getSafeName());
+									stringBuffer.append(TEXT_460);
+									stringBuffer.append(genModel.getNonNLS());
+								}
+							}
+						} else {
+							if (genModel.isVirtualDelegation()
+									&& !genFeature.isPrimitiveType()) {
+								stringBuffer.append(TEXT_461);
+								stringBuffer.append(genClass
+										.getQualifiedFeatureID(genFeature));
+								stringBuffer.append(positiveOffsetCorrection);
+								if (!genFeature.isListType()
+										&& !genFeature.isReferenceType()) {
+									stringBuffer.append(TEXT_462);
+									stringBuffer.append(genFeature
+											.getEDefault());
+								}
+								stringBuffer.append(TEXT_463);
+							} else {
+								if (genClass.isFlag(genFeature)) {
+									if (genFeature.isBooleanType()) {
+										stringBuffer.append(TEXT_464);
+										stringBuffer.append(genClass
+												.getFlagsField(genFeature));
+										stringBuffer.append(TEXT_465);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_466);
+									} else {
+										stringBuffer.append(TEXT_467);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_468);
+										stringBuffer.append(genClass
+												.getFlagsField(genFeature));
+										stringBuffer.append(TEXT_469);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_470);
+										stringBuffer.append(genFeature
+												.getUpperName());
+										stringBuffer.append(TEXT_471);
+									}
+								} else {
+									stringBuffer.append(TEXT_472);
+									stringBuffer.append(genFeature
+											.getSafeName());
+									stringBuffer.append(TEXT_473);
+								}
 							}
 						}
 					}

@@ -1066,7 +1066,6 @@ public class CommunicationMeanItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS);
 			childrenFeatures.add(CapellacorePackage.Literals.NAMED_RELATIONSHIP__NAMING_RULES);
 			childrenFeatures.add(FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS);
 			childrenFeatures.add(FaPackage.Literals.COMPONENT_EXCHANGE__OWNED_COMPONENT_EXCHANGE_REALIZATIONS);
@@ -1140,7 +1139,6 @@ public class CommunicationMeanItemProvider
 			case OaPackage.COMMUNICATION_MEAN__ORIENTED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case OaPackage.COMMUNICATION_MEAN__OWNED_CONSTRAINTS:
 			case OaPackage.COMMUNICATION_MEAN__NAMING_RULES:
 			case OaPackage.COMMUNICATION_MEAN__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
 			case OaPackage.COMMUNICATION_MEAN__OWNED_COMPONENT_EXCHANGE_REALIZATIONS:
@@ -1161,18 +1159,6 @@ public class CommunicationMeanItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
-                         CapellacoreFactory.eINSTANCE.createConstraint());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

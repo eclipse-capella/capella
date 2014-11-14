@@ -16,9 +16,9 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.re.handlers.CreateReplicaHandler;
 import org.polarsys.capella.common.re.ui.commands.CreateReplicaUiCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
 
 /**
  */

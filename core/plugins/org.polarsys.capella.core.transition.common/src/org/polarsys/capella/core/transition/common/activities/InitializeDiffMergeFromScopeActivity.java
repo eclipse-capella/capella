@@ -16,11 +16,9 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
@@ -31,6 +29,7 @@ import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter
 import org.polarsys.capella.core.transition.common.merge.scope.PartialRootedModelScope;
 import org.polarsys.capella.core.transition.common.merge.scope.ReferenceModelScope;
 import org.polarsys.capella.core.transition.common.rules.IRuleTransformation;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.exceptions.possibilities.MappingPossibilityResolutionException;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -57,7 +56,7 @@ public class InitializeDiffMergeFromScopeActivity extends InitializeDiffMergeFro
     List<EObject> rootSource = new ArrayList<EObject>();
     rootSource.add((EObject) context_p.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
 
-    IFeaturedModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
+    IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
 
     context_p.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
 
@@ -67,7 +66,7 @@ public class InitializeDiffMergeFromScopeActivity extends InitializeDiffMergeFro
   }
 
   @Override
-  protected IHandler createDefaultTraceabilitySourceHandler() {
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
     return ITraceabilityHandler.DEFAULT;
   }
 

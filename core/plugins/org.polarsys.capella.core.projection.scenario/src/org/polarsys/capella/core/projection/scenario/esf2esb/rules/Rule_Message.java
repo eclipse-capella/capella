@@ -10,13 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.esf2esb.rules;
 
-import org.eclipse.emf.ecore.EObject;
+import java.util.Collection;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
+import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
@@ -35,12 +38,12 @@ public class Rule_Message extends CommonRule {
 
   @Override
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
-    
+
     boolean sending = true;
     boolean receiving = true;
-    
-    SequenceMessage message = (SequenceMessage)element_p;
-    
+
+    SequenceMessage message = (SequenceMessage) element_p;
+
     if (message.getSendingEnd() != null) {
       sending = isOrWillBeTransformed(message.getSendingEnd(), transfo_p);
     }
@@ -55,15 +58,24 @@ public class Rule_Message extends CommonRule {
   protected String reasonTransformFailed(EObject element_p, ITransfo transfo_p) {
     return ProjectionMessages.EndNotTransitioned;
   }
-  
+
   /**
    * @see org.polarsys.capella.core.tiger.impl.TransfoRule#attach_(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
    */
   @Override
   public void firstAttach(EObject element_p, ITransfo transfo_p) throws TransfoException {
-    TigerRelationshipHelper.attachIemeWithIeme(element_p, getTargetType(), InteractionPackage.Literals.MESSAGE_END, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END, transfo_p);
-    TigerRelationshipHelper.attachIemeWithIeme(element_p, getTargetType(), InteractionPackage.Literals.MESSAGE_END, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END, transfo_p);
-    TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_MESSAGES, transfo_p);
+    TigerRelationshipHelper.attachIemeWithIeme(element_p, getTargetType(), InteractionPackage.Literals.MESSAGE_END,
+        InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END, transfo_p);
+    TigerRelationshipHelper.attachIemeWithIeme(element_p, getTargetType(), InteractionPackage.Literals.MESSAGE_END,
+        InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END, transfo_p);
+    TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_MESSAGES,
+        transfo_p);
+
+    AbstractEventOperation toperation =
+        CESF2CESBHelper.getRelatedConnection(CommonScenarioHelper.getOperation(element_p, transfo_p), (SequenceMessage) element_p, transfo_p);
+    CommonScenarioHelper.attachToBestAndValidElements(element_p, InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGED_ITEMS,
+        (Collection) CommonScenarioHelper.getExchangeItems(toperation), transfo_p);
+
   }
 
   /**

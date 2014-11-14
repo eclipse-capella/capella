@@ -13,7 +13,8 @@ package org.polarsys.capella.core.sirius.ui.copylayout;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -22,8 +23,6 @@ import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.information.PortRealization;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  *

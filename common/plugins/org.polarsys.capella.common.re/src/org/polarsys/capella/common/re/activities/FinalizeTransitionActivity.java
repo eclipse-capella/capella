@@ -10,13 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.activities;
 
+import java.util.Collection;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
-import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
-import org.polarsys.capella.common.re.constants.IReConstants;
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.re.handlers.location.LocationHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -32,11 +34,13 @@ public class FinalizeTransitionActivity extends org.polarsys.capella.core.transi
     super._run(activityParams_p);
 
     //All newly created valid links should not be removed. Other links should be. 
-    ContextScopeHandlerHelper.getInstance(context).addAll(IReConstants.VIRTUAL_LINKS_3,
-        ContextScopeHandlerHelper.getInstance(context).getCollection(IReConstants.VIRTUAL_LINKS_2, context), context);
-
     ReplicableElementHandlerHelper.getInstance(context).cleanVirtualLinks(context);
+    LocationHandlerHelper.getInstance(context).cleanLocations(context);
 
+    Collection<EObject> toRemove = ReplicableElementHandlerHelper.getInstance(context).getDeletableElements(context);
+    if (!toRemove.isEmpty()) {
+      AttachmentHelper.getInstance(context).removeElements(toRemove, context);
+    }
     return Status.OK_STATUS;
   }
 }

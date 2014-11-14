@@ -28,15 +28,17 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.validation.model.Category;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint.ReportLogViewExtPointUtil;
+import org.polarsys.capella.shared.id.handler.IdManager;
+import org.polarsys.capella.shared.id.handler.ResourceSetScope;
 
 /**
  * Helpers previously contained in MarkerContentProvider.java
@@ -45,7 +47,7 @@ public class MarkerViewHelper {
 
   public static final String ECORE_DIAGNOSTIC_SOURCE = "org.eclipse.emf.ecore"; //$NON-NLS-1$
 
-  public static final Object OTHER_CATEGORY = new Object(); 
+  public static final Object OTHER_CATEGORY = new Object();
   public static final Object OTHER_RULES = new Object();
 
   private final IMarkerSource markerSource;
@@ -202,35 +204,50 @@ public class MarkerViewHelper {
     return result;
   }
 
-  private static EObject find(URI uri_p) {
+  private static EObject find(IMarker marker_p, URI uri_p) {
     EObject eobject = null;
     if (uri_p == null) {
       return eobject;
     }
-    ResourceSet set = MDEAdapterFactory.getEditingDomain().getResourceSet();
-    if (uri_p.isRelative() && !uri_p.isPlatformPlugin()) {
-      for (Resource res : set.getResources()) {
-        if (res != null) {
+
+    String fragment = uri_p.fragment();
+    try {
+      //If there is a resource in the marker (validation marker), try to retrieve the object
+      Resource resource = (Resource) marker_p.getAttribute(IValidationConstants.EMF_RESOURCE);
+      if ((fragment != null) && (resource != null)) {
+        eobject = resource.getEObject(fragment);
+      }
+
+      if (eobject == null) {
+        //try to retrieve the object from the given resourceSet
+        eobject = resource.getResourceSet().getEObject(uri_p, false);
+      }
+
+    } catch (Exception e) {
+      //Nothing here
+    }
+
+    if (eobject == null) {
+      //otherwise, we try to retrieve it from editing domains
+      for (TransactionalEditingDomain domain : ExecutionManagerRegistry.getInstance().getAllEditingDomains()) {
+        try {
+          eobject = domain.getResourceSet().getEObject(uri_p, false);
+        } catch (Exception e) {
+          //Nothing here
+        }
+
+        if ((eobject == null) && (fragment != null)) {
           try {
-            String fragment = uri_p.fragment();
-            if (fragment != null) {
-              eobject = res.getEObject(fragment);
-            }
+            eobject = IdManager.getInstance().getEObject(fragment, new ResourceSetScope(domain.getResourceSet()));
           } catch (Exception e) {
-            // Nothing, a simple marker!
-          }
-          if (eobject != null) {
-            break;
+            //Nothing here
           }
         }
+
+        if (eobject != null) {
+          break;
+        }
       }
-    } else {
-      try {
-        eobject = set.getEObject(uri_p, false);
-      } catch (Exception e) {
-        // Nothing, a simple marker!
-      }
-      // TODO maybe we can update the marker here to speedup future searches
     }
     return eobject;
   }
@@ -246,7 +263,7 @@ public class MarkerViewHelper {
     if (uris != null) {
       for (String uriValue : uris.split(ICommonConstants.LINE_SEPARATOR)) {
         if (uriValue.length() > 0) {
-          EObject obj = find(URI.createURI(uriValue));
+          EObject obj = find(marker_p, URI.createURI(uriValue));
           if (obj != null) {
             result.add(obj);
           }

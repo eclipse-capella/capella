@@ -16,35 +16,26 @@ import java.lang.reflect.InvocationTargetException;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
-
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.model.skeleton.EngineeringDomain;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.platform.sirius.ui.project.operations.ProjectSessionCreationHelper;
 
 /**
  * The wizard allowing to initialize a new Capella model.
  */
 public class NewModelWizard extends BasicNewResourceWizard {
-  /**
-   * Step tick count
-   */
-  private static final int STEP_TICK_COUNT = 100;
+
   // Log4j reference logger.
   private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
   // The main page.
   private NewModelWizardPage _mainPage;
-
-  /**
-   * Constructs the wizard allowing to initialize a new Capella model.
-   */
-  public NewModelWizard() {
-    // Do nothing.
-  }
 
   /**
    * @see org.eclipse.ui.wizards.newresource.BasicNewResourceWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
@@ -62,7 +53,7 @@ public class NewModelWizard extends BasicNewResourceWizard {
    */
   @Override
   public void addPages() {
-    _mainPage = new NewModelWizardPage("model.creation.page", getSelection()); //$NON-NLS-1$
+    _mainPage = new NewModelWizardPage("model.creation.page"); //$NON-NLS-1$
     _mainPage.setTitle(Messages.getString("NewModelWizard.title")); //$NON-NLS-1$
     _mainPage.setDescription(Messages.getString("NewModelWizard.description")); //$NON-NLS-1$
     addPage(_mainPage);
@@ -81,19 +72,22 @@ public class NewModelWizard extends BasicNewResourceWizard {
         @SuppressWarnings("synthetic-access")
         public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
           try {
-            int stepCount = 2;
-            SubMonitor progress =
-                SubMonitor.convert(monitor_p, Messages.getString("NewModelWizard.title") + _mainPage.getModelName(), STEP_TICK_COUNT * stepCount); //$NON-NLS-1$
-            // Step 1
-            EngineeringDomain domain = EngineeringDomain.Software;
-            if (_mainPage.isOpaSelected()) {
-              domain = EngineeringDomain.System;
-            }
-            progress.worked(STEP_TICK_COUNT);
+            SubMonitor progress = SubMonitor.convert(monitor_p, Messages.getString("NewModelWizard.title") + _mainPage.getModelName(), 1); //$NON-NLS-1$
 
-            // Step 2 : Create the new model.
-            _mainPage.createNewModel(domain, _mainPage.getModelName(), progress.newChild(STEP_TICK_COUNT));
-            progress.worked(STEP_TICK_COUNT);
+            Object selectedObject = null;
+            if (null != getSelection()) {
+              selectedObject = getSelection().getFirstElement();
+              if (selectedObject instanceof Project) {
+
+                ProjectSessionCreationHelper helper = createSessionCreationHelper();
+                helper.createNewSystemEngineering(((EObject) selectedObject).eResource(), _mainPage.getModelName(), progress);
+
+                //_mainPage.createNewModel(_mainPage.getModelName(), progress.newChild(100));
+              }
+            }
+
+            //
+            progress.worked(1);
           } finally {
             monitor_p.done();
           }
@@ -109,5 +103,9 @@ public class NewModelWizard extends BasicNewResourceWizard {
       __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception_p);
     }
     return true;
+  }
+
+  protected ProjectSessionCreationHelper createSessionCreationHelper() {
+    return new ProjectSessionCreationHelper(_mainPage.isEpbsSelected(), _mainPage.isOpaSelected());
   }
 }

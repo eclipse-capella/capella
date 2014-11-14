@@ -19,13 +19,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * 
@@ -70,7 +69,7 @@ public class DWF_DS_08_Resolver extends AbstractCapellaMarkerResolution {
 				}
 			};
 			// execute the command
-			MDEAdapterFactory.getExecutionManager().execute(
+			TransactionHelper.getExecutionManager(modelElements).execute(
 					collectElementsCommand);
 			mustDeleteMarker.set(Boolean.TRUE);
 			if (mustDeleteMarker.get().booleanValue()) {

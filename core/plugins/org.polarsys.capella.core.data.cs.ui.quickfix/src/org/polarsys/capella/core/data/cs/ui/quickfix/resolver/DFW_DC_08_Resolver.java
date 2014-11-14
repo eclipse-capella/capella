@@ -16,16 +16,15 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
-import org.polarsys.capella.core.data.core.properties.controllers.TypedElementController;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
+import org.polarsys.capella.core.data.core.properties.controllers.TypedElementController;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
+import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * A resolver to assign a type to a TypedElement
@@ -58,7 +57,7 @@ public class DFW_DC_08_Resolver extends AbstractCapellaMarkerResolution {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(m).execute(command);
   }
 
 }

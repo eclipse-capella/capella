@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.tiger.IResolver;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  *
@@ -51,8 +51,8 @@ public class UIResolver implements IResolver, Runnable {
       //Create a dialog
       Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
       selectionDialog = new SelectElementsDialog(shell,
-        MDEAdapterFactory.getEditingDomain(),
-        MDEAdapterFactory.getAdapterFactory(), title_p, message_p,
+        TransactionHelper.getEditingDomain(scope_p),
+        CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(), title_p, message_p,
         new ArrayList<EObject>(scope_p), multipleSelection_p, source_p)
       {
         @Override

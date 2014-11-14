@@ -374,6 +374,30 @@
             class="org.polarsys.capella.core.data.menu.contributions.capellacommon.StateMachineItemContribution"
             id="org.polarsys.capella.core.data.menu.contributions.capellacommon.StateMachineItemContribution">
       </MDEMenuItemContribution>
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.data.menu.contributions.capellacommon.TimeEventItemContribution"
+            id="org.polarsys.capella.core.data.menu.contributions.capellacommon.TimeEventItemContribution">
+      </MDEMenuItemContribution>
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.data.menu.contributions.capellacommon.ChangeEventItemContribution"
+            id="org.polarsys.capella.core.data.menu.contributions.capellacommon.ChangeEventItemContribution">
+      </MDEMenuItemContribution>
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.data.menu.contributions.capellacommon.EntryPointPseudoStateItemContribution"
+            id="org.polarsys.capella.core.data.menu.contributions.capellacommon.EntryPointPseudoStateItemContribution">
+      </MDEMenuItemContribution>
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.data.menu.contributions.capellacommon.ExitPointPseudoStateItemContribution"
+            id="org.polarsys.capella.core.data.menu.contributions.capellacommon.ExitPointPseudoStateItemContribution">
+      </MDEMenuItemContribution>
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.data.menu.contributions.capellacommon.ShallowHistoryPseudoStateItemContribution"
+            id="org.polarsys.capella.core.data.menu.contributions.capellacommon.ShallowHistoryPseudoStateItemContribution">
+      </MDEMenuItemContribution>
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.data.menu.contributions.capellacommon.DeepHistoryPseudoStateItemContribution"
+            id="org.polarsys.capella.core.data.menu.contributions.capellacommon.DeepHistoryPseudoStateItemContribution">
+      </MDEMenuItemContribution>
    </extension>
    <extension name="capellacore" point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
       <MDEMenuItemContribution

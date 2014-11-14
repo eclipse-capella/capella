@@ -4,13 +4,17 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.model.helpers;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.common.helpers;visibility:=reexport,
- org.polarsys.capella.core.data.helpers;visibility:=reexport,
+Require-Bundle: org.apache.commons.lang,
+ org.polarsys.capella.common.helpers;visibility:=reexport,
  org.polarsys.capella.common.menu.dynamic;visibility:=reexport,
- org.polarsys.capella.common.ui,
  org.polarsys.capella.common.queries,
- org.polarsys.capella.shared.id.handler
+ org.polarsys.capella.common.ui,
+ org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
+ org.polarsys.capella.core.data.helpers;visibility:=reexport,
+ org.polarsys.capella.shared.id.handler,
+ org.polarsys.capella.core.model.handler;visibility:=reexport
 Export-Package: org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.core.model.helpers.listeners,
  org.polarsys.capella.core.model.helpers.move,
  org.polarsys.capella.core.model.helpers.naming,
  org.polarsys.capella.core.model.helpers.queries,

@@ -30,12 +30,13 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
+import org.polarsys.capella.core.data.capellacore.provider.NamedElementItemProvider;
 import org.polarsys.capella.core.data.capellacore.provider.RelationshipItemProvider;
 import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
@@ -48,13 +49,27 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  * @generated
  */
 public class StateTransitionItemProvider
-	extends RelationshipItemProvider
+	extends NamedElementItemProvider
 	implements
 		IEditingDomainItemProvider,
 		IStructuredItemContentProvider,
 		ITreeItemContentProvider,
 		IItemLabelProvider,
 		IItemPropertySource {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor realizedFlowPropertyDescriptor;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor guardPropertyDescriptor;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -77,13 +92,6 @@ public class StateTransitionItemProvider
 	protected IItemPropertyDescriptor effectPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IItemPropertyDescriptor triggerPropertyDescriptor;
-
-	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,6 +111,28 @@ public class StateTransitionItemProvider
 		super.checkChildCreationExtender(object);
 		if (object instanceof EObject) {
 			EObject eObject = (EObject) object;
+			// Process ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW
+			if (realizedFlowPropertyDescriptor != null) {
+				Object realizedFlowValue = eObject.eGet(ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW, true);
+				if (realizedFlowValue != null && realizedFlowValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) realizedFlowValue)) {
+					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);
+				} else if (realizedFlowValue == null && ExtensionModelManager.getAnyType(eObject, ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW) != null) {
+					itemPropertyDescriptors.remove(realizedFlowPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(realizedFlowPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(realizedFlowPropertyDescriptor);
+				}
+			}
+			// Process CapellacommonPackage.Literals.STATE_TRANSITION__GUARD
+			if (guardPropertyDescriptor != null) {
+				Object guardValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__GUARD, true);
+				if (guardValue != null && guardValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) guardValue)) {
+					itemPropertyDescriptors.remove(guardPropertyDescriptor);
+				} else if (guardValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION__GUARD) != null) {
+					itemPropertyDescriptors.remove(guardPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(guardPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(guardPropertyDescriptor);
+				}
+			}
 			// Process CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE
 			if (sourcePropertyDescriptor != null) {
 				Object sourceValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, true);
@@ -136,17 +166,6 @@ public class StateTransitionItemProvider
 					itemPropertyDescriptors.add(effectPropertyDescriptor);
 				}
 			}
-			// Process CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER
-			if (triggerPropertyDescriptor != null) {
-				Object triggerValue = eObject.eGet(CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER, true);
-				if (triggerValue != null && triggerValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) triggerValue)) {
-					itemPropertyDescriptors.remove(triggerPropertyDescriptor);
-				} else if (triggerValue == null && ExtensionModelManager.getAnyType(eObject, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER) != null) {
-					itemPropertyDescriptors.remove(triggerPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(triggerPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(triggerPropertyDescriptor);
-				}
-			}
 		}		
 	}
 
@@ -161,13 +180,14 @@ public class StateTransitionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addGuardPropertyDescriptor(object);
+			addRealizedFlowPropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
 			addTriggerDescriptionPropertyDescriptor(object);
+			addGuardPropertyDescriptor(object);
 			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
 			addEffectPropertyDescriptor(object);
-			addTriggerPropertyDescriptor(object);
+			addTriggersPropertyDescriptor(object);
 			addRealizedStateTransitionsPropertyDescriptor(object);
 			addRealizingStateTransitionsPropertyDescriptor(object);
 		}
@@ -178,17 +198,41 @@ public class StateTransitionItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Realized Flow feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRealizedFlowPropertyDescriptor(Object object) {
+		// begin-extension-code
+		realizedFlowPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractRelationship_realizedFlow_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractRelationship_realizedFlow_feature", "_UI_AbstractRelationship_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 ModellingcorePackage.Literals.ABSTRACT_RELATIONSHIP__REALIZED_FLOW,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+		// begin-extension-code
+				 null);
+		itemPropertyDescriptors.add(realizedFlowPropertyDescriptor);
+		// end-extension-code
+	}
+
+	/**
 	 * This adds a property descriptor for the Guard feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected void addGuardPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		guardPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_StateTransition_guard_feature"), //$NON-NLS-1$
@@ -196,11 +240,12 @@ public class StateTransitionItemProvider
 				 CapellacommonPackage.Literals.STATE_TRANSITION__GUARD,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(guardPropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -337,28 +382,29 @@ public class StateTransitionItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Trigger feature.
+	 * This adds a property descriptor for the Triggers feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTriggerPropertyDescriptor(Object object) {
+	protected void addTriggersPropertyDescriptor(Object object) {
+
 		// begin-extension-code
-		triggerPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_StateTransition_trigger_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_StateTransition_trigger_feature", "_UI_StateTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER,
+				 getString("_UI_StateTransition_triggers_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_StateTransition_triggers_feature", "_UI_StateTransition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS,
 				 true,
 				 false,
 				 true,
 				 null,
 				 null,
 		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(triggerPropertyDescriptor);
+				 null));
 		// end-extension-code
 	}
 
@@ -428,7 +474,6 @@ public class StateTransitionItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(CapellacommonPackage.Literals.STATE_TRANSITION__OWNED_GUARD_CONDITION);
 			childrenFeatures.add(CapellacommonPackage.Literals.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS);
 		}
 		return childrenFeatures;
@@ -469,23 +514,7 @@ public class StateTransitionItemProvider
 	 String[] result = new String[] { null };
 
     	//begin-capella-code
-        String label = ""; //$NON-NLS-1$
-        String targetName = ""; //$NON-NLS-1$
-        EObject target = null;
-
- 		target = ((StateTransition) object).getTarget();
-	
-	 	if (null != target) {
-			if (target instanceof AbstractNamedElement) {
-				targetName = ((AbstractNamedElement) target).getName();
-			}
-
-			if (null == targetName || "" == targetName) { //$NON-NLS-1$
-				targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-			}
-	 	}
-	 	label = "[" + getString("_UI_StateTransition_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		
+		String label = ((StateTransition)object).getName();
 		//end-capella-code
 	  
 	
@@ -510,12 +539,10 @@ public class StateTransitionItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(StateTransition.class)) {
-			case CapellacommonPackage.STATE_TRANSITION__GUARD:
 			case CapellacommonPackage.STATE_TRANSITION__KIND:
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGER_DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION:
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -534,18 +561,6 @@ public class StateTransitionItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (CapellacommonPackage.Literals.STATE_TRANSITION__OWNED_GUARD_CONDITION,
-                         CapellacoreFactory.eINSTANCE.createConstraint());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

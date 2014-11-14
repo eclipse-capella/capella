@@ -19,18 +19,17 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.diffmerge.api.IComparison;
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.util.structures.FArrayList;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
-import org.polarsys.capella.core.transition.common.activities.AbstractActivity;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.activities.AbstractActivity;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -52,8 +51,8 @@ public class MakeTraceabilityActivity extends AbstractActivity implements ITrans
     ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
     ITraceabilityHandler targetHandler = (ITraceabilityHandler) context.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
 
-    IFeaturedModelScope sourceScope = (IFeaturedModelScope) context.get(ITransitionConstants.MERGE_REFERENCE_SCOPE);
-    IFeaturedModelScope targetScope = (IFeaturedModelScope) context.get(ITransitionConstants.MERGE_TARGET_SCOPE);
+    IEditableModelScope sourceScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_REFERENCE_SCOPE);
+    IEditableModelScope targetScope = (IEditableModelScope) context.get(ITransitionConstants.MERGE_TARGET_SCOPE);
 
     IComparison comparison = (IComparison) context.get(ITransitionConstants.MERGE_COMPARISON);
 

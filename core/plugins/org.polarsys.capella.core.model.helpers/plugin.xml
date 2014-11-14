@@ -149,5 +149,11 @@
          </queryAlgorithm>
       </querySpecification>      
    </extension>
+   <extension
+         point="org.polarsys.capella.common.ef.editingDomainListener">
+      <editingDomainListener
+            class="org.polarsys.capella.core.model.helpers.listeners.CapellaModelEditingDomainListener">
+      </editingDomainListener>
+   </extension>
 </plugin>
 

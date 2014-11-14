@@ -16,15 +16,13 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
@@ -40,6 +38,7 @@ import org.polarsys.capella.core.transition.system.handlers.optimize.CrossRefere
 import org.polarsys.capella.core.transition.system.handlers.traceability.config.MergeTargetConfiguration;
 import org.polarsys.capella.core.transition.system.handlers.transformation.CapellaTransformationHandler;
 import org.polarsys.capella.core.transition.system.helpers.SemanticHelper;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -109,8 +108,11 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   /**
-   * @param context_p
-   * @param activityParams_p
+   * In a system transition, 
+   * 
+   * TRANSITION_SOURCE_ROOT = getSystemEngineering(TRANSITION_SOURCES)
+   * TRANSITION_SOURCE_RESOURCE = TRANSITION_SOURCE_ROOT.eResource
+   * TRANSITION_SOURCE_EDITING_DOMAIN = editingDomain(TRANSITION_SOURCE_RESOURCE)
    */
   @Override
   protected IStatus initializeSource(IContext context_p, ActivityParameters activityParams_p) {
@@ -123,9 +125,11 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
       }
 
       ensureOpening(source);
-      context_p.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, SystemEngineeringExt.getSystemEngineering((CapellaElement) source));
-      context_p.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, source.eResource());
-      context_p.put(ITransitionConstants.TRANSITION_SOURCE_ARCHITECTURE, BlockArchitectureExt.getRootBlockArchitecture(source));
+
+      EObject root = SystemEngineeringExt.getSystemEngineering((CapellaElement) source);
+      context_p.put(ITransitionConstants.TRANSITION_SOURCE_ROOT, root);
+      context_p.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, root.eResource());
+      context_p.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(root.eResource()));
 
     } else {
       return new Status(IStatus.ERROR, Messages.Activity_Transition, "No input selection");
@@ -134,6 +138,14 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     return Status.OK_STATUS;
   }
 
+  /**
+   * In a system transition, 
+   * default use is where source and target resources are the same
+   * 
+   * TRANSITION_TARGET_RESOURCE = TRANSITION_SOURCE_RESOURCE
+   * TRANSITION_TARGET_EDITING_DOMAIN = editingDomain(TRANSITION_TARGET_RESOURCE)
+   * TRANSITION_TARGET_ROOT = TRANSITION_SOURCE_ROOT 
+   */
   @Override
   protected IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p) {
     //default transition, targetResource is same resource
@@ -142,6 +154,7 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
 
     if ((outputResource != null) && (outputResource.getContents().size() != 0)) {
       context_p.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
+      context_p.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
 
       Project project = (Project) org.polarsys.capella.core.model.helpers.CapellaElementExt.getRoot((CapellaElement) outputResource.getContents().get(0));
 

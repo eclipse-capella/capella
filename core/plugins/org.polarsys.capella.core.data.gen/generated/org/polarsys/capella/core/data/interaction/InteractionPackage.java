@@ -115,15 +115,6 @@ public interface InteractionPackage extends EPackage {
 	int SEQUENCE_MESSAGE__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEQUENCE_MESSAGE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,6 +122,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEQUENCE_MESSAGE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -277,7 +277,7 @@ public interface InteractionPackage extends EPackage {
 	int SEQUENCE_MESSAGE__KIND = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Exchange Context</b></em>' attribute.
+	 * The feature id for the '<em><b>Exchange Context</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -358,13 +358,22 @@ public interface InteractionPackage extends EPackage {
 	int SEQUENCE_MESSAGE__RECEIVING_FUNCTION = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Owned Sequence Message Valuations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Sequence Message</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEQUENCE_MESSAGE_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
+	int SEQUENCE_MESSAGE_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl <em>Scenario</em>}' class.
@@ -413,15 +422,6 @@ public interface InteractionPackage extends EPackage {
 	int SCENARIO__CONSTRAINTS = CapellacorePackage.NAMESPACE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__NAME = CapellacorePackage.NAMESPACE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -429,6 +429,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCENARIO__OWNED_CONSTRAINTS = CapellacorePackage.NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__NAME = CapellacorePackage.NAMESPACE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -629,31 +638,13 @@ public interface InteractionPackage extends EPackage {
 	int SCENARIO__OWNED_PARAMETER = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Pre Condition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__PRE_CONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Post Condition</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCENARIO__POST_CONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 4;
-
-	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__KIND = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 5;
+	int SCENARIO__KIND = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Merged</b></em>' attribute.
@@ -662,7 +653,25 @@ public interface InteractionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SCENARIO__MERGED = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 6;
+	int SCENARIO__MERGED = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__PRE_CONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Post Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO__POST_CONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Owned Instance Roles</b></em>' containment reference list.
@@ -837,15 +846,6 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_FRAGMENT__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_FRAGMENT__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,6 +853,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERACTION_FRAGMENT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_FRAGMENT__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1054,15 +1063,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_END__CONSTRAINTS = INTERACTION_FRAGMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_END__NAME = INTERACTION_FRAGMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1070,6 +1070,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_END__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_END__NAME = INTERACTION_FRAGMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1289,15 +1298,6 @@ public interface InteractionPackage extends EPackage {
 	int MESSAGE_END__CONSTRAINTS = ABSTRACT_END__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_END__NAME = ABSTRACT_END__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1305,6 +1305,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE_END__OWNED_CONSTRAINTS = ABSTRACT_END__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_END__NAME = ABSTRACT_END__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1533,15 +1542,6 @@ public interface InteractionPackage extends EPackage {
 	int TIME_LAPSE__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_LAPSE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1549,6 +1549,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_LAPSE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_LAPSE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1759,15 +1768,6 @@ public interface InteractionPackage extends EPackage {
 	int EXECUTION__CONSTRAINTS = TIME_LAPSE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION__NAME = TIME_LAPSE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1775,6 +1775,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTION__OWNED_CONSTRAINTS = TIME_LAPSE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION__NAME = TIME_LAPSE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1994,15 +2003,6 @@ public interface InteractionPackage extends EPackage {
 	int EXECUTION_END__CONSTRAINTS = ABSTRACT_END__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_END__NAME = ABSTRACT_END__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2010,6 +2010,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTION_END__OWNED_CONSTRAINTS = ABSTRACT_END__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_END__NAME = ABSTRACT_END__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2238,15 +2247,6 @@ public interface InteractionPackage extends EPackage {
 	int EVENT__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2254,6 +2254,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2455,15 +2464,6 @@ public interface InteractionPackage extends EPackage {
 	int CREATION_EVENT__CONSTRAINTS = EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CREATION_EVENT__NAME = EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2471,6 +2471,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int CREATION_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATION_EVENT__NAME = EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2672,15 +2681,6 @@ public interface InteractionPackage extends EPackage {
 	int DESTRUCTION_EVENT__CONSTRAINTS = EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DESTRUCTION_EVENT__NAME = EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2688,6 +2688,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int DESTRUCTION_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESTRUCTION_EVENT__NAME = EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2889,15 +2898,6 @@ public interface InteractionPackage extends EPackage {
 	int EXECUTION_EVENT__CONSTRAINTS = EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTION_EVENT__NAME = EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2905,6 +2905,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTION_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTION_EVENT__NAME = EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3106,15 +3115,6 @@ public interface InteractionPackage extends EPackage {
 	int INSTANCE_ROLE__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INSTANCE_ROLE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3122,6 +3122,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INSTANCE_ROLE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_ROLE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3332,15 +3341,6 @@ public interface InteractionPackage extends EPackage {
 	int EVENT_RECEIPT_OPERATION__CONSTRAINTS = EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_RECEIPT_OPERATION__NAME = EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3348,6 +3348,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_RECEIPT_OPERATION__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_RECEIPT_OPERATION__NAME = EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3558,15 +3567,6 @@ public interface InteractionPackage extends EPackage {
 	int EVENT_SENT_OPERATION__CONSTRAINTS = EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SENT_OPERATION__NAME = EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3574,6 +3574,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_SENT_OPERATION__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SENT_OPERATION__NAME = EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3782,6 +3791,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int MERGE_LINK__CONSTRAINTS = CapellacorePackage.TRACE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MERGE_LINK__OWNED_CONSTRAINTS = CapellacorePackage.TRACE__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -4001,6 +4019,15 @@ public interface InteractionPackage extends EPackage {
 	int REFINEMENT_LINK__CONSTRAINTS = CapellacorePackage.TRACE__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFINEMENT_LINK__OWNED_CONSTRAINTS = CapellacorePackage.TRACE__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4216,6 +4243,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -4453,15 +4489,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CAPABILITY__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4469,6 +4496,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4669,7 +4705,7 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAINS = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Pre Condition</b></em>' attribute.
+	 * The feature id for the '<em><b>Pre Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4678,7 +4714,7 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY__PRE_CONDITION = CapellacorePackage.STRUCTURE_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Post Condition</b></em>' attribute.
+	 * The feature id for the '<em><b>Post Condition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -4940,6 +4976,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_EXTEND__CONSTRAINTS = CapellacorePackage.RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_EXTEND__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5166,6 +5211,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_EXTENSION_POINT__CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5319,15 +5373,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME = CapellacorePackage.NAMED_RELATIONSHIP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_CONSTRAINTS;
-
-	/**
 	 * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5408,6 +5453,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY_GENERALIZATION__CONSTRAINTS = CapellacorePackage.RELATIONSHIP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_GENERALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -5627,6 +5681,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_INCLUDE__CONSTRAINTS = CapellacorePackage.RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_INCLUDE__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5844,15 +5907,6 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_STATE__CONSTRAINTS = INTERACTION_FRAGMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_STATE__NAME = INTERACTION_FRAGMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5860,6 +5914,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERACTION_STATE__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_STATE__NAME = INTERACTION_FRAGMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -6088,15 +6151,6 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_FRAGMENT__CONSTRAINTS = TIME_LAPSE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FRAGMENT__NAME = TIME_LAPSE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6104,6 +6158,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FRAGMENT__OWNED_CONSTRAINTS = TIME_LAPSE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FRAGMENT__NAME = TIME_LAPSE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -6323,15 +6386,6 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_USE__CONSTRAINTS = ABSTRACT_FRAGMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_USE__NAME = ABSTRACT_FRAGMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6339,6 +6393,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERACTION_USE__OWNED_CONSTRAINTS = ABSTRACT_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_USE__NAME = ABSTRACT_FRAGMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -6576,15 +6639,6 @@ public interface InteractionPackage extends EPackage {
 	int COMBINED_FRAGMENT__CONSTRAINTS = ABSTRACT_FRAGMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMBINED_FRAGMENT__NAME = ABSTRACT_FRAGMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6592,6 +6646,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMBINED_FRAGMENT__OWNED_CONSTRAINTS = ABSTRACT_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMBINED_FRAGMENT__NAME = ABSTRACT_FRAGMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -6838,15 +6901,6 @@ public interface InteractionPackage extends EPackage {
 	int GATE__CONSTRAINTS = MESSAGE_END__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GATE__NAME = MESSAGE_END__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6854,6 +6908,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int GATE__OWNED_CONSTRAINTS = MESSAGE_END__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GATE__NAME = MESSAGE_END__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7082,15 +7145,6 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_OPERAND__CONSTRAINTS = INTERACTION_FRAGMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__NAME = INTERACTION_FRAGMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7098,6 +7152,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERACTION_OPERAND__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_OPERAND__NAME = INTERACTION_FRAGMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7244,22 +7307,22 @@ public interface InteractionPackage extends EPackage {
 	int INTERACTION_OPERAND__COVERED_INSTANCE_ROLES = INTERACTION_FRAGMENT__COVERED_INSTANCE_ROLES;
 
 	/**
-	 * The feature id for the '<em><b>Guard</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTERACTION_OPERAND__GUARD = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Referenced Interaction Fragments</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
+	int INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS = INTERACTION_FRAGMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Guard</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERACTION_OPERAND__GUARD = INTERACTION_FRAGMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Operand</em>' class.
@@ -7317,15 +7380,6 @@ public interface InteractionPackage extends EPackage {
 	int FRAGMENT_END__CONSTRAINTS = INTERACTION_FRAGMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FRAGMENT_END__NAME = INTERACTION_FRAGMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7333,6 +7387,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int FRAGMENT_END__OWNED_CONSTRAINTS = INTERACTION_FRAGMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FRAGMENT_END__NAME = INTERACTION_FRAGMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7541,6 +7604,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CONSTRAINTS = CapellacorePackage.INVOLVEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -7778,6 +7850,15 @@ public interface InteractionPackage extends EPackage {
 	int ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__CONSTRAINTS = CapellacorePackage.INVOLVEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8011,6 +8092,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int SCENARIO_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENARIO_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -8248,15 +8338,6 @@ public interface InteractionPackage extends EPackage {
 	int STATE_FRAGMENT__CONSTRAINTS = TIME_LAPSE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_FRAGMENT__NAME = TIME_LAPSE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8264,6 +8345,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE_FRAGMENT__OWNED_CONSTRAINTS = TIME_LAPSE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_FRAGMENT__NAME = TIME_LAPSE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8492,15 +8582,6 @@ public interface InteractionPackage extends EPackage {
 	int ARM_TIMER_EVENT__CONSTRAINTS = EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARM_TIMER_EVENT__NAME = EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8508,6 +8589,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int ARM_TIMER_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARM_TIMER_EVENT__NAME = EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8709,15 +8799,6 @@ public interface InteractionPackage extends EPackage {
 	int CANCEL_TIMER_EVENT__CONSTRAINTS = EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CANCEL_TIMER_EVENT__NAME = EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8725,6 +8806,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int CANCEL_TIMER_EVENT__OWNED_CONSTRAINTS = EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CANCEL_TIMER_EVENT__NAME = EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8926,15 +9016,6 @@ public interface InteractionPackage extends EPackage {
 	int CONSTRAINT_DURATION__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT_DURATION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8942,6 +9023,15 @@ public interface InteractionPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTRAINT_DURATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT_DURATION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -9115,6 +9205,223 @@ public interface InteractionPackage extends EPackage {
 	int CONSTRAINT_DURATION_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl <em>Sequence Message Valuation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl
+	 * @see org.polarsys.capella.core.data.interaction.impl.InteractionPackageImpl#getSequenceMessageValuation()
+	 * @generated
+	 */
+	int SEQUENCE_MESSAGE_VALUATION = 37;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__OWNED_EXTENSIONS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__ID = CapellacorePackage.CAPELLA_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__SID = CapellacorePackage.CAPELLA_ELEMENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__INCOMING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__OUTGOING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__VISIBLE_IN_DOC = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__VISIBLE_IN_LM = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__SUMMARY = CapellacorePackage.CAPELLA_ELEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__DESCRIPTION = CapellacorePackage.CAPELLA_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__REVIEW = CapellacorePackage.CAPELLA_ELEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__OWNED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__APPLIED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__STATUS = CapellacorePackage.CAPELLA_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Exchange Item Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION__VALUE = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Sequence Message Valuation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_MESSAGE_VALUATION_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.interaction.MessageKind <em>Message Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9122,7 +9429,7 @@ public interface InteractionPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.interaction.impl.InteractionPackageImpl#getMessageKind()
 	 * @generated
 	 */
-	int MESSAGE_KIND = 37;
+	int MESSAGE_KIND = 38;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.interaction.ScenarioKind <em>Scenario Kind</em>}' enum.
@@ -9132,7 +9439,7 @@ public interface InteractionPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.interaction.impl.InteractionPackageImpl#getScenarioKind()
 	 * @generated
 	 */
-	int SCENARIO_KIND = 38;
+	int SCENARIO_KIND = 39;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.interaction.InteractionOperatorKind <em>Operator Kind</em>}' enum.
@@ -9142,7 +9449,7 @@ public interface InteractionPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.interaction.impl.InteractionPackageImpl#getInteractionOperatorKind()
 	 * @generated
 	 */
-	int INTERACTION_OPERATOR_KIND = 39;
+	int INTERACTION_OPERATOR_KIND = 40;
 
 
 	/**
@@ -9167,15 +9474,15 @@ public interface InteractionPackage extends EPackage {
 	EAttribute getSequenceMessage_Kind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getExchangeContext <em>Exchange Context</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getExchangeContext <em>Exchange Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Exchange Context</em>'.
+	 * @return the meta object for the reference '<em>Exchange Context</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.SequenceMessage#getExchangeContext()
 	 * @see #getSequenceMessage()
 	 * @generated
 	 */
-	EAttribute getSequenceMessage_ExchangeContext();
+	EReference getSequenceMessage_ExchangeContext();
 
 	/**
 	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getSendingEnd <em>Sending End</em>}'.
@@ -9266,6 +9573,17 @@ public interface InteractionPackage extends EPackage {
 	EReference getSequenceMessage_ReceivingFunction();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.interaction.SequenceMessage#getOwnedSequenceMessageValuations <em>Owned Sequence Message Valuations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned Sequence Message Valuations</em>'.
+	 * @see org.polarsys.capella.core.data.interaction.SequenceMessage#getOwnedSequenceMessageValuations()
+	 * @see #getSequenceMessage()
+	 * @generated
+	 */
+	EReference getSequenceMessage_OwnedSequenceMessageValuations();
+
+	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.interaction.Scenario <em>Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9276,26 +9594,26 @@ public interface InteractionPackage extends EPackage {
 	EClass getScenario();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pre Condition</em>'.
+	 * @return the meta object for the reference '<em>Pre Condition</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.Scenario#getPreCondition()
 	 * @see #getScenario()
 	 * @generated
 	 */
-	EAttribute getScenario_PreCondition();
+	EReference getScenario_PreCondition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Post Condition</em>'.
+	 * @return the meta object for the reference '<em>Post Condition</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.Scenario#getPostCondition()
 	 * @see #getScenario()
 	 * @generated
 	 */
-	EAttribute getScenario_PostCondition();
+	EReference getScenario_PostCondition();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.interaction.Scenario#getKind <em>Kind</em>}'.
@@ -9734,26 +10052,26 @@ public interface InteractionPackage extends EPackage {
 	EClass getAbstractCapability();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPreCondition <em>Pre Condition</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPreCondition <em>Pre Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pre Condition</em>'.
+	 * @return the meta object for the reference '<em>Pre Condition</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getPreCondition()
 	 * @see #getAbstractCapability()
 	 * @generated
 	 */
-	EAttribute getAbstractCapability_PreCondition();
+	EReference getAbstractCapability_PreCondition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPostCondition <em>Post Condition</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPostCondition <em>Post Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Post Condition</em>'.
+	 * @return the meta object for the reference '<em>Post Condition</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getPostCondition()
 	 * @see #getAbstractCapability()
 	 * @generated
 	 */
-	EAttribute getAbstractCapability_PostCondition();
+	EReference getAbstractCapability_PostCondition();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getOwnedScenarios <em>Owned Scenarios</em>}'.
@@ -10296,15 +10614,15 @@ public interface InteractionPackage extends EPackage {
 	EClass getInteractionOperand();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getGuard <em>Guard</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getGuard <em>Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Guard</em>'.
+	 * @return the meta object for the reference '<em>Guard</em>'.
 	 * @see org.polarsys.capella.core.data.interaction.InteractionOperand#getGuard()
 	 * @see #getInteractionOperand()
 	 * @generated
 	 */
-	EAttribute getInteractionOperand_Guard();
+	EReference getInteractionOperand_Guard();
 
 	/**
 	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getReferencedInteractionFragments <em>Referenced Interaction Fragments</em>}'.
@@ -10583,6 +10901,38 @@ public interface InteractionPackage extends EPackage {
 	EReference getConstraintDuration_Finish();
 
 	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation <em>Sequence Message Valuation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sequence Message Valuation</em>'.
+	 * @see org.polarsys.capella.core.data.interaction.SequenceMessageValuation
+	 * @generated
+	 */
+	EClass getSequenceMessageValuation();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getExchangeItemElement <em>Exchange Item Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Exchange Item Element</em>'.
+	 * @see org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getExchangeItemElement()
+	 * @see #getSequenceMessageValuation()
+	 * @generated
+	 */
+	EReference getSequenceMessageValuation_ExchangeItemElement();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @see org.polarsys.capella.core.data.interaction.SequenceMessageValuation#getValue()
+	 * @see #getSequenceMessageValuation()
+	 * @generated
+	 */
+	EReference getSequenceMessageValuation_Value();
+
+	/**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.interaction.MessageKind <em>Message Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10653,12 +11003,12 @@ public interface InteractionPackage extends EPackage {
 		EAttribute SEQUENCE_MESSAGE__KIND = eINSTANCE.getSequenceMessage_Kind();
 
 		/**
-		 * The meta object literal for the '<em><b>Exchange Context</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Exchange Context</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SEQUENCE_MESSAGE__EXCHANGE_CONTEXT = eINSTANCE.getSequenceMessage_ExchangeContext();
+		EReference SEQUENCE_MESSAGE__EXCHANGE_CONTEXT = eINSTANCE.getSequenceMessage_ExchangeContext();
 
 		/**
 		 * The meta object literal for the '<em><b>Sending End</b></em>' reference feature.
@@ -10725,6 +11075,14 @@ public interface InteractionPackage extends EPackage {
 		EReference SEQUENCE_MESSAGE__RECEIVING_FUNCTION = eINSTANCE.getSequenceMessage_ReceivingFunction();
 
 		/**
+		 * The meta object literal for the '<em><b>Owned Sequence Message Valuations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS = eINSTANCE.getSequenceMessage_OwnedSequenceMessageValuations();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.interaction.impl.ScenarioImpl <em>Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -10735,20 +11093,20 @@ public interface InteractionPackage extends EPackage {
 		EClass SCENARIO = eINSTANCE.getScenario();
 
 		/**
-		 * The meta object literal for the '<em><b>Pre Condition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Pre Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCENARIO__PRE_CONDITION = eINSTANCE.getScenario_PreCondition();
+		EReference SCENARIO__PRE_CONDITION = eINSTANCE.getScenario_PreCondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Post Condition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Post Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SCENARIO__POST_CONDITION = eINSTANCE.getScenario_PostCondition();
+		EReference SCENARIO__POST_CONDITION = eINSTANCE.getScenario_PostCondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
@@ -11109,20 +11467,20 @@ public interface InteractionPackage extends EPackage {
 		EClass ABSTRACT_CAPABILITY = eINSTANCE.getAbstractCapability();
 
 		/**
-		 * The meta object literal for the '<em><b>Pre Condition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Pre Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_CAPABILITY__PRE_CONDITION = eINSTANCE.getAbstractCapability_PreCondition();
+		EReference ABSTRACT_CAPABILITY__PRE_CONDITION = eINSTANCE.getAbstractCapability_PreCondition();
 
 		/**
-		 * The meta object literal for the '<em><b>Post Condition</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Post Condition</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_CAPABILITY__POST_CONDITION = eINSTANCE.getAbstractCapability_PostCondition();
+		EReference ABSTRACT_CAPABILITY__POST_CONDITION = eINSTANCE.getAbstractCapability_PostCondition();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned Scenarios</b></em>' containment reference list feature.
@@ -11545,12 +11903,12 @@ public interface InteractionPackage extends EPackage {
 		EClass INTERACTION_OPERAND = eINSTANCE.getInteractionOperand();
 
 		/**
-		 * The meta object literal for the '<em><b>Guard</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Guard</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute INTERACTION_OPERAND__GUARD = eINSTANCE.getInteractionOperand_Guard();
+		EReference INTERACTION_OPERAND__GUARD = eINSTANCE.getInteractionOperand_Guard();
 
 		/**
 		 * The meta object literal for the '<em><b>Referenced Interaction Fragments</b></em>' reference list feature.
@@ -11779,6 +12137,32 @@ public interface InteractionPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONSTRAINT_DURATION__FINISH = eINSTANCE.getConstraintDuration_Finish();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl <em>Sequence Message Valuation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.interaction.impl.SequenceMessageValuationImpl
+		 * @see org.polarsys.capella.core.data.interaction.impl.InteractionPackageImpl#getSequenceMessageValuation()
+		 * @generated
+		 */
+		EClass SEQUENCE_MESSAGE_VALUATION = eINSTANCE.getSequenceMessageValuation();
+
+		/**
+		 * The meta object literal for the '<em><b>Exchange Item Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT = eINSTANCE.getSequenceMessageValuation_ExchangeItemElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEQUENCE_MESSAGE_VALUATION__VALUE = eINSTANCE.getSequenceMessageValuation_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.interaction.MessageKind <em>Message Kind</em>}' enum.

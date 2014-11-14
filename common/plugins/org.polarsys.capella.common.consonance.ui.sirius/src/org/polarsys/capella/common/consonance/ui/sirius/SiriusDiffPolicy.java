@@ -13,10 +13,15 @@ package org.polarsys.capella.common.consonance.ui.sirius;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.gmf.GMFDiffPolicy;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
+import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 
@@ -29,30 +34,35 @@ public class SiriusDiffPolicy extends GMFDiffPolicy {
      (semantically unordered references) */
   private static final Collection<EReference> SEMANTICALLY_UNORDERED_REFERENCES =
     Arrays.asList(
-        ViewpointPackage.eINSTANCE.getDDiagram_ActivatedLayers(),
-        ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements(),
+        DiagramPackage.eINSTANCE.getDDiagram_ActivatedLayers(),
+        DiagramPackage.eINSTANCE.getDDiagram_OwnedDiagramElements(),
         ViewpointPackage.eINSTANCE.getDAnalysis_Models(),
         ViewpointPackage.eINSTANCE.getDAnalysis_OwnedViews(),
         ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements(),
-        ViewpointPackage.eINSTANCE.getEdgeTarget_IncomingEdges(),
-        ViewpointPackage.eINSTANCE.getEdgeTarget_OutgoingEdges()
+        DiagramPackage.eINSTANCE.getEdgeTarget_IncomingEdges(),
+        DiagramPackage.eINSTANCE.getEdgeTarget_OutgoingEdges()
     );
   
   /** The set of String attributes for which the empty string value must not be
       distinguished from the null value */
   private static final Collection<EAttribute> IGNORING_EMPTY_STRING_ATTRIBUTES =
     Arrays.asList(
-        ViewpointPackage.eINSTANCE.getDDiagramElement_TooltipText()
+        DiagramPackage.eINSTANCE.getDDiagramElement_TooltipText()
     );
   
   
   /**
-   * @see org.polarsys.capella.common.compare.policies.DefaultDiffPolicy#considerOrdered(EStructuralFeature)
+   * @see org.eclipse.emf.diffmerge.impl.policies.DefaultDiffPolicy#coverMatch(org.eclipse.emf.diffmerge.api.IMatch)
    */
   @Override
-  public boolean considerOrdered(EStructuralFeature feature_p) {
-    return super.considerOrdered(feature_p) &&
-      !SEMANTICALLY_UNORDERED_REFERENCES.contains(feature_p);
+  public boolean coverMatch(IMatch match_p) {
+    boolean result = super.coverMatch(match_p);
+    if (result && match_p.isPartial()) {
+      // Ignore transient elements of sequence diagrams (OK because no cross-ref)
+      EObject element = match_p.get(match_p.getUncoveredRole().opposite());
+      result = !(element instanceof EventEndsOrdering || element instanceof InstanceRolesOrdering);
+    }
+    return result;
   }
   
   /**
@@ -67,6 +77,15 @@ public class SiriusDiffPolicy extends GMFDiffPolicy {
     else
       result = super.coverValue(value_p, attribute_p);
     return result;
+  }
+  
+  /**
+   * @see org.eclipse.emf.diffmerge.impl.policies.ConfigurableDiffPolicy#doConsiderOrdered(org.eclipse.emf.ecore.EStructuralFeature)
+   */
+  @Override
+  protected boolean doConsiderOrdered(EStructuralFeature feature_p) {
+    return super.doConsiderOrdered(feature_p) &&
+        !SEMANTICALLY_UNORDERED_REFERENCES.contains(feature_p);
   }
   
 }

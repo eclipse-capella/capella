@@ -11,6 +11,7 @@
 package org.polarsys.capella.common.re.launcher;
 
 import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.core.transition.common.launcher.ILoopActivityDispatcher;
 
 /**
  */
@@ -24,6 +25,11 @@ public class UpdateDefLauncher extends UpdateCurLauncher {
   @Override
   protected String getScope() {
     return "org.polarsys.capella.common.re.updateDef";
+  }
+  
+  @Override
+  public ILoopActivityDispatcher createDispatcher() {
+    return new LoopActivityDispatcher();
   }
 
   @Override

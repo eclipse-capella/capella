@@ -10,27 +10,26 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.ui.views.libraryManager.activeStateManager;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.polarsys.capella.common.libraries.IModel;
 
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-
-/**
- */
 public class ActiveStateLabelProvider extends LabelProvider {
 
   @Override
   public String getText(Object element) {
-    IAbstractLibrary library = (IAbstractLibrary) element;
-    return library.getName();
+    IModel library = (IModel) element;
+    return library.getIdentifier().getName();
   }
 
   @Override
   public Image getImage(Object element) {
-    CapellaLibrary library = (CapellaLibrary) element;
-    return EObjectLabelProviderHelper.getImage(library.getProject());
+    ImageDescriptor desc = AbstractUIPlugin.imageDescriptorFromPlugin("org.polarsys.capella.core.data.gen.edit", "icons/full/obj16/Library.gif");
+    if (desc != null) {
+      return desc.createImage();
+    }
+    return null;
   }
-
 }

@@ -1,0 +1,958 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TreeSelection;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.jface.window.Window;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
+import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
+import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentContext;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.cs.Interface;
+import org.polarsys.capella.core.data.cs.InterfacePkg;
+import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
+import org.polarsys.capella.core.data.information.AbstractEventOperation;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.ExchangeItemInstance;
+import org.polarsys.capella.core.data.information.ExchangeMechanism;
+import org.polarsys.capella.core.data.information.InformationFactory;
+import org.polarsys.capella.core.data.information.communication.CommunicationLink;
+import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
+import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.interaction.MessageKind;
+import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.Messages;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.InterfaceExt;
+import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
+
+/**
+ * Dialog to select an operation (i.e service).<br>
+ * The viewer is mono-selection.
+ */
+public class SelectOperationDialogForSharedDataAndEvent extends SelectElementsDialog {
+
+  public enum ElementSupportedType {
+    OPERATION, EXCHANGE
+  }
+
+  /**
+   * Restricted tree viewer button.
+   */
+  private Button _restrictedTreeViewerButton;
+  /**
+   * Filter used to display or not restricted interface.
+   */
+  private ViewerFilter _restrictedInterfaceFilter;
+
+  private ViewerFilter _showComponentExchangeFilter;
+
+  /**
+   * Sequence message that this dialog is open for.
+   */
+  // private SequenceMessage _sequenceMessage;
+  /**
+   * Text field used to store the name of a created operation.
+   */
+  private Text _operationText;
+  /**
+   * Text field used to store the name and the interface (through widget data) instance that will have a new operation.<br>
+   * If getData returns <code>null</code>, a new interface must be created with entered name.
+   */
+  private Text _interfaceText;
+  /**
+   * Button that allows the end-user to select an existing interface when creating a new operation.
+   */
+  private Button _selectInterfaceButton;
+  /**
+   * Button to enable / disable creation operation.
+   */
+  private Button _enableCreationButton;
+  private ElementSupportedType _elementSupportedType;
+  private List<? extends EObject> _restrictedElements;
+  private Button _createPortsButton;
+  private boolean _isPortStrategy;
+  private Button _showComponentExchanges;
+
+  // radio buttons corresponding to EI types (and its group)
+  private Button _eventRadioButton;
+  private Button _flowRadioButton;
+  private Button _operationRadioButton;
+  private Button _sharedRadioButton;
+  private Group _eiTypeGroup;
+  private Button _unsetRadioButton;
+  private InstanceRole _sourceIR;
+  private InstanceRole _targetIR;
+  private MessageKind _messageKind;
+
+  /**
+   * Constructor.
+   * @param parentShell_p
+   * @param editingDomain_p
+   * @param adapterFactory_p
+   * @param dialogTitle_p
+   * @param dialogMessage_p
+   * @param wholeElements_p
+   * @param restrictedElements_p
+   * @param sourceIR_p
+   * @param targetIR_p
+   * @param messageKind
+   * @param type_p
+   */
+  public SelectOperationDialogForSharedDataAndEvent(Shell parentShell_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p, String dialogTitle_p,
+      String dialogMessage_p, List<? extends EObject> wholeElements_p, List<? extends EObject> restrictedElements_p, InstanceRole sourceIR_p,
+      InstanceRole targetIR_p, MessageKind messageKind, ElementSupportedType type_p) {
+    super(parentShell_p, editingDomain_p, adapterFactory_p, dialogTitle_p, dialogMessage_p, wholeElements_p);
+    _sourceIR = sourceIR_p;
+    _targetIR = targetIR_p;
+    _elementSupportedType = type_p;
+    _restrictedElements = restrictedElements_p;
+    _messageKind = messageKind;
+  }
+
+  /**
+   * Configure a handler for the button that enable / disable the creation operation button.
+   * @param enableCreationButton_p
+   */
+  private void configureEnableCreationButtonHandler() {
+    SelectionAdapter listener = new SelectionAdapter() {
+      /**
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       */
+      @Override
+      public void widgetSelected(SelectionEvent event_p) {
+        updateWindow();
+      }
+
+    };
+    if (_enableCreationButton != null) {
+      _enableCreationButton.addSelectionListener(listener);
+      if (_restrictedElements.size() == 0) {
+        _enableCreationButton.setSelection(true);
+      } else {
+        _enableCreationButton.setSelection(false);
+      }
+    }
+    // Force to initialize all widgets depending on this checkbox button.
+    listener.widgetSelected(null);
+  }
+
+  /**
+   * Enable or disable part of window according context.
+   */
+  void updateWindow() {
+    boolean enabledCreationOperation = false;
+    boolean enabledCreationInterface = true;
+
+    if (_enableCreationButton != null) {
+      enabledCreationOperation = _enableCreationButton.getSelection();
+      enabledCreationInterface = _enableCreationButton.getSelection();
+
+    }
+    enabledCreationInterface = enabledCreationOperation;
+    enabledCreationInterface |= ((getAnExchangeItemSelected() != null) && (getAnExchangeItemSelected() instanceof ExchangeItem));
+
+    if (_operationText != null) {
+      _eiTypeGroup.setEnabled(enabledCreationInterface);
+      _operationText.setEnabled(enabledCreationOperation);
+
+      updateRadioButtons(enabledCreationOperation);
+    }
+    _interfaceText.setEnabled(enabledCreationInterface);
+    if (_createPortsButton != null) {
+      _createPortsButton.setEnabled(enabledCreationInterface);
+    }
+    _selectInterfaceButton.setEnabled(enabledCreationInterface);
+
+    // Disable the main viewer to prevent from selection.
+    TreeAndListViewer viewer = getViewer();
+    ISelection selection = null;
+    if (null != viewer) {
+      viewer.setEnabled(!enabledCreationOperation);
+      selection = viewer.getSelection();
+    }
+    if (null != _restrictedTreeViewerButton) {
+      _restrictedTreeViewerButton.setEnabled(!enabledCreationOperation);
+    }
+    if (InterfaceHelper.isSharedDataAccess(_sourceIR, _targetIR)) {
+      _restrictedTreeViewerButton.setEnabled(false);
+    }
+    updateButtons(selection);
+  }
+
+  /**
+   * Updates radio button following the message type
+   * @param enabledCreationOperation_p
+   */
+  private void updateRadioButtons(boolean enabledCreationOperation_p) {
+    if (enabledCreationOperation_p) {
+      if (_messageKind == MessageKind.ASYNCHRONOUS_CALL) {
+        _eventRadioButton.setEnabled(true);
+        _sharedRadioButton.setEnabled(true);
+      } else {
+        _eventRadioButton.setEnabled(false);
+        _sharedRadioButton.setEnabled(false);
+      }
+      _flowRadioButton.setEnabled(true);
+      _unsetRadioButton.setEnabled(true);
+      _operationRadioButton.setEnabled(true);
+      // unset is always legal
+    } else {
+      _eventRadioButton.setEnabled(false);
+      _sharedRadioButton.setEnabled(false);
+      _flowRadioButton.setEnabled(false);
+      _unsetRadioButton.setEnabled(false);
+      _operationRadioButton.setEnabled(false);
+    }
+
+  }
+
+  private List<CapellaElement> getAvailableInterfaces() {
+    IBusinessQuery query =
+        BusinessQueriesProvider.getInstance().getContribution(InteractionPackage.Literals.SEQUENCE_MESSAGE,
+            InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END);
+    return query.getAvailableElements(_sourceIR);
+  }
+
+  /**
+   * Configure a handler to select an existing interface for edit sequence message.
+   */
+  private void configureSelectInterfaceButtonHandler() {
+    _selectInterfaceButton.addSelectionListener(new SelectionAdapter() {
+      /**
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       */
+      @SuppressWarnings("synthetic-access")
+      @Override
+      public void widgetSelected(SelectionEvent event_p) {
+        SelectElementsDialog selectInterfaceDialog =
+            new SelectElementsDialog(getParentShell(),
+                TransactionHelper.getEditingDomain(getAnExchangeItemSelected()),
+                CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+                Messages.SelectOperationDialog_SelectInterfaceDialog_Title, Messages.SelectOperationDialog_SelectInterfaceDialog_Message,
+                getAvailableInterfaces());
+        if (Window.OK == selectInterfaceDialog.open()) {
+          AbstractNamedElement selectedInterface = (AbstractNamedElement) selectInterfaceDialog.getResult().get(0);
+          _interfaceText.setText(selectedInterface.getName());
+          _interfaceText.setData(selectedInterface);
+        }
+      }
+    });
+  }
+
+  /**
+   * Create creation operation widgets.
+   * @param parent_p
+   */
+  private void createCreationOperationPart(Composite parent_p) {
+    // Add a group surrounding the create operation part.
+    final Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
+    treeViewerPartGroup.setLayout(new GridLayout(3, false)); /*
+                                                              * 3 columns one for the label, one the text and the last one for the button
+                                                              */
+    treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateNewExchangeItem);
+
+    _enableCreationButton = new Button(treeViewerPartGroup, SWT.CHECK);
+    _enableCreationButton.setText(Messages.SelectOperationDialog_EnableCreationButton_Title);
+    GridData layoutData = new GridData(GridData.FILL, GridData.BEGINNING, false, false);
+    layoutData.horizontalSpan = 3;
+    _enableCreationButton.setLayoutData(layoutData);
+
+    // Create a text field to host the operation name.
+    createLabel(treeViewerPartGroup, Messages.SelectOperationDialog_Operation_Title);
+    _operationText = createText(treeViewerPartGroup);
+    ((GridData) _operationText.getLayoutData()).horizontalSpan = 3; // No
+    // button
+    // following.
+
+    // Create a modify text adapter to update buttons.
+    ModifyListener modifyListener = new ModifyListener() {
+      /**
+       * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+       */
+      @SuppressWarnings("synthetic-access")
+      public void modifyText(ModifyEvent e_p) {
+        updateButtons(null);
+      }
+    };
+    _operationText.addModifyListener(modifyListener);
+
+    _eiTypeGroup = new Group(treeViewerPartGroup, SWT.NONE);
+    _eiTypeGroup.setText(Messages.SelectOperationDialog_2);
+    _eiTypeGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
+    _eiTypeGroup.setLayout(new GridLayout(5, false)); /*
+                                                       * 4 columns one for the label, one the text and the last one for the button
+                                                       */
+    _eventRadioButton = new Button(_eiTypeGroup, SWT.RADIO);
+    _eventRadioButton.setText(Messages.SelectOperationDialog_3);
+
+    _flowRadioButton = new Button(_eiTypeGroup, SWT.RADIO);
+    _flowRadioButton.setText(Messages.SelectOperationDialog_4);
+
+    _operationRadioButton = new Button(_eiTypeGroup, SWT.RADIO);
+    _operationRadioButton.setText(Messages.SelectOperationDialog_5);
+    _operationRadioButton.setEnabled(true);
+    _operationRadioButton.setSelection(true);
+
+    _sharedRadioButton = new Button(_eiTypeGroup, SWT.RADIO);
+    _sharedRadioButton.setText(Messages.SelectOperationDialog_6);
+
+    _unsetRadioButton = new Button(_eiTypeGroup, SWT.RADIO);
+    _unsetRadioButton.setText(Messages.SelectOperationDialog_7);
+
+  }
+
+  /**
+   * Create creation operation widgets.
+   * @param parent_p
+   */
+  private void createInterfacePart(Composite parent_p) {
+    // Add a group surrounding the create operation part.
+    final Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    treeViewerPartGroup.setText(Messages.SelectOperationDialog_CreateOrSelectInterface);
+    treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL, GridData.BEGINNING, true, true));
+    treeViewerPartGroup.setLayout(new GridLayout(3, false)); /*
+                                                              * 3 columns one for the label, one the text and the last one for the button
+                                                              */
+
+    // Create a text field to host the Interface name.
+    createLabel(treeViewerPartGroup, Messages.SelectOperationDialog_Interface_Title);
+    _interfaceText = createText(treeViewerPartGroup);
+
+    // Create a modify text adapter to update buttons.
+    ModifyListener modifyListener = new ModifyListener() {
+      /**
+       * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+       */
+      @SuppressWarnings("synthetic-access")
+      public void modifyText(ModifyEvent e_p) {
+        updateButtons(null);
+      }
+    };
+    _interfaceText.addModifyListener(modifyListener);
+
+    _selectInterfaceButton = new Button(treeViewerPartGroup, SWT.PUSH);
+    _selectInterfaceButton.setImage(ToolkitPlugin.getDefault().getImageRegistry().get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID));
+
+    List<CapellaElement> accessiblesInterfaces = getAvailableInterfaces();
+    // filtering accessible interfaces to select one used/implemented by
+    // components
+    Interface bestInterface = null;
+    boolean multipleBest = false;
+    for (CapellaElement capellaElement : accessiblesInterfaces) {
+      if (isGoodInterface(capellaElement)) {
+        if (bestInterface != null) {
+          // second best interface, select it to null
+          multipleBest = true;
+          break;
+        }
+        bestInterface = (Interface) capellaElement;
+      }
+    }
+
+    if (bestInterface == null) {
+      // component-> component default name is "source to target"
+      // else  is EI_Interface
+      StringBuilder builder = new StringBuilder();
+      if ((_sourceIR != null) && (_sourceIR.getRepresentedInstance() instanceof ExchangeItemInstance)) {
+        builder.append(_sourceIR.getName());
+        builder.append("_Interface"); //$NON-NLS-1$
+      } else if ((_targetIR != null) && (_targetIR.getRepresentedInstance() instanceof ExchangeItemInstance)) {
+        builder.append(_targetIR.getName());
+        builder.append("_Interface"); //$NON-NLS-1$
+      } else {
+        if ((_sourceIR != null) && (null != _sourceIR.getRepresentedInstance())) {
+          AbstractType abstractType = _sourceIR.getRepresentedInstance().getAbstractType();
+          if (null != abstractType) {
+            builder.append(abstractType.getName());
+          } else {
+            builder.append(_sourceIR.getName());
+          }
+        }
+        if ((_sourceIR != null) && (_targetIR != null)) {
+          builder.append("_to_"); //$NON-NLS-1$
+        }
+        if ((_targetIR != null) && (null != _targetIR.getRepresentedInstance())) {
+          AbstractType abstractType = _targetIR.getRepresentedInstance().getAbstractType();
+          if (null != abstractType) {
+            builder.append(abstractType.getName());
+          } else {
+            builder.append(_targetIR.getName());
+          }
+        }
+      }
+      _interfaceText.setText(builder.toString());
+    } else if (multipleBest) {
+      _interfaceText.setData(null);
+      _interfaceText.setText(""); //$NON-NLS-1$
+    } else {
+      _interfaceText.setData(bestInterface);
+      _interfaceText.setText(bestInterface.getName());
+      if (InterfaceHelper.isSharedDataAccess(_sourceIR, _targetIR)) {
+        // if we have a good interface, we don't have to change it in
+        // communication pattern
+        _interfaceText.setEnabled(false);
+      }
+    }
+
+  }
+
+  /**
+   * @param capellaElement_p
+   * @return
+   */
+  private boolean isGoodInterface(CapellaElement capellaElement_p) {
+    Interface interf = (Interface) capellaElement_p;
+    AbstractType src = _sourceIR == null ? null : _sourceIR.getRepresentedInstance().getAbstractType();
+    AbstractType tgt = _targetIR == null ? null : _targetIR.getRepresentedInstance().getAbstractType();
+    Component srcComp = null;
+    Component tgtComp = null;
+    ExchangeItem ei = null;
+
+    if (src instanceof Component) {
+      srcComp = (Component) src;
+    } else {
+      ei = (ExchangeItem) src;
+    }
+
+    if (tgt instanceof Component) {
+      tgtComp = (Component) tgt;
+    } else {
+      ei = (ExchangeItem) tgt;
+    }
+
+    if (ei == null) {
+      return ComponentExt.isImplementingInterface(tgtComp, interf) && ComponentExt.isUsingInterface(srcComp, interf);
+      // the interface is OK if it already allocates the EI
+    }
+
+    for (ExchangeItemAllocation eia : interf.getOwnedExchangeItemAllocations()) {
+      if (eia.getAllocatedItem() == ei) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * @param parent_p
+   */
+  private void createCreatePortButton(final Composite parent_p) {
+    _createPortsButton = new Button(parent_p, SWT.CHECK);
+    _createPortsButton.setText(Messages.SelectOperationDialog_0);
+    GridData layoutData = new GridData(GridData.FILL, GridData.BEGINNING, false, false);
+    layoutData.horizontalSpan = 3;
+    _createPortsButton.setLayoutData(layoutData);
+  }
+
+  /**
+   * Create an {@link Interface} for related to given sequence message with specified name.
+   * @param sequenceMessage_p
+   * @param interfaceName_p
+   */
+  private Interface createInterface(String interfaceName_p) {
+    Interface result = CsFactory.eINSTANCE.createInterface(interfaceName_p);
+
+    EObject src = _sourceIR != null ? _sourceIR.getRepresentedInstance().eContainer() : null;
+    EObject tgt = _targetIR != null ? _targetIR.getRepresentedInstance().eContainer() : null;
+
+    EObject container = null;
+
+    if ((src != null) && (tgt != null) && (src instanceof Component) && (tgt instanceof Component)) {
+      container = ComponentExt.getFirstCommonComponentAncestor(src, tgt);
+    }
+    if ((container == null) || (container instanceof ComponentContext)) {
+      if (_sourceIR != null) {
+        container = ComponentExt.getRootBlockArchitecture(_sourceIR);
+      } else {
+        container = ComponentExt.getRootBlockArchitecture(_targetIR);
+      }
+    }
+
+    // Retrieve or create an interface pkg into the container
+    EReference referenceInterfacePkg = null;
+    if (container instanceof BlockArchitecture) {
+      referenceInterfacePkg = CsPackage.Literals.BLOCK_ARCHITECTURE__OWNED_INTERFACE_PKG;
+    } else {
+      referenceInterfacePkg = CsPackage.Literals.BLOCK__OWNED_INTERFACE_PKG;
+    }
+
+    if (container.eGet(referenceInterfacePkg) == null) {
+      container.eSet(referenceInterfacePkg, CsFactory.eINSTANCE.createInterfacePkg(Messages.SelectOperationDialog_InterfacePkgName8));
+    }
+
+    // Set the interface into the pkg
+    InterfacePkg pkg = (InterfacePkg) container.eGet(referenceInterfacePkg);
+    pkg.getOwnedInterfaces().add(result);
+
+    org.polarsys.capella.core.model.helpers.CapellaElementExt.creationService(result);
+    result.setName(interfaceName_p);
+
+    return result;
+  }
+
+  /**
+   * Gets or create the selected interface.
+   * @return the selected interface
+   */
+  private Interface getOrCreateInterface() {
+    Interface selectedInterface = (Interface) _interfaceText.getData();
+    if ((null == selectedInterface) || !(selectedInterface.getName().equals(_interfaceText.getText()))) {
+      selectedInterface = createInterface(_interfaceText.getText());
+      _interfaceText.setData(selectedInterface);
+    }
+    return selectedInterface;
+  }
+
+  /**
+   * Create a new operation based on values entered by the end-user.
+   * @return
+   */
+  private ExchangeItem createExchangeItem() {
+    ExchangeItem result = InformationFactory.eINSTANCE.createExchangeItem();
+    Interface itf = getOrCreateInterface();
+
+    // the ei must be by default in the same package as the allocating interface
+    EObject container = itf.eContainer();
+    if (container instanceof InterfacePkg) {
+      InterfacePkg ipkg = (InterfacePkg) container;
+      ipkg.getOwnedExchangeItems().add(result);
+    } else {
+      InterfaceExt.getRootOwnerInterfacePkg(itf).getOwnedExchangeItems().add(result);
+    }
+    result.setExchangeMechanism(ExchangeMechanism.OPERATION);
+    if (_operationRadioButton.getSelection()) {
+      result.setExchangeMechanism(ExchangeMechanism.OPERATION);
+    }
+    if (_eventRadioButton.getSelection()) {
+      result.setExchangeMechanism(ExchangeMechanism.EVENT);
+    }
+    if (_sharedRadioButton.getSelection()) {
+      result.setExchangeMechanism(ExchangeMechanism.SHARED_DATA);
+    }
+    if (_flowRadioButton.getSelection()) {
+      result.setExchangeMechanism(ExchangeMechanism.FLOW);
+    }
+    if (_unsetRadioButton.getSelection()) {
+      result.setExchangeMechanism(ExchangeMechanism.UNSET);
+    }
+
+    org.polarsys.capella.core.model.helpers.CapellaElementExt.creationService(result);
+    result.setName(_operationText.getText());
+    return result;
+  }
+
+  /**
+   * Allocate the exchange item to the interface selected
+   * @param getAnExchangeItemSelected_p
+   * @return
+   */
+  private ExchangeItemAllocation allocateExchangeItem(ExchangeItem exchangeItem_p) {
+    Interface selectedInterface = getOrCreateInterface();
+    ExchangeItemAllocation result = InterfaceExt.addExchangeItem(selectedInterface, exchangeItem_p);
+    if (_operationText == null) {
+      return allocateExchangeItemForSharedData(exchangeItem_p, result);
+    }
+    if (_messageKind == MessageKind.SYNCHRONOUS_CALL) {
+      result.setSendProtocol(CommunicationLinkProtocol.SYNCHRONOUS);
+    }
+    if (_messageKind == MessageKind.ASYNCHRONOUS_CALL) {
+      result.setSendProtocol(CommunicationLinkProtocol.ASYNCHRONOUS);
+    }
+    if (_messageKind == MessageKind.CREATE) {
+      result.setSendProtocol(CommunicationLinkProtocol.BROADCAST);
+    }
+    return result;
+  }
+
+  /**
+   * Initialize given ExchangeItemAllocation with information from the CommunicationLink (if one is available) or with information deduced from the message
+   * itself.
+   * @param exchangeItem_p
+   * @param result_p
+   * @return
+   */
+  private ExchangeItemAllocation allocateExchangeItemForSharedData(ExchangeItem exchangeItem_p, ExchangeItemAllocation result_p) {
+
+    Component component;
+    ExchangeItem ei;
+    CommunicationLink communicationLink = null;
+    // Get involved ExchangeItem and Component.
+    if (_sourceIR.getRepresentedInstance() instanceof ExchangeItemInstance) {
+      ei = (ExchangeItem) _sourceIR.getRepresentedInstance().getAbstractType();
+      component = (Component) _targetIR.getRepresentedInstance().getAbstractType();
+    } else {
+      component = (Component) _sourceIR.getRepresentedInstance().getAbstractType();
+      ei = (ExchangeItem) _targetIR.getRepresentedInstance().getAbstractType();
+    }
+    // Looking for a communication link between Component and ExchangeItem.
+    for (CommunicationLink cl : CommunicationLinkExt.getAllCommunicationLinks(component)) {
+      if (cl.getExchangeItem() == ei) {
+        // found the correct Communication link
+        communicationLink = cl;
+        break;
+      }
+    }
+    if (null == communicationLink) {
+      // No communication link found -> modeling exclusively from the sequence diagram.
+      // in this case, the initialization depends of the message itself;
+      if (_messageKind == MessageKind.CREATE) {
+        result_p.setReceiveProtocol(CommunicationLinkProtocol.UNSET);
+      } else if (_messageKind == MessageKind.SYNCHRONOUS_CALL) {
+        if (ei.getExchangeMechanism() == ExchangeMechanism.SHARED_DATA) {
+          result_p.setReceiveProtocol(CommunicationLinkProtocol.READ);
+        }
+      } else if (_messageKind == MessageKind.ASYNCHRONOUS_CALL) {
+        if (_sourceIR.getRepresentedInstance().getAbstractType() instanceof ExchangeItem) {
+          result_p.setReceiveProtocol(CommunicationLinkProtocol.ACCEPT);
+        }
+      }
+    } else {
+      // A communication link found -> use it to configure the ExchangeItemAllocation.
+      CommunicationLinkKind communicationLinkKind = communicationLink.getKind();
+      CommunicationLinkProtocol communicationLinkProtocol = communicationLink.getProtocol();
+      if ((CommunicationLinkKind.SEND == communicationLinkKind) || (CommunicationLinkKind.PRODUCE == communicationLinkKind)
+          || (CommunicationLinkKind.CALL == communicationLinkKind) || (CommunicationLinkKind.WRITE == communicationLinkKind)
+          || (CommunicationLinkKind.TRANSMIT == communicationLinkKind)) {
+        // Actually, only WRITE should be tested since we are in a SharedData case.
+        result_p.setSendProtocol(communicationLinkProtocol);
+      } else if ((CommunicationLinkKind.RECEIVE == communicationLinkKind) || (CommunicationLinkKind.CONSUME == communicationLinkKind)
+                 || (CommunicationLinkKind.EXECUTE == communicationLinkKind) || (CommunicationLinkKind.ACCESS == communicationLinkKind)
+                 || (CommunicationLinkKind.ACQUIRE == communicationLinkKind)) {
+        // Actually, only ACCESS should be tested since we are in a SharedData case.
+        result_p.setReceiveProtocol(communicationLinkProtocol);
+      }
+      // Case UNSET -> nothing to do...
+    }
+    return result_p;
+  }
+
+  /**
+   * Create the restricted tree viewer button to display or not restricted interfaces.
+   * @param control_p
+   */
+  private void createRestrictedTreeViewerButton(Composite parent_p) {
+    _restrictedInterfaceFilter = new ViewerFilter() {
+      /**
+       * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+       */
+      @SuppressWarnings("synthetic-access")
+      @Override
+      public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
+        if ((element_p instanceof ExchangeItemAllocation) || (element_p instanceof ExchangeItem)) {
+          return _restrictedElements.contains(element_p);
+        } else if (element_p instanceof AbstractEventOperation) {
+          return true; // this is not the filter which decides
+        } else if (element_p instanceof CapellaElement) {
+          // Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of _restrictedElement
+          TreeIterator<EObject> iterator = ((CapellaElement) element_p).eAllContents();
+          while (iterator.hasNext()) {
+            EObject obj = iterator.next();
+            if (_restrictedElements.contains(obj)) {
+              return true;
+            }
+          }
+          return false; // capellaElement without a restricted object
+          // in its contents
+        }
+        return true;
+      }
+    };
+
+    _restrictedTreeViewerButton = new Button(parent_p, SWT.CHECK);
+    _restrictedTreeViewerButton.setText(Messages.SelectOperationDialog_RestrictedInterfacesButton_Title);
+    _restrictedTreeViewerButton.addSelectionListener(new SelectionAdapter() {
+      /**
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       */
+      @SuppressWarnings("synthetic-access")
+      @Override
+      public void widgetSelected(SelectionEvent event_p) {
+
+        if (((Button) event_p.widget).getSelection()) {
+          // Add a viewer filter to filter out restricted
+          // interface.
+          if (null != _restrictedInterfaceFilter) {
+            getViewer().getClientViewer().addFilter(_restrictedInterfaceFilter);
+          }
+        } else {
+          // Remove the filter.
+          if (null != _restrictedInterfaceFilter) {
+            getViewer().getClientViewer().removeFilter(_restrictedInterfaceFilter);
+          }
+        }
+      }
+    });
+    _restrictedTreeViewerButton.setSelection(true);
+
+    getViewer().getClientViewer().addSelectionChangedListener(new ISelectionChangedListener() {
+
+      public void selectionChanged(SelectionChangedEvent event_p) {
+        updateWindow();
+      }
+    });
+    getViewer().getClientViewer().addFilter(_restrictedInterfaceFilter);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  protected int getTreeViewerStyle() {
+    return IViewerStyle.SHOW_STATUS_BAR;
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog#createTreeViewerPart(org.eclipse.swt.widgets.Composite)
+   */
+  @Override
+  protected void createTreeViewerPart(Composite parent_p) {
+    // Add a group surrounding the tree viewer part.
+    Group treeViewerPartGroup = new Group(parent_p, SWT.NONE);
+    treeViewerPartGroup.setText(Messages.SelectOperationDialog_SelectExistingOperationGroup_Title);
+    treeViewerPartGroup.setLayout(new GridLayout());
+    treeViewerPartGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
+    super.createTreeViewerPart(treeViewerPartGroup);
+    if (_elementSupportedType == ElementSupportedType.OPERATION) {
+      createRestrictedTreeViewerButton(getViewer().getControl());
+    }
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog#doCreateDialogArea(org.eclipse.swt.widgets.Composite)
+   */
+  @Override
+  protected void doCreateDialogArea(Composite parent_p) {
+    // Create Operation creation part.
+    if (_elementSupportedType == ElementSupportedType.OPERATION) {
+      // don't have the "create exchangeItem" part if the source or target
+      // of the message
+      // is an exchange item, it will be it. But we keep the create
+      // interface part
+      // to allow creation of a exchangeItemAllocation
+      if (!InterfaceHelper.isSharedDataAccess(_sourceIR, _targetIR)) {
+        createCreationOperationPart(parent_p);
+      }
+
+      createInterfacePart(parent_p);
+      super.doCreateDialogArea(parent_p);
+
+      // create a button to show/hide exchange items
+      createShowCEButton(parent_p);
+
+      // Add a selection handler to all the selection of an existing
+      // interface.
+      configureSelectInterfaceButtonHandler();
+      createCreatePortButton(parent_p);
+
+      // Add a selection handler to enable / disable creation of an
+      // Operation.
+      // We must call that here only to make sure all widgets are created.
+      configureEnableCreationButtonHandler();
+    } else {
+
+      super.doCreateDialogArea(parent_p);
+    }
+  }
+
+  /**
+   * @param parent_p
+   */
+  private void createShowCEButton(Composite parent_p) {
+    _showComponentExchangeFilter = new ViewerFilter() {
+
+      @SuppressWarnings("synthetic-access")
+      @Override
+      public boolean select(Viewer viewer_p, Object parentElement_p, Object element_p) {
+        if (element_p instanceof ExchangeItemAllocation) {
+          return true; // this is not the filter which decides
+        } else if (element_p instanceof AbstractEventOperation) {
+          return _restrictedElements.contains(element_p);
+        } else if (element_p instanceof CapellaElement) {
+          //Recursive case: this element should only be displayed if its direct or indirect "contained" contains one of _restrictedElement
+          TreeIterator<EObject> iterator = ((CapellaElement) element_p).eAllContents();
+          while (iterator.hasNext()) {
+            EObject obj = iterator.next();
+            if (_restrictedElements.contains(obj)) {
+              return true;
+            }
+          }
+          return false; // capellaElement without a restricted object
+          // in its contents
+        }
+        return true;
+      }
+
+    };
+
+    _showComponentExchanges = new Button(getViewer().getControl(), SWT.CHECK);
+    _showComponentExchanges.setText(Messages.SelectOperationDialog_1);
+    _showComponentExchanges.setSelection(true);
+    _showComponentExchanges.addSelectionListener(new SelectionAdapter() {
+      /**
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       */
+      @SuppressWarnings("synthetic-access")
+      @Override
+      public void widgetSelected(SelectionEvent event_p) {
+        if (((Button) event_p.widget).getSelection()) {
+          // Add a viewer filter to filter view component exchanges.
+          if (null != _showComponentExchangeFilter) {
+            getViewer().getClientViewer().removeFilter(_showComponentExchangeFilter);
+          }
+        } else {
+          // Remove the filter.
+          if (null != _showComponentExchangeFilter) {
+            getViewer().getClientViewer().addFilter(_showComponentExchangeFilter);
+          }
+        }
+
+      }
+
+    });
+  }
+
+  @Override
+  public void create() {
+    super.create();
+    getShell().setMinimumSize(661, 800);
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog#handleResult()
+   */
+  @Override
+  protected List<? extends EObject> handleResult() {
+    CapellaElement getAnExchangeItemSelected = getAnExchangeItemSelected();
+    _isPortStrategy = _createPortsButton.getSelection();
+
+    // If not checked, the end-user has selected an existing operation.
+    if ((_elementSupportedType == ElementSupportedType.EXCHANGE)
+        || ((_enableCreationButton != null) && !_enableCreationButton.getSelection() && (getAnExchangeItemSelected == null))) {
+      return super.handleResult();
+    }
+
+    if ((getAnExchangeItemSelected instanceof ExchangeItemAllocation) && ((_enableCreationButton == null) || !_enableCreationButton.getSelection())) {
+      return Collections.singletonList(getAnExchangeItemSelected);
+    }
+    // It's an exchangeItem
+    ExchangeItemAllocation allocation;
+    if ((getAnExchangeItemSelected != null) && ((_enableCreationButton == null) || !_enableCreationButton.getSelection())) {
+      allocation = allocateExchangeItem((ExchangeItem) getAnExchangeItemSelected);
+    } else {
+      allocation = allocateExchangeItem(createExchangeItem());
+    }
+    // The end-user has created a new operation.
+    return Collections.singletonList(allocation);
+  }
+
+  private CapellaElement getAnExchangeItemSelected() {
+    if (getViewer() == null) {
+      return null;
+    }
+    ISelection selection = getViewer().getSelection();
+    if (selection == null) {
+      return null;
+    }
+    if (!(selection instanceof TreeSelection)) {
+      return null;
+    }
+    Object selectionItem = ((TreeSelection) selection).getFirstElement();
+    if (selectionItem == null) {
+      return null;
+    }
+    if (selectionItem instanceof ExchangeItem) {
+      return (ExchangeItem) selectionItem;
+    }
+    if (selectionItem instanceof ExchangeItemAllocation) {
+      return (ExchangeItemAllocation) selectionItem;
+    }
+    return null;
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog#isOkToClose(org.eclipse.jface.viewers.ISelection)
+   */
+  @Override
+  protected boolean isOkToClose(ISelection selection_p) {
+    CapellaElement getAnExchangeItemSelected = getAnExchangeItemSelected();
+
+    // If not checked, or no selection of exchangeItem in the list, the
+    // end-user has selected an existing allocation.
+    if ((_elementSupportedType == ElementSupportedType.EXCHANGE)
+        || ((_enableCreationButton != null) && !_enableCreationButton.getSelection() && (getAnExchangeItemSelected == null))) {
+      return super.isOkToClose(selection_p);
+    }
+
+    boolean interfaceSet = !_interfaceText.getText().equals(ICommonConstants.EMPTY_STRING);
+    boolean exchangeItemSelected = (getAnExchangeItemSelected != null) && (getAnExchangeItemSelected instanceof ExchangeItem);
+    boolean exchangeItemAllocationSelected = (getAnExchangeItemSelected != null) && (getAnExchangeItemSelected instanceof ExchangeItemAllocation);
+    boolean operationSet = (((_operationText != null) && !_operationText.getText().equals(ICommonConstants.EMPTY_STRING)));
+
+    if (exchangeItemAllocationSelected) {
+      return true;
+    }
+    if (exchangeItemSelected) {
+      return interfaceSet;
+    }
+
+    // nothing is selected into the tree.
+    return (interfaceSet && operationSet);
+  }
+
+  /**
+   * @return
+   */
+  public boolean isPortStrategy() {
+    return _isPortStrategy;
+  }
+}

@@ -19,11 +19,12 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.ui.properties.controllers.RepresentationContextualElementsController;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -45,7 +46,7 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
    */
   public RepresentationContextualElementsField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
       RepresentationContextualElementsController controller_p) {
-    this(parent_p, label_p, widgetFactory_p, 2, controller_p, false);
+    this(parent_p, label_p, widgetFactory_p, 3, controller_p, false);
   }
 
   /**
@@ -76,6 +77,11 @@ public class RepresentationContextualElementsField extends BrowseSemanticField {
   public void loadData(DRepresentation dRepresentation_p) {
     _representation = new WeakReference<DRepresentation>(dRepresentation_p);
     setValueTextField(_controller.loadValues(dRepresentation_p));
+  }
+
+  @Override
+  protected ExecutionManager getExecutionManager() {
+    return TransactionHelper.getExecutionManager(_representation.get());
   }
 
   /**

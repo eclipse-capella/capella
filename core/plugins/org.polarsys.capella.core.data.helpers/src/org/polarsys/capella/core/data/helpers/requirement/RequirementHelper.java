@@ -13,7 +13,8 @@ package org.polarsys.capella.core.data.helpers.requirement;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.requirement.delegates.AbstractRequirementHelper;
 import org.polarsys.capella.core.data.helpers.requirement.delegates.RequirementsTraceHelper;
@@ -24,8 +25,6 @@ import org.polarsys.capella.core.data.requirement.SystemFunctionalRequirement;
 import org.polarsys.capella.core.data.requirement.SystemNonFunctionalInterfaceRequirement;
 import org.polarsys.capella.core.data.requirement.SystemNonFunctionalRequirement;
 import org.polarsys.capella.core.data.requirement.SystemUserRequirement;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class RequirementHelper implements IHelper {
 

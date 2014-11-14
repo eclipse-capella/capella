@@ -10,32 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.menu.contributions.information;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
-import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 
-public class CollectionItemContribution implements IMDEMenuItemContribution {
-
-  /**
-   * 
-   */
-  private static final String _DEFAULT_MIN_CARDINALITY = "1"; //$NON-NLS-1$
-  private static final String _DEFAULT_MAX_CARDINALITY = "*"; //$NON-NLS-1$
+public class CollectionItemContribution extends MultiplicityElementItemContribution {
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
@@ -53,53 +37,9 @@ public class CollectionItemContribution implements IMDEMenuItemContribution {
     if (InformationPackage.Literals.COLLECTION.isInstance(createdElement_p)) {
       CompoundCommand cmd = new CompoundCommand();
 
-      // Creates the min cardinality.
-      final Command createMinCardCmd =
-          CreateChildCommand
-              .create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
-                  InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, DatavalueFactory.eINSTANCE.createLiteralNumericValue()),
-                  Collections.EMPTY_LIST);
-      cmd.append(createMinCardCmd);
+      cmd.append(getCardinalitiesCommand(editingDomain_p, createdElement_p, _ONE_CARDINALITY, _MANY_CARDINALITY));
+      cmd.append(getUniqueCommand(editingDomain_p, createdElement_p));
 
-      // Sets the min cardinality value.
-      Command setMinCardValueCmd = new CommandWrapper() {
-        @Override
-        public Command createCommand() {
-          Collection<?> res = createMinCardCmd.getResult();
-          if (res.size() == 1) {
-            Object createdObj = res.iterator().next();
-            if (createdObj instanceof EObject) {
-              return new SetCommand(editingDomain_p, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, _DEFAULT_MIN_CARDINALITY);
-            }
-          }
-          return null;
-        }
-      };
-      cmd.append(setMinCardValueCmd);
-
-      // Creates the max cardinality.
-      final Command createMaxCardCmd =
-          CreateChildCommand
-              .create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
-                  InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, DatavalueFactory.eINSTANCE.createLiteralNumericValue()),
-                  Collections.EMPTY_LIST);
-      cmd.append(createMaxCardCmd);
-
-      // Sets the max cardinality value.
-      Command setMaxCardValueCmd = new CommandWrapper() {
-        @Override
-        public Command createCommand() {
-          Collection<?> res = createMaxCardCmd.getResult();
-          if (res.size() == 1) {
-            Object createdObj = res.iterator().next();
-            if (createdObj instanceof EObject) {
-              return new SetCommand(editingDomain_p, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, _DEFAULT_MAX_CARDINALITY);
-            }
-          }
-          return null;
-        }
-      };
-      cmd.append(setMaxCardValueCmd);
       cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE, Boolean.TRUE));
       cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE, Boolean.TRUE));
 

@@ -13,12 +13,12 @@
 <plugin>
    <extension
          point="org.eclipse.emf.diffmerge.ui.modelComparisonContext">
-      <comparisonScope
-            scopeFactory="org.polarsys.capella.common.consonance.ui.sirius.SiriusScopeFactory">
-      </comparisonScope>
-      <comparisonSpecification
-            specificationFactory="org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonFactory">
-      </comparisonSpecification>
+      <scopeDefinition
+            factory="org.polarsys.capella.common.consonance.ui.sirius.SiriusScopeFactory">
+      </scopeDefinition>
+      <comparisonMethod
+            factory="org.polarsys.capella.common.consonance.ui.sirius.SiriusComparisonMethodFactory">
+      </comparisonMethod>
    </extension>
 
 </plugin>

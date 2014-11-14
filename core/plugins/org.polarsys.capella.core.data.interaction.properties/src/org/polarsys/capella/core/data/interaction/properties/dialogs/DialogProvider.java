@@ -16,21 +16,29 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
-
-import org.polarsys.capella.core.ui.toolkit.helpers.Messages;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.ExchangeItemInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.properties.controllers.DataFlowHelper;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.SelectFunctionalExchangeDialog.DataflowDialogCreationType;
-import org.polarsys.capella.core.data.interaction.properties.dialogs.SelectOperationDialog.ElementSupportedType;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.SelectInvokedOperationModel;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.model.SelectInvokedOperationModelForSharedDataAndEvent;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController.SelectInvokedOperationController;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController.SelectInvokedOperationView;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController.SelectOperationDialogForSharedDataAndEvent;
+import org.polarsys.capella.core.data.interaction.properties.dialogs.sequenceMessage.viewAndController.SelectOperationDialogForSharedDataAndEvent.ElementSupportedType;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.model.utils.CollectionExt;
+import org.polarsys.capella.core.ui.toolkit.helpers.Messages;
 
 /**
  */
@@ -61,43 +69,66 @@ public class DialogProvider {
    * @throws Exception 
    */
   public static EObject openOperationDialog(SequenceMessage message, InstanceRole sourceIR_p, InstanceRole targetIR_p, Object targetOnExchangeItem_p, MessageKind messageKind) {
-    // Get available elements.
-    boolean isSynchronous = messageKind == MessageKind.SYNCHRONOUS_CALL;
-    List<CapellaElement> available = InterfaceHelper.getInstance().getAvailableExchangeItems(sourceIR_p, targetIR_p, isSynchronous);
-    available.addAll(InterfaceHelper.getInstance().getRestrictedExchangeItems(sourceIR_p, targetIR_p, isSynchronous));
-    
-    if (InterfaceHelper.isSharedDataAccess(sourceIR_p, targetIR_p)) {
-      List<CapellaElement> filtered = InterfaceHelper.getInstance().filterExchangeItemAllocations(available, sourceIR_p, targetIR_p, messageKind);
-	  // we remove the duplicate EI/EIA, we keep only EIA. 
-	  // If the EIA exists, this means that this EIA is already selected, so we keep the EIA and we remove the EI.
-      List<ExchangeItem> exchangeItemsToRemove = new ArrayList<ExchangeItem>();
-      for (EObject eObject : filtered) {
-        if (eObject instanceof ExchangeItemAllocation) {
-          ExchangeItemAllocation eia = (ExchangeItemAllocation) eObject;
-          if (filtered.contains(eia.getAllocatedItem()))
-            exchangeItemsToRemove.add(eia.getAllocatedItem());
-        }
-      }
-      filtered.removeAll(exchangeItemsToRemove);
-      available = filtered;
-    }
-    List<CapellaElement> whole = InterfaceHelper.getInstance().getAllExchangeItems(sourceIR_p, targetIR_p, messageKind);
-    // Open a selection dialog to get the related operation.
-    SelectOperationDialog dialog =
-        new SelectOperationDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-            MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
-            Messages.SelectionDialogHelper_SelectionWizard_Title, Messages.AffectToMessage_SelectionOperationDialog_Message, whole, available, sourceIR_p, targetIR_p,
-            messageKind, ElementSupportedType.OPERATION);
-    if (Window.OK == dialog.open()) {
-      // End-user has selected an operation, handle it.
-      if (dialog.getResult().size() == 0)
-        return null;
-
-      EObject selectedOperation = dialog.getResult().get(0);
-      _portStrategie = dialog.isPortStrategy();
-      return selectedOperation;
-    }
-
+	// Open a selection dialog to get the related operation.
+  	if (sourceIR_p.getRepresentedInstance() instanceof ExchangeItemInstance || targetIR_p.getRepresentedInstance() instanceof ExchangeItemInstance) {
+  		// case 1 : one of the sequence message end is an exchange item instance
+  		boolean isSynchronous = messageKind == MessageKind.SYNCHRONOUS_CALL;
+  		List<CapellaElement> available = SelectInvokedOperationModelForSharedDataAndEvent.getAvailableExchangeItems(sourceIR_p, targetIR_p, isSynchronous);
+  		available.addAll(SelectInvokedOperationModelForSharedDataAndEvent.getRestrictedExchangeItems(sourceIR_p, targetIR_p, isSynchronous));
+  		
+  		if (InterfaceHelper.isSharedDataAccess(sourceIR_p, targetIR_p)) {
+  			List<CapellaElement> filtered = InterfaceHelper.getInstance().filterExchangeItemAllocations(available, sourceIR_p, targetIR_p, messageKind);
+  			// we remove the duplicate EI/EIA, we keep only EIA. 
+  			// If the EIA exists, this means that this EIA is already selected, so we keep the EIA and we remove the EI.
+  			List<ExchangeItem> exchangeItemsToRemove = new ArrayList<ExchangeItem>();
+  			for (EObject eObject : filtered) {
+  				if (eObject instanceof ExchangeItemAllocation) {
+  					ExchangeItemAllocation eia = (ExchangeItemAllocation) eObject;
+  					if (filtered.contains(eia.getAllocatedItem()))
+  						exchangeItemsToRemove.add(eia.getAllocatedItem());
+  				}
+  			}
+  			filtered.removeAll(exchangeItemsToRemove);
+  			available = filtered;
+  		}
+  		List<CapellaElement> whole = InterfaceHelper.getInstance().getAllExchangeItems(sourceIR_p, targetIR_p, messageKind);
+  		// Open a selection dialog to get the related operation.
+  		SelectOperationDialogForSharedDataAndEvent dialog =
+  				new SelectOperationDialogForSharedDataAndEvent(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+  						TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(available, whole)),
+  						CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+  						Messages.SelectionDialogHelper_MessageCreation_Title, Messages.AffectToMessage_SelectionOperationDialog_Message, whole, available, sourceIR_p, targetIR_p,
+  						messageKind, ElementSupportedType.OPERATION);
+  		if (Window.OK == dialog.open()) {
+  			// End-user has selected an operation, handle it.
+  			if (dialog.getResult().size() == 0)
+  				return null;  			
+  			EObject selectedOperation = dialog.getResult().get(0);
+  			_portStrategie = dialog.isPortStrategy();
+  			return selectedOperation;
+  		}  		
+  	} else {
+  	  // case 2 : all message end are components
+  		boolean withReturn = messageKind == MessageKind.SYNCHRONOUS_CALL;
+  		SelectInvokedOperationModel model = new SelectInvokedOperationModel(sourceIR_p, targetIR_p, withReturn);
+  		String dialogTitleAddition = model.doesTheMessageReturnAValue() ? " with return" : " without return";  //$NON-NLS-1$//$NON-NLS-2$
+  		SelectInvokedOperationController controller = new SelectInvokedOperationController(model);
+  		SelectElementsDialog dialog =
+  				new SelectInvokedOperationView(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+  						TransactionHelper.getEditingDomain(sourceIR_p),
+  						CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+  						Messages.SelectionDialogHelper_MessageCreation_Title + dialogTitleAddition,
+  						Messages.AffectToMessage_SelectionOperationDialog_Message, 
+  						model,
+  						controller);
+  		if (Window.OK == dialog.open()) {
+  			if (dialog.getResult().size() != 0) {
+  				_portStrategie = model.doesPortsMustBeCreated();
+  				EObject selectedOperation = dialog.getResult().get(0);
+  				return selectedOperation;  				
+  			}
+  		}  		
+  	}
     return null;
   }
 
@@ -123,8 +154,9 @@ public class DialogProvider {
       availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchanges(sourceIR_p, targetIR_p));
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-              MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
-              Messages.SelectionDialogHelper_SelectionWizard_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
+              TransactionHelper.getEditingDomain(availableExchanges),
+              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
               DataflowDialogCreationType.FUNCTIONAL_EXCHANGE);
     } else if (COMPONENT_EXCHANGE_TYPE.equals(echangeType_p)) {
       selectionExchangeMessage = Messages.AffectToMessage_SelectionComponentExchangeDialog_Message;
@@ -137,15 +169,17 @@ public class DialogProvider {
         
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-              MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
-              Messages.SelectionDialogHelper_SelectionWizard_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
+              TransactionHelper.getEditingDomain(availableExchanges),
+              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
               DataflowDialogCreationType.COMPONENT_EXCHANGE);
     } else if (FUNCTIONAL_EXCHANGE_FUNCTION.equals(echangeType_p)) {      
       availableExchanges.addAll(DataFlowHelper.getAvailableFonctionalExchangesFromFunctions(sourceIR_p, targetIR_p));
       dialog =
           new SelectFunctionalExchangeDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-              MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
-              Messages.SelectionDialogHelper_SelectionWizard_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
+              TransactionHelper.getEditingDomain(availableExchanges),
+              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+              Messages.SelectionDialogHelper_MessageCreation_Title, selectionExchangeMessage, availableExchanges, message, sourceIR_p, targetIR_p,
               DataflowDialogCreationType.FUNCTIONAL_EXCHANGE_SCENARIO);
     }
     if (Window.OK == dialog.open()) {

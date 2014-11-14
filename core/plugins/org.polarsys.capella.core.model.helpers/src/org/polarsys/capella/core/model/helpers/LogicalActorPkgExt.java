@@ -13,10 +13,10 @@ package org.polarsys.capella.core.model.helpers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 /**
  * LogicalComponentPkg helpers
@@ -41,10 +41,11 @@ public class LogicalActorPkgExt {
   /**
    * Gets all the LogicalComponents from LogicalComponentPkg
    * 
-   * 
    * @param lcPkg_p the LogicalComponentPkg
-   * @return list of LogicalComponents
+   * @return list of LogicalComponents 
+   * @link use ActorPkgExt.getAllActors() instead 
    */
+  @Deprecated
   static public List<LogicalActor> getAllLAsFromLAPkg(LogicalActorPkg lcPkg_p) {
     List<LogicalActor> list = new ArrayList<LogicalActor>();
     if (null != lcPkg_p) {

@@ -173,6 +173,10 @@
                 parent="org.polarsys.capella.common.re.description">
          </group>
          
+         <group id="org.polarsys.capella.common.re.description.replicaGroup.child"
+                parent="replicaGroup">
+         </group>
+         
          <group id="debug"
                 parent="org.polarsys.capella.common.re.description">
          </group>
@@ -222,6 +226,23 @@
                name="Suffixes">
          </property>
          
+         
+         <property
+               class="org.polarsys.capella.common.re.properties.CurrentSourceProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
+               id="source"
+               name="REC">
+         </property>
+         
+         <property
+               class="org.polarsys.capella.common.re.properties.CurrentTargetProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
+               id="target"
+               name="RPL">
+         </property>
+         
       </properties>
       
       <properties
@@ -256,12 +277,9 @@
          </property>
          
          
-      </properties>
-         
-         
-         
-         
-         
+      </properties>        
+                
+                 
          <properties
             id="org.polarsys.capella.common.re.rpl2re">
           <inheritance properties="org.polarsys.capella.common.re" />
@@ -352,9 +370,7 @@
                id="locationTarget"
                name="Catalog">
          </property>
-         
-         
-         
+                 
          <property
                class="org.polarsys.capella.common.re.properties.DefaultChildrenCompliancyProperty"
                enabled="true"
@@ -363,14 +379,12 @@
                description="Default compliancy for new RPL"
                name="Compliancy">
          </property>
-         
-         
-         
+                  
          <property
                class="org.polarsys.capella.common.re.rpl2re.create.properties.ReplicaProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.location"
-               id="source"
+               id="isource"
                name="RPL">
          </property>
          
@@ -378,7 +392,7 @@
                class="org.polarsys.capella.common.re.rpl2re.create.properties.ReplicableElementProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.debug"
-               id="target"
+               id="itarget"
                name="REC">
          </property>
          
@@ -401,6 +415,7 @@
          
          
       </properties>
+      
       
       
       <properties id="org.polarsys.capella.common.re.updateDef">
@@ -428,7 +443,7 @@
                class="org.polarsys.capella.common.re.rpl2re.updatedef.properties.ReplicableElementProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
-               id="target"
+               id="itarget"
                name="REC">
          </property>
          
@@ -437,7 +452,7 @@
                class="org.polarsys.capella.common.re.rpl2re.updatedef.properties.ReplicaProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
-               id="source"
+               id="isource"
                name="RPL">
          </property>
          
@@ -469,7 +484,7 @@
                class="org.polarsys.capella.common.re.rpl2re.updatecur.properties.ReplicableElementProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
-               id="target"
+               id="itarget"
                name="REC">
          </property>
          
@@ -503,7 +518,7 @@
                class="org.polarsys.capella.common.re.rpl2re.updatecur.properties.ReplicaProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="source"
+               id="isource"
                name="RPL">
          </property>
          
@@ -531,10 +546,10 @@
           
           
          <property
-               class="org.polarsys.capella.common.re.re2rpl.create.properties.ReplicableElementProperty"
+               class="org.polarsys.capella.common.re.re2rpl.create.properties.InitialSourceProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
-               id="source"
+               id="isource"
                name="REC">
          </property>
          
@@ -595,10 +610,10 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.re.re2rpl.create.properties.ReplicaProperty"
+               class="org.polarsys.capella.common.re.re2rpl.create.properties.InitialTargetProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
-               id="target"
+               id="itarget"
                name="RPL">
          </property>
          
@@ -618,7 +633,7 @@
                name="Catalog">
          </property>
          
-     </properties>
+     </properties>    
      
      <properties id="org.polarsys.capella.common.re.updateReplica">
           <inheritance properties="org.polarsys.capella.common.re.re2rpl" />
@@ -627,7 +642,7 @@
                class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicableElementProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
-               id="source"
+               id="isource"
                name="REC">
          </property>
          
@@ -682,7 +697,7 @@
                class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicaProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup"
-               id="target"
+               id="itarget"
                name="Name">
          </property>
          
@@ -704,6 +719,7 @@
          </property>
          
      </properties>
+        
    </extension>
    
    
@@ -742,8 +758,20 @@
     
     <command id="org.polarsys.capella.common.re.updateReplica"
           categoryId="org.polarsys.capella.common.re"
-          description="Update selected RPL its REC"
+          description="Update selected RPL from its REC"
           name="Update selected RPL from its REC">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
+          categoryId="org.polarsys.capella.common.re"
+          description="Delete RPL but preserve related elements"
+          name="Delete RPL but preserve related elements">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
+          categoryId="org.polarsys.capella.common.re"
+          description="Delete RPL and related elements"
+          name="Delete RPL and related elements">
     </command>
     
    </extension>
@@ -769,10 +797,16 @@
                icon="icons/full/etool16/Replica.gif">
         </image>
         
-   </extension>
-   
-   
-   
+        <image commandId="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
+               icon="icons/full/etool16/deleteModel.gif">
+        </image>
+        
+        <image commandId="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
+               icon="icons/full/etool16/delete_element.gif">
+        </image>
+        
+   </extension>  
+     
    
    <extension id="org.polarsys.capella.common.re"
          name="Create Replicable Element"
@@ -901,9 +935,34 @@
       </mapping>
    </extension>
    
-   
    <extension id="org.polarsys.capella.common.re.updateReplica"
          name="Update Replica"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.common.re.re2rpl"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.common.domain.DomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   <extension id="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
+         name="Delete Replica but preserve related elements"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.common.re.re2rpl"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.common.domain.DomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   <extension id="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
+         name="Delete Replica and related elements"
          point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
       <mapping
             extendedMappingExtensionID="org.polarsys.capella.common.re.re2rpl"
@@ -925,11 +984,8 @@
                id="http://www.polarsys.org/capella/common/re/1.0.0">
          </domain>
       </handlers>
-   </extension>
-   
-    
-   
-   
+   </extension>   
+          
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">
       <ActivityDeclaration
@@ -1041,7 +1097,6 @@
    
    
    
-   
    <extension
          point="org.polarsys.kitalpha.cadence.core.activity.declaration">
       <ActivityDeclaration
@@ -1144,8 +1199,7 @@
                 name="Description">
          </group>
       </properties>
-   </extension>
-   
+   </extension>   
    
    
    <extension
@@ -1184,6 +1238,27 @@
                queryIdentifier="CatalogElement_AllUsedCatalogElements">
             <queryAlgorithm algorithm="org.polarsys.capella.common.re.queries.CatalogElement_AllUsedCatalogElements"></queryAlgorithm>
          </querySpecification>
+         
+         <querySpecification
+               queryIdentifier="CatalogElement_ReferencingElements">
+            <queryAlgorithm algorithm="org.polarsys.capella.common.re.queries.CatalogElement_ReferencingElements"></queryAlgorithm>
+         </querySpecification>
+         
+         <querySpecification
+               queryIdentifier="CatalogElement_ReplicatedElements">
+            <queryAlgorithm algorithm="org.polarsys.capella.common.re.queries.CatalogElement_ReplicatedElements"></queryAlgorithm>
+         </querySpecification>
+         
    </extension>
+   
+   
+   <extension
+         point="org.polarsys.capella.common.model.helpers.helper">
+      <helperImpl
+            class="org.polarsys.capella.common.re.helpers.ReHelper"
+            nsURI="http://www.polarsys.org/capella/common/re/1.0.0">
+      </helperImpl>
+   </extension>
+   
    
 </plugin>

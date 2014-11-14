@@ -276,7 +276,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
     PreferenceTransferElement[] transfers = super.getTransfers() != null ? super.getTransfers() : new PreferenceTransferElement[] {};
     List<PreferenceTransferElement> capellaTransfers = new ArrayList<PreferenceTransferElement>();
     for (PreferenceTransferElement currentPreferenceTransferElement : transfers) {
-      if (currentPreferenceTransferElement.getID().contains("thales")) {
+      if (currentPreferenceTransferElement.getID().contains("capella")) {
         capellaTransfers.add(currentPreferenceTransferElement);
       }
 

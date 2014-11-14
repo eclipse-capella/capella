@@ -11,22 +11,19 @@
 package org.polarsys.capella.common.queries.debug;
 
 import java.util.Collection;
-import java.util.Hashtable;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
-import org.apache.tools.ant.util.StringUtils;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.queries.testGeneration.QueryTester;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 
 /**
  */
@@ -126,11 +123,10 @@ public class QueryDebugger {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private static IProject getEclipseProjectFromEObject(EObject object) {
 		try {
-			List<String> tab = StringUtils.split(object.eResource().getURI().toString(), '/');
-			String projectName = tab.get(2);
+			String[] tab = StringUtils.split(object.eResource().getURI().toString(), '/');
+			String projectName = tab[2];
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 			return root.getProject(projectName);
 		} catch (Exception e) {

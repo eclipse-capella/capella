@@ -20,12 +20,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.xml.sax.helpers.DefaultHandler;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -33,6 +27,11 @@ import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Check if HyperLinks to capella element or diagram in the description are up to date
@@ -47,7 +46,7 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
     EObject target = ctx_p.getTarget();
     final IStatus[] result = { null };
     if ((null != target) && (target instanceof CapellaElement)) {
-      CapellaElement capellaElement = (CapellaElement) target;
+      final CapellaElement capellaElement = (CapellaElement) target;
       String description = capellaElement.getDescription();
       if ((null != description) && !description.isEmpty()) {
         // few escape char (need to improve this part)
@@ -86,7 +85,7 @@ public class CapellaElementInDescriptionNameCheck extends AbstractValidationRule
                   if ((null != attValue) && !attValue.isEmpty() && qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)
                       && attQName.equalsIgnoreCase(IConstantValidation.XHTML_HREF_ATT)) {
 
-                    EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(attValue);
+                    EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(capellaElement, attValue);
 
                     if ((null != eObject) && ((eObject instanceof CapellaElement) || (eObject instanceof DRepresentation))) {
                       elementFound = eObject;

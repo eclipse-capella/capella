@@ -16,41 +16,48 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 
 import org.polarsys.capella.core.ui.properties.controllers.ISimpleEditableSemanticFieldController;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
 public class SimpleEditableSemanticField extends SimpleSemanticField {
 
-  /**
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param defaultName_p
-   * @param controller_p
-   */
-  public SimpleEditableSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-      String defaultName_p, ISimpleEditableSemanticFieldController controller_p)
-  {
-    super(parent_p, label_p, widgetFactory_p, 1, controller_p, defaultName_p, true);
-  }
+	/**
+	 * @param parent_p
+	 * @param label_p
+	 * @param widgetFactory_p
+	 * @param defaultName_p
+	 * @param controller_p
+	 */
+	public SimpleEditableSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
+			String defaultName_p, ISimpleEditableSemanticFieldController controller_p)
+	{
+		super(parent_p, label_p, widgetFactory_p, 2, controller_p, defaultName_p, true);
+	}
 
-  /**
-   * Handle Edit button click event.
-   */
-  @Override
-  protected void handleEditButtonClicked() throws EditableSemanticFieldException {
-    AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
-      public void run() {
-        EObject obj = ((ISimpleEditableSemanticFieldController) _controller).editValue(_semanticElement, _semanticFeature, _defaultName);
-        setValueTextField(obj);
-      }
+	public SimpleEditableSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
+			String defaultName_p, ISimpleEditableSemanticFieldController controller_p, boolean shortcut, int cardType)
+	{
+		super(parent_p, label_p, widgetFactory_p, 1, controller_p, defaultName_p, true, shortcut, cardType);
+	}
 
-      @Override
-      public String getName() {
-        return "Edit " + _semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
-      }
-    };
-    executeCommand(command);
-  }
+
+	/**
+	 * Handle Edit button click event.
+	 */
+	@Override
+	protected void handleEditButtonClicked() throws EditableSemanticFieldException {
+		AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+			public void run() {
+				EObject obj = ((ISimpleEditableSemanticFieldController) _controller).editValue(_semanticElement, _semanticFeature, _defaultName);
+				setValueTextField(obj);
+			}
+
+			@Override
+			public String getName() {
+				return "Edit " + _semanticElement.eGet(ModellingcorePackage.eINSTANCE.getAbstractNamedElement_Name()); //$NON-NLS-1$
+			}
+		};
+		executeCommand(command);
+	}
 }

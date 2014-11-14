@@ -13,12 +13,12 @@ package org.polarsys.capella.core.business.queries.queries.interaction;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.InterfaceExt;
 
 public class GetAvailable_SequenceMessage_ServiceInterface extends AbstractQuery {
 

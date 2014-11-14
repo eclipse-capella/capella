@@ -200,7 +200,7 @@ public abstract class TransfoRule implements ITransfoRule, Comparable<TransfoRul
    */
   public boolean requireTransformation(EObject element_p, ITransfo transfo_p) {
     Object transformedElement = Query.retrieveTransformedElement(element_p, transfo_p);
-
+   
     return ((transformedElement == null) || ((transformedElement instanceof List<?>) && (((List<?>) transformedElement).size() == 0)) || ((transformedElement instanceof EObject) && !EcoreUtil2
         .isEqualOrSuperClass(getTargetType(), ((EObject) transformedElement).eClass())));
 

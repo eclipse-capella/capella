@@ -14,9 +14,8 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 
 /**

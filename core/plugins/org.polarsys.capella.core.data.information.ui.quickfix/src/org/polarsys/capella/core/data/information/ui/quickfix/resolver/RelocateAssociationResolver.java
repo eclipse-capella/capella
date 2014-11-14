@@ -15,12 +15,11 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.model.helpers.AssociationExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 public class RelocateAssociationResolver extends AbstractCapellaMarkerResolution {
 
@@ -32,7 +31,7 @@ public class RelocateAssociationResolver extends AbstractCapellaMarkerResolution
     }
     final EObject eObject = modelElements.get(0);
     if (eObject instanceof Association) {
-      MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
+      TransactionHelper.getExecutionManager(eObject).execute(new AbstractReadWriteCommand() {
         @Override
         public void run() {
           AssociationExt.moveToCorrectContainer((Association) eObject);

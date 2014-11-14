@@ -18,13 +18,12 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.rules.AbstractUpdateRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 
@@ -34,6 +33,8 @@ public abstract class AbstractCapellaElementRule extends AbstractUpdateRule {
 
   public AbstractCapellaElementRule() {
     super();
+    registerUpdatedReference(CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS);
+    registerUpdatedReference(CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES);
     registerUpdatedAttribute(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME);
     registerUpdatedAttribute(CapellacorePackage.Literals.CAPELLA_ELEMENT__DESCRIPTION);
     registerUpdatedAttribute(CapellacorePackage.Literals.CAPELLA_ELEMENT__SUMMARY);
@@ -113,8 +114,8 @@ public abstract class AbstractCapellaElementRule extends AbstractUpdateRule {
   @Override
   protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
     super.attachRelated(element_p, result_p, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS,
-        context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p,
+        CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS, context_p);
     AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES,
         context_p);
   }

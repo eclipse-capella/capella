@@ -8,23 +8,17 @@ Require-Bundle: org.apache.log4j;visibility:=reexport,
  org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
  org.eclipse.jdt.core;visibility:=reexport,
- org.eclipse.pde.core;visibility:=reexport,
- org.eclipse.emf.codegen.ecore,
- org.apache.ant;bundle-version="1.7.0";visibility:=reexport,
- org.eclipse.ant.core;bundle-version="3.1.200";visibility:=reexport
-Eclipse-LazyStart: true
+ org.eclipse.pde.core;visibility:=reexport
+Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.mdsofa.common.activator,
  org.polarsys.capella.common.mdsofa.common.adapter,
- org.polarsys.capella.common.mdsofa.common.ant,
  org.polarsys.capella.common.mdsofa.common.constant,
- org.polarsys.capella.common.mdsofa.common.descriptor,
- org.polarsys.capella.common.mdsofa.common.descriptor.pattern.helper,
- org.polarsys.capella.common.mdsofa.common.generator,
  org.polarsys.capella.common.mdsofa.common.helper,
+ org.polarsys.capella.common.mdsofa.common.internal.helper,
  org.polarsys.capella.common.mdsofa.common.listener,
- org.polarsys.capella.common.mdsofa.common.misc,
- org.polarsys.capella.common.mdsofa.common.progress
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+ org.polarsys.capella.common.mdsofa.common.misc
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Activator: org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator
 Bundle-Localization: plugin

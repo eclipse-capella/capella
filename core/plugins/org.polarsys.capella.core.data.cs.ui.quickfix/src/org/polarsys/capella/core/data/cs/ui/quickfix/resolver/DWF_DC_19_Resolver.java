@@ -19,13 +19,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Move Physical Links to their default container
@@ -60,7 +59,7 @@ public class DWF_DC_19_Resolver extends AbstractCapellaMarkerResolution {
 			};
 
 			// execute the command
-			MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+			TransactionHelper.getExecutionManager(modelElements).execute(abstrctCommand);
 			mustDeleteMarker.set(Boolean.TRUE);
 			// Remove the marker if the element is deleted.
 			if (mustDeleteMarker.get().booleanValue()) {

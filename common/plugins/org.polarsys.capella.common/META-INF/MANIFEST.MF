@@ -13,11 +13,11 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.emf.query
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.common,
- org.polarsys.capella.common.activator,
+Export-Package: org.polarsys.capella.common.activator,
  org.polarsys.capella.common.helpers,
  org.polarsys.capella.common.helpers.argumentparser,
  org.polarsys.capella.common.helpers.export,
+ org.polarsys.capella.common.helpers.export.utils,
  org.polarsys.capella.common.helpers.query,
  org.polarsys.capella.common.utils,
  org.polarsys.capella.common.utils.graph

@@ -22,12 +22,11 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
-
-import org.polarsys.capella.core.libraries.flexibilityProperties.LibraryManagerModel;
-import org.polarsys.capella.core.libraries.ui.views.libraryManager.LibraryContentProvider;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
+import org.polarsys.capella.core.libraries.ui.views.libraryManager.LibraryContentProvider;
 
 /**
  * A simple TableViewer to demonstrate usage
@@ -53,7 +52,7 @@ public class ActiveStateManagerWidget {
       @Override
       public void handleEvent(Event event) {
         TableItem item = (TableItem) event.item;
-        IAbstractLibrary library = (IAbstractLibrary) item.getData();
+        IModel library = (IModel) item.getData();
         if ((event.detail == SWT.CHECK)) {
           if (item.getGrayed()) {
             item.setChecked(true);
@@ -79,12 +78,12 @@ public class ActiveStateManagerWidget {
   }
 
   protected void refreshView() {
-    List<IAbstractLibrary> allReferencedLibraries = model.getAllReferencedLibrariesByRootModel();
+    List<IModel> allReferencedLibraries = model.getAllReferencedLibrariesByRootModel();
     tableViewer.setInput(allReferencedLibraries.toArray());
     List<TableItem> itemsToBeChecked = new ArrayList<TableItem>();
     List<TableItem> items = Arrays.asList(table.getItems());
 
-    for (IAbstractLibrary library : allReferencedLibraries) {
+    for (IModel library : allReferencedLibraries) {
       if (model.getActiveState(library).booleanValue()) {
         itemsToBeChecked.add(table.getItem(allReferencedLibraries.indexOf(library)));
       }
@@ -95,7 +94,7 @@ public class ActiveStateManagerWidget {
   }
 
   protected void notifyValueModification() {
-	// Workaround to indicate that the value has changed
+    // Workaround to indicate that the value has changed
     rendererContext.getPropertyContext().setCurrentValue(property, model);
   }
 }

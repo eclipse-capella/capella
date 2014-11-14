@@ -16,16 +16,17 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.model.helpers,
  org.eclipse.core.expressions;visibility:=reexport,
  org.polarsys.capella.common.flexibility.wizards,
- org.apache.commons.lang;bundle-version="2.4.0",
+ org.apache.commons.lang,
  org.polarsys.capella.common.ui.services,
- com.google.guava
+ com.google.guava,
+ org.eclipse.sirius.ext.base,
+ org.polarsys.capella.core.platform.sirius.ui.actions
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries,
- org.polarsys.capella.core.libraries.commands,
- org.polarsys.capella.core.libraries.flexibilityProperties,
- org.polarsys.capella.core.libraries.manager,
- org.polarsys.capella.core.libraries.capellaModel,
+ org.polarsys.capella.core.libraries.model,
  org.polarsys.capella.core.libraries.nature,
+ org.polarsys.capella.core.libraries.properties,
+ org.polarsys.capella.core.libraries.provider,
  org.polarsys.capella.core.libraries.utils
 Bundle-Localization: plugin

@@ -16,12 +16,8 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPart;
-
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
 import org.polarsys.capella.core.transition.diagram.ui.Activator;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
 
 /**
  *
@@ -44,14 +40,6 @@ public class AbstractRunnableHandler extends AbstractUiHandler {
     }
 
     return event_p;
-  }
-
-  /**
-   * Get the Capella Execution Manager.
-   * @return
-   */
-  protected ExecutionManager getExecutionManager() {
-    return ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName());
   }
 
   protected IRunnableWithProgress createRunnable(ExecutionEvent event_p) {

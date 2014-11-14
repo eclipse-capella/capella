@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -29,6 +28,10 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 
 public class InterfaceImplementationRule extends AbstractCapellaElementRule {
+
+  public InterfaceImplementationRule() {
+    registerUpdatedReference(CsPackage.Literals.INTERFACE_IMPLEMENTATION__IMPLEMENTED_INTERFACE);
+  }
 
   @Override
   protected EClass getSourceType() {

@@ -485,6 +485,21 @@ public class DatavalueSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DatavaluePackage.OPAQUE_EXPRESSION: {
+				OpaqueExpression opaqueExpression = (OpaqueExpression)theEObject;
+				T result = caseOpaqueExpression(opaqueExpression);
+				if (result == null) result = caseCapellaElement(opaqueExpression);
+				if (result == null) result = caseValueSpecification(opaqueExpression);
+				if (result == null) result = caseTraceableElement(opaqueExpression);
+				if (result == null) result = casePublishableElement(opaqueExpression);
+				if (result == null) result = caseAbstractTypedElement(opaqueExpression);
+				if (result == null) result = caseAbstractNamedElement(opaqueExpression);
+				if (result == null) result = caseModelElement(opaqueExpression);
+				if (result == null) result = caseExtensibleElement(opaqueExpression);
+				if (result == null) result = caseElement(opaqueExpression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -801,6 +816,21 @@ public class DatavalueSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseUnaryExpression(UnaryExpression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Opaque Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Opaque Expression</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOpaqueExpression(OpaqueExpression object) {
 		return null;
 	}
 

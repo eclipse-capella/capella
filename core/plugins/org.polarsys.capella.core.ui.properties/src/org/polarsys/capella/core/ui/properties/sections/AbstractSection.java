@@ -17,10 +17,8 @@ import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.IUndoableOperation;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -38,18 +36,18 @@ import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.ICommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
-import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
-import org.polarsys.capella.core.ui.properties.CapellaDataListenerForPropertySections;
+import org.polarsys.capella.core.ui.properties.CapellalEditingDomainListenerForPropertySections;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.wizards.Messages;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
 
 /**
  * The NamedElement customized section class.
@@ -124,7 +122,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
 
       section.setClient(_rootParentComposite);
 
-      CapellaDataListenerForPropertySections.getInstance().registerPropertySheetPage(_propertySheetPage);
+      CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().registerPropertySheetPage(_propertySheetPage);
     }
   }
 
@@ -136,7 +134,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     super.dispose();
     // Unregister...
     CapellaReadOnlyHelper.unregister(_capellaElement, this);
-    CapellaDataListenerForPropertySections.getInstance().unregisterPropertySheetPage(_propertySheetPage);
+    CapellalEditingDomainListenerForPropertySections.getCapellaDataListenerForPropertySections().unregisterPropertySheetPage(_propertySheetPage);
 
     // Clean capella element.
     _capellaElement = null;
@@ -182,7 +180,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   protected Group getReferencesGroup() {
     if (null == _referencesGroup) {
       _referencesGroup = getWidgetFactory().createGroup(_rootParentComposite, ICommonConstants.EMPTY_STRING);
-      _referencesGroup.setLayout(new GridLayout(5, false));
+      _referencesGroup.setLayout(new GridLayout(6, false));
       GridData gd = new GridData(GridData.FILL_HORIZONTAL);
       gd.horizontalSpan = 2;
       _referencesGroup.setLayoutData(gd);
@@ -299,10 +297,11 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   protected EObject setInputSelection(IWorkbenchPart part_p, ISelection selection_p) {
     super.setInput(part_p, selection_p);
 
-    if (!(selection_p instanceof IStructuredSelection)
-        || !((part_p instanceof IEditingDomainProvider) || (((IAdaptable) part_p).getAdapter(IEditingDomainProvider.class) != null))) {
-      return null;
-    }
+    // FIXME MA01 - CapellaCommonNavigator is not IEditingDomainProvider anymore ... check this commented code has no other side-effect
+    //    if (!(selection_p instanceof IStructuredSelection)
+    //        || !((part_p instanceof IEditingDomainProvider) || (((IAdaptable) part_p).getAdapter(IEditingDomainProvider.class) != null))) {
+    //      return null;
+    //    }
     return CapellaAdapterHelper.resolveSemanticObject(((IStructuredSelection) selection_p).getFirstElement());
   }
 
@@ -349,7 +348,14 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * @param command_p
    */
   protected void executeCommmand(ICommand command_p) {
-    MDEAdapterFactory.getExecutionManager().execute(command_p);
+    getExecutionManager().execute(command_p);
+  }
+
+  /**
+   * Retrieve the execution manager
+   */
+  protected ExecutionManager getExecutionManager() {
+    return TransactionHelper.getExecutionManager(_capellaElement);
   }
 
   /**

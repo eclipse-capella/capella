@@ -33,28 +33,28 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
-import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.BorderedStyle;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.Ellipse;
+import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.BorderedStyle;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.Ellipse;
-import org.eclipse.sirius.viewpoint.NodeStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.Square;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.ComputedColor;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
@@ -384,7 +384,7 @@ public class ShapeUtil {
       if ((edgeStyle != null) && !isSameColor(color, edgeStyle.getStrokeColor())) {
 
         edgeStyle.setStrokeColor(color);
-        ShapeUtil.addCustomisation(edgeStyle, new EStructuralFeature[] { ViewpointPackage.Literals.EDGE_STYLE__STROKE_COLOR });
+        ShapeUtil.addCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
 
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
       }
@@ -403,7 +403,7 @@ public class ShapeUtil {
       RGBValues color = convertRGBtoRGBValues(color_p);
       if ((edgeStyle != null) && !isSameColor(color, edgeStyle.getStrokeColor())) {
         edgeStyle.setStrokeColor(color);
-        ShapeUtil.removeCustomisation(edgeStyle, new EStructuralFeature[] { ViewpointPackage.Literals.EDGE_STYLE__STROKE_COLOR });
+        ShapeUtil.removeCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR });
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
       }
     }
@@ -420,7 +420,7 @@ public class ShapeUtil {
       EdgeStyle edgeStyle = currentEdge.getOwnedStyle();
       if (edgeStyle.getSize().intValue() != pThick.intValue()) {
         edgeStyle.setSize(pThick);
-        ShapeUtil.addCustomisation(edgeStyle, new EStructuralFeature[] { ViewpointPackage.Literals.EDGE_STYLE__SIZE });
+        ShapeUtil.addCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__SIZE });
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
         return true;
       }
@@ -439,7 +439,7 @@ public class ShapeUtil {
       EdgeStyle edgeStyle = currentEdge.getOwnedStyle();
       if (edgeStyle.getSize().intValue() != pThick.intValue()) {
         edgeStyle.setSize(pThick);
-        ShapeUtil.removeCustomisation(edgeStyle, new EStructuralFeature[] { ViewpointPackage.Literals.EDGE_STYLE__SIZE });
+        ShapeUtil.removeCustomisation(edgeStyle, new EStructuralFeature[] { DiagramPackage.Literals.EDGE_STYLE__SIZE });
         getStyleHelper(currentEdge).refreshStyle(edgeStyle);
         return true;
       }
@@ -512,7 +512,7 @@ public class ShapeUtil {
         RGBValues vColor = convertRGBtoRGBValues(color);
         if (!isSameColor(vColor, bStyle.getBorderColor())) {
           bStyle.setBorderColor(vColor);
-          ShapeUtil.addCustomisation(style, new EStructuralFeature[] { ViewpointPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
+          ShapeUtil.addCustomisation(style, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
           getStyleHelper(currentNode).refreshStyle(style);
           return true;
         }
@@ -535,7 +535,7 @@ public class ShapeUtil {
         RGBValues vColor = convertRGBtoRGBValues(color);
         if (!isSameColor(vColor, bStyle.getBorderColor())) {
           bStyle.setBorderColor(vColor);
-          ShapeUtil.removeCustomisation(style, new EStructuralFeature[] { ViewpointPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
+          ShapeUtil.removeCustomisation(style, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR });
           getStyleHelper(currentNode).refreshStyle(style);
           return true;
         }
@@ -557,7 +557,7 @@ public class ShapeUtil {
         BorderedStyle bStyle = (BorderedStyle) style;
         if (!bStyle.getBorderSize().equals(pThick)) {
           bStyle.setBorderSize(pThick);
-          ShapeUtil.addCustomisation(bStyle, new EStructuralFeature[] { ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
+          ShapeUtil.addCustomisation(bStyle, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
           getStyleHelper(currentNode).refreshStyle(bStyle);
           return true;
         }
@@ -579,7 +579,7 @@ public class ShapeUtil {
         BorderedStyle bStyle = (BorderedStyle) style;
         if (!bStyle.getBorderSize().equals(pThick)) {
           bStyle.setBorderSize(pThick);
-          ShapeUtil.removeCustomisation(bStyle, new EStructuralFeature[] { ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
+          ShapeUtil.removeCustomisation(bStyle, new EStructuralFeature[] { DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE });
           getStyleHelper(currentNode).refreshStyle(bStyle);
           return true;
         }
@@ -601,11 +601,11 @@ public class ShapeUtil {
 
       if (shape instanceof Ellipse) {
         newValuesContent = ((Ellipse) shape).getColor();
-        ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { ViewpointPackage.Literals.ELLIPSE__COLOR });
+        ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { DiagramPackage.Literals.ELLIPSE__COLOR });
 
       } else if (shape instanceof Square) {
         newValuesContent = ((Square) shape).getColor();
-        ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { ViewpointPackage.Literals.SQUARE__COLOR });
+        ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { DiagramPackage.Literals.SQUARE__COLOR });
       }
 
       newValuesContent.setRed(color.red);

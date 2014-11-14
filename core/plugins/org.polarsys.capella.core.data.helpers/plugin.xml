@@ -12,126 +12,126 @@
 -->
 <plugin>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.cs.CompositeStructureHelper"
             nsURI="http://www.polarsys.org/capella/core/cs/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.ctx.SystemAnalysisHelper"
             nsURI="http://www.polarsys.org/capella/core/ctx/0.8.0">
       </helperImpl>
    </extension>
     <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.epbs.EPBSArchitectureHelper"
             nsURI="http://www.polarsys.org/capella/core/epbs/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.fa.FunctionalAnalysisHelper"
             nsURI="http://www.polarsys.org/capella/core/fa/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
             nsURI="http://www.polarsys.org/capella/core/information/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
             nsURI="http://www.polarsys.org/capella/core/information/communication/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
             nsURI="http://www.polarsys.org/capella/core/information/datavalue/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.information.InformationHelper"
             nsURI="http://www.polarsys.org/capella/core/information/datatype/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.interaction.CapellaInteractionHelper"
             nsURI="http://www.polarsys.org/capella/core/interaction/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.la.LogicalArchitectureHelper"
             nsURI="http://www.polarsys.org/capella/core/la/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.capellacommon.CapellaCommonHelper"
             nsURI="http://www.polarsys.org/capella/core/common/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.capellacore.CapellaCoreHelper"
             nsURI="http://www.polarsys.org/capella/core/core/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.capellamodeller.CapellaModellerHelper"
             nsURI="http://www.polarsys.org/capella/core/modeller/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.oa.OperationalAnalysisHelper"
             nsURI="http://www.polarsys.org/capella/core/oa/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.pa.PhysicalArchitectureHelper"
             nsURI="http://www.polarsys.org/capella/core/pa/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.pa.PhysicalArchitectureHelper"
             nsURI="http://www.polarsys.org/capella/core/pa/deployment/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.requirement.RequirementHelper"
             nsURI="http://www.polarsys.org/capella/core/requirement/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.core.data.helpers.sharedmodel.SharedModelHelper"
             nsURI="http://www.polarsys.org/capella/core/sharedmodel/0.8.0">

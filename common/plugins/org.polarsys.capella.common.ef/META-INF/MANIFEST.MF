@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.common.ef;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.emf.workspace;visibility:=reexport,
+ org.polarsys.capella.common.mdsofa.common;visibility:=reexport
+Export-Package: org.polarsys.capella.common.ef,
+ org.polarsys.capella.common.ef.command,
+ org.polarsys.capella.common.ef.domain,
+ org.polarsys.capella.common.ef.internal.command
+Bundle-Activator: org.polarsys.capella.common.ef.CapellaEFPlugin
+Bundle-Localization: plugin

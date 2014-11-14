@@ -219,6 +219,7 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueRefReferencedValue" id="org.polarsys.capella.core.data.business.queries.information.ComplexValueRefReferencedValue" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueRefReferencedProperty" id="org.polarsys.capella.core.data.business.queries.information.ComplexValueRefReferencedProperty" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueReferenceType" id="org.polarsys.capella.core.data.business.queries.information.ComplexValueReferenceType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItem_InheritedExchangeItem" id="org.polarsys.capella.core.business.queries.information.ExchangeItem_InheritedExchangeItem" />
   </extension>
   <extension name="interaction" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation" id="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation" />
@@ -272,10 +273,17 @@
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.InitialPseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.InitialPseudoState_StateRealizations" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.JoinPseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.JoinPseudoState_StateRealizations" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TerminatePseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.TerminatePseudoState_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_Entry" id="org.polarsys.capella.core.business.queries.capellacommon.State_Entry" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.Mode_Entry" id="org.polarsys.capella.core.business.queries.capellacommon.Mode_Entry" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Entry" id="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Entry" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_Exit" id="org.polarsys.capella.core.business.queries.capellacommon.State_Exit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.Mode_Exit" id="org.polarsys.capella.core.business.queries.capellacommon.Mode_Exit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Exit" id="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Exit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Guard" id="org.polarsys.capella.core.business.queries.capellacommon.TimeEvent_Guard" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.ChangeEvent_Guard" id="org.polarsys.capella.core.business.queries.capellacommon.ChangeEvent_Guard" />
   </extension>
   <extension name="capellacore" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.Constraint_ConstrainedElements" id="org.polarsys.capella.core.business.queries.capellacore.Constraint_ConstrainedElements" />
-    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.Constraint_Expression" id="org.polarsys.capella.core.business.queries.capellacore.Constraint_Expression" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Type" id="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Type" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Value" id="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Value" />
     <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_Status" id="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_Status" />
@@ -334,49 +342,31 @@
   </extension>
   <extension point="org.polarsys.capella.common.queries.query">
     <querySpecification queryIdentifier="GetAvailable_ComponentPort_ProvidedInterfaces">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_ComponentPort_ProvidedInterfaces" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_ProvidedInterfaces" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_ComponentPort_RequiredInterfaces">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_ComponentPort_RequiredInterfaces" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_RequiredInterfaces" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_LogicalComponent_ImplementedInterfaces">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_LogicalComponent_ImplementedInterfaces" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_ImplementedInterfaces" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_LogicalComponent_UsedInterfaces">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_LogicalComponent_UsedInterfaces" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_PhysicalActor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_PhysicalComponent_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_PhysicalComponent_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_LogicalActor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_LogicalActor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Actor_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Actor_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_System_FunctionalAllocation">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_System_FunctionalAllocation" />
-    </querySpecification>
-    <querySpecification queryIdentifier="GetAvailable_Entity_AllocatedActivities">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Entity_AllocatedActivities" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_UsedInterfaces" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_FunctionalExchange_ExchangeItems">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_FunctionalExchange_ExchangeItems" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalExchange_ExchangeItems" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_FunctionInputPort_InComingExchangeItems">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_FunctionInputPort_InComingExchangeItems" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionInputPort_InComingExchangeItems" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_FunctionOutputPort_OutGoingExchangeItems">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_FunctionOutputPort_OutGoingExchangeItems" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionOutputPort_OutGoingExchangeItems" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_Interface_InheritedInterfaces">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Interface_InheritedInterfaces" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Interface_InheritedInterfaces" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_Interface_ExchangeItems">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Interface_ExchangeItems" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Interface_ExchangeItems" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_Class_InheritedClasses">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Class_InheritedClasses" />
@@ -447,6 +437,9 @@
     <querySpecification queryIdentifier="GetCurrent_Component_UsedInterfaces">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Component_UsedInterfaces" />
     </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Component_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Component_ImplementedInterfaces" />
+    </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_Component_ImplementedInterfaces">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Component_ImplementedInterfaces" />
     </querySpecification>
@@ -463,16 +456,16 @@
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_UsedInterfaces" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_StateTransitionTrigger">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetAvailable_StateTransitionTrigger" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionTrigger" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_StateTransitionTrigger">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetCurrent_StateTransitionTrigger" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_StateTransitionTrigger" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_StateTransitionEffect">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetAvailable_StateTransitionEffect" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransitionEffect" />
     </querySpecification>
     <querySpecification queryIdentifier="GetCurrent_StateTransitionEffect">
-      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetCurrent_StateTransitionEffect" />
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_StateTransitionEffect" />
     </querySpecification>
     <querySpecification queryIdentifier="GetAvailable_Part_Type">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_Type" />
@@ -834,7 +827,1154 @@
     <querySpecification queryIdentifier="GetCurrent_Enumeration_NullValue">
       <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_NullValue" />
     </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeItem_InheritedExchangeItem">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItem_InheritedExchangeItem" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeItem_InheritedExchangeItem">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItem_InheritedExchangeItem" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_AbstractStateProperties">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_AbstractStateProperties" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_AbstractStateProperties">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_AbstractStateProperties" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Part_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Part_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Part_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Part_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeItemAllocation_AllocatedItem">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_ExchangeItemAllocation_AllocatedItem" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeItemAllocation_AllocatedItem">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_ExchangeItemAllocation_AllocatedItem" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalLinkCategory_Links">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLinkCategory_Links" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalLinkCategory_Links">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLinkCategory_Links" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalPath_AllocatedComponentExchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPath_AllocatedComponentExchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalPath_AllocatedComponentExchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPath_AllocatedComponentExchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalPath_RealizedPhysicalPaths">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPath_RealizedPhysicalPaths" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalPath_RealizedPhysicalPaths">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPath_RealizedPhysicalPaths" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalPort_AllocatedComponentPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPort_AllocatedComponentPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalPort_AllocatedComponentPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPort_AllocatedComponentPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalPort_AllocatedFunctionPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPort_AllocatedFunctionPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalPort_AllocatedFunctionPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPort_AllocatedFunctionPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalPort_RealizedPhysicalPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalPort_RealizedPhysicalPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalPort_RealizedPhysicalPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalPort_RealizedPhysicalPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalLink_AllocatedComponentExchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLink_AllocatedComponentExchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalLink_AllocatedComponentExchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLink_AllocatedComponentExchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalLink_Categories">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLink_Categories" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalLink_Categories">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLink_Categories" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalLink_RealizedPhysicalLinks">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_PhysicalLink_RealizedPhysicalLinks" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalLink_RealizedPhysicalLinks">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_PhysicalLink_RealizedPhysicalLinks" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Part_TypePorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_TypePorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Part_TypePorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_TypePorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_InheritedActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_InheritedActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_InheritedActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_InheritedActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_InteractingCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_InteractingCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_InteractingCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_InteractingCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_RealizedOperationalActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_RealizedOperationalActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_RealizedOperationalActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_RealizedOperationalActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_RealizedOperationalEntities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_RealizedOperationalEntities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_RealizedOperationalEntities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_RealizedOperationalEntities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_ExtendedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_ExtendedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_ExtendedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_ExtendedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_IncludedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_IncludedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_IncludedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_IncludedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_InheritedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InheritedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_InheritedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InheritedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_InteractingActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InteractingActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_InteractingActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InteractingActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_InvolvedAbstractFunctions">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InvolvedAbstractFunctions" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_InvolvedAbstractFunctions">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InvolvedAbstractFunctions" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_InvolvedFunctionalChains">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_InvolvedFunctionalChains" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_InvolvedFunctionalChains">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_InvolvedFunctionalChains" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Capability_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Capability_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Capability_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Capability_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Mission_IncludedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Mission_IncludedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Mission_IncludedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Mission_IncludedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Mission_InteractingActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Mission_InteractingActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Mission_InteractingActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Mission_InteractingActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_SystemFunction_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemFunction_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_SystemFunction_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemFunction_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_SystemFunction_FunctionRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_SystemFunction_FunctionRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_SystemFunction_FunctionRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_SystemFunction_FunctionRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_System_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_System_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_System_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_System_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_System_RealizedOperationalEntities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_System_RealizedOperationalEntities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_System_RealizedOperationalEntities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_System_RealizedOperationalEntities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalActor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalActor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalActor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalActor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComponent_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComponent_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Entity_AllocatedActivities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_Entity_AllocatedActivities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Entity_AllocatedActivities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_Entity_AllocatedActivities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ConfigurationItem_ImplementedPC">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_ImplementedPC" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ConfigurationItem_ImplementedPC">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_ImplementedPC" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ConfigurationItem_InvolvedRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_InvolvedRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ConfigurationItem_InvolvedRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_InvolvedRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_EPBSArchitecture_AllocatedPhysicalArchitecture" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EPBSArchitecture_AllocatedPhysicalArchitecture">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_EPBSArchitecture_AllocatedPhysicalArchitecture" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CommunicationMean_FunctionalExchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_CommunicationMean_FunctionalExchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CommunicationMean_FunctionalExchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_CommunicationMean_FunctionalExchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Entity_AllocatedRoles">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_Entity_AllocatedRoles" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Entity_AllocatedRoles">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_Entity_AllocatedRoles" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_OperationalActivity_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalActivity_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_OperationalActivity_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalActivity_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_OperationalCapability_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_OperationalCapability_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_OperationalCapability_InheritedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InheritedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_OperationalCapability_InheritedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InheritedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_OperationalCapability_InvolvedActivity">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InvolvedActivity" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_OperationalCapability_InvolvedActivity">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InvolvedActivity" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_OperationalCapability_InvolvedEntities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InvolvedEntities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_OperationalCapability_InvolvedEntities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InvolvedEntities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_OperationalCapability_InvolvedOperationalProcess">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalCapability_InvolvedOperationalProcess" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_OperationalCapability_InvolvedOperationalProcess">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalCapability_InvolvedOperationalProcess" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_OperationalProcess_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_OperationalProcess_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_OperationalProcess_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_OperationalProcess_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Role_AllocatedActivities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetAvailable_Role_AllocatedActivities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Role_AllocatedActivities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.oa.GetCurrent_Role_AllocatedActivities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentInstance_Deployers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_ComponentInstance_Deployers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentInstance_Deployers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_ComponentInstance_Deployers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentInstance_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_ComponentInstance_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentInstance_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_ComponentInstance_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_DeployConf_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_DeployConf_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_DeployConf_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_DeployConf_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_InteractingCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_InteractingCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_InteractingCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_InteractingCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_LogicalActorRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_LogicalActorRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_LogicalActorRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_LogicalActorRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalArchitecture_AllocatedLogicalArchitecture">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalArchitecture_AllocatedLogicalArchitecture" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalArchitecture_AllocatedLogicalArchitecture">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalArchitecture_AllocatedLogicalArchitecture" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComp_DefineRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_DefineRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComp_DefineRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_DefineRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComp_Deployers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_Deployers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComp_Deployers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_Deployers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComp_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComp_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComp_ImplementedLCS">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_ImplementedLCS" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComp_ImplementedLCS">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_ImplementedLCS" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComponent_DeployedComponents">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_DeployedComponents" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComponent_DeployedComponents">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_DeployedComponents" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComponent_LogicalComponentRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComponent_LogicalComponentRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComponent_LogicalComponentRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComponent_LogicalComponentRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalFunction_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalFunction_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalFunction_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalFunction_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalFunction_FunctionalRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalFunction_FunctionalRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalFunction_FunctionalRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalFunction_FunctionalRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalInterface_InheritedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalInterface_InheritedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalInterface_InheritedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalInterface_InheritedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalNode_DefineRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_DefineRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalNode_DefineRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_DefineRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalNode_Deployers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_Deployers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalNode_Deployers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_Deployers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalNode_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalNode_Deployments">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_Deployments" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalNode_ImplementedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_ImplementedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalNode_ImplementedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_ImplementedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalNode_ImplementedLCS">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_ImplementedLCS" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalNode_ImplementedLCS">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_ImplementedLCS" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalNode_UsedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalNode_UsedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalNode_UsedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalNode_UsedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentExchangeCategory_Exchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentExchangeCategory_Exchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentExchangeCategory_Exchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentExchangeCategory_Exchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentExchange_Categories">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentExchange_Categories" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentExchange_Categories">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentExchange_Categories" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_AllocatedPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_AllocatedPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_AllocatedPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_AllocatedPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_ConnectedPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_ConnectedPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_ConnectedPorts">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_ConnectedPorts" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_RealizedComponentPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_RealizedComponentPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_RealizedComponentPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_RealizedComponentPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ComponentPort_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Connection_ConnectionFunctionalExchangeAllocations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_Connection_ConnectionFunctionalExchangeAllocations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Connection_ConnectionFunctionalExchangeAllocations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_Connection_ConnectionFunctionalExchangeAllocations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Connection_ConnectionRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_Connection_ConnectionRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Connection_ConnectionRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_Connection_ConnectionRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeCategory_Exchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_ExchangeCategory_Exchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeCategory_Exchanges">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ExchangeCategory_Exchanges" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionInputPort_ProvidedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionInputPort_ProvidedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionInputPort_ProvidedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_ProvidedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionInputPort_RealizedFunctionInputPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionInputPort_RealizedFunctionInputPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionInputPort_RealizedFunctionInputPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_RealizedFunctionInputPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionInputPort_RequiredInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionInputPort_RequiredInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionInputPort_RequiredInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_RequiredInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionOutputPort_ProvidedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionOutputPort_ProvidedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionOutputPort_ProvidedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_ProvidedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionOutputPort_RealizedFunctionOutputPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionOutputPort_RealizedFunctionOutputPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionOutputPort_RealizedFunctionOutputPort">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_RealizedFunctionOutputPort" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionOutputPort_RequiredInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionOutputPort_RequiredInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionOutputPort_RequiredInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_RequiredInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionalChainInvolvement_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChainInvolvement_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionalChainInvolvement_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChainInvolvement_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionalChain_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChain_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionalChain_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChain_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionalChain_RealizedFunctionalChains">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalChain_RealizedFunctionalChains" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionalChain_RealizedFunctionalChains">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalChain_RealizedFunctionalChains" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionalExchange_Categories">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalExchange_Categories" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionalExchange_Categories">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalExchange_Categories" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionalExchange_FunctionalExchangeRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_FunctionalExchange_FunctionalExchangeRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionalExchange_FunctionalExchangeRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalExchange_FunctionalExchangeRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_BooleanType_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_BooleanType_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BooleanType_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BooleanType_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_BooleanType_RealizedBooleanType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_BooleanType_RealizedBooleanType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BooleanType_RealizedBooleanType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BooleanType_RealizedBooleanType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Class_RealizedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Class_RealizedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Class_RealizedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Class_RealizedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_Index">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_Index" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_Index">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_Index" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CommunicationLink_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_CommunicationLink_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CommunicationLink_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_CommunicationLink_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_EnumerationLiteralAbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_EnumerationLiteralAbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EnumerationLiteralAbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_EnumerationLiteralAbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Enumeration_RealizedEnumeration">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Enumeration_RealizedEnumeration" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Enumeration_RealizedEnumeration">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_RealizedEnumeration" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Exception_InheritedException">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Exception_InheritedException" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Exception_InheritedException">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Exception_InheritedException" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeItemElementMaxCard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItemElementMaxCard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeItemElementMaxCard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItemElementMaxCard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeItemElementMinCard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItemElementMinCard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeItemElementMinCard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItemElementMinCard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeItemElement_ReferencedProperties">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItemElement_ReferencedProperties" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeItemElement_ReferencedProperties">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItemElement_ReferencedProperties" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeItem_RealizedInformations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItem_RealizedInformations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeItem_RealizedInformations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItem_RealizedInformations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LiteralBooleanValue_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_LiteralBooleanValue_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LiteralBooleanValue_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_LiteralBooleanValue_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Message_InheritedMessage">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Message_InheritedMessage" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Message_InheritedMessage">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Message_InheritedMessage" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_NumericType_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_NumericType_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericType_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericType_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_NumericType_RealizedNumericType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_NumericType_RealizedNumericType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericType_RealizedNumericType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericType_RealizedNumericType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_NumericValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_NumericValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Parameter_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Parameter_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Parameter_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Parameter_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Parameter_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Parameter_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Parameter_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Parameter_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Parameter_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Parameter_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Parameter_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Parameter_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalQuantity_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_PhysicalQuantity_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalQuantity_RealizedPhysicalQuantity">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_PhysicalQuantity_RealizedPhysicalQuantity" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_RealizedPhysicalQuantity">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_RealizedPhysicalQuantity" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Property_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Property_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Property_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Service_ExchangeItemRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Service_ExchangeItemRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Service_ExchangeItemRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Service_ExchangeItemRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Service_ReferencedMessage">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Service_ReferencedMessage" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Service_ReferencedMessage">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Service_ReferencedMessage" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Service_ThrownException">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Service_ThrownException" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Service_ThrownException">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Service_ThrownException" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Signal_InheritedSignals">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Signal_InheritedSignals" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Signal_InheritedSignals">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Signal_InheritedSignals" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StringType_InheritedStringType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_StringType_InheritedStringType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringType_InheritedStringType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringType_InheritedStringType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StringType_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_StringType_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringType_Property">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringType_Property" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StringType_RealizedStringType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_StringType_RealizedStringType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringType_RealizedStringType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringType_RealizedStringType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StringValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_StringValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_UnionProperty_Qualifiers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_UnionProperty_Qualifiers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_Qualifiers">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_Qualifiers" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Union_DefaultProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Union_DefaultProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Union_DefaultProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Union_DefaultProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Union_Discriminant">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Union_Discriminant" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Union_Discriminant">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Union_Discriminant" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Union_DiscriminantType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Union_DiscriminantType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Union_DiscriminantType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Union_DiscriminantType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Union_InheritedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Union_InheritedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Union_InheritedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Union_InheritedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ValuePart_ReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ValuePart_ReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ValuePart_ReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ValuePart_ReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ChangeEvent_Guard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChangeEvent_Guard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ChangeEvent_Guard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ChangeEvent_Guard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ChoicePseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ChoicePseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ChoicePseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ChoicePseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FinalState_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_FinalState_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FinalState_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_FinalState_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FinalState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_FinalState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FinalState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_FinalState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ForkPseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_ForkPseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ForkPseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_ForkPseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_InitialPseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_InitialPseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_InitialPseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_InitialPseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_JoinPseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_JoinPseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_JoinPseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_JoinPseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Mode_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Mode_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_Mode_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Mode_ReferencedStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_ReferencedStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Mode_ReferencedStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_Mode_ReferencedStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Mode_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_Mode_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Mode_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_Mode_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StateTransition_StateTransitionRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_StateTransition_StateTransitionRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StateTransition_StateTransitionRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_StateTransition_StateTransitionRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_State_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_State_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_State_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_State_ReferencedStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_ReferencedStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_State_ReferencedStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_State_ReferencedStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_State_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_State_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_State_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_State_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_TerminatePseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_TerminatePseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_TerminatePseudoState_StateRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_TerminatePseudoState_StateRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_TimeEvent_Guard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetAvailable_TimeEvent_Guard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_TimeEvent_Guard">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacommon.GetCurrent_TimeEvent_Guard" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValueGroups">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_AppliedPropertyValueGroups" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapellaElement_AppliedPropertyValueGroups">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_CapellaElement_AppliedPropertyValueGroups" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapellaElement_AppliedPropertyValues">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_AppliedPropertyValues" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapellaElement_AppliedPropertyValues">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_CapellaElement_AppliedPropertyValues" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapellaElement_Status">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_CapellaElement_Status" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapellaElement_Status">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_CapellaElement_Status" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Constraint_ConstrainedElements">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_Constraint_ConstrainedElements" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Constraint_ConstrainedElements">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_Constraint_ConstrainedElements" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_EnumerationPropertyValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_EnumerationPropertyValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EnumerationPropertyValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_EnumerationPropertyValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_EnumerationPropertyValue_Value">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetAvailable_EnumerationPropertyValue_Value" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EnumerationPropertyValue_Value">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellacore.GetCurrent_EnumerationPropertyValue_Value" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_SystemEngineering_ReusedSharedPkg">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellamodeller.GetAvailable_SystemEngineering_ReusedSharedPkg" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_SystemEngineering_ReusedSharedPkg">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.capellamodeller.GetCurrent_SystemEngineering_ReusedSharedPkg" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_InteractionUse_ReferencedScenario">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_InteractionUse_ReferencedScenario" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_InteractionUse_ReferencedScenario">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_InteractionUse_ReferencedScenario" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Scenario_RealizedScenario">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_Scenario_RealizedScenario" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Scenario_RealizedScenario">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_Scenario_RealizedScenario" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_SequenceMessage_ExchangedItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_SequenceMessage_ExchangedItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_SequenceMessage_ExchangedItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_SequenceMessage_ExchangedItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_SequenceMessage_InvokedOperation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_SequenceMessage_InvokedOperation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_SequenceMessage_InvokedOperation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_SequenceMessage_InvokedOperation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StateFragment_RelatedAbstractFunction">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_StateFragment_RelatedAbstractFunction" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StateFragment_RelatedAbstractFunction">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_StateFragment_RelatedAbstractFunction" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StateFragment_RelatedAbstractState">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_StateFragment_RelatedAbstractState" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StateFragment_RelatedAbstractState">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_StateFragment_RelatedAbstractState" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_ActorCapabilityRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_ActorCapabilityRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_ActorCapabilityRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_ActorCapabilityRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_AvailableInStates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_AvailableInStates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_ComponentCapabilityRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_ComponentCapabilityRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_ComponentCapabilityRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_ComponentCapabilityRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_InheritedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InheritedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_InheritedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InheritedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_InteractingComponents">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InteractingComponents" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_InteractingComponents">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InteractingComponents" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_InvolvedAbstractFunctions">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InvolvedAbstractFunctions" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_InvolvedAbstractFunctions">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InvolvedAbstractFunctions" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_InvolvedFunctionalChains">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_InvolvedFunctionalChains" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_InvolvedFunctionalChains">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_InvolvedFunctionalChains" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CapabilityRealization_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_CapabilityRealization_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CapabilityRealization_RealizedCapabilities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_CapabilityRealization_RealizedCapabilities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalActor_ActorRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalActor_ActorRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalActor_ActorRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalActor_ActorRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalComponentShortcut_ReferencedLC">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponentShortcut_ReferencedLC" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalComponentShortcut_ReferencedLC">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponentShortcut_ReferencedLC" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalComponent_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalComponent_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalComponent_InvolvedRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalComponent_InvolvedRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalComponent_InvolvedRealizations">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_InvolvedRealizations" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalFunction_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalFunction_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalFunction_AvailableInstates">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalFunction_AvailableInstates" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalFunction_FunctionalRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalFunction_FunctionalRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalFunction_FunctionalRealization">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalFunction_FunctionalRealization" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_ProvidedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_ProvidedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalComponent_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalComponent_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalComponent_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionalExchange_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionalExchange_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionOutputPort_OutGoingExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionOutputPort_OutGoingExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_FunctionInputPort_InComingExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_FunctionInputPort_InComingExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComponentPort_RequiredInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_ComponentPort_RequiredInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Interface_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Interface_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Interface_InheritedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Interface_InheritedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_InterfaceUse_UsedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_InterfaceUse_UsedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_InterfaceImpl_ImplementedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_InterfaceImpl_ImplementedInterface" />
+    </querySpecification>
   </extension>
 </plugin>
-
-

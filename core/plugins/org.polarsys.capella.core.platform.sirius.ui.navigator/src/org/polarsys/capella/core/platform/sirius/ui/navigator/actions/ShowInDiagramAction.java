@@ -21,15 +21,15 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IEditorPart;
@@ -37,15 +37,14 @@ import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 
 /**
  * Show selected {@link ModelElement} in the active diagram editor.
@@ -176,7 +175,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     IGraphicalEditPart graphicalEditPart = null;
 
     if ((null != activeEditor) && (activeEditor instanceof SiriusDiagramEditor)) {
-    	SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
+      SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
 
       // Get the graphical viewer.
       IDiagramGraphicalViewer diagramGraphicalViewer = diagramEditor.getDiagramGraphicalViewer();

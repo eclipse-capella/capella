@@ -11,15 +11,15 @@
 package org.polarsys.capella.core.sirius.ui.copylayout;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
-import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
-
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 
 /**
@@ -53,7 +53,7 @@ public class CapellaNodeLayoutDataKey extends CapellaDecoratorLayoutDataKey {
     }
 
     if ((decorator_p == null) || (decorator_p instanceof AbstractDNode)) {
-      addDecoration(ViewpointPackage.Literals.ABSTRACT_DNODE);
+      addDecoration(DiagramPackage.Literals.ABSTRACT_DNODE);
     }
     if ((decorator_p != null) && (decorator_p.getTarget() != null)) {
       if (decorator_p.getTarget() instanceof ExchangeCategory) {

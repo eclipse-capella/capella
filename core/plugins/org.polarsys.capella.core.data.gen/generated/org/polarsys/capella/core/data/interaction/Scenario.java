@@ -12,6 +12,7 @@ package org.polarsys.capella.core.data.interaction;
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.behavior.AbstractBehavior;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -24,10 +25,10 @@ import org.polarsys.capella.core.data.fa.AbstractFunction;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#isMerged <em>Merged</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getOwnedInstanceRoles <em>Owned Instance Roles</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getOwnedMessages <em>Owned Messages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.Scenario#getOwnedInteractionFragments <em>Owned Interaction Fragments</em>}</li>
@@ -58,7 +59,7 @@ public interface Scenario extends Namespace, AbstractBehavior {
 
 
 	/**
-	 * Returns the value of the '<em><b>Pre Condition</b></em>' attribute.
+	 * Returns the value of the '<em><b>Pre Condition</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -66,39 +67,36 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pre Condition</em>' attribute.
-	 * @see #setPreCondition(String)
+	 * @return the value of the '<em>Pre Condition</em>' reference.
+	 * @see #setPreCondition(Constraint)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PreCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the prerequisite conditions for the use of this Scenario' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
 	 * @generated
 	 */
 
-	String getPreCondition();
+	Constraint getPreCondition();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPreCondition <em>Pre Condition</em>}' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pre Condition</em>' attribute.
+	 * @param value the new value of the '<em>Pre Condition</em>' reference.
 	 * @see #getPreCondition()
 	 * @generated
 	 */
 
-	void setPreCondition(String value);
-
-
-
+	void setPreCondition(Constraint value);
 
 
 
 
 	/**
-	 * Returns the value of the '<em><b>Post Condition</b></em>' attribute.
+	 * Returns the value of the '<em><b>Post Condition</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -106,33 +104,30 @@ public interface Scenario extends Namespace, AbstractBehavior {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Post Condition</em>' attribute.
-	 * @see #setPostCondition(String)
+	 * @return the value of the '<em>Post Condition</em>' reference.
+	 * @see #setPostCondition(Constraint)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getScenario_PostCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the conditions applying after this Scenario has been exercized' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
 	 * @generated
 	 */
 
-	String getPostCondition();
+	Constraint getPostCondition();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.Scenario#getPostCondition <em>Post Condition</em>}' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Post Condition</em>' attribute.
+	 * @param value the new value of the '<em>Post Condition</em>' reference.
 	 * @see #getPostCondition()
 	 * @generated
 	 */
 
-	void setPostCondition(String value);
-
-
-
+	void setPostCondition(Constraint value);
 
 
 

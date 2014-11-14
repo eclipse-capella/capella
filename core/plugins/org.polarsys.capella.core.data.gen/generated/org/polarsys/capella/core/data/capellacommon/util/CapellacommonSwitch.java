@@ -16,9 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 import org.polarsys.capella.common.data.behavior.AbstractBehavior;
+import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
@@ -163,6 +165,23 @@ public class CapellacommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapellacommonPackage.JUSTIFICATION_LINK: {
+				JustificationLink justificationLink = (JustificationLink)theEObject;
+				T result = caseJustificationLink(justificationLink);
+				if (result == null) result = caseGenericTrace(justificationLink);
+				if (result == null) result = caseTrace(justificationLink);
+				if (result == null) result = caseRelationship(justificationLink);
+				if (result == null) result = caseAbstractTrace(justificationLink);
+				if (result == null) result = caseAbstractRelationship(justificationLink);
+				if (result == null) result = caseCapellaElement(justificationLink);
+				if (result == null) result = caseTraceableElement(justificationLink);
+				if (result == null) result = casePublishableElement(justificationLink);
+				if (result == null) result = caseModelElement(justificationLink);
+				if (result == null) result = caseExtensibleElement(justificationLink);
+				if (result == null) result = caseElement(justificationLink);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVEMENT: {
 				CapabilityRealizationInvolvement capabilityRealizationInvolvement = (CapabilityRealizationInvolvement)theEObject;
 				T result = caseCapabilityRealizationInvolvement(capabilityRealizationInvolvement);
@@ -287,9 +306,11 @@ public class CapellacommonSwitch<T> extends Switch<T> {
 			case CapellacommonPackage.STATE_TRANSITION: {
 				StateTransition stateTransition = (StateTransition)theEObject;
 				T result = caseStateTransition(stateTransition);
+				if (result == null) result = caseNamedElement(stateTransition);
 				if (result == null) result = caseRelationship(stateTransition);
-				if (result == null) result = caseAbstractRelationship(stateTransition);
+				if (result == null) result = caseAbstractNamedElement(stateTransition);
 				if (result == null) result = caseCapellaElement(stateTransition);
+				if (result == null) result = caseAbstractRelationship(stateTransition);
 				if (result == null) result = caseTraceableElement(stateTransition);
 				if (result == null) result = casePublishableElement(stateTransition);
 				if (result == null) result = caseModelElement(stateTransition);
@@ -431,6 +452,140 @@ public class CapellacommonSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case CapellacommonPackage.SHALLOW_HISTORY_PSEUDO_STATE: {
+				ShallowHistoryPseudoState shallowHistoryPseudoState = (ShallowHistoryPseudoState)theEObject;
+				T result = caseShallowHistoryPseudoState(shallowHistoryPseudoState);
+				if (result == null) result = casePseudostate(shallowHistoryPseudoState);
+				if (result == null) result = caseAbstractState(shallowHistoryPseudoState);
+				if (result == null) result = caseNamedElement(shallowHistoryPseudoState);
+				if (result == null) result = caseIState(shallowHistoryPseudoState);
+				if (result == null) result = caseAbstractNamedElement(shallowHistoryPseudoState);
+				if (result == null) result = caseCapellaElement(shallowHistoryPseudoState);
+				if (result == null) result = caseTraceableElement(shallowHistoryPseudoState);
+				if (result == null) result = casePublishableElement(shallowHistoryPseudoState);
+				if (result == null) result = caseModelElement(shallowHistoryPseudoState);
+				if (result == null) result = caseExtensibleElement(shallowHistoryPseudoState);
+				if (result == null) result = caseElement(shallowHistoryPseudoState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapellacommonPackage.DEEP_HISTORY_PSEUDO_STATE: {
+				DeepHistoryPseudoState deepHistoryPseudoState = (DeepHistoryPseudoState)theEObject;
+				T result = caseDeepHistoryPseudoState(deepHistoryPseudoState);
+				if (result == null) result = casePseudostate(deepHistoryPseudoState);
+				if (result == null) result = caseAbstractState(deepHistoryPseudoState);
+				if (result == null) result = caseNamedElement(deepHistoryPseudoState);
+				if (result == null) result = caseIState(deepHistoryPseudoState);
+				if (result == null) result = caseAbstractNamedElement(deepHistoryPseudoState);
+				if (result == null) result = caseCapellaElement(deepHistoryPseudoState);
+				if (result == null) result = caseTraceableElement(deepHistoryPseudoState);
+				if (result == null) result = casePublishableElement(deepHistoryPseudoState);
+				if (result == null) result = caseModelElement(deepHistoryPseudoState);
+				if (result == null) result = caseExtensibleElement(deepHistoryPseudoState);
+				if (result == null) result = caseElement(deepHistoryPseudoState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapellacommonPackage.ENTRY_POINT_PSEUDO_STATE: {
+				EntryPointPseudoState entryPointPseudoState = (EntryPointPseudoState)theEObject;
+				T result = caseEntryPointPseudoState(entryPointPseudoState);
+				if (result == null) result = casePseudostate(entryPointPseudoState);
+				if (result == null) result = caseAbstractState(entryPointPseudoState);
+				if (result == null) result = caseNamedElement(entryPointPseudoState);
+				if (result == null) result = caseIState(entryPointPseudoState);
+				if (result == null) result = caseAbstractNamedElement(entryPointPseudoState);
+				if (result == null) result = caseCapellaElement(entryPointPseudoState);
+				if (result == null) result = caseTraceableElement(entryPointPseudoState);
+				if (result == null) result = casePublishableElement(entryPointPseudoState);
+				if (result == null) result = caseModelElement(entryPointPseudoState);
+				if (result == null) result = caseExtensibleElement(entryPointPseudoState);
+				if (result == null) result = caseElement(entryPointPseudoState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapellacommonPackage.EXIT_POINT_PSEUDO_STATE: {
+				ExitPointPseudoState exitPointPseudoState = (ExitPointPseudoState)theEObject;
+				T result = caseExitPointPseudoState(exitPointPseudoState);
+				if (result == null) result = casePseudostate(exitPointPseudoState);
+				if (result == null) result = caseAbstractState(exitPointPseudoState);
+				if (result == null) result = caseNamedElement(exitPointPseudoState);
+				if (result == null) result = caseIState(exitPointPseudoState);
+				if (result == null) result = caseAbstractNamedElement(exitPointPseudoState);
+				if (result == null) result = caseCapellaElement(exitPointPseudoState);
+				if (result == null) result = caseTraceableElement(exitPointPseudoState);
+				if (result == null) result = casePublishableElement(exitPointPseudoState);
+				if (result == null) result = caseModelElement(exitPointPseudoState);
+				if (result == null) result = caseExtensibleElement(exitPointPseudoState);
+				if (result == null) result = caseElement(exitPointPseudoState);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapellacommonPackage.STATE_EVENT_REALIZATION: {
+				StateEventRealization stateEventRealization = (StateEventRealization)theEObject;
+				T result = caseStateEventRealization(stateEventRealization);
+				if (result == null) result = caseAllocation(stateEventRealization);
+				if (result == null) result = caseRelationship(stateEventRealization);
+				if (result == null) result = caseAbstractTrace(stateEventRealization);
+				if (result == null) result = caseAbstractRelationship(stateEventRealization);
+				if (result == null) result = caseCapellaElement(stateEventRealization);
+				if (result == null) result = caseTraceableElement(stateEventRealization);
+				if (result == null) result = casePublishableElement(stateEventRealization);
+				if (result == null) result = caseModelElement(stateEventRealization);
+				if (result == null) result = caseExtensibleElement(stateEventRealization);
+				if (result == null) result = caseElement(stateEventRealization);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapellacommonPackage.STATE_EVENT: {
+				StateEvent stateEvent = (StateEvent)theEObject;
+				T result = caseStateEvent(stateEvent);
+				if (result == null) result = caseNamedElement(stateEvent);
+				if (result == null) result = caseAbstractEvent(stateEvent);
+				if (result == null) result = caseCapellaElement(stateEvent);
+				if (result == null) result = caseAbstractType(stateEvent);
+				if (result == null) result = caseAbstractNamedElement(stateEvent);
+				if (result == null) result = caseTraceableElement(stateEvent);
+				if (result == null) result = casePublishableElement(stateEvent);
+				if (result == null) result = caseModelElement(stateEvent);
+				if (result == null) result = caseExtensibleElement(stateEvent);
+				if (result == null) result = caseElement(stateEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapellacommonPackage.CHANGE_EVENT: {
+				ChangeEvent changeEvent = (ChangeEvent)theEObject;
+				T result = caseChangeEvent(changeEvent);
+				if (result == null) result = caseStateEvent(changeEvent);
+				if (result == null) result = caseNamedElement(changeEvent);
+				if (result == null) result = caseAbstractEvent(changeEvent);
+				if (result == null) result = caseCapellaElement(changeEvent);
+				if (result == null) result = caseAbstractType(changeEvent);
+				if (result == null) result = caseAbstractNamedElement(changeEvent);
+				if (result == null) result = caseTraceableElement(changeEvent);
+				if (result == null) result = casePublishableElement(changeEvent);
+				if (result == null) result = caseModelElement(changeEvent);
+				if (result == null) result = caseExtensibleElement(changeEvent);
+				if (result == null) result = caseElement(changeEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CapellacommonPackage.TIME_EVENT: {
+				TimeEvent timeEvent = (TimeEvent)theEObject;
+				T result = caseTimeEvent(timeEvent);
+				if (result == null) result = caseStateEvent(timeEvent);
+				if (result == null) result = caseNamedElement(timeEvent);
+				if (result == null) result = caseAbstractEvent(timeEvent);
+				if (result == null) result = caseCapellaElement(timeEvent);
+				if (result == null) result = caseAbstractType(timeEvent);
+				if (result == null) result = caseAbstractNamedElement(timeEvent);
+				if (result == null) result = caseTraceableElement(timeEvent);
+				if (result == null) result = casePublishableElement(timeEvent);
+				if (result == null) result = caseModelElement(timeEvent);
+				if (result == null) result = caseExtensibleElement(timeEvent);
+				if (result == null) result = caseElement(timeEvent);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -477,6 +632,21 @@ public class CapellacommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTransfoLink(TransfoLink object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Justification Link</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Justification Link</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseJustificationLink(JustificationLink object) {
 		return null;
 	}
 
@@ -732,6 +902,126 @@ public class CapellacommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseStateTransitionRealization(StateTransitionRealization object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Shallow History Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Shallow History Pseudo State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseShallowHistoryPseudoState(ShallowHistoryPseudoState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Deep History Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Deep History Pseudo State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeepHistoryPseudoState(DeepHistoryPseudoState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entry Point Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entry Point Pseudo State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntryPointPseudoState(EntryPointPseudoState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Exit Point Pseudo State</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Exit Point Pseudo State</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExitPointPseudoState(ExitPointPseudoState object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>State Event Realization</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>State Event Realization</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStateEventRealization(StateEventRealization object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>State Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>State Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStateEvent(StateEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Change Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Change Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChangeEvent(ChangeEvent object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Time Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Time Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTimeEvent(TimeEvent object) {
 		return null;
 	}
 
@@ -1017,6 +1307,36 @@ public class CapellacommonSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAllocation(Allocation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractType(AbstractType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Event</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Event</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractEvent(AbstractEvent object) {
 		return null;
 	}
 

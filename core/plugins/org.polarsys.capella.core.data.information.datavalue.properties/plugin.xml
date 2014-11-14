@@ -157,10 +157,18 @@
                   type="org.polarsys.capella.core.data.information.datavalue.ValuePart">
             </input>
          </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.information.datavalue.properties.sections.OpaqueExpressionSection"
+               id="org.polarsys.capella.core.data.information.datavalue.properties.OpaqueExpression"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.information.datavalue.OpaqueExpression">
+            </input>
+         </propertySection>
       </propertySections>
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
-	  <propertySections contributorId="org.eclipse.sirius.diagram">
+	  <propertySections contributorId="org.eclipse.sirius.diagram.ui">
          <propertySection
                class="org.polarsys.capella.core.data.information.datavalue.properties.sections.BinaryExpressionSection"
                filter="org.polarsys.capella.core.data.information.datavalue.properties.sections.BinaryExpressionSection"

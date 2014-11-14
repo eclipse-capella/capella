@@ -16,6 +16,7 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.ui,
  org.eclipse.sirius.query.legacy,
  org.eclipse.sirius.common,
+ org.eclipse.sirius.ext.base,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius,
  org.eclipse.sirius.diagram,
@@ -34,7 +35,11 @@ Require-Bundle: org.eclipse.core.expressions,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.semantic.queries,
  org.polarsys.capella.core.libraries.extendedQueries,
- org.polarsys.capella.common.libraries
+ org.polarsys.capella.common.libraries,
+ org.eclipse.sirius.diagram.ui,
+ com.google.guava,
+ org.polarsys.capella.common.linkedtext.ui,
+ org.polarsys.capella.core.linkedtext.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

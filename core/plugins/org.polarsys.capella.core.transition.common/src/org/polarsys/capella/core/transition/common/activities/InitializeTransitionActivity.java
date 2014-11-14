@@ -10,17 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.common.activities;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
 import org.apache.log4j.Level;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.core.transition.common.ExtensionHelper;
 import org.polarsys.capella.core.transition.common.constants.ISchemaConstants;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -44,8 +44,7 @@ import org.polarsys.capella.core.transition.common.handlers.selection.Transforma
 import org.polarsys.capella.core.transition.common.handlers.session.DefaultSessionHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.transformation.DefaultTransformationHandler;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -53,7 +52,7 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  * Initialize the transition: - Initialize handlers -
  */
-public class InitializeTransitionActivity extends AbstractActivity implements ITransposerWorkflow {
+public abstract class InitializeTransitionActivity extends AbstractActivity implements ITransposerWorkflow {
 
   public static final String ID = "org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity"; //$NON-NLS-1$
 
@@ -95,8 +94,6 @@ public class InitializeTransitionActivity extends AbstractActivity implements IT
     context_p.put(ITransitionConstants.TRANSPOSER_APPLY_REQUIRED, Boolean.TRUE);
     context_p.put(ITransitionConstants.TRANSFORMED_ELEMENTS, new HashSet<EObject>());
 
-    ResourceSet set = ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName()).getEditingDomain().getResourceSet();
-    context_p.put(ITransitionConstants.RESOURCE_SET, set);
     context_p.put(ITransitionConstants.TRANSITION_SELECTION, context_p.get(ITransitionConstants.TRANSPOSER_SELECTION));
 
     status = initializeTransitionSources(context_p, activityParams_p);
@@ -110,7 +107,9 @@ public class InitializeTransitionActivity extends AbstractActivity implements IT
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { ITransitionConstants.TRANSITION_SOURCE_ROOT, ITransitionConstants.TRANSITION_SOURCE_RESOURCE });
+    status =
+        checkParameters(context_p, new String[] { ITransitionConstants.TRANSITION_SOURCE_ROOT, ITransitionConstants.TRANSITION_SOURCE_RESOURCE,
+                                                 ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN });
     if (!checkStatus(status)) {
       return status;
     }
@@ -214,12 +213,43 @@ public class InitializeTransitionActivity extends AbstractActivity implements IT
       return status;
     }
 
-    status = checkParameters(context_p, new String[] { ITransitionConstants.TRANSITION_TARGET_ROOT, ITransitionConstants.TRANSITION_TARGET_RESOURCE });
+    status =
+        checkParameters(context_p, new String[] { ITransitionConstants.TRANSITION_TARGET_ROOT, ITransitionConstants.TRANSITION_TARGET_RESOURCE,
+                                                 ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN });
     if (!checkStatus(status)) {
       return status;
     }
 
     return Status.OK_STATUS;
+  }
+
+  // FIXME refactor duplicated code
+  public Collection<Object> getSemanticObjects(Collection<Object> elements_p) {
+    Collection<Object> result = new ArrayList<Object>();
+    for (Object object : elements_p) {
+      Object semantic = resolveSemanticObject(object);
+      if (semantic != null) {
+        result.add(semantic);
+      }
+    }
+    return result;
+  }
+
+  public Object resolveSemanticObject(Object object_p) {
+    Object semantic = null;
+
+    if (object_p != null) {
+      if (object_p instanceof EObject) {
+        semantic = object_p;
+
+      } else if (object_p instanceof IAdaptable) {
+        Object adapter = ((IAdaptable) object_p).getAdapter(EObject.class);
+        if (adapter instanceof EObject) {
+          semantic = adapter;
+        }
+      }
+    }
+    return semantic;
   }
 
   /**
@@ -270,9 +300,12 @@ public class InitializeTransitionActivity extends AbstractActivity implements IT
   }
 
   /**
-   * Initialize TRANSITION_SOURCE_ROOT and TRANSITION_SOURCE_RESOURCE according to selection
-   * @param context_p
-   * @param activityParams_p
+   * Initialize TRANSITION_SOURCE_ROOT and TRANSITION_SOURCE_RESOURCE and TRANSITION_SOURCE_EDITING_DOMAIN according to selection
+   * 
+   * in a common transition, 
+   * TRANSITION_SOURCE_ROOT = TRANSITION_SOURCES.get(0)
+   * TRANSITION_SOURCE_RESOURCE = TRANSITION_SOURCE_ROOT.eResource
+   * TRANSITION_SOURCE_EDITING_DOMAIN = editingDomain(TRANSITION_SOURCE_RESOURCE)
    */
   protected IStatus initializeSource(IContext context_p, ActivityParameters activityParams_p) {
     Collection<Object> selection = (Collection<Object>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
@@ -282,6 +315,7 @@ public class InitializeTransitionActivity extends AbstractActivity implements IT
       if (source instanceof EObject) {
         Resource res = ((EObject) source).eResource();
         context_p.put(ITransitionConstants.TRANSITION_SOURCE_RESOURCE, res);
+        context_p.put(ITransitionConstants.TRANSITION_SOURCE_EDITING_DOMAIN, TransactionUtil.getEditingDomain(res));
       }
 
     } else {
@@ -292,13 +326,11 @@ public class InitializeTransitionActivity extends AbstractActivity implements IT
   }
 
   /**
-   * Initialize TRANSITION_TARGET_ROOT and TRANSITION_TARGET_RESOURCE according to selection
+   * Initialize TRANSITION_TARGET_ROOT and TRANSITION_TARGET_RESOURCE and TRANSITION_TARGET_EDITING_DOMAIN  according to selection
    * @param context_p
    * @param activityParams_p
    */
-  protected IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p) {
-    return Status.OK_STATUS;
-  }
+  protected abstract IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p);
 
   /**
    * Initialize the Notify handler and set it into context via ITransitionConstants.NOTIFY_HANDLER

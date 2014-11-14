@@ -11,6 +11,7 @@
 
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
@@ -33,14 +35,15 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.navigator.IDescriptionProvider;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 /**
  * The Capella navigator label provider.
@@ -53,7 +56,11 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
    * Constructs the Capella navigator label provider.
    */
   public CapellaNavigatorLabelProvider() {
-    super(MDEAdapterFactory.getEditingDomain(), CapellaNavigatorAdapterFactory.getAdapterFactory());
+    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+  }
+
+  public CapellaNavigatorLabelProvider(AdapterFactory adapterFactory_p) {
+    super(adapterFactory_p);
   }
 
   public CapellaNavigatorLabelProvider(TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p) {
@@ -94,6 +101,7 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   @Override
   public String getText(Object object_p) {
     String text = null;
+
     if (object_p instanceof Session) {
       text = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getText(object_p);
     } else if (object_p instanceof ItemDecorator) {
@@ -104,7 +112,17 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
       IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object_p, IWorkbenchAdapter.class);
       text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object_p) : super.getText(object_p);
+
+      if (object_p instanceof IFile) {
+        if (CapellaResourceHelper.isAirdResource((IFile) object_p, true)) {
+          Session session = SessionHelper.getSession(((IFile) object_p));
+          if ((session != null) && (session.getStatus() == SessionStatus.DIRTY)) {
+            text = "*" + text; //$NON-NLS-1$
+          }
+        }
+      }
     }
+
     return text;
   }
 

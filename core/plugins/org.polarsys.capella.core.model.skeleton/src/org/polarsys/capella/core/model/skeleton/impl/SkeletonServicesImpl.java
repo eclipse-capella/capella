@@ -11,6 +11,10 @@
 
 package org.polarsys.capella.core.model.skeleton.impl;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
@@ -18,8 +22,6 @@ import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -34,8 +36,6 @@ import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateEngSystemCmd;
 import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateLogicalArchiCmd;
 import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateOpAnalysisCmd;
 import org.polarsys.capella.core.model.skeleton.impl.cmd.CreatePhysicalArchiCmd;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * The skeleton services implementation.
@@ -139,14 +139,14 @@ public class SkeletonServicesImpl implements ISkeletonServices {
       }
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
        */
       @Override
       public String getName() {
         return Messages.getString("capella.sys_eng.create.cmd"); //$NON-NLS-1$
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(createSystemEngineeringCommand);
+    TransactionHelper.getExecutionManager(project_p).execute(createSystemEngineeringCommand);
     return systemEng[0];
   }
 
@@ -157,7 +157,7 @@ public class SkeletonServicesImpl implements ISkeletonServices {
     // Call the command allowing to create the operational analysis structure skeleton.
     String architectureName = NamingConstants.SkeletonServicesImpl_package_name_operationalAnalysis;
     _currentOpAnalysisCmd = new CreateOpAnalysisCmd(systemEng_p, architectureName);
-    MDEAdapterFactory.getExecutionManager().execute(_currentOpAnalysisCmd);
+    TransactionHelper.getExecutionManager(systemEng_p).execute(_currentOpAnalysisCmd);
 
     return _currentOpAnalysisCmd.getOperationalAnalysis();
   }
@@ -170,7 +170,7 @@ public class SkeletonServicesImpl implements ISkeletonServices {
     // Call the command allowing to create the System Analysis structure skeleton.
     String packageName = NamingConstants.SkeletonServicesImpl_package_name_systemAnalysis;
     _currentCtxArchitectureCmd = new CreateCtxArchiCmd(systemEng_p, packageName, opAnalysis_p, opActivity_p);
-    MDEAdapterFactory.getExecutionManager().execute(_currentCtxArchitectureCmd);
+    TransactionHelper.getExecutionManager(systemEng_p).execute(_currentCtxArchitectureCmd);
 
     return _currentCtxArchitectureCmd.getSystemAnalysis();
   }
@@ -185,7 +185,7 @@ public class SkeletonServicesImpl implements ISkeletonServices {
     // Call the command allowing to create the logical architecture structure skeleton.
     String packageName = NamingConstants.SkeletonServicesImpl_package_name_logicalArchitecture;
     _currentLogicalArchitectureCmd = new CreateLogicalArchiCmd(systemEng_p, packageName, ctxArchitecture_p, systemFunction_p, system_p);
-    MDEAdapterFactory.getExecutionManager().execute(_currentLogicalArchitectureCmd);
+    TransactionHelper.getExecutionManager(systemEng_p).execute(_currentLogicalArchitectureCmd);
 
     return _currentLogicalArchitectureCmd.getLogicalArchitecture();
   }
@@ -200,7 +200,7 @@ public class SkeletonServicesImpl implements ISkeletonServices {
     // Call the command allowing to create the physical architecture structure skeleton.
     String packageName = NamingConstants.SkeletonServicesImpl_package_name_physicalArchitecture;
     _currentPhysicalArchitectureCmd = new CreatePhysicalArchiCmd(systemEng_p, packageName, logicalArchitecture_p, logicalComponent_p, logicalFunction_p);
-    MDEAdapterFactory.getExecutionManager().execute(_currentPhysicalArchitectureCmd);
+    TransactionHelper.getExecutionManager(systemEng_p).execute(_currentPhysicalArchitectureCmd);
 
     return _currentPhysicalArchitectureCmd.getPhysicalArchitecture();
   }
@@ -213,7 +213,7 @@ public class SkeletonServicesImpl implements ISkeletonServices {
     // Call the command allowing to create the EPBS architecture structure skeleton.
     String packageName = NamingConstants.SkeletonServicesImpl_package_name_epbsArchitecture;
     _currentEpbsArchitectureCmd = new CreateEPBSArchiCmd(systemEng_p, packageName, physicalArchitecture_p, pc_p);
-    MDEAdapterFactory.getExecutionManager().execute(_currentEpbsArchitectureCmd);
+    TransactionHelper.getExecutionManager(systemEng_p).execute(_currentEpbsArchitectureCmd);
 
     return _currentEpbsArchitectureCmd.getEPBSArchitecture();
   }

@@ -197,7 +197,7 @@ At this time, no compliancy control is applied to detect cycle between categorie
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.common.ui.toolkit.browser.query.IQuery"/>
+                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.common.helpers.query.IQuery"/>
                </appInfo>
             </annotation>
          </attribute>

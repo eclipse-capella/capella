@@ -15,14 +15,19 @@ import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.fields.VisibilityKindGroup;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.information.InformationFactory;
@@ -30,16 +35,11 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Parameter;
 import org.polarsys.capella.core.data.information.properties.Messages;
 import org.polarsys.capella.core.data.information.properties.controllers.Service_RealizedExchangeItemsController;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.ContainmentTableField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.menu.dynamic.CreationHelper;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * The Service section.
@@ -101,13 +101,14 @@ public class ServiceSection extends NamedElementSection {
           public void run() {
             Parameter item = InformationFactory.eINSTANCE.createParameter();
             ((List<EObject>) _semanticElement.eGet(_semanticFeature)).add(item);
-            Command cmd = CreationHelper.getAdditionnalCommand(MDEAdapterFactory.getEditingDomain(), item);
-            MDEAdapterFactory.getEditingDomain().getCommandStack().execute(cmd);
+            EditingDomain domain = TransactionHelper.getEditingDomain(item);
+            Command cmd = CreationHelper.getAdditionnalCommand(domain, item);
+            domain.getCommandStack().execute(cmd);
 
             CapellaUIPropertiesPlugin.getDefault().openWizard(item);
           }
         };
-        MDEAdapterFactory.getExecutionManager().execute(command);
+        TransactionHelper.getExecutionManager(_semanticElement).execute(command);
         refreshViewer();
       }
     };

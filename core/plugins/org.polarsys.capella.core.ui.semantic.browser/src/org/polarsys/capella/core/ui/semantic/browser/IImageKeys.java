@@ -27,4 +27,9 @@ public interface IImageKeys {
    */
   public final static String IMG_REFRESH = "full/clcl16/refresh.gif"; //$NON-NLS-1$
 
+  /**
+   * Image id used in semantic browser to action "limitate tree expansion".<br>
+   */
+  public final static String IMG_COLLAPSE_CATEGORIES = "full/clcl16/collapseCategories.gif"; //$NON-NLS-1$
+  
 }

@@ -7,7 +7,6 @@ Bundle-Activator: org.polarsys.capella.core.transition.common.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.polarsys.capella.common.tig.ef;visibility:=reexport,
  org.polarsys.kitalpha.transposer.transformation.emf;visibility:=reexport,
  org.polarsys.capella.common.helpers;visibility:=reexport,
  org.polarsys.capella.common.ui;visibility:=reexport,
@@ -19,6 +18,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.activities,
+ org.polarsys.capella.core.transition.common.capellaHelpers,
  org.polarsys.capella.core.transition.common.commands,
  org.polarsys.capella.core.transition.common.constants,
  org.polarsys.capella.core.transition.common.context,
@@ -40,12 +40,12 @@ Export-Package: org.polarsys.capella.core.transition.common,
  org.polarsys.capella.core.transition.common.handlers.traceability.config,
  org.polarsys.capella.core.transition.common.handlers.transformation,
  org.polarsys.capella.core.transition.common.launcher,
- org.polarsys.capella.core.transition.common.capellaHelpers,
  org.polarsys.capella.core.transition.common.merge,
  org.polarsys.capella.core.transition.common.merge.scope,
  org.polarsys.capella.core.transition.common.policies.diff,
  org.polarsys.capella.core.transition.common.policies.match,
  org.polarsys.capella.core.transition.common.policies.merge,
  org.polarsys.capella.core.transition.common.rules,
- org.polarsys.capella.core.transition.common.transposer
+ org.polarsys.capella.core.transition.common.transposer,
+ org.polarsys.capella.core.transition.common.transposer.current
 Bundle-Localization: plugin

@@ -13,7 +13,14 @@ package org.polarsys.capella.core.data.helpers.interaction;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedRelationshipHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityRealizationHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractFunctionAbstractCapabilityInvolvementHelper;
@@ -30,10 +37,6 @@ import org.polarsys.capella.core.data.helpers.interaction.delegates.MessageEndHe
 import org.polarsys.capella.core.data.helpers.interaction.delegates.ScenarioHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.ScenarioRealizationHelper;
 import org.polarsys.capella.core.data.helpers.interaction.delegates.SequenceMessageHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedRelationshipHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.TraceHelper;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint;
@@ -59,10 +62,9 @@ import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioRealization;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class CapellaInteractionHelper implements IHelper {
 
@@ -75,9 +77,10 @@ public class CapellaInteractionHelper implements IHelper {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.model.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature,
+   * @see org.polarsys.capella.common.model.helpers.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature,
    *      org.eclipse.emf.ecore.EAnnotation)
    */
+  @Override
   public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
     Object ret = null;
 
@@ -135,6 +138,8 @@ public class CapellaInteractionHelper implements IHelper {
       ret = NamedElementHelper.getInstance().doSwitch((ConstraintDuration) object_p, feature_p);
     } else if (object_p instanceof TimeLapse) {
       ret = NamedElementHelper.getInstance().doSwitch((TimeLapse) object_p, feature_p);
+    } else if (object_p instanceof SequenceMessageValuation){
+      ret = CapellaElementHelper.getInstance().doSwitch((CapellaElement) object_p, feature_p);
     }
 
     if (null != ret || feature_p.getUpperBound() == 1)

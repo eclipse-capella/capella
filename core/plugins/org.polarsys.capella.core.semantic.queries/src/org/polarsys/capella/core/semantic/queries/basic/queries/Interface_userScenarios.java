@@ -22,9 +22,9 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * This query allows to get the scenarios in which the current Interface is used
@@ -38,11 +38,11 @@ public class Interface_userScenarios implements IQuery {
 
     List<Object> result = new ArrayList<Object>();
     if (object_p instanceof Interface) {
+      Interface itf = (Interface) object_p;
       // gets the Semantic Editing Domain
-      SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+      SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(itf);
       // Gets the Cross Referencer
       ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
-      Interface itf = (Interface) object_p;
       // Gets the interface's operations
       for (ExchangeItem operation : itf.getExchangeItems()) {
         // Processes all interface's operations in order to get the scenarios in which they are used

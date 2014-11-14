@@ -28,10 +28,6 @@
    </license>
 
    <includes
-         id="org.polarsys.capella.common.tig.adapter.feature"
-         version="0.0.0"/>
-
-   <includes
          id="org.polarsys.capella.common.mdsofa.common.feature"
          version="0.0.0"/>
 

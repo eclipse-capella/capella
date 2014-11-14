@@ -14,25 +14,24 @@ package org.polarsys.capella.core.platform.sirius.ui.actions;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
-import org.eclipse.emf.edit.ui.action.CutAction;
 import org.eclipse.jface.viewers.StructuredViewer;
-
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCutCommand;
+import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
 
 /**
  * The action allowing to cut Capella elements.
  */
-public class CapellaCutAction extends CutAction {
+public class CapellaCutAction extends AbstractCommandActionHandler {
+
   private StructuredViewer _viewer;
 
   /**
    * Constructs the Capella action allowing to cut Capella elements.
    * @param domain_p The editing domain.
    */
-  public CapellaCutAction(EditingDomain domain_p, StructuredViewer viewer_p) {
-    super(domain_p);
+  public CapellaCutAction(StructuredViewer viewer_p) {
+    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Cut_menu_item"));
     _viewer = viewer_p;
   }
 
@@ -40,9 +39,10 @@ public class CapellaCutAction extends CutAction {
    * @see org.eclipse.emf.edit.ui.action.PasteAction#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<?> selection_p) {
+  public Command createCommand(Collection<Object> selection_p) {
     CapellaCopyAction.filterSelectedElements(selection_p);
     Collection<?> list = selection_p;
-    return new CapellaCutCommand(EMFEditUIPlugin.INSTANCE.getString("_UI_Cut_menu_item"), domain, list, _viewer); //$NON-NLS-1$
+    return new CapellaCutCommand(EMFEditUIPlugin.INSTANCE.getString("_UI_Cut_menu_item"), list, _viewer); //$NON-NLS-1$
   }
+
 }

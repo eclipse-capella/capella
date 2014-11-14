@@ -18,8 +18,10 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.queries.AbstractQuery;
+import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -32,7 +34,6 @@ import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalContext;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaPackage;
@@ -44,8 +45,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalContext;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 
 public class GetAvailable_Part_Type extends AbstractQuery {
 

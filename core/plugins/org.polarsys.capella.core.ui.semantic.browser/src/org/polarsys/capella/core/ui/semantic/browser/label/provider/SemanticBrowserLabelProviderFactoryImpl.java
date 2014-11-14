@@ -11,10 +11,9 @@
 package org.polarsys.capella.core.ui.semantic.browser.label.provider;
 
 import org.eclipse.jface.viewers.ILabelProvider;
-
-import org.polarsys.capella.common.ui.toolkit.viewers.AbstractTooltipLabelProvider;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory;
+import org.polarsys.capella.common.ui.toolkit.viewers.AbstractTooltipLabelProvider;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
  */
@@ -27,7 +26,7 @@ public class SemanticBrowserLabelProviderFactoryImpl extends AbstractLabelProvid
   private ILabelProvider getLabelProvider() {
     if (null == _labelProvider) {
       _labelProvider =
-          new AbstractTooltipLabelProvider(new SemanticBrowserLabelProvider(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory())) {
+          new AbstractTooltipLabelProvider(new SemanticBrowserLabelProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory())) {
             @Override
             public String getToolTipText(Object element_p) {
               ILabelProvider labelProvider = getLabelProvider();

@@ -18,11 +18,10 @@ import java.util.LinkedList;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -135,38 +134,49 @@ public class PropertyValuesScopeRetriever implements IScopeRetriever {
   public Collection<? extends EObject> retrieveRelatedElements(EObject source_p, IContext context_p) {
     Collection<EObject> result = new LinkedList<EObject>();
 
-    if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.INITIAL_SOURCE_SCOPE, source_p, context_p)) {
-      if (isProperty(source_p)) {
-        String transitionKind = (String) context_p.get(ITopDownConstants.TRANSITION_KIND);
-        if (ITopDownConstants.TRANSITION_TOPDOWN_PROPERTYVALUE.equals(transitionKind)) {
-          addOwnedElement(context_p, source_p);
-        }
-      }
-    }
-
     if (source_p instanceof CapellaElement) {
       CapellaElement element = (CapellaElement) source_p;
+
+      //for the property values transition, we add the selected properties in the list of property that will be propagated to the next level by the TransformationSelectionContext
+      if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.INITIAL_SOURCE_SCOPE, element, context_p)) {
+        if (isProperty(source_p)) {
+          String transitionKind = (String) context_p.get(ITopDownConstants.TRANSITION_KIND);
+          if (ITopDownConstants.TRANSITION_TOPDOWN_PROPERTYVALUE.equals(transitionKind)) {
+            addOwnedElement(context_p, source_p);
+          }
+        }
+      }
+
+      result.addAll(element.getAppliedPropertyValueGroups());
+      result.addAll(element.getAppliedPropertyValues());
+
+      result.addAll(element.getOwnedPropertyValueGroups());
+      result.addAll(element.getOwnedPropertyValues());
+      
       if (ContextScopeHandlerHelper.getInstance(context_p).contains(ITransitionConstants.SOURCE_SCOPE, element, context_p)) {
 
-        result.addAll(element.getAppliedPropertyValueGroups());
-        result.addAll(element.getAppliedPropertyValues());
-
-        result.addAll(element.getOwnedPropertyValueGroups());
-        result.addAll(element.getOwnedPropertyValues());
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedPropertyValueGroups(), context_p);
-        ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedPropertyValues(), context_p);
-
+        //if the applied property values preference is checked, we add applied properties
         if (OptionsHandlerHelper.getInstance(context_p).getBooleanValue(context_p, ISystemConstants.TRANSITION_PREFERENCES,
             ISystemConstants.SCOPE__APPLIED_PROPERTY_VALUES, ISystemConstants.SCOPE__APPLIED_PROPERTY_VALUES__DEFAULT_VALUE.booleanValue())) {
           addAppliedElements(context_p, element.getAppliedPropertyValueGroups());
           addAppliedElements(context_p, element.getAppliedPropertyValues());
+
+          ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getAppliedPropertyValueGroups(), context_p);
+          ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getAppliedPropertyValues(), context_p);
         }
 
-        if (OptionsHandlerHelper.getInstance(context_p).getBooleanValue(context_p, ISystemConstants.TRANSITION_PREFERENCES,
-            ISystemConstants.SCOPE__OWNED_PROPERTY_VALUES, ISystemConstants.SCOPE__OWNED_PROPERTY_VALUES__DEFAULT_VALUE.booleanValue())) {
+        //For a referenced property included in the scope or if the owned property values preference  is checked, we add internal properties
+        if (isProperty(source_p)
+            || OptionsHandlerHelper.getInstance(context_p).getBooleanValue(context_p, ISystemConstants.TRANSITION_PREFERENCES,
+                ISystemConstants.SCOPE__OWNED_PROPERTY_VALUES, ISystemConstants.SCOPE__OWNED_PROPERTY_VALUES__DEFAULT_VALUE.booleanValue())) {
           addOwnedElements(context_p, element.getOwnedPropertyValueGroups());
           addOwnedElements(context_p, element.getOwnedPropertyValues());
+
+
+          ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedPropertyValueGroups(), context_p);
+          ContextScopeHandlerHelper.getInstance(context_p).addAll(ITransitionConstants.SOURCE_SCOPE, element.getOwnedPropertyValues(), context_p);
         }
+
       }
     }
 

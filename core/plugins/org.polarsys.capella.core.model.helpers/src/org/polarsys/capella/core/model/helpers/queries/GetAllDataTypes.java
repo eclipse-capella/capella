@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
+import org.polarsys.capella.common.queries.internal.NoneValue;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
@@ -27,11 +28,13 @@ public class GetAllDataTypes extends AbstractQuery {
   @Override
   public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
     List<Object> returnedDataTypes = new ArrayList<Object>();
+    if(!(input_p instanceof NoneValue)){
     for (BlockArchitecture aBlockArchitecture : BlockArchitectureExt.getRootAndPreviousBlockArchitectures((EObject) input_p)) {
       for (EObject aDataType : EObjectExt.getAll(aBlockArchitecture, DatatypePackage.Literals.DATA_TYPE)) {
         returnedDataTypes.add(aDataType);
       }
     }
+  }
     return returnedDataTypes;
   }
 }

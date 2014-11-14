@@ -14,6 +14,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
  * Extension to {@link ICommonConstants}.
+ *
  */
 public interface ICommonConstants2 extends ICommonConstants {
 
@@ -22,12 +23,5 @@ public interface ICommonConstants2 extends ICommonConstants {
    */
   public static final char ASTERISK_CHARACTER = '*';
   
-  public static final String LF = "\n";
-
-  public static final String CR = "\r";
-
-  public static final String COMMA = ",";
-
-  public static final String BACKSLASH = "\\";
   
 }

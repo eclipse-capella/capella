@@ -1074,6 +1074,15 @@
       </eAnnotations>
       <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="structural" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="none"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="implementorComponents"
         upperBound="-1" eType="#//Component" changeable="false" volatile="true" transient="true"
         derived="true" eOpposite="#//Component/implementedInterfaces">

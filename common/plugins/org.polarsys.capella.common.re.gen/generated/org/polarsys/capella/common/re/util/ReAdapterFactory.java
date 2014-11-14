@@ -96,12 +96,16 @@ public class ReAdapterFactory extends AdapterFactoryImpl {
 				return createReElementContainerAdapter();
 			}
 			@Override
+			public Adapter caseCatalogElementPkg(CatalogElementPkg object) {
+				return createCatalogElementPkgAdapter();
+			}
+			@Override
 			public Adapter caseRecCatalog(RecCatalog object) {
 				return createRecCatalogAdapter();
 			}
 			@Override
-			public Adapter caseCatalogElementPkg(CatalogElementPkg object) {
-				return createCatalogElementPkgAdapter();
+			public Adapter caseGroupingElementPkg(GroupingElementPkg object) {
+				return createGroupingElementPkgAdapter();
 			}
 			@Override
 			public Adapter caseCatalogElementLink(CatalogElementLink object) {
@@ -218,6 +222,20 @@ public class ReAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRecCatalogAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.common.re.GroupingElementPkg <em>Grouping Element Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.common.re.GroupingElementPkg
+	 * @generated
+	 */
+	public Adapter createGroupingElementPkgAdapter() {
 		return null;
 	}
 

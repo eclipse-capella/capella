@@ -41,9 +41,8 @@ public class MergeSourceScopeProperty extends AbstractProperty implements IEdita
 
     Collection<EObject> scopeElements = new HashSet<EObject>();
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_SOURCE));
 
-    //needed?
     scopeElements.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllElements(source));
 
     Collection<EObject> sharedElements = (Collection) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__SHARED_ELEMENTS));
@@ -97,7 +96,7 @@ public class MergeSourceScopeProperty extends AbstractProperty implements IEdita
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE, IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__SHARED_ELEMENTS,
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_SOURCE, IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__SHARED_ELEMENTS,
                          IReConstants.PROPERTY__INVALID_SHARED_ELEMENTS };
   }
 

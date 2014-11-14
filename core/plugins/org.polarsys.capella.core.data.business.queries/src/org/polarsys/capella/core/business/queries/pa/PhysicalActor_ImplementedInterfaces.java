@@ -13,203 +13,26 @@ package org.polarsys.capella.core.business.queries.pa;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.ctx.Actor;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
-import org.polarsys.capella.core.model.helpers.PhysicalActorPkgExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
 /**
  */
-public class PhysicalActor_ImplementedInterfaces implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery, IBusinessQuery {
+public class PhysicalActor_ImplementedInterfaces implements IBusinessQuery {
 
-  /**
-   * get all the Interface categories from 'functionalExchange_p' parent Block Architecture
-   * @param currentProperty_p_p 
-   * @param oa_p
-   * @return list of ExchangeCategories
-   */
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, PhysicalActor element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    
-    //current BlockArchitecture Basic Interfaces
-    availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(arch_p.getOwnedInterfacePkg(),
-                                                                      element_p, true));
-    
-    //Interface from InterfacePkg of all the LogicalActor
-    if (arch_p instanceof PhysicalArchitecture) {
-      PhysicalActorPkg ownedPhysicalActorPkg = ((PhysicalArchitecture)arch_p).getOwnedPhysicalActorPkg();
-      availableElements.addAll(PhysicalActorPkgExt.getAllInterfacesFromPhysicalActorPkg(ownedPhysicalActorPkg));
-    }
-    
-    //remove Interfaces related to LogicalActor
-    List<Interface> usedInterfaces = ComponentExt.getImplementedInterfaces(element_p);
-    for (Interface interface1 : usedInterfaces) {
-      availableElements.remove(interface1);
-    }
-    
-    return availableElements;
-  }
-  
-  /**
-   * <p>
-   * Gets all the interfaces contained in the interface package and all of its
-   * sub packages of the Shared Package.
-   * </p>
-   * <p>
-   * Except the interfaces that are already used by the current actor
-   * </p>
-   * <p>
-   * Refer MQRY_Actor_UsedInterfaces_12
-   * </p>
-   * 
-   * @param currentActor_p
-   *            the current {@link Actor}
-   * @param systemEngineering_p
-   *            the {@link SystemEngineering}
-   * @return list of interfaces
-   */
-  private List<CapellaElement> getRule_MQRY_Actor_UsedInterfaces12(Component currentActor_p, SystemEngineering systemEngineering_p) {
-    // The list of Capella elements to return.
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    List<SharedPkg> sharedPkgs = SystemEngineeringExt.getSharedPkgs(currentActor_p);
-    for (SharedPkg sharedPkg : sharedPkgs) {
-      
-      GenericPkg genericPkg = sharedPkg.getOwnedGenericPkg();
-      if (genericPkg != null) {
-        availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(genericPkg, currentActor_p, true));
-      }
-    }
-    return availableElements;
-  }
-  
-  // same level
-  private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11(SystemEngineering systemEng_p, PhysicalActor actor_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    BlockArchitecture arch = null;
-    arch = SystemEngineeringExt.getRootBlockArchitecture(actor_p);
-    
-    if (null != arch) {
-      availableElements.addAll(getElementsFromBlockArchitecture(arch,actor_p));      
-    }
-    
-    // For the layer visibility
-    if (!(arch instanceof OperationalAnalysis)) {
-      availableElements.addAll(getRule_MQRY_Service_ItemRealization_11_1(systemEng_p, actor_p));      
-    }
-
-    return availableElements;
-  }
-  
-  /*
-   * For the layer visibility
-   */
-  private List<CapellaElement> getRule_MQRY_Service_ItemRealization_11_1(SystemEngineering systemEng_p, PhysicalActor currentProperty_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    BlockArchitecture arch = null;
-    arch = SystemEngineeringExt.getRootBlockArchitecture(currentProperty_p);
-    
-    SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentProperty_p);
-    OperationalAnalysis oa = SystemEngineeringExt.getOwnedOperationalAnalysis(sysEng);
-    if (null != oa) {
-      availableElements.addAll(getElementsFromBlockArchitecture(oa,currentProperty_p));
-    }else{
-      SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
-      availableElements.addAll(getElementsFromBlockArchitecture(ca,currentProperty_p));
-    }
-
-    if (null != arch) {
-      if (null != oa && (arch instanceof LogicalArchitecture) || (arch instanceof PhysicalArchitecture)) {
-        SystemAnalysis ctxArch = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
-        availableElements.addAll(getElementsFromBlockArchitecture(ctxArch,currentProperty_p));
-      }
-      if ((arch instanceof PhysicalArchitecture)) {
-        LogicalArchitecture logArch = SystemEngineeringExt.getOwnedLogicalArchitecture(sysEng);
-        availableElements.addAll(getElementsFromBlockArchitecture(logArch,currentProperty_p));
-      }
-    }
-    return availableElements;
-  }
-  
-
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
- 
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-
-    if (null == systemEngineering) {
-      return availableElements;
-    }
-    
-    if (element_p instanceof PhysicalActor) {
-      PhysicalActor ele = (PhysicalActor) element_p;
-      availableElements.addAll(getRule_MQRY_Service_ItemRealization_11(systemEngineering, ele));
-      availableElements.addAll(getRule_MQRY_Actor_UsedInterfaces12(ele, systemEngineering));
-    } 
-     
-    return availableElements;
-  }
-	/**
-	 * <p>
-	 * Gets all the interfaces implemented by the current actor.
-	 * </p>
-	 * <p>
-	 * Refer MQRY_Actor_ImplInterfaces_1
-	 * </p>
-	 * 
-	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,
-	 *      boolean)
-	 */
-	public List<CapellaElement> getOldCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-
-		if (null == systemEngineering) {
-			return currentElements;
-		}
-
-		if (element_p instanceof PhysicalActor) {
-		  PhysicalActor currentActor = (PhysicalActor) element_p;
-			currentElements.addAll(ComponentExt.getImplementedInterfaces(currentActor));
-		}
-		return currentElements;
-	}
-
+  @Override
 	public EClass getEClass() {
 		return PaPackage.Literals.PHYSICAL_ACTOR;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
     List<EReference> list = new ArrayList<EReference>(1);
     list.add(CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES);
@@ -219,11 +42,15 @@ public class PhysicalActor_ImplementedInterfaces implements ExtendedBusinessQuer
 
 	@Override
 	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-	  return RefactorDebugger.callAndTestQuery("GetAvailable_PhysicalActor_ImplementedInterfaces__Lib", element_p, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+	  QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PHYSICAL_ACTOR__IMPLEMENTED_INTERFACES___LIB, element_p, context);
 	}
 
 	@Override
 	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-	  return RefactorDebugger.callAndTestQuery("GetCurrent_PhysicalActor_ImplementedInterfaces", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+	  QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PHYSICAL_ACTOR__IMPLEMENTED_INTERFACES, element_p, context);
 	}
 }

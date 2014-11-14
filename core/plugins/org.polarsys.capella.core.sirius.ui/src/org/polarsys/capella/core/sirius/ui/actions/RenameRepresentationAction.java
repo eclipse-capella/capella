@@ -24,11 +24,11 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.sirius.ui.Messages;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * The action allowing to rename representations.
@@ -116,7 +116,7 @@ public class RenameRepresentationAction extends BaseSelectionListenerAction {
       if (Window.OK == dialog.open()) {
         String newName = dialog.getNewName();
         if (!oldName.equals(newName)) {
-          MDEAdapterFactory.getExecutionManager().execute(new RenameRepresentationCommand(representation, newName));
+          TransactionHelper.getExecutionManager(representation).execute(new RenameRepresentationCommand(representation, newName));
         }
       }
     }

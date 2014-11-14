@@ -35,9 +35,15 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.statushandlers.StatusManager;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.model.copypaste.SharedCopyPasteElements;
 import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Involvement;
+import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.data.fa.AbstractFunctionAllocation;
@@ -49,13 +55,6 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.Enumeration;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
-import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.capellacore.InvolverElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * The Capella command allowing to paste Capella elements. It generates a new object identifier each time the command is called.
@@ -182,12 +181,12 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
         if (!status.isOK()) {
 
           // Remove holding resources created by the command creation
-          if (domain instanceof SemanticEditingDomain) {
-            SemanticEditingDomain sed = ((SemanticEditingDomain) domain);
-            if ((sed.getHoldingResource() != null) && (sed.getHoldingResource().getContents() != null)) {
-              sed.getHoldingResource().getContents().removeAll(pasteElements);
-            }
-          }
+//          if (domain instanceof SemanticEditingDomain) {
+//            SemanticEditingDomain sed = ((SemanticEditingDomain) domain);
+//            if ((sed.getHoldingResource() != null) && (sed.getHoldingResource().getContents() != null)) {
+//              sed.getHoldingResource().getContents().removeAll(pasteElements);
+//            }
+//          }
 
           // Show error message
           PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {

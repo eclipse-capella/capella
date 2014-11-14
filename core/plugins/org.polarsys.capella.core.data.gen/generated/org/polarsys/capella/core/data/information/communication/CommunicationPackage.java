@@ -116,15 +116,6 @@ public interface CommunicationPackage extends EPackage {
 	int COMMUNICATION_ITEM__CONSTRAINTS = CapellacorePackage.CLASSIFIER__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMUNICATION_ITEM__NAME = CapellacorePackage.CLASSIFIER__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,6 +123,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMUNICATION_ITEM__OWNED_CONSTRAINTS = CapellacorePackage.CLASSIFIER__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_ITEM__NAME = CapellacorePackage.CLASSIFIER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -495,15 +495,6 @@ public interface CommunicationPackage extends EPackage {
 	int EXCEPTION__CONSTRAINTS = COMMUNICATION_ITEM__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCEPTION__NAME = COMMUNICATION_ITEM__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -511,6 +502,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCEPTION__OWNED_CONSTRAINTS = COMMUNICATION_ITEM__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION__NAME = COMMUNICATION_ITEM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -874,15 +874,6 @@ public interface CommunicationPackage extends EPackage {
 	int MESSAGE__CONSTRAINTS = COMMUNICATION_ITEM__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE__NAME = COMMUNICATION_ITEM__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -890,6 +881,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE__OWNED_CONSTRAINTS = COMMUNICATION_ITEM__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__NAME = COMMUNICATION_ITEM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -1253,6 +1253,15 @@ public interface CommunicationPackage extends EPackage {
 	int MESSAGE_REFERENCE__CONSTRAINTS = CapellacorePackage.RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_REFERENCE__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1461,15 +1470,6 @@ public interface CommunicationPackage extends EPackage {
 	int MESSAGE_REFERENCE_PKG__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE_REFERENCE_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1477,6 +1477,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MESSAGE_REFERENCE_PKG__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE_REFERENCE_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1723,15 +1732,6 @@ public interface CommunicationPackage extends EPackage {
 	int SIGNAL__CONSTRAINTS = COMMUNICATION_ITEM__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL__NAME = COMMUNICATION_ITEM__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1739,6 +1739,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIGNAL__OWNED_CONSTRAINTS = COMMUNICATION_ITEM__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL__NAME = COMMUNICATION_ITEM__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -2111,15 +2120,6 @@ public interface CommunicationPackage extends EPackage {
 	int SIGNAL_INSTANCE__CONSTRAINTS = InformationPackage.ABSTRACT_INSTANCE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_INSTANCE__NAME = InformationPackage.ABSTRACT_INSTANCE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2127,6 +2127,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int SIGNAL_INSTANCE__OWNED_CONSTRAINTS = InformationPackage.ABSTRACT_INSTANCE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SIGNAL_INSTANCE__NAME = InformationPackage.ABSTRACT_INSTANCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2462,15 +2471,6 @@ public interface CommunicationPackage extends EPackage {
 	int SIGNAL_INSTANCE__IS_PART_OF_KEY = InformationPackage.ABSTRACT_INSTANCE__IS_PART_OF_KEY;
 
 	/**
-	 * The feature id for the '<em><b>Value Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SIGNAL_INSTANCE__VALUE_CONSTRAINT = InformationPackage.ABSTRACT_INSTANCE__VALUE_CONSTRAINT;
-
-	/**
 	 * The feature id for the '<em><b>Association</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2542,6 +2542,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMUNICATION_LINK__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_LINK__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2877,6 +2886,15 @@ public interface CommunicationPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMMUNICATION_LINK_ALLOCATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMUNICATION_LINK_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.

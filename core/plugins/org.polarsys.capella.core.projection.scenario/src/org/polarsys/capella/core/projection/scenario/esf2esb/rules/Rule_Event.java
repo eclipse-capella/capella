@@ -10,18 +10,15 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.esf2esb.rules;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.interaction.Event;
@@ -31,12 +28,10 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
-import org.polarsys.capella.core.projection.common.resolver.ResolverFinalizer;
 import org.polarsys.capella.core.projection.scenario.CommonScenarioHelper;
 import org.polarsys.capella.core.projection.scenario.Messages;
 import org.polarsys.capella.core.projection.scenario.ScenarioFinalizer;
 import org.polarsys.capella.core.projection.scenario.es2es.rules.ScenarioHelper;
-import org.polarsys.capella.core.tiger.IResolver;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -89,8 +84,9 @@ public class Rule_Event extends CommonRule {
       for (EObject eTgt : Query.retrieveUnattachedTransformedElements(src, transfo_p, InteractionPackage.Literals.EVENT_SENT_OPERATION)) {
         EventSentOperation tgt = (EventSentOperation) eTgt;
         AbstractEventOperation operation = getRelatedConnection(src.getOperation(), (Event) element_p, i, transfo_p);
-        if (operation != null)
+        if (operation != null) {
           TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
+        }
         i++;
       }
 
@@ -99,8 +95,9 @@ public class Rule_Event extends CommonRule {
       for (EObject eTgt : Query.retrieveUnattachedTransformedElements(src, transfo_p, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION)) {
         EventReceiptOperation tgt = (EventReceiptOperation) eTgt;
         AbstractEventOperation operation = getRelatedConnection(src.getOperation(), (Event) element_p, i, transfo_p);
-        if (operation != null)
+        if (operation != null) {
           TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
+        }
         i++;
       }
     }
@@ -115,60 +112,16 @@ public class Rule_Event extends CommonRule {
    * @throws TransfoException 
    */
   private AbstractEventOperation getRelatedConnection(AbstractEventOperation operation_p, Event event_p, int n, ITransfo transfo_p) {
-    List<EObject> allocatings = new ArrayList<EObject>();
     SequenceMessage relatedMessage = ScenarioHelper.getRelatedSequenceMessage(event_p);
-
-    if (operation_p instanceof FunctionalExchange) {
-      FunctionalExchange exchange = (FunctionalExchange) operation_p;
-
-      //Retrieve a connection for functional exchange for any messages
-      ComponentExchange connection = null;
-
-      for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange.getIncomingComponentExchangeFunctionalExchangeRealizations()) {
-        if (allocation.getAllocatingComponentExchange() != null) {
-          //maybe filter them with source and target of connection and message covered instance roles ?
-          allocatings.add(allocation.getAllocatingComponentExchange());
-        }
-      }
-
-      if (allocatings.size() > 0) {
-
-        //Retrieve a resolver
-        IResolver resolver = ResolverFinalizer.getResolver(transfo_p);
-        String message = ICommonConstants.EMPTY_STRING;
-
-        if (resolver != null) {
-
-          if (relatedMessage != null) {
-            message =
-                NLS.bind(Messages.Rule_Event_FunctionalExchangeMultiAllocatedConveyed, EObjectLabelProviderHelper.getText(relatedMessage),
-                    EObjectLabelProviderHelper.getText(exchange));
-          } else {
-            message = NLS.bind(Messages.Rule_Event_FunctionalExchangeMultiAllocated, EObjectLabelProviderHelper.getText(exchange));
-          }
-
-          message += Messages.Rule_Event_SelectionComponentExchange;
-
-          List<EObject> result =
-              resolver.resolve(relatedMessage, allocatings, CommonScenarioHelper.getTitle(transfo_p), message, false, transfo_p, new EObject[] {
-                                                                                                                                                relatedMessage,
-                                                                                                                                                exchange });
-
-          if (result.size() > 0) {
-            connection = (ComponentExchange) result.get(0);
-          }
-
-          return connection;
-        }
-
-      }
+    AbstractEventOperation operation = CESF2CESBHelper.getRelatedConnection(operation_p, relatedMessage, transfo_p);
+    if (operation == null) {
+      notifyMessage(
+          NLS.bind(Messages.Rule_Event_FunctionalExchangeNotAllocated, EObjectLabelProviderHelper.getText(operation_p),
+              EObjectLabelProviderHelper.getText(relatedMessage)), new Object[] { relatedMessage, operation_p }, ReportManagerConstants.LOG_LEVEL_WARN,
+          transfo_p);
 
     }
-
-    notifyMessage(NLS.bind(Messages.Rule_Event_FunctionalExchangeNotAllocated, EObjectLabelProviderHelper.getText(operation_p), EObjectLabelProviderHelper
-        .getText(relatedMessage)), new Object[] { relatedMessage, operation_p }, ReportManagerConstants.LOG_LEVEL_WARN, transfo_p);
-
-    return null;
+    return operation;
   }
 
   @Override

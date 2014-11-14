@@ -350,7 +350,7 @@ public class CapellacoreSwitch<T> extends Switch<T> {
 			case CapellacorePackage.CONSTRAINT: {
 				Constraint constraint = (Constraint)theEObject;
 				T result = caseConstraint(constraint);
-				if (result == null) result = caseAbstractAnnotation(constraint);
+				if (result == null) result = caseNamedElement(constraint);
 				if (result == null) result = caseAbstractConstraint(constraint);
 				if (result == null) result = caseAbstractNamedElement(constraint);
 				if (result == null) result = caseCapellaElement(constraint);

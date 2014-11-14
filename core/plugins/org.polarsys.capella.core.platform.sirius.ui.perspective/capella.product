@@ -20,8 +20,8 @@
    <windowImages i16="icons/CapellaAdavance16x16.gif" i32="icons/Capella32x32.png" i48="icons/Capella48x48.png"/>
 
    <splash
-      startupProgressRect="0,280,455,15"
-      startupMessageRect="10,220,438,20"
+      startupProgressRect="1,288,452,15"
+      startupMessageRect="24,200,421,20"
       startupForegroundColor="000000" />
    <launcher>
       <solaris/>
@@ -251,11 +251,7 @@
       <plugin id="org.polarsys.capella.common.menu.dynamic"/>
       <plugin id="org.polarsys.capella.common.model"/>
       <plugin id="org.polarsys.capella.common.platform.sirius"/>
-      <plugin id="org.polarsys.capella.common.platform.sirius.tig"/>
-      <plugin id="org.polarsys.capella.common.tig.common"/>
-      <plugin id="org.polarsys.capella.common.tig.ef"/>
-      <plugin id="org.polarsys.capella.common.tig.efprovider"/>
-      <plugin id="org.polarsys.capella.common.tig.model"/>
+      <plugin id="org.polarsys.capella.common.platform.sirius.ted"/>
       <plugin id="org.polarsys.capella.common.tools.report"/>
       <plugin id="org.polarsys.capella.common.tools.report.appenders.reportlogview"/>
       <plugin id="org.polarsys.capella.common.ui"/>

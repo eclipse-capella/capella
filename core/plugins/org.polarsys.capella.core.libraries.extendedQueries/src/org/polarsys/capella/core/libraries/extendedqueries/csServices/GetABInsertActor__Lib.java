@@ -16,9 +16,9 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -26,7 +26,7 @@ import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
@@ -39,10 +39,10 @@ public class GetABInsertActor__Lib extends AbstractQuery {
   public List<Object> execute(Object input_p, IQueryContext context_p) throws QueryException {
     Collection<? extends Component> components = new HashSet<Component>();
     EObject input = (EObject) input_p;
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(input);
-    Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-    for (IAbstractLibrary library : libraries) {
-      BlockArchitecture architecture = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(input, (CapellaLibrary) library);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(input);
+    Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+    for (IModel library : libraries) {
+      BlockArchitecture architecture = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(input, (CapellaModel) library);
       components.addAll((List) QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_SUB_DEFINED_ACTORS, architecture, new QueryContext()));
     }
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture((EObject) input_p);

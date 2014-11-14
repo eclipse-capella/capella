@@ -15,18 +15,22 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.interaction.Event;
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.Operation;
+import org.polarsys.capella.core.data.interaction.Event;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 public class GetAvailable_StateTransitionEffect extends AbstractQuery {
 
@@ -40,12 +44,19 @@ public class GetAvailable_StateTransitionEffect extends AbstractQuery {
         TreeIterator<Object> allContents = EcoreUtil.getAllContents(block, false);
         while (allContents.hasNext()) {
           Object object = allContents.next();
-          if ((object instanceof AbstractEvent) && !(object instanceof Event)) {
+          if ((object instanceof ExchangeItem) || (object instanceof Operation)) {
             availableElements.add((CapellaElement) object);
           }
         }
       }
-    }
+          TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch, false);
+          while (allContents.hasNext()) {
+            Object object = allContents.next();
+            if ((object instanceof AbstractEvent) && !(object instanceof Event) && !(object instanceof StateEvent) && !(object instanceof ExchangeItem) && !(object instanceof Operation)) {
+              availableElements.add((CapellaElement) object);
+            }
+          }
+        }
     if (inputElement instanceof StateTransition) {
       List<CapellaElement> currentElements = QueryInterpretor.executeQuery("GetCurrent_StateTransitionEffect", inputElement, new QueryContext());//$NON-NLS-1$
       availableElements.removeAll(currentElements);

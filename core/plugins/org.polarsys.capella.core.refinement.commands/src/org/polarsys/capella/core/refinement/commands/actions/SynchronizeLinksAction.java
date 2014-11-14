@@ -22,13 +22,12 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.impl.DNodeContainerImpl;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.impl.DNodeContainerImpl;
 import org.eclipse.ui.IObjectActionDelegate;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.actions.AbstractPartToComponentAction;
 import org.polarsys.capella.core.refinement.commands.SynchronizeLinksCommand;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * This action launches the automatic interface synchronization.

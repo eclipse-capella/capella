@@ -20,8 +20,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection;
-
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
  */
@@ -30,16 +29,17 @@ public class CapelladPropertySection extends AdvancedPropertySection implements 
    * Force to share the same adapter factory with other capella components.
    */
   public AdapterFactory getAdapterFactory() {
-    return MDEAdapterFactory.getAdapterFactory();
+    return CapellaAdapterFactoryProvider.getInstance().getAdapterFactory();
   }
 
   /**
    * @param object
    */
+  @Override
   public IPropertySource getPropertySource(Object object) {
     if (getAdapterFactory() != null) {
       IItemPropertySource item = (IItemPropertySource) getAdapterFactory().adapt(object, IItemPropertySource.class);
-      if (item != null)
+      if (item != null) {
         return new PropertySource(object, item) {
           /**
            * Used to ignore reentrant call from expert property sheet page.
@@ -72,20 +72,20 @@ public class CapelladPropertySection extends AdvancedPropertySection implements 
             }
           }
         };
+      }
     }
     return null;
   }
 
   /**
    * {@inheritDoc}
-   * 
-   * @see org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
-   *      org.eclipse.jface.viewers.ISelection)
+   * @see org.eclipse.ui.views.properties.tabbed.AdvancedPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
    */
   @Override
   public void setInput(IWorkbenchPart part, ISelection selection) {
-    super.setInput(part, selection);
-    if (page != null)
+    if (null != page) {
       page.setPropertySourceProvider(this);
+    }
+    super.setInput(part, selection);
   }
 }

@@ -34,6 +34,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
 import org.polarsys.capella.common.utils.graph.BasicDirectedGraph;
 import org.polarsys.capella.common.utils.graph.IDirectedGraph;
@@ -60,7 +61,6 @@ import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.EObjectNavigatorDialog;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * Show details for package dependency cycles.
@@ -85,6 +85,7 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
     final Collection<List<EObject>> cycles = result.getValue();
 
     // show the dialog
+    if(cycles !=null && cycles.iterator().hasNext()){
     EObjectNavigatorDialog dialog =
         new EObjectNavigatorDialog(cycles.iterator().next(), CoreQuickFixMessages.cycle_details_dialog_title,
             CoreQuickFixMessages.cycle_details_dialog_message, CoreQuickFixMessages.cycle_details_dialog_combo_lbl,
@@ -214,7 +215,7 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
     });
 
     dialog.open();
-
+    }
     return;
   }
 
@@ -262,7 +263,7 @@ public class DWF_D25_Resolver extends AbstractCapellaMarkerResolution {
    * @return an {@link ItemProviderAdapter} if any.
    */
   private ItemProviderAdapter getItemProvider(EObject object_p) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) MDEAdapterFactory.getEditingDomain();
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object_p);
     IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
     return (ItemProviderAdapter) provider;
   }

@@ -284,6 +284,15 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getModelElement_OwnedConstraints() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractRelationship() {
 		return abstractRelationshipEClass;
 	}
@@ -313,15 +322,6 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 */
 	public EAttribute getAbstractNamedElement_Name() {
 		return (EAttribute)abstractNamedElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAbstractNamedElement_OwnedConstraints() {
-		return (EReference)abstractNamedElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -511,6 +511,24 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 */
 	public EReference getAbstractConstraint_ConstrainedElements() {
 		return (EReference)abstractConstraintEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractConstraint_OwnedSpecification() {
+		return (EReference)abstractConstraintEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractConstraint_Context() {
+		return (EReference)abstractConstraintEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -716,6 +734,15 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getIState_AvailableInStates() {
+		return (EReference)iStateEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getParameterEffectKind() {
 		return parameterEffectKindEEnum;
 	}
@@ -761,13 +788,13 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__ID);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__SID);
 		createEReference(modelElementEClass, MODEL_ELEMENT__CONSTRAINTS);
+		createEReference(modelElementEClass, MODEL_ELEMENT__OWNED_CONSTRAINTS);
 
 		abstractRelationshipEClass = createEClass(ABSTRACT_RELATIONSHIP);
 		createEReference(abstractRelationshipEClass, ABSTRACT_RELATIONSHIP__REALIZED_FLOW);
 
 		abstractNamedElementEClass = createEClass(ABSTRACT_NAMED_ELEMENT);
 		createEAttribute(abstractNamedElementEClass, ABSTRACT_NAMED_ELEMENT__NAME);
-		createEReference(abstractNamedElementEClass, ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS);
 
 		informationsExchangerEClass = createEClass(INFORMATIONS_EXCHANGER);
 		createEReference(informationsExchangerEClass, INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS);
@@ -797,6 +824,8 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 		abstractConstraintEClass = createEClass(ABSTRACT_CONSTRAINT);
 		createEReference(abstractConstraintEClass, ABSTRACT_CONSTRAINT__CONSTRAINED_ELEMENTS);
+		createEReference(abstractConstraintEClass, ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION);
+		createEReference(abstractConstraintEClass, ABSTRACT_CONSTRAINT__CONTEXT);
 
 		valueSpecificationEClass = createEClass(VALUE_SPECIFICATION);
 
@@ -825,6 +854,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 		iStateEClass = createEClass(ISTATE);
 		createEReference(iStateEClass, ISTATE__REFERENCED_STATES);
+		createEReference(iStateEClass, ISTATE__AVAILABLE_IN_STATES);
 
 		// Create enums
 		parameterEffectKindEEnum = createEEnum(PARAMETER_EFFECT_KIND);
@@ -886,6 +916,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		initEAttribute(getModelElement_Id(), ecorePackage.getEString(), "id", null, 1, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getModelElement_Sid(), ecorePackage.getEString(), "sid", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getModelElement_Constraints(), this.getAbstractConstraint(), null, "constraints", null, 0, -1, ModelElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getModelElement_OwnedConstraints(), this.getAbstractConstraint(), null, "ownedConstraints", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		addEOperation(modelElementEClass, null, "destroy", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
@@ -900,7 +931,6 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 		initEClass(abstractNamedElementEClass, AbstractNamedElement.class, "AbstractNamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getAbstractNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, AbstractNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAbstractNamedElement_OwnedConstraints(), this.getAbstractConstraint(), null, "ownedConstraints", null, 0, -1, AbstractNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(informationsExchangerEClass, InformationsExchanger.class, "InformationsExchanger", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getInformationsExchanger_IncomingInformationFlows(), this.getAbstractInformationFlow(), null, "incomingInformationFlows", null, 0, -1, InformationsExchanger.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -930,6 +960,8 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 		initEClass(abstractConstraintEClass, AbstractConstraint.class, "AbstractConstraint", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getAbstractConstraint_ConstrainedElements(), this.getModelElement(), null, "constrainedElements", null, 0, -1, AbstractConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractConstraint_OwnedSpecification(), this.getValueSpecification(), null, "ownedSpecification", null, 0, 1, AbstractConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractConstraint_Context(), this.getModelElement(), null, "context", null, 0, 1, AbstractConstraint.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(valueSpecificationEClass, ValueSpecification.class, "ValueSpecification", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -958,6 +990,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 
 		initEClass(iStateEClass, IState.class, "IState", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getIState_ReferencedStates(), this.getIState(), null, "referencedStates", null, 0, -1, IState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getIState_AvailableInStates(), this.getIState(), null, "availableInStates", null, 0, -1, IState.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(parameterEffectKindEEnum, ParameterEffectKind.class, "ParameterEffectKind"); //$NON-NLS-1$
@@ -1016,7 +1049,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   source, 
 		   new String[] {
 			 "metaclass", "Element" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });																					
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
@@ -1035,7 +1068,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   new String[] {
 			 "featureName", "name", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "AbstractNamedElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });																			
 		addAnnotation
 		  (traceableElementEClass, 
 		   source, 
@@ -1083,7 +1116,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   new String[] {
 			 "featureName", "client", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Dependency" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																		
+		   });																																																																																									
 	}
 
 	/**
@@ -1103,7 +1136,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																			
+		   });																																																																																																																																																																																										
 	}
 
 	/**
@@ -1163,7 +1196,15 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "the list of constraints applying to this element of the model\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });					
+		addAnnotation
+		  (getModelElement_OwnedConstraints(), 
+		   source, 
+		   new String[] {
+			 "description", "the constraints that are stored/owned by this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
@@ -1203,14 +1244,6 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "The name of the NamedElement\r\n[source: UML superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getAbstractNamedElement_OwnedConstraints(), 
-		   source, 
-		   new String[] {
-			 "description", "the constraints that are stored/owned by this element\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
@@ -1390,7 +1423,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "usage guideline", "n/a (Abstract)", //$NON-NLS-1$ //$NON-NLS-2$
 			 "used in levels", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "The value specification for a constraint must evaluate to a Boolean value.\r\n\r\nEvaluating the value specification for a constraint must not have side effects\r\n\r\nA constraint cannot be applied to itself.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
@@ -1402,6 +1435,18 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
+		addAnnotation
+		  (getAbstractConstraint_OwnedSpecification(), 
+		   source, 
+		   new String[] {
+			 "description", "A condition that must be true when evaluated in order for the constraint to be satisfied" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getAbstractConstraint_Context(), 
+		   source, 
+		   new String[] {
+			 "description", "Specifies the element that is the context for evaluating this constraint, which is the Constraint\'s parent element." //$NON-NLS-1$ //$NON-NLS-2$
+		   });		
 		addAnnotation
 		  (valueSpecificationEClass, 
 		   source, 
@@ -1678,6 +1723,14 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getIState_AvailableInStates(), 
+		   source, 
+		   new String[] {
+			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });		
 	}
 
@@ -1709,14 +1762,14 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   source, 
 		   new String[] {
 			 "excludefrom", "xmlpivot" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getModelElement_OwnedConstraints(), 
+		   source, 
+		   new String[] {
 		   });																	
 		addAnnotation
 		  (getAbstractNamedElement_Name(), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  (getAbstractNamedElement_OwnedConstraints(), 
 		   source, 
 		   new String[] {
 		   });						
@@ -1736,7 +1789,12 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		  (getAbstractConstraint_ConstrainedElements(), 
 		   source, 
 		   new String[] {
-		   });								
+		   });			
+		addAnnotation
+		  (getAbstractConstraint_OwnedSpecification(), 
+		   source, 
+		   new String[] {
+		   });										
 		addAnnotation
 		  (getAbstractParameter_IsException(), 
 		   source, 
@@ -1791,6 +1849,11 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		  (getIState_ReferencedStates(), 
 		   source, 
 		   new String[] {
+		   });				
+		addAnnotation
+		  (getIState_AvailableInStates(), 
+		   source, 
+		   new String[] {
 		   });
 	}
 
@@ -1811,7 +1874,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																
+		   });																																																																																																																																																																																							
 	}
 
 	/**
@@ -1827,7 +1890,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   source, 
 		   new String[] {
 			 "Label", "ModelElement" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });																					
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
@@ -1846,7 +1909,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   new String[] {
 			 "namingAttribute", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "Label", "name" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																				
+		   });																	
 		addAnnotation
 		  (traceableElementEClass, 
 		   source, 
@@ -1888,7 +1951,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		   source, 
 		   new String[] {
 			 "Label", "source" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																	
+		   });																																																																																								
 	}
 
 	/**
@@ -1923,7 +1986,15 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Opposite reference of uml::Constraint::constrainedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "Order must be computed" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });					
+		addAnnotation
+		  (getModelElement_OwnedConstraints(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "Some packaged elements of uml::Element::nearestPackage on which AbstractConstraint stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
+		   });							
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
@@ -1957,14 +2028,6 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::NamedElement::name", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getAbstractNamedElement_OwnedConstraints(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "Some packaged elements of uml::Element::nearestPackage on which AbstractConstraint stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
 		  (informationsExchangerEClass, 
@@ -2115,7 +2178,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "uml::Constraint::constrainedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
+		   });								
 		addAnnotation
 		  (valueSpecificationEClass, 
 		   source, 
@@ -2369,6 +2432,14 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getIState_AvailableInStates(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 	}
 
@@ -2414,7 +2485,12 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		  (getAbstractType_AbstractTypedElements(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																						
+		   });																																	
+		addAnnotation
+		  (getAbstractConstraint_Context(), 
+		   source, 
+		   new String[] {
+		   });																																																																													
 	}
 
 	/**
@@ -2424,17 +2500,17 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																										
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																													
 		addAnnotation
 		  (abstractRelationshipEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																			
+		   });																																																																
 		addAnnotation
 		  (abstractTraceEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																										
+		   });																																																																																																	
 	}
 
 	/**
@@ -2469,7 +2545,7 @@ public class ModellingcorePackageImpl extends EPackageImpl implements Modellingc
 		  (getAbstractTrace_SourceElement(), 
 		   source, 
 		   new String[] {
-		   });																																																																																
+		   });																																																																																							
 	}
 
 } //ModellingcorePackageImpl

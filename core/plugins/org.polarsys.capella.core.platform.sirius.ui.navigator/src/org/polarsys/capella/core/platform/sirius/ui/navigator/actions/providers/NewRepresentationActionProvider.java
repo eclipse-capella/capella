@@ -27,6 +27,9 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction;
 import org.polarsys.capella.core.sirius.ui.actions.NewScenarioRepresentationAction;
@@ -45,25 +48,30 @@ public class NewRepresentationActionProvider extends CommonActionProvider {
 
     IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
     Object firstElement = selection.getFirstElement();
+    
     if (firstElement instanceof EObject) {
-
       EObject firstSelectedEObject = (EObject) firstElement;
       Session currentSession = SessionManager.INSTANCE.getSession(firstSelectedEObject);
+     
       if (null != currentSession) {
-        Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
-        Collection<RepresentationDescription> descriptions =
+    	IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(currentSession));
+    	IModel currentElementModel = ILibraryManager.INSTANCE.getModel(firstSelectedEObject);
+    	
+    	if (sessionModel.equals(currentElementModel)){
+    		Collection<Viewpoint> selectedViewpoints = currentSession.getSelectedViewpoints(false);
+    		Collection<RepresentationDescription> descriptions =
             DialectManager.INSTANCE.getAvailableRepresentationDescriptions(selectedViewpoints, firstSelectedEObject);
-        if (!descriptions.isEmpty()) {
-          // Creates the "New Diagram / Table" menu.
-          MenuManager newDiagramMenu = new MenuManager(Messages.NewRepresentationActionProvider_NewRepresentationAction_Title, "capella.project.diagrams.menu"); //$NON-NLS-1$
+    		if (!descriptions.isEmpty()) {
+    		  // Creates the "New Diagram / Table" menu.
+    		  MenuManager newDiagramMenu = new MenuManager(Messages.NewRepresentationActionProvider_NewRepresentationAction_Title, "capella.project.diagrams.menu"); //$NON-NLS-1$
 
-          // Computes the "New Diagram..." menu content according to the current selection.
-          for (RepresentationDescription description : descriptions) {
-            if (DialectManager.INSTANCE.canCreate(firstSelectedEObject, description)) {
-              NewRepresentationAction representationAction = buildNewRepresentationAction(firstSelectedEObject, description, currentSession);
-              newDiagramMenu.add(representationAction);
+            // Computes the "New Diagram..." menu content according to the current selection.
+            for (RepresentationDescription description : descriptions) {
+              if (DialectManager.INSTANCE.canCreate(firstSelectedEObject, description)) {
+                NewRepresentationAction representationAction = buildNewRepresentationAction(firstSelectedEObject, description, currentSession);
+                newDiagramMenu.add(representationAction);
+              }
             }
-          }
           
           //create scenarios from capabilities
           if (firstSelectedEObject instanceof AbstractCapability) {
@@ -85,14 +93,14 @@ public class NewRepresentationActionProvider extends CommonActionProvider {
 					}
 				} 
 			}
-			
-		}
+		  }
 
           // Attaches the "New Diagram..." menu to group.new of the parent commonViewer contextual menu.
           if (newDiagramMenu.getSize() > 0) {
             menu_p.appendToGroup(ICommonMenuConstants.GROUP_NEW, newDiagramMenu);
+          	}
           }
-        }
+ 		}
       }
     }
   }

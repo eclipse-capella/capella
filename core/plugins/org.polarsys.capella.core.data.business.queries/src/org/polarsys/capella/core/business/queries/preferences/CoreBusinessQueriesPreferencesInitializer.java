@@ -12,7 +12,6 @@ package org.polarsys.capella.core.business.queries.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-
 import org.polarsys.capella.core.business.queries.BusinessQueriesPlugin;
 
 /**

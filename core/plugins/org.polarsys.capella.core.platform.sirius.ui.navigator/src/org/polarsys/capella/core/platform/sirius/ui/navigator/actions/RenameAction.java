@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TreeEditor;
@@ -28,23 +28,24 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.actions.RenameResourceAction;
 import org.eclipse.ui.actions.TextActionHandler;
-
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
-import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
+import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
 
 /**
  * Standard action for renaming an {@link AbstractNamedElement} element in a Tree.
  * @see RenameResourceAction
  */
-public class RenameAction extends BaseSelectionListenerAction {
+public class RenameAction extends AbstractCommandActionHandler {
   /**
    * Tree that this action is run against.
    */
@@ -65,20 +66,15 @@ public class RenameAction extends BaseSelectionListenerAction {
    * Handler for Cut, Copy, Paste of text...
    */
   private TextActionHandler _textActionHandler;
-  /**
-   * Editing Domain.
-   */
-  private EditingDomain _editionDomain;
 
   /**
    * Constructor.
    * @param domain_p
    */
-  public RenameAction(EditingDomain domain_p, CapellaCommonNavigator commonNavigator_p) {
+  public RenameAction(CapellaCommonNavigator commonNavigator_p) {
     super(ICommonConstants.EMPTY_STRING); // this action is linked to a RetargetAction.
     _navigatorTree = commonNavigator_p.getCommonViewer().getTree();
     _treeEditor = new TreeEditor(_navigatorTree);
-    _editionDomain = domain_p;
   }
 
   /**
@@ -202,8 +198,10 @@ public class RenameAction extends BaseSelectionListenerAction {
     if (!selection_p.isEmpty()) {
       Object selectedElement = selection_p.getFirstElement();
       // Deal with abstract named elements only.
-      if ((selectedElement instanceof EObject) && (!(selectedElement instanceof SequenceMessage))) {
-        result = true;
+      if (selectedElement instanceof EObject) {
+        if (!(selectedElement instanceof SequenceMessage)) {
+          result = true;
+        }
       }
     }
     return result;
@@ -220,7 +218,7 @@ public class RenameAction extends BaseSelectionListenerAction {
       createTextEditor(selectedElement_p);
     }
 
-    EAttribute attribute = getEditableAttribute(selectedElement_p);
+    EAttribute attribute = CapellaResourceHelper.getEditableAttribute(selectedElement_p);
     String name = null;
     if (attribute != null) {
       name = (String) selectedElement_p.eGet(attribute);
@@ -240,33 +238,6 @@ public class RenameAction extends BaseSelectionListenerAction {
   }
 
   /**
-   * Retrieve editable attribute
-   * @param selectedElement_p
-   * @return a changeable, no-transient, no-derived, no-isMany attribute, or null
-   */
-  protected EAttribute getEditableAttribute(EObject selectedElement_p) {
-    EAttribute attribute = null;
-    if (selectedElement_p != null) {
-
-      //We should externalize that when Project Explorer will be MDK compliant
-      if (selectedElement_p instanceof AbstractNamedElement) {
-        attribute = ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME;
-
-        //} else if (.....) {
-        // FIXME should read some extension point somewhere
-
-      } else if (selectedElement_p.eClass() != null) {
-        //try default feature if exist
-        EStructuralFeature feature = selectedElement_p.eClass().getEStructuralFeature("name"); //$NON-NLS-1$
-        if ((feature != null) && (feature instanceof EAttribute)) {
-          attribute = (EAttribute) feature;
-        }
-      }
-    }
-    return attribute;
-  }
-
-  /**
    * Save the changes and dispose created text editor widget.
    */
   private void saveChangesAndDispose() {
@@ -275,15 +246,16 @@ public class RenameAction extends BaseSelectionListenerAction {
     String newName = _textEditor.getText();
     // Ensure a change was performed.
     if (null != selectedElement) {
-      EAttribute attribute = getEditableAttribute(selectedElement);
+      EAttribute attribute = CapellaResourceHelper.getEditableAttribute(selectedElement);
       String selectedElementName = null;
       if (attribute != null) {
         selectedElementName = (String) selectedElement.eGet(attribute);
       }
 
-      if (null != newName && !newName.equals(selectedElementName)) {
+      if ((null != newName) && !newName.equals(selectedElementName)) {
         // Create a set command to change the value.
-        _editionDomain.getCommandStack().execute(SetCommand.create(_editionDomain, selectedElement, attribute, newName));
+        TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(selectedElement);
+        domain.getCommandStack().execute(SetCommand.create(domain, selectedElement, attribute, newName));
       }
     }
     // Dispose the text widget.

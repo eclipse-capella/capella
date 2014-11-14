@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.sirius.analysis.showhide;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;

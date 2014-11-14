@@ -19,7 +19,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
@@ -29,11 +33,6 @@ import org.polarsys.capella.core.transition.common.handlers.traceability.ITracea
 import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter;
 import org.polarsys.capella.core.transition.common.merge.scope.ReferenceModelScope;
-import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.common.re.CatalogElementKind;
-import org.polarsys.capella.common.re.CatalogElementLink;
-import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -194,7 +193,11 @@ public class ReSourceScope extends ReferenceModelScope implements INotifyListene
   @Override
   public boolean remove(EObject element_p) {
     System.out.println(NLS.bind("REMOVE {0}", new String[] { EObjectLabelProviderHelper.getText(element_p) }));
-    return super.remove(element_p);
+    ReplicableElementHandlerHelper.getInstance(context).addDeletableElement(element_p, context);
+
+    _roots.remove(element_p);
+    removeFromScope(element_p);
+    return true;
   }
 
   /**
@@ -242,7 +245,13 @@ public class ReSourceScope extends ReferenceModelScope implements INotifyListene
   public boolean remove(EObject source_p, EReference reference_p, EObject value_p) {
     System.out.println(NLS.bind("REMOVE {0} {1} {2}", new String[] { EObjectLabelProviderHelper.getText(source_p), reference_p.getName(),
                                                                     EObjectLabelProviderHelper.getText(value_p) }));
+
+    if (reference_p.isContainment()) {
+      ReplicableElementHandlerHelper.getInstance(context).addDeletableElement(value_p, context);
+      return true;
+    }
     return super.remove(source_p, reference_p, value_p);
+
   }
 
 }

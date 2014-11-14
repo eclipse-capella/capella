@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * 
@@ -49,7 +49,7 @@ public class ExchangesItemCommLink implements IQuery {
       List<ExchangeItemAllocation> elements = new ArrayList<ExchangeItemAllocation>(1);
       
       // gets the Semantic Editing Domain
-      SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+      SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(exchangItem);
       // Gets the Cross Referencer
       ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
       Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(exchangItem);

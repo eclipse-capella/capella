@@ -18,7 +18,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -39,6 +38,7 @@ public class CatalogElement_AllUsedCatalogElements extends AbstractQuery {
 
       LinkedList<CatalogElement> elements = new LinkedList<CatalogElement>();
       elements.add((CatalogElement) input_p);
+      String queryUsedELements = CatalogElement_UsedElements.class.getSimpleName();
 
       HashSet<CatalogElement> visited = new HashSet<CatalogElement>();
       while (!elements.isEmpty()) {
@@ -47,7 +47,7 @@ public class CatalogElement_AllUsedCatalogElements extends AbstractQuery {
           visited.add(element);
           objs.add(element);
 
-          Collection<EObject> usedElements = QueryInterpretor.executeQuery(CatalogElement_UsedElements.class.getSimpleName(), element, context_p);
+          Collection<EObject> usedElements = QueryInterpretor.executeQuery(queryUsedELements, element, context_p);
           for (EObject usedElement : usedElements) {
             if (usedElement instanceof CatalogElement) {
               objs.add(usedElement);

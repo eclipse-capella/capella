@@ -115,15 +115,6 @@ public interface DatatypePackage extends EPackage {
 	int DATA_TYPE__CONSTRAINTS = CapellacorePackage.GENERALIZABLE_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_TYPE__NAME = CapellacorePackage.GENERALIZABLE_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,6 +122,15 @@ public interface DatatypePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_TYPE__OWNED_CONSTRAINTS = CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE__NAME = CapellacorePackage.GENERALIZABLE_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -548,15 +548,6 @@ public interface DatatypePackage extends EPackage {
 	int BOOLEAN_TYPE__CONSTRAINTS = DATA_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_TYPE__NAME = DATA_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -564,6 +555,15 @@ public interface DatatypePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_TYPE__OWNED_CONSTRAINTS = DATA_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_TYPE__NAME = DATA_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -999,15 +999,6 @@ public interface DatatypePackage extends EPackage {
 	int ENUMERATION__CONSTRAINTS = DATA_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION__NAME = DATA_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1015,6 +1006,15 @@ public interface DatatypePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION__OWNED_CONSTRAINTS = DATA_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__NAME = DATA_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -1486,15 +1486,6 @@ public interface DatatypePackage extends EPackage {
 	int STRING_TYPE__CONSTRAINTS = DATA_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_TYPE__NAME = DATA_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1502,6 +1493,15 @@ public interface DatatypePackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_TYPE__OWNED_CONSTRAINTS = DATA_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_TYPE__NAME = DATA_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -1955,15 +1955,6 @@ public interface DatatypePackage extends EPackage {
 	int NUMERIC_TYPE__CONSTRAINTS = DATA_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NUMERIC_TYPE__NAME = DATA_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1971,6 +1962,15 @@ public interface DatatypePackage extends EPackage {
 	 * @ordered
 	 */
 	int NUMERIC_TYPE__OWNED_CONSTRAINTS = DATA_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_TYPE__NAME = DATA_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -2433,15 +2433,6 @@ public interface DatatypePackage extends EPackage {
 	int PHYSICAL_QUANTITY__CONSTRAINTS = NUMERIC_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PHYSICAL_QUANTITY__NAME = NUMERIC_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2449,6 +2440,15 @@ public interface DatatypePackage extends EPackage {
 	 * @ordered
 	 */
 	int PHYSICAL_QUANTITY__OWNED_CONSTRAINTS = NUMERIC_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PHYSICAL_QUANTITY__NAME = NUMERIC_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.

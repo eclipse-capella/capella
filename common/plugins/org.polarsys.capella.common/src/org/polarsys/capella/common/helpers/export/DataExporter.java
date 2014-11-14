@@ -19,10 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.helpers.ICommonConstants2;
+import org.polarsys.capella.common.helpers.export.utils.CSVWriterMessages;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
  * The export tool itself
+ *
  */
 public class DataExporter {
 
@@ -40,7 +42,7 @@ public class DataExporter {
         exporterProvider.getAvailableExporter() == null ||
         exporterProvider.getAvailableExporter().isEmpty()
     ) {
-      throw new IllegalArgumentException(ExportMessages.errNullFileName); 
+      throw new IllegalArgumentException(CSVWriterMessages.errNullFileName); 
     }
     
     _exporterProvider = exporterProvider;

@@ -547,6 +547,18 @@ public class FunctionSpecificationItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createJustificationLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
                          InteractionFactory.eINSTANCE.createMergeLink());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      

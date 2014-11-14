@@ -106,7 +106,7 @@ public class SharedElementsProperty extends AbstractProperty implements ICompoun
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE, IReConstants.PROPERTY__LOCATION_TARGET };
+    return new String[] { IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE, IReConstants.PROPERTY__LOCATION_TARGET };
   }
 
   /**

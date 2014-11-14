@@ -15,7 +15,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityTraceHandler;
@@ -51,7 +50,7 @@ public class TraceabilityHandlerMatchPolicy extends ContextMatchPolicy {
    *      org.polarsys.capella.common.consonance.scopes.IModelScope)
    */
   @Override
-  public Comparable<?> getMatchId(EObject element_p, IModelScope scope_p) {
+  public Comparable<?> getMatchID(EObject element_p, IModelScope scope_p) {
     Collection<EObject> bounds = new ArrayList<EObject>();
 
     IContext context = getContext();

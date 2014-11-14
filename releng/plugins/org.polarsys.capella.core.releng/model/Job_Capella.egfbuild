@@ -6,7 +6,7 @@
     <properties xmi:id="_meNNoJfMEeOUI_87YdVFoQ" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
     <properties xmi:id="_rUAe8JfMEeOUI_87YdVFoQ" key="secondary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/null" type="INLINED"/>
     <properties xmi:id="_V7oikJPvEeOsBuJqo0_MQw" key="site_COTS" value="${cots.repository.prefix}/cots" type="INLINED"/>
-    <properties xmi:id="_PZ3HcJMaEeO7u6f29_-yFQ" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/releases/0.9.0/${eclipseCodeName}" type="INLINED"/>
+    <properties xmi:id="_PZ3HcJMaEeO7u6f29_-yFQ" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/releases/2.0.0-S20140911-111207/${eclipseCodeName}" type="INLINED"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_LfxWIIgGEeOdzI3OsQ-7WQ" name="Build All">
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
     </steps>
@@ -22,7 +22,7 @@
     <properties xmi:id="_oqCyQJMaEeO7u6f29_-yFQ" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/eclipse/updates/3.8" type="INLINED"/>
     <properties xmi:id="_UBi1gJMgEeO7u6f29_-yFQ" key="secondary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
     <properties xmi:id="_xaG_5HKOEeGk8-zOAaqAYg" key="site_COTS" value="${cots.repository.prefix}/cots-3.8.2" type="INLINED"/>
-    <properties xmi:id="_xGI7A3KOEeGk8-zOAaqAYg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/releases/0.9.0/${eclipseCodeName}" type="INLINED"/>
+    <properties xmi:id="_xGI7A3KOEeGk8-zOAaqAYg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/releases/2.0.1-S20141106-093454/${eclipseCodeName}" type="INLINED"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_mEA7QpMGEeOMQMHiDBX4Dw" name="Build All">
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
     </steps>

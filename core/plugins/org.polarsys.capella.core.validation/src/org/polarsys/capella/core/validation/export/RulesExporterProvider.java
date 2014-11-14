@@ -28,11 +28,14 @@ public class RulesExporterProvider implements IExporterProvider {
    * @see org.polarsys.capella.common.helpers.export.IExporterProvider#getAvailableExporter()
    */
   public List<AbstractExporter> getAvailableExporter() {
+
     List<AbstractExporter> list = new ArrayList<AbstractExporter>();
     
-    list.add(new CSVExporter(String.valueOf(ICommonConstants.SEMICOLON_CHARACTER)));
+    list.add(new CSVExporter(ICommonConstants.SEMICOLON_CHARACTER));
     list.add(new TXTExporter());
     
     return list;
+    
   }
+
 }

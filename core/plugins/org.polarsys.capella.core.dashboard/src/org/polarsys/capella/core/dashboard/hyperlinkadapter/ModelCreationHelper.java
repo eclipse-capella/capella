@@ -20,9 +20,15 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
+import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
@@ -49,12 +55,6 @@ import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
-import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
@@ -68,8 +68,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.LogicalActorPkgExt;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
 /**
  * change from singleton to static method
@@ -109,7 +108,7 @@ public class ModelCreationHelper {
 
   @Deprecated
   static public Region getOrCreateLogicalStateMachineRegion(final Project project_p) {
-    MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
+    TransactionHelper.getExecutionManager(project_p).execute(new AbstractReadWriteCommand() {
       public void run() {
         LogicalComponent lc = ModelQueryHelper.getLogicalSystem(project_p);
         if (lc != null) {
@@ -123,7 +122,7 @@ public class ModelCreationHelper {
 
   @Deprecated
   static public Region getOrCreatePhysicalStateMachineRegion(final Project project_p) {
-    MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
+    TransactionHelper.getExecutionManager(project_p).execute(new AbstractReadWriteCommand() {
       public void run() {
         PhysicalComponent pc = ModelQueryHelper.getPhysicalSystem(project_p);
         if (pc != null) {
@@ -137,7 +136,7 @@ public class ModelCreationHelper {
 
   @Deprecated
   static public Region getOrCreateSystemStateMachineRegion(final Project project_p) {
-    MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
+    TransactionHelper.getExecutionManager(project_p).execute(new AbstractReadWriteCommand() {
       public void run() {
         System system = ModelQueryHelper.getSystem(project_p);
         if (system != null) {
@@ -189,7 +188,7 @@ public class ModelCreationHelper {
       private Scenario _scenario;
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
        */
       @Override
       public Collection<?> getAffectedObjects() {
@@ -206,7 +205,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
 
     return (Scenario) cmd.getAffectedObjects().iterator().next();
   }
@@ -238,7 +237,7 @@ public class ModelCreationHelper {
       private Scenario _scenario;
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
        */
       @Override
       public Collection<?> getAffectedObjects() {
@@ -255,7 +254,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
 
     return (Scenario) cmd.getAffectedObjects().iterator().next();
   }
@@ -280,7 +279,7 @@ public class ModelCreationHelper {
       private Scenario _scenario;
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
        */
       @Override
       public Collection<?> getAffectedObjects() {
@@ -297,7 +296,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
 
     return (Scenario) cmd.getAffectedObjects().iterator().next();
   }
@@ -341,7 +340,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
     return (null != operationalEntity[0]) ? ModelQueryHelper.getStateMachineRegion(operationalEntity[0]) : null;
   }
 
@@ -358,7 +357,7 @@ public class ModelCreationHelper {
       private Scenario _scenario;
 
       /**
-       * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+       * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
        */
       @Override
       public Collection<?> getAffectedObjects() {
@@ -375,7 +374,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
 
     return (Scenario) cmd.getAffectedObjects().iterator().next();
   }
@@ -397,7 +396,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
     return (null != components[0]) ? ModelQueryHelper.getStateMachineRegion(components[0]) : null;
   }
 
@@ -418,7 +417,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
     return (null != components[0]) ? ModelQueryHelper.getStateMachineRegion(components[0]) : null;
   }
 
@@ -439,7 +438,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
     return (null != components[0]) ? ModelQueryHelper.getStateMachineRegion(components[0]) : null;
   }
 
@@ -460,7 +459,7 @@ public class ModelCreationHelper {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(project_p).execute(cmd);
     return (null != components[0]) ? ModelQueryHelper.getStateMachineRegion(components[0]) : null;
   }
 

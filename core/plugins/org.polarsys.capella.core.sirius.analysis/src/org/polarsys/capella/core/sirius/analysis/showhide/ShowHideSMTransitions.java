@@ -14,10 +14,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.StateMachineServices;

@@ -28,27 +28,23 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-
-import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
-import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.renderer.EditListRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
 import org.polarsys.capella.common.re.handlers.scope.DependenciesHandlerHelper;
 import org.polarsys.capella.common.re.ui.decorators.InstanciationLabelDecorator;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
 public class ReplicaRenderer extends EditListRenderer implements PropertyChangeListener {
 
-  DataLabelProvider _parentProvider;
   ILabelProvider _defaultProvider;
 
   @Override
@@ -59,7 +55,7 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
   @Override
   public void performRender(Composite parent_p, IRendererContext rendererContext_p) {
     super.performRender(parent_p, rendererContext_p);
-    _parentProvider.setViewer(getViewer().getClientViewer());
+
   }
 
   /**
@@ -91,12 +87,11 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
    */
   @Override
   protected ILabelProvider createLabelProvider(final IRendererContext rendererContext_p) {
-    _parentProvider = new DataLabelProvider(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
     _defaultProvider = super.createLabelProvider(rendererContext_p);
 
     final InstanciationLabelDecorator decorator = new InstanciationLabelDecorator();
 
-    return new DefaultLabelProvider(_parentProvider) {
+    return new DefaultLabelProvider(rendererContext_p.getLabelProvider()) {
 
       public Font getBold(Font font_p) {
         Font result = JFaceResources.getFontRegistry().getBold(JFaceResources.getFontRegistry().defaultFont().getFontData()[0].getName());
@@ -216,9 +211,16 @@ public class ReplicaRenderer extends EditListRenderer implements PropertyChangeL
     }
 
     IContext context = (IContext) rendererContext_p.getPropertyContext().getSource();
-    IStatus status =
-        DependenciesHandlerHelper.getInstance(context).getDependenciesStatus(Collections.singletonList((EObject) element_p), scopeElements, context);
+    IStatus status = getDependenciesStatus(Collections.singletonList((EObject) element_p), scopeElements, context);
     return status;
+  }
+
+  public IStatus getDependenciesStatus(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
+    Collection<EObject> values = DependenciesHandlerHelper.getInstance(context_p).getDependencies(elements_p, scopeElements, context_p);
+    if (values.isEmpty()) {
+      return Status.OK_STATUS;
+    }
+    return new Status(IStatus.WARNING, "aa", "missing dependencies");
   }
 
   @Override

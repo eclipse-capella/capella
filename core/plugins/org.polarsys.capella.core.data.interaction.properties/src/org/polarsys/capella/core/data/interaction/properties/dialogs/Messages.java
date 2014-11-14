@@ -18,6 +18,8 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.data.interaction.properties.dialogs.messages"; //$NON-NLS-1$
 
+	public static String SelectOperationDialog_SequenceMessageKind;
+
   public static String ExchangeDialog_ComponentExchangeLabel;
   public static String ExchangeDialog_CreateComponentExchangeGroup;
   public static String ExchangeDialog_CreateComponentExchangeCheckbox;
@@ -47,8 +49,9 @@ public class Messages extends NLS {
   public static String SelectOperationDialog_4;
   public static String SelectOperationDialog_5;
   public static String SelectOperationDialog_6;
-
   public static String SelectOperationDialog_7;
+  public static String SelectOperationDialog_8;
+
   public static String SelectOperationDialog_CreateNewExchangeItem;
   public static String SelectOperationDialog_CreateOrSelectInterface;
   public static String SelectOperationDialog_EnableCreationButton_Title;
@@ -56,10 +59,15 @@ public class Messages extends NLS {
 
   public static String SelectOperationDialog_InterfacePkgName8;
   public static String SelectOperationDialog_Operation_Title;
+	public static String SelectOperationDialog_HideTechnicalInterfaceNamesButton_Title;
   public static String SelectOperationDialog_RestrictedInterfacesButton_Title;
   public static String SelectOperationDialog_SelectExistingOperationGroup_Title;
   public static String SelectOperationDialog_SelectInterfaceDialog_Message;
   public static String SelectOperationDialog_SelectInterfaceDialog_Title;
+
+	public static String SelectOperationDialog_SequenceMessageKind_synchronous;
+	public static String SelectOperationDialog_SequenceMessageKind_asynchronous;
+
 
   static {
     // initialize resource bundle

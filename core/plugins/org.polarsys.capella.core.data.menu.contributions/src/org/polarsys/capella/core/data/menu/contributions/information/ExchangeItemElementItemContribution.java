@@ -10,34 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.menu.contributions.information;
 
-import java.util.Collection;
-import java.util.Collections;
-
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandWrapper;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.information.ElementKind;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
-import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 
-public class ExchangeItemElementItemContribution implements IMDEMenuItemContribution {
-
-  /**
-   * 
-   */
-  private static final String _DEFAULT_CARDINALITY = "1"; //$NON-NLS-1$
+public class ExchangeItemElementItemContribution extends MultiplicityElementItemContribution {
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
@@ -54,53 +41,9 @@ public class ExchangeItemElementItemContribution implements IMDEMenuItemContribu
     if (InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT.isInstance(createdElement_p)) {
       CompoundCommand cmd = new CompoundCommand();
 
-      // Creates the min cardinality.
-      final Command createMinCardCmd =
-          CreateChildCommand
-              .create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
-                  InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, DatavalueFactory.eINSTANCE.createLiteralNumericValue()),
-                  Collections.EMPTY_LIST);
-      cmd.append(createMinCardCmd);
+      cmd.append(getCardinalitiesCommand(editingDomain_p, createdElement_p, _ONE_CARDINALITY, _ONE_CARDINALITY));
 
-      // Sets the min cardinality value.
-      Command setMinCardValueCmd = new CommandWrapper() {
-        @Override
-        public Command createCommand() {
-          Collection<?> res = createMinCardCmd.getResult();
-          if (res.size() == 1) {
-            Object createdObj = res.iterator().next();
-            if (createdObj instanceof EObject) {
-              return new SetCommand(editingDomain_p, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, _DEFAULT_CARDINALITY);
-            }
-          }
-          return null;
-        }
-      };
-      cmd.append(setMinCardValueCmd);
-
-      // Creates the max cardinality.
-      final Command createMaxCardCmd =
-          CreateChildCommand
-              .create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
-                  InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, DatavalueFactory.eINSTANCE.createLiteralNumericValue()),
-                  Collections.EMPTY_LIST);
-      cmd.append(createMaxCardCmd);
-
-      // Sets the max cardinality value.
-      Command setMaxCardValueCmd = new CommandWrapper() {
-        @Override
-        public Command createCommand() {
-          Collection<?> res = createMaxCardCmd.getResult();
-          if (res.size() == 1) {
-            Object createdObj = res.iterator().next();
-            if (createdObj instanceof EObject) {
-              return new SetCommand(editingDomain_p, (EObject) createdObj, DatavaluePackage.Literals.LITERAL_NUMERIC_VALUE__VALUE, _DEFAULT_CARDINALITY);
-            }
-          }
-          return null;
-        }
-      };
-      cmd.append(setMaxCardValueCmd);
+      cmd.append(getUniqueCommand(editingDomain_p, createdElement_p));
 
       // Set the kind of exchange item element according container
       Command setKindCmd = new CommandWrapper() {
@@ -111,7 +54,7 @@ public class ExchangeItemElementItemContribution implements IMDEMenuItemContribu
           if ((container != null) && (container instanceof ExchangeItem)) {
             ExchangeItem item = (ExchangeItem) container;
             if (item.getExchangeMechanism() == ExchangeMechanism.OPERATION) {
-              kind = ElementKind.PARAMETER;
+              kind = ElementKind.MEMBER;
             }
             return new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__KIND, kind);
           }
@@ -122,10 +65,11 @@ public class ExchangeItemElementItemContribution implements IMDEMenuItemContribu
 
       // Set the isComposite of exchange item element
       cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__COMPOSITE, Boolean.TRUE));
-		return cmd;
-	  }
-	  return null;
-	}
+
+      return cmd;
+    }
+    return null;
+  }
 
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()

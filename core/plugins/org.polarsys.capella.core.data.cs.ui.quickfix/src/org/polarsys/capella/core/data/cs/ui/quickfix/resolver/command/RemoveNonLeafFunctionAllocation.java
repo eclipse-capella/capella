@@ -14,14 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 public class RemoveNonLeafFunctionAllocation extends AbstractReadWriteCommand {
 
@@ -55,7 +54,7 @@ public class RemoveNonLeafFunctionAllocation extends AbstractReadWriteCommand {
 
     // remove links
     if (!linksToRemove.isEmpty()) {
-      CapellaDeleteCommand command = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), linksToRemove, false, true, true);
+      CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(linksToRemove), linksToRemove, false, true, true);
       if (command.canExecute()) {
         command.execute();
       }

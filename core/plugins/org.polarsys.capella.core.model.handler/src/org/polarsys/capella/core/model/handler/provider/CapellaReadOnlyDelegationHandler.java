@@ -12,7 +12,7 @@ package org.polarsys.capella.core.model.handler.provider;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.IReadOnlyDelegationHandler;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.IReadOnlyDelegationHandler;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
@@ -21,7 +21,7 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
  */
 public class CapellaReadOnlyDelegationHandler implements IReadOnlyDelegationHandler {
   /**
-   * @see org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.IReadOnlyDelegationHandler#isReadOnly(org.eclipse.emf.ecore.resource.Resource)
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.IReadOnlyDelegationHandler#isReadOnly(org.eclipse.emf.ecore.resource.Resource)
    */
   public boolean isReadOnly(Resource resource_p) {
     // Always answer NOT in RO for Capella resource to allow all EMF commands to be executed even if the resource is in RO.

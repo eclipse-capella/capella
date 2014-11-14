@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.refinement.command.UpdateLinks;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -40,7 +40,7 @@ public class SynchronizeLinksCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
   public void run() {
     if (_modelElement != null) {
@@ -51,7 +51,7 @@ public class SynchronizeLinksCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#getLabel()
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#getLabel()
    */
   @Override
   public String getName() {

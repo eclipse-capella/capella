@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.handlers.filter;
 
+import java.util.HashSet;
+import java.util.LinkedList;
+
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
@@ -18,9 +21,8 @@ import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.transition.common.handlers.filter.AbstractFilterItem;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.filter.AbstractFilterItem;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -74,23 +76,28 @@ public class AvoidMergeUnmodifiableItem extends AbstractFilterItem {
    */
   @Override
   public boolean isDisplayable(IDifference difference_p, Role role_p, IContext context_p) {
+    LinkedList<IDifference> toVisit = new LinkedList<IDifference>();
+    HashSet<IDifference> visited = new HashSet<IDifference>();
 
-    if (difference_p instanceof IElementPresence) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference_p;
-      EObject source = diff.getElementMatch().get(role_p);
+    toVisit.add(difference_p);
+    while (!toVisit.isEmpty()) {
+      IDifference difference = toVisit.removeFirst();
+      if (!visited.contains(difference)) {
+        visited.add(difference);
 
-      if (source != null) {
-        if (ReplicableElementHandlerHelper.getInstance(context_p).isUnmodifiableElement(source, context_p)) {
-          return false;
+        if (difference instanceof IElementPresence) {
+          IElementRelativeDifference diff = (IElementRelativeDifference) difference;
+          EObject source = diff.getElementMatch().get(role_p);
+          if (source != null) {
+            if (ReplicableElementHandlerHelper.getInstance(context_p).isUnmodifiableElement(source, context_p)) {
+              return false;
+            }
+          }
         }
-      }
-    }
 
-    //If the given difference requires a not-visible dependencies (UnmodifiableElement), it becomes not-visible too! (to avoid some unwanted merges)
-    if (difference_p instanceof IMergeableDifference) {
-      for (IMergeableDifference difference : ((IMergeableDifference) difference_p).getDirectRequiresDependencies(Role.TARGET)) {
-        if (!isDisplayable(difference, role_p, context_p)) {
-          return false;
+        //If the given difference requires a not-visible dependencies (UnmodifiableElement), it becomes not-visible too! (to avoid some unwanted merges)
+        if (difference instanceof IMergeableDifference) {
+          toVisit.addAll(((IMergeableDifference) difference).getDirectRequiresDependencies(Role.TARGET)); //or role_p?
         }
       }
     }

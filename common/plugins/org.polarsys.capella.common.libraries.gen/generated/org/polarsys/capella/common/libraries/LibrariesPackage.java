@@ -31,6 +31,7 @@ import org.polarsys.kitalpha.emde.model.EmdePackage;
  * <!-- end-user-doc -->
  * @see org.polarsys.capella.common.libraries.LibrariesFactory
  * @model kind="package"
+ *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension extensibleProviderFactory='true' childCreationExtenders='true'"
  * @generated
  */
 public interface LibrariesPackage extends EPackage {

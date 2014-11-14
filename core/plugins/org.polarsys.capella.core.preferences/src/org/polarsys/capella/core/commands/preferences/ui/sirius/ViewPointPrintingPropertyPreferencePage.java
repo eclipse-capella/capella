@@ -11,11 +11,10 @@
 package org.polarsys.capella.core.commands.preferences.ui.sirius;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.sirius.diagram.internal.preferences.DiagramPrintingPreferencePage;
+import org.eclipse.sirius.diagram.ui.internal.preferences.DiagramPrintingPreferencePage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPropertyPage;
-
 import org.polarsys.capella.core.commands.preferences.service.IAbstractDefaultPreferencePage;
 
 public class ViewPointPrintingPropertyPreferencePage extends DiagramPrintingPreferencePage implements IAbstractDefaultPreferencePage, IWorkbenchPropertyPage {

@@ -593,20 +593,21 @@ public class InformationSwitch<T> extends Switch<T> {
 				ExchangeItem exchangeItem = (ExchangeItem)theEObject;
 				T result = caseExchangeItem(exchangeItem);
 				if (result == null) result = caseAbstractExchangeItem(exchangeItem);
-				if (result == null) result = caseType(exchangeItem);
 				if (result == null) result = caseAbstractEvent(exchangeItem);
 				if (result == null) result = caseAbstractSignal(exchangeItem);
 				if (result == null) result = caseFinalizableElement(exchangeItem);
+				if (result == null) result = caseGeneralizableElement(exchangeItem);
+				if (result == null) result = caseType(exchangeItem);
 				if (result == null) result = caseAbstractType(exchangeItem);
 				if (result == null) result = caseNamespace(exchangeItem);
 				if (result == null) result = caseNamedElement(exchangeItem);
 				if (result == null) result = caseAbstractNamedElement(exchangeItem);
-				if (result == null) result = caseCapellaElement(exchangeItem);
 				if (result == null) result = caseExtensibleElement(exchangeItem);
+				if (result == null) result = caseCapellaElement(exchangeItem);
+				if (result == null) result = caseElement(exchangeItem);
 				if (result == null) result = caseTraceableElement(exchangeItem);
 				if (result == null) result = casePublishableElement(exchangeItem);
 				if (result == null) result = caseModelElement(exchangeItem);
-				if (result == null) result = caseElement(exchangeItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

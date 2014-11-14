@@ -46,6 +46,7 @@ import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 
 /**
  * don't know if it is really used but we have to update as of Sirius 5.0 Fill the session when a drop event comes.
@@ -86,11 +87,11 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
     } catch (final PartInitException e) {
       SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
     } catch (final IOException e) {
-    	SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
+      SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
     } catch (final InvocationTargetException e) {
-    	SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
+      SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
     } catch (final InterruptedException e) {
-    	SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
+      SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
     }
     return false;
   }
@@ -124,9 +125,9 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
       try {
         dialog.run(false, false, operation);
       } catch (InvocationTargetException e) {
-    	  SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
+        SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
       } catch (InterruptedException e) {
-    	  SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
+        SiriusPlugin.getDefault().error(ERROR_CREATING_SESSION, e);
       }
 
     }
@@ -140,8 +141,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
       Object obj = it.next();
       if (obj instanceof IFile) {
         IFile file = (IFile) obj;
-        URI selectionURI = URI.createPlatformResourceURI(file.getFullPath().toOSString(), true);
-        result.add(selectionURI);
+        result.add(EcoreUtil2.getURI(file));
       }
     }
     return result;
@@ -161,11 +161,11 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
   protected void openSelectedSessionModelFiles(Collection<URI> sessionModelURIs, IProgressMonitor monitor) {
     monitor.subTask("Open selected Session model"); //$NON-NLS-1$
     for (URI sessionModelURI : sessionModelURIs) {
-      Session session = SessionManager.INSTANCE.getSession(sessionModelURI);
+      Session session = SessionManager.INSTANCE.getSession(sessionModelURI, monitor);
       monitor.worked(1);
       if (session == null) {
         monitor.subTask("Load session"); //$NON-NLS-1$
-        session = SessionManager.INSTANCE.getSession(sessionModelURI);
+        session = SessionManager.INSTANCE.getSession(sessionModelURI, monitor);
         monitor.worked(1);
         session.save(new NullProgressMonitor());
         monitor.done();
@@ -180,7 +180,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
       final Collection<DRepresentation> startupCandidates = SessionHelper.findAllStartupCandidates(session);
       final Collection<DRepresentation> selection = SessionHelper.selectRepresentationsToOpen(null, startupCandidates);
       for (final DRepresentation repr : selection) {
-        DialectUIManager.INSTANCE.openEditor(session, repr);
+        DialectUIManager.INSTANCE.openEditor(session, repr, monitor);
         monitor.worked(1);
       }
     }
@@ -200,13 +200,13 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
       dlg.setBlockOnOpen(true);
       if (dlg.open() == Window.OK) {
         final Session session = wizard.getCreatedSession();
-        Command addSemanticResourceCmd = new AddSemanticResourceCommand(session, semanticModelURI);
+        Command addSemanticResourceCmd = new AddSemanticResourceCommand(session, semanticModelURI, monitor);
         session.getTransactionalEditingDomain().getCommandStack().execute(addSemanticResourceCmd);
         ViewpointSelection.openViewpointsSelectionDialog(session);
         final Collection<DRepresentation> startupCandidates = SessionHelper.findAllStartupCandidates(session);
         final Collection<DRepresentation> selection = SessionHelper.selectRepresentationsToOpen(null, startupCandidates);
         for (final DRepresentation repr : selection) {
-          DialectUIManager.INSTANCE.openEditor(session, repr);
+          DialectUIManager.INSTANCE.openEditor(session, repr, monitor);
         }
       }
     }

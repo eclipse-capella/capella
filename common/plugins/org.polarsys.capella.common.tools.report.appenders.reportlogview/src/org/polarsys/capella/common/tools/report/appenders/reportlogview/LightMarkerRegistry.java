@@ -21,15 +21,14 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
-
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 
 /**
  * A lot of default-marker cause bad performances.<br>
@@ -110,15 +109,15 @@ public class LightMarkerRegistry implements IMarkerSource {
     }
   }
 
-  public void createMarker(IResource resource_p, Diagnostic diagnostic_p, URI uri) {
-    createMarker(resource_p, diagnostic_p);
+  public void createMarker(IResource resource_p, Diagnostic diagnostic_p, Resource emfResource_p) {
+    createMarker(resource_p, emfResource_p, diagnostic_p);
   }
 
   /**
    * Create a light marker. The returned marker should not be changed. See also the comments on the class definition above.
    */
-  public IMarker createMarker(IResource resource_p, Diagnostic diagnostic_p) {
-    LightMarker marker = new LightMarker(resource_p, diagnostic_p);
+  public IMarker createMarker(IResource fileResource_p, Resource emfResource_p, Diagnostic diagnostic_p) {
+    LightMarker marker = new LightMarker(fileResource_p, diagnostic_p);
 
     int severity = diagnostic_p.getSeverity();
     try {
@@ -153,6 +152,8 @@ public class LightMarkerRegistry implements IMarkerSource {
       marker.setAttribute(IValidationConstants.TAG_DIAGNOSTIC, diagnostic_p);
       // also store the rule id directly on the marker
       marker.setAttribute(IValidationConstants.TAG_RULE_ID, getRuleId(diagnostic_p));
+      // also store the emf resource directly on the marker
+      marker.setAttribute(IValidationConstants.EMF_RESOURCE, emfResource_p);
     } catch (CoreException e) {
       e.printStackTrace();
     }
@@ -162,8 +163,8 @@ public class LightMarkerRegistry implements IMarkerSource {
     return marker;
   }
 
-  public void createMarker(IResource resource_p, Diagnostic diagnostic_p, URI uri, String preferenceFile) {
-    IMarker marker = createMarker(resource_p, diagnostic_p);
+  public void createMarker(IResource fileResource_p, Diagnostic diagnostic_p, Resource emfResource_p, String preferenceFile) {
+    IMarker marker = createMarker(fileResource_p, emfResource_p, diagnostic_p);
     // also store the rule id directly on the marker
     try {
       marker.setAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, preferenceFile);

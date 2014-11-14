@@ -43,7 +43,7 @@ import org.polarsys.capella.core.data.oa.OaFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.util.OaAdapterFactory;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**

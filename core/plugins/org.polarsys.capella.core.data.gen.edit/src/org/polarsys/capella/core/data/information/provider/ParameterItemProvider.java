@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModellingcoreFactory;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.provider.TypedElementItemProvider;
@@ -1597,6 +1598,18 @@ public class ParameterItemProvider extends TypedElementItemProvider implements I
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          InformationFactory.eINSTANCE.createCollectionValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -1755,6 +1768,18 @@ public class ParameterItemProvider extends TypedElementItemProvider implements I
                     CommandParameter commandParameter = createChildParameter
                         (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

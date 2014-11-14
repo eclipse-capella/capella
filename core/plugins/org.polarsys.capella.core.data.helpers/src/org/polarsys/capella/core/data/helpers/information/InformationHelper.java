@@ -13,7 +13,15 @@ package org.polarsys.capella.core.data.helpers.information;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
+import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedRelationshipHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypedElementHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractBooleanValueHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractCollectionValueHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.AbstractComplexValueHelper;
@@ -32,6 +40,7 @@ import org.polarsys.capella.core.data.helpers.information.delegates.DataTypeHelp
 import org.polarsys.capella.core.data.helpers.information.delegates.ExchangeItemElementHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.ExchangeItemHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.ExchangeItemRealizationHelper;
+import org.polarsys.capella.core.data.helpers.information.delegates.OpaqueExpressionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.OperationAllocationHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.PartitionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.PartitionableElementHelper;
@@ -42,12 +51,6 @@ import org.polarsys.capella.core.data.helpers.information.delegates.PropertyHelp
 import org.polarsys.capella.core.data.helpers.information.delegates.ServiceHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.UnaryExpressionHelper;
 import org.polarsys.capella.core.data.helpers.information.delegates.UnionHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedRelationshipHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypedElementHelper;
 import org.polarsys.capella.core.data.information.AbstractCollectionValue;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Class;
@@ -83,11 +86,9 @@ import org.polarsys.capella.core.data.information.datavalue.AbstractEnumerationV
 import org.polarsys.capella.core.data.information.datavalue.AbstractStringValue;
 import org.polarsys.capella.core.data.information.datavalue.BinaryExpression;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
 import org.polarsys.capella.core.data.information.datavalue.UnaryExpression;
 import org.polarsys.capella.core.data.information.datavalue.ValuePart;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class InformationHelper implements IHelper {
 
@@ -100,7 +101,7 @@ public class InformationHelper implements IHelper {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.model.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature,
+   * @see org.polarsys.capella.common.model.helpers.IHelper#getValue(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature,
    *      org.eclipse.emf.ecore.EAnnotation)
    */
   public Object getValue(EObject object_p, EStructuralFeature feature_p, EAnnotation annotation_p) {
@@ -182,6 +183,8 @@ public class InformationHelper implements IHelper {
       ret = CommunicationLinkAllocationHelper.getInstance().doSwitch((CommunicationLinkAllocation) object_p, feature_p);
     } else if (object_p instanceof CommunicationLinkExchanger) {
       ret = CommunicationLinkExchangerHelper.getInstance().doSwitch((CommunicationLinkExchanger) object_p, feature_p);
+    } else if (object_p instanceof OpaqueExpression){
+      ret = OpaqueExpressionHelper.getInstance().doSwitch((OpaqueExpression) object_p, feature_p);
     }
 
     if (null != ret || feature_p.getUpperBound() == 1)

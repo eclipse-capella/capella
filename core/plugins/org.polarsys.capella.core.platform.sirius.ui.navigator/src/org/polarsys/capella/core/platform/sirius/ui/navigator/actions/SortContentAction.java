@@ -10,20 +10,22 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * Standard action for sorting the content of a {@link CapellaElement} element.
@@ -36,11 +38,18 @@ public class SortContentAction extends BaseSelectionListenerAction {
     @Override
     public int compare(EObject o1_p, EObject o2_p) {
       // Work only with AbstractNamedElements, for other types, no order is given.
-      if (!(o1_p instanceof AbstractNamedElement) || !(o2_p instanceof AbstractNamedElement)) {
-        return 0;
-      }
-      String o1Name = ((AbstractNamedElement) o1_p).getName();
-      String o2Name = ((AbstractNamedElement) o2_p).getName();
+      
+      String o1Name = null;
+      String o2Name = null;
+      EAttribute attribute_o1 = CapellaResourceHelper.getEditableAttribute(o1_p);
+      EAttribute attribute_o2 = CapellaResourceHelper.getEditableAttribute(o2_p);
+      
+      if (attribute_o1 != null) {
+         o1Name = (String) o1_p.eGet(attribute_o1);
+        }
+      if (attribute_o2 != null) {
+          o2Name = (String) o2_p.eGet(attribute_o2);
+         }
       // Two null names -> keep same order.
       if ((null == o1Name) && (null == o2Name)) {
         return 0;
@@ -56,7 +65,7 @@ public class SortContentAction extends BaseSelectionListenerAction {
       return o1Name.compareTo(o2Name);
     }
   };
-
+  
   /**
    * Constructor.
    * @param domain_p
@@ -71,7 +80,7 @@ public class SortContentAction extends BaseSelectionListenerAction {
   @Override
   public void run() {
     final List<?> selectedElements = getStructuredSelection().toList();
-    MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
+    TransactionHelper.getExecutionManager(filterNonEObjects(selectedElements)).execute(new AbstractReadWriteCommand() {
       @Override
       public void run() {
         for (final Object selectedElement : selectedElements) {
@@ -80,11 +89,12 @@ public class SortContentAction extends BaseSelectionListenerAction {
             continue;
           }
           EObject selectedEObject = (EObject) selectedElement;
-          // Sort containement features content.
+          // Sort containment features content.
           for (EReference ownedRef : selectedEObject.eClass().getEAllContainments()) {
             if (ownedRef.isMany()) {
               @SuppressWarnings("unchecked")
               EList<EObject> ownedElements = (EList<EObject>) selectedEObject.eGet(ownedRef);
+              System.out.println(ownedElements);
               if (ownedElements.size() > 2) {
                 ECollections.sort(ownedElements, abstractNamedElementNameComparator);
               }
@@ -93,6 +103,17 @@ public class SortContentAction extends BaseSelectionListenerAction {
         }
       }
     });
+  }
+  
+  @SuppressWarnings("rawtypes")
+  protected Collection<EObject> filterNonEObjects(Collection elements) {
+	Collection<EObject> result = new ArrayList<EObject>();
+	for (Object elt : elements) {
+	  if (elt instanceof EObject) {
+		result.add((EObject) elt);
+	  }
+	}
+	return result;
   }
 
   /**
@@ -104,8 +125,8 @@ public class SortContentAction extends BaseSelectionListenerAction {
       return false;
     }
     for (Object selectedElement : selection_p.toList()) {
-      // Deal with capella elements only.
-      if (!(selectedElement instanceof CapellaElement)) {
+      // Deal with capella elements and Emde extensions.
+      if (!(CapellaResourceHelper.isSemanticElement(selectedElement))) {
         return false;
       }
     }

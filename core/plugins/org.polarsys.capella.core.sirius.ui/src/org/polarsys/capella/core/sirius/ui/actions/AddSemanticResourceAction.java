@@ -11,7 +11,6 @@
 
 package org.polarsys.capella.core.sirius.ui.actions;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -20,7 +19,6 @@ import java.util.List;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.window.Window;
@@ -29,8 +27,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * The action allowing to add a semantic resource in session(s).
@@ -54,19 +51,16 @@ public class AddSemanticResourceAction extends BaseSelectionListenerAction {
     Collection<URI> selectedResourcesURIs = selectResources();
     if ((null != selectedResourcesURIs) && !selectedResourcesURIs.isEmpty()) {
       // Gets all selected sessions.
-      List<Session> sessions = new ArrayList<Session>();
       Iterator<?> iterator = getStructuredSelection().iterator();
       while (iterator.hasNext()) {
         Object object = iterator.next();
         if (object instanceof Session) {
-          sessions.add((Session) object);
+          // Calls the command to add semantic resources.
+          TransactionalEditingDomain domain = TransactionHelper.getEditingDomain((Session) object);
+          RecordingCommand command = new AddSemanticResourceCommand(domain, "Add Semantic Resource", Collections.singletonList((Session) object), selectedResourcesURIs); //$NON-NLS-1$
+          domain.getCommandStack().execute(command);
         }
       }
-
-      // Calls the command to add semantic resources.
-      TransactionalEditingDomain transDomain = MDEAdapterFactory.getEditingDomain();
-      RecordingCommand command = new AddSemanticResourceCommand(transDomain, "Add Semantic Resource", sessions, selectedResourcesURIs); //$NON-NLS-1$
-      transDomain.getCommandStack().execute(command);
     }
   }
 

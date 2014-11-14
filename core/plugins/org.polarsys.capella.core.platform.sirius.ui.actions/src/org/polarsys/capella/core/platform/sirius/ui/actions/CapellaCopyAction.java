@@ -16,23 +16,23 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.ui.action.CopyAction;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.jface.viewers.StructuredViewer;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipboardCommand;
+import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
 
 /**
  */
-public class CapellaCopyAction extends CopyAction {
+public class CapellaCopyAction extends AbstractCommandActionHandler {
 
   private StructuredViewer _viewer;
 
   /**
    * @param editingDomain_p
    */
-  public CapellaCopyAction(TransactionalEditingDomain editingDomain_p, StructuredViewer viewer_p) {
-    super(editingDomain_p);
+  public CapellaCopyAction(StructuredViewer viewer_p) {
+    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Copy_menu_item"));
     _viewer = viewer_p;
   }
 
@@ -40,9 +40,9 @@ public class CapellaCopyAction extends CopyAction {
    * @see org.eclipse.emf.edit.ui.action.CopyAction#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<?> selection_p) {
+  public Command createCommand(Collection<Object> selection_p) {
     filterSelectedElements(selection_p);
-    return new CapellaCopyToClipboardCommand(domain, selection_p, _viewer);
+    return new CapellaCopyToClipboardCommand(TransactionHelper.getEditingDomain(filterSelection(selection_p)), selection_p, _viewer);
   }
 
   /**
@@ -62,4 +62,5 @@ public class CapellaCopyAction extends CopyAction {
       }
     }
   }
+
 }

@@ -15,13 +15,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
 
@@ -31,10 +31,10 @@ public class GetCCEIInsertInterfaceForLib extends AbstractQuery {
   public List<Object> execute(Object input, IQueryContext context) {
     List<Object> result = new ArrayList<Object>();
     EObject element = (EObject) input;
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(element);
-    Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-    for (IAbstractLibrary library : libraries) {
-      EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(element, (CapellaLibrary) library);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element);
+    Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+    for (IModel library : libraries) {
+      EObject correspondingInput = QueryExt.getCorrespondingElementInLibrary(element, (CapellaModel) library);
       result.addAll(QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_INTERFACES, correspondingInput, context));
     }
     return result;

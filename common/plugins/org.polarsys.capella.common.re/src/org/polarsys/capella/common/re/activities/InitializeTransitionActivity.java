@@ -17,8 +17,17 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.attachment.ReAttachmentHandler;
+import org.polarsys.capella.common.re.handlers.attributes.DefaultAttributeHandler;
+import org.polarsys.capella.common.re.handlers.location.DefaultLocationHandler;
+import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandler;
+import org.polarsys.capella.common.re.handlers.scope.DefaultDependenciesHandler;
+import org.polarsys.capella.common.re.handlers.scope.ScopeHandler;
+import org.polarsys.capella.common.re.handlers.scope.UnmodifiableElementsScopeRetriever;
+import org.polarsys.capella.common.re.handlers.selection.ReSelectionContext;
+import org.polarsys.capella.common.re.handlers.transformation.ReTransformationHandler;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
@@ -26,15 +35,7 @@ import org.polarsys.capella.core.transition.common.handlers.scope.CompoundScopeR
 import org.polarsys.capella.core.transition.common.handlers.selection.CompoundSelectionContextHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.config.TraceabilityConfiguration;
-import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.attachment.ReAttachmentHandler;
-import org.polarsys.capella.common.re.handlers.attributes.DefaultAttributeHandler;
-import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandler;
-import org.polarsys.capella.common.re.handlers.scope.DefaultDependenciesHandler;
-import org.polarsys.capella.common.re.handlers.scope.ScopeHandler;
-import org.polarsys.capella.common.re.handlers.scope.UnmodifiableElementsScopeRetriever;
-import org.polarsys.capella.common.re.handlers.selection.ReSelectionContext;
-import org.polarsys.capella.common.re.handlers.transformation.ReTransformationHandler;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -91,6 +92,17 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     }
 
     status = checkParameters(context_p, new String[] { IReConstants.ATTRIBUTE_HANDLER });
+    if (!checkStatus(status)) {
+      return status;
+    }
+
+    // Initialize handlers and source/target of transition
+    status = initializeLocationHandler(context_p, activityParams_p);
+    if (!checkStatus(status)) {
+      return status;
+    }
+
+    status = checkParameters(context_p, new String[] { IReConstants.LOCATION_HANDLER });
     if (!checkStatus(status)) {
       return status;
     }
@@ -173,6 +185,28 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
   }
 
   /**
+   * @param context_p
+   * @param activityParams_p
+   * @return
+   */
+  protected IStatus initializeLocationHandler(IContext context_p, ActivityParameters activityParams_p) {
+    IHandler handler = loadHandlerFromParameters(IReConstants.LOCATION_HANDLER, activityParams_p);
+    if (handler == null) {
+      handler = createDefaultLocationHandler();
+    }
+    context_p.put(IReConstants.LOCATION_HANDLER, handler);
+    handler.init(context_p);
+    return Status.OK_STATUS;
+  }
+
+  /**
+   * @return
+   */
+  protected IHandler createDefaultLocationHandler() {
+    return new DefaultLocationHandler();
+  }
+
+  /**
    * {@inheritDoc}
    */
   @Override
@@ -200,6 +234,14 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
     return new CompoundTraceabilityHandler(new TraceabilityConfiguration());
   }
 
+  /**
+   * In a common transition, 
+   * default use is where source and target resources are the same
+   * 
+   * TRANSITION_TARGET_RESOURCE = TRANSITION_SOURCE_RESOURCE
+   * TRANSITION_TARGET_EDITING_DOMAIN = editingDomain(TRANSITION_TARGET_RESOURCE)
+   * TRANSITION_TARGET_ROOT = TRANSITION_TARGET_RESOURCE.getContents().get(0) 
+   */
   @Override
   protected IStatus initializeTarget(IContext context_p, ActivityParameters activityParams_p) {
     // default transition, targetResource is same resource
@@ -208,6 +250,8 @@ public class InitializeTransitionActivity extends org.polarsys.capella.core.tran
 
     if ((outputResource != null) && (outputResource.getContents().size() != 0)) {
       context_p.put(ITransitionConstants.TRANSITION_TARGET_RESOURCE, outputResource);
+      context_p.put(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN, TransactionUtil.getEditingDomain(outputResource));
+
       EObject root = EcoreUtil.getRootContainer(outputResource.getContents().get(0));
       if (root != null) {
         context_p.put(ITransitionConstants.TRANSITION_TARGET_ROOT, root);

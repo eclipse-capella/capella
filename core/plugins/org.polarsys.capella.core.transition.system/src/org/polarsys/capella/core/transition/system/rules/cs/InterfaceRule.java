@@ -15,19 +15,18 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.IContextScopeHandler;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 public class InterfaceRule extends AbstractCapellaElementRule {
@@ -37,7 +36,6 @@ public class InterfaceRule extends AbstractCapellaElementRule {
     registerUpdatedAttribute(CsPackage.Literals.INTERFACE__MECHANISM);
     registerUpdatedAttribute(CapellacorePackage.Literals.GENERAL_CLASS__VISIBILITY);
     registerUpdatedAttribute(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL);
-
   }
 
   @Override

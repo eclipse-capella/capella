@@ -28,7 +28,7 @@ import org.eclipse.ui.actions.BaseSelectionListenerAction;
 
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCloneDiagramCommand.ICloneListener;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Clone action.
@@ -144,7 +144,7 @@ public class CloneAction extends BaseSelectionListenerAction {
     });
     // This is a special command that handles the undo/redo outside of the recording command implementation.
     // Thus is more adequate to execute it against the command stack directly, rather than use the default behavior.
-    MDEAdapterFactory.getEditingDomain().getCommandStack().execute(command);
+    TransactionHelper.getEditingDomain(_representations).getCommandStack().execute(command);
   }
 
   /**

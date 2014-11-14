@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.polarsys.capella.shared.id.handler.IScope;
 import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  */
@@ -41,7 +41,7 @@ public class SaxParserHelper {
     return result;
   }
 
-  public static EObject getEObjectFromHrefAttribute(String attValue_p) {
+  public static EObject getEObjectFromHrefAttribute(final EObject context_p, String attValue_p) {
     String[] split = attValue_p.split("hlink://"); //$NON-NLS-1$
     EObject eObject = null;
     if (split.length == 2) {
@@ -49,7 +49,7 @@ public class SaxParserHelper {
       eObject = IdManager.getInstance().getEObject(id, new IScope() {
         @Override
         public List<Resource> getResources() {
-          return MDEAdapterFactory.getResourceSet().getResources();
+          return TransactionHelper.getEditingDomain(context_p).getResourceSet().getResources();
         }
       });
     }

@@ -17,10 +17,13 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.helpers.query.MDEQueries;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
@@ -28,8 +31,6 @@ import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PaPackage;
@@ -38,8 +39,6 @@ import org.polarsys.capella.core.data.requirement.Requirement;
 import org.polarsys.capella.core.data.requirement.RequirementsPkg;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.model.utils.ListExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */
@@ -48,7 +47,8 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
   /**
    * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
    */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  @Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 
     if ((element_p instanceof OperationalAnalysis) || EcoreUtil2.isContainedBy(element_p, OaPackage.Literals.OPERATIONAL_ANALYSIS)) {
@@ -138,7 +138,8 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
   /**
    * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement, boolean)
    */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+  @Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
 
     for (AbstractTrace trace : element_p.getOutgoingTraces()) {
@@ -152,11 +153,13 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
     return currentElements;
   }
 
-  public EClass getEClass() {
+  @Override
+	public EClass getEClass() {
     return CapellacorePackage.Literals.CAPELLA_ELEMENT;
   }
 
-  public List<EReference> getEStructuralFeatures() {
+  @Override
+	public List<EReference> getEStructuralFeatures() {
     return Collections.singletonList(ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES);
   }
 

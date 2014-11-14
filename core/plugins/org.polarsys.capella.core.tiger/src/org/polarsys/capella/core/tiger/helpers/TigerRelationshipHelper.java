@@ -804,7 +804,7 @@ public class TigerRelationshipHelper {
    * Retrieve the transitioned elements of the given object_p with the given clazz or the object_p if it isn't yet transitioned
    */
   @SuppressWarnings("unchecked")
-  protected static Collection<EObject> retrieveBestElements(EObject source_p, EObject object_p, EClass clazz, ITransfo transfo_p) {
+  public static Collection<EObject> retrieveBestElements(EObject source_p, EObject object_p, EClass clazz, ITransfo transfo_p) {
     Collection<EObject> objects = (Collection<EObject>) Query.retrieveTransformedElements(object_p, transfo_p, clazz);
     Collection<EObject> result = new LinkedList<EObject>();
 
@@ -829,7 +829,7 @@ public class TigerRelationshipHelper {
    * Returns the given reference value as a list of elements
    */
   @SuppressWarnings("unchecked")
-  protected static Collection<EObject> retrieveReferenceAsList(EObject object_p, EReference reference_p) {
+  public static Collection<EObject> retrieveReferenceAsList(EObject object_p, EReference reference_p) {
     Object sourceReference = object_p.eGet(reference_p);
     if (sourceReference instanceof Collection<?>) {
       return (Collection<EObject>) sourceReference;

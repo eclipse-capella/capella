@@ -12,7 +12,7 @@ package org.polarsys.capella.core.data.cs.ui.quickfix.resolver.command;
 
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 public class EditComponent extends AbstractReadWriteCommand {
   private Component element;

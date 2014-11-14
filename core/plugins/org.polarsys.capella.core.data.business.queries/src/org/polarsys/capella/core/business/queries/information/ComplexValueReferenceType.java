@@ -17,94 +17,28 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery;
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
-import org.polarsys.capella.core.business.abstractqueries.helpers.CapellaElementsHelperForBusinessQueries;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
-import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.datavalue.ComplexValueReference;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 /**
  * This is the query for CollectionValueReference types.
  */
-public class ComplexValueReferenceType extends CapellaElement_CurrentAndHigherLevelsQuery implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery {
+public class ComplexValueReferenceType extends CapellaElement_CurrentAndHigherLevelsQuery implements IBusinessQuery {
 
-  public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element_p);
-    SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element_p);
-    OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
-    returnValue.addAll(getDataFromLevel(operationalAnalysis, element_p));
-    if (!(currentBlockArchitecture instanceof OperationalAnalysis)) {
-      SystemAnalysis systemAnalysis = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-      returnValue.addAll(getDataFromLevel(systemAnalysis, element_p));
-      if (!(currentBlockArchitecture instanceof SystemAnalysis)) {
-        LogicalArchitecture logicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-        returnValue.addAll(getDataFromLevel(logicalArchitecture, element_p));
-        if (!(currentBlockArchitecture instanceof LogicalArchitecture)) {
-          PhysicalArchitecture physicalArchitecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-          returnValue.addAll(getDataFromLevel(physicalArchitecture, element_p));
-          if (!(currentBlockArchitecture instanceof PhysicalArchitecture)) {
-            EPBSArchitecture epbsArchitecture = SystemEngineeringExt.getEPBSArchitecture((systemEngineering));
-            returnValue.addAll(getDataFromLevel(epbsArchitecture, element_p));
-          }
-        }
-      }
-    }
-    returnValue.addAll(getUnlevelizedData(element_p));
-    returnValue.addAll(getDataFromComponentHierarchy(element_p));
-    returnValue.addAll(getDataFromRealizedComponentsHierarchy(element_p));
-    returnValue.addAll(getTypesFromComponentHierarchy(element_p));
-    returnValue = filterUnNamedElements(returnValue);
-    return returnValue;
-  }
-
-  public List<CapellaElement> getOldCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (!systemEngineeringExists(element_p)) {
-      return currentElements;
-    }
-    if (element_p instanceof ComplexValueReference) {
-      ComplexValueReference complex = (ComplexValueReference) element_p;
-      Classifier type = complex.getComplexType();
-      if (null != type) {
-        currentElements.add(type);
-      }
-    }
-    return currentElements;
-  }
-
-  public EClass getEClass() {
+  @Override
+	public EClass getEClass() {
     return DatavaluePackage.Literals.COMPLEX_VALUE_REFERENCE;
   }
 
-  public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
-  }
-
   @Override
-  public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-
-    // all collections avoiding the current one
-    returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg_p, InformationPackage.Literals.COLLECTION, capellaElement_p));
-    returnValue.addAll(CapellaElementsHelperForBusinessQueries.getCapellaElementsInstancesOf(dataPkg_p, InformationPackage.Literals.CLASS, capellaElement_p));
-
-    return returnValue;
+	public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
   }
 
   @Override
@@ -115,13 +49,15 @@ public class ComplexValueReferenceType extends CapellaElement_CurrentAndHigherLe
     types.add(InformationPackage.Literals.COLLECTION);
     types.add(InformationPackage.Literals.CLASS);
     parameters.add(types);
-    return RefactorDebugger.callAndTestQuery(
-        "GetAvailable_DataValue_AbstractType__Lib", parameters, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__DATA_VALUE__ABSTRACT_TYPE___LIB, parameters, context);
   }
 
   @Override
   public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    return RefactorDebugger.callAndTestQuery(
-        "GetCurrent_ComplexValueReferenceType", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COMPLEX_VALUE_REFERENCE_TYPE, element_p, context);
   }
 }

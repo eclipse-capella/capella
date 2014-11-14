@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.ui.fastlinker.view;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +42,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-
+import org.polarsys.capella.core.ui.fastlinker.view.providers.FastLinkerLabelProvider;
 import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
 import org.polarsys.capella.core.model.links.helpers.LinkInfo;
 import org.polarsys.capella.core.model.links.helpers.LinkInfo.LinkStyle;
@@ -140,9 +141,9 @@ public class FastLinkerFigureCanvas extends FigureCanvas implements ISelectionPr
 
   protected final Figure _fastLinkerFigure;
 
-  protected final Map<IFigure, ModelElement> _figureToModelElement;
-
-  protected final CapellaElementLabelProvider _capellaElementLabelProvider;
+  protected final Map<IFigure, Collection> _figureToModelElement;
+protected final FastLinkerLabelProvider _capellaElementLabelProvider;
+  
 
   protected IFigure _selectedFigure;
 
@@ -157,12 +158,12 @@ public class FastLinkerFigureCanvas extends FigureCanvas implements ISelectionPr
   public FastLinkerFigureCanvas(Composite parent_p, int style) {
     super(parent_p, style);
 
-    _figureToModelElement = new HashMap<IFigure, ModelElement>();
+    _figureToModelElement = new HashMap<IFigure, Collection>();
     _selectionListeners = new ArrayList<ISelectionChangedListener>();
     _doubleClickListeners = new ArrayList<IDoubleClickListener>();
 
     // Label provider for ModelElements displayed in the view.
-    _capellaElementLabelProvider = new CapellaElementLabelProvider();
+    _capellaElementLabelProvider = new FastLinkerLabelProvider();
 
     _fastLinkerFigure = new Figure();
     setContents(_fastLinkerFigure);
@@ -211,7 +212,7 @@ public class FastLinkerFigureCanvas extends FigureCanvas implements ISelectionPr
     return connection;
   }
 
-  protected Label createModelElementFigure(ModelElement modelElement_p, boolean displayInBold_p) {
+  protected Label createModelElementFigure(Collection modelElement_p, boolean displayInBold_p) {
     Label modelElementFigure = new Label(_capellaElementLabelProvider.getText(modelElement_p), _capellaElementLabelProvider.getImage(modelElement_p));
     if (displayInBold_p) {
       // Get the BOLD font from the FontRegistry.
@@ -222,7 +223,7 @@ public class FastLinkerFigureCanvas extends FigureCanvas implements ISelectionPr
     return modelElementFigure;
   }
 
-  public void fillFigure(ModelElement firstElement_p, ModelElement secondElement_p, ModelElement pinnedElement_p, LinkInfo linkRepresentation_p) {
+  public void fillFigure(Collection firstElement_p, Collection secondElement_p, Collection pinnedElement_p, LinkInfo linkRepresentation_p) {
     _figureToModelElement.clear();
     _fastLinkerFigure.removeAll();
     _selectedFigure = null;
@@ -244,14 +245,21 @@ public class FastLinkerFigureCanvas extends FigureCanvas implements ISelectionPr
 
     if (null != linkRepresentation_p) {
       IFigure connection = null;
-      if ((linkRepresentation_p._sourceElement == firstElement_p) && (linkRepresentation_p._targetElement == secondElement_p)) {
-        connection = createConnection(firstElementFigure, secondElementFigure, linkRepresentation_p._linkStyle);
-      } else if ((linkRepresentation_p._sourceElement == secondElement_p) && (linkRepresentation_p._targetElement == firstElement_p)) {
-        connection = createConnection(secondElementFigure, firstElementFigure, linkRepresentation_p._linkStyle);
-      }
-      if (null != connection) {
-        _fastLinkerFigure.add(connection);
-      }
+			if (firstElement_p != null && (firstElement_p.contains(linkRepresentation_p._sourceElement))
+					&& secondElement_p != null && (secondElement_p
+							.contains(linkRepresentation_p._targetElement))) {
+				connection = createConnection(firstElementFigure,
+						secondElementFigure, linkRepresentation_p._linkStyle);
+			} else if (secondElement_p != null && (secondElement_p
+					.contains(linkRepresentation_p._sourceElement))
+					&& firstElement_p != null && (firstElement_p
+							.contains(linkRepresentation_p._targetElement))) {
+				connection = createConnection(secondElementFigure,
+						firstElementFigure, linkRepresentation_p._linkStyle);
+			}
+			if (null != connection) {
+				_fastLinkerFigure.add(connection);
+			}
     }
   }
 

@@ -6,8 +6,7 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-localization: plugin
-Require-Bundle: org.polarsys.capella.common.tig.efprovider,
- org.eclipse.sirius.ui,
+Require-Bundle: org.eclipse.sirius.ui,
  org.eclipse.sirius.common,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius.ecore.extender,
@@ -25,7 +24,11 @@ Require-Bundle: org.polarsys.capella.common.tig.efprovider,
  org.polarsys.capella.core.preferences,
  org.eclipse.sirius.diagram.layoutdata;visibility:=reexport,
  org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.core.libraries
+ org.polarsys.capella.core.libraries,
+ org.eclipse.sirius.ext.base,
+ org.eclipse.sirius.diagram.ui,
+ com.google.guava,
+ org.eclipse.sirius.diagram.sequence;bundle-version="2.0.0"
 Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.actions,
  org.polarsys.capella.core.sirius.ui.copylayout,
@@ -37,4 +40,4 @@ Export-Package: org.polarsys.capella.core.sirius.ui,
  org.polarsys.capella.core.sirius.ui.session
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.polarsys.capella.core.sirius.ui.SiriusUIPlugin
-Bundle-Localization: plugin
+

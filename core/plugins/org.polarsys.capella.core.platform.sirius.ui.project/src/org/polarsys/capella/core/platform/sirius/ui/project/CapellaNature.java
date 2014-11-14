@@ -14,8 +14,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  * The Capella nature.
@@ -24,13 +25,14 @@ public class CapellaNature extends ModelingProject {
   /**
    * The Capella nature identifier.
    */
-  public static final String ID = "org.polarsys.capella.project.nature"; //$NON-NLS-1$
+  public static final String ID = CapellaResourceHelper.CAPELLA_PROJECT_NATURE;
 
   /**
    * Get the corresponding Modeling project.
    * @param project The original project
    * @return an optional ModelingProject (none if this project is not a modeling project).
    */
+  @Deprecated
   public static Option<CapellaNature> asCapellaProject(IProject project) {
     IProjectNature nature = null;
 

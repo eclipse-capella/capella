@@ -451,7 +451,7 @@ public class StateItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS ||
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
 			childFeature == CapellacommonPackage.Literals.STATE__STATE_INVARIANT;
 
 		if (qualify) {

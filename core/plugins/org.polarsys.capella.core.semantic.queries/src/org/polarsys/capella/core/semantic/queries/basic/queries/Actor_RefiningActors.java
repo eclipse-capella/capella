@@ -26,9 +26,9 @@ import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActor;
 import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * This query allows to get the actor(s) refining the current actor.
@@ -41,7 +41,7 @@ public class Actor_RefiningActors implements IQuery {
   public List<Object> compute(Object object_p) {
     List<Object> result = new ArrayList<Object>();
     // gets the Semantic Editing Domain
-    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain((EObject) object_p);
     // Gets the Cross Referencer
     ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
     Collection<Setting> inverseReferences = crossReferencer.getInverseReferences((EObject) object_p);

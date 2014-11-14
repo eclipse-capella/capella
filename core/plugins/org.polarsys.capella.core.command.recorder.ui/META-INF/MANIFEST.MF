@@ -10,7 +10,6 @@ Require-Bundle: org.polarsys.capella.core.command.recorder,
  org.polarsys.capella.common.command.recorder.ui,
  org.eclipse.sirius,
  org.polarsys.capella.core.platform.sirius.ui.navigator
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.command.recorder.ui.handler
-Bundle-Localization: plugin

@@ -30,8 +30,7 @@ import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.ui.progress.UIJob;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SiriusSessionListener;
+import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 
 /**
  * A content provider which doens't sent async refresh of ui for each notification.
@@ -50,13 +49,11 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
    */
   public GroupedAdapterFactoryContentProvider(AdapterFactory adapterFactory_p) {
     super(adapterFactory_p);
-    registerResourceSetListener();
   }
 
   protected ResourceSetListener getListener() {
     if (listener == null) {
       listener = new ResourceSetListenerImpl() {
-
         /**
          * {@inheritDoc}
          */
@@ -75,7 +72,6 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
             runRefresh();
           }
         }
-
       };
     }
     return listener;
@@ -86,10 +82,10 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
    * @return
    */
   protected boolean refreshRequired(ResourceSetChangeEvent event_p) {
-    if (SiriusSessionListener.getInstance().isOpeningSession()) {
+    if (SiriusSessionListener.isOpeningSession(event_p.getEditingDomain())) {
       return false;
     }
-    if (SiriusSessionListener.getInstance().isClosingSession()) {
+    if (SiriusSessionListener.isClosingSession(event_p.getEditingDomain())) {
       return false;
     }
 
@@ -115,7 +111,7 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     }
   }
 
-  protected void runRefresh() {
+  public void runRefresh() {
     if ((viewer != null) && (viewer.getControl() != null) && !viewer.getControl().isDisposed()) {
 
       UIJob job = new UIJob(viewer.getControl().getDisplay(), Messages.GroupedAdapterFactoryContentProvider_RefreshViewer) {
@@ -202,10 +198,6 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
     addNotification(notification_p);
   }
 
-  protected void registerResourceSetListener() {
-    MDEAdapterFactory.getEditingDomain().addResourceSetListener(getListener());
-  }
-
   /**
    * Name change notification
    */
@@ -265,15 +257,15 @@ public class GroupedAdapterFactoryContentProvider extends AdapterFactoryContentP
       // Based on Thinking In Java book : Overriding hashCode( ) chapter 11
       int result = 17;
       if (_notifierReference.get() != null) {
-        result = 37 * result + _notifierReference.get().hashCode();
+        result = (37 * result) + _notifierReference.get().hashCode();
       }
       if (_featureReference.get() != null) {
-        result = 37 * result + _featureReference.get().hashCode();
+        result = (37 * result) + _featureReference.get().hashCode();
       }
       if (_newValueReference.get() != null) {
-        result = 37 * result + _newValueReference.get().hashCode();
+        result = (37 * result) + _newValueReference.get().hashCode();
       }
-      result = 37 * result + _eventType;
+      result = (37 * result) + _eventType;
       return result;
     }
   }

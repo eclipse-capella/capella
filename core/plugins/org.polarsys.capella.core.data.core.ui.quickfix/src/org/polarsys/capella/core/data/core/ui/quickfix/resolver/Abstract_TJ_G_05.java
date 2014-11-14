@@ -17,18 +17,17 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Rename source or target name
@@ -44,7 +43,7 @@ public abstract class Abstract_TJ_G_05 extends AbstractCapellaMarkerResolution {
     final List<EObject> modelElements = getModelElements(marker_p);
     final boolean[] flag = { false };
     if (!modelElements.isEmpty()) {
-      final Object obj = modelElements.get(0);
+      final EObject obj = modelElements.get(0);
       AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
 
         @Override
@@ -86,7 +85,7 @@ public abstract class Abstract_TJ_G_05 extends AbstractCapellaMarkerResolution {
       };
 
       // execute the command
-      MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+      TransactionHelper.getExecutionManager(obj).execute(abstrctCommand);
       if (flag[0]) {
         try {
           marker_p.delete();

@@ -55,21 +55,21 @@
                name="Access Policies">
          </group>
          <property
-               class="org.polarsys.capella.core.libraries.flexibilityProperties.ReferencesProperty"
+               class="org.polarsys.capella.core.libraries.properties.ReferencesProperty"
                enabled="true"
                group="org.polarsys.capella.core.libraries.manageReferences.group"
                id="org.polarsys.capella.core.libraries.manageReferences.referenceProperty"
                name="Referenced Libraries">
          </property>
          <property
-               class="org.polarsys.capella.core.libraries.flexibilityProperties.ActiveStateProperty"
+               class="org.polarsys.capella.core.libraries.properties.ActiveStateProperty"
                enabled="true"
                group="org.polarsys.capella.core.libraries.activeStates.group"
                id="org.polarsys.capella.core.libraries.manageReferences.activeStateProperty"
                name="Library States Configuration">
          </property>
          <property
-               class="org.polarsys.capella.core.libraries.flexibilityProperties.AccessPolicyProperty"
+               class="org.polarsys.capella.core.libraries.properties.AccessPolicyProperty"
                enabled="true"
                group="org.polarsys.capella.core.libraries.accessPolicies.group"
                id="org.polarsys.capella.core.libraries.manageReferences.accessPolicyProperty"
@@ -79,28 +79,16 @@
    </extension>
    
    <extension
-         point="org.eclipse.ui.handlers">
-      <handler
-            class="org.polarsys.capella.core.libraries.commands.ManageReferencedLibrariesCommand"
-            commandId="org.polarsys.capella.core.libraries.commands.manageReferences">
-      </handler>
-      <handler
-            class="org.polarsys.capella.core.libraries.commands.ManageLibraryVersionCommand"
-            commandId="org.polarsys.capella.core.libraries.commands.manageVersion">
-         <activeWhen>
-            <equals
-                  value="false">
-            </equals>
-         </activeWhen>
-      </handler>
+         point="org.polarsys.capella.common.libraries.providers">
+      <provider
+            class="org.polarsys.capella.core.libraries.provider.CapellaWorkspaceProvider">
+      </provider>
    </extension>
-   
    <extension
-         point="org.polarsys.capella.common.queries.query">
-      <querySpecification
-            queryIdentifier="org.polarsys.capella.common.libraries.libraryManager">
-         <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.manager.LibraryManagerProvider"></queryAlgorithm>
-      </querySpecification>
+         point="org.polarsys.capella.common.platform.sirius.ted.derivedSemanticResourceProvider">
+      <derivedSemanticResourceProvider
+            class="org.polarsys.capella.core.libraries.provider.LibrariesDerivedSemanticResourceProvider">
+      </derivedSemanticResourceProvider>
    </extension>
 
 </plugin>

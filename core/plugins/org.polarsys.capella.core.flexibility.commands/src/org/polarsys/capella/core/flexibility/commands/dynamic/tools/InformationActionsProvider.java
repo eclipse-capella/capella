@@ -31,7 +31,17 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
+import org.polarsys.capella.common.data.activity.ActivityEdge;
+import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
@@ -43,22 +53,11 @@ import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
 import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
 import org.polarsys.capella.core.flexibility.commands.helpers.EObjectHelper;
-import org.polarsys.capella.common.data.activity.ActivityEdge;
-import org.polarsys.capella.common.data.activity.ActivityPackage;
-import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */
@@ -560,7 +559,10 @@ public class InformationActionsProvider implements IActionsProvider {
             getLinkTo(object_p,
                 new EReference[] { CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, CapellacommonPackage.Literals.STATE_TRANSITION__TARGET }, d);
         result +=
-            getSetTo(object_p, new EAttribute[] { CapellacommonPackage.Literals.STATE_TRANSITION__GUARD, CapellacommonPackage.Literals.STATE_TRANSITION__KIND },
+            getLinkTo(object_p, new EReference[] { CapellacommonPackage.Literals.STATE_TRANSITION__GUARD },
+                d);
+        result +=
+            getSetTo(object_p, new EAttribute[] { CapellacommonPackage.Literals.STATE_TRANSITION__KIND },
                 d);
 
       }

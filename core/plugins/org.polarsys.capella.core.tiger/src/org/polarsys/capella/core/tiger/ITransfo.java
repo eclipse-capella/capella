@@ -49,6 +49,13 @@ public interface ITransfo extends Map<String, Object> {
   public abstract void loadRules(String rulePkgName_p, String[] classNames_p) throws ClassNotFoundException;
 
   /**
+   * @param rulePkgName_p
+   * @throws ClassNotFoundException
+   * @see org.polarsys.capella.core.tiger.impl.TransfoRuleBase#loadRules(java.lang.String)
+   */
+  public abstract void loadRules(String rulePkgName_p) throws ClassNotFoundException;
+
+  /**
    * 
    * @param element_p
    * @param transfo_p

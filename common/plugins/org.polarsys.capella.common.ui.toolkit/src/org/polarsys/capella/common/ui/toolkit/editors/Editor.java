@@ -26,16 +26,13 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
-
 import org.polarsys.capella.common.ui.toolkit.fields.MdeFieldEditor;
 import org.polarsys.capella.common.ui.toolkit.viewers.FieldsViewer;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * The generic editor. Editors are Eclipse wizards and they contain only one page.
  */
-public class Editor extends Wizard {
+public abstract class Editor extends Wizard {
   // The editor page.
   public EditorPage _page;
   // The element store.
@@ -59,22 +56,6 @@ public class Editor extends Wizard {
     addPage(_page);
     _page.setPageComplete(true);
   }
-
-  /**
-   * @see Wizard#performFinish()
-   */
-  @Override
-  public boolean performFinish() {
-	  // JPE TIG modification : the store must be done in the context of a transaction
-    MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand(){
-  		public void run() {
-  			_page.store();
-  		}
-	  });
-//    _page.store(); 
-    return true;
-  }
-
 
   /**
    * Sets the current editor enable or not.

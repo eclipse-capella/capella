@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.provider.AbstractDependenciesPkgItemProvider;
 import org.polarsys.capella.core.data.information.DataPkg;
@@ -138,6 +139,7 @@ public class DataPkgItemProvider
 			childrenFeatures.add(InformationPackage.Literals.DATA_PKG__OWNED_SIGNALS);
 			childrenFeatures.add(InformationPackage.Literals.DATA_PKG__OWNED_MESSAGES);
 			childrenFeatures.add(InformationPackage.Literals.DATA_PKG__OWNED_EXCEPTIONS);
+			childrenFeatures.add(InformationPackage.Literals.DATA_PKG__OWNED_STATE_EVENTS);
 		}
 		return childrenFeatures;
 	}
@@ -218,6 +220,7 @@ public class DataPkgItemProvider
 			case InformationPackage.DATA_PKG__OWNED_SIGNALS:
 			case InformationPackage.DATA_PKG__OWNED_MESSAGES:
 			case InformationPackage.DATA_PKG__OWNED_EXCEPTIONS:
+			case InformationPackage.DATA_PKG__OWNED_STATE_EVENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -611,6 +614,30 @@ public class DataPkgItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (InformationPackage.Literals.DATA_PKG__OWNED_EXCEPTIONS,
                          CommunicationFactory.eINSTANCE.createException());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (InformationPackage.Literals.DATA_PKG__OWNED_STATE_EVENTS,
+                         CapellacommonFactory.eINSTANCE.createChangeEvent());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (InformationPackage.Literals.DATA_PKG__OWNED_STATE_EVENTS,
+                         CapellacommonFactory.eINSTANCE.createTimeEvent());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

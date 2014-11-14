@@ -34,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.util.InteractionAdapterFactory;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -806,6 +806,29 @@ public class InteractionItemProviderAdapterFactory extends InteractionAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SequenceMessageValuationItemProvider sequenceMessageValuationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.interaction.SequenceMessageValuation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSequenceMessageValuationAdapter() {
+		if (sequenceMessageValuationItemProvider == null) {
+			sequenceMessageValuationItemProvider = new SequenceMessageValuationItemProvider(this);
+		}
+
+		return sequenceMessageValuationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -962,6 +985,7 @@ public class InteractionItemProviderAdapterFactory extends InteractionAdapterFac
 		if (armTimerEventItemProvider != null) armTimerEventItemProvider.dispose();
 		if (cancelTimerEventItemProvider != null) cancelTimerEventItemProvider.dispose();
 		if (constraintDurationItemProvider != null) constraintDurationItemProvider.dispose();
+		if (sequenceMessageValuationItemProvider != null) sequenceMessageValuationItemProvider.dispose();
 	}
 
 }

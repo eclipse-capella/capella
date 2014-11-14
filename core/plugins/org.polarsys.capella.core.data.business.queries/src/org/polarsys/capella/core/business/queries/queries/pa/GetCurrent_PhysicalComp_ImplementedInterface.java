@@ -10,40 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.pa;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Component_ImplementedInterfaces;
 
-import org.polarsys.capella.common.queries.AbstractQuery;
-import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
+@Deprecated
+public class GetCurrent_PhysicalComp_ImplementedInterface extends GetCurrent_Component_ImplementedInterfaces {
 
-public class GetCurrent_PhysicalComp_ImplementedInterface extends AbstractQuery {
-
-  @Override
-  public List<Object> execute(Object input, IQueryContext context) {
-    CapellaElement capellaElement = (CapellaElement) input;
-    List<CapellaElement> currentElements = getCurrentElements(capellaElement, false);
-    return (List) currentElements;
-  }
-
-  /**
-   * <p>
-   * Gets all the interfaces that are implemented by the current Physical Component.
-   * </p>
-   * <p>
-   * Refer MQRY_ PhysicalComponent_ImplInterfaces_1
-   * </p>
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
-   */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof PhysicalComponent) {
-      PhysicalComponent currentPC = (PhysicalComponent) element_p;
-      currentElements.addAll(ComponentExt.getImplementedInterfaces(currentPC));
-    }
-    return currentElements;
-  }
+  //Nothing more than this class definition
 
 }

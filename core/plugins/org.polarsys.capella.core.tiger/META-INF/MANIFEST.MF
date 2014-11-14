@@ -4,9 +4,8 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.tiger;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
- org.polarsys.capella.common.tig.efprovider;visibility:=reexport,
  org.polarsys.capella.common.ui.services;visibility:=reexport,
  org.polarsys.capella.core.model.handler;visibility:=reexport
 Export-Package: org.polarsys.capella.core.tiger;
@@ -28,6 +27,6 @@ Export-Package: org.polarsys.capella.core.tiger;
    org.eclipse.emf.ecore",
  org.polarsys.capella.core.tiger.impl
 Bundle-Activator: org.polarsys.capella.core.tiger.Activator
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Eclipse-BuddyPolicy: registered
 Bundle-Localization: plugin

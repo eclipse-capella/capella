@@ -19,10 +19,9 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  *
@@ -44,24 +43,30 @@ public class RemoveInstanceRoles implements IExternalJavaAction {
    */
   @SuppressWarnings("unchecked")
   public void execute(Collection<? extends EObject> selections_p, Map<String, Object> parameters_p) {
-	  if (parameters_p.get(RESULT) instanceof String) return; // canceled
-    List<EObject> result = (List<EObject>)parameters_p.get(RESULT);
-    List<EObject>current = (List<EObject>) parameters_p.get(CURRENT);
+    if (parameters_p.get(RESULT) instanceof String) {
+      return; // canceled
+    }
+    List<EObject> result = (List<EObject>) parameters_p.get(RESULT);
+    List<EObject> current = (List<EObject>) parameters_p.get(CURRENT);
 
-    if (result==null) result = new ArrayList<EObject>();
-    if (current==null) current = new ArrayList<EObject>();
+    if (result == null) {
+      result = new ArrayList<EObject>();
+    }
+    if (current == null) {
+      current = new ArrayList<EObject>();
+    }
 
     Set<InstanceRole> irToRemove = new HashSet<InstanceRole>();
     for (EObject obj : current) {
       if (obj instanceof InstanceRole) {
         InstanceRole ir = (InstanceRole) obj;
-        if (! result.contains(ir.getRepresentedInstance())) {
+        if (!result.contains(ir.getRepresentedInstance())) {
           irToRemove.add(ir);
         }
-      }      
+      }
     }
-    
-    CapellaDeleteCommand mdc = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), irToRemove, false, false, true);
+
+    CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(selections_p), irToRemove, false, false, true);
     if (mdc.canExecute()) {
       // Do execute the command !
       mdc.execute();

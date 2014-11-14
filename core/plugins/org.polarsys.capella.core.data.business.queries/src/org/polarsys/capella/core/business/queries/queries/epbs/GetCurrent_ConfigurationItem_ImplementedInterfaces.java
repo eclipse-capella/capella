@@ -13,11 +13,11 @@ package org.polarsys.capella.core.business.queries.queries.epbs;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class GetCurrent_ConfigurationItem_ImplementedInterfaces extends AbstractQuery {
 

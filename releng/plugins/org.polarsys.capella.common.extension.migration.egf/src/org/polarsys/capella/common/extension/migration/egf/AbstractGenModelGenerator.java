@@ -445,7 +445,6 @@ public abstract class AbstractGenModelGenerator extends AbstractGenerator {
   }
 
   /**
-   * Code copied from ModelConverterPackagePage.addExternalGenModels class provided by org.eclipse.emf.converter.ui.contribution.base plug-in.
    * Add external genModels into given list.
    * @param genModels_p must be not null.
    */

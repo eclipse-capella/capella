@@ -7,8 +7,8 @@ Bundle-Activator: org.polarsys.capella.core.refinement.merge.ui.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.refinement.merge;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.refinement.merge.ui,
  org.polarsys.capella.core.refinement.merge.ui.viewer
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

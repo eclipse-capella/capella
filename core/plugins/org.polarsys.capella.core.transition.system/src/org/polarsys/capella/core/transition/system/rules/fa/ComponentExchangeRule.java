@@ -15,7 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -29,7 +29,6 @@ import org.polarsys.capella.core.transition.common.handlers.attachment.Attachmen
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 
@@ -39,6 +38,8 @@ public class ComponentExchangeRule extends AbstractCapellaElementRule {
     super();
     registerUpdatedAttribute(FaPackage.Literals.COMPONENT_EXCHANGE__KIND);
     registerUpdatedAttribute(FaPackage.Literals.COMPONENT_EXCHANGE__ORIENTED);
+
+    registerUpdatedReference(ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__CONVOYED_INFORMATIONS);
   }
 
   @Override

@@ -29,9 +29,6 @@ public class RemoveSuperTypesFilter implements IQueryFilter {
   public boolean keepElement(Object object, IQueryContext context_p) {
     if (object instanceof GeneralizableElement) {
       GeneralizableElement genElt = (GeneralizableElement) object;
-      for (GeneralizableElement elt : GeneralizableElementExt.getAllSuperGeneralizableElements(currentElement)) {
-        System.out.println(elt);
-      }
       return !GeneralizableElementExt.getAllSuperGeneralizableElements(currentElement).contains(genElt);
     }
     return true;

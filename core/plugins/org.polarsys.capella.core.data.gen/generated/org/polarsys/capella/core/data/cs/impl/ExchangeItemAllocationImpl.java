@@ -30,7 +30,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -50,7 +50,6 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getInvokingSequenceMessages <em>Invoking Sequence Messages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.ExchangeItemAllocationImpl#getSendProtocol <em>Send Protocol</em>}</li>
@@ -83,24 +82,6 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
-
-
-
-
 
 
 
@@ -258,24 +239,6 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @generated
 	 */
 
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public EList<SequenceMessage> getInvokingSequenceMessages() {
 
 
@@ -296,10 +259,10 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.ABSTRACT_EVENT_OPERATION__INVOKING_SEQUENCE_MESSAGES, annotation);
 		
 		try {
@@ -505,10 +468,10 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATING_INTERFACE, annotation);
 		
 		try {
@@ -529,26 +492,10 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
 				return getName();
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES:
 				return getInvokingSequenceMessages();
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
@@ -584,10 +531,6 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 				// begin-extension-code
 				}
 				// end-extension-code
-				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
 				// begin-extension-code
@@ -641,9 +584,6 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
 				setFinal(FINAL_EDEFAULT);
 				return;
@@ -672,8 +612,6 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 		switch (featureID) {
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__INVOKING_SEQUENCE_MESSAGES:
 				return !getInvokingSequenceMessages().isEmpty();
 			case CsPackage.EXCHANGE_ITEM_ALLOCATION__FINAL:
@@ -701,7 +639,6 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -735,7 +672,6 @@ public class ExchangeItemAllocationImpl extends RelationshipImpl implements Exch
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return CsPackage.EXCHANGE_ITEM_ALLOCATION__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return CsPackage.EXCHANGE_ITEM_ALLOCATION__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}

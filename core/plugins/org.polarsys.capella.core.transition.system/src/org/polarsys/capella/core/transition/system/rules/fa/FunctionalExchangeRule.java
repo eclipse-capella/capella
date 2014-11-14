@@ -16,7 +16,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -28,11 +28,15 @@ import org.polarsys.capella.core.transition.common.handlers.attachment.Attachmen
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
-import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 
 public class FunctionalExchangeRule extends AbstractCapellaElementRule {
+
+  public FunctionalExchangeRule() {
+    super();
+    registerUpdatedReference(FaPackage.Literals.FUNCTIONAL_EXCHANGE__EXCHANGED_ITEMS);
+  }
 
   @Override
   protected EClass getSourceType() {

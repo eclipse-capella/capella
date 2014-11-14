@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -64,7 +65,7 @@ public class OpenRepresentationsRunnable implements IRunnableWithProgress {
 
         // Opens the editor.
         if (null != session) {
-          IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation);
+          IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
           if (null != part) {
             // Arrange all.
             if (_arrangeAll && (part instanceof DiagramEditor)) {

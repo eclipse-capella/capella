@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.launcher;
 
-import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
-import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
-import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
 import org.polarsys.capella.common.re.activities.AttachmentActivity;
 import org.polarsys.capella.common.re.activities.DifferencesComputingActivity;
 import org.polarsys.capella.common.re.activities.FinalizeTransitionActivity;
@@ -22,6 +19,10 @@ import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.rpl2re.activities.DifferencesFilteringActivity;
 import org.polarsys.capella.common.re.rpl2re.activities.InitializeDiffMergeUpdateReActivity;
 import org.polarsys.capella.common.re.rpl2re.activities.InitializeTransitionActivity;
+import org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity;
+import org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity;
+import org.polarsys.capella.core.transition.common.launcher.ILoopActivityDispatcher;
+import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
 
 /**
  */
@@ -40,6 +41,11 @@ public class UpdateCurLauncher extends ReLauncher {
   @Override
   protected String getKind() {
     return IReConstants.COMMAND__UPDATE_CURRENT_REPLICA_FROM_REPLICA;
+  }
+
+  @Override
+  public ILoopActivityDispatcher createDispatcher() {
+    return new LoopActivityDispatcher();
   }
 
   /**

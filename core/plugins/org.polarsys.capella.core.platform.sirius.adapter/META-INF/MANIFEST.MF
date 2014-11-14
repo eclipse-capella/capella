@@ -8,7 +8,7 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.sirius.diagram;visibility:=reexport,
  org.polarsys.capella.core.services;visibility:=reexport,
  org.polarsys.capella.core.model.handler
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.sirius.adapter
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

@@ -25,7 +25,8 @@ Require-Bundle: org.polarsys.capella.core.ui.toolkit;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.core.diagram.helpers,
  org.polarsys.capella.core.preferences,
- org.polarsys.capella.common.flexibility.wizards
+ org.polarsys.capella.common.flexibility.wizards,
+ org.eclipse.sirius.diagram.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.properties,

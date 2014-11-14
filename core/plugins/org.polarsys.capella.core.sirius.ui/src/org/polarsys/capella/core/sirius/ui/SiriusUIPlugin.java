@@ -12,7 +12,6 @@
 package org.polarsys.capella.core.sirius.ui;
 
 import org.osgi.framework.BundleContext;
-
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**

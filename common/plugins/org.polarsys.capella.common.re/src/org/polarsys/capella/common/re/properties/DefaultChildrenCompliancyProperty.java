@@ -39,7 +39,7 @@ public class DefaultChildrenCompliancyProperty extends AbstractProperty implemen
    */
   @Override
   public Object getValue(IPropertyContext context_p) {
-    IProperty property = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+    IProperty property = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
     CatalogElement element = (CatalogElement) context_p.getCurrentValue(property);
     if ((element != null) && (element.getDefaultReplicaCompliancy() != null)) {
       return element.getDefaultReplicaCompliancy();
@@ -92,7 +92,7 @@ public class DefaultChildrenCompliancyProperty extends AbstractProperty implemen
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__LOCATION_TARGET, IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET };
+    return new String[] { IReConstants.PROPERTY__LOCATION_TARGET, IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET };
   }
 
   /**
@@ -134,7 +134,7 @@ public class DefaultChildrenCompliancyProperty extends AbstractProperty implemen
    */
   @Override
   public void setValue(IPropertyContext context_p) {
-    IProperty locationProperty = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+    IProperty locationProperty = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
     EObject sourceProperty = (EObject) context_p.getCurrentValue(locationProperty);
     if ((sourceProperty != null) && (sourceProperty instanceof CatalogElement)) {
       CompliancyDefinition definition = (CompliancyDefinition) context_p.getCurrentValue(this);

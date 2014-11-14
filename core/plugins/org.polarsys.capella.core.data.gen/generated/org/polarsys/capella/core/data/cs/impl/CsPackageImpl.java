@@ -1017,8 +1017,8 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_ImplementorComponents() {
-		return (EReference)interfaceEClass.getEStructuralFeatures().get(1);
+	public EAttribute getInterface_Structural() {
+		return (EAttribute)interfaceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1026,7 +1026,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_UserComponents() {
+	public EReference getInterface_ImplementorComponents() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1035,7 +1035,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_InterfaceImplementations() {
+	public EReference getInterface_UserComponents() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1044,7 +1044,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_InterfaceUses() {
+	public EReference getInterface_InterfaceImplementations() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -1053,7 +1053,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_ProvisioningInterfaceAllocations() {
+	public EReference getInterface_InterfaceUses() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -1062,7 +1062,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_AllocatingInterfaces() {
+	public EReference getInterface_ProvisioningInterfaceAllocations() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1071,7 +1071,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_AllocatingComponents() {
+	public EReference getInterface_AllocatingInterfaces() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1080,7 +1080,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_ExchangeItems() {
+	public EReference getInterface_AllocatingComponents() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -1089,7 +1089,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_OwnedExchangeItemAllocations() {
+	public EReference getInterface_ExchangeItems() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -1098,7 +1098,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_RequiringComponents() {
+	public EReference getInterface_OwnedExchangeItemAllocations() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -1107,7 +1107,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_RequiringComponentPorts() {
+	public EReference getInterface_RequiringComponents() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -1116,7 +1116,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_ProvidingComponents() {
+	public EReference getInterface_RequiringComponentPorts() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -1125,7 +1125,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_ProvidingComponentPorts() {
+	public EReference getInterface_ProvidingComponents() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -1134,7 +1134,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_RealizingLogicalInterfaces() {
+	public EReference getInterface_ProvidingComponentPorts() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -1143,7 +1143,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_RealizedContextInterfaces() {
+	public EReference getInterface_RealizingLogicalInterfaces() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(15);
 	}
 
@@ -1152,7 +1152,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_RealizingPhysicalInterfaces() {
+	public EReference getInterface_RealizedContextInterfaces() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(16);
 	}
 
@@ -1161,8 +1161,17 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getInterface_RealizedLogicalInterfaces() {
+	public EReference getInterface_RealizingPhysicalInterfaces() {
 		return (EReference)interfaceEClass.getEStructuralFeatures().get(17);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getInterface_RealizedLogicalInterfaces() {
+		return (EReference)interfaceEClass.getEStructuralFeatures().get(18);
 	}
 
 	/**
@@ -1946,6 +1955,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 
 		interfaceEClass = createEClass(INTERFACE);
 		createEAttribute(interfaceEClass, INTERFACE__MECHANISM);
+		createEAttribute(interfaceEClass, INTERFACE__STRUCTURAL);
 		createEReference(interfaceEClass, INTERFACE__IMPLEMENTOR_COMPONENTS);
 		createEReference(interfaceEClass, INTERFACE__USER_COMPONENTS);
 		createEReference(interfaceEClass, INTERFACE__INTERFACE_IMPLEMENTATIONS);
@@ -2240,6 +2250,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 
 		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getInterface_Mechanism(), ecorePackage.getEString(), "mechanism", null, 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getInterface_Structural(), ecorePackage.getEBoolean(), "structural", "true", 0, 1, Interface.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEReference(getInterface_ImplementorComponents(), this.getComponent(), this.getComponent_ImplementedInterfaces(), "implementorComponents", null, 0, -1, Interface.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInterface_UserComponents(), this.getComponent(), this.getComponent_UsedInterfaces(), "userComponents", null, 0, -1, Interface.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInterface_InterfaceImplementations(), this.getInterfaceImplementation(), null, "interfaceImplementations", null, 0, -1, Interface.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2404,7 +2415,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													
 	}
 
 	/**
@@ -2892,7 +2903,16 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "_todo_reviewed : to be precised", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });				
+		addAnnotation
+		  (getInterface_Structural(), 
+		   source, 
+		   new String[] {
+			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -3699,7 +3719,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getInterface_Mechanism(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });								
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -3974,7 +3994,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										
 	}
 
 	/**
@@ -4444,7 +4464,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });							
+		   });								
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -5324,7 +5344,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		   source, 
 		   new String[] {
 			 "Label", "Interface" //$NON-NLS-1$ //$NON-NLS-2$
-		   });										
+		   });											
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -5664,7 +5684,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 			 "featureName", "mechanism", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Interface", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																						
+		   });																							
 		addAnnotation
 		  (getInterface_InterfaceImplementations(), 
 		   source, 
@@ -5934,7 +5954,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getInterfacePkg_OwnedInterfacePkgs(), 
 		   source, 
 		   new String[] {
-		   });															
+		   });																
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -6154,7 +6174,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (getSystemComponent_ParticipationsInCapabilityRealizations(), 
 		   source, 
 		   new String[] {
-		   });																																
+		   });																																	
 		addAnnotation
 		  (getInterface_ImplementorComponents(), 
 		   source, 
@@ -6374,7 +6394,7 @@ public class CsPackageImpl extends EPackageImpl implements CsPackage {
 		  (componentAllocationEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																					
+		   });																																																																																																																						
 		addAnnotation
 		  (interfaceImplementationEClass, 
 		   source, 

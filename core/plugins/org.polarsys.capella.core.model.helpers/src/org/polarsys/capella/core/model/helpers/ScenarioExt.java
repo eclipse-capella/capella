@@ -18,13 +18,21 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.ctx.Actor;
@@ -34,12 +42,16 @@ import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.information.Partition;
+import org.polarsys.capella.core.data.information.communication.CommunicationLink;
+import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
+import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Event;
@@ -55,16 +67,9 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 
 /**
  * Scenario helpers
@@ -445,6 +450,116 @@ public class ScenarioExt {
         }
       }
     }
+    return result;
+  }
+
+  /**
+   * Resolves ExchangeItemAllocatons using CommunicationLinks.
+   * @param message_p
+   * @return
+   */
+  public static List<CapellaElement> getRestrictedExchangeItems(InstanceRole source, InstanceRole target, boolean isSynchronous) {
+    List<CapellaElement> result = new ArrayList<CapellaElement>();
+
+    // Gets the client and the provider of the sequence message
+    Component client = null;
+    Component provider = null;
+    AbstractExchangeItem eiClient = null;
+
+    if (source != null) {
+      if (source.getRepresentedInstance().getAbstractType() instanceof Component) {
+        client = (Component) source.getRepresentedInstance().getAbstractType();
+      } else {
+        eiClient = (AbstractExchangeItem) source.getRepresentedInstance().getAbstractType();
+      }
+    } else {
+      client = null;
+    }
+
+    if (target != null) {
+      if (target.getRepresentedInstance().getAbstractType() instanceof Component) {
+        provider = (Component) target.getRepresentedInstance().getAbstractType();
+      } else {
+        eiClient = (AbstractExchangeItem) target.getRepresentedInstance().getAbstractType();
+      }
+    } else {
+      provider = null;
+    }
+
+    // message synchrone vers un SD : on inverse client/provider car il s'agit d'un READ.
+    if (((client == null) || (provider == null)) && isSynchronous) {
+      Component temp = client;
+      client = provider;
+      provider = temp;
+    }
+    // Find potential ExchangeItems using communication links.
+    List<AbstractExchangeItem> potentialEI = new ArrayList<AbstractExchangeItem>();
+    if (provider != null) {
+      for (CommunicationLink cl : CommunicationLinkExt.getAllCommunicationLinks(provider)) {
+        if ((cl.getKind() == CommunicationLinkKind.RECEIVE) || (cl.getKind() == CommunicationLinkKind.CONSUME)
+            || (cl.getKind() == CommunicationLinkKind.EXECUTE) || (cl.getKind() == CommunicationLinkKind.ACCESS)) {
+          if (CommunicationLinkKind.ACCESS == cl.getKind()) {
+            CommunicationLinkProtocol protocol = cl.getProtocol();
+            if (isSynchronous && (CommunicationLinkProtocol.READ == protocol)) {
+              potentialEI.add(cl.getExchangeItem());
+            }
+            if (!isSynchronous && (CommunicationLinkProtocol.ACCEPT == protocol)) {
+              potentialEI.add(cl.getExchangeItem());
+            }
+            if (CommunicationLinkProtocol.UNSET == protocol) {
+              potentialEI.add(cl.getExchangeItem());
+            }
+          } else {
+            potentialEI.add(cl.getExchangeItem());
+          }
+        }
+
+      }
+    } else if (eiClient != null) {
+      // the provider is a ExchangeItem, so the potentiel is himself
+      potentialEI.add((AbstractExchangeItem) target.getRepresentedInstance().getAbstractType());
+    }
+
+    if (client != null) {
+      for (CommunicationLink cl : CommunicationLinkExt.getAllCommunicationLinks(client)) {
+        if ((cl.getKind() == CommunicationLinkKind.CALL) || (cl.getKind() == CommunicationLinkKind.PRODUCE) || (cl.getKind() == CommunicationLinkKind.SEND)
+            || (cl.getKind() == CommunicationLinkKind.WRITE)) {
+          if (potentialEI.contains(cl.getExchangeItem())) {
+            CommunicationLinkProtocol protocol = cl.getProtocol();
+            if (cl.getKind() == CommunicationLinkKind.CALL) {
+              // filtrage complementaire synchronous/asynchronous au niveau du communication link
+              if (isSynchronous && (protocol == CommunicationLinkProtocol.SYNCHRONOUS)) {
+                result.add(cl.getExchangeItem());
+              }
+              if (!isSynchronous && (protocol == CommunicationLinkProtocol.ASYNCHRONOUS)) {
+                result.add(cl.getExchangeItem());
+              }
+              if (protocol == CommunicationLinkProtocol.UNSET) {
+                result.add(cl.getExchangeItem());
+              }
+            } else {
+              result.add(cl.getExchangeItem());
+            }
+          }
+        }
+      }
+    } else {
+      // the client is an exchaneItem, it must be the same than potentialEI
+      for (AbstractExchangeItem abstractExchangeItem : potentialEI) {
+        if (abstractExchangeItem == eiClient) {
+          result.add((CapellaElement) eiClient);
+          // communication pattern : on rajoute les EIA qui pointent vers cet EI
+          List<EObject> eiaPotentials = EObjectExt.getReferencers(abstractExchangeItem, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
+          for (EObject eObject : eiaPotentials) {
+            if (eObject instanceof ExchangeItemAllocation) {
+              ExchangeItemAllocation eia = (ExchangeItemAllocation) eObject;
+              result.add(eia);
+            }
+          }
+        }
+      }
+    }
+
     return result;
   }
 

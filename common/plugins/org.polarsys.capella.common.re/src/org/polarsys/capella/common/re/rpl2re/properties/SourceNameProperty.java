@@ -37,13 +37,13 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE, IReConstants.PROPERTY__LOCATION_SOURCE };
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE, IReConstants.PROPERTY__LOCATION_SOURCE };
   }
 
   @Override
   public boolean isEnabled(IPropertyContext context_p) {
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     return source != null;
   }
 
@@ -55,7 +55,7 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
     if (_currentName == null) {
       IContext context = (IContext) context_p.getSource();
       CatalogElement source =
-          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
       if (source != null) {
         CatalogElementPkg location =
             (CatalogElementPkg) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_SOURCE));
@@ -77,7 +77,7 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
     boolean isValid = true;
     IContext context = (IContext) context_p.getSource();
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     if (source != null) {
 
       if ((newValue_p == null) || ((newValue_p instanceof String) && ((String) newValue_p).isEmpty())) {
@@ -115,7 +115,7 @@ public class SourceNameProperty extends AbstractProperty implements ICompoundPro
   @Override
   public void setValue(IPropertyContext context_p) {
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     if (element != null) {
       element.setName((String) context_p.getCurrentValue(this));
     }

@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="org.polarsys.capella.patterns.ui.viewerContribution.showHidePatternInstances"
+            targetID="org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID">
+         <action
+               class="org.eclipse.emf.diffmerge.patterns.ui.capella.semanticBrowserAddition.actions.ShowHidePatternInstances"
+               icon="icons/full/etool16/patternInstance.png"
+               id="org.polarsys.capella.patterns.ui.actions.showHidePatternInstances"
+               label="Show pattern instances in the semantic browser"
+               style="toggle"
+               toolbarPath="additions"
+               tooltip="Show pattern instances in the semantic browser">
+         </action>
+      </viewContribution>
+   </extension>
+   
+   <!--                          PATTERNS  DIAGRAM                          -->
+   
+   <!--extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.common.re?before=capella.project.explorer.menu.transitions.diagram.preferences">
+         <menu
+               id="capella.project.explorer.diagram.menu.patterns.preferences"
+               label="Patterns">
+            <visibleWhen checkEnabled="false">
+                  <reference  definitionId="org.eclipse.emf.diffmerge.patterns.ui.capella.visibilityDiagramDefinition"/>
+            </visibleWhen>
+            
+         </menu>
+      </menuContribution>
+      
+       <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.applypattern"
+               label="Apply Pattern..."
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+            </visibleWhen>
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator1"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      
+       <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.createpattern"
+               label="Create Pattern..."
+               style="push">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.includepatterns"
+               label="Include in Patterns"
+               style="push">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.resetinclusions"
+               label="Reset Inclusions"
+               style="push">
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator2"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.createtamplate"
+               label="Create Template..."
+               style="push">
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator3"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.manageinstance"
+               label="Manage Instance(s)..."
+               style="push">
+         </command>
+      </menuContribution>
+      
+      
+      
+       <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.PatternInstanceExplorerSetSelectionCommand"
+               icon="platform:/plugin/org.eclipse.emf.diffmerge.patterns.ui/icons/full/pattern.gif"
+               label="Show in Pattern Instance Explorer"
+               style="push">
+         </command>
+      </menuContribution>
+
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.HighlightAllPatternsInstances"
+               label="Highlight all Instances"
+               style="push">
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator4"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.diagram.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.browsecatalogs"
+               label="Browse Catalogs..."
+               style="push">
+         </command>
+      </menuContribution>
+      
+   </extension-->
+   
+   
+   <!--                                                  FIN                                       -->
+    
+    
+    <!--extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer#PopupMenu?after=org.polarsys.capella.common.re">
+         <menu
+               id="capella.project.explorer.menu.patterns.preferences"
+               label="Patterns">
+            <visibleWhen checkEnabled="false">
+                  <reference  definitionId="org.eclipse.emf.diffmerge.patterns.ui.capella.visibilityModelDefinition"/>
+            </visibleWhen>
+            
+         </menu>
+      </menuContribution>
+      
+       <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.applypattern"
+               label="Apply Pattern..."
+               mode="FORCE_TEXT"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+            </visibleWhen>
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator11"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      
+       <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.createpattern"
+               label="Create Pattern..."
+               style="push">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.includepatterns"
+               label="Include in Patterns"
+               style="push">
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.resetinclusions"
+               label="Reset Inclusions"
+               style="push">
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator12"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.createtamplate"
+               label="Create Template..."
+               style="push">
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator13"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.manageinstance"
+               label="Manage Instance(s)..."
+               style="push">
+         </command>
+      </menuContribution>
+      
+      
+      
+       <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.PatternInstanceExplorerSetSelectionCommand"
+               icon="platform:/plugin/org.eclipse.emf.diffmerge.patterns.ui/icons/full/pattern.gif"
+               label="Show in Pattern Instance Explorer"
+               style="push">
+         </command>
+         <separator
+               name="org.eclipse.emf.diffmerge.patterns.ui.capella.separator14"
+               visible="true">
+         </separator>
+      </menuContribution>
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.patterns.preferences?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.browsecatalogs"
+               label="Browse Catalogs..."
+               style="push">
+         </command>
+      </menuContribution>
+            
+   </extension-->
+ 
+    
+   <!--                      -->
+  
+   <!--extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
+         <command
+               commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.PatternInstanceExplorerSetSelectionCommand"
+               icon="platform:/plugin/org.eclipse.emf.diffmerge.patterns.ui/icons/full/pattern.gif"
+               id="org.eclipse.emf.diffmerge.patterns.ui.capella.PatternInstanceExplorerSetSelectionMenu3"
+               label="Show in Pattern Instance Explorer"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <reference
+                     definitionId="org.eclipse.emf.diffmerge.patterns.ui.capella.semantic.browser.showInPatternExplorerSelectionDefinition">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.emf.diffmerge.patterns.ui.sirius.views.siriusinstanceexplorerview?after=additions">
+         <command
+               commandId="org.polarsys.capella.core.platform.doremi.ui.navigator.locateIncapellaExplorerCommand"
+               icon="platform:/plugin/org.polarsys.capella.core.platform.doremi.ui.navigator/icons/capella_16.png"
+               label="Show in capella Advance Explorer"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <reference
+                     definitionId="org.polarsys.capella.core.ui.semantic.browser.doremi.selectIncapellaExplorerDefinition">
+               </reference>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.ui.semantic.browser.doremi.semanticBrowserSetSelectionCommand"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.semantic.browser/icons/sembrowser_16x16.png"
+               id="org.polarsys.capella.core.ui.semantic.browser.doremi.semanticBrowserSetSelection3"
+               label="Show in Semantic Browser"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <reference
+                     definitionId="org.polarsys.capella.core.ui.semantic.browser.doremi.selectInSemanticBrowserSelectionDefinition">
+               </reference>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+    
+     <extension
+         point="org.eclipse.ui.services">
+      <sourceProvider
+            provider="org.eclipse.emf.diffmerge.patterns.ui.providers.IncludedElementsProvider">
+         <variable
+               name="org.eclipse.emf.diffmerge.patterns.ui.sirius.actions.includedElementsVariable"
+               priorityLevel="workbench">
+         </variable>
+      </sourceProvider>
+   </extension>
+   <extension point="org.eclipse.ui.handlers">
+   	<handler 
+   		class="org.eclipse.emf.diffmerge.patterns.ui.handlers.ResetInclusionsHandler"
+   		commandId="org.eclipse.emf.diffmerge.patterns.ui.sirius.command.resetinclusions"> 
+		<activeWhen>
+        	<with variable="org.eclipse.emf.diffmerge.patterns.ui.sirius.actions.includedElementsVariable">
+            	<equals value="visible"> </equals>
+         	</with>
+        </activeWhen>
+   	</handler>        
+   </extension>
+      
+   <extension
+         point="org.polarsys.capella.core.preferences.capellaPreferences">
+      <category
+            description="This category encompasses all edition commands related to the usage of patterns."
+            name="Patterns">
+         <item
+               description="Applies a pattern on the model elements selected by the user."
+               enableByDefault="true"
+               id="org.eclipse.emf.diffmerge.patterns.ui.capella.command.applypattern"
+               name="Apply Pattern">
+         </item>
+         <item
+               description="Resets the elements previously included for pattern creation (see command Include in Patterns)."
+               enableByDefault="true"
+               id="org.eclipse.emf.diffmerge.patterns.ui.capella.command.resetinclusions"
+               name="Reset Inclusions">
+         </item>
+         <item
+               description="Include the selected elements into the patterns to be created."
+               enableByDefault="true"
+               id="org.eclipse.emf.diffmerge.patterns.ui.capella.command.includepatterns"
+               name="Include in Patterns">
+         </item>
+         <item
+               description="Creates a new pattern based on the selected elements."
+               enableByDefault="true"
+               id="org.eclipse.emf.diffmerge.patterns.ui.capella.command.createpattern"
+               name="Create Pattern">
+         </item>
+         <item
+               description="Creates a template, which is a helper for creating patterns."
+               enableByDefault="true"
+               id="org.eclipse.emf.diffmerge.patterns.ui.capella.command.createtamplate"
+               name="Create Template">
+         </item>
+         <item
+               description="Opens a dialog for managing pattern instances based on the selected elements."
+               enableByDefault="true"
+               id="org.eclipse.emf.diffmerge.patterns.ui.capella.command.manageinstance"
+               name="Manage Instance(s)">
+         </item>
+      </category>
+   </extension-->
+  
+   
+    
+ <!-- capella Advance Specific Declarations: Definitions -->
+   
+   <!--extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.eclipse.emf.diffmerge.patterns.ui.capella.visibilityModelDefinition">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate>
+                        <instanceof
+                              value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                        </instanceof>
+                  </iterate>
+                  <count
+                     value="+">
+                  </count>
+               </and>
+            </with>
+      </definition>
+   </extension>
+   
+   
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.eclipse.emf.diffmerge.patterns.ui.capella.visibilityDiagramDefinition">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate>
+                       <or>
+                        <instanceof
+                              value="fr.obeo.dsl.viewpoint.diagram.edit.api.part.IDiagramElementEditPart">
+                        </instanceof>
+                        <instanceof
+                              value="fr.obeo.dsl.viewpoint.diagram.edit.api.part.IDDiagramEditPart">
+                        </instanceof>
+                       </or>
+                  </iterate>
+                  <count
+                     value="+">
+                  </count>
+               </and>
+            </with>
+      </definition>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.eclipse.emf.diffmerge.patterns.ui.capella.semantic.browser.showInPatternExplorerSelectionDefinition">
+         <with
+               variable="activeMenuSelection">
+            <and>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                     </instanceof>
+                     <instanceof
+                           value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                     </instanceof>
+                     <instanceof
+                           value="org.eclipse.emf.diffmerge.patterns.core.api.IPatternInstance">
+                     </instanceof>
+                  </or>
+               </iterate>
+               <count
+                     value="1">
+               </count>
+            </and>
+         </with>
+      </definition>
+      <definition
+            id="org.eclipse.emf.diffmerge.patterns.ui.capella.showInPatternExplorerSelectionDefinition">
+         <with
+               variable="activeMenuSelection">
+            <and>
+               <iterate>
+                  <or>
+                     <instanceof
+                           value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                     </instanceof>
+                     <instanceof
+                           value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                     </instanceof>
+                  </or>
+               </iterate>
+               <count
+                     value="1">
+               </count>
+            </and>
+         </with>
+      </definition>
+   </extension>
+   <extension
+         point="org.eclipse.emf.diffmerge.patterns.ui.modelenvironmentui">
+      <client
+            class="org.eclipse.emf.diffmerge.patterns.ui.capella.providers.capellaAdvanceModelEnvironmentUI">
+      </client>
+   </extension>
+   <extension
+         point="org.eclipse.emf.diffmerge.patterns.ui.uiExtender">
+      <client
+            class="org.eclipse.emf.diffmerge.patterns.ui.capella.util.capellaAdvanceUIExtender">
+      </client>
+   </extension-->
+   
+
+</plugin>

@@ -14,7 +14,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
-
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.CsFactory;
@@ -36,8 +37,6 @@ import org.polarsys.capella.core.data.interaction.InteractionState;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.Involvement;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OaFactory;

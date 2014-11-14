@@ -14,7 +14,7 @@ package org.polarsys.capella.core.platform.sirius.ui.actions;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 import org.polarsys.capella.core.platform.sirius.ui.commands.ExchangeItemAllocationOnPortsCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
+import org.polarsys.capella.common.ef.command.ICommand;
 
 /**
  * The action allowing to cut Capella elements.

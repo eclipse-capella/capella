@@ -6,12 +6,13 @@
     containmentProxies="true" complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.polarsys.kitalpha.emde.model/model/eMDE.genmodel#//emde">
   <foreignModel>re.ecore</foreignModel>
   <genPackages prefix="Re" basePackage="org.polarsys.capella.common" resource="XMI"
-      disposableProviderFactory="true" ecorePackage="re.ecore#/">
+      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="re.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="re.ecore#//CatalogElementKind">
       <genEnumLiterals ecoreEnumLiteral="re.ecore#//CatalogElementKind/REC"/>
       <genEnumLiterals ecoreEnumLiteral="re.ecore#//CatalogElementKind/RPL"/>
       <genEnumLiterals ecoreEnumLiteral="re.ecore#//CatalogElementKind/REC_RPL"/>
-      <genEnumLiterals ecoreEnumLiteral="re.ecore#//CatalogElementKind/GATHERING"/>
+      <genEnumLiterals ecoreEnumLiteral="re.ecore#//CatalogElementKind/GROUPING"/>
     </genEnums>
     <genClasses image="false" ecoreClass="re.ecore#//ReAbstractElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//ReAbstractElement/id"/>
@@ -25,12 +26,13 @@
     <genClasses image="false" ecoreClass="re.ecore#//ReElementContainer">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference re.ecore#//ReElementContainer/ownedElements"/>
     </genClasses>
-    <genClasses ecoreClass="re.ecore#//RecCatalog">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference re.ecore#//RecCatalog/ownedCompliancyDefinitionPkg"/>
-    </genClasses>
     <genClasses ecoreClass="re.ecore#//CatalogElementPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElementPkg/ownedElementPkgs"/>
     </genClasses>
+    <genClasses ecoreClass="re.ecore#//RecCatalog">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference re.ecore#//RecCatalog/ownedCompliancyDefinitionPkg"/>
+    </genClasses>
+    <genClasses ecoreClass="re.ecore#//GroupingElementPkg"/>
     <genClasses ecoreClass="re.ecore#//CatalogElementLink">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElementLink/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElementLink/target"/>
@@ -41,11 +43,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/kind"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/author"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/environment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/purpose"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute re.ecore#//CatalogElement/tags"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/origin"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/currentCompliancy"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/defaultReplicaCompliancy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/ownedLinks"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/referencedElements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference re.ecore#//CatalogElement/replicatedElements"/>
     </genClasses>
     <genClasses ecoreClass="re.ecore#//CompliancyDefinitionPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference re.ecore#//CompliancyDefinitionPkg/ownedDefinitions"/>

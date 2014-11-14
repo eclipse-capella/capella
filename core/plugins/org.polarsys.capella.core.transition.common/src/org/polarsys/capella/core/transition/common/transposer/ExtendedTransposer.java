@@ -21,17 +21,16 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
-
+import org.polarsys.capella.core.transition.common.exception.TransitionException;
 import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
 import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
-import org.polarsys.capella.core.transition.common.exception.TransitionException;
 import org.polarsys.kitalpha.transposer.TransposerCorePlugin;
 import org.polarsys.kitalpha.transposer.analyzer.graph.Graph;
 import org.polarsys.kitalpha.transposer.analyzer.graph.Vertex;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.api.TransposerConfiguration;
-import org.polarsys.kitalpha.transposer.generic.GenericContext;
 import org.polarsys.kitalpha.transposer.generic.GenericTransposer;
+import org.polarsys.kitalpha.transposer.rules.handler.api.IRulesHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.exceptions.mappings.purposes.NonExistingPurposeException;
 import org.polarsys.kitalpha.transposer.rules.handler.exceptions.rules.RuleExecutionException;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -190,23 +189,9 @@ public class ExtendedTransposer extends GenericTransposer {
     _scheduler = new ExtendedScheduler();
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public void initRulesHandler(String purpose_p, String mappingId_p) {
-    try {
-      _rulesHandler = new ExtendedRulesHandler(purpose_p, mappingId_p);
-
-      if (_rulesHandler.getContext() == null) {
-        _rulesHandler.setContext(new GenericContext());
-      }
-
-      _context = _rulesHandler.getContext();
-
-    } catch (NonExistingPurposeException e) {
-      TransposerCorePlugin.getDefault().logError(TransposerCorePlugin.PLUGIN_ID, e.getMessage(), e);
-    }
+  protected IRulesHandler getRulesHandler(String purpose_p, String mappingId_p) throws NonExistingPurposeException {
+    return new ExtendedRulesHandler(purpose_p, mappingId_p);
   }
 
   /**

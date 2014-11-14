@@ -33,6 +33,14 @@ public class DataLabelProvider extends MDEAdapterFactoryLabelProvider implements
 
   /**
    * Constructor.
+   * @param adapterFactory_p
+   */
+  public DataLabelProvider(AdapterFactory adapterFactory_p) {
+    super(adapterFactory_p);
+  }
+
+  /**
+   * Constructor.
    * @param editingDomain_p
    * @param adapterFactory_p
    */

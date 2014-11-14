@@ -17,10 +17,9 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AbstractSiriusEditPolicy;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AbstractSiriusEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.ui.properties.wizards.Messages;
 import org.polarsys.capella.core.ui.properties.wizards.OpenCustomWizardCommand;

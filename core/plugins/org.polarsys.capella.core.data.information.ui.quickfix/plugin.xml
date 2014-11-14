@@ -58,9 +58,6 @@
          <rules
                ruleId="DWF_D_10">
          </rules>
-         <rules
-               ruleId="DWF_D_09">
-         </rules>
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.information.ui.quickfix.resolver.DataValueTypeResolver"

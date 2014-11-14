@@ -24,17 +24,22 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
-import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.StateTransitionRealization;
 import org.polarsys.capella.core.data.capellacommon.TransitionKind;
-import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
+import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.capellacore.Relationship;
+import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,14 +48,14 @@ import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getGuard <em>Guard</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getRealizedFlow <em>Realized Flow</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getTriggerDescription <em>Trigger Description</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getSource <em>Source</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getEffect <em>Effect</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getTrigger <em>Trigger</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getOwnedGuardCondition <em>Owned Guard Condition</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getTriggers <em>Triggers</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getOwnedStateTransitionRealizations <em>Owned State Transition Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getRealizedStateTransitions <em>Realized State Transitions</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.StateTransitionImpl#getRealizingStateTransitions <em>Realizing State Transitions</em>}</li>
@@ -59,31 +64,17 @@ import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
  *
  * @generated
  */
-public class StateTransitionImpl extends RelationshipImpl implements StateTransition {
+public class StateTransitionImpl extends NamedElementImpl implements StateTransition {
 
 	/**
-	 * The default value of the '{@link #getGuard() <em>Guard</em>}' attribute.
+	 * The cached value of the '{@link #getRealizedFlow() <em>Realized Flow</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGuard()
+	 * @see #getRealizedFlow()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String GUARD_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getGuard()
-	 * @generated
-	 * @ordered
-	 */
-	protected String guard = GUARD_EDEFAULT;
-
-
-
-
+	protected AbstractInformationFlow realizedFlow;
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -128,6 +119,16 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	 * @ordered
 	 */
 	protected String triggerDescription = TRIGGER_DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGuard()
+	 * @generated
+	 * @ordered
+	 */
+	protected Constraint guard;
 
 
 
@@ -176,32 +177,14 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 
 
 	/**
-	 * The cached value of the '{@link #getTrigger() <em>Trigger</em>}' reference.
+	 * The cached value of the '{@link #getTriggers() <em>Triggers</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTrigger()
+	 * @see #getTriggers()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractEvent trigger;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedGuardCondition() <em>Owned Guard Condition</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedGuardCondition()
-	 * @generated
-	 * @ordered
-	 */
-	protected AbstractConstraint ownedGuardCondition;
-
-
-
-
+	protected EList<AbstractEvent> triggers;
 
 	/**
 	 * The cached value of the '{@link #getOwnedStateTransitionRealizations() <em>Owned State Transition Realizations</em>}' containment reference list.
@@ -255,8 +238,86 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	 * @generated
 	 */
 
-	public String getGuard() {
+	public AbstractInformationFlow getRealizedFlow() {
 
+		if (realizedFlow != null && realizedFlow.eIsProxy()) {
+			InternalEObject oldRealizedFlow = (InternalEObject)realizedFlow;
+			realizedFlow = (AbstractInformationFlow)eResolveProxy(oldRealizedFlow);
+			if (realizedFlow != oldRealizedFlow) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW, oldRealizedFlow, realizedFlow));
+			}
+		}
+		return realizedFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public AbstractInformationFlow basicGetRealizedFlow() {
+
+		return realizedFlow;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public NotificationChain basicSetRealizedFlow(AbstractInformationFlow newRealizedFlow, NotificationChain msgs) {
+
+		AbstractInformationFlow oldRealizedFlow = realizedFlow;
+		realizedFlow = newRealizedFlow;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW, oldRealizedFlow, newRealizedFlow);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setRealizedFlow(AbstractInformationFlow newRealizedFlow) {
+
+		if (newRealizedFlow != realizedFlow) {
+			NotificationChain msgs = null;
+			if (realizedFlow != null)
+				msgs = ((InternalEObject)realizedFlow).eInverseRemove(this, ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__REALIZATIONS, AbstractInformationFlow.class, msgs);
+			if (newRealizedFlow != null)
+				msgs = ((InternalEObject)newRealizedFlow).eInverseAdd(this, ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__REALIZATIONS, AbstractInformationFlow.class, msgs);
+			msgs = basicSetRealizedFlow(newRealizedFlow, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW, newRealizedFlow, newRealizedFlow));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public Constraint getGuard() {
+
+		if (guard != null && guard.eIsProxy()) {
+			InternalEObject oldGuard = (InternalEObject)guard;
+			guard = (Constraint)eResolveProxy(oldGuard);
+			if (guard != oldGuard) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_TRANSITION__GUARD, oldGuard, guard));
+			}
+		}
 		return guard;
 	}
 
@@ -267,19 +328,25 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	 * @generated
 	 */
 
-	public void setGuard(String newGuard) {
+	public Constraint basicGetGuard() {
 
-		String oldGuard = guard;
+		return guard;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setGuard(Constraint newGuard) {
+
+		Constraint oldGuard = guard;
 		guard = newGuard;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__GUARD, oldGuard, guard));
 
 	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -564,138 +631,13 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	 * @generated
 	 */
 
-	public AbstractEvent getTrigger() {
+	public EList<AbstractEvent> getTriggers() {
 
-		if (trigger != null && trigger.eIsProxy()) {
-			InternalEObject oldTrigger = (InternalEObject)trigger;
-			trigger = (AbstractEvent)eResolveProxy(oldTrigger);
-			if (trigger != oldTrigger) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_TRANSITION__TRIGGER, oldTrigger, trigger));
-			}
+		if (triggers == null) {
+			triggers = new EObjectResolvingEList<AbstractEvent>(AbstractEvent.class, this, CapellacommonPackage.STATE_TRANSITION__TRIGGERS);
 		}
-		return trigger;
+		return triggers;
 	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public AbstractEvent basicGetTrigger() {
-
-		return trigger;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setTrigger(AbstractEvent newTrigger) {
-
-		AbstractEvent oldTrigger = trigger;
-		trigger = newTrigger;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__TRIGGER, oldTrigger, trigger));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public AbstractConstraint getOwnedGuardCondition() {
-
-		if (ownedGuardCondition != null && ownedGuardCondition.eIsProxy()) {
-			InternalEObject oldOwnedGuardCondition = (InternalEObject)ownedGuardCondition;
-			ownedGuardCondition = (AbstractConstraint)eResolveProxy(oldOwnedGuardCondition);
-			if (ownedGuardCondition != oldOwnedGuardCondition) {
-				InternalEObject newOwnedGuardCondition = (InternalEObject)ownedGuardCondition;
-				NotificationChain msgs = oldOwnedGuardCondition.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION, null, null);
-				if (newOwnedGuardCondition.eInternalContainer() == null) {
-					msgs = newOwnedGuardCondition.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION, oldOwnedGuardCondition, ownedGuardCondition));
-			}
-		}
-		return ownedGuardCondition;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public AbstractConstraint basicGetOwnedGuardCondition() {
-
-		return ownedGuardCondition;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public NotificationChain basicSetOwnedGuardCondition(AbstractConstraint newOwnedGuardCondition, NotificationChain msgs) {
-
-		AbstractConstraint oldOwnedGuardCondition = ownedGuardCondition;
-		ownedGuardCondition = newOwnedGuardCondition;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION, oldOwnedGuardCondition, newOwnedGuardCondition);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-
-		return msgs;
-	}
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setOwnedGuardCondition(AbstractConstraint newOwnedGuardCondition) {
-
-		if (newOwnedGuardCondition != ownedGuardCondition) {
-			NotificationChain msgs = null;
-			if (ownedGuardCondition != null)
-				msgs = ((InternalEObject)ownedGuardCondition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION, null, msgs);
-			if (newOwnedGuardCondition != null)
-				msgs = ((InternalEObject)newOwnedGuardCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION, null, msgs);
-			msgs = basicSetOwnedGuardCondition(newOwnedGuardCondition, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION, newOwnedGuardCondition, newOwnedGuardCondition));
-
-	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -741,10 +683,10 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacommonPackage.Literals.STATE_TRANSITION__REALIZED_STATE_TRANSITIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacommonPackage.Literals.STATE_TRANSITION__REALIZED_STATE_TRANSITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE_TRANSITION__REALIZED_STATE_TRANSITIONS, annotation);
 		
 		try {
@@ -788,10 +730,10 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacommonPackage.Literals.STATE_TRANSITION__REALIZING_STATE_TRANSITIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacommonPackage.Literals.STATE_TRANSITION__REALIZING_STATE_TRANSITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE_TRANSITION__REALIZING_STATE_TRANSITIONS, annotation);
 		
 		try {
@@ -815,6 +757,10 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
+				if (realizedFlow != null)
+					msgs = ((InternalEObject)realizedFlow).eInverseRemove(this, ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__REALIZATIONS, AbstractInformationFlow.class, msgs);
+				return basicSetRealizedFlow((AbstractInformationFlow)otherEnd, msgs);
 			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
 				if (source != null)
 					msgs = ((InternalEObject)source).eInverseRemove(this, CapellacommonPackage.ABSTRACT_STATE__OUTGOING, AbstractState.class, msgs);
@@ -835,12 +781,12 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
+				return basicSetRealizedFlow(null, msgs);
 			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
 				return basicSetSource(null, msgs);
 			case CapellacommonPackage.STATE_TRANSITION__TARGET:
 				return basicSetTarget(null, msgs);
-			case CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION:
-				return basicSetOwnedGuardCondition(null, msgs);
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
 				return ((InternalEList<?>)getOwnedStateTransitionRealizations()).basicRemove(otherEnd, msgs);
 		}
@@ -855,12 +801,16 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case CapellacommonPackage.STATE_TRANSITION__GUARD:
-				return getGuard();
+			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
+				if (resolve) return getRealizedFlow();
+				return basicGetRealizedFlow();
 			case CapellacommonPackage.STATE_TRANSITION__KIND:
 				return getKind();
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGER_DESCRIPTION:
 				return getTriggerDescription();
+			case CapellacommonPackage.STATE_TRANSITION__GUARD:
+				if (resolve) return getGuard();
+				return basicGetGuard();
 			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
 				if (resolve) return getSource();
 				return basicGetSource();
@@ -870,12 +820,8 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
 				if (resolve) return getEffect();
 				return basicGetEffect();
-			case CapellacommonPackage.STATE_TRANSITION__TRIGGER:
-				if (resolve) return getTrigger();
-				return basicGetTrigger();
-			case CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION:
-				if (resolve) return getOwnedGuardCondition();
-				return basicGetOwnedGuardCondition();
+			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
+				return getTriggers();
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
 				return getOwnedStateTransitionRealizations();
 			case CapellacommonPackage.STATE_TRANSITION__REALIZED_STATE_TRANSITIONS:
@@ -895,11 +841,11 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case CapellacommonPackage.STATE_TRANSITION__GUARD:
+			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
 				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
+				if (newValue == null || newValue instanceof AbstractInformationFlow) {
 				// end-extension-code
-					setGuard((String)newValue);
+					setRealizedFlow((AbstractInformationFlow)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -918,6 +864,15 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 				if (newValue == null || newValue instanceof String) {
 				// end-extension-code
 					setTriggerDescription((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CapellacommonPackage.STATE_TRANSITION__GUARD:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Constraint) {
+				// end-extension-code
+					setGuard((Constraint)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -949,23 +904,9 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 				}
 				// end-extension-code
 				return;
-			case CapellacommonPackage.STATE_TRANSITION__TRIGGER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setTrigger((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
-					setOwnedGuardCondition((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
+			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
+				getTriggers().clear();
+				getTriggers().addAll((Collection<? extends AbstractEvent>)newValue);
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
 				getOwnedStateTransitionRealizations().clear();
@@ -984,14 +925,17 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case CapellacommonPackage.STATE_TRANSITION__GUARD:
-				setGuard(GUARD_EDEFAULT);
+			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
+				setRealizedFlow((AbstractInformationFlow)null);
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__KIND:
 				setKind(KIND_EDEFAULT);
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGER_DESCRIPTION:
 				setTriggerDescription(TRIGGER_DESCRIPTION_EDEFAULT);
+				return;
+			case CapellacommonPackage.STATE_TRANSITION__GUARD:
+				setGuard((Constraint)null);
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
 				setSource((AbstractState)null);
@@ -1002,11 +946,8 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
 				setEffect((AbstractEvent)null);
 				return;
-			case CapellacommonPackage.STATE_TRANSITION__TRIGGER:
-				setTrigger((AbstractEvent)null);
-				return;
-			case CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION:
-				setOwnedGuardCondition((AbstractConstraint)null);
+			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
+				getTriggers().clear();
 				return;
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
 				getOwnedStateTransitionRealizations().clear();
@@ -1025,22 +966,22 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case CapellacommonPackage.STATE_TRANSITION__GUARD:
-				return GUARD_EDEFAULT == null ? guard != null : !GUARD_EDEFAULT.equals(guard);
+			case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW:
+				return realizedFlow != null;
 			case CapellacommonPackage.STATE_TRANSITION__KIND:
 				return kind != KIND_EDEFAULT;
 			case CapellacommonPackage.STATE_TRANSITION__TRIGGER_DESCRIPTION:
 				return TRIGGER_DESCRIPTION_EDEFAULT == null ? triggerDescription != null : !TRIGGER_DESCRIPTION_EDEFAULT.equals(triggerDescription);
+			case CapellacommonPackage.STATE_TRANSITION__GUARD:
+				return guard != null;
 			case CapellacommonPackage.STATE_TRANSITION__SOURCE:
 				return source != null;
 			case CapellacommonPackage.STATE_TRANSITION__TARGET:
 				return target != null;
 			case CapellacommonPackage.STATE_TRANSITION__EFFECT:
 				return effect != null;
-			case CapellacommonPackage.STATE_TRANSITION__TRIGGER:
-				return trigger != null;
-			case CapellacommonPackage.STATE_TRANSITION__OWNED_GUARD_CONDITION:
-				return ownedGuardCondition != null;
+			case CapellacommonPackage.STATE_TRANSITION__TRIGGERS:
+				return triggers != null && !triggers.isEmpty();
 			case CapellacommonPackage.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS:
 				return ownedStateTransitionRealizations != null && !ownedStateTransitionRealizations.isEmpty();
 			case CapellacommonPackage.STATE_TRANSITION__REALIZED_STATE_TRANSITIONS:
@@ -1058,13 +999,53 @@ public class StateTransitionImpl extends RelationshipImpl implements StateTransi
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractRelationship.class) {
+			switch (derivedFeatureID) {
+				case CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW: return ModellingcorePackage.ABSTRACT_RELATIONSHIP__REALIZED_FLOW;
+				default: return -1;
+			}
+		}
+		if (baseClass == Relationship.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractRelationship.class) {
+			switch (baseFeatureID) {
+				case ModellingcorePackage.ABSTRACT_RELATIONSHIP__REALIZED_FLOW: return CapellacommonPackage.STATE_TRANSITION__REALIZED_FLOW;
+				default: return -1;
+			}
+		}
+		if (baseClass == Relationship.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (guard: "); //$NON-NLS-1$
-		result.append(guard);
-		result.append(", kind: "); //$NON-NLS-1$
+		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(", triggerDescription: "); //$NON-NLS-1$
 		result.append(triggerDescription);

@@ -22,14 +22,10 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.swt.widgets.Display;
@@ -37,7 +33,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
-import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -46,7 +42,6 @@ import org.polarsys.capella.core.sirius.ui.Messages;
 import org.polarsys.capella.core.sirius.ui.SiriusUIPlugin;
 import org.polarsys.capella.core.sirius.ui.editor.CapellaDashboardEditorInput;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
-import org.polarsys.capella.core.sirius.ui.session.ISessionActionListener;
 
 /**
  * The action allowing to open new sessions.
@@ -58,7 +53,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
    * Capella dashboard editor. See org.polarsys.capella.core.dashboard.editor.CapellaDashboardEditor.ID.<br>
    * We must not depend on capella dashboard editor plug-in due to deployment reasons.
    */
-  private static final String CAPELLA_DASHBOARD_EDITOR = "org.polarsys.capella.core.dashboard.editor.capellaDashboardEditor"; //$NON-NLS-1$
+  public static final String CAPELLA_DASHBOARD_EDITOR = "org.polarsys.capella.core.dashboard.editor.capellaDashboardEditor"; //$NON-NLS-1$
   /**
    * Should open the Capella Dashboard ?
    */
@@ -101,7 +96,7 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           continue;
         }
         // Check model compliancy.
-        URI selectedUri = URI.createPlatformResourceURI(selectedFile.getFullPath().toString(), true);
+        URI selectedUri = EcoreUtil2.getURI(selectedFile);
         IStatus checkModelsCompliancyResult = CapellaSessionHelper.checkModelsCompliancy(selectedUri);
         if (!checkModelsCompliancyResult.isOK()) {
           _failedOpeningSessions.put(selectedFile, checkModelsCompliancyResult);
@@ -115,18 +110,17 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
               "Session can't be opened (null session)")); //$NON-NLS-1$
           continue;
         }
-        // Notify action listeners
-        for (ISessionActionListener listener : SessionHelper.getSessionActionListeners()) {
-          IStatus status = listener.preOpenSession(session);
-          if ((status != null) && !status.isOK()) {
-            continue;
-          }
+
+        IStatus checkLibraryCompliancyResult = CapellaSessionHelper.checkLibrariesAvailability(session);
+        if (!checkLibraryCompliancyResult.isOK()) {
+          _failedOpeningSessions.put(selectedFile, checkLibraryCompliancyResult);
+          continue;
         }
+
         // Open session.
         session.open(monitor_p);
         // initialize the corresponding model
         // should be done in a listener but event opened is triggered while the melodymodeller file has not been created (in the case of a project creation)
-        ILibraryManager.INSTANCE.getAbstractModel(session);
         // Open the editing session.
         IEditingSession editingSession = SessionUIManager.INSTANCE.getOrCreateUISession(session);
         editingSession.open();
@@ -135,32 +129,35 @@ public class OpenSessionAction extends BaseSelectionListenerAction {
           openCapellaDashboard(session);
         }
       } catch (Exception ex) {
-        _failedOpeningSessions.put(selectedFile, new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(),
-            "An error occured when opening session", ex)); //$NON-NLS-1$
-        __logger.debug(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+        IStatus status =
+            new Status(IStatus.ERROR, SiriusUIPlugin.getDefault().getPluginId(), NLS.bind("An error occured when opening session ({0})", selectedFile), ex); //$NON-NLS-1$
+        _failedOpeningSessions.put(selectedFile, status);
+        __logger.debug(new EmbeddedMessage(status.getMessage(), IReportManagerDefaultComponents.UI));
         CapellaSessionHelper.reportException(ex);
+
       } finally {
         // Notify action listeners
-        if (session != null) {
-          for (ISessionActionListener listener : SessionHelper.getSessionActionListeners()) {
-            listener.postOpenSession(session);
-          }
-        }
+        //        if (session != null) {
+        //          for (ISessionActionListener listener : SessionHelper.getSessionActionListeners()) {
+        //            listener.postOpenSession(session);
+        //          }
+        //        }
       }
     }
+
     // Clean up failed sessions' resources (if any).
-    for (IFile sessionFile : _failedOpeningSessions.keySet()) {
-      URI sessionFileURI = URI.createPlatformResourceURI(sessionFile.getFullPath().toString(), true);
-      final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionFileURI);
-      final TransactionalEditingDomain transactionalEditingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().getEditingDomain(set);
-      Resource sessionResource = transactionalEditingDomain.getResourceSet().getResource(sessionFileURI, false);
-      if ((null != sessionResource) && sessionResource.isLoaded()) {
-        // Unload the (badly) loaded resource.
-        sessionResource.unload();
-        // Remove it from the ResourceSet
-        transactionalEditingDomain.getResourceSet().getResources().remove(sessionResource);
-      }
-    }
+    //    for (IFile sessionFile : _failedOpeningSessions.keySet()) {
+    //      URI sessionFileURI = URI.createPlatformResourceURI(sessionFile.getFullPath().toString(), true);
+    //      final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionFileURI);
+    //      final TransactionalEditingDomain transactionalEditingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().getEditingDomain(set);
+    //      Resource sessionResource = transactionalEditingDomain.getResourceSet().getResource(sessionFileURI, false);
+    //      if ((null != sessionResource) && sessionResource.isLoaded()) {
+    //        // Unload the (badly) loaded resource.
+    //        sessionResource.unload();
+    //        // Remove it from the ResourceSet
+    //        transactionalEditingDomain.getResourceSet().getResources().remove(sessionResource);
+    //      }
+    //    }
   }
 
   /**

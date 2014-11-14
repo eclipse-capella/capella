@@ -15,7 +15,6 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 
@@ -72,6 +71,7 @@ public class CheckboxRenderer extends AbstractRenderer {
 
   @Override
   public void dispose(IRendererContext context_p) {
+    super.dispose(context_p);
     dataExport.dispose();
   }
 

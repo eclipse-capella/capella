@@ -114,15 +114,6 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_BEHAVIOR__CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BEHAVIOR__NAME = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,6 +121,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_BEHAVIOR__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BEHAVIOR__NAME = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Is Control Operator</b></em>' attribute.
@@ -214,15 +214,6 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_SIGNAL__CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_SIGNAL__NAME = ModellingcorePackage.ABSTRACT_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -230,6 +221,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_SIGNAL__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_SIGNAL__NAME = ModellingcorePackage.ABSTRACT_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -296,15 +296,6 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_EVENT__CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_EVENT__NAME = ModellingcorePackage.ABSTRACT_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -312,6 +303,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_EVENT__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EVENT__NAME = ModellingcorePackage.ABSTRACT_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -378,15 +378,6 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_TIME_EVENT__CONSTRAINTS = ABSTRACT_EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_TIME_EVENT__NAME = ABSTRACT_EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -394,6 +385,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_TIME_EVENT__OWNED_CONSTRAINTS = ABSTRACT_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_TIME_EVENT__NAME = ABSTRACT_EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -478,15 +478,6 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_MESSAGE_EVENT__CONSTRAINTS = ABSTRACT_EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_MESSAGE_EVENT__NAME = ABSTRACT_EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -494,6 +485,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_MESSAGE_EVENT__OWNED_CONSTRAINTS = ABSTRACT_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MESSAGE_EVENT__NAME = ABSTRACT_EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -560,15 +560,6 @@ public interface BehaviorPackage extends EPackage {
 	int ABSTRACT_SIGNAL_EVENT__CONSTRAINTS = ABSTRACT_MESSAGE_EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_SIGNAL_EVENT__NAME = ABSTRACT_MESSAGE_EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -576,6 +567,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_SIGNAL_EVENT__OWNED_CONSTRAINTS = ABSTRACT_MESSAGE_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_SIGNAL_EVENT__NAME = ABSTRACT_MESSAGE_EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -651,15 +651,6 @@ public interface BehaviorPackage extends EPackage {
 	int TIME_EXPRESSION__CONSTRAINTS = ModellingcorePackage.VALUE_SPECIFICATION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TIME_EXPRESSION__NAME = ModellingcorePackage.VALUE_SPECIFICATION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -667,6 +658,15 @@ public interface BehaviorPackage extends EPackage {
 	 * @ordered
 	 */
 	int TIME_EXPRESSION__OWNED_CONSTRAINTS = ModellingcorePackage.VALUE_SPECIFICATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EXPRESSION__NAME = ModellingcorePackage.VALUE_SPECIFICATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.

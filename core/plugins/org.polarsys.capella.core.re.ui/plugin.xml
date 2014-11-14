@@ -43,12 +43,8 @@
          </filterExpression>
       </commonFilter>
       
-   </extension>
-      
-      
-      
-      
-      
+   </extension>    
+               
       
    <extension
          point="org.polarsys.capella.common.flexibility.wizards">
@@ -67,16 +63,7 @@
         </propertyBinding>
         
       </bindings>
-      
-      <bindings properties="org.polarsys.capella.core.re.updateReplica">
-      
-        <propertyBinding 
-            property="targetContentLocation"
-            renderer="capellaReplicaContentLocationRenderer">
-        </propertyBinding>
-        
-      </bindings>
-      
+            
    </extension>
    
    
@@ -121,6 +108,26 @@
             </and>
          </activeWhen>
      </handler>
+      
+     <handler commandId="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
+            class="org.polarsys.capella.core.re.ui.handlers.DeleteReplicaPreserveRelatedElementsUiHandler">
+         <activeWhen>
+            <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.re.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+     </handler>
+     
+      <handler commandId="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
+            class="org.polarsys.capella.core.re.ui.handlers.DeleteReplicaAndRelatedElementsUiHandler">
+         <activeWhen>
+            <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.re.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+     </handler>
      
      <handler commandId="org.polarsys.capella.common.re.createReplica"
             class="org.polarsys.capella.core.re.ui.handlers.CreateReplicaUiHandler">
@@ -130,9 +137,9 @@
                 <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
             </and>
          </activeWhen>
-     </handler>
+     </handler>     
    </extension>
-   
+     
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
       <propertyTester

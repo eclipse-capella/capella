@@ -11,5 +11,12 @@
        Thales - initial API and implementation
 -->
 <plugin>
+   <extension-point id="org.polarsys.capella.common.libraries.providers" name="org.polarsys.capella.common.libraries.providers" schema="schema/providers.exsd"/>
+   <extension
+         point="org.polarsys.capella.common.ef.editingDomainListener">
+      <editingDomainListener
+            class="org.polarsys.capella.common.libraries.policy.ResourceAccessPolicyListener">
+      </editingDomainListener>
+   </extension>
 
 </plugin>

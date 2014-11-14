@@ -13,63 +13,49 @@ package org.polarsys.capella.core.business.queries.capellacommon;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.common.data.behavior.AbstractEvent;
 
 /**
  * This query is for StateTransition -> Trigger
  */
-public class StateTransitionTrigger extends AbstractStateTransitionTriggerAndEffect implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery {
+public class StateTransitionTrigger extends AbstractStateTransitionTriggerAndEffect implements IBusinessQuery {
 
   /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof StateTransition) {
-      availableElements.addAll(getRule_MQRY_StateTransition_AvailableEvents_11((StateTransition) element_p));
-    }
-    return availableElements;
-  }
+	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return CapellacommonPackage.Literals.STATE_TRANSITION;
+	}
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement, boolean)
-   */
-  public List<CapellaElement> getOldCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof StateTransition) {
-      AbstractEvent evt = ((StateTransition) element_p).getTrigger();
-      if (evt != null) {
-        currentElements.add((CapellaElement) evt);
-      }
-    }
-    return currentElements;
-  }
-
-  @Override
+	@Override
   public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    return RefactorDebugger
-        .callAndTestQuery("GetAvailable_StateTransitionTrigger__Lib", element_p, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__STATE_TRANSITION_TRIGGER___LIB, element_p, context);
   }
 
   @Override
   public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    return RefactorDebugger.callAndTestQuery("GetCurrent_StateTransitionTrigger", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__STATE_TRANSITION_TRIGGER, element_p, context);
   }
 
   /**
    * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getEStructuralFeature()
    */
+  @Override
   public List<EReference> getEStructuralFeatures() {
     List<EReference> list = new ArrayList<EReference>(1);
-    list.add(CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER);
+    list.add(CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS);
     return list;
   }
 

@@ -33,17 +33,15 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 import org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants;
 import org.polarsys.capella.core.model.handler.validation.PluggableDiagnosticianProvider;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaValidationPreferences;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
 
 /**
  * The EMF edit validate action, with correct selection of the resource, while handling the resulting diagnostic.<br>
@@ -80,7 +78,7 @@ public class CapellaValidateAction extends ValidateAction {
         // Original reasons to switch: CDO and too many workspace notifications (especially in transitions)
 
         // can't use resource_p, see handleDiagnostics below
-        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p.getURI());
+        LightMarkerRegistry.getInstance().createMarker(getFile(_currentResource), diagnostic_p, resource_p);
       }
 
       /**
@@ -138,7 +136,7 @@ public class CapellaValidateAction extends ValidateAction {
    */
   @Override
   public void run() {
-    ExecutionManager executionManager = ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName());
+    ExecutionManager executionManager = TransactionHelper.getExecutionManager(selectedObjects);
     // Precondition.
     // Need for an execution manager.
     if (null == executionManager) {

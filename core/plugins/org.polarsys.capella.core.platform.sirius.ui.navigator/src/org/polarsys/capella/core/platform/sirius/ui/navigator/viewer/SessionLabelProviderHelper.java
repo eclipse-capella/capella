@@ -12,7 +12,7 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
  */
@@ -35,7 +35,7 @@ public class SessionLabelProviderHelper {
 
   public ILabelProvider getSessionLabelProvider() {
     if (_labelProvider == null) {
-        _labelProvider = new AdapterFactoryLabelProvider(ViewHelper.INSTANCE.createAdapterFactory());
+        _labelProvider = new AdapterFactoryLabelProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
     }
     return _labelProvider;
   } 

@@ -20,10 +20,9 @@ import org.eclipse.emf.diffmerge.api.IMatchPolicy;
 import org.eclipse.emf.diffmerge.api.IMergePolicy;
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.osgi.util.NLS;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
@@ -31,6 +30,7 @@ import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.capella.core.transition.common.policies.diff.ExtDiffPolicy;
 import org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy;
 import org.polarsys.capella.core.transition.common.policies.merge.ExtMergePolicy;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -60,8 +60,8 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
    */
   public void computeDifferences(IContext context_p) {
 
-    IFeaturedModelScope sourceScope = (IFeaturedModelScope) context_p.get(ITransitionConstants.MERGE_REFERENCE_SCOPE);
-    IFeaturedModelScope targetScope = (IFeaturedModelScope) context_p.get(ITransitionConstants.MERGE_TARGET_SCOPE);
+    IEditableModelScope sourceScope = (IEditableModelScope) context_p.get(ITransitionConstants.MERGE_REFERENCE_SCOPE);
+    IEditableModelScope targetScope = (IEditableModelScope) context_p.get(ITransitionConstants.MERGE_TARGET_SCOPE);
 
     // Defining comparison with target as TARGET and source as REFERENCE
     IComparison comparison = createComparison(sourceScope, targetScope);
@@ -120,7 +120,7 @@ public class DifferencesComputingActivity extends AbstractActivity implements IT
     return policy;
   }
 
-  protected IComparison createComparison(IFeaturedModelScope sourceScope_p, IFeaturedModelScope targetScope_p) {
+  protected IComparison createComparison(IEditableModelScope sourceScope_p, IEditableModelScope targetScope_p) {
     return new ExtendedComparison(targetScope_p, sourceScope_p);
   }
 

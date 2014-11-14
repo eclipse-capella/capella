@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
@@ -35,6 +36,7 @@ import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
+import org.polarsys.capella.core.tiger.impl.TransfoRule;
 
 /**
  */
@@ -77,7 +79,7 @@ public class Rule_Event extends CommonRule {
   }
 
   /**
-   * @see org.polarsys.capella.core.tiger.impl.TransfoRule#attach_(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
+   * {@inheritDoc}
    */
   @Override
   public void firstAttach(EObject element_p, ITransfo transfo_p) throws TransfoException {
@@ -87,16 +89,21 @@ public class Rule_Event extends CommonRule {
       if (obj instanceof EventSentOperation) {
         EventSentOperation src = (EventSentOperation) element_p;
         EventSentOperation tgt = (EventSentOperation) obj;
-        AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), i);
-        if (operation != null)
+
+        AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), DF2ISHelper.getExchangeItems(src).get(i), i);
+        if (operation != null) {
+
           TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
+        }
       }
       if (obj instanceof EventReceiptOperation) {
         EventReceiptOperation src = (EventReceiptOperation) element_p;
         EventReceiptOperation tgt = (EventReceiptOperation) obj;
-        AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), i);
-        if (operation != null)
+        AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), DF2ISHelper.getExchangeItems(src).get(i), i);
+        if (operation != null) {
+
           TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
+        }
       }
       i++;
     }
@@ -108,9 +115,14 @@ public class Rule_Event extends CommonRule {
    * @param operation_p
    * @return
    */
-  private AbstractEventOperation getRelatedExchangeItemAllocation(AbstractEventOperation operation_p, int n) {
+  private AbstractEventOperation getRelatedExchangeItemAllocation(AbstractEventOperation operation_p, ExchangeItem item, int n) {
     Interface itf = (Interface) Query.retrieveFirstTransformedElement(operation_p, _transfo, CsPackage.Literals.INTERFACE);
     if (itf != null) {
+      for (ExchangeItemAllocation alloc : itf.getOwnedExchangeItemAllocations()) {
+        if (alloc.getAllocatedItem().equals(item)) {
+          return alloc;
+        }
+      }
       if (itf.getOwnedExchangeItemAllocations().size() > n) {
         return itf.getOwnedExchangeItemAllocations().get(n);
       }
@@ -122,18 +134,21 @@ public class Rule_Event extends CommonRule {
   @SuppressWarnings("unused")
   protected Object transformElement(EObject element_p, ITransfo transfo_p) {
     EPackage pkg = (EPackage) element_p.eClass().eContainer();
-
     List<ExchangeItem> eis = DF2ISHelper.getExchangeItems((Event) element_p);
-    if (eis.size() <= 1)
+    if (eis.size() <= 1) {
       return pkg.getEFactoryInstance().create(element_p.eClass());
+    }
 
+    // int i=0;
     List<Event> result = new ArrayList<Event>(eis.size());
     for (ExchangeItem exchangeItem : eis) {
       Event end = (Event) pkg.getEFactoryInstance().create(element_p.eClass());
       result.add(end);
+      //end.setName(element_p.eClass().getName()+": "+exchangeItem.getName()+" ("+(i++)+")"); //$NON-NLS-1$
     }
     return result;
   }
+
 
   @Override
   protected void doGoDeep(EObject element_p, List<EObject> result_p) {

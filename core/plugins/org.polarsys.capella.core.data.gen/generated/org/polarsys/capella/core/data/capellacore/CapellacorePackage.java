@@ -116,6 +116,15 @@ public interface CapellacorePackage extends EPackage {
 	int CAPELLA_ELEMENT__CONSTRAINTS = ModellingcorePackage.TRACEABLE_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPELLA_ELEMENT__OWNED_CONSTRAINTS = ModellingcorePackage.TRACEABLE_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,15 +315,6 @@ public interface CapellacorePackage extends EPackage {
 	int NAMED_ELEMENT__CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__NAME = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -322,6 +322,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_ELEMENT__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__NAME = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -512,6 +521,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int RELATIONSHIP__CONSTRAINTS = ModellingcorePackage.ABSTRACT_RELATIONSHIP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATIONSHIP__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -713,15 +731,6 @@ public interface CapellacorePackage extends EPackage {
 	int NAMESPACE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMESPACE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -729,6 +738,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMESPACE__OWNED_CONSTRAINTS = NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMESPACE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -957,6 +975,15 @@ public interface CapellacorePackage extends EPackage {
 	int NAMED_RELATIONSHIP__CONSTRAINTS = RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_RELATIONSHIP__OWNED_CONSTRAINTS = RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1110,22 +1137,13 @@ public interface CapellacorePackage extends EPackage {
 	int NAMED_RELATIONSHIP__NAME = RELATIONSHIP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_RELATIONSHIP__OWNED_CONSTRAINTS = RELATIONSHIP_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_RELATIONSHIP__NAMING_RULES = RELATIONSHIP_FEATURE_COUNT + 2;
+	int NAMED_RELATIONSHIP__NAMING_RULES = RELATIONSHIP_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Named Relationship</em>' class.
@@ -1134,7 +1152,7 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_RELATIONSHIP_FEATURE_COUNT = RELATIONSHIP_FEATURE_COUNT + 3;
+	int NAMED_RELATIONSHIP_FEATURE_COUNT = RELATIONSHIP_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.Structure <em>Structure</em>}' class.
@@ -1183,15 +1201,6 @@ public interface CapellacorePackage extends EPackage {
 	int STRUCTURE__CONSTRAINTS = NAMESPACE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRUCTURE__NAME = NAMESPACE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1199,6 +1208,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int STRUCTURE__OWNED_CONSTRAINTS = NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURE__NAME = NAMESPACE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1436,15 +1454,6 @@ public interface CapellacorePackage extends EPackage {
 	int REUSER_STRUCTURE__CONSTRAINTS = STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REUSER_STRUCTURE__NAME = STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1452,6 +1461,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int REUSER_STRUCTURE__OWNED_CONSTRAINTS = STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REUSER_STRUCTURE__NAME = STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1707,15 +1725,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_MODELLING_STRUCTURE__CONSTRAINTS = REUSER_STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_MODELLING_STRUCTURE__NAME = REUSER_STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1723,6 +1732,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_MODELLING_STRUCTURE__OWNED_CONSTRAINTS = REUSER_STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MODELLING_STRUCTURE__NAME = REUSER_STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1996,15 +2014,6 @@ public interface CapellacorePackage extends EPackage {
 	int TYPE__CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE__NAME = ModellingcorePackage.ABSTRACT_TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2012,6 +2021,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPE__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__NAME = ModellingcorePackage.ABSTRACT_TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -2258,15 +2276,6 @@ public interface CapellacorePackage extends EPackage {
 	int MODELLING_BLOCK__CONSTRAINTS = TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODELLING_BLOCK__NAME = TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2274,6 +2283,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int MODELLING_BLOCK__OWNED_CONSTRAINTS = TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELLING_BLOCK__NAME = TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -2520,15 +2538,6 @@ public interface CapellacorePackage extends EPackage {
 	int MODELLING_ARCHITECTURE__CONSTRAINTS = STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODELLING_ARCHITECTURE__NAME = STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2536,6 +2545,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int MODELLING_ARCHITECTURE__OWNED_CONSTRAINTS = STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELLING_ARCHITECTURE__NAME = STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2773,15 +2791,6 @@ public interface CapellacorePackage extends EPackage {
 	int MODELLING_ARCHITECTURE_PKG__CONSTRAINTS = STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODELLING_ARCHITECTURE_PKG__NAME = STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2789,6 +2798,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int MODELLING_ARCHITECTURE_PKG__OWNED_CONSTRAINTS = STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODELLING_ARCHITECTURE_PKG__NAME = STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3026,15 +3044,6 @@ public interface CapellacorePackage extends EPackage {
 	int TYPED_ELEMENT__CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_ELEMENT__NAME = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3042,6 +3051,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPED_ELEMENT__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT__NAME = ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
@@ -3250,6 +3268,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int TRACE__CONSTRAINTS = RELATIONSHIP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE__OWNED_CONSTRAINTS = RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -3469,6 +3496,15 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_ANNOTATION__CONSTRAINTS = CAPELLA_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ANNOTATION__OWNED_CONSTRAINTS = CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3668,6 +3704,15 @@ public interface CapellacorePackage extends EPackage {
 	int NAMING_RULE__CONSTRAINTS = ABSTRACT_ANNOTATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMING_RULE__OWNED_CONSTRAINTS = ABSTRACT_ANNOTATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3846,7 +3891,7 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__OWNED_EXTENSIONS = ABSTRACT_ANNOTATION__OWNED_EXTENSIONS;
+	int CONSTRAINT__OWNED_EXTENSIONS = NAMED_ELEMENT__OWNED_EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3855,7 +3900,7 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__ID = ABSTRACT_ANNOTATION__ID;
+	int CONSTRAINT__ID = NAMED_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Sid</b></em>' attribute.
@@ -3864,7 +3909,7 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__SID = ABSTRACT_ANNOTATION__SID;
+	int CONSTRAINT__SID = NAMED_ELEMENT__SID;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
@@ -3873,169 +3918,7 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__CONSTRAINTS = ABSTRACT_ANNOTATION__CONSTRAINTS;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__INCOMING_TRACES = ABSTRACT_ANNOTATION__INCOMING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OUTGOING_TRACES = ABSTRACT_ANNOTATION__OUTGOING_TRACES;
-
-	/**
-	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__VISIBLE_IN_DOC = ABSTRACT_ANNOTATION__VISIBLE_IN_DOC;
-
-	/**
-	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__VISIBLE_IN_LM = ABSTRACT_ANNOTATION__VISIBLE_IN_LM;
-
-	/**
-	 * The feature id for the '<em><b>Summary</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__SUMMARY = ABSTRACT_ANNOTATION__SUMMARY;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__DESCRIPTION = ABSTRACT_ANNOTATION__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Review</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__REVIEW = ABSTRACT_ANNOTATION__REVIEW;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNED_PROPERTY_VALUES = ABSTRACT_ANNOTATION__OWNED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNED_ENUMERATION_PROPERTY_TYPES = ABSTRACT_ANNOTATION__OWNED_ENUMERATION_PROPERTY_TYPES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__APPLIED_PROPERTY_VALUES = ABSTRACT_ANNOTATION__APPLIED_PROPERTY_VALUES;
-
-	/**
-	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__OWNED_PROPERTY_VALUE_GROUPS = ABSTRACT_ANNOTATION__OWNED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__APPLIED_PROPERTY_VALUE_GROUPS = ABSTRACT_ANNOTATION__APPLIED_PROPERTY_VALUE_GROUPS;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__STATUS = ABSTRACT_ANNOTATION__STATUS;
-
-	/**
-	 * The feature id for the '<em><b>Features</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__FEATURES = ABSTRACT_ANNOTATION__FEATURES;
-
-	/**
-	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__APPLIED_REQUIREMENTS = ABSTRACT_ANNOTATION__APPLIED_REQUIREMENTS;
-
-	/**
-	 * The feature id for the '<em><b>Content</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CONTENT = ABSTRACT_ANNOTATION__CONTENT;
-
-	/**
-	 * The feature id for the '<em><b>Constrained Elements</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__CONSTRAINED_ELEMENTS = ABSTRACT_ANNOTATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONSTRAINT__NAME = ABSTRACT_ANNOTATION_FEATURE_COUNT + 1;
+	int CONSTRAINT__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
@@ -4044,16 +3927,178 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__OWNED_CONSTRAINTS = ABSTRACT_ANNOTATION_FEATURE_COUNT + 2;
+	int CONSTRAINT__OWNED_CONSTRAINTS = NAMED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Expression</b></em>' reference.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__EXPRESSION = ABSTRACT_ANNOTATION_FEATURE_COUNT + 3;
+	int CONSTRAINT__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__INCOMING_TRACES = NAMED_ELEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OUTGOING_TRACES = NAMED_ELEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__VISIBLE_IN_DOC = NAMED_ELEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__VISIBLE_IN_LM = NAMED_ELEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__SUMMARY = NAMED_ELEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__DESCRIPTION = NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__REVIEW = NAMED_ELEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNED_PROPERTY_VALUES = NAMED_ELEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNED_ENUMERATION_PROPERTY_TYPES = NAMED_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__APPLIED_PROPERTY_VALUES = NAMED_ELEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNED_PROPERTY_VALUE_GROUPS = NAMED_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__APPLIED_PROPERTY_VALUE_GROUPS = NAMED_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__STATUS = NAMED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__FEATURES = NAMED_ELEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__APPLIED_REQUIREMENTS = NAMED_ELEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Constrained Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__CONSTRAINED_ELEMENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owned Specification</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__OWNED_SPECIFICATION = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__CONTEXT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -4062,7 +4107,7 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = ABSTRACT_ANNOTATION_FEATURE_COUNT + 4;
+	int CONSTRAINT_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacore.impl.KeyValueImpl <em>Key Value</em>}' class.
@@ -4109,6 +4154,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int KEY_VALUE__CONSTRAINTS = CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_VALUE__OWNED_CONSTRAINTS = CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4317,6 +4371,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int REUSE_LINK__CONSTRAINTS = RELATIONSHIP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REUSE_LINK__OWNED_CONSTRAINTS = RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -4536,15 +4599,6 @@ public interface CapellacorePackage extends EPackage {
 	int REUSEABLE_STRUCTURE__CONSTRAINTS = STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REUSEABLE_STRUCTURE__NAME = STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4552,6 +4606,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int REUSEABLE_STRUCTURE__OWNED_CONSTRAINTS = STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REUSEABLE_STRUCTURE__NAME = STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4798,15 +4861,6 @@ public interface CapellacorePackage extends EPackage {
 	int GENERALIZABLE_ELEMENT__CONSTRAINTS = TYPE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERALIZABLE_ELEMENT__NAME = TYPE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4814,6 +4868,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int GENERALIZABLE_ELEMENT__OWNED_CONSTRAINTS = TYPE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZABLE_ELEMENT__NAME = TYPE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -5114,15 +5177,6 @@ public interface CapellacorePackage extends EPackage {
 	int CLASSIFIER__CONSTRAINTS = GENERALIZABLE_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASSIFIER__NAME = GENERALIZABLE_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5130,6 +5184,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASSIFIER__OWNED_CONSTRAINTS = GENERALIZABLE_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASSIFIER__NAME = GENERALIZABLE_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -5448,15 +5511,6 @@ public interface CapellacorePackage extends EPackage {
 	int GENERAL_CLASS__CONSTRAINTS = CLASSIFIER__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERAL_CLASS__NAME = CLASSIFIER__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5464,6 +5518,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int GENERAL_CLASS__OWNED_CONSTRAINTS = CLASSIFIER__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERAL_CLASS__NAME = CLASSIFIER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -5818,6 +5881,15 @@ public interface CapellacorePackage extends EPackage {
 	int GENERALIZATION__CONSTRAINTS = RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERALIZATION__OWNED_CONSTRAINTS = RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6035,15 +6107,6 @@ public interface CapellacorePackage extends EPackage {
 	int FEATURE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FEATURE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6051,6 +6114,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int FEATURE__OWNED_CONSTRAINTS = NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -6270,15 +6342,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_EXCHANGE_ITEM_PKG__CONSTRAINTS = STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_EXCHANGE_ITEM_PKG__NAME = STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6286,6 +6349,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_EXCHANGE_ITEM_PKG__OWNED_CONSTRAINTS = STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EXCHANGE_ITEM_PKG__NAME = STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -6532,6 +6604,15 @@ public interface CapellacorePackage extends EPackage {
 	int ALLOCATION__CONSTRAINTS = RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION__OWNED_CONSTRAINTS = RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6747,6 +6828,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int INVOLVEMENT__CONSTRAINTS = RELATIONSHIP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVOLVEMENT__OWNED_CONSTRAINTS = RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -6966,6 +7056,15 @@ public interface CapellacorePackage extends EPackage {
 	int INVOLVER_ELEMENT__CONSTRAINTS = CAPELLA_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVOLVER_ELEMENT__OWNED_CONSTRAINTS = CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7163,6 +7262,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int INVOLVED_ELEMENT__CONSTRAINTS = CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVOLVED_ELEMENT__OWNED_CONSTRAINTS = CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7364,15 +7472,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_PROPERTY_VALUE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_PROPERTY_VALUE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7380,6 +7479,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_PROPERTY_VALUE__OWNED_CONSTRAINTS = NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PROPERTY_VALUE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7590,15 +7698,6 @@ public interface CapellacorePackage extends EPackage {
 	int STRING_PROPERTY_VALUE__CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7606,6 +7705,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_PROPERTY_VALUE__OWNED_CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7825,15 +7933,6 @@ public interface CapellacorePackage extends EPackage {
 	int INTEGER_PROPERTY_VALUE__CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7841,6 +7940,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_PROPERTY_VALUE__OWNED_CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8060,15 +8168,6 @@ public interface CapellacorePackage extends EPackage {
 	int BOOLEAN_PROPERTY_VALUE__CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8076,6 +8175,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_PROPERTY_VALUE__OWNED_CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8295,15 +8403,6 @@ public interface CapellacorePackage extends EPackage {
 	int FLOAT_PROPERTY_VALUE__CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOAT_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8311,6 +8410,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int FLOAT_PROPERTY_VALUE__OWNED_CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8530,15 +8638,6 @@ public interface CapellacorePackage extends EPackage {
 	int ENUMERATION_PROPERTY_VALUE__CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8546,6 +8645,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION_PROPERTY_VALUE__OWNED_CONSTRAINTS = ABSTRACT_PROPERTY_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_PROPERTY_VALUE__NAME = ABSTRACT_PROPERTY_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8774,15 +8882,6 @@ public interface CapellacorePackage extends EPackage {
 	int ENUMERATION_PROPERTY_TYPE__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION_PROPERTY_TYPE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8790,6 +8889,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION_PROPERTY_TYPE__OWNED_CONSTRAINTS = NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_PROPERTY_TYPE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8991,15 +9099,6 @@ public interface CapellacorePackage extends EPackage {
 	int ENUMERATION_PROPERTY_LITERAL__CONSTRAINTS = NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION_PROPERTY_LITERAL__NAME = NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9007,6 +9106,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION_PROPERTY_LITERAL__OWNED_CONSTRAINTS = NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_PROPERTY_LITERAL__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -9199,15 +9307,6 @@ public interface CapellacorePackage extends EPackage {
 	int PROPERTY_VALUE_GROUP__CONSTRAINTS = NAMESPACE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY_VALUE_GROUP__NAME = NAMESPACE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9215,6 +9314,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY_VALUE_GROUP__OWNED_CONSTRAINTS = NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_VALUE_GROUP__NAME = NAMESPACE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -9452,15 +9560,6 @@ public interface CapellacorePackage extends EPackage {
 	int PROPERTY_VALUE_PKG__CONSTRAINTS = STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPERTY_VALUE_PKG__NAME = STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9468,6 +9567,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int PROPERTY_VALUE_PKG__OWNED_CONSTRAINTS = STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_VALUE_PKG__NAME = STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -9705,15 +9813,6 @@ public interface CapellacorePackage extends EPackage {
 	int ABSTRACT_DEPENDENCIES_PKG__CONSTRAINTS = STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_DEPENDENCIES_PKG__NAME = STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9721,6 +9820,15 @@ public interface CapellacorePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_DEPENDENCIES_PKG__OWNED_CONSTRAINTS = STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_DEPENDENCIES_PKG__NAME = STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -10334,17 +10442,6 @@ public interface CapellacorePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getConstraint();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacore.Constraint#getExpression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Expression</em>'.
-	 * @see org.polarsys.capella.core.data.capellacore.Constraint#getExpression()
-	 * @see #getConstraint()
-	 * @generated
-	 */
-	EReference getConstraint_Expression();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacore.KeyValue <em>Key Value</em>}'.
@@ -11389,14 +11486,6 @@ public interface CapellacorePackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONSTRAINT = eINSTANCE.getConstraint();
-
-		/**
-		 * The meta object literal for the '<em><b>Expression</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONSTRAINT__EXPRESSION = eINSTANCE.getConstraint_Expression();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacore.impl.KeyValueImpl <em>Key Value</em>}' class.

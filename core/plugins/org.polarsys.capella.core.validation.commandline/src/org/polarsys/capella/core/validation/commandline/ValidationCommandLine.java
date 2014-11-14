@@ -47,7 +47,7 @@ import org.eclipse.ui.application.WorkbenchAdvisor;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -58,7 +58,6 @@ import org.polarsys.capella.core.commandline.core.AbstractCommandLine;
 import org.polarsys.capella.core.commandline.core.CommandLineException;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 public class ValidationCommandLine extends AbstractCommandLine {
   static final String CONSTRAINT_DISABLED_PREFIX = "org.eclipse.emf.validation//con.disabled/"; //$NON-NLS-1$
@@ -249,7 +248,7 @@ public class ValidationCommandLine extends AbstractCommandLine {
    */
   private Resource loadAirdSemanticModel(URI uri_p) {
     SessionManager sessionManager = SessionManager.INSTANCE;
-    Session session = sessionManager.getSession(uri_p);
+    Session session = sessionManager.getSession(uri_p, new NullProgressMonitor());
 
     Collection<Resource> resources = session.getSemanticResources();
 

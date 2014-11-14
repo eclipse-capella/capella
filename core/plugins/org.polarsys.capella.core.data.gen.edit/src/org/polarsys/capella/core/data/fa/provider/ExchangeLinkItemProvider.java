@@ -234,7 +234,6 @@ public class ExchangeLinkItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS);
 			childrenFeatures.add(CapellacorePackage.Literals.NAMED_RELATIONSHIP__NAMING_RULES);
 			childrenFeatures.add(FaPackage.Literals.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS);
 		}
@@ -304,7 +303,6 @@ public class ExchangeLinkItemProvider
 			case FaPackage.EXCHANGE_LINK__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case FaPackage.EXCHANGE_LINK__OWNED_CONSTRAINTS:
 			case FaPackage.EXCHANGE_LINK__NAMING_RULES:
 			case FaPackage.EXCHANGE_LINK__OWNED_EXCHANGE_CONTAINMENTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -323,18 +321,6 @@ public class ExchangeLinkItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
-                         CapellacoreFactory.eINSTANCE.createConstraint());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

@@ -14,8 +14,8 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.re.commands.CreateRecCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
 
 /**
  */
@@ -26,9 +26,7 @@ public class CreateRecHandler extends AbstractReHandler {
    */
   @Override
   protected ICommand createCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
-    return new CreateRecCommand(selection_p, progressMonitor_p) {
-
-    };
+    return new CreateRecCommand(selection_p, progressMonitor_p);
   }
 
   /**

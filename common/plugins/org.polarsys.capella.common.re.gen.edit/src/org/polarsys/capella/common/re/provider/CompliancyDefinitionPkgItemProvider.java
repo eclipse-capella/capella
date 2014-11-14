@@ -66,6 +66,9 @@ public class CompliancyDefinitionPkgItemProvider extends
 			super.getPropertyDescriptors(object);
 
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 

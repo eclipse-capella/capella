@@ -311,7 +311,6 @@
       </mapping>
    </extension>
    
-   
    <extension id="org.polarsys.capella.core.re.updateReplica"
          name="Update Replica"
          point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
@@ -325,6 +324,31 @@
       </mapping>
    </extension>
    
+    <extension id="org.polarsys.capella.core.re.deleteReplicaPreserveRelatedElements"
+         name="Delete Replica But Preserve Related Elements"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.re;org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   <extension id="org.polarsys.capella.core.re.deleteReplicaAndRelatedElements"
+         name="Delete Replica And Related Elements"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.re;org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
    
    <extension
          point="org.polarsys.capella.common.flexibility.properties">
@@ -356,6 +380,18 @@
       <properties
             id="org.polarsys.capella.core.re.updateReplica">
             <inheritance properties="org.polarsys.capella.common.re.updateReplica" />
+            
+      </properties>
+      
+       <properties
+            id="org.polarsys.capella.core.re.deleteReplicaPreserveRelatedElements">
+            <inheritance properties="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements" />
+            
+      </properties>
+      
+      <properties
+            id="org.polarsys.capella.core.re.deleteReplicaAndRelatedElements">
+            <inheritance properties="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements" />
             
       </properties>
    </extension>

@@ -10,19 +10,51 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.ctx;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.Collections;
+import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.business.queries.interaction.AbstractCapability_InvolvedFunctionalChains;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
 
 /**
  */
-public class Capability_InvolvedFunctionalChains extends AbstractCapability_InvolvedFunctionalChains {
+public class Capability_InvolvedFunctionalChains extends AbstractCapability_InvolvedFunctionalChains implements IBusinessQuery {
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return CtxPackage.Literals.CAPABILITY;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeature()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(InteractionPackage.Literals.ABSTRACT_CAPABILITY__OWNED_FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENTS);
+	}
+
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return CtxPackage.Literals.CAPABILITY;
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__CAPABILITY__INVOLVED_FUNCTIONAL_CHAINS, element_p, context);
+	}
 }

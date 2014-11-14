@@ -53,7 +53,7 @@ public class NameCellModifier implements ICellModifier {
     if ((element instanceof CatalogElementLink) || (element instanceof CatalogElement)) {
       IPropertyContext pContext = context.getPropertyContext();
       IContext iContext = (IContext) pContext.getSource();
-      return AttributesHandlerHelper.getInstance(iContext).getName((EObject) element, iContext, pContext);
+      return AttributesHandlerHelper.getInstance(iContext).getCurrentName((EObject) element, iContext, pContext);
 
     } else if (element instanceof EObject) {
       EStructuralFeature feature = ((EObject) element).eClass().getEStructuralFeature(property);
@@ -74,11 +74,9 @@ public class NameCellModifier implements ICellModifier {
       IContext iContext = (IContext) pContext.getSource();
 
       if ((value == null) || ((value instanceof String) && ((String) value).isEmpty())) {
-        AttributesHandlerHelper.getInstance(iContext).unsetName((EObject) element, (String) value, iContext, pContext);
-
+        AttributesHandlerHelper.getInstance(iContext).unsetCustomName((EObject) element, (String) value, iContext, pContext);
       } else {
-        AttributesHandlerHelper.getInstance(iContext).setName((EObject) element, (String) value, iContext, pContext);
-
+        AttributesHandlerHelper.getInstance(iContext).setCustomName((EObject) element, (String) value, iContext);
       }
 
     } else if (element instanceof EObject) {

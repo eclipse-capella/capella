@@ -34,6 +34,8 @@ import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.ElementExtensionItemProvider;
 
@@ -46,6 +48,14 @@ import org.polarsys.kitalpha.emde.model.edit.provider.ElementExtensionItemProvid
 public class ModelInformationItemProvider extends LibraryAbstractElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider,
     ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
   /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor versionPropertyDescriptor;
+
+
+		/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -57,6 +67,31 @@ public class ModelInformationItemProvider extends LibraryAbstractElementItemProv
 
 
   /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process LibrariesPackage.Literals.MODEL_INFORMATION__VERSION
+			if (versionPropertyDescriptor != null) {
+				Object versionValue = eObject.eGet(LibrariesPackage.Literals.MODEL_INFORMATION__VERSION, true);
+				if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) versionValue)) {
+					itemPropertyDescriptors.remove(versionPropertyDescriptor);
+				} else if (versionValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.MODEL_INFORMATION__VERSION) != null) {
+					itemPropertyDescriptors.remove(versionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(versionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(versionPropertyDescriptor);
+				}
+			}
+		}		
+	}
+
+
+		/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -69,6 +104,9 @@ public class ModelInformationItemProvider extends LibraryAbstractElementItemProv
 
 			addVersionPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 
@@ -79,11 +117,9 @@ public class ModelInformationItemProvider extends LibraryAbstractElementItemProv
 	 * @generated
 	 */
   protected void addVersionPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		versionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_ModelInformation_version_feature"), //$NON-NLS-1$
@@ -95,7 +131,8 @@ public class ModelInformationItemProvider extends LibraryAbstractElementItemProv
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(versionPropertyDescriptor);
 		// end-extension-code
 	}
 

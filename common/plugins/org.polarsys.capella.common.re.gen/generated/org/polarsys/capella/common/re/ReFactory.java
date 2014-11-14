@@ -39,6 +39,15 @@ public interface ReFactory extends EFactory {
 	RecCatalog createRecCatalog();
 
 	/**
+	 * Returns a new object of class '<em>Grouping Element Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Grouping Element Pkg</em>'.
+	 * @generated
+	 */
+	GroupingElementPkg createGroupingElementPkg();
+
+	/**
 	 * Returns a new object of class '<em>Catalog Element Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

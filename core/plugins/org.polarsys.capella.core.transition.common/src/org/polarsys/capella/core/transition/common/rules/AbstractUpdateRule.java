@@ -16,13 +16,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
-public abstract class AbstractUpdateRule extends AbstractRule implements IRuleUpdateAttribute {
+public abstract class AbstractUpdateRule extends AbstractRule implements IRuleUpdateAttribute, IRuleUpdateReference {
 
   private List<EAttribute> updatedAttributes = new ArrayList<EAttribute>();
 

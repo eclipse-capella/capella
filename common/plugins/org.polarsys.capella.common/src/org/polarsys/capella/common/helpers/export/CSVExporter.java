@@ -14,14 +14,16 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
 
+import org.polarsys.capella.common.helpers.export.utils.CSVWriter;
+
 /**
  *
  */
 public class CSVExporter extends AbstractExporter {
   
-  protected String _delimiter;
+  protected char _delimiter;
   
-  public CSVExporter(String delimiter) {
+  public CSVExporter(char delimiter) {
     _delimiter = delimiter;
   }
 
@@ -31,20 +33,31 @@ public class CSVExporter extends AbstractExporter {
   @SuppressWarnings("unchecked")
   @Override
   public void export(OutputStream stream_p, Object data_p) throws IOException, ClassCastException {
-    export(stream_p, (List<String[]>) data_p);
+   
+    List<String[]> data = (List<String[]>) data_p;
+    
+    export(stream_p, data);
+    
+    return;
   }
   
   /**
    * @see #export(OutputStream, Object)
    */
   public void export(OutputStream stream_p, List<String[]> data_p) throws IOException  {
-    CSVFileWriter writer= new CSVFileWriter(stream_p, _delimiter);
+        
+    CSVWriter writer= new CSVWriter(stream_p, _delimiter);
     
     for (String[] line: data_p) {
-      writer.writeLine(line);
+      if (null == line || line.length == 0) {
+        writer.endRecord();
+      }
+      writer.writeRecord(line);
     }
 
     writer.flush();
+    
+    return;
   }
 
   /**
@@ -62,4 +75,5 @@ public class CSVExporter extends AbstractExporter {
   public String getDescription() {
     return ExportMessages.csvDesc;
   }
+  
 }

@@ -26,7 +26,6 @@ public class Rule_InteractionOperand extends Rule_CapellaElement {
    */
   public Rule_InteractionOperand() {
     super(InteractionPackage.Literals.INTERACTION_OPERAND, InteractionPackage.Literals.INTERACTION_OPERAND);
-    registerAttributeUpdate(InteractionPackage.Literals.INTERACTION_OPERAND__GUARD);
   }
 
   /**

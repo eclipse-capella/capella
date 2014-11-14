@@ -12,12 +12,12 @@ package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands;
 
 import org.apache.log4j.Logger;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  *

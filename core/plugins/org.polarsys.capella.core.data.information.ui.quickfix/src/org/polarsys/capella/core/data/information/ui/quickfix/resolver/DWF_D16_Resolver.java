@@ -47,7 +47,7 @@ import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.EObjectNavigatorDialog;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  */
@@ -243,7 +243,7 @@ public class DWF_D16_Resolver extends AbstractCapellaMarkerResolution {
    * @return an {@link ItemProviderAdapter} if any.
    */
   private ItemProviderAdapter getItemProvider(EObject object_p) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) MDEAdapterFactory.getEditingDomain();
+    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(object_p);
     IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
     return (ItemProviderAdapter) provider;
   }

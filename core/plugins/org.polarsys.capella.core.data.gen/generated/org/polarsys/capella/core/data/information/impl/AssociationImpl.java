@@ -39,7 +39,6 @@ import org.polarsys.capella.core.data.information.Property;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getOwnedMembers <em>Owned Members</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.AssociationImpl#getNavigableMembers <em>Navigable Members</em>}</li>
@@ -69,20 +68,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
 
 
 
@@ -192,24 +177,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 	 * @generated
 	 */
 
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public EList<NamingRule> getNamingRules() {
 
 		if (namingRules == null) {
@@ -264,8 +231,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
 			case InformationPackage.ASSOCIATION__NAMING_RULES:
 				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
 			case InformationPackage.ASSOCIATION__OWNED_MEMBERS:
@@ -284,8 +249,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 		switch (featureID) {
 			case InformationPackage.ASSOCIATION__NAME:
 				return getName();
-			case InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case InformationPackage.ASSOCIATION__NAMING_RULES:
 				return getNamingRules();
 			case InformationPackage.ASSOCIATION__OWNED_MEMBERS:
@@ -313,10 +276,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 				// begin-extension-code
 				}
 				// end-extension-code
-				return;
-			case InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case InformationPackage.ASSOCIATION__NAMING_RULES:
 				getNamingRules().clear();
@@ -346,9 +305,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 			case InformationPackage.ASSOCIATION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case InformationPackage.ASSOCIATION__NAMING_RULES:
 				getNamingRules().clear();
 				return;
@@ -374,8 +330,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 		switch (featureID) {
 			case InformationPackage.ASSOCIATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case InformationPackage.ASSOCIATION__NAMING_RULES:
 				return namingRules != null && !namingRules.isEmpty();
 			case InformationPackage.ASSOCIATION__OWNED_MEMBERS:
@@ -397,7 +351,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case InformationPackage.ASSOCIATION__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -419,7 +372,6 @@ public class AssociationImpl extends RelationshipImpl implements Association {
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return InformationPackage.ASSOCIATION__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return InformationPackage.ASSOCIATION__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}

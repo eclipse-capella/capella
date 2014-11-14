@@ -10,15 +10,24 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.oa;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.Collections;
+import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
+import org.polarsys.capella.core.business.queries.cs.Component_FunctionalAllocation;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 
 /**
  *
  */
-public class OperationalActor_AllocatedActivities extends Entity_AllocatedActivities implements IBusinessQuery {
+public class OperationalActor_AllocatedActivities extends Component_FunctionalAllocation implements IBusinessQuery {
 
   /**
    * @see org.polarsys.capella.core.business.queries.oa.Entity_AllocatedActivities#getEClass()
@@ -28,4 +37,26 @@ public class OperationalActor_AllocatedActivities extends Entity_AllocatedActivi
     return OaPackage.Literals.OPERATIONAL_ACTOR;
   }
 
+	/**
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ENTITY__ALLOCATED_ACTIVITIES, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ENTITY__ALLOCATED_ACTIVITIES, element_p, context);
+	}
+  
 }

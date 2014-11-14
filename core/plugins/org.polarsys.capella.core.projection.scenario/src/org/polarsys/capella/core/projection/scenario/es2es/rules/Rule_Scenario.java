@@ -37,7 +37,7 @@ import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 import org.polarsys.capella.core.transition.system.topdown.commands.TransitionCommandHelper;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
+import org.polarsys.capella.common.ef.command.ICommand;
 
 /**
  */

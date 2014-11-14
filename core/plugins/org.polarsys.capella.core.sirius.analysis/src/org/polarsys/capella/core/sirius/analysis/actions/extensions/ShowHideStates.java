@@ -16,9 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.sirius.analysis.StateMachineServices;
 

@@ -15,6 +15,7 @@ import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.data.behavior.AbstractSignal;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.Interface;
 
@@ -42,7 +43,7 @@ import org.polarsys.capella.core.data.cs.Interface;
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' base\040metaclass\040in\040UML/SysML\040profile\040='uml::Operation' explanation='none' constraints='none'"
  * @generated
  */
-public interface ExchangeItem extends AbstractExchangeItem, Type, AbstractEvent, AbstractSignal, FinalizableElement {
+public interface ExchangeItem extends AbstractExchangeItem, AbstractEvent, AbstractSignal, FinalizableElement, GeneralizableElement {
 
 
 

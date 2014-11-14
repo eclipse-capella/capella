@@ -58,7 +58,7 @@ public class CombinedFragmentSection extends NamedElementSection {
     namedElementGroup.enableNameField(false);
 
     Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
-    main.setLayout(new GridLayout(5, false));
+    main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     main.setLayoutData(gd);

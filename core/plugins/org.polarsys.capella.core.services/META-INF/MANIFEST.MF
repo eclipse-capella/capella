@@ -4,11 +4,10 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.services;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.emf.transaction;visibility:=reexport,
- org.polarsys.capella.core.model.helpers,
- org.polarsys.capella.common.tig.ef;visibility:=reexport
+ org.polarsys.capella.core.model.helpers
 Export-Package: org.polarsys.capella.core.services
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

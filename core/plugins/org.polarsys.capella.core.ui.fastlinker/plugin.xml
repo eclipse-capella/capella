@@ -208,39 +208,29 @@
          <or>
             <with
                   variable="activeMenuSelection">
-               <and>
-                  <count
-                        value="1">
-                  </count>
                   <iterate>
                      <or>
                         <instanceof
                               value="org.polarsys.kitalpha.emde.model.Element">
                         </instanceof>
                         <instanceof
-                              value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart">
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
                         </instanceof>
                      </or>
                   </iterate>
-               </and>
             </with>
             <with
                   variable="selection">
-               <and>
-                  <count
-                        value="1">
-                  </count>
                   <iterate>
                      <or>
                         <instanceof
                               value="org.polarsys.kitalpha.emde.model.Element">
                         </instanceof>
                         <instanceof
-                              value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart">
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
                         </instanceof>
                      </or>
                   </iterate>
-               </and>
             </with>
          </or>
       </definition>
@@ -255,6 +245,12 @@
                name="Send To Fast Linker">
          </item>
       </category>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.helpers.longRunningOperationsListener">
+      <listener
+            class="org.polarsys.capella.core.ui.fastlinker.listeners.FastLinkerLongRunningOperationListener">
+      </listener>
    </extension>
 
 </plugin>

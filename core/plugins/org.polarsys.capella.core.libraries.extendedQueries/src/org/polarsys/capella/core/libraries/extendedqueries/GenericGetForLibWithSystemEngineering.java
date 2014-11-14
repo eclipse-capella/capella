@@ -15,14 +15,15 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.exceptions.QueryException;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
 
 public class GenericGetForLibWithSystemEngineering extends AbstractQuery {
@@ -31,13 +32,15 @@ public class GenericGetForLibWithSystemEngineering extends AbstractQuery {
     List<Object> result = new ArrayList<Object>();
     if ((input_p != null) && (input_p instanceof EObject)) {
       EObject input = (EObject) input_p;
-      IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(input);
+      IModel currentProject = ILibraryManager.INSTANCE.getModel(input);
 
       if (currentProject != null) {
-        Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getReferencedLibraries(currentProject, true);
-        for (IAbstractLibrary library : libraries) {
-          EObject correspondingInput = QueryExt.getSystemEngineeringFromLibrary((CapellaLibrary) library);
-          result.addAll(QueryInterpretor.executeQuery(getIdentifier(), correspondingInput, context_p));
+        Collection<IModel> libraries = LibraryManagerExt.getActivesReferences(currentProject);
+        for (IModel library : libraries) {
+          EObject correspondingInput = QueryExt.getSystemEngineeringFromLibrary(TransactionUtil.getEditingDomain(input), (CapellaModel) library);
+          if (correspondingInput != null) {
+            result.addAll(QueryInterpretor.executeQuery(getIdentifier(), correspondingInput, context_p));
+          }
         }
       }
     }

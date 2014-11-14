@@ -6,3 +6,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 /icons/full/clcl16/refresh.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/refresh.gif
 /icons/full/clcl16/synced.gif - org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/elcl16/synced.gif
+/icons/full/clcl16/collapseCategories.gif - org.polarsys.capella.core.ui.semantic.browser - org.polarsys.capella.core.ui.semantic.browser/icons/full/clcl16/collapseCategories.gif

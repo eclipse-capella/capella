@@ -10,111 +10,49 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.la;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.SystemComponent;
-import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.pa.PhysicalActor;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.data.la.LaPackage;
 
 /**
  */
 public class CapabilityRealization_ComponentCapabilityRealization implements IBusinessQuery {
 
-  /**
-   * @param arch_p
-   * @return
-   */
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-    TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch_p, true);
-    while (allContents.hasNext()) {
-      Object object = allContents.next();
-      if ((object instanceof SystemComponent)
-       && !(object instanceof PhysicalActor))
-      {
-        availableElements.add((CapellaElement) object);
-      }
-    }
-
-    return availableElements;
-  }
-
-  /**
-   *  same level visibility layer
-   *  @param ele_p
-   */
-  private List<CapellaElement> getRule_MQRY_CapabilityRealization_AvailableActors(CapabilityRealization ele_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-    BlockArchitecture currentBlockArchitecture = SystemEngineeringExt.getRootBlockArchitecture(ele_p);
-    if (currentBlockArchitecture != null) {
-      availableElements.addAll(getElementsFromBlockArchitecture(currentBlockArchitecture));
-    }
-
-    // remove existing from the availableElements
-    for (CapellaElement element : getCurrentElements(ele_p, false)) {
-      availableElements.remove(element);
-    }
-
-    return availableElements;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-    if (element_p instanceof CapabilityRealization) {
-      availableElements.addAll(getRule_MQRY_CapabilityRealization_AvailableActors((CapabilityRealization) element_p));
-    }
-
-    return availableElements;
-	}
-
-  /**
-   * {@inheritDoc}
-   */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof CapabilityRealization) {
-		  CapabilityRealization capabilityRealization = (CapabilityRealization) element_p;
-      for (SystemComponentCapabilityRealizationInvolvement cpntReal : capabilityRealization.getOwnedSystemComponentCapabilityRealizations()) {
-        InvolvedElement involved = cpntReal.getInvolved();
-        if (null != involved) {
-          currentElements.add(involved);
-        }
-      }
-		}
-		return currentElements;
-	}
-
-  /**
-   * {@inheritDoc}
-   */
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public EClass getEClass() {
 		return LaPackage.Literals.CAPABILITY_REALIZATION;
 	}
 
-  /**
-   * {@inheritDoc}
-   */
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
+		return Collections.singletonList(LaPackage.Literals.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__CAPABILITY_REALIZATION__COMPONENT_CAPABILITY_REALIZATION, element_p, context);
 	}
 }

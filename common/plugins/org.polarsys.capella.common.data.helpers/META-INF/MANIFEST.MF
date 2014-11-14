@@ -6,9 +6,7 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.data.activity.gen;visibility:=reexport,
  org.polarsys.capella.common.data.behavior.gen;visibility:=reexport,
- org.polarsys.capella.common.data.core.gen;visibility:=reexport,
- org.polarsys.capella.common.platform.sirius.tig;visibility:=reexport,
- org.polarsys.capella.common.tig.efprovider;visibility:=reexport
+ org.polarsys.capella.common.data.core.gen;visibility:=reexport
 Export-Package: org.polarsys.capella.common.data.helpers.activity,
  org.polarsys.capella.common.data.helpers.activity.delegates,
  org.polarsys.capella.common.data.helpers.behavior,

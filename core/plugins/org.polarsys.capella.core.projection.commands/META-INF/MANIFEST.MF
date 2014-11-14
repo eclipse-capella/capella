@@ -11,8 +11,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.projection.logicalfunction,
  org.polarsys.capella.core.projection.operationalactivity,
  org.polarsys.capella.core.projection.systemfunction,
- org.polarsys.capella.common.tig.efprovider,
- org.polarsys.capella.common.tig.ef,
  org.polarsys.capella.core.projection.lc2pc.breakdownstrategy,
  org.polarsys.capella.core.projection.preferences,
  org.polarsys.capella.core.projection.actors.ctx2la,
@@ -22,7 +20,6 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.refinement.processor.interfacelinksupdate,
  org.polarsys.capella.core.projection.interfaces.la2pa,
  org.polarsys.capella.core.projection.data,
- org.polarsys.capella.common.platform.sirius.tig,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.eclipse.sirius,
  org.polarsys.capella.core.platform.sirius.ui.menu,
@@ -34,7 +31,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.expressions,
  org.polarsys.capella.core.projection.exchanges,
  org.polarsys.capella.core.projection.scenario
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.commands
 Bundle-Localization: plugin

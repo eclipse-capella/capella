@@ -40,8 +40,6 @@ public class AbstractCapabilityRule extends AbstractCapellaElementRule {
 
   public AbstractCapabilityRule() {
     super();
-    registerUpdatedAttribute(InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION);
-    registerUpdatedAttribute(InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION);
   }
 
   /**

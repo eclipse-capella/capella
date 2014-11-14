@@ -38,25 +38,27 @@
                   This rule checks that a Class (or a Component) cannot inherit from multiple classes (resp. Components) if the dedicated configuration option does not allow it.
                </description>
             </constraint>
+            <!--
             <constraint
                   class="org.polarsys.capella.core.data.core.validation.constraint.MDCHK_Constraint_Expression"
                   id="DWF_D_20"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_D_20 - Constraint expression type check 1"
+                  name="DWF_D_20 - Constraint ownedSpecification type check 1"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  "{0}" constraint expression type shall be BooleanType.
+                  "{0}" constraint ownedSpecification must be of type boolean.
                </message>
                <description>
-                  This rule checks that a constraint expression is typed by a BooleanType.
+                  This rule checks that the ownedSpecification of a constraint is of type boolean.
                </description>
                <target
                      class="Constraint">
                </target>
             </constraint>
+            -->
             <constraint
                   class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHKClassWithAbstractAttributes"
                   id="DWF_D_41"
@@ -76,6 +78,25 @@
                      class="CapellaElement">
                </target>
             </constraint>    
+            <constraint
+                        class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHK_Class_FinalSuperClass"
+                        id="DWF_D_47"
+                        isEnabledByDefault="true"
+                        lang="Java"
+                        mode="Batch"
+                        name="DWF_D_47 - Final Inheritance"
+                        severity="WARNING"
+                        statusCode="1">
+                    <message>
+                        {0} have a Final Inheritance ({1}).
+                    </message>
+                    <target
+                        class="GeneralizableElement">
+                    </target>
+                    <description>
+                        This rule ensures that superTypes are not Final.
+                    </description>
+            </constraint>
          </constraints>
          <constraints
                categories="capella.category/quality">
@@ -166,7 +187,7 @@ Two exchange items that share a common container have conflicting names if both 
             <constraint
                   class="org.polarsys.capella.core.data.core.validation.capellaelement.MDCHK_DE_CE_PL_Naming_1"
                   id="I_09"
-                  isEnabledByDefault="true"
+                  isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
                   name="I_09 - Exchanges Naming conflicts check 1"
@@ -176,7 +197,7 @@ Two exchange items that share a common container have conflicting names if both 
                   {0}{1} content has a naming conflict for: {2}.
                </message>
                <description>
-                  This rule ensures that an element doesn&apos;t contain a naming conflict. This rule only applies to exchanges (Component Exchanges, Physical Links and Functional Exchanges).
+                  This rule ensures that an element doesn&apos;t contain a naming conflict. This rule only applies to exchanges (Component Exchanges, Physical Links and Functional Exchanges) which have the same source (Component / function), the same target (Component / function) and the same name.
                </description>
                <target
                      class="CapellaElement">
@@ -185,7 +206,7 @@ Two exchange items that share a common container have conflicting names if both 
             <constraint
                   class="org.polarsys.capella.core.data.core.validation.capellaelement.UnnamedElement"
                   id="I_10"
-                  isEnabledByDefault="true"
+                  isEnabledByDefault="false"
                   lang="Java"
                   mode="Batch"
                   name="I_10 - Unnamed Element"
@@ -260,6 +281,61 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                <target
                      class="CapellaElement">
                </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.PartNotNull"
+                  id="I_31"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_31 - check Null Part"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  [{0}] to {1} has a Null Part.
+               </message>
+               <target
+                     class="CapellaElement">
+               </target>
+               <description>
+                  This rule checks that a Component Exchange / Physical Link End doesn&apos;t have a part Null.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.SingletonModeWithEnds"
+                  id="I_32"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_32 - Check Component Exchange / Physical Link Ends in SingletonComponents mode"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Component Exchange / Physical Link Ends are dedicated to the reusable mode defined in Key Value&quot;projectApproach&quot;.
+               </message>
+               <description>
+                  This rule ensures that Component Exchange / Physical Link Ends are restricted to reusable mode defined in Key Value&quot;projectApproach&quot;.
+               </description>
+               <target
+                     class="CapellaElement"></target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.SingletonModeWithMultipleParts"
+                  id="I_33"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_33 - Check  Reused Parts in SingletonComponents mode"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The type {0} ({1}) should not have multiple parts when the project approach is in default mode (not in reusable mode).
+               </message>
+               <description>
+                  This rule checks that reused parts are not used when the project approach is in default mode (not in reusable mode).
+               </description>
+               <target
+                     class="CapellaElement"></target>
             </constraint>
          </constraints>
       </constraintProvider>

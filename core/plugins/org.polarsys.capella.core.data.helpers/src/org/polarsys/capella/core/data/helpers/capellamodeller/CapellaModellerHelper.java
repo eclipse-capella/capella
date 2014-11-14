@@ -13,15 +13,14 @@ package org.polarsys.capella.core.data.helpers.capellamodeller;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
-import org.polarsys.capella.core.data.helpers.capellamodeller.delegates.SystemEngineeringHelper;
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellamodeller.Folder;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineeringPkg;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
+import org.polarsys.capella.core.data.helpers.capellamodeller.delegates.SystemEngineeringHelper;
 
 public class CapellaModellerHelper implements IHelper {
 

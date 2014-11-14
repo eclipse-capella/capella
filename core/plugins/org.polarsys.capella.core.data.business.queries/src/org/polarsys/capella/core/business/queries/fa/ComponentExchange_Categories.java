@@ -10,101 +10,49 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.fa;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.fa.ComponentExchange;
-import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
-import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.data.fa.FaPackage;
 
 /**
  */
 public class ComponentExchange_Categories implements IBusinessQuery {
- 
-  /**
-   * Gets all the component exchange categories from the BlockArchitecture
-   * @param arch_p
-   * @return list of ComponentExchangeCategories
-   */
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    if (arch_p != null) {
-      for (EObject obj : EObjectExt.getAll(arch_p, FaPackage.Literals.COMPONENT_EXCHANGE_CATEGORY)) {
-        availableElements.add((CapellaElement) obj);
-      }
-    }
-    return availableElements;
-  }
 
-  // same level
-  private List<CapellaElement> getRule_MQRY_ComponentExchange_Categories_11(ComponentExchange componentExchange_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(componentExchange_p);
-    
-    availableElements.addAll(getElementsFromBlockArchitecture(arch));
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return FaPackage.Literals.COMPONENT_EXCHANGE;
+	}
 
-    return availableElements;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES);
+	}
 
-  /**
-   * {@inheritDoc}
-   */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__COMPONENT_EXCHANGE__CATEGORIES, element_p, context);
+	}
 
-    if (element_p instanceof ComponentExchange) {
-      ComponentExchange componentExchange = (ComponentExchange) element_p;
-      availableElements.addAll(getRule_MQRY_ComponentExchange_Categories_11(componentExchange));
-
-      // remove ComponentExchangeCategory related to current
-      List<CapellaElement> currentElements = getCurrentElements(componentExchange, false);
-      if (!currentElements.isEmpty() && !availableElements.isEmpty()) {
-        availableElements.removeAll(currentElements);
-      }
-    } 
-
-    return availableElements;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-    if (element_p instanceof ComponentExchange) {
-      ComponentExchange componentExchange = (ComponentExchange) element_p;
-      EList<ComponentExchangeCategory> categories = componentExchange.getCategories();
-      for (ComponentExchangeCategory categorie : categories) {
-        currentElements.add(categorie);
-      }
-    }
-
-    return currentElements;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return FaPackage.Literals.COMPONENT_EXCHANGE;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
-   */
-  public List<EReference> getEStructuralFeatures() {
-      return Collections.singletonList(FaPackage.Literals.COMPONENT_EXCHANGE__CATEGORIES);
-  }  
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COMPONENT_EXCHANGE__CATEGORIES, element_p, context);
+	}
 }

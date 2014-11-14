@@ -10,99 +10,49 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.fa;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.fa.ExchangeCategory;
-import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.data.fa.FaPackage;
 
 /**
  */
 public class FunctionalExchange_Categories implements IBusinessQuery {
 
-  @Override
-  public List<CapellaElement> getAvailableElements(CapellaElement element) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return FaPackage.Literals.FUNCTIONAL_EXCHANGE;
+	}
 
-    if (element instanceof FunctionalExchange) {
-      FunctionalExchange functionalExchange = (FunctionalExchange) element;
-      availableElements.addAll(getRule_MQRY_FunctionalExchange_Categories_11(functionalExchange));
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES);
+	}
 
-      // remove ExchangeCategory related to current
-      List<CapellaElement> currentElements = getCurrentElements(functionalExchange, false);
-      if (!currentElements.isEmpty() && !availableElements.isEmpty()) {
-        availableElements.removeAll(currentElements);
-      }
-    }
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__FUNCTIONAL_EXCHANGE__CATEGORIES, element_p, context);
+	}
 
-    return availableElements;
-  }
-
-  /**
-   * Gets all the exchange categories from the BlockArchitecture
-   * @param arch_p
-   * @return list of ExchangeCategories
-   */
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    if (arch_p != null) {
-      for (EObject obj : EObjectExt.getAll(arch_p, FaPackage.Literals.EXCHANGE_CATEGORY)) {
-        availableElements.add((CapellaElement) obj);
-      }
-    }
-    return availableElements;
-  }
-
-  // same level
-  private List<CapellaElement> getRule_MQRY_FunctionalExchange_Categories_11(FunctionalExchange functionalExchange_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(functionalExchange_p);
-
-    availableElements.addAll(getElementsFromBlockArchitecture(arch));
-
-    return availableElements;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-    if (element_p instanceof FunctionalExchange) {
-      FunctionalExchange functionalExchange = (FunctionalExchange) element_p;
-      EList<ExchangeCategory> categories = functionalExchange.getCategories();
-      for (ExchangeCategory categorie : categories) {
-        currentElements.add(categorie);
-      }
-    }
-
-    return currentElements;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return FaPackage.Literals.FUNCTIONAL_EXCHANGE;
-  }
-
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
-   */
-  public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(FaPackage.Literals.FUNCTIONAL_EXCHANGE__CATEGORIES);
-  }
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__FUNCTIONAL_EXCHANGE__CATEGORIES, element_p, context);
+	}
 }

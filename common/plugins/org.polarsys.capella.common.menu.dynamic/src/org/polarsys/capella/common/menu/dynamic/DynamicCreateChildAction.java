@@ -34,6 +34,11 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.ActionContributionProvider;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
+/**
+ * An extended child creation action that takes the Capella creation service
+ * into account. 
+ * @see org.polarsys.capella.common.menu.dynamic.CreationHelper
+ */
 public class DynamicCreateChildAction extends CreateChildAction {
   /**
    * Constructor.

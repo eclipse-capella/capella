@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
@@ -44,6 +44,7 @@ import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getReferencedStates <em>Referenced States</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getAvailableInStates <em>Available In States</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getOwnedAbstractStateRealizations <em>Owned Abstract State Realizations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getRealizedAbstractStates <em>Realized Abstract States</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.impl.AbstractStateImpl#getRealizingAbstractStates <em>Realizing Abstract States</em>}</li>
@@ -66,6 +67,20 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 	 * @ordered
 	 */
 	protected EList<IState> referencedStates;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getAvailableInStates() <em>Available In States</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAvailableInStates()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<IState> availableInStates;
 
 
 
@@ -173,6 +188,20 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 	 * @generated
 	 */
 
+	public EList<IState> getAvailableInStates() {
+
+		if (availableInStates == null) {
+			availableInStates = new EObjectResolvingEList<IState>(IState.class, this, CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES);
+		}
+		return availableInStates;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
 	public EList<AbstractStateRealization> getOwnedAbstractStateRealizations() {
 
 		if (ownedAbstractStateRealizations == null) {
@@ -211,10 +240,10 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES, annotation);
 		
 		try {
@@ -258,10 +287,10 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__REALIZING_ABSTRACT_STATES, annotation);
 		
 		try {
@@ -341,10 +370,10 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.ABSTRACT_STATE__INVOLVER_REGIONS, annotation);
 		
 		try {
@@ -405,6 +434,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		switch (featureID) {
 			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
 				return getReferencedStates();
+			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
+				return getAvailableInStates();
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				return getOwnedAbstractStateRealizations();
 			case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
@@ -434,6 +465,10 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 				getReferencedStates().clear();
 				getReferencedStates().addAll((Collection<? extends IState>)newValue);
 				return;
+			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
+				getAvailableInStates().clear();
+				getAvailableInStates().addAll((Collection<? extends IState>)newValue);
+				return;
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				getOwnedAbstractStateRealizations().clear();
 				getOwnedAbstractStateRealizations().addAll((Collection<? extends AbstractStateRealization>)newValue);
@@ -462,6 +497,9 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
 				getReferencedStates().clear();
 				return;
+			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
+				getAvailableInStates().clear();
+				return;
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				getOwnedAbstractStateRealizations().clear();
 				return;
@@ -487,6 +525,8 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		switch (featureID) {
 			case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES:
 				return referencedStates != null && !referencedStates.isEmpty();
+			case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES:
+				return availableInStates != null && !availableInStates.isEmpty();
 			case CapellacommonPackage.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS:
 				return ownedAbstractStateRealizations != null && !ownedAbstractStateRealizations.isEmpty();
 			case CapellacommonPackage.ABSTRACT_STATE__REALIZED_ABSTRACT_STATES:
@@ -514,6 +554,7 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		if (baseClass == IState.class) {
 			switch (derivedFeatureID) {
 				case CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES: return ModellingcorePackage.ISTATE__REFERENCED_STATES;
+				case CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES: return ModellingcorePackage.ISTATE__AVAILABLE_IN_STATES;
 				default: return -1;
 			}
 		}
@@ -530,6 +571,7 @@ public abstract class AbstractStateImpl extends NamedElementImpl implements Abst
 		if (baseClass == IState.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ISTATE__REFERENCED_STATES: return CapellacommonPackage.ABSTRACT_STATE__REFERENCED_STATES;
+				case ModellingcorePackage.ISTATE__AVAILABLE_IN_STATES: return CapellacommonPackage.ABSTRACT_STATE__AVAILABLE_IN_STATES;
 				default: return -1;
 			}
 		}

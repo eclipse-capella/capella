@@ -65,8 +65,9 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case RePackage.REC_CATALOG: return createRecCatalog();
 			case RePackage.CATALOG_ELEMENT_PKG: return createCatalogElementPkg();
+			case RePackage.REC_CATALOG: return createRecCatalog();
+			case RePackage.GROUPING_ELEMENT_PKG: return createGroupingElementPkg();
 			case RePackage.CATALOG_ELEMENT_LINK: return createCatalogElementLink();
 			case RePackage.CATALOG_ELEMENT: return createCatalogElement();
 			case RePackage.COMPLIANCY_DEFINITION_PKG: return createCompliancyDefinitionPkg();
@@ -116,6 +117,18 @@ public class ReFactoryImpl extends EFactoryImpl implements ReFactory {
     //begin-capella-code
     //end-capella-code
 		return recCatalog;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GroupingElementPkg createGroupingElementPkg() {
+		GroupingElementPkgImpl groupingElementPkg = new GroupingElementPkgImpl();
+    //begin-capella-code
+    //end-capella-code
+		return groupingElementPkg;
 	}
 
 	/**

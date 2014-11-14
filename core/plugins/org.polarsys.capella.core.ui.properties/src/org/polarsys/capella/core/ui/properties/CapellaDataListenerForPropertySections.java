@@ -21,14 +21,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.BaseLabelProvider;
 import org.eclipse.jface.viewers.LabelProviderChangedEvent;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.progress.UIJob;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.polarsys.capella.core.model.preferences.CapellaModelDataListener;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.model.helpers.listeners.CapellaModelDataListener;
 
 /**
  */
@@ -37,30 +33,7 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
   /**
    * 
    */
-  private static CapellaDataListenerForPropertySections _instance;
-
-  /**
-   * 
-   */
   private Set<TabbedPropertySheetPage> _pages;
-
-  /**
-   * 
-   */
-  public static CapellaDataListenerForPropertySections getInstance() {
-    if (null == _instance) {
-      _instance = new CapellaDataListenerForPropertySections();
-      registerAdapters();
-    }
-    return _instance;
-  }
-
-  /**
-   * 
-   */
-  private CapellaDataListenerForPropertySections() {
-    // cannot be directly instanciated
-  }
 
   /**
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
@@ -91,23 +64,6 @@ public class CapellaDataListenerForPropertySections extends CapellaModelDataList
           };
       refreshView.run(new NullProgressMonitor());
     }
-  }
-
-  /**
-   * 
-   */
-  private static void registerAdapters() {
-    MDEAdapterFactory.getDataNotifier().addAdapter(ModelElement.class, _instance);
-    MDEAdapterFactory.getDataNotifier().addAdapter(DRepresentation.class, _instance);
-
-  }
-
-  /**
-   * 
-   */
-  @SuppressWarnings("unused")
-  private static void unregisterAdapters() {
-    MDEAdapterFactory.getDataNotifier().remove(_instance);
   }
 
   /**

@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.swt.widgets.Control;
 
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
 import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
@@ -61,10 +63,11 @@ public class DialogHelper {
   public static List<EObject> openTransferDialog(Control control_p, List<EObject> currentElements, List<EObject> availableElements, String title, String message) {
     boolean expandLeftViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandLeftViewerContent();
     boolean expandRightViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandRightViewerContent();
+	DataLabelProvider leftLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(availableElements));
+	DataLabelProvider rightLabelProvider =  new CapellaTransfertViewerLabelProvider(TransactionHelper.getEditingDomain(currentElements));
 
     return SelectionDialogHelper.multiplePropertyTransfertDialogWizard(
-      control_p.getShell(), title, message, availableElements, currentElements,
-      new CapellaTransfertViewerLabelProvider(), new CapellaTransfertViewerLabelProvider(),
+      control_p.getShell(), title, message, availableElements, currentElements, leftLabelProvider, rightLabelProvider,
       expandLeftViewer ? AbstractTreeViewer.ALL_LEVELS : 0, expandRightViewer ? AbstractTreeViewer.ALL_LEVELS : 0);
   }
 }

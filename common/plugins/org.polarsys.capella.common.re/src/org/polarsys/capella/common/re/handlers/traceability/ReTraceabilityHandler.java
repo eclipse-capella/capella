@@ -77,9 +77,6 @@ public class ReTraceabilityHandler extends LevelBasedTraceabilityHandler impleme
   @Override
   @Deprecated
   public String getId(EObject element_p, IContext context_p) {
-    if (element_p instanceof CatalogElementLink) {
-      System.out.println(0);
-    }
     return super.getId(element_p, context_p);
   }
 
@@ -114,7 +111,7 @@ public class ReTraceabilityHandler extends LevelBasedTraceabilityHandler impleme
    */
   @Override
   public void notifyChanged(INotifyChangeEvent event_p, IContext context_p) {
-
+    //Nothing here
   }
 
 }

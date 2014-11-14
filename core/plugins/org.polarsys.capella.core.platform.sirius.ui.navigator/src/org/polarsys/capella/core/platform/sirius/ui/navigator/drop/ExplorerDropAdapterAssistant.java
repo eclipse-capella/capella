@@ -37,7 +37,7 @@ import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaCopyToClipbo
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
 import org.polarsys.capella.core.platform.sirius.ui.commands.PasteCommandHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * The Capella explorer drop assistant.
@@ -95,7 +95,7 @@ public class ExplorerDropAdapterAssistant extends AbstractCapellaDropAdapterAssi
     Object currentTarget = target_p;
     EObject nextContainer = (EObject) currentTarget;
     // Gets the editing domain.
-    TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
+    TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(nextContainer);
     // Create a drop command.
     Command dropCommand = new DragAndDropCommand(editingDomain, nextContainer, getLocation(event_p), event_p.operations, event_p.detail, modelElements_p) {
       /**

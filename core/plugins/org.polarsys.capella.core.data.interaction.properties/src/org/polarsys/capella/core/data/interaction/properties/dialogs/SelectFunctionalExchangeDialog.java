@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.interaction.properties.dialogs;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +44,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
@@ -83,12 +84,14 @@ import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.model.utils.CollectionExt;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 
@@ -132,10 +135,14 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     @Override
     @SuppressWarnings("synthetic-access")
     public void widgetSelected(SelectionEvent e_p) {
+      List<? extends EObject> availableElements = getAvailableElements();
+      List<? extends EObject> currentElements = getCurrentElements();
       TransferTreeListDialog dialog =
           new TransferTreeListDialog(getShell(), Messages.ExchangeDialog_ExchangeItemSelectionWizardTitle,
-              Messages.ExchangeDialog_ExchangeItemSelectionWizardMessage, MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
-      dialog.setLeftInput(getAvailableElements(), null);
+              Messages.ExchangeDialog_ExchangeItemSelectionWizardMessage,
+              TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(availableElements, currentElements)),
+              CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+      dialog.setLeftInput(availableElements, null);
       dialog.setRightInput(getCurrentElements(), null);
 
       if (Window.OK == dialog.open()) {
@@ -265,11 +272,11 @@ public class SelectFunctionalExchangeDialog extends SelectElementsDialog {
     @SuppressWarnings("synthetic-access")
     @Override
     public void widgetSelected(SelectionEvent e_p) {
-
+      Collection<? extends EObject> functions = getAccessibleFunctions(_function);
       SelectElementsDialog selectFunctionDialog =
-          new SelectElementsDialog(getParentShell(), MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
+          new SelectElementsDialog(getParentShell(), TransactionHelper.getEditingDomain(functions), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
               Messages.SelectOperationDialog_SelectInterfaceDialog_Title, Messages.SelectOperationDialog_SelectInterfaceDialog_Message,
-              getAccessibleFunctions(_function));
+              functions);
       if (Window.OK == selectFunctionDialog.open()) {
         AbstractNamedElement selectedFunc = (AbstractNamedElement) selectFunctionDialog.getResult().get(0);
         _text.setText(selectedFunc.getName());

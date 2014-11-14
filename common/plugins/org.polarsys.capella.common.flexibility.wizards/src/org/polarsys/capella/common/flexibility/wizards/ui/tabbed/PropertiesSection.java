@@ -23,7 +23,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyGroup;
@@ -34,8 +36,6 @@ import org.polarsys.capella.common.flexibility.wizards.policy.IPolicifiedRendere
 import org.polarsys.capella.common.flexibility.wizards.schema.IGroupRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 public class PropertiesSection extends AbstractPropertySection {
   IPropertyContext _propertyContext;
@@ -96,8 +96,7 @@ public class PropertiesSection extends AbstractPropertySection {
 
   protected void write(final IPropertyContext context_p) {
     if ((context_p != null) && context_p.isModified()) {
-      MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
-
+      AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
         @Override
         public String getName() {
           return "Model edition";
@@ -106,16 +105,20 @@ public class PropertiesSection extends AbstractPropertySection {
         public void run() {
           context_p.writeAll();
         }
-      });
+      };
+      ExecutionManager em = ExecutionManagerRegistry.getInstance().addNewManager();
+      em.execute(cmd);
+      ExecutionManagerRegistry.getInstance().removeManager(em);
     }
   }
 
   /**
    * @param selection_p
    */
+  @SuppressWarnings("unchecked")
   protected Object getSource(ISelection selection_p) {
     Collection<Object> objects = new ArrayList<Object>();
-    Iterator<Object> e = ((IStructuredSelection) selection_p).iterator();
+	Iterator<Object> e = ((IStructuredSelection) selection_p).iterator();
     while (e.hasNext()) {
       objects.add(e.next());
     }

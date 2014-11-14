@@ -64,6 +64,9 @@ public class ReNamedElementItemProvider extends ReAbstractElementItemProvider
 
 			addNamePropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 

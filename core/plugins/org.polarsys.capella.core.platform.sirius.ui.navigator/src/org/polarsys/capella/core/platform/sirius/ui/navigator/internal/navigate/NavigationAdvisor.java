@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,7 +22,15 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentAllocation;
@@ -52,7 +61,6 @@ import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.datavalue.AbstractBooleanValue;
 import org.polarsys.capella.core.data.information.datavalue.AbstractEnumerationValue;
-import org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue;
 import org.polarsys.capella.core.data.information.datavalue.AbstractStringValue;
 import org.polarsys.capella.core.data.information.datavalue.BooleanReference;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
@@ -69,17 +77,8 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioRealization;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.StateFragment;
-import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.model.handler.AbstractModelElementRunnable;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * Provides services to navigation from a {@link ModelElement} to other {@link ModelElement} according to semantic rules.
@@ -560,6 +559,9 @@ public class NavigationAdvisor {
         }
       }
     }
+    if (sequenceMessage_p.getExchangeContext() != null){
+      navigateTowardsElement.add(sequenceMessage_p.getExchangeContext());
+    }
     return navigateTowardsElement;
   }
 
@@ -620,19 +622,17 @@ public class NavigationAdvisor {
     }
     return navigations;
   }
-
+  
   /**
-   * Handle {@link Constraint} navigation.
-   * @param constraint_p
-   * @return a list mapped to {@link Constraint#getExpression()}
+   * Handle {@link StateTransition} navigation.
+   * @param involvement_p
+   * @return a list of elements that can be navigated to, starting from the argument state transition.
    */
-  List<EObject> handleConstraintExpressionNavigation(Constraint constraint_p) {
-    ArrayList<EObject> navigations = new ArrayList<EObject>(1);
-    AbstractExpressionValue expression = constraint_p.getExpression();
-    if (null != expression) {
-      navigations.add(expression);
+  List<EObject> handleStateTransitionNavigation(StateTransition transition_p){
+    if (transition_p.getGuard() != null){
+      return Collections.<EObject>singletonList(transition_p.getGuard());
     }
-    return navigations;
+    return Collections.emptyList();
   }
 
   /**
@@ -830,10 +830,10 @@ public class NavigationAdvisor {
           setResult(handlePhysicalPathInvolvementNavigation((PhysicalPathInvolvement) getElement()));
         }
       });
-      // Constraint navigations
-      __handledNavigations.put(Constraint.class, new AbstractModelElementRunnable() {
+      // StateTransition navigations
+      __handledNavigations.put(StateTransition.class, new AbstractModelElementRunnable() {
         public void run() {
-          setResult(handleConstraintExpressionNavigation((Constraint) getElement()));
+          setResult(handleStateTransitionNavigation((StateTransition) getElement()));
         }
       });
     }

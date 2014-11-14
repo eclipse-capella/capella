@@ -14,9 +14,17 @@ package org.polarsys.capella.common.re.constants;
  */
 public class IReConstants {
 
+  public static final String PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE = "isource"; //$NON-NLS-1$
+  public static final String PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET = "itarget"; //$NON-NLS-1$
+
+  public static final String PROPERTY__REPLICABLE_ELEMENT__CURRENT_SOURCE = "source"; //$NON-NLS-1$
+  public static final String PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET = "target"; //$NON-NLS-1$
+
+  @Deprecated
   public static final String PROPERTY__REPLICABLE_ELEMENT__SOURCE = "source"; //$NON-NLS-1$
   public static final String PROPERTY__REPLICABLE_ELEMENT__SUFFIX = "suffix"; //$NON-NLS-1$
   public static final String PROPERTY__REPLICABLE_ELEMENT__SUFFIXES = "suffixes"; //$NON-NLS-1$
+  @Deprecated
   public static final String PROPERTY__REPLICABLE_ELEMENT__TARGET = "target"; //$NON-NLS-1$
 
   public static final String PROPERTY__CURRENT_COMPLIANCY = "currentCompliancy"; //$NON-NLS-1$
@@ -34,10 +42,14 @@ public class IReConstants {
 
   public static final String UPDATE_REPLICA = "org.polarsys.capella.common.re.updateReplica";
   public static final String UPDATE_REPLICABLE_ELEMENT = "org.polarsys.capella.common.re.updateCur";
+  public static final String DELETE_REPLICABLE_ELEMENT_AND_RELATED_ELEMENTS = "org.polarsys.capella.common.re.deleteReplicaAndRelatedElements";
 
   public static final String COMMAND__CURRENT_VALUE = "COMMAND__CURRENT_VALUE";
   public static final String COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE = "COMMAND__UPDATE_A_REPLICA_FROM_REPLICABLE";
   public static final String COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE = "COMMAND__CREATE_A_REPLICA_FROM_REPLICABLE";
+  public static final String COMMAND__DELETE_A_REPLICA_AND_RELATED_ELEMENTS = "COMMAND__DELETE_A_REPLICA_AND_RELATED_ELEMENTS";
+  public static final String COMMAND__DELETE_A_REPLICA_PRESERVE_RELATED_ELEMENTS = "COMMAND__DELETE_A_REPLICA_PRESERVE_RELATED_ELEMENTS";
+  public static final String COMMAND__DETACH_ELEMENT_FROM_REPLICA = "COMMAND__DETACH_ELEMENT_FROM_REPLICA";
 
   public static final String COMMAND__CREATE_REPLICABLE_ELEMENT = "COMMAND__CREATE_REPLICABLE_ELEMENT";
   public static final String COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA = "COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA";
@@ -53,6 +65,7 @@ public class IReConstants {
   public static final String TRACEABILITY_ATTACHMENT_HANDLER = "TRACEABILITY_ATTACHMENT_HANDLER";
 
   public static final String ATTRIBUTE_HANDLER = "ATTRIBUTE_HANDLER";
+  public static final String LOCATION_HANDLER = "LOCATION_HANDLER";
   public static final String REPLICABLE_ELEMENT_HANDLER = "REPLICABLE_ELEMENT_HANDLER";
   public static final String PROPERTY__TARGET_NAME = "targetName";
 
@@ -60,13 +73,17 @@ public class IReConstants {
   //When we create a replica from a rec, we create for all elements of the rec a link, that we will reconnect further to the
   //element of the replica created while diffmerge.
   //When attached to the source element (of the rec), the link is located in the VIRTUAL_LINKS.
-  //We diffmerge, when the link is linked to the element of the rpl, the link is located in the VIRTUAL_LINKS_2. Since it is a real link, it should not be removed
+  //On diffmerge, when the link is linked to the element of the rpl, the link is located in the VIRTUAL_LINKS_2. Since it is a real link, it should not be removed
   //except if a CANCEL is triggered. 
   //At the end of the operation, VIRTUAL_LINKS_2 is copied into VIRTUAL_LINKS_3, list of links which should not be deleted at the FinalizationActivity.
 
+  //All links created while using tooling
+  public static final String CREATED_LINKS = "CREATED_LINKS";
+  //All links of a RPL towards semantic elements of the REC. updated while diffmerge process
   public static final String VIRTUAL_LINKS = "VIRTUAL_LINKS";
-  public static final String VIRTUAL_LINKS_2 = "VIRTUAL_LINKS_2";
-  public static final String VIRTUAL_LINKS_3 = "VIRTUAL_LINKS_3";
+  //All links to keep after tooling. Some links will be deleted
+  public static final String CREATED_LINKS_TO_KEEP = "CREATED_LINKS_TO_KEEP";
+  public static final String ADDITIONAL_ELEMENTS_TO_DELETE = "ADDITIONAL_ELEMENTS_TO_DELETE";
 
   public static final String PLUGIN_ID = "org.polarsys.capella.common.re"; //$NON-NLS-1$
   public static final String PROPERTY__LOCATION_TARGET = "locationTarget"; //$NON-NLS-1$
@@ -82,5 +99,9 @@ public class IReConstants {
   public static final String DEPENDENCIES_SCOPE_HANDLER = "DEPENDENCIES_SCOPE_HANDLER";
   public static final Object SCOPE_COMPUTATION_SCOPE_HANDLER = "SCOPE_COMPUTATION_SCOPE_HANDLER";
   public static final Object SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER = "SCOPE_COMPLEMENTARY_COMPUTATION_SCOPE_HANDLER";
+
+  public static boolean ENABLE_SUB_INSTANCIATION() {
+    return false;
+  }
 
 }

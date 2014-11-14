@@ -15,7 +15,7 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * Invert the orientations of the ports of a ComponentExchange.

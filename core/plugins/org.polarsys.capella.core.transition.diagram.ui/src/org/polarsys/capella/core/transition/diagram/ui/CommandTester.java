@@ -11,8 +11,7 @@
 package org.polarsys.capella.core.transition.diagram.ui;
 
 import org.eclipse.core.expressions.PropertyTester;
-import org.eclipse.sirius.viewpoint.DDiagram;
-
+import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;

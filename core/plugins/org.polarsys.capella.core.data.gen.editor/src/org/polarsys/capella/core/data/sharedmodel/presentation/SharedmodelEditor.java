@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.sharedmodel.presentation;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -129,9 +128,6 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
 import org.polarsys.capella.common.data.activity.provider.ActivityItemProviderAdapterFactory;
 import org.polarsys.capella.common.data.behavior.provider.BehaviorItemProviderAdapterFactory;
 import org.polarsys.capella.common.data.modellingcore.provider.ModellingcoreItemProviderAdapterFactory;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
 import org.polarsys.capella.core.data.capellacommon.provider.CapellacommonItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.capellacore.provider.CapellacoreItemProviderAdapterFactory;
 import org.polarsys.capella.core.data.capellamodeller.presentation.CapellaModellerEditorPlugin;
@@ -158,6 +154,7 @@ import org.polarsys.kitalpha.emde.extension.ModelExtensionListener;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionManager;
 import org.polarsys.kitalpha.emde.model.edit.provider.EmdeItemProviderAdapterFactory;
 import org.polarsys.kitalpha.emde.ui.actions.EmdeViewerFilterAction;
+
 // begin-capella-code
 // end-capella-code
 // begin-capella-code
@@ -789,10 +786,10 @@ public class SharedmodelEditor
 		// Create the editing domain with a special command stack.
 		//
 		// begin-capella-code
-		// editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
-		String efName = TigEfProvider.getExecutionManagerName();
-		ExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);
-		editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); 
+		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
+		//String efName = TigEfProvider.getExecutionManagerName();
+		//ExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);
+		//editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); 
    		// end-capella-code
 
 		// Register this editor for ExtendedModel state

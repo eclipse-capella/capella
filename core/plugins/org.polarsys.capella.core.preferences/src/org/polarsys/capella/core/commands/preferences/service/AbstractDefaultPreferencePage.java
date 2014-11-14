@@ -112,6 +112,11 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
 
     return ok;
   }
+  
+  public boolean performCancel() {
+      
+	  return true;
+  }
 
   public IPreferenceStore getProjectPreferenceStore() {
     final IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();

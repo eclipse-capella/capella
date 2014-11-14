@@ -9,7 +9,8 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/CatalogElementPkg.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CatalogElementPkg.gif
 /icons/full/obj16/CompliancyDefinition.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CompliancyDefinition.gif
 /icons/full/obj16/CompliancyDefinitionPkg.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CompliancyDefinitionPkg.gif
-/icons/full/obj16/GatheringElement.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/GatheringElement.gif
+/icons/full/obj16/GroupingElement.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/GroupingElement.gif
+/icons/full/obj16/GroupingElementPkg.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/GroupingElementPkg.gif
 /icons/full/obj16/RecCatalog.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/RecCatalog.gif
 /icons/full/obj16/Replica.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/Replica.gif
 /icons/full/obj16/ReplicableElement.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/ReplicableElement.gif

@@ -15,9 +15,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
-
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
+import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.handlers.scope.ScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.selection.EClassSelectionContext;
@@ -179,6 +179,14 @@ public class DefaultTransformationHandler implements ITransformationHandler {
         SelectionContextHandlerHelper.getHandler(context_p).getSelectionContext(context_p, ITransitionConstants.SELECTION_CONTEXT__TRANSFORMATION, element_p,
             result_p);
     return getBestTracedElement(root_p, context_p, sContext);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void postTransformElement(EObject element_p, EObject result_p, IContext context_p) {
+    AttachmentHelper.getInstance(context_p).createdElement(element_p, result_p, context_p);
   }
 
 }

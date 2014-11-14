@@ -16,9 +16,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -31,7 +31,7 @@ import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -48,11 +48,11 @@ public class GetAvailable_Part_DeployedElements__Lib extends AbstractQuery {
     Collection<Part> parts = ComponentExt.getPartAncestors(currentPart);
     AbstractType abstractType = currentPart.getAbstractType();
 
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(currentPart);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(currentPart);
     BlockArchitecture block = BlockArchitectureExt.getRootBlockArchitecture(currentPart);
-    Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-    for (IAbstractLibrary library : libraries) {
-      CapellaElement correspondingInput = (CapellaElement) QueryExt.getCorrespondingElementInLibrary(block, (CapellaLibrary) library);
+    Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+    for (IModel library : libraries) {
+      CapellaElement correspondingInput = (CapellaElement) QueryExt.getCorrespondingElementInLibrary(block, (CapellaModel) library);
       if ((null != abstractType) && ((abstractType instanceof PhysicalComponent) || (abstractType instanceof PhysicalActor))) {
         List<PhysicalComponent> behaviourComps = SystemEngineeringExt.getAllPhysicalComponents(correspondingInput);
         if (abstractType instanceof PhysicalComponent) {

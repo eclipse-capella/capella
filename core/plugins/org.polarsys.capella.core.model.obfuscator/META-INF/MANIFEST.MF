@@ -11,8 +11,9 @@ Require-Bundle: org.polarsys.capella.core.platform.sirius.ui.navigator,
  org.eclipse.sirius,
  org.polarsys.capella.core.sirius.ui,
  org.eclipse.sirius.ui,
- org.eclipse.gmf.runtime.notation;bundle-version="1.4.1",
- org.eclipse.sirius.table
+ org.eclipse.gmf.runtime.notation,
+ org.eclipse.sirius.table,
+ org.eclipse.sirius.diagram
 Bundle-Activator: org.polarsys.capella.core.model.obfuscator.CapellaModelObfuscatorActivator
 Export-Package: org.polarsys.capella.core.model.obfuscator,
  org.polarsys.capella.core.model.obfuscator.actions

@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.common.properties;
 
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class CommonPropertiesPlugin extends AbstractUIPlugin {
+public class CommonPropertiesPlugin extends AbstractUIActivator {
   // The shared instance
   private static CommonPropertiesPlugin __plugin;
 
@@ -45,4 +45,5 @@ public class CommonPropertiesPlugin extends AbstractUIPlugin {
   public static CommonPropertiesPlugin getDefault() {
     return __plugin;
   }
+
 }

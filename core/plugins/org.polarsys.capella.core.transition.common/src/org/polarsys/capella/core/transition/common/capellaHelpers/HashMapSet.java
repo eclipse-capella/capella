@@ -36,6 +36,12 @@ public class HashMapSet<K, V> {
     //Nothing
   }
 
+  public void clear() {
+    if (map != null) {
+      map.clear();
+    }
+  }
+
   private class InternalHashSet extends HashSet<V> implements InternalSet {
     private static final long serialVersionUID = -1399521010073092265L;
 

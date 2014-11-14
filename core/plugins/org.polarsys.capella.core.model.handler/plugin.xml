@@ -19,7 +19,7 @@
    <extension-point id="delegateWorkbenchAdvisor" name="Delegate Application Advisor" schema="schema/delegateWorkbenchAdvisor.exsd"/>
     <extension-point id="deleteCommandProvider" name="Delete Command Provider" schema="schema/deleteCommandProvider.exsd"/>
    <extension
-         point="org.polarsys.capella.common.platform.sirius.tig.semanticEditingDomainProviders">
+         point="org.polarsys.capella.common.platform.sirius.ted.semanticEditingDomainProviders">
       <semanticEditingDomainProviders
             class="org.polarsys.capella.core.model.handler.provider.CapellaSemanticEditingDomainProviders">
       </semanticEditingDomainProviders>
@@ -29,8 +29,23 @@
          name="Capella Editing Domain Factory"
          point="org.eclipse.sirius.common.editingDomainFactory">
       <editingDomainFactory
-            class="org.polarsys.capella.common.platform.sirius.tig.ef.SiriusEditingDomainProvider"
+            class="org.polarsys.capella.common.platform.sirius.ted.SiriusEditingDomainProvider"
             override="org.eclipse.sirius.LocalSessionEditingDomainFactory">
       </editingDomainFactory>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.ef.editingDomainListener">
+      <editingDomainListener
+            class="org.polarsys.capella.core.model.handler.post.commit.listener.ProxyResolutionResourceSetListener">
+      </editingDomainListener>
+      <editingDomainListener
+            class="org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListener">
+      </editingDomainListener>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.polarsys.capella.core.model.handler.internal.session.CapellaSessionListener">
+      </listener>
    </extension>
 </plugin>

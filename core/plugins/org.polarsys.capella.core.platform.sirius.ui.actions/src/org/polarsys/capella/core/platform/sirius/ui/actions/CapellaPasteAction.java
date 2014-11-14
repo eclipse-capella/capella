@@ -19,41 +19,36 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.action.PasteAction;
+import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.model.copypaste.SharedCutPasteClipboard;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaPasteCommand;
+import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
 
 /**
  * The action allowing to paste Capella elements. it generates a new identifier each time the action is called.
  */
-public class CapellaPasteAction extends PasteAction {
+public class CapellaPasteAction extends AbstractCommandActionHandler {
   /**
    * Constructs the Capella action allowing to paste Capella elements.
    * @param domain_p The editing domain.
    */
-  public CapellaPasteAction(EditingDomain domain_p) {
-    super(domain_p);
+  public CapellaPasteAction() {
+    super(EMFEditUIPlugin.INSTANCE.getString("_UI_Paste_menu_item"));
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.action.PasteAction#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<?> selection_p) {
+  public Command createCommand(Collection<Object> selection_p) {
     if (1 == selection_p.size()) {
-      return new CapellaPasteCommand(domain, getStructuredSelection().iterator().next(), null, CommandParameter.NO_INDEX);
+      return new CapellaPasteCommand(TransactionHelper.getEditingDomain(filterSelection(selection_p)), getStructuredSelection().iterator().next(), null,
+          CommandParameter.NO_INDEX);
     }
     return UnexecutableCommand.INSTANCE;
-  }
-
-  /**
-   * This returns the owner object upon which the command will act.
-   */
-  protected EObject getOwner() {
-    return (EObject) ((CapellaPasteCommand) command).getOwner();
   }
 
   /**
@@ -71,7 +66,10 @@ public class CapellaPasteAction extends PasteAction {
         if ((null != cutClipboard) && cutClipboard.hasCut()) {
           clipboard = cutClipboard.getClipboard();
         } else {
-          clipboard = domain.getClipboard();
+          EditingDomain domain = TransactionHelper.getEditingDomain((EObject) obj);
+          if (domain != null) {
+            clipboard = domain.getClipboard();
+          }
         }
 
         if ((clipboard != null) && !clipboard.isEmpty() && !checkSemanticRules((List<EObject>) clipboard, (EObject) obj)) {

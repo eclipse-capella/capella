@@ -12,12 +12,10 @@ package org.polarsys.capella.core.data.cs.properties.controllers;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.DeleteHelper;
-
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.properties.controllers.AllocatedComponentExchangesController;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
@@ -32,8 +30,8 @@ public class PhysicalLinkAllocatedComponentExchangesController extends Allocated
   protected void doAddOperationInWriteOpenValues(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, EObject object_p) {
     super.doAddOperationInWriteOpenValues(semanticElement_p, semanticFeature_p, object_p);
 
-    if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed() && (semanticElement_p instanceof PhysicalLink)
-        && (object_p instanceof ComponentExchange)) {
+    if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed()
+        && (semanticElement_p instanceof PhysicalLink) && (object_p instanceof ComponentExchange)) {
       PhysicalLinkExt.synchronizeAllocations((PhysicalLink) semanticElement_p, (ComponentExchange) object_p);
     }
   }

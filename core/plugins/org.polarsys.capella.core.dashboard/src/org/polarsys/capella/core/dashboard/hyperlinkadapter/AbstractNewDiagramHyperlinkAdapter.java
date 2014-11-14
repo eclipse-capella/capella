@@ -32,14 +32,14 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
 import org.eclipse.ui.forms.widgets.AbstractHyperlink;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.sirius.ui.actions.NewRepresentationAction;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Base class to implement a diagram creation.
@@ -90,7 +90,7 @@ public abstract class AbstractNewDiagramHyperlinkAdapter extends AbstractHyperli
     };
 
     try {
-    	MDEAdapterFactory.getExecutionManager().execute(cmd);
+    	TransactionHelper.getExecutionManager(session_p).execute(cmd);
 	} catch (OperationCanceledException e) {
 		return true;
 	} 
@@ -166,7 +166,7 @@ public abstract class AbstractNewDiagramHyperlinkAdapter extends AbstractHyperli
 	}
     
     if (isAutorized[0]&& cmd!=null) {
-        MDEAdapterFactory.getExecutionManager().execute(cmd);
+        TransactionHelper.getExecutionManager(session_p).execute(cmd);
 	}
     
    

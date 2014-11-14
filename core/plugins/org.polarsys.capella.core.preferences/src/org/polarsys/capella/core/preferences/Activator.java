@@ -48,7 +48,6 @@ import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.commands.preferences.internalization.l10n.CustomPreferencesMessages;
@@ -151,11 +150,16 @@ public class Activator extends AbstractUIPlugin {
   // Overlay preference store for property pages
   public static Map<IResource, IPreferenceStore> propertiesStore = new HashMap<IResource, IPreferenceStore>();
 
+  IPreferenceStore preferenceStore = null;
+
   @Override
   public IPreferenceStore getPreferenceStore() {
+    // Create the preference store lazily.
+    if (preferenceStore == null) {
+      preferenceStore = new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID);
 
-    return new ScopedPreferenceStore(new InstanceScope(), Activator.PLUGIN_ID);
-
+    }
+    return preferenceStore;
   }
 
   public IPreferenceStore getPropertyPreferenceStore(IResource project) {
@@ -248,8 +252,8 @@ public class Activator extends AbstractUIPlugin {
   }
 
   /**
-	 * 
-	 */
+   * 
+   */
   private void initializeUserProfilePreferences() {
     CategoryPreferencesManager.getInstance().loadUserProfile();
   }

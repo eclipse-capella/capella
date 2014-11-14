@@ -17,17 +17,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.ui.properties.providers.CapellaTransfertViewerLabelProvider;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * PARAMETERS <br>
@@ -62,12 +63,13 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     TransferTreeListDialog dialog;
 
     if ((scope.size() != 0) && (scope.get(0) instanceof InstanceRole)) {
-      dialog =
-          new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage, new IRDataLabelProvider(),
-              new IRDataLabelProvider());
+      dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
+        new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)),
+        new IRDataLabelProvider(TransactionHelper.getEditingDomain(scope)));
     } else {
-      dialog =
-          new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage, getCustoLabelProvider(), getCustoLabelProvider());
+      dialog = new TransferTreeListDialog(getShell(), Messages.SelectElementFromListWizard_Title, wizardMessage,
+        getCustoLabelProvider(),
+        getCustoLabelProvider());
     }
 
     // Create the list of available elements.
@@ -113,8 +115,8 @@ public class SelectElementsFromTransferWizard extends AbstractExternalJavaAction
     /**
      * Default constructor
      */
-    public IRDataLabelProvider() {
-      super(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
+    public IRDataLabelProvider(TransactionalEditingDomain editingDomain) {
+      super(editingDomain, CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
     }
 
     /**

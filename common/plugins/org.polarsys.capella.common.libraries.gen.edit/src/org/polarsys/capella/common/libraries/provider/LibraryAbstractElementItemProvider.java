@@ -88,6 +88,9 @@ public class LibraryAbstractElementItemProvider
 
 			addIdPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 
@@ -197,17 +200,6 @@ public class LibraryAbstractElementItemProvider
                 // end-extension-code
 
 
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return LibrariesEditPlugin.INSTANCE;
 	}
 
 	// begin-capella-code

@@ -7,7 +7,8 @@ Bundle-Activator: org.polarsys.capella.core.data.ctx.properties.CtxPropertiesPlu
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.core.data.fa.properties;visibility:=reexport,
  org.polarsys.capella.core.data.interaction.properties;visibility:=reexport,
- org.polarsys.capella.core.data.cs.properties;visibility:=reexport
+ org.polarsys.capella.core.data.cs.properties;visibility:=reexport,
+ org.eclipse.sirius.diagram.ui;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.ctx.properties,
  org.polarsys.capella.core.data.ctx.properties.controllers,

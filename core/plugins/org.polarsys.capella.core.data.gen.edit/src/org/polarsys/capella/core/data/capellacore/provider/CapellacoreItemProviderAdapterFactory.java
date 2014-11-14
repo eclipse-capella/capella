@@ -39,6 +39,7 @@ import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.util.ActivitySwitch;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.util.ModellingcoreSwitch;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
@@ -46,7 +47,7 @@ import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.util.CapellacoreAdapterFactory;
 import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -615,7 +616,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 			 * @generated
 			 */
 			@Override
-			public Object caseAbstractNamedElement(AbstractNamedElement object) {
+			public Object caseModelElement(ModelElement object) {
 				// begin-extension-code
 				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/core/0.8.0")) { //$NON-NLS-1$
 					return null;				
@@ -624,7 +625,7 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
+                        (ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS,
                          CapellacoreFactory.eINSTANCE.createConstraint());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -636,7 +637,6 @@ public class CapellacoreItemProviderAdapterFactory extends CapellacoreAdapterFac
 
 				return null;
 			}
- 
 			/**
 			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->

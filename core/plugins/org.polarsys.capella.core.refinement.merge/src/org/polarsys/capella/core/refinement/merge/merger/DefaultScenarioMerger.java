@@ -21,9 +21,10 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.IConstraintFilter;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
@@ -32,7 +33,7 @@ import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.refinement.merge.MergeActivator;
 import org.polarsys.capella.core.refinement.merge.exception.MergeException;
 import org.polarsys.capella.core.refinement.merge.helpers.MergeHelper;
@@ -44,7 +45,6 @@ import org.polarsys.capella.core.refinement.merge.validation.MergeConstraintFilt
 import org.polarsys.capella.core.refinement.preferences.services.RefinementPrefServices;
 import org.polarsys.capella.core.refinement.scenarios.core.exceptions.ProcessorException;
 import org.polarsys.capella.core.validation.CapellaValidationActivator;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 /**
  * A (default) scenario merger implementation
@@ -64,8 +64,10 @@ public class DefaultScenarioMerger implements IScenarioMerger {
 
       _result = null == previousMergeResult ? performMerge(sc_p) : performUpdate(sc_p, previousMergeResult);
 
-      // Let's add the new scenario
       CapabilityRealization cr = (CapabilityRealization) sc_p.eContainer();
+      
+      // Let's add the new scenario
+      HoldingResourceHelper.ensureMoveElement(_result, cr);
       cr.getOwnedScenarios().add(_result);
 
     } catch (MergeException exception_p) {

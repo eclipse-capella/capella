@@ -10,13 +10,16 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.optimize;
 
+import java.util.Collection;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -32,11 +35,12 @@ public class CrossReferencerHandler implements IHandler {
   /**
    * {@inheritDoc}
    */
+  @SuppressWarnings("unchecked")
   @Override
   public IStatus init(IContext context_p) {
     isEnabled = CrossReferencerHelper.resolutionEnabled();
     if (isEnabled) {
-      EcoreUtil.resolveAll(MDEAdapterFactory.getResourceSet());
+      EcoreUtil.resolveAll(TransactionHelper.getEditingDomain((Collection<? extends EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES)).getResourceSet());
     }
     CrossReferencerHelper.enableResolution(false);
     return Status.OK_STATUS;

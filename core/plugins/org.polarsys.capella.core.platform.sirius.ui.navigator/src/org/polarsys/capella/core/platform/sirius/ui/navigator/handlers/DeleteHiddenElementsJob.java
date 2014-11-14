@@ -19,7 +19,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Eclipse's job that will call the remove hidden diagrams command.
@@ -41,8 +41,8 @@ public class DeleteHiddenElementsJob extends WorkspaceJob {
   public IStatus runInWorkspace(IProgressMonitor monitor_p) throws CoreException {
 
     RemoveHiddenElementsCommand deleteHiddenEltCmd =
-        new RemoveHiddenElementsCommand(_representationsToRefresh, MDEAdapterFactory.getExecutionManager(), _unsynchDiags);
-    MDEAdapterFactory.getExecutionManager().execute(deleteHiddenEltCmd);
+        new RemoveHiddenElementsCommand(_representationsToRefresh, TransactionHelper.getExecutionManager(_session), _unsynchDiags);
+    TransactionHelper.getExecutionManager(_session).execute(deleteHiddenEltCmd);
     return Status.OK_STATUS;
   }
 }

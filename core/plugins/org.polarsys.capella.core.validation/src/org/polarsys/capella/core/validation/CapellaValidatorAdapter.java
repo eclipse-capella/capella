@@ -37,7 +37,6 @@ import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.validation.adapter.EValidatorAdapter;
 
 /**
  * A specialized validator adapter that handles rule-aware constraints.
@@ -51,7 +50,7 @@ public class CapellaValidatorAdapter extends EValidatorAdapter {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.model.validation.adapter.EValidatorAdapter#appendDiagnostics(org.eclipse.core.runtime.IStatus,
+   * @see org.polarsys.capella.core.validation.EValidatorAdapter#appendDiagnostics(org.eclipse.core.runtime.IStatus,
    *      org.eclipse.emf.common.util.DiagnosticChain)
    */
   @Override
@@ -69,7 +68,7 @@ public class CapellaValidatorAdapter extends EValidatorAdapter {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.model.validation.adapter.EValidatorAdapter#getValidator()
+   * @see org.polarsys.capella.core.validation.EValidatorAdapter#getValidator()
    */
   @Override
   public IBatchValidator getValidator() {

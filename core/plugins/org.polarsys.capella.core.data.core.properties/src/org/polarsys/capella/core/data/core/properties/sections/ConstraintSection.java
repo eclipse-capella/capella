@@ -11,33 +11,60 @@
 package org.polarsys.capella.core.data.core.properties.sections;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.action.IMenuListener;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.menu.dynamic.DynamicCreateChildAction;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.core.properties.Messages;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.core.properties.Messages;
+import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractMultipleSemanticFieldController;
-import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.TextAreaValueGroup;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 
 /**
  * The Constraint section.
  */
 public class ConstraintSection extends NamedElementSection {
 
-  private TextAreaValueGroup _contentGroup;
-  private SimpleSemanticField _expressionField;
   private MultipleSemanticField _constrainedElementsField;
+  private Text _specificationText;
+  private Button _editSpecificationButton;
+  private Button _deleteSpecificationButton;
+  private MenuManager _createSpecificationMenu;
+
+  private Constraint _constraint;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -45,23 +72,95 @@ public class ConstraintSection extends NamedElementSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    _contentGroup = new TextAreaValueGroup(_rootParentComposite, Messages.getString("Constraint.Content.Label"), getWidgetFactory()); //$NON-NLS-1$
-    _contentGroup.setDisplayedInWizard(displayedInWizard);
-    
-    _constrainedElementsField = new MultipleSemanticField(getReferencesGroup(),
-      Messages.getString("Constraint.ConstrainedElements.Label"), //$NON-NLS-1$
-      getWidgetFactory(),
-      new AbstractMultipleSemanticFieldController() {
-        @Override
-        protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
-          return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(), ModellingcorePackage.eINSTANCE.getAbstractConstraint_ConstrainedElements());
-        }
-      }
-    );
+    _constrainedElementsField = new MultipleSemanticField(getReferencesGroup(), Messages.getString("Constraint.ConstrainedElements.Label"), //$NON-NLS-1$
+        getWidgetFactory(), new AbstractMultipleSemanticFieldController() {
+          @Override
+          protected IBusinessQuery getReadOpenValuesQuery(CapellaElement semanticElement_p) {
+            return BusinessQueriesProvider.getInstance().getContribution(semanticElement_p.eClass(),
+                ModellingcorePackage.eINSTANCE.getAbstractConstraint_ConstrainedElements());
+          }
+        });
     _constrainedElementsField.setDisplayedInWizard(displayedInWizard);
 
-    _expressionField = new SimpleSemanticField(getReferencesGroup(), Messages.getString("Constraint.Expression.Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
-    _expressionField.setDisplayedInWizard(displayedInWizard);
+    Group group = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
+    GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
+    gd.horizontalSpan = 2;
+    group.setLayoutData(gd);
+
+    GridLayout gl = new GridLayout(4, false);
+    group.setLayout(gl);
+
+    CLabel label = getWidgetFactory().createCLabel(group, Messages.getString("Constraint.OwnedSpecification.Label")); //$NON-NLS-1$
+    label.setLayoutData(new GridData(SWT.FILL, SWT.TOP, false, false));
+    _specificationText = getWidgetFactory().createText(group, "", SWT.MULTI | SWT.FULL_SELECTION | SWT.V_SCROLL | SWT.H_SCROLL | SWT.WRAP); //$NON-NLS-1$
+    _specificationText.setEnabled(false);
+
+    gd = new GridData(SWT.FILL, SWT.FILL, true, true);
+    _specificationText.setLayoutData(gd);
+
+    ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
+    _editSpecificationButton = getWidgetFactory().createButton(group, null, SWT.PUSH);
+    _deleteSpecificationButton = getWidgetFactory().createButton(group, null, SWT.PUSH);
+    _editSpecificationButton.setLayoutData(new GridData(SWT.FILL, SWT.TOP, false, false));
+    _deleteSpecificationButton.setLayoutData(new GridData(SWT.FILL, SWT.TOP, false, false));
+    _editSpecificationButton.setImage(imgRegistry.get(ToolkitPlugin.EDIT_IMAGE_ITEM_ID));
+    _deleteSpecificationButton.setImage(imgRegistry.get(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID));
+    _createSpecificationMenu = new MenuManager();
+    _createSpecificationMenu.setRemoveAllWhenShown(true);
+    _createSpecificationMenu.addMenuListener(new IMenuListener() {
+
+      public void menuAboutToShow(IMenuManager manager_p) {
+        EditingDomain domain = AdapterFactoryEditingDomain.getEditingDomainFor(getSelectedConstraint());
+        ISelection selection = new StructuredSelection(getSelectedConstraint());
+        Collection<?> newChildDescriptors = domain.getNewChildDescriptors(getSelectedConstraint(), null);
+        for (Object o : newChildDescriptors) {
+          if ((o instanceof CommandParameter)
+              && (((CommandParameter) o).getFeature() == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION)) {
+            CreateAndEditAction action = new CreateAndEditAction(domain, selection, o);
+            if (action.isEnabled()) {
+              _createSpecificationMenu.add(action);
+            }
+          }
+        }
+      }
+    });
+    _createSpecificationMenu.createContextMenu(_editSpecificationButton);
+    _editSpecificationButton.addSelectionListener(new SelectionListener() {
+      public void widgetSelected(SelectionEvent e_p) {
+        if (getSelectedConstraint().getOwnedSpecification() != null) {
+          if (CapellaUIPropertiesPlugin.getDefault().openWizard(getSelectedConstraint().getOwnedSpecification())) {
+            loadData(getSelectedConstraint()); // refresh
+          }
+        } else {
+          _createSpecificationMenu.getMenu().setVisible(true);
+        }
+      }
+
+      public void widgetDefaultSelected(SelectionEvent e_p) {
+        /*nop*/
+      }
+    });
+
+    _deleteSpecificationButton.addSelectionListener(new SelectionListener() {
+      public void widgetSelected(SelectionEvent e_p) {
+        if (getSelectedConstraint().getOwnedSpecification() != null) {
+          CapellaDeleteCommand c =
+              new CapellaDeleteCommand(TransactionHelper.getExecutionManager(getSelectedConstraint()), Collections.singletonList(getSelectedConstraint()
+                  .getOwnedSpecification()), true, !isDisplayedInWizard(), true);
+          if (c.canExecute()) {
+            c.execute();
+            if (c.getAffectedObjects().size() > 0) {
+              _specificationText.setText("");
+            }
+          }
+        }
+      }
+
+      public void widgetDefaultSelected(SelectionEvent e_p) {
+        /*nop*/
+      }
+    });
+
   }
 
   /**
@@ -70,10 +169,9 @@ public class ConstraintSection extends NamedElementSection {
   @Override
   public void loadData(CapellaElement capellaElement_p) {
     super.loadData(capellaElement_p);
-
-    _contentGroup.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getAbstractAnnotation_Content());
-    _constrainedElementsField.loadData(capellaElement_p, ModellingcorePackage.eINSTANCE.getAbstractConstraint_ConstrainedElements());
-    _expressionField.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getConstraint_Expression());
+    _constraint = (Constraint) capellaElement_p;
+    _constrainedElementsField.loadData(_constraint, ModellingcorePackage.eINSTANCE.getAbstractConstraint_ConstrainedElements());
+    _specificationText.setText(CapellaEmbeddedLinkedTextEditorInput.getDefaultText(_constraint));
   }
 
   /**
@@ -91,12 +189,39 @@ public class ConstraintSection extends NamedElementSection {
   @Override
   public List<AbstractSemanticField> getSemanticFields() {
     List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
-
     fields.addAll(super.getSemanticFields());
-    fields.add(_contentGroup);
     fields.add(_constrainedElementsField);
-    fields.add(_expressionField);
-
     return fields;
   }
+
+  @Override
+  public void dispose() {
+    super.dispose();
+    if (_createSpecificationMenu != null) {
+      // see https://bugs.eclipse.org/bugs/show_bug.cgi?id=447600
+      _createSpecificationMenu.dispose();
+    }
+  }
+
+  /*
+   * Chains a new child creation action and an open wizard action together
+   */
+  private final static class CreateAndEditAction extends DynamicCreateChildAction {
+    public CreateAndEditAction(EditingDomain editingDomain_p, ISelection selection_p, Object descriptor_p) {
+      super(editingDomain_p, selection_p, descriptor_p);
+    }
+
+    @Override
+    public void run() {
+      super.run();
+      if (descriptor instanceof CommandParameter) {
+        CapellaUIPropertiesPlugin.getDefault().openWizard((EObject) ((CommandParameter) descriptor).value);
+      }
+    }
+  }
+
+  private Constraint getSelectedConstraint() {
+    return _constraint;
+  }
+
 }

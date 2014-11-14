@@ -19,15 +19,20 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-
+import org.polarsys.capella.common.queries.debug.QueryDebugger;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.Involvement;
+import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
@@ -42,17 +47,11 @@ import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityGeneralization;
 import org.polarsys.capella.core.data.interaction.AbstractCapabilityInclude;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.Involvement;
-import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
-import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 
 /**
  */
@@ -122,7 +121,7 @@ public class InteractionServices {
             new QueryContext());
     parts =
         (List) QueryDebugger.executeQueryWithInclusionDebug(
-        		org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB, scenario, parts);
+            org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_COMPONENTS_FOR_LIB, scenario, parts);
     return parts;
   }
 
@@ -136,10 +135,10 @@ public class InteractionServices {
             new QueryContext());
     parts =
         (List) QueryDebugger.executeQueryWithInclusionDebug(
-        		org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB, architecture, parts);
+            org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants.GET_IS_SCOPE_INSERT_ACTORS_FOR_LIB, architecture, parts);
     return parts;
   }
-  
+
   /**
    * Retrieve scope for the Relationship tool in the capability diagram
    * @param source

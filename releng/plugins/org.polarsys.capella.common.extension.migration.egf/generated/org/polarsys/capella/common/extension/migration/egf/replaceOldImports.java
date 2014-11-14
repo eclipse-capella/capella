@@ -1,14 +1,4 @@
-/*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *  
- * Contributors:
- *    Thales - initial API and implementation
- *******************************************************************************/
-//Generated on Wed Jun 04 10:56:57 CEST 2014 with EGF 1.1.0.v20140514-0645
+//Generated with EGF 1.2.0.v20140805-0858
 package org.polarsys.capella.common.extension.migration.egf;
 
 import java.util.*;

@@ -712,6 +712,18 @@ public class InteractionSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION: {
+				SequenceMessageValuation sequenceMessageValuation = (SequenceMessageValuation)theEObject;
+				T result = caseSequenceMessageValuation(sequenceMessageValuation);
+				if (result == null) result = caseCapellaElement(sequenceMessageValuation);
+				if (result == null) result = caseTraceableElement(sequenceMessageValuation);
+				if (result == null) result = casePublishableElement(sequenceMessageValuation);
+				if (result == null) result = caseModelElement(sequenceMessageValuation);
+				if (result == null) result = caseExtensibleElement(sequenceMessageValuation);
+				if (result == null) result = caseElement(sequenceMessageValuation);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -1268,6 +1280,21 @@ public class InteractionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConstraintDuration(ConstraintDuration object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sequence Message Valuation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sequence Message Valuation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSequenceMessageValuation(SequenceMessageValuation object) {
 		return null;
 	}
 

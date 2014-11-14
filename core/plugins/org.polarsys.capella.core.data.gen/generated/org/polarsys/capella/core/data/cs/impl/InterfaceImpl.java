@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.impl.GeneralClassImpl;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -50,6 +50,7 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getProvisionedInterfaceAllocations <em>Provisioned Interface Allocations</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getAllocatedInterfaces <em>Allocated Interfaces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getMechanism <em>Mechanism</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#isStructural <em>Structural</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getImplementorComponents <em>Implementor Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getUserComponents <em>User Components</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.cs.impl.InterfaceImpl#getInterfaceImplementations <em>Interface Implementations</em>}</li>
@@ -139,6 +140,50 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * The default value of the '{@link #isStructural() <em>Structural</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStructural()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean STRUCTURAL_EDEFAULT = true;
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #isStructural() <em>Structural</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStructural()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean structural = STRUCTURAL_EDEFAULT;
 
 
 
@@ -266,10 +311,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE_ALLOCATOR__PROVISIONED_INTERFACE_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE_ALLOCATOR__PROVISIONED_INTERFACE_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE_ALLOCATOR__PROVISIONED_INTERFACE_ALLOCATIONS, annotation);
 		
 		try {
@@ -313,10 +358,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE_ALLOCATOR__ALLOCATED_INTERFACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE_ALLOCATOR__ALLOCATED_INTERFACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE_ALLOCATOR__ALLOCATED_INTERFACES, annotation);
 		
 		try {
@@ -372,6 +417,32 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 	 * @generated
 	 */
 
+	public boolean isStructural() {
+
+		return structural;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setStructural(boolean newStructural) {
+
+		boolean oldStructural = structural;
+		structural = newStructural;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.INTERFACE__STRUCTURAL, oldStructural, structural));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
 	public EList<Component> getImplementorComponents() {
 
 
@@ -392,10 +463,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__IMPLEMENTOR_COMPONENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__IMPLEMENTOR_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__IMPLEMENTOR_COMPONENTS, annotation);
 		
 		try {
@@ -439,10 +510,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__USER_COMPONENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__USER_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__USER_COMPONENTS, annotation);
 		
 		try {
@@ -486,10 +557,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__INTERFACE_IMPLEMENTATIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__INTERFACE_IMPLEMENTATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__INTERFACE_IMPLEMENTATIONS, annotation);
 		
 		try {
@@ -533,10 +604,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__INTERFACE_USES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__INTERFACE_USES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__INTERFACE_USES, annotation);
 		
 		try {
@@ -580,10 +651,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__PROVISIONING_INTERFACE_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__PROVISIONING_INTERFACE_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__PROVISIONING_INTERFACE_ALLOCATIONS, annotation);
 		
 		try {
@@ -627,10 +698,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__ALLOCATING_INTERFACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__ALLOCATING_INTERFACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__ALLOCATING_INTERFACES, annotation);
 		
 		try {
@@ -674,10 +745,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__ALLOCATING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__ALLOCATING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__ALLOCATING_COMPONENTS, annotation);
 		
 		try {
@@ -721,10 +792,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__EXCHANGE_ITEMS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__EXCHANGE_ITEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__EXCHANGE_ITEMS, annotation);
 		
 		try {
@@ -786,10 +857,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__REQUIRING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__REQUIRING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__REQUIRING_COMPONENTS, annotation);
 		
 		try {
@@ -833,10 +904,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__REQUIRING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__REQUIRING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__REQUIRING_COMPONENT_PORTS, annotation);
 		
 		try {
@@ -880,10 +951,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__PROVIDING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__PROVIDING_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__PROVIDING_COMPONENTS, annotation);
 		
 		try {
@@ -927,10 +998,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__PROVIDING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__PROVIDING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__PROVIDING_COMPONENT_PORTS, annotation);
 		
 		try {
@@ -974,10 +1045,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZING_LOGICAL_INTERFACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZING_LOGICAL_INTERFACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__REALIZING_LOGICAL_INTERFACES, annotation);
 		
 		try {
@@ -1021,10 +1092,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZED_CONTEXT_INTERFACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZED_CONTEXT_INTERFACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__REALIZED_CONTEXT_INTERFACES, annotation);
 		
 		try {
@@ -1068,10 +1139,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZING_PHYSICAL_INTERFACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZING_PHYSICAL_INTERFACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__REALIZING_PHYSICAL_INTERFACES, annotation);
 		
 		try {
@@ -1115,10 +1186,10 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZED_LOGICAL_INTERFACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.INTERFACE__REALIZED_LOGICAL_INTERFACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.INTERFACE__REALIZED_LOGICAL_INTERFACES, annotation);
 		
 		try {
@@ -1166,6 +1237,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 				return getAllocatedInterfaces();
 			case CsPackage.INTERFACE__MECHANISM:
 				return getMechanism();
+			case CsPackage.INTERFACE__STRUCTURAL:
+				return isStructural();
 			case CsPackage.INTERFACE__IMPLEMENTOR_COMPONENTS:
 				return getImplementorComponents();
 			case CsPackage.INTERFACE__USER_COMPONENTS:
@@ -1226,6 +1299,15 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 				}
 				// end-extension-code
 				return;
+			case CsPackage.INTERFACE__STRUCTURAL:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Boolean) {
+				// end-extension-code
+					setStructural((Boolean)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
 			case CsPackage.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS:
 				getOwnedExchangeItemAllocations().clear();
 				getOwnedExchangeItemAllocations().addAll((Collection<? extends ExchangeItemAllocation>)newValue);
@@ -1248,6 +1330,9 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 				return;
 			case CsPackage.INTERFACE__MECHANISM:
 				setMechanism(MECHANISM_EDEFAULT);
+				return;
+			case CsPackage.INTERFACE__STRUCTURAL:
+				setStructural(STRUCTURAL_EDEFAULT);
 				return;
 			case CsPackage.INTERFACE__OWNED_EXCHANGE_ITEM_ALLOCATIONS:
 				getOwnedExchangeItemAllocations().clear();
@@ -1274,6 +1359,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 				return !getAllocatedInterfaces().isEmpty();
 			case CsPackage.INTERFACE__MECHANISM:
 				return MECHANISM_EDEFAULT == null ? mechanism != null : !MECHANISM_EDEFAULT.equals(mechanism);
+			case CsPackage.INTERFACE__STRUCTURAL:
+				return structural != STRUCTURAL_EDEFAULT;
 			case CsPackage.INTERFACE__IMPLEMENTOR_COMPONENTS:
 				return !getImplementorComponents().isEmpty();
 			case CsPackage.INTERFACE__USER_COMPONENTS:
@@ -1361,6 +1448,8 @@ public class InterfaceImpl extends GeneralClassImpl implements Interface {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (mechanism: "); //$NON-NLS-1$
 		result.append(mechanism);
+		result.append(", structural: "); //$NON-NLS-1$
+		result.append(structural);
 		result.append(')');
 		return result.toString();
 	}

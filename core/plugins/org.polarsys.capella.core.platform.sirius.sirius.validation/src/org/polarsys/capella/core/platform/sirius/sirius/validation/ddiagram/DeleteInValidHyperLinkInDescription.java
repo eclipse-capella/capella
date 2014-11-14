@@ -20,18 +20,17 @@ import javax.xml.parsers.SAXParserFactory;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.utils.saxparser.IConstantValidation;
 import org.polarsys.capella.core.model.utils.saxparser.SaxParserHelper;
+import org.xml.sax.Attributes;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Using SAX parser delete capella element or diagram hyperLink from description
@@ -69,7 +68,7 @@ public class DeleteInValidHyperLinkInDescription {
     while (iterator.hasNext()) {
       EObject object = iterator.next();
       if (object instanceof CapellaElement) {
-        CapellaElement capellaElement = (CapellaElement) object;
+        final CapellaElement capellaElement = (CapellaElement) object;
         String description = capellaElement.getDescription();
         if ((null != description) && !description.isEmpty()) {
           _currentElementDescription = new StringBuilder();
@@ -138,7 +137,7 @@ public class DeleteInValidHyperLinkInDescription {
                     if ((null != attValue) && !attValue.isEmpty() && qName.equalsIgnoreCase(IConstantValidation.XHTML_A_TAG)
                         && attName.equalsIgnoreCase(IConstantValidation.XHTML_HREF_ATT)) {
 
-                      EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(attValue);
+                      EObject eObject = SaxParserHelper.getEObjectFromHrefAttribute(capellaElement, attValue);
                       if (null == eObject) {
                         // if ok default value will be added else the value will be updated
                         elementIsNull = true;

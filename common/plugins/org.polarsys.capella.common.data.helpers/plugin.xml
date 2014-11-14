@@ -12,21 +12,21 @@
 -->
 <plugin>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.data.helpers.activity.ActivityHelper"
             nsURI="http://www.polarsys.org/capella/common/activity/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.data.helpers.behavior.BehaviorHelper"
             nsURI="http://www.polarsys.org/capella/common/behavior/0.8.0">
       </helperImpl>
    </extension>
    <extension
-         point="org.polarsys.capella.common.tig.model.helper">
+         point="org.polarsys.capella.common.model.helpers.helper">
       <helperImpl
             class="org.polarsys.capella.common.data.helpers.modellingcore.ModellingCoreHelper"
             nsURI="http://www.polarsys.org/capella/common/core/0.8.0">

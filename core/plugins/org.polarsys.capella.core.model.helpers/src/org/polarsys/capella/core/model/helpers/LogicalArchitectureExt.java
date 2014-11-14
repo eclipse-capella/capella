@@ -92,7 +92,9 @@ public class LogicalArchitectureExt {
         list.addAll(getAllLCsFromLogicalArchitectureLayer(logArch));
       }
       for (LogicalComponent subLC : lc_p.getSubLogicalComponents()) {
-        list.addAll(getAllLCsFromLC(subLC));
+      	if (subLC != lc_p) {
+      		list.addAll(getAllLCsFromLC(subLC));      		
+      	}
       }
     }
     return list;

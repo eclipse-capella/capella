@@ -147,6 +147,15 @@ public interface DatavalueFactory extends EFactory {
 	UnaryExpression createUnaryExpression();
 
 	/**
+	 * Returns a new object of class '<em>Opaque Expression</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Opaque Expression</em>'.
+	 * @generated
+	 */
+	OpaqueExpression createOpaqueExpression();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -262,6 +271,15 @@ public interface DatavalueFactory extends EFactory {
 	 * @generated
 	 */
 	UnaryExpression createUnaryExpression(String name_p);
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	OpaqueExpression createOpaqueExpression(String name_p);
 
 	//begin-capella-code
 	//end-capella-code

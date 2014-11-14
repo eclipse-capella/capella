@@ -12,8 +12,8 @@ package org.polarsys.capella.common.ui.toolkit.viewers;
 
 import java.util.Collection;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
+import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -87,9 +87,31 @@ public class TreeAndListViewer extends RegExpTreeViewer {
    * @param isMultipleSelection_p
    * @param labelProvider_p
    */
-  public TreeAndListViewer(Composite parent_p, Collection<? extends EObject> displayedElements_p, boolean isMultipleSelection_p, ILabelProvider labelProvider_p) {
+  public TreeAndListViewer(Composite parent_p, Collection<? extends Object> displayedElements_p, boolean isMultipleSelection_p, ILabelProvider labelProvider_p) {
     this(parent_p, displayedElements_p, null /* no context */, isMultipleSelection_p, labelProvider_p,
       IViewerStyle.SHOW_STATUS_BAR|IViewerStyle.SHOW_TREE_VIEW_MODE_BUTTON, AbstractTreeViewer.ALL_LEVELS);
+  }
+
+  /**
+   * Constructor.
+   * @param parent_p
+   * @param displayedElements_p
+   * @param context_p to set an undefined context to {@link ILinkSelection} contribution, set {@link AbstractData#UNDEFINED_CONTEXT}.
+   * @param isMultipleSelection_p
+   * @param contentProvider
+   * @param labelProvider_p
+   * @param style_p could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
+   * @param viewerExpandLevel_p
+   */
+  public TreeAndListViewer(Composite parent_p, Collection<? extends Object> displayedElements_p, Object context_p, boolean isMultipleSelection_p,
+      IContentProvider contentProvider, ILabelProvider labelProvider_p, int style_p, int viewerExpandLevel_p)
+  {
+    super(parent_p, isMultipleSelection_p, style_p, viewerExpandLevel_p);
+    // Default implementation displays elements as a tree.
+    TreeViewer viewer = getClientViewer();
+    viewer.setContentProvider(/*new GroupingContentProvider(*/contentProvider/*)*/);
+    viewer.setLabelProvider(labelProvider_p);
+    setInput(displayedElements_p, context_p);
   }
 
   /**
@@ -102,16 +124,10 @@ public class TreeAndListViewer extends RegExpTreeViewer {
    * @param style_p could be 0 or a combination of {@value #SHOW_STATUS_BAR} {@value #SHOW_TREE_VIEW_MODE_BUTTON}
    * @param viewerExpandLevel_p
    */
-  public TreeAndListViewer(Composite parent_p, Collection<? extends EObject> displayedElements_p, Object context_p, boolean isMultipleSelection_p,
+  public TreeAndListViewer(Composite parent_p, Collection<? extends Object> displayedElements_p, Object context_p, boolean isMultipleSelection_p,
       ILabelProvider labelProvider_p, int style_p, int viewerExpandLevel_p)
   {
-    super(parent_p, isMultipleSelection_p, style_p, viewerExpandLevel_p);
-    // Default implementation displays elements as a tree.
-    TreeViewer viewer = getClientViewer();
-    DataContentProvider contentProvider = new DataContentProvider();
-    viewer.setContentProvider(/*new GroupingContentProvider(*/contentProvider/*)*/);
-    viewer.setLabelProvider(labelProvider_p);
-    setInput(displayedElements_p, context_p);
+    this(parent_p, displayedElements_p, context_p, isMultipleSelection_p, new DataContentProvider(), labelProvider_p, style_p, viewerExpandLevel_p);
   }
 
   /**
@@ -270,7 +286,7 @@ public class TreeAndListViewer extends RegExpTreeViewer {
    * @param element_p
    * @return <code>true</code> means valid.
    */
-  public boolean isValidElement(EObject element_p) {
+  public boolean isValidElement(Object element_p) {
     return _data.isValid(element_p);
   }
 
@@ -279,7 +295,7 @@ public class TreeAndListViewer extends RegExpTreeViewer {
    * @param displayedElements_p
    * @param context_p
    */
-  public void setInput(Collection<? extends EObject> displayedElements_p, Object context_p) {
+  public void setInput(Collection<? extends Object> displayedElements_p, Object context_p) {
     boolean hierarchicalDisplay = ((IViewerStyle.SHOW_LIST_VIEW_MODE & getStyle()) == 0);
     if ((null != _treeViewerModeButton) && !_treeViewerModeButton.isDisposed()) {
       hierarchicalDisplay = _treeViewerModeButton.getSelection();

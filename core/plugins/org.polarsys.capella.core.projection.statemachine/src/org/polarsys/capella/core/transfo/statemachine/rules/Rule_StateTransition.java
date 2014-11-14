@@ -34,7 +34,6 @@ public class Rule_StateTransition extends Rule_CapellaElement {
           CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION);
 
     registerAttributeUpdate(CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER_DESCRIPTION);
-    registerAttributeUpdate(CapellacommonPackage.Literals.STATE_TRANSITION__GUARD);
     registerAttributeUpdate(CapellacommonPackage.Literals.STATE_TRANSITION__KIND);
   }
 
@@ -55,7 +54,8 @@ public class Rule_StateTransition extends Rule_CapellaElement {
 
     StateTransition sourceElement = (StateTransition) element_p;
     AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT, context_p);
-    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS, context_p);
+    AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__GUARD, context_p);
 
     if (isFirstAttach(element_p, result_p, context_p)) {
       AttachmentHelper.getInstance(context_p).attachTracedElements(element_p, result_p, CapellacommonPackage.Literals.STATE_TRANSITION__SOURCE, context_p);

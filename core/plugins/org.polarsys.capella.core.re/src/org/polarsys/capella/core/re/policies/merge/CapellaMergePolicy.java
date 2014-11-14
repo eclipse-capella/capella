@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.policies.merge;
 
+import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.re.policies.merge.ReMergePolicy;
@@ -31,15 +31,15 @@ public class CapellaMergePolicy extends ReMergePolicy {
   }
 
   @Override
-  public boolean copyFeature(EStructuralFeature feature_p) {
+  public boolean copyFeature(EStructuralFeature feature_p, IFeaturedModelScope scope_p) {
     if (ModellingcorePackage.Literals.MODEL_ELEMENT__ID.equals(feature_p)) {
       return false;
     }
-    return super.copyFeature(feature_p);
+    return super.copyFeature(feature_p, scope_p);
   }
 
   @Override
-  protected String getNewIdFor(EObject element_p) {
+  protected String getNewIntrinsicID(EObject element_p, IFeaturedModelScope scope_p) {
     if (element_p instanceof ModelElement) {
       return ((ModelElement) element_p).getId();
     }

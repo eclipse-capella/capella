@@ -11,18 +11,18 @@
 
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers;
 
-import java.util.EventObject;
+import java.util.Collection;
 
 import org.eclipse.core.commands.operations.IOperationHistory;
 import org.eclipse.core.commands.operations.IUndoContext;
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
-import org.eclipse.emf.common.command.CommandStackListener;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.ui.actions.ActionContext;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
@@ -30,13 +30,14 @@ import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.operations.RedoActionHandler;
 import org.eclipse.ui.operations.UndoActionHandler;
-
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.ICommandStackSelectionProvider;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.NavigatorEditingDomainDispatcher;
 
 /**
  * The undo / redo actions provider.
  */
-public class UndoRedoActionProvider extends CommonActionProvider {
+public class UndoRedoActionProvider extends CommonActionProvider implements ICommandStackSelectionProvider {
   /**
    * Undo action handler based on {@link IOperationHistory}.
    */
@@ -45,10 +46,6 @@ public class UndoRedoActionProvider extends CommonActionProvider {
    * Redo action handler based on {@link IOperationHistory}.
    */
   private RedoActionHandler redoActionHandler;
-  /**
-   * Command stack listener to refresh undo redo actions state.
-   */
-  private CommandStackListener _commandStackListener;
 
   /**
    * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
@@ -56,39 +53,15 @@ public class UndoRedoActionProvider extends CommonActionProvider {
   @Override
   public void init(ICommonActionExtensionSite site_p) {
     super.init(site_p);
-    // Get the editing domain.
-    TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
-    // Create the undo / redo action group based on IOperationHistory as GMF also uses this one rather than EMF undo / redo actions.
-    // Get the appropriate undo context.
-    IUndoContext undoContext = ((IWorkspaceCommandStack) editingDomain.getCommandStack()).getDefaultUndoContext();
+
     IWorkbenchPartSite site = ((ICommonViewerWorkbenchSite) site_p.getViewSite()).getSite();
     // Create the undo action handler
-    undoActionHandler = new UndoActionHandler(site, undoContext);
+    undoActionHandler = new UndoActionHandler(site, null/*undoContext*/);
     // Create the redo action handler
-    redoActionHandler = new RedoActionHandler(site, undoContext);
-    // Create a command stack listener to update undo / redo handlers.
-    _commandStackListener = new CommandStackListener() {
-      /**
-       * @see org.eclipse.emf.common.command.CommandStackListener#commandStackChanged(java.util.EventObject)
-       */
-      @SuppressWarnings("synthetic-access")
-      public void commandStackChanged(EventObject event_p) {
-        Command mostRecentCommand = ((CommandStack) event_p.getSource()).getMostRecentCommand();
-        if (null != mostRecentCommand) {
-          // Update action bars in an asynchronous way.
-          getActionSite().getViewSite().getShell().getDisplay().asyncExec(new Runnable() {
-            /**
-             * @see java.lang.Runnable#run()
-             */
-            public void run() {
-              updateActionBars();
-            }
-          });
-        }
-      }
-    };
-    // Add the listener to the command stack.
-    editingDomain.getCommandStack().addCommandStackListener(_commandStackListener);
+    redoActionHandler = new RedoActionHandler(site, null/*undoContext*/);
+
+    NavigatorEditingDomainDispatcher.registerCommandStackSelectionProvider(this);
+    updateActionBars();
   }
 
   /**
@@ -112,13 +85,31 @@ public class UndoRedoActionProvider extends CommonActionProvider {
   /**
    * @see org.eclipse.ui.actions.ActionGroup#updateActionBars()
    */
+  @SuppressWarnings({ "rawtypes", "unchecked" })
   @Override
   public void updateActionBars() {
-    if (undoActionHandler != null) {
-      undoActionHandler.update();
+    // Retrieve the editing domain from the current selection.
+    EditingDomain editingDomain = null;
+    ISelection selection = null;
+    ActionContext ctx = getContext();
+    if (null != ctx) {
+      selection = ctx.getSelection();
+    } else {
+      selection = getActionSite().getViewSite().getSelectionProvider().getSelection();
     }
-    if (undoActionHandler != null) {
-      redoActionHandler.update();
+    if (selection instanceof IStructuredSelection) {
+      editingDomain = TransactionHelper.getEditingDomain((Collection) ((IStructuredSelection) selection).toList());
+    }
+    if (null != editingDomain) {
+      // Get the appropriate undo context.
+      IUndoContext undoContext = ((IWorkspaceCommandStack) editingDomain.getCommandStack()).getDefaultUndoContext();
+      // Update handlers.
+      if (undoActionHandler != null) {
+        undoActionHandler.setContext(undoContext);
+      }
+      if (redoActionHandler != null) {
+        redoActionHandler.setContext(undoContext);
+      }
     }
   }
 
@@ -133,6 +124,14 @@ public class UndoRedoActionProvider extends CommonActionProvider {
     redoActionHandler.dispose();
     redoActionHandler = null;
     // Remove the listener used to refresh undo / redo actions states.
-    MDEAdapterFactory.getEditingDomain().getCommandStack().removeCommandStackListener(_commandStackListener);
+    NavigatorEditingDomainDispatcher.unregisterCommandStackSelectionProvider(this);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void commandStackSelectionChanged(ISelection selection_p) {
+    updateActionBars();
   }
 }

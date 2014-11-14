@@ -92,6 +92,7 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 			case DatavaluePackage.VALUE_PART: return createValuePart();
 			case DatavaluePackage.BINARY_EXPRESSION: return createBinaryExpression();
 			case DatavaluePackage.UNARY_EXPRESSION: return createUnaryExpression();
+			case DatavaluePackage.OPAQUE_EXPRESSION: return createOpaqueExpression();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -285,6 +286,18 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
     //begin-capella-code
     //end-capella-code
 		return unaryExpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OpaqueExpression createOpaqueExpression() {
+		OpaqueExpressionImpl opaqueExpression = new OpaqueExpressionImpl();
+    //begin-capella-code
+    //end-capella-code
+		return opaqueExpression;
 	}
 
 	/**
@@ -501,6 +514,19 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	  UnaryExpression unaryExpression = createUnaryExpression();
 		unaryExpression.setName(name_p);	  
 		return unaryExpression;
+	}
+
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public OpaqueExpression createOpaqueExpression(String name_p) {
+	  OpaqueExpression opaqueExpression = createOpaqueExpression();
+		opaqueExpression.setName(name_p);	  
+		return opaqueExpression;
 	}
 
 	//begin-capella-code

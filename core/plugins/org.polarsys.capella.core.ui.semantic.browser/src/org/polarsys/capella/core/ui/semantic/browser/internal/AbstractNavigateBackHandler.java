@@ -15,11 +15,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
-import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 import org.polarsys.capella.common.ui.toolkit.browser.action.SemanticBrowserHistoryAction;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
+import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 
 /**
  * Base class to implement the handler for backward & forward navigation in the semantic browser.

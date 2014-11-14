@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.Port;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.query.IQuery;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * This query allows to get the interface related ports.
@@ -33,11 +33,11 @@ public class Interface_relatedPorts implements IQuery {
    */
   public List<Object> compute(Object object_p) {
     List<Object> result = new ArrayList<Object>();
+    Interface itf = (Interface) object_p;
     // gets the Semantic Editing Domain
-    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(itf);
     // Gets the Cross Referencer
     ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
-    Interface itf = (Interface) object_p;
     //Indeed, a Port may reference an interface while this interface will never reference any port
     Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(itf);
     for (Setting setting : inverseReferences) {

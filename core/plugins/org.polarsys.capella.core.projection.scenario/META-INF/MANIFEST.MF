@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.projection.lc2pc.breakdownstrategy,
  org.polarsys.capella.core.projection.lc2pc.leafstrategy,
  org.polarsys.capella.core.transition.system.topdown
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.scenario
 Bundle-Localization: plugin

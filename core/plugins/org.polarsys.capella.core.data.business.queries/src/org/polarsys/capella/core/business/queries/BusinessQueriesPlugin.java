@@ -11,7 +11,6 @@
 package org.polarsys.capella.core.business.queries;
 
 import org.osgi.framework.BundleContext;
-
 import org.polarsys.capella.common.ui.services.AbstractUIActivator;
 
 /**

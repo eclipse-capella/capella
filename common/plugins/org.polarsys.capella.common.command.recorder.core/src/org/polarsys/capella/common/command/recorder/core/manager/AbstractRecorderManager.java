@@ -23,7 +23,8 @@ import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.IUndoableOperation;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
-
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.polarsys.capella.common.command.recorder.core.exception.RecorderException;
 import org.polarsys.capella.common.command.recorder.core.manager.utils.IRecorderManagerConstants;
 import org.polarsys.capella.common.command.recorder.core.manager.utils.RecorderManagerUtils;
@@ -33,11 +34,9 @@ import org.polarsys.capella.common.command.recorder.core.output.IOutputManager;
 import org.polarsys.capella.common.command.recorder.core.output.OutputHelper;
 import org.polarsys.capella.common.command.recorder.core.recorder.AbstractRecorder;
 import org.polarsys.capella.common.command.recorder.core.recorder.IRecorder;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-
-import org.eclipse.sirius.business.api.session.SessionManager;
 
 /**
  * Basic internal mechanisms implementation for RecorderManager.
@@ -199,7 +198,9 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
     
     _recorders.add(recorder_p);
     _outputManager.registerRecorder(recorder_p, createNewRecord_p);
-    MDEAdapterFactory.getEditingDomain().addResourceSetListener(recorder_p);
+    for (TransactionalEditingDomain editingDomain : ExecutionManagerRegistry.getInstance().getAllEditingDomains()) {
+      editingDomain.addResourceSetListener(recorder_p);
+    }
     SessionManager.INSTANCE.addSessionsListener(recorder_p);
   }
 
@@ -210,7 +211,9 @@ public abstract class AbstractRecorderManager implements IRecorderManager, IReco
   public void removeRecorder(AbstractRecorder recorder_p) {
     _recorders.remove(recorder_p);
     _outputManager.removeRecorder(recorder_p);
-    MDEAdapterFactory.getEditingDomain().removeResourceSetListener(recorder_p);
+    for (TransactionalEditingDomain editingDomain : ExecutionManagerRegistry.getInstance().getAllEditingDomains()) {
+	  editingDomain.removeResourceSetListener(recorder_p);
+	}
     SessionManager.INSTANCE.removeSessionsListener(recorder_p);
   }
   

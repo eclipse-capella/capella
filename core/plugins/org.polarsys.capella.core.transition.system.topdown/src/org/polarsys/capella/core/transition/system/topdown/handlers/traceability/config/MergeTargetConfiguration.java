@@ -14,16 +14,15 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.InterfaceImplementation;
 import org.polarsys.capella.core.data.cs.InterfaceUse;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
-import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
@@ -32,6 +31,7 @@ import org.polarsys.capella.core.transition.common.constants.ITransitionConstant
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
+import org.polarsys.capella.core.transition.system.handlers.traceability.LibraryTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.RealizationLinkTraceabilityHandler;
 import org.polarsys.capella.core.transition.system.handlers.traceability.ReconciliationTraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -60,8 +60,10 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
     protected void initializeComponent(Component source_p, Component target_p, IContext context_p, LevelMappingTraceability map_p) {
       super.initializeComponent(source_p, target_p, context_p, map_p);
 
-      addMapping(map_p, ComponentExt.getDataPkg(source_p, false), ComponentExt.getDataPkg(target_p, false), context_p);
-      addMapping(map_p, ComponentExt.getInterfacePkg(source_p, false), ComponentExt.getInterfacePkg(target_p, false), context_p);
+      if ((source_p != null) && (target_p != null) && !source_p.eClass().equals(target_p.eClass())) {
+        addMapping(map_p, ComponentExt.getDataPkg(source_p, false), ComponentExt.getDataPkg(target_p, false), context_p);
+        addMapping(map_p, ComponentExt.getInterfacePkg(source_p, false), ComponentExt.getInterfacePkg(target_p, false), context_p);
+      }
 
       //Reconciliation for InterfaceUse with no traceabilityLinks, or linked to a traced interface
       for (InterfaceUse sLink : source_p.getUsedInterfaceLinks()) {
@@ -187,6 +189,8 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
   protected void initHandlers(IContext fContext_p) {
     addHandler(fContext_p, new TopDownTargetReconciliationTraceabilityHandler(getIdentifier(fContext_p)));
     addHandler(fContext_p, new TopDownTargetSIDTraceabilityHandler(getIdentifier(fContext_p)));
+
+    addHandler(fContext_p, new LibraryTraceabilityHandler());
   }
 
   protected BlockArchitecture getSourceArchitecture(SystemEngineering source_p, IContext context_p) {
@@ -244,6 +248,10 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
 
     }
 
+    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
+      return handler_p instanceof LibraryTraceabilityHandler;
+    }
+
     return result;
   }
 
@@ -276,6 +284,10 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
           result = false;
         }
       }
+    }
+
+    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
+      return handler_p instanceof LibraryTraceabilityHandler;
     }
 
     return result;

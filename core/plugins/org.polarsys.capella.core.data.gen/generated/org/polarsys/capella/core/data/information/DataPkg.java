@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.information;
 
 import org.eclipse.emf.common.util.EList;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
 import org.polarsys.capella.core.data.information.communication.Message;
@@ -36,6 +37,7 @@ import org.polarsys.capella.core.data.information.datavalue.DataValueContainer;
  *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedSignals <em>Owned Signals</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedMessages <em>Owned Messages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedExceptions <em>Owned Exceptions</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.DataPkg#getOwnedStateEvents <em>Owned State Events</em>}</li>
  * </ul>
  * </p>
  *
@@ -297,6 +299,33 @@ public interface DataPkg extends AbstractDependenciesPkg, AbstractExchangeItemPk
 	 */
 
 	EList<org.polarsys.capella.core.data.information.communication.Exception> getOwnedExceptions();
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned State Events</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateEvent}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned State Events</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned State Events</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.information.InformationPackage#getDataPkg_OwnedStateEvents()
+	 * @model containment="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedStateEvents'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the StateEvent elements contained in the package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
+
+	EList<StateEvent> getOwnedStateEvents();
 
 
 

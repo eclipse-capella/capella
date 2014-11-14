@@ -24,15 +24,16 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
-
-import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
-import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
 import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
+import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.model.utils.CollectionExt;
 
 /**
  */
@@ -138,6 +139,7 @@ public class BrowseRenderer extends TextRenderer {
   /**
    * @param shell_p
    */
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   protected void proceedBrowse(Shell shell_p, IRendererContext context_p) {
     IProperty property = context_p.getProperty(this);
     if (property instanceof IRestraintProperty) {
@@ -152,7 +154,8 @@ public class BrowseRenderer extends TextRenderer {
         scope.remove(null);
 
         SelectElementsDialog dialog =
-            new SelectElementsDialog(shell_p, MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(), "Selection wizard", //$NON-NLS-1$
+            new SelectElementsDialog(shell_p, TransactionHelper.getEditingDomain(scope), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
+                "Selection wizard", //$NON-NLS-1$
                 "Select element.", //$NON-NLS-1$
                 new ArrayList<EObject>(scope), false, null);
         if (dialog.open() == Window.OK) {
@@ -164,20 +167,21 @@ public class BrowseRenderer extends TextRenderer {
         }
 
       } else {
-        TransferTreeListDialog dialog = new TransferTreeListDialog(shell_p, "Selection wizard", //$NON-NLS-1$
-            "Select elements.", //$NON-NLS-1$
-            MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
-        Collection<EObject> left = new HashSet<EObject>();
-        Collection<EObject> right = new HashSet<EObject>();
-
         Collection<EObject> current = (Collection) propertyContext.getCurrentValue(restraintProperty);
+        Collection<EObject> left = new HashSet<EObject>();
         left.addAll((Collection) restraintProperty.getValue(propertyContext));
         left.addAll((Collection) restraintProperty.getChoiceValues(propertyContext));
         left.removeAll(current);
-        right.addAll(current);
         left.remove(null);
+        Collection<EObject> right = new HashSet<EObject>();
+        right.addAll(current);
         right.remove(null);
 
+        Collection<EObject> list = CollectionExt.mergeCollections(left, right);
+
+        TransferTreeListDialog dialog = new TransferTreeListDialog(shell_p, "Selection wizard", //$NON-NLS-1$
+            "Select elements.", //$NON-NLS-1$
+            TransactionHelper.getEditingDomain(list), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
         dialog.setLeftInput(new ArrayList<EObject>(left), null);
         dialog.setRightInput(new ArrayList<EObject>(right), null);
         if (dialog.open() == Window.OK) {

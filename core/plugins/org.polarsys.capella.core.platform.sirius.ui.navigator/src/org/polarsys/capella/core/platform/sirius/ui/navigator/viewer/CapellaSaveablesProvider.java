@@ -19,7 +19,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
@@ -31,18 +31,17 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 /**
  * The Capella saveables provider.
  */
-@SuppressWarnings("deprecation")
-public class CapellaSaveablesProvider extends SaveablesProvider implements SessionManagerListener2 {
+public class CapellaSaveablesProvider extends SaveablesProvider implements SessionManagerListener {
   /**
    * Mapping between session and its saveable.
    */
-  private Map<Session, CapellaSaveable> _saveables;
+  private Map<Session, Saveable> _saveables;
 
   /**
    * Constructor.
    */
   public CapellaSaveablesProvider() {
-    _saveables = new HashMap<Session, CapellaSaveable>(0);
+    _saveables = new HashMap<Session, Saveable>(0);
   }
 
   /**
@@ -53,6 +52,13 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
     // Move session listener registration to this methods according to SaveablesProvider life's cycle.
     // Add this listener to the session manager.
     SessionManager.INSTANCE.addSessionsListener(this);
+
+    // Add existing active Session in the Capella saveable provider.
+    // Must be performed before CNF initialization to have the right saveables computation at CNF initialization.
+    // One use case is to re-open capella with a previous model opened.
+    for (Session activeSession : SessionManager.INSTANCE.getSessions()) {
+      notifyAddSession(activeSession);
+    }
   }
 
   /**
@@ -77,9 +83,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
   @Override
   public Object[] getElements(Saveable saveable_p) {
     Object[] result = new Object[1];
-    if (saveable_p instanceof CapellaSaveable) {
-      result[0] = ((CapellaSaveable) saveable_p).getAdapter(Session.class);
-    }
+    result[0] = saveable_p.getAdapter(Session.class);
     return result;
   }
 
@@ -105,7 +109,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
   public Saveable[] getSaveables() {
     Saveable[] result = null;
     synchronized (_saveables) {
-      Collection<CapellaSaveable> saveables = _saveables.values();
+      Collection<Saveable> saveables = _saveables.values();
       result = saveables.toArray(new Saveable[saveables.size()]);
     }
     return result;
@@ -133,10 +137,10 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
   }
 
   /**
-   * @see org.eclipse.sirius.business.api.session.SessionManagerListener2#notify(org.eclipse.sirius.business.api.session.Session, int)
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session, int)
    */
   public void notify(Session updatedSession_p, int notification_p) {
-    final CapellaSaveable[] saveable = { null };
+    final Saveable[] saveable = { null };
     synchronized (_saveables) {
       saveable[0] = _saveables.get(updatedSession_p);
     }

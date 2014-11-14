@@ -17,14 +17,13 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.re.CatalogElementPkg;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -52,13 +51,13 @@ public class InvalidSharedElementsProperty extends AbstractProperty implements I
         CatalogElementPkg pkg = (CatalogElementPkg) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET));
         if (pkg != null) {
 
-          IAbstractModel targetModel = ILibraryManager.INSTANCE.getAbstractModel(pkg);
+          IModel targetModel = ILibraryManager.INSTANCE.getModel(pkg);
           if (targetModel != null) {
-            Collection<IAbstractLibrary> referencedLibraries = targetModel.getAllReferencedLibraries(false);
+            Collection<IModel> referencedLibraries = LibraryManagerExt.getAllReferences(targetModel);
             if (targetModel != null) {
               for (Object object : scopeElements) {
                 if (object instanceof EObject) {
-                  IAbstractModel sourceModel = ILibraryManager.INSTANCE.getAbstractModel((EObject) object);
+                  IModel sourceModel = ILibraryManager.INSTANCE.getModel((EObject) object);
                   if (!targetModel.equals(sourceModel) && !referencedLibraries.contains(sourceModel)) {
                     result.add((EObject) object);
                   }

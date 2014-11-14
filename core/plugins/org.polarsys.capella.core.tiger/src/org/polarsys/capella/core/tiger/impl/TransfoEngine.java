@@ -24,14 +24,18 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.helpers.modellingcore.utils.HoldingResourceFilter;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.tiger.Activator;
 import org.polarsys.capella.core.tiger.IFinalizer;
 import org.polarsys.capella.core.tiger.ITransfo;
@@ -43,14 +47,14 @@ import org.polarsys.capella.core.tiger.extension.ITransfoEngineExecuteExt;
 import org.polarsys.capella.core.tiger.helpers.DebugHelper;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
-import org.polarsys.capella.common.data.helpers.modellingcore.utils.HoldingResourceFilter;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 /**
  * The abstract transformation engine. This abstraction contains the transformation algorithm chosen for the bridge.
  */
 @SuppressWarnings({ "nls", "unchecked" })
 public abstract class TransfoEngine extends ITransfoEngine {
+
+  public static final String HOLDING_RESOURCE = "HOLDING_RESOURCE";
 
   /**
    * The transformation engine state
@@ -297,6 +301,11 @@ public abstract class TransfoEngine extends ITransfoEngine {
    * @throws Exception
    */
   public void postExecute(ITransfo transfo_p) {
+
+    //We remove the holding resource at the end of the transition
+    EObject transfoSource = (EObject) _transfo.get(TRANSFO_SOURCE);
+    // new HoldingResourceHelper().flushHoldingResource(MDEAdapterFactory.getEditingDomain(transfoSource));
+
     try {
       IExtensionRegistry registry = Platform.getExtensionRegistry();
       IConfigurationElement[] elements = registry.getConfigurationElementsFor(Activator.PLUGIN_ID);
@@ -442,11 +451,19 @@ public abstract class TransfoEngine extends ITransfoEngine {
    */
   private void registerTargetElement(EObject sourceElement, EObject targetElement) throws TransfoException {
     if (targetElement != null) { // Allow transformation one to nothing
+
+      if (targetElement.eResource() == null) {
+        getHoldingResource(_transfo).getContents().add(targetElement);
+      }
+
       _transformedElements.add(targetElement);
 
       // Links
       AbstractTrace newLink = TigerRelationshipHelper.createTransfoLink(sourceElement, targetElement, _transfo);
       if (newLink != null) {
+        if (newLink.eContainer() == null) {
+          getHoldingResource(_transfo).getContents().add(newLink);
+        }
         List<AbstractTrace> links = (List<AbstractTrace>) _transfo.get(NEW_LINKS);
         links.add(newLink);
       }
@@ -593,6 +610,14 @@ public abstract class TransfoEngine extends ITransfoEngine {
   @Override
   public void setTransfo(ITransfo transfo_p) {
     _transfo = transfo_p;
+  }
+
+  protected Resource getHoldingResource(ITransfo transfo_p) {
+    if (!transfo_p.containsKey(HOLDING_RESOURCE)) {
+      EObject transfoSource = (EObject) _transfo.get(TRANSFO_SOURCE);
+      transfo_p.put(HOLDING_RESOURCE, HoldingResourceHelper.getHoldingResource(TransactionHelper.getEditingDomain(transfoSource)));
+    }
+    return (Resource) transfo_p.get(HOLDING_RESOURCE);
   }
 
   /**

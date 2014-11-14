@@ -12,49 +12,25 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.listeners;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.session.Session;
-
-import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.ISessionListener;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.polarsys.capella.core.platform.sirius.ui.session.CapellaSessionHelper;
 
 /**
  *
  */
-public class SessionCheckingListener implements ISessionListener {
-  /**
-   * Constructor
-   */
-	public SessionCheckingListener() {
-	  //
-	}
+public class SessionCheckingListener extends SessionManagerListener.Stub {
 
   /**
-   * {@inheritDoc}
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session, int)
    */
-	public void sessionOpening(final Session session_p) {
-	  //
-	}
-
-  /**
-   * {@inheritDoc}
-   */
-	public void sessionOpened(final Session session_p) {
-		if (!CapellaSessionHelper.checkModelsCompliancy(session_p)) {
-		  CapellaSessionHelper.cleanResourceSet(session_p);
-		  session_p.close(new NullProgressMonitor());
-		}
-	}
-
-  /**
-   * {@inheritDoc}
-   */
-	public void sessionClosing(Session session_p) {
-	  //
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void sessionClosed(Session session_p) {
-	  //
-	}
+  @Override
+  public void notify(Session updatedSession_p, int notification_p) {
+    if (SessionListener.OPENED == notification_p) {
+      if (!CapellaSessionHelper.checkModelsCompliancy(updatedSession_p)) {
+        CapellaSessionHelper.cleanResourceSet(updatedSession_p);
+        updatedSession_p.close(new NullProgressMonitor());
+      }
+    }
+  }
 }

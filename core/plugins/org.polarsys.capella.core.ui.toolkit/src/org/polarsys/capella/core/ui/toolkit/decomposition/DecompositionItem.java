@@ -19,6 +19,8 @@ import java.util.TreeSet;
 
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
+import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
+import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
@@ -141,14 +143,22 @@ public class DecompositionItem {
    */
   @Override
   public boolean equals(Object object_p) {
-	  if (object_p instanceof DecompositionItem) {
-		  if (this == object_p)
-			  return true;
-		  if (getValue() == null)
-			  return false;
-
-		  return getValue().equals(((DecompositionItem) object_p).getValue())
-		     && isInterfaceUsage() == ((DecompositionItem) object_p).isInterfaceUsage();
+  	if (object_p instanceof DecompositionItem) {
+		  if (this == object_p) {
+		  	return true;		  	
+		  } else if (getValue() == null) {
+		  	return false;		  	
+		  } else {
+		  	DecompositionItem item = (DecompositionItem) object_p;
+		  	Object value1 = getValue();
+		  	Object value2 = item.getValue();
+		  	if (value1 instanceof Interface && value2 instanceof Interface) {
+		  		return value1.equals(value2)
+		  				&& isInterfaceUsage() == item.isInterfaceUsage();		  		
+		  	} else if (value1 instanceof CommunicationLink && value2 instanceof CommunicationLink) {
+		  		return CommunicationLinkExt.isSameCommunication((CommunicationLink) value1, (CommunicationLink) value2);
+		  	}
+		  }
 	  }
 	  return false;
   }
@@ -273,18 +283,20 @@ public class DecompositionItem {
 
   //Check if the current 'DecompositionItem' (Interface) is internal for the parent Component in the model
   public boolean isInternal() {
-	  if (this.getValue() == null) return true; // Case new Interface
-	  else if (this.getParentComponent().getValue() != null) {
-		  Interface currentItf = (Interface) this.getValue();
-		  // Check if the Interface have a Refinement link toward another Interface
-		  if (RefinementLinkExt.getRefinementRelatedTargetElements(currentItf, CsPackage.Literals.INTERFACE).size() != 0) {
-			  // Check if the Interface is under the LogicalComponent in model
-			  LogicalComponent lc = (LogicalComponent) this.getParentComponent().getValue();
-			  for (CapellaElement meloElt : LogicalComponentExt.getAllInterfacesInLogicalComponent(lc)) {
-				  Interface itf = (Interface) meloElt;
-				  if (currentItf.equals(itf)) return true;
-			  }
-		  }
+	  if (this.getValue() instanceof Interface) {
+	  	if (this.getValue() == null) return true; // Case new Interface
+	  	else if (this.getParentComponent().getValue() != null) {
+	  		Interface currentItf = (Interface) this.getValue();
+	  		// Check if the Interface have a Refinement link toward another Interface
+	  		if (RefinementLinkExt.getRefinementRelatedTargetElements(currentItf, CsPackage.Literals.INTERFACE).size() != 0) {
+	  			// Check if the Interface is under the LogicalComponent in model
+	  			LogicalComponent lc = (LogicalComponent) this.getParentComponent().getValue();
+	  			for (CapellaElement meloElt : LogicalComponentExt.getAllInterfacesInLogicalComponent(lc)) {
+	  				Interface itf = (Interface) meloElt;
+	  				if (currentItf.equals(itf)) return true;
+	  			}
+	  		}
+	  	}	  	
 	  }
 	  return false;
   }

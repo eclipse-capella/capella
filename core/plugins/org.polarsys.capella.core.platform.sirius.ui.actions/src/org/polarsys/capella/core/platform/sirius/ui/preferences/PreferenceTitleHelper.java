@@ -10,33 +10,25 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.sirius.ui.preferences;
 
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.capellamodeller.provider.CapellaModellerEditPlugin;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
+ * 
  */
 public class PreferenceTitleHelper {
-  
-  public String getPreferenceTitle(EClass clazz_p){
-  AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) MDEAdapterFactory.getEditingDomain();
-  ItemProviderAdapter itemProviderAdapter = new ItemProviderAdapter(editingDomain.getAdapterFactory()) {
-    /**
-     * @see org.eclipse.emf.edit.provider.ItemProviderAdapter#getResourceLocator()
-     */
-    @Override
-    protected ResourceLocator getResourceLocator() {
-      return CapellaModellerEditPlugin.INSTANCE;
+
+  public String getPreferenceTitle(EClass clazz_p) {
+    EObject obj = clazz_p.getEPackage().getEFactoryInstance().create(clazz_p);
+    IItemLabelProvider provider = (IItemLabelProvider) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(obj, IItemLabelProvider.class);
+    if (provider instanceof ItemProviderAdapter) {
+      return EObjectLabelProviderHelper.getMetaclassLabel(obj.eClass(), (ItemProviderAdapter) provider);
     }
-  };
-  String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(clazz_p, itemProviderAdapter);
-  itemProviderAdapter.dispose();
-  return metaclassLabel;
+    return ICommonConstants.EMPTY_STRING;
   }
 }

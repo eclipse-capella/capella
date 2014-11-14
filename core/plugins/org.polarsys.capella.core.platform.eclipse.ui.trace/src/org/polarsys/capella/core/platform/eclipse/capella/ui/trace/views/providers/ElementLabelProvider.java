@@ -10,10 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.graphics.Image;
+import org.polarsys.capella.core.data.capellacore.Trace;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.TraceNameHelper;
 import org.polarsys.capella.core.ui.toolkit.viewers.CapellaElementLabelProvider;
-import org.polarsys.capella.core.data.capellacore.Trace;
 
 /**
  * <code>ElementLabelProvider</code> is the label provider of
@@ -24,9 +25,11 @@ public class ElementLabelProvider extends CapellaElementLabelProvider {
 
 	/**
 	 * Constructor
+	 * 
+	 * @param eobject_p object from which the editing domain will be retrieved
 	 */
-	public ElementLabelProvider() {
-		super();
+	public ElementLabelProvider(EObject eobject_p) {
+		super(eobject_p);
 	}
 
 	/**

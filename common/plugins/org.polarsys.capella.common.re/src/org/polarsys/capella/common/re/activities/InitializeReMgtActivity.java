@@ -11,18 +11,22 @@
 package org.polarsys.capella.common.re.activities;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.common.re.handlers.traceability.MatchConfiguration;
 import org.polarsys.capella.core.transition.common.activities.AbstractActivity;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.IContextScopeHandler;
+import org.polarsys.capella.core.transition.common.handlers.scope.ScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.CompoundTraceabilityHandler;
-import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.traceability.MatchConfiguration;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -49,6 +53,22 @@ public class InitializeReMgtActivity extends AbstractActivity {
     }
 
     initializeTraceabilityAttachmentHandler(context, activityParams_p);
+
+    //Compute scope and additional elements
+    IContextScopeHandler scopeHandler = ContextScopeHandlerHelper.getInstance(context);
+    Collection<EObject> scopeElements = new HashSet<EObject>();
+    scopeHandler.clear(ITransitionConstants.INITIAL_SOURCE_SCOPE, context);
+    scopeHandler.clear(ITransitionConstants.SOURCE_SCOPE, context);
+    scopeHandler.addAll(ITransitionConstants.INITIAL_SOURCE_SCOPE, scopeElements, context);
+    scopeHandler.addAll(ITransitionConstants.SOURCE_SCOPE, scopeElements, context);
+
+    status = ScopeHandlerHelper.getInstance(context).computeScope(scopeElements, context);
+    if (!checkStatus(status)) {
+      return status;
+    }
+
+    ReplicableElementHandlerHelper.getInstance(context).getListSources(context)
+        .add(ReplicableElementHandlerHelper.getInstance(context).getInitialSource(context));
 
     return Status.OK_STATUS;
   }

@@ -12,12 +12,12 @@ package org.polarsys.capella.core.data.fa.ui.quickfix.resolver;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
-
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Remove Function's Condition value
@@ -28,7 +28,7 @@ public class DWF_DF_09_Resolver extends AbstractCapellaMarkerResolution {
    * {@inheritDoc}
    */
   public void run(IMarker marker_p) {
-    final Object obj = getModelElements(marker_p).get(0);
+    final EObject obj = getModelElements(marker_p).get(0);
 
     if (null != obj) {
       AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
@@ -50,7 +50,7 @@ public class DWF_DF_09_Resolver extends AbstractCapellaMarkerResolution {
       };
 
       // execute the command
-      MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+      TransactionHelper.getExecutionManager(obj).execute(abstrctCommand);
       try {
         marker_p.delete();
       } catch (CoreException exception_p) {

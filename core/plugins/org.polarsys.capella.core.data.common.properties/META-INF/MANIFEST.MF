@@ -5,7 +5,9 @@ Bundle-SymbolicName: org.polarsys.capella.core.data.common.properties;singleton:
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.data.common.properties.CommonPropertiesPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport
+Require-Bundle: org.polarsys.capella.core.data.core.properties;visibility:=reexport,
+ org.polarsys.capella.common.linkedtext.ui,
+ org.polarsys.capella.core.linkedtext.ui
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.data.common.properties,
  org.polarsys.capella.core.data.common.properties.controllers,

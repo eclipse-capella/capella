@@ -24,6 +24,7 @@ import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.CatalogElementPkg;
 import org.polarsys.capella.common.re.CompliancyDefinition;
 import org.polarsys.capella.common.re.CompliancyDefinitionPkg;
+import org.polarsys.capella.common.re.GroupingElementPkg;
 import org.polarsys.capella.common.re.ReAbstractElement;
 import org.polarsys.capella.common.re.ReDescriptionElement;
 import org.polarsys.capella.common.re.ReElementContainer;
@@ -75,6 +76,13 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	private EClass recCatalogEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass groupingElementPkgEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -277,6 +285,15 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getGroupingElementPkg() {
+		return groupingElementPkgEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCatalogElementPkg() {
 		return catalogElementPkgEClass;
 	}
@@ -376,7 +393,7 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogElement_Tags() {
+	public EAttribute getCatalogElement_Purpose() {
 		return (EAttribute)catalogElementEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -385,8 +402,8 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogElement_Origin() {
-		return (EReference)catalogElementEClass.getEStructuralFeatures().get(4);
+	public EAttribute getCatalogElement_Tags() {
+		return (EAttribute)catalogElementEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -394,7 +411,7 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogElement_CurrentCompliancy() {
+	public EReference getCatalogElement_Origin() {
 		return (EReference)catalogElementEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -403,7 +420,7 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogElement_DefaultReplicaCompliancy() {
+	public EReference getCatalogElement_CurrentCompliancy() {
 		return (EReference)catalogElementEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -412,8 +429,35 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogElement_OwnedLinks() {
+	public EReference getCatalogElement_DefaultReplicaCompliancy() {
 		return (EReference)catalogElementEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCatalogElement_OwnedLinks() {
+		return (EReference)catalogElementEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCatalogElement_ReferencedElements() {
+		return (EReference)catalogElementEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCatalogElement_ReplicatedElements() {
+		return (EReference)catalogElementEClass.getEStructuralFeatures().get(10);
 	}
 
 	/**
@@ -492,11 +536,13 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		reElementContainerEClass = createEClass(RE_ELEMENT_CONTAINER);
 		createEReference(reElementContainerEClass, RE_ELEMENT_CONTAINER__OWNED_ELEMENTS);
 
+		catalogElementPkgEClass = createEClass(CATALOG_ELEMENT_PKG);
+		createEReference(catalogElementPkgEClass, CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS);
+
 		recCatalogEClass = createEClass(REC_CATALOG);
 		createEReference(recCatalogEClass, REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG);
 
-		catalogElementPkgEClass = createEClass(CATALOG_ELEMENT_PKG);
-		createEReference(catalogElementPkgEClass, CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS);
+		groupingElementPkgEClass = createEClass(GROUPING_ELEMENT_PKG);
 
 		catalogElementLinkEClass = createEClass(CATALOG_ELEMENT_LINK);
 		createEReference(catalogElementLinkEClass, CATALOG_ELEMENT_LINK__SOURCE);
@@ -508,11 +554,14 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__KIND);
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__AUTHOR);
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__ENVIRONMENT);
+		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__PURPOSE);
 		createEAttribute(catalogElementEClass, CATALOG_ELEMENT__TAGS);
 		createEReference(catalogElementEClass, CATALOG_ELEMENT__ORIGIN);
 		createEReference(catalogElementEClass, CATALOG_ELEMENT__CURRENT_COMPLIANCY);
 		createEReference(catalogElementEClass, CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY);
 		createEReference(catalogElementEClass, CATALOG_ELEMENT__OWNED_LINKS);
+		createEReference(catalogElementEClass, CATALOG_ELEMENT__REFERENCED_ELEMENTS);
+		createEReference(catalogElementEClass, CATALOG_ELEMENT__REPLICATED_ELEMENTS);
 
 		compliancyDefinitionPkgEClass = createEClass(COMPLIANCY_DEFINITION_PKG);
 		createEReference(compliancyDefinitionPkgEClass, COMPLIANCY_DEFINITION_PKG__OWNED_DEFINITIONS);
@@ -557,10 +606,12 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		reAbstractElementEClass.getESuperTypes().add(theEmdePackage.getExtensibleElement());
 		reNamedElementEClass.getESuperTypes().add(this.getReAbstractElement());
 		reDescriptionElementEClass.getESuperTypes().add(this.getReNamedElement());
-		recCatalogEClass.getESuperTypes().add(this.getCatalogElementPkg());
-		recCatalogEClass.getESuperTypes().add(theEmdePackage.getElementExtension());
 		catalogElementPkgEClass.getESuperTypes().add(this.getReNamedElement());
 		catalogElementPkgEClass.getESuperTypes().add(this.getReElementContainer());
+		recCatalogEClass.getESuperTypes().add(this.getCatalogElementPkg());
+		recCatalogEClass.getESuperTypes().add(theEmdePackage.getElementExtension());
+		groupingElementPkgEClass.getESuperTypes().add(this.getCatalogElementPkg());
+		groupingElementPkgEClass.getESuperTypes().add(theEmdePackage.getElementExtension());
 		catalogElementLinkEClass.getESuperTypes().add(this.getReAbstractElement());
 		catalogElementEClass.getESuperTypes().add(this.getReDescriptionElement());
 		catalogElementEClass.getESuperTypes().add(this.getReElementContainer());
@@ -580,14 +631,16 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		initEClass(reElementContainerEClass, ReElementContainer.class, "ReElementContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getReElementContainer_OwnedElements(), this.getCatalogElement(), null, "ownedElements", null, 0, -1, ReElementContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-		initEClass(recCatalogEClass, RecCatalog.class, "RecCatalog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getRecCatalog_OwnedCompliancyDefinitionPkg(), this.getCompliancyDefinitionPkg(), null, "ownedCompliancyDefinitionPkg", null, 0, 1, RecCatalog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
 		initEClass(catalogElementPkgEClass, CatalogElementPkg.class, "CatalogElementPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getCatalogElementPkg_OwnedElementPkgs(), this.getCatalogElementPkg(), null, "ownedElementPkgs", null, 0, -1, CatalogElementPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
+		initEClass(recCatalogEClass, RecCatalog.class, "RecCatalog", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getRecCatalog_OwnedCompliancyDefinitionPkg(), this.getCompliancyDefinitionPkg(), null, "ownedCompliancyDefinitionPkg", null, 0, 1, RecCatalog.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(groupingElementPkgEClass, GroupingElementPkg.class, "GroupingElementPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
 		initEClass(catalogElementLinkEClass, CatalogElementLink.class, "CatalogElementLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getCatalogElementLink_Source(), this.getCatalogElement(), null, "source", null, 0, 1, CatalogElementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCatalogElementLink_Source(), this.getCatalogElement(), null, "source", null, 0, 1, CatalogElementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElementLink_Target(), ecorePackage.getEObject(), null, "target", null, 0, 1, CatalogElementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElementLink_Origin(), this.getCatalogElementLink(), null, "origin", null, 0, 1, CatalogElementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getCatalogElementLink_UnsynchronizedFeatures(), ecorePackage.getEString(), "unsynchronizedFeatures", null, 0, -1, CatalogElementLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -596,11 +649,14 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		initEAttribute(getCatalogElement_Kind(), this.getCatalogElementKind(), "kind", "REC", 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEAttribute(getCatalogElement_Author(), ecorePackage.getEString(), "author", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getCatalogElement_Environment(), ecorePackage.getEString(), "environment", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getCatalogElement_Purpose(), ecorePackage.getEString(), "purpose", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getCatalogElement_Tags(), ecorePackage.getEString(), "tags", null, 0, -1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElement_Origin(), this.getCatalogElement(), null, "origin", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElement_CurrentCompliancy(), this.getCompliancyDefinition(), null, "currentCompliancy", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElement_DefaultReplicaCompliancy(), this.getCompliancyDefinition(), null, "defaultReplicaCompliancy", null, 0, 1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getCatalogElement_OwnedLinks(), this.getCatalogElementLink(), null, "ownedLinks", null, 0, -1, CatalogElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCatalogElement_ReferencedElements(), ecorePackage.getEObject(), null, "referencedElements", null, 0, -1, CatalogElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getCatalogElement_ReplicatedElements(), this.getCatalogElement(), null, "replicatedElements", null, 0, -1, CatalogElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(compliancyDefinitionPkgEClass, CompliancyDefinitionPkg.class, "CompliancyDefinitionPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getCompliancyDefinitionPkg_OwnedDefinitions(), this.getCompliancyDefinition(), null, "ownedDefinitions", null, 0, -1, CompliancyDefinitionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -612,16 +668,121 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 		addEEnumLiteral(catalogElementKindEEnum, CatalogElementKind.REC);
 		addEEnumLiteral(catalogElementKindEEnum, CatalogElementKind.RPL);
 		addEEnumLiteral(catalogElementKindEEnum, CatalogElementKind.REC_RPL);
-		addEEnumLiteral(catalogElementKindEEnum, CatalogElementKind.GATHERING);
+		addEEnumLiteral(catalogElementKindEEnum, CatalogElementKind.GROUPING);
 
 		// Create resource
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.polarsys.org/kitalpha/emde/1.0.0/extension
+		createExtensionAnnotations();
+		// http://www.polarsys.org/capella/semantic
+		createSemanticAnnotations();
 		// http://www.polarsys.org/kitalpha/emde/1.0.0/constraint
 		createConstraintAnnotations();
 		// http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping
 		createConstraintMappingAnnotations();
+		// http://www.polarsys.org/capella/derived
+		createDerivedAnnotations();
+		// http://www.polarsys.org/kitalpha/ecore/documentation
+		createDocumentationAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/emde/1.0.0/extension</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtensionAnnotations() {
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/extension"; //$NON-NLS-1$		
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																				
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.polarsys.org/capella/semantic</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createSemanticAnnotations() {
+		String source = "http://www.polarsys.org/capella/semantic"; //$NON-NLS-1$			
+		addAnnotation
+		  (getReNamedElement_Name(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getReDescriptionElement_Description(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getReElementContainer_OwnedElements(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (catalogElementPkgEClass, 
+		   source, 
+		   new String[] {
+		   });					
+		addAnnotation
+		  (catalogElementEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCatalogElement_Kind(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCatalogElement_Author(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCatalogElement_Environment(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCatalogElement_Purpose(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCatalogElement_Tags(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCatalogElement_Origin(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getCatalogElement_ReferencedElements(), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getCatalogElement_ReplicatedElements(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (compliancyDefinitionEClass, 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -631,13 +792,19 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createConstraintAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$		
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraint"; //$NON-NLS-1$							
 		addAnnotation
 		  (recCatalogEClass, 
 		   source, 
 		   new String[] {
 			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
-		   });	
+		   });			
+		addAnnotation
+		  (groupingElementPkgEClass, 
+		   source, 
+		   new String[] {
+			 "ExtendedElement", "http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering http://www.polarsys.org/capella/core/cs/0.8.0#//BlockArchitecture" //$NON-NLS-1$ //$NON-NLS-2$
+		   });													
 	}
 
 	/**
@@ -647,13 +814,49 @@ public class RePackageImpl extends EPackageImpl implements RePackage {
 	 * @generated
 	 */
 	protected void createConstraintMappingAnnotations() {
-		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$			
+		String source = "http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping"; //$NON-NLS-1$								
 		addAnnotation
 		  (recCatalogEClass, 
 		   source, 
 		   new String[] {
 			 "Mapping", "platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering " //$NON-NLS-1$ //$NON-NLS-2$
-		   });
+		   });														
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.polarsys.org/capella/derived</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDerivedAnnotations() {
+		String source = "http://www.polarsys.org/capella/derived"; //$NON-NLS-1$																		
+		addAnnotation
+		  (getCatalogElement_ReferencedElements(), 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getCatalogElement_ReplicatedElements(), 
+		   source, 
+		   new String[] {
+		   });		
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.polarsys.org/kitalpha/ecore/documentation</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createDocumentationAnnotations() {
+		String source = "http://www.polarsys.org/kitalpha/ecore/documentation"; //$NON-NLS-1$																					
+		addAnnotation
+		  (getCatalogElement_ReplicatedElements(), 
+		   source, 
+		   new String[] {
+			 "description", "retrieve all referencing elements which have the current element as origin" //$NON-NLS-1$ //$NON-NLS-2$
+		   });	
 	}
 
 } //RePackageImpl

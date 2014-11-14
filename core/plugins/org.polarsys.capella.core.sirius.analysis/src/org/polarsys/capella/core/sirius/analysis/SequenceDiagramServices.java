@@ -22,12 +22,14 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.UIUtil;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -49,15 +51,12 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalCapability;
-import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SequenceMessageExt;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.sirius.analysis.activator.SiriusViewActivator;
 
 public class SequenceDiagramServices {
 
@@ -246,7 +245,6 @@ public class SequenceDiagramServices {
     InteractionFragment newPredecessorOfEnd = (InteractionFragment) finishingEndPredecessorAfter;
 
     NamedElement ne = (NamedElement) object_p;
-
 
     if (object_p instanceof SequenceMessage) {
       SequenceMessage reorderedMessage = (SequenceMessage) object_p;
@@ -678,7 +676,7 @@ public class SequenceDiagramServices {
         }
       }
     }
-    CapellaDeleteCommand mdc = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), irToRemove, false, false, true);
+    CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(context_p), irToRemove, false, false, true);
     if (mdc.canExecute()) {
       // Do execute the command !
       mdc.execute();

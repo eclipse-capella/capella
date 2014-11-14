@@ -149,7 +149,6 @@ public class AbstractCapabilityExtensionPointItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS);
 			childrenFeatures.add(CapellacorePackage.Literals.NAMED_RELATIONSHIP__NAMING_RULES);
 		}
 		return childrenFeatures;
@@ -218,7 +217,6 @@ public class AbstractCapabilityExtensionPointItemProvider
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
 			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -236,18 +234,6 @@ public class AbstractCapabilityExtensionPointItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
-                         CapellacoreFactory.eINSTANCE.createConstraint());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter

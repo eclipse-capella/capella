@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
-import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
@@ -34,22 +33,22 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Shell;
-
 import org.polarsys.capella.common.helpers.EObjectCouple;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.menu.dynamic.DynamicCreateChildAction;
+import org.polarsys.capella.common.menu.dynamic.utils.ContributionItemComparator;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.kitalpha.emde.model.Element;
-import org.polarsys.kitalpha.emde.model.ElementExtension;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
 import org.polarsys.capella.core.data.capellacore.Relationship;
 import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.cs.Part;
+import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.menu.dynamic.DynamicCreateChildAction;
-import org.polarsys.capella.common.menu.dynamic.utils.ContributionItemComparator;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.kitalpha.emde.model.Element;
+import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 /**
  * Dynamic Creation action.
@@ -115,8 +114,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getStructuralDynamicActions() {
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
-    Element modelElement = getModelElement();
+	Element modelElement = getModelElement();
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
       @Override
@@ -131,8 +130,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getPropertyValueDynamicActions() {
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
-    Element modelElement = getModelElement();
+	Element modelElement = getModelElement();
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
       @Override
@@ -148,8 +147,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getExtensionDynamicActions() {
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
-    Element modelElement = getModelElement();
+	Element modelElement = getModelElement();
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
       @Override
@@ -164,8 +163,8 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    */
   @Override
   public Collection<IContributionItem> getNonStructuralDynamicActions() {
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
     Element modelElement = getModelElement();
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(modelElement);
     Collection<CommandParameter> newChildDescriptors = getFilteredNewChildDescriptors(editingDomain, modelElement);
     return generateCreateChildActions(newChildDescriptors, editingDomain, new AbstractCondition() {
       @Override
@@ -306,9 +305,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
    * @return
    */
   protected ItemProviderAdapter getItemProvider(EObject object_p) {
-    AdapterFactoryEditingDomain editingDomain = (AdapterFactoryEditingDomain) MDEAdapterFactory.getEditingDomain();
-    IItemLabelProvider provider = (IItemLabelProvider) editingDomain.getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
-    return (ItemProviderAdapter) provider;
+    return (ItemProviderAdapter) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(object_p, IItemLabelProvider.class);
   }
 
   /**

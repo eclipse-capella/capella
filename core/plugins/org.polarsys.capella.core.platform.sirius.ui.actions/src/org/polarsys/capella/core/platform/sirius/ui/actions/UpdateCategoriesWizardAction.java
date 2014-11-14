@@ -17,7 +17,7 @@ import org.eclipse.core.commands.IHandler;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.SWT;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.core.ui.toolkit.helpers.SelectionDialogHelper;
 
@@ -49,35 +49,39 @@ public class UpdateCategoriesWizardAction extends AbstractTigAction implements I
           SelectionDialogHelper.multiplePropertyTransfertDialogWizard(getActiveShell(), Messages.UpdateCategoriesWizardAction_Title,
               Messages.UpdateCategoriesWizardAction_msg, availableElements, commonCategories);
 
-      // categories to remove = (common categories) - (wizard selection)
-      final List<EObject> catToRemove = new ArrayList<EObject>();
-      catToRemove.addAll(commonCategories);
-      catToRemove.removeAll(wizardSelections);
+      if (wizardSelections != null) {
 
-      // categories to remove = (wizard selection) - (common categories)
-      final List<EObject> catToAdd = new ArrayList<EObject>();
-      catToAdd.addAll(wizardSelections);
-      catToAdd.removeAll(commonCategories);
+        // categories to remove = (common categories) - (wizard selection)
+        final List<EObject> catToRemove = new ArrayList<EObject>();
+        catToRemove.addAll(commonCategories);
+        catToRemove.removeAll(wizardSelections);
 
-      // Create a command to perform the model changes.
-      AbstractReadWriteCommand performedChangesCommand = new AbstractReadWriteCommand() {
-        /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
-         */
-        @Override
-        public String getName() {
-          return Messages.AllocationManagementWizardAction_Command_Label;
-        }
+        // categories to remove = (wizard selection) - (common categories)
+        final List<EObject> catToAdd = new ArrayList<EObject>();
+        catToAdd.addAll(wizardSelections);
+        catToAdd.removeAll(commonCategories);
 
-        /**
-         * @see java.lang.Runnable#run()
-         */
-        public void run() {
-          handleChanges(selection, catToAdd, catToRemove);
-        }
+        // Create a command to perform the model changes.
+        AbstractReadWriteCommand performedChangesCommand = new AbstractReadWriteCommand() {
+          /**
+           * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
+           */
+          @Override
+          public String getName() {
+            return Messages.AllocationManagementWizardAction_Command_Label;
+          }
 
-      };
-      getExecutionManager().execute(performedChangesCommand);
+          /**
+           * @see java.lang.Runnable#run()
+           */
+          public void run() {
+            handleChanges(selection, catToAdd, catToRemove);
+          }
+
+        };
+        getExecutionManager().execute(performedChangesCommand);
+      }
+
     } else {
       WizardActionHelper.createMessageBox(getActiveShell(), Messages.AllocationManagementWizardAction_Warning_Message, SWT.ICON_INFORMATION);
     }

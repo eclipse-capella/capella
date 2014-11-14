@@ -26,13 +26,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-
-import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.Activator;
 import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
+import org.polarsys.capella.common.ui.services.swt.events.AbstractKeyAdapter;
 
 /**
  */
@@ -76,7 +75,7 @@ public class TextRenderer extends AbstractRenderer {
 
     if (isColoredOnValidation()) {
       defaultColor = getDefaultColor(display);
-      errorColor = defaultColor; 
+      errorColor = defaultColor;
       warningColor = defaultColor;
       disabledColor = defaultColor;
     }
@@ -299,9 +298,9 @@ public class TextRenderer extends AbstractRenderer {
       }
       String text = getLabelProvider(rendererContext_p).getText(value);
 
-      if (isImage()) {
+      if (isImage() && !imageControl.isDisposed()) {
         Image image = getLabelProvider(rendererContext_p).getImage(value);
-        if (image != null) {
+        if ((image != null) && !image.equals(imageControl.getImage())) {
           imageControl.setImage(image);
         }
       }
@@ -311,13 +310,12 @@ public class TextRenderer extends AbstractRenderer {
       }
       if ((label != null) && !label.isDisposed()) {
         label.setEnabled(property_p.isEnabled(rendererContext_p.getPropertyContext()));
-
       }
 
       if (!textControl.isDisposed()) {
         textControl.setEditable(isEditable(property_p, rendererContext_p));
-
         textControl.setText(text);
+
         if (isColoredOnValidation() && (diag_p != null)) {
           if (diag_p.isOK()) {
             validateControl.setImage(Activator.getDefault().getImage("full/etool16/empty.gif"));

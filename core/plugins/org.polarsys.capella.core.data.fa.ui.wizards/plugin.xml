@@ -77,6 +77,19 @@
        </extension>
       
       <extension
+         point="org.polarsys.capella.core.preferences.capellaPreferences">
+          <category
+                description="Capella Wizards"
+                name="Wizards">
+             <item
+                   enableByDefault="true"
+                   id="org.polarsys.capella.core.data.fa.ui.wizards.command.EIAllocationManagementWizardAction"
+                   name="%EIAllocationManagement">
+             </item>
+          </category>
+       </extension>
+       
+      <extension
          point="org.eclipse.ui.commands">
            <category
                 id="org.polarsys.capella.core.wizard.ui.category"

@@ -22,11 +22,10 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Table;
-
-import org.polarsys.capella.core.libraries.flexibilityProperties.LibraryManagerModel;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.core.libraries.properties.LibraryManagerModel;
 
 /**
  * A simple TableViewer to demonstrate usage
@@ -71,7 +70,7 @@ public class AccessPolicyManagerWidget {
     accessPolicyColumn.setLabelProvider(new ColumnLabelProvider() {
       @Override
       public void update(final ViewerCell cell) {
-        IAbstractLibrary library = (IAbstractLibrary) cell.getElement();
+        IModel library = (IModel) cell.getElement();
         if (!model.isAccessPolicyModifiable(library)) {
           cell.setForeground(Display.getDefault().getSystemColor(SWT.COLOR_DARK_GRAY));
         } else {

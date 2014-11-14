@@ -12,6 +12,7 @@ package org.polarsys.capella.core.data.interaction;
 
 import org.eclipse.emf.common.util.EList;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -68,7 +69,7 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 
 
 	/**
-	 * Returns the value of the '<em><b>Pre Condition</b></em>' attribute.
+	 * Returns the value of the '<em><b>Pre Condition</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -76,39 +77,36 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pre Condition</em>' attribute.
-	 * @see #setPreCondition(String)
+	 * @return the value of the '<em>Pre Condition</em>' reference.
+	 * @see #setPreCondition(Constraint)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_PreCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the prerequisite conditions for the use of this Capability\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
 	 * @generated
 	 */
 
-	String getPreCondition();
+	Constraint getPreCondition();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPreCondition <em>Pre Condition</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPreCondition <em>Pre Condition</em>}' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pre Condition</em>' attribute.
+	 * @param value the new value of the '<em>Pre Condition</em>' reference.
 	 * @see #getPreCondition()
 	 * @generated
 	 */
 
-	void setPreCondition(String value);
-
-
-
+	void setPreCondition(Constraint value);
 
 
 
 
 	/**
-	 * Returns the value of the '<em><b>Post Condition</b></em>' attribute.
+	 * Returns the value of the '<em><b>Post Condition</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -116,33 +114,30 @@ public interface AbstractCapability extends Structure, InvolverElement, Abstract
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Post Condition</em>' attribute.
-	 * @see #setPostCondition(String)
+	 * @return the value of the '<em>Post Condition</em>' reference.
+	 * @see #setPostCondition(Constraint)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapability_PostCondition()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the conditions applying after this Capability has been exercized\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
 	 * @generated
 	 */
 
-	String getPostCondition();
+	Constraint getPostCondition();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPostCondition <em>Post Condition</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getPostCondition <em>Post Condition</em>}' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Post Condition</em>' attribute.
+	 * @param value the new value of the '<em>Post Condition</em>' reference.
 	 * @see #getPostCondition()
 	 * @generated
 	 */
 
-	void setPostCondition(String value);
-
-
-
+	void setPostCondition(Constraint value);
 
 
 

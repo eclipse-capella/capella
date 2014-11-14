@@ -8,8 +8,12 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.common.helpers,
- org.polarsys.capella.core.model.helpers
-Export-Package: org.polarsys.capella.core.data.core.validation.capellaelement,
- org.polarsys.capella.core.data.capellamodeller.validation
-Bundle-ActivationPolicy: lazy
+ org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.common.libraries;bundle-version="0.8.0",
+ org.eclipse.sirius;bundle-version="2.0.0"
+Export-Package: org.polarsys.capella.core.data.capellamodeller.validation,
+ org.polarsys.capella.core.data.core.validation.capellaelement,
+ org.polarsys.capella.core.data.core.validation.capellaelement.nameconflict,
+ org.polarsys.capella.core.data.core.validation.capellaelement.nameconflict.signatures,
+ org.polarsys.capella.core.data.core.validation.constraint
 Bundle-Localization: plugin

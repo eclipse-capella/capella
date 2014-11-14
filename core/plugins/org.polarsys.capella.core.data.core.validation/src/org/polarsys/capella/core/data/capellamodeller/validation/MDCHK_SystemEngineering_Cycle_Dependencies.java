@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-
 import org.polarsys.capella.core.data.capellacore.AbstractDependenciesPkg;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.AbstractDependenciesPkgExt;
@@ -36,7 +35,10 @@ public class MDCHK_SystemEngineering_Cycle_Dependencies extends AbstractValidati
   static public Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> getCycleOfDependencies(final SystemEngineering context) {
     Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> graphOfDependencies = new HashMap<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>>(); // graph of dependencies
     Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> reversedGraphOfDependencies = new HashMap<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>>(); // graph of dependencies with inverse edges
-    Collection<AbstractDependenciesPkg> allPackages = AbstractDependenciesPkgExt.getAllPackages(context);
+    Collection<AbstractDependenciesPkg> allPackages = AbstractDependenciesPkgExt.getAllPackages(context);  
+    
+    handleLibraries(context, allPackages);
+    
     // init graphs of dependencies
     for (AbstractDependenciesPkg aPackage : allPackages) {
       reversedGraphOfDependencies.put(aPackage, new HashSet<AbstractDependenciesPkg>());
@@ -45,7 +47,9 @@ public class MDCHK_SystemEngineering_Cycle_Dependencies extends AbstractValidati
       Collection<AbstractDependenciesPkg> dependentPackages = AbstractDependenciesPkgExt.getDependentPackages(aPackage);
       graphOfDependencies.put(aPackage, dependentPackages);
       for (AbstractDependenciesPkg aDependentPackage : dependentPackages) {
-        reversedGraphOfDependencies.get(aDependentPackage).add(aPackage);
+    	if (reversedGraphOfDependencies.containsKey(aDependentPackage)){
+    	  reversedGraphOfDependencies.get(aDependentPackage).add(aPackage);
+    	}
       }
     }
     // algorithm
@@ -97,7 +101,7 @@ public class MDCHK_SystemEngineering_Cycle_Dependencies extends AbstractValidati
         Map<AbstractDependenciesPkg, Collection<AbstractDependenciesPkg>> dependencies = getCycleOfDependencies((SystemEngineering) eObj);
         if (null != dependencies && !dependencies.isEmpty()) {
           // There are conflicts
-          IStatus status = createFailureStatus(ctx_p, new Object[] { Integer.valueOf(dependencies.size()) });
+          IStatus status = ctx_p.createFailureStatus(new Object[] { Integer.valueOf(dependencies.size()) });
           statuses.add(status);
           return ConstraintStatus.createMultiStatus(ctx_p, statuses);
         }
@@ -105,5 +109,22 @@ public class MDCHK_SystemEngineering_Cycle_Dependencies extends AbstractValidati
     }
     // No conflict found
     return ctx_p.createSuccessStatus();
+  }
+
+  public static void handleLibraries(SystemEngineering context, Collection<AbstractDependenciesPkg> allPackages){
+// FIXME this code cannot work with new libraries 'framework'
+//	  Collection<IModel>  libraries = ILibraryManager.INSTANCE.getAbstractModel(context).getAllReferencedLibraries(false);
+//    for (IModel lib: libraries){
+//    	 List<SystemEngineering> returnedList = new ArrayList<SystemEngineering>();
+//    	 Set<EObject> content= lib.getAllContentsAsSet();
+//    	 for (EObject eo : content){
+//    		 if (eo instanceof SystemEngineering){
+//    			 returnedList.add((SystemEngineering)eo);
+//    		 }
+//    	 }
+//  	   for (SystemEngineering aSysEng : returnedList) {
+//  	   	 allPackages.addAll(AbstractDependenciesPkgExt.getAllPackages(aSysEng));
+//  	   }
+//    }
   }
 }

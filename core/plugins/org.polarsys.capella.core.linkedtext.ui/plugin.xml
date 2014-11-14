@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider
+            cache="true"
+            mode="Batch">
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/0.8.0">
+         </package>
+         <constraints categories="capella.category/design/well-formedness/data">
+            <constraint
+                  class="org.polarsys.capella.core.linkedtext.ui.validation.OpaqueExpressionHyperlinkCheck"
+                  id="DWF_D_48"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_48 - Dangling LinkedText hyperlinks in OpaqueExpressions"
+                  severity="WARNING"
+                  statusCode="1">
+              <message>
+                 OpaqueExpression {0} contains one or more dangling element references
+              </message>
+              <description>
+              	Verifies that all LinkedText hyperlinks in an OpaqueExpression can be resolved
+              </description>
+              <target
+                    class="OpaqueExpression">
+              </target>
+           </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.menu.dynamic.MDEMenuItemContribution">
+      <MDEMenuItemContribution
+            class="org.polarsys.capella.core.linkedtext.ui.OpaqueExpressionItemContribution"
+            id="OpaqueExpression_AddLinkedText">
+      </MDEMenuItemContribution>
+   </extension>
+
+</plugin>

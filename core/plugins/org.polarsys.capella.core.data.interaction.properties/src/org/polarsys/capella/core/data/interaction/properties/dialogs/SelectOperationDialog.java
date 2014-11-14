@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.interaction.properties.dialogs;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,14 +38,16 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentContext;
@@ -53,6 +56,7 @@ import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.InterfacePkg;
+import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemInstance;
@@ -65,12 +69,10 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 
 /**
  * Dialog to select an operation (i.e service).<br>
@@ -271,10 +273,11 @@ public class SelectOperationDialog extends SelectElementsDialog {
       @SuppressWarnings("synthetic-access")
       @Override
       public void widgetSelected(SelectionEvent event_p) {
+    	Collection<CapellaElement> interfaces = getAvailableInterfaces();
         SelectElementsDialog selectInterfaceDialog =
-            new SelectElementsDialog(getParentShell(), MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
+            new SelectElementsDialog(getParentShell(), TransactionHelper.getEditingDomain(interfaces), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
                 Messages.SelectOperationDialog_SelectInterfaceDialog_Title, Messages.SelectOperationDialog_SelectInterfaceDialog_Message,
-                getAvailableInterfaces());
+                interfaces);
         if (Window.OK == selectInterfaceDialog.open()) {
           AbstractNamedElement selectedInterface = (AbstractNamedElement) selectInterfaceDialog.getResult().get(0);
           _interfaceText.setText(selectedInterface.getName());
@@ -631,7 +634,7 @@ public class SelectOperationDialog extends SelectElementsDialog {
       ei = (ExchangeItem) _targetIR.getRepresentedInstance().getAbstractType();
     }
     // Looking for a communication link between Component and ExchangeItem.
-    for (CommunicationLink cl : component.getOwnedCommunicationLinks()) {
+    for (CommunicationLink cl : CommunicationLinkExt.getAllCommunicationLinks(component)) {
       if (cl.getExchangeItem() == ei) {
         // found the correct Communication link
         communicationLink = cl;

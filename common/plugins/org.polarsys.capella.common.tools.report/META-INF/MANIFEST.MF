@@ -7,7 +7,7 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.helpers;visibility:=reexport,
  org.apache.log4j;visibility:=reexport,
  com.sun.jaxb;visibility:=reexport
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.tools.report.appenders,
  org.polarsys.capella.common.tools.report.config,
@@ -15,5 +15,5 @@ Export-Package: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.tools.report.config.registry,
  org.polarsys.capella.common.tools.report.util
 Bundle-Activator: org.polarsys.capella.common.tools.report.ReportManagerActivator
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.re2rpl.create.properties;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.flexibility.properties.property.AbstractProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IEditableProperty;
@@ -26,8 +26,10 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
+import org.polarsys.capella.common.re.handlers.location.LocationHandlerHelper;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.capellaHelpers.HashMapSet;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -35,45 +37,81 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class ReplicaContentProperty extends AbstractProperty implements ICompoundProperty, IModifiedProperty, IEditableProperty {
 
+  private static String LINKS = "TEMPORARYLINKS";
+
   /**
    * {@inheritDoc}
    */
   @Override
   public Object getValue(IPropertyContext context_p) {
-    CatalogElement replicable =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+    CatalogElement target =
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
 
     IContext context = (IContext) context_p.getSource();
 
-    if (context.get("TEMPORARYLINKS") != null) {
-      return context.get("TEMPORARYLINKS");
+    if (context.get(LINKS) != null) {
+      return context.get(LINKS);
     }
+    Collection<EObject> links = new HashSet<EObject>();
 
-    HashSet<CatalogElement> visited = new HashSet<CatalogElement>();
-    HashSet<CatalogElementLink> setLinks = new HashSet<CatalogElementLink>();
-    HashSet<CatalogElementLink> setLinksToDelete = new HashSet<CatalogElementLink>();
+    CatalogElement source =
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
 
-    //Retrieve all links not being origin of another link => OK
-    CatalogElement toSee = replicable;
-    while (toSee != null) {
-      if (visited.contains(toSee)) {
-        continue;
+    ReplicableElementHandlerHelper.getInstance(context).createInitialReplica(source, target, context);
+
+    Collection<CatalogElementLink> toDelete = new HashSet<CatalogElementLink>();
+
+    if (IReConstants.ENABLE_SUB_INSTANCIATION()) {
+      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(target)) {
+        toDelete.add(link.getOrigin());
+        links.add(link);
       }
 
-      visited.add(toSee);
-      Collection<CatalogElementLink> links = ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(toSee);
-      for (CatalogElementLink link : links) {
-        setLinks.add(link);
-        if (link.getOrigin() != null) {
-          setLinksToDelete.add(link.getOrigin());
+    } else {
+      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(target)) {
+        toDelete.add(link.getOrigin());
+        links.add(link);
+      }
+    }
+
+    HashMapSet<CatalogElement, CatalogElementLink> toCreate = new HashMapSet<CatalogElement, CatalogElementLink>();
+
+    Collection<CatalogElement> usedSource = new ArrayList<CatalogElement>();
+    usedSource.add(source);
+    if (IReConstants.ENABLE_SUB_INSTANCIATION()) {
+      usedSource.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllUsedReplicableElements(source));
+    }
+
+    Collection<CatalogElement> usedTarget = new ArrayList<CatalogElement>();
+    usedTarget.add(target);
+    if (IReConstants.ENABLE_SUB_INSTANCIATION()) {
+      usedTarget.addAll(ReplicableElementHandlerHelper.getInstance(context).getAllUsedReplicableElements(target));
+    }
+
+    for (CatalogElement element : usedSource) {
+      for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getElementsLinks(element)) {
+        toCreate.put(element, link);
+      }
+    }
+
+    for (CatalogElement element : toCreate.keySet()) {
+      toCreate.get(element).removeAll(toDelete);
+
+      CatalogElement targetElement = null;
+      for (CatalogElement targetElementq : usedTarget) {
+        if (targetElementq.getOrigin().equals(element)) {
+          targetElement = targetElementq;
+          break;
         }
       }
-      toSee = toSee.getOrigin();
+
+      Collection<CatalogElementLink> targetLinks =
+          ReplicableElementHandlerHelper.getInstance(context).createTargetLinks(targetElement, toCreate.get(element), context);
+      links.addAll(targetLinks);
     }
-    setLinks.removeAll(setLinksToDelete);
-    Collection<CatalogElementLink> targetLinks = AttributesHandlerHelper.getInstance(context).createTargetLinks(replicable, setLinks, context);
-    context.put("TEMPORARYLINKS", targetLinks);
-    return targetLinks;
+
+    context.put(LINKS, links);
+    return links;
 
   }
 
@@ -82,29 +120,27 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
    */
   @Override
   public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    System.out.println(0);
     IContext context = (IContext) context_p.getSource();
 
     Object useDefault = context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__USE_DEFAULT_LOCATION));
     boolean isUseDefault = !(Boolean.FALSE.equals(useDefault));
 
     HashSet<CatalogElementLink> links = (HashSet<CatalogElementLink>) newValue_p;
-    System.out.println(0);
     HashSet<CatalogElementLink> linksInvalid = new HashSet<CatalogElementLink>();
 
     for (CatalogElementLink link : links) {
-      EObject currentLocation = AttributesHandlerHelper.getInstance(context).getCurrentLocation(link, context);
+      EObject currentLocation = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
       if (currentLocation != null) {
         continue;
       }
 
-      EObject location = AttributesHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+      EObject location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
       if (location != null) {
         continue;
       }
 
       if (isUseDefault) {
-        EObject defaultLocation = AttributesHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
+        EObject defaultLocation = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
         if (defaultLocation != null) {
           continue;
         }
@@ -113,8 +149,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     }
 
     if (!linksInvalid.isEmpty()) {
-      return new Status(IStatus.WARNING, IReConstants.PLUGIN_ID, "Some elements need to be stored in the model");
-
+      return new Status(IStatus.ERROR, IReConstants.PLUGIN_ID, "Some elements need to be stored in the model");
     }
     return Status.OK_STATUS;
   }
@@ -150,24 +185,33 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
     if (links != null) {
 
       for (CatalogElementLink link : links) {
-        EObject currentLocation = AttributesHandlerHelper.getInstance(context).getCurrentLocation(link, context);
+        EObject currentLocation = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
         if (currentLocation != null) {
           continue;
         }
 
-        EObject location = AttributesHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+        EObject location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
         if (location != null) {
-          AttributesHandlerHelper.getInstance(context).setCurrentLocation(link, location, context);
+          LocationHandlerHelper.getInstance(context).setCurrentLocation(link, location, context);
           continue;
         }
 
         if (isUseDefault) {
-          EObject defaultLocation = AttributesHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
+          EObject defaultLocation = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
           if (defaultLocation != null) {
-            AttributesHandlerHelper.getInstance(context).setCurrentLocation(link, defaultLocation, context);
+            LocationHandlerHelper.getInstance(context).setCurrentLocation(link, defaultLocation, context);
             continue;
           }
         }
+      }
+    }
+
+    CatalogElement replica =
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+
+    for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(replica)) {
+      if (ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, link, context)) {
+        ContextScopeHandlerHelper.getInstance(context).add(IReConstants.CREATED_LINKS_TO_KEEP, link, context);
       }
     }
 
@@ -178,7 +222,7 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE, IReConstants.PROPERTY__USE_DEFAULT_LOCATION,
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET, IReConstants.PROPERTY__USE_DEFAULT_LOCATION,
                          IReConstants.PROPERTY__LOCATION_TARGET };
   }
 
@@ -187,10 +231,17 @@ public class ReplicaContentProperty extends AbstractProperty implements ICompoun
    */
   @Override
   public void updatedValue(IProperty property_p, IPropertyContext context_p) {
-    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE.equals(property_p.getId())) {
+    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property_p.getId())) {
       IContext context = (IContext) context_p.getSource();
-      context.put("TEMPORARYLINKS", null);
+      context.put(LINKS, null);
       ReplicableElementHandlerHelper.getInstance(context).cleanVirtualLinks(context);
+      LocationHandlerHelper.getInstance(context).cleanLocations(context);
+
+    } else if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property_p.getId())) {
+      IContext context = (IContext) context_p.getSource();
+      context.put(LINKS, null);
+      ReplicableElementHandlerHelper.getInstance(context).cleanVirtualLinks(context);
+      LocationHandlerHelper.getInstance(context).cleanLocations(context);
     }
     //Nothing here
   }

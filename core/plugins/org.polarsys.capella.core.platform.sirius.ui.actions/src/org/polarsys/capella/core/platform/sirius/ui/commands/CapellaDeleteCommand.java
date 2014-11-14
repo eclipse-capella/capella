@@ -45,6 +45,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.PlatformUI;
 
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
@@ -59,8 +61,6 @@ import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.IDeletePreferences;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Capella delete command facade.
@@ -215,7 +215,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
       // Execute deletion against the execution manager.
       _executionManager.execute(new AbstractReadWriteCommand() {
         /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#commandRolledBack()
+         * @see org.polarsys.capella.common.ef.command.AbstractCommand#commandRolledBack()
          */
         @SuppressWarnings("synthetic-access")
         @Override
@@ -227,7 +227,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
         }
 
         /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getAffectedObjects()
+         * @see org.polarsys.capella.common.ef.command.AbstractCommand#getAffectedObjects()
          */
         @SuppressWarnings("synthetic-access")
         @Override
@@ -239,7 +239,7 @@ public class CapellaDeleteCommand extends AbstractCommand {
         }
 
         /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+         * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
          */
         @Override
         public String getName() {

@@ -63,6 +63,7 @@ public class SystemEngineering_ReusedSharedPkg implements IBusinessQuery {
 	 * 
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
+	@Override
 	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 
@@ -81,6 +82,7 @@ public class SystemEngineering_ReusedSharedPkg implements IBusinessQuery {
 	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,
 	 *      boolean)
 	 */
+	@Override
 	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
 		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
 
@@ -92,10 +94,12 @@ public class SystemEngineering_ReusedSharedPkg implements IBusinessQuery {
 		return currentElements;
 	}
 
+	@Override
 	public EClass getEClass() {
 		return CapellamodellerPackage.Literals.SYSTEM_ENGINEERING;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
     return Collections.singletonList(CapellacorePackage.Literals.REUSER_STRUCTURE__OWNED_REUSE_LINKS);
 	}

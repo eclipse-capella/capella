@@ -53,7 +53,7 @@ import org.polarsys.capella.core.ui.properties.viewers.TableDelegatedViewer;
 import org.polarsys.capella.core.ui.properties.viewers.TreeDelegatedViewer;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */

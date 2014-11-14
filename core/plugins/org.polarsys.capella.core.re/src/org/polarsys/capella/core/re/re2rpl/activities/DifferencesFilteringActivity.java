@@ -12,10 +12,9 @@ package org.polarsys.capella.core.re.re2rpl.activities;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.re.handlers.filters.PartOwnedTypeFilter;
 import org.polarsys.capella.core.transition.common.handlers.filter.CompoundFilteringItems;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 

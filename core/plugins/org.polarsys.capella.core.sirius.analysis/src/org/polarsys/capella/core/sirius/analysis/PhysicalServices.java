@@ -25,30 +25,32 @@ import java.util.TreeSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 import org.eclipse.swt.graphics.RGB;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.SimpleOrientedGraph;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.AbstractPathInvolvedElement;
@@ -69,7 +71,6 @@ import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
@@ -78,15 +79,13 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.deployment.DeploymentFactory;
 import org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink;
-import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.PartExt;
 import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
 import org.polarsys.capella.core.model.helpers.PhysicalPathExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
  */
@@ -107,6 +106,38 @@ public class PhysicalServices {
 
   public boolean isMultipleDeploymentAllowed() {
     return CapellaModelPreferencesPlugin.getDefault().isMultipleDeploymentAllowed();
+  }
+
+  /**
+   * Returns all semantics of source views for the given path
+   */
+  public Collection<EObject> getPhysicalPathSources(PhysicalPath path_p) {
+    // a link is not oriented, so return both bounds
+    HashSet<EObject> result = new HashSet<EObject>();
+
+    for (PhysicalPathInvolvement anInvolvement : PhysicalPathExt.getFlatInvolvementsOf(path_p, CsPackage.Literals.PHYSICAL_LINK)) {
+      PhysicalLink currentExchange = (PhysicalLink) anInvolvement.getInvolved();
+      if ((currentExchange != null) && !currentExchange.eIsProxy()) {
+        EObject source = PhysicalLinkExt.getSourcePort(currentExchange);
+        if (result != null) {
+          result.add(source);
+        }
+        EObject target = PhysicalLinkExt.getTargetPort(currentExchange);
+        if (result != null) {
+          result.add(target);
+        }
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * Returns all semantics of target views for the given path
+   */
+  public Collection<EObject> getPhysicalPathTargets(PhysicalPath path_p) {
+    // a link is not oriented, so return both bounds
+    return getPhysicalPathSources(path_p);
   }
 
   /**
@@ -388,7 +419,7 @@ public class PhysicalServices {
       sourcePort = CsFactory.eINSTANCE.createPhysicalPort();
       ((Component) sourcePart.getType()).getOwnedFeatures().add(sourcePort);
       CapellaServices.getService().creationService(sourcePort);
-      nodeSource = CsServices.getService().createViewOrGetPort((DNodeContainer) sourceView_p, sourcePort).getKey();
+      nodeSource = CsServices.getService().createViewOrGetPhysicalPort((DNodeContainer) sourceView_p, sourcePort).getKey();
     }
 
     // Create or retrieve targetPort
@@ -401,7 +432,7 @@ public class PhysicalServices {
       targetPort = CsFactory.eINSTANCE.createPhysicalPort();
       ((Component) targetPart.getType()).getOwnedFeatures().add(targetPort);
       CapellaServices.getService().creationService(targetPort);
-      nodeTarget = CsServices.getService().createViewOrGetPort((DNodeContainer) targetView_p, targetPort).getKey();
+      nodeTarget = CsServices.getService().createViewOrGetPhysicalPort((DNodeContainer) targetView_p, targetPort).getKey();
     }
 
     // Create physical link

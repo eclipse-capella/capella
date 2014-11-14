@@ -16,24 +16,21 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.helpers.ctx.services.CapabilityPkgExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.MissionPkgExt;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
-/**
- */
 public class ContextServices {
   private static ContextServices singleton = null;
 

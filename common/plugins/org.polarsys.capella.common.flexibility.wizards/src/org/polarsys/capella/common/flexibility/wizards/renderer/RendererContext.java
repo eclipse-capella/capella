@@ -12,11 +12,7 @@ package org.polarsys.capella.common.flexibility.wizards.renderer;
 
 import java.util.HashMap;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ILabelProvider;
-
-import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.ICompoundProperty;
@@ -30,7 +26,6 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IPropertyRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderers;
 import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  *
@@ -69,20 +64,7 @@ public class RendererContext implements IRendererContext, PropertyChangeListener
     _groups2renderers = new HashMap<IPropertyGroup, IGroupRenderer>(0);
     _renderers2groups = new HashMap<IGroupRenderer, IPropertyGroup>(0);
 
-    labelProvider = new DefaultLabelProvider(new MDEAdapterFactoryLabelProvider(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory())) {
-
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      public String getText(Object object_p) {
-        if (object_p instanceof EObject) {
-          return EObjectLabelProviderHelper.getText(object_p);
-        }
-        return super.getText(object_p);
-      }
-
-    };
+    labelProvider = new DefaultLabelProvider();
   }
 
   public ILabelProvider getLabelProvider() {

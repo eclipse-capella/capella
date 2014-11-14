@@ -15,10 +15,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
@@ -26,6 +24,7 @@ import org.polarsys.capella.core.transition.common.merge.scope.IModelScopeFilter
 import org.polarsys.capella.core.transition.common.merge.scope.PartialRootedModelScope;
 import org.polarsys.capella.core.transition.common.merge.scope.ReferenceModelScope;
 import org.polarsys.capella.core.transition.common.merge.scope.TargetModelScope;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -42,10 +41,6 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
   @Override
   public IStatus _run(ActivityParameters activityParams_p) {
     IContext context = (IContext) activityParams_p.getParameter(TRANSPOSER_CONTEXT).getValue();
-
-    if (context.get(ITransitionConstants.DIFFMERGE_DISABLE) != null) {
-      return Status.CANCEL_STATUS;
-    }
 
     IStatus status = Status.OK_STATUS;
 
@@ -84,7 +79,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
     List<EObject> rootSource = new ArrayList<EObject>();
     rootSource.add((EObject) context_p.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
 
-    IFeaturedModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
+    IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
 
     context_p.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
 
@@ -106,7 +101,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
     List<EObject> rootTarget = new ArrayList<EObject>();
     rootTarget.add((EObject) context_p.get(ITransitionConstants.MERGE_TARGET_CONTAINER));
 
-    IFeaturedModelScope targetScope = new TargetModelScope(rootTarget, context_p);
+    IEditableModelScope targetScope = new TargetModelScope(rootTarget, context_p);
     context_p.put(ITransitionConstants.MERGE_TARGET_SCOPE, targetScope);
 
     ((PartialRootedModelScope) targetScope).build(getTargetFilter(context_p));
@@ -123,7 +118,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
   protected IStatus initializeTraceabilitySourceHandler(IContext context_p, ActivityParameters activityParams_p) {
     IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER, activityParams_p);
     if (handler == null) {
-      handler = createDefaultTraceabilitySourceHandler();
+      handler = createDefaultTraceabilitySourceHandler(context_p);
     }
     context_p.put(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER, handler);
     handler.init(context_p);
@@ -134,7 +129,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
    * Create default traceability handler for source of diffMerge
    * @return
    */
-  protected IHandler createDefaultTraceabilitySourceHandler() {
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
     return ITraceabilityHandler.DEFAULT;
   }
 
@@ -147,7 +142,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
   protected IStatus initializeTraceabilityTargetHandler(IContext context_p, ActivityParameters activityParams_p) {
     IHandler handler = loadHandlerFromParameters(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER, activityParams_p);
     if (handler == null) {
-      handler = createDefaultTraceabilityTargetHandler();
+      handler = createDefaultTraceabilityTargetHandler(context_p);
     }
     context_p.put(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER, handler);
     handler.init(context_p);
@@ -158,7 +153,7 @@ public class InitializeDiffMergeFromTransformationActivity extends AbstractActiv
    * Create default traceability handler for target of diffMerge
    * @return
    */
-  protected IHandler createDefaultTraceabilityTargetHandler() {
+  protected IHandler createDefaultTraceabilityTargetHandler(IContext context_p) {
     return ITraceabilityHandler.DEFAULT;
   }
 

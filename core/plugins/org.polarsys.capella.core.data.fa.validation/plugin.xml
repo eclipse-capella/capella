@@ -55,31 +55,49 @@
                                This rule generates a warning if the Function Exchange conveys some Exchange Items which are not allocated to its source ({1}) and/or its target port ({2}).
                             </description>
                          </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_providedItf_1"
+                               id="DCOM_18"
+                               isEnabledByDefault="true"
+                               lang="Java"
+                               mode="Batch"
+                               name="DCOM_18 - Component port provided interface delegation check"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               {0} (Component port) of {1} (Logical Component) does not delegate its provided {2} (Interface).
+                            </message>
+                            <description>
+                               This rule checks that provided interfaces are delegated to one or many subcomponents (if they exist).
+                            </description>
+                            <target
+                                  class="ComponentPort">
+                            </target>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_requiredItf_2"
+                               id="DCOM_19"
+                               isEnabledByDefault="true"
+                               lang="Java"
+                               mode="Batch"
+                               name="DCOM_19 - Component port required interface delegation check"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               {0} (Component port) of {1} (Logical Component) does not delegate its required {2} (Interface).
+                            </message>
+                            <description>
+                               This rule checks that required interfaces are delegated to one or many  subcomponents (if they exist).
+                            </description>
+                            <target
+                                  class="ComponentPort">
+                            </target>
+                         </constraint>
          </constraints> 
          
          
          
          <constraints categories="capella.category/design/consistency">
-            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_providedItf_1" id="DCON_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCON_02 - Component port interface implemention check" severity="WARNING" statusCode="1">
-               <message>
-                  {0} (Component port) provides {1} (Interface) not implemented by its owner Component.
-               </message>
-               <description>
-                  This rule checks that interfaces provided by component ports are implemented by their owner Components.
-               </description>
-               <target class="ComponentPort">
-               </target>
-            </constraint>
-            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_requiredItf_2" id="DCON_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCON_03 - Component port interface use check" severity="WARNING" statusCode="1">
-               <message>
-                  {0} (Component port) requires {1} (Interface) not used by its owner Component.
-               </message>
-               <description>
-                  This rule checks that interfaces requires by component ports are used by their owner Component.
-               </description>
-               <target class="ComponentPort">
-               </target>
-            </constraint>
          </constraints>
          <constraints categories="capella.category/transition/justification/generic">
             <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_Realization_1" id="TJ_G_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TJ_G_01 - Component Port Realization " severity="WARNING" statusCode="1">
@@ -260,87 +278,6 @@
                <target class="FunctionalExchange">
                </target>
             </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.fa.validation.connection.DelegationOutOfPlace"
-                  id="DWF_DF_07"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_DF_07 - Delegation out of place check"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <description>
-                  This rule check that Component Exchange of kind Delegation if not out of place and useless.
-It also make sure if Delegation source and target are not null.
-               </description>
-               <target
-                     class="ComponentExchange">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchangeFEAllocation"
-                  id="DWF_DF_08"
-                  isEnabledByDefault="false"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_DF_08 - Component Exchange Functional Exchange consistency"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <target
-                     class="ComponentExchange">
-               </target>
-               <description>
-                  This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions).
-               </description>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.fa.validation.componentPort.ComponentPortOnNodePC"
-                  id="DWF_DF_10"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_DF_10 - ComponentPort on NodePC"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <description>
-                  This rule ensures that ComponentPort is not contained in NodePC.
-
-NodePC=Physical Component of nature NODE
-               </description>
-               <target
-                     class="ComponentPort">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchagneWithmOutPortOnNodePC"
-                  id="DWF_DF_11"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_DF_11 - Component Exchange with out port on NodePC"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <description>
-                  This rule ensures that ComponentExchange with out port sourceEnd or target end is not NodePC.
-
-NodePC=Physical Component of nature NODE
-               </description>
-               <target
-                     class="ComponentExchange">
-               </target>
-            </constraint>
          </constraints>
          <constraints categories="capella.category/design/coverage">
             <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_Connections" id="DCOV_09" isEnabledByDefault="true" lang="java" mode="Batch" name="DCOV_09 - Component port Component Exchanges check" severity="WARNING" statusCode="1">
@@ -463,7 +400,7 @@ NodePC=Physical Component of nature NODE
             <constraint
                   class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_Orientation"
                   id="I_20"
-                  isEnabledByDefault="false"
+                  isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
                   name="I_20 - ComponentExchange port orientation"
@@ -495,6 +432,68 @@ In Case the ComponentExchange is of kind DELEGATION
                   This rule checks the allocation level consistency between functions and components to avoid allocations of system functions in logical architecture.
                </description>
                <target class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.connection.DelegationOutOfPlace"
+                  id="DWF_DC_28"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_28 - Delegation out of place check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule check that Component Exchange of kind Delegation if not out of place and useless.
+It also make sure if Delegation source and target are not null.
+               </description>
+               <target
+                     class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.componentPort.ComponentPortOnNodePC"
+                  id="DWF_DC_31"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_31 - ComponentPort on NodePC"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that ComponentPort is not contained in NodePC.
+
+NodePC=Physical Component of nature NODE
+               </description>
+               <target
+                     class="ComponentPort">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchagneWithmOutPortOnNodePC"
+                  id="DWF_DC_32"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_32 - Component Exchange with out port on NodePC"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that ComponentExchange with out port sourceEnd or target end is not NodePC.
+
+NodePC=Physical Component of nature NODE
+               </description>
+               <target
+                     class="ComponentExchange">
                </target>
             </constraint>
             <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_ComponentAllocationUnicity" id="DWF_DC_12" isEnabledByDefault="true" lang="java" mode="Batch" name="DWF_DC_12 - Function Allocation Unicity" severity="ERROR" statusCode="1">
@@ -575,6 +574,25 @@ In Case the ComponentExchange is of kind DELEGATION
                <target
                      class="FunctionalExchange">
                </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchangeFEAllocation"
+                  id="DWF_DC_29"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_29 - Component Exchange Functional Exchange consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="ComponentExchange">
+               </target>
+               <description>
+                  This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions).
+               </description>
             </constraint>
          </constraints>
          <constraints categories="capella.category/transition/consistency/dataflows">

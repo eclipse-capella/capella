@@ -10,7 +10,6 @@ Require-Bundle: org.polarsys.capella.core.sirius.ui;visibility:=reexport,
  org.polarsys.capella.core.ui.toolkit,
  org.polarsys.capella.core.data.gen.edit;visibility:=reexport,
  org.polarsys.capella.core.model.skeleton;visibility:=reexport,
- org.polarsys.capella.common.tig.efprovider,
  org.eclipse.sirius.ui,
  org.eclipse.gmf.runtime.diagram.ui,
  org.eclipse.ui.ide,
@@ -21,11 +20,12 @@ Require-Bundle: org.polarsys.capella.core.sirius.ui;visibility:=reexport,
  org.eclipse.ui.navigator,
  org.polarsys.capella.core.preferences,
  org.polarsys.capella.core.preferences.project.configuration,
- org.polarsys.capella.common.libraries
+ org.polarsys.capella.common.libraries,
+ org.eclipse.sirius.ext.base
 Export-Package: org.polarsys.capella.core.platform.sirius.ui.project,
  org.polarsys.capella.core.platform.sirius.ui.project.internal,
  org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences,
  org.polarsys.capella.core.platform.sirius.ui.project.operations,
  org.polarsys.capella.core.platform.sirius.ui.project.provider
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

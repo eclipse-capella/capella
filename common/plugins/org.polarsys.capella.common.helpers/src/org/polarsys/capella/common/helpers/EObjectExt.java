@@ -20,11 +20,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.common.helpers.query.MDEQueries;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * EObject helpers
@@ -59,14 +60,28 @@ public class EObjectExt extends EcoreUtil2 {
   }
 
   /**
-   * This method retrieves all Object who have a EReference 'eRef_p' toward the Object 'eObjectRef_p'
+   * This method retrieves all Object who have a EReference toward the EObject 'eObjectRef_p'
+   * @param eObjectRef_p : EObject
+   * @return The list of referencing elements
+   */
+  public static List<EObject> getReferencers(EObject eObjectRef_p) {
+    TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(eObjectRef_p);
+    if (domain instanceof SemanticEditingDomain) {
+      SemanticEditingDomain editingDomain = (SemanticEditingDomain) domain;
+      return getReferencers(eObjectRef_p, null, editingDomain);
+    }
+    return Collections.emptyList();
+  }
+
+  /**
+   * This method retrieves all Object who have a EReference 'eRef_p' toward the EObject 'eObjectRef_p'
    * @param eObjectRef_p : EObject
    * @param eRef_p : EReference relation
-   * @return
+   * @return The list of referencing elements
    */
   public static List<EObject> getReferencers(EObject eObjectRef_p, EReference eRef_p) {
-    TransactionalEditingDomain domain = MDEAdapterFactory.getEditingDomain(eObjectRef_p);
-    if ((domain != null) && (domain instanceof SemanticEditingDomain)) {
+    TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(eObjectRef_p);
+    if (domain instanceof SemanticEditingDomain) {
       SemanticEditingDomain editingDomain = (SemanticEditingDomain) domain;
       return getReferencers(eObjectRef_p, eRef_p, editingDomain);
     }
@@ -76,9 +91,9 @@ public class EObjectExt extends EcoreUtil2 {
   /**
    * This method retrieves all Object who have a EReference 'eRef_p' toward the Object 'eObjectRef_p'
    * @param eObjectRef_p : EObject
-   * @param eRef_p : EReference relation
+   * @param eRef_p : EReference relation (if null, all references are considered)
    * @param editingDomain_p : SemanticEditingDomain
-   * @return
+   * @return The list of referencing elements
    */
   public static List<EObject> getReferencers(EObject eObjectRef_p, EReference eRef_p, SemanticEditingDomain editingDomain_p) {
     List<EObject> result = new ArrayList<EObject>();
@@ -86,7 +101,7 @@ public class EObjectExt extends EcoreUtil2 {
     ECrossReferenceAdapter crossReferencer = editingDomain_p.getCrossReferencer();
     Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObjectRef_p, true);
     for (Setting setting : inverseReferences) {
-      if (eRef_p.equals(setting.getEStructuralFeature())) {
+      if (eRef_p == null || eRef_p.equals(setting.getEStructuralFeature())) {
         if (!result.contains(setting.getEObject())) {
           result.add(setting.getEObject());
         }
@@ -128,5 +143,43 @@ public class EObjectExt extends EcoreUtil2 {
       }
     }
     return false;
+  }
+
+  /**
+   * @param eobjects_p a collection of eobjects from which the resource set will be retrieved
+   * @return if all eobjects belong to the same resource set, this resource set is returned. Otherwise null is returned.
+   */
+  public static ResourceSet getCommonResourceSet(Collection<? extends EObject> eobjects_p) {
+    ResourceSet rs = null;
+    for (EObject obj : eobjects_p) {
+      if (obj.eResource() != null) {
+        if (null == rs) {
+          rs = obj.eResource().getResourceSet();
+        } else {
+          if (!rs.equals(obj.eResource().getResourceSet())) {
+            return null;
+          }
+        }
+      }
+    }
+    return rs;
+  }
+
+  /**
+   * @param resources_p a collection of resources from which the resource set will be retrieved
+   * @return if all resources belong to the same resource set, this resource set is returned. Otherwise null is returned.
+   */
+  public static ResourceSet getCommonResourceSet(List<Resource> resources_p) {
+    ResourceSet rs = null;
+    for (Resource res : resources_p) {
+      if (null == rs) {
+        rs = res.getResourceSet();
+      } else {
+        if (!rs.equals(res.getResourceSet())) {
+          return null;
+        }
+      }
+    }
+    return rs;
   }
 }

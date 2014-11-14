@@ -13,11 +13,11 @@ package org.polarsys.capella.core.business.queries.queries.capellacommon;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 public class GetCurrent_StateTransitionEffect extends AbstractQuery {
 

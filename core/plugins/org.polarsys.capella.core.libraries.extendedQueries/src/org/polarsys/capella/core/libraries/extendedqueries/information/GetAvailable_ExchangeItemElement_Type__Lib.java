@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.utils.ListExt;
@@ -50,11 +50,11 @@ public class GetAvailable_ExchangeItemElement_Type__Lib extends AbstractQuery {
   public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(element_p);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
     if (element_p instanceof ExchangeItemElement) {
-      Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-      for (IAbstractLibrary library : libraries) {
-        BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaLibrary) library);
+      Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+      for (IModel library : libraries) {
+        BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaModel) library);
         for (BlockArchitecture current : BlockArchitectureExt.getAllAllocatedArchitectures(correspondingBlock)) {
           DataPkg pkg = DataPkgExt.getDataPkgOfBlockArchitecture(current);
           availableElements.addAll(DataPkgExt.getAllTypesFromDataPkg(pkg));

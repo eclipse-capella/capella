@@ -66,6 +66,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/Service.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif
 /icons/full/obj16/ComponentExchangeEnd.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/ComponentExchangeEnd.gif
 /icons/full/obj16/Interface.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Interface.gif
+/icons/full/obj16/Interface_Technical.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/Interface_Technical.gif
 /icons/full/obj16/KeyValue.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/KeyValue.gif
 /icons/full/obj16/CommunicationLinkSend.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/CommunicationLinkSend.gif
 /icons/full/obj16/SystemUserRequirement.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SystemUserRequirement.gif
@@ -289,3 +290,13 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/obj16/FlowPort.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FlowPort.gif
 /icons/full/obj16/SharedPkg.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SharedPkg.gif
 /icons/full/obj16/FunctionKind_Split.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/FunctionKind_Split.gif
+/icons/full/obj16/ShallowHistoryPseudoState.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ShallowHistoryPseudoState.gif
+/icons/full/obj16/DeepHistoryPseudoState.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/DeepHistoryPseudoState.gif
+/icons/full/obj16/EntryPointPseudoState.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/EntryPointPseudoState.gif
+/icons/full/obj16/ExitPointPseudoState.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ExitPointPseudoState.gif
+/icons/full/obj16/TimeEvent.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/TimeEvent.gif
+/icons/full/obj16/ChangeEvent.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ChangeEvent.gif
+/icons/full/obj16/StateEventRealization.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/StateEventRealization.gif
+/icons/full/obj16/OpaqueExpression.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/OpaqueExpression.gif
+/icons/full/obj16/SequenceMessageValuation.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/SequenceMessageValuation.gif
+/icons/full/obj16/JustificationLink.gif - org.polarsys.capella.core.data.res.edit - org.polarsys.capella.core.data.res.edit/icons/full/obj16/GenericTrace.gif

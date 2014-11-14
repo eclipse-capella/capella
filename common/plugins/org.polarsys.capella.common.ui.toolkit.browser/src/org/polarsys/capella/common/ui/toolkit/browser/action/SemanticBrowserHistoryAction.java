@@ -31,7 +31,6 @@ import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
-
 import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserHistory.BrowserNavigationHistoryEntry;
 import org.polarsys.capella.common.ui.toolkit.browser.label.provider.factory.AbstractLabelProviderFactory;
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;

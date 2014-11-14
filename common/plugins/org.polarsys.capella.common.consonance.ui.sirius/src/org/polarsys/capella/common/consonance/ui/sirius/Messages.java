@@ -18,6 +18,7 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.common.consonance.ui.sirius.messages"; //$NON-NLS-1$
   public static String SiriusComparisonFactory_Label;
+  public static String SiriusComparisonMethod_UndoRedoWarning;
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

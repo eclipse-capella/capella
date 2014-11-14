@@ -16,10 +16,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
-import org.polarsys.capella.core.data.common.properties.Messages;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.common.properties.Messages;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 
 /**
@@ -27,7 +26,6 @@ import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 public class StateTransitionGroup extends AbstractSemanticField {
 
   private Text _triggerDescriptionField;
-  private Text _guardField;
 
   /**
    * @param parent_p
@@ -43,7 +41,6 @@ public class StateTransitionGroup extends AbstractSemanticField {
     textGroup.setLayoutData(gd);
 
     createTriggerDescriptionTextField(textGroup);
-    createGuardTextField(textGroup);
   }
 
   /**
@@ -58,17 +55,6 @@ public class StateTransitionGroup extends AbstractSemanticField {
   }
 
   /**
-   * @param textGroup_p
-   */
-  private void createGuardTextField(Group textGroup_p) {
-    _widgetFactory.createCLabel(textGroup_p, Messages.getString("StateTransitionGroup.Guard.Label")); //$NON-NLS-1$
-    _guardField = _widgetFactory.createText(textGroup_p, ""); //$NON-NLS-1$
-    _guardField.addFocusListener(this);
-    _guardField.addKeyListener(this);
-    _guardField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-  }
-
-  /**
    * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
@@ -76,10 +62,9 @@ public class StateTransitionGroup extends AbstractSemanticField {
     loadData(semanticElement_p, null);
 
     if (null != _semanticElement) {
-      if (null != _triggerDescriptionField)
+      if (null != _triggerDescriptionField) {
         setTextValue(_triggerDescriptionField, _semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_TriggerDescription());
-      if (null != _guardField)
-        setTextValue(_guardField, _semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_Guard());
+      }
     }
   }
 
@@ -90,8 +75,6 @@ public class StateTransitionGroup extends AbstractSemanticField {
   protected void fillTextField(Text textField_p) {
     if (textField_p.equals(_triggerDescriptionField)) {
       setDataValue(_semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_TriggerDescription(), _triggerDescriptionField.getText());
-    } else if (textField_p.equals(_guardField)) {
-      setDataValue(_semanticElement, CapellacommonPackage.eINSTANCE.getStateTransition_Guard(), _guardField.getText());
     }
   }
 
@@ -100,11 +83,8 @@ public class StateTransitionGroup extends AbstractSemanticField {
    */
   @Override
   public void setEnabled(boolean enabled_p) {
-    if (null != _triggerDescriptionField && !_triggerDescriptionField.isDisposed()) {
+    if ((null != _triggerDescriptionField) && !_triggerDescriptionField.isDisposed()) {
       _triggerDescriptionField.setEnabled(enabled_p);
-    }
-    if (null != _guardField && !_guardField.isDisposed()) {
-      _guardField.setEnabled(enabled_p);
     }
   }
 }

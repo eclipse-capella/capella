@@ -15,17 +15,16 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.requirement.Requirement;
-import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 
 /**
  */

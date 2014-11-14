@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaActionsActivator;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -38,7 +38,7 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
   private IProgressMonitor _progressMonitor = null;
 
   /**
-   * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+   * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
    */
   @Override
   public String getName() {
@@ -78,7 +78,7 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
   protected abstract AbstractTransform getTransformation(EObject element_p);
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
   public void run() {
 

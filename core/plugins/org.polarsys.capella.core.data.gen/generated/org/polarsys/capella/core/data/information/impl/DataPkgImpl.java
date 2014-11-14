@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacore.AbstractExchangeItemPkg;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.VisibilityKind;
@@ -61,6 +62,7 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getOwnedSignals <em>Owned Signals</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getOwnedMessages <em>Owned Messages</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getOwnedExceptions <em>Owned Exceptions</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.DataPkgImpl#getOwnedStateEvents <em>Owned State Events</em>}</li>
  * </ul>
  * </p>
  *
@@ -269,6 +271,19 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 	 * @ordered
 	 */
 	protected EList<org.polarsys.capella.core.data.information.communication.Exception> ownedExceptions;
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getOwnedStateEvents() <em>Owned State Events</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedStateEvents()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<StateEvent> ownedStateEvents;
 
 
 
@@ -567,6 +582,20 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public EList<StateEvent> getOwnedStateEvents() {
+
+		if (ownedStateEvents == null) {
+			ownedStateEvents = new EObjectContainmentEList<StateEvent>(StateEvent.class, this, InformationPackage.DATA_PKG__OWNED_STATE_EVENTS);
+		}
+		return ownedStateEvents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -596,6 +625,8 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 				return ((InternalEList<?>)getOwnedMessages()).basicRemove(otherEnd, msgs);
 			case InformationPackage.DATA_PKG__OWNED_EXCEPTIONS:
 				return ((InternalEList<?>)getOwnedExceptions()).basicRemove(otherEnd, msgs);
+			case InformationPackage.DATA_PKG__OWNED_STATE_EVENTS:
+				return ((InternalEList<?>)getOwnedStateEvents()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -636,6 +667,8 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 				return getOwnedMessages();
 			case InformationPackage.DATA_PKG__OWNED_EXCEPTIONS:
 				return getOwnedExceptions();
+			case InformationPackage.DATA_PKG__OWNED_STATE_EVENTS:
+				return getOwnedStateEvents();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -710,6 +743,10 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 				getOwnedExceptions().clear();
 				getOwnedExceptions().addAll((java.util.Collection<? extends org.polarsys.capella.core.data.information.communication.Exception>)newValue);
 				return;
+			case InformationPackage.DATA_PKG__OWNED_STATE_EVENTS:
+				getOwnedStateEvents().clear();
+				getOwnedStateEvents().addAll((java.util.Collection<? extends StateEvent>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -765,6 +802,9 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 			case InformationPackage.DATA_PKG__OWNED_EXCEPTIONS:
 				getOwnedExceptions().clear();
 				return;
+			case InformationPackage.DATA_PKG__OWNED_STATE_EVENTS:
+				getOwnedStateEvents().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -807,6 +847,8 @@ public class DataPkgImpl extends AbstractDependenciesPkgImpl implements DataPkg 
 				return ownedMessages != null && !ownedMessages.isEmpty();
 			case InformationPackage.DATA_PKG__OWNED_EXCEPTIONS:
 				return ownedExceptions != null && !ownedExceptions.isEmpty();
+			case InformationPackage.DATA_PKG__OWNED_STATE_EVENTS:
+				return ownedStateEvents != null && !ownedStateEvents.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

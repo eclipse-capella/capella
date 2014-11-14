@@ -22,7 +22,8 @@ public class Messages extends NLS {
   public static String AffectToMessage_SelectionInteractionDialog_Message;
   public static String AffectToMessage_SelectionComponentExchangeDialog_Message;
   public static String AffectToMessage_SelectionCommunicationMeanDialog_Message;
-  
+  public static String SelectionDialogHelper_MessageCreation_Title;
+
   public static String SelectionDialogHelper_SelectionWizard_Title;
   static {
     // initialize resource bundle

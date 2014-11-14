@@ -54,14 +54,14 @@ model.
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.common.tig.efprovider"
+         id="org.polarsys.capella.common.ef"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.polarsys.capella.common.platform.sirius.tig"
+         id="org.polarsys.capella.common.platform.sirius.ted"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -90,6 +90,13 @@ model.
 
    <plugin
          id="org.polarsys.capella.common.sirius.decorators"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.polarsys.capella.common.model.helpers"
          download-size="0"
          install-size="0"
          version="0.0.0"

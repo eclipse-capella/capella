@@ -10,15 +10,17 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.ui.subcommands.renderers;
 
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
-
-import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.renderer.SelectListRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  *
@@ -30,12 +32,16 @@ public class AllElementsRenderer extends SelectListRenderer {
    */
   @Override
   protected IContentProvider createContentProvider(IRendererContext context_p) {
-    return new AdapterFactoryContentProvider(MDEAdapterFactory.getAdapterFactory());
+    IContext context = ((IContext) context_p.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
+    TransactionalEditingDomain domain = (TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
+    return new AdapterFactoryContentProvider(((AdapterFactoryEditingDomain) domain).getAdapterFactory());
   }
 
   @Override
   protected ILabelProvider createLabelProvider(IRendererContext context_p) {
-    return new MDEAdapterFactoryLabelProvider(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
+    IContext context = ((IContext) context_p.getPropertyContext().getSourceAsList(IContext.class).iterator().next());
+    TransactionalEditingDomain domain = (TransactionalEditingDomain) context.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN);
+    return new MDEAdapterFactoryLabelProvider(((AdapterFactoryEditingDomain) domain).getAdapterFactory());
   }
 
   /**

@@ -15,19 +15,18 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.common.re.handlers.traceability.MatchConfiguration;
 import org.polarsys.capella.common.re.handlers.traceability.MatchTraceabilityHandler;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.merge.ExtendedComparison;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -49,24 +48,33 @@ public class CapellaMatchConfiguration extends MatchConfiguration {
         }
 
         Collection<EObject> elements = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
-        CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-        CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+        if (!elements.isEmpty()) {
+          CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
+          CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+          if (sourceElement == null) {
+            sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getInitialSource(context_p);
+          }
+          if (targetElement == null) {
+            targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getInitialTarget(context_p);
+          }
 
-        Resource destinationResource = elements.iterator().next().eResource();
-        Resource sourceResource = (sourceElement == null) || (sourceElement.eResource() == null) ? destinationResource : sourceElement.eResource();
-        Resource targetResource = (targetElement == null) || (targetElement.eResource() == null) ? destinationResource : targetElement.eResource();
+          Resource destinationResource = elements.iterator().next().eResource();
+          Resource sourceResource = (sourceElement == null) || (sourceElement.eResource() == null) ? destinationResource : sourceElement.eResource();
+          Resource targetResource = (targetElement == null) || (targetElement.eResource() == null) ? destinationResource : targetElement.eResource();
 
-        if ((sourceElement != null) && (targetElement != null) && (sourceResource != targetResource)) {
-          SystemEngineering sourceSE = (SystemEngineering) EcoreUtil2.getFirstContainer(source_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
-          SystemEngineering destRE = (SystemEngineering) ((Project) destinationResource.getContents().get(0)).getOwnedModelRoots().get(0);
-          if (source_p instanceof BlockArchitecture) {
-            for (ModellingArchitecture root : destRE.getOwnedArchitectures()) {
-              if (source_p.eClass().isInstance(root)) {
-                return Collections.singletonList((EObject) root);
+          if ((sourceElement != null) && (targetElement != null) && (sourceResource != targetResource)) {
+            SystemEngineering sourceSE = (SystemEngineering) EcoreUtil2.getFirstContainer(source_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+            SystemEngineering destRE = (SystemEngineering) ((Project) destinationResource.getContents().get(0)).getOwnedModelRoots().get(0);
+            if (source_p instanceof BlockArchitecture) {
+              for (ModellingArchitecture root : destRE.getOwnedArchitectures()) {
+                if (source_p.eClass().isInstance(root)) {
+                  return Collections.singletonList((EObject) root);
+                }
               }
             }
           }
         }
+
         return Collections.singletonList(source_p);
       }
 
@@ -78,18 +86,27 @@ public class CapellaMatchConfiguration extends MatchConfiguration {
         }
 
         Collection<EObject> elements = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
-        CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
-        CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
-        Resource destinationResource = null;
-        destinationResource = elements.iterator().next().eResource();
 
-        if ((sourceElement != null) && (targetElement != null) && (sourceElement.eResource() != destinationResource)) {
-          SystemEngineering destRE = (SystemEngineering) EcoreUtil2.getFirstContainer(source_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
-          SystemEngineering sourceRE = (SystemEngineering) ((Project) destinationResource.getContents().get(0)).getOwnedModelRoots().get(0);
-          if (source_p instanceof BlockArchitecture) {
-            for (ModellingArchitecture root : destRE.getOwnedArchitectures()) {
-              if (source_p.eClass().isInstance(root)) {
-                return Collections.singletonList((EObject) root);
+        if (!elements.isEmpty()) {
+          CatalogElement sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getSource(context_p);
+          CatalogElement targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getTarget(context_p);
+          if (sourceElement == null) {
+            sourceElement = ReplicableElementHandlerHelper.getInstance(context_p).getInitialSource(context_p);
+          }
+          if (targetElement == null) {
+            targetElement = ReplicableElementHandlerHelper.getInstance(context_p).getInitialTarget(context_p);
+          }
+
+          Resource destinationResource = elements.iterator().next().eResource();
+
+          if ((sourceElement != null) && (targetElement != null) && (sourceElement.eResource() != destinationResource)) {
+            SystemEngineering destRE = (SystemEngineering) EcoreUtil2.getFirstContainer(source_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+            SystemEngineering sourceRE = (SystemEngineering) ((Project) destinationResource.getContents().get(0)).getOwnedModelRoots().get(0);
+            if (source_p instanceof BlockArchitecture) {
+              for (ModellingArchitecture root : destRE.getOwnedArchitectures()) {
+                if (source_p.eClass().isInstance(root)) {
+                  return Collections.singletonList((EObject) root);
+                }
               }
             }
           }

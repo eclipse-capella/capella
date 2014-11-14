@@ -34,12 +34,16 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AbstractSiriusEditPolicy;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AbstractSiriusEditPolicy;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -62,11 +66,7 @@ import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  * Custom edit policy to choose a service.
@@ -80,8 +80,9 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
   @SuppressWarnings("static-access")
   @Override
   public boolean understandsRequest(Request request) {
-    if (RequestConstants.REQ_OPEN.equals(request.getType()))
+    if (RequestConstants.REQ_OPEN.equals(request.getType())) {
       return true;
+    }
     return false;
   }
 
@@ -101,7 +102,7 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
 
           private AbstractEventOperation operation;
 
-          @SuppressWarnings( { "synthetic-access", "deprecation" })
+          @SuppressWarnings({ "synthetic-access", "deprecation" })
           @Override
           public void execute() {
             if (sequenceMessage.getKind() == MessageKind.SYNCHRONOUS_CALL) {
@@ -159,23 +160,23 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
     final AbstractInstance client = source.getRepresentedInstance();
     final AbstractInstance provider = target.getRepresentedInstance();
 
-    if (client.getAbstractType() instanceof Component && provider.getAbstractType() instanceof Component) {
+    if ((client.getAbstractType() instanceof Component) && (provider.getAbstractType() instanceof Component)) {
 
       final Component clientComponent = (Component) client.getAbstractType();
       final Component providerComponent = (Component) provider.getAbstractType();
 
       if (!clientComponent.getUsedInterfaces().contains(ownerClassifier)) {
         final InterfaceUse interfaceUse = CsFactory.eINSTANCE.createInterfaceUse();
-        new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new SetCommand(getEditingDomain(), interfaceUse, CsPackage.eINSTANCE
-            .getInterfaceUse_UsedInterface(), ownerClassifier))).execute();
+        new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new SetCommand(getEditingDomain(), interfaceUse,
+            CsPackage.eINSTANCE.getInterfaceUse_UsedInterface(), ownerClassifier))).execute();
         new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new AddCommand(getEditingDomain(), clientComponent.getOwnedInterfaceUses(), interfaceUse)))
             .execute();
       }
 
       if (!providerComponent.getImplementedInterfaces().contains(ownerClassifier)) {
         final InterfaceImplementation interfaceImplementation = CsFactory.eINSTANCE.createInterfaceImplementation();
-        new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new SetCommand(getEditingDomain(), interfaceImplementation, CsPackage.eINSTANCE
-            .getInterfaceImplementation_ImplementedInterface(), ownerClassifier))).execute();
+        new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new SetCommand(getEditingDomain(), interfaceImplementation,
+            CsPackage.eINSTANCE.getInterfaceImplementation_ImplementedInterface(), ownerClassifier))).execute();
         new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new AddCommand(getEditingDomain(), providerComponent.getOwnedInterfaceImplementations(),
             interfaceImplementation))).execute();
       }
@@ -282,7 +283,7 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
   private SequenceMessage findReply(SequenceMessage sequenceMessage) {
     final ECrossReferenceAdapter crossReferenceAdapter = ECrossReferenceAdapter.getCrossReferenceAdapter(sequenceMessage.getReceivingEnd());
     for (Setting setting : crossReferenceAdapter.getInverseReferences(sequenceMessage.getReceivingEnd())) {
-      if (setting.getEObject() instanceof Execution && setting.getEStructuralFeature() == InteractionPackage.eINSTANCE.getTimeLapse_Start()) {
+      if ((setting.getEObject() instanceof Execution) && (setting.getEStructuralFeature() == InteractionPackage.eINSTANCE.getTimeLapse_Start())) {
         return ((MessageEnd) ((Execution) setting.getEObject()).getFinish()).getMessage();
       }
     }
@@ -307,8 +308,7 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
     }
 
     final EObjectSelectionWizard wizard =
-        new EObjectSelectionWizard("Select Service", "Select the service to invoke", null, root, SiriusDiagramEditorPlugin.getInstance() //$NON-NLS-1$ //$NON-NLS-2$
-            .getItemProvidersAdapterFactory());
+        new EObjectSelectionWizard("Select Service", "Select the service to invoke", null, root, SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory());
     wizard.setMany(false);
     final Shell shell = new Shell();
     final WizardDialog dlg = new WizardDialog(shell, wizard);
@@ -342,8 +342,7 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
     }
 
     final EObjectSelectionWizard wizard =
-        new EObjectSelectionWizard("Select Signal", "Select the signal to send", null, root, SiriusDiagramEditorPlugin.getInstance() //$NON-NLS-1$ //$NON-NLS-2$
-            .getItemProvidersAdapterFactory());
+        new EObjectSelectionWizard("Select Signal", "Select the signal to send", null, root, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
     wizard.setMany(false);
     final Shell shell = new Shell();
     final WizardDialog dlg = new WizardDialog(shell, wizard);
@@ -371,7 +370,7 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
   }
 
   private List<Interface> getInterfaces(SystemAnalysis architecture) {
-    return architecture != null && architecture.getOwnedInterfacePkg() != null ? architecture.getOwnedInterfacePkg().getOwnedInterfaces() : Collections
+    return (architecture != null) && (architecture.getOwnedInterfacePkg() != null) ? architecture.getOwnedInterfacePkg().getOwnedInterfaces() : Collections
         .<Interface> emptyList();
   }
 
@@ -380,8 +379,8 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
     for (final SystemAnalysis ctxArchitecture : filter(((SystemEngineering) architecture.eContainer()).getOwnedArchitectures(), SystemAnalysis.class)) {
       result.addAll(getInterfaces(ctxArchitecture));
     }
-    result.addAll(architecture != null && architecture.getOwnedInterfacePkg() != null ? architecture.getOwnedInterfacePkg().getOwnedInterfaces() : Collections
-        .<Interface> emptyList());
+    result.addAll((architecture != null) && (architecture.getOwnedInterfacePkg() != null) ? architecture.getOwnedInterfacePkg().getOwnedInterfaces()
+                                                                                         : Collections.<Interface> emptyList());
     return new ArrayList<Interface>(result);
   }
 
@@ -390,8 +389,8 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
     for (final LogicalArchitecture logArchitecture : filter(((SystemEngineering) architecture.eContainer()).getOwnedArchitectures(), LogicalArchitecture.class)) {
       result.addAll(getInterfaces(logArchitecture));
     }
-    result.addAll(architecture != null && architecture.getOwnedInterfacePkg() != null ? architecture.getOwnedInterfacePkg().getOwnedInterfaces() : Collections
-        .<Interface> emptyList());
+    result.addAll((architecture != null) && (architecture.getOwnedInterfacePkg() != null) ? architecture.getOwnedInterfacePkg().getOwnedInterfaces()
+                                                                                         : Collections.<Interface> emptyList());
     return new ArrayList<Interface>(result);
   }
 
@@ -403,7 +402,7 @@ public class ChooseServiceEditPolicy extends AbstractSiriusEditPolicy {
   private ModellingArchitecture findArchitecture(final EObject ownedElement) {
     ModellingArchitecture result = null;
     EObject current = ownedElement;
-    while (result == null && current != null) {
+    while ((result == null) && (current != null)) {
       if (CapellacorePackage.eINSTANCE.getModellingArchitecture().isInstance(current)) {
         result = (ModellingArchitecture) current;
       }

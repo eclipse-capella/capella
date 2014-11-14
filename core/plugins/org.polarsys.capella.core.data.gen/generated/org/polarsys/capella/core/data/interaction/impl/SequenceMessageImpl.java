@@ -16,14 +16,18 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IAdapterManager;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.polarsys.capella.common.model.helpers.IHelper;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 import org.polarsys.capella.core.data.capellacore.impl.NamedElementImpl;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -33,6 +37,7 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,6 +56,7 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getReceivingPart <em>Receiving Part</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getSendingFunction <em>Sending Function</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getReceivingFunction <em>Receiving Function</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.SequenceMessageImpl#getOwnedSequenceMessageValuations <em>Owned Sequence Message Valuations</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,24 +89,14 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * The default value of the '{@link #getExchangeContext() <em>Exchange Context</em>}' attribute.
+	 * The cached value of the '{@link #getExchangeContext() <em>Exchange Context</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExchangeContext()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String EXCHANGE_CONTEXT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getExchangeContext() <em>Exchange Context</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExchangeContext()
-	 * @generated
-	 * @ordered
-	 */
-	protected String exchangeContext = EXCHANGE_CONTEXT_EDEFAULT;
+	protected Constraint exchangeContext;
 
 
 
@@ -147,6 +143,35 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * @ordered
 	 */
 	protected EList<ExchangeItem> exchangedItems;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getOwnedSequenceMessageValuations() <em>Owned Sequence Message Valuations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedSequenceMessageValuations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<SequenceMessageValuation> ownedSequenceMessageValuations;
 
 
 
@@ -230,8 +255,16 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * @generated
 	 */
 
-	public String getExchangeContext() {
+	public Constraint getExchangeContext() {
 
+		if (exchangeContext != null && exchangeContext.eIsProxy()) {
+			InternalEObject oldExchangeContext = (InternalEObject)exchangeContext;
+			exchangeContext = (Constraint)eResolveProxy(oldExchangeContext);
+			if (exchangeContext != oldExchangeContext) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, oldExchangeContext, exchangeContext));
+			}
+		}
 		return exchangeContext;
 	}
 
@@ -242,19 +275,25 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * @generated
 	 */
 
-	public void setExchangeContext(String newExchangeContext) {
+	public Constraint basicGetExchangeContext() {
 
-		String oldExchangeContext = exchangeContext;
+		return exchangeContext;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setExchangeContext(Constraint newExchangeContext) {
+
+		Constraint oldExchangeContext = exchangeContext;
 		exchangeContext = newExchangeContext;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, oldExchangeContext, exchangeContext));
 
 	}
-
-
-
-
-
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -401,10 +440,10 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION, annotation);
 		
 		try {
@@ -478,10 +517,10 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART, annotation);
 		
 		try {
@@ -537,10 +576,10 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART, annotation);
 		
 		try {
@@ -596,10 +635,10 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION, annotation);
 		
 		try {
@@ -655,10 +694,10 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION, annotation);
 		
 		try {
@@ -678,13 +717,42 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public EList<SequenceMessageValuation> getOwnedSequenceMessageValuations() {
+
+		if (ownedSequenceMessageValuations == null) {
+			ownedSequenceMessageValuations = new EObjectContainmentEList.Resolving<SequenceMessageValuation>(SequenceMessageValuation.class, this, InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS);
+		}
+		return ownedSequenceMessageValuations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+				return ((InternalEList<?>)getOwnedSequenceMessageValuations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case InteractionPackage.SEQUENCE_MESSAGE__KIND:
 				return getKind();
 			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				return getExchangeContext();
+				if (resolve) return getExchangeContext();
+				return basicGetExchangeContext();
 			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
 				if (resolve) return getSendingEnd();
 				return basicGetSendingEnd();
@@ -708,6 +776,8 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_FUNCTION:
 				if (resolve) return getReceivingFunction();
 				return basicGetReceivingFunction();
+			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+				return getOwnedSequenceMessageValuations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -732,9 +802,9 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
 				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
+				if (newValue == null || newValue instanceof Constraint) {
 				// end-extension-code
-					setExchangeContext((String)newValue);
+					setExchangeContext((Constraint)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -761,6 +831,10 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 				getExchangedItems().clear();
 				getExchangedItems().addAll((Collection<? extends ExchangeItem>)newValue);
 				return;
+			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+				getOwnedSequenceMessageValuations().clear();
+				getOwnedSequenceMessageValuations().addAll((Collection<? extends SequenceMessageValuation>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -778,7 +852,7 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 				setKind(KIND_EDEFAULT);
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				setExchangeContext(EXCHANGE_CONTEXT_EDEFAULT);
+				setExchangeContext((Constraint)null);
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
 				setSendingEnd((MessageEnd)null);
@@ -788,6 +862,9 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 				return;
 			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
 				getExchangedItems().clear();
+				return;
+			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+				getOwnedSequenceMessageValuations().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -806,7 +883,7 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 			case InteractionPackage.SEQUENCE_MESSAGE__KIND:
 				return kind != KIND_EDEFAULT;
 			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				return EXCHANGE_CONTEXT_EDEFAULT == null ? exchangeContext != null : !EXCHANGE_CONTEXT_EDEFAULT.equals(exchangeContext);
+				return exchangeContext != null;
 			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
 				return sendingEnd != null;
 			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
@@ -823,6 +900,8 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 				return basicGetSendingFunction() != null;
 			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_FUNCTION:
 				return basicGetReceivingFunction() != null;
+			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+				return ownedSequenceMessageValuations != null && !ownedSequenceMessageValuations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -840,8 +919,6 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
-		result.append(", exchangeContext: "); //$NON-NLS-1$
-		result.append(exchangeContext);
 		result.append(')');
 		return result.toString();
 	}

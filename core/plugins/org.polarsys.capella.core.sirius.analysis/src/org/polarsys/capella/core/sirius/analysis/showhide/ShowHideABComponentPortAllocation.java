@@ -11,16 +11,15 @@
 package org.polarsys.capella.core.sirius.analysis.showhide;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
+import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
 import org.polarsys.capella.core.sirius.analysis.CsServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
-import org.polarsys.capella.core.model.helpers.ComponentPortAllocationExt;
 
 /**
  * A ShowHide definition for ABCategory

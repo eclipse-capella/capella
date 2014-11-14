@@ -17,7 +17,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.loader.ObjectPropertiesLoader;
@@ -30,8 +32,8 @@ import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContex
 import org.polarsys.capella.common.flexibility.wizards.loader.RenderersLoader;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderers;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * 
@@ -158,9 +160,7 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
         return;
       }
       if ((context != null) && (event_p.getProperty() != null) && context.isModified(event_p.getProperty())) {
-
-        MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
-
+    	AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
           /**
            * {@inheritDoc}
            */
@@ -172,11 +172,12 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
           public void run() {
             context.write(event_p.getProperty());
           }
-        });
-
+        };
+        ExecutionManager em = ExecutionManagerRegistry.getInstance().addNewManager();
+        em.execute(cmd);
+        ExecutionManagerRegistry.getInstance().removeManager(em);
       }
     }
-
   }
 
   /**
@@ -200,7 +201,7 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
         root = adapt(root);
 
         if (root instanceof EObject) {
-          MDEAdapterFactory.getDataNotifier().addAdapter((EObject) root, adapter);
+          ((SemanticEditingDomain) TransactionHelper.getEditingDomain((EObject) root)).getDataNotifier().addAdapter((EObject) root, adapter);
         }
         super.setSource(root);
       }

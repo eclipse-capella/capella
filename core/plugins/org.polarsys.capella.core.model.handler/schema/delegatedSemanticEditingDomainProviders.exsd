@@ -59,7 +59,7 @@
  - TransactionChangeRecorderProvider
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory$ISemanticEditingDomainProviders"/>
+                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory$ISemanticEditingDomainProviders"/>
                </appInfo>
             </annotation>
          </attribute>

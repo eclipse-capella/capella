@@ -36,8 +36,6 @@ public class Rule_AbstractCapability extends Rule_CapellaElement {
   public Rule_AbstractCapability() {
     super(InteractionPackage.Literals.ABSTRACT_CAPABILITY, InteractionPackage.Literals.ABSTRACT_CAPABILITY,
           InteractionPackage.Literals.ABSTRACT_CAPABILITY_REALIZATION);
-    registerAttributeUpdate(InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION);
-    registerAttributeUpdate(InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION);
   }
 
   /**

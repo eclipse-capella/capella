@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.tiger.impl;
 
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,6 +21,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.osgi.framework.Bundle;
+
 import org.polarsys.capella.core.tiger.Activator;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoRule;
@@ -101,6 +104,63 @@ public class TransfoRuleBase implements ITransfoRuleBase {
     }
     
     return null;
+  }
+
+  
+  @SuppressWarnings("rawtypes")
+  public static Class[] getClasses(String packageName_p)
+    throws ClassNotFoundException {
+    ArrayList<Class> classes = new ArrayList<Class>();
+    //  Get a File object for the package
+    File directory = null;
+    try {
+      ClassLoader cld = Thread.currentThread().getContextClassLoader();
+      if (cld == null) {
+        throw new ClassNotFoundException("Can't get class loader.");
+      }
+      String path = packageName_p.replace('.', '/');
+      URL resource = cld.getResource(path);
+      if (resource == null) {
+        throw new ClassNotFoundException("No resource for " + path);
+      }
+      directory = new File(resource.getFile());
+    } catch (NullPointerException x) {
+      throw new ClassNotFoundException(packageName_p + " (" + directory
+                                       + ") does not appear to be a valid package");
+    }
+    if (directory.exists()) {
+      // Get the list of the files contained in the package
+      String[] files = directory.list();
+      for (int i = 0; i < files.length; i++) {
+        // we are only interested in .class files
+        if (files[i].endsWith(".class")) {
+          // removes the .class extension
+          classes.add(Class.forName(packageName_p + '.'
+                                    + files[i].substring(0, files[i].length() - 6)));
+        }
+      }
+    } else {
+      throw new ClassNotFoundException(packageName_p
+                                       + " does not appear to be a valid package");
+    }
+    
+    Class[] foundedClasses = new Class[classes.size()];
+    classes.toArray(foundedClasses);
+    return foundedClasses;
+  }
+
+
+  /**
+   * @see org.polarsys.capella.common.tiger.ITransfoRuleBase#loadRules(java.lang.String)
+   */
+  public void loadRules(String rulePkgName_p) 
+    throws ClassNotFoundException {
+    
+    Class<?>[] classes = getClasses(rulePkgName_p);
+    for (Class<?> class_ : classes) {
+      loadRule(class_);
+    }      
+
   }
 
   /**
@@ -212,4 +272,5 @@ public class TransfoRuleBase implements ITransfoRuleBase {
     
     return builder.toString();
   }
+ 
 }

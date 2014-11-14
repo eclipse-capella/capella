@@ -30,14 +30,13 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionDelegate;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.flexibility.commands.Activator;
 import org.polarsys.capella.core.flexibility.commands.MiscUtil;
 import org.polarsys.capella.core.flexibility.commands.dynamic.tools.DefaultCategories;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -225,7 +224,7 @@ public class DefaultAction extends Action {
    */
   @Override
   public void run() {
-    MiscUtil.transactionallyExecute(new AbstractReadWriteCommand() {
+    MiscUtil.transactionallyExecute(getSelectedEObjects(), new AbstractReadWriteCommand() {
       @Override
       public String getName() {
         return getText();

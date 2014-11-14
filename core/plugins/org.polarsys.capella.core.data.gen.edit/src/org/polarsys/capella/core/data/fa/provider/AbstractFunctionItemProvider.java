@@ -300,7 +300,6 @@ public class AbstractFunctionItemProvider
 			addIsDerivedPropertyDescriptor(object);
 			addIsReadOnlyPropertyDescriptor(object);
 			addIsPartOfKeyPropertyDescriptor(object);
-			addValueConstraintPropertyDescriptor(object);
 			addAssociationPropertyDescriptor(object);
 			addRepresentingInstanceRolesPropertyDescriptor(object);
 			addInActivityPartitionPropertyDescriptor(object);
@@ -782,33 +781,6 @@ public class AbstractFunctionItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
-	 * This adds a property descriptor for the Value Constraint feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValueConstraintPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Property_valueConstraint_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Property_valueConstraint_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PROPERTY__VALUE_CONSTRAINT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 		// begin-extension-code
 				 null));
@@ -1526,7 +1498,6 @@ public class AbstractFunctionItemProvider
 			case FaPackage.ABSTRACT_FUNCTION__IS_DERIVED:
 			case FaPackage.ABSTRACT_FUNCTION__IS_READ_ONLY:
 			case FaPackage.ABSTRACT_FUNCTION__IS_PART_OF_KEY:
-			case FaPackage.ABSTRACT_FUNCTION__VALUE_CONSTRAINT:
 			case FaPackage.ABSTRACT_FUNCTION__KIND:
 			case FaPackage.ABSTRACT_FUNCTION__CONDITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
@@ -1597,6 +1568,18 @@ public class AbstractFunctionItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
                          CapellacommonFactory.eINSTANCE.createTransfoLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createJustificationLink());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -2687,7 +2670,7 @@ public class AbstractFunctionItemProvider
 		Object childObject = child;
 
 		boolean qualify =
-			childFeature == ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS ||
+			childFeature == ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS ||
 			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION ||
 			childFeature == ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION ||
 			childFeature == InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE ||

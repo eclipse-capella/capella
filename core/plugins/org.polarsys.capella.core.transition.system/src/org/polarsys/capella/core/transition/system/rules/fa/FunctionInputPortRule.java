@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionInputPort;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -28,6 +27,10 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 /**
  */
 public class FunctionInputPortRule extends AbstractCapellaElementRule {
+
+  public FunctionInputPortRule() {
+    registerUpdatedReference(FaPackage.Literals.FUNCTION_INPUT_PORT__INCOMING_EXCHANGE_ITEMS);
+  }
 
   @Override
   public IStatus transformRequired(EObject element_p, IContext context_p) {

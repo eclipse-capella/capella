@@ -14,11 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
-import org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.common.re.CatalogElement;
@@ -28,6 +24,9 @@ import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.common.re.merge.scope.ReSourceScope;
 import org.polarsys.capella.common.re.merge.scope.ReTargetScope;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
+import org.polarsys.capella.core.transition.common.policies.match.TraceabilityHandlerMatchPolicy;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -51,7 +50,7 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
    * {@inheritDoc}
    */
   @Override
-  public Comparable<?> getMatchId(EObject element_p, IModelScope scope_p) {
+  public Comparable<?> getMatchID(EObject element_p, IModelScope scope_p) {
     IContext context = getContext();
 
     //Retrieve handlers from context
@@ -83,6 +82,15 @@ public class ReMatchPolicy extends TraceabilityHandlerMatchPolicy {
       for (EObject linkItem : links) {
         if (usedLinks.contains(linkItem)) {
           link = (CatalogElementLink) linkItem;
+          break;
+        }
+      }
+    }
+    if (link == null) {
+      //sometimes, created links are not available via crossreferencer. see why..
+      for (CatalogElementLink linkItem : usedLinks) {
+        if (linkItem.getTarget().equals(element_p)) {
+          link = linkItem;
           break;
         }
       }

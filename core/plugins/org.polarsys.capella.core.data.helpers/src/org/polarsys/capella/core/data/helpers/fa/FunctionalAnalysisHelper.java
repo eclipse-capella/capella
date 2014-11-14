@@ -13,7 +13,8 @@ package org.polarsys.capella.core.data.helpers.fa;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -40,6 +41,10 @@ import org.polarsys.capella.core.data.fa.FunctionalChainReference;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchangeSpecification;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.AllocationHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.AbstractFunctionalBlockHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.ComponentExchangeAllocationHelper;
@@ -61,12 +66,6 @@ import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalChainRefere
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalExchangeHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalExchangeRealizationHelper;
 import org.polarsys.capella.core.data.helpers.fa.delegates.FunctionalExchangeSpecificationHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.AllocationHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.CapellaElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class FunctionalAnalysisHelper implements IHelper {
 

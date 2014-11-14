@@ -37,7 +37,7 @@ public class LocationTargetProperty extends AbstractProperty implements IEditabl
   @Override
   public boolean isEnabled(IPropertyContext context_p) {
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
     return source != null;
   }
 
@@ -49,7 +49,7 @@ public class LocationTargetProperty extends AbstractProperty implements IEditabl
     IContext context = (IContext) context_p.getSource();
 
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
     if ((element != null) && (element.eContainer() != null)) {
       EObject location = element.eContainer();
       if ((location != null) && (location instanceof CatalogElementPkg)) {
@@ -113,7 +113,7 @@ public class LocationTargetProperty extends AbstractProperty implements IEditabl
   @Override
   public void setValue(IPropertyContext context_p) {
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
     if ((element != null) && (element.eContainer() == null)) {
       EObject location = (EObject) context_p.getCurrentValue(this);
       if (location instanceof CatalogElementPkg) {
@@ -128,7 +128,7 @@ public class LocationTargetProperty extends AbstractProperty implements IEditabl
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET };
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET };
   }
 
   /**

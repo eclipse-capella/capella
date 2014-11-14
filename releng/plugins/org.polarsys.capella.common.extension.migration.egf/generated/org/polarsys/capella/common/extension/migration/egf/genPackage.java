@@ -1,4 +1,4 @@
-//Generated on Wed Jun 25 16:48:40 CEST 2014 with EGF 1.2.0.v20140623-0645
+//Generated with EGF 1.2.0.v20140805-0858
 package org.polarsys.capella.common.extension.migration.egf;
 
 import java.util.*;
@@ -109,6 +109,22 @@ public class genPackage {
 					"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
 					"childCreationExtenders", annotation);
 			genPackage.setChildCreationExtenders(Boolean
+					.parseBoolean(annotation));
+		}
+
+		annotation = EcoreUtil.getAnnotation(ecorePackage,
+				"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+				"childCreationExtenders");
+		if (annotation != null) {
+			genPackage.setChildCreationExtenders(Boolean
+					.parseBoolean(annotation));
+		}
+
+		annotation = EcoreUtil.getAnnotation(ecorePackage,
+				"http://www.polarsys.org/kitalpha/emde/1.0.0/extension",
+				"extensibleProviderFactory");
+		if (annotation != null) {
+			genPackage.setExtensibleProviderFactory(Boolean
 					.parseBoolean(annotation));
 		}
 

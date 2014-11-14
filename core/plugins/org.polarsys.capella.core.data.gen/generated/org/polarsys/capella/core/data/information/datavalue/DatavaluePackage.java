@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 
 /**
@@ -115,15 +116,6 @@ public interface DatavaluePackage extends EPackage {
 	int DATA_VALUE__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_VALUE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -131,6 +123,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_VALUE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_VALUE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -350,15 +351,6 @@ public interface DatavaluePackage extends EPackage {
 	int DATA_VALUE_CONTAINER__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DATA_VALUE_CONTAINER__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -366,6 +358,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_VALUE_CONTAINER__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_VALUE_CONTAINER__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -612,15 +613,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_BOOLEAN_VALUE__CONSTRAINTS = DATA_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_VALUE__NAME = DATA_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -628,6 +620,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_VALUE__NAME = DATA_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -856,15 +857,6 @@ public interface DatavaluePackage extends EPackage {
 	int LITERAL_BOOLEAN_VALUE__CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LITERAL_BOOLEAN_VALUE__NAME = ABSTRACT_BOOLEAN_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -872,6 +864,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int LITERAL_BOOLEAN_VALUE__OWNED_CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_BOOLEAN_VALUE__NAME = ABSTRACT_BOOLEAN_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1109,15 +1110,6 @@ public interface DatavaluePackage extends EPackage {
 	int BOOLEAN_REFERENCE__CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_REFERENCE__NAME = ABSTRACT_BOOLEAN_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1125,6 +1117,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_REFERENCE__NAME = ABSTRACT_BOOLEAN_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1371,15 +1372,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_ENUMERATION_VALUE__CONSTRAINTS = DATA_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_ENUMERATION_VALUE__NAME = DATA_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1387,6 +1379,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_ENUMERATION_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ENUMERATION_VALUE__NAME = DATA_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1615,15 +1616,6 @@ public interface DatavaluePackage extends EPackage {
 	int ENUMERATION_LITERAL__CONSTRAINTS = ABSTRACT_ENUMERATION_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION_LITERAL__NAME = ABSTRACT_ENUMERATION_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1631,6 +1623,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION_LITERAL__OWNED_CONSTRAINTS = ABSTRACT_ENUMERATION_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_LITERAL__NAME = ABSTRACT_ENUMERATION_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1868,15 +1869,6 @@ public interface DatavaluePackage extends EPackage {
 	int ENUMERATION_REFERENCE__CONSTRAINTS = ABSTRACT_ENUMERATION_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ENUMERATION_REFERENCE__NAME = ABSTRACT_ENUMERATION_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1884,6 +1876,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ENUMERATION_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_ENUMERATION_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION_REFERENCE__NAME = ABSTRACT_ENUMERATION_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2130,15 +2131,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_STRING_VALUE__CONSTRAINTS = DATA_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_STRING_VALUE__NAME = DATA_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2146,6 +2138,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_STRING_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STRING_VALUE__NAME = DATA_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2374,15 +2375,6 @@ public interface DatavaluePackage extends EPackage {
 	int LITERAL_STRING_VALUE__CONSTRAINTS = ABSTRACT_STRING_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LITERAL_STRING_VALUE__NAME = ABSTRACT_STRING_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2390,6 +2382,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int LITERAL_STRING_VALUE__OWNED_CONSTRAINTS = ABSTRACT_STRING_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_STRING_VALUE__NAME = ABSTRACT_STRING_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2627,15 +2628,6 @@ public interface DatavaluePackage extends EPackage {
 	int STRING_REFERENCE__CONSTRAINTS = ABSTRACT_STRING_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_REFERENCE__NAME = ABSTRACT_STRING_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2643,6 +2635,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int STRING_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_STRING_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_REFERENCE__NAME = ABSTRACT_STRING_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2889,15 +2890,6 @@ public interface DatavaluePackage extends EPackage {
 	int NUMERIC_VALUE__CONSTRAINTS = DATA_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NUMERIC_VALUE__NAME = DATA_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2905,6 +2897,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int NUMERIC_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_VALUE__NAME = DATA_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3142,15 +3143,6 @@ public interface DatavaluePackage extends EPackage {
 	int LITERAL_NUMERIC_VALUE__CONSTRAINTS = NUMERIC_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LITERAL_NUMERIC_VALUE__NAME = NUMERIC_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3158,6 +3150,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int LITERAL_NUMERIC_VALUE__OWNED_CONSTRAINTS = NUMERIC_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LITERAL_NUMERIC_VALUE__NAME = NUMERIC_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3404,15 +3405,6 @@ public interface DatavaluePackage extends EPackage {
 	int NUMERIC_REFERENCE__CONSTRAINTS = NUMERIC_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NUMERIC_REFERENCE__NAME = NUMERIC_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3420,6 +3412,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int NUMERIC_REFERENCE__OWNED_CONSTRAINTS = NUMERIC_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERIC_REFERENCE__NAME = NUMERIC_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3675,15 +3676,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_COMPLEX_VALUE__CONSTRAINTS = DATA_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_COMPLEX_VALUE__NAME = DATA_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3691,6 +3683,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_COMPLEX_VALUE__OWNED_CONSTRAINTS = DATA_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_COMPLEX_VALUE__NAME = DATA_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3919,15 +3920,6 @@ public interface DatavaluePackage extends EPackage {
 	int COMPLEX_VALUE__CONSTRAINTS = ABSTRACT_COMPLEX_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_VALUE__NAME = ABSTRACT_COMPLEX_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3935,6 +3927,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPLEX_VALUE__OWNED_CONSTRAINTS = ABSTRACT_COMPLEX_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_VALUE__NAME = ABSTRACT_COMPLEX_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4172,15 +4173,6 @@ public interface DatavaluePackage extends EPackage {
 	int COMPLEX_VALUE_REFERENCE__CONSTRAINTS = ABSTRACT_COMPLEX_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPLEX_VALUE_REFERENCE__NAME = ABSTRACT_COMPLEX_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4188,6 +4180,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPLEX_VALUE_REFERENCE__OWNED_CONSTRAINTS = ABSTRACT_COMPLEX_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPLEX_VALUE_REFERENCE__NAME = ABSTRACT_COMPLEX_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4434,6 +4435,15 @@ public interface DatavaluePackage extends EPackage {
 	int VALUE_PART__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PART__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4642,15 +4652,6 @@ public interface DatavaluePackage extends EPackage {
 	int ABSTRACT_EXPRESSION_VALUE__CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_EXPRESSION_VALUE__NAME = ABSTRACT_BOOLEAN_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4658,6 +4659,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_EXPRESSION_VALUE__OWNED_CONSTRAINTS = ABSTRACT_BOOLEAN_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EXPRESSION_VALUE__NAME = ABSTRACT_BOOLEAN_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4958,15 +4968,6 @@ public interface DatavaluePackage extends EPackage {
 	int BINARY_EXPRESSION__CONSTRAINTS = ABSTRACT_EXPRESSION_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BINARY_EXPRESSION__NAME = ABSTRACT_EXPRESSION_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4974,6 +4975,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY_EXPRESSION__OWNED_CONSTRAINTS = ABSTRACT_EXPRESSION_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_EXPRESSION__NAME = ABSTRACT_EXPRESSION_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -5301,15 +5311,6 @@ public interface DatavaluePackage extends EPackage {
 	int UNARY_EXPRESSION__CONSTRAINTS = ABSTRACT_EXPRESSION_VALUE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UNARY_EXPRESSION__NAME = ABSTRACT_EXPRESSION_VALUE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5317,6 +5318,15 @@ public interface DatavaluePackage extends EPackage {
 	 * @ordered
 	 */
 	int UNARY_EXPRESSION__OWNED_CONSTRAINTS = ABSTRACT_EXPRESSION_VALUE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNARY_EXPRESSION__NAME = ABSTRACT_EXPRESSION_VALUE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -5589,6 +5599,241 @@ public interface DatavaluePackage extends EPackage {
 	int UNARY_EXPRESSION_FEATURE_COUNT = ABSTRACT_EXPRESSION_VALUE_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl <em>Opaque Expression</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl
+	 * @see org.polarsys.capella.core.data.information.datavalue.impl.DatavaluePackageImpl#getOpaqueExpression()
+	 * @generated
+	 */
+	int OPAQUE_EXPRESSION = 21;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__OWNED_EXTENSIONS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__ID = CapellacorePackage.CAPELLA_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__SID = CapellacorePackage.CAPELLA_ELEMENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__INCOMING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__OUTGOING_TRACES = CapellacorePackage.CAPELLA_ELEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__VISIBLE_IN_DOC = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__VISIBLE_IN_LM = CapellacorePackage.CAPELLA_ELEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__SUMMARY = CapellacorePackage.CAPELLA_ELEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__DESCRIPTION = CapellacorePackage.CAPELLA_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__REVIEW = CapellacorePackage.CAPELLA_ELEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__OWNED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__APPLIED_PROPERTY_VALUES = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__STATUS = CapellacorePackage.CAPELLA_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__FEATURES = CapellacorePackage.CAPELLA_ELEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__APPLIED_REQUIREMENTS = CapellacorePackage.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__NAME = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Abstract Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__ABSTRACT_TYPE = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Bodies</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__BODIES = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Languages</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION__LANGUAGES = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Opaque Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_EXPRESSION_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.datavalue.BinaryOperator <em>Binary Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5596,7 +5841,7 @@ public interface DatavaluePackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.datavalue.impl.DatavaluePackageImpl#getBinaryOperator()
 	 * @generated
 	 */
-	int BINARY_OPERATOR = 21;
+	int BINARY_OPERATOR = 22;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.information.datavalue.UnaryOperator <em>Unary Operator</em>}' enum.
@@ -5606,7 +5851,7 @@ public interface DatavaluePackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.information.datavalue.impl.DatavaluePackageImpl#getUnaryOperator()
 	 * @generated
 	 */
-	int UNARY_OPERATOR = 22;
+	int UNARY_OPERATOR = 23;
 
 
 	/**
@@ -6194,6 +6439,38 @@ public interface DatavaluePackage extends EPackage {
 	EReference getUnaryExpression_OwnedOperand();
 
 	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression <em>Opaque Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Opaque Expression</em>'.
+	 * @see org.polarsys.capella.core.data.information.datavalue.OpaqueExpression
+	 * @generated
+	 */
+	EClass getOpaqueExpression();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression#getBodies <em>Bodies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Bodies</em>'.
+	 * @see org.polarsys.capella.core.data.information.datavalue.OpaqueExpression#getBodies()
+	 * @see #getOpaqueExpression()
+	 * @generated
+	 */
+	EAttribute getOpaqueExpression_Bodies();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression#getLanguages <em>Languages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Languages</em>'.
+	 * @see org.polarsys.capella.core.data.information.datavalue.OpaqueExpression#getLanguages()
+	 * @see #getOpaqueExpression()
+	 * @generated
+	 */
+	EAttribute getOpaqueExpression_Languages();
+
+	/**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.information.datavalue.BinaryOperator <em>Binary Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6716,6 +6993,32 @@ public interface DatavaluePackage extends EPackage {
 		 * @generated
 		 */
 		EReference UNARY_EXPRESSION__OWNED_OPERAND = eINSTANCE.getUnaryExpression_OwnedOperand();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl <em>Opaque Expression</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.information.datavalue.impl.OpaqueExpressionImpl
+		 * @see org.polarsys.capella.core.data.information.datavalue.impl.DatavaluePackageImpl#getOpaqueExpression()
+		 * @generated
+		 */
+		EClass OPAQUE_EXPRESSION = eINSTANCE.getOpaqueExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Bodies</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPAQUE_EXPRESSION__BODIES = eINSTANCE.getOpaqueExpression_Bodies();
+
+		/**
+		 * The meta object literal for the '<em><b>Languages</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPAQUE_EXPRESSION__LANGUAGES = eINSTANCE.getOpaqueExpression_Languages();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.information.datavalue.BinaryOperator <em>Binary Operator</em>}' enum.

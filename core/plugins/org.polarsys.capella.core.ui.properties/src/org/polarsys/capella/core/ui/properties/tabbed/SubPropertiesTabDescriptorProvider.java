@@ -16,9 +16,8 @@ import java.util.Collection;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.common.flexibility.wizards.ui.tabbed.ObjectPropertiesTabDescriptorProvider;
 
 /**

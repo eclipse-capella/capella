@@ -14,14 +14,12 @@ package org.polarsys.capella.core.sirius.ui.actions;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -47,20 +45,14 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.tig.ef.command.AbstractNonDirtyingCommand;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaModel;
-import org.polarsys.capella.core.libraries.manager.LibraryManager;
 import org.polarsys.capella.core.sirius.ui.Messages;
 import org.polarsys.capella.core.sirius.ui.closeproject.SessionCloseManager;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
-import org.polarsys.capella.core.sirius.ui.session.ISessionActionListener;
 
 /**
  * The action allowing to close sessions.
@@ -180,36 +172,10 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
     /**
      * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
      */
-	public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+    public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
       for (Session session : _selectedSessions) {
         CloseSessionCommand command = new CloseSessionCommand(session);
-        MDEAdapterFactory.getExecutionManager().execute(command);
-        boolean cr = command.isCompleted();
-        if (cr) {
-          if (DEBUG) {
-            System.out.println("---- dans CloseSessionOperation.run ----"); //$NON-NLS-1$
-          }
-          // Close and remove must not be run in the TED command to make sure memory allocations are freed. Recommendation for Sirius.
-          if (session.isOpen()) {
-            try {
-
-              for (ISessionActionListener listener : SessionHelper.getSessionActionListeners()) {
-                IStatus status = listener.preCloseSession(session);
-                if ((status != null) && !status.isOK()) {
-                  return;
-                }
-              }
-
-              SessionCloseManager.closeSession(session, monitor_p);// session.close(monitor_p);
-              SessionCloseManager.cleanSession(session);
-
-            } finally {
-              for (ISessionActionListener listener : SessionHelper.getSessionActionListeners()) {
-                listener.postCloseSession(session);
-              }
-            }
-          }
-        }
+        TransactionHelper.getExecutionManager(session).execute(command);
       }
     }
   }
@@ -240,8 +206,6 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
      */
     private boolean _isCompleted;
 
-    private List<Session> sessionsToClose = new ArrayList<Session>();
-
     /**
      * Constructs the command allowing to close session.
      * @param session_p The session to close.
@@ -257,23 +221,6 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
      */
     public boolean isCompleted() {
       return _isCompleted;
-    }
-
-    protected int askIfSaveIsRequired(CapellaModel model) {
-      Session session = model.getSession();
-      String sessionName = model.getProject().getName();
-      boolean changesFound = SessionCloseManager.doesContainModifiedResources(model);
-      // Ask user confirmation, if needed.
-      int choice = ISaveablePart2.NO;
-      if (changesFound/* SessionStatus.DIRTY.equals(session.getStatus()) */) {
-        if (_showDialog) {
-          // Show a dialog.
-          choice = SWTUtil.showSaveDialog(session, "Session " + sessionName, true); //$NON-NLS-1$
-        } else {
-          choice = (_shouldSaveIfNoDialog) ? ISaveablePart2.YES : ISaveablePart2.NO;
-        }
-      }
-      return choice;
     }
 
     protected void saveSession(Session session) {
@@ -299,7 +246,7 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
         SessionCloseManager.closeUISession(uiSession, saveIsNeeded);// uiSession.close(saveIsNeeded);
       }
       // Close editors not yet registered with an UI session
-      Display.getDefault().syncExec(new CloseOthersEditorRunnable(_session, saveIsNeeded));
+      Display.getDefault().syncExec(new CloseOthersEditorRunnable(session, saveIsNeeded));
       // Remove the UI session.
       if (uiSession != null) {
         SessionCloseManager.removeUiSession(uiSession);// SessionUIManager.INSTANCE.remove(uiSession);
@@ -311,97 +258,11 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
       SessionCloseManager.cleanSession(session);
     }
 
-    // we does not block unload if the project is not link to others by library references
-    private List<Resource> getResourcesToNotUnload(List<CapellaModel> models) {
-      List<Resource> resourcesToNotUnload = new ArrayList<Resource>();
-      if (models.size() > 1) {
-        for (CapellaModel model : models) {
-          resourcesToNotUnload.addAll(model.getOwnedResources());
-        }
-      }
-      return resourcesToNotUnload;
-    }
-
     /**
      * @see java.lang.Runnable#run()
      */
-	@SuppressWarnings("synthetic-access")
+    @SuppressWarnings("synthetic-access")
     public void run() {
-
-      // WORKAROUND DUE TO TIG LIMITATIONS (LIBRARIES CONTEXT)
-      Hashtable<CapellaModel, Boolean> model2SaveIsNeeded = new Hashtable<CapellaModel, Boolean>();
-      List<CapellaModel> models = null;
-      try {
-        CapellaModel currentModel = (CapellaModel) ILibraryManager.INSTANCE.getAbstractModel(_session);
-        if ((currentModel instanceof CapellaLibrary) || (currentModel.getAllReferencedLibraries(false).size() > 0)) {
-          List<CapellaModel> modelsInGraph = SessionCloseManager.getLibraryGraphSet(currentModel);
-          models = new ArrayList<CapellaModel>();
-          for (CapellaModel capellaModel : modelsInGraph) {
-            if (capellaModel.getSession() != null) {
-              models.add(capellaModel);
-            }
-          }
-        }
-      } catch (Exception e) {
-        //e.printStackTrace();
-        logger.debug(new EmbeddedMessage("Error during library graph computation.", //$NON-NLS-1$
-            IReportManagerDefaultComponents.UI));
-        models = null;// RELIABILITY - means that the old close code will be launched instead
-      }
-      if (models != null) {
-        if (DEBUG) {
-          System.out.println("=> new algo"); //$NON-NLS-1$
-        }
-        // ask for each linked sessions if it has to be saved
-        for (CapellaModel model : models) {
-          int choice = askIfSaveIsRequired(model);
-          if (choice == ISaveablePart2.CANCEL) {
-            return;
-          }
-          model2SaveIsNeeded.put(model, new Boolean(choice == ISaveablePart2.YES));
-        }
-        // save sessions
-        for (CapellaModel model : model2SaveIsNeeded.keySet()) {
-          if (model2SaveIsNeeded.get(model).booleanValue()) {
-            saveSession(model.getSession());
-          }
-        }
-        // get all sessions and close it
-        Hashtable<CapellaModel, Session> model2Session = new Hashtable<CapellaModel, Session>();
-        for (CapellaModel model : model2SaveIsNeeded.keySet()) {
-          model2Session.put(model, model.getSession());
-        }
-
-        // close the sessions
-        MDEAdapterFactory.getResourceSet().getLoadOptions().put("workaroundSirius", getResourcesToNotUnload(models)); //$NON-NLS-1$
-        for (CapellaModel model : model2Session.keySet()) {
-          Session session = model2Session.get(model);
-          closeSession(session, model2SaveIsNeeded.get(model).booleanValue());
-        }
-        MDEAdapterFactory.getResourceSet().getLoadOptions().remove("workaroundSirius"); //$NON-NLS-1$
-
-        // state to models that they must be reloaded
-
-        for (CapellaModel model : model2SaveIsNeeded.keySet()) {
-          // model.mustBeReloaded();// state that the model must be reloaded
-          model.setSession(null);
-        }
-        if (models.size() > 1) {
-          ((LibraryManager) ILibraryManager.INSTANCE).resetCacheForReferences();
-        }
-
-        _isCompleted = true;
-
-        // WORKAROUND END
-      } else {
-        old_run(); // old code call
-      }
-    }
-
-    private void old_run() {
-      if (DEBUG) {
-        System.out.println("=> old algo"); //$NON-NLS-1$
-      }
 
       // Ask user confirmation, if needed.
       int choice = ISaveablePart2.NO;
@@ -416,36 +277,14 @@ public class CloseSessionAction extends BaseSelectionListenerAction {
       if (ISaveablePart2.CANCEL == choice) {
         return;
       }
+
       // Save session, if required.
       boolean saveIsNeeded = (ISaveablePart2.YES == choice);
       if (saveIsNeeded) {
-        Collection<IFile> files = new ArrayList<IFile>();
-        if (SessionCloseManager.isSaveable(_session, files)/* SessionHelper.areSessionResourcesSaveable(_session, files) */) {
-          SessionCloseManager.saveSession(_session);// _session.save(new NullProgressMonitor());
-        } else {
-          String msg;
-          msg = Messages.unableToSaveDialog_TopMsg;
-          for (IFile file : files) {
-            msg += file.toString() + ICommonConstants.EOL_CHARACTER;
-          }
-          msg += ICommonConstants.EOL_CHARACTER + Messages.unableToSaveDuringCloseOpsDialog_BottomQuestion + ICommonConstants.EOL_CHARACTER;
+        saveSession(_session);
+      }
 
-          Shell activeShell = Display.getCurrent().getActiveShell();
-          if (!MessageDialog.openQuestion(activeShell, Messages.CloseSessionAction_Title, msg)) {
-            return;
-          }
-        }
-      }
-      IEditingSession uiSession = SessionCloseManager.getUISession(_session);// SessionUIManager.INSTANCE.getUISession(_session);
-      if (null != uiSession) {
-        SessionCloseManager.closeUISession(uiSession, saveIsNeeded);// uiSession.close(saveIsNeeded);
-      }
-      // Close editors not yet registered with an UI session
-      Display.getDefault().syncExec(new CloseOthersEditorRunnable(_session, saveIsNeeded));
-      // Remove the UI session.
-      if (null != uiSession) {
-        SessionCloseManager.removeUiSession(uiSession);// SessionUIManager.INSTANCE.rMelodyViewpointDeleteGlobalActionHandlerProvideremove(uiSession);
-      }
+      closeSession(_session, saveIsNeeded);
 
       _isCompleted = true;
     }

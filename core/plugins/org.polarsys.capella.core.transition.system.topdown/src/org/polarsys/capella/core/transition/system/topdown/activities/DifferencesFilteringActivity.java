@@ -12,8 +12,6 @@ package org.polarsys.capella.core.transition.system.topdown.activities;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.transition.common.handlers.filter.CompoundFilteringItems;
 import org.polarsys.capella.core.transition.common.handlers.filter.TargetAttributeFilterItem;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
@@ -29,6 +27,7 @@ import org.polarsys.capella.core.transition.system.topdown.handlers.filter.Refer
 import org.polarsys.capella.core.transition.system.topdown.handlers.filter.RemoveRealizedFilterItem;
 import org.polarsys.capella.core.transition.system.topdown.handlers.filter.TargetDifferencesFilterItem;
 import org.polarsys.capella.core.transition.system.topdown.handlers.filter.UnwantedElementPresenceFilterItem;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 

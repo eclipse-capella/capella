@@ -1,0 +1,272 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.platform.sirius.clipboard.actions;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.TextCompartmentEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrapLabel;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.dnd.Clipboard;
+import org.eclipse.swt.dnd.TextTransfer;
+import org.eclipse.swt.dnd.Transfer;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.IActionDelegate;
+import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
+import org.polarsys.capella.core.platform.sirius.clipboard.util.SiriusUtil;
+import org.polarsys.capella.core.platform.sirius.clipboard.util.LayerUtil;
+
+/**
+ * Common facilities for copy/paste actions in Capella diagrams
+ */
+@SuppressWarnings("deprecation")
+// For WrapLabel: upward compatibility
+public abstract class AbstractCopyPasteAction implements IObjectActionDelegate {
+
+  // A clipboard which allows for data transfer with the system keyboard,
+  // useful for copying text which is not enclosed in a Text widget, e.g. the
+  // content compartment of a Note
+  private static final Clipboard CLIPBOARD = new Clipboard(PlatformUI.getWorkbench().getDisplay());
+
+  // The current selection, if structured, or null
+  private IStructuredSelection _selection;
+  // The current shell
+  private Shell _shell;
+  // The current Text widget for label edition, or null if no label is being edited
+  private Text _editingTextWidget;
+  // The current compartment figure of a Note being selected, or null if none
+  private WrapLabel _noteContent;
+
+  /**
+   * Basic constructor
+   */
+  public AbstractCopyPasteAction() {
+    super();
+    _selection = null;
+    _shell = null;
+    _editingTextWidget = null;
+    _noteContent = null;
+  }
+
+  /**
+   * Set the given String as the new content of the system clipboard
+   */
+  protected void copyTextToSystemClipboard(String text_p) {
+    if (text_p != null) {
+      CLIPBOARD.setContents(new Object[] { text_p }, new Transfer[] { TextTransfer.getInstance() });
+    }
+  }
+
+  /**
+   * Simple helper returning the child control of the given composite which has the focus, if any
+   */
+  private Control getChildUnderFocus(Composite composite_p) {
+    for (Control child : composite_p.getChildren()) {
+      if (!child.isDisposed() && child.isFocusControl()) {
+        return child;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Return the current selection adapted for copy/paste, i.e., only the relevant elements from the GMF layer
+   */
+  protected List<? extends View> getCopyPasteSelection() {
+    return LayerUtil.toGmf(getSelection());
+  }
+
+  /**
+   * Return the text widget being edited at the last selection change, if any
+   */
+  protected Text getEditingTextWidget() {
+    return _editingTextWidget;
+  }
+
+  /**
+   * Return the content compartment of a Note being selected at the last selection change, if any
+   */
+  protected WrapLabel getSelectedNoteContentFigure() {
+    return _noteContent;
+  }
+
+  /**
+   * Return a filtered, relevant selection
+   */
+  protected List<EditPart> getSelection() {
+    return toGef(_selection);
+  }
+
+  /**
+   * Return the current shell
+   */
+  protected Shell getShell() {
+    return _shell;
+  }
+
+  /**
+   * Return the content of the system clipboard as a String if applicable, otherwise return null
+   */
+  protected String getTextFromSystemClipboard() {
+    String result = null;
+    Object contents = CLIPBOARD.getContents(TextTransfer.getInstance());
+    if (contents instanceof String) {
+      result = (String) contents;
+    }
+    return result;
+  }
+
+  /**
+   * Override to define pop-up menu enabled state. Computation should not be expensive.
+   */
+  protected abstract boolean isEnabled();
+
+  /**
+   * Return whether this copy/paste action occurs while a label is being edited
+   */
+  protected boolean isInLabelEdition() {
+    return _editingTextWidget != null;
+  }
+
+  /**
+   * Return whether the action occurred in the context of a Sequence Diagram
+   */
+  protected boolean isInSequenceDiagram() {
+    boolean result = false;
+    if ((_selection != null) && !_selection.isEmpty()) {
+      Object selected = _selection.getFirstElement();
+      if (selected instanceof EditPart) {
+        Object gmfElement = ((EditPart) selected).getModel();
+        if (gmfElement instanceof View) {
+          EObject siriusElement = ((View) gmfElement).getElement();
+          result = SiriusUtil.isInSequenceDiagram(siriusElement);
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Return whether this copy/paste action occurs while the content of a Note is selected
+   */
+  protected boolean isOnNoteContent() {
+    return _noteContent != null;
+  }
+
+  /**
+   * Return the text widget being edited in the current selection, if any
+   */
+  private Text lookupEditingTextWidget() {
+    Text result = null;
+    if ((_selection != null) && (_selection.toList().size() == 1) && (_selection.getFirstElement() instanceof EditPart)) {
+      EditPart selected = (EditPart) _selection.getFirstElement();
+      if ((selected.getViewer() != null) && (selected.getViewer().getControl() instanceof Composite)) {
+        Composite selectedComposite = (Composite) selected.getViewer().getControl();
+        Control underFocus = getChildUnderFocus(selectedComposite);
+        if (underFocus instanceof Text) {
+          result = (Text) underFocus;
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * If current selection is the content compartment of a Note then return it, otherwise return null
+   */
+  /**
+   * @deprecated we do not support GMF note editing.
+   */
+  @Deprecated
+  private WrapLabel lookupSelectedNoteContentFigure() {
+    WrapLabel result = null;
+    if ((_selection != null) && (_selection.size() == 1)) {
+      Object selected = _selection.getFirstElement();
+      if (selected instanceof TextCompartmentEditPart) {
+        TextCompartmentEditPart selectedCompartment = (TextCompartmentEditPart) selected;
+        // Selection is a text compartment: check that there is no
+        // corresponding semantic element
+        if ((selectedCompartment.getModel() instanceof Node) && (((Node) selectedCompartment.getModel()).getElement() == null)) {
+          IFigure selectedFigure = selectedCompartment.getFigure();
+          if (selectedFigure instanceof WrapLabel) {
+            result = (WrapLabel) selectedFigure;
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
+   * @see IActionDelegate#selectionChanged(IAction, ISelection)
+   */
+  public void selectionChanged(IAction action_p, ISelection selection_p) {
+    if (selection_p instanceof IStructuredSelection) {
+      _selection = (IStructuredSelection) selection_p;
+      _editingTextWidget = lookupEditingTextWidget();
+      // _noteContent is set to null because we should not apply copy/past behavior to a GMF note.
+      // _noteContent = lookupSelectedNoteContentFigure();
+      _noteContent = null;
+
+      boolean enabled = isEnabled();
+      if (action_p != null) {
+        action_p.setEnabled(enabled);
+      }
+    } else {
+      _selection = null;
+      _editingTextWidget = null;
+      _noteContent = null;
+      if (action_p != null) {
+        action_p.setEnabled(false);
+      }
+    }
+  }
+
+  /**
+   * @see IObjectActionDelegate#setActivePart(IAction, IWorkbenchPart)
+   */
+  public void setActivePart(IAction action_p, IWorkbenchPart targetPart_p) {
+    _shell = targetPart_p.getSite().getShell();
+  }
+
+  /**
+   * Extract relevant GEF elements from selection
+   */
+  private List<EditPart> toGef(IStructuredSelection selection_p) {
+    List<EditPart> result = new ArrayList<EditPart>();
+    if (selection_p != null) {
+      @SuppressWarnings("unchecked")
+      Iterator<Object> it = selection_p.iterator();
+      while (it.hasNext()) {
+        Object current = it.next();
+        if (current instanceof EditPart) {
+          result.add((EditPart) current);
+        }
+      }
+    }
+    return result;
+  }
+
+}

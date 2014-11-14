@@ -15,13 +15,12 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.PortRealization;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Edit Function Port
@@ -63,6 +62,6 @@ public class TC_DF_11_Resolver extends AbstractCapellaMarkerResolution {
       }
     };
     // execute the command
-    MDEAdapterFactory.getExecutionManager().execute(cmd);
+    TransactionHelper.getExecutionManager(srcPort_p).execute(cmd);
   }
 }

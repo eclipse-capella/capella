@@ -22,22 +22,23 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edit.command.MoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.ui.action.CommandActionHandler;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.ui.toolkit.AbstractCommandActionHandler;
 
 /**
  * Base class to implement a move action for selected Capella Elements.<br>
  * Selected elements must have the same type and the same parent.
  */
-public abstract class AbstractMoveAction extends CommandActionHandler {
+public abstract class AbstractMoveAction extends AbstractCommandActionHandler {
+
   /**
    * Constructor.
    * @param text_p
    */
-  protected AbstractMoveAction(EditingDomain domain_p, String text_p) {
-    super(domain_p, text_p);
+  protected AbstractMoveAction(String text_p) {
+    super(text_p);
   }
 
   /**
@@ -74,8 +75,7 @@ public abstract class AbstractMoveAction extends CommandActionHandler {
 
     } else {
       //If selection is invalid, free current command to avoid memory leak
-      List<?> list = selection_p.toList();
-      command = super.createCommand(list);
+      setCommand(createUnexecutableCommand());
     }
     return result;
   }
@@ -86,14 +86,11 @@ public abstract class AbstractMoveAction extends CommandActionHandler {
    * Selected elements must have the same type and the same parent.
    */
   protected class CapellaMoveCommand extends CompoundCommand {
-    /**
-     * This is the editing domain in which this command operates.
-     */
-    private EditingDomain _domain;
+
     /**
      * This is the collection of objects to be moved.
      */
-    private List<?> _collection;
+    private List<EObject> _collection;
 
     /**
      * The way the move has to be performed.
@@ -103,7 +100,7 @@ public abstract class AbstractMoveAction extends CommandActionHandler {
     /**
      * @return the sortedElementToMove
      */
-    protected List<?> getSortedElementsToMove() {
+    protected List<EObject> getSortedElementsToMove() {
       // Sort selected elements by their index in the containment feature.
       Collections.sort(_collection, new Comparator<Object>() {
         /**
@@ -144,10 +141,9 @@ public abstract class AbstractMoveAction extends CommandActionHandler {
      * @param collection_p
      * @param isMovingUp_p
      */
-    public CapellaMoveCommand(EditingDomain domain_p, String label_p, Collection<?> collection_p, boolean isMovingUp_p) {
+    public CapellaMoveCommand(String label_p, Collection<EObject> collection_p, boolean isMovingUp_p) {
       super(MERGE_COMMAND_ALL, label_p, Messages.AbstractMoveAction_MoveCommand_Description);
-      _domain = domain_p;
-      _collection = new ArrayList<Object>(collection_p);
+      _collection = new ArrayList<EObject>(collection_p);
       _isMovingUp = isMovingUp_p;
     }
 
@@ -196,7 +192,10 @@ public abstract class AbstractMoveAction extends CommandActionHandler {
     @SuppressWarnings("unchecked")
     @Override
     public void execute() {
-      for (Object name : getSortedElementsToMove()) {
+      List<EObject> moveable = getSortedElementsToMove();
+      EditingDomain domain = TransactionHelper.getEditingDomain(moveable);
+
+      for (Object name : moveable) {
         EObject object = (EObject) name;
         EObject container = object.eContainer();
         // Get the containing feature.
@@ -207,7 +206,7 @@ public abstract class AbstractMoveAction extends CommandActionHandler {
         // Compute the new position.
         index += _isMovingUp ? -1 : 1;
         // Append and execute immediately the command.
-        appendAndExecute(MoveCommand.create(_domain, container, containmentFeature, object, index));
+        appendAndExecute(MoveCommand.create(domain, container, containmentFeature, object, index));
       }
     }
   }

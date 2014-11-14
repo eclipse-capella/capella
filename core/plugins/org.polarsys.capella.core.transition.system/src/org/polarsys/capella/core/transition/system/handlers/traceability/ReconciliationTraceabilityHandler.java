@@ -13,24 +13,22 @@ package org.polarsys.capella.core.transition.system.handlers.traceability;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacore.Allocation;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.Partition;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellacore.Allocation;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.LevelBasedTraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -192,19 +190,6 @@ public class ReconciliationTraceabilityHandler extends LevelBasedTraceabilityHan
    */
   protected void initializeComponent(Component source_p, Component target_p, IContext context_p, LevelMappingTraceability map_p) {
     ITraceabilityHandler handler = TraceabilityHandlerHelper.getInstance(context_p);
-
-    if (source_p.getOwnedStateMachines().size() == 1) {
-      if (target_p.getOwnedStateMachines().size() == 1) {
-        StateMachine sourceMachine = source_p.getOwnedStateMachines().get(0);
-        StateMachine targetMachine = target_p.getOwnedStateMachines().get(0);
-        addMapping(map_p, sourceMachine, targetMachine, context_p);
-        if (sourceMachine.getOwnedRegions().size() == 1) {
-          if (targetMachine.getOwnedRegions().size() == 1) {
-            addMapping(map_p, sourceMachine.getOwnedRegions().get(0), targetMachine.getOwnedRegions().get(0), context_p);
-          }
-        }
-      }
-    }
 
     // Perform a map with parts if there is only one part with the same type
     for (Partition sourcePartition : source_p.getOwnedPartitions()) {

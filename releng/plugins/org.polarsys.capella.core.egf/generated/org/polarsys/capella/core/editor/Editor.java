@@ -1,4 +1,4 @@
-//Generated on Tue Jun 24 15:10:02 CEST 2014 with EGF 1.2.0.v20140623-0645
+//Generated with EGF 1.2.0.v20140805-0858
 package org.polarsys.capella.core.editor;
 
 import org.eclipse.egf.common.helper.*;
@@ -225,11 +225,11 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "// begin-capella-code"
 			+ NL
-			+ "import org.polarsys.capella.common.tig.efprovider.TigEfProvider;"
+			+ "//import org.polarsys.capella.common.tig.efprovider.TigEfProvider;"
 			+ NL
-			+ "import org.polarsys.capella.common.tig.ef.ExecutionManager;"
+			+ "//import org.polarsys.capella.common.tig.ef.ExecutionManager;"
 			+ NL
-			+ "import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;"
+			+ "//import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;"
 			+ NL + "// end-capella-code" + NL;
 	protected final String TEXT_38 = NL + NL + NL + "/**" + NL
 			+ " * This is an example of a ";
@@ -1248,14 +1248,14 @@ public class Editor extends org.polarsys.kitalpha.emde.egf.editor.Editor {
 			+ NL
 			+ "\t\t// begin-capella-code"
 			+ NL
-			+ "\t\t// editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new ";
+			+ "\t\teditingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new ";
 	protected final String TEXT_139 = "());"
 			+ NL
-			+ "\t\tString efName = TigEfProvider.getExecutionManagerName();"
+			+ "\t\t//String efName = TigEfProvider.getExecutionManagerName();"
 			+ NL
-			+ "\t\tExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);"
+			+ "\t\t//ExecutionManager em = ExecutionManagerRegistry.getInstance().getExecutionManager(efName);"
 			+ NL
-			+ "\t\teditingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); "
+			+ "\t\t//editingDomain = (AdapterFactoryEditingDomain) em.getEditingDomain(); "
 			+ NL + "   \t\t// end-capella-code" + NL;
 	protected final String TEXT_140 = NL
 			+ "\t\t// Register this editor for ExtendedModel state" + NL

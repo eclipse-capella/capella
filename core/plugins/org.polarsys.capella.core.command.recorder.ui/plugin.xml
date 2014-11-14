@@ -50,12 +50,6 @@
       </page>
    </extension>
    <extension
-         point="org.polarsys.capella.core.platform.sirius.ui.navigator.sessionListener">
-      <sessionListener
-            class="org.polarsys.capella.core.command.recorder.ui.handler.CapellaDummySessionListener">
-      </sessionListener>
-   </extension>
-   <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="capella.sirius.perspective">
@@ -63,6 +57,12 @@
                id="org.polarsys.capella.core.command.recorder.ui.recorder">
          </viewShortcut>
       </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.polarsys.capella.core.command.recorder.ui.handler.CapellaDummySessionListener">
+      </listener>
    </extension>
    
    

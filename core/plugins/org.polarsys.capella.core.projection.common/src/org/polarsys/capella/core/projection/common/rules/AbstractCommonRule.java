@@ -23,13 +23,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
+import org.polarsys.capella.core.model.handler.provider.IReadOnlySectionHandler;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
@@ -44,7 +47,6 @@ import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 import org.polarsys.capella.core.tiger.impl.TransfoRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 
 /**
  * Transformation rule between Tiger and Transposer
@@ -107,8 +109,8 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
     List<EObject> affectedMessages = new ArrayList<EObject>();
     affectedMessages.add(source_p);
     affectedMessages.addAll(result);
-    notifyMessage(NLS.bind(ProjectionMessages.RetrieveElement, EObjectLabelProviderHelper.getText(source_p), EObjectLabelProviderHelper.getText(result)), affectedMessages,
-        ReportManagerConstants.LOG_LEVEL_DEBUG, transfo_p);
+    notifyMessage(NLS.bind(ProjectionMessages.RetrieveElement, EObjectLabelProviderHelper.getText(source_p), EObjectLabelProviderHelper.getText(result)),
+        affectedMessages, ReportManagerConstants.LOG_LEVEL_DEBUG, transfo_p);
 
     if (result.contains(null)) {
       notifyMessage(NLS.bind(ProjectionMessages.RetrieveElementNullElement, EObjectLabelProviderHelper.getText(source_p)), affectedMessages,
@@ -256,6 +258,7 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
         AttachmentHelper.getInstance(context_p).attachElementByRel(container, result_p, (EReference) feature);
       }
     }
+
   }
 
   protected void attachRelated(EObject element_p, EObject result_p, IContext context_p) {
@@ -345,6 +348,14 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
     return null;
   }
 
+  protected Resource getHoldingResource(ITransfo transfo_p) {
+    if (!transfo_p.containsKey(TransfoEngine.HOLDING_RESOURCE)) {
+      EObject transfoSource = (EObject) _transfo.get(TransfoEngine.TRANSFO_SOURCE);
+      transfo_p.put(TransfoEngine.HOLDING_RESOURCE, HoldingResourceHelper.getHoldingResource(TransactionHelper.getEditingDomain(transfoSource)));
+    }
+    return (Resource) transfo_p.get(TransfoEngine.HOLDING_RESOURCE);
+  }
+
   @Override
   public final Object transform_(EObject element_p, ITransfo transfo_p) {
 
@@ -361,6 +372,10 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
 
       for (EObject res : result) {
         EObject transformed = res;
+        if (res.eResource() == null) {
+          getHoldingResource(_transfo).getContents().add(res);
+        }
+
         String sourceText = EObjectLabelProviderHelper.getText(element_p);
         String targetText = EObjectLabelProviderHelper.getText(transformed);
         String targetName = CapellaElementExt.getName(transformed);

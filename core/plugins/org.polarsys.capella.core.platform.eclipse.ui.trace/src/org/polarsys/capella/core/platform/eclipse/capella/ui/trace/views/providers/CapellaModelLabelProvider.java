@@ -33,7 +33,7 @@ public class CapellaModelLabelProvider extends CapellaElementLabelProvider imple
 	 * @param currentNamedElement_p
 	 */
 	public CapellaModelLabelProvider(CapellaElement currentNamedElement_p) {
-		super();
+		super(currentNamedElement_p);
 		_currentElement = currentNamedElement_p;
 	}
 
@@ -42,7 +42,7 @@ public class CapellaModelLabelProvider extends CapellaElementLabelProvider imple
 	 * @param isNewTrace_p
 	 */
 	public CapellaModelLabelProvider(CapellaElement currentNamedElement_p, boolean isNewTrace_p) {
-		super();
+		super(currentNamedElement_p);
 		_currentElement = currentNamedElement_p;
 		_isNewTrace = isNewTrace_p;
 	}

@@ -13,34 +13,25 @@ package org.polarsys.capella.common.mdsofa.common.helper;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.emf.codegen.ecore.Generator;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.pde.core.plugin.IPluginModelBase;
 import org.eclipse.pde.core.plugin.PluginRegistry;
-
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.mdsofa.common.generator.IMDSoFaGeneratorConstants;
 
 /**
  * Workspace projects helper.
@@ -322,139 +313,5 @@ public class ProjectHelper {
       }
     }
     return folder;
-  }
-
-  /**
-   * Make sure named project exists.<br>
-   * If not try and create a new one with given name.
-   * @param projectName_p The expected project name.
-   * @param cleanProject_p true to clean project structure after creation, false otherwise.
-   * @param projectType_p {@link Generator#EMF_EMPTY_PROJECT_STYLE} see other values.
-   * @param sourceFolder_p Source folder of created project.
-   * @return {@link ProjectExistenceStatus} value.
-   */
-  private static ProjectExistenceStatus ensureProjectExists(String projectName_p, boolean cleanProject_p, int projectType_p, String sourceFolder_p) {
-    ProjectExistenceStatus result = ProjectExistenceStatus.CREATION_FAILED;
-    // Precondition.
-    if (null == projectName_p) {
-      return result;
-    }
-    IFile file = FileHelper.getPlatformFile(projectName_p + IMDSoFaGeneratorConstants.PROJECT_ROOT_FILE);
-    // Project already exists, stop here.
-    if (file.exists()) {
-      result = ProjectExistenceStatus.ALREADY_EXISTS;
-      return result;
-    }
-    // Else, try and create an EMF project.
-    IPath projectLocationPath = new Path(ICommonConstants.SLASH_CHARACTER + projectName_p);
-    IProject resultingProject =
-                                Generator.createEMFProject(projectLocationPath.append(ICommonConstants.SLASH_CHARACTER + sourceFolder_p), null,
-                                                           new ArrayList<IProject>(0), new NullProgressMonitor(), projectType_p, Collections.EMPTY_LIST);
-    if ((null != resultingProject) && resultingProject.exists()) {
-      result = ProjectExistenceStatus.CREATED;
-      // If project should be cleaned, do it.
-      if (cleanProject_p) {
-        cleanProjectStructure(resultingProject);
-      }
-    } else {
-      result = ProjectExistenceStatus.CREATION_FAILED;
-    }
-    return result;
-  }
-
-  /**
-   * Make sure named project exists.<br>
-   * If not try and create a new one with given name, source folder is set to 'src'.
-   * @param projectName_p The expected project name.
-   * @param cleanProject_p true to clean project structure after creation, false otherwise.
-   * @param projectType_p {@link Generator#EMF_EMPTY_PROJECT_STYLE} see other values.
-   * @return {@link ProjectExistenceStatus} value.
-   */
-  private static ProjectExistenceStatus ensureProjectExists(String projectName_p, boolean cleanProject_p, int projectType_p) {
-    return ensureProjectExists(projectName_p, cleanProject_p, projectType_p, IMDSoFaGeneratorConstants.SRC_FOLDER);
-  }
-
-  /**
-   * Clean newly created project structure.<br/> Remove plug-in dependencies class path container from given project (if applicable).<br/> Also set nature
-   * back to Java one.
-   * @param project_p
-   */
-  private static void cleanProjectStructure(IProject project_p) {
-    IJavaProject javaProject = getJavaProject(project_p);
-    // Precondition.
-    if (null == javaProject) {
-      return;
-    }
-    // Restore Java nature only.
-    String natureIds[] = new String[] { JavaCore.NATURE_ID };
-    try {
-      IProjectDescription description = project_p.getDescription();
-      description.setNatureIds(natureIds);
-      project_p.setDescription(description, new NullProgressMonitor());
-    } catch (CoreException exception_p1) {
-      StringBuilder loggerMessage = new StringBuilder("ProjectHelper.cleanProjectStructure(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p1);
-    }
-    // Get raw class path.
-    IClasspathEntry[] rawClasspath = null;
-    try {
-      rawClasspath = javaProject.getRawClasspath();
-    } catch (JavaModelException exception_p) {
-      StringBuilder loggerMessage = new StringBuilder("ProjectHelper.cleanProjectStructure(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
-    }
-    // Iterate over class path elements.
-    if ((null != rawClasspath) && (0 != rawClasspath.length)) {
-      List<IClasspathEntry> newRawClasspath = new ArrayList<IClasspathEntry>(rawClasspath.length);
-      for (IClasspathEntry classpathEntry : rawClasspath) {
-        if (classpathEntry.getEntryKind() == IClasspathEntry.CPE_CONTAINER) {
-          // Do not retain required plug-ins container.
-          IPath path = classpathEntry.getPath();
-          if (!CLASS_PATH_ENTRY_REQUIRED_PLUGINS_PATH_ID.equals(path.getFileExtension())) {
-            newRawClasspath.add(classpathEntry);
-          }
-        } else {
-          newRawClasspath.add(classpathEntry);
-        }
-      }
-      // Set new raw class path.
-      try {
-        javaProject.setRawClasspath(newRawClasspath.toArray(new IClasspathEntry[newRawClasspath.size()]), new NullProgressMonitor());
-      } catch (JavaModelException exception_p) {
-        StringBuilder loggerMessage = new StringBuilder("ProjectHelper.cleanProjectStructure(..) _ "); //$NON-NLS-1$
-        __logger.warn(loggerMessage.toString(), exception_p);
-      }
-    }
-  }
-
-  /**
-   * Make sure named plug-in project exists.<br>
-   * If not try and create a new one with given name.
-   * @param projectName_p The expected project name.
-   * @return
-   */
-  public static ProjectExistenceStatus ensurePluginProjectExists(String projectName_p) {
-    return ensureProjectExists(projectName_p, false, Generator.EMF_PLUGIN_PROJECT_STYLE);
-  }
-
-  /**
-   * Make sure named plug-in project exists.<br>
-   * If not try and create a new one with given name.
-   * @param projectName_p The expected project name.
-   * @param sourceFolder_p Source folder of created project.
-   * @return
-   */
-  public static ProjectExistenceStatus ensurePluginProjectExists(String projectName_p, String sourceFolder_p) {
-    return ensureProjectExists(projectName_p, false, Generator.EMF_PLUGIN_PROJECT_STYLE, sourceFolder_p);
-  }
-
-  /**
-   * Make sure named project exists.<br>
-   * If not try and create a new one with given name.
-   * @param projectName_p The expected project name.
-   * @return
-   */
-  public static ProjectExistenceStatus ensureProjectExists(String projectName_p) {
-    return ensureProjectExists(projectName_p, true, Generator.EMF_EMPTY_PROJECT_STYLE);
   }
 }

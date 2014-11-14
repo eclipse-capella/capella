@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.filter.ReferenceValueFromSource;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
@@ -46,7 +45,9 @@ public class ReferencePropagationFilterItem extends ReferenceValueFromSource {
         IRule<?> rule = ruleHandler.getApplicablePossibility(source_p).getCompleteRule();
         if ((rule != null) && (rule instanceof IRuleUpdateReference)) {
           IRuleUpdateReference deeperRule = (IRuleUpdateReference) rule;
-          return deeperRule.isUpdatedReference(attribute_p);
+          if (deeperRule.isUpdatedReference(attribute_p)) {
+            return true;
+          }
         }
       }
     } catch (Exception exception_p) {

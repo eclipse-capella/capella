@@ -15,12 +15,11 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Move Functional exchanges to their default container
@@ -52,7 +51,7 @@ public class DWF_DF_06_Resolver extends AbstractCapellaMarkerResolution {
       };
 
       // execute the command
-      MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+      TransactionHelper.getExecutionManager(modelElements).execute(abstrctCommand);
       try {
         marker_p.delete();
       } catch (CoreException exception_p) {

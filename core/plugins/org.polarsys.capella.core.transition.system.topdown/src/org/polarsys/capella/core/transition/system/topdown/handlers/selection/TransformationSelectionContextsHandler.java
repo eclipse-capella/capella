@@ -11,17 +11,12 @@
 package org.polarsys.capella.core.transition.system.topdown.handlers.selection;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
-import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
-import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
-import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.options.IOptionsHandler;
 import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
@@ -32,7 +27,6 @@ import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownCon
 import org.polarsys.capella.core.transition.system.topdown.handlers.level.LevelHandlerHelper;
 import org.polarsys.capella.core.transition.system.topdown.handlers.scope.PropertyValuesScopeRetriever;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
-import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -96,8 +90,7 @@ public class TransformationSelectionContextsHandler extends DefaultSelectionCont
                       ITopDownConstants.TRANSITION_TOPDOWN, ITopDownConstants.OPTIONS_TRANSITION__DATATYPE,
                       ITopDownConstants.OPTIONS_TRANSITION__DATATYPE_DEFAULT.booleanValue()));
 
-        } else if ((parent instanceof AbstractPropertyValue) || (parent instanceof PropertyValuePkg) || (parent instanceof PropertyValueGroup)
-                   || (parent instanceof EnumerationPropertyType) || (parent instanceof EnumerationPropertyLiteral)) {
+        } else if (PropertyValuesScopeRetriever.getInstance(context_p).isProperty(parent)) {
           transition =
               PropertyValuesScopeRetriever.getInstance(context_p).getOwnedElements(context_p).contains(parent)
                   || PropertyValuesScopeRetriever.getInstance(context_p).getAppliedElements(context_p).contains(parent);

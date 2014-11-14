@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-
 import org.polarsys.capella.core.data.information.ElementKind;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
@@ -41,21 +40,21 @@ public class ExchangeItemKind extends AbstractValidationRule {
         ExchangeMechanism exchangeMechanism = exchangeItem.getExchangeMechanism();
         if (null != exchangeMechanism) {
           String exchangeItemKindName = exchangeMechanism.getName();
-          
+
           // Operation kind
-          if (exchangeItemKindName != null && exchangeMechanism == ExchangeMechanism.OPERATION) { 
+          if ((exchangeItemKindName != null) && (exchangeMechanism == ExchangeMechanism.OPERATION)) {
             EList<ExchangeItemElement> elements = exchangeItem.getOwnedElements();
             for (ExchangeItemElement exchangeItemElement : elements) {
               ElementKind exchangeItemElementKind = exchangeItemElement.getKind();
-              if (exchangeItemElementKind != ElementKind.PARAMETER) {
+              if (exchangeItemElementKind != ElementKind.MEMBER) {
                 //(ExchangeItem) of kind OPERATION should not have (ExchangeItemElement) other than PARAMETER as kind
-                IStatus status =  ctx_p.createFailureStatus(new Object[] { exchangeItem, exchangeMechanism, exchangeItemElement.getName(), ElementKind.PARAMETER });
+                IStatus status = ctx_p.createFailureStatus(new Object[] { exchangeItem, exchangeMechanism, exchangeItemElement.getName(), ElementKind.MEMBER });
                 statuses.add(status);
               }
             }
-          }  
+          }
           // Other kinds
-          if (exchangeItemKindName != null && exchangeMechanism != ExchangeMechanism.OPERATION) {
+          if ((exchangeItemKindName != null) && (exchangeMechanism != ExchangeMechanism.OPERATION)) {
             EList<ExchangeItemElement> elements = exchangeItem.getOwnedElements();
             for (ExchangeItemElement exchangeItemElement : elements) {
               ElementKind exchangeItemElementKind = exchangeItemElement.getKind();
@@ -65,14 +64,14 @@ public class ExchangeItemKind extends AbstractValidationRule {
                 statuses.add(status);
               }
             }
-          } 
+          }
         }
-        if(statuses.size()>0){
+        if (statuses.size() > 0) {
           return ConstraintStatus.createMultiStatus(ctx_p, statuses);
         }
       }
     }
-    
+
     // No conflict found
     return ctx_p.createSuccessStatus();
   }

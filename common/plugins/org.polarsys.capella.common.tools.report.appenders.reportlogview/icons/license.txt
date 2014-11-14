@@ -15,7 +15,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/e_contents_view.gif - org.eclipse.help.base - org.eclipse.help.base/doc/contents_view.gif
 /icons/error.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/obj16/error_tsk.gif
 /icons/expandall.gif - org.eclipse.mylyn.commons.ui - org.eclipse.mylyn.commons.ui/icons/elcl16/expandall.gif
-/icons/fatal.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/ovr16/error_co_buildpath.gif
+/icons/fatal.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/jrtexception_obj.gif
 /icons/file_obj.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/file_obj.gif
 /icons/full_hierarchy.gif - org.eclipse.m2m.qvt.oml.common.ui - org.eclipse.m2m.qvt.oml.common.ui/icons/showinherf.gif
 /icons/inform.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/info_obj.gif

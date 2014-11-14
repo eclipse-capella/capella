@@ -20,15 +20,14 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IActionDelegate;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ui.wizards.dialogs.EIAllocationModelHelpers;
 import org.polarsys.capella.core.data.fa.ui.wizards.dialogs.EIAllocationTransfertDlg;
 import org.polarsys.capella.core.data.fa.ui.wizards.dialogs.Messages;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -51,7 +50,7 @@ public class EIAllocationManagementWizardAction extends AbstractTigAction {
       createMessageBox(Messages.EIAllocationManagementWizardAction_Warning_Message, SWT.ICON_INFORMATION);
     } else {
       try {
-        MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
+        TransactionHelper.getExecutionManager(getSelectedElements()).execute(new AbstractReadWriteCommand() {
           @SuppressWarnings("synthetic-access")
           @Override
           public void run() {

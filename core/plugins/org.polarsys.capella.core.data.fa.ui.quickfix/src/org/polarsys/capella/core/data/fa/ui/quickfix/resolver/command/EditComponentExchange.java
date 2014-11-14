@@ -12,7 +12,7 @@ package org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command;
 
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 public class EditComponentExchange extends AbstractReadWriteCommand {
   private ComponentExchange exchange;

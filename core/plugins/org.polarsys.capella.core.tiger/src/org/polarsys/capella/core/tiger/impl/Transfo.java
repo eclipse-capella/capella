@@ -272,6 +272,13 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
   }
 
   /**
+   * @see org.polarsys.capella.common.tiger.ITransfo#loadRules(java.lang.String)
+   */
+  public void loadRules(String rulePkgName_p) throws ClassNotFoundException {
+    _ruleBase.loadRules(rulePkgName_p);
+  }
+
+  /**
    * @see org.polarsys.capella.common.tiger.ITransfo#loadRules(java.lang.String, java.lang.String[])
    */
   public void loadRules(String rulePkgName_p, String[] classNames_p) throws ClassNotFoundException {

@@ -93,11 +93,11 @@ public class PropertySection extends MultiplicityElementSection {
     nullValueField.setDisplayedInWizard(displayedInWizard);
 
     minLengthField = new SimpleEditableSemanticField(getReferencesGroup(),
-      Messages.getString("MultiplicityElement.MinLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController()); //$NON-NLS-1$ //$NON-NLS-2$
+      Messages.getString("MultiplicityElement.MinLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController(), true, 2); //$NON-NLS-1$ //$NON-NLS-2$
     minLengthField.setDisplayedInWizard(displayedInWizard);
 
     maxLengthField = new SimpleEditableSemanticField(getReferencesGroup(),
-      Messages.getString("MultiplicityElement.MaxLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController()); //$NON-NLS-1$ //$NON-NLS-2$
+      Messages.getString("MultiplicityElement.MaxLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController(), true, 3); //$NON-NLS-1$ //$NON-NLS-2$
     maxLengthField.setDisplayedInWizard(displayedInWizard);
 
     visibilityKindGroup = new VisibilityKindGroup(_rootParentComposite, getWidgetFactory());

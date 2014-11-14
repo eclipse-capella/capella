@@ -66,6 +66,9 @@ public class RecCatalogItemProvider extends CatalogElementPkgItemProvider
 			super.getPropertyDescriptors(object);
 
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 

@@ -22,6 +22,6 @@ public class AFDelegateWorkbenchAdvisor extends DefaultDelegateWorkbenchAdvisor 
 
   @Override
   public void preStartup() {
-    //org.polarsys.kitalpha.ad.services.ToolIntegrationHelper.loadTools();
+    org.polarsys.kitalpha.ad.services.ToolIntegrationHelper.loadTools();
   }
 }

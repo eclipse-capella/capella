@@ -11,13 +11,12 @@
 package org.polarsys.capella.core.sirius.ui.copylayout;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 public class CapellaLayoutDataManagerProvider implements ILayoutDataManagerProvider {
 
@@ -25,7 +24,7 @@ public class CapellaLayoutDataManagerProvider implements ILayoutDataManagerProvi
     if (diagram instanceof DSemanticDiagram) {
       DSemanticDiagram dSem = (DSemanticDiagram) diagram;
       EObject semanticTarget = dSem.getTarget();
-      return (semanticTarget instanceof ModelElement) && !(semanticTarget instanceof Scenario);
+      return (CapellaResourceHelper.isSemanticElement(semanticTarget)) && !(semanticTarget instanceof Scenario);
     }
     return false;
   }

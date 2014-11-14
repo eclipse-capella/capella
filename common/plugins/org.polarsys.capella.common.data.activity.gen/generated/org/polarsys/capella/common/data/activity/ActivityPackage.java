@@ -116,15 +116,6 @@ public interface ActivityPackage extends EPackage {
 	int ABSTRACT_ACTIVITY__CONSTRAINTS = BehaviorPackage.ABSTRACT_BEHAVIOR__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_ACTIVITY__NAME = BehaviorPackage.ABSTRACT_BEHAVIOR__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,6 +123,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_ACTIVITY__OWNED_CONSTRAINTS = BehaviorPackage.ABSTRACT_BEHAVIOR__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTIVITY__NAME = BehaviorPackage.ABSTRACT_BEHAVIOR__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Is Control Operator</b></em>' attribute.
@@ -288,6 +288,15 @@ public interface ActivityPackage extends EPackage {
 	int EXCEPTION_HANDLER__CONSTRAINTS = ModellingcorePackage.MODEL_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCEPTION_HANDLER__OWNED_CONSTRAINTS = ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Protected Node</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -379,6 +388,15 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_GROUP__CONSTRAINTS = ModellingcorePackage.MODEL_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_GROUP__OWNED_CONSTRAINTS = ModellingcorePackage.MODEL_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -468,6 +486,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERRUPTIBLE_ACTIVITY_REGION__CONSTRAINTS = ACTIVITY_GROUP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERRUPTIBLE_ACTIVITY_REGION__OWNED_CONSTRAINTS = ACTIVITY_GROUP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
@@ -568,6 +595,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY_EDGE__CONSTRAINTS = ModellingcorePackage.ABSTRACT_RELATIONSHIP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_EDGE__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -733,6 +769,15 @@ public interface ActivityPackage extends EPackage {
 	int CONTROL_FLOW__CONSTRAINTS = ACTIVITY_EDGE__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_FLOW__OWNED_CONSTRAINTS = ACTIVITY_EDGE__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -894,6 +939,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_FLOW__CONSTRAINTS = ACTIVITY_EDGE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_FLOW__OWNED_CONSTRAINTS = ACTIVITY_EDGE__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -1095,6 +1149,15 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_PARTITION__CONSTRAINTS = ACTIVITY_GROUP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_PARTITION__OWNED_CONSTRAINTS = ACTIVITY_GROUP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1140,22 +1203,13 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_PARTITION__NAME = ACTIVITY_GROUP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY_PARTITION__OWNED_CONSTRAINTS = ACTIVITY_GROUP_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Is Dimension</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__IS_DIMENSION = ACTIVITY_GROUP_FEATURE_COUNT + 2;
+	int ACTIVITY_PARTITION__IS_DIMENSION = ACTIVITY_GROUP_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Is External</b></em>' attribute.
@@ -1164,7 +1218,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__IS_EXTERNAL = ACTIVITY_GROUP_FEATURE_COUNT + 3;
+	int ACTIVITY_PARTITION__IS_EXTERNAL = ACTIVITY_GROUP_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Represented Element</b></em>' reference.
@@ -1173,7 +1227,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__REPRESENTED_ELEMENT = ACTIVITY_GROUP_FEATURE_COUNT + 4;
+	int ACTIVITY_PARTITION__REPRESENTED_ELEMENT = ACTIVITY_GROUP_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Super Partition</b></em>' reference.
@@ -1182,7 +1236,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__SUPER_PARTITION = ACTIVITY_GROUP_FEATURE_COUNT + 5;
+	int ACTIVITY_PARTITION__SUPER_PARTITION = ACTIVITY_GROUP_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Sub Partitions</b></em>' reference list.
@@ -1191,7 +1245,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION__SUB_PARTITIONS = ACTIVITY_GROUP_FEATURE_COUNT + 6;
+	int ACTIVITY_PARTITION__SUB_PARTITIONS = ACTIVITY_GROUP_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Partition</em>' class.
@@ -1200,7 +1254,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_PARTITION_FEATURE_COUNT = ACTIVITY_GROUP_FEATURE_COUNT + 7;
+	int ACTIVITY_PARTITION_FEATURE_COUNT = ACTIVITY_GROUP_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.data.activity.impl.ActivityExchangeImpl <em>Exchange</em>}' class.
@@ -1249,15 +1303,6 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_EXCHANGE__CONSTRAINTS = ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY_EXCHANGE__NAME = ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1265,6 +1310,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY_EXCHANGE__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_EXCHANGE__NAME = ModellingcorePackage.ABSTRACT_INFORMATION_FLOW__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -1376,15 +1430,6 @@ public interface ActivityPackage extends EPackage {
 	int ACTIVITY_NODE__CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTIVITY_NODE__NAME = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1392,6 +1437,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTIVITY_NODE__OWNED_CONSTRAINTS = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_NODE__NAME = ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -1494,15 +1548,6 @@ public interface ActivityPackage extends EPackage {
 	int EXECUTABLE_NODE__CONSTRAINTS = ACTIVITY_NODE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXECUTABLE_NODE__NAME = ACTIVITY_NODE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1510,6 +1555,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTABLE_NODE__OWNED_CONSTRAINTS = ACTIVITY_NODE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTABLE_NODE__NAME = ACTIVITY_NODE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -1621,6 +1675,15 @@ public interface ActivityPackage extends EPackage {
 	int STRUCTURED_ACTIVITY_NODE__CONSTRAINTS = ACTIVITY_GROUP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS = ACTIVITY_GROUP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Super Group</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1666,22 +1729,13 @@ public interface ActivityPackage extends EPackage {
 	int STRUCTURED_ACTIVITY_NODE__NAME = ACTIVITY_GROUP_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS = ACTIVITY_GROUP_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY_PARTITION = ACTIVITY_GROUP_FEATURE_COUNT + 2;
+	int STRUCTURED_ACTIVITY_NODE__IN_ACTIVITY_PARTITION = ACTIVITY_GROUP_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference.
@@ -1690,7 +1744,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION = ACTIVITY_GROUP_FEATURE_COUNT + 3;
+	int STRUCTURED_ACTIVITY_NODE__IN_INTERRUPTIBLE_REGION = ACTIVITY_GROUP_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>In Structured Node</b></em>' reference.
@@ -1699,7 +1753,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE = ACTIVITY_GROUP_FEATURE_COUNT + 4;
+	int STRUCTURED_ACTIVITY_NODE__IN_STRUCTURED_NODE = ACTIVITY_GROUP_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
@@ -1708,7 +1762,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__OUTGOING = ACTIVITY_GROUP_FEATURE_COUNT + 5;
+	int STRUCTURED_ACTIVITY_NODE__OUTGOING = ACTIVITY_GROUP_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
@@ -1717,7 +1771,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__INCOMING = ACTIVITY_GROUP_FEATURE_COUNT + 6;
+	int STRUCTURED_ACTIVITY_NODE__INCOMING = ACTIVITY_GROUP_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Owned Handlers</b></em>' containment reference list.
@@ -1726,7 +1780,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__OWNED_HANDLERS = ACTIVITY_GROUP_FEATURE_COUNT + 7;
+	int STRUCTURED_ACTIVITY_NODE__OWNED_HANDLERS = ACTIVITY_GROUP_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Local Precondition</b></em>' containment reference.
@@ -1735,7 +1789,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION = ACTIVITY_GROUP_FEATURE_COUNT + 8;
+	int STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION = ACTIVITY_GROUP_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Local Postcondition</b></em>' containment reference.
@@ -1744,7 +1798,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION = ACTIVITY_GROUP_FEATURE_COUNT + 9;
+	int STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION = ACTIVITY_GROUP_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -1753,7 +1807,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__CONTEXT = ACTIVITY_GROUP_FEATURE_COUNT + 10;
+	int STRUCTURED_ACTIVITY_NODE__CONTEXT = ACTIVITY_GROUP_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -1762,7 +1816,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__INPUTS = ACTIVITY_GROUP_FEATURE_COUNT + 11;
+	int STRUCTURED_ACTIVITY_NODE__INPUTS = ACTIVITY_GROUP_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -1771,7 +1825,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE__OUTPUTS = ACTIVITY_GROUP_FEATURE_COUNT + 12;
+	int STRUCTURED_ACTIVITY_NODE__OUTPUTS = ACTIVITY_GROUP_FEATURE_COUNT + 11;
 
 	/**
 	 * The number of structural features of the '<em>Structured Activity Node</em>' class.
@@ -1780,7 +1834,7 @@ public interface ActivityPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT = ACTIVITY_GROUP_FEATURE_COUNT + 13;
+	int STRUCTURED_ACTIVITY_NODE_FEATURE_COUNT = ACTIVITY_GROUP_FEATURE_COUNT + 12;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.common.data.activity.impl.AbstractActionImpl <em>Abstract Action</em>}' class.
@@ -1829,15 +1883,6 @@ public interface ActivityPackage extends EPackage {
 	int ABSTRACT_ACTION__CONSTRAINTS = EXECUTABLE_NODE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_ACTION__NAME = EXECUTABLE_NODE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1845,6 +1890,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_ACTION__OWNED_CONSTRAINTS = EXECUTABLE_NODE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTION__NAME = EXECUTABLE_NODE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -2001,15 +2055,6 @@ public interface ActivityPackage extends EPackage {
 	int ACCEPT_EVENT_ACTION__CONSTRAINTS = ABSTRACT_ACTION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_EVENT_ACTION__NAME = ABSTRACT_ACTION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2017,6 +2062,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACCEPT_EVENT_ACTION__OWNED_CONSTRAINTS = ABSTRACT_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_EVENT_ACTION__NAME = ABSTRACT_ACTION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -2191,15 +2245,6 @@ public interface ActivityPackage extends EPackage {
 	int INVOCATION_ACTION__CONSTRAINTS = ABSTRACT_ACTION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INVOCATION_ACTION__NAME = ABSTRACT_ACTION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2207,6 +2252,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int INVOCATION_ACTION__OWNED_CONSTRAINTS = ABSTRACT_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INVOCATION_ACTION__NAME = ABSTRACT_ACTION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -2372,15 +2426,6 @@ public interface ActivityPackage extends EPackage {
 	int SEND_SIGNAL_ACTION__CONSTRAINTS = INVOCATION_ACTION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEND_SIGNAL_ACTION__NAME = INVOCATION_ACTION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2388,6 +2433,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEND_SIGNAL_ACTION__OWNED_CONSTRAINTS = INVOCATION_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEND_SIGNAL_ACTION__NAME = INVOCATION_ACTION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -2571,15 +2625,6 @@ public interface ActivityPackage extends EPackage {
 	int CALL_ACTION__CONSTRAINTS = INVOCATION_ACTION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_ACTION__NAME = INVOCATION_ACTION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2587,6 +2632,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL_ACTION__OWNED_CONSTRAINTS = INVOCATION_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_ACTION__NAME = INVOCATION_ACTION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -2761,15 +2815,6 @@ public interface ActivityPackage extends EPackage {
 	int CALL_BEHAVIOR_ACTION__CONSTRAINTS = CALL_ACTION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CALL_BEHAVIOR_ACTION__NAME = CALL_ACTION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2777,6 +2822,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int CALL_BEHAVIOR_ACTION__OWNED_CONSTRAINTS = CALL_ACTION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CALL_BEHAVIOR_ACTION__NAME = CALL_ACTION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -2960,15 +3014,6 @@ public interface ActivityPackage extends EPackage {
 	int OBJECT_NODE__CONSTRAINTS = ACTIVITY_NODE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_NODE__NAME = ACTIVITY_NODE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2976,6 +3021,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_NODE__OWNED_CONSTRAINTS = ACTIVITY_NODE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_NODE__NAME = ACTIVITY_NODE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -3141,15 +3195,6 @@ public interface ActivityPackage extends EPackage {
 	int PIN__CONSTRAINTS = OBJECT_NODE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PIN__NAME = OBJECT_NODE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3157,6 +3202,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int PIN__OWNED_CONSTRAINTS = OBJECT_NODE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PIN__NAME = OBJECT_NODE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -3331,15 +3385,6 @@ public interface ActivityPackage extends EPackage {
 	int INPUT_PIN__CONSTRAINTS = PIN__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_PIN__NAME = PIN__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3347,6 +3392,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int INPUT_PIN__OWNED_CONSTRAINTS = PIN__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_PIN__NAME = PIN__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -3530,15 +3584,6 @@ public interface ActivityPackage extends EPackage {
 	int VALUE_PIN__CONSTRAINTS = INPUT_PIN__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_PIN__NAME = INPUT_PIN__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3546,6 +3591,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int VALUE_PIN__OWNED_CONSTRAINTS = INPUT_PIN__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_PIN__NAME = INPUT_PIN__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -3738,15 +3792,6 @@ public interface ActivityPackage extends EPackage {
 	int OUTPUT_PIN__CONSTRAINTS = PIN__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTPUT_PIN__NAME = PIN__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3754,6 +3799,15 @@ public interface ActivityPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTPUT_PIN__OWNED_CONSTRAINTS = PIN__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTPUT_PIN__NAME = PIN__NAME;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.

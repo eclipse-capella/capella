@@ -25,9 +25,20 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.Feature;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Relationship;
+import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -57,10 +68,10 @@ import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
+import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.ActorPkgExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionalExt;
-import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -78,13 +89,6 @@ import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.Relationship;
-import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
@@ -94,11 +98,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalComponentPkg;
 import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Component helpers
@@ -885,7 +884,6 @@ public class ComponentExt {
     return ancestor;
   }
 
-
   /**
    * Gets all the components contained in a component
    * @param component_p the parent component
@@ -1085,12 +1083,14 @@ public class ComponentExt {
 
     for (InterfaceImplementation interfaceImpl : currentComp_p.getImplementedInterfaceLinks()) {
       Interface inter = interfaceImpl.getImplementedInterface();
-      if (isCheckRequired) {
-        if (isImplementingInterface(component_p, inter)) {
-          continue;
+      if ((inter != null)) {
+        if (isCheckRequired) {
+          if (isImplementingInterface(component_p, inter)) {
+            continue;
+          }
         }
+        interfaceList.add(inter);
       }
-      interfaceList.add(inter);
     }
     return interfaceList;
   }
@@ -1380,7 +1380,6 @@ public class ComponentExt {
 
     return result;
   }
-
 
   private static List<EObject> getRelatedElementsForCommonAncestor(EObject eobject_p, boolean useDeployementLinks_p) {
 
@@ -1805,12 +1804,14 @@ public class ComponentExt {
 
     for (InterfaceUse interfaceUse : currentComp_p.getUsedInterfaceLinks()) {
       Interface inter = interfaceUse.getUsedInterface();
-      if (isCheckRequired) {
-        if (isUsingInterface(component_p, inter)) {
-          continue;
+      if (inter != null) {
+        if (isCheckRequired) {
+          if (isUsingInterface(component_p, inter)) {
+            continue;
+          }
         }
+        interfaceList.add(inter);
       }
-      interfaceList.add(inter);
     }
     return interfaceList;
   }
@@ -1849,7 +1850,7 @@ public class ComponentExt {
    * Returns whether component used or require the exchange item by related interfaces
    */
   public static boolean isAnUsedOrRequiredExchangeItem(Component component_p, AbstractExchangeItem exchangeItem_p) {
-	// Enlarged search to StandardPorts
+    // Enlarged search to StandardPorts
     List<Interface> itfLst = ComponentExt.getAllUsedAndRequiredInterfaces(component_p);
 
     if (itfLst != null) {

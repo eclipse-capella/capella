@@ -20,20 +20,19 @@ import org.eclipse.emf.edit.ui.provider.PropertyDescriptor;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.swt.widgets.Composite;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue;
 import org.polarsys.capella.core.data.capellacore.FloatPropertyValue;
 import org.polarsys.capella.core.data.capellacore.IntegerPropertyValue;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.StringPropertyValue;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
  */
@@ -170,7 +169,7 @@ public class AbstractPropertyValueCellEditorProvider implements ICellEditorProvi
       return new TextCellEditor(composite_p);
     }
 
-    IItemPropertySource provider = (IItemPropertySource) MDEAdapterFactory.getAdapterFactory().adapt(element_p, IItemPropertySource.class);
+    IItemPropertySource provider = (IItemPropertySource) CapellaAdapterFactoryProvider.getInstance().getAdapterFactory().adapt(element_p, IItemPropertySource.class);
     IItemPropertyDescriptor itemDescriptor = provider.getPropertyDescriptor(element_p, VALUE);
     PropertyDescriptor descriptor = new PropertyDescriptor(element_p, itemDescriptor);
 

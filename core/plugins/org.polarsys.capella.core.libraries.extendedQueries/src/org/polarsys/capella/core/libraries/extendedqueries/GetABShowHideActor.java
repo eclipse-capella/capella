@@ -14,22 +14,23 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaModel;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
@@ -51,35 +52,38 @@ public class GetABShowHideActor extends AbstractQuery {
 
   private List<BlockArchitecture> getCorrespondingBlockArchitectureFromLibraries(BlockArchitecture currentArchBlock) {// TODO !!!!!!!!!!!!!!!!! TEST
     List<BlockArchitecture> res = new ArrayList<BlockArchitecture>();
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(CapellaQueries.getInstance().getRootQueries().getProject(currentArchBlock));
-    Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getReferencedLibraries(currentProject, true);
-    for (IAbstractLibrary library : libraries) {
+    IModel currentProject = ILibraryManager.INSTANCE.getModel(CapellaQueries.getInstance().getRootQueries().getProject(currentArchBlock));
+    Collection<IModel> libraries = LibraryManagerExt.getActivesReferences(currentProject);
+    for (IModel library : libraries) {
       // we get the systemEngineering object ...
-      Project libraryProject = ((CapellaModel) library).getProject();
-      SystemEngineering systemEngineering = QueryExt.getSystemEngineeringFrom(libraryProject);
-      // ... in order to get architecture blocks from libraries (for now, we filter these blocks so that we keep only blocks of the same level of the given
-      // currentArchBlock //TODO verify)
-      if (currentArchBlock instanceof OperationalAnalysis) {
-        for (BlockArchitecture blockArchitecture : systemEngineering.getContainedOperationalAnalysis()) {
-          res.add(blockArchitecture);
-        }
-      } else if (currentArchBlock instanceof SystemAnalysis) {
-        for (BlockArchitecture blockArchitecture : systemEngineering.getContainedSystemAnalysis()) {
-          res.add(blockArchitecture);
-        }
-      } else if (currentArchBlock instanceof LogicalArchitecture) {
-        for (BlockArchitecture blockArchitecture : systemEngineering.getContainedLogicalArchitectures()) {
-          res.add(blockArchitecture);
-        }
-      } else if (currentArchBlock instanceof PhysicalArchitecture) {
-        for (BlockArchitecture blockArchitecture : systemEngineering.getContainedPhysicalArchitectures()) {
-          res.add(blockArchitecture);
-        }
-      } else if (currentArchBlock instanceof EPBSArchitecture) {
-        for (BlockArchitecture blockArchitecture : systemEngineering.getContainedEPBSArchitectures()) {
-          res.add(blockArchitecture);
+      Project libraryProject = ((CapellaModel) library).getProject(TransactionUtil.getEditingDomain(currentArchBlock));
+      if (libraryProject != null) {
+        SystemEngineering systemEngineering = QueryExt.getSystemEngineeringFrom(libraryProject);
+        // ... in order to get architecture blocks from libraries (for now, we filter these blocks so that we keep only blocks of the same level of the given
+        // currentArchBlock //TODO verify)
+        if (currentArchBlock instanceof OperationalAnalysis) {
+          for (BlockArchitecture blockArchitecture : systemEngineering.getContainedOperationalAnalysis()) {
+            res.add(blockArchitecture);
+          }
+        } else if (currentArchBlock instanceof SystemAnalysis) {
+          for (BlockArchitecture blockArchitecture : systemEngineering.getContainedSystemAnalysis()) {
+            res.add(blockArchitecture);
+          }
+        } else if (currentArchBlock instanceof LogicalArchitecture) {
+          for (BlockArchitecture blockArchitecture : systemEngineering.getContainedLogicalArchitectures()) {
+            res.add(blockArchitecture);
+          }
+        } else if (currentArchBlock instanceof PhysicalArchitecture) {
+          for (BlockArchitecture blockArchitecture : systemEngineering.getContainedPhysicalArchitectures()) {
+            res.add(blockArchitecture);
+          }
+        } else if (currentArchBlock instanceof EPBSArchitecture) {
+          for (BlockArchitecture blockArchitecture : systemEngineering.getContainedEPBSArchitectures()) {
+            res.add(blockArchitecture);
+          }
         }
       }
+
     }
     return res;
   }

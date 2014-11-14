@@ -14,7 +14,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.messages.Messages;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.MainWizard;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.ViewEditPage;
@@ -72,7 +72,7 @@ public class MDTraceViewEditCommand extends AbstractReadWriteCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.ef.command.ICommand#isReadOnly()
+   * @see org.polarsys.capella.common.ef.command.ICommand#isReadOnly()
    */
   @Override
   public boolean isReadOnly() {

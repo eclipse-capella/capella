@@ -10,49 +10,51 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.information;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.core.business.abstractqueries.helpers.CapellaElementsHelperForBusinessQueries;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.MultiplicityElement;
 
 /**
  * This is the query for collections default values.
  * 
  * */
-public class Collection_DefaultValue extends
-		AbstractMultiplicityElement_DefaultValue {
+public class Collection_DefaultValue extends AbstractMultiplicityElement_DefaultValue implements IBusinessQuery {
 
 	/**
-	 * @see org.polarsys.capella.core.business.abstractqueries.CapellaElement_CurrentAndHigherLevelsQuery#getDataFromLevel(org.polarsys.capella.core.data.cs.BlockArchitecture,
-	 *      org.polarsys.capella.core.data.capellacore.CapellaElement)
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
 	 */
 	@Override
-	public List<CapellaElement> getDataFromLevel(DataPkg dataPkg_p,
-			CapellaElement capellaElement_p) {
-		// get standard data from abstract class
-		// filter based on 'Type'
-		List<CapellaElement> dataFromLevel = super.getDataFromLevel(dataPkg_p,
-				capellaElement_p);
-		// get data considering the GeneralizableElement All Super Elements for
-		// type compare
-		// filter based on 'Super'
-		if (capellaElement_p instanceof MultiplicityElement) {
-			dataFromLevel.addAll(CapellaElementsHelperForBusinessQueries
-					.getApplicableValuesForMultEleConsideringSuperGenElements(
-							dataPkg_p, (MultiplicityElement) capellaElement_p,
-							getEStructuralFeatures()));
-		}
-		return dataFromLevel;
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE);
 	}
 
 	/**
 	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
 	 */
+	@Override
 	public EClass getEClass() {
 		return InformationPackage.Literals.COLLECTION;
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__COLLECTION__DEFAULT_VALUE, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COLLECTION__DEFAULT_VALUE, element_p, context);
 	}
 }

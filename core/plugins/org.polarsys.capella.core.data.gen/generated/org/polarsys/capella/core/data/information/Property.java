@@ -26,7 +26,6 @@ import org.polarsys.capella.core.data.capellacore.TypedElement;
  *   <li>{@link org.polarsys.capella.core.data.information.Property#isIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Property#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Property#isIsPartOfKey <em>Is Part Of Key</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.information.Property#getValueConstraint <em>Value Constraint</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.Property#getAssociation <em>Association</em>}</li>
  * </ul>
  * </p>
@@ -205,47 +204,6 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 	 */
 
 	void setIsPartOfKey(boolean value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Value Constraint</b></em>' attribute.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Value Constraint</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value Constraint</em>' attribute.
-	 * @see #setValueConstraint(String)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_ValueConstraint()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='valueConstraint' featureOwner='eng.Property' fromStereotype='true'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a textual specification of a constraint to be applied to the values brought by this property\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
-
-	String getValueConstraint();
-
-
-
-
-	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#getValueConstraint <em>Value Constraint</em>}' attribute.
-
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value Constraint</em>' attribute.
-	 * @see #getValueConstraint()
-	 * @generated
-	 */
-
-	void setValueConstraint(String value);
 
 
 

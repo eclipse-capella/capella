@@ -24,10 +24,10 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.StringHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.DeleteRepresentationCommand;
 import org.polarsys.capella.core.sirius.ui.Messages;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * The actions allowing to delete representation from selection.
@@ -62,9 +62,11 @@ public class DeleteRepresentationAction extends BaseSelectionListenerAction {
             StringHelper.formatMessage(Messages.DeleteRepresentationAction_Multiple_Diagram_Message, new String[] { String.valueOf(deletedDiagramCount) });
       }
       if (MessageDialog.openConfirm(null, Messages.DeleteRepresentationAction_Title, Messages.DeleteRepresentationAction_Message + contextualMessage)) {
-        TransactionalEditingDomain domain = MDEAdapterFactory.getEditingDomain();
-        DeleteRepresentationCommand command = new DeleteRepresentationCommand(domain, selectedRepresentations);
-        domain.getCommandStack().execute(command);
+        TransactionalEditingDomain domain = TransactionHelper.getEditingDomain(selectedRepresentations);
+        if (null != domain) {
+          DeleteRepresentationCommand command = new DeleteRepresentationCommand(domain, selectedRepresentations);
+          domain.getCommandStack().execute(command);
+        }
       }
     }
   }

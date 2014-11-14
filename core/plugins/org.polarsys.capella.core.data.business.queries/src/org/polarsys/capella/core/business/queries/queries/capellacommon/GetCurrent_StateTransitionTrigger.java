@@ -13,11 +13,11 @@ package org.polarsys.capella.core.business.queries.queries.capellacommon;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
 public class GetCurrent_StateTransitionTrigger extends AbstractQuery {
 
@@ -26,9 +26,10 @@ public class GetCurrent_StateTransitionTrigger extends AbstractQuery {
     CapellaElement inputElement = (CapellaElement) input;
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
     if (inputElement instanceof StateTransition) {
-      AbstractEvent evt = ((StateTransition) inputElement).getTrigger();
-      if (evt != null) {
-        currentElements.add((CapellaElement) evt);
+      for (AbstractEvent evt : ((StateTransition) inputElement).getTriggers()) {
+        if (evt != null) {
+          currentElements.add((CapellaElement) evt);
+        }
       }
     }
     return (List) currentElements;

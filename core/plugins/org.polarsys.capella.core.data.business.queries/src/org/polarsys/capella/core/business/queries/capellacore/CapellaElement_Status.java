@@ -10,67 +10,43 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.capellacore;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 
 /**
  */
 public class CapellaElement_Status implements IBusinessQuery {
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-    if (null == element_p) {
-      return availableElements;
-    }
-    
-    Project project = (Project) EcoreUtil2.getFirstContainer(element_p, CapellamodellerPackage.Literals.PROJECT);
-    if (null != project) {
-      for (EnumerationPropertyType enumeration : project.getOwnedEnumerationPropertyTypes()) {
-        if (enumeration.getName().equals(CapellaProjectHelper.PROGRESS_STATUS_KEYWORD)) {
-          for (EnumerationPropertyLiteral literal : enumeration.getOwnedLiterals()) {
-            availableElements.add(literal);
-          }
-        }
-      }
-    }
-
-    return availableElements;
-  }
-
-	/**
-	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement, boolean)
-	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-	  currentElements.add(element_p.getStatus());
-
-		return currentElements;
-	}
-
+	@Override
 	public EClass getEClass() {
 		return CapellacorePackage.Literals.CAPELLA_ELEMENT;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
+		return Collections.singletonList(CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CAPELLA_ELEMENT__STATUS, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__CAPELLA_ELEMENT__STATUS, element_p, context);
 	}
 }

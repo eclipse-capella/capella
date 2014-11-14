@@ -22,12 +22,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.menu.dynamic.contributions.ActionContributionProvider;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
@@ -41,8 +40,15 @@ public class CreationHelper {
    * @return
    */
   public static EObject performContributionCommands(EObject createdElement_p) {
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
-    editingDomain.getCommandStack().execute(CreationHelper.getContributorsCommand(editingDomain, createdElement_p, createdElement_p.eContainer(), createdElement_p.eClass(), createdElement_p.eContainmentFeature()));
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(createdElement_p);
+    if (null != editingDomain) {
+      editingDomain.getCommandStack().execute(
+        CreationHelper.getContributorsCommand(editingDomain,
+          createdElement_p,
+          createdElement_p.eContainer(),
+          createdElement_p.eClass(),
+          createdElement_p.eContainmentFeature()));
+    }
     return createdElement_p;
   }
 
@@ -53,8 +59,15 @@ public class CreationHelper {
    * @return
    */
   public static EObject performContributionCommands(EObject createdElement_p, EObject container_p) {
-    EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
-    editingDomain.getCommandStack().execute(CreationHelper.getContributorsCommand(editingDomain, createdElement_p, container_p, createdElement_p.eClass(), createdElement_p.eContainmentFeature()));
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(createdElement_p);
+    if (null != editingDomain) {
+      editingDomain.getCommandStack().execute(
+        CreationHelper.getContributorsCommand(editingDomain,
+          createdElement_p,
+          container_p,
+          createdElement_p.eClass(),
+          createdElement_p.eContainmentFeature()));
+    }
     return createdElement_p;
   }
 
@@ -111,7 +124,7 @@ public class CreationHelper {
             Object createdElt = res.iterator().next();
             if (createdElt instanceof EObject) {
               // call all the execution contributors
-              return getContributorsCommand(editingDomain_p, (EObject) createdElt, owner_p, objectClass_p, feature_p);
+              return getContributorsCommand((EObject) createdElt, owner_p, objectClass_p, feature_p);
             }
           }
           return new IdentityCommand();
@@ -133,19 +146,33 @@ public class CreationHelper {
    * @return
    */
   public static StrictCompoundCommand getAdditionnalCommand(EditingDomain editingDomain_p, ModelElement createdElement_p, String namingPrefix_p) {
-    return getAdditionnalCommand(editingDomain_p, createdElement_p, createdElement_p.eContainer(), createdElement_p.eClass(), createdElement_p
-        .eContainmentFeature(), namingPrefix_p);
+    return getAdditionnalCommand(editingDomain_p, createdElement_p, createdElement_p.eContainer(), createdElement_p.eClass(),
+        createdElement_p.eContainmentFeature(), namingPrefix_p);
   }
 
   /**
-   * This returns a composite command containing all the contributions. If no contributors were declared, returns an IdentityCommand.
+   * This returns a composite command containing all the contributions.<br/>
+   * If no contributors were declared, returns an IdentityCommand.
+   * @param createdElement_p
+   * @param owner_p
+   * @param objectClass_p
+   * @param feature_p
+   */
+  public static CompoundCommand getContributorsCommand(EObject createdElement_p, EObject owner_p, EClass objectClass_p, EStructuralFeature feature_p) {
+    EditingDomain editingDomain = TransactionHelper.getEditingDomain(owner_p != null ? owner_p : createdElement_p);
+    return getContributorsCommand(editingDomain, createdElement_p, owner_p, objectClass_p, feature_p);
+  }
+
+  /**
+   * This returns a composite command containing all the contributions.<br/>
+   * If no contributors were declared, returns an IdentityCommand.
    * @param editingDomain_p
    * @param createdElement_p
    * @param owner_p
    * @param objectClass_p
    * @param feature_p
    */
-  public static CompoundCommand getContributorsCommand(EditingDomain editingDomain_p, EObject createdElement_p, EObject owner_p, EClass objectClass_p,
+  private static CompoundCommand getContributorsCommand(EditingDomain editingDomain_p, EObject createdElement_p, EObject owner_p, EClass objectClass_p,
       EStructuralFeature feature_p) {
     CompoundCommand cmd = new CompoundCommand();
 

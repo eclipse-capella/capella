@@ -17,6 +17,7 @@ import org.eclipse.emf.diffmerge.api.IMapping;
 import org.eclipse.emf.diffmerge.api.IMatch;
 import org.eclipse.emf.diffmerge.api.IMergePolicy;
 import org.eclipse.emf.diffmerge.api.Role;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.diffmerge.diffdata.impl.EComparisonImpl;
 import org.eclipse.emf.diffmerge.diffdata.impl.EMappingImpl;
@@ -28,7 +29,6 @@ import org.eclipse.emf.diffmerge.util.structures.FArrayList;
 import org.eclipse.emf.diffmerge.util.structures.IEqualityTester;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 import org.polarsys.capella.core.transition.common.policies.diff.IDiffPolicy2;
 import org.polarsys.capella.core.transition.common.policies.merge.IMergePolicy2;
 
@@ -108,11 +108,11 @@ public class ExtendedComparison extends EComparisonImpl {
 
   }
 
-  public ExtendedComparison(IFeaturedModelScope targetScope_p, IFeaturedModelScope referenceScope_p) {
+  public ExtendedComparison(IEditableModelScope targetScope_p, IEditableModelScope referenceScope_p) {
     this(targetScope_p, referenceScope_p, null);
   }
 
-  public ExtendedComparison(IFeaturedModelScope targetScope_p, IFeaturedModelScope referenceScope_p, IFeaturedModelScope ancestorScope_p) {
+  public ExtendedComparison(IEditableModelScope targetScope_p, IEditableModelScope referenceScope_p, IEditableModelScope ancestorScope_p) {
     super(targetScope_p, referenceScope_p, ancestorScope_p);
 
     setMapping(new EMappingImpl() {
@@ -121,7 +121,7 @@ public class ExtendedComparison extends EComparisonImpl {
         private UnidirectionalComparisonCopier _targetToReferenceCopier = new FixedUnidirectionalComparisonCopier(Role.TARGET);
 
         @Override
-        public EObject completeMatch(IMapping mapping_p, IMatch partialMatch_p) {
+        public EObject completeMatch(IMapping.Editable mapping_p, IMatch partialMatch_p) {
           assert partialMatch_p.isPartial();
           Role sourceRole = partialMatch_p.getUncoveredRole().opposite();
           UnidirectionalComparisonCopier involvedCopier = (sourceRole == Role.REFERENCE) ? _referenceToTargetCopier : _targetToReferenceCopier;
@@ -130,7 +130,7 @@ public class ExtendedComparison extends EComparisonImpl {
         }
 
         @Override
-        public void completeReferences(IMapping mapping_p, Role role_p) {
+        public void completeReferences(IMapping.Editable mapping_p, Role role_p) {
           UnidirectionalComparisonCopier involvedCopier = (role_p == Role.TARGET) ? _referenceToTargetCopier : _targetToReferenceCopier;
           involvedCopier.completeReferences(mapping_p.getComparison());
         }
@@ -170,8 +170,8 @@ public class ExtendedComparison extends EComparisonImpl {
         assert (match_p != null) && !match_p.isPartial() && (reference_p != null);
         assert !reference_p.isContainer();
         // Get reference values in different roles
-        IFeaturedModelScope targetScope = getOutput().getScope(Role.TARGET);
-        IFeaturedModelScope referenceScope = getOutput().getScope(Role.REFERENCE);
+        IEditableModelScope targetScope = getComparison().getScope(Role.TARGET);
+        IEditableModelScope referenceScope = getComparison().getScope(Role.REFERENCE);
         EObject targetElement = match_p.get(Role.TARGET);
         EObject referenceElement = match_p.get(Role.REFERENCE);
         List<EObject> targetValues = targetScope.get(targetElement, reference_p);

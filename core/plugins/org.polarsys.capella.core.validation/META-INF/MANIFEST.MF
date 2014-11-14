@@ -6,9 +6,9 @@ Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.emf.validation;visibility:=reexport,
+Require-Bundle: org.eclipse.core.expressions,
+ org.eclipse.emf.validation;visibility:=reexport,
  org.polarsys.capella.core.model.helpers;visibility:=reexport,
- org.polarsys.capella.common.tig.model.validation,
  org.polarsys.capella.core.model.handler;visibility:=reexport,
  org.polarsys.capella.core.model.preferences;visibility:=reexport
 Export-Package: org.polarsys.capella.core.validation,

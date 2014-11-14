@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.libraries.nature;
 
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  *
@@ -18,5 +19,5 @@ import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 public class LibraryNature extends ModelingProject {
 
   /** The Library nature identifier. */
-  public static final String ID = "org.polarsys.capella.library.nature"; //$NON-NLS-1$
+  public static final String ID = CapellaResourceHelper.CAPELLA_LIBRARY_PROJECT_NATURE;
 }

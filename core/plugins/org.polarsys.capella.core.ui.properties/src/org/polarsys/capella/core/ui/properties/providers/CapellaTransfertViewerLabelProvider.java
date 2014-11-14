@@ -15,27 +15,27 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.graphics.Image;
-
-import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
+import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.oa.CommunicationMean;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.helpers.ComponentExchangeExt;
-import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  */
@@ -48,7 +48,14 @@ public class CapellaTransfertViewerLabelProvider extends DataLabelProvider {
    * Default constructor
    */
   public CapellaTransfertViewerLabelProvider() {
-    super(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
+    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+  }
+
+  /**
+   * Default constructor
+   */
+  public CapellaTransfertViewerLabelProvider(TransactionalEditingDomain editingDomain) {
+    super(editingDomain, CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
   }
 
   /**

@@ -58,6 +58,10 @@ public class CapellaFeatureHelper {
       String contentAsString = new String(buffer, encoding);
       // Get the version.
       detectedVersion = StringHelper.substring(CapellaXMLSaveImpl.CAPELLA_VERSION_PREFIX, "-->", contentAsString, false); //$NON-NLS-1$
+      if (detectedVersion == null) {
+        // version not detected, it might be an old legacy model
+        detectedVersion = StringHelper.substring(CapellaXMLSaveImpl.MELODY_VERSION_PREFIX, "-->", contentAsString, false); //$NON-NLS-1$
+      }
     } catch (Exception exception_p) {
       StringBuilder loggerMessage = new StringBuilder("CapellaFeatureHelper.getDetectedVersion(..) _ "); //$NON-NLS-1$
       __logger.warn(loggerMessage.toString(), exception_p);

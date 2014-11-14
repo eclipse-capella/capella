@@ -17,13 +17,12 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.utils.saxparser.WriteCapellaElementDescriptionSAXParser;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 public class I_22_Resolver extends AbstractCapellaMarkerResolution {
 
@@ -76,7 +75,7 @@ public class I_22_Resolver extends AbstractCapellaMarkerResolution {
       };
 
       // execute the command
-      MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+      TransactionHelper.getExecutionManager(modelElements).execute(abstrctCommand);
       if (flag[0]) {
         try {
           marker_p.delete();

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -80,6 +81,7 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.ScenarioRealization;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
 import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.la.LaPackage;
@@ -366,6 +368,13 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass sequenceMessageValuationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum messageKindEEnum = null;
 
 	/**
@@ -522,8 +531,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSequenceMessage_ExchangeContext() {
-		return (EAttribute)sequenceMessageEClass.getEStructuralFeatures().get(1);
+	public EReference getSequenceMessage_ExchangeContext() {
+		return (EReference)sequenceMessageEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -603,6 +612,15 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSequenceMessage_OwnedSequenceMessageValuations() {
+		return (EReference)sequenceMessageEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getScenario() {
 		return scenarioEClass;
 	}
@@ -612,8 +630,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScenario_PreCondition() {
-		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(0);
+	public EReference getScenario_PreCondition() {
+		return (EReference)scenarioEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -621,8 +639,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScenario_PostCondition() {
-		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(1);
+	public EReference getScenario_PostCondition() {
+		return (EReference)scenarioEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -631,7 +649,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	public EAttribute getScenario_Kind() {
-		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -640,7 +658,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	public EAttribute getScenario_Merged() {
-		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -999,8 +1017,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAbstractCapability_PreCondition() {
-		return (EAttribute)abstractCapabilityEClass.getEStructuralFeatures().get(0);
+	public EReference getAbstractCapability_PreCondition() {
+		return (EReference)abstractCapabilityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1008,8 +1026,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAbstractCapability_PostCondition() {
-		return (EAttribute)abstractCapabilityEClass.getEStructuralFeatures().get(1);
+	public EReference getAbstractCapability_PostCondition() {
+		return (EReference)abstractCapabilityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1467,8 +1485,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getInteractionOperand_Guard() {
-		return (EAttribute)interactionOperandEClass.getEStructuralFeatures().get(0);
+	public EReference getInteractionOperand_Guard() {
+		return (EReference)interactionOperandEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1477,7 +1495,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	public EReference getInteractionOperand_ReferencedInteractionFragments() {
-		return (EReference)interactionOperandEClass.getEStructuralFeatures().get(1);
+		return (EReference)interactionOperandEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1710,6 +1728,33 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getSequenceMessageValuation() {
+		return sequenceMessageValuationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequenceMessageValuation_ExchangeItemElement() {
+		return (EReference)sequenceMessageValuationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSequenceMessageValuation_Value() {
+		return (EReference)sequenceMessageValuationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMessageKind() {
 		return messageKindEEnum;
 	}
@@ -1762,7 +1807,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		// Create classes and their features
 		sequenceMessageEClass = createEClass(SEQUENCE_MESSAGE);
 		createEAttribute(sequenceMessageEClass, SEQUENCE_MESSAGE__KIND);
-		createEAttribute(sequenceMessageEClass, SEQUENCE_MESSAGE__EXCHANGE_CONTEXT);
+		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__EXCHANGE_CONTEXT);
 		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__SENDING_END);
 		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__RECEIVING_END);
 		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__INVOKED_OPERATION);
@@ -1771,12 +1816,13 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__RECEIVING_PART);
 		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__SENDING_FUNCTION);
 		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__RECEIVING_FUNCTION);
+		createEReference(sequenceMessageEClass, SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS);
 
 		scenarioEClass = createEClass(SCENARIO);
-		createEAttribute(scenarioEClass, SCENARIO__PRE_CONDITION);
-		createEAttribute(scenarioEClass, SCENARIO__POST_CONDITION);
 		createEAttribute(scenarioEClass, SCENARIO__KIND);
 		createEAttribute(scenarioEClass, SCENARIO__MERGED);
+		createEReference(scenarioEClass, SCENARIO__PRE_CONDITION);
+		createEReference(scenarioEClass, SCENARIO__POST_CONDITION);
 		createEReference(scenarioEClass, SCENARIO__OWNED_INSTANCE_ROLES);
 		createEReference(scenarioEClass, SCENARIO__OWNED_MESSAGES);
 		createEReference(scenarioEClass, SCENARIO__OWNED_INTERACTION_FRAGMENTS);
@@ -1831,8 +1877,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		createEReference(abstractCapabilityRealizationEClass, ABSTRACT_CAPABILITY_REALIZATION__REALIZING_CAPABILITY);
 
 		abstractCapabilityEClass = createEClass(ABSTRACT_CAPABILITY);
-		createEAttribute(abstractCapabilityEClass, ABSTRACT_CAPABILITY__PRE_CONDITION);
-		createEAttribute(abstractCapabilityEClass, ABSTRACT_CAPABILITY__POST_CONDITION);
+		createEReference(abstractCapabilityEClass, ABSTRACT_CAPABILITY__PRE_CONDITION);
+		createEReference(abstractCapabilityEClass, ABSTRACT_CAPABILITY__POST_CONDITION);
 		createEReference(abstractCapabilityEClass, ABSTRACT_CAPABILITY__OWNED_SCENARIOS);
 		createEReference(abstractCapabilityEClass, ABSTRACT_CAPABILITY__INCOMING_CAPABILITY_ALLOCATION);
 		createEReference(abstractCapabilityEClass, ABSTRACT_CAPABILITY__OUTGOING_CAPABILITY_ALLOCATION);
@@ -1893,8 +1939,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		gateEClass = createEClass(GATE);
 
 		interactionOperandEClass = createEClass(INTERACTION_OPERAND);
-		createEAttribute(interactionOperandEClass, INTERACTION_OPERAND__GUARD);
 		createEReference(interactionOperandEClass, INTERACTION_OPERAND__REFERENCED_INTERACTION_FRAGMENTS);
+		createEReference(interactionOperandEClass, INTERACTION_OPERAND__GUARD);
 
 		timeLapseEClass = createEClass(TIME_LAPSE);
 		createEReference(timeLapseEClass, TIME_LAPSE__START);
@@ -1930,6 +1976,10 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		createEAttribute(constraintDurationEClass, CONSTRAINT_DURATION__DURATION);
 		createEReference(constraintDurationEClass, CONSTRAINT_DURATION__START);
 		createEReference(constraintDurationEClass, CONSTRAINT_DURATION__FINISH);
+
+		sequenceMessageValuationEClass = createEClass(SEQUENCE_MESSAGE_VALUATION);
+		createEReference(sequenceMessageValuationEClass, SEQUENCE_MESSAGE_VALUATION__EXCHANGE_ITEM_ELEMENT);
+		createEReference(sequenceMessageValuationEClass, SEQUENCE_MESSAGE_VALUATION__VALUE);
 
 		// Create enums
 		messageKindEEnum = createEEnum(MESSAGE_KIND);
@@ -1967,6 +2017,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		FaPackage theFaPackage = (FaPackage)EPackage.Registry.INSTANCE.getEPackage(FaPackage.eNS_URI);
 		BehaviorPackage theBehaviorPackage = (BehaviorPackage)EPackage.Registry.INSTANCE.getEPackage(BehaviorPackage.eNS_URI);
 		CapellacommonPackage theCapellacommonPackage = (CapellacommonPackage)EPackage.Registry.INSTANCE.getEPackage(CapellacommonPackage.eNS_URI);
+		ModellingcorePackage theModellingcorePackage = (ModellingcorePackage)EPackage.Registry.INSTANCE.getEPackage(ModellingcorePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -2014,11 +2065,12 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		armTimerEventEClass.getESuperTypes().add(this.getEvent());
 		cancelTimerEventEClass.getESuperTypes().add(this.getEvent());
 		constraintDurationEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		sequenceMessageValuationEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(sequenceMessageEClass, SequenceMessage.class, "SequenceMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEAttribute(getSequenceMessage_Kind(), this.getMessageKind(), "kind", null, 0, 1, SequenceMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getSequenceMessage_ExchangeContext(), ecorePackage.getEString(), "exchangeContext", null, 0, 1, SequenceMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSequenceMessage_ExchangeContext(), theCapellacorePackage.getConstraint(), null, "exchangeContext", null, 0, 1, SequenceMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSequenceMessage_SendingEnd(), this.getMessageEnd(), null, "sendingEnd", null, 0, 1, SequenceMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSequenceMessage_ReceivingEnd(), this.getMessageEnd(), null, "receivingEnd", null, 0, 1, SequenceMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSequenceMessage_InvokedOperation(), theInformationPackage.getAbstractEventOperation(), null, "invokedOperation", null, 0, 1, SequenceMessage.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2027,12 +2079,13 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		initEReference(getSequenceMessage_ReceivingPart(), theCsPackage.getPart(), null, "receivingPart", null, 0, 1, SequenceMessage.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSequenceMessage_SendingFunction(), theFaPackage.getAbstractFunction(), null, "sendingFunction", null, 0, 1, SequenceMessage.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getSequenceMessage_ReceivingFunction(), theFaPackage.getAbstractFunction(), null, "receivingFunction", null, 0, 1, SequenceMessage.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSequenceMessage_OwnedSequenceMessageValuations(), this.getSequenceMessageValuation(), null, "ownedSequenceMessageValuations", null, 0, -1, SequenceMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(scenarioEClass, Scenario.class, "Scenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getScenario_PreCondition(), ecorePackage.getEString(), "preCondition", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getScenario_PostCondition(), ecorePackage.getEString(), "postCondition", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getScenario_Kind(), this.getScenarioKind(), "kind", "UNSET", 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 		initEAttribute(getScenario_Merged(), ecorePackage.getEBoolean(), "merged", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getScenario_PreCondition(), theCapellacorePackage.getConstraint(), null, "preCondition", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getScenario_PostCondition(), theCapellacorePackage.getConstraint(), null, "postCondition", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getScenario_OwnedInstanceRoles(), this.getInstanceRole(), null, "ownedInstanceRoles", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getScenario_OwnedMessages(), this.getSequenceMessage(), null, "ownedMessages", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getScenario_OwnedInteractionFragments(), this.getInteractionFragment(), null, "ownedInteractionFragments", null, 0, -1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2087,8 +2140,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		initEReference(getAbstractCapabilityRealization_RealizingCapability(), this.getAbstractCapability(), this.getAbstractCapability_OutgoingCapabilityAllocation(), "realizingCapability", null, 1, 1, AbstractCapabilityRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(abstractCapabilityEClass, AbstractCapability.class, "AbstractCapability", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getAbstractCapability_PreCondition(), ecorePackage.getEString(), "preCondition", null, 0, 1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getAbstractCapability_PostCondition(), ecorePackage.getEString(), "postCondition", null, 0, 1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_PreCondition(), theCapellacorePackage.getConstraint(), null, "preCondition", null, 0, 1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getAbstractCapability_PostCondition(), theCapellacorePackage.getConstraint(), null, "postCondition", null, 0, 1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_OwnedScenarios(), this.getScenario(), null, "ownedScenarios", null, 0, -1, AbstractCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_IncomingCapabilityAllocation(), this.getAbstractCapabilityRealization(), this.getAbstractCapabilityRealization_RealizedCapability(), "incomingCapabilityAllocation", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getAbstractCapability_OutgoingCapabilityAllocation(), this.getAbstractCapabilityRealization(), this.getAbstractCapabilityRealization_RealizingCapability(), "outgoingCapabilityAllocation", null, 0, -1, AbstractCapability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2149,8 +2202,8 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		initEClass(gateEClass, Gate.class, "Gate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(interactionOperandEClass, InteractionOperand.class, "InteractionOperand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getInteractionOperand_Guard(), ecorePackage.getEString(), "guard", null, 0, 1, InteractionOperand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getInteractionOperand_ReferencedInteractionFragments(), this.getInteractionFragment(), null, "referencedInteractionFragments", null, 0, -1, InteractionOperand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getInteractionOperand_Guard(), theCapellacorePackage.getConstraint(), null, "guard", null, 0, 1, InteractionOperand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(timeLapseEClass, TimeLapse.class, "TimeLapse", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getTimeLapse_Start(), this.getInteractionFragment(), null, "start", null, 1, 1, TimeLapse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -2186,6 +2239,10 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		initEAttribute(getConstraintDuration_Duration(), ecorePackage.getEString(), "duration", null, 0, 1, ConstraintDuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getConstraintDuration_Start(), this.getInteractionFragment(), null, "start", null, 0, 1, ConstraintDuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getConstraintDuration_Finish(), this.getInteractionFragment(), null, "finish", null, 0, 1, ConstraintDuration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(sequenceMessageValuationEClass, SequenceMessageValuation.class, "SequenceMessageValuation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getSequenceMessageValuation_ExchangeItemElement(), theInformationPackage.getExchangeItemElement(), null, "exchangeItemElement", null, 0, 1, SequenceMessageValuation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getSequenceMessageValuation_Value(), theModellingcorePackage.getValueSpecification(), null, "value", null, 0, 1, SequenceMessageValuation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		// Initialize enums and add enum literals
 		initEEnum(messageKindEEnum, MessageKind.class, "MessageKind"); //$NON-NLS-1$
@@ -2261,7 +2318,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					
 	}
 
 	/**
@@ -2336,7 +2393,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "the ExchangeItems carried by this sequence message", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																		
+		   });																			
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
@@ -2348,6 +2405,23 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getScenario_Kind(), 
+		   source, 
+		   new String[] {
+			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  (getScenario_Merged(), 
+		   source, 
+		   new String[] {
+			 "description", "Whether the scenario underwent a merge operation for the transition from one level to the next\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
 		  (getScenario_PreCondition(), 
@@ -2363,23 +2437,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   source, 
 		   new String[] {
 			 "description", "the conditions applying after this Scenario has been exercized", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getScenario_Kind(), 
-		   source, 
-		   new String[] {
-			 "description", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getScenario_Merged(), 
-		   source, 
-		   new String[] {
-			 "description", "Whether the scenario underwent a merge operation for the transition from one level to the next\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
@@ -3351,18 +3408,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
 		addAnnotation
-		  (getInteractionOperand_Guard(), 
-		   source, 
-		   new String[] {
-			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
-			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
 		  (getInteractionOperand_ReferencedInteractionFragments(), 
 		   source, 
 		   new String[] {
@@ -3374,6 +3419,18 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
+		addAnnotation
+		  (getInteractionOperand_Guard(), 
+		   source, 
+		   new String[] {
+			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
 		addAnnotation
 		  (interactionOperatorKindEEnum, 
 		   source, 
@@ -3741,7 +3798,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "description", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });
+		   });			
 	}
 
 	/**
@@ -3801,19 +3858,14 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (getSequenceMessage_ReceivingFunction(), 
 		   source, 
 		   new String[] {
-		   });							
+		   });			
+		addAnnotation
+		  (getSequenceMessage_OwnedSequenceMessageValuations(), 
+		   source, 
+		   new String[] {
+		   });						
 		addAnnotation
 		  (scenarioEClass, 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  (getScenario_PreCondition(), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  (getScenario_PostCondition(), 
 		   source, 
 		   new String[] {
 		   });				
@@ -3824,6 +3876,16 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   });					
 		addAnnotation
 		  (getScenario_Merged(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getScenario_PreCondition(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getScenario_PostCondition(), 
 		   source, 
 		   new String[] {
 		   });												
@@ -3925,12 +3987,27 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (getCombinedFragment_Operator(), 
 		   source, 
 		   new String[] {
-		   });													
+		   });															
 		addAnnotation
 		  (getInteractionOperand_Guard(), 
 		   source, 
 		   new String[] {
 		   });																																																																																				
+		addAnnotation
+		  (sequenceMessageValuationEClass, 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getSequenceMessageValuation_ExchangeItemElement(), 
+		   source, 
+		   new String[] {
+		   });		
+		addAnnotation
+		  (getSequenceMessageValuation_Value(), 
+		   source, 
+		   new String[] {
+		   });
 	}
 
 	/**
@@ -3950,7 +4027,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																		
 	}
 
 	/**
@@ -3978,7 +4055,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   source, 
 		   new String[] {
 			 "Label", "receivingEnd" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																								
+		   });																									
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
@@ -4344,7 +4421,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   source, 
 		   new String[] {
 			 "Label", "finish" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																															
+		   });																																																		
 	}
 
 	/**
@@ -4382,14 +4459,14 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   new String[] {
 			 "featureName", "receiveEvent", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Message" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });																											
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
 		   new String[] {
 			 "metaclass", "Interaction", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.Scenario" //$NON-NLS-1$ //$NON-NLS-2$
-		   });														
+		   });								
 		addAnnotation
 		  (getScenario_Merged(), 
 		   source, 
@@ -4397,7 +4474,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "featureName", "isMerged", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Scenario", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });											
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
 		   source, 
@@ -4801,7 +4878,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		   new String[] {
 			 "featureName", "finish", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "ExecutionSpecification" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																
+		   });																																																			
 	}
 
 	/**
@@ -4892,13 +4969,29 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
+		   });						
 		addAnnotation
 		  (scenarioEClass, 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "base metaclass in UML/SysML profile ", "uml::Interaction", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getScenario_Kind(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  (getScenario_Merged(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
@@ -4917,22 +5010,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getScenario_Kind(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getScenario_Merged(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });							
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
@@ -5798,14 +5875,6 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
 		addAnnotation
-		  (getInteractionOperand_Guard(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
 		  (getInteractionOperand_ReferencedInteractionFragments(), 
 		   source, 
 		   new String[] {
@@ -5813,6 +5882,14 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
+		addAnnotation
+		  (getInteractionOperand_Guard(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
 		addAnnotation
 		  (interactionOperatorKindEEnum, 
 		   source, 
@@ -6100,7 +6177,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });			
+		   });						
 	}
 
 	/**
@@ -6120,7 +6197,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (getSequenceMessage_ReceivingEnd(), 
 		   source, 
 		   new String[] {
-		   });																																											
+		   });																																												
 		addAnnotation
 		  (getScenario_OwnedInstanceRoles(), 
 		   source, 
@@ -6325,7 +6402,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (getTimeLapse_Finish(), 
 		   source, 
 		   new String[] {
-		   });																																														
+		   });																																																	
 	}
 
 	/**
@@ -6360,7 +6437,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (getSequenceMessage_ReceivingFunction(), 
 		   source, 
 		   new String[] {
-		   });																																																								
+		   });																																																									
 		addAnnotation
 		  (getScenario_ContainedFunctions(), 
 		   source, 
@@ -6520,7 +6597,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (getScenarioRealization_RealizingScenario(), 
 		   source, 
 		   new String[] {
-		   });																	
+		   });																				
 	}
 
 	/**
@@ -6530,7 +6607,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 	 * @generated
 	 */
 	protected void createIgnoreAnnotations() {
-		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																																																																																																																																																																																																																											
+		String source = "http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"; //$NON-NLS-1$																																																																																																																																																																																																																																												
 		addAnnotation
 		  (mergeLinkEClass, 
 		   source, 
@@ -6560,7 +6637,7 @@ public class InteractionPackageImpl extends EPackageImpl implements InteractionP
 		  (abstractCapabilityIncludeEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																									
+		   });																																																																																																																																																												
 	}
 
 } //InteractionPackageImpl

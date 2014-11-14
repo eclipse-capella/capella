@@ -16,12 +16,11 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.system.rules.AbstractCapellaElementRule;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IPremise;
 
@@ -33,6 +32,8 @@ public class ExchangeItemAllocationRule extends AbstractCapellaElementRule {
     registerUpdatedAttribute(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__SEND_PROTOCOL);
 
     registerUpdatedAttribute(ModellingcorePackage.Literals.FINALIZABLE_ELEMENT__FINAL);
+
+    registerUpdatedReference(CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
   }
 
   @Override

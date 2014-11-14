@@ -12,8 +12,8 @@ package org.polarsys.capella.core.sirius.ui.copylayout;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
+import org.polarsys.capella.shared.id.handler.IdManager;
 
 /**
  * Specific key allowing to know the semantic {@link EObject}.
@@ -39,41 +39,40 @@ public class AbstractCapellaLayoutDataKey implements LayoutDataKey {
     _semantic = object_p;
   }
 
+  @Override
   public String getId() {
     return getId(getSemantic());
   }
 
   public String getId(Object object_p) {
     if (object_p instanceof EObject) {
-      return EcoreUtil.getID((EObject) object_p);
+      if (object_p instanceof EClass) {
+        return ((EClass) object_p).getName();
+      }
+      String id = IdManager.getInstance().getId((EObject) object_p);
+      if (id != null) {
+        return id;
+      }
 
-    } else if (object_p instanceof EClass) {
-      return ((EClass) object_p).getName();
     }
-    return String.valueOf(object_p.hashCode());
-  }
-
-  @Override
-  public int hashCode() {
-    int result = 17;
-    EObject semantic = getSemantic();
-    if (semantic != null) {
-      result = (37 * result) + semantic.hashCode();
-    }
-    return result;
+    return String.valueOf(object_p.toString());
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) {
-      return true;
+    return (obj instanceof AbstractCapellaLayoutDataKey) && (hashCode() == obj.hashCode());
+  }
+
+  @Override
+  /**
+   * Must returns a unique hashCode. Equals method is based on it
+   */
+  public int hashCode() {
+    int result = 17;
+    EObject semantic = getSemantic();
+    if (semantic != null) {
+      result = (37 * result) + getId(semantic).hashCode();
     }
-    if (obj == null) {
-      return false;
-    }
-    if (hashCode() == obj.hashCode()) {
-      return true;
-    }
-    return false;
+    return result;
   }
 }

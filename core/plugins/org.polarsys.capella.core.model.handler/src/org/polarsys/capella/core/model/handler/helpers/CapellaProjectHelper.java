@@ -15,12 +15,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.libraries.LibrariesFactory;
+import org.polarsys.capella.common.libraries.ModelInformation;
+import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.KeyValue;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 /**
  * Provides services to deal with Capella Project concept.
@@ -212,5 +214,33 @@ public class CapellaProjectHelper {
       parent = parent.eContainer();
     }
     return (null != parent) ? (Project) parent : null;
+  }
+
+  public static void addModelInformation(Project project_p) {
+    getModelInformation(project_p, true);
+  }
+
+  /**
+   * Add a model information if not already created
+   * @param project_p
+   */
+  public static ModelInformation getModelInformation(Project project_p, boolean create_p) {
+    ModelInformation result = null;
+    if (project_p != null) {
+      //Avoid many model informations if one is already owned
+      for (ElementExtension extension : project_p.getOwnedExtensions()) {
+        if (extension instanceof ModelInformation) {
+          result = (ModelInformation) extension;
+          break;
+        }
+      }
+
+      if ((result == null) && create_p) {
+        result = LibrariesFactory.eINSTANCE.createModelInformation();
+        project_p.getOwnedExtensions().add(result);
+      }
+    }
+    return result;
+
   }
 }

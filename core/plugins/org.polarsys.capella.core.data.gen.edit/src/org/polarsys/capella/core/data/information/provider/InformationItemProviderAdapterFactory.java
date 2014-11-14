@@ -39,6 +39,7 @@ import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.ObjectNode;
 import org.polarsys.capella.common.data.activity.ValuePin;
 import org.polarsys.capella.common.data.activity.util.ActivitySwitch;
+import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameter;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -48,7 +49,7 @@ import org.polarsys.capella.core.data.information.InformationFactory;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.util.InformationAdapterFactory;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -802,6 +803,46 @@ public class InformationItemProviderAdapterFactory extends InformationAdapterFac
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
+			}
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseAbstractConstraint(AbstractConstraint object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/0.8.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         InformationFactory.eINSTANCE.createCollectionValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         InformationFactory.eINSTANCE.createCollectionValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+				return null;
 			}
 			/**
 			 * <!-- begin-user-doc -->

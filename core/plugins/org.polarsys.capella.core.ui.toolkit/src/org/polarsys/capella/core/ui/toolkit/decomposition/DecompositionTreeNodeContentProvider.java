@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.toolkit.decomposition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.viewers.TreeNodeContentProvider;
@@ -19,14 +20,17 @@ import org.eclipse.jface.viewers.Viewer;
  * TreeNodeContentProvider for Decomposition.
  */
 public class DecompositionTreeNodeContentProvider extends TreeNodeContentProvider {
-  private boolean synthesisCheckPage;
   
-  public DecompositionTreeNodeContentProvider(boolean synthesisCheckPage_p) {
+	private boolean synthesisCheckPage;
+  protected DecompositionModel model;
+  
+  public DecompositionTreeNodeContentProvider(DecompositionModel model_p, boolean synthesisCheckPage_p) {
     setSynthesisCheckPage(synthesisCheckPage_p);
+    model = model_p;
   }
   
-  public DecompositionTreeNodeContentProvider() {
-    this(false);
+  public DecompositionTreeNodeContentProvider(DecompositionModel model_p) {
+    this(model_p, false);
   }
 
   /**
@@ -37,17 +41,29 @@ public class DecompositionTreeNodeContentProvider extends TreeNodeContentProvide
     super.inputChanged(viewer_p, oldInput_p, newInput_p);
   }
 
+  private List<DecompositionItem> getFilteredItems(DecompositionComponent component) {
+  	List<DecompositionItem> res = new ArrayList<DecompositionItem>();
+  	for (DecompositionItem item : component.getItems()) {
+			if (!model.isTechnicalInterface(item) || !model.doesHideTechnicalInterfaces()) {
+				res.add(item);
+			}
+		}
+  	return res;
+  }
+
+  
   /**
    * @see org.eclipse.jface.viewers.TreeNodeContentProvider#getElements(java.lang.Object)
    */
   @SuppressWarnings("rawtypes")
   @Override
   public Object[] getElements(Object inputElement_p) {
-    if (inputElement_p instanceof DecompositionModel) {
+  	if (inputElement_p instanceof DecompositionModel) {
       return new DecompositionComponent[] { ((DecompositionModel) inputElement_p).getSourceComponent() };
     }
     if (inputElement_p instanceof DecompositionComponent) {
-      return ((DecompositionComponent) inputElement_p).getItems().toArray();
+    	return getFilteredItems((DecompositionComponent) inputElement_p).toArray();
+//    	return ((DecompositionComponent) inputElement_p).getItems().toArray();
     }
     if (inputElement_p instanceof Decomposition) {
       return ((Decomposition) inputElement_p).getTargetComponents().toArray();
@@ -69,8 +85,9 @@ public class DecompositionTreeNodeContentProvider extends TreeNodeContentProvide
    */
   @Override
   public Object[] getChildren(Object parentElement_p) {
-    if (parentElement_p instanceof DecompositionComponent) {
-      return ((DecompositionComponent) parentElement_p).getItems().toArray();
+  	if (parentElement_p instanceof DecompositionComponent) {
+  		return getFilteredItems((DecompositionComponent) parentElement_p).toArray();
+//      return ((DecompositionComponent) parentElement_p).getItems().toArray();
     }
     if (parentElement_p instanceof Decomposition) {
       return ((Decomposition) parentElement_p).getTargetComponents().toArray();
@@ -87,7 +104,7 @@ public class DecompositionTreeNodeContentProvider extends TreeNodeContentProvide
    */
   @Override
   public Object getParent(Object element_p) {
-    if (element_p instanceof DecompositionComponent) {
+  	if (element_p instanceof DecompositionComponent) {
       if (((DecompositionComponent) element_p).isSourceComponent()) {
         return element_p;
       }
@@ -104,15 +121,14 @@ public class DecompositionTreeNodeContentProvider extends TreeNodeContentProvide
       }
     return null;
   }
-
+  
   /**
    * @see org.eclipse.jface.viewers.TreeNodeContentProvider#hasChildren(java.lang.Object)
    */
   @Override
   public boolean hasChildren(Object element_p) {
-
 	  if (element_p instanceof DecompositionComponent) {
-		  return !((DecompositionComponent) element_p).getItems().isEmpty();
+	  	return !getFilteredItems((DecompositionComponent) element_p).isEmpty();
 	  }
 
 	  if (element_p instanceof Decomposition) {

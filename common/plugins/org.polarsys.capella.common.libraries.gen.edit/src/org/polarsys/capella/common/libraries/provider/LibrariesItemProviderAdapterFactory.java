@@ -18,9 +18,11 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
-import org.eclipse.emf.edit.provider.ChildCreationExtenderManager;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
@@ -32,8 +34,15 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.polarsys.capella.common.libraries.LibrariesFactory;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.util.LibrariesAdapterFactory;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.model.EmdePackage;
+import org.polarsys.kitalpha.emde.model.ExtensibleElement;
+import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
+import org.polarsys.kitalpha.emde.model.util.EmdeSwitch;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -44,39 +53,48 @@ import org.polarsys.capella.common.libraries.util.LibrariesAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class LibrariesItemProviderAdapterFactory extends
-		LibrariesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-	/**
+public class LibrariesItemProviderAdapterFactory extends LibrariesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable,
+    IChildCreationExtender {
+  /**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComposedAdapterFactory parentAdapterFactory;
+  protected ComposedAdapterFactory parentAdapterFactory;
 
-	/**
+  /**
 	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IChangeNotifier changeNotifier = new ChangeNotifier();
+  protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
-	/**
+  /**
+	 * This helps manage the child creation extenders.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  protected ChildCreationExtenderManager childCreationExtenderManager =
+      new ChildCreationExtenderManager(LibrariesEditPlugin.INSTANCE, LibrariesPackage.eNS_URI);
+
+  /**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection<Object> supportedTypes = new ArrayList<Object>();
+  protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
-	/**
+  /**
 	 * This constructs an instance.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LibrariesItemProviderAdapterFactory() {
+  public LibrariesItemProviderAdapterFactory() {
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
@@ -84,22 +102,22 @@ public class LibrariesItemProviderAdapterFactory extends
 		supportedTypes.add(IItemPropertySource.class);
 	}
 
-	/**
+  /**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.libraries.ModelInformation} instances.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModelInformationItemProvider modelInformationItemProvider;
+  protected ModelInformationItemProvider modelInformationItemProvider;
 
-	/**
+  /**
 	 * This creates an adapter for a {@link org.polarsys.capella.common.libraries.ModelInformation}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Adapter createModelInformationAdapter() {
+  @Override
+  public Adapter createModelInformationAdapter() {
 		if (modelInformationItemProvider == null) {
 			modelInformationItemProvider = new ModelInformationItemProvider(this);
 		}
@@ -107,22 +125,22 @@ public class LibrariesItemProviderAdapterFactory extends
 		return modelInformationItemProvider;
 	}
 
-	/**
+  /**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.libraries.LibraryReference} instances.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected LibraryReferenceItemProvider libraryReferenceItemProvider;
+  protected LibraryReferenceItemProvider libraryReferenceItemProvider;
 
-	/**
+  /**
 	 * This creates an adapter for a {@link org.polarsys.capella.common.libraries.LibraryReference}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Adapter createLibraryReferenceAdapter() {
+  @Override
+  public Adapter createLibraryReferenceAdapter() {
 		if (libraryReferenceItemProvider == null) {
 			libraryReferenceItemProvider = new LibraryReferenceItemProvider(this);
 		}
@@ -130,22 +148,22 @@ public class LibrariesItemProviderAdapterFactory extends
 		return libraryReferenceItemProvider;
 	}
 
-	/**
+  /**
 	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.common.libraries.ModelVersion} instances.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModelVersionItemProvider modelVersionItemProvider;
+  protected ModelVersionItemProvider modelVersionItemProvider;
 
-	/**
+  /**
 	 * This creates an adapter for a {@link org.polarsys.capella.common.libraries.ModelVersion}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Adapter createModelVersionAdapter() {
+  @Override
+  public Adapter createModelVersionAdapter() {
 		if (modelVersionItemProvider == null) {
 			modelVersionItemProvider = new ModelVersionItemProvider(this);
 		}
@@ -153,55 +171,54 @@ public class LibrariesItemProviderAdapterFactory extends
 		return modelVersionItemProvider;
 	}
 
-	/**
+  /**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComposeableAdapterFactory getRootAdapterFactory() {
+  public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
-	/**
+  /**
 	 * This sets the composed adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+  public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
-	/**
+  /**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public boolean isFactoryForType(Object type) {
+  @Override
+  public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
 
-	/**
+  /**
 	 * This implementation substitutes the factory itself as the key for the adapter.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Adapter adapt(Notifier notifier, Object type) {
+  @Override
+  public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
 
-	/**
+  /**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Object adapt(Object object, Object type) {
+  @Override
+  public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
 			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
@@ -212,33 +229,60 @@ public class LibrariesItemProviderAdapterFactory extends
 		return null;
 	}
 
-	/**
-	 * This adds a listener.
+  /**
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void addListener(INotifyChangedListener notifyChangedListener) {
+  public List<IChildCreationExtender> getChildCreationExtenders() {
+		return childCreationExtenderManager.getChildCreationExtenders();
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public ResourceLocator getResourceLocator() {
+		return childCreationExtenderManager;
+	}
+
+  /**
+	 * This adds a listener.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
 
-	/**
+  /**
 	 * This removes a listener.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void removeListener(INotifyChangedListener notifyChangedListener) {
+  public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
 
-	/**
+  /**
 	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void fireNotifyChanged(Notification notification) {
+  public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
 		if (parentAdapterFactory != null) {
@@ -246,16 +290,117 @@ public class LibrariesItemProviderAdapterFactory extends
 		}
 	}
 
-	/**
+  /**
 	 * This disposes all of the item providers created by this factory. 
 	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void dispose() {
+  public void dispose() {
 		if (modelInformationItemProvider != null) modelInformationItemProvider.dispose();
 		if (libraryReferenceItemProvider != null) libraryReferenceItemProvider.dispose();
 		if (modelVersionItemProvider != null) modelVersionItemProvider.dispose();
 	}
+
+  /**
+	 * A child creation extender for the {@link EmdePackage}.
+	 * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+	 * @generated
+	 */
+  public static class EmdeChildCreationExtender implements IChildCreationExtender {
+    /**
+		 * The switch for creating child descriptors specific to each extended class.
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    protected static class CreationSwitch extends EmdeSwitch<Object> {
+      /**
+			 * The child descriptors being populated.
+			 * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+			 * @generated
+			 */
+      protected List<Object> newChildDescriptors;
+
+      /**
+			 * The domain in which to create the children.
+			 * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+			 * @generated
+			 */
+      protected EditingDomain editingDomain;
+
+      /**
+			 * Creates the a switch for populating child descriptors in the given domain.
+			 * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+			 * @generated
+			 */
+      CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+				this.newChildDescriptors = newChildDescriptors;
+				this.editingDomain = editingDomain;
+			}
+
+      /**
+			 * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+			 * @generated
+			 */
+      @Override
+      public Object caseExtensibleElement(ExtensibleElement object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/common/libraries/1.0.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
+                         LibrariesFactory.eINSTANCE.createModelInformation());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+				return null;
+			}
+
+      /**
+			 * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+			 * @generated
+			 */
+      protected CommandParameter createChildParameter(Object feature, Object child) {
+				return new CommandParameter(null, feature, child);
+			}
+
+    }
+
+    /**
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+			ArrayList<Object> result = new ArrayList<Object>();
+		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+		   return result;
+		}
+
+    /**
+		 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+		 * @generated
+		 */
+    public ResourceLocator getResourceLocator() {
+			return LibrariesEditPlugin.INSTANCE;
+		}
+  }
 
 }

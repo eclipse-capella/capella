@@ -152,9 +152,7 @@ public abstract class Abstract_MDCHK_NamingConflictRule extends AbstractValidati
       conflictCandidates = typesAndNames.get(currentElement.eClass());
 
       Set<AbstractNamedElement> conflictingElements = new HashSet<AbstractNamedElement>();
-
       for (AbstractNamedElement conflictCandidate : conflictCandidates) {
-
         if (currentElement instanceof ComponentExchange) {
           hasConflictComponentExchange(conflictingElements, conflictCandidate, (ComponentExchange) currentElement);
 

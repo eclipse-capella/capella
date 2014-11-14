@@ -26,16 +26,23 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.diffmerge.ui.EMFDiffMergeUIPlugin;
 import org.eclipse.emf.diffmerge.ui.util.MiscUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.bundle.FeatureHelper;
+import org.polarsys.capella.common.consonance.ui.sirius.SiriusScope;
+import org.polarsys.capella.common.libraries.LibrariesPackage;
+import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
 import org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListener;
-import org.polarsys.capella.common.consonance.ui.sirius.SiriusScope;
 
 
 /**
@@ -49,10 +56,23 @@ public class CapellaScope extends SiriusScope {
   
   /**
    * Constructor
-   * @param resource_p a non-null resource
+   * @param uri_p a non-null URI
+   * @param domain_p a non-null editing domain
+   * @param readOnly_p whether the scope is read-only
    */
-  public CapellaScope(Resource resource_p) {
-    super(resource_p);
+  public CapellaScope(URI uri_p, EditingDomain editingDomain_p, boolean readOnly_p) {
+    super(uri_p, editingDomain_p, readOnly_p);
+    // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
+  }
+  
+  /**
+   * Constructor
+   * @param uri_p a non-null URI
+   * @param resourceSet_p a non-null resource set
+   * @param readOnly_p whether the scope is read-only
+   */
+  public CapellaScope(URI uri_p, ResourceSet resourceSet_p, boolean readOnly_p) {
+    super(uri_p, resourceSet_p, readOnly_p);
     // Do not explicitly assign _ignoreCapellaVersions: it may be assigned via super constructor
   }
   
@@ -75,16 +95,17 @@ public class CapellaScope extends SiriusScope {
    * @param toolVersion2_p a potentially null short version (in format "X.Y.Z")
    */
   protected boolean areCompatible(String toolVersion1_p, String toolVersion2_p) {
-    boolean result = false;
-    String toolVersion1 = toCanonicalVersion(toolVersion1_p);
-    String toolVersion2 = toCanonicalVersion(toolVersion2_p);
-    String pattern = Pattern.quote(
-        ICommonConstants.EMPTY_STRING + ICommonConstants.POINT_CHARACTER);
-    String[] segments1 = toolVersion1.split(pattern);
-    String[] segments2 = toolVersion2.split(pattern);
-    if (segments1.length >= 2 && segments2.length >=2) {
-      if (segments1[0].equals(segments2[0]))
-        result = segments1[1].equals(segments2[1]);
+    boolean result = true;
+    if (toolVersion1_p != null && toolVersion2_p != null) {
+      result = false;
+      String pattern = Pattern.quote(
+          ICommonConstants.EMPTY_STRING + ICommonConstants.POINT_CHARACTER);
+      String[] segments1 = toolVersion1_p.split(pattern);
+      String[] segments2 = toolVersion2_p.split(pattern);
+      if (segments1.length >= 2 && segments2.length >=2) {
+        if (segments1[0].equals(segments2[0]))
+          result = segments1[1].equals(segments2[1]);
+      }
     }
     return result;
   }
@@ -133,28 +154,28 @@ public class CapellaScope extends SiriusScope {
    * Return whether write permission is acquired for the modified files
    */
   protected boolean checkWritePermission() {
-    final TransactionalEditingDomain domain = CapellaComparePlugin.getDefault().getEditingDomain();
+    // Building the list of modified resources
+    int nbResources = getResources().size();
+    List<Resource> modifiedResources = new ArrayList<Resource>(nbResources);
+    for (Resource currentRes : getResources()) {
+    	if (currentRes.isModified())
+    		modifiedResources.add(currentRes);
+    }
+    final TransactionalEditingDomain domain = findEditingDomain(modifiedResources);
     boolean result = domain == null; // If no editing domain, consider permission is ok
-    if (domain != null) {
-      // Building the list of modified resources
-      int nbResources = getResources().size();
-      List<Resource> modifiedResources = new ArrayList<Resource>(nbResources);
-      for (Resource currentRes : getResources()) {
-        if (currentRes.isModified())
-          modifiedResources.add(currentRes);
-      }
+    if (!result) {
       // Building the list of modified resource files
       final List<IFile> modifiedFiles = new ArrayList<IFile>(modifiedResources.size());
       for (Resource currentRes : modifiedResources) {
-        IFile file = getFileFor(currentRes);
-        if (file != null) {
-          modifiedFiles.add(file);
-          try {
-            file.touch(null); // Trigger file modification validators if any
-          } catch (CoreException e) {
-            // Proceed
-          }
-        }
+    	IFile file = getFileFor(currentRes);
+    	if (file != null) {
+    		modifiedFiles.add(file);
+    		try {
+    			file.touch(null); // Trigger file modification validators if any
+    		} catch (CoreException e) {
+    			// Proceed
+    		}
+    	}
       }
       // Checking ability to write in resource files
       final List<Exception> emptyIfOk = new ArrayList<Exception>(1);
@@ -172,6 +193,33 @@ public class CapellaScope extends SiriusScope {
         }
       });
       result = emptyIfOk.isEmpty();
+    }
+    return result;
+  }
+  
+  /**
+   * Find and return a transactional editing domain from a list of resources, if possible
+   * @param resources_p a non-null set of resources
+   * @return a potentially null editing domain
+   */
+  protected TransactionalEditingDomain findEditingDomain(Collection<Resource> resources_p) {
+    for (Resource resource : resources_p) {
+      TransactionalEditingDomain result = TransactionUtil.getEditingDomain(resource);
+      if (result != null)
+        return result;
+    }
+    return null;
+  }
+  
+  /**
+   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusScope#getCrossReferencesInScope(org.eclipse.emf.ecore.EObject)
+   */
+  @Override
+  protected Collection<EReference> getCrossReferencesInScope(EObject element_p) {
+    Collection<EReference> result = super.getCrossReferencesInScope(element_p);
+    if (element_p instanceof LibraryReference) {
+      // From Model/Library to referenced Libraries
+      result.add(LibrariesPackage.eINSTANCE.getLibraryReference_Library());
     }
     return result;
   }
@@ -216,7 +264,7 @@ public class CapellaScope extends SiriusScope {
     // referenced by DAnalysis (DAnalysis_Models)
     List<Resource> result = super.getRelevantReferencedResources(element_p);
     for (Resource resource : new ArrayList<Resource>(result)) {
-      if ("ecore".equals(resource.getURI().fileExtension())) //$NON-NLS-1$
+      if (EcorePackage.eNAME.equals(resource.getURI().fileExtension()))
         result.remove(resource);
     }
     return result;
@@ -245,21 +293,6 @@ public class CapellaScope extends SiriusScope {
     boolean result = checkWritePermission();
     if (result)
       result = super.save();
-    return result;
-  }
-  
-  /**
-   * Return a canonical variant of the given tool version
-   * @param toolVersion_p a potentially null string (in format "X.Y.Z")
-   * @return a non-null string
-   */
-  protected String toCanonicalVersion(String toolVersion_p) {
-    String maVersion = FeatureHelper.getCapellaVersion(false);
-    final String DEFAULT_VERSION = maVersion != null? maVersion: "2.3.0"; //$NON-NLS-1$
-    String result = toolVersion_p != null? toolVersion_p: DEFAULT_VERSION;
-    result.replaceFirst(Pattern.quote("1.6."), "2.1.");  //$NON-NLS-1$//$NON-NLS-2$
-    result.replaceFirst(Pattern.quote("1.7."), "2.2."); //$NON-NLS-1$ //$NON-NLS-2$
-    result.replaceFirst(Pattern.quote("1.8."), "2.3."); //$NON-NLS-1$ //$NON-NLS-2$
     return result;
   }
   

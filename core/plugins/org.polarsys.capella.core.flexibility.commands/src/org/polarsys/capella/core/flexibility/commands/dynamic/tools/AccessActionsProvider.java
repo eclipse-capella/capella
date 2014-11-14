@@ -38,20 +38,20 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceImpl;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.cs.PhysicalPort;
-import org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceImpl;
 import org.polarsys.capella.core.flexibility.commands.Activator;
 import org.polarsys.capella.core.flexibility.commands.Messages;
 import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
@@ -59,8 +59,6 @@ import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  */
@@ -72,13 +70,11 @@ public class AccessActionsProvider implements IActionsProvider {
   public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-
     list.add(new PhysicalLinkDelegation(shell_p, selectionProvider_p));
     list.add(new OpenAsText(shell_p, selectionProvider_p));
     list.add(new CreateCapellaProject(shell_p, selectionProvider_p));
     list.add(new SetAsReadOnly(shell_p, selectionProvider_p));
     list.add(new UnsetAsReadOnly(shell_p, selectionProvider_p));
-
 
     return list;
   }
@@ -525,7 +521,7 @@ public class AccessActionsProvider implements IActionsProvider {
           String label = element.getName();
 
           if (element.getDiagramElementMapping() != null) {
-            if (element.getDiagramElementMapping().eContainingFeature() == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
+            if (element.getDiagramElementMapping().eContainingFeature() == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS) {
 
               if ((element.eContainer() != null) && (element.eContainer() instanceof DDiagramElement)) {
                 label = ((DDiagramElement) element.eContainer()).getName();

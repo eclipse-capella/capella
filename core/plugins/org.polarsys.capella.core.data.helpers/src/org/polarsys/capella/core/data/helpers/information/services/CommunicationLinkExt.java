@@ -10,19 +10,22 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.helpers.information.services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeMechanism;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 
 /**
  *
@@ -131,6 +134,10 @@ public class CommunicationLinkExt {
     }
     return result;
   }
+  
+  public static Component getSource(CommunicationLink link) {
+	  return (Component) link.eContainer();
+  }
 
   public static AbstractExchangeItem getExchangeItemsByKind(CommunicationLink link, CommunicationLinkKind kind) {
     if (link!=null && kind.equals(link.getKind())) {
@@ -159,4 +166,42 @@ public class CommunicationLinkExt {
         || link.getKind() == CommunicationLinkKind.ACCESS
         || link.getKind() == CommunicationLinkKind.ACQUIRE;
   }
+
+  /**
+   * return the list of all Communication Link contained by the given component that are senders. 
+   * @param component : Component
+   * @return List<CommunicationLink>
+   */  
+	public static List<CommunicationLink> getSenderCommunicationLink(Component component) {
+		List<CommunicationLink> senderLinks = new ArrayList<CommunicationLink>();
+		for (CommunicationLink link : component.getOwnedCommunicationLinks()) {
+			if (isSender(link)) {
+				senderLinks.add(link);
+			}
+		}
+		return senderLinks;
+	}
+
+  /**
+   * return the list of all Communication Link contained by the given component that are receivers. 
+   * @param component : Component
+   * @return List<CommunicationLink>
+   */
+	public static List<CommunicationLink> getReceiverCommunicationLink(Component component) {
+		List<CommunicationLink> senderLinks = new ArrayList<CommunicationLink>();
+		for (CommunicationLink link : component.getOwnedCommunicationLinks()) {
+			if (isReceiver(link)) {
+				senderLinks.add(link);
+			}
+		}
+		return senderLinks;
+	}
+
+	/** True if link1 and link2 target the same Exchange Item, have the same kind and the same protocol. */
+	public static boolean isSameCommunication(CommunicationLink link1, CommunicationLink link2) {
+		return link1.getExchangeItem() == link2.getExchangeItem()
+				&& link1.getProtocol() == link2.getProtocol()
+				&& link1.getKind() == link2.getKind();
+	}
+		
 }

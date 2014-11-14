@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.navigator,
  org.eclipse.emf.common.ui,
  org.eclipse.sirius.common
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.platform.sirius.customisation,
  org.polarsys.capella.common.platform.sirius.customisation.resourcelocator,

@@ -83,6 +83,7 @@ public abstract class AbstractStructuredRepresentationField extends AbstractSema
         handleDelete();
       }
     });
+    _deleteBtn.setToolTipText("Remove selected elements");
     _deleteBtn.setEnabled(false);
   }
 

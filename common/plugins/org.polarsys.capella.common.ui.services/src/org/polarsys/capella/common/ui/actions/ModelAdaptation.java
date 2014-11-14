@@ -18,14 +18,13 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * The Capella adaptation.
  */
 public class ModelAdaptation {
-  
+
   /**
    * Adapt a Sirius element into a Capella element.
    * And return the first element, if multiple selection.
@@ -35,7 +34,8 @@ public class ModelAdaptation {
   public static ModelElement adaptToCapella(Object element_p) {
     if (element_p instanceof IStructuredSelection) {
       IStructuredSelection structuredSelection = (IStructuredSelection) element_p;
-      return adaptFromStructuredSelection(structuredSelection).get(0);
+      List<ModelElement> adapted = adaptFromStructuredSelection(structuredSelection);
+      return adapted.isEmpty()? null: adapted.get(0);
     }
     return adaptFromObject(element_p);
   }
@@ -54,21 +54,24 @@ public class ModelAdaptation {
     result.add(adaptFromObject(element_p));
     return result;
   }
-  
+
   private static ModelElement adaptFromObject(Object element_p) {
     ModelElement result = null;
-    if (element_p instanceof ModelElement){
+    if (element_p instanceof ModelElement) {
       result = (ModelElement) element_p;
     } else {
-      if (element_p instanceof IAdaptable){
+      if (element_p instanceof IAdaptable) {
         // FIXME why not also ask the adapter manager?
         // GMF level adaptation
         Object dnodeElement = ((IAdaptable) element_p).getAdapter(EObject.class);
-        if (dnodeElement != null){
+        if (dnodeElement != null) {
+          EObject obj = (EObject) Platform.getAdapterManager().getAdapter(dnodeElement, ModelElement.class);
           // Business level adaptation
-          result = (ModelElement) Platform.getAdapterManager().getAdapter(dnodeElement, ModelElement.class);
-          if (result == null) {
-            result = (ModelElement) Platform.getAdapterManager().loadAdapter(dnodeElement, ModelElement.class.getName());
+          if (obj == null) {
+            obj = (EObject) Platform.getAdapterManager().loadAdapter(dnodeElement, ModelElement.class.getName());
+          }
+          if (obj instanceof ModelElement) {
+            result = (ModelElement) obj;
           }
         }
       }
@@ -83,8 +86,8 @@ public class ModelAdaptation {
       Object nextSelected = it.next();
       result.add(adaptFromObject(nextSelected));
     }
-    
+
     return result;
   }
-  
+
 }

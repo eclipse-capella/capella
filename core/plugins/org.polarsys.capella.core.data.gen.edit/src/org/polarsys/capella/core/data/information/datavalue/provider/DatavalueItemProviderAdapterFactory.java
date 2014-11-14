@@ -39,6 +39,7 @@ import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.activity.ObjectNode;
 import org.polarsys.capella.common.data.activity.ValuePin;
 import org.polarsys.capella.common.data.activity.util.ActivitySwitch;
+import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameter;
 import org.polarsys.capella.common.data.modellingcore.AbstractParameterSet;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
@@ -48,7 +49,7 @@ import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.information.datavalue.util.DatavalueAdapterFactory;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -407,6 +408,29 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OpaqueExpressionItemProvider opaqueExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOpaqueExpressionAdapter() {
+		if (opaqueExpressionItemProvider == null) {
+			opaqueExpressionItemProvider = new OpaqueExpressionItemProvider(this);
+		}
+
+		return opaqueExpressionItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -545,6 +569,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 		if (valuePartItemProvider != null) valuePartItemProvider.dispose();
 		if (binaryExpressionItemProvider != null) binaryExpressionItemProvider.dispose();
 		if (unaryExpressionItemProvider != null) unaryExpressionItemProvider.dispose();
+		if (opaqueExpressionItemProvider != null) opaqueExpressionItemProvider.dispose();
 	}
 
 	/**
@@ -586,6 +611,189 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
 				this.newChildDescriptors = newChildDescriptors;
 				this.editingDomain = editingDomain;
+			}
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseAbstractConstraint(AbstractConstraint object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/0.8.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createBooleanReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createEnumerationReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createStringReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createNumericReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createComplexValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createComplexValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createBinaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+				return null;
 			}
 			/**
 			 * <!-- begin-user-doc -->
@@ -758,6 +966,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -903,6 +1124,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                     CommandParameter commandParameter = createChildParameter
                         (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1074,6 +1308,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                     CommandParameter commandParameter = createChildParameter
                         (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1328,6 +1575,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -1484,6 +1744,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -1640,6 +1913,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -1785,6 +2071,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                     CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
@@ -1964,6 +2263,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
 				return null;
 			}
  
@@ -2127,6 +2439,19 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                     CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.VALUE_PIN__VALUE,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

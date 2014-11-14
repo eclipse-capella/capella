@@ -26,20 +26,31 @@ import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolve
 import org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.ChangeEvent;
+import org.polarsys.capella.core.data.capellacommon.ChangeEventKind;
 import org.polarsys.capella.core.data.capellacommon.ChoicePseudoState;
+import org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState;
+import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
+import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.ForkPseudoState;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacommon.InitialPseudoState;
 import org.polarsys.capella.core.data.capellacommon.JoinPseudoState;
+import org.polarsys.capella.core.data.capellacommon.JustificationLink;
 import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Pseudostate;
 import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
+import org.polarsys.capella.core.data.capellacommon.StateEventRealization;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacommon.StateTransitionRealization;
 import org.polarsys.capella.core.data.capellacommon.TerminatePseudoState;
+import org.polarsys.capella.core.data.capellacommon.TimeEvent;
+import org.polarsys.capella.core.data.capellacommon.TimeEventKind;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacommon.TransitionKind;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -104,6 +115,13 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	private EClass transfoLinkEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass justificationLinkEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -229,7 +247,77 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass shallowHistoryPseudoStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass deepHistoryPseudoStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass entryPointPseudoStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass exitPointPseudoStateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stateEventRealizationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stateEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass changeEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass timeEventEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EEnum transitionKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum timeEventKindEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum changeEventKindEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -400,6 +488,15 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 */
 	public EClass getTransfoLink() {
 		return transfoLinkEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getJustificationLink() {
+		return justificationLinkEClass;
 	}
 
 	/**
@@ -668,8 +765,8 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStateTransition_Guard() {
-		return (EAttribute)stateTransitionEClass.getEStructuralFeatures().get(0);
+	public EReference getStateTransition_Guard() {
+		return (EReference)stateTransitionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -678,7 +775,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	public EAttribute getStateTransition_Kind() {
-		return (EAttribute)stateTransitionEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)stateTransitionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -687,7 +784,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * @generated
 	 */
 	public EAttribute getStateTransition_TriggerDescription() {
-		return (EAttribute)stateTransitionEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)stateTransitionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -722,7 +819,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateTransition_Trigger() {
+	public EReference getStateTransition_Triggers() {
 		return (EReference)stateTransitionEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -731,7 +828,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateTransition_OwnedGuardCondition() {
+	public EReference getStateTransition_OwnedStateTransitionRealizations() {
 		return (EReference)stateTransitionEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -740,7 +837,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateTransition_OwnedStateTransitionRealizations() {
+	public EReference getStateTransition_RealizedStateTransitions() {
 		return (EReference)stateTransitionEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -749,17 +846,8 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getStateTransition_RealizedStateTransitions() {
-		return (EReference)stateTransitionEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getStateTransition_RealizingStateTransitions() {
-		return (EReference)stateTransitionEClass.getEStructuralFeatures().get(10);
+		return (EReference)stateTransitionEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -875,8 +963,161 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getShallowHistoryPseudoState() {
+		return shallowHistoryPseudoStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDeepHistoryPseudoState() {
+		return deepHistoryPseudoStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEntryPointPseudoState() {
+		return entryPointPseudoStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExitPointPseudoState() {
+		return exitPointPseudoStateEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStateEventRealization() {
+		return stateEventRealizationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateEventRealization_RealizedEvent() {
+		return (EReference)stateEventRealizationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateEventRealization_RealizingEvent() {
+		return (EReference)stateEventRealizationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getStateEvent() {
+		return stateEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateEvent_Condition() {
+		return (EReference)stateEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStateEvent_OwnedStateEventRealizations() {
+		return (EReference)stateEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getChangeEvent() {
+		return changeEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getChangeEvent_Kind() {
+		return (EAttribute)changeEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTimeEvent() {
+		return timeEventEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTimeEvent_Kind() {
+		return (EAttribute)timeEventEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTimeEvent_Time() {
+		return (EAttribute)timeEventEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getTransitionKind() {
 		return transitionKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getTimeEventKind() {
+		return timeEventKindEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getChangeEventKind() {
+		return changeEventKindEEnum;
 	}
 
 	/**
@@ -916,6 +1157,8 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 
 		transfoLinkEClass = createEClass(TRANSFO_LINK);
 
+		justificationLinkEClass = createEClass(JUSTIFICATION_LINK);
+
 		capabilityRealizationInvolvementEClass = createEClass(CAPABILITY_REALIZATION_INVOLVEMENT);
 		createEReference(capabilityRealizationInvolvementEClass, CAPABILITY_REALIZATION_INVOLVEMENT__INVOLVED_CAPABILITY_REALIZATION_INVOLVED_ELEMENT);
 
@@ -953,14 +1196,13 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		createEReference(abstractStateEClass, ABSTRACT_STATE__INVOLVER_REGIONS);
 
 		stateTransitionEClass = createEClass(STATE_TRANSITION);
-		createEAttribute(stateTransitionEClass, STATE_TRANSITION__GUARD);
 		createEAttribute(stateTransitionEClass, STATE_TRANSITION__KIND);
 		createEAttribute(stateTransitionEClass, STATE_TRANSITION__TRIGGER_DESCRIPTION);
+		createEReference(stateTransitionEClass, STATE_TRANSITION__GUARD);
 		createEReference(stateTransitionEClass, STATE_TRANSITION__SOURCE);
 		createEReference(stateTransitionEClass, STATE_TRANSITION__TARGET);
 		createEReference(stateTransitionEClass, STATE_TRANSITION__EFFECT);
-		createEReference(stateTransitionEClass, STATE_TRANSITION__TRIGGER);
-		createEReference(stateTransitionEClass, STATE_TRANSITION__OWNED_GUARD_CONDITION);
+		createEReference(stateTransitionEClass, STATE_TRANSITION__TRIGGERS);
 		createEReference(stateTransitionEClass, STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS);
 		createEReference(stateTransitionEClass, STATE_TRANSITION__REALIZED_STATE_TRANSITIONS);
 		createEReference(stateTransitionEClass, STATE_TRANSITION__REALIZING_STATE_TRANSITIONS);
@@ -985,8 +1227,33 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		createEReference(stateTransitionRealizationEClass, STATE_TRANSITION_REALIZATION__REALIZED_STATE_TRANSITION);
 		createEReference(stateTransitionRealizationEClass, STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION);
 
+		shallowHistoryPseudoStateEClass = createEClass(SHALLOW_HISTORY_PSEUDO_STATE);
+
+		deepHistoryPseudoStateEClass = createEClass(DEEP_HISTORY_PSEUDO_STATE);
+
+		entryPointPseudoStateEClass = createEClass(ENTRY_POINT_PSEUDO_STATE);
+
+		exitPointPseudoStateEClass = createEClass(EXIT_POINT_PSEUDO_STATE);
+
+		stateEventRealizationEClass = createEClass(STATE_EVENT_REALIZATION);
+		createEReference(stateEventRealizationEClass, STATE_EVENT_REALIZATION__REALIZED_EVENT);
+		createEReference(stateEventRealizationEClass, STATE_EVENT_REALIZATION__REALIZING_EVENT);
+
+		stateEventEClass = createEClass(STATE_EVENT);
+		createEReference(stateEventEClass, STATE_EVENT__CONDITION);
+		createEReference(stateEventEClass, STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS);
+
+		changeEventEClass = createEClass(CHANGE_EVENT);
+		createEAttribute(changeEventEClass, CHANGE_EVENT__KIND);
+
+		timeEventEClass = createEClass(TIME_EVENT);
+		createEAttribute(timeEventEClass, TIME_EVENT__KIND);
+		createEAttribute(timeEventEClass, TIME_EVENT__TIME);
+
 		// Create enums
 		transitionKindEEnum = createEEnum(TRANSITION_KIND);
+		timeEventKindEEnum = createEEnum(TIME_EVENT_KIND);
+		changeEventKindEEnum = createEEnum(CHANGE_EVENT_KIND);
 	}
 
 	/**
@@ -1027,6 +1294,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		abstractCapabilityPkgEClass.getESuperTypes().add(theCapellacorePackage.getStructure());
 		genericTraceEClass.getESuperTypes().add(theCapellacorePackage.getTrace());
 		transfoLinkEClass.getESuperTypes().add(this.getGenericTrace());
+		justificationLinkEClass.getESuperTypes().add(this.getGenericTrace());
 		capabilityRealizationInvolvementEClass.getESuperTypes().add(theCapellacorePackage.getInvolvement());
 		capabilityRealizationInvolvedElementEClass.getESuperTypes().add(theCapellacorePackage.getInvolvedElement());
 		stateMachineEClass.getESuperTypes().add(theCapellacorePackage.getCapellaElement());
@@ -1037,6 +1305,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		finalStateEClass.getESuperTypes().add(this.getState());
 		abstractStateEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		abstractStateEClass.getESuperTypes().add(theModellingcorePackage.getIState());
+		stateTransitionEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		stateTransitionEClass.getESuperTypes().add(theCapellacorePackage.getRelationship());
 		pseudostateEClass.getESuperTypes().add(this.getAbstractState());
 		initialPseudoStateEClass.getESuperTypes().add(this.getPseudostate());
@@ -1046,6 +1315,15 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		terminatePseudoStateEClass.getESuperTypes().add(this.getPseudostate());
 		abstractStateRealizationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 		stateTransitionRealizationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
+		shallowHistoryPseudoStateEClass.getESuperTypes().add(this.getPseudostate());
+		deepHistoryPseudoStateEClass.getESuperTypes().add(this.getPseudostate());
+		entryPointPseudoStateEClass.getESuperTypes().add(this.getPseudostate());
+		exitPointPseudoStateEClass.getESuperTypes().add(this.getPseudostate());
+		stateEventRealizationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
+		stateEventEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
+		stateEventEClass.getESuperTypes().add(theBehaviorPackage.getAbstractEvent());
+		changeEventEClass.getESuperTypes().add(this.getStateEvent());
+		timeEventEClass.getESuperTypes().add(this.getStateEvent());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(abstractCapabilityPkgEClass, AbstractCapabilityPkg.class, "AbstractCapabilityPkg", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1056,6 +1334,8 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		initEReference(getGenericTrace_Target(), theModellingcorePackage.getTraceableElement(), null, "target", null, 1, 1, GenericTrace.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(transfoLinkEClass, TransfoLink.class, "TransfoLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(justificationLinkEClass, JustificationLink.class, "JustificationLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
 		initEClass(capabilityRealizationInvolvementEClass, CapabilityRealizationInvolvement.class, "CapabilityRealizationInvolvement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 		initEReference(getCapabilityRealizationInvolvement_InvolvedCapabilityRealizationInvolvedElement(), this.getCapabilityRealizationInvolvedElement(), null, "involvedCapabilityRealizationInvolvedElement", null, 1, 1, CapabilityRealizationInvolvement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1094,14 +1374,13 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		initEReference(getAbstractState_InvolverRegions(), this.getRegion(), null, "involverRegions", null, 0, -1, AbstractState.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(stateTransitionEClass, StateTransition.class, "StateTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getStateTransition_Guard(), ecorePackage.getEString(), "guard", null, 0, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getStateTransition_Kind(), this.getTransitionKind(), "kind", null, 0, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getStateTransition_TriggerDescription(), ecorePackage.getEString(), "triggerDescription", null, 0, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStateTransition_Guard(), theCapellacorePackage.getConstraint(), null, "guard", null, 0, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateTransition_Source(), this.getAbstractState(), this.getAbstractState_Outgoing(), "source", null, 1, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateTransition_Target(), this.getAbstractState(), this.getAbstractState_Incoming(), "target", null, 1, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateTransition_Effect(), theBehaviorPackage.getAbstractEvent(), null, "effect", null, 0, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getStateTransition_Trigger(), theBehaviorPackage.getAbstractEvent(), null, "trigger", null, 0, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getStateTransition_OwnedGuardCondition(), theModellingcorePackage.getAbstractConstraint(), null, "ownedGuardCondition", null, 0, 1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStateTransition_Triggers(), theBehaviorPackage.getAbstractEvent(), null, "triggers", null, 0, -1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateTransition_OwnedStateTransitionRealizations(), this.getStateTransitionRealization(), null, "ownedStateTransitionRealizations", null, 0, -1, StateTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateTransition_RealizedStateTransitions(), this.getStateTransition(), null, "realizedStateTransitions", null, 0, -1, StateTransition.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateTransition_RealizingStateTransitions(), this.getStateTransition(), null, "realizingStateTransitions", null, 0, -1, StateTransition.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1126,11 +1405,41 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		initEReference(getStateTransitionRealization_RealizedStateTransition(), this.getStateTransition(), null, "realizedStateTransition", null, 1, 1, StateTransitionRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getStateTransitionRealization_RealizingStateTransition(), this.getStateTransition(), null, "realizingStateTransition", null, 1, 1, StateTransitionRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
+		initEClass(shallowHistoryPseudoStateEClass, ShallowHistoryPseudoState.class, "ShallowHistoryPseudoState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(deepHistoryPseudoStateEClass, DeepHistoryPseudoState.class, "DeepHistoryPseudoState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(entryPointPseudoStateEClass, EntryPointPseudoState.class, "EntryPointPseudoState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(exitPointPseudoStateEClass, ExitPointPseudoState.class, "ExitPointPseudoState", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+
+		initEClass(stateEventRealizationEClass, StateEventRealization.class, "StateEventRealization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getStateEventRealization_RealizedEvent(), this.getStateEvent(), null, "realizedEvent", null, 1, 1, StateEventRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStateEventRealization_RealizingEvent(), this.getStateEvent(), null, "realizingEvent", null, 1, 1, StateEventRealization.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(stateEventEClass, StateEvent.class, "StateEvent", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEReference(getStateEvent_Condition(), theCapellacorePackage.getConstraint(), null, "condition", null, 0, 1, StateEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getStateEvent_OwnedStateEventRealizations(), this.getStateEventRealization(), null, "ownedStateEventRealizations", null, 0, -1, StateEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(changeEventEClass, ChangeEvent.class, "ChangeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getChangeEvent_Kind(), this.getChangeEventKind(), "kind", null, 0, 1, ChangeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+		initEClass(timeEventEClass, TimeEvent.class, "TimeEvent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEAttribute(getTimeEvent_Kind(), this.getTimeEventKind(), "kind", null, 0, 1, TimeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEAttribute(getTimeEvent_Time(), ecorePackage.getEString(), "time", null, 0, 1, TimeEvent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
 		// Initialize enums and add enum literals
 		initEEnum(transitionKindEEnum, TransitionKind.class, "TransitionKind"); //$NON-NLS-1$
 		addEEnumLiteral(transitionKindEEnum, TransitionKind.INTERNAL);
 		addEEnumLiteral(transitionKindEEnum, TransitionKind.LOCAL);
 		addEEnumLiteral(transitionKindEEnum, TransitionKind.EXTERNAL);
+
+		initEEnum(timeEventKindEEnum, TimeEventKind.class, "TimeEventKind"); //$NON-NLS-1$
+		addEEnumLiteral(timeEventKindEEnum, TimeEventKind.AT);
+		addEEnumLiteral(timeEventKindEEnum, TimeEventKind.AFTER);
+
+		initEEnum(changeEventKindEEnum, ChangeEventKind.class, "ChangeEventKind"); //$NON-NLS-1$
+		addEEnumLiteral(changeEventKindEEnum, ChangeEventKind.WHEN);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1198,7 +1507,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   new String[] {
 			 "metaclass", "Dependency", //$NON-NLS-1$ //$NON-NLS-2$
 			 "stereotype", "eng.TransfoLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																							
+		   });																																																																																																																																																																																																												
 	}
 
 	/**
@@ -1218,7 +1527,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																															
+		   });																																																																																																																																																																																																																																				
 	}
 
 	/**
@@ -1275,6 +1584,18 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   });										
 		addAnnotation
 		  (transfoLinkEClass, 
+		   source, 
+		   new String[] {
+			 "description", "specialized trace to keep track of relationships between source elements of a transformation, and destination elements.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical, epbs", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  (justificationLinkEClass, 
 		   source, 
 		   new String[] {
 			 "description", "specialized trace to keep track of relationships between source elements of a transformation, and destination elements.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
@@ -1514,15 +1835,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getStateTransition_Guard(), 
-		   source, 
-		   new String[] {
-			 "description", "specifies the guard of the state transition", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
 		  (getStateTransition_Kind(), 
 		   source, 
 		   new String[] {
@@ -1536,6 +1848,15 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   source, 
 		   new String[] {
 			 "description", "describes the trigger associated to the transition\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getStateTransition_Guard(), 
+		   source, 
+		   new String[] {
+			 "description", "specifies the guard of the state transition", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
@@ -1565,18 +1886,10 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getStateTransition_Trigger(), 
+		  (getStateTransition_Triggers(), 
 		   source, 
 		   new String[] {
-			 "description", "The event to be triggered", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getStateTransition_OwnedGuardCondition(), 
-		   source, 
-		   new String[] {
-			 "description", "A guard is a constraint that provides a fine-grained control over the firing of the transition. The guard is evaluated\r\nwhen an event occurrence is dispatched by the state machine. If the guard is true at that time, the transition may be\r\nenabled; otherwise, it is disabled. Guards should be pure expressions without side effects. Guard expressions with\r\nside effects are ill formed.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "description", "Specifies the triggers that may fire the transition.", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
@@ -1747,6 +2060,187 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "description", "kind=external implies that the transition, if triggered, will exit the composite (source) state.\r\n[source:UML Superstructure v2.2]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (shallowHistoryPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Shallow history represents the most recent active substate of its containing state (but not the substates of that substate).\r\nA composite state can have at most one shallow history vertex. A transition coming into the shallow history vertex is\r\nequivalent to a transition coming into the most recent active substate of a state. At most one transition may originate\r\nfrom the history connector to the default shallow history state. This transition is taken in case the composite state had\r\nnever been active before. The entry action of the state represented by the shallow history is performed.\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (deepHistoryPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "description", "Deep history represents the most recent active configuration of the composite state that directly contains this\r\npseudostate (e.g., the state configuration that was active when the composite state was last exited). A composite state\r\ncan have at most one deep history vertex. At most one transition may originate from the history connector to the default\r\ndeep history state. This transition is taken in case the composite state had never been active before. Entry actions of\r\nstates entered on the implicit direct path from the deep history to the innermost state(s) represented by a deep history\r\nare performed. The entry action is preformed only once for each state in the active state configuration being restored.\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (entryPointPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "description", "An entry point pseudostate is an entry point of a state machine or composite state. In each region of the state machine or\r\ncomposite state it has at most a single transition to a vertex within the same region.\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (exitPointPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "description", "An exit point pseudostate is an exit point of a state machine or composite state. Entering an exit point within any region\r\nof the composite state or state machine referenced by a submachine state implies the exit of this composite state or\r\nsubmachine state and the triggering of the transition that has this exit point as source in the state machine enclosing the\r\nsubmachine or composite state.\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (stateEventRealizationEClass, 
+		   source, 
+		   new String[] {
+			 "description", "a StateEventRealization is a specific kind of realization link between two StateEvent (typically of different design levels, or of different nature)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational,system,logical,physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getStateEventRealization_RealizedEvent(), 
+		   source, 
+		   new String[] {
+			 "description", "destination of the realization link : the state event that is being realized\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getStateEventRealization_RealizingEvent(), 
+		   source, 
+		   new String[] {
+			 "description", "the source of the realization link : the state event that is realizing another abstract state\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (stateEventEClass, 
+		   source, 
+		   new String[] {
+			 "description", "An event used in statemachine definition which occurs at a given condition. \r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage examples", "../img/usage_examples/example_statemachine.png", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
+		  (getStateEvent_OwnedStateEventRealizations(), 
+		   source, 
+		   new String[] {
+			 "description", "the realization links that are owned/contained in this StateEvent\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (changeEventEClass, 
+		   source, 
+		   new String[] {
+			 "description", "A change event occurs when a Boolean-valued expression becomes true. For example, as a result of a change in the value\r\nheld in a slot corresponding to an attribute, or a change in the value referenced by a link corresponding to an association.\r\nA change event is raised implicitly and is not the result of an explicit action\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getChangeEvent_Kind(), 
+		   source, 
+		   new String[] {
+			 "description", "specifies the type of the state ChangeEvent (see ChangeEventKind)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "refer to ChangeEventKind definition", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (timeEventEClass, 
+		   source, 
+		   new String[] {
+			 "description", "A time event specifies a point in time by an expression. The expression might be absolute or might be relative to some\r\nother point in time.\r\n[source: UML superstructure v2.4]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			 "usage guideline", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
+			 "used in levels", "operational, system, logical, physical", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "reference documentation", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getTimeEvent_Kind(), 
+		   source, 
+		   new String[] {
+			 "description", "specifies the type of the state TimeEvent (see TimeEventKind)\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "refer to TimeEventKind definition", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getTimeEvent_Time(), 
+		   source, 
+		   new String[] {
+			 "description", "Specifies the corresponding time deadline\r\n[source: UML superstructure v2.4]\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "type", "a string-based time value ", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (timeEventKindEEnum, 
+		   source, 
+		   new String[] {
+			 "description", "TimeEventKind is an enumeration type.\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (timeEventKindEEnum.getELiterals().get(0), 
+		   source, 
+		   new String[] {
+			 "description", "An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"\r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (timeEventKindEEnum.getELiterals().get(1), 
+		   source, 
+		   new String[] {
+			 "description", "A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d \r\n[source: UML superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (changeEventKindEEnum, 
+		   source, 
+		   new String[] {
+			 "description", "ChangeEventKind is an enumeration type.\r\n[source:Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (changeEventKindEEnum.getELiterals().get(0), 
+		   source, 
+		   new String[] {
+			 "description", "A change event occurs when a Boolean-valued expression becomes true.\r\n[source:UML Superstructure v2.4]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });	
 	}
 
@@ -1777,7 +2271,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getGenericTrace_Target(), 
 		   source, 
 		   new String[] {
-		   });																			
+		   });																							
 		addAnnotation
 		  (stateMachineEClass, 
 		   source, 
@@ -1883,17 +2377,17 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   new String[] {
 		   });				
 		addAnnotation
-		  (getStateTransition_Guard(), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
 		  (getStateTransition_Kind(), 
 		   source, 
 		   new String[] {
 		   });				
 		addAnnotation
 		  (getStateTransition_TriggerDescription(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getStateTransition_Guard(), 
 		   source, 
 		   new String[] {
 		   });				
@@ -1913,12 +2407,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   new String[] {
 		   });				
 		addAnnotation
-		  (getStateTransition_Trigger(), 
-		   source, 
-		   new String[] {
-		   });				
-		addAnnotation
-		  (getStateTransition_OwnedGuardCondition(), 
+		  (getStateTransition_Triggers(), 
 		   source, 
 		   new String[] {
 		   });					
@@ -1962,7 +2451,62 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (terminatePseudoStateEClass, 
 		   source, 
 		   new String[] {
-		   });																								
+		   });																												
+		addAnnotation
+		  (shallowHistoryPseudoStateEClass, 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (deepHistoryPseudoStateEClass, 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (entryPointPseudoStateEClass, 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (exitPointPseudoStateEClass, 
+		   source, 
+		   new String[] {
+		   });												
+		addAnnotation
+		  (stateEventEClass, 
+		   source, 
+		   new String[] {
+		   });			
+		addAnnotation
+		  (getStateEvent_Condition(), 
+		   source, 
+		   new String[] {
+		   });						
+		addAnnotation
+		  (changeEventEClass, 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getChangeEvent_Kind(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (timeEventEClass, 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getTimeEvent_Kind(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getTimeEvent_Time(), 
+		   source, 
+		   new String[] {
+		   });										
 	}
 
 	/**
@@ -1982,7 +2526,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																												
+		   });																																																																																																																																																																																																																																	
 	}
 
 	/**
@@ -2016,7 +2560,13 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   source, 
 		   new String[] {
 			 "Label", "TransfoLink" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																								
+		   });						
+		addAnnotation
+		  (justificationLinkEClass, 
+		   source, 
+		   new String[] {
+			 "Label", "JustificationLink" //$NON-NLS-1$ //$NON-NLS-2$
+		   });																																																																																																																																																																																																								
 	}
 
 	/**
@@ -2055,6 +2605,15 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   });										
 		addAnnotation
 		  (transfoLinkEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "uml::Dependency", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });					
+		addAnnotation
+		  (justificationLinkEClass, 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2264,14 +2823,6 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getStateTransition_Guard(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
 		  (getStateTransition_Kind(), 
 		   source, 
 		   new String[] {
@@ -2281,6 +2832,14 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		   });				
 		addAnnotation
 		  (getStateTransition_TriggerDescription(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getStateTransition_Guard(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
@@ -2312,18 +2871,10 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
 		addAnnotation
-		  (getStateTransition_Trigger(), 
+		  (getStateTransition_Triggers(), 
 		   source, 
 		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });				
-		addAnnotation
-		  (getStateTransition_OwnedGuardCondition(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "uml::Transition::guard", //$NON-NLS-1$ //$NON-NLS-2$
+			 "UML/SysML semantic equivalences", "uml::Transition::trigger", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });				
@@ -2470,6 +3021,175 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 			 "UML/SysML semantic equivalences", "uml::TransitionKind::external", //$NON-NLS-1$ //$NON-NLS-2$
 			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (shallowHistoryPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Pseudostate elements for which kind is shallowHistory" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (deepHistoryPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Pseudostate elements for which kind is deepHistory" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (entryPointPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Pseudostate elements for which kind is entry point" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (exitPointPseudoStateEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::Pseudostate", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "uml::Pseudostate elements for which kind is exit point" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (stateEventRealizationEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::Realization", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getStateEventRealization_RealizedEvent(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getStateEventRealization_RealizingEvent(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "Derived and transient", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (stateEventEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (getStateEvent_Condition(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::ChangeEvent::changeExpression if current element is a ChangeEvent\r\numl::TimeEvent::when if current element is a TimeEvent\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::ChangeEvent and uml::TimeEvent\r\n", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getStateEvent_OwnedStateEventRealizations(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "keyword::nearestpackage", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "Elements are contained in the nearest possible parent container.", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "Some elements on which StateEventRealization stereotype or any stereotype that inherits from it is applied" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (changeEventEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::ChangeEvent", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getChangeEvent_Kind(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (timeEventEClass, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "base metaclass in UML/SysML profile ", "uml::TimeEvent", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getTimeEvent_Kind(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (getTimeEvent_Time(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::TimeEvent::when", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });				
+		addAnnotation
+		  (timeEventKindEEnum, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::TransitionKind", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (timeEventKindEEnum.getELiterals().get(0), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative = false", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (timeEventKindEEnum.getELiterals().get(1), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::TimeEvent::isRelative = true", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (changeEventKindEEnum, 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "uml::TransitionKind", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });			
+		addAnnotation
+		  (changeEventKindEEnum.getELiterals().get(0), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });
 	}
 
@@ -2490,7 +3210,12 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (transfoLinkEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																						
+		   });					
+		addAnnotation
+		  (justificationLinkEClass, 
+		   source, 
+		   new String[] {
+		   });																																																																																																																																																																																																							
 	}
 
 	/**
@@ -2505,7 +3230,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getGenericTrace_KeyValuePairs(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																															
+		   });																																																																																																																																																																																																																				
 	}
 
 	/**
@@ -2525,7 +3250,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getGenericTrace_Target(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });														
 		addAnnotation
 		  (getCapabilityRealizationInvolvement_InvolvedCapabilityRealizationInvolvedElement(), 
 		   source, 
@@ -2565,7 +3290,7 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getAbstractState_InvolverRegions(), 
 		   source, 
 		   new String[] {
-		   });																																		
+		   });																															
 		addAnnotation
 		  (getStateTransition_RealizedStateTransitions(), 
 		   source, 
@@ -2595,7 +3320,17 @@ public class CapellacommonPackageImpl extends EPackageImpl implements Capellacom
 		  (getStateTransitionRealization_RealizingStateTransition(), 
 		   source, 
 		   new String[] {
-		   });										
+		   });																										
+		addAnnotation
+		  (getStateEventRealization_RealizedEvent(), 
+		   source, 
+		   new String[] {
+		   });				
+		addAnnotation
+		  (getStateEventRealization_RealizingEvent(), 
+		   source, 
+		   new String[] {
+		   });																																		
 	}
 
 } //CapellacommonPackageImpl

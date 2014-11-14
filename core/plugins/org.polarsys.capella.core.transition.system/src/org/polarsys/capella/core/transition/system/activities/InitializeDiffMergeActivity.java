@@ -33,13 +33,13 @@ public class InitializeDiffMergeActivity extends InitializeDiffMergeFromTransfor
   public static final String ID = "org.polarsys.capella.core.transition.system.activities.InitializeDiffMergeActivity"; //$NON-NLS-1$
 
   @Override
-  protected IHandler createDefaultTraceabilitySourceHandler() {
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
     ITraceabilityConfiguration configuration = new MergeSourceConfiguration();
     return new CompoundTraceabilityHandler(configuration);
   }
 
   @Override
-  protected IHandler createDefaultTraceabilityTargetHandler() {
+  protected IHandler createDefaultTraceabilityTargetHandler(IContext context_p) {
     ITraceabilityConfiguration configuration = new MergeTargetConfiguration();
     return new CompoundTraceabilityHandler(configuration);
   }

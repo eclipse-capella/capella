@@ -10,17 +10,32 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.oa;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.Collections;
+import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.oa.OaPackage;
 
 /**
  *
  */
-public class OperationalActor_AllocatedRoles extends Entity_AllocatedRoles implements IBusinessQuery {
+public class OperationalActor_AllocatedRoles implements IBusinessQuery {
 
   /**
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(OaPackage.Literals.ENTITY__OWNED_ROLE_ALLOCATIONS);
+	}
+
+	/**
    * @see org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles#getEClass()
    */
   @Override
@@ -28,4 +43,18 @@ public class OperationalActor_AllocatedRoles extends Entity_AllocatedRoles imple
     return OaPackage.Literals.OPERATIONAL_ACTOR;
   }
 
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ENTITY__ALLOCATED_ROLES, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ENTITY__ALLOCATED_ROLES, element_p, context);
+	}
+  
 }

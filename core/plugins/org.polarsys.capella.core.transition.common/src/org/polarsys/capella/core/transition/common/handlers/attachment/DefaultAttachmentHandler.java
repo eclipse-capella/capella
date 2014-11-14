@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
@@ -205,6 +204,14 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
   @Override
   public void removeElements(Collection<EObject> objects_p, IContext context_p) {
     //Nothing yet
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void createdElement(EObject element_p, EObject result_p, IContext context_p) {
+
   }
 
 }

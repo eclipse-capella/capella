@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.interaction;
 
 import org.eclipse.emf.common.util.EList;
+import org.polarsys.capella.core.data.capellacore.Constraint;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,8 +21,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getGuard <em>Guard</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getReferencedInteractionFragments <em>Referenced Interaction Fragments</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getGuard <em>Guard</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,7 +38,7 @@ public interface InteractionOperand extends InteractionFragment {
 
 
 	/**
-	 * Returns the value of the '<em><b>Guard</b></em>' attribute.
+	 * Returns the value of the '<em><b>Guard</b></em>' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -45,33 +46,30 @@ public interface InteractionOperand extends InteractionFragment {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Guard</em>' attribute.
-	 * @see #setGuard(String)
+	 * @return the value of the '<em>Guard</em>' reference.
+	 * @see #setGuard(Constraint)
 	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getInteractionOperand_Guard()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
 	 * @generated
 	 */
 
-	String getGuard();
+	Constraint getGuard();
 
 
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getGuard <em>Guard</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.InteractionOperand#getGuard <em>Guard</em>}' reference.
 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Guard</em>' attribute.
+	 * @param value the new value of the '<em>Guard</em>' reference.
 	 * @see #getGuard()
 	 * @generated
 	 */
 
-	void setGuard(String value);
-
-
-
+	void setGuard(Constraint value);
 
 
 

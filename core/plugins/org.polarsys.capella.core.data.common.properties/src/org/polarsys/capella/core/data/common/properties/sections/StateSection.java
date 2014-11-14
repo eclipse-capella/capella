@@ -21,13 +21,12 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.common.properties.Messages;
 import org.polarsys.capella.core.data.common.properties.controllers.StateController;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
@@ -40,13 +39,15 @@ public class StateSection extends AbstractStateSection {
 
   private MultipleSemanticField functionsField;
   private SimpleSemanticField activityField;
+  private SimpleSemanticField entryField;
+  private SimpleSemanticField exitField;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
     super.createControls(parent, aTabbedPropertySheetPage);
 
     Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
-    main.setLayout(new GridLayout(5, false));
+    main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     main.setLayoutData(gd);
@@ -56,18 +57,24 @@ public class StateSection extends AbstractStateSection {
     activityField = new SimpleSemanticField(main, Messages.getString("State.Activity"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
     activityField.setDisplayedInWizard(displayedInWizard);
 
+    entryField = new SimpleSemanticField(main, Messages.getString("State.Entry"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    entryField.setDisplayedInWizard(displayedInWizard);
+
+    exitField = new SimpleSemanticField(main, Messages.getString("State.Exit"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    exitField.setDisplayedInWizard(displayedInWizard);
+
     functionsField = new MultipleSemanticField(main, Messages.getString("State.Functions"), getWidgetFactory(), new StateController()) { //$NON-NLS-1$
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("unchecked")
-      @Override
-      protected void removeAllDataValue(EObject object_p, EStructuralFeature feature_p) {
-        for (EObject referencer : EObjectExt.getReferencers(object_p, (EReference) feature_p)) {
-          ((List<EObject>) referencer.eGet(feature_p)).remove(object_p);
-        }
-      }
-    };
+          /**
+           * {@inheritDoc}
+           */
+          @SuppressWarnings("unchecked")
+          @Override
+          protected void removeAllDataValue(EObject object_p, EStructuralFeature feature_p) {
+            for (EObject referencer : EObjectExt.getReferencers(object_p, (EReference) feature_p)) {
+              ((List<EObject>) referencer.eGet(feature_p)).remove(object_p);
+            }
+          }
+        };
     functionsField.setDisplayedInWizard(displayedInWizard);
 
   }
@@ -80,6 +87,9 @@ public class StateSection extends AbstractStateSection {
     super.loadData(capellaElement_p);
 
     activityField.loadData(capellaElement_p, CapellacommonPackage.Literals.STATE__DO_ACTIVITY);
+    entryField.loadData(capellaElement_p, CapellacommonPackage.Literals.STATE__ENTRY);
+    exitField.loadData(capellaElement_p, CapellacommonPackage.Literals.STATE__EXIT);
+
     functionsField.loadData(capellaElement_p, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES);
   }
 
@@ -101,6 +111,8 @@ public class StateSection extends AbstractStateSection {
 
     fields.addAll(super.getSemanticFields());
     fields.add(activityField);
+    fields.add(entryField);
+    fields.add(exitField);
     fields.add(functionsField);
 
     return fields;

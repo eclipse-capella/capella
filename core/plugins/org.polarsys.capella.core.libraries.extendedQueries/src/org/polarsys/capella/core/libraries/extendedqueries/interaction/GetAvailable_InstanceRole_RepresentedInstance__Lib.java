@@ -18,9 +18,9 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
@@ -38,7 +38,7 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.queries.helpers.QueryExt;
@@ -53,10 +53,10 @@ public class GetAvailable_InstanceRole_RepresentedInstance__Lib extends Abstract
       Scenario scenario = (Scenario) capellaElement.eContainer();
       SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(capellaElement);
       if (sysEng != null) {
-        IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(capellaElement);
-        Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-        for (IAbstractLibrary library : libraries) {
-          ModellingArchitecture block = (ModellingArchitecture) QueryExt.getCorrespondingElementInLibrary(capellaElement, (CapellaLibrary) library);
+        IModel currentProject =  ILibraryManager.INSTANCE.getModel(capellaElement);
+        Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+        for (IModel library : libraries) {
+          ModellingArchitecture block = (ModellingArchitecture) QueryExt.getCorrespondingElementInLibrary(capellaElement, (CapellaModel) library);
           Collection<Part> excluded = new ArrayList<Part>();
           for (InstanceRole instRole : scenario.getOwnedInstanceRoles()) {
             if (instRole.getRepresentedInstance() instanceof Part) {

@@ -17,13 +17,12 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
  * @see Progress Monitoring label provider.
@@ -44,7 +43,7 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
    * @param foregroundColorForReferencingElements_p must be a {@link SWT#COLOR} constant.
    */
   public ProgressMonitoringLabelProvider(TreeViewer viewer_p, int foregroundColorForReferencingElements_p) {
-    super(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
+    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
     _foregroundColor = foregroundColorForReferencingElements_p;
     _viewer = viewer_p;
   }

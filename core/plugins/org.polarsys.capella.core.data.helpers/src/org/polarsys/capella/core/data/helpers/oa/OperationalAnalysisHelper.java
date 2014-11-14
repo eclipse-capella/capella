@@ -13,11 +13,12 @@ package org.polarsys.capella.core.data.helpers.oa;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentHelper;
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.NamedElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.RelationshipHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
+import org.polarsys.capella.core.data.helpers.cs.delegates.ComponentHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.ActivityAllocationHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.CommunicationMeanHelper;
 import org.polarsys.capella.core.data.helpers.oa.delegates.EntityHelper;
@@ -60,8 +61,6 @@ import org.polarsys.capella.core.data.oa.RoleAllocation;
 import org.polarsys.capella.core.data.oa.RoleAssemblyUsage;
 import org.polarsys.capella.core.data.oa.RolePkg;
 import org.polarsys.capella.core.data.oa.Swimlane;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 
 public class OperationalAnalysisHelper implements IHelper {

@@ -32,7 +32,7 @@ public class CapellaDiffPolicy extends SiriusDiffPolicy {
     );
   
   /**
-   * @see org.eclipse.emf.diffmerge.ui.SiriusDiffPolicy#coverValue(java.lang.Object, org.eclipse.emf.ecore.EAttribute)
+   * @see org.polarsys.capella.common.consonance.ui.sirius.SiriusDiffPolicy#coverValue(java.lang.Object, org.eclipse.emf.ecore.EAttribute)
    */
   @Override
   public boolean coverValue(Object value_p, EAttribute attribute_p) {

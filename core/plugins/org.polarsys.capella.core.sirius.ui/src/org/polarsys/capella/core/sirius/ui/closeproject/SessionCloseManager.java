@@ -31,19 +31,16 @@ import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.polarsys.capella.core.libraries.manager.LibraryManagerExt;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaModel;
-import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
-import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  */
@@ -64,24 +61,25 @@ public class SessionCloseManager {
     return result;
   }
 
-  public static boolean doesContainModifiedResources(CapellaModel model) {
-    if (DEBUG) {
-      System.out.println("> doesContainModifiedResources");
-      System.out.println("  >> model : " + model);
-    }
-    List<Resource> ownedResources = model.getOwnedResources();
-    boolean changesFound = false;
-    for (int i = 0; !changesFound && (i < ownedResources.size()); i++) {
-      Resource resource = ownedResources.get(i);
-      if (hasChangesToSave(resource)) {
-        changesFound = true;
-      }
-    }
-    if (DEBUG) {
-      System.out.println("  << " + changesFound);
-    }
-    return changesFound;
-  }
+  //
+  //  public static boolean doesContainModifiedResources(CapellaModel model) {
+  //    if (DEBUG) {
+  //      System.out.println("> doesContainModifiedResources");
+  //      System.out.println("  >> model : " + model);
+  //    }
+  //    List<Resource> ownedResources = model.getOwnedResources();
+  //    boolean changesFound = false;
+  //    for (int i = 0; !changesFound && (i < ownedResources.size()); i++) {
+  //      Resource resource = ownedResources.get(i);
+  //      if (hasChangesToSave(resource)) {
+  //        changesFound = true;
+  //      }
+  //    }
+  //    if (DEBUG) {
+  //      System.out.println("  << " + changesFound);
+  //    }
+  //    return changesFound;
+  //  }
 
   // COPIED FROM CapellaSavingPolicy (part of PATCH DUE TO TIG LIMITATIONS (LIBRARIES CONTEXT))
   private static Map<?, ?> saveOptions;
@@ -172,21 +170,22 @@ public class SessionCloseManager {
     return result;
   }
 
-  /** calculate the set of all models (libraries and project) that reference or are referenced by the current model */
-  public static List<CapellaModel> getLibraryGraphSet(CapellaModel currentModel) {
-    if (DEBUG) {
-      System.out.println("> getLibraryGraphSet");
-      System.out.println("  >> currentModel : " + currentModel);
-    }
-    List<CapellaModel> models = LibraryManagerExt.computeGraphSet(currentModel);
-    if (DEBUG) {
-      System.out.println("  << ");
-      for (CapellaModel model : models) {
-        System.out.println("     " + model);
-      }
-    }
-    return models;
-  }
+  //
+  //  /** calculate the set of all models (libraries and project) that reference or are referenced by the current model */
+  //  public static List<CapellaModel> getLibraryGraphSet(CapellaModel currentModel) {
+  //    if (DEBUG) {
+  //      System.out.println("> getLibraryGraphSet");
+  //      System.out.println("  >> currentModel : " + currentModel);
+  //    }
+  //    List<CapellaModel> models = LibraryManagerExt.computeGraphSet(currentModel);
+  //    if (DEBUG) {
+  //      System.out.println("  << ");
+  //      for (CapellaModel model : models) {
+  //        System.out.println("     " + model);
+  //      }
+  //    }
+  //    return models;
+  //  }
 
   public static void closeSession(Session session) {
     closeSession(session, null);
@@ -235,11 +234,11 @@ public class SessionCloseManager {
       CrossReferencerHelper.enableResolution(false);
       for (Resource resource : session.getAllSessionResources()) {
         resource.unload();
-        MDEAdapterFactory.getResourceSet().getResources().remove(resource);
+        TransactionHelper.getEditingDomain(session).getResourceSet().getResources().remove(resource);
       }
       for (Resource resource : session.getSemanticResources()) {
         resource.unload();
-        MDEAdapterFactory.getResourceSet().getResources().remove(resource);
+        TransactionHelper.getEditingDomain(session).getResourceSet().getResources().remove(resource);
       }
     } finally {
       CrossReferencerHelper.enableResolution(value);

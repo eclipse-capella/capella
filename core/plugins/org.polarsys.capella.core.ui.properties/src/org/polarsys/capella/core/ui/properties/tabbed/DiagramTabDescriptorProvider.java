@@ -22,7 +22,7 @@ public class DiagramTabDescriptorProvider extends FixedTabDescriptorProvider {
    * @param id_p
    */
   public DiagramTabDescriptorProvider() {
-    super("org.eclipse.sirius.diagram");
+    super("org.eclipse.sirius.diagram.ui");
     addDescriptor(new SubPropertiesTabDescriptorProvider());
   }
 

@@ -77,6 +77,7 @@ public class InterfaceItemProvider
 			addProvisionedInterfaceAllocationsPropertyDescriptor(object);
 			addAllocatedInterfacesPropertyDescriptor(object);
 			addMechanismPropertyDescriptor(object);
+			addStructuralPropertyDescriptor(object);
 			addImplementorComponentsPropertyDescriptor(object);
 			addUserComponentsPropertyDescriptor(object);
 			addInterfaceImplementationsPropertyDescriptor(object);
@@ -175,6 +176,33 @@ public class InterfaceItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Structural feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addStructuralPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Interface_structural_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_Interface_structural_feature", "_UI_Interface_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CsPackage.Literals.INTERFACE__STRUCTURAL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 		// begin-extension-code
 				 null));
@@ -650,8 +678,21 @@ public class InterfaceItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Object getImageGen(Object object) {
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Interface")); //$NON-NLS-1$
+	}
+
+	/**
+	 * This returns Interface.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 */
 	@Override
 	public Object getImage(Object object) {
+	    Interface itf = (Interface) object;
+	    if (!itf.isStructural()) {
+	      return overlayImage(object, getResourceLocator().getImage("full/obj16/Interface_Technical")); //$NON-NLS-1$
+	    }
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/Interface")); //$NON-NLS-1$
 	}
 
@@ -692,6 +733,7 @@ public class InterfaceItemProvider
 
 		switch (notification.getFeatureID(Interface.class)) {
 			case CsPackage.INTERFACE__MECHANISM:
+			case CsPackage.INTERFACE__STRUCTURAL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CsPackage.INTERFACE__OWNED_INTERFACE_ALLOCATIONS:

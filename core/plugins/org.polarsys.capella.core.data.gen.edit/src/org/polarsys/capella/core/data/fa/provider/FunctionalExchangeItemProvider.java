@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.modellingcore.ModellingcoreFactory;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -1332,6 +1333,18 @@ public class FunctionalExchangeItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
                          InformationFactory.eINSTANCE.createCollectionValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -1500,6 +1513,18 @@ public class FunctionalExchangeItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
                          InformationFactory.eINSTANCE.createCollectionValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -1668,6 +1693,18 @@ public class FunctionalExchangeItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
                          InformationFactory.eINSTANCE.createCollectionValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
@@ -1826,6 +1863,18 @@ public class FunctionalExchangeItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

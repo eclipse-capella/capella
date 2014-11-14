@@ -268,7 +268,7 @@
       </propertySections>
    </extension>
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
-	  <propertySections contributorId="org.eclipse.sirius.diagram">
+	  <propertySections contributorId="org.eclipse.sirius.diagram.ui">
          <propertySection
                class="org.polarsys.capella.core.data.oa.properties.sections.ActivityAllocationSection"
                filter="org.polarsys.capella.core.data.oa.properties.sections.ActivityAllocationSection"

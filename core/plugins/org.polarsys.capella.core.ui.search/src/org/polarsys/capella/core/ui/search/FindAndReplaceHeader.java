@@ -66,16 +66,17 @@ public class FindAndReplaceHeader extends Composite {
     gridLayout.marginWidth = 2;
     gridLayout.verticalSpacing = 0;
     setLayout(gridLayout);
+    setLayoutData(new GridData(GridData.FILL, GridData.FILL, true, true));
 
     Composite composite = new Composite(this, SWT.NONE);
-    GridData gd_composite = new GridData(SWT.LEFT, SWT.TOP, true, false, 1, 1);
+    GridData gd_composite = new GridData(GridData.FILL, SWT.TOP, true, false, 1, 1);
     gd_composite.widthHint = 450;
     composite.setLayoutData(gd_composite);
 
     GridLayout gl_composite = new GridLayout(2, false);
-    gl_composite.marginLeft = 10;
+    //gl_composite.marginLeft = 10;
     gl_composite.verticalSpacing = 2;
-    gl_composite.marginWidth = 4;
+    //gl_composite.marginWidth = 4;
     gl_composite.marginTop = 1;
     composite.setLayout(gl_composite);
 
@@ -99,7 +100,7 @@ public class FindAndReplaceHeader extends Composite {
     gd_composite.widthHint = 466;
 
     Group grpOptions = new Group(this, SWT.NONE);
-    GridData gd_grpOptions = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
+    GridData gd_grpOptions = new GridData(GridData.FILL, SWT.CENTER, true, false, 1, 1);
     gd_grpOptions.widthHint = 450;
     grpOptions.setLayoutData(gd_grpOptions);
     grpOptions.setText("Options"); //$NON-NLS-1$
@@ -131,15 +132,15 @@ public class FindAndReplaceHeader extends Composite {
     _btnCheckButton_1.setText("Update description hyperlinks");
 
     _composite = new Composite(this, SWT.NONE);
-    GridData gd_composite2 = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
+    GridData gd_composite2 = new GridData(GridData.FILL, SWT.CENTER, true, false, 1, 1);
     gd_composite2.widthHint = 476;
     _composite.setLayoutData(gd_composite2);
     GridLayout gl_composite2 = new GridLayout(2, false);
-    gl_composite2.marginWidth = 10;
+    //gl_composite2.marginWidth = 10;
     _composite.setLayout(gl_composite2);
 
     Group group = new Group(_composite, SWT.NONE);
-    GridData gd_group = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
+    GridData gd_group = new GridData(GridData.FILL, SWT.CENTER, true, false, 1, 1);
     gd_group.heightHint = 30;
     gd_group.widthHint = 224;
     group.setLayoutData(gd_group);
@@ -164,7 +165,7 @@ public class FindAndReplaceHeader extends Composite {
     new Label(group, SWT.NONE);
 
     Group grpScope = new Group(_composite, SWT.NONE);
-    GridData gd_grpScope = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
+    GridData gd_grpScope = new GridData(GridData.FILL, SWT.CENTER, true, false, 1, 1);
     gd_grpScope.heightHint = 30;
     gd_grpScope.widthHint = 215;
     grpScope.setLayoutData(gd_grpScope);
@@ -184,7 +185,7 @@ public class FindAndReplaceHeader extends Composite {
     impact_group = new Group(this, SWT.NONE);
     GridLayout gl_impact_group = new GridLayout(9, true);
     impact_group.setLayout(gl_impact_group);
-    gd_impact_group = new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1);
+    gd_impact_group = new GridData(GridData.FILL, SWT.CENTER, true, false, 1, 1);
     gd_impact_group.heightHint = 30;
     gd_impact_group.widthHint = 450;
     impact_group.setLayoutData(gd_impact_group);
@@ -192,7 +193,7 @@ public class FindAndReplaceHeader extends Composite {
 
     Label lblNewLabel_1 = new Label(impact_group, SWT.NONE);
     GridData gd_lblNewLabel_1 = new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1);
-    gd_lblNewLabel_1.widthHint = 30;
+    gd_lblNewLabel_1.widthHint = 35;
     lblNewLabel_1.setLayoutData(gd_lblNewLabel_1);
     lblNewLabel_1.setText("Name:"); //$NON-NLS-1$
 

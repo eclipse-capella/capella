@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 
@@ -113,7 +113,7 @@ public class DiagramHelper {
     if (current_p instanceof DDiagram) {
       return ((DDiagram) current_p);
     }
-    return (DDiagram) EcoreUtil2.getFirstContainer(current_p, ViewpointPackage.Literals.DDIAGRAM);
+    return (DDiagram) EcoreUtil2.getFirstContainer(current_p, DiagramPackage.Literals.DDIAGRAM);
   }
 
   public RepresentationDescription getDescription(Session session_p, String descriptionId_p) {

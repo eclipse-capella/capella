@@ -191,6 +191,10 @@ public class DatavalueAdapterFactory extends AdapterFactoryImpl {
 				return createUnaryExpressionAdapter();
 			}
 			@Override
+			public Adapter caseOpaqueExpression(OpaqueExpression object) {
+				return createOpaqueExpressionAdapter();
+			}
+			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
@@ -549,6 +553,20 @@ public class DatavalueAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createUnaryExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression <em>Opaque Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.polarsys.capella.core.data.information.datavalue.OpaqueExpression
+	 * @generated
+	 */
+	public Adapter createOpaqueExpressionAdapter() {
 		return null;
 	}
 

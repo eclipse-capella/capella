@@ -24,8 +24,8 @@ public class ExchangeItemElementExt {
    */
   public static void changeExchangeItemElementKind(ExchangeItemElement element_p, ExchangeMechanism mechanism) {
     if (mechanism == ExchangeMechanism.OPERATION) {
-      if (element_p.getKind() != ElementKind.PARAMETER) {
-        element_p.setKind(ElementKind.PARAMETER);
+      if (element_p.getKind() != ElementKind.MEMBER) {
+        element_p.setKind(ElementKind.MEMBER);
       }
     } else {
       if (element_p.getKind() != ElementKind.TYPE) {

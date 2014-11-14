@@ -36,7 +36,7 @@ public class SuffixesProperty extends AbstractProperty implements IModifiedPrope
   @Override
   public Object getValue(IPropertyContext context_p) {
     CatalogElement target =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
     IContext context = (IContext) context_p.getSource();
     if (target != null) {
       for (CatalogElementLink link : target.getOwnedLinks()) {
@@ -49,7 +49,7 @@ public class SuffixesProperty extends AbstractProperty implements IModifiedPrope
     }
 
     CatalogElement source =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
     if (source != null) {
 
       for (CatalogElementLink link : source.getOwnedLinks()) {
@@ -100,7 +100,7 @@ public class SuffixesProperty extends AbstractProperty implements IModifiedPrope
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET };
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET };
   }
 
   /**

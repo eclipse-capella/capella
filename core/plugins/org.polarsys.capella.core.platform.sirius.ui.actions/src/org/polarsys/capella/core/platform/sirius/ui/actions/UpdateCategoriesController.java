@@ -89,7 +89,7 @@ abstract public class UpdateCategoriesController {
     for (EObject cat : categories) {
       if (cat instanceof NamedElement) {
         _logger.info(new EmbeddedMessage(StringHelper.formatMessage(message, new String[] { ((NamedElement) cat).getName() }),
-            IReportManagerDefaultComponents.MODEL, categories));
+            IReportManagerDefaultComponents.MODEL, cat));
       }
     }
   }

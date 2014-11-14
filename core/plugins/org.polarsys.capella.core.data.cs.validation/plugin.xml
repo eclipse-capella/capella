@@ -19,46 +19,6 @@
          </package>
          <constraints
                categories="capella.category/design/well-formedness/dataflows">
-            <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.physicalPort.PhysicalPortOnBehaviourPC"
-                  id="DWF_DF_09"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_DF_09 - PhysicalPort on BehaviourPC"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <description>
-                  This rule ensures that PhysicalPort is not contained in BehaviourPC.
-
-BehaviourPC=Physical Component of nature BEHAVIOUR
-               </description>
-               <target
-                     class="PhysicalPort">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.physicalPath.PhysicalPathComponentExchangeAllocation"
-                  id="DWF_DF_13"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="DWF_DF_13 - PhysicalPath allocated CE"
-                  severity="WARNING"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-               <description>
-                  This rule checks that a PhysicalPath should allocated component exchage between its path.
-               </description>
-               <target
-                     class="PhysicalPath">
-               </target>
-            </constraint>
          </constraints>
          <constraints
                categories="capella.category/design/well-formedness/interfaces">
@@ -87,17 +47,17 @@ BehaviourPC=Physical Component of nature BEHAVIOUR
                   isEnabledByDefault="true"
                   lang="java"
                   mode="Batch"
-                  name="DWF_I_05 - Component Communication Link kind"
+                  name="DWF_I_05 - No Equivalent Component Communication Links"
                   severity="ERROR"
                   statusCode="1">
                <message>
-                  {0}(Component) has more than one {2} CommunicationLink targeting {3}(ExchangeItem)
+                  {0}(Component) has {1} equivalent Communication Links (kind = {2}, protocol = {3}) targeting {4}(ExchangeItem)
                </message>
                <target
                      class="Component">
                </target>
                <description>
-                  This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item.
+                  This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item with the same protocol.
                </description>
             </constraint>
             <constraint
@@ -179,6 +139,139 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                      class="ExchangeItemAllocation">
                </target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.TechnicalInterfaceRepresentAllCommunicationLinks"
+                  id="DWF_I_14"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_14 -  Technical interface represent all communication links"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) does not represents all the communication links from {1} (Component) to {2} (Component). Exchange items {3} should be allocated to this interface.
+               </message>
+               <description>
+                  This rule checks that an existing technical interface between two Components represent all the Communication Links with the same direction between those two components.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.ExchangeItemAllocationForTechnicalInterfaceHasCommunicationLink"
+                  id="DWF_I_15"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_15 -  Exchange Item Allocation For Technical Interface Has Communication Link"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  There is no corresponding communication link from component {0} to component {1} for the exchange item {2} that is allocated to interface {3}.
+               </message>
+               <description>
+                  This rule checks that for each Exchange Item Allocation of a technical Interface, there is a Communication Link associated to it.
+               </description>
+               <target
+                     class="ExchangeItemAllocation">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.TechnicalInterfacesAreNotProvidedOrRequired"
+                  id="DWF_I_16"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_16 -  Technical interfaces are not provided or required"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) can not be provided or required by components since it is a technical interface ({1}).
+               </message>
+               <description>
+                  This rule checks that technical interfaces are not provided or required
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.AtMostOneTechnicalInterfaceBetweenTwoComponents"
+                  id="DWF_I_17"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_17 - At most one technical interface between two components"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Couple of components ({0}, {1}) has more than one technical interfaces ({2}).
+               </message>
+               <description>
+                  This rule checks that there is at most one technical Interfaces by couple of component (direction is meaningful).
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.TechnicalInterfacesShouldNotBeUsedByMoreThanOneComponent"
+                  id="DWF_I_18"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_18 - Technical interfaces should not be used by more than one component"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Technical interface {0} is used by more than one component ({1}).
+               </message>
+               <description>
+                  This rule checks that a technical interfaces should not be used by more than one component.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.TechnicalInterfacesShouldNotBeImplementedByMoreThanOneComponent"
+                  id="DWF_I_19"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_19 - Technical interfaces should not be implemented by more than one component"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Technical interface {0} is implemented by more than one component ({1}).
+               </message>
+               <description>
+                  This rule checks that a technical interfaces should not be implemented by more than one component
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.IntefaceDoesNotContainSimilarExchangeItemAllocation"
+                  id="DWF_I_20"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_20 - Interface does not contain similar Exchange Item Allocation"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}(Interface) has {1} equivalent Exchange Item Allocation (protocols = {2}, {3}) targeting {4}(ExchangeItem)
+               </message>
+               <description>
+                  This rule checks that an interface does not contain similar Exchange Item Allocation (that target the same Exchange Item and have same protocols).
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>            
          </constraints>
          <constraints
                categories="capella.category/design/well-formedness/components">
@@ -219,6 +312,46 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                <description>
                   This rule ensures that each parts of a component have the same level (i.e context, logical, physical,...) that the component itself.
                </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalPath.PhysicalPathComponentExchangeAllocation"
+                  id="DWF_DC_33"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_33 - PhysicalPath allocated CE"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule checks that a PhysicalPath should allocated component exchage between its path.
+               </description>
+               <target
+                     class="PhysicalPath">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalPort.PhysicalPortOnBehaviourPC"
+                  id="DWF_DC_30"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_30 - PhysicalPort on BehaviourPC"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that PhysicalPort is not contained in BehaviourPC.
+
+BehaviourPC=Physical Component of nature BEHAVIOUR
+               </description>
+               <target
+                     class="PhysicalPort">
+               </target>
             </constraint>
             <constraint
                   class="org.polarsys.capella.core.data.cs.validation.componentcontext.MDCHK_ComponentContext_AbstractActor_Part"
@@ -398,25 +531,6 @@ If an ExchangeItemAllocation is on SystemArchitecture layer. It should not alloc
                </description>
                <target
                      class="ComponentContext">
-               </target>
-            </constraint>
-            <constraint
-                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_OperationsSignatureUniqueness"
-                  id="I_18"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="I_18 - Interface operation signature check"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  {0} (Interface) contains {1} several times with the same signature.
-               </message>
-               <description>
-                  This rule checks that an Interface does not contain the same operation several times.
-               </description>
-               <target
-                     class="Interface">
                </target>
             </constraint>
             <constraint
@@ -710,6 +824,32 @@ This rule is applied to a Function Port and checks that all Exchange Items alloc
                      class="ModelElement">
                </target>
             </constraint>
+            
+            </constraints>
+            <constraints
+               categories="capella.category/design/well-formedness/interfaces">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.InterfaceAndExchangeItemsLocationConsistency"
+                  id="DWF_I_13"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_13 - Interface and Exchange item location check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The element {0} is linked through {3} [{2}] to {1} which is defined outside its namespace
+               </message>
+               <description>
+                  This rule checks if a component is linked to interfaces and exchange items which are defined in a unavailable location (for instance a component should not be linked to an inner interface of another component)
+               </description>
+               <target
+                     class="ModelElement">
+               </target>
+            </constraint>
+            
+            
+            
          </constraints>
       </constraintProvider>
    </extension>

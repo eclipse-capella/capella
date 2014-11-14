@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.console,
  org.polarsys.capella.common.tools.report.appenders.console,
  org.eclipse.debug.ui
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.platform.eclipse.tools.report.console
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

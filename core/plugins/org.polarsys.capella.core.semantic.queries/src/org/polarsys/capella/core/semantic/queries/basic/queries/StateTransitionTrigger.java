@@ -13,9 +13,9 @@ package org.polarsys.capella.core.semantic.queries.basic.queries;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.common.data.behavior.AbstractEvent;
 import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
 
 /**
  * Return trigger vale of given StateTransition
@@ -35,12 +35,14 @@ public class StateTransitionTrigger implements IQuery {
     List<Object> result = new ArrayList<Object>();
     if (object_p instanceof StateTransition) {
       // cast
-      StateTransition ele = (StateTransition)object_p;
-      // get trigger value of the stateTransition
-      AbstractEvent trigger = ele.getTrigger();
-      // check null value
-      if (null != trigger) {
-        result.add(trigger);
+      StateTransition ele = (StateTransition) object_p;
+
+      for (AbstractEvent trigger : ele.getTriggers()) {
+        // get trigger value of the stateTransition
+        // check null value
+        if (null != trigger) {
+          result.add(trigger);
+        }
       }
     }
     return result;

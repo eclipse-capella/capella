@@ -40,6 +40,8 @@ import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.requirement.RequirementFactory;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
 
 /**
@@ -57,6 +59,19 @@ public class ScenarioItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor preConditionPropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor postConditionPropertyDescriptor;
+
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -64,6 +79,41 @@ public class ScenarioItemProvider
 	 */
 	public ScenarioItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process InteractionPackage.Literals.SCENARIO__PRE_CONDITION
+			if (preConditionPropertyDescriptor != null) {
+				Object preConditionValue = eObject.eGet(InteractionPackage.Literals.SCENARIO__PRE_CONDITION, true);
+				if (preConditionValue != null && preConditionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) preConditionValue)) {
+					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);
+				} else if (preConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO__PRE_CONDITION) != null) {
+					itemPropertyDescriptors.remove(preConditionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(preConditionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(preConditionPropertyDescriptor);
+				}
+			}
+			// Process InteractionPackage.Literals.SCENARIO__POST_CONDITION
+			if (postConditionPropertyDescriptor != null) {
+				Object postConditionValue = eObject.eGet(InteractionPackage.Literals.SCENARIO__POST_CONDITION, true);
+				if (postConditionValue != null && postConditionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) postConditionValue)) {
+					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);
+				} else if (postConditionValue == null && ExtensionModelManager.getAnyType(eObject, InteractionPackage.Literals.SCENARIO__POST_CONDITION) != null) {
+					itemPropertyDescriptors.remove(postConditionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(postConditionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(postConditionPropertyDescriptor);
+				}
+			}
+		}		
 	}
 
 	/**
@@ -82,10 +132,10 @@ public class ScenarioItemProvider
 			addIsControlOperatorPropertyDescriptor(object);
 			addOwnedParameterSetPropertyDescriptor(object);
 			addOwnedParameterPropertyDescriptor(object);
-			addPreConditionPropertyDescriptor(object);
-			addPostConditionPropertyDescriptor(object);
 			addKindPropertyDescriptor(object);
 			addMergedPropertyDescriptor(object);
+			addPreConditionPropertyDescriptor(object);
+			addPostConditionPropertyDescriptor(object);
 			addContainedFunctionsPropertyDescriptor(object);
 			addContainedPartsPropertyDescriptor(object);
 			addReferencedScenariosPropertyDescriptor(object);
@@ -240,11 +290,9 @@ public class ScenarioItemProvider
 	 * @generated
 	 */
 	protected void addPreConditionPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		preConditionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Scenario_preCondition_feature"), //$NON-NLS-1$
@@ -252,11 +300,12 @@ public class ScenarioItemProvider
 				 InteractionPackage.Literals.SCENARIO__PRE_CONDITION,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(preConditionPropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -267,11 +316,9 @@ public class ScenarioItemProvider
 	 * @generated
 	 */
 	protected void addPostConditionPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		postConditionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_Scenario_postCondition_feature"), //$NON-NLS-1$
@@ -279,11 +326,12 @@ public class ScenarioItemProvider
 				 InteractionPackage.Literals.SCENARIO__POST_CONDITION,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(postConditionPropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -563,8 +611,6 @@ public class ScenarioItemProvider
 
 		switch (notification.getFeatureID(Scenario.class)) {
 			case InteractionPackage.SCENARIO__IS_CONTROL_OPERATOR:
-			case InteractionPackage.SCENARIO__PRE_CONDITION:
-			case InteractionPackage.SCENARIO__POST_CONDITION:
 			case InteractionPackage.SCENARIO__KIND:
 			case InteractionPackage.SCENARIO__MERGED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
@@ -648,6 +694,18 @@ public class ScenarioItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
                          CapellacommonFactory.eINSTANCE.createTransfoLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createJustificationLink());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

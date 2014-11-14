@@ -10,3 +10,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 /themes/capella/graphics/launchbar/migrate16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/migrate16.png
 /themes/capella/graphics/launchbar/overview16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/overview16.png
 /themes/capella/graphics/launchbar/samples16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/samples16.png
+/themes/capella/graphics/launchbar/whatsnew16.png - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/launchbar/whatsnew16.png

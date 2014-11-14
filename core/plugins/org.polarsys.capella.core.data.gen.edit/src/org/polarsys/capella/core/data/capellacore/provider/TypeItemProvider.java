@@ -636,7 +636,7 @@ public class TypeItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
+                        (ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS,
                          CapellacoreFactory.eINSTANCE.createConstraint());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -758,6 +758,18 @@ public class TypeItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
                          CapellacommonFactory.eINSTANCE.createTransfoLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createJustificationLink());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

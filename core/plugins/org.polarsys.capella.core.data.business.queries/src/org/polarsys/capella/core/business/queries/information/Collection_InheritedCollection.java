@@ -10,92 +10,52 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.information;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
-import org.polarsys.capella.core.data.information.Collection;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.model.utils.ListExt;
 
 /**
  * This is the query for the Collection type inherited type
  */
-public class Collection_InheritedCollection extends GeneralizableElement_AbstractInheritedType implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery {
-
-  /**
-	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
-	 */
-	public List<CapellaElement> getOldCurrentElements(CapellaElement element_p,
-			boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (!systemEngineeringExists(element_p)) {
-			return currentElements;
-		}
-		if (element_p instanceof GeneralizableElement) {
-			GeneralizableElement generalizableElement = (GeneralizableElement) element_p;
-			currentElements.addAll(generalizableElement.getSuper());
-			currentElements = ListExt.removeDuplicates(currentElements);
-			currentElements.remove(generalizableElement);
-		}
-		return currentElements;
-	}
-
-/**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  @Override
-  public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = super.getAvailableElements(element_p);
-    if (element_p instanceof Collection) {
-      Type type = ((Collection) element_p).getType();
-      if (type instanceof GeneralizableElement) {
-        List<CapellaElement> filteredElements = new ArrayList<CapellaElement>();
-        for (CapellaElement availableElement : availableElements) {
-          if (availableElement instanceof Collection) {
-            Type availableElementType = ((Collection) availableElement).getType();
-            if (availableElementType != null) {
-              if (!availableElementType.equals(type) && !GeneralizableElementExt.getAllSuperGeneralizableElements((GeneralizableElement) type).contains(availableElementType)) {
-                filteredElements.add(availableElement);
-              }
-            }
-          }
-        }
-        availableElements.removeAll(filteredElements);
-      }
-    }
-    return availableElements;
-  }
+public class Collection_InheritedCollection extends GeneralizableElement_AbstractInheritedType implements IBusinessQuery {
 
   /**
    * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
    */
-  public EClass getEClass() {
+  @Override
+	public EClass getEClass() {
     return InformationPackage.Literals.COLLECTION;
   }
 
   /**
-   * @see org.polarsys.capella.core.business.queries.information.GeneralizableElement_AbstractInheritedType#getAvailableEclassForSuperType()
+   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
    */
   @Override
-  protected EClass getAvailableEclassForSuperType() {
-    return InformationPackage.Literals.COLLECTION;
+	public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS);
   }
 
-@Override
+  
+  @Override
 public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-  return RefactorDebugger.callAndTestQuery("GetAvailable_Collection_InheritedCollection__Lib", element_p, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+  QueryContext context = new QueryContext();
+	context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+	return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__COLLECTION__INHERITED_COLLECTION___LIB, element_p, context);
 }
 
 @Override
 public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-  return RefactorDebugger.callAndTestQuery("GetCurrent_Collection_InheritedCollection", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+  QueryContext context = new QueryContext();
+	context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+	return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__COLLECTION__INHERITED_COLLECTION, element_p, context);
 }
 }

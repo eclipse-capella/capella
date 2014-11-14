@@ -9,8 +9,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius;visibility:=reexport,
  org.eclipse.emf.diffmerge.ui.gmf;visibility:=reexport,
- org.eclipse.emf.edit
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+ org.eclipse.emf.transaction,
+ org.eclipse.emf.edit,
+ org.eclipse.sirius.diagram,
+ org.eclipse.sirius.diagram.sequence
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.consonance.ui.sirius
 Bundle-Localization: plugin

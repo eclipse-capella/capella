@@ -241,6 +241,15 @@
                ruleId="DWF_DC_14">
          </rules>
       </resolver>
+           <resolver
+           class="org.polarsys.capella.core.data.fa.ui.quickfix.resolver.I_32_Resolver"
+           desc="%quickFix.I_32.desc"
+           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+           label="%quickFix.I_32.label">
+         <rules
+               ruleId="I_32">
+         </rules>
+      </resolver>
    </extension>
    <extension
          point="org.eclipse.ui.ide.markerResolution">
@@ -259,7 +268,7 @@
                name="ruleId"
                value="org.polarsys.capella.core.data.fa.validation.DWF_DF_08">
          </attribute>
-      </markerResolutionGenerator>
+      </markerResolutionGenerator>     
    </extension>
 
 </plugin>

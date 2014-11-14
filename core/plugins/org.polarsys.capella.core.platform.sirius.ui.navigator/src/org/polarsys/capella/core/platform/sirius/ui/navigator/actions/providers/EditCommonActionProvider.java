@@ -11,9 +11,6 @@
 
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers;
 
-import org.eclipse.emf.edit.ui.action.CopyAction;
-import org.eclipse.emf.edit.ui.action.CutAction;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -21,6 +18,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.eclipse.ui.actions.TextActionHandler;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
@@ -28,7 +26,6 @@ import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
 import org.eclipse.ui.texteditor.IWorkbenchActionDefinitionIds;
-
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaCopyAction;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaCutAction;
 import org.polarsys.capella.core.platform.sirius.ui.actions.CapellaDeleteAction;
@@ -40,21 +37,19 @@ import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveD
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.MoveUpAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.ui.resources.CapellaUIResourcesPlugin;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
 
 /**
  * The edit contribution actions provider.
  */
 public class EditCommonActionProvider extends CommonActionProvider {
-  private CopyAction _copyAction;
-  private CutAction _cutAction;
+  private BaseSelectionListenerAction _copyAction;
+  private BaseSelectionListenerAction _cutAction;
   private CapellaDeleteAction _deleteAction;
-  private MoveDownAction _moveDown;
-  private MoveUpAction _moveUp;
-  private SortContentAction _sortContent;
+  private BaseSelectionListenerAction _moveDown;
+  private BaseSelectionListenerAction _moveUp;
+  private BaseSelectionListenerAction _sortContent;
 
-  private CapellaPasteAction _pasteAction;
+  private BaseSelectionListenerAction _pasteAction;
   private RenameAction _renameAction;
 
   // private ValidateAction _validateAction;
@@ -158,21 +153,17 @@ public class EditCommonActionProvider extends CommonActionProvider {
 
     // Gets the active part.
     CapellaCommonNavigator activePart = (CapellaCommonNavigator) commonViewerWorkbenchSite.getPart();
-    // Gets the editing domain.
-    ExecutionManager mgr = MDEAdapterFactory.getExecutionManager();
-    TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
 
     // Gets the shared images.
     ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
     ISelectionProvider selectionProvider = commonViewSite.getSelectionProvider();
 
-    _cutAction = new CapellaCutAction(editingDomain, site_p.getStructuredViewer());
+    _cutAction = new CapellaCutAction(site_p.getStructuredViewer());
     _cutAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.CUT);
-    _cutAction.setActiveWorkbenchPart(activePart);
     _cutAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT));
     _cutAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_CUT_DISABLED));
     SelectionHelper.registerToSelectionChanges(_cutAction, selectionProvider);
-    _copyAction = new CapellaCopyAction(editingDomain, site_p.getStructuredViewer()) {
+    _copyAction = new CapellaCopyAction(site_p.getStructuredViewer()) {
       /**
        * {@inheritDoc}
        */
@@ -185,29 +176,26 @@ public class EditCommonActionProvider extends CommonActionProvider {
       }
     };
     _copyAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.COPY);
-    _copyAction.setActiveWorkbenchPart(activePart);
     _copyAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY));
     _copyAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_COPY_DISABLED));
     SelectionHelper.registerToSelectionChanges(_copyAction, selectionProvider);
 
-    _pasteAction = new CapellaPasteAction(editingDomain);
+    _pasteAction = new CapellaPasteAction();
     _pasteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.PASTE);
-    _pasteAction.setActiveWorkbenchPart(activePart);
     _pasteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE));
     _pasteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_PASTE_DISABLED));
     SelectionHelper.registerToSelectionChanges(_pasteAction, selectionProvider);
 
-    _deleteAction = new CapellaDeleteAction(mgr);
+    _deleteAction = new CapellaDeleteAction();
     _deleteAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.DELETE);
-    _deleteAction.setActiveWorkbenchPart(activePart);
     _deleteAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
     _deleteAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
     SelectionHelper.registerToSelectionChanges(_deleteAction, selectionProvider);
 
-    _moveUp = new MoveUpAction(editingDomain);
+    _moveUp = new MoveUpAction();
     SelectionHelper.registerToSelectionChanges(_moveUp, selectionProvider);
 
-    _moveDown = new MoveDownAction(editingDomain);
+    _moveDown = new MoveDownAction();
     SelectionHelper.registerToSelectionChanges(_moveDown, selectionProvider);
 
     _sortContent = new SortContentAction();
@@ -218,7 +206,7 @@ public class EditCommonActionProvider extends CommonActionProvider {
     SelectionHelper.registerToSelectionChanges(_sortContent, selectionProvider);
 
     // Initialize the rename action.
-    _renameAction = new RenameAction(editingDomain, activePart);
+    _renameAction = new RenameAction(activePart);
     _renameAction.setActionDefinitionId(IWorkbenchActionDefinitionIds.RENAME);
     SelectionHelper.registerToSelectionChanges(_renameAction, selectionProvider);
   }

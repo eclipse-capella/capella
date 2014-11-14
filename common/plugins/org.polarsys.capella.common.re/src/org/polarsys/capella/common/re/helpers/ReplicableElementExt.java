@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.common.re.RePackage;
 
@@ -35,6 +36,23 @@ public class ReplicableElementExt {
       if (object instanceof CatalogElementLink) {
         CatalogElementLink link = (CatalogElementLink) object;
         if (link.getSource() != null) {
+          elements.add(link.getSource());
+        }
+      }
+    }
+    return elements;
+  }
+  
+  /**
+   * Returns replicable elements referencing the given element_p
+   */
+  public static Collection<CatalogElement> getReferencingReplicas(EObject element_p) {
+    ArrayList<CatalogElement> elements = new ArrayList<CatalogElement>();
+    Collection<EObject> links = EObjectExt.getReferencers(element_p, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
+    for (EObject object : links) {
+      if (object instanceof CatalogElementLink) {
+        CatalogElementLink link = (CatalogElementLink) object;
+        if (link.getSource() != null && link.getSource().getKind()!= CatalogElementKind.REC) {
           elements.add(link.getSource());
         }
       }

@@ -7,11 +7,10 @@ Bundle-Activator: org.polarsys.capella.common.command.recorder.core.RecorderCore
 Bundle-Vendor: %providerName
 Bundle-localization: plugin
 Require-Bundle: org.eclipse.core.variables;visibility:=reexport,
- org.polarsys.capella.common.tig.efprovider;visibility:=reexport,
  org.polarsys.capella.common.tools.report,
  org.eclipse.sirius,
  org.polarsys.capella.core.preferences
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.command.recorder.core,
  org.polarsys.capella.common.command.recorder.core.exception,
@@ -25,4 +24,3 @@ Export-Package: org.polarsys.capella.common.command.recorder.core,
  org.polarsys.capella.common.command.recorder.core.recorder,
  org.polarsys.capella.common.command.recorder.core.variables,
  org.polarsys.capella.common.command.recorder.core.writer
-Bundle-Localization: plugin

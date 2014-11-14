@@ -13,14 +13,13 @@ package org.polarsys.capella.core.model.handler.provider;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.emf.ecore.resource.Resource.Factory.Registry;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ICrossReferencerProvider;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.IPreCommitListenerProvider;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.IReadOnlyDelegationHandler;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ISemanticEditingDomainProviders;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ITransactionChangeRecorderProvider;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.IAdapterFactoryProvider;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ICrossReferencerProvider;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.IReadOnlyDelegationHandler;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ISemanticEditingDomainProviders;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ITransactionChangeRecorderProvider;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.core.model.handler.crossreferencer.CapellaCrossReferencerProvider;
-import org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListenerProvider;
 
 /**
  * Customize the {@link SemanticEditingDomain} for Capella needs.
@@ -33,7 +32,7 @@ public class CapellaSemanticEditingDomainProviders implements ISemanticEditingDo
   /**
    * Provides the file modification pre-commit listener used in Capella.
    */
-  private FileModificationPreCommitListenerProvider _fileModificationPreCommitListenerProvider;
+//  private FileModificationPreCommitListenerProvider _fileModificationPreCommitListenerProvider;
   /**
    * Read only delegation handler.
    */
@@ -42,6 +41,10 @@ public class CapellaSemanticEditingDomainProviders implements ISemanticEditingDo
    * Delegated semantic editing domain providers.
    */
   private ISemanticEditingDomainProviders _delegatedSemanticEditingDomainProviders;
+  /**
+   * Delegated adapter factory provider.
+   */
+  private IAdapterFactoryProvider _capellaAdapterFactoryProvider;
 
   /**
    * Constructor.
@@ -51,7 +54,7 @@ public class CapellaSemanticEditingDomainProviders implements ISemanticEditingDo
   }
 
   /**
-   * @see org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getCrossReferencerProvider()
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getCrossReferencerProvider()
    */
   public ICrossReferencerProvider getCrossReferencerProvider() {
     if (null == _capellaCrossReferencerProvider) {
@@ -67,17 +70,33 @@ public class CapellaSemanticEditingDomainProviders implements ISemanticEditingDo
   }
 
   /**
-   * @see org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getPreCommitListenerProvider()
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getAdapterFactoryProvider()
    */
-  public IPreCommitListenerProvider getPreCommitListenerProvider() {
-    if (null == _fileModificationPreCommitListenerProvider) {
-      _fileModificationPreCommitListenerProvider = new FileModificationPreCommitListenerProvider();
+  public IAdapterFactoryProvider getAdapterFactoryProvider() {
+    if (null == _capellaAdapterFactoryProvider) {
+      if (null != _delegatedSemanticEditingDomainProviders) {
+        _capellaAdapterFactoryProvider = _delegatedSemanticEditingDomainProviders.getAdapterFactoryProvider();
+      }
+      if (null == _capellaAdapterFactoryProvider) {
+        // Default implementation.
+        _capellaAdapterFactoryProvider = CapellaAdapterFactoryProvider.getInstance();
+      }
     }
-    return _fileModificationPreCommitListenerProvider;
+    return _capellaAdapterFactoryProvider;
   }
 
   /**
-   * @see org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getReadOnlyDelegationHandler()
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getPreCommitListenerProvider()
+   */
+//  public IPreCommitListenerProvider getPreCommitListenerProvider() {
+//    if (null == _fileModificationPreCommitListenerProvider) {
+//      _fileModificationPreCommitListenerProvider = new FileModificationPreCommitListenerProvider();
+//    }
+//    return _fileModificationPreCommitListenerProvider;
+//  }
+
+  /**
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getReadOnlyDelegationHandler()
    */
   public IReadOnlyDelegationHandler getReadOnlyDelegationHandler() {
     if (null == _readOnlyDelegationHandler) {
@@ -93,7 +112,7 @@ public class CapellaSemanticEditingDomainProviders implements ISemanticEditingDo
   }
 
   /**
-   * @see org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getTransactionChangeRecorderProvider()
+   * @see org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.ISemanticEditingDomainProviders#getTransactionChangeRecorderProvider()
    */
   public ITransactionChangeRecorderProvider getTransactionChangeRecorderProvider() {
     ITransactionChangeRecorderProvider result = null;

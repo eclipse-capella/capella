@@ -10,3 +10,8 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/ArrowUp_16x16.gif - org.eclipse.emf.generic.editor - org.eclipse.emf.generic.editor/icons/common/up.gif
 /icons/Lock_8x8.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/deadlock_ovr.gif
 /icons/ArrowDown_16x16.gif - org.eclipse.compare - org.eclipse.compare/icons/full/elcl16/next_nav.gif
+/icons/EOccurrenceOneToUnbounded.gif - org.eclipse.emf.ecoretools.diagram - org.eclipse.emf.ecoretools.diagram/icons/multiplicity/EOccurrenceOneToUnbounded.gif 
+/icons/EOccurrenceZero.gif - org.eclipse.emf.ecoretools.diagram - org.eclipse.emf.ecoretools.diagram/icons/multiplicity/EOccurrenceZero.gif
+/icons/EOccurrenceZeroToOne.gif - org.eclipse.emf.ecoretools.diagram - org.eclipse.emf.ecoretools.diagram/icons/multiplicity/EOccurrenceZeroToOne.gif
+/icons/EOccurrenceOne.gif - org.eclipse.emf.ecoretools.diagram - org.eclipse.emf.ecoretools.diagram/icons/multiplicity/EOccurrenceOne.gif
+/icons/EOccurrenceUnbounded.gif - org.polarsys.capella.core.ui.properties - org.polarsys.capella.core.ui.properties/icons/EOccurrenceUnbounded.gif 

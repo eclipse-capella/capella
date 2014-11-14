@@ -39,13 +39,13 @@ public class CurrentCompliancyProperty extends AbstractProperty implements IEdit
    */
   @Override
   public Object getValue(IPropertyContext context_p) {
-    IProperty property = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+    IProperty property = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
     CatalogElement element = (CatalogElement) context_p.getCurrentValue(property);
     if ((element != null) && (element.getCurrentCompliancy() != null)) {
       return element.getCurrentCompliancy();
     }
 
-    property = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE);
+    property = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE);
     element = (CatalogElement) context_p.getCurrentValue(property);
     if (element != null) {
       return element.getDefaultReplicaCompliancy();
@@ -90,7 +90,7 @@ public class CurrentCompliancyProperty extends AbstractProperty implements IEdit
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__LOCATION_SOURCE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE };
+    return new String[] { IReConstants.PROPERTY__LOCATION_SOURCE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE };
   }
 
   /**
@@ -132,7 +132,7 @@ public class CurrentCompliancyProperty extends AbstractProperty implements IEdit
    */
   @Override
   public void setValue(IPropertyContext context_p) {
-    IProperty locationProperty = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+    IProperty locationProperty = context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
     EObject sourceProperty = (EObject) context_p.getCurrentValue(locationProperty);
     if ((sourceProperty != null) && (sourceProperty instanceof CatalogElement)) {
       CompliancyDefinition definition = (CompliancyDefinition) context_p.getCurrentValue(this);

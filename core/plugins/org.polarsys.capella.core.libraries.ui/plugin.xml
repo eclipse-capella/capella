@@ -79,7 +79,7 @@
                   icon="icons/full/etool16/library_command_manage.png"
                   label="Manage references"
                   style="push">
-               <visibleWhen checkEnabled="false">
+               <visibleWhen checkEnabled="true">
                   <iterate operator="and" ifEmpty="false">
                       <adapt type="org.eclipse.core.resources.IResource">
                         <test property="org.eclipse.core.resources.name" value="*.aird"/> 
@@ -90,22 +90,6 @@
             <command
                   commandId="org.polarsys.capella.core.libraries.commands.manageVersion"
                   label="Manage version"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="true">
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.polarsys.capella.core.libraries.commands.test"
-                  label="Unit test cases"
-                  style="push">
-               <visibleWhen
-                     checkEnabled="true">
-               </visibleWhen>
-            </command>
-            <command
-                  commandId="org.polarsys.capella.core.libraries.commands.debugInfos"
-                  label="Debug"
                   style="push">
                <visibleWhen
                      checkEnabled="true">
@@ -185,7 +169,18 @@
                 <test property="org.polarsys.capella.core.libraries.ui.propertyTester.capellaModelIsLocalPropertyTester"/>
             </with>         
          </enabledWhen>
-     </handler>   
+     </handler>
+     
+     <handler
+            class="org.polarsys.capella.core.libraries.ui.handlers.ManageLibraryVersionHandler"
+            commandId="org.polarsys.capella.core.libraries.commands.manageVersion">
+         <activeWhen>
+            <equals
+                  value="false">
+            </equals>
+         </activeWhen>
+      </handler>
+         
    </extension>
 
 </plugin>

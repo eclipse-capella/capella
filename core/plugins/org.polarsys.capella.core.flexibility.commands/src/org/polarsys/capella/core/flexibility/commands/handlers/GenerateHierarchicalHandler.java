@@ -29,17 +29,16 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
+import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
+import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.InformationFactory;
-import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
-import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
  *
@@ -99,15 +98,12 @@ public class GenerateHierarchicalHandler extends AbstractUiHandler {
 
     Resource resource = null;
     final List<EObject> objects = new ArrayList<EObject>();
+    IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event_p);
+    final EObject root = (EObject) selection.iterator().next();
 
-    MDEAdapterFactory.getExecutionManager().execute(new AbstractReadWriteCommand() {
-
+    TransactionHelper.getExecutionManager(root).execute(new AbstractReadWriteCommand() {
       public void run() {
-
-        IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event_p);
-        EObject root = (EObject) selection.iterator().next();
         BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(root);
-
         HashMap<String, Class> clazz = new HashMap<String, Class>();
         HashMapSet<String, String> hierarchical = new HashMapSet<String, String>();
 

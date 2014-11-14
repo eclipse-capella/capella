@@ -15,11 +15,11 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IAction;
 
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.operations.LongRunningListenersRegistry;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
 import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.core.transition.system.topdown.ui.commands.IntramodelTransitionCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
 
 /**
  *

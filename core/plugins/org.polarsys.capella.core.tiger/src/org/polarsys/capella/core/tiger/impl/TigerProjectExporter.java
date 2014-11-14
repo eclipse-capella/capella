@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 
 import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 
 /**
@@ -49,7 +49,7 @@ public class TigerProjectExporter {
 			sb.append(segments[i]);
 		}
 		
-		XMIResource myNewResource = (XMIResource) MDEAdapterFactory.getEditingDomain().createResource(sb.toString());
+		XMIResource myNewResource = (XMIResource) TransactionHelper.getEditingDomain(sibbling_p).createResource(sb.toString());
 		myNewResource.getResourceSet().getResources().add(sibbling_p.eResource());
 		myNewResource.getContents().add(root_p);
 		try {

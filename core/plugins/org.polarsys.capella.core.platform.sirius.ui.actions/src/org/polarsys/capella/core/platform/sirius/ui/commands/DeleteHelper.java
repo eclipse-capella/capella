@@ -29,6 +29,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -746,11 +747,11 @@ public class DeleteHelper implements IDeleteHelper {
         testTraceFeature =
             (linkedObject_p instanceof FunctionalExchangeRealization) || (linkedObject_p instanceof ComponentExchangeFunctionalExchangeAllocation);
       }
-    } else if (linkedObject_p instanceof AbstractFunction) {
+    } else if ((linkedObject_p instanceof AbstractFunction) || (linkedObject_p instanceof StateEvent)) {
       // [DELETE] Deleting referenced trigger or effect (e.g. a function) deletes the related state transition
       if (CapellacommonPackage.Literals.STATE_TRANSITION__EFFECT.equals(feature_p)) {
         return false;
-      } else if (CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGER.equals(feature_p)) {
+      } else if (CapellacommonPackage.Literals.STATE_TRANSITION__TRIGGERS.equals(feature_p)) {
         return false;
       }
 
@@ -758,8 +759,7 @@ public class DeleteHelper implements IDeleteHelper {
       if ((linkedObject_p instanceof AbstractEventOperation) || (linkedObject_p instanceof ExchangeItem)
           || (linkedObject_p instanceof ComponentExchangeCategory)) {
         result = false;
-      } 
-      else {
+      } else {
         // Test for exchange realizations, that are referencing links that should not be destroyed.
         testTraceFeature =
             (linkedObject_p instanceof ComponentExchangeRealization) || (linkedObject_p instanceof ComponentExchangeFunctionalExchangeAllocation)

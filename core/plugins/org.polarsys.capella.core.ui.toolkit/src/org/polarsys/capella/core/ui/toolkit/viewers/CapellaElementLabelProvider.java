@@ -10,8 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.toolkit.viewers;
 
+import org.eclipse.emf.ecore.EObject;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 
 /**
  * The Capella element label provider.
@@ -23,6 +25,14 @@ public class CapellaElementLabelProvider extends MDEAdapterFactoryLabelProvider 
 	 * Constructs the Capella element label provider.
 	 */
 	public CapellaElementLabelProvider() {
-		super(MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
+		super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+	}
+
+	/**
+	 * Constructs the Capella element label provider.
+	 * @param eobject_p
+	 */
+	public CapellaElementLabelProvider(EObject eobject_p) {
+		super(TransactionHelper.getEditingDomain(eobject_p), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
 	}
 }

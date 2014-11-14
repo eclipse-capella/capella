@@ -14,16 +14,14 @@ import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.validation.service.ModelValidationService;
-
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.preferences.Activator;
 
 public abstract class AbstractPreferencesInitializer extends AbstractPreferenceInitializer {
@@ -33,13 +31,13 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
   public static ScopedCapellaPreferencesStore preferencesManager;
 
   /*
-	 * 
-	 */
+   * 
+   */
   IProject project;
 
   /**
-	 * 
-	 */
+   * 
+   */
   public AbstractPreferencesInitializer(String pluginID) {
     super();
     this.project =
@@ -47,13 +45,13 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
     preferencesManager = ScopedCapellaPreferencesStore.getInstance(pluginID);
     initializeDefaultPreferences();
     try {
-    	 //force satrt of EMF Validation plugin before initializing ther default preferences scope
-        ModelValidationService.getInstance().loadXmlConstraintDeclarations();
-        PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-   
+      //force satrt of EMF Validation plugin before initializing ther default preferences scope
+      ModelValidationService.getInstance().loadXmlConstraintDeclarations();
+      PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+
   }
 
   /**
@@ -126,32 +124,24 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
    * @param key
    */
   private void initializeAllOpenedProjects(String key, Object value) {
-    try {
-      IProject[] iProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
+    IProject[] iProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 
-      // initialize default scope
-      if (value instanceof Boolean) {
-        ScopedCapellaPreferencesStore.putBoolean(null, key, ((Boolean) value).booleanValue());
-      } else if (value instanceof String) {
-        ScopedCapellaPreferencesStore.putString(null, key, ((String) value));
-      }
+    // initialize default scope
+    if (value instanceof Boolean) {
+      ScopedCapellaPreferencesStore.putBoolean(null, key, ((Boolean) value).booleanValue());
+    } else if (value instanceof String) {
+      ScopedCapellaPreferencesStore.putString(null, key, ((String) value));
+    }
 
-      // inistilize project scopes
-      for (IProject iProject : iProjects) {
-        if (iProject.isOpen() && iProject.isAccessible() && (iProject.getNature(PreferencesHelper.CAPELLA_PROJECT_NATURE_ID) != null)) {
-          if (value instanceof Boolean) {
-            ScopedCapellaPreferencesStore.putBoolean(iProject, key, ((Boolean) value).booleanValue());
-          } else if (value instanceof String) {
-            ScopedCapellaPreferencesStore.putString(iProject, key, (String) value);
-          }
-
+    // inistilize project scopes
+    for (IProject iProject : iProjects) {
+      if (iProject.isOpen() && iProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(iProject))) {
+        if (value instanceof Boolean) {
+          ScopedCapellaPreferencesStore.putBoolean(iProject, key, ((Boolean) value).booleanValue());
+        } else if (value instanceof String) {
+          ScopedCapellaPreferencesStore.putString(iProject, key, (String) value);
         }
-
       }
-    } catch (CoreException exception_p) {
-      StringBuilder loggerMessage = new StringBuilder("AbstractPreferencesInitializer.initializeAllOpenedProjects(..) _ "); //$NON-NLS-1$
-      loggerMessage.append(exception_p.getMessage());
-      __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception_p);
     }
 
   }

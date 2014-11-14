@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFactory;
@@ -23,11 +23,12 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.InteractionUse;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.refinement.merge.exception.MergeToolException;
 import org.polarsys.capella.core.refinement.merge.messages.MergeMessages;
+import org.polarsys.capella.core.refinement.merge.utils.CapellaCopier;
 import org.polarsys.capella.core.refinement.merge.utils.LinkEnum;
 import org.polarsys.capella.core.refinement.merge.utils.LinkUtils;
-import org.polarsys.capella.core.refinement.merge.utils.CapellaCopier;
 
 /**
  * Helper class for Scenario
@@ -53,7 +54,9 @@ public class ScenarioHelper {
     if (null != name_p) {
       result.setName(name_p);
     }
-    
+
+    HoldingResourceHelper.attachToHoldingResource(result, HoldingResourceHelper.getHoldingResource(TransactionHelper.getEditingDomain(sc_p)));
+
     return result;
   }
 

@@ -12,7 +12,7 @@ package org.polarsys.capella.core.data.fa.ui.quickfix.resolver.command;
 
 import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  * Set the orientation of a ComponentPort.

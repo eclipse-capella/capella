@@ -59,11 +59,11 @@ public abstract class MultiplicityElementSection extends TypedElementSection {
     }
 
     _minCardField = new SimpleEditableSemanticField(getReferencesGroup(),
-        Messages.getString("MultiplicityElement.MinCardLabel"), getWidgetFactory(), "", new MultiplicityElementCardController()); //$NON-NLS-1$ //$NON-NLS-2$
+        Messages.getString("MultiplicityElement.MinCardLabel"), getWidgetFactory(), "", new MultiplicityElementCardController(), true, 0); //$NON-NLS-1$ //$NON-NLS-2$
     _minCardField.setDisplayedInWizard(displayedInWizard);
 
     _maxCardField = new SimpleEditableSemanticField(getReferencesGroup(),
-        Messages.getString("MultiplicityElement.MaxCardLabel"), getWidgetFactory(), "", new MultiplicityElementCardController()); //$NON-NLS-1$ //$NON-NLS-2$
+        Messages.getString("MultiplicityElement.MaxCardLabel"), getWidgetFactory(), "", new MultiplicityElementCardController(), true, 1); //$NON-NLS-1$ //$NON-NLS-2$
     _maxCardField.setDisplayedInWizard(displayedInWizard);
   }
 

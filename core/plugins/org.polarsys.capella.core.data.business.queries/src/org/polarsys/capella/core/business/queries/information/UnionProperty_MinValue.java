@@ -10,87 +10,47 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.information;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
-import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.MultiplicityElement;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.oa.OperationalAnalysis;
-import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 
 /**
  * This is the query for the union property min value
  */
-public class UnionProperty_MinValue extends AbstractMultiplicityElement_MinValue implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery {
+public class UnionProperty_MinValue extends AbstractMultiplicityElement_MinValue implements IBusinessQuery {
 
-	public List<CapellaElement> getOldCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (!systemEngineeringExists(element_p)) {
-      return currentElements;
-    }
-    if (element_p instanceof MultiplicityElement) {
-      MultiplicityElement mElement = (MultiplicityElement) element_p;
-      if (mElement.getOwnedMinValue() != null) {
-        currentElements.add(mElement.getOwnedMinValue());
-      }
-    }
-    return currentElements;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE);
+	}
 
-  public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    BlockArchitecture currentBlockArchitecture = DataPkgExt.getRootBlockArchitecture(element_p);
-    SystemEngineering systemEngineering = SystemEngineeringExt.getSystemEngineering(element_p);
-    OperationalAnalysis operationalAnalysis = SystemEngineeringExt.getOwnedOperationalAnalysis(systemEngineering);
-    returnValue.addAll(getDataFromLevel(operationalAnalysis, element_p));
-    if (!(currentBlockArchitecture instanceof OperationalAnalysis)) {
-      SystemAnalysis systemAnalysis = SystemEngineeringExt.getOwnedSystemAnalysis(systemEngineering);
-      returnValue.addAll(getDataFromLevel(systemAnalysis, element_p));
-      if (!(currentBlockArchitecture instanceof SystemAnalysis)) {
-        LogicalArchitecture logicalArchitecture = SystemEngineeringExt.getOwnedLogicalArchitecture(systemEngineering);
-        returnValue.addAll(getDataFromLevel(logicalArchitecture, element_p));
-        if (!(currentBlockArchitecture instanceof LogicalArchitecture)) {
-          PhysicalArchitecture physicalArchitecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(systemEngineering);
-          returnValue.addAll(getDataFromLevel(physicalArchitecture, element_p));
-          if (!(currentBlockArchitecture instanceof PhysicalArchitecture)) {
-            EPBSArchitecture epbsArchitecture = SystemEngineeringExt.getEPBSArchitecture((systemEngineering));
-            returnValue.addAll(getDataFromLevel(epbsArchitecture, element_p));
-          }
-        }
-      }
-    }
-    returnValue.addAll(getUnlevelizedData(element_p));
-    returnValue.addAll(getDataFromComponentHierarchy(element_p));
-    returnValue.addAll(getDataFromRealizedComponentsHierarchy(element_p));
-    returnValue.addAll(getTypesFromComponentHierarchy(element_p));
-    returnValue = filterUnNamedElements(returnValue);
-    return returnValue;
-  }
-
-  public EClass getEClass() {
+	@Override
+	public EClass getEClass() {
     return InformationPackage.Literals.UNION_PROPERTY;
   }
 
   @Override
   public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    return RefactorDebugger
-        .callAndTestQuery("GetAvailable_UnionProperty_MinValue__Lib", element_p, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__UNION_PROPERTY__MIN_VALUE___LIB, element_p, context);
   }
 
   @Override
   public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    return RefactorDebugger.callAndTestQuery("GetCurrent_UnionProperty_MinValue", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__UNION_PROPERTY__MIN_VALUE, element_p, context);
   }
 }

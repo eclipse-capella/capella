@@ -15,7 +15,7 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 
 import org.polarsys.capella.core.re.commands.UpdateCurCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
+import org.polarsys.capella.common.ef.command.ICommand;
 
 /**
  */

@@ -24,11 +24,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.statushandlers.StatusManager;
-
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.validation.ui.ide.PluginActivator;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Delete Element(s), with confirmation (ok:yes, cancel:no). Also delete the marker.
@@ -52,7 +52,7 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
     if (modelElements.isEmpty()) {
       return;
     }
-    final Object modelElement = modelElements.get(0);
+    final EObject modelElement = modelElements.get(0);
     // Get element(s) to delete from QF implementation.
     Object elementToDelete = getElementToDelete(modelElement);
     final Collection<?>[] listOfElementsToDelete = new Collection<?>[1];
@@ -72,9 +72,9 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
       @Override
       public void run() {
         // Ask user for confirmation.
-        boolean confirmDeletion = CapellaDeleteCommand.confirmDeletion(MDEAdapterFactory.getExecutionManager(), listOfElementsToDelete[0]);
+        boolean confirmDeletion = CapellaDeleteCommand.confirmDeletion(TransactionHelper.getExecutionManager(modelElement), listOfElementsToDelete[0]);
         if (confirmDeletion) {
-          CapellaDeleteCommand command = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), listOfElementsToDelete[0], false, false, true);
+          CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(modelElement), listOfElementsToDelete[0], false, false, true);
           if (command.canExecute()) {
             command.execute();
             // Element (s) deleted -> delete maker too.
@@ -84,7 +84,7 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
 
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+    TransactionHelper.getExecutionManager(modelElement).execute(abstrctCommand);
 
     // Remove the marker if the element is deleted.
     if (mustDeleteMarker[0] == true) {
@@ -101,7 +101,7 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
   @Override
   public void run(IMarker[] markers, IProgressMonitor monitor) {
   
-    final Set<Object> toDelete = new HashSet<Object>();
+    final Set<EObject> toDelete = new HashSet<EObject>();
     
     for (IMarker marker : markers){
       // Get ModelElement associated to the marker.
@@ -116,9 +116,9 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
         if (((Collection<?>) elementToDelete).isEmpty()) {
           return;
         }
-        toDelete.addAll((Collection<?>) elementToDelete);
+        toDelete.addAll((Collection<? extends EObject>) elementToDelete);
       } else if (elementToDelete != null) {
-        toDelete.add(elementToDelete);
+        toDelete.add((EObject) elementToDelete);
       }
     }
     
@@ -127,13 +127,14 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
     if (toDelete.isEmpty()){
       mustDeleteMarker.set(Boolean.TRUE);
     } else {
+      final ExecutionManager em = TransactionHelper.getExecutionManager(toDelete);
       AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
         @Override
         public void run() {
           // Ask user for confirmation.
-          boolean confirmDeletion = CapellaDeleteCommand.confirmDeletion(MDEAdapterFactory.getExecutionManager(), toDelete);
+          boolean confirmDeletion = CapellaDeleteCommand.confirmDeletion(em, toDelete);
           if (confirmDeletion) {
-            CapellaDeleteCommand command = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), toDelete, false, false, true);
+            CapellaDeleteCommand command = new CapellaDeleteCommand(em, toDelete, false, false, true);
             if (command.canExecute()) {
               command.execute();
               // Element (s) deleted -> delete maker too.
@@ -142,7 +143,7 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
           }
         }
       };
-      MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+      em.execute(abstrctCommand);
     }
 
     // Remove the marker if the element is deleted.
@@ -158,7 +159,4 @@ public abstract class AbstractDeleteCommandResolver extends AbstractCapellaMarke
       }
     } 
   }
-  
-  
-  
 }

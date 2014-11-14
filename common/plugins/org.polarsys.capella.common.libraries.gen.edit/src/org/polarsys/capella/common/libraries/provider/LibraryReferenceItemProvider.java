@@ -36,6 +36,8 @@ import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
+import org.polarsys.kitalpha.emde.extension.ExtensionModelManager;
+import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 import org.polarsys.capella.common.libraries.ModelInformation;
 import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvider;
 
@@ -48,6 +50,20 @@ import org.polarsys.kitalpha.emde.model.edit.provider.ExtensibleElementItemProvi
 public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider,
     ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
   /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor libraryPropertyDescriptor;
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IItemPropertyDescriptor versionPropertyDescriptor;
+
+
+		/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -59,6 +75,42 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 
 
   /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void checkChildCreationExtender(Object object) {
+		super.checkChildCreationExtender(object);
+		if (object instanceof EObject) {
+			EObject eObject = (EObject) object;
+			// Process LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY
+			if (libraryPropertyDescriptor != null) {
+				Object libraryValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY, true);
+				if (libraryValue != null && libraryValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) libraryValue)) {
+					itemPropertyDescriptors.remove(libraryPropertyDescriptor);
+				} else if (libraryValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__LIBRARY) != null) {
+					itemPropertyDescriptors.remove(libraryPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(libraryPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(libraryPropertyDescriptor);
+				}
+			}
+			// Process LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION
+			if (versionPropertyDescriptor != null) {
+				Object versionValue = eObject.eGet(LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION, true);
+				if (versionValue != null && versionValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) versionValue)) {
+					itemPropertyDescriptors.remove(versionPropertyDescriptor);
+				} else if (versionValue == null && ExtensionModelManager.getAnyType(eObject, LibrariesPackage.Literals.LIBRARY_REFERENCE__VERSION) != null) {
+					itemPropertyDescriptors.remove(versionPropertyDescriptor);				  					
+				} else if (itemPropertyDescriptors.contains(versionPropertyDescriptor) == false) {
+					itemPropertyDescriptors.add(versionPropertyDescriptor);
+				}
+			}
+		}		
+	}
+
+
+		/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -73,6 +125,9 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 			addAccessPolicyPropertyDescriptor(object);
 			addVersionPropertyDescriptor(object);
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 
@@ -110,11 +165,9 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 	 * @generated
 	 */
   protected void addLibraryPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		libraryPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LibraryReference_library_feature"), //$NON-NLS-1$
@@ -126,7 +179,8 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(libraryPropertyDescriptor);
 		// end-extension-code
 	}
 
@@ -137,11 +191,9 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 	 * @generated
 	 */
   protected void addVersionPropertyDescriptor(Object object) {
-
 		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
+		versionPropertyDescriptor = createItemPropertyDescriptor
+		// end-extension-code		
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
 				 getString("_UI_LibraryReference_version_feature"), //$NON-NLS-1$
@@ -153,7 +205,8 @@ public class LibraryReferenceItemProvider extends LibraryAbstractElementItemProv
 				 null,
 				 null,
 		// begin-extension-code
-				 null));
+				 null);
+		itemPropertyDescriptors.add(versionPropertyDescriptor);
 		// end-extension-code
 	}
 

@@ -26,10 +26,10 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.menu.dynamic.CreationHelper;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractStateRealization;
@@ -377,7 +377,7 @@ public class CapellaElementExt {
   @Deprecated
   public static Collection<Setting> getInverseReferencesOfEObject(EObject eObj) {
     // gets the Semantic Editing Domain
-    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(eObj);
     // Gets the Cross Referencer
     ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
     Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(eObj);
@@ -573,7 +573,7 @@ public class CapellaElementExt {
 
   public static EObject creationService(EObject context_p, String namingPrefix_p) {
     if (context_p instanceof ModelElement) {
-      EditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
+      EditingDomain editingDomain = TransactionHelper.getEditingDomain(context_p);
       StrictCompoundCommand command = CreationHelper.getAdditionnalCommand(editingDomain, (ModelElement) context_p, namingPrefix_p);
       if (command.canExecute()) {
         command.execute();

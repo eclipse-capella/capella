@@ -35,17 +35,15 @@ public enum ElementKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	TYPE(0, "TYPE", "TYPE"), //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>PARAMETER</b></em>' literal object.
+	TYPE(0, "TYPE", "TYPE"), /**
+	 * The '<em><b>MEMBER</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PARAMETER_VALUE
+	 * @see #MEMBER_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PARAMETER(1, "PARAMETER", "PARAMETER"); //$NON-NLS-1$ //$NON-NLS-2$
+	MEMBER(1, "MEMBER", "MEMBER"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>TYPE</b></em>' literal value.
@@ -64,20 +62,20 @@ public enum ElementKind implements Enumerator {
 	public static final int TYPE_VALUE = 0;
 
 	/**
-	 * The '<em><b>PARAMETER</b></em>' literal value.
+	 * The '<em><b>MEMBER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>PARAMETER</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>MEMBER</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PARAMETER
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when ExchangeItemElement is described as a parameter for its ExchangeItem' constraints='none' comment/notes='none'"
+	 * @see #MEMBER
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='used when ExchangeItemElement is described as a member for its ExchangeItem' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PARAMETER_VALUE = 1;
+	public static final int MEMBER_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Element Kind</b></em>' enumerators.
@@ -88,7 +86,7 @@ public enum ElementKind implements Enumerator {
 	private static final ElementKind[] VALUES_ARRAY =
 		new ElementKind[] {
 			TYPE,
-			PARAMETER,
+			MEMBER,
 		};
 
 	/**
@@ -140,7 +138,7 @@ public enum ElementKind implements Enumerator {
 	public static ElementKind get(int value) {
 		switch (value) {
 			case TYPE_VALUE: return TYPE;
-			case PARAMETER_VALUE: return PARAMETER;
+			case MEMBER_VALUE: return MEMBER;
 		}
 		return null;
 	}

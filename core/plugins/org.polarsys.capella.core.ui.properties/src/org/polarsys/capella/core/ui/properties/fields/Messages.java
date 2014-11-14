@@ -23,6 +23,7 @@ public class Messages extends NLS {
   public static String BrowseSemanticField_EditBtn;
   public static String BrowseSemanticField_BrowseBtn;
   public static String BrowseSemanticField_AddBtn;
+  public static String BrowseSemanticField_ShortcutBtn;
   public static String ReferencesTableField_DeleteCommand_Label;
   public static String ReferencesTableField_SelectionElementDialog_Title;
   public static String BooleanValueGroup_Value_Label;

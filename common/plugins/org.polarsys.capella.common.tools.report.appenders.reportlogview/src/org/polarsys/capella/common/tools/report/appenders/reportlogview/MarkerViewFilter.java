@@ -19,7 +19,6 @@ import java.util.Set;
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.IStateListener;
 import org.eclipse.core.commands.State;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -44,8 +43,6 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.RadioState;
-
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  */
@@ -338,37 +335,39 @@ public class MarkerViewFilter extends ViewerFilter {
         MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
       }
       result = vis.getResult();
-    } else {
-      // ... but we had to roll our own 
-      // 
-      // the custom solution is to find all EMF Resource objects that have a platform resource uri 
-      // that shares a common prefix with the current selection path and return true if
-      // the marker's affected eobjects are contained in one of those resources
-      out: 
-        for (Resource res : MDEAdapterFactory.getResourceSet().getResources()){
-          URI rsURI = res.getURI();
-          if (rsURI.isPlatformResource()){
-
-            String prefix = resource_p.getFullPath().toString();
-
-            // make sure to filter markers for project /hello, if project /helloworld is selected
-            if (!(resource_p instanceof IFile)){
-              prefix += "/"; //$NON-NLS-1$
-            }
-
-            // now check if the marker contains an EObject that's persisted in this EMF resource
-            if (rsURI.toPlatformString(true).startsWith(prefix)){
-              List<EObject> affected = MarkerViewHelper.getModelElementsFromMarker(marker_p);
-              for (EObject affectedObject : affected){
-                if (affectedObject.eResource() == res){
-                  result = true;
-                  break out;
-                }
-              }
-            }
-          }
-        }
     }
+// FIXME is this code really necessary ? if it is, find another way to do that (not compliant with multiple editing domains)
+//    else {
+//      // ... but we had to roll our own 
+//      // 
+//      // the custom solution is to find all EMF Resource objects that have a platform resource uri 
+//      // that shares a common prefix with the current selection path and return true if
+//      // the marker's affected eobjects are contained in one of those resources
+//      out: 
+//        for (Resource res : LegacyMDEAdapterFactory.getEditingDomain().getResourceSet().getResources()){
+//          URI rsURI = res.getURI();
+//          if (rsURI.isPlatformResource()){
+//
+//            String prefix = resource_p.getFullPath().toString();
+//
+//            // make sure to filter markers for project /hello, if project /helloworld is selected
+//            if (!(resource_p instanceof IFile)){
+//              prefix += "/"; //$NON-NLS-1$
+//            }
+//
+//            // now check if the marker contains an EObject that's persisted in this EMF resource
+//            if (rsURI.toPlatformString(true).startsWith(prefix)){
+//              List<EObject> affected = MarkerViewHelper.getModelElementsFromMarker(marker_p);
+//              for (EObject affectedObject : affected){
+//                if (affectedObject.eResource() == res){
+//                  result = true;
+//                  break out;
+//                }
+//              }
+//            }
+//          }
+//        }
+//    }
     return result;
   }
      

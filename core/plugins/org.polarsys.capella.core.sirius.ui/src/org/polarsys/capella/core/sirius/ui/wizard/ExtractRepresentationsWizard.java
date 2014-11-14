@@ -36,12 +36,11 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  * This wizard asks the user for which representations he wants to externalize and create the new .aird files.
@@ -245,7 +244,7 @@ public class ExtractRepresentationsWizard extends Wizard {
    * 
    */
   protected void doCreateResource() {
-    _pickedResource = MDEAdapterFactory.getResourceSet().createResource(_diagramModelFilePage.getURI());
+    _pickedResource = TransactionHelper.getEditingDomain(_session).getResourceSet().createResource(_diagramModelFilePage.getURI());
   }
 
   /**

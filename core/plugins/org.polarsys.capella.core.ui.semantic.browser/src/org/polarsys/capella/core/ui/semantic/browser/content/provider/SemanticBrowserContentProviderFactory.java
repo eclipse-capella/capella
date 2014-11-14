@@ -12,13 +12,12 @@ package org.polarsys.capella.core.ui.semantic.browser.content.provider;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-
-import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.factory.impl.DefaultContentProviderFactory;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.CurrentElementCP;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.ReferencedElementCP;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.impl.ReferencingElementCP;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
 
 /**
  * Content provider factory used for the semantic browser.
@@ -28,7 +27,7 @@ public class SemanticBrowserContentProviderFactory extends DefaultContentProvide
    * Constructor.
    */
   public SemanticBrowserContentProviderFactory() {
-    super(MDEAdapterFactory.getAdapterFactory());
+    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
   }
 
   /**
@@ -37,7 +36,7 @@ public class SemanticBrowserContentProviderFactory extends DefaultContentProvide
   @Override
   public ITreeContentProvider getCurrentContentProvider() {
 
-    return new CurrentElementCP(getAdapterFactory()) {
+    return new CurrentElementCP(getAdapterFactory(), model) {
 
       /**
        * {@inheritDoc}
@@ -56,7 +55,7 @@ public class SemanticBrowserContentProviderFactory extends DefaultContentProvide
    */
   @Override
   public ITreeContentProvider getReferencedContentProvider() {
-    return new ReferencedElementCP(getAdapterFactory()) {
+    return new ReferencedElementCP(getAdapterFactory(), model) {
 
       /**
        * {@inheritDoc}
@@ -75,7 +74,7 @@ public class SemanticBrowserContentProviderFactory extends DefaultContentProvide
    */
   @Override
   public ITreeContentProvider getReferencingContentProvider() {
-    return new ReferencingElementCP(getAdapterFactory()) {
+    return new ReferencingElementCP(getAdapterFactory(), model) {
 
       /**
        * {@inheritDoc}

@@ -20,8 +20,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 public class TraceableElementHelper {
   private static TraceableElementHelper instance;
@@ -91,8 +91,8 @@ public class TraceableElementHelper {
       try {
         markAsCrossReferenced(element_p, true);
 
-        TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain(element_p);
-        if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
+        if (editingDomain instanceof SemanticEditingDomain) {
           Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
 
           for (EStructuralFeature.Setting setting : references) {
@@ -114,7 +114,7 @@ public class TraceableElementHelper {
     if (!isCrossReferencing(element_p, false)) {
       try {
         markAsCrossReferenced(element_p, false);
-        TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain(element_p);
+        TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain(element_p);
         if ((editingDomain != null) && (editingDomain instanceof SemanticEditingDomain)) {
           Collection<Setting> references = ((SemanticEditingDomain) editingDomain).getDerivedCrossReferencer().getInverseReferences(element_p, true);
           for (EStructuralFeature.Setting setting : references) {

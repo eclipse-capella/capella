@@ -23,16 +23,15 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.impl.DNodeContainerImpl;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.impl.DNodeContainerImpl;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.platform.sirius.ui.actions.AbstractPartToComponentAction;
 import org.polarsys.capella.core.refinement.commands.GenerateInterfaceDelegationsCommand;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * This action launches the automatic interface delegations generation.
@@ -75,10 +74,10 @@ public class GenerateInterfaceDelegationsAction extends AbstractPartToComponentA
 
     if (object instanceof LogicalComponent) {
       EObject root = object.eContainer();
-      while (root != null && !(root instanceof LogicalComponent || root instanceof BlockArchitecture)) {
+      while ((root != null) && !((root instanceof LogicalComponent) || (root instanceof BlockArchitecture))) {
         root = root.eContainer();
       }
-      if (root == null || root instanceof LogicalComponent) {
+      if ((root == null) || (root instanceof LogicalComponent)) {
         MessageDialog
             .openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Interface delegations", "Cannot be performed into an inner component"); //$NON-NLS-1$ //$NON-NLS-2$
         return;

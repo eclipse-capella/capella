@@ -13,13 +13,13 @@ package org.polarsys.capella.core.business.queries.queries.epbs;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.utils.ListExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
+import org.polarsys.capella.core.data.epbs.ConfigurationItem;
+import org.polarsys.capella.core.data.pa.PhysicalComponent;
+import org.polarsys.capella.core.model.utils.ListExt;
 
 public class GetAvailable_ConfigurationItem_ImplementedInterfaces extends AbstractQuery {
 

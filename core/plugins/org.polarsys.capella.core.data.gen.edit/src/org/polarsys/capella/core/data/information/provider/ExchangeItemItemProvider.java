@@ -113,6 +113,7 @@ public class ExchangeItemItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addFinalPropertyDescriptor(object);
 			addIncomingTracesPropertyDescriptor(object);
 			addOutgoingTracesPropertyDescriptor(object);
 			addVisibleInDocPropertyDescriptor(object);
@@ -128,7 +129,11 @@ public class ExchangeItemItemProvider
 			addContainedGenericTracesPropertyDescriptor(object);
 			addContainedRequirementsTracesPropertyDescriptor(object);
 			addTypedElementsPropertyDescriptor(object);
-			addFinalPropertyDescriptor(object);
+			addAbstractPropertyDescriptor(object);
+			addSuperGeneralizationsPropertyDescriptor(object);
+			addSubGeneralizationsPropertyDescriptor(object);
+			addSuperPropertyDescriptor(object);
+			addSubPropertyDescriptor(object);
 			addExchangeMechanismPropertyDescriptor(object);
 			addAllocatorInterfacesPropertyDescriptor(object);
 			addRealizedExchangeItemsPropertyDescriptor(object);
@@ -546,6 +551,141 @@ public class ExchangeItemItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Abstract feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAbstractPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GeneralizableElement_abstract_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizableElement_abstract_feature", "_UI_GeneralizableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__ABSTRACT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Super Generalizations feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuperGeneralizationsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GeneralizableElement_superGeneralizations_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizableElement_superGeneralizations_feature", "_UI_GeneralizableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Sub Generalizations feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubGeneralizationsPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GeneralizableElement_subGeneralizations_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizableElement_subGeneralizations_feature", "_UI_GeneralizableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Super feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSuperPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GeneralizableElement_super_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizableElement_super_feature", "_UI_GeneralizableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
+	 * This adds a property descriptor for the Sub feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSubPropertyDescriptor(Object object) {
+
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_GeneralizableElement_sub_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_GeneralizableElement_sub_feature", "_UI_GeneralizableElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
+
+	/**
 	 * This adds a property descriptor for the Final feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -724,6 +864,7 @@ public class ExchangeItemItemProvider
 			childrenFeatures.add(CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS);
 			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES);
 			childrenFeatures.add(CapellacorePackage.Literals.NAMESPACE__NAMING_RULES);
+			childrenFeatures.add(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS);
 			childrenFeatures.add(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_ELEMENTS);
 			childrenFeatures.add(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS);
 			childrenFeatures.add(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_EXCHANGE_ITEM_INSTANCES);
@@ -812,12 +953,13 @@ public class ExchangeItemItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ExchangeItem.class)) {
+			case InformationPackage.EXCHANGE_ITEM__FINAL:
 			case InformationPackage.EXCHANGE_ITEM__VISIBLE_IN_DOC:
 			case InformationPackage.EXCHANGE_ITEM__VISIBLE_IN_LM:
 			case InformationPackage.EXCHANGE_ITEM__SUMMARY:
 			case InformationPackage.EXCHANGE_ITEM__DESCRIPTION:
 			case InformationPackage.EXCHANGE_ITEM__REVIEW:
-			case InformationPackage.EXCHANGE_ITEM__FINAL:
+			case InformationPackage.EXCHANGE_ITEM__ABSTRACT:
 			case InformationPackage.EXCHANGE_ITEM__EXCHANGE_MECHANISM:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
@@ -826,6 +968,7 @@ public class ExchangeItemItemProvider
 			case InformationPackage.EXCHANGE_ITEM__OWNED_PROPERTY_VALUE_GROUPS:
 			case InformationPackage.EXCHANGE_ITEM__OWNED_TRACES:
 			case InformationPackage.EXCHANGE_ITEM__NAMING_RULES:
+			case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS:
 			case InformationPackage.EXCHANGE_ITEM__OWNED_ELEMENTS:
 			case InformationPackage.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS:
 			case InformationPackage.EXCHANGE_ITEM__OWNED_EXCHANGE_ITEM_INSTANCES:
@@ -848,7 +991,7 @@ public class ExchangeItemItemProvider
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
+                        (ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS,
                          CapellacoreFactory.eINSTANCE.createConstraint());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -981,6 +1124,18 @@ public class ExchangeItemItemProvider
                 {
                     CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
+                         CapellacommonFactory.eINSTANCE.createJustificationLink());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.NAMESPACE__OWNED_TRACES,
                          InteractionFactory.eINSTANCE.createMergeLink());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1006,6 +1161,18 @@ public class ExchangeItemItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.NAMESPACE__NAMING_RULES,
                          CapellacoreFactory.eINSTANCE.createNamingRule());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS,
+                         CapellacoreFactory.eINSTANCE.createGeneralization());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

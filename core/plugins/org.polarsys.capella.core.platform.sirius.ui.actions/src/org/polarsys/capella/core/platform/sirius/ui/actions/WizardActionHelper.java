@@ -17,7 +17,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.PhysicalLink;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
@@ -95,7 +95,7 @@ public class WizardActionHelper {
    * 
    */
   public static void deleteCreatedCategory(CapellaElement cElt) {
-    new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), Collections.singleton(cElt), true, false, false).execute();
+    new CapellaDeleteCommand(TransactionHelper.getExecutionManager(cElt), Collections.singleton(cElt), true, false, false).execute();
 
   }
 

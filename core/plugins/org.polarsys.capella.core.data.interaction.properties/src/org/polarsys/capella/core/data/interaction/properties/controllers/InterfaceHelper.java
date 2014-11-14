@@ -11,19 +11,25 @@
 package org.polarsys.capella.core.data.interaction.properties.controllers;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.fa.ComponentPort;
+import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -40,14 +46,10 @@ import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.ActorExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 /**
  * This is a class above classes allowing to know available operations regarding sequence messages <br>
@@ -304,7 +306,7 @@ public class InterfaceHelper {
    * @param sequenceMessage the sequence message
    * @return a list of <code>Operation</code> instances
    */
-  public List<CapellaElement> getAvailableExchangeItems(InstanceRole source, InstanceRole target, boolean isSynchronous) {
+  public List<CapellaElement> getAvailableExchangeItemsFromInterfaces(InstanceRole source, InstanceRole target, boolean isSynchronous) {
     ExchangeItem manipulatedItem = null;
 
     // A list to store the client used and required interfaces
@@ -335,7 +337,7 @@ public class InterfaceHelper {
           clientUsedAndRequiredInterfaces.addAll(InterfaceExt.getAllSuperGeneralizableElements(getUsedAndRequiredInterfaces(component)));
         }
       } else if (client.getAbstractType() instanceof ExchangeItem) {
-    	// The interfaces are all those containing a ExchangeItemAllocation to this EI
+        // The interfaces are all those containing a ExchangeItemAllocation to this EI
         List<EObject> lst = EObjectExt.getReferencers(client.getAbstractType(), CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
         for (EObject obj : lst) {
           Interface interf = (Interface) obj.eContainer();
@@ -355,7 +357,7 @@ public class InterfaceHelper {
           providerImplementedAndProvidedInterfaces.addAll(InterfaceExt.getAllSuperGeneralizableElements(getImplementedAndProvidedInterfaces(component)));
         }
       } else if (provider.getAbstractType() instanceof ExchangeItem) {
-      	// The interfaces are all those containing a ExchangeItemAllocation to this EI
+        // The interfaces are all those containing a ExchangeItemAllocation to this EI
         List<EObject> lst = EObjectExt.getReferencers(provider.getAbstractType(), CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM);
         for (EObject obj : lst) {
           Interface interf = (Interface) obj.eContainer();
@@ -384,6 +386,36 @@ public class InterfaceHelper {
     }
     return operations;
   }
+  
+	public Collection<CapellaElement> getExchangeItemsFromCommunicationLinks(InstanceRole source, InstanceRole target, boolean isSynchronous) {
+		// Gets the client and the provider of the sequence message
+		Component client = null;
+		Component provider = null;
+
+		if (source != null && source.getRepresentedInstance().getAbstractType() instanceof Component) {
+			client = (Component) source.getRepresentedInstance().getAbstractType();
+		}
+		if (target != null && target.getRepresentedInstance().getAbstractType() instanceof Component) {
+			provider = (Component) target.getRepresentedInstance().getAbstractType();
+		}
+
+		// A synchronous message to SD: in inverse client / provider because it is a
+		// READ.
+		if (((client == null) || (provider == null)) && isSynchronous) {
+			Component temp = client;
+			client = provider;
+			provider = temp;
+		}
+
+		if (client != null && provider != null) {
+			HashSet<CapellaElement> clientSendItems = new HashSet<CapellaElement>((Collection<? extends CapellaElement>) CommunicationLinkExt.getExchangeItems(CommunicationLinkExt.getSenderCommunicationLink(client)));
+			Collection<AbstractExchangeItem> providerReceiveItems = CommunicationLinkExt.getExchangeItems(CommunicationLinkExt.getReceiverCommunicationLink(provider));
+			clientSendItems.retainAll(providerReceiveItems);
+			return clientSendItems;
+		} else {
+			return new ArrayList<CapellaElement>();
+		}
+	}
 
   public List<CapellaElement> getAllExchangeItems(InstanceRole source, InstanceRole target, MessageKind messageKind_p) {
     if ((source != null) && (target != null)) {
@@ -397,7 +429,7 @@ public class InterfaceHelper {
    * @param message_p
    * @return
    */
-  public List<CapellaElement> getRestrictedExchangeItems(InstanceRole source, InstanceRole target, boolean isSynchronous) {
+  public List<CapellaElement> getRestrictedExchangeItemsFromCommunicationLinks(InstanceRole source, InstanceRole target, boolean isSynchronous) {
     List<CapellaElement> result = new ArrayList<CapellaElement>();
 
     // Gets the client and the provider of the sequence message
@@ -498,7 +530,6 @@ public class InterfaceHelper {
         }
       }
     }
-
     return result;
   }
 
@@ -515,5 +546,6 @@ public class InterfaceHelper {
     }
     return isSharedDataAccess(message_p.getSendingEnd().getCovered(), message_p.getReceivingEnd().getCovered());
   }
+
 
 }

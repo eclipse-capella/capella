@@ -12,7 +12,6 @@ package org.polarsys.capella.core.data.menu.contributions.information;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.CollectionValue;
@@ -22,6 +21,7 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 public class StringReferenceItemContribution extends DataNamingHelperBasedContribution {
   /**
@@ -29,6 +29,11 @@ public class StringReferenceItemContribution extends DataNamingHelperBasedContri
    */
   @Override
   public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+
+    if (feature_p == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION){
+      return false;
+    }
+
     boolean select = !(modelElement_p instanceof AbstractFunction);
 
     if (feature_p.equals(InformationPackage.Literals.COLLECTION_VALUE__OWNED_ELEMENTS)
@@ -65,6 +70,7 @@ public class StringReferenceItemContribution extends DataNamingHelperBasedContri
   /**
    * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()
    */
+  @Override
   public EClass getMetaclass() {
     return DatavaluePackage.Literals.STRING_REFERENCE;
   }

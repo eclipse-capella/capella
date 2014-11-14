@@ -14,13 +14,13 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
+import org.eclipse.sirius.business.api.session.Session;
+import org.polarsys.capella.common.ef.ExecutionManager;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
 import org.polarsys.capella.core.transition.common.context.TransitionContext;
 import org.polarsys.capella.core.transition.diagram.Activator;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -39,14 +39,14 @@ public class AbstractProcessingCommands<T> extends AbstractProcessingRunnable<T>
     return context;
   }
 
-  protected ExecutionManager getExecutionManager() {
-    return MDEAdapterFactory.getExecutionManager();
+  protected ExecutionManager getExecutionManager(Session session_p) {
+    return TransactionHelper.getExecutionManager(session_p);
   }
 
-  protected IStatus runCommand(final String name_p, final RunnableWithBooleanResult runnable_p) {
+  protected IStatus runCommand(final Session session_p, final String name_p, final RunnableWithBooleanResult runnable_p) {
     final IStatus[] result = new IStatus[] { Status.OK_STATUS };
     try {
-      getExecutionManager().execute(new AbstractReadWriteCommand() {
+      getExecutionManager(session_p).execute(new AbstractReadWriteCommand() {
 
         /**
          * {@inheritDoc}

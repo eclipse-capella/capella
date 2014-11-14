@@ -18,13 +18,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
-
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.ui.toolkit.dialogs.OrderedTransferTreeListDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataLabelProvider;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.model.utils.CollectionExt;
 
 /**
  */
@@ -43,7 +44,7 @@ public class SelectionDialogHelper {
     Collection<? extends EObject> elements = (null != list_p) ? list_p : new ArrayList<EObject>(0);
     // call wizard
     SelectElementsDialog selectionDialog =
-        new SelectElementsDialog(shell_p, MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
+        new SelectElementsDialog(shell_p, TransactionHelper.getEditingDomain(elements), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
             Messages.SelectionDialogHelper_SelectionWizard_Title, ICommonConstants.EMPTY_STRING, elements, multiplicity_p, null, treeViewerExpandLevel_p);
     return selectionDialog;
   }
@@ -112,11 +113,11 @@ public class SelectionDialogHelper {
    * @param leftLabelProvider_p
    * @param rightLabelProvider_p
    */
-  public static List<EObject> multiplePropertyTransfertDialogWizard(Shell shell_p, String title_p, String message_p, List<EObject> leftViewersource,
-      List<EObject> rightViewersource, DataLabelProvider leftLabelProvider_p, DataLabelProvider rightLabelProvider_p) {
-    return multiplePropertyTransfertDialogWizard(shell_p, title_p, message_p, leftViewersource, rightViewersource, leftLabelProvider_p, rightLabelProvider_p,
-        AbstractTreeViewer.ALL_LEVELS, AbstractTreeViewer.ALL_LEVELS);
-  }
+//  public static List<EObject> multiplePropertyTransfertDialogWizard(Shell shell_p, String title_p, String message_p, List<EObject> leftViewersource,
+//      List<EObject> rightViewersource, DataLabelProvider leftLabelProvider_p, DataLabelProvider rightLabelProvider_p) {
+//    return multiplePropertyTransfertDialogWizard(shell_p, title_p, message_p, leftViewersource, rightViewersource, leftLabelProvider_p, rightLabelProvider_p,
+//        AbstractTreeViewer.ALL_LEVELS, AbstractTreeViewer.ALL_LEVELS);
+//  }
 
   /**
    * Open selection wizard for given list of element
@@ -161,7 +162,9 @@ public class SelectionDialogHelper {
       List<EObject> rightViewersource) {
 
     TransferTreeListDialog dialog =
-        new TransferTreeListDialog(shell_p, title_p, message_p, MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory());
+        new TransferTreeListDialog(shell_p, title_p, message_p,
+        	TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(leftViewersource, rightViewersource)),
+        	CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
     dialog.setLeftInput(leftViewersource, null /* no context */);
     dialog.setRightInput(rightViewersource, null /* no context */);
     if (Window.OK == dialog.open()) {
@@ -189,7 +192,9 @@ public class SelectionDialogHelper {
     List<EObject> returnedSelectedElements = null;
 
     OrderedTransferTreeListDialog dialog =
-        new OrderedTransferTreeListDialog(shell_p, MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(), title_p, message_p);
+        new OrderedTransferTreeListDialog(shell_p,
+        	TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(availableElements_p, initialSelection_p)),
+        	CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(), title_p, message_p);
     dialog.setLeftInput(availableElements_p, null /* no context */);
     dialog.setRightInput(initialSelection_p, null /* no context */);
     if (Window.OK == dialog.open()) {

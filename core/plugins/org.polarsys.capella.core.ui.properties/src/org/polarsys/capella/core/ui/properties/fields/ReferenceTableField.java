@@ -19,18 +19,17 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.ui.properties.IImageKeys;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
+import org.polarsys.capella.core.ui.properties.IImageKeys;
 import org.polarsys.capella.core.ui.properties.controllers.IMultipleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.capella.core.ui.properties.helpers.NamingHelper;
 import org.polarsys.capella.core.ui.properties.viewers.IDelegatedViewer;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -99,7 +98,7 @@ public class ReferenceTableField extends AbstractStructuredRepresentationField {
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(_semanticElement).execute(command);
     refreshViewer();
   }
 
@@ -124,7 +123,7 @@ public class ReferenceTableField extends AbstractStructuredRepresentationField {
               }
             }
           };
-          MDEAdapterFactory.getExecutionManager().execute(command);
+          TransactionHelper.getExecutionManager(_semanticElement).execute(command);
           refreshViewer();
         }
       }

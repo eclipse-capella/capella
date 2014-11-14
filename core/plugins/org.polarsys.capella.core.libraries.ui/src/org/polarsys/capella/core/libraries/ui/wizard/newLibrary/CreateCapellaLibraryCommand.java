@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.ui.wizard.newLibrary;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.ProjectApproach;
@@ -22,8 +21,8 @@ import org.polarsys.capella.core.model.skeleton.impl.cmd.CreateCapellaProjectCmd
  */
 public class CreateCapellaLibraryCommand extends CreateCapellaProjectCmd {
 
-  public CreateCapellaLibraryCommand(IProject eclipseProject_p, String name_p, TransactionalEditingDomain domain_p, ProjectApproach approach_p) {
-    super(eclipseProject_p, name_p, domain_p, approach_p);
+  public CreateCapellaLibraryCommand(Resource resource_p, String name_p, ProjectApproach approach_p) {
+    super(resource_p, name_p, approach_p);
   }
 
   @Override

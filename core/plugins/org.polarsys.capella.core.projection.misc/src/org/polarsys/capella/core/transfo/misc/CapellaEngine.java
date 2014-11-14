@@ -21,30 +21,30 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.helpers.query.MDEQueries;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Namespace;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
-import org.polarsys.capella.core.model.helpers.refmap.KPair;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.model.helpers.refmap.CapellaRefMap;
+import org.polarsys.capella.core.model.helpers.refmap.KPair;
 import org.polarsys.capella.core.model.helpers.refmap.VPair;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 
 /**
  */
@@ -69,7 +69,7 @@ public class CapellaEngine extends TransfoEngine {
 
     try {
       if (resolution) {
-        EcoreUtil.resolveAll(MDEAdapterFactory.getResourceSet());
+        EcoreUtil.resolveAll(TransactionHelper.getEditingDomain((EObject) transfo_p.get(TRANSFO_SOURCE)).getResourceSet());
       }
       CrossReferencerHelper.enableResolution(false);
       super.execute(transfo_p);
@@ -126,8 +126,7 @@ public class CapellaEngine extends TransfoEngine {
               FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION)
           || !isSemantiklyLinked(src, FaPackage.Literals.FUNCTIONAL_EXCHANGE, tgt, FaPackage.Literals.COMPONENT_EXCHANGE,
               FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION)
-          ||
-          !isSemantiklyLinked(src, FaPackage.Literals.ABSTRACT_FUNCTION, tgt, FaPackage.Literals.ABSTRACT_FUNCTION, FaPackage.Literals.FUNCTION_REALIZATION)
+          || !isSemantiklyLinked(src, FaPackage.Literals.ABSTRACT_FUNCTION, tgt, FaPackage.Literals.ABSTRACT_FUNCTION, FaPackage.Literals.FUNCTION_REALIZATION)
           || !isSemantiklyLinked(src, CsPackage.Literals.INTERFACE, tgt, CsPackage.Literals.INTERFACE, CsPackage.Literals.INTERFACE_ALLOCATION)) {
         transfoLink.destroy();
       }
@@ -188,9 +187,7 @@ public class CapellaEngine extends TransfoEngine {
     if ((transformedElements != null) && (transformedElements instanceof Collection)) {
       Collection<EObject> transformedElementsList = (Collection) transformedElements;
       for (EObject element : transformedElementsList) {
-        CompoundCommand command =
-            CreationHelper.getContributorsCommand(MDEAdapterFactory.getEditingDomain(), element, element.eContainer(), element.eClass(),
-                element.eContainmentFeature());
+        CompoundCommand command = CreationHelper.getContributorsCommand(element, element.eContainer(), element.eClass(), element.eContainmentFeature());
         if (command.canExecute()) {
           command.execute();
         }
@@ -201,9 +198,7 @@ public class CapellaEngine extends TransfoEngine {
     if ((links != null) && (links instanceof Collection)) {
       Collection<EObject> linksList = (Collection) links;
       for (EObject element : linksList) {
-        CompoundCommand command =
-            CreationHelper.getContributorsCommand(MDEAdapterFactory.getEditingDomain(), element, element.eContainer(), element.eClass(),
-                element.eContainmentFeature());
+        CompoundCommand command = CreationHelper.getContributorsCommand(element, element.eContainer(), element.eClass(), element.eContainmentFeature());
         if (command.canExecute()) {
           command.execute();
         }
@@ -224,7 +219,9 @@ public class CapellaEngine extends TransfoEngine {
         TraceableElement elt = transfoLink.getSourceElement();
         Namespace ownerElt = (Namespace) ((elt instanceof Namespace) ? elt : EcoreUtil2.getFirstContainer(elt, CapellacorePackage.Literals.NAMESPACE));
         if (ownerElt != null) {
+          HoldingResourceHelper.ensureMoveElement(transfoLink, ownerElt);
           ownerElt.getOwnedTraces().add(transfoLink);
+
         }
       }
     }
@@ -262,7 +259,9 @@ public class CapellaEngine extends TransfoEngine {
         EReference[] references = semanticLink.getSecondValue();
         for (int i = 0; i < classes.length; i++) {
           if (classes[i].isInstance(trace) && (trace.getSourceElement() == linkSrc_p)) {
+            HoldingResourceHelper.ensureMoveElement(trace, linkSrc_p);
             ((Collection<EObject>) linkSrc_p.eGet(references[i])).add(trace);
+
           }
         }
       }

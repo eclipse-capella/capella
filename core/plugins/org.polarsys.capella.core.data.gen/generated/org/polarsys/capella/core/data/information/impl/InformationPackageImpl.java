@@ -867,6 +867,15 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getDataPkg_OwnedStateEvents() {
+		return (EReference)dataPkgEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getDomainElement() {
 		return domainElementEClass;
 	}
@@ -1173,17 +1182,8 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getProperty_ValueConstraint() {
-		return (EAttribute)propertyEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getProperty_Association() {
-		return (EReference)propertyEClass.getEStructuralFeatures().get(5);
+		return (EReference)propertyEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1821,6 +1821,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		createEReference(dataPkgEClass, DATA_PKG__OWNED_SIGNALS);
 		createEReference(dataPkgEClass, DATA_PKG__OWNED_MESSAGES);
 		createEReference(dataPkgEClass, DATA_PKG__OWNED_EXCEPTIONS);
+		createEReference(dataPkgEClass, DATA_PKG__OWNED_STATE_EVENTS);
 
 		domainElementEClass = createEClass(DOMAIN_ELEMENT);
 
@@ -1862,7 +1863,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		createEAttribute(propertyEClass, PROPERTY__IS_DERIVED);
 		createEAttribute(propertyEClass, PROPERTY__IS_READ_ONLY);
 		createEAttribute(propertyEClass, PROPERTY__IS_PART_OF_KEY);
-		createEAttribute(propertyEClass, PROPERTY__VALUE_CONSTRAINT);
 		createEReference(propertyEClass, PROPERTY__ASSOCIATION);
 
 		serviceEClass = createEClass(SERVICE);
@@ -2029,10 +2029,10 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		portRealizationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 		portAllocationEClass.getESuperTypes().add(theCapellacorePackage.getAllocation());
 		exchangeItemEClass.getESuperTypes().add(theModellingcorePackage.getAbstractExchangeItem());
-		exchangeItemEClass.getESuperTypes().add(theCapellacorePackage.getType());
 		exchangeItemEClass.getESuperTypes().add(theBehaviorPackage.getAbstractEvent());
 		exchangeItemEClass.getESuperTypes().add(theBehaviorPackage.getAbstractSignal());
 		exchangeItemEClass.getESuperTypes().add(theModellingcorePackage.getFinalizableElement());
+		exchangeItemEClass.getESuperTypes().add(theCapellacorePackage.getGeneralizableElement());
 		exchangeItemElementEClass.getESuperTypes().add(theCapellacorePackage.getNamedElement());
 		exchangeItemElementEClass.getESuperTypes().add(this.getMultiplicityElement());
 		exchangeItemElementEClass.getESuperTypes().add(theCapellacorePackage.getTypedElement());
@@ -2091,6 +2091,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		initEReference(getDataPkg_OwnedSignals(), theCommunicationPackage.getSignal(), null, "ownedSignals", null, 0, -1, DataPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getDataPkg_OwnedMessages(), theCommunicationPackage.getMessage(), null, "ownedMessages", null, 0, -1, DataPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getDataPkg_OwnedExceptions(), theCommunicationPackage.getException(), null, "ownedExceptions", null, 0, -1, DataPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEReference(getDataPkg_OwnedStateEvents(), theCapellacommonPackage.getStateEvent(), null, "ownedStateEvents", null, 0, -1, DataPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(domainElementEClass, DomainElement.class, "DomainElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
@@ -2132,7 +2133,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		initEAttribute(getProperty_IsDerived(), ecorePackage.getEBoolean(), "isDerived", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getProperty_IsReadOnly(), ecorePackage.getEBoolean(), "isReadOnly", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEAttribute(getProperty_IsPartOfKey(), ecorePackage.getEBoolean(), "isPartOfKey", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getProperty_ValueConstraint(), ecorePackage.getEString(), "valueConstraint", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 		initEReference(getProperty_Association(), this.getAssociation(), null, "association", null, 0, 1, Property.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
 		initEClass(serviceEClass, Service.class, "Service", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2244,7 +2244,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 
 		initEEnum(elementKindEEnum, ElementKind.class, "ElementKind"); //$NON-NLS-1$
 		addEEnumLiteral(elementKindEEnum, ElementKind.TYPE);
-		addEEnumLiteral(elementKindEEnum, ElementKind.PARAMETER);
+		addEEnumLiteral(elementKindEEnum, ElementKind.MEMBER);
 
 		initEEnum(collectionKindEEnum, CollectionKind.class, "CollectionKind"); //$NON-NLS-1$
 		addEEnumLiteral(collectionKindEEnum, CollectionKind.ARRAY);
@@ -2293,7 +2293,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												
 	}
 
 	/**
@@ -2719,6 +2719,14 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
+		  (getDataPkg_OwnedStateEvents(), 
+		   source, 
+		   new String[] {
+			 "description", "the StateEvent elements contained in the package\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
 		  (domainElementEClass, 
 		   source, 
 		   new String[] {
@@ -3114,15 +3122,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "description", "specifies whether this Property is involved as a key to a table of values\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "type", "\"true\" if the Property is used as a key", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getProperty_ValueConstraint(), 
-		   source, 
-		   new String[] {
-			 "description", "a textual specification of a constraint to be applied to the values brought by this property\r\n[source: Capella study]", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "type", "n/a", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });							
 		addAnnotation
@@ -3665,7 +3664,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		  (elementKindEEnum.getELiterals().get(1), 
 		   source, 
 		   new String[] {
-			 "description", "used when ExchangeItemElement is described as a parameter for its ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
+			 "description", "used when ExchangeItemElement is described as a member for its ExchangeItem", //$NON-NLS-1$ //$NON-NLS-2$
 			 "constraints", "none", //$NON-NLS-1$ //$NON-NLS-2$
 			 "comment/notes", "none" //$NON-NLS-1$ //$NON-NLS-2$
 		   });			
@@ -3932,6 +3931,11 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   new String[] {
 		   });						
 		addAnnotation
+		  (getDataPkg_OwnedStateEvents(), 
+		   source, 
+		   new String[] {
+		   });						
+		addAnnotation
 		  (domainElementEClass, 
 		   source, 
 		   new String[] {
@@ -4074,11 +4078,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   });					
 		addAnnotation
 		  (getProperty_IsPartOfKey(), 
-		   source, 
-		   new String[] {
-		   });					
-		addAnnotation
-		  (getProperty_ValueConstraint(), 
 		   source, 
 		   new String[] {
 		   });											
@@ -4282,7 +4281,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "useIDAttributes", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "extensibleProviderFactory", "true", //$NON-NLS-1$ //$NON-NLS-2$
 			 "childCreationExtenders", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									
 	}
 
 	/**
@@ -4438,6 +4437,12 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "Label", "ownedExceptions" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
+		  (getDataPkg_OwnedStateEvents(), 
+		   source, 
+		   new String[] {
+			 "Label", "ownedStateEvents" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
 		  (domainElementEClass, 
 		   source, 
 		   new String[] {
@@ -4544,7 +4549,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   source, 
 		   new String[] {
 			 "Label", "Property" //$NON-NLS-1$ //$NON-NLS-2$
-		   });																										
+		   });																						
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
@@ -4828,7 +4833,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   new String[] {
 			 "featureName", "packagedElement", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "Package" //$NON-NLS-1$ //$NON-NLS-2$
-		   });								
+		   });													
 		addAnnotation
 		  (domainElementEClass, 
 		   source, 
@@ -5001,14 +5006,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   source, 
 		   new String[] {
 			 "featureName", "isPartOfKey", //$NON-NLS-1$ //$NON-NLS-2$
-			 "featureOwner", "eng.Property", //$NON-NLS-1$ //$NON-NLS-2$
-			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getProperty_ValueConstraint(), 
-		   source, 
-		   new String[] {
-			 "featureName", "valueConstraint", //$NON-NLS-1$ //$NON-NLS-2$
 			 "featureOwner", "eng.Property", //$NON-NLS-1$ //$NON-NLS-2$
 			 "fromStereotype", "true" //$NON-NLS-1$ //$NON-NLS-2$
 		   });					
@@ -5514,6 +5511,14 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 			 "constraints", "uml::Package::packagedElement elements on which Excpetion stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed" //$NON-NLS-1$ //$NON-NLS-2$
 		   });						
 		addAnnotation
+		  (getDataPkg_OwnedStateEvents(), 
+		   source, 
+		   new String[] {
+			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
+			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
+			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
+		   });						
+		addAnnotation
 		  (domainElementEClass, 
 		   source, 
 		   new String[] {
@@ -5866,14 +5871,6 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		   });					
 		addAnnotation
 		  (getProperty_IsPartOfKey(), 
-		   source, 
-		   new String[] {
-			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
-			 "explanation", "none", //$NON-NLS-1$ //$NON-NLS-2$
-			 "constraints", "none" //$NON-NLS-1$ //$NON-NLS-2$
-		   });					
-		addAnnotation
-		  (getProperty_ValueConstraint(), 
 		   source, 
 		   new String[] {
 			 "UML/SysML semantic equivalences", "", //$NON-NLS-1$ //$NON-NLS-2$
@@ -6492,7 +6489,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		  (getCollection_ContainedOperations(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																	
+		   });																																																																																																																																																																																						
 		addAnnotation
 		  (getOperation_AllocatingOperations(), 
 		   source, 
@@ -6517,7 +6514,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		  (getOperationAllocation_AllocatingOperation(), 
 		   source, 
 		   new String[] {
-		   });																																																																																
+		   });																																																																												
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
@@ -6707,6 +6704,11 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		  (getDataPkg_OwnedExceptions(), 
 		   source, 
 		   new String[] {
+		   });						
+		addAnnotation
+		  (getDataPkg_OwnedStateEvents(), 
+		   source, 
+		   new String[] {
 		   });																		
 		addAnnotation
 		  (getKeyPart_Property(), 
@@ -6757,7 +6759,7 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		  (getOperation_OwnedParameters(), 
 		   source, 
 		   new String[] {
-		   });																																																																																																						
+		   });																																																																																																		
 		addAnnotation
 		  (getProperty_Association(), 
 		   source, 
@@ -6812,12 +6814,12 @@ public class InformationPackageImpl extends EPackageImpl implements InformationP
 		  (associationEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																								
+		   });																																																																																																																																																																													
 		addAnnotation
 		  (keyPartEClass, 
 		   source, 
 		   new String[] {
-		   });																																																																																																																																																																																																																																																																																																																																																																																																																											
+		   });																																																																																																																																																																																																																																																																																																																																																																																																																							
 	}
 
 } //InformationPackageImpl

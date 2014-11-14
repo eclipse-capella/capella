@@ -8,7 +8,7 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.ui.services;visibility:=reexport,
  org.polarsys.capella.common.command.recorder.core;visibility:=reexport,
  org.polarsys.capella.core.preferences
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.command.recorder.ui,
  org.polarsys.capella.common.command.recorder.ui.messages,

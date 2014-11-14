@@ -7,8 +7,7 @@
  *  
  * Contributors:
  *    Thales - initial API and implementation
- *    IBM Corporation 
- ******************************************************************************/
+ *******************************************************************************/
 package org.polarsys.capella.core.refinement.merge.utils;
 
 import java.util.List;
@@ -34,7 +33,7 @@ public class CapellaCopier extends Copier {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Mainly duplicated from EcoreUtil.Copier class provided by org.eclipse.emf.ecore.util plug-in.
+   * Mainly duplicated from EcoreUtil.Copier class
    * @see org.eclipse.emf.ecore.util.EcoreUtil.Copier#copyAttribute(org.eclipse.emf.ecore.EAttribute, org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
    */
   @Override

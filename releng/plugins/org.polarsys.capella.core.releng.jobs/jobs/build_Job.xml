@@ -1,8 +1,5 @@
 <project name="Job">
 
-	<echo message="Running Job EGF in Job_EGF/releng"/>
-	<ant dir="Job_EGF/releng"/>
-
 	<echo message="Running Job Capella in Job_Capella/releng"/>
 	<ant dir="Job_Capella/releng"/>
 

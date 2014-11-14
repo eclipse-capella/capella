@@ -129,6 +129,7 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 			case InteractionPackage.ARM_TIMER_EVENT: return createArmTimerEvent();
 			case InteractionPackage.CANCEL_TIMER_EVENT: return createCancelTimerEvent();
 			case InteractionPackage.CONSTRAINT_DURATION: return createConstraintDuration();
+			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION: return createSequenceMessageValuation();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
@@ -542,6 +543,18 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
     //begin-capella-code
     //end-capella-code
 		return constraintDuration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SequenceMessageValuation createSequenceMessageValuation() {
+		SequenceMessageValuationImpl sequenceMessageValuation = new SequenceMessageValuationImpl();
+    //begin-capella-code
+    //end-capella-code
+		return sequenceMessageValuation;
 	}
 
 	/**

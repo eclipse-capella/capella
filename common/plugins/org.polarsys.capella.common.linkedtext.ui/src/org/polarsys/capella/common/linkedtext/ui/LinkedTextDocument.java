@@ -1,0 +1,302 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.linkedtext.ui;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.lang.StringEscapeUtils;
+import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.jface.text.BadPositionCategoryException;
+import org.eclipse.jface.text.DefaultPositionUpdater;
+import org.eclipse.jface.text.Document;
+import org.eclipse.jface.text.Position;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.LabelProviderChangedEvent;
+
+
+public class LinkedTextDocument extends Document implements ILabelProviderListener {
+  
+  /**
+   * A parameter interface that describes input from which to derive linked text documents.
+   */
+  public static interface Input {
+
+    /**
+     * Returns the raw linked text
+     */
+    public String getText();
+
+    /**
+     * Set the raw linked text
+     */
+    public void setText(String linkedText);
+
+    /**
+     * @return the base object used for hyperlink resolution.
+     */
+    public Object getDocumentBase();
+
+    /**
+     * @return the label provider used to obtain hyperlink target text representations
+     */
+    public ILabelProvider getLabelProvider();
+
+    /**
+     * @return the resolver used to resolve and deresolve hyperlink references
+     */
+    public Resolver getResolver();
+  }
+  
+  /**
+   * A resolver is responsible to find (resolve) hyperlink targets given a base object and a hyperlink 
+   * reference, and also to produce a hyperlink reference from a target object and a base object.
+   */
+  public static interface Resolver {
+    
+    /**
+     * Given a hyperlink reference and a base object compute and return the target object.
+     * @param base_p the base object
+     * @param href_p the hyperlink reference
+     * @return the referenced target object or null if the reference cannot be resolved.
+     */
+    public Object getTarget(Object base_p, String href_p);
+    
+    /**
+     * Given a base and a target object, computes a hyperlink reference
+     * @param base_p the base object
+     * @param target the target object
+     * @return
+     */
+    public String getHref(Object base_p, Object target);
+  }
+
+  private final static Pattern pattern = Pattern.compile("<a href=\"([^\"]*)\"/>");
+  
+  /* The base object. All hrefs are resolved against this object */
+  private final Object _documentBase;
+  
+  /* The label provider used to obtain text for hyperlink targets*/
+  private final ILabelProvider _labelProvider;
+
+  /* The resolver */
+  private final Resolver _resolver;
+  
+  /**
+   * Create a new instance using a document base and a label provider. The document base
+   * is used as a reference element when resolving hyperlink references. The label provider
+   * is used to obtain a text presentation for resolved target objects.
+   * 
+   * @param documentBase_p the document base
+   * @param labelProvider_p the label provider
+   */
+  public LinkedTextDocument(Object documentBase_p, ILabelProvider labelProvider_p, Resolver resolver_p){
+    _labelProvider = labelProvider_p;
+    _documentBase = documentBase_p;
+    _resolver = resolver_p;
+    
+    _labelProvider.addListener(this);
+  }
+ 
+  /**
+   * @return the document base object
+   */
+  public final Object getDocumentBase(){
+    return _documentBase;
+  }
+  
+  /**
+   * @return the document label provider used to obtain text presentation for hyperlink targets
+   */
+  public final ILabelProvider getLabelProvider(){
+    return _labelProvider;
+  }
+  
+  /**
+   * @return the resolver
+   */
+  public final Resolver getResolver(){
+    return _resolver;
+  }
+
+  @Override
+  protected void completeInitialization(){
+    super.completeInitialization();
+    addPositionCategory(LinkedTextCategories.HYPERLINK.name());
+    addPositionUpdater(new DefaultPositionUpdater(LinkedTextCategories.HYPERLINK.name()));
+  }
+
+  /**
+   * Load a LinkedTextDocument from a raw string.
+   * 
+   * @param raw_p the raw text in the given language
+   * @param documentBase the document base object
+   * @param resolver_p the resolver to resolve and deresolve hyperlink references
+   * @param labelProvider_p the label provider used to obtain text presentations for hyperlink targets
+   * @return the loaded document
+   */
+  public static LinkedTextDocument load(Input input_p){
+    
+    LinkedTextDocument doc = new LinkedTextDocument(input_p.getDocumentBase(), input_p.getLabelProvider(), input_p.getResolver());
+    List<LinkedTextHyperlink> links = new ArrayList<LinkedTextHyperlink>();
+
+    if(input_p.getText() != null) {
+    Matcher m = pattern.matcher(input_p.getText());
+    StringBuilder builder = new StringBuilder();
+    int offset = 0;
+    while (m.find()){
+      int start = m.start();
+      if (start > offset){
+        builder.append(StringEscapeUtils.unescapeHtml(input_p.getText().substring(offset, start)));
+      }
+      final int labelStart = builder.length();
+
+      Object target = doc.getResolver().getTarget(doc.getDocumentBase(), m.group(1));
+      String text = null;
+      if (target != null){
+        text = doc.getLabelProvider().getText(target);
+      } else {
+        text = m.group(1);
+      }
+      LinkedTextHyperlink hl = LinkedTextHyperlink.create(labelStart, text.length(), target);
+      builder.append(text);
+      links.add(hl);
+      offset = m.end();
+    }
+    builder.append(StringEscapeUtils.unescapeHtml(input_p.getText().substring(offset, input_p.getText().length())));
+    doc.set(builder.toString());
+    for (Position pos : links){
+      try {
+        doc.addPosition(LinkedTextCategories.HYPERLINK.name(), pos);
+      } catch (BadLocationException exception_p) {
+        exception_p.printStackTrace(); //FIXME
+      } catch (BadPositionCategoryException exception_p) {
+        /* there's always a hyperlink category */
+      }
+    }
+    }
+    return doc;
+  }
+
+  public void insertHyperlink(LinkedTextHyperlink hl) throws BadLocationException {
+    stopListenerNotification();
+    replace(hl.getOffset(), 0, _labelProvider.getText(hl.getTarget()));
+    try {
+      addPosition(LinkedTextCategories.HYPERLINK.name(), hl);
+    } catch (BadPositionCategoryException exception_p) {
+      /* there's always a hyperlink category */
+    }
+    resumeListenerNotification();
+  }
+
+  /**
+   * @return
+   */
+  public Collection<LinkedTextHyperlink> getHyperlinks() {
+    Collection<LinkedTextHyperlink> result = new ArrayList<LinkedTextHyperlink>();
+    try {
+      for (Position pos : getPositions(LinkedTextCategories.HYPERLINK.name())){
+        if (!pos.isDeleted()){
+          result.add((LinkedTextHyperlink) pos);
+        }
+      }
+    } catch (BadPositionCategoryException exception_p) {
+      /* there's always a hyperlink category */
+    }
+    return result;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void labelProviderChanged(LabelProviderChangedEvent event_p) {
+    for (LinkedTextHyperlink hl : getHyperlinks()){
+      String newText = null;
+      if (event_p.getElements() == null) {
+        newText = _labelProvider.getText(hl.getTarget());
+      } else {
+        for (Object element : event_p.getElements()){
+          if (element == hl.getTarget()){
+            newText = _labelProvider.getText(hl.getTarget());
+            break;
+          }
+        }
+      }
+      if (newText != null){
+        try {
+          replace(hl.getOffset(), hl.getLength(), newText);
+        } catch (BadLocationException exception_p) {
+          // FIXME
+          exception_p.printStackTrace();
+        }
+      }
+    }
+  }
+
+  /**
+   * Disposes the document. This unregisters the documents label provider listener from the hyperlink label provider
+   */
+  public void dispose(){
+    _labelProvider.removeListener(this);
+  }
+
+  /**
+   * Saves this document back into raw text representation.
+   */
+  public String saveToRaw(){
+    
+    StringBuilder builder = new StringBuilder();
+
+    int offset = 0;
+    for (Iterator<LinkedTextHyperlink> it = getHyperlinks().iterator(); it.hasNext();){
+        LinkedTextHyperlink current = it.next();
+        try {
+          String segment = get(offset, current.getOffset() - offset);
+          builder.append(StringEscapeUtils.escapeHtml(segment));
+        } catch (BadLocationException exception_p) {
+          exception_p.printStackTrace();
+        }
+        
+        String href = null;
+        if (current.getTarget() == null){
+          try {
+            href = get(current.getOffset(), current.getLength());
+          } catch (BadLocationException exception_p) {
+            // FIXME
+            exception_p.printStackTrace();
+          }
+        } else {
+          href = getResolver().getHref(getDocumentBase(), current.getTarget());
+        }
+
+        builder.append("<a href=\"") //$NON-NLS-1$
+               .append(href)
+               .append("\"/>"); //$NON-NLS-1$
+        offset = current.getOffset() + current.getLength();
+    }
+
+    try {
+      String segment = get(offset, getLength() - offset);
+      builder.append(StringEscapeUtils.escapeHtml(segment));
+    } catch (BadLocationException exception_p) {
+      exception_p.printStackTrace();
+    }
+
+    return builder.toString();
+  }
+  
+}

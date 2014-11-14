@@ -1,20 +1,13 @@
-/**
- * <copyright> 
- *
- * Copyright (c) 2005-2006 IBM Corporation and others.
- * All rights reserved.   This program and the accompanying materials
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors: 
- *   IBM - Initial API and implementation
- *   Thales
- *
- * </copyright>
- *
- * $Id: DeleteCommand.java,v 1.8 2009/02/02 12:42:39 emerks Exp $
- */
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
 package org.polarsys.capella.core.model.handler.command;
 
 import java.util.ArrayList;
@@ -36,7 +29,7 @@ import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * A model command that deletes given elements, along with their references.<br>

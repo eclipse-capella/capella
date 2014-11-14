@@ -13,20 +13,15 @@ package org.polarsys.capella.common.re.handlers.replicable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
 import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
-import org.polarsys.capella.core.transition.common.handlers.IHandler;
-import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
-import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
@@ -44,36 +39,97 @@ import org.polarsys.capella.common.re.queries.CatalogElement_AllUsedElementLinks
 import org.polarsys.capella.common.re.queries.CatalogElement_AllUsedElements;
 import org.polarsys.capella.common.re.queries.CatalogElement_UsedElementLinks;
 import org.polarsys.capella.common.re.queries.CatalogElement_UsedElements;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.options.IPropertyHandler;
+import org.polarsys.capella.core.transition.common.handlers.options.OptionsHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  */
-public class ReplicableElementHandler implements IHandler {
+public class ReplicableElementHandler implements IReplicableElementHandler {
 
-  public static final String REPLICA = "RRE_REPLICA";
+  public static final String SOURCE = "REH_SOURCE";
 
-  public static final String REPLICABLE_ELEMENT = "REPLICABLE_ELEMENT";
+  public static final String TARGET = "REH_TARGET";
 
-  public static final String SOURCE = "RRE_SOURCE";
+  public static final String INITIAL_SOURCE = "REH_INITIAL_SOURCE";
 
-  public static final String TARGET = "REPLICABLE_ELEMENTTARGET";
+  public static final String INITIAL_TARGET = "REH_INITIAL_TARGET";
 
   public static final String LINKS = "LINKS";
 
-  public CatalogElement getReplica(IContext context_p) {
-    return (CatalogElement) context_p.get(REPLICA);
-  }
-
-  public CatalogElement getReplicableElement(IContext context_p) {
-    return (CatalogElement) context_p.get(REPLICABLE_ELEMENT);
-  }
-
   public CatalogElement getSource(IContext context_p) {
-    return (CatalogElement) context_p.get(SOURCE);
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    return (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_SOURCE));
   }
 
   public CatalogElement getTarget(IContext context_p) {
-    return (CatalogElement) context_p.get(TARGET);
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    return (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET));
+  }
+
+  public void setSource(IContext context_p, CatalogElement element_p) {
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    context.setCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_SOURCE), element_p);
+  }
+
+  public void setTarget(IContext context_p, CatalogElement element_p) {
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    context.setCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__CURRENT_TARGET), element_p);
+  }
+
+  public LinkedList<CatalogElement> getListSourcesVisited(IContext context_p) {
+    if (!context_p.exists("getListSourcesVisited")) {
+      context_p.put("getListSourcesVisited", new LinkedList<CatalogElement>());
+    }
+    return (LinkedList<CatalogElement>) context_p.get("getListSourcesVisited");
+  }
+
+  public LinkedList<CatalogElement> getListSources(IContext context_p) {
+    if (!context_p.exists("getListSources")) {
+      context_p.put("getListSources", new LinkedList<CatalogElement>());
+    }
+    return (LinkedList<CatalogElement>) context_p.get("getListSources");
+  }
+
+  public CatalogElement getInitialSource(IContext context_p) {
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    return (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
+  }
+
+  public CatalogElement getInitialTarget(IContext context_p) {
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    return (CatalogElement) context.getCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET));
+  }
+
+  public void setInitialSource(IContext context_p, CatalogElement element_p) {
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    context.setCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE), element_p);
+  }
+
+  public void setInitialTarget(IContext context_p, CatalogElement element_p) {
+    IPropertyContext context =
+        ((IPropertyHandler) OptionsHandlerHelper.getInstance(context_p)).getPropertyContext(context_p,
+            (String) context_p.get(ITransitionConstants.OPTIONS_SCOPE));
+    context.setCurrentValue(context.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET), element_p);
   }
 
   public Collection<CatalogElementLink> getLinks(IContext context_p) {
@@ -81,22 +137,6 @@ public class ReplicableElementHandler implements IHandler {
       context_p.put(LINKS, new ArrayList<CatalogElementLink>());
     }
     return (Collection<CatalogElementLink>) context_p.get(LINKS);
-  }
-
-  public void setReplica(IContext context_p, CatalogElement element_p) {
-    context_p.put(REPLICA, element_p);
-  }
-
-  public void setReplicableElement(IContext context_p, CatalogElement element_p) {
-    context_p.put(REPLICABLE_ELEMENT, element_p);
-  }
-
-  public void setSource(IContext context_p, CatalogElement element_p) {
-    context_p.put(SOURCE, element_p);
-  }
-
-  public void setTarget(IContext context_p, CatalogElement element_p) {
-    context_p.put(TARGET, element_p);
   }
 
   public CatalogElementPkg getRootPackage(EObject object_p) {
@@ -171,14 +211,16 @@ public class ReplicableElementHandler implements IHandler {
   }
 
   public CatalogElementLink addLink(IContext context_p, ITraceabilityHandler handler_p, CatalogElement element_p, EObject value_p, EObject oppositeValue_p) {
-    for (CatalogElementLink link : element_p.getOwnedLinks()) {
+
+    for (CatalogElementLink link : ReplicableElementHandlerHelper.getInstance(context_p).getAllElementsLinks(element_p)) {
       if (value_p.equals(link.getTarget())) {
         return null;
       }
       if ((oppositeValue_p != null) && oppositeValue_p.equals(link.getTarget())) {
         if (ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.VIRTUAL_LINKS, link, context_p)) {
           link.setTarget(value_p);
-          ContextScopeHandlerHelper.getInstance(context_p).add(IReConstants.VIRTUAL_LINKS_2, link, context_p);
+          link.setSource(element_p);
+          ContextScopeHandlerHelper.getInstance(context_p).remove(IReConstants.VIRTUAL_LINKS, link, context_p);
         }
         return link;
       }
@@ -282,7 +324,7 @@ public class ReplicableElementHandler implements IHandler {
         Collection<EObject> links = EObjectExt.getReferencers((EObject) item, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
         for (EObject link : links) {
           if (link instanceof CatalogElementLink) {
-            if ((context_p != null) && ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.VIRTUAL_LINKS, link, context_p)) {
+            if ((context_p != null) && ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.CREATED_LINKS, link, context_p)) {
               continue;
             }
 
@@ -309,7 +351,7 @@ public class ReplicableElementHandler implements IHandler {
         Collection<EObject> links = EObjectExt.getReferencers((EObject) item, RePackage.Literals.CATALOG_ELEMENT_LINK__TARGET);
         for (EObject link : links) {
           if (link instanceof CatalogElementLink) {
-            if (ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.VIRTUAL_LINKS, link, context_p)) {
+            if (ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.CREATED_LINKS, link, context_p)) {
               continue;
             }
 
@@ -404,6 +446,24 @@ public class ReplicableElementHandler implements IHandler {
   }
 
   /**
+   * @param esource_p
+   * @return
+   */
+  public Collection<CatalogElement> getUsedReplicableElements(CatalogElement esource_p) {
+    LinkedList<CatalogElement> toVisit = new LinkedList<CatalogElement>();
+    if (esource_p != null) {
+
+      for (CatalogElementLink link : esource_p.getOwnedLinks()) {
+        if ((link != null) && (link.getTarget() != null) && (link.getTarget() instanceof CatalogElement)) {
+          toVisit.addLast((CatalogElement) link.getTarget());
+        }
+      }
+    }
+    return toVisit;
+
+  }
+
+  /**
    * @param source_p
    */
   public Collection<CatalogElement> getAllUsedReplicableElements(CatalogElement source_p) {
@@ -440,7 +500,6 @@ public class ReplicableElementHandler implements IHandler {
    */
   @Override
   public IStatus dispose(IContext context_p) {
-    cleanVirtualLinks(context_p);
     return Status.OK_STATUS;
   }
 
@@ -502,10 +561,10 @@ public class ReplicableElementHandler implements IHandler {
    * @param context_p
    */
   public void cleanVirtualLinks(IContext context_p) {
-    Collection<EObject> links = ContextScopeHandlerHelper.getInstance(context_p).getCollection(IReConstants.VIRTUAL_LINKS, context_p);
+    Collection<EObject> links = ContextScopeHandlerHelper.getInstance(context_p).getCollection(IReConstants.CREATED_LINKS, context_p);
     Collection<EObject> toRemove = new LinkedList<EObject>();
     for (EObject object : links) {
-      if (!ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.VIRTUAL_LINKS_3, object, context_p)) {
+      if (!ContextScopeHandlerHelper.getInstance(context_p).contains(IReConstants.CREATED_LINKS_TO_KEEP, object, context_p)) {
         toRemove.add(object);
       }
     }
@@ -536,6 +595,8 @@ public class ReplicableElementHandler implements IHandler {
     }
 
     links.clear();
+    links = ContextScopeHandlerHelper.getInstance(context_p).getCollection(IReConstants.VIRTUAL_LINKS, context_p);
+    links.removeAll(toRemove);
   }
 
   /**
@@ -572,6 +633,126 @@ public class ReplicableElementHandler implements IHandler {
         definitions.getOwnedDefinitions().add(definition);
       }
     }
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public Collection<CatalogElementLink> createTargetLinks(CatalogElement replicable_p, Collection<CatalogElementLink> setLinks_p, IContext context_p) {
+    HashSet<CatalogElementLink> newLinks = new HashSet<CatalogElementLink>();
+
+    for (CatalogElementLink link : setLinks_p) {
+      CatalogElementLink link2 = ReFactory.eINSTANCE.createCatalogElementLink();
+      link2.setTarget(link.getTarget());
+      link2.setSource(replicable_p);
+      link2.setOrigin(link);
+      replicable_p.getOwnedLinks().add(link2);
+      newLinks.add(link2);
+
+      ContextScopeHandlerHelper.getInstance(context_p).add(IReConstants.CREATED_LINKS, link2, context_p);
+      ContextScopeHandlerHelper.getInstance(context_p).add(IReConstants.VIRTUAL_LINKS, link2, context_p);
+    }
+    return newLinks;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public CatalogElementLink getOppositeLink(CatalogElementLink link_p, IContext context) {
+    CatalogElement element = link_p.getSource();
+
+    CatalogElement source = ReplicableElementHandlerHelper.getInstance(context).getSource(context);
+    CatalogElement target = ReplicableElementHandlerHelper.getInstance(context).getTarget(context);
+    if (element.equals(source)) {
+      element = target;
+    } else {
+      element = source;
+    }
+
+    Collection<CatalogElementLink> usedLinks = ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks(element, new QueryContext());
+    for (CatalogElementLink usedLink : usedLinks) {
+      if ((usedLink != null) && (usedLink.getOrigin() != null) && usedLink.getOrigin().equals(link_p)) {
+        return usedLink;
+      }
+      if ((link_p != null) && (link_p.getOrigin() != null) && link_p.getOrigin().equals(usedLink)) {
+        return usedLink;
+      }
+    }
+
+    return null;
+  }
+
+  public CatalogElement createInitialReplica(CatalogElement source_p, CatalogElement target_p, IContext context_p) {
+    return createInitialReplica(source_p, target_p, context_p, true);
+  }
+
+  public CatalogElement createInitialReplica(CatalogElement source_p, CatalogElement target_p, IContext context_p, boolean children_p) {
+
+    CatalogElement element = target_p;
+    if (element == null) {
+      element = ReplicableElementHandlerHelper.getInstance(context_p).createReplica();
+    }
+
+    if (source_p != null) {
+      String namea = source_p.getName();
+      if (namea.startsWith("REC")) {
+        namea = "RPL" + namea.substring(3);
+      }
+      element.setName(namea);
+      element.setOrigin(source_p);
+
+      if (IReConstants.ENABLE_SUB_INSTANCIATION()) {
+        //create internal links
+        for (CatalogElementLink link : source_p.getOwnedLinks()) {
+          if ((link != null) && (link.getTarget() != null) && (link.getTarget() instanceof CatalogElement)) {
+            CatalogElement replica = null;
+            boolean found = false;
+            for (CatalogElementLink linkReplica : element.getOwnedLinks()) {
+              if ((linkReplica != null) && (linkReplica.getOrigin() != null) && linkReplica.getOrigin().equals(link)) {
+                found = true;
+                replica = (CatalogElement) linkReplica.getTarget();
+                break;
+              }
+            }
+
+            replica = createInitialReplica((CatalogElement) link.getTarget(), replica, context_p, IReConstants.ENABLE_SUB_INSTANCIATION());
+
+            if (!found) {
+              CatalogElementLink linkCopy = ReFactory.eINSTANCE.createCatalogElementLink();
+              linkCopy.setSource(element);
+              linkCopy.setTarget(replica);
+              linkCopy.setOrigin(link);
+              element.getOwnedLinks().add(linkCopy);
+              element.getOwnedElements().add(replica);
+              ContextScopeHandlerHelper.getInstance(context_p).add(IReConstants.CREATED_LINKS, linkCopy, context_p);
+            }
+          }
+        }
+      }
+    }
+
+    return element;
+  }
+
+  /**
+   * @param element_p
+   * @param context_p
+   */
+  public void addDeletableElement(EObject element_p, IContext context_p) {
+    if (!context_p.exists(IReConstants.ADDITIONAL_ELEMENTS_TO_DELETE)) {
+      context_p.put(IReConstants.ADDITIONAL_ELEMENTS_TO_DELETE, new HashSet<EObject>());
+    }
+
+    ((Collection) context_p.get(IReConstants.ADDITIONAL_ELEMENTS_TO_DELETE)).add(element_p);
+  }
+
+  public Collection<EObject> getDeletableElements(IContext context_p) {
+    if (!context_p.exists(IReConstants.ADDITIONAL_ELEMENTS_TO_DELETE)) {
+      return Collections.emptyList();
+    }
+    return ((Collection) context_p.get(IReConstants.ADDITIONAL_ELEMENTS_TO_DELETE));
   }
 
 }

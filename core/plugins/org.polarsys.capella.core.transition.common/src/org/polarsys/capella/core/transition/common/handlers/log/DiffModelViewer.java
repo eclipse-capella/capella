@@ -13,18 +13,18 @@ package org.polarsys.capella.core.transition.common.handlers.log;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IAttributeValuePresence;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
+import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.swt.graphics.Image;
-
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.filter.AbstractFilterItem.FilterAction;
@@ -33,11 +33,13 @@ import org.polarsys.capella.core.transition.common.handlers.log.IDiffModelType.D
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
-public class DiffModelViewer implements Serializable, IDiffModelViewer {
-  /**
-    * 
-    */
-  private static final long serialVersionUID = 3257866368548591539L;
+public class DiffModelViewer implements IDiffModelViewer {
+
+  private static final String TRACEABILITY_1 = "1"; //$NON-NLS-1$
+
+  private static final String TRACEABILITY_N = "N"; //$NON-NLS-1$
+
+  private static final String TRACEABILITY_SEPARATOR = "-"; //$NON-NLS-1$
 
   private transient IDifference _relatedDiff = null;
 
@@ -58,7 +60,7 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
 
   private String _detailedDiff = "?";
 
-  boolean isMultiTraceability = false;
+  String traceability = null;
 
   boolean isReadOnly = false;
 
@@ -117,8 +119,7 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
 
     if (diffelt != null) {
       computeElementProperties(diffelt);
-      computeTraceability(diffelt, scope, context_p);
-
+      computeTraceability(_relatedDiff, scope, context_p);
     }
 
     if (me != null) {
@@ -128,58 +129,66 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
 
   }
 
-  /**
-   * @param diffelt_p
-   */
-  protected void computeTraceability(EObject diffelt_p, Role scope, IContext context_p) {
+  protected void computeTraceability(IDifference diffelt_p, Role scope, IContext context_p) {
 
-    ITraceabilityHandler sourceHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
-    ITraceabilityHandler targetHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+    traceability = TRACEABILITY_1 + TRACEABILITY_SEPARATOR + TRACEABILITY_1;
 
-    ITraceabilityHandler handler = sourceHandler;
-    if (scope == Role.TARGET) {
-      handler = targetHandler;
+    if (diffelt_p instanceof IElementRelativeDifference) {
+      EObject object = ((IElementRelativeDifference) diffelt_p).getElementMatch().get(Role.REFERENCE);
+
+      ITraceabilityHandler sourceMergeHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_SOURCE_MERGE_HANDLER);
+      ITraceabilityHandler targetMergeHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_TARGET_MERGE_HANDLER);
+
+      ITraceabilityHandler sourceHandler = sourceMergeHandler;
+      ITraceabilityHandler targetHandler = targetMergeHandler;
+
+      if (scope == Role.TARGET) {
+        sourceHandler = targetMergeHandler;
+        targetHandler = sourceMergeHandler;
+      }
+
+      Collection<EObject> targetElements = new HashSet<EObject>();
+      Collection<EObject> sourceElements = new HashSet<EObject>();
+
+      Collection<EObject> ancestors = sourceHandler.retrieveSourceElements(object, context_p);
+      for (EObject ancestor : ancestors) {
+
+        Collection<EObject> targets = targetHandler.retrieveTracedElements(ancestor, context_p);
+        targetElements.addAll(targets);
+
+        for (EObject target : targets) {
+          Collection<EObject> ancestorTargets = targetHandler.retrieveSourceElements(target, context_p);
+
+          for (EObject ancestorTarget : ancestorTargets) {
+            sourceElements.addAll(sourceHandler.retrieveTracedElements(ancestorTarget, context_p));
+          }
+        }
+      }
+
+      String sourceCount = sourceElements.size() <= 1 ? TRACEABILITY_1 : TRACEABILITY_N;
+      String targetCount = targetElements.size() <= 1 ? TRACEABILITY_1 : TRACEABILITY_N;
+
+      traceability = sourceCount + TRACEABILITY_SEPARATOR + targetCount;
+
     }
-
-    int nb = 0;
-    Collection<EObject> sources = handler.retrieveSourceElements(diffelt_p, context_p);
-    for (EObject source : sources) {
-      nb += targetHandler.retrieveTracedElements(source, context_p).size();
-    }
-
-    isMultiTraceability = nb > 1;
-
   }
 
-  /**
-   * @param me
-   */
   protected void computeElementProperties(EObject me) {
     _elementDiff = LogHelper.getInstance().getIdentifier(me);
 
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getRelatedDiff()
-   */
+  @Override
   public IDifference getRelatedDiff() {
     return _relatedDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setRelatedDiff(org.polarsys.capella.common.consonance.data.diff.IDifference)
-   */
+  @Override
   public void setRelatedDiff(IDifference diff) {
     _relatedDiff = diff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getTextDiff()
-   */
+  @Override
   public String getTextDiff() {
     if (_textDiff == null) {
       _textDiff = LogHelper.getInstance().getText(this);
@@ -187,156 +196,91 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
     return _textDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getActionDiff()
-   */
+  @Override
   public FilterAction getDefaultActionDiff() {
     return _defaultActionDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getActionDiff()
-   */
+  @Override
   public FilterAction getActionDiff() {
     return _actionDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setActionDiff(int)
-   */
+  @Override
   public void setActionDiff(FilterAction diff) {
     _actionDiff = diff;
   }
 
-  /**
-   * @param out
-   * @throws IOException
-   */
   private void writeObject(ObjectOutputStream out) throws IOException {
     out.defaultWriteObject();
   }
 
-  /**
-   * @param in
-   * @throws IOException
-   * @throws ClassNotFoundException
-   */
   private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
     in.defaultReadObject();
 
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getElementDiff()
-   */
+  @Override
   public String getElementDiff() {
     return _elementDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setElementDiff(org.polarsys.capella.core.transition.common.ui.viewer.model
-   * .DiffModelViewer.DiffElement)
-   */
+  @Override
   public void setElementDiff(String diff) {
     _elementDiff = diff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getImage()
-   */
+  @Override
   public Image getImage() {
     return EObjectLabelProviderHelper.getImage(_relatedSemanticElt);
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setTypeDiff(org.polarsys.capella.core.transition.common.ui.viewer.model.
-   * DiffModelViewer.DiffType)
-   */
+  @Override
   public void setTypeDiff(DiffType diff) {
     _typeDiff = diff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getTypeDiff()
-   */
+  @Override
   public DiffType getTypeDiff() {
     return _typeDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getScopeDiff()
-   */
+  @Override
   public DiffScope getScopeDiff() {
     return _scopeDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setScopeDiff(org.polarsys.capella.core.transition.common.ui.viewer.model
-   * .DiffModelViewer.DiffScope)
-   */
+  @Override
   public void setScopeDiff(DiffScope diff) {
     _scopeDiff = diff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getDetailedDiff()
-   */
+  @Override
   public String getDetailedDiff() {
     return _detailedDiff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setDetailedDiff(java.lang.String)
-   */
+  @Override
   public void setDetailedDiff(String diff) {
     _detailedDiff = diff;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getCapellaElementDiff()
-   */
+  @Override
   public EObject getSemanticElementDiff() {
     return _relatedSemanticElt;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see
-   * org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setCapellaElementDiff(org.polarsys.capella.core.data.capellacore.CapellaElement
-   * )
-   */
+  @Override
   public void setSemanticElementDiff(EObject capellaElt) {
     _relatedSemanticElt = capellaElt;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#getRelatedCapellaEltId()
-   */
+  @Override
   public String getRelatedSemanticEltId() {
     return _relatedSemanticEltId;
   }
 
-  /*
-   * (non-Javadoc)
-   * @see org.polarsys.capella.core.transition.common.ui.viewer.model.IDiffModelViewer#setRelatedCapellaEltId(java.lang.String)
-   */
+  @Override
   public void setRelatedSemanticEltId(String capellaEltId) {
     _relatedSemanticEltId = capellaEltId;
   }
@@ -344,6 +288,7 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
   /**
    * {@inheritDoc}
    */
+  @Override
   public boolean isReadOnly() {
     return isReadOnly;
   }
@@ -353,6 +298,7 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
   /**
    * {@inheritDoc}
    */
+  @Override
   public void setRoot(IDiffModelViewer source_p) {
     _root = source_p;
   }
@@ -360,6 +306,7 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
   /**
    * {@inheritDoc}
    */
+  @Override
   public IDiffModelViewer getRoot() {
     return _root;
   }
@@ -367,6 +314,7 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
   /**
    * {@inheritDoc}
    */
+  @Override
   public void setDefaultActionDiff(FilterAction diff_p) {
     _defaultActionDiff = diff_p;
 
@@ -375,10 +323,8 @@ public class DiffModelViewer implements Serializable, IDiffModelViewer {
   /**
    * {@inheritDoc}
    */
+  @Override
   public String getTraceability() {
-    if (isMultiTraceability) {
-      return "1-N";
-    }
-    return "1-1";
+    return traceability;
   }
 }

@@ -30,7 +30,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.FinalizableElement;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Feature;
 import org.polarsys.capella.core.data.capellacore.Type;
@@ -84,7 +84,6 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#isIsDerived <em>Is Derived</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#isIsReadOnly <em>Is Read Only</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#isIsPartOfKey <em>Is Part Of Key</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getValueConstraint <em>Value Constraint</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getAssociation <em>Association</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getRepresentingInstanceRoles <em>Representing Instance Roles</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.fa.impl.ComponentPortImpl#getIncomingInformationFlows <em>Incoming Information Flows</em>}</li>
@@ -525,50 +524,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 
 
 	/**
-	 * The default value of the '{@link #getValueConstraint() <em>Value Constraint</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueConstraint()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String VALUE_CONSTRAINT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getValueConstraint() <em>Value Constraint</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getValueConstraint()
-	 * @generated
-	 * @ordered
-	 */
-	protected String valueConstraint = VALUE_CONSTRAINT_EDEFAULT;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
 	 * The default value of the '{@link #getOrientation() <em>Orientation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -856,10 +811,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.TYPED_ELEMENT__TYPE.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.TYPED_ELEMENT__TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE, annotation);
 		
 		try {
@@ -1642,38 +1597,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 	 * @generated
 	 */
 
-	public String getValueConstraint() {
-
-		return valueConstraint;
-	}
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
-	public void setValueConstraint(String newValueConstraint) {
-
-		String oldValueConstraint = valueConstraint;
-		valueConstraint = newValueConstraint;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.COMPONENT_PORT__VALUE_CONSTRAINT, oldValueConstraint, valueConstraint));
-
-	}
-
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public Association getAssociation() {
 
 		Association association = basicGetAssociation();
@@ -1707,10 +1630,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.PROPERTY__ASSOCIATION.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.PROPERTY__ASSOCIATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PROPERTY__ASSOCIATION, annotation);
 		
 		try {
@@ -1753,10 +1676,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.ABSTRACT_INSTANCE__REPRESENTING_INSTANCE_ROLES, annotation);
 		
 		try {
@@ -1800,10 +1723,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS, annotation);
 		
 		try {
@@ -1847,10 +1770,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS, annotation);
 		
 		try {
@@ -1894,10 +1817,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS, annotation);
 		
 		try {
@@ -2005,10 +1928,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__COMPONENT_EXCHANGES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__COMPONENT_EXCHANGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT__COMPONENT_EXCHANGES, annotation);
 		
 		try {
@@ -2052,10 +1975,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS, annotation);
 		
 		try {
@@ -2099,10 +2022,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__DELEGATED_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__DELEGATED_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT__DELEGATED_COMPONENT_PORTS, annotation);
 		
 		try {
@@ -2146,10 +2069,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__DELEGATING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__DELEGATING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT__DELEGATING_COMPONENT_PORTS, annotation);
 		
 		try {
@@ -2193,10 +2116,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS, annotation);
 		
 		try {
@@ -2240,10 +2163,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__REALIZED_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__REALIZED_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT__REALIZED_COMPONENT_PORTS, annotation);
 		
 		try {
@@ -2287,10 +2210,10 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__REALIZING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = FaPackage.Literals.COMPONENT_PORT__REALIZING_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_PORT__REALIZING_COMPONENT_PORTS, annotation);
 		
 		try {
@@ -2388,8 +2311,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				return isIsReadOnly();
 			case FaPackage.COMPONENT_PORT__IS_PART_OF_KEY:
 				return isIsPartOfKey();
-			case FaPackage.COMPONENT_PORT__VALUE_CONSTRAINT:
-				return getValueConstraint();
 			case FaPackage.COMPONENT_PORT__ASSOCIATION:
 				if (resolve) return getAssociation();
 				return basicGetAssociation();
@@ -2620,15 +2541,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				}
 				// end-extension-code
 				return;
-			case FaPackage.COMPONENT_PORT__VALUE_CONSTRAINT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setValueConstraint((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
 			case FaPackage.COMPONENT_PORT__ORIENTATION:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof OrientationPortKind) {
@@ -2723,9 +2635,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 			case FaPackage.COMPONENT_PORT__IS_PART_OF_KEY:
 				setIsPartOfKey(IS_PART_OF_KEY_EDEFAULT);
 				return;
-			case FaPackage.COMPONENT_PORT__VALUE_CONSTRAINT:
-				setValueConstraint(VALUE_CONSTRAINT_EDEFAULT);
-				return;
 			case FaPackage.COMPONENT_PORT__ORIENTATION:
 				setOrientation(ORIENTATION_EDEFAULT);
 				return;
@@ -2790,8 +2699,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				return isReadOnly != IS_READ_ONLY_EDEFAULT;
 			case FaPackage.COMPONENT_PORT__IS_PART_OF_KEY:
 				return isPartOfKey != IS_PART_OF_KEY_EDEFAULT;
-			case FaPackage.COMPONENT_PORT__VALUE_CONSTRAINT:
-				return VALUE_CONSTRAINT_EDEFAULT == null ? valueConstraint != null : !VALUE_CONSTRAINT_EDEFAULT.equals(valueConstraint);
 			case FaPackage.COMPONENT_PORT__ASSOCIATION:
 				return basicGetAssociation() != null;
 			case FaPackage.COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES:
@@ -2881,7 +2788,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				case FaPackage.COMPONENT_PORT__IS_DERIVED: return InformationPackage.PROPERTY__IS_DERIVED;
 				case FaPackage.COMPONENT_PORT__IS_READ_ONLY: return InformationPackage.PROPERTY__IS_READ_ONLY;
 				case FaPackage.COMPONENT_PORT__IS_PART_OF_KEY: return InformationPackage.PROPERTY__IS_PART_OF_KEY;
-				case FaPackage.COMPONENT_PORT__VALUE_CONSTRAINT: return InformationPackage.PROPERTY__VALUE_CONSTRAINT;
 				case FaPackage.COMPONENT_PORT__ASSOCIATION: return InformationPackage.PROPERTY__ASSOCIATION;
 				default: return -1;
 			}
@@ -2964,7 +2870,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 				case InformationPackage.PROPERTY__IS_DERIVED: return FaPackage.COMPONENT_PORT__IS_DERIVED;
 				case InformationPackage.PROPERTY__IS_READ_ONLY: return FaPackage.COMPONENT_PORT__IS_READ_ONLY;
 				case InformationPackage.PROPERTY__IS_PART_OF_KEY: return FaPackage.COMPONENT_PORT__IS_PART_OF_KEY;
-				case InformationPackage.PROPERTY__VALUE_CONSTRAINT: return FaPackage.COMPONENT_PORT__VALUE_CONSTRAINT;
 				case InformationPackage.PROPERTY__ASSOCIATION: return FaPackage.COMPONENT_PORT__ASSOCIATION;
 				default: return -1;
 			}
@@ -3025,8 +2930,6 @@ public class ComponentPortImpl extends PortImpl implements ComponentPort {
 		result.append(isReadOnly);
 		result.append(", isPartOfKey: "); //$NON-NLS-1$
 		result.append(isPartOfKey);
-		result.append(", valueConstraint: "); //$NON-NLS-1$
-		result.append(valueConstraint);
 		result.append(", orientation: "); //$NON-NLS-1$
 		result.append(orientation);
 		result.append(", kind: "); //$NON-NLS-1$

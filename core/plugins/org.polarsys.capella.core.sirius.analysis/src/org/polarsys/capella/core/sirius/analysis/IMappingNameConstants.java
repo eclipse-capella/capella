@@ -180,7 +180,6 @@ public interface IMappingNameConstants {
   public static final String LAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME = "LAB PortRealization FlowPort to ComponentPort"; //$NON-NLS-1$
   public static final String PAB_FUNCTION_PORT_ALLOCATION_MAPPING_NAME = "PAB PortRealization"; //$NON-NLS-1$
 
-  public static final String SAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME = "CA DataFlow between Function"; //$NON-NLS-1$
   public static final String SAB_COMPONENT_PORT_MAPPING_NAME = "CA Component Port"; //$NON-NLS-1$
   public static final String SAB_CONNECTION_MAPPING_NAME = "CA Data Flow Between Actors and System"; //$NON-NLS-1$
   public static final String SDFB_PIN_MAPPING_NAME = "SDFB_Pin"; //$NON-NLS-1$
@@ -207,6 +206,7 @@ public interface IMappingNameConstants {
   public static final String SDFB_FUNCTIONAL_CHAIN_END_MAPPING_NAME = "SDFB_FunctionalChainEnd"; //$NON-NLS-1$
   public static final String SAB_FUNCTIONAL_CHAIN_END_MAPPING_NAME = "CA_FunctionalChainEnd"; //$NON-NLS-1$
 
+  public static final String SAB_FUNCTIONAL_EXCHANGE_MAPPING_NAME = "CA DataFlow between Function"; //$NON-NLS-1$
   public static final String SAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME = "CA_InputPin by Categorie"; //$NON-NLS-1$
   public static final String SAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME = "CA_OutputPin by Categorie"; //$NON-NLS-1$
   public static final String SAB_EXCHANGE_CATEGORY_MAPPING_NAME = "CA DataFlow by Categorie"; //$NON-NLS-1$
@@ -411,8 +411,14 @@ public interface IMappingNameConstants {
   public static final String SHOW_EXCHANGE_ITEMS_ON_CE_WITH_OUT_FE = "Show Exchange Items on Component Exchange without Functional Exchanges"; //$NON-NLS-1$
   public static final String SHOW_FE_ON_CE = "Show Allocated Functional Exchanges on Component Exchanges"; //$NON-NLS-1$
   public static final String HIDE_CROSS_FE_IN_MULTIPART = "Hide cross Functional Exchanges of reusable Components"; //$NON-NLS-1$
-  public static final String HIDE_ASSOCIATION_LABLE = "Hide Association Labels";//$NON-NLS-1$
-  public static final String HIDE_ROLE_LABLE = "Hide Role Labels";//$NON-NLS-1$
+  public static final String HIDE_ASSOCIATION_LABELS = "Hide Association Labels";//$NON-NLS-1$
+  public static final String HIDE_ROLE_LABELS = "Hide Role Labels";//$NON-NLS-1$
+  public static final String HIDE_ROLE_NAMES = "Hide Role Names";//$NON-NLS-1$
+  public static final String HIDE_FUNCTIONAL_EXCHANGES_NAMES = "Hide Functional Exchanges names";//$NON-NLS-1$
+  public static final String HIDE_COMPONENT_EXCHANGES_NAMES = "Hide Component Exchanges names";//$NON-NLS-1$
+  public static final String HIDE_PHYSICAL_LINKS_NAMES = "Hide Physical Links names";//$NON-NLS-1$
+  public static final String HIDE_INTERACTIONS_NAMES = "Hide Interactions names";//$NON-NLS-1$
+  public static final String HIDE_COMMUNICATION_MEANS_NAMES = "Hide Communication Means names";//$NON-NLS-1$
   public static final Object SHOW_FUNCTIONAL_EXCHANGES_ECHANGE_ITEMS = "Show Functional Exchanges [ExchangeItems]"; //$NON-NLS-1$
   public static final Object SHOW_COMPONENT_EXCHANGES_ECHANGE_ITEMS = "Show Component Exchanges [ExchangeItems]"; //$NON-NLS-1$
   public static final Object HIDE_CE_BY_DELEGATION = "Hide Simplified Diagram Based Component Exchanges"; //$NON-NLS-1$
@@ -442,6 +448,7 @@ public interface IMappingNameConstants {
   // Interface Scenario
   public static final String IS_CONSTRAINT_MAPPING = "Scenario_Constraint"; //$NON-NLS-1$
   public static final String IS_CONSTRAINT_ELEMENT_MAPPING = "Scenario_ContrainedElements"; //$NON-NLS-1$
+  public static final String IS_HIDE_CALL_ARGUMENTS = "Hide Call Arguments"; //$NON-NLS-1$
   public static final String OAB_ROLE_MAPPING_NAME = "OAB_subRoles"; //$NON-NLS-1$
   public static final String ORB_ROLE_MAPPING_NAME = "ORB_Role1"; //$NON-NLS-1$
 
@@ -466,5 +473,11 @@ public interface IMappingNameConstants {
   public static final String COC_Extends_MAPPING_NAME = "COC2_OC_Extends";//$NON-NLS-1$
   public static final String COC_Include_MAPPING_NAME = "COC2_OC_Include";//$NON-NLS-1$
   public static final String COC_Generalization_MAPPING_NAME = "COC2_OC_Generalization";//$NON-NLS-1$
+
+  // Exchange context
+  public static final String SHOW_EXCHANGE_CONTEXT = "ShowExchangeContext"; //$NON-NLS-1$
+  public static final String SHOW_CE_EXCHANGE_CONTEXT = "ShowCEExchangeContext"; //$NON-NLS-1$
+  public static final String SHOW_FE_EXCHANGE_CONTEXT = "ShowFEExchangeContext"; //$NON-NLS-1$
+  public static final String SHOW_EI_EXCHANGE_CONTEXT = "ShowEIExchangeContext"; //$NON-NLS-1$
 
 }

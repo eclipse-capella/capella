@@ -27,21 +27,21 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
+import org.polarsys.capella.core.ui.properties.IImageKeys;
+import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
+import org.polarsys.capella.core.ui.properties.viewers.IDelegatedViewer;
+import org.polarsys.capella.core.ui.properties.viewers.TableDelegatedViewer;
 import org.polarsys.capella.core.ui.toolkit.actions.move.MoveDownAction;
 import org.polarsys.capella.core.ui.toolkit.actions.move.MoveUpAction;
-import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.core.ui.properties.IImageKeys;
-import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
-import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
-import org.polarsys.capella.core.ui.properties.viewers.TableDelegatedViewer;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -56,8 +56,27 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
   private Button _downBtn;
 
   /**
+   * Constructor
+   * @param parent_p
+   * @param widgetFactory_p
+   * @param referencerFeature_p
+   * @param referencedFeature_p
+   * @param referencedFeatureType_p
+   * @param label_p
+   * @param selectionElementDialogMessage_p
+   * @param viewer_p
+   */
+  public ContainmentTableField(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, EReference referencerFeature_p,
+      EReference referencedFeature_p, EClass referencedFeatureType_p, String label_p, String selectionElementDialogMessage_p, IDelegatedViewer viewer_p) {
+    super(parent_p, widgetFactory_p, referencedFeature_p, label_p, viewer_p);
+
+    _referencerFeature = referencerFeature_p;
+    _referencedFeatureType = referencedFeatureType_p;
+    _selectionElementDialogMessage = selectionElementDialogMessage_p;
+  }
+
+  /**
    * Constructor.
-   *
    * @param parent_p
    * @param widgetFactory_p
    * @param referencerFeature_p
@@ -68,11 +87,10 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
    */
   public ContainmentTableField(Composite parent_p, TabbedPropertySheetWidgetFactory widgetFactory_p, EReference referencerFeature_p,
       EReference referencedFeature_p, EClass referencedFeatureType_p, String label_p, String selectionElementDialogMessage_p) {
-    super(parent_p, widgetFactory_p, referencedFeature_p, label_p, new TableDelegatedViewer(widgetFactory_p));
 
-    _referencerFeature = referencerFeature_p;
-    _referencedFeatureType = referencedFeatureType_p;
-    _selectionElementDialogMessage = selectionElementDialogMessage_p;
+    this(parent_p, widgetFactory_p, referencerFeature_p, referencedFeature_p, referencedFeatureType_p, label_p, selectionElementDialogMessage_p,
+         new TableDelegatedViewer(widgetFactory_p));
+
   }
 
   /**
@@ -100,6 +118,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
   /**
    * Handle Delete button.
    */
+  @Override
   @SuppressWarnings("unchecked")
   protected void handleDelete() {
     if (null != _delegatedViewer) {
@@ -113,8 +132,9 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
           }
 
           public void run() {
-            CapellaDeleteCommand command = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(),
-              getContainedElementsfor(selectedReferencedElements), true, false, false);
+            CapellaDeleteCommand command =
+                new CapellaDeleteCommand(TransactionHelper.getExecutionManager(_semanticElement), getContainedElementsfor(selectedReferencedElements), true,
+                    false, false);
             if (command.canExecute()) {
               command.execute();
             }
@@ -156,7 +176,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
           }
         }
       };
-      MDEAdapterFactory.getExecutionManager().execute(command);
+      TransactionHelper.getExecutionManager(_semanticElement).execute(command);
       refreshViewer();
     }
   }
@@ -167,7 +187,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
   @SuppressWarnings("unchecked")
   protected void handleDown() {
     List<EObject> selectedReferencedElements = ((IStructuredSelection) _delegatedViewer.getColumnViewer().getSelection()).toList();
-    MoveDownAction action = new MoveDownAction(MDEAdapterFactory.getEditingDomain());
+    MoveDownAction action = new MoveDownAction();
     action.updateSelection(new StructuredSelection(getContainedElementsfor(selectedReferencedElements)));
     action.run();
     refreshViewer();
@@ -179,7 +199,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
   @SuppressWarnings("unchecked")
   protected void handleUp() {
     List<EObject> selectedReferencedElements = ((IStructuredSelection) _delegatedViewer.getColumnViewer().getSelection()).toList();
-    MoveUpAction action = new MoveUpAction(MDEAdapterFactory.getEditingDomain());
+    MoveUpAction action = new MoveUpAction();
     action.updateSelection(new StructuredSelection(getContainedElementsfor(selectedReferencedElements)));
     action.run();
     refreshViewer();
@@ -222,7 +242,7 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
         }
       }
     };
-    MDEAdapterFactory.getExecutionManager().execute(command);
+    TransactionHelper.getExecutionManager(_semanticElement).execute(command);
     // Remove already referenced elements.
     availableElements.removeAll(getReferencedElementsByContainedOnes());
     return availableElements;
@@ -239,8 +259,8 @@ public class ContainmentTableField extends AbstractStructuredRepresentationField
    * @param displayedElements_p
    * @return
    */
-  protected SelectElementsDialog getSelectionElementDialog(Shell parentShell_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p, String dialogTitle_p, String dialogMessage_p,
-      List<? extends EObject> displayedElements_p) {
+  protected SelectElementsDialog getSelectionElementDialog(Shell parentShell_p, TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p,
+      String dialogTitle_p, String dialogMessage_p, List<? extends EObject> displayedElements_p) {
     return new SelectElementsDialog(parentShell_p, editingDomain_p, adapterFactory_p, dialogTitle_p, dialogMessage_p, displayedElements_p, true, null);
   }
 }

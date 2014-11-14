@@ -17,30 +17,21 @@ import java.util.HashSet;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.contextscope.IContextScopeHandler;
 import org.polarsys.capella.core.transition.common.handlers.scope.DefaultScopeHandler;
 import org.polarsys.capella.core.transition.common.handlers.scope.IScopeHandler;
 import org.polarsys.capella.core.transition.common.handlers.scope.RuleRequiredElementsScopeRetriever;
-import org.polarsys.capella.common.re.CatalogElement;
-import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
  *
  */
 public class DefaultDependenciesHandler implements IDependenciesHandler {
-
-  public IStatus getDependenciesStatus(Collection<EObject> elements_p, Collection<EObject> scopeElements, IContext context_p) {
-    Collection<EObject> values = getDependencies(elements_p, scopeElements, context_p);
-    if (values.isEmpty()) {
-      return Status.OK_STATUS;
-    }
-    return new Status(IStatus.WARNING, "aa", "missing dependencies");
-  }
 
   public IScopeHandler getSharedHandler(IContext context_p) {
     if (!context_p.exists(IReConstants.SHARED_ELEMENTS_SCOPE_HANDLER)) {

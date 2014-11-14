@@ -37,7 +37,7 @@ public class SourceElementProperty extends org.polarsys.capella.common.re.rpl2re
     Collection result = (Collection) context.get("SCOPE_ELEMENTS_PROPERTY");
 
     CatalogElement element =
-        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+        (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
 
     if (result == null) {
       result = new HashSet<EObject>();
@@ -60,14 +60,14 @@ public class SourceElementProperty extends org.polarsys.capella.common.re.rpl2re
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE };
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE };
   }
 
   @Override
   public void updatedValue(IProperty property_p, IPropertyContext context_p) {
     IContext context = (IContext) context_p.getSource();
 
-    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE.equals(property_p.getId())) {
+    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE.equals(property_p.getId())) {
       context.put("SCOPE_ELEMENTS_PROPERTY", null);
     }
   }

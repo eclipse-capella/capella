@@ -13,8 +13,8 @@ package org.polarsys.capella.common.ui.toolkit.browser.view;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.ui.IViewPart;
-
 import org.polarsys.capella.common.ui.toolkit.browser.action.BrowserHistory;
+import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 
 /**
  * A semantic browser view part contains multiple viewers.
@@ -65,4 +65,8 @@ public interface ISemanticBrowserViewPart extends IViewPart {
    * @return
    */
   public BrowserHistory getHistory();
+  
+  public ISemanticBrowserModel getModel();
+  
+  public void setInputOnViewers(Object input_p);
 }

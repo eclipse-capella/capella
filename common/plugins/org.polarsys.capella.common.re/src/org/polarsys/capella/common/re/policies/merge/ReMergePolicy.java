@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.policies.merge;
 
+import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.capella.common.re.constants.IReConstants;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.core.transition.common.handlers.contextscope.ContextScopeHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -35,7 +35,8 @@ public class ReMergePolicy extends org.polarsys.capella.core.transition.common.p
   @Override
   public boolean copy(EObject source_p) {
     IContext context = getContext();
-    if (ReplicableElementHandlerHelper.getInstance(context).getReplica(context) == null) {
+
+    if (ReplicableElementHandlerHelper.getInstance(context).getSource(context) == null) {
       return !ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.UNMERGEABLE_ELEMENTS, source_p, context);
     }
 
@@ -46,12 +47,12 @@ public class ReMergePolicy extends org.polarsys.capella.core.transition.common.p
    * {@inheritDoc}
    */
   @Override
-  protected boolean copyPhysicalIds() {
+  public boolean copyExtrinsicIDs(IFeaturedModelScope sourceScope_p, IFeaturedModelScope targetScope_p) {
     return false;
   }
 
   @Override
-  protected boolean useNewEcoreIds() {
+  protected boolean requiresNewIntrinsicID(EObject element_p, IFeaturedModelScope scope_p) {
     return true;
   }
 

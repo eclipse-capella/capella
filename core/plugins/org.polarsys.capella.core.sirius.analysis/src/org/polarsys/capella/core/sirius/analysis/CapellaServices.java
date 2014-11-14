@@ -33,36 +33,67 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
-import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
-import org.eclipse.sirius.business.internal.experimental.sync.DDiagramSynchronizer;
-import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
+import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
+import org.polarsys.capella.common.data.activity.ActivityEdge;
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.data.activity.Pin;
+import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.queries.debug.QueryDebugger;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.capellacore.Feature;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.capellacore.TypedElement;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.Block;
@@ -112,7 +143,6 @@ import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
-import org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
@@ -121,18 +151,6 @@ import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.Generalization;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.capellacore.TypedElement;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
@@ -145,38 +163,29 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
-import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 import org.polarsys.capella.core.libraries.extendedqueries.QueryIdentifierConstants;
+import org.polarsys.capella.core.linkedtext.ui.CapellaEmbeddedLinkedTextEditorInput;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ExchangeItemExt;
 import org.polarsys.capella.core.model.helpers.FunctionalChainExt;
-import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
-import org.polarsys.capella.common.data.activity.ActivityEdge;
-import org.polarsys.capella.common.data.activity.ActivityNode;
-import org.polarsys.capella.common.data.activity.Pin;
-import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
-import org.polarsys.capella.common.queries.debug.QueryDebugger;
-
-import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
+import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
 
 /**
  * Basic Services For Capella models.
  */
 public class CapellaServices {
+
+  public boolean isInLib(EObject context) {
+    Session session = SessionManager.INSTANCE.getSession(context);
+    IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(session));
+    IModel currentElementModel = ILibraryManager.INSTANCE.getModel(context);
+    return sessionModel.equals(currentElementModel); //on interdit si le IModel de l'élément est pas celui de la session (ie donc est une librarie)
+  }
 
   public List<EObject> ancestor(EObject object) {
     List<EObject> result = new ArrayList<EObject>();
@@ -233,8 +242,8 @@ public class CapellaServices {
    * @param edge_p
    */
   public void deleteView(DDiagramElement element_p) {
-    DeleteDDiagramElementTask task =
-        new DeleteDDiagramElementTask(element_p, SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element_p));
+    DeleteEObjectTask task = new DeleteEObjectTask(element_p, SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element_p));
+
     try {
       task.execute();
     } catch (FeatureNotFoundException ex) {
@@ -682,7 +691,7 @@ public class CapellaServices {
   }
 
   @SuppressWarnings({ "rawtypes", "unchecked" })
-public List<BlockArchitecture> getAvailableArchitectures(final EObject context) {
+  public List<BlockArchitecture> getAvailableArchitectures(final EObject context) {
     // OLD CODE
     List<BlockArchitecture> returnedArchitectures = new ArrayList<BlockArchitecture>();
     SystemEngineering rootSystemEngineering = (SystemEngineering) getAncestor(context, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING.getName());
@@ -729,7 +738,7 @@ public List<BlockArchitecture> getAvailableArchitectures(final EObject context) 
       if ((typedElement instanceof Property) && (((Property) typedElement).getAggregationKind() != AggregationKind.UNSET)) {
         Property property = (Property) typedElement;
 
-        SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+        SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(property);
         if (semEditDomain != null) {
           ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
           if (crossReferencer != null) {
@@ -1568,13 +1577,13 @@ public List<BlockArchitecture> getAvailableArchitectures(final EObject context) 
    * Returns the logger services.
    * @return the logger services.
    */
-//  public LoggerServices getLoggerServices() {
-//    if (this.loggerServices == null) {
-//      this.loggerServices = new LoggerActivationDeactivationAspect(new BasicLoggerServices());
-//      ((LoggerActivationDeactivationAspect) this.loggerServices).setActive(LOGGER_ACTIVE);
-//    }
-//    return loggerServices;
-//  }
+  //  public LoggerServices getLoggerServices() {
+  //    if (this.loggerServices == null) {
+  //      this.loggerServices = new LoggerActivationDeactivationAspect(new BasicLoggerServices());
+  //      ((LoggerActivationDeactivationAspect) this.loggerServices).setActive(LOGGER_ACTIVE);
+  //    }
+  //    return loggerServices;
+  //  }
 
   public List<Component> getLogicalParent(EObject context, Component aComponent) {
     return ComponentExt.getDirectParents(aComponent);
@@ -2268,15 +2277,15 @@ public List<BlockArchitecture> getAvailableArchitectures(final EObject context) 
    */
   public void removeElement(CapellaElement element) {
     if (element != null) {
-      List<Object> list = new ArrayList<Object>();
+      List<EObject> list = new ArrayList<EObject>();
       list.add(element);
       removeElements(list);
     }
   }
 
-  public void removeElements(Collection<?> elements) {
+  public void removeElements(Collection<? extends EObject> elements) {
     if ((elements != null) && (elements.size() > 0)) {
-      CapellaDeleteCommand command = new CapellaDeleteCommand(MDEAdapterFactory.getExecutionManager(), elements, false, false, true);
+      CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elements), elements, false, false, true);
       if (command.canExecute()) {
         command.execute();
       }
@@ -2318,25 +2327,10 @@ public List<BlockArchitecture> getAvailableArchitectures(final EObject context) 
   /**
    * Display the contents of a constraint. common.odesing : CDB (referenced everywhere)
    * @param constraint_p
-   * @return
+   * @return a non-null constraint label
    */
   public String getConstraintLabel(Constraint constraint_p) {
-    // return constraint name if not null and empty
-    String constraintName = constraint_p.getName();
-    if ((null != constraintName) && !constraintName.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-      return constraintName;
-    }
-    // return expression name if not null and empty
-    if (null != constraint_p.getExpression()) {
-      AbstractExpressionValue expr = constraint_p.getExpression();
-      String expressionName = expr.getName();
-      if ((null != expressionName) && !expressionName.equalsIgnoreCase(ICommonConstants.EMPTY_STRING)) {
-        return expressionName;
-      }
-    }
-    // display content
-    String content = constraint_p.getContent();
-    return content == null ? ICommonConstants.EMPTY_STRING : content;
+    return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint_p);
   }
 
   public String getFCInvolvmentLabel(FunctionalChainInvolvement fci_p, DDiagram diagram_p) {

@@ -11,7 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis.editpart;
 
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 
 /**
  * Nothing here, but a lot of changes in GMF layers

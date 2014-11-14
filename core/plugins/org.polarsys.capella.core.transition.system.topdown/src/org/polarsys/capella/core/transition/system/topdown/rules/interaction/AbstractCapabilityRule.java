@@ -34,11 +34,6 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
  */
 public class AbstractCapabilityRule extends org.polarsys.capella.core.transition.system.rules.interaction.AbstractCapabilityRule {
 
-  public AbstractCapabilityRule() {
-    registerUpdatedAttribute(InteractionPackage.Literals.ABSTRACT_CAPABILITY__POST_CONDITION);
-    registerUpdatedAttribute(InteractionPackage.Literals.ABSTRACT_CAPABILITY__PRE_CONDITION);
-  }
-
   /**
    * {@inheritDoc}
    */

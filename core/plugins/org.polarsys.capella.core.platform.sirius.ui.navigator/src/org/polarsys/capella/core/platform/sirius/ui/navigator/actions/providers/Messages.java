@@ -17,6 +17,7 @@ import org.eclipse.osgi.util.NLS;
  */
 public class Messages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.messages"; //$NON-NLS-1$
+  public static String OpenRepresentationActionProvider_OpenRepresentationAction_Title;
   public static String ModelElementActionProvider_Goto_Menu_Title;
   public static String NewRepresentationActionProvider_NewRepresentationAction_Title;
   public static String RenameResourceAction_Session_Warning_Dialog_Title;

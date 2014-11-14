@@ -13,12 +13,13 @@ package org.polarsys.capella.core.transition.common.rules;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IRule;
 
 /**
+ * A transposer rule to retrieve some elements for the given element_p
  */
-public interface IRuleScope {
+public interface IRuleScope extends IRule<EObject> {
 
   /**
    * Retrieve all root related to the current source element

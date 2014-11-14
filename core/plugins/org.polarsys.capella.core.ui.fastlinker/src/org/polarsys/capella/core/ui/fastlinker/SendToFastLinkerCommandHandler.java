@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.ui.fastlinker;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
@@ -17,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -34,7 +38,7 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
     // Get selection.
     ISelection selection = getCurrentSelection(event_p.getApplicationContext());
     // Get selected model element.
-    EObject selectedModelElement = getSelectedModelElement(selection);
+    Collection selectedModelElement = getSelectedModelElement(selection);
     if (null == selectedModelElement) {
       return null;
     }
@@ -68,19 +72,23 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
    * @return the target element of the {@link IDiagramElementEditPart} or the EObject contained in the given selection or <code>null</code> if the selection is
    *         empty or if it doesn't contain an {@link IDiagramElementEditPart} or an {@link EObject} as first element.
    */
-  public EObject getSelectedModelElement(ISelection selection_p) {
-    if (!(selection_p instanceof IStructuredSelection)) {
-      return null;
-    }
-    Object selectedElement = ((IStructuredSelection) selection_p).getFirstElement();
-    if ((selectedElement instanceof IDiagramElementEditPart)) {
-      IDiagramElementEditPart diagramElement = (IDiagramElementEditPart) selectedElement;
-      return diagramElement.resolveTargetSemanticElement();
-    } else if (selectedElement instanceof EObject) {
-      return (EObject) selectedElement;
-    }
-    return null;
-  }
+  public Collection<EObject> getSelectedModelElement(ISelection selection_p) {
+		if (!(selection_p instanceof IStructuredSelection)) {
+			return null;
+		}
+		Collection<EObject> ret = new ArrayList<EObject>();
+		List selectedElements = ((IStructuredSelection) selection_p).toList();
+		for (Object selectedElement : selectedElements)
+			if ((selectedElement instanceof IDiagramElementEditPart)) {
+				IDiagramElementEditPart diagramElement = (IDiagramElementEditPart) selectedElement;
+				ret.add(diagramElement.resolveTargetSemanticElement());
+			} else if (selectedElement instanceof EObject) {
+				ret.add((EObject) selectedElement);
+			}
+		if (selectedElements.isEmpty())
+			return null;
+		return ret;
+	}
 
   /**
    * {@inheritDoc}
@@ -88,16 +96,18 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
   @Override
   public void setEnabled(Object evaluationContext_p) {
     // Get current selection.
-    ISelection selection = getCurrentSelection(evaluationContext_p);
-    // Extract selected model element from selection.
-    EObject selectedElement = getSelectedModelElement(selection);
-    if (null == selectedElement) {
-      setBaseEnabled(false);
-      return;
+	  ISelection selection = getCurrentSelection(evaluationContext_p);
+		// Extract selected model element from selection.
+		Collection selectedElement = getSelectedModelElement(selection);
+		if (null == selectedElement || selectedElement.isEmpty()) {
+			setBaseEnabled(false);
+			return;
 
-    }
-    // Ask FastLinkerManager if it would accept the model element.
-    boolean isAccepted = FastLinkerActivator.getDefault().getFastLinkerManager().acceptElementInFastLinker(selectedElement);
-    setBaseEnabled(isAccepted);
+		}
+		// Ask FastLinkerManager if it would accept the model element.
+		boolean isAccepted = FastLinkerActivator.getDefault()
+				.getFastLinkerManager()
+				.acceptElementInFastLinker(selectedElement);
+		setBaseEnabled(isAccepted);
   }
 }

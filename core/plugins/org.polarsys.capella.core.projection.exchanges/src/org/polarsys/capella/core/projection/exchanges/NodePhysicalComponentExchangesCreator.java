@@ -48,7 +48,7 @@ import org.polarsys.capella.core.model.helpers.PhysicalLinkExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.common.data.modellingcore.InformationsExchanger;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  * This class is the <code>IExchangesCreator</code> implementation specific to node physical components.<br>

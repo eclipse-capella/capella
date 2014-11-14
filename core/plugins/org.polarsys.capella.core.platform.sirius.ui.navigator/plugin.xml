@@ -11,7 +11,6 @@
        Thales - initial API and implementation
 -->
 <plugin>
-   <extension-point id="sessionListener" name="Session Listener" schema="schema/sessionListener.exsd"/>
    <extension point="org.eclipse.ui.views">
       <view
             allowMultiple="false"
@@ -25,6 +24,8 @@
          </description>
       </view>
    </extension>
+   
+      
    <extension
       point="org.eclipse.ui.navigator.viewer">
    <viewer
@@ -189,6 +190,13 @@
                         value="org.polarsys.capella.project.nature">
                   </test>
                </adapt>
+               <adapt type="org.eclipse.core.resources.IProject">
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.projectNature"
+                        value="org.polarsys.capella.library.nature">
+                  </test>
+               </adapt>
                 <and> 
                     <instanceof value="org.eclipse.core.resources.IResource"/> 
                     <test 
@@ -314,6 +322,11 @@
 				       	  </test>
 				       </and>
             	</enablement-->
+                     
+         </actionProvider>
+                  <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.OpenRepresentationActionProvider"
+               id="capella.project.explorer.openRepresentationContributor">
                      
          </actionProvider>
          <actionProvider
@@ -897,6 +910,13 @@
             </or>
          </filterExpression>
       </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.TechnicalInterfaceFilter"
+            description="%common.filter.technicalInterfaces.filter.description"
+            id="capella.project.explorer.filters.technicalInterfaces"
+            name="%common.filter.technicalInterfaces.filter.name">
+      </commonFilter>
    </extension>
    <extension
          point="org.eclipse.ui.navigator.linkHelper">
@@ -911,7 +931,7 @@
          </editorInputEnablement>
          <selectionEnablement>
             <instanceof
-                  value="org.eclipse.sirius.viewpoint.DSemanticDiagram">
+                  value="org.eclipse.sirius.diagram.DSemanticDiagram">
             </instanceof>
          </selectionEnablement>
          
@@ -1320,12 +1340,6 @@
    </extension>
 
    <extension
-         point="org.polarsys.capella.core.platform.sirius.ui.navigator.sessionListener">
-      <sessionListener
-            class="org.polarsys.capella.core.platform.sirius.ui.navigator.listeners.SessionCheckingListener">
-      </sessionListener>
-   </extension>
-   <extension
          point="org.polarsys.capella.core.preferences.capellaPreferences">
       <category
             description="test"
@@ -1338,9 +1352,16 @@
          </item>
       </category>
    </extension>
-   
-    
-     
-     
-   
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.listeners.SessionCheckingListener">
+      </listener>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.ef.editingDomainListener">
+      <editingDomainListener
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.NavigatorEditingDomainDispatcher">
+      </editingDomainListener>
+   </extension>
 </plugin>

@@ -71,8 +71,8 @@
          <property  name="windowImages" value="icons/CapellaAdavance16x16.gif,icons/Capella32x32.png,icons/Capella48x48.png"/>
          <property name="preferenceCustomization" value="plugin_customization.ini" /> 
          <property name="startupForegroundColor" value="000000" /> 
-         <property name="startupMessageRect" value="10,220,438,20" /> 
-         <property name="startupProgressRect" value="0,280,455,15" />
+         <property name="startupMessageRect" value="24,200,421,20" /> 
+         <property name="startupProgressRect" value="1,288,452,15" />
          <property
                name="appName"
                value="Capella">

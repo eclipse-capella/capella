@@ -11,7 +11,7 @@
 package org.polarsys.capella.core.sirius.analysis;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 
 /**
@@ -21,7 +21,15 @@ import org.polarsys.kitalpha.emde.extension.ModelExtensionHelper;
 
 public class ModelExtensionServices {
   public boolean isExtensionModelActive(EObject obj) {
-
-    return !ModelExtensionHelper.getInstance().isExtensionModelDisabled(((DSemanticDecorator) obj).getTarget());
+    if (obj instanceof DRepresentationElement) {
+      DRepresentationElement elt = (DRepresentationElement) obj;
+      for (EObject eobj : elt.getSemanticElements()) {
+        if (!ModelExtensionHelper.getInstance().isExtensionModelDisabled(eobj)) {
+          return true;
+        }
+      }
+      return false;
+    }
+    return false;
   }
 }

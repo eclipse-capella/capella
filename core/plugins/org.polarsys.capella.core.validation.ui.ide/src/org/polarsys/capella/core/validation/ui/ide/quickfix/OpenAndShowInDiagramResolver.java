@@ -14,6 +14,7 @@ import java.text.MessageFormat;
 import java.util.Collection;
 
 import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -23,7 +24,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMarkerResolution2;
-
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.ShowInDiagramAction;
 
@@ -60,15 +60,13 @@ public class OpenAndShowInDiagramResolver implements IMarkerResolution2 {
    * @param modelElementDiagramTarget_p model element which is associated to the diagram to show.
    * @param modelElementToSelectInDiagram_p model element to select in the diagram.
    */
-  public OpenAndShowInDiagramResolver(EObject modelElementDiagramTarget_p,
-      EObject modelElementToSelectInDiagram_p) {
+  public OpenAndShowInDiagramResolver(EObject modelElementDiagramTarget_p, EObject modelElementToSelectInDiagram_p) {
     // Get session given target ModelElement.
     _session = SessionManager.INSTANCE.getSession(modelElementDiagramTarget_p);
     // Find representations associated to target ModelElement.
     DRepresentation targetingRepresentation = null;
     if (null != _session) {
-      Collection<DRepresentation> representations =
-          DialectManager.INSTANCE.getRepresentations(modelElementDiagramTarget_p, _session);
+      Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(modelElementDiagramTarget_p, _session);
       if (!representations.isEmpty()) {
         // Get the first found representation.
         targetingRepresentation = representations.iterator().next();
@@ -79,10 +77,8 @@ public class OpenAndShowInDiagramResolver implements IMarkerResolution2 {
     _targetingRepresentation = targetingRepresentation;
     // Generate QF's label.
     String representationName = EObjectLabelProviderHelper.getText(_targetingRepresentation);
-    String representationClassName =
-        EObjectLabelProviderHelper.getMetaclassLabel(_targetingRepresentation, false);
-    _label =
-        MessageFormat.format(QUICK_FIX_LABEL_PATTERN, representationName, representationClassName);
+    String representationClassName = EObjectLabelProviderHelper.getMetaclassLabel(_targetingRepresentation, false);
+    _label = MessageFormat.format(QUICK_FIX_LABEL_PATTERN, representationName, representationClassName);
 
     _image = EObjectLabelProviderHelper.getImage(_targetingRepresentation);
     _modelElementToSelectInDiagram = modelElementToSelectInDiagram_p;
@@ -112,7 +108,7 @@ public class OpenAndShowInDiagramResolver implements IMarkerResolution2 {
       // Can't open representation.
       return;
     }
-    DialectUIManager.INSTANCE.openEditor(_session, _targetingRepresentation);
+    DialectUIManager.INSTANCE.openEditor(_session, _targetingRepresentation, new NullProgressMonitor());
     // Precondition.
     if (null == _modelElementToSelectInDiagram) {
       // Can't show element in representation.

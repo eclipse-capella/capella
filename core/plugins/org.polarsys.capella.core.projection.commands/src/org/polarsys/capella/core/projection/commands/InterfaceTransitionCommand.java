@@ -37,7 +37,7 @@ public class InterfaceTransitionCommand extends AbstractTransitionCommand {
   }
 
   /**
-   * @see org.polarsys.capella.common.command.ICommand#getLabel()
+   * @see org.polarsys.capella.common.ef.command.command.ICommand#getLabel()
    */
   @Override
   public String getName() {

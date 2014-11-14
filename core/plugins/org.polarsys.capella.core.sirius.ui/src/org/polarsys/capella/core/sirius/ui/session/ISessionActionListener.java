@@ -13,6 +13,10 @@ package org.polarsys.capella.core.sirius.ui.session;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.sirius.business.api.session.Session;
 
+/**
+ * @deprecated shall not be used anymore
+ */
+@Deprecated
 public interface ISessionActionListener {
 
   /**

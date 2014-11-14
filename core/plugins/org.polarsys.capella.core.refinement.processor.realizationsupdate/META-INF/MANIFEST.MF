@@ -8,6 +8,6 @@ Require-Bundle: org.polarsys.capella.core.refinement.framework;visibility:=reexp
  org.polarsys.capella.core.projection.misc
 Export-Package: org.polarsys.capella.core.refinement.processor,
  org.polarsys.capella.core.refinement.static_
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

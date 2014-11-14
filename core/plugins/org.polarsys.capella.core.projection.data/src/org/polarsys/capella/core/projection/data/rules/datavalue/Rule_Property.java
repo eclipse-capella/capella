@@ -39,7 +39,6 @@ public class Rule_Property extends Rule_CapellaElement {
     registerAttributeUpdate(InformationPackage.Literals.PROPERTY__IS_PART_OF_KEY);
     registerAttributeUpdate(InformationPackage.Literals.PROPERTY__IS_READ_ONLY);
     registerAttributeUpdate(CapellacorePackage.Literals.FEATURE__IS_STATIC);
-    registerAttributeUpdate(InformationPackage.Literals.PROPERTY__VALUE_CONSTRAINT);
 
   }
 

@@ -114,7 +114,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET };
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET };
   }
 
   /**
@@ -124,7 +124,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
   public void updatedValue(IProperty property_p, IPropertyContext context_p) {
     IContext context = (IContext) context_p.getSource();
 
-    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET.equals(property_p.getId())) {
+    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property_p.getId())) {
       context.put("SCOPE_ELEMENTS_PROPERTY", null);
     }
   }

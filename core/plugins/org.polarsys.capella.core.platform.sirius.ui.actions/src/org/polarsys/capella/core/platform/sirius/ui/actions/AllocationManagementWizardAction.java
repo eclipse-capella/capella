@@ -20,12 +20,13 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IActionDelegate;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementData.AllocationSelectionType;
 
 /**
@@ -86,7 +87,9 @@ public class AllocationManagementWizardAction extends AbstractTigAction {
       if (!_dataInstance.isSourceDataVoid()) {
         // Open a Transfer Dialog.
         SelectElementsDialog dialog =
-            new SelectElementsDialog(getActiveShell(), MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
+            new SelectElementsDialog(getActiveShell(),
+            	TransactionHelper.getEditingDomain(availableElements),
+            	CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
                 Messages.AllocationManagementWizardAction_Title, _dataInstance.getDataMessage(), availableElements,
                 _dataInstance.isMultiSelection(contextualMenuSelections), null);
         if (Window.OK == dialog.open()) {
@@ -99,7 +102,7 @@ public class AllocationManagementWizardAction extends AbstractTigAction {
           // Create a command to perform the model changes.
           AbstractReadWriteCommand performedChangesCommand = new AbstractReadWriteCommand() {
             /**
-             * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+             * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
              */
             @Override
             public String getName() {
@@ -116,10 +119,11 @@ public class AllocationManagementWizardAction extends AbstractTigAction {
           getExecutionManager().execute(performedChangesCommand);
         }
 
-      } else {
-        WizardActionHelper.createMessageBox(getActiveShell(), Messages.AllocationManagementWizardAction_Warning_Message, SWT.ICON_INFORMATION);
+      }else{
+    	WizardActionHelper.createMessageBox(getActiveShell(),Messages.AllocationManagementWizardAction_Information_Message,SWT.ICON_INFORMATION);
       }
-
+    }else{
+    	WizardActionHelper.createMessageBox(getActiveShell(),Messages.AllocationManagementWizardAction_Warning_Message,SWT.ICON_INFORMATION);
     }
   }
 

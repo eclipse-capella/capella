@@ -18,7 +18,12 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -38,8 +43,6 @@ import org.polarsys.capella.core.data.la.LogicalActor;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.SystemActorRealization;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.pa.LogicalActorRealization;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -47,11 +50,6 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-
-import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
 
 /**
  * Services for interactions.
@@ -294,12 +292,17 @@ public class InteractionAspectService {
     List<AbstractActor> result = new ArrayList<AbstractActor>();
 
     List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context_p);
-    for (CapabilityRealization capabilityRealization : capabilities) {
-      result.addAll(capabilityRealization.getParticipatingActors());
+    if(capabilities != null){
+        for (CapabilityRealization capabilityRealization : capabilities) {
+        	      result.addAll(capabilityRealization.getParticipatingActors());
+        }    	
     }
 
     Capability capa = (Capability) getRefinedCapabality(context_p);
-    result.addAll(capa.getParticipatingActors());
+    if(capa != null){
+        result.addAll(capa.getParticipatingActors());
+    }
+    
     return result;
   }
 
@@ -355,8 +358,11 @@ public class InteractionAspectService {
     List<ActorCapabilityRealizationInvolvement> result = new ArrayList<ActorCapabilityRealizationInvolvement>();
 
     List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context_p);
-    for (CapabilityRealization capabilityRealization : capabilities) {
-      result.addAll(capabilityRealization.getOwnedActorCapabilityRealizations());
+    if(capabilities != null){
+        for (CapabilityRealization capabilityRealization : capabilities) {
+            result.addAll(capabilityRealization.getOwnedActorCapabilityRealizations());
+          }
+    	
     }
 
     return result;

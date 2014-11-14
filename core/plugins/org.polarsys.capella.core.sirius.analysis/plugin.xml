@@ -20,7 +20,7 @@
       </component>
    </extension>
    <extension
-         point="org.eclipse.sirius.diagram.styleConfigurationProvider">
+         point="org.eclipse.sirius.diagram.ui.styleConfigurationProvider">
       <styleConfigurationProvider
             providerClass="org.polarsys.capella.core.sirius.analysis.extension.style.LogicalDataFlowStyleConfiguration">
       </styleConfigurationProvider>

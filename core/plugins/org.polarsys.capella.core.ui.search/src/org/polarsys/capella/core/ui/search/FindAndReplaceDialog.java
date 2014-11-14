@@ -45,33 +45,34 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.misc.StringMatcher;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import com.google.common.collect.Sets.SetView;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.ef.command.AbstractCompoundCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.ICommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.re.ReNamedElement;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry.IMarkerModification;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.ui.toolkit.dialogs.SelectElementsDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractContextMenuFiller;
-import org.polarsys.kitalpha.emde.model.Element;
-import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.utils.saxparser.WriteCapellaElementDescriptionSAXParser;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
+import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.re.ReNamedElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractCompoundCommand;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
-import org.polarsys.capella.common.tig.ef.command.ICommand;
+import org.polarsys.capella.core.ui.toolkit.dialogs.ImpactAnalysisDialog;
+import org.polarsys.kitalpha.emde.model.Element;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
+import com.google.common.collect.Sets.SetView;
 
 /**
  */
@@ -121,8 +122,8 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
    * @param root_p
    * @wbp.parser.constructor
    */
-  public FindAndReplaceDialog(Shell parentShell, Collection<? extends EObject> elements, int treeViewerExpandLevel_p) {
-    super(parentShell, MDEAdapterFactory.getEditingDomain(), MDEAdapterFactory.getAdapterFactory(),
+  protected FindAndReplaceDialog(Shell parentShell, Collection<? extends EObject> elements, int treeViewerExpandLevel_p) {
+    super(parentShell, TransactionHelper.getEditingDomain(elements), CapellaAdapterFactoryProvider.getInstance().getAdapterFactory(),
           org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_title,
           org.polarsys.capella.core.ui.search.Messages.FindAndReplaceDialog_dialogMessage, elements, true, null, treeViewerExpandLevel_p);
 
@@ -305,7 +306,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
     replaceAllCommand.append(replaceAllInDescCmd);
 
     if (replaceAllCommand.getContainedCommandsSize() > 0) {
-      MDEAdapterFactory.getExecutionManager().execute(replaceAllCommand);
+      TransactionHelper.getExecutionManager(_systemEngineering).execute(replaceAllCommand);
     }
 
     // update description hyperlinks to impacted elements
@@ -364,7 +365,7 @@ public class FindAndReplaceDialog extends SelectElementsDialog {
       }
 
     };
-    MDEAdapterFactory.getExecutionManager().execute(updateHyperlinksCommand);
+    TransactionHelper.getExecutionManager(SysEngAllContents).execute(updateHyperlinksCommand);
   }
 
   /**

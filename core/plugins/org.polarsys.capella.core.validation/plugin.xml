@@ -179,5 +179,13 @@
            class="org.polarsys.capella.core.validation.DiagnosticianProvider">
      </provider>
   </extension>
-   
+  <extension point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+         id="org.polarsys.capella.core.validation.expressions.EObjectPropertyTester"
+         type="org.eclipse.emf.ecore.EObject"
+         namespace="org.polarsys.capella.core.validation.expressions"
+         properties="ePackage"
+         class="org.polarsys.capella.core.validation.expressions.EObjectPropertyTester">
+      </propertyTester>
+  </extension>
 </plugin>

@@ -5,29 +5,24 @@ Bundle-SymbolicName: org.polarsys.capella.core.transition.diagram;singleton:=tru
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.polarsys.capella.core.transition.diagram.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- org.polarsys.capella.common.helpers;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
  org.eclipse.sirius;visibility:=reexport,
- org.polarsys.capella.core.data.gen,
- org.eclipse.sirius.diagram,
  org.eclipse.sirius.common,
+ org.eclipse.sirius.diagram;visibility:=reexport,
+ org.eclipse.sirius.diagram.ui,
  org.eclipse.sirius.ecore.extender,
+ org.polarsys.capella.common.helpers;visibility:=reexport,
  org.polarsys.capella.common.ui.services,
- org.polarsys.capella.common.tig.efprovider,
- org.polarsys.capella.common.platform.sirius.tig,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.diagram.helpers,
+ org.polarsys.capella.core.menu.dynamic,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.platform.sirius.ui.actions,
- org.polarsys.capella.core.menu.dynamic,
- org.eclipse.sirius,
- org.eclipse.sirius.diagram,
- org.eclipse.sirius.common,
- org.eclipse.sirius.ecore.extender,
- org.polarsys.capella.core.diagram.helpers,
- org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.core.projection.common;visibility:=reexport,
  org.polarsys.capella.core.projection.misc,
+ org.polarsys.capella.core.sirius.analysis,
  org.polarsys.capella.core.transition.system;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

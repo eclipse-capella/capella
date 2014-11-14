@@ -8,13 +8,13 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Iterator;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -27,16 +27,15 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -45,6 +44,7 @@ import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
@@ -52,38 +52,30 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.navigator.SaveablesProvider;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.platform.sirius.tig.ef.DataNotifier;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.common.libraries.ModelInformation;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryContentProvider;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.information.datavalue.BooleanReference;
-import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
-import org.polarsys.capella.core.data.information.datavalue.EnumerationReference;
-import org.polarsys.capella.core.data.information.datavalue.NumericReference;
-import org.polarsys.capella.core.data.information.datavalue.StringReference;
-import org.polarsys.capella.core.data.capellamodeller.Library;
-import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.core.model.preferences.CapellaModelDataListener;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.ICapellaNavigatorPreferences;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator.CapellaCommonViewer;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.libraries.IAbstractModel;
-import org.polarsys.capella.common.libraries.ILibraryManager;
-import org.polarsys.capella.common.libraries.ModelInformation;
 
 /**
  * The Capella navigator content provider.
@@ -100,9 +92,6 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    */
   private static final Object[] NO_CHILD = new Object[0];
 
-  // The common viewer.
-  protected CapellaCommonViewer _viewer;
-
   /**
    * Should content notifications be taken into account ? <code>true</code> if so, <code>false</code> to ignore them.
    */
@@ -111,19 +100,13 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * Session content provider.
    */
   private ITreeContentProvider _sessionContentProvider;
-  /**
-   * Listener used to handle model element changes even if not displayed in the viewer.
-   */
-  private AdapterImpl _elementChangesListener;
-  /**
-   * Monitored references for additional notifications.
-   */
-  private static List<EStructuralFeature> __monitoredReferencesForAdditionalNotifications;
 
   /**
-   * CustomizedSessionWrapperContentProvider
+   * The saveable provider.
    */
-  protected static class CustomizedSessionWrapperContentProvider extends SessionWrapperContentProvider {
+  private CapellaSaveablesProvider _saveablesProvider;
+
+  class CustomizedSessionWrapperContentProvider extends SessionWrapperContentProvider {
     /**
      * Constructor.
      * @param wrapped_p
@@ -157,37 +140,41 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   }
 
   /**
+   * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
+   */
+  @Override
+  @SuppressWarnings("rawtypes")
+  public Object getAdapter(Class clazz_p) {
+    if (SaveablesProvider.class == clazz_p) {
+      return _saveablesProvider;
+    }
+    return null;
+  }
+
+  /**
    * Constructs the Capella navigator content provider.
    */
   public CapellaNavigatorContentProvider() {
-    super(CapellaNavigatorAdapterFactory.getAdapterFactory());
+    super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
+
     // Add in workspace resource changes notification mechanism.
     ResourcesPlugin.getWorkspace().addResourceChangeListener(this, IResourceChangeEvent.PRE_DELETE); // PRE_CLOSE is handled by the CloseAction.
+
     // Instantiate a customized session content provider.
     CustomizedSessionWrapperContentProvider customizedSessionWrapperContentProvider =
-        new CustomizedSessionWrapperContentProvider(new AdapterFactoryContentProvider(CapellaNavigatorAdapterFactory.getAdapterFactory()));
+        new CustomizedSessionWrapperContentProvider(new AdapterFactoryContentProvider(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory()));
+
     // Put it in a grouping content provider.
     SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, true);
     _sessionContentProvider = new GroupingContentProvider(customizedSessionWrapperContentProvider);
 
-    // Initialize monitored references for additional notifications.
-    initializeMonitoredReferences();
+    // Create saveable provider.
+    if (null == _saveablesProvider) {
+      _saveablesProvider = new CapellaSaveablesProvider();
+    }
 
-    // Add a listener to handle model element changes even if not displayed in the viewer.
-    _elementChangesListener = new CapellaModelDataListener() {
-      /**
-       * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      public void notifyChanged(Notification notification_p) {
-        // Forward only notification related to following features:
-        EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
-        if (__monitoredReferencesForAdditionalNotifications.contains(feature)) {
-          CapellaNavigatorContentProvider.this.notifyChanged(notification_p);
-        }
-      }
-    };
+    NavigatorEditingDomainDispatcher.registerNotifyChangedListener(this);
+
     // By default, take into account content notifications.
     enableContentNotifications();
   }
@@ -200,42 +187,6 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   }
 
   /**
-   * Initialize monitored references for additional notifications.
-   */
-  private void initializeMonitoredReferences() {
-    // Initialize the map at first call only.
-    if (null == __monitoredReferencesForAdditionalNotifications) {
-      __monitoredReferencesForAdditionalNotifications = new ArrayList<EStructuralFeature>(10);
-      __monitoredReferencesForAdditionalNotifications.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME);
-      __monitoredReferencesForAdditionalNotifications.add(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
-      // Numeric Reference.
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_VALUE);
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.NUMERIC_REFERENCE__REFERENCED_PROPERTY);
-      // Boolean Reference.
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.BOOLEAN_REFERENCE__REFERENCED_VALUE);
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.BOOLEAN_REFERENCE__REFERENCED_PROPERTY);
-      // String Reference.
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_VALUE);
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.STRING_REFERENCE__REFERENCED_PROPERTY);
-      // Enumeration Reference.
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.ENUMERATION_REFERENCE__REFERENCED_VALUE);
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.ENUMERATION_REFERENCE__REFERENCED_PROPERTY);
-      // Value Part.
-      __monitoredReferencesForAdditionalNotifications.add(DatavaluePackage.Literals.VALUE_PART__REFERENCED_PROPERTY);
-    }
-  }
-
-  protected void registerToDataNotifier() {
-    // Register types we want to get additional notifications, only registered features in the map will send additional notifications.
-    DataNotifier dataNotifier = MDEAdapterFactory.getDataNotifier();
-    dataNotifier.addAdapter(AbstractNamedElement.class, _elementChangesListener);
-    dataNotifier.addAdapter(NumericReference.class, _elementChangesListener);
-    dataNotifier.addAdapter(BooleanReference.class, _elementChangesListener);
-    dataNotifier.addAdapter(StringReference.class, _elementChangesListener);
-    dataNotifier.addAdapter(EnumerationReference.class, _elementChangesListener);
-  }
-
-  /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getParent(java.lang.Object)
    */
   @Override
@@ -245,13 +196,16 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       // Handle Eclipse resources parenting.
       IResource resource = (IResource) element_p;
       parent = resource.getParent();
+
     } else if (element_p instanceof DAnalysisSession) {
       // Handle Session even if a session is not displayed because saveables are based on sessions.
       parent = SessionHelper.getFirstAnalysisFile((DAnalysisSession) element_p);
+
     } else if (element_p instanceof DSemanticDecorator) {
       // Handle diagram parenting.
       DSemanticDecorator representation = (DSemanticDecorator) element_p;
       parent = representation.getTarget();
+
     } else if (CapellaResourceHelper.isCapellaResource(element_p)) {
       // Handle resource parenting.
       // Get the session for this semantic resource.
@@ -302,12 +256,87 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       if (element_p instanceof IProject) {
         // IProjects are top level elements in the tree.
         result = getIProjectChildren((IProject) element_p);
+
       } else if (element_p instanceof IFile) {
         // Handle AIRD file case.
         IFile file = (IFile) element_p;
         if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(file.getFileExtension())) {
           result = getAirdFileChildren(file);
         }
+
+      } else if (element_p instanceof Session) {
+        Session session = (Session) element_p;
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+
+        IModel referencingModel = ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
+
+        if (referencingModel != null) {
+
+          LinkedList<Object> rootProject = new LinkedList<Object>();
+          LinkedList<Object> libraries = new LinkedList<Object>();
+          LinkedList<Object> others = new LinkedList<Object>();
+          HashSet<Resource> resourcesDone = new HashSet<Resource>();
+
+          //Add the main model to the top
+          if (referencingModel instanceof CapellaModel) {
+            Project object = ((CapellaModel) referencingModel).getProject(domain);
+            if (object != null) {
+              rootProject.add(object);
+            }
+            resourcesDone.add(object.eResource());
+          }
+
+          //Add referenced libraries
+          Collection<IModel> allReferenced = LibraryManagerExt.getAllReferences(referencingModel);
+          for (IModel referenced : allReferenced) {
+            if (referenced instanceof CapellaModel) {
+              Project object = ((CapellaModel) referenced).getProject(domain);
+              if (object != null) {
+                resourcesDone.add(object.eResource());
+                if (referencingModel.isActive(referenced)) {
+                  libraries.add(object);
+                }
+              }
+            }
+          }
+
+          // for any other children from sirius, we add it to the end
+          for (Object child : _sessionContentProvider.getChildren(element_p)) {
+
+            if ((child instanceof Resource) && !resourcesDone.contains(child) && (!((Resource) child).getContents().isEmpty())) {
+
+              // Don't handle semantic fragments as theirs contents are displayed as children of model elements.
+              if (CapellaResourceHelper.isCapellaResource(child)) {
+
+                if (!CapellaResourceHelper.isCapellaFragment(((Resource) child).getURI())) {
+                  //add any referenced resources which is not a compatible library (it may happen)
+                  for (EObject object : ((Resource) child).getContents()) {
+                    IModel referencedLibrary = ILibraryManager.INSTANCE.getModel(object);
+                    if ((referencedLibrary == null)) {
+                      others.addFirst(object);
+                    }
+                  }
+                }
+              } else {
+                others.addFirst(((Resource) child).getContents());
+              }
+
+            } else {
+              //we want to add others elements at the end (viewpoint package for instance)
+              others.addLast(child);
+            }
+          }
+
+          LinkedList<Object> resultList = new LinkedList<Object>();
+          resultList.addAll(rootProject);
+          resultList.addAll(libraries);
+          resultList.addAll(others);
+
+          return resultList.toArray(new Object[0]);
+
+        }
+        return _sessionContentProvider.getChildren(element_p);
+
       } else if ((element_p instanceof Part) && isImplicitView(element_p) && (((Part) element_p).getOwnedAbstractType() != null)) {
         ArrayList<Object> merged = new ArrayList<Object>();
         merged.addAll(Arrays.asList(_sessionContentProvider.getChildren(element_p)));
@@ -363,55 +392,39 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   protected Object[] getAirdFileChildren(IFile file_p) {
     Object[] result = NO_CHILD;
     Session session = SessionHelper.getSession(file_p);
-    IAbstractModel referencingModel = null;
+
     // We got the session, let' get its children except the semantic resource, because we skip the Session item in the tree.
     if (null != session) {
-      Iterator<Object> candidateChildren = Arrays.asList(getChildren(session)).iterator();
-      List<Object> retainedChildren = new ArrayList<Object>(0);
-      while (candidateChildren.hasNext()) {
-        Object object = candidateChildren.next();
-        if (CapellaResourceHelper.isCapellaResource(object)) {
-          // Don't handle capella fragments as theirs contents are displayed as children of melodymodeller.
-          if (!CapellaResourceHelper.isCapellaFragment(((Resource) object).getURI())) {
-            List<EObject> contents = ((Resource) object).getContents();
-            boolean isCapellaProjectHidden = !isCapellaProjectDisplayed();
-            // Loop over contents to filter or not Capella Project concept.
-            for (EObject contentChild : contents) {
-              isCapellaProjectHidden = !isCapellaProjectDisplayed(contentChild);
-              if (isCapellaProjectHidden && (contentChild instanceof Project)) {
-                Project project = (Project) contentChild;
-                // Adapt the project to force its item provider to be instantiated.
-                // Without that, no refresh events are sent because no item provider exists.
-                adapterFactory.adapt(project, IEditingDomainItemProvider.class);
-                retainedChildren.addAll(project.getOwnedModelRoots());
-              } else {
-                // if the child is a library, skip it if it does not pertain to the all referenced libraries set for the current session (or the current session
-                // itself)
-                if (contentChild instanceof Library) {
-                  IAbstractModel referencedLibrary = ILibraryManager.INSTANCE.getAbstractModel(contentChild);
-                  if ((referencedLibrary != null)) {
-                    if (referencingModel == null) {
-                      referencingModel = ILibraryManager.INSTANCE.getAbstractModel(session);
-                    }
-                    if (referencedLibrary.equals(referencingModel)) {
-                      retainedChildren.add(contentChild);
 
-                    } else if (referencingModel.getAllReferencedLibraries(true).contains(referencedLibrary)) {
-                      retainedChildren.add(contentChild);
-                    }
-                  }
-                } else {
-                  retainedChildren.add(contentChild);
-                }
-              }
-            }
+      List<Object> retainedChildren = new ArrayList<Object>(0);
+      Object[] children = getChildren(session);
+
+      for (Object object : children) {
+
+        if (object instanceof Project) {
+          Project project = (Project) object;
+
+          boolean isCapellaProjectHidden = !isCapellaProjectDisplayed();
+          isCapellaProjectHidden = !isCapellaProjectDisplayed(project);
+
+          if (isCapellaProjectHidden) {
+            // Adapt the project to force its item provider to be instantiated.
+            // Without that, no refresh events are sent because no item provider exists.
+            adapterFactory.adapt(project, IEditingDomainItemProvider.class);
+            retainedChildren.addAll(project.getOwnedModelRoots());
+
+          } else {
+            retainedChildren.add(project);
           }
+
         } else {
           retainedChildren.add(object);
         }
       }
+
       result = retainedChildren.toArray();
     }
+
     return result;
   }
 
@@ -440,10 +453,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    */
   @Override
   public void dispose() {
-    if (null != _elementChangesListener) {
-      unregisterFromDataNotifier();
-      _elementChangesListener = null;
-    }
+    NavigatorEditingDomainDispatcher.unregisterNotifyChangedListener(this);
+
     // Remove from workspace resource changes notification mechanism.
     ResourcesPlugin.getWorkspace().removeResourceChangeListener(this);
 
@@ -452,11 +463,6 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
       _sessionContentProvider = null;
     }
     super.dispose();
-  }
-
-  protected void unregisterFromDataNotifier() {
-    // Remove the registered listener from the data notifier.
-    MDEAdapterFactory.getDataNotifier().remove(_elementChangesListener);
   }
 
   /**
@@ -488,33 +494,6 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   }
 
   /**
-   * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
-   */
-  @Override
-  @SuppressWarnings("rawtypes")
-  public Object getAdapter(Class clazz_p) {
-    if (SaveablesProvider.class == clazz_p) {
-      return _viewer.getAdapter(clazz_p);
-    }
-    return null;
-  }
-
-  /**
-   * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-   */
-  @Override
-  public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
-    if ((null == oldInput_p) && (null != newInput_p)) {
-      // Case of the 1st call by JFace viewer framework to inputChanged from the initial setInput.
-      if (null == _viewer) {
-        // Keep a reference on the viewer.
-        _viewer = (CapellaCommonViewer) viewer_p;
-      }
-    }
-    super.inputChanged(viewer_p, oldInput_p, newInput_p);
-  }
-
-  /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
@@ -535,6 +514,13 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     if (shouldNotify) {
       Notification notification = notification_p;
 
+      if (notifier instanceof EObject) {
+        TransactionalEditingDomain domain = TransactionHelper.getEditingDomain((EObject) notifier);
+        if (domain != null) {
+          domain.addResourceSetListener(getListener());
+        }
+      }
+
       if (notifier instanceof ModelInformation) {
         // forward the notification on resource for library references update.
         Session session = SessionManager.INSTANCE.getSession((ModelInformation) notifier);
@@ -548,6 +534,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           }
         }
       }
+
       if ((notifier instanceof Project) && !isCapellaProjectDisplayed()) {
         // Capella Project is not refresh, forward the notification on Capella Project parent.
         notification = new ViewerNotification(notification, ((EObject) notifier).eContainer());
@@ -561,13 +548,17 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
       // Search for additional updates, indeed elements that reference an element, whose name changed, might be refreshed too.
       if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(notification.getFeature())) {
-        // Get the cross referencer.
-        Collection<Setting> referencingObjectSettings =
-            ((SemanticEditingDomain) MDEAdapterFactory.getEditingDomain()).getCrossReferencer().getInverseReferences((EObject) notifier);
-
-        // Loop over referencingObjectSettings.
-        for (Setting setting : referencingObjectSettings) {
-          super.addObject(setting.getEObject());
+        SemanticEditingDomain editingDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain((EObject) notifier);
+        if (null != editingDomain) {
+          // Get the cross referencer.
+          ECrossReferenceAdapter crossReferencer = editingDomain.getCrossReferencer();
+          if (null != crossReferencer) {
+            Collection<Setting> referencingObjectSettings = crossReferencer.getInverseReferences((EObject) notifier);
+            // Loop over referencingObjectSettings.
+            for (Setting setting : referencingObjectSettings) {
+              super.addObject(setting.getEObject());
+            }
+          }
         }
       }
     }
@@ -577,18 +568,23 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * Disable content notifications.<br>
    * Method {@link #notifyChanged(Notification)} will no longer do anything.
    */
+  public void disableContentNotifications(SemanticEditingDomain editingDomain) {
+    _allowContentNotifications = false;
+  }
+
   public void disableContentNotifications() {
     _allowContentNotifications = false;
-    unregisterFromDataNotifier();
   }
 
   /**
    * Re-enable content notifications.<br>
    * Method {@link #notifyChanged(Notification)} behaves as expected.
    */
-  public void enableContentNotifications() {
+  public void enableContentNotifications(SemanticEditingDomain editingDomain) {
     _allowContentNotifications = true;
-    registerToDataNotifier();
   }
 
+  public void enableContentNotifications() {
+    _allowContentNotifications = true;
+  }
 }

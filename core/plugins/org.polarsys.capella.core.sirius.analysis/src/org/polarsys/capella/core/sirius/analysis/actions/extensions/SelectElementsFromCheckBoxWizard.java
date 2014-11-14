@@ -16,30 +16,31 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-
-import org.polarsys.capella.common.ui.toolkit.dialogs.CheckboxTreeDialog;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.toolkit.dialogs.CheckboxTreeDialog;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.ABServices;
+import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.FunctionalChainServices;
-import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.PhysicalServices;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
- * PARAMETERS EObject context -- for getting the appropriate interpreter Map<ExchangeCategory,Collection<Function>> scope -- the set of selectable elements, may
- * be null (empty collection) Map<ExchangeCategory,Collection<Function>> initialSelection -- the initial set of checked elements, may be null (empty collection)
- * String wizardMessage -- the message to display in the wizard, may be null (empty string) String resultVariable -- the Sirius variable to put the user
- * selection into
+ * PARAMETERS<br>
+ * EObject context -- for getting the appropriate interpreter Map<br>
+ * <ExchangeCategory,Collection<Function>> scope -- the set of selectable elements, may be null (empty collection)<br>
+ * Map<ExchangeCategory,Collection<Function>> initialSelection -- the initial set of checked elements, may be null (empty collection)<br>
+ * String wizardMessage -- the message to display in the wizard, may be null (empty string)<br>
+ * String resultVariable -- the Sirius variable to put the user selection into
  */
 public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction {
 
@@ -125,7 +126,7 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     // Create a checkBox dialog.
     CheckboxTreeDialog<ExchangeCategory, AbstractFunction> dialog =
         new CheckboxTreeDialog<ExchangeCategory, AbstractFunction>(getShell(), "Select Elements To Show", wizardMessage, //$NON-NLS-1$
-            (AdapterFactoryEditingDomain) MDEAdapterFactory.getEditingDomain());
+            (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(context));
     dialog.setInput((Map) scope, (Map) initialSelection);
 
     if (Window.OK == dialog.open()) {

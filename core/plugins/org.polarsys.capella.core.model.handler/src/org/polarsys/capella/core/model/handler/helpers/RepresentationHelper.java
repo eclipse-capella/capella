@@ -10,47 +10,39 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.handler.helpers;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
-import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.utils.RunnableWithBooleanResult;
-import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
-import org.polarsys.capella.core.data.interaction.InstanceRole;
-import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.data.interaction.SequenceMessage;
-import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Sirius representations helper.
@@ -62,27 +54,76 @@ public class RepresentationHelper {
    * Default implementation loops over specified elements and search for all representations in a specified element containment subtree.
    * @return a not <code>null</code> collection.
    */
-  public static Collection<DRepresentation> getAllRepresentationsTargetedBy(Collection<?> elements_p) {
-    HashSet<DRepresentation> representations = new HashSet<DRepresentation>(0);
-    for (Object o : elements_p) {
-      if (o instanceof EObject) {
-        EObject currentElement = (EObject) o;
-        Session session = SessionManager.INSTANCE.getSession(currentElement);
-        if (session != null) { // can happen during tests
-          representations.addAll(DialectManager.INSTANCE.getRepresentations(currentElement, session));
-        }
-        // Add the element subtree.
-        TreeIterator<EObject> allChildrenOfCurrentElement = currentElement.eAllContents();
+  public static Collection<DRepresentation> getAllRepresentationsTargetedBy(Collection<?> semanticElements_p) {
+    Set<DRepresentation> representations = new HashSet<DRepresentation>();
+    // Go through EObjects only.
+    Iterable<EObject> semanticEObjects = Iterables.filter(semanticElements_p, EObject.class);
+    for (EObject semanticEObject : semanticEObjects) {
+      Session session = SessionManager.INSTANCE.getSession(semanticEObject);
+      if (session != null) { // can happen during tests
+        representations.addAll(DialectManager.INSTANCE.getRepresentations(semanticEObject, session));
+        // Go trough element's subtree (sub elements have the same session as their parent).
+        TreeIterator<EObject> allChildrenOfCurrentElement = semanticEObject.eAllContents();
+
         while (allChildrenOfCurrentElement.hasNext()) {
           EObject child = allChildrenOfCurrentElement.next();
-          session = SessionManager.INSTANCE.getSession(child);
-          if (session != null) { // can happen during tests
-            representations.addAll(DialectManager.INSTANCE.getRepresentations(child, session));
-          }
+
+          representations.addAll(DialectManager.INSTANCE.getRepresentations(child, session));
         }
       }
     }
+
     return representations;
+  }
+
+  /**
+   * Get all representations where the specified semantic element appears. This method is recursive and get also representation of some related elements.
+   * @param semanticElement_p
+   * @param representations
+   */
+  private static void getRelatedRepresentations(EObject semanticElement_p, Set<DRepresentation> representations) {
+    Session session = SessionManager.INSTANCE.getSession(semanticElement_p);
+
+    List<EObject> semanticElementsToCheck = new ArrayList<EObject>();
+    semanticElementsToCheck.add(semanticElement_p);
+    // For an AbstractActor, we want to see representations related to its allocated functions.
+    if (semanticElement_p instanceof AbstractActor) {
+      semanticElementsToCheck.addAll(((AbstractActor) semanticElement_p).getAllocatedFunctions());
+    }
+
+    for (EObject semanticElementToCheck : semanticElementsToCheck) {
+      for (Setting setting : session.getSemanticCrossReferencer().getInverseReferences(semanticElementToCheck)) {
+        // Get DRepresentation related to semanticElement.
+        if (ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())) {
+          DSemanticDecorator decorator = (DSemanticDecorator) setting.getEObject();
+          // TODO Use DiagramHelper.getService().getRepresentation(decorator) (not possible currently because of a cycle in dependencies).
+          DRepresentation diagram = null;
+          if (decorator instanceof DRepresentation) {
+            // DRepresentation is referencing directly to the semantic element.
+            diagram = (DRepresentation) decorator;
+          } else {
+            // An internal element of a representation is referencing the semantic element -> get containing representation.
+            diagram = (DRepresentation) EcoreUtil2.getFirstContainer(decorator, ViewpointPackage.Literals.DREPRESENTATION);
+          }
+          if (null != diagram) {
+            // Will be added only if not already present (it's a Set).
+            representations.add(diagram);
+          }
+        } else if (ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.ABSTRACT_END__EVENT.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_END.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_END.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE.equals(setting.getEStructuralFeature())
+                   || InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION.equals(setting.getEStructuralFeature())
+                   || CapellacorePackage.Literals.INVOLVEMENT__INVOLVED.equals(setting.getEStructuralFeature())) {
+          // Get representations associated to another semantic element referencing the given semantic element.
+          getRelatedRepresentations(setting.getEObject(), representations);
+        }
+      }
+    }
   }
 
   /**
@@ -93,166 +134,38 @@ public class RepresentationHelper {
    */
   public static Collection<DRepresentation> getAllRepresentationsWhereSemanticElementIsDisplayed(EObject semanticElement_p,
       RunnableWithBooleanResult filteringCondition_p) {
-    Set<DRepresentation> result = new HashSet<DRepresentation>(0);
+    // Precondition: we must have a Session.
     Session session = SessionManager.INSTANCE.getSession(semanticElement_p);
     if (null == session) {
-      return result;
+      return Collections.emptySet();
     }
-    for (Viewpoint currentSelectedViewpoint : session.getSelectedViewpoints(false)) {
-      for (RepresentationDescription representationDescription : currentSelectedViewpoint.getOwnedRepresentations()) {
-        boolean search = true;
-        // If a condition is given, used to filter out or not current representation description.
-        if (null != filteringCondition_p) {
+    // Collect all representations related to the given semantic elements and some other related ones (following specific kind of references).
+    Set<DRepresentation> unfilteredRepresentations = new HashSet<DRepresentation>();
+    getRelatedRepresentations(semanticElement_p, unfilteredRepresentations);
+
+    // Do some filtering.
+    Set<DRepresentation> filteredRepresentations = new HashSet<DRepresentation>();
+    Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
+    // Go through representations.
+    for (DRepresentation representation : unfilteredRepresentations) {
+      RepresentationDescription representationDescription = DialectManager.INSTANCE.getDescription(representation);
+      // Keep only representations having their RepresentationDescription in selectedViewpoints.
+      Viewpoint parentViewpoint = new RepresentationDescriptionQuery(representationDescription).getParentViewpoint();
+      if (selectedViewpoints.contains(parentViewpoint)) {
+        if (null == filteringCondition_p) {
+          filteredRepresentations.add(representation);
+        } else {
+          // If a condition is given, use it to filter out or not current representation regarding its description.
           filteringCondition_p.setObject(representationDescription);
           filteringCondition_p.run();
-          search = filteringCondition_p.getResult().booleanValue();
-        }
-        if (search) {
-          // Get all representations for current representation description.
-          Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(representationDescription, session);
-          // Loop over representations, to search the ones that contain our model element.
-          for (DRepresentation representation : representations) {
-            boolean flag = false;
-            // add to result if the target of a representation is equal to semantic element
-            //
-            if (representation instanceof DSemanticDiagram) {
-              // get Representation target
-              EObject diagramTarget = ((DSemanticDiagram) representation).getTarget();
-              if (null != diagramTarget) {
-                if (diagramTarget.equals(semanticElement_p)) {
-                  if (!result.contains(representation)) {
-                    flag = true;
-                    result.add(representation);
-                  }
-                }
-              }
-            } else if (representation instanceof DTable) {
-              // get Representation target
-              EObject tableTarget = ((DTable) representation).getTarget();
-              if (null != tableTarget) {
-                if (tableTarget.equals(semanticElement_p)) {
-                  if (!result.contains(representation)) {
-                    flag = true;
-                    result.add(representation);
-                  }
-                }
-              }
-            }
-            if (!flag) {
-              for (DRepresentationElement representationElement : representation.getRepresentationElements()) {
-                EObject target = representationElement.getTarget();
-                if (semanticElement_p.equals(target)) {
-                  // Current representation contains our semantic element.
-                  // Add it in resulting set, break current loop to search for next representation.
-                  result.add(representation);
-                  break;
-                }
-                // PART (looking for abstractType)
-                else if (target instanceof Part) {
-                  EReference eReference = ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE;
-                  if (isSemanticElementEqualToTargetReferencedElement(target, semanticElement_p, eReference, false)) {
-                    result.add(representation);
-                    break;
-                  }
-                }
-                // SEQUENCE MESSAGE (Looking for invokedOperation)
-                else if (target instanceof SequenceMessage) {
-                  EReference eReference = InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION;
-                  if (isSemanticElementEqualToTargetReferencedElement(target, semanticElement_p, eReference, false)) {
-                    result.add(representation);
-                    break;
-                  }
-                }
-                // INSTANCE ROLE (Looking for represented Instance)
-                else if (target instanceof InstanceRole) {
-                  EReference eReference = InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE;
-                  if (isSemanticElementEqualToTargetReferencedElement(target, semanticElement_p, eReference, true)) {
-                    result.add(representation);
-                    break;
-                  }
-                }
-                // STATE FRAGMENT (looking for related abstract function and related state)
-                else if (target instanceof StateFragment) {
-                  EReference eReference = InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE;
-                  EReference eReference2 = InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION;
-                  if (isSemanticElementEqualToTargetReferencedElement(target, semanticElement_p, eReference, true)
-                      || isSemanticElementEqualToTargetReferencedElement(target, semanticElement_p, eReference2, true)) {
-                    result.add(representation);
-                    break;
-                  }
-                }
-                // Functional Chain Involvement (looking for related involved element)
-                else if (target instanceof FunctionalChainInvolvement) {
-                  EReference eReference = CapellacorePackage.Literals.INVOLVEMENT__INVOLVED;
-                  if (isSemanticElementEqualToTargetReferencedElement(target, semanticElement_p, eReference, false)) {
-                    result.add(representation);
-                    break;
-                  }
-                }
-                // Physical Path Involvement (looking for related involved element) (involved element could be part)
-                else if (target instanceof PhysicalPathInvolvement) {
-                  EReference eReference = CsPackage.Literals.PHYSICAL_PATH_INVOLVEMENT__INVOLVED_ELEMENT;
-                  // consider part abstract Type
-                  if (isSemanticElementEqualToTargetReferencedElement(target, semanticElement_p, eReference, true)) {
-                    result.add(representation);
-                    break;
-                  }
-                }
-                // ABSTRACT ACTOR
-                // For an AbstractActor consider all the allocatedFunctions as SemanticElements
-                // ? do consider other component
-                if (semanticElement_p instanceof AbstractActor) {
-                  //
-                  AbstractActor actor = (AbstractActor) semanticElement_p;
-                  EList<AbstractFunction> allocatedFunctions = actor.getAllocatedFunctions();
-                  boolean found = false;
-                  for (AbstractFunction abstractFunction : allocatedFunctions) {
-                    if (abstractFunction.equals(target)) {
-                      // Current representation contains our semantic element.
-                      // Add it in resulting set, break current loop to search for next representation.
-                      result.add(representation);
-                      found = true;
-                      break;
-                    }
-                  }
-                  if (found) {
-                    // jump back to new diagram iteration
-                    break;
-                  }
-                }
-
-              }
-            }
+          if (filteringCondition_p.getResult().booleanValue()) {
+            filteredRepresentations.add(representation);
           }
         }
       }
     }
-    return result;
-  }
 
-  /**
-   * Return true if Referenced Element of target is equal to the given semantiqueElement
-   * @param target_p
-   * @param semanticElement_p
-   * @param abstractTypeRef_p
-   */
-  private static boolean isSemanticElementEqualToTargetReferencedElement(EObject target_p, EObject semanticElement_p, EReference abstractTypeRef_p,
-      boolean considerPartAbstractType_p) {
-    Object eGet = target_p.eGet(abstractTypeRef_p);
-    // assuming the reference return single object
-    if ((null != eGet) && !abstractTypeRef_p.isMany()) {
-      if (semanticElement_p.equals(eGet)) {
-        return true;
-      } else if (considerPartAbstractType_p) {
-        if (eGet instanceof Part) {
-          AbstractType abstractType = ((Part) eGet).getAbstractType();
-          if ((null != abstractType) && abstractType.equals(semanticElement_p)) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
+    return filteredRepresentations;
   }
 
   /**
@@ -261,7 +174,7 @@ public class RepresentationHelper {
    * @return
    */
   public static Collection<Resource> collectDependentResources(EObject semanticRoot_p) {
-    Collection<Resource> resources = new HashSet<Resource>(0);
+    Collection<Resource> resources = new HashSet<Resource>();
     // Find all elements that reference semantic root.
     for (EObject referencingElement : CrossReferencerHelper.getReferencingElements(semanticRoot_p)) {
       resources.add(referencingElement.eResource());
@@ -341,13 +254,17 @@ public class RepresentationHelper {
 
         if (session != null) {
           Collection<Resource> sessionResources = new HashSet<Resource>();
-          if (session.getSemanticResources() != null) {
-            sessionResources.addAll(session.getSemanticResources());
+          // Add SemanticResources.
+          Collection<Resource> sessionSemanticResources = session.getSemanticResources();
+          if (null != sessionSemanticResources) {
+            sessionResources.addAll(sessionSemanticResources);
           }
-          if (session.getReferencedSessionResources() != null) {
-            sessionResources.addAll(session.getReferencedSessionResources());
+          // Add ReferencedSessionResources.
+          Collection<Resource> referencedSessionResources = session.getReferencedSessionResources();
+          if (null != referencedSessionResources) {
+            sessionResources.addAll(referencedSessionResources);
           }
-
+          // Go through found resources.
           for (Resource resource : sessionResources) {
             if (resource instanceof AirdResource) {
               AirdResource airdResource = (AirdResource) resource;

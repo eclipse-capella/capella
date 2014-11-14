@@ -13,7 +13,10 @@ package org.polarsys.capella.core.data.helpers.la;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.model.helpers.HelperNotFoundException;
+import org.polarsys.capella.common.model.helpers.IHelper;
+import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.CapabilityRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.ContextInterfaceRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.LaArchitectureHelper;
@@ -24,7 +27,6 @@ import org.polarsys.capella.core.data.helpers.la.delegates.LogicalFunctionHelper
 import org.polarsys.capella.core.data.helpers.la.delegates.SystemActorRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.SystemAnalysisRealizationHelper;
 import org.polarsys.capella.core.data.helpers.la.delegates.SystemRealizationHelper;
-import org.polarsys.capella.core.data.helpers.capellacore.delegates.StructureHelper;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.ContextInterfaceRealization;
 import org.polarsys.capella.core.data.la.LogicalActor;
@@ -35,9 +37,6 @@ import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.SystemActorRealization;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
 import org.polarsys.capella.core.data.la.SystemRealization;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.common.tig.model.HelperNotFoundException;
-import org.polarsys.capella.common.tig.model.IHelper;
 
 public class LogicalArchitectureHelper implements IHelper {
 

@@ -57,6 +57,7 @@ import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.widgets.Widget;
 
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractViewerDialog;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -83,7 +84,6 @@ import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.common.menu.dynamic.DynamicCreateChildAction;
 
 /**
@@ -353,7 +353,7 @@ public class EIAllocationTransfertDlg extends AbstractViewerDialog {
     List<Action> actions = new ArrayList<Action>();
     final Object selectedElement = selection.getFirstElement();
     if (selectedElement instanceof AbstractFunction) {
-      TransactionalEditingDomain editingDomain = MDEAdapterFactory.getEditingDomain();
+      TransactionalEditingDomain editingDomain = TransactionHelper.getEditingDomain((EObject) selectedElement);
       for (final CommandParameter cmd : (Collection<CommandParameter>) editingDomain.getNewChildDescriptors(selectedElement, null)) {
         final EReference ref = cmd.getEReference();
         final EObject value = cmd.getEValue();

@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.HideLabelFilter;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
@@ -448,7 +448,7 @@ public class DragAndDropServices {
     EObject portView = DiagramServices.getDiagramServices().getDiagramElement(diagram, element_p);
 
     if (portView instanceof DDiagramElement) {
-      HideLabelFilter filter = ViewpointFactory.eINSTANCE.createHideLabelFilter();
+      HideLabelFilter filter = DiagramFactory.eINSTANCE.createHideLabelFilter();
       ((DDiagramElement) portView).getGraphicalFilters().add(filter);
       return true;
     }

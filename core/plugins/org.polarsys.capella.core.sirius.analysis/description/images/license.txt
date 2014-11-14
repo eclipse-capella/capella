@@ -128,3 +128,9 @@ These followings icons are made available under the terms of the Eclipse Public 
 /description/images/Actor.png - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/description/images/Actor.png
 /description/images/StringType.png - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/description/images/StringType.png
 /description/images/JoinFunction.png - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/JoinNode.png
+/description/images/Pseudostate_deepHistory.svg - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif
+/description/images/Pseudostate_shallowHistory.svg - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_shallowHistory.gif
+/description/images/Pseudostate_entryPoint.svg - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif
+/description/images/Pseudostate_exitPoint.svg - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif
+/description/images/CategoryOutput.png - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png
+/description/images/CategoryInput.png - org.polarsys.capella.core.sirius.analysis - org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png

@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.AbstractDeploymentLink;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -51,7 +51,6 @@ import org.polarsys.capella.core.data.pa.deployment.PortInstance;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getDeployingLinks <em>Deploying Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getDeploymentLinks <em>Deployment Links</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.pa.deployment.impl.ComponentInstanceImpl#getPortInstances <em>Port Instances</em>}</li>
@@ -84,24 +83,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractConstraint> ownedConstraints;
-
-
-
-
 
 
 
@@ -229,24 +210,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	 * @generated
 	 */
 
-	public EList<AbstractConstraint> getOwnedConstraints() {
-
-		if (ownedConstraints == null) {
-			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS);
-		}
-		return ownedConstraints;
-	}
-
-
-
-
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-
 	public EList<AbstractDeploymentLink> getDeployingLinks() {
 
 
@@ -267,10 +230,10 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, annotation);
 		
 		try {
@@ -332,10 +295,10 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = DeploymentPackage.Literals.COMPONENT_INSTANCE__PORT_INSTANCES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = DeploymentPackage.Literals.COMPONENT_INSTANCE__PORT_INSTANCES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DeploymentPackage.Literals.COMPONENT_INSTANCE__PORT_INSTANCES, annotation);
 		
 		try {
@@ -463,8 +426,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS:
-				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
 			case DeploymentPackage.COMPONENT_INSTANCE__DEPLOYMENT_LINKS:
 				return ((InternalEList<?>)getDeploymentLinks()).basicRemove(otherEnd, msgs);
 			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_ABSTRACT_PHYSICAL_INSTANCES:
@@ -485,8 +446,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 		switch (featureID) {
 			case DeploymentPackage.COMPONENT_INSTANCE__NAME:
 				return getName();
-			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS:
-				return getOwnedConstraints();
 			case DeploymentPackage.COMPONENT_INSTANCE__DEPLOYING_LINKS:
 				return getDeployingLinks();
 			case DeploymentPackage.COMPONENT_INSTANCE__DEPLOYMENT_LINKS:
@@ -521,10 +480,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 				// begin-extension-code
 				}
 				// end-extension-code
-				return;
-			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
 				return;
 			case DeploymentPackage.COMPONENT_INSTANCE__DEPLOYMENT_LINKS:
 				getDeploymentLinks().clear();
@@ -563,9 +518,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 			case DeploymentPackage.COMPONENT_INSTANCE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS:
-				getOwnedConstraints().clear();
-				return;
 			case DeploymentPackage.COMPONENT_INSTANCE__DEPLOYMENT_LINKS:
 				getDeploymentLinks().clear();
 				return;
@@ -594,8 +546,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 		switch (featureID) {
 			case DeploymentPackage.COMPONENT_INSTANCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS:
-				return ownedConstraints != null && !ownedConstraints.isEmpty();
 			case DeploymentPackage.COMPONENT_INSTANCE__DEPLOYING_LINKS:
 				return !getDeployingLinks().isEmpty();
 			case DeploymentPackage.COMPONENT_INSTANCE__DEPLOYMENT_LINKS:
@@ -623,7 +573,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 		if (baseClass == AbstractNamedElement.class) {
 			switch (derivedFeatureID) {
 				case DeploymentPackage.COMPONENT_INSTANCE__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
-				case DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}
@@ -657,7 +606,6 @@ public class ComponentInstanceImpl extends AbstractPhysicalInstanceImpl implemen
 		if (baseClass == AbstractNamedElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return DeploymentPackage.COMPONENT_INSTANCE__NAME;
-				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return DeploymentPackage.COMPONENT_INSTANCE__OWNED_CONSTRAINTS;
 				default: return -1;
 			}
 		}

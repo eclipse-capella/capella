@@ -4,13 +4,14 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *  
+ * 
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
 
 package org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
@@ -27,8 +28,11 @@ import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.navigator.ICommonViewerSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
+import org.polarsys.capella.common.command.recorder.core.project.utils.ProjectUtils;
+import org.polarsys.capella.core.libraries.nature.LibraryNature;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.SelectionHelper;
+import org.polarsys.capella.core.platform.sirius.ui.project.CapellaNature;
 import org.polarsys.capella.core.sirius.ui.actions.CloseSessionAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenSessionAction;
 import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
@@ -73,6 +77,7 @@ public class AirdCommonActionProvider extends CommonActionProvider {
     super.init(site_p);
     ISelectionProvider selectionProvider = site_p.getViewSite().getSelectionProvider();
     _openSessionAction = new OpenSessionAction();
+    
     SelectionHelper.registerToSelectionChanges(_openSessionAction, selectionProvider);
 
     _closeSessionAction = new CloseSessionAction();
@@ -84,6 +89,7 @@ public class AirdCommonActionProvider extends CommonActionProvider {
     ICommonViewerWorkbenchSite commonViewerWorkbenchSite = (ICommonViewerWorkbenchSite) commonViewSite;
     _saveAction = ActionFactory.SAVE.create(commonViewerWorkbenchSite.getWorkbenchWindow());
   }
+
 
   /**
    * @see org.eclipse.ui.actions.ActionGroup#fillActionBars(org.eclipse.ui.IActionBars)
@@ -119,15 +125,24 @@ public class AirdCommonActionProvider extends CommonActionProvider {
     boolean canSelectViewpoints = true;
     while (selectedElements.hasNext()) {
       Object selectedElement = selectedElements.next();
-      if ((selectedElement instanceof IFile) && ((IFile) selectedElement).getFileExtension().equals(CapellaResourceHelper.AIRD_FILE_EXTENSION)) {
+      if ((selectedElement instanceof IFile) && ((IFile)selectedElement).getFileExtension().equals(CapellaResourceHelper.AIRD_FILE_EXTENSION)) {
         // Update open session.
-        Session session = SessionHelper.getSessionForDiagramFile((IFile) selectedElement);
+        IFile airdFile = (IFile) selectedElement;
+        Session session = SessionHelper.getSessionForDiagramFile(airdFile);
         if (null == session) {
           canSelectViewpoints &= false;
           canClose &= false;
         } else {
           canOpen &= false;
         }
+        
+        // if the aird selected is not inside a Capella project, we don't open the dashboard
+        if(!ProjectUtils.isProjectOfType(airdFile.getProject(), Arrays.asList(CapellaNature.ID, LibraryNature.ID))){
+          _openSessionAction.setOpenCapellaDashboard(false);
+        }else{
+          _openSessionAction.setOpenCapellaDashboard(true);
+        }
+        
       }
     }
     _openSessionAction.setEnabled(canOpen);

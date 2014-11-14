@@ -22,7 +22,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.ui.properties.controllers.ISimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.helpers.DialogHelper;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
@@ -43,7 +43,7 @@ public class SimpleSemanticField extends BrowseSemanticField {
    * @param controller_p
    */
   public SimpleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, ISimpleSemanticFieldController controller_p) {
-    this(parent_p, label_p, widgetFactory_p, 2, controller_p, null, false);
+    this(parent_p, label_p, widgetFactory_p, 3, controller_p, null, false);
   }
 
   /**
@@ -56,21 +56,29 @@ public class SimpleSemanticField extends BrowseSemanticField {
    * @param hasEditBtn_p
    */
   public SimpleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
-    int textFieldSpan_p, ISimpleSemanticFieldController controller_p, String defaultName_p, boolean hasEditBtn_p)
+		    int textFieldSpan_p, ISimpleSemanticFieldController controller_p, String defaultName_p, boolean hasEditBtn_p, boolean hasShortcutBtn_p, int cardType)
+{
+	    super(parent_p, label_p, widgetFactory_p, textFieldSpan_p);
+	    setController(controller_p);
+
+	    _defaultName = defaultName_p;
+
+	    if (hasShortcutBtn_p) {
+	    	 createShortcutButton(parent_p, cardType);
+	      }
+	    if (hasEditBtn_p) {
+	      createEditButton(parent_p);
+	    }
+	    createOpenButton(parent_p);
+	    createDeleteButton(parent_p); 
+}
+  
+  public SimpleSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p,
+		    int textFieldSpan_p, ISimpleSemanticFieldController controller_p, String defaultName_p, boolean hasEditBtn_p)
   {
-    super(parent_p, label_p, widgetFactory_p, textFieldSpan_p);
-
-    setController(controller_p);
-
-    _defaultName = defaultName_p;
-
-    if (hasEditBtn_p) {
-      createEditButton(parent_p);
-    }
-    createOpenButton(parent_p);
-    createDeleteButton(parent_p);
+	  this(parent_p, label_p, widgetFactory_p, textFieldSpan_p, controller_p, defaultName_p, hasEditBtn_p, false, 0);
   }
-
+  
   /**
    * Set given controller.
    * @param controller_p

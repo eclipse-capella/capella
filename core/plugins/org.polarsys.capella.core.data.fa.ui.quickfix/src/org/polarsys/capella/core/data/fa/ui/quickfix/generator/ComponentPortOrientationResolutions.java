@@ -43,7 +43,6 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.CommandMarkerResolut
 public class ComponentPortOrientationResolutions implements IMarkerResolutionGenerator {
 
   public IMarkerResolution[] getResolutions(IMarker marker_p) {
-
     List<? extends IMarkerResolution> resolutions = Collections.emptyList();
     List<EObject> objects = MarkerViewHelper.getModelElementsFromMarker(marker_p);
     if ((objects.size() > 0) && (objects.get(0) instanceof ComponentExchange)) {

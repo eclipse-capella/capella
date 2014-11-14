@@ -21,16 +21,11 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.team.core.RepositoryProvider;
 import org.eclipse.team.core.TeamException;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-
-import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
-import org.polarsys.capella.common.tig.ef.ExecutionManager;
-import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
 
 
 /**
@@ -85,20 +80,6 @@ public class CapellaComparePlugin extends AbstractUIPlugin {
    */
   public static CapellaComparePlugin getDefault() {
     return plugin;
-  }
-  
-  /**
-   * Return the Capella editing domain
-   * @return a potentially (but normally not) null editing domain
-   */
-  public TransactionalEditingDomain getEditingDomain() {
-    TransactionalEditingDomain result = null;
-    String editingDomainId = TigEfProvider.getExecutionManagerName();
-    ExecutionManager em =
-      ExecutionManagerRegistry.getInstance().getExecutionManager(editingDomainId);
-    if (em != null)
-      result = em.getEditingDomain();
-    return result;
   }
   
   /**

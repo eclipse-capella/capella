@@ -236,6 +236,7 @@ public class SequenceMessageExt {
     InstanceRole src = message_p.getSendingEnd().getCovered();
     InstanceRole tgt = message_p.getReceivingEnd().getCovered();
 
+    if(message_p.getSendingEnd().getEvent() instanceof EventSentOperation){
     EventSentOperation eso = (EventSentOperation) message_p.getSendingEnd().getEvent();
     ExchangeItemAllocation eia = (ExchangeItemAllocation) eso.getOperation();
 
@@ -303,6 +304,8 @@ public class SequenceMessageExt {
       return CommunicationLinkKind.RECEIVE.toString();
     }
     return protocol.toString();
+    }
+	return ICommonConstants.EMPTY_STRING;
   }
 
   /**

@@ -17,6 +17,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.information.Association;
+import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
@@ -36,7 +37,7 @@ public class UnnamedElement extends AbstractValidationRule {
     if(eObj instanceof NamedElement)
     {
       // If the Rule has to check the Target
-      if(!( eObj instanceof AbstractEvent
+      if(!( eObj instanceof AbstractEvent && !(eObj instanceof ExchangeItem)
           || eObj instanceof TimeLapse
           || eObj instanceof Association
           || (eObj instanceof Feature && eObj.eContainer() instanceof Association)

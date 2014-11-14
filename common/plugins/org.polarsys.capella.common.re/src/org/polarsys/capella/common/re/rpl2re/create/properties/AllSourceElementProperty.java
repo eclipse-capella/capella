@@ -114,7 +114,7 @@ public class AllSourceElementProperty extends AbstractProperty implements IEdita
     if (IReConstants.PROPERTY__SCOPE.equals(property_p.getId())) {
       context.put("ALL_SCOPE_ELEMENTS_PROPERTY", null);
     }
-    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET.equals(property_p.getId())) {
+    if (IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET.equals(property_p.getId())) {
       context.put("ALL_SCOPE_ELEMENTS_PROPERTY", null);
     }
   }

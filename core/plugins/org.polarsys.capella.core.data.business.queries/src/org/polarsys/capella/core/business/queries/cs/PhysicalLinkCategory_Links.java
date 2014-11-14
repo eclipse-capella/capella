@@ -10,84 +10,43 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.cs;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.PhysicalLink;
-import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.utils.ListExt;
+import org.polarsys.capella.core.data.cs.CsPackage;
 
 /**
  */
 public class PhysicalLinkCategory_Links implements IBusinessQuery {
-  
-  /**
-   * get all the physical links from 'exchangeCategory_p' parent Block Architecture
-   * @param arch_p 
-   * @param exchangeCategory_p
-   * @return list of PhysicalLink
-   */
-  private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, PhysicalLinkCategory exchangeCategory_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 
-    if (arch_p != null) {
-      for (EObject obj : EObjectExt.getAll(arch_p, CsPackage.Literals.PHYSICAL_LINK)) {
-        availableElements.add((CapellaElement) obj);
-      }
-    }
-
-    return availableElements;
-  }
-
-	/**
-	 * @see IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
-	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-		if (element_p instanceof PhysicalLinkCategory) {
-      BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(element_p);
-      if (null != arch) {
-  		  availableElements.addAll(getElementsFromBlockArchitecture(arch, (PhysicalLinkCategory) element_p));
-  		}
-    }
-
-    availableElements = ListExt.removeDuplicates(availableElements);
-
-		return availableElements;
-	}
-
-	/**
-	 * @see IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement, boolean)
-	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-
-		if (element_p instanceof PhysicalLinkCategory) {
-		  for (PhysicalLink pl : ((PhysicalLinkCategory) element_p).getLinks()) {
-		    currentElements.add(pl);
-		  }
-		}
-
-		return currentElements;
-	}
-
+	@Override
 	public EClass getEClass() {
 		return CsPackage.Literals.PHYSICAL_LINK_CATEGORY;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(CsPackage.Literals.PHYSICAL_LINK_CATEGORY__LINKS);
+		return Collections.singletonList(CsPackage.Literals.PHYSICAL_LINK_CATEGORY__LINKS);
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PHYSICAL_LINK_CATEGORY__LINKS, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PHYSICAL_LINK_CATEGORY__LINKS, element_p, context);
 	}
 }

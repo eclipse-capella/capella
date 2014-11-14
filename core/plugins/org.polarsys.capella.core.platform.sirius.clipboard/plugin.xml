@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.polarsys.capella.core.platform.sirius.clipboard.siriusActions"
+            objectClass="org.eclipse.gef.EditPart">
+         <menu
+               id="BusinessCopyPasteMenuSirius"
+               label="Model Copy/Paste"
+               path="additions">
+            <groupMarker
+                  name="groupCopyPaste">
+            </groupMarker>
+         </menu>
+         <action
+               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramQuickPasteAction"
+               enablesFor="1"
+               id="modelpatterns.sirius.clipboard.actionQuickPaste"
+               label="Quick Paste   Ctrl+Shift+V"
+               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
+         </action>
+         <action
+               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramPasteAction"
+               enablesFor="+"
+               id="modelpatterns.sirius.clipboard.actionPaste"
+               label="Paste            Ctrl+V"
+               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
+         </action>
+         <action
+               class="org.polarsys.capella.core.platform.sirius.clipboard.actions.CapellaDiagramCopyAction"
+               enablesFor="+"
+               id="modelpatterns.sirius.clipboard.actionCopy"
+               label="Copy            Ctrl+C"
+               menubarPath="BusinessCopyPasteMenuSirius/groupCopyPaste">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.clipboard.quickPaste"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+V">
+      </key>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.clipboard.paste"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+V">
+      </key>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.clipboard.copy"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+C">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            name="Capella Diagram Copy/Paste">
+      </category>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.QuickPasteCommandHandler"
+            description="Capella Diagram Paste without refresh"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.quickPaste"
+            name="Business quick paste (no refresh)">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.PasteCommandHandler"
+            description="Capella Diagram Paste"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.paste"
+            name="Business paste">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.clipboard.category"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.clipboard.actions.CopyCommandHandler"
+            description="Capella Diagram Copy"
+            id="org.polarsys.capella.core.platform.sirius.clipboard.copy"
+            name="Business copy">
+      </command>
+   </extension>
+
+</plugin>

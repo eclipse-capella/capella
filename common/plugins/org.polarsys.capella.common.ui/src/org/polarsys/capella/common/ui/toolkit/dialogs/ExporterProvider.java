@@ -21,6 +21,7 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
  * Exporter provider for metric results.
+ *
  */
 public class ExporterProvider implements IExporterProvider {
 
@@ -28,11 +29,13 @@ public class ExporterProvider implements IExporterProvider {
    * @see org.polarsys.capella.core.ui.metric.export.IExporterProvider#getAvailableExporter()
    */
   public List<AbstractExporter> getAvailableExporter() {
+
     List<AbstractExporter> list = new ArrayList<AbstractExporter>();
     
-    list.add(new CSVExporter(String.valueOf(ICommonConstants.SEMICOLON_CHARACTER)));
+    list.add(new CSVExporter(ICommonConstants.SEMICOLON_CHARACTER));
     list.add(new TXTExporter());
     
     return list;
   }
+
  }

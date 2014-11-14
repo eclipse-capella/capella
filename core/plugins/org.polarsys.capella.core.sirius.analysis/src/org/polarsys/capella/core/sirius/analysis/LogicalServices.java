@@ -13,12 +13,12 @@ package org.polarsys.capella.core.sirius.analysis;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
 import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.interaction.RefinementLink;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
-import org.polarsys.capella.core.data.capellacore.InvolvedElement;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * Services for logical Architecture.

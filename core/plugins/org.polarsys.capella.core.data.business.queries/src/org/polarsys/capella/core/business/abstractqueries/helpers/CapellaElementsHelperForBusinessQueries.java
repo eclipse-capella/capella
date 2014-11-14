@@ -20,11 +20,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Feature;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Type;
+import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.helpers.information.delegates.DataValueHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
+import org.polarsys.capella.core.data.helpers.information.delegates.DataValueHelper;
 import org.polarsys.capella.core.data.information.Collection;
 import org.polarsys.capella.core.data.information.CollectionValue;
 import org.polarsys.capella.core.data.information.DataPkg;
@@ -48,17 +55,9 @@ import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationReference;
 import org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.Feature;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.Type;
-import org.polarsys.capella.core.data.capellacore.TypedElement;
 import org.polarsys.capella.core.model.helpers.DataPkgExt;
 import org.polarsys.capella.core.model.helpers.DataValueExt;
 import org.polarsys.capella.core.model.utils.EClassExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 /**
  * This class is a helper whose purpose is to give some utility methods for the business queries involving capella elements.

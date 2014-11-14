@@ -15,14 +15,13 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Give to the SequenceMessage the name of its references element
@@ -69,7 +68,7 @@ public class DWF_DS_12_RenameResolver extends AbstractCapellaMarkerResolution {
 			}
 		};
 		// execute the command
-		MDEAdapterFactory.getExecutionManager().execute(cmd);
+		TransactionHelper.getExecutionManager(modelElement).execute(cmd);
 		// Remove the associated marker.
 		try {
 			marker_p.delete();

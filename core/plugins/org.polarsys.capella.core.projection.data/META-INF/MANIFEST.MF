@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.core.projection.data;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.polarsys.capella.core.projection.misc,
  org.polarsys.capella.core.projection.common,
  org.polarsys.capella.core.projection.preferences
@@ -15,5 +15,5 @@ Export-Package: org.polarsys.capella.core.projection.data,
  org.polarsys.capella.core.projection.data.rules.datavalue,
  org.polarsys.capella.core.projection.data.rules.communication,
  org.polarsys.capella.core.projection.data.rules.propertyvalue
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

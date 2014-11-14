@@ -16,7 +16,18 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.util.Util;
 import org.eclipse.swt.widgets.Display;
-
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.cs.Interface;
+import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.information.communication.CommunicationLink;
+import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
+import org.polarsys.capella.core.data.la.LogicalArchitecture;
+import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.ui.toolkit.decomposition.Decomposition;
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionComponent;
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionItem;
@@ -24,14 +35,6 @@ import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionItemServi
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModel;
 import org.polarsys.capella.core.ui.toolkit.decomposition.Messages;
 import org.polarsys.capella.core.ui.toolkit.dialogs.CapellaWizardDialog;
-import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
-import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
 /**
  * Controller for creating and showing the model and view for decomposition wizard
@@ -58,6 +61,20 @@ public class LCDecompositionController {
   }
 
   /**
+   * Wraps all the interfaces and communication links wrapped into {@link DecompositionItem} in a {@link LogicalComponent}
+   * @param logicalComponent_p the logical component
+   * @return list of interfaces
+   */
+  public List<DecompositionItem> getWrappedCommunicationLinks(LogicalComponent logicalComponent_p, boolean alreadyDecomposed_p) {
+    List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
+    List<CommunicationLink> senderCommunicationLinks = CommunicationLinkExt.getSenderCommunicationLink(logicalComponent_p);
+    list.addAll(getDecompositionItemList(senderCommunicationLinks, true, alreadyDecomposed_p));
+    return list;
+  }
+
+  
+  
+  /**
    * Gets the list of {@link DecompositionItem}. Actual wrapping happens here.
    * @param currentList_p List of interfaces
    * @param isUsed flag to check whether the interface is used / implemented
@@ -68,17 +85,27 @@ public class LCDecompositionController {
     List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
 
     for (Object element : currentList_p) {
+    	String path = getElementPath(element);
+      String name = null;
       if (element instanceof Interface) {
-        String name = ((Interface) element).getName();
-        String path = getElementPath(element);
-        DecompositionItem item = new DecompositionItem(name, element, DecompositionItem.UNASSIGNED, isUsed, path);
-        item.setAlreadyDecomposed(alreadyDecomposed_p);
-        // Gets the list of DecompositionItemServices from current Interface
-        List<DecompositionItemService> listItemSces = getDecompositionItemServiceList(((Interface) element).getOwnedExchangeItemAllocations(), item, isUsed);
-        item.setServiceItems(listItemSces);
-
-        list.add(item);
+      	name = ((Interface) element).getName();
+      } else if (element instanceof CommunicationLink) {
+      	CommunicationLink link = (CommunicationLink) element;
+      	ExchangeItem exchangeItem = link.getExchangeItem();
+      	name = "[link] to "+exchangeItem.getName()+" ("+exchangeItem.getExchangeMechanism()+")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      	CommunicationLinkProtocol protocol = link.getProtocol();
+      	if (protocol != CommunicationLinkProtocol.UNSET) {
+      		name += " ["+protocol+"]"; //$NON-NLS-1$ //$NON-NLS-2$
+      	}
       }
+      DecompositionItem item = new DecompositionItem(name, element, DecompositionItem.UNASSIGNED, isUsed, path);
+    	if (element instanceof Interface) {
+        // Gets the list of DecompositionItemServices from current Interface
+      	List<DecompositionItemService> listItemSces = getDecompositionItemServiceList(((Interface) element).getOwnedExchangeItemAllocations(), item, isUsed);
+      	item.setServiceItems(listItemSces);        	
+      }      
+    	item.setAlreadyDecomposed(alreadyDecomposed_p);
+    	list.add(item);
     }
     return list;
   }
@@ -138,7 +165,10 @@ public class LCDecompositionController {
     DecompositionComponent comp = new DecompositionComponent();
     comp.setName(component_p.getName());
     comp.setValue(component_p);
-    comp.setItems(getWrappedInterfaces(component_p, true));
+    List<DecompositionItem> items = new ArrayList<DecompositionItem>();
+    items.addAll(getWrappedInterfaces(component_p, true));
+    items.addAll(getWrappedCommunicationLinks(component_p, true));
+    comp.setItems(items);
     comp.setComposite(ComponentExt.isComposite(component_p));
 
     if (comp.isReusedComponent()) {
@@ -188,6 +218,7 @@ public class LCDecompositionController {
     sourceComp.setValue(sourceLC_p);
     sourceComp.setSourceComponent(true);
     List<DecompositionItem> tmp = getWrappedInterfaces(sourceLC_p, false);
+    tmp.addAll(getWrappedCommunicationLinks(sourceLC_p, false));
     sourceComp.setPath(getElementPath(sourceComp.getValue()));
     sourceComp.setItems(tmp);
 

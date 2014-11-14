@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.editors.annotationTypes">
+      <type
+            name="org.polarsys.capella.common.linkedtext.ui.hyperlink">
+      </type>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors.markerAnnotationSpecification">
+      <specification
+            annotationType="org.polarsys.capella.common.linkedtext.ui.hyperlink"
+            colorPreferenceKey="capellaLinkedTextHyperlinkColor"
+            colorPreferenceValue="10,10,200"
+            highlightPreferenceKey="capellaLinkedTextHyperlinkHighlight"
+            includeOnPreferencePage="true"
+            label="Capella LinkedText Hyperlink"
+            overviewRulerPreferenceKey="capellaLinkedTextHyperlinkOverviewRuler"
+            textPreferenceKey="capellaLinkedTextHyperlinkText"
+            textPreferenceValue="true"
+            textStylePreferenceKey="capellaLinkedTextHyperlinkTextStyle"
+            textStylePreferenceValue="UNDERLINE"
+            verticalRulerPreferenceKey="capellaLinkedTextHyperlinkVerticalRuler">
+      </specification>
+   </extension>
+   <extension
+         point="org.eclipse.ui.themes">
+      <themeElementCategory
+            id="org.polarsys.capella.common.linkedtext.ui.themeCategory"
+            label="Capella Linked Text">
+         <description>
+            Allows to customize style and appearance of
+         </description>
+      </themeElementCategory>
+      <colorDefinition
+            categoryId="org.polarsys.capella.common.linkedtext.ui.themeCategory"
+            defaultsTo="ACTIVE_HYPERLINK_COLOR"
+            id="org.polarsys.capella.common.linkedtext.ui.linkedTextHyperlinkColor"
+            label="Hyperlink Color">
+         <description>
+            The color for hyperlinks
+         </description>
+      </colorDefinition>
+      <fontDefinition
+            categoryId="org.polarsys.capella.common.linkedtext.ui.themeCategory"
+            id="org.polarsys.capella.common.linkedtext.ui.font"
+            label="Linked Text Font">
+         <description>
+            The font for normal linked text
+         </description>
+      </fontDefinition>
+   </extension>
+
+</plugin>

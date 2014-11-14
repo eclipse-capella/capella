@@ -10,60 +10,42 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.information;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.helpers.EObjectExt;
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
-import org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
-public class UnaryExpression_Type extends AbstractExpression_Type implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery {
+public class UnaryExpression_Type extends AbstractExpression_Type implements IBusinessQuery {
 
-  public List<CapellaElement> getOldCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof AbstractExpressionValue) {
-      AbstractExpressionValue abstractExpression = (AbstractExpressionValue) element_p;
-      AbstractType type = abstractExpression.getExpressionType();
-      if (null != type) {
-        currentElements.add((CapellaElement) type);
-      }
-    }
-    return currentElements;
-  }
+  @Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+	}
 
-  public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
-    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-    if (element_p instanceof AbstractExpressionValue) {
-      for (EObject obj : EObjectExt.getAll(systemEngineering, DatatypePackage.Literals.DATA_TYPE)) {
-        availableElements.add((CapellaElement) obj);
-      }
-    }
-    return availableElements;
-  }
-
-  public EClass getEClass() {
+	@Override
+	public EClass getEClass() {
     return DatavaluePackage.Literals.UNARY_EXPRESSION;
   }
 
   @Override
   public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-    return RefactorDebugger.callAndTestQuery(
-        "GetAvailable_AbstractExpressionValue_Type__Lib", element_p, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ABSTRACT_EXPRESSION_VALUE__TYPE___LIB, element_p, context);
   }
 
   @Override
   public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    return RefactorDebugger.callAndTestQuery("GetCurrent_UnaryExpression_Type", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+    QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__UNARY_EXPRESSION__TYPE, element_p, context);
   }
 }

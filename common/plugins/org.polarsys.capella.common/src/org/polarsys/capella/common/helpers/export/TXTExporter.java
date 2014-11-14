@@ -14,11 +14,12 @@ import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
  * Brutal text format export with an space character as separator
+ *
  */
 public class TXTExporter extends CSVExporter {
   
   public TXTExporter() {
-    super(String.valueOf(ICommonConstants.WHITE_SPACE_CHARACTER));
+    super(ICommonConstants.WHITE_SPACE_CHARACTER);
   }
 
   /**

@@ -369,7 +369,6 @@ public class StructuredActivityNodeItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS);
 			childrenFeatures.add(ActivityPackage.Literals.EXECUTABLE_NODE__OWNED_HANDLERS);
 			childrenFeatures.add(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_PRECONDITION);
 			childrenFeatures.add(ActivityPackage.Literals.ABSTRACT_ACTION__LOCAL_POSTCONDITION);
@@ -431,7 +430,6 @@ public class StructuredActivityNodeItemProvider
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_CONSTRAINTS:
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__OWNED_HANDLERS:
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_PRECONDITION:
 			case ActivityPackage.STRUCTURED_ACTIVITY_NODE__LOCAL_POSTCONDITION:

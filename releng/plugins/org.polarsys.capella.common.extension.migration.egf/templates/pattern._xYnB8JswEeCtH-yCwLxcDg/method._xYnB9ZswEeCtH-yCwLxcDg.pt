@@ -25,6 +25,20 @@ if (annotation != null) {
 	genPackage.setChildCreationExtenders(Boolean.parseBoolean(annotation));
 }
 
+
+
+annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension", "childCreationExtenders");
+if (annotation != null) {
+	genPackage.setChildCreationExtenders(Boolean.parseBoolean(annotation));
+}
+
+annotation = EcoreUtil.getAnnotation(ecorePackage, "http://www.polarsys.org/kitalpha/emde/1.0.0/extension", "extensibleProviderFactory");
+if (annotation != null) {
+	genPackage.setExtensibleProviderFactory(Boolean.parseBoolean(annotation));
+}
+
+
+
 genPackage.eResource().save(Collections.EMPTY_MAP);
 genPackage.getEcorePackage().eResource().save(Collections.EMPTY_MAP);
 //EGFCorePlugin.getDefault().logInfo(annotation);

@@ -10,11 +10,21 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.osgi.util.NLS;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.fa.ComponentExchange;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
+import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.EventReceiptOperation;
 import org.polarsys.capella.core.data.interaction.EventSentOperation;
@@ -24,6 +34,8 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.tiger.ITransfo;
+import org.polarsys.capella.core.tiger.helpers.Query;
+import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 
 /**
@@ -93,6 +105,73 @@ public class CommonScenarioHelper {
       return NLS.bind(Messages.Rule_InstanceRole_TransitionTitleDetailled, EObjectLabelProviderHelper.getText((EObject) source));
     }
     return Messages.Rule_InstanceRole_TransitionTitle;
+  }
+
+  @SuppressWarnings("unchecked")
+  public static List<ExchangeItem> getExchangeItems(AbstractEventOperation operation) {
+    List<ExchangeItem> result = new ArrayList<ExchangeItem>();
+
+    if (operation instanceof ExchangeItem) {
+      result.add((ExchangeItem) operation);
+    }
+    if (operation instanceof ExchangeItemAllocation) {
+      ExchangeItemAllocation allocation = (ExchangeItemAllocation) operation;
+      if ((allocation.getAllocatedItem() != null) && (allocation.getAllocatedItem() instanceof ExchangeItem)) {
+        result.add(allocation.getAllocatedItem());
+      }
+    }
+    if (operation instanceof FunctionalExchange) {
+      FunctionalExchange fe = (FunctionalExchange) operation;
+      result.addAll(fe.getExchangedItems());
+
+    } else if (operation instanceof ComponentExchange) {
+      ComponentExchange connection = (ComponentExchange) operation;
+      for (AbstractExchangeItem item : connection.getConvoyedInformations()) {
+        if (item instanceof ExchangeItem) {
+          result.add((ExchangeItem) item);
+        }
+      }
+    }
+
+    return result;
+
+  }
+
+  /**
+   * @param element_p
+   * @param sequenceMessageExchangedItems_p
+   * @param transfo_p
+   */
+  public static void attachToBestAndValidElements(EObject element_p, EReference reference_p, Collection<EObject> objects, ITransfo transfo_p) {
+
+    if ((element_p == null) || !TigerRelationshipHelper.isApplicable(element_p.eClass(), reference_p)) {
+      return;
+    }
+
+    for (EObject targetElement : Query.retrieveTransformedElements(element_p, transfo_p)) {
+      if (TigerRelationshipHelper.isApplicable(targetElement.eClass(), reference_p)) {
+
+        Object resultTarget = targetElement.eGet(reference_p);
+
+        for (EObject sourceElement : TigerRelationshipHelper.retrieveReferenceAsList(element_p, reference_p)) {
+          for (EObject bestElement : TigerRelationshipHelper.retrieveBestElements(targetElement, sourceElement, (EClass) reference_p.getEType(), transfo_p)) {
+            if (!objects.contains(bestElement)) {
+              continue;
+            }
+            if (reference_p.isMany() || (resultTarget == null)
+                || ((resultTarget != null) && (resultTarget.equals(sourceElement) || resultTarget.equals(bestElement)))) {
+              if (bestElement != sourceElement) {
+                TigerRelationshipHelper.detachElementByRel(targetElement, sourceElement, reference_p);
+              }
+              TigerRelationshipHelper.attachElementByRel(targetElement, bestElement, reference_p);
+            }
+          }
+        }
+
+      }
+
+    }
+
   }
 
 }

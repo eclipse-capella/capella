@@ -1,13 +1,15 @@
-/*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
  *
- * Contributors:
- *    Thales - initial API and implementation
- *******************************************************************************/
+ *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  All rights reserved. This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License v1.0
+ *  which accompanies this distribution, and is available at
+ *  http://www.eclipse.org/legal/epl-v10.html
+ * 
+ *  Contributors:
+ *     Thales - initial API and implementation
+ */
+
 package org.polarsys.capella.common.data.modellingcore.provider;
 
 import java.util.ArrayList;
@@ -17,8 +19,11 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
+
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -31,9 +36,12 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+
 import org.polarsys.capella.common.data.modellingcore.util.ModellingcoreAdapterFactory;
-import org.polarsys.kitalpha.emde.model.edit.provider.ChildCreationExtenderManager;
+
+import org.polarsys.kitalpha.emde.extension.edit.ChildCreationExtenderManager;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.

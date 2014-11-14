@@ -13,21 +13,22 @@ package org.polarsys.capella.core.transition.common.launcher;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.OperationCanceledException;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
-import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
-import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
-import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.exception.TransitionException;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.transposer.ExtendedCadenceLauncher;
 import org.polarsys.capella.core.transition.common.transposer.SharedWorkflowActivityParameter;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.polarsys.kitalpha.cadence.core.api.parameter.GenericParameter;
+import org.polarsys.kitalpha.cadence.core.api.parameter.WorkflowActivityParameter;
 
 /**
  *
@@ -37,6 +38,30 @@ public class ActivitiesLauncher {
   protected ExtendedCadenceLauncher _cadenceLauncher;
 
   protected HashMap<String, String> _mapOverrides;
+
+  public class StringArrayIterator implements Iterator<String> {
+    private String array[];
+    private int pos = 0;
+
+    public StringArrayIterator(String array_p[]) {
+      array = array_p;
+    }
+
+    public boolean hasNext() {
+      return pos < array.length;
+    }
+
+    public String next() throws NoSuchElementException {
+      if (hasNext()) {
+        return array[pos++];
+      }
+      throw new NoSuchElementException();
+    }
+
+    public void remove() {
+      throw new UnsupportedOperationException();
+    }
+  }
 
   public void initCadence() {
     _cadenceLauncher = createCadenceLauncher();
@@ -131,11 +156,20 @@ public class ActivitiesLauncher {
     return new SharedWorkflowActivityParameter();
   }
 
+  protected Iterator<String> iteratorWorkflowElements(String workflowId_p) {
+    return new StringArrayIterator(getWorkflowElements(workflowId_p));
+  }
+
+  protected Iterator<String> iteratorFinalWorkflowElements(String workflowId_p) {
+    return new StringArrayIterator(getFinalWorkflowElements(workflowId_p));
+  }
+
   protected void triggerActivities(Collection<Object> selection_p, String workflowId_p, IProgressMonitor monitor_p) {
     try {
       SharedWorkflowActivityParameter sharedParameter = getSharedParameter(workflowId_p);
 
-      for (String workflowElement : getWorkflowElements(workflowId_p)) {
+      for (Iterator<String> iter = iteratorWorkflowElements(workflowId_p); iter.hasNext();) {
+        String workflowElement = iter.next();
         WorkflowActivityParameter parameter = getParameter(workflowId_p, workflowElement);
         WorkflowActivityParameter compoundParameter = addSharedParameter(parameter, sharedParameter);
         IStatus status = triggerActivities(compoundParameter, workflowId_p, workflowElement, monitor_p);
@@ -156,7 +190,8 @@ public class ActivitiesLauncher {
 
       try {
 
-        for (String workflowElement : getFinalWorkflowElements(workflowId_p)) {
+        for (Iterator<String> iter = iteratorFinalWorkflowElements(workflowId_p); iter.hasNext();) {
+          String workflowElement = iter.next();
           WorkflowActivityParameter parameter = getParameter(workflowId_p, workflowElement);
           WorkflowActivityParameter compoundParameter = addSharedParameter(parameter, sharedParameter);
           IStatus status = triggerActivities(compoundParameter, workflowId_p, workflowElement, monitor_p);

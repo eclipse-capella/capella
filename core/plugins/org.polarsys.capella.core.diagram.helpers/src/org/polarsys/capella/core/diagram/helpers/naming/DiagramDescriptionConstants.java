@@ -31,5 +31,5 @@ public class DiagramDescriptionConstants {
   public static final String ENTITY_BLANK_DIAGRAM_NAME = "Entity Blank";
 
   public static final String BREAKDOWN_DIAGRAM_NAME = "Breakdown";
-
+  public static final String INTERFACE_SCENARIO = "Component Interfaces Scenario";
 }

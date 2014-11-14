@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.common.libraries.IAbstractLibrary;
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.filters.MultiFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -34,7 +34,7 @@ import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
-import org.polarsys.capella.core.libraries.capellaModel.CapellaLibrary;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.PropertyExt;
 import org.polarsys.capella.core.model.helpers.queries.filters.RemoveSubTypesFilter;
@@ -49,14 +49,14 @@ public class AbstractTypeHelpers {
   public static List<CapellaElement> getAvailableElements_Type_InheritedType(CapellaElement element_p, EClass typeClass, String allTypeInstanceQueryIdentifier) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(element_p);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
 
     if (typeClass.isInstance(element_p)) {
       final GeneralizableElement currentElement = (GeneralizableElement) element_p;
       MultiFilter filter = new MultiFilter(new IQueryFilter[] { new RemoveUnnamedElementFilter(), new RemoveSubTypesFilter(currentElement) });
-      java.util.Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-      for (IAbstractLibrary library : libraries) {
-        BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaLibrary) library);
+      java.util.Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+      for (IModel library : libraries) {
+        BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaModel) library);
         for (BlockArchitecture blockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(correspondingBlock)) {
           List<CapellaElement> elements = QueryInterpretor.executeQuery(allTypeInstanceQueryIdentifier, blockArchitecture, new QueryContext(), filter);
           availableElements.addAll(elements);
@@ -71,12 +71,12 @@ public class AbstractTypeHelpers {
   public static List<CapellaElement> getAvailableElements_Type_Type(CapellaElement element_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     BlockArchitecture currentBlock = BlockArchitectureExt.getRootBlockArchitecture(element_p);
-    IAbstractModel currentProject = ILibraryManager.INSTANCE.getAbstractModel(element_p);
+    IModel currentProject =  ILibraryManager.INSTANCE.getModel(element_p);
 
     if (element_p instanceof Property) {
-      java.util.Collection<IAbstractLibrary> libraries = ILibraryManager.INSTANCE.getAllReferencedLibraries(currentProject, true);
-      for (IAbstractLibrary library : libraries) {
-        BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaLibrary) library);
+      java.util.Collection<IModel> libraries = LibraryManagerExt.getAllActivesReferences(currentProject);
+      for (IModel library : libraries) {
+        BlockArchitecture correspondingBlock = (BlockArchitecture) QueryExt.getCorrespondingElementInLibrary(currentBlock, (CapellaModel) library);
         for (BlockArchitecture blockArchitecture : BlockArchitectureExt.getAllAllocatedArchitectures(correspondingBlock)) {
           DataPkg dataPkg = blockArchitecture.getOwnedDataPkg();
           if (dataPkg != null) {

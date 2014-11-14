@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
-
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
@@ -326,6 +325,8 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
 
           if (transformRequired.isOK()) {
             for (EObject result : transformElement(element_p, context_p)) {
+              postTransformElement(element_p, result, context_p);
+
               if (isValidTargetElement(element_p, result, context_p)) {
                 if (!isRegisteredTargetElement(element_p, result, context_p)) {
                   registerTargetElement(element_p, result, context_p);
@@ -361,6 +362,15 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
       throw e;
     }
 
+  }
+
+  /**
+   * @param element_p
+   * @param result_p
+   * @param context_p
+   */
+  protected void postTransformElement(EObject element_p, EObject result_p, IContext context_p) {
+    TransformationHandlerHelper.getInstance(context_p).postTransformElement(element_p, result_p, context_p);
   }
 
   /**
@@ -466,10 +476,6 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
     }
   }
 
-  public EObject _getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    return getBestContainer(element_p, result_p, context_p);
-  }
-
   /**
    * @param element_p
    * @param result_p
@@ -494,7 +500,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
     return element_p.eContainer();
   }
 
-  public EObject _getDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
+  public EObject retrieveDefaultContainer(EObject element_p, EObject result_p, IContext context_p) {
     return getDefaultContainer(element_p, result_p, context_p);
   }
 
@@ -519,10 +525,6 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
     return element_p.eContainingFeature();
   }
 
-  public EStructuralFeature _getSourceContainementFeature(EObject element_p, EObject result_p, IContext context_p) {
-    return getSourceContainementFeature(element_p, result_p, context_p);
-  }
-
   /**
    * Default implementation can return null if element_p is not attached
    * @param element_p
@@ -534,7 +536,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
     return element_p.eContainingFeature();
   }
 
-  public EStructuralFeature _getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
+  public EStructuralFeature retrieveTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
     return getTargetContainementFeature(element_p, result_p, container_p, context_p);
   }
 
@@ -663,7 +665,7 @@ public abstract class AbstractRule implements IRule<EObject>, IRuleScope, IRuleT
   protected IContext currentContext;
 
   @Deprecated
-  protected void setCurrentContext(IContext context_p) {
+  public void setCurrentContext(IContext context_p) {
     currentContext = context_p;
   }
 

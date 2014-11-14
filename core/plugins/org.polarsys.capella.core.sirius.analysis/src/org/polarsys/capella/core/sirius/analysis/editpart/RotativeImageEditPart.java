@@ -38,13 +38,13 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * Specific Edit Part for rotative image
@@ -58,6 +58,10 @@ public class RotativeImageEditPart extends WorkspaceImageEditPart implements ISt
                                             "/org.polarsys.capella.core.sirius.analysis/description/images/InFlowPort.png", //$NON-NLS-1$
                                             "/org.polarsys.capella.core.sirius.analysis/description/images/OutFlowPort.png", //$NON-NLS-1$
                                             "/org.polarsys.capella.core.sirius.analysis/description/images/StandardPortSmall.png", //$NON-NLS-1$
+                                            "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionInputPort.png", //$NON-NLS-1$
+                                            "/org.polarsys.capella.core.sirius.analysis/description/images/FunctionOutputPort.png", //$NON-NLS-1$
+                                            "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryInput.png", //$NON-NLS-1$
+                                            "/org.polarsys.capella.core.sirius.analysis/description/images/CategoryOutput.png", //$NON-NLS-1$
   };
 
   /**

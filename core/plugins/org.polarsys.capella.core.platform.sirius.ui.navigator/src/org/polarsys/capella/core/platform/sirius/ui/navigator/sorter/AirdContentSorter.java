@@ -13,11 +13,8 @@ package org.polarsys.capella.core.platform.sirius.ui.navigator.sorter;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-
 /**
- * Used to put Project or SystemEngineering at the first place under the .aird file.
+ * Used to keep the same order than content provider returns for .aird file.
  */
 public class AirdContentSorter extends ViewerSorter {
   /**
@@ -25,14 +22,6 @@ public class AirdContentSorter extends ViewerSorter {
    */
   @Override
   public int compare(Viewer viewer_p, Object object1_p, Object object2_p) {
-    if ((object1_p instanceof Project) || (object1_p instanceof SystemEngineering)) {
-      // A Project or a SystemEngineering is lesser than any object.
-      return -1;
-    }
-    if ((object2_p instanceof Project) || (object2_p instanceof SystemEngineering)) {
-      // Any object is greater than a Project or a SystemEngineering.
-      return 1;
-    }
     return 0;
   }
 }

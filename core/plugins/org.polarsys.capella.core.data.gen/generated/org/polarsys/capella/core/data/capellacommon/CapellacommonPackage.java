@@ -116,15 +116,6 @@ public interface CapellacommonPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_PKG__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CAPABILITY_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -132,6 +123,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY_PKG__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -367,6 +367,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int GENERIC_TRACE__CONSTRAINTS = CapellacorePackage.TRACE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_TRACE__OWNED_CONSTRAINTS = CapellacorePackage.TRACE__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -613,6 +622,15 @@ public interface CapellacommonPackage extends EPackage {
 	int TRANSFO_LINK__CONSTRAINTS = GENERIC_TRACE__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFO_LINK__OWNED_CONSTRAINTS = GENERIC_TRACE__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -811,6 +829,259 @@ public interface CapellacommonPackage extends EPackage {
 	int TRANSFO_LINK_FEATURE_COUNT = GENERIC_TRACE_FEATURE_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.JustificationLinkImpl <em>Justification Link</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.JustificationLinkImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getJustificationLink()
+	 * @generated
+	 */
+	int JUSTIFICATION_LINK = 3;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__OWNED_EXTENSIONS = GENERIC_TRACE__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__ID = GENERIC_TRACE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__SID = GENERIC_TRACE__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__CONSTRAINTS = GENERIC_TRACE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__OWNED_CONSTRAINTS = GENERIC_TRACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__REALIZED_FLOW = GENERIC_TRACE__REALIZED_FLOW;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__INCOMING_TRACES = GENERIC_TRACE__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__OUTGOING_TRACES = GENERIC_TRACE__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__VISIBLE_IN_DOC = GENERIC_TRACE__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__VISIBLE_IN_LM = GENERIC_TRACE__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__SUMMARY = GENERIC_TRACE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__DESCRIPTION = GENERIC_TRACE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__REVIEW = GENERIC_TRACE__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__OWNED_PROPERTY_VALUES = GENERIC_TRACE__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__OWNED_ENUMERATION_PROPERTY_TYPES = GENERIC_TRACE__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__APPLIED_PROPERTY_VALUES = GENERIC_TRACE__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__OWNED_PROPERTY_VALUE_GROUPS = GENERIC_TRACE__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__APPLIED_PROPERTY_VALUE_GROUPS = GENERIC_TRACE__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__STATUS = GENERIC_TRACE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__FEATURES = GENERIC_TRACE__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__APPLIED_REQUIREMENTS = GENERIC_TRACE__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Target Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__TARGET_ELEMENT = GENERIC_TRACE__TARGET_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Source Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__SOURCE_ELEMENT = GENERIC_TRACE__SOURCE_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Key Value Pairs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__KEY_VALUE_PAIRS = GENERIC_TRACE__KEY_VALUE_PAIRS;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__SOURCE = GENERIC_TRACE__SOURCE;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK__TARGET = GENERIC_TRACE__TARGET;
+
+	/**
+	 * The number of structural features of the '<em>Justification Link</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JUSTIFICATION_LINK_FEATURE_COUNT = GENERIC_TRACE_FEATURE_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvementImpl <em>Capability Realization Involvement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -818,7 +1089,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getCapabilityRealizationInvolvement()
 	 * @generated
 	 */
-	int CAPABILITY_REALIZATION_INVOLVEMENT = 3;
+	int CAPABILITY_REALIZATION_INVOLVEMENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -855,6 +1126,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_REALIZATION_INVOLVEMENT__CONSTRAINTS = CapellacorePackage.INVOLVEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REALIZATION_INVOLVEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -1044,7 +1324,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getCapabilityRealizationInvolvedElement()
 	 * @generated
 	 */
-	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT = 4;
+	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1081,6 +1361,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__CONSTRAINTS = CapellacorePackage.INVOLVED_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REALIZATION_INVOLVED_ELEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVED_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1252,7 +1541,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getStateMachine()
 	 * @generated
 	 */
-	int STATE_MACHINE = 5;
+	int STATE_MACHINE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1289,6 +1578,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE_MACHINE__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_MACHINE__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1435,22 +1733,13 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_MACHINE__NAME = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_MACHINE__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Is Control Operator</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__IS_CONTROL_OPERATOR = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 2;
+	int STATE_MACHINE__IS_CONTROL_OPERATOR = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Owned Parameter Set</b></em>' reference list.
@@ -1459,7 +1748,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__OWNED_PARAMETER_SET = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 3;
+	int STATE_MACHINE__OWNED_PARAMETER_SET = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Owned Parameter</b></em>' reference list.
@@ -1468,7 +1757,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__OWNED_PARAMETER = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 4;
+	int STATE_MACHINE__OWNED_PARAMETER = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Owned Regions</b></em>' containment reference list.
@@ -1477,7 +1766,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE__OWNED_REGIONS = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 5;
+	int STATE_MACHINE__OWNED_REGIONS = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>State Machine</em>' class.
@@ -1486,7 +1775,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_MACHINE_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 6;
+	int STATE_MACHINE_FEATURE_COUNT = CapellacorePackage.CAPELLA_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.RegionImpl <em>Region</em>}' class.
@@ -1496,7 +1785,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getRegion()
 	 * @generated
 	 */
-	int REGION = 6;
+	int REGION = 7;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1535,15 +1824,6 @@ public interface CapellacommonPackage extends EPackage {
 	int REGION__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REGION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1551,6 +1831,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int REGION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REGION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1731,7 +2020,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getAbstractState()
 	 * @generated
 	 */
-	int ABSTRACT_STATE = 10;
+	int ABSTRACT_STATE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -1770,15 +2059,6 @@ public interface CapellacommonPackage extends EPackage {
 	int ABSTRACT_STATE__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_STATE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1786,6 +2066,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_STATE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STATE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1932,13 +2221,22 @@ public interface CapellacommonPackage extends EPackage {
 	int ABSTRACT_STATE__REFERENCED_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STATE__AVAILABLE_IN_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Realized Abstract States</b></em>' reference list.
@@ -1947,7 +2245,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE__REALIZED_ABSTRACT_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ABSTRACT_STATE__REALIZED_ABSTRACT_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Abstract States</b></em>' reference list.
@@ -1956,7 +2254,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE__REALIZING_ABSTRACT_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ABSTRACT_STATE__REALIZING_ABSTRACT_STATES = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
@@ -1965,7 +2263,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE__OUTGOING = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int ABSTRACT_STATE__OUTGOING = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
@@ -1974,7 +2272,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE__INCOMING = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
+	int ABSTRACT_STATE__INCOMING = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Involver Regions</b></em>' reference list.
@@ -1983,7 +2281,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE__INVOLVER_REGIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
+	int ABSTRACT_STATE__INVOLVER_REGIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Abstract State</em>' class.
@@ -1992,7 +2290,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_STATE_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
+	int ABSTRACT_STATE_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.StateImpl <em>State</em>}' class.
@@ -2002,7 +2300,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getState()
 	 * @generated
 	 */
-	int STATE = 7;
+	int STATE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -2041,15 +2339,6 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE__CONSTRAINTS = ABSTRACT_STATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE__NAME = ABSTRACT_STATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2057,6 +2346,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE__OWNED_CONSTRAINTS = ABSTRACT_STATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__NAME = ABSTRACT_STATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2203,6 +2501,15 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE__REFERENCED_STATES = ABSTRACT_STATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__AVAILABLE_IN_STATES = ABSTRACT_STATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2345,7 +2652,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getMode()
 	 * @generated
 	 */
-	int MODE = 8;
+	int MODE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -2384,15 +2691,6 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__CONSTRAINTS = STATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODE__NAME = STATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2400,6 +2698,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODE__OWNED_CONSTRAINTS = STATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE__NAME = STATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2546,6 +2853,15 @@ public interface CapellacommonPackage extends EPackage {
 	int MODE__REFERENCED_STATES = STATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODE__AVAILABLE_IN_STATES = STATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2688,7 +3004,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getFinalState()
 	 * @generated
 	 */
-	int FINAL_STATE = 9;
+	int FINAL_STATE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -2727,15 +3043,6 @@ public interface CapellacommonPackage extends EPackage {
 	int FINAL_STATE__CONSTRAINTS = STATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FINAL_STATE__NAME = STATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2743,6 +3050,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int FINAL_STATE__OWNED_CONSTRAINTS = STATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__NAME = STATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2889,6 +3205,15 @@ public interface CapellacommonPackage extends EPackage {
 	int FINAL_STATE__REFERENCED_STATES = STATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_STATE__AVAILABLE_IN_STATES = STATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3031,7 +3356,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getStateTransition()
 	 * @generated
 	 */
-	int STATE_TRANSITION = 11;
+	int STATE_TRANSITION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3040,7 +3365,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__OWNED_EXTENSIONS = CapellacorePackage.RELATIONSHIP__OWNED_EXTENSIONS;
+	int STATE_TRANSITION__OWNED_EXTENSIONS = CapellacorePackage.NAMED_ELEMENT__OWNED_EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3049,7 +3374,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__ID = CapellacorePackage.RELATIONSHIP__ID;
+	int STATE_TRANSITION__ID = CapellacorePackage.NAMED_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Sid</b></em>' attribute.
@@ -3058,7 +3383,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__SID = CapellacorePackage.RELATIONSHIP__SID;
+	int STATE_TRANSITION__SID = CapellacorePackage.NAMED_ELEMENT__SID;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
@@ -3067,16 +3392,25 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__CONSTRAINTS = CapellacorePackage.RELATIONSHIP__CONSTRAINTS;
+	int STATE_TRANSITION__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__REALIZED_FLOW = CapellacorePackage.RELATIONSHIP__REALIZED_FLOW;
+	int STATE_TRANSITION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_TRANSITION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3085,7 +3419,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__INCOMING_TRACES = CapellacorePackage.RELATIONSHIP__INCOMING_TRACES;
+	int STATE_TRANSITION__INCOMING_TRACES = CapellacorePackage.NAMED_ELEMENT__INCOMING_TRACES;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
@@ -3094,7 +3428,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__OUTGOING_TRACES = CapellacorePackage.RELATIONSHIP__OUTGOING_TRACES;
+	int STATE_TRANSITION__OUTGOING_TRACES = CapellacorePackage.NAMED_ELEMENT__OUTGOING_TRACES;
 
 	/**
 	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
@@ -3103,7 +3437,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__VISIBLE_IN_DOC = CapellacorePackage.RELATIONSHIP__VISIBLE_IN_DOC;
+	int STATE_TRANSITION__VISIBLE_IN_DOC = CapellacorePackage.NAMED_ELEMENT__VISIBLE_IN_DOC;
 
 	/**
 	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
@@ -3112,7 +3446,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__VISIBLE_IN_LM = CapellacorePackage.RELATIONSHIP__VISIBLE_IN_LM;
+	int STATE_TRANSITION__VISIBLE_IN_LM = CapellacorePackage.NAMED_ELEMENT__VISIBLE_IN_LM;
 
 	/**
 	 * The feature id for the '<em><b>Summary</b></em>' attribute.
@@ -3121,7 +3455,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__SUMMARY = CapellacorePackage.RELATIONSHIP__SUMMARY;
+	int STATE_TRANSITION__SUMMARY = CapellacorePackage.NAMED_ELEMENT__SUMMARY;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -3130,7 +3464,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__DESCRIPTION = CapellacorePackage.RELATIONSHIP__DESCRIPTION;
+	int STATE_TRANSITION__DESCRIPTION = CapellacorePackage.NAMED_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Review</b></em>' attribute.
@@ -3139,7 +3473,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__REVIEW = CapellacorePackage.RELATIONSHIP__REVIEW;
+	int STATE_TRANSITION__REVIEW = CapellacorePackage.NAMED_ELEMENT__REVIEW;
 
 	/**
 	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
@@ -3148,7 +3482,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__OWNED_PROPERTY_VALUES = CapellacorePackage.RELATIONSHIP__OWNED_PROPERTY_VALUES;
+	int STATE_TRANSITION__OWNED_PROPERTY_VALUES = CapellacorePackage.NAMED_ELEMENT__OWNED_PROPERTY_VALUES;
 
 	/**
 	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
@@ -3157,7 +3491,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.RELATIONSHIP__OWNED_ENUMERATION_PROPERTY_TYPES;
+	int STATE_TRANSITION__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.NAMED_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
 
 	/**
 	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
@@ -3166,7 +3500,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__APPLIED_PROPERTY_VALUES = CapellacorePackage.RELATIONSHIP__APPLIED_PROPERTY_VALUES;
+	int STATE_TRANSITION__APPLIED_PROPERTY_VALUES = CapellacorePackage.NAMED_ELEMENT__APPLIED_PROPERTY_VALUES;
 
 	/**
 	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
@@ -3175,7 +3509,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.RELATIONSHIP__OWNED_PROPERTY_VALUE_GROUPS;
+	int STATE_TRANSITION__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.NAMED_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
 
 	/**
 	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
@@ -3184,7 +3518,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.RELATIONSHIP__APPLIED_PROPERTY_VALUE_GROUPS;
+	int STATE_TRANSITION__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.NAMED_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' reference.
@@ -3193,7 +3527,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__STATUS = CapellacorePackage.RELATIONSHIP__STATUS;
+	int STATE_TRANSITION__STATUS = CapellacorePackage.NAMED_ELEMENT__STATUS;
 
 	/**
 	 * The feature id for the '<em><b>Features</b></em>' reference list.
@@ -3202,7 +3536,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__FEATURES = CapellacorePackage.RELATIONSHIP__FEATURES;
+	int STATE_TRANSITION__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
 
 	/**
 	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
@@ -3211,16 +3545,16 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__APPLIED_REQUIREMENTS = CapellacorePackage.RELATIONSHIP__APPLIED_REQUIREMENTS;
+	int STATE_TRANSITION__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
 
 	/**
-	 * The feature id for the '<em><b>Guard</b></em>' attribute.
+	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__GUARD = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 0;
+	int STATE_TRANSITION__REALIZED_FLOW = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -3229,7 +3563,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__KIND = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 1;
+	int STATE_TRANSITION__KIND = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Trigger Description</b></em>' attribute.
@@ -3238,7 +3572,16 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__TRIGGER_DESCRIPTION = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 2;
+	int STATE_TRANSITION__TRIGGER_DESCRIPTION = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Guard</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_TRANSITION__GUARD = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -3247,7 +3590,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__SOURCE = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 3;
+	int STATE_TRANSITION__SOURCE = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -3256,7 +3599,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__TARGET = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 4;
+	int STATE_TRANSITION__TARGET = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Effect</b></em>' reference.
@@ -3265,25 +3608,16 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__EFFECT = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 5;
+	int STATE_TRANSITION__EFFECT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Trigger</b></em>' reference.
+	 * The feature id for the '<em><b>Triggers</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__TRIGGER = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Owned Guard Condition</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STATE_TRANSITION__OWNED_GUARD_CONDITION = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 7;
+	int STATE_TRANSITION__TRIGGERS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Owned State Transition Realizations</b></em>' containment reference list.
@@ -3292,7 +3626,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 8;
+	int STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Realized State Transitions</b></em>' reference list.
@@ -3301,7 +3635,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__REALIZED_STATE_TRANSITIONS = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 9;
+	int STATE_TRANSITION__REALIZED_STATE_TRANSITIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Realizing State Transitions</b></em>' reference list.
@@ -3310,7 +3644,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION__REALIZING_STATE_TRANSITIONS = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 10;
+	int STATE_TRANSITION__REALIZING_STATE_TRANSITIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>State Transition</em>' class.
@@ -3319,7 +3653,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_TRANSITION_FEATURE_COUNT = CapellacorePackage.RELATIONSHIP_FEATURE_COUNT + 11;
+	int STATE_TRANSITION_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.PseudostateImpl <em>Pseudostate</em>}' class.
@@ -3329,7 +3663,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getPseudostate()
 	 * @generated
 	 */
-	int PSEUDOSTATE = 12;
+	int PSEUDOSTATE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3368,15 +3702,6 @@ public interface CapellacommonPackage extends EPackage {
 	int PSEUDOSTATE__CONSTRAINTS = ABSTRACT_STATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PSEUDOSTATE__NAME = ABSTRACT_STATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3384,6 +3709,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int PSEUDOSTATE__OWNED_CONSTRAINTS = ABSTRACT_STATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDOSTATE__NAME = ABSTRACT_STATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3530,6 +3864,15 @@ public interface CapellacommonPackage extends EPackage {
 	int PSEUDOSTATE__REFERENCED_STATES = ABSTRACT_STATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PSEUDOSTATE__AVAILABLE_IN_STATES = ABSTRACT_STATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3600,7 +3943,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getInitialPseudoState()
 	 * @generated
 	 */
-	int INITIAL_PSEUDO_STATE = 13;
+	int INITIAL_PSEUDO_STATE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3639,15 +3982,6 @@ public interface CapellacommonPackage extends EPackage {
 	int INITIAL_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INITIAL_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3655,6 +3989,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int INITIAL_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3801,6 +4144,15 @@ public interface CapellacommonPackage extends EPackage {
 	int INITIAL_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3871,7 +4223,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getJoinPseudoState()
 	 * @generated
 	 */
-	int JOIN_PSEUDO_STATE = 14;
+	int JOIN_PSEUDO_STATE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -3910,15 +4262,6 @@ public interface CapellacommonPackage extends EPackage {
 	int JOIN_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3926,6 +4269,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int JOIN_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4072,6 +4424,15 @@ public interface CapellacommonPackage extends EPackage {
 	int JOIN_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4142,7 +4503,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getForkPseudoState()
 	 * @generated
 	 */
-	int FORK_PSEUDO_STATE = 15;
+	int FORK_PSEUDO_STATE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -4181,15 +4542,6 @@ public interface CapellacommonPackage extends EPackage {
 	int FORK_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FORK_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4197,6 +4549,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORK_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4343,6 +4704,15 @@ public interface CapellacommonPackage extends EPackage {
 	int FORK_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4413,7 +4783,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getChoicePseudoState()
 	 * @generated
 	 */
-	int CHOICE_PSEUDO_STATE = 16;
+	int CHOICE_PSEUDO_STATE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -4452,15 +4822,6 @@ public interface CapellacommonPackage extends EPackage {
 	int CHOICE_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHOICE_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4468,6 +4829,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int CHOICE_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4614,6 +4984,15 @@ public interface CapellacommonPackage extends EPackage {
 	int CHOICE_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHOICE_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4684,7 +5063,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getTerminatePseudoState()
 	 * @generated
 	 */
-	int TERMINATE_PSEUDO_STATE = 17;
+	int TERMINATE_PSEUDO_STATE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -4723,15 +5102,6 @@ public interface CapellacommonPackage extends EPackage {
 	int TERMINATE_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TERMINATE_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4739,6 +5109,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int TERMINATE_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINATE_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4885,6 +5264,15 @@ public interface CapellacommonPackage extends EPackage {
 	int TERMINATE_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
 
 	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TERMINATE_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
 	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4955,7 +5343,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getAbstractStateRealization()
 	 * @generated
 	 */
-	int ABSTRACT_STATE_REALIZATION = 18;
+	int ABSTRACT_STATE_REALIZATION = 19;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -4992,6 +5380,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_STATE_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_STATE_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -5190,7 +5587,7 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getStateTransitionRealization()
 	 * @generated
 	 */
-	int STATE_TRANSITION_REALIZATION = 19;
+	int STATE_TRANSITION_REALIZATION = 20;
 
 	/**
 	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
@@ -5227,6 +5624,15 @@ public interface CapellacommonPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE_TRANSITION_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_TRANSITION_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -5418,6 +5824,2102 @@ public interface CapellacommonPackage extends EPackage {
 	int STATE_TRANSITION_REALIZATION_FEATURE_COUNT = CapellacorePackage.ALLOCATION_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.ShallowHistoryPseudoStateImpl <em>Shallow History Pseudo State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.ShallowHistoryPseudoStateImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getShallowHistoryPseudoState()
+	 * @generated
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE = 21;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OWNED_EXTENSIONS = PSEUDOSTATE__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__ID = PSEUDOSTATE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__SID = PSEUDOSTATE__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__INCOMING_TRACES = PSEUDOSTATE__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OUTGOING_TRACES = PSEUDOSTATE__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__VISIBLE_IN_DOC = PSEUDOSTATE__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__VISIBLE_IN_LM = PSEUDOSTATE__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__SUMMARY = PSEUDOSTATE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__DESCRIPTION = PSEUDOSTATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__REVIEW = PSEUDOSTATE__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OWNED_PROPERTY_VALUES = PSEUDOSTATE__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OWNED_ENUMERATION_PROPERTY_TYPES = PSEUDOSTATE__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__APPLIED_PROPERTY_VALUES = PSEUDOSTATE__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OWNED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__APPLIED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__STATUS = PSEUDOSTATE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Referenced States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS = PSEUDOSTATE__OWNED_ABSTRACT_STATE_REALIZATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__REALIZED_ABSTRACT_STATES = PSEUDOSTATE__REALIZED_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Realizing Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__REALIZING_ABSTRACT_STATES = PSEUDOSTATE__REALIZING_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__OUTGOING = PSEUDOSTATE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__INCOMING = PSEUDOSTATE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>Involver Regions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE__INVOLVER_REGIONS = PSEUDOSTATE__INVOLVER_REGIONS;
+
+	/**
+	 * The number of structural features of the '<em>Shallow History Pseudo State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHALLOW_HISTORY_PSEUDO_STATE_FEATURE_COUNT = PSEUDOSTATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.DeepHistoryPseudoStateImpl <em>Deep History Pseudo State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.DeepHistoryPseudoStateImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getDeepHistoryPseudoState()
+	 * @generated
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE = 22;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OWNED_EXTENSIONS = PSEUDOSTATE__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__ID = PSEUDOSTATE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__SID = PSEUDOSTATE__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__INCOMING_TRACES = PSEUDOSTATE__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OUTGOING_TRACES = PSEUDOSTATE__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__VISIBLE_IN_DOC = PSEUDOSTATE__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__VISIBLE_IN_LM = PSEUDOSTATE__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__SUMMARY = PSEUDOSTATE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__DESCRIPTION = PSEUDOSTATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__REVIEW = PSEUDOSTATE__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OWNED_PROPERTY_VALUES = PSEUDOSTATE__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OWNED_ENUMERATION_PROPERTY_TYPES = PSEUDOSTATE__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__APPLIED_PROPERTY_VALUES = PSEUDOSTATE__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OWNED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__APPLIED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__STATUS = PSEUDOSTATE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Referenced States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS = PSEUDOSTATE__OWNED_ABSTRACT_STATE_REALIZATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__REALIZED_ABSTRACT_STATES = PSEUDOSTATE__REALIZED_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Realizing Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__REALIZING_ABSTRACT_STATES = PSEUDOSTATE__REALIZING_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__OUTGOING = PSEUDOSTATE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__INCOMING = PSEUDOSTATE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>Involver Regions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE__INVOLVER_REGIONS = PSEUDOSTATE__INVOLVER_REGIONS;
+
+	/**
+	 * The number of structural features of the '<em>Deep History Pseudo State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEEP_HISTORY_PSEUDO_STATE_FEATURE_COUNT = PSEUDOSTATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.EntryPointPseudoStateImpl <em>Entry Point Pseudo State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.EntryPointPseudoStateImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getEntryPointPseudoState()
+	 * @generated
+	 */
+	int ENTRY_POINT_PSEUDO_STATE = 23;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OWNED_EXTENSIONS = PSEUDOSTATE__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__ID = PSEUDOSTATE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__SID = PSEUDOSTATE__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__INCOMING_TRACES = PSEUDOSTATE__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OUTGOING_TRACES = PSEUDOSTATE__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__VISIBLE_IN_DOC = PSEUDOSTATE__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__VISIBLE_IN_LM = PSEUDOSTATE__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__SUMMARY = PSEUDOSTATE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__DESCRIPTION = PSEUDOSTATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__REVIEW = PSEUDOSTATE__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OWNED_PROPERTY_VALUES = PSEUDOSTATE__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OWNED_ENUMERATION_PROPERTY_TYPES = PSEUDOSTATE__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__APPLIED_PROPERTY_VALUES = PSEUDOSTATE__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OWNED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__APPLIED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__STATUS = PSEUDOSTATE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Referenced States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS = PSEUDOSTATE__OWNED_ABSTRACT_STATE_REALIZATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__REALIZED_ABSTRACT_STATES = PSEUDOSTATE__REALIZED_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Realizing Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__REALIZING_ABSTRACT_STATES = PSEUDOSTATE__REALIZING_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__OUTGOING = PSEUDOSTATE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__INCOMING = PSEUDOSTATE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>Involver Regions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE__INVOLVER_REGIONS = PSEUDOSTATE__INVOLVER_REGIONS;
+
+	/**
+	 * The number of structural features of the '<em>Entry Point Pseudo State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTRY_POINT_PSEUDO_STATE_FEATURE_COUNT = PSEUDOSTATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.ExitPointPseudoStateImpl <em>Exit Point Pseudo State</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.ExitPointPseudoStateImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getExitPointPseudoState()
+	 * @generated
+	 */
+	int EXIT_POINT_PSEUDO_STATE = 24;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OWNED_EXTENSIONS = PSEUDOSTATE__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__ID = PSEUDOSTATE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__SID = PSEUDOSTATE__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__CONSTRAINTS = PSEUDOSTATE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OWNED_CONSTRAINTS = PSEUDOSTATE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__NAME = PSEUDOSTATE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__INCOMING_TRACES = PSEUDOSTATE__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OUTGOING_TRACES = PSEUDOSTATE__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__VISIBLE_IN_DOC = PSEUDOSTATE__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__VISIBLE_IN_LM = PSEUDOSTATE__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__SUMMARY = PSEUDOSTATE__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__DESCRIPTION = PSEUDOSTATE__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__REVIEW = PSEUDOSTATE__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OWNED_PROPERTY_VALUES = PSEUDOSTATE__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OWNED_ENUMERATION_PROPERTY_TYPES = PSEUDOSTATE__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__APPLIED_PROPERTY_VALUES = PSEUDOSTATE__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OWNED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__APPLIED_PROPERTY_VALUE_GROUPS = PSEUDOSTATE__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__STATUS = PSEUDOSTATE__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__FEATURES = PSEUDOSTATE__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__APPLIED_REQUIREMENTS = PSEUDOSTATE__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Referenced States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__REFERENCED_STATES = PSEUDOSTATE__REFERENCED_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__AVAILABLE_IN_STATES = PSEUDOSTATE__AVAILABLE_IN_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Abstract State Realizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS = PSEUDOSTATE__OWNED_ABSTRACT_STATE_REALIZATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__REALIZED_ABSTRACT_STATES = PSEUDOSTATE__REALIZED_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Realizing Abstract States</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__REALIZING_ABSTRACT_STATES = PSEUDOSTATE__REALIZING_ABSTRACT_STATES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__OUTGOING = PSEUDOSTATE__OUTGOING;
+
+	/**
+	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__INCOMING = PSEUDOSTATE__INCOMING;
+
+	/**
+	 * The feature id for the '<em><b>Involver Regions</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE__INVOLVER_REGIONS = PSEUDOSTATE__INVOLVER_REGIONS;
+
+	/**
+	 * The number of structural features of the '<em>Exit Point Pseudo State</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXIT_POINT_PSEUDO_STATE_FEATURE_COUNT = PSEUDOSTATE_FEATURE_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventRealizationImpl <em>State Event Realization</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.StateEventRealizationImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getStateEventRealization()
+	 * @generated
+	 */
+	int STATE_EVENT_REALIZATION = 25;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__OWNED_EXTENSIONS = CapellacorePackage.ALLOCATION__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__ID = CapellacorePackage.ALLOCATION__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__SID = CapellacorePackage.ALLOCATION__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__REALIZED_FLOW = CapellacorePackage.ALLOCATION__REALIZED_FLOW;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__INCOMING_TRACES = CapellacorePackage.ALLOCATION__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__OUTGOING_TRACES = CapellacorePackage.ALLOCATION__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__VISIBLE_IN_DOC = CapellacorePackage.ALLOCATION__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__VISIBLE_IN_LM = CapellacorePackage.ALLOCATION__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__SUMMARY = CapellacorePackage.ALLOCATION__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__DESCRIPTION = CapellacorePackage.ALLOCATION__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__REVIEW = CapellacorePackage.ALLOCATION__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__OWNED_PROPERTY_VALUES = CapellacorePackage.ALLOCATION__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.ALLOCATION__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__APPLIED_PROPERTY_VALUES = CapellacorePackage.ALLOCATION__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.ALLOCATION__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.ALLOCATION__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__STATUS = CapellacorePackage.ALLOCATION__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__FEATURES = CapellacorePackage.ALLOCATION__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__APPLIED_REQUIREMENTS = CapellacorePackage.ALLOCATION__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Target Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__TARGET_ELEMENT = CapellacorePackage.ALLOCATION__TARGET_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Source Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__SOURCE_ELEMENT = CapellacorePackage.ALLOCATION__SOURCE_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Realized Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__REALIZED_EVENT = CapellacorePackage.ALLOCATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Realizing Event</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION__REALIZING_EVENT = CapellacorePackage.ALLOCATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>State Event Realization</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_REALIZATION_FEATURE_COUNT = CapellacorePackage.ALLOCATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl <em>State Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getStateEvent()
+	 * @generated
+	 */
+	int STATE_EVENT = 26;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__OWNED_EXTENSIONS = CapellacorePackage.NAMED_ELEMENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__ID = CapellacorePackage.NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__SID = CapellacorePackage.NAMED_ELEMENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__INCOMING_TRACES = CapellacorePackage.NAMED_ELEMENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__OUTGOING_TRACES = CapellacorePackage.NAMED_ELEMENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__VISIBLE_IN_DOC = CapellacorePackage.NAMED_ELEMENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__VISIBLE_IN_LM = CapellacorePackage.NAMED_ELEMENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__SUMMARY = CapellacorePackage.NAMED_ELEMENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__DESCRIPTION = CapellacorePackage.NAMED_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__REVIEW = CapellacorePackage.NAMED_ELEMENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__OWNED_PROPERTY_VALUES = CapellacorePackage.NAMED_ELEMENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__OWNED_ENUMERATION_PROPERTY_TYPES = CapellacorePackage.NAMED_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__APPLIED_PROPERTY_VALUES = CapellacorePackage.NAMED_ELEMENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__OWNED_PROPERTY_VALUE_GROUPS = CapellacorePackage.NAMED_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__APPLIED_PROPERTY_VALUE_GROUPS = CapellacorePackage.NAMED_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__STATUS = CapellacorePackage.NAMED_ELEMENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__FEATURES = CapellacorePackage.NAMED_ELEMENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__APPLIED_REQUIREMENTS = CapellacorePackage.NAMED_ELEMENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__ABSTRACT_TYPED_ELEMENTS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__CONDITION = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Event Realizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>State Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE_EVENT_FEATURE_COUNT = CapellacorePackage.NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.ChangeEventImpl <em>Change Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.ChangeEventImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getChangeEvent()
+	 * @generated
+	 */
+	int CHANGE_EVENT = 27;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__OWNED_EXTENSIONS = STATE_EVENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__ID = STATE_EVENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__SID = STATE_EVENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__CONSTRAINTS = STATE_EVENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__OWNED_CONSTRAINTS = STATE_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__NAME = STATE_EVENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__INCOMING_TRACES = STATE_EVENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__OUTGOING_TRACES = STATE_EVENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__VISIBLE_IN_DOC = STATE_EVENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__VISIBLE_IN_LM = STATE_EVENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__SUMMARY = STATE_EVENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__DESCRIPTION = STATE_EVENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__REVIEW = STATE_EVENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__OWNED_PROPERTY_VALUES = STATE_EVENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__OWNED_ENUMERATION_PROPERTY_TYPES = STATE_EVENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__APPLIED_PROPERTY_VALUES = STATE_EVENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__OWNED_PROPERTY_VALUE_GROUPS = STATE_EVENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__APPLIED_PROPERTY_VALUE_GROUPS = STATE_EVENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__STATUS = STATE_EVENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__FEATURES = STATE_EVENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__APPLIED_REQUIREMENTS = STATE_EVENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__ABSTRACT_TYPED_ELEMENTS = STATE_EVENT__ABSTRACT_TYPED_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__CONDITION = STATE_EVENT__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Event Realizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__OWNED_STATE_EVENT_REALIZATIONS = STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT__KIND = STATE_EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Change Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHANGE_EVENT_FEATURE_COUNT = STATE_EVENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.impl.TimeEventImpl <em>Time Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.TimeEventImpl
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getTimeEvent()
+	 * @generated
+	 */
+	int TIME_EVENT = 28;
+
+	/**
+	 * The feature id for the '<em><b>Owned Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__OWNED_EXTENSIONS = STATE_EVENT__OWNED_EXTENSIONS;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__ID = STATE_EVENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Sid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__SID = STATE_EVENT__SID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__CONSTRAINTS = STATE_EVENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__OWNED_CONSTRAINTS = STATE_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__NAME = STATE_EVENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__INCOMING_TRACES = STATE_EVENT__INCOMING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Traces</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__OUTGOING_TRACES = STATE_EVENT__OUTGOING_TRACES;
+
+	/**
+	 * The feature id for the '<em><b>Visible In Doc</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__VISIBLE_IN_DOC = STATE_EVENT__VISIBLE_IN_DOC;
+
+	/**
+	 * The feature id for the '<em><b>Visible In LM</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__VISIBLE_IN_LM = STATE_EVENT__VISIBLE_IN_LM;
+
+	/**
+	 * The feature id for the '<em><b>Summary</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__SUMMARY = STATE_EVENT__SUMMARY;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__DESCRIPTION = STATE_EVENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Review</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__REVIEW = STATE_EVENT__REVIEW;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__OWNED_PROPERTY_VALUES = STATE_EVENT__OWNED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Enumeration Property Types</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__OWNED_ENUMERATION_PROPERTY_TYPES = STATE_EVENT__OWNED_ENUMERATION_PROPERTY_TYPES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__APPLIED_PROPERTY_VALUES = STATE_EVENT__APPLIED_PROPERTY_VALUES;
+
+	/**
+	 * The feature id for the '<em><b>Owned Property Value Groups</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__OWNED_PROPERTY_VALUE_GROUPS = STATE_EVENT__OWNED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Applied Property Value Groups</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__APPLIED_PROPERTY_VALUE_GROUPS = STATE_EVENT__APPLIED_PROPERTY_VALUE_GROUPS;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__STATUS = STATE_EVENT__STATUS;
+
+	/**
+	 * The feature id for the '<em><b>Features</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__FEATURES = STATE_EVENT__FEATURES;
+
+	/**
+	 * The feature id for the '<em><b>Applied Requirements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__APPLIED_REQUIREMENTS = STATE_EVENT__APPLIED_REQUIREMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__ABSTRACT_TYPED_ELEMENTS = STATE_EVENT__ABSTRACT_TYPED_ELEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Condition</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__CONDITION = STATE_EVENT__CONDITION;
+
+	/**
+	 * The feature id for the '<em><b>Owned State Event Realizations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__OWNED_STATE_EVENT_REALIZATIONS = STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__KIND = STATE_EVENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT__TIME = STATE_EVENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Time Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_EVENT_FEATURE_COUNT = STATE_EVENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.TransitionKind <em>Transition Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5425,7 +7927,28 @@ public interface CapellacommonPackage extends EPackage {
 	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getTransitionKind()
 	 * @generated
 	 */
-	int TRANSITION_KIND = 20;
+	int TRANSITION_KIND = 29;
+
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.TimeEventKind <em>Time Event Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getTimeEventKind()
+	 * @generated
+	 */
+	int TIME_EVENT_KIND = 30;
+
+	/**
+	 * The meta object id for the '{@link org.polarsys.capella.core.data.capellacommon.ChangeEventKind <em>Change Event Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.polarsys.capella.core.data.capellacommon.ChangeEventKind
+	 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getChangeEventKind()
+	 * @generated
+	 */
+	int CHANGE_EVENT_KIND = 31;
 
 
 	/**
@@ -5490,6 +8013,16 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTransfoLink();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.JustificationLink <em>Justification Link</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Justification Link</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.JustificationLink
+	 * @generated
+	 */
+	EClass getJustificationLink();
 
 	/**
 	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement <em>Capability Realization Involvement</em>}'.
@@ -5802,15 +8335,15 @@ public interface CapellacommonPackage extends EPackage {
 	EClass getStateTransition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getGuard <em>Guard</em>}'.
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getGuard <em>Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Guard</em>'.
+	 * @return the meta object for the reference '<em>Guard</em>'.
 	 * @see org.polarsys.capella.core.data.capellacommon.StateTransition#getGuard()
 	 * @see #getStateTransition()
 	 * @generated
 	 */
-	EAttribute getStateTransition_Guard();
+	EReference getStateTransition_Guard();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getKind <em>Kind</em>}'.
@@ -5868,26 +8401,15 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getStateTransition_Effect();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTrigger <em>Trigger</em>}'.
+	 * Returns the meta object for the reference list '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getTriggers <em>Triggers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Trigger</em>'.
-	 * @see org.polarsys.capella.core.data.capellacommon.StateTransition#getTrigger()
+	 * @return the meta object for the reference list '<em>Triggers</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateTransition#getTriggers()
 	 * @see #getStateTransition()
 	 * @generated
 	 */
-	EReference getStateTransition_Trigger();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getOwnedGuardCondition <em>Owned Guard Condition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Owned Guard Condition</em>'.
-	 * @see org.polarsys.capella.core.data.capellacommon.StateTransition#getOwnedGuardCondition()
-	 * @see #getStateTransition()
-	 * @generated
-	 */
-	EReference getStateTransition_OwnedGuardCondition();
+	EReference getStateTransition_Triggers();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.capellacommon.StateTransition#getOwnedStateTransitionRealizations <em>Owned State Transition Realizations</em>}'.
@@ -6047,6 +8569,163 @@ public interface CapellacommonPackage extends EPackage {
 	EReference getStateTransitionRealization_RealizingStateTransition();
 
 	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState <em>Shallow History Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Shallow History Pseudo State</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState
+	 * @generated
+	 */
+	EClass getShallowHistoryPseudoState();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState <em>Deep History Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Deep History Pseudo State</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState
+	 * @generated
+	 */
+	EClass getDeepHistoryPseudoState();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState <em>Entry Point Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Entry Point Pseudo State</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState
+	 * @generated
+	 */
+	EClass getEntryPointPseudoState();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState <em>Exit Point Pseudo State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Exit Point Pseudo State</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState
+	 * @generated
+	 */
+	EClass getExitPointPseudoState();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.StateEventRealization <em>State Event Realization</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State Event Realization</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEventRealization
+	 * @generated
+	 */
+	EClass getStateEventRealization();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateEventRealization#getRealizedEvent <em>Realized Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Realized Event</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEventRealization#getRealizedEvent()
+	 * @see #getStateEventRealization()
+	 * @generated
+	 */
+	EReference getStateEventRealization_RealizedEvent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateEventRealization#getRealizingEvent <em>Realizing Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Realizing Event</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEventRealization#getRealizingEvent()
+	 * @see #getStateEventRealization()
+	 * @generated
+	 */
+	EReference getStateEventRealization_RealizingEvent();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.StateEvent <em>State Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>State Event</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEvent
+	 * @generated
+	 */
+	EClass getStateEvent();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.polarsys.capella.core.data.capellacommon.StateEvent#getCondition <em>Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Condition</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEvent#getCondition()
+	 * @see #getStateEvent()
+	 * @generated
+	 */
+	EReference getStateEvent_Condition();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.polarsys.capella.core.data.capellacommon.StateEvent#getOwnedStateEventRealizations <em>Owned State Event Realizations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Owned State Event Realizations</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.StateEvent#getOwnedStateEventRealizations()
+	 * @see #getStateEvent()
+	 * @generated
+	 */
+	EReference getStateEvent_OwnedStateEventRealizations();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.ChangeEvent <em>Change Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Change Event</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.ChangeEvent
+	 * @generated
+	 */
+	EClass getChangeEvent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.capellacommon.ChangeEvent#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.ChangeEvent#getKind()
+	 * @see #getChangeEvent()
+	 * @generated
+	 */
+	EAttribute getChangeEvent_Kind();
+
+	/**
+	 * Returns the meta object for class '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent <em>Time Event</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Event</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEvent
+	 * @generated
+	 */
+	EClass getTimeEvent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEvent#getKind()
+	 * @see #getTimeEvent()
+	 * @generated
+	 */
+	EAttribute getTimeEvent_Kind();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getTime <em>Time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEvent#getTime()
+	 * @see #getTimeEvent()
+	 * @generated
+	 */
+	EAttribute getTimeEvent_Time();
+
+	/**
 	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.capellacommon.TransitionKind <em>Transition Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6055,6 +8734,26 @@ public interface CapellacommonPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getTransitionKind();
+
+	/**
+	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.capellacommon.TimeEventKind <em>Time Event Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Time Event Kind</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
+	 * @generated
+	 */
+	EEnum getTimeEventKind();
+
+	/**
+	 * Returns the meta object for enum '{@link org.polarsys.capella.core.data.capellacommon.ChangeEventKind <em>Change Event Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Change Event Kind</em>'.
+	 * @see org.polarsys.capella.core.data.capellacommon.ChangeEventKind
+	 * @generated
+	 */
+	EEnum getChangeEventKind();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -6131,6 +8830,16 @@ public interface CapellacommonPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TRANSFO_LINK = eINSTANCE.getTransfoLink();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.JustificationLinkImpl <em>Justification Link</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.JustificationLinkImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getJustificationLink()
+		 * @generated
+		 */
+		EClass JUSTIFICATION_LINK = eINSTANCE.getJustificationLink();
 
 		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.CapabilityRealizationInvolvementImpl <em>Capability Realization Involvement</em>}' class.
@@ -6383,12 +9092,12 @@ public interface CapellacommonPackage extends EPackage {
 		EClass STATE_TRANSITION = eINSTANCE.getStateTransition();
 
 		/**
-		 * The meta object literal for the '<em><b>Guard</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Guard</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute STATE_TRANSITION__GUARD = eINSTANCE.getStateTransition_Guard();
+		EReference STATE_TRANSITION__GUARD = eINSTANCE.getStateTransition_Guard();
 
 		/**
 		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
@@ -6431,20 +9140,12 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE_TRANSITION__EFFECT = eINSTANCE.getStateTransition_Effect();
 
 		/**
-		 * The meta object literal for the '<em><b>Trigger</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Triggers</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference STATE_TRANSITION__TRIGGER = eINSTANCE.getStateTransition_Trigger();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Guard Condition</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference STATE_TRANSITION__OWNED_GUARD_CONDITION = eINSTANCE.getStateTransition_OwnedGuardCondition();
+		EReference STATE_TRANSITION__TRIGGERS = eINSTANCE.getStateTransition_Triggers();
 
 		/**
 		 * The meta object literal for the '<em><b>Owned State Transition Realizations</b></em>' containment reference list feature.
@@ -6583,6 +9284,142 @@ public interface CapellacommonPackage extends EPackage {
 		EReference STATE_TRANSITION_REALIZATION__REALIZING_STATE_TRANSITION = eINSTANCE.getStateTransitionRealization_RealizingStateTransition();
 
 		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.ShallowHistoryPseudoStateImpl <em>Shallow History Pseudo State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.ShallowHistoryPseudoStateImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getShallowHistoryPseudoState()
+		 * @generated
+		 */
+		EClass SHALLOW_HISTORY_PSEUDO_STATE = eINSTANCE.getShallowHistoryPseudoState();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.DeepHistoryPseudoStateImpl <em>Deep History Pseudo State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.DeepHistoryPseudoStateImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getDeepHistoryPseudoState()
+		 * @generated
+		 */
+		EClass DEEP_HISTORY_PSEUDO_STATE = eINSTANCE.getDeepHistoryPseudoState();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.EntryPointPseudoStateImpl <em>Entry Point Pseudo State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.EntryPointPseudoStateImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getEntryPointPseudoState()
+		 * @generated
+		 */
+		EClass ENTRY_POINT_PSEUDO_STATE = eINSTANCE.getEntryPointPseudoState();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.ExitPointPseudoStateImpl <em>Exit Point Pseudo State</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.ExitPointPseudoStateImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getExitPointPseudoState()
+		 * @generated
+		 */
+		EClass EXIT_POINT_PSEUDO_STATE = eINSTANCE.getExitPointPseudoState();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventRealizationImpl <em>State Event Realization</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.StateEventRealizationImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getStateEventRealization()
+		 * @generated
+		 */
+		EClass STATE_EVENT_REALIZATION = eINSTANCE.getStateEventRealization();
+
+		/**
+		 * The meta object literal for the '<em><b>Realized Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_EVENT_REALIZATION__REALIZED_EVENT = eINSTANCE.getStateEventRealization_RealizedEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Realizing Event</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_EVENT_REALIZATION__REALIZING_EVENT = eINSTANCE.getStateEventRealization_RealizingEvent();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl <em>State Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.StateEventImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getStateEvent()
+		 * @generated
+		 */
+		EClass STATE_EVENT = eINSTANCE.getStateEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Condition</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_EVENT__CONDITION = eINSTANCE.getStateEvent_Condition();
+
+		/**
+		 * The meta object literal for the '<em><b>Owned State Event Realizations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS = eINSTANCE.getStateEvent_OwnedStateEventRealizations();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.ChangeEventImpl <em>Change Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.ChangeEventImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getChangeEvent()
+		 * @generated
+		 */
+		EClass CHANGE_EVENT = eINSTANCE.getChangeEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHANGE_EVENT__KIND = eINSTANCE.getChangeEvent_Kind();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.impl.TimeEventImpl <em>Time Event</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.TimeEventImpl
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getTimeEvent()
+		 * @generated
+		 */
+		EClass TIME_EVENT = eINSTANCE.getTimeEvent();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_EVENT__KIND = eINSTANCE.getTimeEvent_Kind();
+
+		/**
+		 * The meta object literal for the '<em><b>Time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_EVENT__TIME = eINSTANCE.getTimeEvent_Time();
+
+		/**
 		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.TransitionKind <em>Transition Kind</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6591,6 +9428,26 @@ public interface CapellacommonPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum TRANSITION_KIND = eINSTANCE.getTransitionKind();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.TimeEventKind <em>Time Event Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getTimeEventKind()
+		 * @generated
+		 */
+		EEnum TIME_EVENT_KIND = eINSTANCE.getTimeEventKind();
+
+		/**
+		 * The meta object literal for the '{@link org.polarsys.capella.core.data.capellacommon.ChangeEventKind <em>Change Event Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.polarsys.capella.core.data.capellacommon.ChangeEventKind
+		 * @see org.polarsys.capella.core.data.capellacommon.impl.CapellacommonPackageImpl#getChangeEventKind()
+		 * @generated
+		 */
+		EEnum CHANGE_EVENT_KIND = eINSTANCE.getChangeEventKind();
 
 	}
 

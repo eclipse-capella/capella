@@ -18,7 +18,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.core.transition.common.handlers.scope.IScopeRetriever;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -50,18 +50,40 @@ public class ContainmentScopeRetriever implements IScopeRetriever {
   public Collection<? extends EObject> retrieveRelatedElements(EObject element_p, IContext context_p) {
 
     Collection<EObject> referencedElements = new HashSet<EObject>();
-    for (EReference reference : element_p.eClass().getEAllReferences()) {
-      if (reference.isContainment()) {
+    if (!isFilteredElement(element_p, context_p)) {
 
-        if (reference.isMany()) {
-          referencedElements.addAll((EList) element_p.eGet(reference));
-        } else {
-          referencedElements.add((EObject) element_p.eGet(reference));
+      for (EReference reference : element_p.eClass().getEAllReferences()) {
+        if (reference.isContainment() && !isFilteredReference(reference, element_p, context_p)) {
+
+          if (reference.isMany()) {
+            referencedElements.addAll((EList) element_p.eGet(reference));
+          } else {
+            referencedElements.add((EObject) element_p.eGet(reference));
+          }
         }
       }
     }
 
     return referencedElements;
+  }
+
+  /**
+   * @param element_p
+   * @param context_p
+   * @return
+   */
+  protected boolean isFilteredElement(EObject element_p, IContext context_p) {
+    return element_p instanceof CatalogElement;
+  }
+
+  /**
+   * @param reference_p
+   * @param element_p
+   * @param context_p
+   * @return
+   */
+  protected boolean isFilteredReference(EReference reference_p, EObject element_p, IContext context_p) {
+    return false;
   }
 
   /**

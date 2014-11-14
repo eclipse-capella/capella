@@ -15,7 +15,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.swt.SWT;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 
 public class CreateCategoriesWizardAction extends AbstractTigAction {
@@ -40,7 +40,7 @@ public class CreateCategoriesWizardAction extends AbstractTigAction {
 
       AbstractReadWriteCommand doModelUpdateCmd = new AbstractReadWriteCommand() {
         /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+         * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
          */
         @Override
         public String getName() {

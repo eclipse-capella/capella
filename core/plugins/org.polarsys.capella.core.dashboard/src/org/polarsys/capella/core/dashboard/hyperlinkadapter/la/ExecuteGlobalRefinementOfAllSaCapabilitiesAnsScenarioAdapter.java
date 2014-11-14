@@ -19,7 +19,7 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.refinement.commands.ScenarioRefinementCommand;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Execute a global refinement of all System Analysis Capabilities and Scenarios.
@@ -39,7 +39,7 @@ public class ExecuteGlobalRefinementOfAllSaCapabilitiesAnsScenarioAdapter extend
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
-    MDEAdapterFactory.getExecutionManager().execute(
+    TransactionHelper.getExecutionManager(capellaProject_p).execute(
       new ScenarioRefinementCommand(getModelElement(_project), new NullProgressMonitor()));
   }
 

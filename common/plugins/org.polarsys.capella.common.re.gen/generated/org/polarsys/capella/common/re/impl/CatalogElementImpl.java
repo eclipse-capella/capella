@@ -12,20 +12,23 @@ package org.polarsys.capella.common.re.impl;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IAdapterManager;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.CatalogElementLink;
@@ -44,11 +47,14 @@ import org.polarsys.capella.common.re.RePackage;
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getPurpose <em>Purpose</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getTags <em>Tags</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getOrigin <em>Origin</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getCurrentCompliancy <em>Current Compliancy</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getDefaultReplicaCompliancy <em>Default Replica Compliancy</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getOwnedLinks <em>Owned Links</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getReferencedElements <em>Referenced Elements</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.impl.CatalogElementImpl#getReplicatedElements <em>Replicated Elements</em>}</li>
  * </ul>
  * </p>
  *
@@ -137,6 +143,34 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @ordered
 	 */
 	protected String environment = ENVIRONMENT_EDEFAULT;
+
+
+
+
+
+	/**
+	 * The default value of the '{@link #getPurpose() <em>Purpose</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPurpose()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PURPOSE_EDEFAULT = null;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getPurpose() <em>Purpose</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPurpose()
+	 * @generated
+	 * @ordered
+	 */
+	protected String purpose = PURPOSE_EDEFAULT;
 
 
 
@@ -356,6 +390,32 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * @generated
 	 */
 
+	public String getPurpose() {
+
+		return purpose;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setPurpose(String newPurpose) {
+
+		String oldPurpose = purpose;
+		purpose = newPurpose;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__PURPOSE, oldPurpose, purpose));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
 	public EList<String> getTags() {
 
 		if (tags == null) {
@@ -548,6 +608,92 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+
+	public EList<EObject> getReferencedElements() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<EObject> resultAsList = (Collection<EObject>) result;
+		return new EcoreEList.UnmodifiableEList<EObject>(this, RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<CatalogElement> getReplicatedElements() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CatalogElement> resultAsList = (Collection<CatalogElement>) result;
+		return new EcoreEList.UnmodifiableEList<CatalogElement>(this, RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -575,6 +721,8 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return getAuthor();
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
 				return getEnvironment();
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				return getPurpose();
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				return getTags();
 			case RePackage.CATALOG_ELEMENT__ORIGIN:
@@ -588,6 +736,10 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return basicGetDefaultReplicaCompliancy();
 			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
 				return getOwnedLinks();
+			case RePackage.CATALOG_ELEMENT__REFERENCED_ELEMENTS:
+				return getReferencedElements();
+			case RePackage.CATALOG_ELEMENT__REPLICATED_ELEMENTS:
+				return getReplicatedElements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -628,6 +780,15 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				if (newValue == null || newValue instanceof String) {
 				// end-extension-code
 					setEnvironment((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setPurpose((String)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
@@ -692,6 +853,9 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
 				setEnvironment(ENVIRONMENT_EDEFAULT);
 				return;
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				setPurpose(PURPOSE_EDEFAULT);
+				return;
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				getTags().clear();
 				return;
@@ -729,6 +893,8 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return AUTHOR_EDEFAULT == null ? author != null : !AUTHOR_EDEFAULT.equals(author);
 			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
 				return ENVIRONMENT_EDEFAULT == null ? environment != null : !ENVIRONMENT_EDEFAULT.equals(environment);
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				return PURPOSE_EDEFAULT == null ? purpose != null : !PURPOSE_EDEFAULT.equals(purpose);
 			case RePackage.CATALOG_ELEMENT__TAGS:
 				return tags != null && !tags.isEmpty();
 			case RePackage.CATALOG_ELEMENT__ORIGIN:
@@ -739,6 +905,10 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 				return defaultReplicaCompliancy != null;
 			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
 				return ownedLinks != null && !ownedLinks.isEmpty();
+			case RePackage.CATALOG_ELEMENT__REFERENCED_ELEMENTS:
+				return !getReferencedElements().isEmpty();
+			case RePackage.CATALOG_ELEMENT__REPLICATED_ELEMENTS:
+				return !getReplicatedElements().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -792,6 +962,8 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 		result.append(author);
 		result.append(", environment: "); //$NON-NLS-1$
 		result.append(environment);
+		result.append(", purpose: "); //$NON-NLS-1$
+		result.append(purpose);
 		result.append(", tags: "); //$NON-NLS-1$
 		result.append(tags);
 		result.append(')');

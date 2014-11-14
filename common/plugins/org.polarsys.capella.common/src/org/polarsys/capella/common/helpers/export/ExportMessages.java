@@ -19,7 +19,6 @@ public class ExportMessages extends NLS {
   private static final String BUNDLE_NAME = "org.polarsys.capella.common.helpers.export.messages"; //$NON-NLS-1$
 
   public static String errNullExporterProvider;
-  public static String errNullFileName;
   
   public static String csvDesc;
   public static String txtDesc;

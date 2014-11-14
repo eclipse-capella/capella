@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
@@ -75,12 +74,12 @@ public class CapellaDecoratorLayoutDataKey extends AbstractCapellaLayoutDataKey 
     int result = 17;
     EObject semantic = getSemantic();
     if (semantic != null) {
-      result = 37 * result + semantic.hashCode();
+      result = (37 * result) + getId(semantic).hashCode();
     }
     if (getDecorations() != null) {
       for (Object decoration : getDecorations()) {
         if (decoration != null) {
-          result = 37 * result + decoration.hashCode();
+          result = (37 * result) + getId(decoration).hashCode();
         }
       }
     }

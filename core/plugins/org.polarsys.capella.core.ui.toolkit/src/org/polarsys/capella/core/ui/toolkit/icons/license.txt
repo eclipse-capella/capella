@@ -10,4 +10,4 @@ These followings icons are made available under the terms of the Eclipse Public 
 /src/org/polarsys/capella/core/common/ui/toolkit/icons/green.gif - capella.common.ui.toolkit - capella.common.ui.toolkit/src/org/polarsys/capella/core/common/ui/toolkit/icons/green.gif
 /src/org/polarsys/capella/core/common/ui/toolkit/icons/orange.gif - capella.common.ui.toolkit - capella.common.ui.toolkit/src/org/polarsys/capella/core/common/ui/toolkit/icons/orange.gif
 /src/org/polarsys/capella/core/common/ui/toolkit/icons/red.gif - capella.common.ui.toolkit - capella.common.ui.toolkit/src/org/polarsys/capella/core/common/ui/toolkit/icons/red.gif
-/src/org/polarsys/capella/core/common/ui/toolkit/icons/write_obj.gif - capella.common.ui.toolkit - capella.common.ui.toolkit/src/org/polarsys/capella/core/common/ui/toolkit/icons/write_obj.gif
+/src/org/polarsys/capella/core/common/ui/toolkit/icons/write_obj.gif - capella.common.ui.toolkit - capella.common.ui.toolkit/src/org/polarsys/capella/core/common/ui/toolkit/icons/write_obj.gif 

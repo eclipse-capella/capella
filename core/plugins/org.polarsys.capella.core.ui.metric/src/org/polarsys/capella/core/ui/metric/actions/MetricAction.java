@@ -19,16 +19,11 @@ import java.util.Set;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
@@ -73,13 +68,17 @@ public class MetricAction extends BaseSelectionListenerAction {
    */
   @Override
   public void run() {
-
-    _rootSemanticObject = getRootSemanticObject();
+    EObject rootSemanticObject = ProgressMonitoringActionsHelper.getSelectedEObject(getStructuredSelection());
+    if (null == rootSemanticObject) {
+      return;
+    }
+    _rootSemanticObject = rootSemanticObject;
 
     IRunnableWithProgress runnable = new IRunnableWithProgress() {
       /**
        * @see org.eclipse.jface.operation.IRunnableWithProgress#run(org.eclipse.core.runtime.IProgressMonitor)
        */
+      @Override
       @SuppressWarnings("synthetic-access")
       public void run(IProgressMonitor progressMonitor_p) throws InvocationTargetException, InterruptedException {
         progressMonitor_p.beginTask(MetricMessages.progressMonitorMsg, -1);
@@ -150,6 +149,7 @@ public class MetricAction extends BaseSelectionListenerAction {
             // we finally store data
 
             for (EClass eclass : sort(metric.getResult().keySet())) {
+              // Create temporary objects just to get their name and image.
               EFactory factory = eclass.getEPackage().getEFactoryInstance();
               eobject = factory.create(eclass);
 
@@ -218,7 +218,7 @@ public class MetricAction extends BaseSelectionListenerAction {
     List<EClass> list = new ArrayList<EClass>(keySet_p);
 
     Collections.sort(list, new java.util.Comparator<EClass>() {
-
+      @Override
       public int compare(EClass o1_p, EClass o2_p) {
         return o1_p.getName().compareTo(o2_p.getName());
       }
@@ -263,39 +263,6 @@ public class MetricAction extends BaseSelectionListenerAction {
     dialog.open();
 
     return;
-  }
-
-  /**
-   * get the Root semantic {@link EObject} corresponding to the current selection
-   * @return <code>null</code> whether selection does not fit any supported case .
-   */
-  protected EObject getRootSemanticObject() {
-
-    EObject result = null;
-    Object selectedObject = getStructuredSelection().getFirstElement();
-
-    try {
-      if (selectedObject instanceof IFile) {
-
-        IFile file = (IFile) selectedObject;
-        URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-        Session session = SessionManager.INSTANCE.getSession(uri);
-        if ((null != session) && session.isOpen()) { // Session is open
-          DAnalysis da = null;
-          Resource resource = session.getSessionResource();
-          da = (DAnalysis) resource.getContents().get(0);
-          result = da.getModels().get(0);
-        }
-      } else if (selectedObject instanceof EObject) {
-        result = (EObject) selectedObject;
-      } else {
-        result = null;
-      }
-    } catch (Exception exception_p) { // Old models raise up exception
-      result = null;
-    }
-
-    return result;
   }
 
 }

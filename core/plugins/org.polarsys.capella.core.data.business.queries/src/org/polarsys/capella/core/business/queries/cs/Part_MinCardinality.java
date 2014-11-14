@@ -10,66 +10,51 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.cs;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.abstractqueries.CapellaElement_AbstractCardinality;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.cs.Part;
-import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.ReuseLink;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.information.InformationPackage;
 
 /**
  * This is the query allowing to get the max cardinality of a part
  */
-public class Part_MinCardinality extends CapellaElement_AbstractCardinality {
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement, boolean)
-   */
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-    if (null == systemEngineering) {
-      SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
-      for (ReuseLink link : sharedPkg.getReuseLinks()) {
-        if (SystemEngineeringExt.getSystemEngineering(link) != null) {
-          systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
-          break;
-        }
-      }
-      if (systemEngineering == null)
-        return currentElements;
-    }
+public class Part_MinCardinality extends CapellaElement_AbstractCardinality implements IBusinessQuery {
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return CsPackage.Literals.PART;
+	}
 
-    if (element_p instanceof Part) {
-      Part property = (Part) element_p;
-      if (property.getOwnedMinCard() != null) {
-        currentElements.add(property.getOwnedMinCard());
-      }
-    }
-    return currentElements;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD);
+	}
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEClass()
-   */
-  public EClass getEClass() {
-    return CsPackage.Literals.PART;
-  }
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__PART__MIN_CARDINALITY, element_p, context);
+	}
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeatures()
-   */
-  public List<EReference> getEStructuralFeatures() {
-    return Collections.singletonList(InformationPackage.Literals.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD);
-  }
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__PART__MIN_CARDINALITY, element_p, context);
+	}
 }

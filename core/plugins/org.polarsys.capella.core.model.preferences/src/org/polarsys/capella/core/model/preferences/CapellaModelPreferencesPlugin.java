@@ -14,8 +14,6 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.osgi.framework.BundleContext;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
 
 /**
@@ -28,12 +26,6 @@ public class CapellaModelPreferencesPlugin extends Plugin {
 
   // The shared instance
   private static CapellaModelPreferencesPlugin plugin;
-
-  // The data listeners
-  private CapellaModelDataListenerForDatas _dataListenerForDatas;
-  private CapellaModelDataListenerForSequenceMessages _dataListenerForSequenceMessages;
-  private CapellaModelDataListenerForPartsAndComponents _dataListenerForPartsAndComponents;
-  private CapellaModelDataListenerForExchangeItemsAndCommunicationLinks _dataListenerForExchangeItemsAndCommunicationLinks;
 
   /**
    * The constructor
@@ -49,7 +41,6 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   public void start(BundleContext context) throws Exception {
     super.start(context);
     plugin = this;
-    checkPreferences();
     new CapellaModelPreferencesInitializer();
 
   }
@@ -183,58 +174,5 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   public boolean isSynchronizationOfPhysicalPortToComponentPortOnPhysicalPathAllowed() {
     return AbstractPreferencesInitializer.getBoolean(
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH, true);
-  }
-
-  /**
-   * load/unload the data listener according to the corresponding preference
-   */
-  private void checkPreferences() {
-    loadDataListenerForDatas();
-    loadDataListenerForSequenceMessages();
-    loadDataListenerForExchangeItemsAndCommunicationLinks();
-    loadDataListenerForPartsAndComponents();
-
-  }
-
-  /**
-   * loads the data listener
-   */
-  private void loadDataListenerForDatas() {
-    if (_dataListenerForDatas == null) {
-      _dataListenerForDatas = new CapellaModelDataListenerForDatas();
-      MDEAdapterFactory.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForDatas);
-    }
-  }
-
-  /**
-   * loads the data listener
-   */
-  private void loadDataListenerForSequenceMessages() {
-    if (_dataListenerForSequenceMessages == null) {
-      _dataListenerForSequenceMessages = new CapellaModelDataListenerForSequenceMessages();
-      MDEAdapterFactory.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForSequenceMessages);
-    }
-  }
-
-  /**
-   * loads the data listener
-   */
-  private void loadDataListenerForPartsAndComponents() {
-    if (_dataListenerForPartsAndComponents == null) {
-      _dataListenerForPartsAndComponents = new CapellaModelDataListenerForPartsAndComponents();
-      MDEAdapterFactory.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForPartsAndComponents);
-    }
-  }
-
-  /**
-   * loads the data listener
-   */
-  private void loadDataListenerForExchangeItemsAndCommunicationLinks() {
-    if (_dataListenerForExchangeItemsAndCommunicationLinks == null) {
-      _dataListenerForExchangeItemsAndCommunicationLinks =
-          new CapellaModelDataListenerForExchangeItemsAndCommunicationLinks();
-      MDEAdapterFactory.getDataNotifier().addAdapter(AbstractNamedElement.class,
-          _dataListenerForExchangeItemsAndCommunicationLinks);
-    }
   }
 }

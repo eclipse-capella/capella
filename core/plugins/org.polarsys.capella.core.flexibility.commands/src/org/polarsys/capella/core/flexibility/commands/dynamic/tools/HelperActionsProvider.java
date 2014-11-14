@@ -18,7 +18,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.widgets.Shell;
-
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalChainInvolvement;
 import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
@@ -40,6 +39,7 @@ public class HelperActionsProvider implements IActionsProvider {
     return list;
   }
 
+   
   @SuppressWarnings("nls")
   public class FunctionalChainInvolvementInformations extends DefaultAction {
 

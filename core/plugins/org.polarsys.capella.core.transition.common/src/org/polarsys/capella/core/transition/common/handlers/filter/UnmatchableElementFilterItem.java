@@ -14,7 +14,6 @@ import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -29,7 +28,7 @@ public class UnmatchableElementFilterItem extends AbstractFilterItem {
       EObject target = presence.getElementMatch().get(Role.TARGET);
 
       if (target != null) {
-        Comparable<?> id = (diff_p.getComparison()).getLastMatchPolicy().getMatchId(target, diff_p.getComparison().getScope(Role.TARGET));
+        Object id = (diff_p.getComparison()).getLastMatchPolicy().getMatchID(target, diff_p.getComparison().getScope(Role.TARGET));
         if (id.toString().startsWith("UNMATCHABLE")) {
           return true;
         }

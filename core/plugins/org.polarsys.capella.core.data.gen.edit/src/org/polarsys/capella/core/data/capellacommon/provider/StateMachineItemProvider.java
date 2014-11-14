@@ -580,7 +580,6 @@ public class StateMachineItemProvider
 			childrenFeatures.add(CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUES);
 			childrenFeatures.add(CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES);
 			childrenFeatures.add(CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS);
-			childrenFeatures.add(ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS);
 			childrenFeatures.add(CapellacommonPackage.Literals.STATE_MACHINE__OWNED_REGIONS);
 		}
 		return childrenFeatures;
@@ -658,7 +657,6 @@ public class StateMachineItemProvider
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUES:
 			case CapellacommonPackage.STATE_MACHINE__OWNED_ENUMERATION_PROPERTY_TYPES:
 			case CapellacommonPackage.STATE_MACHINE__OWNED_PROPERTY_VALUE_GROUPS:
-			case CapellacommonPackage.STATE_MACHINE__OWNED_CONSTRAINTS:
 			case CapellacommonPackage.STATE_MACHINE__OWNED_REGIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -677,6 +675,18 @@ public class StateMachineItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ModellingcorePackage.Literals.MODEL_ELEMENT__OWNED_CONSTRAINTS,
+                         CapellacoreFactory.eINSTANCE.createConstraint());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -754,18 +764,6 @@ public class StateMachineItemProvider
                     CommandParameter commandParameter = createChildParameter
                         (CapellacorePackage.Literals.CAPELLA_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS,
                          CapellacoreFactory.eINSTANCE.createPropertyValueGroup());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS,
-                         CapellacoreFactory.eINSTANCE.createConstraint());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }

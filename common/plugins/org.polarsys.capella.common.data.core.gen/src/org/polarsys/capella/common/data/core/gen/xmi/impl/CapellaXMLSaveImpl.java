@@ -31,6 +31,10 @@ public class CapellaXMLSaveImpl extends XMIExtensionSaveImpl {
    */
   public static final String CAPELLA_VERSION_PREFIX = "Capella_Version_"; //$NON-NLS-1$
   /**
+   * Melody legacy version prefix (still needed to migrate old models).
+   */
+  public static final String MELODY_VERSION_PREFIX = "MelodyAdvance_Version_"; //$NON-NLS-1$
+  /**
    * Keep a mark at the beginning of the document just below the XML declaration.
    */
   private Object _capellaReleaseMark;

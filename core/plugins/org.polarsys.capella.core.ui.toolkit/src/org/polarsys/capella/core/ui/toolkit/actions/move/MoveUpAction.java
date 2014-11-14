@@ -13,7 +13,6 @@ package org.polarsys.capella.core.ui.toolkit.actions.move;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
  * Move up selected elements.<br>
@@ -24,15 +23,15 @@ public class MoveUpAction extends AbstractMoveAction {
    * Constructor.
    * @param text_p
    */
-  public MoveUpAction(EditingDomain domain_p) {
-    super(domain_p, Messages.MoveUpAction_Title);
+  public MoveUpAction() {
+    super(Messages.MoveUpAction_Title);
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.action.CommandActionHandler#createCommand(java.util.Collection)
    */
   @Override
-  public Command createCommand(Collection<?> selection_p) {
-    return new CapellaMoveCommand(getEditingDomain(), Messages.MoveUpAction_Title, selection_p, true);
+  public Command createCommand(Collection<Object> selection_p) {
+    return new CapellaMoveCommand(Messages.MoveUpAction_Title, filterSelection(selection_p), true);
   }
 }

@@ -20,7 +20,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
@@ -37,16 +39,14 @@ import org.polarsys.capella.core.data.interaction.properties.controllers.Interfa
 import org.polarsys.capella.core.data.interaction.properties.controllers.SequenceMessageController;
 import org.polarsys.capella.core.data.interaction.properties.dialogs.DialogProvider;
 import org.polarsys.capella.core.data.interaction.properties.fields.MessageKindGroup;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
+import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.EditableSemanticFieldException;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleEditableSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.TextValueGroup;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 
 /**
  * The SequenceMessage section.
@@ -56,7 +56,7 @@ public class SequenceMessageSection extends NamedElementSection {
   private SimpleEditableSemanticField invokedOperationField;
   private MultipleSemanticField exchangedItemsField;
   private MessageKindGroup messageKindGroup;
-  protected TextValueGroup exchangeContextField;
+  private SimpleSemanticField exchangeContextField;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -65,7 +65,7 @@ public class SequenceMessageSection extends NamedElementSection {
     namedElementGroup.enableNameField(false);
 
     Group main = getWidgetFactory().createGroup(_rootParentComposite, ""); //$NON-NLS-1$
-    main.setLayout(new GridLayout(5, false));
+    main.setLayout(new GridLayout(6, false));
     GridData gd = new GridData(GridData.FILL_HORIZONTAL);
     gd.horizontalSpan = 2;
     main.setLayoutData(gd);
@@ -154,7 +154,7 @@ public class SequenceMessageSection extends NamedElementSection {
     messageKindGroup = new MessageKindGroup(_rootParentComposite, getWidgetFactory(), false);
     messageKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    exchangeContextField = new TextValueGroup(_rootParentComposite, Messages.getString("SequenceMessage.ExchangeContextLabel"), getWidgetFactory()); //$NON-NLS-1$
+    exchangeContextField = new SimpleSemanticField(main, Messages.getString("SequenceMessage.ExchangeContextLabel"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
     exchangeContextField.setDisplayedInWizard(displayedInWizard);
   }
 

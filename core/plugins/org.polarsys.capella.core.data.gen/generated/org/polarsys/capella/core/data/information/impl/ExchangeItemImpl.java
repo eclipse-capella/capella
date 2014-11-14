@@ -35,13 +35,15 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.data.modellingcore.PublishableElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.data.modellingcore.impl.AbstractExchangeItemImpl;
-import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.capella.common.model.helpers.IHelper;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Generalization;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.capellacore.NamingRule;
@@ -67,6 +69,7 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getIncomingTraces <em>Incoming Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getOutgoingTraces <em>Outgoing Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#isVisibleInDoc <em>Visible In Doc</em>}</li>
@@ -87,7 +90,12 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getContainedRequirementsTraces <em>Contained Requirements Traces</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getNamingRules <em>Naming Rules</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getTypedElements <em>Typed Elements</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#isFinal <em>Final</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getOwnedGeneralizations <em>Owned Generalizations</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getSuperGeneralizations <em>Super Generalizations</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getSubGeneralizations <em>Sub Generalizations</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getSuper <em>Super</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getSub <em>Sub</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getExchangeMechanism <em>Exchange Mechanism</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getOwnedElements <em>Owned Elements</em>}</li>
  *   <li>{@link org.polarsys.capella.core.data.information.impl.ExchangeItemImpl#getOwnedInformationRealizations <em>Owned Information Realizations</em>}</li>
@@ -102,268 +110,6 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
  * @generated
  */
 public class ExchangeItemImpl extends AbstractExchangeItemImpl implements ExchangeItem {
-
-
-
-
-
-
-
-
-
-	/**
-	 * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean VISIBLE_IN_DOC_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean visibleInDoc = VISIBLE_IN_DOC_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean VISIBLE_IN_LM_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean visibleInLM = VISIBLE_IN_LM_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The default value of the '{@link #getSummary() <em>Summary</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSummary()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String SUMMARY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getSummary() <em>Summary</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSummary()
-	 * @generated
-	 * @ordered
-	 */
-	protected String summary = SUMMARY_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected String description = DESCRIPTION_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The default value of the '{@link #getReview() <em>Review</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReview()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String REVIEW_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getReview() <em>Review</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReview()
-	 * @generated
-	 * @ordered
-	 */
-	protected String review = REVIEW_EDEFAULT;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedPropertyValues() <em>Owned Property Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValues()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractPropertyValue> ownedPropertyValues;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedEnumerationPropertyTypes() <em>Owned Enumeration Property Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedEnumerationPropertyTypes()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EnumerationPropertyType> ownedEnumerationPropertyTypes;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getAppliedPropertyValues() <em>Applied Property Values</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAppliedPropertyValues()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<AbstractPropertyValue> appliedPropertyValues;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedPropertyValueGroups() <em>Owned Property Value Groups</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValueGroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<PropertyValueGroup> ownedPropertyValueGroups;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getAppliedPropertyValueGroups() <em>Applied Property Value Groups</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAppliedPropertyValueGroups()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<PropertyValueGroup> appliedPropertyValueGroups;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected EnumerationPropertyLiteral status;
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<EnumerationPropertyLiteral> features;
-
-
-
-
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Trace> ownedTraces;
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<NamingRule> namingRules;
 
 
 
@@ -392,6 +138,226 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	 * @ordered
 	 */
 	protected boolean final_ = FINAL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVisibleInDoc()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean VISIBLE_IN_DOC_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVisibleInDoc()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean visibleInDoc = VISIBLE_IN_DOC_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVisibleInLM()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean VISIBLE_IN_LM_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isVisibleInLM()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean visibleInLM = VISIBLE_IN_LM_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSummary()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SUMMARY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSummary()
+	 * @generated
+	 * @ordered
+	 */
+	protected String summary = SUMMARY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getReview() <em>Review</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReview()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String REVIEW_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getReview() <em>Review</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getReview()
+	 * @generated
+	 * @ordered
+	 */
+	protected String review = REVIEW_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOwnedPropertyValues() <em>Owned Property Values</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPropertyValues()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractPropertyValue> ownedPropertyValues;
+
+	/**
+	 * The cached value of the '{@link #getOwnedEnumerationPropertyTypes() <em>Owned Enumeration Property Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedEnumerationPropertyTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EnumerationPropertyType> ownedEnumerationPropertyTypes;
+
+	/**
+	 * The cached value of the '{@link #getAppliedPropertyValues() <em>Applied Property Values</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppliedPropertyValues()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractPropertyValue> appliedPropertyValues;
+
+	/**
+	 * The cached value of the '{@link #getOwnedPropertyValueGroups() <em>Owned Property Value Groups</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedPropertyValueGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PropertyValueGroup> ownedPropertyValueGroups;
+
+	/**
+	 * The cached value of the '{@link #getAppliedPropertyValueGroups() <em>Applied Property Value Groups</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAppliedPropertyValueGroups()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<PropertyValueGroup> appliedPropertyValueGroups;
+
+	/**
+	 * The cached value of the '{@link #getStatus() <em>Status</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getStatus()
+	 * @generated
+	 * @ordered
+	 */
+	protected EnumerationPropertyLiteral status;
+
+	/**
+	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFeatures()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<EnumerationPropertyLiteral> features;
+
+	/**
+	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedTraces()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Trace> ownedTraces;
+
+	/**
+	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNamingRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamingRule> namingRules;
+
+	/**
+	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ABSTRACT_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean abstract_ = ABSTRACT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getOwnedGeneralizations() <em>Owned Generalizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedGeneralizations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Generalization> ownedGeneralizations;
 
 
 
@@ -529,10 +495,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, annotation);
 		
 		try {
@@ -576,10 +542,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, annotation);
 		
 		try {
@@ -944,10 +910,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
 		
 		try {
@@ -1009,10 +975,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
 		
 		try {
@@ -1056,10 +1022,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
 		
 		try {
@@ -1121,10 +1087,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = CapellacorePackage.Literals.TYPE__TYPED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = CapellacorePackage.Literals.TYPE__TYPED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.TYPE__TYPED_ELEMENTS, annotation);
 		
 		try {
@@ -1141,6 +1107,218 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 
 
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public boolean isAbstract() {
+
+		return abstract_;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setAbstract(boolean newAbstract) {
+
+		boolean oldAbstract = abstract_;
+		abstract_ = newAbstract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.EXCHANGE_ITEM__ABSTRACT, oldAbstract, abstract_));
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Generalization> getOwnedGeneralizations() {
+
+		if (ownedGeneralizations == null) {
+			ownedGeneralizations = new EObjectContainmentEList.Resolving<Generalization>(Generalization.class, this, InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS);
+		}
+		return ownedGeneralizations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Generalization> getSuperGeneralizations() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Generalization> resultAsList = (Collection<Generalization>) result;
+		return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<Generalization> getSubGeneralizations() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Generalization> resultAsList = (Collection<Generalization>) result;
+		return new EcoreEList.UnmodifiableEList<Generalization>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<GeneralizableElement> getSuper() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
+		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<GeneralizableElement> getSub() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<GeneralizableElement> resultAsList = (Collection<GeneralizableElement>) result;
+		return new EcoreEList.UnmodifiableEList<GeneralizableElement>(this, CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUB, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1286,10 +1464,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__ALLOCATOR_INTERFACES.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__ALLOCATOR_INTERFACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.EXCHANGE_ITEM__ALLOCATOR_INTERFACES, annotation);
 		
 		try {
@@ -1333,10 +1511,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__REALIZED_EXCHANGE_ITEMS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__REALIZED_EXCHANGE_ITEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.EXCHANGE_ITEM__REALIZED_EXCHANGE_ITEMS, annotation);
 		
 		try {
@@ -1380,10 +1558,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_EXCHANGE_ITEMS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_EXCHANGE_ITEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_EXCHANGE_ITEMS, annotation);
 		
 		try {
@@ -1427,10 +1605,10 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
       EPackage package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
     } 
     // A helper is found, let's use it. 
-    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_OPERATIONS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    EAnnotation annotation = InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_OPERATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.EXCHANGE_ITEM__REALIZING_OPERATIONS, annotation);
 		
 		try {
@@ -1464,6 +1642,8 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
 			case InformationPackage.EXCHANGE_ITEM__NAMING_RULES:
 				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+			case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS:
+				return ((InternalEList<?>)getOwnedGeneralizations()).basicRemove(otherEnd, msgs);
 			case InformationPackage.EXCHANGE_ITEM__OWNED_ELEMENTS:
 				return ((InternalEList<?>)getOwnedElements()).basicRemove(otherEnd, msgs);
 			case InformationPackage.EXCHANGE_ITEM__OWNED_INFORMATION_REALIZATIONS:
@@ -1482,6 +1662,8 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case InformationPackage.EXCHANGE_ITEM__FINAL:
+				return isFinal();
 			case InformationPackage.EXCHANGE_ITEM__INCOMING_TRACES:
 				return getIncomingTraces();
 			case InformationPackage.EXCHANGE_ITEM__OUTGOING_TRACES:
@@ -1523,8 +1705,18 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				return getNamingRules();
 			case InformationPackage.EXCHANGE_ITEM__TYPED_ELEMENTS:
 				return getTypedElements();
-			case InformationPackage.EXCHANGE_ITEM__FINAL:
-				return isFinal();
+			case InformationPackage.EXCHANGE_ITEM__ABSTRACT:
+				return isAbstract();
+			case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS:
+				return getOwnedGeneralizations();
+			case InformationPackage.EXCHANGE_ITEM__SUPER_GENERALIZATIONS:
+				return getSuperGeneralizations();
+			case InformationPackage.EXCHANGE_ITEM__SUB_GENERALIZATIONS:
+				return getSubGeneralizations();
+			case InformationPackage.EXCHANGE_ITEM__SUPER:
+				return getSuper();
+			case InformationPackage.EXCHANGE_ITEM__SUB:
+				return getSub();
 			case InformationPackage.EXCHANGE_ITEM__EXCHANGE_MECHANISM:
 				return getExchangeMechanism();
 			case InformationPackage.EXCHANGE_ITEM__OWNED_ELEMENTS:
@@ -1554,6 +1746,15 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case InformationPackage.EXCHANGE_ITEM__FINAL:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Boolean) {
+				// end-extension-code
+					setFinal((Boolean)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
 			case InformationPackage.EXCHANGE_ITEM__VISIBLE_IN_DOC:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof Boolean) {
@@ -1640,14 +1841,18 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				getNamingRules().clear();
 				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
 				return;
-			case InformationPackage.EXCHANGE_ITEM__FINAL:
+			case InformationPackage.EXCHANGE_ITEM__ABSTRACT:
 				// begin-extension-code
 				if (newValue == null || newValue instanceof Boolean) {
 				// end-extension-code
-					setFinal((Boolean)newValue);
+					setAbstract((Boolean)newValue);
 				// begin-extension-code
 				}
 				// end-extension-code
+				return;
+			case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS:
+				getOwnedGeneralizations().clear();
+				getOwnedGeneralizations().addAll((Collection<? extends Generalization>)newValue);
 				return;
 			case InformationPackage.EXCHANGE_ITEM__EXCHANGE_MECHANISM:
 				// begin-extension-code
@@ -1683,6 +1888,9 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case InformationPackage.EXCHANGE_ITEM__FINAL:
+				setFinal(FINAL_EDEFAULT);
+				return;
 			case InformationPackage.EXCHANGE_ITEM__VISIBLE_IN_DOC:
 				setVisibleInDoc(VISIBLE_IN_DOC_EDEFAULT);
 				return;
@@ -1725,8 +1933,11 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 			case InformationPackage.EXCHANGE_ITEM__NAMING_RULES:
 				getNamingRules().clear();
 				return;
-			case InformationPackage.EXCHANGE_ITEM__FINAL:
-				setFinal(FINAL_EDEFAULT);
+			case InformationPackage.EXCHANGE_ITEM__ABSTRACT:
+				setAbstract(ABSTRACT_EDEFAULT);
+				return;
+			case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS:
+				getOwnedGeneralizations().clear();
 				return;
 			case InformationPackage.EXCHANGE_ITEM__EXCHANGE_MECHANISM:
 				setExchangeMechanism(EXCHANGE_MECHANISM_EDEFAULT);
@@ -1754,6 +1965,8 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case InformationPackage.EXCHANGE_ITEM__FINAL:
+				return final_ != FINAL_EDEFAULT;
 			case InformationPackage.EXCHANGE_ITEM__INCOMING_TRACES:
 				return !getIncomingTraces().isEmpty();
 			case InformationPackage.EXCHANGE_ITEM__OUTGOING_TRACES:
@@ -1794,8 +2007,18 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				return namingRules != null && !namingRules.isEmpty();
 			case InformationPackage.EXCHANGE_ITEM__TYPED_ELEMENTS:
 				return !getTypedElements().isEmpty();
-			case InformationPackage.EXCHANGE_ITEM__FINAL:
-				return final_ != FINAL_EDEFAULT;
+			case InformationPackage.EXCHANGE_ITEM__ABSTRACT:
+				return abstract_ != ABSTRACT_EDEFAULT;
+			case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS:
+				return ownedGeneralizations != null && !ownedGeneralizations.isEmpty();
+			case InformationPackage.EXCHANGE_ITEM__SUPER_GENERALIZATIONS:
+				return !getSuperGeneralizations().isEmpty();
+			case InformationPackage.EXCHANGE_ITEM__SUB_GENERALIZATIONS:
+				return !getSubGeneralizations().isEmpty();
+			case InformationPackage.EXCHANGE_ITEM__SUPER:
+				return !getSuper().isEmpty();
+			case InformationPackage.EXCHANGE_ITEM__SUB:
+				return !getSub().isEmpty();
 			case InformationPackage.EXCHANGE_ITEM__EXCHANGE_MECHANISM:
 				return exchangeMechanism != EXCHANGE_MECHANISM_EDEFAULT;
 			case InformationPackage.EXCHANGE_ITEM__OWNED_ELEMENTS:
@@ -1824,6 +2047,22 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractEvent.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractSignal.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == FinalizableElement.class) {
+			switch (derivedFeatureID) {
+				case InformationPackage.EXCHANGE_ITEM__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
+				default: return -1;
+			}
+		}
 		if (baseClass == TraceableElement.class) {
 			switch (derivedFeatureID) {
 				case InformationPackage.EXCHANGE_ITEM__INCOMING_TRACES: return ModellingcorePackage.TRACEABLE_ELEMENT__INCOMING_TRACES;
@@ -1874,19 +2113,14 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				default: return -1;
 			}
 		}
-		if (baseClass == AbstractEvent.class) {
+		if (baseClass == GeneralizableElement.class) {
 			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractSignal.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == FinalizableElement.class) {
-			switch (derivedFeatureID) {
-				case InformationPackage.EXCHANGE_ITEM__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
+				case InformationPackage.EXCHANGE_ITEM__ABSTRACT: return CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT;
+				case InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS: return CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS;
+				case InformationPackage.EXCHANGE_ITEM__SUPER_GENERALIZATIONS: return CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS;
+				case InformationPackage.EXCHANGE_ITEM__SUB_GENERALIZATIONS: return CapellacorePackage.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS;
+				case InformationPackage.EXCHANGE_ITEM__SUPER: return CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER;
+				case InformationPackage.EXCHANGE_ITEM__SUB: return CapellacorePackage.GENERALIZABLE_ELEMENT__SUB;
 				default: return -1;
 			}
 		}
@@ -1900,6 +2134,22 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractEvent.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractSignal.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == FinalizableElement.class) {
+			switch (baseFeatureID) {
+				case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return InformationPackage.EXCHANGE_ITEM__FINAL;
+				default: return -1;
+			}
+		}
 		if (baseClass == TraceableElement.class) {
 			switch (baseFeatureID) {
 				case ModellingcorePackage.TRACEABLE_ELEMENT__INCOMING_TRACES: return InformationPackage.EXCHANGE_ITEM__INCOMING_TRACES;
@@ -1950,19 +2200,14 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 				default: return -1;
 			}
 		}
-		if (baseClass == AbstractEvent.class) {
+		if (baseClass == GeneralizableElement.class) {
 			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractSignal.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == FinalizableElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return InformationPackage.EXCHANGE_ITEM__FINAL;
+				case CapellacorePackage.GENERALIZABLE_ELEMENT__ABSTRACT: return InformationPackage.EXCHANGE_ITEM__ABSTRACT;
+				case CapellacorePackage.GENERALIZABLE_ELEMENT__OWNED_GENERALIZATIONS: return InformationPackage.EXCHANGE_ITEM__OWNED_GENERALIZATIONS;
+				case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS: return InformationPackage.EXCHANGE_ITEM__SUPER_GENERALIZATIONS;
+				case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB_GENERALIZATIONS: return InformationPackage.EXCHANGE_ITEM__SUB_GENERALIZATIONS;
+				case CapellacorePackage.GENERALIZABLE_ELEMENT__SUPER: return InformationPackage.EXCHANGE_ITEM__SUPER;
+				case CapellacorePackage.GENERALIZABLE_ELEMENT__SUB: return InformationPackage.EXCHANGE_ITEM__SUB;
 				default: return -1;
 			}
 		}
@@ -1979,18 +2224,18 @@ public class ExchangeItemImpl extends AbstractExchangeItemImpl implements Exchan
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (visibleInDoc: "); //$NON-NLS-1$
+		result.append(" (final: "); //$NON-NLS-1$
+		result.append(final_);
+		result.append(", visibleInDoc: "); //$NON-NLS-1$
 		result.append(visibleInDoc);
 		result.append(", visibleInLM: "); //$NON-NLS-1$
 		result.append(visibleInLM);
 		result.append(", summary: "); //$NON-NLS-1$
 		result.append(summary);
-		result.append(", description: "); //$NON-NLS-1$
-		result.append(description);
 		result.append(", review: "); //$NON-NLS-1$
 		result.append(review);
-		result.append(", final: "); //$NON-NLS-1$
-		result.append(final_);
+		result.append(", abstract: "); //$NON-NLS-1$
+		result.append(abstract_);
 		result.append(", exchangeMechanism: "); //$NON-NLS-1$
 		result.append(exchangeMechanism);
 		result.append(')');

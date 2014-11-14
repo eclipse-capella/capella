@@ -9,7 +9,7 @@ Require-Bundle: org.polarsys.capella.common.menu.dynamic;visibility:=reexport,
  org.polarsys.capella.common.ui.services,
  org.polarsys.capella.core.data.gen;visibility:=reexport,
  org.polarsys.capella.core.preferences
-Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.polarsys.capella.core.menu.dynamic
 Bundle-Localization: plugin

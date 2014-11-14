@@ -15,12 +15,11 @@ import java.util.List;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellacore.InvolverElement;
+import org.polarsys.capella.core.data.cs.PhysicalPathInvolvement;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
 
 /**
  * Set valid involver to physical path involvement
@@ -48,7 +47,7 @@ public class DWF_DC_25_Resolver extends AbstractCapellaMarkerResolution {
           flag[0] = true;
         }
       };
-      MDEAdapterFactory.getExecutionManager().execute(cmd);
+      TransactionHelper.getExecutionManager(modelElements).execute(cmd);
 
       // remove the marker if the element is deleted
       if (flag[0] == true) {

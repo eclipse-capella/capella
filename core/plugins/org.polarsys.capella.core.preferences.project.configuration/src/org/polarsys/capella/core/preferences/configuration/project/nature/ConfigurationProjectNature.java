@@ -13,18 +13,19 @@ package org.polarsys.capella.core.preferences.configuration.project.nature;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 
 /**
  */
 public class ConfigurationProjectNature implements IProjectNature {
   /*
-	 * 
-	 */
-  public static final String NATURE_ID = "org.polarsys.capella.core.preferences.project.nature.configNature"; //$NON-NLS-1$
+   * 
+   */
+  public static final String NATURE_ID = CapellaResourceHelper.CAPELLA_CONFIGURATION_PROJECT_NATURE;
 
   /*
-	 * 
-	 */
+   * 
+   */
   private IProject project;
 
   /**

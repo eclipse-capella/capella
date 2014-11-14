@@ -54,17 +54,15 @@ public enum CatalogElementKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	REC_RPL(2, "REC_RPL", "REC_RPL"), //$NON-NLS-1$ //$NON-NLS-2$
-
-	/**
-	 * The '<em><b>GATHERING</b></em>' literal object.
+	REC_RPL(2, "REC_RPL", "REC_RPL"), /**
+	 * The '<em><b>GROUPING</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #GATHERING_VALUE
+	 * @see #GROUPING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	GATHERING(3, "GATHERING", "GATHERING"); //$NON-NLS-1$ //$NON-NLS-2$
+	GROUPING(3, "GROUPING", "GROUPING"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>REC</b></em>' literal value.
@@ -112,19 +110,19 @@ public enum CatalogElementKind implements Enumerator {
 	public static final int REC_RPL_VALUE = 2;
 
 	/**
-	 * The '<em><b>GATHERING</b></em>' literal value.
+	 * The '<em><b>GROUPING</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>GATHERING</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>GROUPING</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #GATHERING
+	 * @see #GROUPING
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int GATHERING_VALUE = 3;
+	public static final int GROUPING_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>Catalog Element Kind</b></em>' enumerators.
@@ -137,7 +135,7 @@ public enum CatalogElementKind implements Enumerator {
 			REC,
 			RPL,
 			REC_RPL,
-			GATHERING,
+			GROUPING,
 		};
 
 	/**
@@ -191,7 +189,7 @@ public enum CatalogElementKind implements Enumerator {
 			case REC_VALUE: return REC;
 			case RPL_VALUE: return RPL;
 			case REC_RPL_VALUE: return REC_RPL;
-			case GATHERING_VALUE: return GATHERING;
+			case GROUPING_VALUE: return GROUPING;
 		}
 		return null;
 	}

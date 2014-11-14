@@ -7,9 +7,7 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.polarsys.capella.common.ui.services,
- org.polarsys.capella.core.ui.toolkit,
- org.polarsys.capella.common.tig.efprovider,
- org.polarsys.capella.common.tig.ef
+ org.polarsys.capella.core.ui.toolkit
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.platform.eclipse.capella.ui.trace,
  org.polarsys.capella.core.platform.eclipse.capella.ui.trace.commands,

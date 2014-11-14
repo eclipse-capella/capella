@@ -86,7 +86,7 @@ public class DependenciesProperty extends AbstractProperty implements ICompoundP
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE };
+    return new String[] { IReConstants.PROPERTY__SCOPE, IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE };
   }
 
   /**

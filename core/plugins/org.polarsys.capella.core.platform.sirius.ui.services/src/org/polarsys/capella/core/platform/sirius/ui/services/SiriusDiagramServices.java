@@ -17,14 +17,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.ui.IEditorPart;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.IDiagramServices;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-
 
 /**
  */
@@ -70,7 +68,7 @@ public class SiriusDiagramServices implements IDiagramServices {
    */
   public void openDiagram(ModelElement element_p) {
     // TODO Not implemented yet
-	__logger.warn("The method openDiagram is not implemented yet in SiriusDiagramServices."); //$NON-NLS-1$
+    __logger.warn("The method openDiagram is not implemented yet in SiriusDiagramServices."); //$NON-NLS-1$
   }
 
   /**
@@ -78,6 +76,6 @@ public class SiriusDiagramServices implements IDiagramServices {
    */
   public void closeDiagram(ModelElement element_p) {
     // TODO Not implemented yet
-	__logger.warn("The method closeDiagram is not implemented yet in SiriusDiagramServices."); //$NON-NLS-1$
+    __logger.warn("The method closeDiagram is not implemented yet in SiriusDiagramServices."); //$NON-NLS-1$
   }
 }

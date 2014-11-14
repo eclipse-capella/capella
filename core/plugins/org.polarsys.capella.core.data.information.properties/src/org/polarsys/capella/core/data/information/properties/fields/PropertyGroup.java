@@ -65,7 +65,7 @@ public class PropertyGroup extends AbstractSemanticField {
     super(widgetFactory_p);
 
     Group group = _widgetFactory.createGroup(parent_p, ""); //$NON-NLS-1$
-    group.setLayout(new GridLayout(5, false));
+    group.setLayout(new GridLayout(6, false));
     group.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
     // Role

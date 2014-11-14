@@ -32,6 +32,7 @@ public class IDiagramNameConstants extends DiagramDescriptionConstants {
   public static final String PACKAGE_DEPENDENCIES_DIAGRAM_NAME = "Package Dependencies";
   public static final String INTERFACE_SCENARIO_DIAGRAM_NAME = "Component Interfaces Scenario";
   public static final String FUNCTIONAL_CHAIN_DIAGRAM_NAME = "Functional Chain Description";
+  public static final String PHYSICAL_PATH_DIAGRAM_NAME = "Physical Path Description";
   public static final String STATE_AND_MODE_MATRIX = "State And Mode - Matrix";
   public static final String CAPABILITY_REALIZATION_BLANK = "Capability Realization Blank";
 

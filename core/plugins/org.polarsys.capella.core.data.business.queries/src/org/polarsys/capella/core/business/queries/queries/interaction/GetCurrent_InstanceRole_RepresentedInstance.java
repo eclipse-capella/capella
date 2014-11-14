@@ -13,11 +13,11 @@ package org.polarsys.capella.core.business.queries.queries.interaction;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.polarsys.capella.core.data.information.AbstractInstance;
-import org.polarsys.capella.core.data.interaction.InstanceRole;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.information.AbstractInstance;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
 
 public class GetCurrent_InstanceRole_RepresentedInstance extends AbstractQuery {
 

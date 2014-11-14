@@ -23,7 +23,8 @@ public class Messages extends NLS {
   public static String CapellaSessionHelper_SemanticModel_Error_Message_WrongVersion_Part2;
   public static String CapellaSessionHelper_SemanticModel_ErrorDialog_Title;
   public static String CapellaSessionHelper_UnknownError_Message;
-  
+  public static String CapellaSessionHelper_MissingLibraries_Message;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -118,15 +118,6 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTIONAL_ARCHITECTURE__CONSTRAINTS = CapellacorePackage.MODELLING_ARCHITECTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_ARCHITECTURE__NAME = CapellacorePackage.MODELLING_ARCHITECTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,6 +125,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTIONAL_ARCHITECTURE__OWNED_CONSTRAINTS = CapellacorePackage.MODELLING_ARCHITECTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTIONAL_ARCHITECTURE__NAME = CapellacorePackage.MODELLING_ARCHITECTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -425,15 +425,6 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTIONAL_STRUCTURE__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_STRUCTURE__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -441,6 +432,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTIONAL_STRUCTURE__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTIONAL_STRUCTURE__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -723,15 +723,6 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTIONAL_BLOCK__CONSTRAINTS = CapellacorePackage.MODELLING_BLOCK__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTIONAL_BLOCK__NAME = CapellacorePackage.MODELLING_BLOCK__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -739,6 +730,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTIONAL_BLOCK__OWNED_CONSTRAINTS = CapellacorePackage.MODELLING_BLOCK__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTIONAL_BLOCK__NAME = CapellacorePackage.MODELLING_BLOCK__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -1048,15 +1048,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTION_PKG__CONSTRAINTS = CapellacorePackage.STRUCTURE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1064,6 +1055,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_PKG__OWNED_CONSTRAINTS = CapellacorePackage.STRUCTURE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_PKG__NAME = CapellacorePackage.STRUCTURE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1346,15 +1346,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTION_SPECIFICATION__CONSTRAINTS = CapellacorePackage.NAMESPACE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_SPECIFICATION__NAME = CapellacorePackage.NAMESPACE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1362,6 +1353,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_SPECIFICATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_SPECIFICATION__NAME = CapellacorePackage.NAMESPACE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1707,15 +1707,6 @@ public interface FaPackage extends EPackage {
 	int EXCHANGE_CATEGORY__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCHANGE_CATEGORY__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1723,6 +1714,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_CATEGORY__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_CATEGORY__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -1924,6 +1924,15 @@ public interface FaPackage extends EPackage {
 	int EXCHANGE_LINK__CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_LINK__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2077,15 +2086,6 @@ public interface FaPackage extends EPackage {
 	int EXCHANGE_LINK__NAME = CapellacorePackage.NAMED_RELATIONSHIP__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCHANGE_LINK__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_RELATIONSHIP__OWNED_CONSTRAINTS;
-
-	/**
 	 * The feature id for the '<em><b>Naming Rules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2193,6 +2193,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_CONTAINMENT__CONSTRAINTS = CapellacorePackage.RELATIONSHIP__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_CONTAINMENT__OWNED_CONSTRAINTS = CapellacorePackage.RELATIONSHIP__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -2412,15 +2421,6 @@ public interface FaPackage extends EPackage {
 	int EXCHANGE_SPECIFICATION__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXCHANGE_SPECIFICATION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2428,6 +2428,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_SPECIFICATION__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_SPECIFICATION__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -2710,15 +2719,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTIONAL_EXCHANGE_SPECIFICATION__CONSTRAINTS = EXCHANGE_SPECIFICATION__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_EXCHANGE_SPECIFICATION__NAME = EXCHANGE_SPECIFICATION__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2726,6 +2726,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_EXCHANGE_SPECIFICATION__OWNED_CONSTRAINTS = EXCHANGE_SPECIFICATION__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_EXCHANGE_SPECIFICATION__NAME = EXCHANGE_SPECIFICATION__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3017,15 +3026,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTIONAL_CHAIN__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_CHAIN__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3033,6 +3033,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -3378,6 +3387,15 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTIONAL_CHAIN_CONTAINER__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3575,6 +3593,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_INVOLVEMENT__CONSTRAINTS = CapellacorePackage.INVOLVEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS = CapellacorePackage.INVOLVEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -3828,6 +3855,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_CHAIN_REFERENCE__CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_REFERENCE__OWNED_CONSTRAINTS = FUNCTIONAL_CHAIN_INVOLVEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -4092,15 +4128,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTION_PORT__CONSTRAINTS = InformationPackage.PORT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_PORT__NAME = InformationPackage.PORT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4108,6 +4135,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_PORT__OWNED_CONSTRAINTS = InformationPackage.PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_PORT__NAME = InformationPackage.PORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4435,15 +4471,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTION_INPUT_PORT__CONSTRAINTS = FUNCTION_PORT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_INPUT_PORT__NAME = FUNCTION_PORT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4451,6 +4478,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_INPUT_PORT__OWNED_CONSTRAINTS = FUNCTION_PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_INPUT_PORT__NAME = FUNCTION_PORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -4913,15 +4949,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTION_OUTPUT_PORT__CONSTRAINTS = FUNCTION_PORT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTION_OUTPUT_PORT__NAME = FUNCTION_PORT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4929,6 +4956,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_OUTPUT_PORT__OWNED_CONSTRAINTS = FUNCTION_PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_OUTPUT_PORT__NAME = FUNCTION_PORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -5382,6 +5418,15 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTION_ALLOCATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5597,6 +5642,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_FUNCTIONAL_ALLOCATION__CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_FUNCTIONAL_ALLOCATION__OWNED_CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -5834,6 +5888,15 @@ public interface FaPackage extends EPackage {
 	int FUNCTIONAL_CHAIN_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_CHAIN_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6049,6 +6112,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXCHANGE_SPECIFICATION_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXCHANGE_SPECIFICATION_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -6286,6 +6358,15 @@ public interface FaPackage extends EPackage {
 	int FUNCTIONAL_EXCHANGE_REALIZATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_EXCHANGE_REALIZATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6519,6 +6600,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_REALIZATION__CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_REALIZATION__OWNED_CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -6756,15 +6846,6 @@ public interface FaPackage extends EPackage {
 	int FUNCTIONAL_EXCHANGE__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FUNCTIONAL_EXCHANGE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6772,6 +6853,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTIONAL_EXCHANGE__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTIONAL_EXCHANGE__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7252,15 +7342,6 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTION__CONSTRAINTS = CapellacorePackage.NAMESPACE__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTION__NAME = CapellacorePackage.NAMESPACE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7268,6 +7349,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_FUNCTION__OWNED_CONSTRAINTS = CapellacorePackage.NAMESPACE__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_FUNCTION__NAME = CapellacorePackage.NAMESPACE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -7648,22 +7738,13 @@ public interface FaPackage extends EPackage {
 	int ABSTRACT_FUNCTION__IS_PART_OF_KEY = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 22;
 
 	/**
-	 * The feature id for the '<em><b>Value Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_FUNCTION__VALUE_CONSTRAINT = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 23;
-
-	/**
 	 * The feature id for the '<em><b>Association</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__ASSOCIATION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 24;
+	int ABSTRACT_FUNCTION__ASSOCIATION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Representing Instance Roles</b></em>' reference list.
@@ -7672,7 +7753,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__REPRESENTING_INSTANCE_ROLES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 25;
+	int ABSTRACT_FUNCTION__REPRESENTING_INSTANCE_ROLES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Owned Functional Chains</b></em>' containment reference list.
@@ -7681,7 +7762,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OWNED_FUNCTIONAL_CHAINS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 26;
+	int ABSTRACT_FUNCTION__OWNED_FUNCTIONAL_CHAINS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 25;
 
 	/**
 	 * The feature id for the '<em><b>In Activity Partition</b></em>' reference.
@@ -7690,7 +7771,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__IN_ACTIVITY_PARTITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 27;
+	int ABSTRACT_FUNCTION__IN_ACTIVITY_PARTITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>In Interruptible Region</b></em>' reference.
@@ -7699,7 +7780,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__IN_INTERRUPTIBLE_REGION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 28;
+	int ABSTRACT_FUNCTION__IN_INTERRUPTIBLE_REGION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 27;
 
 	/**
 	 * The feature id for the '<em><b>In Structured Node</b></em>' reference.
@@ -7708,7 +7789,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__IN_STRUCTURED_NODE = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 29;
+	int ABSTRACT_FUNCTION__IN_STRUCTURED_NODE = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 28;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
@@ -7717,7 +7798,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OUTGOING = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 30;
+	int ABSTRACT_FUNCTION__OUTGOING = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 29;
 
 	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
@@ -7726,7 +7807,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__INCOMING = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 31;
+	int ABSTRACT_FUNCTION__INCOMING = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 30;
 
 	/**
 	 * The feature id for the '<em><b>Owned Handlers</b></em>' containment reference list.
@@ -7735,7 +7816,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OWNED_HANDLERS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 32;
+	int ABSTRACT_FUNCTION__OWNED_HANDLERS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 31;
 
 	/**
 	 * The feature id for the '<em><b>Local Precondition</b></em>' containment reference.
@@ -7744,7 +7825,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__LOCAL_PRECONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 33;
+	int ABSTRACT_FUNCTION__LOCAL_PRECONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 32;
 
 	/**
 	 * The feature id for the '<em><b>Local Postcondition</b></em>' containment reference.
@@ -7753,7 +7834,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__LOCAL_POSTCONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 34;
+	int ABSTRACT_FUNCTION__LOCAL_POSTCONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 33;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -7762,7 +7843,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__CONTEXT = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 35;
+	int ABSTRACT_FUNCTION__CONTEXT = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 34;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -7771,7 +7852,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__INPUTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 36;
+	int ABSTRACT_FUNCTION__INPUTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 35;
 
 	/**
 	 * The feature id for the '<em><b>Outputs</b></em>' containment reference list.
@@ -7780,7 +7861,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OUTPUTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 37;
+	int ABSTRACT_FUNCTION__OUTPUTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 36;
 
 	/**
 	 * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
@@ -7789,7 +7870,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__ARGUMENTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 38;
+	int ABSTRACT_FUNCTION__ARGUMENTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 37;
 
 	/**
 	 * The feature id for the '<em><b>Results</b></em>' containment reference list.
@@ -7798,7 +7879,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__RESULTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 39;
+	int ABSTRACT_FUNCTION__RESULTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 38;
 
 	/**
 	 * The feature id for the '<em><b>Behavior</b></em>' reference.
@@ -7807,7 +7888,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__BEHAVIOR = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 40;
+	int ABSTRACT_FUNCTION__BEHAVIOR = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 39;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -7816,7 +7897,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__ABSTRACT_TYPED_ELEMENTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 41;
+	int ABSTRACT_FUNCTION__ABSTRACT_TYPED_ELEMENTS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 40;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -7825,7 +7906,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__KIND = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 42;
+	int ABSTRACT_FUNCTION__KIND = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 41;
 
 	/**
 	 * The feature id for the '<em><b>Condition</b></em>' attribute.
@@ -7834,7 +7915,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__CONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 43;
+	int ABSTRACT_FUNCTION__CONDITION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 42;
 
 	/**
 	 * The feature id for the '<em><b>Owned Functions</b></em>' containment reference list.
@@ -7843,7 +7924,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OWNED_FUNCTIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 44;
+	int ABSTRACT_FUNCTION__OWNED_FUNCTIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 43;
 
 	/**
 	 * The feature id for the '<em><b>Owned Function Realizations</b></em>' containment reference list.
@@ -7852,7 +7933,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 45;
+	int ABSTRACT_FUNCTION__OWNED_FUNCTION_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 44;
 
 	/**
 	 * The feature id for the '<em><b>Owned Functional Exchanges</b></em>' containment reference list.
@@ -7861,7 +7942,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OWNED_FUNCTIONAL_EXCHANGES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 46;
+	int ABSTRACT_FUNCTION__OWNED_FUNCTIONAL_EXCHANGES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 45;
 
 	/**
 	 * The feature id for the '<em><b>Sub Functions</b></em>' reference list.
@@ -7870,7 +7951,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__SUB_FUNCTIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 47;
+	int ABSTRACT_FUNCTION__SUB_FUNCTIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 46;
 
 	/**
 	 * The feature id for the '<em><b>Out Function Realizations</b></em>' reference list.
@@ -7879,7 +7960,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__OUT_FUNCTION_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 48;
+	int ABSTRACT_FUNCTION__OUT_FUNCTION_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 47;
 
 	/**
 	 * The feature id for the '<em><b>In Function Realizations</b></em>' reference list.
@@ -7888,7 +7969,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__IN_FUNCTION_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 49;
+	int ABSTRACT_FUNCTION__IN_FUNCTION_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 48;
 
 	/**
 	 * The feature id for the '<em><b>Component Functional Allocations</b></em>' reference list.
@@ -7897,7 +7978,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__COMPONENT_FUNCTIONAL_ALLOCATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 50;
+	int ABSTRACT_FUNCTION__COMPONENT_FUNCTIONAL_ALLOCATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 49;
 
 	/**
 	 * The feature id for the '<em><b>Allocation Blocks</b></em>' reference list.
@@ -7906,7 +7987,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__ALLOCATION_BLOCKS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 51;
+	int ABSTRACT_FUNCTION__ALLOCATION_BLOCKS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 50;
 
 	/**
 	 * The feature id for the '<em><b>Available In States</b></em>' reference list.
@@ -7915,7 +7996,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__AVAILABLE_IN_STATES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 52;
+	int ABSTRACT_FUNCTION__AVAILABLE_IN_STATES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 51;
 
 	/**
 	 * The feature id for the '<em><b>Involving Capabilities</b></em>' reference list.
@@ -7924,7 +8005,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__INVOLVING_CAPABILITIES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 53;
+	int ABSTRACT_FUNCTION__INVOLVING_CAPABILITIES = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 52;
 
 	/**
 	 * The feature id for the '<em><b>Involving Capability Realizations</b></em>' reference list.
@@ -7933,7 +8014,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__INVOLVING_CAPABILITY_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 54;
+	int ABSTRACT_FUNCTION__INVOLVING_CAPABILITY_REALIZATIONS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 53;
 
 	/**
 	 * The feature id for the '<em><b>Involving Functional Chains</b></em>' reference list.
@@ -7942,7 +8023,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__INVOLVING_FUNCTIONAL_CHAINS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 55;
+	int ABSTRACT_FUNCTION__INVOLVING_FUNCTIONAL_CHAINS = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 54;
 
 	/**
 	 * The feature id for the '<em><b>Linked State Machine</b></em>' reference.
@@ -7951,7 +8032,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__LINKED_STATE_MACHINE = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 56;
+	int ABSTRACT_FUNCTION__LINKED_STATE_MACHINE = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 55;
 
 	/**
 	 * The feature id for the '<em><b>Linked Function Specification</b></em>' reference.
@@ -7960,7 +8041,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION__LINKED_FUNCTION_SPECIFICATION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 57;
+	int ABSTRACT_FUNCTION__LINKED_FUNCTION_SPECIFICATION = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 56;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Function</em>' class.
@@ -7969,7 +8050,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_FUNCTION_FEATURE_COUNT = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 58;
+	int ABSTRACT_FUNCTION_FEATURE_COUNT = CapellacorePackage.NAMESPACE_FEATURE_COUNT + 57;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.ComponentExchangeImpl <em>Component Exchange</em>}' class.
@@ -8018,15 +8099,6 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_EXCHANGE__CONSTRAINTS = BehaviorPackage.ABSTRACT_EVENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_EXCHANGE__NAME = BehaviorPackage.ABSTRACT_EVENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8034,6 +8106,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE__OWNED_CONSTRAINTS = BehaviorPackage.ABSTRACT_EVENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE__NAME = BehaviorPackage.ABSTRACT_EVENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Typed Elements</b></em>' reference list.
@@ -8487,6 +8568,15 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_EXCHANGE_ALLOCATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8722,15 +8812,6 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_EXCHANGE_ALLOCATOR__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_EXCHANGE_ALLOCATOR__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8738,6 +8819,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_ALLOCATOR__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_ALLOCATOR__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -8948,15 +9038,6 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_EXCHANGE_CATEGORY__CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_EXCHANGE_CATEGORY__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8964,6 +9045,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_CATEGORY__OWNED_CONSTRAINTS = CapellacorePackage.NAMED_ELEMENT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_CATEGORY__NAME = CapellacorePackage.NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -9163,6 +9253,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_END__CONSTRAINTS = ModellingcorePackage.INFORMATIONS_EXCHANGER__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_END__OWNED_CONSTRAINTS = ModellingcorePackage.INFORMATIONS_EXCHANGER__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Information Flows</b></em>' reference list.
@@ -9400,6 +9499,15 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__CONSTRAINTS;
 
 	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__OWNED_CONSTRAINTS = ABSTRACT_FUNCTION_ALLOCATION__OWNED_CONSTRAINTS;
+
+	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9633,6 +9741,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_EXCHANGE_REALIZATION__CONSTRAINTS = EXCHANGE_SPECIFICATION_REALIZATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_EXCHANGE_REALIZATION__OWNED_CONSTRAINTS = EXCHANGE_SPECIFICATION_REALIZATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -9888,15 +10005,6 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_PORT__CONSTRAINTS = InformationPackage.PORT__CONSTRAINTS;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__NAME = InformationPackage.PORT__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9904,6 +10012,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_PORT__OWNED_CONSTRAINTS = InformationPackage.PORT__OWNED_CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT__NAME = InformationPackage.PORT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.
@@ -10320,22 +10437,13 @@ public interface FaPackage extends EPackage {
 	int COMPONENT_PORT__IS_PART_OF_KEY = InformationPackage.PORT_FEATURE_COUNT + 21;
 
 	/**
-	 * The feature id for the '<em><b>Value Constraint</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT_PORT__VALUE_CONSTRAINT = InformationPackage.PORT_FEATURE_COUNT + 22;
-
-	/**
 	 * The feature id for the '<em><b>Association</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__ASSOCIATION = InformationPackage.PORT_FEATURE_COUNT + 23;
+	int COMPONENT_PORT__ASSOCIATION = InformationPackage.PORT_FEATURE_COUNT + 22;
 
 	/**
 	 * The feature id for the '<em><b>Representing Instance Roles</b></em>' reference list.
@@ -10344,7 +10452,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES = InformationPackage.PORT_FEATURE_COUNT + 24;
+	int COMPONENT_PORT__REPRESENTING_INSTANCE_ROLES = InformationPackage.PORT_FEATURE_COUNT + 23;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Information Flows</b></em>' reference list.
@@ -10353,7 +10461,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__INCOMING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 25;
+	int COMPONENT_PORT__INCOMING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 24;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Information Flows</b></em>' reference list.
@@ -10362,7 +10470,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 26;
+	int COMPONENT_PORT__OUTGOING_INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 25;
 
 	/**
 	 * The feature id for the '<em><b>Information Flows</b></em>' reference list.
@@ -10371,7 +10479,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 27;
+	int COMPONENT_PORT__INFORMATION_FLOWS = InformationPackage.PORT_FEATURE_COUNT + 26;
 
 	/**
 	 * The feature id for the '<em><b>Orientation</b></em>' attribute.
@@ -10380,7 +10488,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__ORIENTATION = InformationPackage.PORT_FEATURE_COUNT + 28;
+	int COMPONENT_PORT__ORIENTATION = InformationPackage.PORT_FEATURE_COUNT + 27;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -10389,7 +10497,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__KIND = InformationPackage.PORT_FEATURE_COUNT + 29;
+	int COMPONENT_PORT__KIND = InformationPackage.PORT_FEATURE_COUNT + 28;
 
 	/**
 	 * The feature id for the '<em><b>Component Exchanges</b></em>' reference list.
@@ -10398,7 +10506,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__COMPONENT_EXCHANGES = InformationPackage.PORT_FEATURE_COUNT + 30;
+	int COMPONENT_PORT__COMPONENT_EXCHANGES = InformationPackage.PORT_FEATURE_COUNT + 29;
 
 	/**
 	 * The feature id for the '<em><b>Allocated Function Ports</b></em>' reference list.
@@ -10407,7 +10515,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 31;
+	int COMPONENT_PORT__ALLOCATED_FUNCTION_PORTS = InformationPackage.PORT_FEATURE_COUNT + 30;
 
 	/**
 	 * The feature id for the '<em><b>Delegated Component Ports</b></em>' reference list.
@@ -10416,7 +10524,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__DELEGATED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 32;
+	int COMPONENT_PORT__DELEGATED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 31;
 
 	/**
 	 * The feature id for the '<em><b>Delegating Component Ports</b></em>' reference list.
@@ -10425,7 +10533,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__DELEGATING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 33;
+	int COMPONENT_PORT__DELEGATING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 32;
 
 	/**
 	 * The feature id for the '<em><b>Allocating Physical Ports</b></em>' reference list.
@@ -10434,7 +10542,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS = InformationPackage.PORT_FEATURE_COUNT + 34;
+	int COMPONENT_PORT__ALLOCATING_PHYSICAL_PORTS = InformationPackage.PORT_FEATURE_COUNT + 33;
 
 	/**
 	 * The feature id for the '<em><b>Realized Component Ports</b></em>' reference list.
@@ -10443,7 +10551,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__REALIZED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 35;
+	int COMPONENT_PORT__REALIZED_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 34;
 
 	/**
 	 * The feature id for the '<em><b>Realizing Component Ports</b></em>' reference list.
@@ -10452,7 +10560,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT__REALIZING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 36;
+	int COMPONENT_PORT__REALIZING_COMPONENT_PORTS = InformationPackage.PORT_FEATURE_COUNT + 35;
 
 	/**
 	 * The number of structural features of the '<em>Component Port</em>' class.
@@ -10461,7 +10569,7 @@ public interface FaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PORT_FEATURE_COUNT = InformationPackage.PORT_FEATURE_COUNT + 37;
+	int COMPONENT_PORT_FEATURE_COUNT = InformationPackage.PORT_FEATURE_COUNT + 36;
 
 	/**
 	 * The meta object id for the '{@link org.polarsys.capella.core.data.fa.impl.ComponentPortAllocationImpl <em>Component Port Allocation</em>}' class.
@@ -10508,6 +10616,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_PORT_ALLOCATION__CONSTRAINTS = CapellacorePackage.ALLOCATION__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT_ALLOCATION__OWNED_CONSTRAINTS = CapellacorePackage.ALLOCATION__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Realized Flow</b></em>' reference.
@@ -10752,6 +10869,15 @@ public interface FaPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_PORT_ALLOCATION_END__CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Owned Constraints</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PORT_ALLOCATION_END__OWNED_CONSTRAINTS = CapellacorePackage.CAPELLA_ELEMENT__OWNED_CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Traces</b></em>' reference list.

@@ -12,18 +12,17 @@ package org.polarsys.capella.core.commands.preferences.ui.sirius;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.ui.tools.internal.preference.DesignerPreferencePage;
+import org.eclipse.sirius.ui.tools.internal.preference.SiriusPreferencePage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPropertyPage;
-
 import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
 import org.polarsys.capella.core.commands.preferences.service.IAbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnum;
 import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
 import org.polarsys.capella.core.preferences.Activator;
 
-public class ViewPointPropertyPreferencePage extends DesignerPreferencePage implements IAbstractDefaultPreferencePage, IWorkbenchPropertyPage {
+public class ViewPointPropertyPreferencePage extends SiriusPreferencePage implements IAbstractDefaultPreferencePage, IWorkbenchPropertyPage {
 
   public static final String PROPERTY_PAGE_ID = "org.eclipse.sirius.ui.tools.internal.preference.viewpoint.page"; //$NON-NLS-1$
 

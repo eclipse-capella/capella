@@ -5,7 +5,8 @@ Bundle-SymbolicName: org.polarsys.capella.common.queries;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.queries.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.ui,
+Require-Bundle: org.apache.commons.lang,
+ org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore,
  org.polarsys.capella.common.tools.report
@@ -15,6 +16,7 @@ Export-Package: org.polarsys.capella.common.queries,
  org.polarsys.capella.common.queries.debug,
  org.polarsys.capella.common.queries.exceptions,
  org.polarsys.capella.common.queries.filters,
+ org.polarsys.capella.common.queries.internal,
  org.polarsys.capella.common.queries.interpretor,
  org.polarsys.capella.common.queries.queryContext,
  org.polarsys.capella.common.queries.testGeneration

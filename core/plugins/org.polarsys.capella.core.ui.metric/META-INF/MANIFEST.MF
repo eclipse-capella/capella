@@ -11,13 +11,14 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius,
  org.eclipse.gmf.runtime.diagram.ui,
  org.polarsys.capella.common.ui.toolkit,
- org.polarsys.capella.core.data.gen,
  org.polarsys.capella.common.ui.toolkit.browser,
  org.polarsys.capella.common.ui.services,
- org.polarsys.capella.core.sirius.ui,
+ org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.core.model.helpers,
  org.polarsys.capella.core.platform.sirius.ui.menu,
  org.polarsys.capella.core.platform.sirius.ui.navigator,
- org.polarsys.capella.core.platform.sirius.ui.services
+ org.polarsys.capella.core.platform.sirius.ui.services,
+ org.polarsys.capella.core.sirius.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.ui.metric.actions,

@@ -15,18 +15,17 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.swt.graphics.Image;
-
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.ExchangeSpecification;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
@@ -42,13 +41,13 @@ public class LogicalDataFlowStyleConfiguration extends SimpleStyleConfiguration 
     @Override
     public Image caseAbstractFunction(AbstractFunction object) {
       final IItemLabelProvider labelProvider =
-          (IItemLabelProvider) SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory().adapt(object.getBehavior(), IItemLabelProvider.class);
+          (IItemLabelProvider) DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory().adapt(object.getBehavior(), IItemLabelProvider.class);
       if (labelProvider != null) {
         ImageDescriptor descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(object.getBehavior()));
         if (descriptor == null) {
           descriptor = ImageDescriptor.getMissingImageDescriptor();
         }
-        return SiriusDiagramEditorPlugin.getInstance().getImage(descriptor);
+        return DiagramUIPlugin.getPlugin().getImage(descriptor);
       }
       // }
       return null;
@@ -59,13 +58,13 @@ public class LogicalDataFlowStyleConfiguration extends SimpleStyleConfiguration 
       if (!object.getExchangeSpecifications().isEmpty()) {
         final ExchangeSpecification exchange = object.getExchangeSpecifications().iterator().next();
         final IItemLabelProvider labelProvider =
-            (IItemLabelProvider) SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory().adapt(exchange, IItemLabelProvider.class);
+            (IItemLabelProvider) DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory().adapt(exchange, IItemLabelProvider.class);
         if (labelProvider != null) {
           ImageDescriptor descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(exchange));
           if (descriptor == null) {
             descriptor = ImageDescriptor.getMissingImageDescriptor();
           }
-          return SiriusDiagramEditorPlugin.getInstance().getImage(descriptor);
+          return DiagramUIPlugin.getPlugin().getImage(descriptor);
         }
       }
       return null;

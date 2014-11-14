@@ -20,6 +20,7 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
+import org.polarsys.capella.core.data.helpers.capellacore.delegates.GeneralizableElementHelper;
 import org.polarsys.capella.core.data.helpers.capellacore.delegates.TypeHelper;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemRealization;
@@ -57,7 +58,7 @@ public class ExchangeItemHelper {
 
     // no helper found... searching in super classes...
 		if(null == ret) {
-			ret = TypeHelper.getInstance().doSwitch(element_p, feature_p);
+			ret = GeneralizableElementHelper.getInstance().doSwitch(element_p, feature_p);
 		}
 		return ret;
 	}

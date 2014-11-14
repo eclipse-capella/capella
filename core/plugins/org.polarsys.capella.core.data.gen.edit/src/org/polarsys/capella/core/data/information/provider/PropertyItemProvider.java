@@ -149,7 +149,6 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
 			addIsDerivedPropertyDescriptor(object);
 			addIsReadOnlyPropertyDescriptor(object);
 			addIsPartOfKeyPropertyDescriptor(object);
-			addValueConstraintPropertyDescriptor(object);
 			addAssociationPropertyDescriptor(object);
 		}
 		// begin-extension-code
@@ -454,33 +453,6 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
 	}
 
 	/**
-	 * This adds a property descriptor for the Value Constraint feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValueConstraintPropertyDescriptor(Object object) {
-
-		// begin-extension-code
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-		// end-extension-code
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Property_valueConstraint_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Property_valueConstraint_feature", "_UI_Property_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 InformationPackage.Literals.PROPERTY__VALUE_CONSTRAINT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-		// begin-extension-code
-				 null));
-		// end-extension-code
-	}
-
-	/**
 	 * This adds a property descriptor for the Association feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -623,7 +595,6 @@ public class PropertyItemProvider extends FeatureItemProvider implements IEditin
 			case InformationPackage.PROPERTY__IS_DERIVED:
 			case InformationPackage.PROPERTY__IS_READ_ONLY:
 			case InformationPackage.PROPERTY__IS_PART_OF_KEY:
-			case InformationPackage.PROPERTY__VALUE_CONSTRAINT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case InformationPackage.PROPERTY__OWNED_DEFAULT_VALUE:

@@ -17,13 +17,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.AbstractTreeViewer;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
-
-import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
-import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
-import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
+import org.eclipse.jface.viewers.ISelection;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.renderer.SelectListRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 
 /**
  *
@@ -33,6 +33,12 @@ public class ScopeElementsRenderer extends SelectListRenderer {
   @Override
   protected int getExpandLevel() {
     return AbstractTreeViewer.ALL_LEVELS;
+  }
+
+  @Override
+  protected void doubleClicked(ISelection doubleClickedElement_p, IRendererContext context_p) {
+    // Nothing here
+
   }
 
   /**

@@ -97,7 +97,6 @@ private static final String PLUGIN_ID = "org.polarsys.capella.common.model.Dropp
   }
 
   /**
-   * Code copied from InitializeCopyCommand.copyReferences class provided by org.eclipse.emf.edit.command plug-in.
    * This method will iterate over the references of the owner object and sets them. accordingly in the copy.
    */
   @Override

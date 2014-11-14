@@ -12,11 +12,10 @@ package org.polarsys.capella.core.transition.common.handlers.filter;
 
 import org.eclipse.emf.diffmerge.api.Role;
 import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
+import org.eclipse.osgi.util.NLS;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -29,7 +28,11 @@ public class ReferenceValueFromSource extends AbstractFilterItem {
    */
   @Override
   public String getDescription(IDifference difference_p) {
-    return "Propagation, target reference is not set";
+    if (difference_p instanceof IReferenceValuePresence) {
+      IReferenceValuePresence avp = (IReferenceValuePresence) difference_p;
+      return NLS.bind("Propagation, reference ''{0}'' is updated automatically", avp.getFeature().getName());
+    }
+    return "Propagation, target reference is updated automatically";
   }
 
   /**
@@ -42,16 +45,14 @@ public class ReferenceValueFromSource extends AbstractFilterItem {
       // We merge AttributeValuePresence if value is empty into target
       if (role_p == Role.REFERENCE) {
         IReferenceValuePresence avp = (IReferenceValuePresence) difference_p;
-        role = FilterAction.TARGET;
+        role = null;
         EObject diffelt = avp.getElementMatch().get(Role.REFERENCE);
         if (diffelt != null) {
-          for (IMergeableDifference mergeDiff : avp.getDirectImpliesDependencies(Role.TARGET)) {
-            if (mergeDiff instanceof IReferenceValuePresence) {
-              role = null;
-              if (isMergeableReference(avp.getFeature(), diffelt, avp.getElementMatch().get(Role.TARGET), ((IReferenceValuePresence) mergeDiff).getValue(),
-                  avp.getValue(), context_p)) {
-                role = FilterAction.TARGET;
-              }
+
+          if (difference_p instanceof IReferenceValuePresence) {
+            if (isMergeableReference(avp.getFeature(), diffelt, avp.getElementMatch().get(Role.TARGET), ((IReferenceValuePresence) difference_p).getValue(),
+                avp.getValue(), context_p)) {
+              role = FilterAction.TARGET;
             }
           }
         }

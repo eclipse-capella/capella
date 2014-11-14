@@ -10,22 +10,53 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.oa;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.Collections;
+import java.util.List;
 
-import org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.QueryConstants;
+import org.polarsys.capella.core.business.queries.fa.AbstractAvailableInState;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 
 /**
  * Return current and available States and Modes of Operational Process
  *
  */
-public class OperationalProcess_AvailableInStates extends FunctionalChain_AvailableInStates {
+public class OperationalProcess_AvailableInStates extends AbstractAvailableInState implements IBusinessQuery {
 
-  /**
-   * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEClass()
-   */
-  @Override
-  public EClass getEClass() {
-    return OaPackage.Literals.OPERATIONAL_PROCESS;
-  }
+	/**
+	 * @see org.polarsys.capella.core.business.queries.capellacore.IBusinessQuery#getEStructuralFeature()
+	 */
+	@Override
+	public List<EReference> getEStructuralFeatures() {
+		return Collections.singletonList(FaPackage.Literals.FUNCTIONAL_CHAIN__AVAILABLE_IN_STATES);
+	}
+
+	/**
+	 * @see org.polarsys.capella.core.business.queries.core.business.queries.IBusinessQuery#getEClass()
+	 */
+	@Override
+	public EClass getEClass() {
+		return OaPackage.Literals.OPERATIONAL_PROCESS;
+	}
+
+	@Override
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES, element_p, context);
+	}
+
+	@Override
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__OPERATIONAL_PROCESS__AVAILABLE_IN_STATES, element_p, context);
+	}
 }

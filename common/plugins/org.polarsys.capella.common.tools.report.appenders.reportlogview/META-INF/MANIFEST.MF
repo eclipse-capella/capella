@@ -10,10 +10,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.ide,
  org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.ui.services,
- org.polarsys.capella.common.tig.efprovider,
- org.polarsys.capella.common.tig.ef,
  org.eclipse.help,
- org.apache.commons.lang
+ org.apache.commons.lang,
+ org.polarsys.capella.shared.id.handler
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report.appenders.reportlogview,

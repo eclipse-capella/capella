@@ -20,10 +20,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.common.handlers.log.LogHelper;
@@ -63,6 +63,10 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
 
       try {
 
+        if (relationship_p.isContainment()) {
+          HoldingResourceHelper.ensureMoveElement(relatedElement_p, element_p);
+        }
+
         if (relationship_p.isMany()) {
           EList<EObject> tmp = ((EList<EObject>) element_p.eGet(relationship_p));
           if (tmp.contains(relatedElement_p)) {
@@ -87,7 +91,9 @@ public class DefaultAttachmentHandler implements IAttachmentHandler {
       }
 
       if (done) {
+
         if (relationship_p.isContainment()) {
+
           LogHelper.getInstance().info(
               NLS.bind(Messages.TigerRelationshipHelper_ContainedBy, new Object[] { EObjectLabelProviderHelper.getText(relatedElement_p),
                                                                                    EObjectLabelProviderHelper.getText(element_p), relationship_p.getName() }),

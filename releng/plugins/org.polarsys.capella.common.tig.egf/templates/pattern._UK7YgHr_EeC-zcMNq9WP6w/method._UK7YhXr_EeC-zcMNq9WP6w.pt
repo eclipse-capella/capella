@@ -51,12 +51,12 @@ if (derive != null) {
 	<% } %>
 <%} else { %>
 <%// Check if the feature has the helper annotation.%>
-<%EAnnotation annotationHelper = eFeature.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);%>
+<%EAnnotation annotationHelper = eFeature.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);%>
   <%if (null != annotationHelper) { %>
     <%// Generate The helper framework code.%>
     Object result = null;
     // Helper that can get value for current feature.
-    <%=genModel.getImportedName("org.polarsys.capella.common.tig.model.IHelper")%> helper = null;
+    <%=genModel.getImportedName("org.polarsys.capella.common.model.helpers.IHelper")%> helper = null;
     // If current object is adaptable, ask it to get its IHelper.
     if (this instanceof <%=genModel.getImportedName("org.eclipse.core.runtime.IAdaptable")%>) {
     	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
@@ -71,10 +71,10 @@ if (derive != null) {
       <%=genModel.getImportedName("org.eclipse.emf.ecore.EPackage")%> package_l = eClass().getEPackage();
       // Get the root package of the owner package.
       EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
-      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI()); <%=genModel.getNonNLS()%>
+      throw new org.polarsys.capella.common.model.helpers.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI()); <%=genModel.getNonNLS()%>
     } 
     // A helper is found, let's use it. 
-    <%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> annotation = <%=genFeature.getQualifiedFeatureAccessor()%>.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    <%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> annotation = <%=genFeature.getQualifiedFeatureAccessor()%>.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, <%=genFeature.getQualifiedFeatureAccessor()%>, annotation);
 		<% if (genFeature.isListType()) {%>
 		try {

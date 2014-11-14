@@ -12,7 +12,6 @@ package org.polarsys.capella.common.ui.toolkit.browser.action;
 
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
-
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 
 /**

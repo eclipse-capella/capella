@@ -147,6 +147,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/png/FunctionKind_Duplicate.png - capella.ui.resources - capella.ui.resources/icons/full/png/FunctionKind_Duplicate.png
 /icons/full/png/SystemNonFunctionalInterfaceRequirement.png - capella.ui.resources - capella.ui.resources/icons/full/png/SystemNonFunctionalInterfaceRequirement.png
 /icons/full/png/Interface.png - capella.ui.resources - capella.ui.resources/icons/full/png/Interface.png
+/icons/full/png/Interface_Technical.png - capella.ui.resources - capella.ui.resources/icons/full/png/Interface_Technical.png
 /icons/full/png/LiteralStringValue.png - capella.ui.resources - capella.ui.resources/icons/full/png/LiteralStringValue.png
 /icons/full/png/PhysicalArchitecture.png - capella.ui.resources - capella.ui.resources/icons/full/png/PhysicalArchitecture.png
 /icons/full/png/Actor.png - capella.ui.resources - capella.ui.resources/icons/full/png/Actor.png
@@ -156,3 +157,9 @@ These followings icons are made available under the terms of the Eclipse Public 
 /icons/full/png/CommunicationLinkTransmit.png - capella.ui.resources - capella.ui.resources/icons/full/png/CommunicationLinkTransmit.png
 /icons/full/png/StringType.png - capella.ui.resources - capella.ui.resources/icons/full/png/StringType.png
 /icons/full/png/ChoicePseudoState.png - capella.ui.resources - capella.ui.resources/icons/full/png/ChoicePseudoState.png
+/icons/full/png/ShallowHistoryPseudoState.png - capella.ui.resources - capella.ui.resources/icons/full/png/ShallowHistoryPseudoState.png
+/icons/full/png/DeepHistoryPseudoState.png - capella.ui.resources - capella.ui.resources/icons/full/png/DeepHistoryPseudoState.png
+/icons/full/png/EntryPointPseudoState.png - capella.ui.resources - capella.ui.resources/icons/full/png/EntryPointPseudoState.png
+/icons/full/png/ExitPointPseudoState.png - capella.ui.resources - capella.ui.resources/icons/full/png/ExitPointPseudoState.png
+/icons/full/png/TimeEvent.png - capella.ui.resources - capella.ui.resources/icons/full/png/TimeEvent.png
+/icons/full/png/ChangeEvent.png - capella.ui.resources - capella.ui.resources/icons/full/png/ChangeEvent.png

@@ -12,15 +12,15 @@ package org.polarsys.capella.core.libraries.utils;
 
 import java.util.Comparator;
 
-import org.polarsys.capella.common.libraries.IAbstractModel;
+import org.polarsys.capella.common.libraries.IModel;
 
 /**
  */
-public class AbstractModelComparator implements Comparator<IAbstractModel> {
+public class AbstractModelComparator implements Comparator<IModel> {
 
   @Override
-  public int compare(IAbstractModel m1, IAbstractModel m2) {
-    return m1.getName().compareTo(m2.getName());
+  public int compare(IModel m1, IModel m2) {
+    return m1.getIdentifier().getName().compareTo(m2.getIdentifier().getName());
   }
 
 }

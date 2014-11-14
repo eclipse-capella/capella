@@ -93,7 +93,7 @@
       
      
       
-  	  <objectContribution
+      <objectContribution
             id="org.polarsys.capella.core.sirius.explorer.menus"
             objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
          <!--menu
@@ -166,9 +166,9 @@
          </test> 
            
            <!--test forcePluginActivation="true" 
-					     property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsModelingPreferences"
-					     value="TEST_VALIDATION">
-		   </test-->  
+                         property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsModelingPreferences"
+                         value="TEST_VALIDATION">
+           </test-->  
          </enablement>
          
          <action
@@ -435,14 +435,14 @@
          <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction" 
          style="push" 
          icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >  
-		   <visibleWhen checkEnabled="false">
-      		<with variable="selection">
-		        <iterate>
-				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression"/>
-		      	</iterate>
-      		</with>
-		  </visibleWhen>
-	    </command> 
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression"/>
+                </iterate>
+            </with>
+          </visibleWhen>
+        </command> 
       </menuContribution>
       
       <!-- Trace Manager -->
@@ -451,68 +451,22 @@
          <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand" 
          style="push" 
          icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif" >  
-		   <visibleWhen checkEnabled="false">
-      		<with variable="selection">
-		        <iterate>
-				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression"/>
-		      	</iterate>
-      		</with>
-		  </visibleWhen>
-	    </command> 
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression"/>
+                </iterate>
+            </with>
+          </visibleWhen>
+        </command> 
       </menuContribution>
       
-      <!-- Categories -->
-      <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=group.categories">
-         <menu
-               id="org.polarsys.capella.core.platforme.sirius.ui.menu.categories"
-               label="Categories">
-            <visibleWhen
-                  checkEnabled="false">
-               <reference
-                     definitionId="org.polarsys.capella.core.platforme.sirius.ui.menu.categories.visibilityInDiagramExpr">
-               </reference>
-            </visibleWhen>
-         </menu>
-      </menuContribution>
       
-      <!-- Update Categories -->
-      <menuContribution
-            allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.platforme.sirius.ui.menu.categories?after=additions">
-         <command
-               commandId="org.polarsys.capella.core.platform.sirius.ui.menu.commands.updatecategories"
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-                     <reference
-                           definitionId="org.polarsys.capella.core.platforme.sirius.ui.menu.categories.visibilityInDiagramExpr">
-                     </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
+      </extension>
       
-      <!-- Create Categories -->
-      <menuContribution
-            allPopups="true"
-            locationURI="popup:org.polarsys.capella.core.platforme.sirius.ui.menu.categories?after=additions">
-         <command
-          commandId="org.polarsys.capella.core.platform.sirius.ui.menu.commands.createcategories"
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-                     <reference
-                           definitionId="org.polarsys.capella.core.platforme.sirius.ui.menu.categories.visibilityInDiagramExpr">
-                     </reference>
-            </visibleWhen>
-         </command>
-      </menuContribution>
-      
-   	  </extension>
-   	  
-		<!-- Semantic Browser Menu -->
-		
-		<extension
+        <!-- Semantic Browser Menu -->
+        
+        <extension
          point="org.eclipse.ui.menus">
           <menuContribution
             locationURI="popup:org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID?after=additions">
@@ -523,7 +477,7 @@
                
                <visibleWhen checkEnabled="false">
                    <reference
-                         definitionId="org.polarsys.capella.core.sementic.ui.expression.transitionVisibilityModelElementExpression">
+                         definitionId="org.polarsys.capella.core.semantic.ui.expression.transitionVisibilityModelElementExpression">
                    </reference>
               </visibleWhen>
          </command>
@@ -561,14 +515,14 @@
          <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction" 
          style="push" 
          icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >  
-		   <visibleWhen checkEnabled="false">
-      		<with variable="selection">
-		        <iterate>
-				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-		      	</iterate>
-      		</with>
-		  </visibleWhen>
-	    </command> 
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
+                </iterate>
+            </with>
+          </visibleWhen>
+        </command> 
       </menuContribution>
       
       <!-- Trace Manager -->
@@ -577,14 +531,14 @@
          <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand" 
          style="push" 
          icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif" >  
-		   <visibleWhen checkEnabled="false">
-      		<with variable="selection">
-		        <iterate>
-				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-		      	</iterate>
-      		</with>
-		  </visibleWhen>
-	    </command> 
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
+                </iterate>
+            </with>
+          </visibleWhen>
+        </command> 
       </menuContribution>
       
      </extension>
@@ -598,8 +552,8 @@
       
      <extension
          point="org.eclipse.ui.menus">
-		 
-	  <menuContribution
+         
+      <menuContribution
             locationURI="popup:capella.project.explorer#PopupMenu?after=group.wizard">
          <menu
                id="org.polarsys.capella.core.wizards"  label="Wizards">
@@ -619,14 +573,14 @@
          <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.RequirementManagerWizardAction" 
          style="push" 
          icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >  
-		   <visibleWhen checkEnabled="false">
-      		<with variable="selection">
-		        <iterate>
-				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-		      	</iterate>
-      		</with>
-		  </visibleWhen>
-	    </command> 
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
+                </iterate>
+            </with>
+          </visibleWhen>
+        </command> 
       </menuContribution>
       
       <!-- Trace Manager -->
@@ -635,50 +589,89 @@
          <command  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.traceManagerCommand" 
          style="push" 
          icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_trace.gif" >  
-		   <visibleWhen checkEnabled="false">
-      		<with variable="selection">
-		        <iterate>
-				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-		      	</iterate>
-      		</with>
-		  </visibleWhen>
-	    </command> 
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
+                </iterate>
+            </with>
+          </visibleWhen>
+        </command> 
       </menuContribution>
       </extension>
             
        <extension
          point="org.eclipse.ui.menus">
             <!-- Allocation Management -->
-		      <menuContribution  allPopups="true" locationURI="popup:capella.project.explorer#PopupMenu?after=org.polarsys.capella.core.wizards">
-		         <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction" 
-		         	style="push" 
-		         	icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif">  
-				   <visibleWhen checkEnabled="false">
-						        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
-				  </visibleWhen>
-			    </command> 
-		     </menuContribution>
+              <menuContribution  allPopups="true" locationURI="popup:capella.project.explorer#PopupMenu?after=org.polarsys.capella.core.wizards">
+                 <command commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction" 
+                    style="push" 
+                    icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif">  
+                   <visibleWhen checkEnabled="false">
+                                <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression"/>
+                  </visibleWhen>
+                </command> 
+             </menuContribution>
        </extension>
       
        
       <extension
-	         point="org.eclipse.ui.menus">
-			      <menuContribution
-			            locationURI="popup:org.eclipse.ui.popup.any?after=group.allocation">
-			         <command
-			               commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
-			               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
-			               label="%AllocationManagement"
-			               style="push">
-			            <visibleWhen
-			                  checkEnabled="false">
-			               <reference
-			                     definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.expression.AllocationManagementWizardDiagramExpression">
-			               </reference>
-			            </visibleWhen>
-			         </command>
-			      </menuContribution>
-	  </extension>
+             point="org.eclipse.ui.menus">
+                  <menuContribution
+                        locationURI="popup:org.eclipse.ui.popup.any?after=group.allocation">
+                     <command
+                           commandId="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
+                           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_manage.gif"
+                           label="%AllocationManagement"
+                           style="push">
+                        <visibleWhen
+                              checkEnabled="false">
+                           <reference
+                                 definitionId="org.polarsys.capella.core.platform.sirius.ui.actions.expression.AllocationManagementWizardDiagramExpression">
+                           </reference>
+                        </visibleWhen>
+                     </command>
+                  </menuContribution>
+      </extension>
+      <extension
+            point="org.eclipse.ui.menus">
+         <menuContribution
+               allPopups="false"
+               locationURI="popup:org.eclipse.ui.popup.any?after=group.categories">
+            <menu
+                  id="org.polarsys.capella.core.sirius.diagram.editor.categories"
+                  label="Category">
+            </menu>
+         </menuContribution>
+         <menuContribution
+               allPopups="true"
+               locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.categories?after=additions">
+            <command
+                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
+                  </reference>
+               </visibleWhen>
+            </command>
+         </menuContribution>
+         <menuContribution
+               allPopups="true"
+               locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.categories?after=additions">
+            <command
+                  commandId="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
+                  </reference>
+               </visibleWhen>
+            </command>
+         </menuContribution>
+      </extension>
          
       
       <extension
@@ -686,6 +679,10 @@
       <category
             id="org.polarsys.capella.core.wizard.ui.category"
             name="Wizards">
+      </category>
+      <category
+            id="org.polarsys.capella.core.wizard.ui.category"
+            name="Category">
       </category>
       <command
                defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.AllocationManagementWizardAction"
@@ -706,33 +703,41 @@
                >
       </command>
       <command
-            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
-            id="org.polarsys.capella.core.platform.sirius.ui.menu.commands.updatecategories"
-            name="Update categories">
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
+            name="Create Category">
       </command>
       <command
-            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
-            id="org.polarsys.capella.core.platform.sirius.ui.menu.commands.createcategories"
-            name="Create category">
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
+            name="Update Category">
       </command>
       
-	 </extension>	 
-	 
-	 <extension point="org.eclipse.core.expressions.definitions">
+     </extension>    
+     
+     <extension point="org.eclipse.core.expressions.definitions">
       <definition
             id="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityModelElementExpression">
-             <iterate ifEmpty="false">
-                <instanceof value="org.polarsys.capella.common.data.modellingcore.ModelElement"/>
-            </iterate>
+            <with
+                  variable="selection">
+                <iterate ifEmpty="false">
+                    <instanceof value="org.polarsys.capella.common.data.modellingcore.ModelElement"/>
+                </iterate>
+            </with>
+            
       </definition>
    </extension>
    
    <extension point="org.eclipse.core.expressions.definitions">
       <definition
             id="org.polarsys.capella.core.transition.system.topdown.ui.expression.wizardVisibilityDiagramElementExpression">
-            <iterate ifEmpty="false">
-                    <instanceof value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"/>
-            </iterate>
+            <with
+                  variable="selection">
+               <iterate ifEmpty="false">
+                        <instanceof value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"/>
+                </iterate>
+            </with>
+            
       </definition>
    </extension>
 
@@ -816,7 +821,7 @@
                properties="actionMode"
                type="org.polarsys.capella.common.data.modellingcore.ModelElement">
          </propertyTester>
-		 
+         
          <propertyTester
                class="org.polarsys.capella.core.platform.sirius.ui.CapellaPropertyTester"
                id="org.polarsys.capella.core.platform.sirius.ui.isInCapellaContext"
@@ -824,9 +829,9 @@
                properties="isInCapellaContext"
                type="java.lang.Object">
          </propertyTester>
-		 
+         
       </extension>
-	  
+      
    <extension
          point="org.polarsys.capella.core.preferences.capellaPreferences">
       <category
@@ -854,13 +859,13 @@
          <item
                description="Update categories for communication means, component exchanges, functional exchanges and physical links"
                enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.commands.updatecategories"
+               id="org.polarsys.capella.core.platform.sirius.ui.actions.UpdateCategoriesWizardAction"
                name="Update Categories">
          </item>
          <item
                description="Create a category for communication means, component exchanges, functional exchanges and physical links"
                enableByDefault="true"
-               id="org.polarsys.capella.core.platform.sirius.ui.menu.commands.createcategories"
+               id="org.polarsys.capella.core.platform.sirius.ui.actions.CreateCategoriesWizardAction"
                name="Create category">
          </item>
       </category>
@@ -874,11 +879,11 @@
       </with>
       </definition>
       <definition
-            id="org.polarsys.capella.core.platforme.sirius.ui.menu.categories.visibilityInDiagramExpr">
+            id="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
                 <iterate ifEmpty="false">
                 <or>
-                    <instanceof value="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart"/>
-                    <instanceof value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart"/>
+                    <instanceof value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart"/>
+                    <instanceof value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"/>
                 </or>
                 </iterate>
       </definition>
@@ -895,10 +900,10 @@
                   <iterate>
                        <or>
                         <instanceof
-                              value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart">
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
                         </instanceof>
                         <instanceof
-                              value="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                         </instanceof>
                        </or>
                   </iterate>
@@ -913,7 +918,7 @@
    
    <extension point="org.eclipse.core.expressions.definitions">
       <definition
-            id="org.polarsys.capella.core.sementic.ui.expression.transitionVisibilityModelElementExpression">
+            id="org.polarsys.capella.core.semantic.ui.expression.transitionVisibilityModelElementExpression">
                <with
                   variable="selection">
                <and>

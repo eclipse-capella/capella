@@ -17,22 +17,23 @@ import java.util.List;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IActionDelegate;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ef.command.AbstractReadOnlyCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.ui.actions.AbstractTigAction;
 import org.polarsys.capella.common.ui.toolkit.dialogs.TransferTreeListDialog;
-import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.core.business.queries.capellacore.CapellaElement_OutgoingRequirement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.Namespace;
 import org.polarsys.capella.core.data.requirement.RequirementFactory;
 import org.polarsys.capella.core.data.requirement.RequirementsTrace;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadOnlyCommand;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.model.utils.CollectionExt;
 
 /**
  */
@@ -109,8 +110,8 @@ public class RequirementManagerWizardAction extends AbstractTigAction {
       new TransferTreeListDialog(getActiveShell(),
         Messages.RequirementManagerWizardAction_Title,
         Messages.RequirementManagerWizardAction_Message,
-        MDEAdapterFactory.getEditingDomain(),
-        MDEAdapterFactory.getAdapterFactory());
+        TransactionHelper.getEditingDomain(CollectionExt.mergeCollections(availableElements, currentElements)),
+        CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
     dialog.setLeftInput(availableElements, null /* no context */);
     dialog.setRightInput(currentElements, null /* no context */);
     if (Window.OK == dialog.open()) {
@@ -118,7 +119,7 @@ public class RequirementManagerWizardAction extends AbstractTigAction {
       // Create a command to perform the model changes.
       AbstractReadWriteCommand performedChangesCommand = new AbstractReadWriteCommand() {
         /**
-         * @see org.polarsys.capella.common.tig.ef.command.AbstractCommand#getName()
+         * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
          */
         @Override
         public String getName() {

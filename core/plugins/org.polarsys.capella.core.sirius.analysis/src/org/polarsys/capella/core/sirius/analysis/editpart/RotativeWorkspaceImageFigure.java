@@ -1,22 +1,21 @@
 /*******************************************************************************
- * Copyright (c) 2000, 2004 IBM Corporation and others.
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *  
  * Contributors:
- *     IBM Corporation - initial API and implementation
- *     Thales - add alpha management
+ *    Thales - initial API and implementation
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis.editpart;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;

@@ -9,6 +9,6 @@ Export-Package: org.polarsys.capella.common.ui.toolkit.services.behaviors,
  org.polarsys.capella.common.ui.toolkit.services.validators
 Require-Bundle: org.polarsys.capella.common.tools.report;visibility:=reexport,
  org.polarsys.capella.common.ui
-Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin

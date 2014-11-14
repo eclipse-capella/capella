@@ -15,7 +15,6 @@ import java.util.HashSet;
 
 import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation;
@@ -46,7 +45,7 @@ public class TopDownMatchPolicy extends org.polarsys.capella.core.transition.com
   }
 
   @Override
-  public Comparable<?> getMatchId(EObject element_p, IModelScope scope_p) {
+  public Comparable<?> getMatchID(EObject element_p, IModelScope scope_p) {
     EObject bound = null;
 
     IContext context = getContext();
@@ -98,7 +97,7 @@ public class TopDownMatchPolicy extends org.polarsys.capella.core.transition.com
     EObject source = handler_p.getSourceElement(element_p, context);
 
     if ((target != null) && (source != null)) {
-      ID = "TRACE_BETWEEN_" + getMatchId(target, scope_p) + " " + getMatchId(source, scope_p) + " " + element_p.eClass().getName();
+      ID = "TRACE_BETWEEN_" + getMatchID(target, scope_p) + " " + getMatchID(source, scope_p) + " " + element_p.eClass().getName();
 
     }
 

@@ -246,8 +246,7 @@
       
       
       
-      <bindings properties="org.polarsys.capella.common.re.createRec">
-        
+      <bindings properties="org.polarsys.capella.common.re.createRec">      
         
         
         <propertyBinding 
@@ -256,12 +255,12 @@
         </propertyBinding>
       
         <propertyBinding 
-            property="target"
+            property="itarget"
             renderer="none">
         </propertyBinding>
         
         <propertyBinding 
-            property="source"
+            property="isource"
             renderer="none">
         </propertyBinding>
         
@@ -275,16 +274,12 @@
             renderer="none">
         </propertyBinding>
         
-      </bindings>
-      
-      
-      
-      
-      
+      </bindings>  
+                      
       <bindings properties="org.polarsys.capella.common.re.updateDef">
         
         <propertyBinding 
-            property="target"
+            property="itarget"
             renderer="replicableElementRenderer">
         </propertyBinding>
       
@@ -294,7 +289,7 @@
         </propertyBinding>
         
         <propertyBinding 
-            property="source"
+            property="isource"
             renderer="replicaRenderer">
         </propertyBinding>
         
@@ -310,7 +305,7 @@
       <bindings properties="org.polarsys.capella.common.re.updateCur">
         
         <propertyBinding 
-            property="target"
+            property="itarget"
             renderer="replicableElementRenderer">
         </propertyBinding>
       
@@ -320,7 +315,7 @@
         </propertyBinding>
         
         <propertyBinding 
-            property="source"
+            property="isource"
             renderer="none">
         </propertyBinding>
         
@@ -362,7 +357,7 @@
       <bindings properties="org.polarsys.capella.common.re.createReplica">
         
         <propertyBinding 
-            property="source"
+            property="isource"
             renderer="replicableElementRenderer">
             <!-- ReplicableElement, no edit, browse allowed -->
         </propertyBinding>
@@ -397,16 +392,13 @@
             renderer="replicaContentLocationRenderer">
         </propertyBinding>
         
-      </bindings>
-      
-      
-      
+      </bindings>       
       
       <bindings properties="org.polarsys.capella.common.re.updateReplica">
       
       
         <propertyBinding 
-            property="source"
+            property="isource"
             renderer="uneditReTextRenderer">
             <!-- ReplicableElement, name edit not allowed -->
         </propertyBinding>
@@ -417,7 +409,7 @@
         </propertyBinding>
         
         <propertyBinding 
-            property="target"
+            property="itarget"
             renderer="reTextRenderer">
         </propertyBinding>
         
@@ -450,9 +442,8 @@
             property="targetContentLocation"
             renderer="replicaContentLocationRenderer">
         </propertyBinding>
-      </bindings>
-      
-      
+      </bindings>     
+            
    </extension>
    
    
@@ -701,10 +692,8 @@
       
      <handler commandId="org.polarsys.capella.common.re.createReplica"
             class="org.polarsys.capella.common.re.ui.handlers.CreateReplicaUiHandler">
-     </handler>
-     
+     </handler>     
    </extension>
-   
    
    
    <extension point="org.eclipse.ui.menus">
@@ -746,6 +735,20 @@
          <command
                commandId="org.polarsys.capella.common.re.updateReplica"
                id="org.polarsys.capella.common.re.updateReplica"
+               style="push">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
+               id="org.polarsys.capella.common.re.deleteReplicaAndRelatedElements"
+               style="push">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
+               id="org.polarsys.capella.common.re.deleteReplicaPreserveRelatedElements"
                style="push">
             <visibleWhen checkEnabled="true"/>
          </command>
@@ -837,9 +840,6 @@
          
       </menuContribution>
       
-      
-      
-      
       <menuContribution allPopups="false" locationURI="toolbar:org.polarsys.capella.common.re.sample">
 
       </menuContribution>
@@ -865,56 +865,56 @@
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addElements"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Update REC from selection"
+          description="Include selected elements"
           name="Include selected elements">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.allElements"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Create a REC from selection"
+          description="Include elements from model"
           name="Include elements from model">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.scopeElements"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Update REC from selection"
+          description="Include related elements"
           name="Include related elements">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addChildren"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Update REC from selection"
+          description="Include children of selected elements"
           name="Include children of selected elements">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Update REC from selection"
+          description="Include required dependencies of selected elements"
           name="Include required dependencies of selected elements">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.browse.addDependencies"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Update REC from selection"
+          description="Include all required dependencies"
           name="Include all required dependencies">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.delete"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Update REC from selected RPL"
+          description="Remove selected elements"
           name="Remove selected elements">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.deleteChildren"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Update REC from selected RPL"
+          description="Remove selected elements and children"
           name="Remove selected elements and children">
     </command>
     
     <command id="org.polarsys.capella.common.re.subcommands.suffixElement"
           categoryId="org.polarsys.capella.common.re.subcommands"
-          description="Suffix elements"
-          name="Add/remove suffix">
+          description="Add/remove suffix on elements"
+          name="Add/remove suffix on elements">
     </command>
     
    </extension>

@@ -24,9 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
-
 import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
-import org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryContentProvider;
 import org.polarsys.capella.common.ui.toolkit.browser.BrowserActivator;
 import org.polarsys.capella.common.ui.toolkit.browser.category.CategoryRegistry;
 import org.polarsys.capella.common.ui.toolkit.browser.category.ICategory;
@@ -34,7 +32,9 @@ import org.polarsys.capella.common.ui.toolkit.browser.content.provider.IBrowserC
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.BrowserElementWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.CategoryWrapper;
 import org.polarsys.capella.common.ui.toolkit.browser.content.provider.wrapper.EObjectWrapper;
+import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserModel;
 import org.polarsys.capella.common.ui.toolkit.browser.query.QueryAdapter;
+import org.polarsys.capella.common.ui.toolkit.provider.GroupedAdapterFactoryContentProvider;
 
 /**
  * Controller.
@@ -56,12 +56,15 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
   protected HashMap<BrowserElementWrapper, BrowserElementWrapper> _semanticParentHashMap;
 
   protected boolean refreshRequired = false;
+  
+  protected ISemanticBrowserModel model;
 
   /**
    * Constructor.
    */
-  public AbstractContentProvider(AdapterFactory adapterFactory_p) {
+  public AbstractContentProvider(AdapterFactory adapterFactory_p, ISemanticBrowserModel model_p) {
     super(adapterFactory_p);
+    model = model_p;
     _semanticParentHashMap = new HashMap<BrowserElementWrapper, BrowserElementWrapper>(0);
   }
 
@@ -131,12 +134,16 @@ public abstract class AbstractContentProvider extends GroupedAdapterFactoryConte
             // Flag to filter out empty category.
             boolean shouldRemovedEmptyCategoryWrapper = false;
             if (gatherElement instanceof ICategory) {
-              Set<Object> categoryChildren = new HashSet<Object>(0);
-              // Compute category children, if no child, remove this category from displayed elements.
-              getCategoryChildren((ICategory) gatherElement, elementWrapper, categoryChildren);
-              if (categoryChildren.isEmpty()) {
+              if (!model.doesShowCategory((ICategory) gatherElement)) {
                 shouldRemovedEmptyCategoryWrapper = true;
-              }
+              } else {
+                Set<Object> categoryChildren = new HashSet<Object>(0);
+                // Compute category children, if no child, remove this category from displayed elements.
+                getCategoryChildren((ICategory) gatherElement, elementWrapper, categoryChildren);
+                if (categoryChildren.isEmpty()) {
+                  shouldRemovedEmptyCategoryWrapper = true;
+                }
+              }            	
             }
             if (shouldRemovedEmptyCategoryWrapper) {
               wrappers.remove(elementWrapper);

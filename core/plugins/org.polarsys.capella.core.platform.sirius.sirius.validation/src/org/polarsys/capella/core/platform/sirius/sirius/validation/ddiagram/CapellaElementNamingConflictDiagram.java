@@ -24,12 +24,11 @@ import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
-import org.polarsys.capella.common.data.modellingcore.AbstractRelationship;
 
 /**
  * This is a  rule for diagram naming conflicts rules
@@ -53,7 +52,7 @@ public class CapellaElementNamingConflictDiagram extends AbstractValidationRule 
     EObject eObj = ctx_p.getTarget();
     EMFEventType eType = ctx_p.getEventType();
     if (eType == EMFEventType.NULL) {
-      
+
       // Do not check "naming conflicts" under scenarios and capabilities
       if (eObj instanceof CapellaElement) {
         // This collection will store the conflicts statuses
@@ -62,26 +61,26 @@ public class CapellaElementNamingConflictDiagram extends AbstractValidationRule 
         // Creates a Map which will map each type with a list of the instances names of this type
         Map<String, List<String>> typesAndNames = new HashMap<String, List<String>>();
         CapellaElement elt = (CapellaElement) eObj;
-        
+
         // look for diagram naming conflict
         if (!(elt instanceof AbstractRelationship)) {
           // get session
           final Session curSession = SessionManager.INSTANCE.getSession(elt);
           if (curSession != null) {
-              // get all diagram element contained by given element
-              final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(elt, curSession);
-              for (DRepresentation dRepresentation : allRepresentations) {
-                if (dRepresentation instanceof DDiagram) {
-                    DDiagram diagram = (DDiagram) dRepresentation;
-                    // Gets the name and the type of the current element
-                    String currentElementName = diagram.getName();
-                    String currentElementType = diagram.eClass().getName();
-                    hasConflict = checkTheNamingConflict(ctx_p, statuses, hasConflict, typesAndNames, elt, currentElementName, currentElementType);
-                }
+            // get all diagram element contained by given element
+            final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(elt, curSession);
+            for (DRepresentation dRepresentation : allRepresentations) {
+              if (dRepresentation instanceof DDiagram) {
+                DDiagram diagram = (DDiagram) dRepresentation;
+                // Gets the name and the type of the current element
+                String currentElementName = diagram.getName();
+                String currentElementType = diagram.eClass().getName();
+                hasConflict = checkTheNamingConflict(ctx_p, statuses, hasConflict, typesAndNames, elt, currentElementName, currentElementType);
               }
+            }
           }
         }
-        
+
         if (hasConflict) {
           // There are conflicts
           // Returns them as a multiStatuses status
@@ -104,9 +103,8 @@ public class CapellaElementNamingConflictDiagram extends AbstractValidationRule 
    * @param currentElementType
    * @return
    */
-  private boolean checkTheNamingConflict(IValidationContext ctx_p, Collection<IStatus> statuses, boolean hasConflict_p, 
-        Map<String, List<String>> typesAndNames, CapellaElement elt,
-      String currentElementName, String currentElementType) {
+  private boolean checkTheNamingConflict(IValidationContext ctx_p, Collection<IStatus> statuses, boolean hasConflict_p,
+      Map<String, List<String>> typesAndNames, CapellaElement elt, String currentElementName, String currentElementType) {
     boolean hasConflict = hasConflict_p;
     if (!typesAndNames.containsKey(currentElementType)) {
       // This type doesn't have a map entry

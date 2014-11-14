@@ -551,6 +551,15 @@ public class BlockArchitectureExt {
   }
 
   /**
+   * Return true if the given component is contained by a block architecture
+   * @param component_p
+   * @return
+   */
+  public static boolean isRootComponent(Component component_p) {
+	  return component_p.eContainer() instanceof BlockArchitecture;
+  }
+
+  /**
    * Retrieve Components from BlockArchitecture Layer + look for available modes and states
    * @param ele_p
    * @param blockArch_p

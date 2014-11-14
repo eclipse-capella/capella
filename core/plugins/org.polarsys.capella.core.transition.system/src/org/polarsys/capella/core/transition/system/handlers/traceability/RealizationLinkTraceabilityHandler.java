@@ -23,8 +23,18 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.TransfoLink;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Namespace;
+import org.polarsys.capella.core.data.capellacore.Trace;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.Interface;
@@ -37,28 +47,18 @@ import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacommon.TransfoLink;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.Namespace;
-import org.polarsys.capella.core.data.capellacore.Trace;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerFactory;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.model.handler.command.DeleteStructureCommand;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.handlers.attachment.AttachmentHelper;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.handlers.notify.INotifyChangeEvent;
 import org.polarsys.capella.core.transition.common.handlers.notify.INotifyListener;
 import org.polarsys.capella.core.transition.common.handlers.notify.NotifyHandlerHelper;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityTraceHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.LinkTraceabilityHandler;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -221,7 +221,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   private void disposeUnattachedElements(IContext context_p) {
     Collection<EObject> traces = Collections.singletonList((EObject) getDefaultOwner(context_p));
     if (!traces.isEmpty()) {
-      DeleteStructureCommand command = new DeleteStructureCommand(MDEAdapterFactory.getEditingDomain(), getDefaultOwner(context_p).eContents(), true);
+      DeleteStructureCommand command =
+          new DeleteStructureCommand((TransactionalEditingDomain) context_p.get(ITransitionConstants.TRANSITION_TARGET_EDITING_DOMAIN), getDefaultOwner(
+              context_p).eContents(), true);
       if (command.canExecute()) {
         command.execute();
       }
@@ -231,6 +233,7 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
   protected Namespace getDefaultOwner(IContext context_p) {
     if (!context_p.exists(DEFAULT_OWNER)) {
       Namespace owner = CapellamodellerFactory.eINSTANCE.createFolder();
+      AttachmentHelper.getInstance(context_p).createdElement(owner, owner, context_p);
       context_p.put(DEFAULT_OWNER, owner);
     }
     return (Namespace) context_p.get(DEFAULT_OWNER);
@@ -313,8 +316,9 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
           CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
       mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.JOIN_PSEUDO_STATE, CapellacommonPackage.Literals.JOIN_PSEUDO_STATE,
           CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
-      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE, CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE,
-          CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
+      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE,
+          CapellacommonPackage.Literals.TERMINATE_PSEUDO_STATE, CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION,
+          CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
       mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.FINAL_STATE, CapellacommonPackage.Literals.FINAL_STATE,
           CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
       mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.MODE, CapellacommonPackage.Literals.MODE,
@@ -323,6 +327,8 @@ public class RealizationLinkTraceabilityHandler extends LinkTraceabilityHandler 
           CapellacommonPackage.Literals.ABSTRACT_STATE_REALIZATION, CapellacommonPackage.Literals.ABSTRACT_STATE__OWNED_ABSTRACT_STATE_REALIZATIONS));
       mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.STATE_TRANSITION, CapellacommonPackage.Literals.STATE_TRANSITION,
           CapellacommonPackage.Literals.STATE_TRANSITION_REALIZATION, CapellacommonPackage.Literals.STATE_TRANSITION__OWNED_STATE_TRANSITION_REALIZATIONS));
+      mappingAdd(mapping, new RealizationLinkMapping(CapellacommonPackage.Literals.STATE_EVENT, CapellacommonPackage.Literals.STATE_EVENT,
+          CapellacommonPackage.Literals.STATE_EVENT_REALIZATION, CapellacommonPackage.Literals.STATE_EVENT__OWNED_STATE_EVENT_REALIZATIONS));
 
       // functional chain realizations
       mappingAdd(mapping, new RealizationLinkMapping(OaPackage.Literals.OPERATIONAL_PROCESS, FaPackage.Literals.FUNCTIONAL_CHAIN,

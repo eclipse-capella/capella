@@ -15,11 +15,9 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.diffmerge.api.scopes.IFeaturedModelScope;
+import org.eclipse.emf.diffmerge.api.scopes.IEditableModelScope;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -34,6 +32,7 @@ import org.polarsys.capella.core.transition.system.topdown.handlers.traceability
 import org.polarsys.capella.core.transition.system.topdown.handlers.traceability.config.MergeTargetConfiguration;
 import org.polarsys.capella.core.transition.system.topdown.merge.scope.ReferenceModelScope;
 import org.polarsys.capella.core.transition.system.topdown.merge.scope.TargetModelScope;
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -43,13 +42,13 @@ public class InitializeDiffMergeActivity extends org.polarsys.capella.core.trans
   public static final String ID = "org.polarsys.capella.core.transition.system.topdown.activities.InitializeDiffMergeActivity"; //$NON-NLS-1$
 
   @Override
-  protected IHandler createDefaultTraceabilitySourceHandler() {
+  protected IHandler createDefaultTraceabilitySourceHandler(IContext context_p) {
     ITraceabilityConfiguration configuration = new MergeSourceConfiguration();
     return new CompoundTraceabilityHandler(configuration);
   }
 
   @Override
-  protected IHandler createDefaultTraceabilityTargetHandler() {
+  protected IHandler createDefaultTraceabilityTargetHandler(IContext context_p) {
     ITraceabilityConfiguration configuration = new MergeTargetConfiguration();
     return new CompoundTraceabilityHandler(configuration);
   }
@@ -62,7 +61,7 @@ public class InitializeDiffMergeActivity extends org.polarsys.capella.core.trans
     List<EObject> rootSource = new ArrayList<EObject>();
     rootSource.add((EObject) context_p.get(ITransitionConstants.MERGE_REFERENCE_CONTAINER));
 
-    IFeaturedModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
+    IEditableModelScope sourceScope = new ReferenceModelScope(rootSource, context_p);
 
     context_p.put(ITransitionConstants.MERGE_REFERENCE_SCOPE, sourceScope);
 

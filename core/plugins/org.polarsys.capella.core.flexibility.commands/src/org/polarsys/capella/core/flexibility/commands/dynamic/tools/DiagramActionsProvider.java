@@ -41,96 +41,97 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.BeginLabelStyle;
+import org.eclipse.sirius.diagram.CenterLabelStyle;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialect;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.BeginLabelStyle;
-import org.eclipse.sirius.viewpoint.CenterLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.EndLabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceImpl;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceImpl;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
-import org.polarsys.capella.core.sirius.analysis.DiagramServices;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.flexibility.commands.actions.DefaultAction;
 import org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider;
+import org.polarsys.capella.core.sirius.analysis.CapellaServices;
+import org.polarsys.capella.core.sirius.analysis.DiagramServices;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.sirius.ui.danalysis.CapellaAnalysisSelector;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
 
 /**
  */
 public class DiagramActionsProvider implements IActionsProvider {
 
-  public static DAnalysis initDynamicAnalysis() {
-    ResourceSet set = MDEAdapterFactory.getResourceSet();
-    Resource res = null;
-
-    for (Resource resE : set.getResources()) {
-      if (resE.getURI().toString().equals("capella://dynamic")) {
-        if (resE.getContents().size() > 0) {
-          return (DAnalysis) resE.getContents().get(0);
-        } else {
-          res = resE;
-        }
-      }
-    }
-
-    if (res == null) {
-      res = new XMLResourceImpl();
-      res.setURI(URI.createURI("capella://dynamic"));
-    }
-
-    //Weird method to avoid.
-    EPackage.Registry.INSTANCE.put("capella://dynamic", null);
-
-    DAnalysis ana = ViewpointFactory.eINSTANCE.createDAnalysis();
-    res.getContents().add(ana);
-    set.getResources().add(res);
-
-    return ana;
-  }
-
   public class OpenDynamicViewer extends DefaultAction {
+
+	  public DAnalysis initDynamicAnalysis() {
+	    ResourceSet set = TransactionHelper.getEditingDomain(getSelectedEObjects()).getResourceSet();
+	    Resource res = null;
+
+	    for (Resource resE : set.getResources()) {
+	      if (resE.getURI().toString().equals("capella://dynamic")) { //$NON-NLS-1$
+	        if (resE.getContents().size() > 0) {
+	          return (DAnalysis) resE.getContents().get(0);
+	        } else {
+	          res = resE;
+	        }
+	      }
+	    }
+
+	    if (res == null) {
+	      res = new XMLResourceImpl();
+	      res.setURI(URI.createURI("capella://dynamic")); //$NON-NLS-1$
+	    }
+
+	    //Weird method to avoid.
+	    EPackage.Registry.INSTANCE.put("capella://dynamic", null); //$NON-NLS-1$
+
+	    DAnalysis ana = ViewpointFactory.eINSTANCE.createDAnalysis();
+	    res.getContents().add(ana);
+	    set.getResources().add(res);
+
+	    return ana;
+	  }
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -147,12 +148,12 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action opens a dynamic diagram of selected elements";
+      return "This action opens a dynamic diagram of selected elements"; //$NON-NLS-1$
     }
 
     @Override
     public String getText() {
-      return "Dynamic viewer";
+      return "Dynamic viewer"; //$NON-NLS-1$
     }
 
     @Override
@@ -185,7 +186,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     public Collection<Viewpoint> getViewpoints() {
       Collection<Viewpoint> vs = new ArrayList<Viewpoint>();
-      ResourceSet set = MDEAdapterFactory.getResourceSet();
+      ResourceSet set = TransactionHelper.getEditingDomain(getSelectedEObjects()).getResourceSet();
 
       for (Resource odesign : set.getResources()) {
         if (odesign instanceof AirdResource) {
@@ -231,9 +232,8 @@ public class DiagramActionsProvider implements IActionsProvider {
         boolean delete = false;
         Session session = SessionManager.INSTANCE.getSession(root);
         DAnalysisSessionImpl a = ((DAnalysisSessionImpl) session);
-        DiagramDialect dialect = new DiagramDialect();
 
-        String viewpointName = "";
+        String viewpointName = ""; //$NON-NLS-1$
         if (root instanceof LogicalFunction) {
           viewpointName = IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME;
 
@@ -324,7 +324,9 @@ public class DiagramActionsProvider implements IActionsProvider {
             }
           });
 
-          representation = dialect.getServices().createRepresentation("[DYNAMIC] " + desc.getName(), root, desc, session, new NullProgressMonitor());
+          DiagramDialect dialect = new DiagramDialect();
+
+          representation = dialect.getServices().createRepresentation("[DYNAMIC] " + desc.getName(), root, desc, session, new NullProgressMonitor()); //$NON-NLS-1$
           a.setAnalysisSelector(new CapellaAnalysisSelector() {
 
             /**
@@ -339,7 +341,7 @@ public class DiagramActionsProvider implements IActionsProvider {
         }
 
         if (session != null) {
-          editor = DialectUIManager.INSTANCE.openEditor(session, representation);
+          editor = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
         }
         ((DSemanticDecorator) representation).setTarget(root);
         if (delete) {
@@ -386,8 +388,7 @@ public class DiagramActionsProvider implements IActionsProvider {
       }
 
     }
-
-  };
+  }
 
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
@@ -416,7 +417,7 @@ public class DiagramActionsProvider implements IActionsProvider {
     public String getDescription() {
       return NLS
           .bind(
-              "This action enables all viewpoints in each aird fragments. Sometimes, aird fragment doesn't have all viewpoint definitions and it is not possible to create a diagram in this fragment.",
+              "This action enables all viewpoints in each aird fragments. Sometimes, aird fragment doesn't have all viewpoint definitions and it is not possible to create a diagram in this fragment.", //$NON-NLS-1$
               getText());
     }
 
@@ -427,7 +428,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -445,7 +446,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Repair viewpoint definition on fragments";
+      return "Repair viewpoint definition on fragments"; //$NON-NLS-1$
     }
 
     Collection<Resource> getResources() {
@@ -483,7 +484,7 @@ public class DiagramActionsProvider implements IActionsProvider {
           Collection<Resource> objects = getResources();
           List<DAnalysis> analysises = new ArrayList<DAnalysis>();
 
-          getLogger().info(new EmbeddedMessage(objects.size() + " resources to be opened", IReportManagerDefaultComponents.UI));
+          getLogger().info(new EmbeddedMessage(objects.size() + " resources to be opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
           //Retrieve all viewpoints definition
           for (Resource container : objects) {
@@ -502,7 +503,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                           viewpoints.put(key, view.getViewpoint());
 
                           getLogger().info(
-                              new EmbeddedMessage(NLS.bind("Get viewpoint definition ''{0}'' in ''{1}''", getName(view.getViewpoint()),
+                              new EmbeddedMessage(NLS.bind("Get viewpoint definition ''{0}'' in ''{1}''", getName(view.getViewpoint()), //$NON-NLS-1$
                                   getName(analysis.eResource()).toString()), IReportManagerDefaultComponents.UI));
                           viewpointsEnabled.put(key, Boolean.valueOf(analysis.getSelectedViews().contains(view)));
                         } else {
@@ -540,7 +541,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                   analysis.getSelectedViews().add(rep);
                 }
                 getLogger().info(
-                    new EmbeddedMessage(NLS.bind("Add viewpoint ''{0}'' in ''{1}''", getName(viewpoint), getName(analysis.eResource())),
+                    new EmbeddedMessage(NLS.bind("Add viewpoint ''{0}'' in ''{1}''", getName(viewpoint), getName(analysis.eResource())), //$NON-NLS-1$
                         IReportManagerDefaultComponents.UI));
                 hasProceed = true;
                 nbProceed++;
@@ -551,9 +552,9 @@ public class DiagramActionsProvider implements IActionsProvider {
           }
 
           if (!hasProceed) {
-            getLogger().info(new EmbeddedMessage("No viewpoint definition have been added", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage("No viewpoint definition have been added", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           } else {
-            getLogger().info(new EmbeddedMessage(nbProceed + " viewpoint have been added", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage(nbProceed + " viewpoint have been added", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
           monitor_p.done();
@@ -624,7 +625,7 @@ public class DiagramActionsProvider implements IActionsProvider {
         Session session = SessionManager.INSTANCE.getSession(semantic);
 
         if (session != null) {
-          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object_p);
+          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object_p, new NullProgressMonitor());
           editor.getSite().getPage().closeEditor(editor, false);
         }
 
@@ -634,14 +635,13 @@ public class DiagramActionsProvider implements IActionsProvider {
       }
       return hasProceed;
     }
-
-  };
+  }
 
   private class ReColorEdgesAction extends DefaultAction {
 
     @Override
     public String getDescription() {
-      return NLS.bind("This action set default color on edges of all diagrams.", getText());
+      return NLS.bind("This action set default color on edges of all diagrams.", getText()); //$NON-NLS-1$
     }
 
     @Override
@@ -651,7 +651,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -669,7 +669,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Set default color on edges";
+      return "Set default color on edges"; //$NON-NLS-1$
     }
 
     @Override
@@ -701,7 +701,7 @@ public class DiagramActionsProvider implements IActionsProvider {
       }
 
       if (!hasProceed) {
-        getLogger().info(new EmbeddedMessage("No edges have been re-colored", IReportManagerDefaultComponents.UI));
+        getLogger().info(new EmbeddedMessage("No edges have been re-colored", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
       }
     }
@@ -742,7 +742,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 ColorDescription colorDescription = mapping.getStyle().getBeginLabelStyleDescription().getLabelColor();
 
                 if (labelStyle == null) {
-                  labelStyle = ViewpointFactory.eINSTANCE.createBeginLabelStyle();
+                  labelStyle = DiagramFactory.eINSTANCE.createBeginLabelStyle();
                   edgeStyle.setBeginLabelStyle(labelStyle);
                 }
 
@@ -762,7 +762,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 ColorDescription colorDescription = mapping.getStyle().getCenterLabelStyleDescription().getLabelColor();
 
                 if (labelStyle == null) {
-                  labelStyle = ViewpointFactory.eINSTANCE.createCenterLabelStyle();
+                  labelStyle = DiagramFactory.eINSTANCE.createCenterLabelStyle();
                   edgeStyle.setCenterLabelStyle(labelStyle);
                 }
 
@@ -781,7 +781,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 ColorDescription colorDescription = mapping.getStyle().getEndLabelStyleDescription().getLabelColor();
 
                 if (labelStyle == null) {
-                  labelStyle = ViewpointFactory.eINSTANCE.createEndLabelStyle();
+                  labelStyle = DiagramFactory.eINSTANCE.createEndLabelStyle();
                   edgeStyle.setEndLabelStyle(labelStyle);
                 }
 
@@ -801,13 +801,13 @@ public class DiagramActionsProvider implements IActionsProvider {
 
       if (hasProceed) {
         getLogger().info(
-            new EmbeddedMessage(NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object_p.getName()), IReportManagerDefaultComponents.UI,
+            new EmbeddedMessage(NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object_p.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
                 object_p));
         try {
           object_p.refresh();
         } catch (Exception exceptionP) {
           getLogger().warn(
-              new EmbeddedMessage(NLS.bind("An error occured while refreshing diagram ''{0}''.", object_p.getName()), IReportManagerDefaultComponents.UI,
+              new EmbeddedMessage(NLS.bind("An error occured while refreshing diagram ''{0}''.", object_p.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
                   object_p));
         }
       }
@@ -837,7 +837,7 @@ public class DiagramActionsProvider implements IActionsProvider {
         strokeColor_p.setGreen(0);
       }
     }
-  };
+  }
 
   public class RefreshDiagramAction extends DefaultAction {
 
@@ -848,7 +848,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action opens any diagrams to fix filter problems";
+      return "This action opens any diagrams to fix filter problems"; //$NON-NLS-1$
     }
 
     @Override
@@ -858,7 +858,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -876,7 +876,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public String getText() {
-      return "Repair dirty diagrams";
+      return "Repair dirty diagrams"; //$NON-NLS-1$
     }
 
     List<DDiagram> getDiagrams() {
@@ -911,11 +911,11 @@ public class DiagramActionsProvider implements IActionsProvider {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<DDiagram> objects = getDiagrams();
-          getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be opened", IReportManagerDefaultComponents.UI));
+          getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-          monitor_p.beginTask("Open diagrams", objects.size());
+          monitor_p.beginTask("Open diagrams", objects.size()); //$NON-NLS-1$
           for (DDiagram object : objects) {
-            monitor_p.setTaskName("Opening : " + object.getName());
+            monitor_p.setTaskName("Opening : " + object.getName()); //$NON-NLS-1$
             if (process(object)) {
               hasProceed = true;
               nbProceed++;
@@ -924,9 +924,9 @@ public class DiagramActionsProvider implements IActionsProvider {
           }
 
           if (!hasProceed) {
-            getLogger().info(new EmbeddedMessage("No diagram have been opened", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage("No diagram have been opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           } else {
-            getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been opened", IReportManagerDefaultComponents.UI));
+            getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
           monitor_p.done();
@@ -956,7 +956,7 @@ public class DiagramActionsProvider implements IActionsProvider {
         Session session = SessionManager.INSTANCE.getSession(semantic);
 
         if (session != null) {
-          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object_p);
+          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object_p, new NullProgressMonitor());
           editor.getSite().getPage().closeEditor(editor, false);
         }
 
@@ -966,8 +966,7 @@ public class DiagramActionsProvider implements IActionsProvider {
       }
       return hasProceed;
     }
-
-  };
+  }
 
   public class DiagramProxyReparatorAccessor extends DefaultAction {
 
@@ -975,7 +974,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     protected String getIconFile() {
-      return "process.gif";
+      return "process.gif"; //$NON-NLS-1$
     }
 
     @Override
@@ -993,12 +992,12 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     @Override
     public String getDescription() {
-      return "This action fixes graphical elements linked to a semantic element but this semantic element has been moved to another fragment and its graphical element has not yet been updated.";
+      return "This action fixes graphical elements linked to a semantic element but this semantic element has been moved to another fragment and its graphical element has not yet been updated."; //$NON-NLS-1$
     }
 
     @Override
     public String getText() {
-      return "Repair graphical elements linked to an invalid semantic element";
+      return "Repair graphical elements linked to an invalid semantic element"; //$NON-NLS-1$
     }
 
     @Override
@@ -1018,7 +1017,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
       boolean noDiagrams = true;
 
-      logger.info(new EmbeddedMessage("Diagrams checking...", IReportManagerDefaultComponents.UI));
+      logger.info(new EmbeddedMessage("Diagrams checking...", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
       if (getSelectedEObjects().size() > 0) {
         EObject root = getSelectedEObjects().get(0);
@@ -1045,7 +1044,7 @@ public class DiagramActionsProvider implements IActionsProvider {
       mapIds.clear();
 
       if (noDiagrams) {
-        logger.info(new EmbeddedMessage("No diagrams can be fixed.", IReportManagerDefaultComponents.UI));
+        logger.info(new EmbeddedMessage("No diagrams can be fixed.", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
       }
 
     }
@@ -1076,23 +1075,23 @@ public class DiagramActionsProvider implements IActionsProvider {
             EObject uri = mapIds.get(value);
             setElement(element, proxy, uri, feature);
 
-            String info = "";
+            String info = ""; //$NON-NLS-1$
             if (element instanceof DDiagramElement) {
               info += ((AbstractNamedElement) uri).getName();
             }
             getLogger().info(
-                new EmbeddedMessage(NLS.bind("''{0}'' has been replaced by ''{1}'' [{2}]", new Object[] { obj.eProxyURI().toString(), EcoreUtil.getURI(uri),
+                new EmbeddedMessage(NLS.bind("''{0}'' has been replaced by ''{1}'' [{2}]", new Object[] { obj.eProxyURI().toString(), EcoreUtil.getURI(uri), //$NON-NLS-1$
                                                                                                          uri.eClass().getName(), info }),
                     IReportManagerDefaultComponents.UI, element));
             return 1;
           }
 
-          String info = "";
+          String info = ""; //$NON-NLS-1$
           if (element instanceof DDiagramElement) {
-            info += ((DDiagramElement) element).getName() + " contained by " + ((DDiagramElement) (element.eContainer())).getName();
+            info += ((DDiagramElement) element).getName() + " contained by " + ((DDiagramElement) (element.eContainer())).getName(); //$NON-NLS-1$
           }
           getLogger().warn(
-              new EmbeddedMessage(NLS.bind("''{0}'' couldn't be resolved. [{1}]", new Object[] { obj.eProxyURI().toString(), info }),
+              new EmbeddedMessage(NLS.bind("''{0}'' couldn't be resolved. [{1}]", new Object[] { obj.eProxyURI().toString(), info }), //$NON-NLS-1$
                   IReportManagerDefaultComponents.UI, element));
           return 2;
         }
@@ -1125,7 +1124,7 @@ public class DiagramActionsProvider implements IActionsProvider {
       int nbFix = 0;
       int nbNotFix = 0;
 
-      logger.info(new EmbeddedMessage(NLS.bind("Diagram ''{0}'' checking...", diagram_p.getName()), IReportManagerDefaultComponents.UI, diagram_p));
+      logger.info(new EmbeddedMessage(NLS.bind("Diagram ''{0}'' checking...", diagram_p.getName()), IReportManagerDefaultComponents.UI, diagram_p)); //$NON-NLS-1$
 
       for (DDiagramElement element : diagram_p.getDiagramElements()) {
         if (element.getTarget() != null) {
@@ -1156,11 +1155,11 @@ public class DiagramActionsProvider implements IActionsProvider {
         }
       }
 
-      logger.info(new EmbeddedMessage(NLS.bind("{0} problems potentially fixable have been found in this diagram.", nbProblem),
+      logger.info(new EmbeddedMessage(NLS.bind("{0} problems potentially fixable have been found in this diagram.", nbProblem), //$NON-NLS-1$
           IReportManagerDefaultComponents.UI, diagram_p));
       if (nbProblem > 0) {
-        logger.info(new EmbeddedMessage(NLS.bind("{0} problems in theses elements have been fixed.", nbFix), IReportManagerDefaultComponents.UI, diagram_p));
-        logger.info(new EmbeddedMessage(NLS.bind("{0} problems in theses elements could not be fixed.", nbNotFix), IReportManagerDefaultComponents.UI,
+        logger.info(new EmbeddedMessage(NLS.bind("{0} problems in theses elements have been fixed.", nbFix), IReportManagerDefaultComponents.UI, diagram_p)); //$NON-NLS-1$
+        logger.info(new EmbeddedMessage(NLS.bind("{0} problems in theses elements could not be fixed.", nbNotFix), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
             diagram_p));
       }
       return nbFix != 0;

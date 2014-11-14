@@ -29,7 +29,7 @@ public class EPFValidatorAdapter extends CapellaValidatorAdapter {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.model.validation.adapter.EValidatorAdapter#appendDiagnostics(org.eclipse.core.runtime.IStatus,
+   * @see org.polarsys.capella.core.validation.EValidatorAdapter#appendDiagnostics(org.eclipse.core.runtime.IStatus,
    *      org.eclipse.emf.common.util.DiagnosticChain)
    */
   @Override
@@ -47,7 +47,7 @@ public class EPFValidatorAdapter extends CapellaValidatorAdapter {
   }
 
   /**
-   * @see org.polarsys.capella.common.tig.model.validation.adapter.EValidatorAdapter#getValidator()
+   * @see org.polarsys.capella.core.validation.EValidatorAdapter#getValidator()
    */
   @Override
   public IBatchValidator getValidator() {

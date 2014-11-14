@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractNamedElement#getName <em>Name</em>}</li>
- *   <li>{@link org.polarsys.capella.common.data.modellingcore.AbstractNamedElement#getOwnedConstraints <em>Owned Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,32 +73,6 @@ public interface AbstractNamedElement extends ModelElement {
 	 */
 
 	void setName(String value);
-
-
-
-
-
-
-
-	/**
-	 * Returns the value of the '<em><b>Owned Constraints</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractConstraint}.
-
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Owned Constraints</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Constraints</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractNamedElement_OwnedConstraints()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the constraints that are stored/owned by this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='none' constraints='Some packaged elements of uml::Element::nearestPackage on which AbstractConstraint stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
-
-	EList<AbstractConstraint> getOwnedConstraints();
 
 
 

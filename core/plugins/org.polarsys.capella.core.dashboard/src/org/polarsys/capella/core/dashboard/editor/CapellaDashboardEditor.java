@@ -22,7 +22,7 @@ import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.events.ControlEvent;
@@ -61,7 +61,7 @@ import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 /**
  * Base class to implement Capella dashboard.
  */
-public class CapellaDashboardEditor extends SharedHeaderFormEditor implements SessionManagerListener2, ITabbedPropertySheetPageContributor {
+public class CapellaDashboardEditor extends SharedHeaderFormEditor implements SessionManagerListener, ITabbedPropertySheetPageContributor {
   /**
    * Logger.
    */
@@ -89,7 +89,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
 
       IFormPage page = createDocumentationPage();
       if (null != page) {
-    	addPage(page);
+        addPage(page);
       }
 
       // Add Operational Analysis if needed.
@@ -130,11 +130,12 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
    */
   protected IFormPage createDocumentationPage() {
     //return new CapellaDocumentationDashboardPage(this);
-	List<IConfigurationElement> providers = Arrays.asList(ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.dashboard", "documentationDashboardPageProvider"));
+    List<IConfigurationElement> providers =
+        Arrays.asList(ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.dashboard", "documentationDashboardPageProvider"));
     for (IConfigurationElement configurationElement : providers) {
       IDashboardPageProvider provider = (IDashboardPageProvider) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
       return provider.provideDashboardPage(this);
-	}
+    }
     return null;
   }
 
@@ -304,9 +305,12 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
    */
   @Override
   public void init(IEditorSite site_p, IEditorInput input_p) throws PartInitException {
+    if (!((CapellaDashboardEditorInput) input_p).getStatus().isOK()) {
+      throw new PartInitException(((CapellaDashboardEditorInput) input_p).getStatus());
+    }
     if (null == ((CapellaDashboardEditorInput) input_p).getCapellaProject()) {
-      throw new PartInitException(
-          new Status(IStatus.WARNING, CapellaDashboardActivator.getDefault().getPluginId(), Messages.CapellaDashboardEditor_Error_Message));
+      throw new PartInitException(new Status(IStatus.WARNING, CapellaDashboardActivator.getDefault().getPluginId(),
+          Messages.CapellaDashboardEditor_Error_Message));
     }
     super.init(site_p, input_p);
     // Register as session listener.
@@ -401,7 +405,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
   }
 
   /**
-   * @see org.eclipse.sirius.business.api.session.SessionManagerListener2#notify(org.eclipse.sirius.business.api.session.Session, int)
+   * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session, int)
    */
   public void notify(Session session_p, int notification_p) {
     // Filter on event for other sessions.

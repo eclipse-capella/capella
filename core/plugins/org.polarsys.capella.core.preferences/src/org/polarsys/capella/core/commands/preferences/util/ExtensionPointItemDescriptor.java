@@ -7,8 +7,7 @@
  *  
  * Contributors:
  *    Thales - initial API and implementation
- *    IBM Corporation 
- ******************************************************************************/
+ *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.util;
 
 import org.eclipse.core.runtime.CoreException;
@@ -86,7 +85,6 @@ public final class ExtensionPointItemDescriptor extends AbstractItemDescriptor i
   }
 
   /**
-   * Code was copied from XmlConstraintDescriptor class provided by org.eclipse.emf.validation.internal.util plug-in.
    * Returns the normalized constraint ID, which is prefixed by the contributing plug-in's ID.
    * @param pluginId the ID of the plug-in that contributes the constraint
    * @param id the constraint's ID, as declared in the XML

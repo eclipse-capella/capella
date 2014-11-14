@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
-import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.helpers.TransactionHelper;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
  */
@@ -29,7 +29,7 @@ public class PropertyExt {
    * @return the <code>Association</code> or <code>null</code> if the property is not bound to an association
    */
   public static Association getRegardingAssociation(CapellaElement elem_p) {
-    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+    SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(elem_p);
     if (semEditDomain != null) {
       ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
       if (crossReferencer != null) {

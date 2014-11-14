@@ -1,4 +1,4 @@
-//Generated on Tue Jun 24 15:10:04 CEST 2014 with EGF 1.2.0.v20140623-0645
+//Generated with EGF 1.2.0.v20140805-0858
 package org.polarsys.capella.common.tig.model;
 
 import org.eclipse.egf.emf.pattern.base.*;

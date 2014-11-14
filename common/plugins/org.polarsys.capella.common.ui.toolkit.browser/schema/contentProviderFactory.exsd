@@ -55,7 +55,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn="org.polarsys.capella.common.ui.toolkit.browser.content.provider.AbstractContentProviderFactory:"/>
+                  <meta.attribute kind="java" basedOn="org.polarsys.capella.common.ui.toolkit.browser.content.provider.factory.AbstractContentProviderFactory:"/>
                </appInfo>
             </annotation>
          </attribute>

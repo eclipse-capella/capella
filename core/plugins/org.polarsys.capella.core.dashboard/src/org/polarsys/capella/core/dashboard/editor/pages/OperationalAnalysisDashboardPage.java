@@ -125,6 +125,10 @@ public class OperationalAnalysisDashboardPage extends AbstractCapellaArchitectur
         .createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_ROLE_BLANK_DIAGRAM),
             Messages.OperationalAnalysisDashboardPage_NewRoleBlankDiagramAction_Title, null, null, new NewRoleBlankDiagramAdapter(getCapellaProject(),
                 getSession()));
+    // Create an hyper link for Create a new Entity Scenario.
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OA_DATAFLOW_SCENARIO),
+        Messages.OperationalAnalysisDashboardPage_NewInteractionScenarioAction_Title, null, null, new NewInteractionScenarioAdapter(getCapellaProject(),
+            getSession()));
     return section.getKey();
   }
 
@@ -156,10 +160,7 @@ public class OperationalAnalysisDashboardPage extends AbstractCapellaArchitectur
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_CAPABILITY_BLANK_DIAGRAM),
         Messages.OperationalAnalysisDashboardPage_NewOperationalCapabilitiesDiagramAction_Title, null, null, new NewOperationalCapabilityBlankDiagramAdapter(
             getCapellaProject(), getSession()));
-    // Create an hyper link for Create a new Entity Scenario.
-    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OA_DATAFLOW_SCENARIO),
-        Messages.OperationalAnalysisDashboardPage_NewInteractionScenarioAction_Title, null, null, new NewInteractionScenarioAdapter(getCapellaProject(),
-            getSession()));
+   
     return section.getKey();
   }
 

@@ -19,20 +19,20 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.information.AggregationKind;
 import org.polarsys.capella.core.data.information.Association;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.DataType;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.core.model.helpers.listeners.CapellaModelDataListener;
 
 /**
  */
@@ -68,7 +68,7 @@ public class CapellaModelDataListenerForDatas extends CapellaModelDataListener {
           if (value instanceof DataType)
           {
             if (!((Property) notifier).getAggregationKind().equals(AggregationKind.COMPOSITION)) {
-              executeCommand(new AbstractReadWriteCommand() {
+              executeCommand((Property) notifier, new AbstractReadWriteCommand() {
                 public void run() {
                   ((Property) notifier).setAggregationKind(AggregationKind.COMPOSITION);
                 }
@@ -95,7 +95,7 @@ public class CapellaModelDataListenerForDatas extends CapellaModelDataListener {
                 }
               }
             }
-            executeCommand(new AbstractReadWriteCommand() {
+            executeCommand((Class) notifier, new AbstractReadWriteCommand() {
               public void run() {
                 removeAssociations((Class) notifier, assocToBeRemoved);
               }

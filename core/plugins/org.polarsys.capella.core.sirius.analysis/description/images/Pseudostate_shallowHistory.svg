@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   width="60.5px"
+   height="60px"
+   viewBox="9 2.833 60.5 60"
+   enable-background="new 9 2.833 60.5 60"
+   xml:space="preserve"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="Pseudostate_shallowHistory_N.svg"><metadata
+   id="metadata54"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs52" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="801"
+   inkscape:window-height="539"
+   id="namedview50"
+   showgrid="false"
+   inkscape:zoom="1"
+   inkscape:cx="30.25"
+   inkscape:cy="30"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<font
+   horiz-adv-x="1000"
+   id="font3">
+<!-- Copyright 1992, 1994, 1997, 2000, 2004 Adobe Systems Incorporated. All rights reserved. Myriad is either a registered trademark or a trademark of Adobe Systems Incorporated in the United States and/or other countries. -->
+<font-face
+   font-family="MyriadPro-Bold"
+   units-per-em="1000"
+   underline-position="-100"
+   underline-thickness="50"
+   id="font-face5" />
+<missing-glyph
+   horiz-adv-x="500"
+   d="M0,0l500,0l0,700l-500,0M250,395l-170,255l340,0M280,350l170,255l0,-510M80,50l170,255l170,-255M50,605l170,-255l-170,-255z"
+   id="missing-glyph7" />
+<glyph
+   unicode="H"
+   horiz-adv-x="689"
+   d="M66,674l0,-674l153,0l0,282l251,0l0,-282l152,0l0,674l-152,0l0,-259l-251,0l0,259z"
+   id="glyph9" />
+</font>
+
+	<radialGradient
+   id="SVGID_1_"
+   cx="-473.9058"
+   cy="-1750.6362"
+   r="60.5837"
+   gradientTransform="matrix(1,0,0,-1,495.5,-1741.6504)"
+   gradientUnits="userSpaceOnUse">
+	<stop
+   offset="0"
+   style="stop-color:#FBF8F8"
+   id="stop12" />
+	<stop
+   offset="0"
+   style="stop-color:#FDFBFB"
+   id="stop14" />
+	<stop
+   offset="0"
+   style="stop-color:#FFFFFF"
+   id="stop16" />
+	<stop
+   offset="0.0432"
+   style="stop-color:#FEFEFE"
+   id="stop18" />
+	<stop
+   offset="0.0899"
+   style="stop-color:#FEFEFE"
+   id="stop20" />
+	<stop
+   offset="0.2165"
+   style="stop-color:#FDFDFD"
+   id="stop22" />
+	<stop
+   offset="0.2742"
+   style="stop-color:#FDFDFD"
+   id="stop24" />
+	<stop
+   offset="0.3238"
+   style="stop-color:#FCFCFC"
+   id="stop26" />
+	<stop
+   offset="0.3898"
+   style="stop-color:#F9F9F9"
+   id="stop28" />
+	<stop
+   offset="0.4283"
+   style="stop-color:#F5F5F5"
+   id="stop30" />
+	<stop
+   offset="0.4971"
+   style="stop-color:#EBEBEB"
+   id="stop32" />
+	<stop
+   offset="0.5713"
+   style="stop-color:#DFDFDF"
+   id="stop34" />
+	<stop
+   offset="0.6429"
+   style="stop-color:#D3D3D3"
+   id="stop36" />
+	<stop
+   offset="0.7116"
+   style="stop-color:#C9C9C9"
+   id="stop38" />
+	<stop
+   offset="0.8079"
+   style="stop-color:#B5B5B5"
+   id="stop40" />
+	<stop
+   offset="0.9702"
+   style="stop-color:#919191"
+   id="stop42" />
+	<stop
+   offset="1"
+   style="stop-color:#383838"
+   id="stop44" />
+</radialGradient>
+<circle
+   cx="39.25"
+   cy="32.834"
+   r="29.351999"
+   id="circle46"
+   style="fill:url(#SVGID_1_);stroke:#000000;stroke-width:0.77069998"
+   sodipodi:cx="39.25"
+   sodipodi:cy="32.834"
+   sodipodi:rx="29.351999"
+   sodipodi:ry="29.351999"
+   transform="matrix(0.99435561,0,0,0.99435561,0.22204234,0.26782835)" />
+<text
+   transform="matrix(1.022 0 0 1 22.3818 48.0898)"
+   font-family="'MyriadPro-Bold'"
+   font-size="45.2953"
+   id="text48">H</text>
+
+</svg>

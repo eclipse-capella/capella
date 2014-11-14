@@ -17,391 +17,535 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.ui.toolkit.ToolkitPlugin;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
+import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
 import org.polarsys.capella.core.model.utils.EObjectExt2;
 import org.polarsys.capella.core.model.utils.NamingHelper;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
+import org.polarsys.capella.core.ui.properties.IImageKeys;
 import org.polarsys.capella.core.ui.properties.helpers.LockHelper;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
  */
 public class BrowseSemanticField extends AbstractSemanticField {
-  //
-  protected Button _valueAddBtn;
-  protected Button _valueOpenBtn;
-  protected Button _valueDelBtn;
-  protected Button _valueEditBtn;
+	//
+	protected Button _valueAddBtn;
+	protected Button _valueOpenBtn;
+	protected Button _valueDelBtn;
+	protected Button _valueEditBtn;
+	protected Button _valueShortcutBtn;
+	protected MenuItem menuitem1;
+	protected MenuItem menuitem2;
+	protected Menu menu;
 
-  // this text field shall be accessed only through its getter/setter
-  private Text _valueTextField;
-  private CLabel _labelTextField;
-  private Composite _valueTextContainer;
+	// this text field shall be accessed only through its getter/setter
+	private Text _valueTextField;
+	private CLabel _labelTextField;
+	private Composite _valueTextContainer;
 
-  /**
-   * the default width of the text field
-   */
-  private static final int _TEXTFIELD_DEFAULT_WIDTH = 200;
+	/**
+	 * the default width of the text field
+	 */
+	private static final int _TEXTFIELD_DEFAULT_WIDTH = 200;
 
-  /**
-   * Constructor.
-   * @param parent_p
-   * @param label_p
-   * @param widgetFactory_p
-   * @param textFieldSpan_p
-   */
-  public BrowseSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, int textFieldSpan_p) {
-    super(widgetFactory_p);
-    _labelTextField = _widgetFactory.createCLabel(parent_p, label_p);
+	/**
+	 * Constructor.
+	 * @param parent_p
+	 * @param label_p
+	 * @param widgetFactory_p
+	 * @param textFieldSpan_p
+	 */
+	public BrowseSemanticField(Composite parent_p, String label_p, TabbedPropertySheetWidgetFactory widgetFactory_p, int textFieldSpan_p) {
+		super(widgetFactory_p);
+		_labelTextField = _widgetFactory.createCLabel(parent_p, label_p);
 
-    createTextField(parent_p, textFieldSpan_p);
-  }
+		createTextField(parent_p, textFieldSpan_p);
+	}
 
-  /**
-   * Create Delete button.
-   * @param parent_p
-   */
-  protected void createDeleteButton(Composite parent_p) {
-    ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
-    Image removeImage = imgRegistry.get(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID);
-    String tooltip = Messages.BrowseSemanticField_DelBtn;
-    _valueDelBtn = createButton(parent_p, removeImage, tooltip);
-  }
+	/**
+	 * Create Delete button.
+	 * @param parent_p
+	 */
+	protected void createDeleteButton(Composite parent_p) {
+		ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
+		Image removeImage = imgRegistry.get(ToolkitPlugin.REMOVE_IMAGE_ITEM_ID);
+		String tooltip = Messages.BrowseSemanticField_DelBtn;
+		_valueDelBtn = createButton(parent_p, removeImage, tooltip);
+	}
 
-  /**
-   * Create Edit button.
-   * @param parent_p
-   */
-  protected void createEditButton(Composite parent_p) {
-    ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
-    Image editImage = imgRegistry.get(ToolkitPlugin.EDIT_IMAGE_ITEM_ID);
-    String tooltip = Messages.BrowseSemanticField_EditBtn;
-    _valueEditBtn = createButton(parent_p, editImage, tooltip);
-  }
+	/**
+	 * Create Edit button.
+	 * @param parent_p
+	 */
+	protected void createEditButton(Composite parent_p) {
+		ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
+		Image editImage = imgRegistry.get(ToolkitPlugin.EDIT_IMAGE_ITEM_ID);
+		String tooltip = Messages.BrowseSemanticField_EditBtn;
+		_valueEditBtn = createButton(parent_p, editImage, tooltip);
+	}
 
-  /**
-   * Create Open button.
-   * @param parent_p
-   */
-  protected void createOpenButton(Composite parent_p) {
-    ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
-    Image openImage = imgRegistry.get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID);
-    String tooltip = Messages.BrowseSemanticField_BrowseBtn;
-    _valueOpenBtn = createButton(parent_p, openImage, tooltip);
-  }
+	/**
+	 * Create Open button.
+	 * @param parent_p
+	 */
+	protected void createOpenButton(Composite parent_p) {
+		ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
+		Image openImage = imgRegistry.get(ToolkitPlugin.BROWSE_IMAGE_ITEM_ID);
+		String tooltip = Messages.BrowseSemanticField_BrowseBtn;
+		_valueOpenBtn = createButton(parent_p, openImage, tooltip);
+	}
 
-  /**
-   * Create Add button.
-   * @param parent_p
-   */
-  protected void createAddButton(Composite parent_p) {
-    ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
-    Image addImage = imgRegistry.get(ToolkitPlugin.ADD_ITEM_IMAGE_ID);
-    String tooltip = Messages.BrowseSemanticField_AddBtn;
-    _valueAddBtn = createButton(parent_p, addImage, tooltip);
-  }
+	/**
+	 * Create Add button.
+	 * @param parent_p
+	 */
+	protected void createAddButton(Composite parent_p) {
+		ImageRegistry imgRegistry = ToolkitPlugin.getDefault().getImageRegistry();
+		Image addImage = imgRegistry.get(ToolkitPlugin.ADD_ITEM_IMAGE_ID);
+		String tooltip = Messages.BrowseSemanticField_AddBtn;
+		_valueAddBtn = createButton(parent_p, addImage, tooltip);
+	}
 
-  /**
-   * Create text field.
-   * @param parent_p
-   * @param textFieldSpan_p
-   */
-  protected void createTextField(Composite parent_p, int textFieldSpan_p) {
-    // this intermediate composite have been created to allow a tooltip to be shown
-    // (because the text field is disabled, its own tooltip is never shown)
-    _valueTextContainer = _widgetFactory.createComposite(parent_p);
-    GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-    gd.horizontalSpan = textFieldSpan_p;
-    _valueTextContainer.setLayoutData(gd);
-    _valueTextContainer.setLayout(new GridLayout());
+	/**
+	 * Create Shortcut button.
+	 * @param parent_p
+	 * @param cardType 
+	 */
+	protected void createShortcutButton(Composite parent_p, int cardType) {
+		Image image = null;
+		switch (cardType) {
+		case 0: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_CARD_ID);			
+		break;
+		case 1: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_CARD_ID);			
+		break;
+		case 2: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);			
+		break;
+		case 3: image = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);			
+		break;
+		default:
+			break;
+		}
+		String tooltip = Messages.BrowseSemanticField_ShortcutBtn;
+		if(image != null){
+			_valueShortcutBtn = createButton(parent_p, image, tooltip);
 
-    _valueTextField = _widgetFactory.createText(_valueTextContainer, ICommonConstants.EMPTY_STRING);
-    gd = new GridData(GridData.FILL_HORIZONTAL);
-    gd.horizontalSpan = textFieldSpan_p;
-    gd.widthHint = _TEXTFIELD_DEFAULT_WIDTH;
-    _valueTextField.setLayoutData(gd);
-    _valueTextField.setEditable(false);
-    _valueTextField.setForeground(_valueTextField.getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
-  }
+			menu = new Menu(_valueShortcutBtn);
 
-  /**
-   * Enable / Disable Delete button with specified value.
-   * @param status_p
-   */
-  public void enableDeleteButton(boolean status_p) {
-    if ((_valueDelBtn != null) && !_valueDelBtn.isDisposed()) {
-      _valueDelBtn.setEnabled(status_p);
-    }
-  }
+			if(cardType == 0){
+				menuitem1 = new MenuItem(menu, SWT.NONE);
+				menuitem1.setText("0");
+				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
+				menuitem1.setImage(imageMenuItem1);
+				menuitem2 = new MenuItem(menu, SWT.NONE);
+				menuitem2.setText("1");
+				Image imageMenuItem2 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.ONE_ID);
+				menuitem2.setImage(imageMenuItem2);
+			}else if(cardType == 1){
 
-  /**
-   * Enable / Disable edit button with specified value.
-   * @param status_p
-   */
-  public void enableEditButton(boolean status_p) {
-    if ((_valueEditBtn != null) && !_valueEditBtn.isDisposed()) {
-      _valueEditBtn.setEnabled(status_p);
-    }
-  }
+				menuitem1 = new MenuItem(menu, SWT.NONE);
+				menuitem1.setText("1");
+				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.ONE_ID);
+				menuitem1.setImage(imageMenuItem1);
+				menuitem2 = new MenuItem(menu, SWT.NONE);
+				menuitem2.setText("*");
+				Image imageMenuItem2 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
+				menuitem2.setImage(imageMenuItem2);
 
-  /**
-   * Enable / Disable Open button with specified value.
-   * @param status_p
-   */
-  public void enableOpenButton(boolean status_p) {
-    if ((_valueOpenBtn != null) && !_valueOpenBtn.isDisposed()) {
-      _valueOpenBtn.setEnabled(status_p);
-    }
-  }
+			}else if(cardType == 2){
 
-  /**
-   * Enable / Disable Add button with specified value.
-   * @param status_p
-   */
-  public void enableAddButton(boolean status_p) {
-    if ((_valueAddBtn != null) && !_valueAddBtn.isDisposed()) {
-      _valueAddBtn.setEnabled(status_p);
-    }
-  }
+				menuitem1 = new MenuItem(menu, SWT.NONE);
+				menuitem1.setText("0");
+				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MIN_LENGTH_ID);
+				menuitem1.setImage(imageMenuItem1);
+			}else if(cardType == 3){
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setEnabled(boolean enabled_p) {
-    LockHelper.getInstance().enable(_valueAddBtn, enabled_p);
-    LockHelper.getInstance().enable(_valueDelBtn, enabled_p);
-    LockHelper.getInstance().enable(_valueEditBtn, enabled_p);
-    LockHelper.getInstance().enable(_valueOpenBtn, enabled_p);
-    LockHelper.getInstance().update(_valueTextField, enabled_p);
-  }
+				menuitem1 = new MenuItem(menu, SWT.NONE);
+				menuitem1.setText("*");
+				Image imageMenuItem1 = CapellaUIPropertiesPlugin.getDefault().getImage(IImageKeys.QUICK_EDIT_MAX_LENGTH_ID);
+				menuitem1.setImage(imageMenuItem1);
+			}
 
-  /**
-   * Show / Hide Delete button with specified value.
-   * @param status_p
-   */
-  protected void setVisibleDeleteButton(boolean status_p) {
-    if (_valueDelBtn != null) {
-      _valueDelBtn.setVisible(status_p);
-    }
-  }
+			_valueShortcutBtn.setMenu(menu);
 
-  /**
-   * Show / Hide edit button with specified value.
-   * @param status_p
-   */
-  protected void setVisibleEditButton(boolean status_p) {
-    if (_valueEditBtn != null) {
-      _valueEditBtn.setVisible(status_p);
-    }
-  }
+			if(menuitem1 != null){
+				menuitem1.addSelectionListener(new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent event){
+						setValueTextField(menuitem1.getText());
+						AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
+							public void run() {
+								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue("");
+								newValue.setValue(menuitem1.getText());
+								_semanticElement.eSet(_semanticFeature, newValue);
+							}
+						};
+						executeCommand(cmd);
+					}
+				});			
+			}
+			if(menuitem2 != null){
+				menuitem2.addSelectionListener(new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent event){
+						setValueTextField(menuitem2.getText());
+						AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
+							public void run() {
+								LiteralNumericValue newValue = DatavalueFactory.eINSTANCE.createLiteralNumericValue("");
+								newValue.setValue(menuitem2.getText());
+								_semanticElement.eSet(_semanticFeature, newValue);
+							}
+						};
+						executeCommand(cmd);
+					}
+				});
 
-  /**
-   * Show / Hide Open button with specified value.
-   * @param status_p
-   */
-  protected void setVisibleOpenButton(boolean status_p) {
-    if (_valueOpenBtn != null) {
-      _valueOpenBtn.setVisible(status_p);
-    }
-  }
+			}
+		}
 
-  /**
-   * Show / Hide Add button with specified value.
-   * @param status_p
-   */
-  protected void setVisibleAddButton(boolean status_p) {
-    if (_valueAddBtn != null) {
-      _valueAddBtn.setVisible(status_p);
-    }
-  }
+	}
 
-  /**
-   * Show / Hide widget with specified value.
-   * @param status_p
-   */
-  public void setVisible(boolean status_p) {
-    setVisibleAddButton(status_p);
-    setVisibleDeleteButton(status_p);
-    setVisibleEditButton(status_p);
-    setVisibleOpenButton(status_p);
-    if (_valueTextField != null) {
-      _valueTextField.setVisible(status_p);
-    }
-    if (_labelTextField != null) {
-      _labelTextField.setVisible(status_p);
-    }
-  }
+	/**
+	 * Create text field.
+	 * @param parent_p
+	 * @param textFieldSpan_p
+	 */
+	protected void createTextField(Composite parent_p, int textFieldSpan_p) {
+		// this intermediate composite have been created to allow a tooltip to be shown
+		// (because the text field is disabled, its own tooltip is never shown)
+		_valueTextContainer = _widgetFactory.createComposite(parent_p);
+		GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = textFieldSpan_p;
+		_valueTextContainer.setLayoutData(gd);
+		_valueTextContainer.setLayout(new GridLayout());
 
-  /**
-   * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
-   */
-  @Override
-  public void loadData(CapellaElement semanticElement_p) {
-    loadData(semanticElement_p, _semanticFeature);
-  }
+		_valueTextField = _widgetFactory.createText(_valueTextContainer, ICommonConstants.EMPTY_STRING);
+		gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = textFieldSpan_p;
+		gd.widthHint = _TEXTFIELD_DEFAULT_WIDTH;
+		_valueTextField.setLayoutData(gd);
+		_valueTextField.setEditable(false);
+		_valueTextField.setForeground(_valueTextField.getDisplay().getSystemColor(SWT.COLOR_DARK_GRAY));
+	}
 
-  /**
-   *
-   */
-  public String getValueTextField() {
-    if (_valueTextField != null)
-      return _valueTextField.getText();
-    return null;
-  }
+	/**
+	 * Enable / Disable Delete button with specified value.
+	 * @param status_p
+	 */
+	public void enableDeleteButton(boolean status_p) {
+		if ((_valueDelBtn != null) && !_valueDelBtn.isDisposed()) {
+			_valueDelBtn.setEnabled(status_p);
+		}
+	}
 
-  /**
-   * @param eObject_p object whose path is required
-   * @return the complete path of the given model element, or null if it's not a model element
-   */
-  public String getFullLabel(EObject eObject_p) {
-    if (eObject_p instanceof ModelElement) {
-      String path = ((ModelElement) eObject_p).getFullLabel();
-      if (path.startsWith("/")) { //$NON-NLS-1$
-        path = path.substring(1);
-      }
-      path = path.replaceAll("/", "::"); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-    return null;
-  }
+	/**
+	 * Enable / Disable edit button with specified value.
+	 * @param status_p
+	 */
+	public void enableEditButton(boolean status_p) {
+		if ((_valueEditBtn != null) && !_valueEditBtn.isDisposed()) {
+			_valueEditBtn.setEnabled(status_p);
+		}
+	}
 
-  /**
-   * @param object_p
-   */
-  public void setValueTextField(Object object_p) {
-    if (_valueTextField == null)
-      return;
+	/**
+	 * Enable / Disable Open button with specified value.
+	 * @param status_p
+	 */
+	public void enableOpenButton(boolean status_p) {
+		if ((_valueOpenBtn != null) && !_valueOpenBtn.isDisposed()) {
+			_valueOpenBtn.setEnabled(status_p);
+		}
+	}
 
-    if (object_p != null) {
-      if (object_p instanceof String) {
-        _valueTextField.setText((String) object_p);
-      } else if (object_p instanceof EObject) {
-        _valueTextField.setText(NamingHelper.getValue((EObject) object_p, _semanticFeature));
-        _valueTextContainer.setToolTipText(getFullLabel((EObject) object_p));
-      } else if (object_p instanceof Collection<?>) {
-        _valueTextField.setText(EObjectExt2.formatValues((Collection<?>) object_p, _semanticFeature));
-      }
-    } else {
-      _valueTextField.setText(Messages.UndefinedValue);
-    }
-  }
+	/**
+	 * Enable / Disable Add button with specified value.
+	 * @param status_p
+	 */
+	public void enableAddButton(boolean status_p) {
+		if ((_valueAddBtn != null) && !_valueAddBtn.isDisposed()) {
+			_valueAddBtn.setEnabled(status_p);
+		}
+	}
 
-  /**
-   * 
-   */
-  protected boolean isLoaded() {
-    return !_valueTextField.getText().equals(Messages.UndefinedValue);
-  }
+	/**
+	 * Enable / Disable Shortcut button with specified value.
+	 * @param status_p
+	 */
+	public void enableShortcutButton(boolean status_p) {
+		if ((_valueShortcutBtn != null) && !_valueShortcutBtn.isDisposed()) {
+			_valueAddBtn.setEnabled(status_p);
+		}
+	}
 
-  /**
-   * @param label_p
-   */
-  public void setLabel(String label_p) {
-    if (_labelTextField != null)
-      _labelTextField.setText(label_p);
-  }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setEnabled(boolean enabled_p) {
+		LockHelper.getInstance().enable(_valueAddBtn, enabled_p);
+		LockHelper.getInstance().enable(_valueDelBtn, enabled_p);
+		LockHelper.getInstance().enable(_valueEditBtn, enabled_p);
+		LockHelper.getInstance().enable(_valueOpenBtn, enabled_p);
+		LockHelper.getInstance().enable(_valueShortcutBtn, enabled_p);
+		LockHelper.getInstance().update(_valueTextField, enabled_p);
+	}
 
-  /**
-   * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-   */
-  @Override
-  public void widgetSelected(SelectionEvent event_p) {
-    if (event_p != null) {
-      Object source = event_p.getSource();
-      if (source != null) {
-        if (source.equals(_valueOpenBtn)) {
-          handleOpenButtonClicked(_valueOpenBtn);
-        } else if (source.equals(_valueDelBtn)) {
-          handleDeleteButtonClicked();
-        } else if (source.equals(_valueEditBtn)) {
-          try {
-            handleEditButtonClicked();
-          } catch (EditableSemanticFieldException ex) {
-            // this exception has been thrown in order to roll back the command
-            // it shall not be visible by the end user
-          }
-        } else if (_valueAddBtn.equals(source)) {
-          try {
-            handleAddButtonClicked();
-          } catch (EditableSemanticFieldException ex) {
-            // this exception has been thrown in order to roll back the command
-            // it shall not be visible by the end user
-          }
-        }
-      }
-    }
-  }
+	/**
+	 * Show / Hide Delete button with specified value.
+	 * @param status_p
+	 */
+	protected void setVisibleDeleteButton(boolean status_p) {
+		if (_valueDelBtn != null) {
+			_valueDelBtn.setVisible(status_p);
+		}
+	}
 
-  /**
-   * Handle Open button click event.
-   * @param button_p
-   */
-  protected void handleOpenButtonClicked(Button button_p) {
-    // do nothing (shall be overloaded)
-  }
+	/**
+	 * Show / Hide edit button with specified value.
+	 * @param status_p
+	 */
+	protected void setVisibleEditButton(boolean status_p) {
+		if (_valueEditBtn != null) {
+			_valueEditBtn.setVisible(status_p);
+		}
+	}
 
-  /**
-   * Handle Delete button click event. Reset all data value in this field.
-   */
-  protected void handleDeleteButtonClicked() {
-    AbstractReadWriteCommand command = getDeleteCommand(_semanticElement, _semanticFeature);
-    executeCommand(command);
-  }
+	/**
+	 * Show / Hide Open button with specified value.
+	 * @param status_p
+	 */
+	protected void setVisibleOpenButton(boolean status_p) {
+		if (_valueOpenBtn != null) {
+			_valueOpenBtn.setVisible(status_p);
+		}
+	}
 
-  /**
-   * Handle Edit button click event.
-   * @throws EditableSemanticFieldException
-   */
-  protected void handleEditButtonClicked() throws EditableSemanticFieldException {
-    // do nothing (shall be overloaded)
-  }
+	/**
+	 * Show / Hide Add button with specified value.
+	 * @param status_p
+	 */
+	protected void setVisibleAddButton(boolean status_p) {
+		if (_valueAddBtn != null) {
+			_valueAddBtn.setVisible(status_p);
+		}
+	}
 
-  /**
-   * Handle Add button click event.
-   * @throws EditableSemanticFieldException
-   */
-  protected void handleAddButtonClicked() throws EditableSemanticFieldException {
-    // do nothing (shall be overloaded)
-  }
+	/**
+	 * Show / Hide Shortcut button with specified value.
+	 * @param status_p
+	 */
+	protected void setVisibleShortcutButton(boolean status_p) {
+		if (_valueShortcutBtn != null) {
+			_valueShortcutBtn.setVisible(status_p);
+		}
+	}
 
-  /**
-   * @param element_p
-   * @param feature_p
-   * @return
-   */
-  protected AbstractReadWriteCommand getDeleteCommand(final EObject element_p, final EStructuralFeature feature_p) {
-    return new AbstractReadWriteCommand() {
-      public void run() {
-        doDeleteCommand(element_p, feature_p);
-      }
-    };
-  }
-  
-  /**
-   * @param element_p
-   * @param feature_p
-   */
-  protected void doDeleteCommand(EObject element_p, EStructuralFeature feature_p) {
-    if (feature_p.isMany()) {
-      removeAllDataValue(element_p, feature_p);
-    } else {
-      setDataValue(element_p, feature_p, null);
-    }
+	/**
+	 * Show / Hide widget with specified value.
+	 * @param status_p
+	 */
+	public void setVisible(boolean status_p) {
+		setVisibleAddButton(status_p);
+		setVisibleDeleteButton(status_p);
+		setVisibleEditButton(status_p);
+		setVisibleOpenButton(status_p);
+		setVisibleShortcutButton(status_p);
+		if (_valueTextField != null) {
+			_valueTextField.setVisible(status_p);
+		}
+		if (_labelTextField != null) {
+			_labelTextField.setVisible(status_p);
+		}
+	}
 
-    if (_valueEditBtn != null)
-      _valueEditBtn.setEnabled(true);
+	/**
+	 * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.AbstractSemanticField#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+	 */
+	@Override
+	public void loadData(CapellaElement semanticElement_p) {
+		loadData(semanticElement_p, _semanticFeature);
+	}
 
-    setValueTextField((EObject) null);
-  }
+	/**
+	 *
+	 */
+	public String getValueTextField() {
+		if (_valueTextField != null)
+			return _valueTextField.getText();
+		return null;
+	}
+
+	/**
+	 * @param eObject_p object whose path is required
+	 * @return the complete path of the given model element, or null if it's not a model element
+	 */
+	public String getFullLabel(EObject eObject_p) {
+		if (eObject_p instanceof ModelElement) {
+			String path = ((ModelElement) eObject_p).getFullLabel();
+			if (path.startsWith("/")) { //$NON-NLS-1$
+				path = path.substring(1);
+			}
+			path = path.replaceAll("/", "::"); //$NON-NLS-1$ //$NON-NLS-2$
+		}
+		return null;
+	}
+
+	/**
+	 * @param object_p
+	 */
+	public void setValueTextField(Object object_p) {
+		if (_valueTextField == null)
+			return;
+
+		if (object_p != null) {
+			if (object_p instanceof String) {
+				_valueTextField.setText((String) object_p);
+			} else if (object_p instanceof EObject) {
+				_valueTextField.setText(NamingHelper.getValue((EObject) object_p, _semanticFeature));
+				_valueTextContainer.setToolTipText(getFullLabel((EObject) object_p));
+			} else if (object_p instanceof Collection<?>) {
+				_valueTextField.setText(EObjectExt2.formatValues((Collection<?>) object_p, _semanticFeature));
+			}
+		} else {
+			_valueTextField.setText(Messages.UndefinedValue);
+		}
+	}
+
+	/**
+	 * 
+	 */
+	protected boolean isLoaded() {
+		return !_valueTextField.getText().equals(Messages.UndefinedValue);
+	}
+
+	/**
+	 * @param label_p
+	 */
+	public void setLabel(String label_p) {
+		if (_labelTextField != null)
+			_labelTextField.setText(label_p);
+	}
+
+	/**
+	 * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+	 */
+	@Override
+	public void widgetSelected(SelectionEvent event_p) {
+		if (event_p != null) {
+			Object source = event_p.getSource();
+			if (source != null) {
+				if (source.equals(_valueOpenBtn)) {
+					handleOpenButtonClicked(_valueOpenBtn);
+				} else if (source.equals(_valueDelBtn)) {
+					handleDeleteButtonClicked();
+				} else if (source.equals(_valueShortcutBtn)) {
+					handleShortcutButtonClicked();
+				} else if (source.equals(_valueEditBtn)) {
+					try {
+						handleEditButtonClicked();
+					} catch (EditableSemanticFieldException ex) {
+						// this exception has been thrown in order to roll back the command
+						// it shall not be visible by the end user
+					}
+				} else if (_valueAddBtn.equals(source)) {
+					try {
+						handleAddButtonClicked();
+					} catch (EditableSemanticFieldException ex) {
+						// this exception has been thrown in order to roll back the command
+						// it shall not be visible by the end user
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Handle Open button click event.
+	 * @param button_p
+	 */
+	protected void handleOpenButtonClicked(Button button_p) {
+		// do nothing (shall be overloaded)
+	}
+
+	/**
+	 * Handle Delete button click event. Reset all data value in this field.
+	 */
+	protected void handleDeleteButtonClicked() {
+		AbstractReadWriteCommand command = getDeleteCommand(_semanticElement, _semanticFeature);
+		executeCommand(command);
+	}
+
+	/**
+	 * Handle Edit button click event.
+	 * @throws EditableSemanticFieldException
+	 */
+	protected void handleEditButtonClicked() throws EditableSemanticFieldException {
+		// do nothing (shall be overloaded)
+	}
+
+	/**
+	 * Handle Add button click event.
+	 * @throws EditableSemanticFieldException
+	 */
+	protected void handleAddButtonClicked() throws EditableSemanticFieldException {
+		// do nothing (shall be overloaded)
+	}
+
+	/**
+	 * Handle Shortcut button click event.
+	 * @throws EditableSemanticFieldException
+	 */
+	protected void handleShortcutButtonClicked() throws EditableSemanticFieldException {
+		if(menu != null){
+			menu.setVisible(true);
+		}
+	}
+
+
+	/**
+	 * @param element_p
+	 * @param feature_p
+	 * @return
+	 */
+	protected AbstractReadWriteCommand getDeleteCommand(final EObject element_p, final EStructuralFeature feature_p) {
+		return new AbstractReadWriteCommand() {
+			public void run() {
+				doDeleteCommand(element_p, feature_p);
+			}
+		};
+	}
+
+	/**
+	 * @param element_p
+	 * @param feature_p
+	 */
+	protected void doDeleteCommand(EObject element_p, EStructuralFeature feature_p) {
+		if (feature_p.isMany()) {
+			removeAllDataValue(element_p, feature_p);
+		} else {
+			setDataValue(element_p, feature_p, null);
+		}
+
+		if (_valueEditBtn != null)
+			_valueEditBtn.setEnabled(true);
+
+		setValueTextField((EObject) null);
+	}
 }

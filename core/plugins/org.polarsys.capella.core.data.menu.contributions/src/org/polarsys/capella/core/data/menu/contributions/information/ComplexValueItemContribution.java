@@ -12,10 +12,10 @@ package org.polarsys.capella.core.data.menu.contributions.information;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */
@@ -25,12 +25,18 @@ public class ComplexValueItemContribution extends DataNamingHelperBasedContribut
    */
   @Override
   public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+
+    if (feature_p == ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION){
+      return false;
+    }
+
     return !(modelElement_p instanceof AbstractFunction);
   }
 
   /**
    * @see org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution#getMetaclass()
    */
+  @Override
   public EClass getMetaclass() {
     return DatavaluePackage.Literals.COMPLEX_VALUE;
   }

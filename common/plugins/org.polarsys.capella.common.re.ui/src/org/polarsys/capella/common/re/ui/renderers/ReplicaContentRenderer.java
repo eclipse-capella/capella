@@ -42,10 +42,6 @@ import org.eclipse.swt.dnd.DragSourceListener;
 import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
-
-import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
-import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
-import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
@@ -53,8 +49,13 @@ import org.polarsys.capella.common.flexibility.wizards.renderer.EditListRenderer
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.CatalogElementPkg;
 import org.polarsys.capella.common.re.constants.IReConstants;
-import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
+import org.polarsys.capella.common.re.handlers.location.LocationHandlerHelper;
+import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
+import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
 /**
@@ -181,7 +182,7 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
       Collection<EObject> scopeElements = new HashSet<EObject>((Collection) value);
 
       if (!scopeElements.isEmpty()) {
-        IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+        IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
         Object replica = context_p.getPropertyContext().getCurrentValue(property);
         scopeElements.add((EObject) replica);
       }
@@ -201,17 +202,24 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
           if (element_p instanceof CatalogElementLink) {
             CatalogElementLink link = (CatalogElementLink) element_p;
             IContext context = (IContext) context_p.getPropertyContext().getSource();
-            EObject location = AttributesHandlerHelper.getInstance(context).getCurrentLocation(link, context);
+            EObject location = LocationHandlerHelper.getInstance(context).getCurrentLocation(link, context);
             if ((location != null) && (location instanceof CatalogElementLink)) {
               return location;
             }
-            location = AttributesHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+            location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
             if ((location != null) && (location instanceof CatalogElementLink)) {
               return location;
             }
 
-            IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+            IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
             Object replica = context_p.getPropertyContext().getCurrentValue(property);
+            if (!(location instanceof CatalogElementLink) && !(location instanceof CatalogElementPkg)) {
+              for (CatalogElementLink link2 : ReplicableElementHandlerHelper.getInstance(context).getAllElementsLinks((CatalogElement) replica)) {
+                if (link2.getTarget().equals(location)) {
+                  return link2;
+                }
+              }
+            }
 
             return replica;
           }
@@ -231,20 +239,20 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
       CatalogElementLink link = (CatalogElementLink) element_p;
       IContext context = (IContext) context_p.getPropertyContext().getSource();
 
-      IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET);
+      IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
       Object replica = context_p.getPropertyContext().getCurrentValue(property);
 
       if (!replica.equals(link.getSource())) {
         return new Status(IStatus.OK, "  ", "custom location");
       }
 
-      EObject location = AttributesHandlerHelper.getInstance(context).getCurrentLocation((CatalogElementLink) element_p, context);
+      EObject location = LocationHandlerHelper.getInstance(context).getCurrentLocation((CatalogElementLink) element_p, context);
       if (location != null) {
         return new Status(IStatus.INFO, "  ", "custom location");
       }
-      location = AttributesHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
+      location = LocationHandlerHelper.getInstance(context).getLocation(link, link.getOrigin(), context);
       if (location == null) {
-        EObject defaultLocation = AttributesHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
+        EObject defaultLocation = LocationHandlerHelper.getInstance(context).getDefaultLocation(link, link.getOrigin(), context);
 
         Object value =
             context_p.getPropertyContext().getCurrentValue(
@@ -284,8 +292,11 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
    */
   @Override
   public void updatedValue(IProperty property_p, IRendererContext context_p, Object newValue_p) {
+    if (!isDisposed()) {
     super.updatedValue(property_p, context_p, newValue_p);
     getViewer().getClientViewer().refresh();
+
+    }
   }
 
   @Override
@@ -313,6 +324,9 @@ public class ReplicaContentRenderer extends EditListRenderer implements Property
   @Override
   public void update(PropertyChangedEvent event_p) {
 
+    if (isDisposed()) {
+      return;
+    }
     if (IReConstants.PROPERTY__CLICK_SELECTION.equals(event_p.getProperty().getId())) {
       List initialSelection = ((IStructuredSelection) getViewer().getClientViewer().getSelection()).toList();
       List selection = new ArrayList(initialSelection);

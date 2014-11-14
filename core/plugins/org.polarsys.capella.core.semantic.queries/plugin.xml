@@ -1437,8 +1437,26 @@
             <basicQuery
                   class="org.polarsys.capella.core.semantic.queries.basic.queries.InstanceRole_representedInstance">
             </basicQuery>
+         </categoryQuery>         
+      </category>
+      
+      <category
+            id="org.polarsys.capella.core.semantic.queries.InteractionUseReferencedScenario"
+            isTopLevel="true"
+            name="Referenced Scenario">
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <availableForType
+               class="org.polarsys.capella.core.data.interaction.InteractionUse">
+         </availableForType>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.InteractionUseReferencedScenario">
+            </basicQuery>
          </categoryQuery>
       </category>
+      
       <category
             id="org.polarsys.capella.core.semantic.queries.InstanceRole_parentScenario"
             isTopLevel="true"
@@ -1571,7 +1589,7 @@
             isTopLevel="true"
             name="ExchangeItemElements">
          <targetBrowserId
-               id="ReferencedElementBrowser">
+               id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
@@ -5229,7 +5247,7 @@
                class="org.polarsys.capella.core.data.capellacore.Type">
          </availableForType>
          <targetBrowserId
-               id="ReferencedElementBrowser">
+               id="ReferencingElementBrowser">
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
@@ -5410,7 +5428,28 @@
       <category
             id="org.polarsys.capella.core.semantic.queries.ModelElemnetConstraintss"
             isTopLevel="true"
-            name="Constraints">
+            name="Constraining Elements">
+         <availableForType
+               class="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ModelElementConstraints">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OwnedSpecification">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.ModelElementGuard"
+            isTopLevel="true"
+            name="Guard">
          <availableForType
                class="org.polarsys.capella.common.data.modellingcore.ModelElement">
          </availableForType>
@@ -5419,7 +5458,91 @@
          </targetBrowserId>
          <categoryQuery>
             <basicQuery
-                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ModelElementConstraints">
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ModelElementGuard">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OwnedSpecification">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.ModelElementExchangeContext"
+            isTopLevel="true"
+            name="Exchange Context">
+         <availableForType
+               class="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ModelElementExchangeContext">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OwnedSpecification">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.ModelElementPreCondition"
+            isTopLevel="true"
+            name="Pre-condition">
+         <availableForType
+               class="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ModelElementPreCondition">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OwnedSpecification">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.ModelElementPostCondition"
+            isTopLevel="true"
+            name="Post-condition">
+         <availableForType
+               class="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.ModelElementPostCondition">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OwnedSpecification">
+            </basicQuery>
+         </itemQueries>
+      </category>
+      <category
+            id="org.polarsys.capella.core.semantic.queries.basic.queries.ConstraintOwnedSpecification"
+            isTopLevel="true"
+            name="Expression">
+         <availableForType
+               class="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         </availableForType>
+         <targetBrowserId
+               id="CurrentElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.core.semantic.queries.basic.queries.OwnedSpecification">
             </basicQuery>
          </categoryQuery>
       </category>
@@ -5647,6 +5770,7 @@
             </basicQuery>
          </categoryQuery>
       </category>
+      
    </extension>
    <extension
          point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">

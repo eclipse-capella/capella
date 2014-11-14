@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -65,6 +66,9 @@ public class CatalogElementPkgItemProvider extends ReNamedElementItemProvider im
 			super.getPropertyDescriptors(object);
 
 		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
 		return itemPropertyDescriptors;
 	}
 
@@ -160,7 +164,7 @@ public class CatalogElementPkgItemProvider extends ReNamedElementItemProvider im
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -177,29 +181,39 @@ public class CatalogElementPkgItemProvider extends ReNamedElementItemProvider im
                 // end-extension-code
 
 
+                if (RePackage.Literals.CATALOG_ELEMENT_PKG.equals(((EObject)object).eClass()) || RePackage.Literals.REC_CATALOG.equals(((EObject)object).eClass())) {
+                  
+                  
+                  // begin-extension-code
+                  {
+                      CommandParameter commandParameter = createChildParameter
+                          (RePackage.Literals.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS,
+                           ReFactory.eINSTANCE.createCatalogElementPkg());
+                      if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                          newChildDescriptors.add(commandParameter);      
+                      }
+                  }
+                  // end-extension-code
+
+                
+                }
+
+                
+                if (RePackage.Literals.GROUPING_ELEMENT_PKG.equals(((EObject)object).eClass())) {
+                  
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
                         (RePackage.Literals.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS,
-                         ReFactory.eINSTANCE.createCatalogElementPkg());
+                         ReFactory.eINSTANCE.createGroupingElementPkg());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
                     }
                 }
+                
                 // end-extension-code
 
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (RePackage.Literals.CATALOG_ELEMENT_PKG__OWNED_ELEMENT_PKGS,
-                         ReFactory.eINSTANCE.createRecCatalog());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
                 }
-                // end-extension-code
-
 
 	}
 

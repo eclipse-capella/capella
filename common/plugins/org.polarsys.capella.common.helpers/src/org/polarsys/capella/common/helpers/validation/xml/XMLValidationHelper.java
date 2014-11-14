@@ -83,8 +83,8 @@ public class XMLValidationHelper {
     }
     return handler.getExceptions();
   }
-  
-  
+
+
   class SAXExceptions extends DefaultHandler {
     protected List<SAXParseException> exceptions = new ArrayList<SAXParseException>();
     @Override

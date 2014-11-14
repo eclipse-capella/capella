@@ -175,22 +175,281 @@
       
       <!-- oooooooooooooooooooo  ACCELERATORS oooooooooooooooooooooooooo -->
 
+      <!-- accelerator propagateSystemInterfacesToLogicalSystem -->
       <objectContribution
-            id="org.polarsys.capella.core.sirius.menus.graphical.propagateInterfacesSAtoLA"
+            id="org.polarsys.capella.core.sirius.menus.graphical.propagateSystemInterfacesToLogicalSystem"
             objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
          <enablement>
             <test forcePluginActivation="true"
                   property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
-                  value="propagateInterfacesSAtoLA">
+                  value="instanceOfSystem">
             </test>
          </enablement>
-         <action label="%propagateInterfacesSAtoLA_label"
+         <action label="%propagateSystemInterfacesToLogicalSystem_label"
                class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="graphicalRefinementMode.propagateInterfacesSAtoLA"
+               id="graphicalRefinementMode.propagateSystemInterfacesToLogicalSystem"
                menubarPath="AcceleratorDiagramCommands/groupAccelerator">
          </action>
       </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.propagateSystemInterfacesToLogicalSystem"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfSystem">
+            </test>
+         </enablement>
+         <action label="%propagateSystemInterfacesToLogicalSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.propagateSystemInterfacesToLogicalSystem"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <!-- accelerator synchronizeLogicalInterfacesWithSystem -->      
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeLogicalInterfacesWithSystem"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="instanceOfLogicalComponent">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalInterfacesWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.synchronizeLogicalInterfacesWithSystem"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeLogicalInterfacesWithSystem"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfLogicalComponent">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalInterfacesWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.synchronizeLogicalInterfacesWithSystem"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>      
+	  <!-- accelerator propagateActorInterfacesToLogicalActors -->
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.propagateActorInterfacesToLogicalActors"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="instanceOfSystemActorOrSystemActorPck">
+            </test>
+         </enablement>
+         <action label="%propagateActorInterfacesToLogicalActors_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.propagateActorInterfacesToLogicalActors"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.propagateActorInterfacesToLogicalActors"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfSystemActorOrSystemActorPck">
+            </test>
+         </enablement>
+         <action label="%propagateActorInterfacesToLogicalActors_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.propagateActorInterfacesToLogicalActors"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <!-- accelerator synchronizeLogicalActorInterfacesWithSystem -->      
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeLogicalActorInterfacesWithSystem"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="instanceOfLogicalActorOrLogicalActorPck">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalActorInterfacesWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.synchronizeLogicalActorInterfacesWithSystem"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeLogicalActorInterfacesWithSystem"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfLogicalActorOrLogicalActorPck">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalActorInterfacesWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.synchronizeLogicalActorInterfacesWithSystem"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>      
+	  <!-- accelerator propagateActorCommunicationLinksToLogicalSystem -->
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.propagateActorCommunicationLinksToLogicalSystem"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="instanceOfSystemActorOrSystemActorPck">
+            </test>
+         </enablement>
+         <action label="%propagateActorCommunicationLinksToLogicalSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.propagateActorCommunicationLinksToLogicalSystem"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.propagateActorCommunicationLinksToLogicalSystem"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfSystemActorOrSystemActorPck">
+            </test>
+         </enablement>
+         <action label="%propagateActorCommunicationLinksToLogicalSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.propagateActorCommunicationLinksToLogicalSystem"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <!-- accelerator synchronizeLogicalActorCommunicationLinksWithSystem -->      
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeLogicalActorCommunicationLinksWithSystem"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="instanceOfLogicalActorOrLogicalActorPck">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalActorCommunicationLinksWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.synchronizeLogicalActorCommunicationLinksWithSystem"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeLogicalActorCommunicationLinksWithSystem"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfLogicalActorOrLogicalActorPck">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalActorCommunicationLinksWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.synchronizeLogicalActorCommunicationLinksWithSystem"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>      
+	  <!-- accelerator propagateSystemCommunicationLinksToLogicalSystem -->
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.propagateSystemCommunicationLinksToLogicalSystem"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="instanceOfSystem">
+            </test>
+         </enablement>
+         <action label="%propagateSystemCommunicationLinksToLogicalSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.propagateSystemCommunicationLinksToLogicalSystem"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.propagateSystemCommunicationLinksToLogicalSystem"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfSystem">
+            </test>
+         </enablement>
+         <action label="%propagateSystemCommunicationLinksToLogicalSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.propagateSystemCommunicationLinksToLogicalSystem"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>      
+      <!-- accelerator synchronizeLogicalCommunicationLinksWithSystem -->      
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeLogicalCommunicationLinksWithSystem"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="instanceOfLogicalComponent">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalCommunicationLinksWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.synchronizeLogicalCommunicationLinksWithSystem"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeLogicalCommunicationLinksWithSystem"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="instanceOfLogicalComponent">
+            </test>
+         </enablement>
+         <action label="%synchronizeLogicalCommunicationLinksWithSystem_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateCommunicationLinkDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.synchronizeLogicalCommunicationLinksWithSystem"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+
+
+
       <objectContribution
             id="org.polarsys.capella.core.sirius.menus.graphical.propagateInterfacesLCtoPC"
             objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
@@ -220,22 +479,6 @@
                class="org.polarsys.capella.core.refinement.commands.actions.PropagateLinksAction"
                icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
                id="graphicalRefinementMode.propagateInterfacesPCtoCI"
-               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
-         </action>
-      </objectContribution>
-      <objectContribution
-            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeInterfacesLA"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
-         <enablement>
-            <test forcePluginActivation="true"
-                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
-                  value="synchronizeInterfacesLA">
-            </test>
-         </enablement>
-         <action label="%synchronizeInterfacesLA_label"
-               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="graphicalRefinementMode.synchronizeInterfacesLA"
                menubarPath="AcceleratorDiagramCommands/groupAccelerator">
          </action>
       </objectContribution>
@@ -272,23 +515,7 @@
          </action>
       </objectContribution>
 
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.propagateInterfacesSAtoLA"
-            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
-         <enablement>
-            <test forcePluginActivation="true"
-                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
-                  value="propagateInterfacesSAtoLA">
-            </test>
-         </enablement>
-         <action label="%propagateInterfacesSAtoLA_label"
-               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="refinementMode.propagateInterfacesSAtoLA"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-      </objectContribution>
+
       <objectContribution
             id="capella.project.explorer.toolsContributor.propagateInterfacesLCtoPC"
             objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
@@ -323,23 +550,7 @@
                menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
          </action>
       </objectContribution>
-      <objectContribution
-            id="capella.project.explorer.toolsContributor.synchronizeInterfacesLA"
-            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
-         <enablement>
-            <test forcePluginActivation="true"
-                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
-                  value="synchronizeInterfacesLA">
-            </test>
-         </enablement>
-         <action label="%synchronizeInterfacesLA_label"
-               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
-               enablesFor="1"
-               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
-               id="refinementMode.synchronizeInterfacesLA"
-               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
-         </action>
-      </objectContribution>
+
       <objectContribution
             id="capella.project.explorer.toolsContributor.synchronizeInterfacesPC"
             objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">

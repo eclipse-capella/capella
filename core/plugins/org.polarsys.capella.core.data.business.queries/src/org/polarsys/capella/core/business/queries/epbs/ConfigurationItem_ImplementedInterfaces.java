@@ -15,49 +15,22 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-
-import org.polarsys.capella.core.business.abstractqueries.ExtendedBusinessQueryForLib;
-import org.polarsys.capella.core.business.abstractqueries.RefactorDebugger;
-import org.polarsys.capella.core.business.abstractqueries.RefactoredBusinessQuery;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact;
-import org.polarsys.capella.core.data.cs.CsPackage;
-import org.polarsys.capella.core.data.epbs.ConfigurationItem;
-import org.polarsys.capella.core.data.epbs.EpbsPackage;
+import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
-import org.polarsys.capella.core.model.utils.ListExt;
+import org.polarsys.capella.core.data.cs.CsPackage;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 
-public class ConfigurationItem_ImplementedInterfaces implements ExtendedBusinessQueryForLib, RefactoredBusinessQuery, IBusinessQuery {
+public class ConfigurationItem_ImplementedInterfaces implements IBusinessQuery {
 
-	public List<CapellaElement> getOldAvailableElements(CapellaElement element_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-
-		if (element_p instanceof ConfigurationItem) {
-			for (AbstractPhysicalArtifact physicalArtifact : ((ConfigurationItem) element_p).getAllocatedPhysicalArtifacts()) {
-			  if (physicalArtifact instanceof PhysicalComponent) {
-			    availableElements.addAll(((PhysicalComponent) physicalArtifact).getImplementedInterfaces());
-			  }
-			}
-		} 
-		availableElements = ListExt.removeDuplicates(availableElements);
-
-		return availableElements;
-	}
-
-	public List<CapellaElement> getOldCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof ConfigurationItem) {
-			currentElements.addAll(ComponentExt.getImplementedInterfaces((ConfigurationItem) element_p));
-		}
-		return currentElements;
-	}
-
+	@Override
 	public EClass getEClass() {
 		return EpbsPackage.Literals.CONFIGURATION_ITEM;
 	}
 
+	@Override
 	public List<EReference> getEStructuralFeatures() {
 	    List<EReference> list = new ArrayList<EReference>(2);
 	    list.add(CsPackage.Literals.COMPONENT__IMPLEMENTED_INTERFACES);
@@ -67,11 +40,15 @@ public class ConfigurationItem_ImplementedInterfaces implements ExtendedBusiness
 
 	@Override
 	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-	  return RefactorDebugger.callAndTestQuery("GetAvailable_ConfigurationItem_ImplementedInterfaces__Lib", element_p, getOldAvailableElements(element_p), getEClass(), getClass());//$NON-NLS-1$
+	  QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES___LIB, element_p, context);
 	}
 
 	@Override
 	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-	  return RefactorDebugger.callAndTestQuery("GetCurrent_ConfigurationItem_ImplementedInterfaces", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+	  QueryContext context = new QueryContext();
+		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__CONFIGURATION_ITEM__IMPLEMENTED_INTERFACES, element_p, context);
 	}
 }

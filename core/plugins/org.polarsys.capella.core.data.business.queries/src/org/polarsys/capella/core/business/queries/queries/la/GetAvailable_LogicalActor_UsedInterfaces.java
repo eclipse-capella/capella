@@ -19,7 +19,6 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.la.LogicalActor;
@@ -27,9 +26,6 @@ import org.polarsys.capella.core.data.la.LogicalActorPkg;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
-import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.InterfacePkgExt;
 import org.polarsys.capella.core.model.helpers.LogicalActorPkgExt;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -90,13 +86,6 @@ public class GetAvailable_LogicalActor_UsedInterfaces extends AbstractQuery {
    */
   private List<CapellaElement> getRule_MQRY_Actor_UsedInterfaces12(Component currentActor_p, SystemEngineering systemEngineering_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    List<SharedPkg> sharedPkgs = SystemEngineeringExt.getSharedPkgs(currentActor_p);
-    for (SharedPkg sharedPkg : sharedPkgs) {
-      GenericPkg genericPkg = sharedPkg.getOwnedGenericPkg();
-      if (genericPkg != null) {
-        availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(genericPkg, currentActor_p, true));
-      }
-    }
     return availableElements;
   }
 
@@ -108,14 +97,10 @@ public class GetAvailable_LogicalActor_UsedInterfaces extends AbstractQuery {
    */
   private List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, LogicalActor element_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    availableElements.addAll(InterfacePkgExt.getAllInterfacesFiltered(arch_p.getOwnedInterfacePkg(), element_p, true));
+    availableElements.addAll(InterfacePkgExt.getAllInterfaces(arch_p.getOwnedInterfacePkg()));
     if (arch_p instanceof LogicalArchitecture) {
       LogicalActorPkg ownedLogicalActorPkg = ((LogicalArchitecture) arch_p).getOwnedLogicalActorPkg();
       availableElements.addAll(LogicalActorPkgExt.getAllInterfacesFromLogicalActorPkg(ownedLogicalActorPkg));
-    }
-    List<Interface> usedInterfaces = ComponentExt.getUsedInterfaces(element_p);
-    for (Interface interface1 : usedInterfaces) {
-      availableElements.remove(interface1);
     }
     return availableElements;
   }

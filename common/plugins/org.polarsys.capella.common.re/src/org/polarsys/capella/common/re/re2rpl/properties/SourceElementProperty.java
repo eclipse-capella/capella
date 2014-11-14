@@ -43,7 +43,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
       result = new HashSet<EObject>();
 
       CatalogElement element =
-          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SOURCE));
+          (CatalogElement) context_p.getCurrentValue(context_p.getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_SOURCE));
 
       result.addAll(ReplicableElementHandlerHelper.getInstance(context).getElements(element));
       // TODO Add replica elements to scope
@@ -93,7 +93,7 @@ public class SourceElementProperty extends AbstractProperty implements IEditable
    */
   @Override
   public String[] getRelatedProperties() {
-    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__TARGET };
+    return new String[] { IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET };
   }
 
   /**
