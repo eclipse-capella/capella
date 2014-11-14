@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+
+<target name="Juno-based TP" sequenceNumber="8">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.pde.api.tools.ee.cdcfoundation10.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.cdcfoundation11.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.j2se13.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.j2se14.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.j2se15.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.javase16.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.javase17.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.jre11.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.osgiminimum10.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.osgiminimum11.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.pde.api.tools.ee.osgiminimum12.group" version="1.0.0.v20120530-1420-7D-FYxFAFkNZkOMvTB_AjP52"/>
+<unit id="org.eclipse.platform.ide" version="3.8.2.M20130131-0800"/>
+<unit id="org.eclipse.platform.sdk" version="3.8.2.M20130131-0800"/>
+<unit id="org.eclipse.rcp.feature.group" version="3.8.2.v20130118-180157-96BuGOZFxwOAeG8Ofmqicz0tPK"/>
+<unit id="org.eclipse.rcp.source.feature.group" version="3.8.2.v20130118-180157-96BuGOZFxwOAeG8Ofmqicz0tPK"/>
+<unit id="org.eclipse.sdk.ide" version="3.8.2.M20130131-0800"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.8.0.v20121212-203907-7M7fA78g4_y-edvtH0ZcEC5NOFTB"/>
+<unit id="org.eclipse.releng.tools.feature.group" version="3.5.0.v20120528-1717-458Z7w312316420242241"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/download.eclipse.org/eclipse/updates/3.8/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.2.1.v20120314-1108"/>
+<unit id="org.eclipse.acceleo.doc.feature.group" version="3.2.1.v20120314-1108"/>
+<unit id="org.eclipse.acceleo.examples.feature.group" version="3.2.1.v20120314-1108"/>
+<unit id="org.eclipse.acceleo.sdk.feature.group" version="3.2.1.v20120314-1108"/>
+<unit id="org.eclipse.acceleo.runtime.feature.group" version="3.2.1.v20120314-1108"/>
+<unit id="org.eclipse.acceleo.feature.group" version="3.2.1.v20120314-1108"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/latest/acceleo/3.2/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="fr.obeo.acceleo.feature.group" version="2.8.0.201102021515"/>
+<unit id="fr.obeo.acceleo.ui.feature.group" version="2.8.0.201102021515"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/latest/acceleo/2.8/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.source.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.diagram.ecoretools.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.diagram.papyrus.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.uml2.feature.group" version="2.1.2.201310091450"/>
+<unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="2.1.2.201310091450"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/latest/emfcompare/2.1.0/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="com.google.guava.runtime.feature.feature.group" version="11.0.1"/>
+<unit id="com.google.guava.sdk.feature.feature.group" version="11.0.1"/>
+<unit id="com.thalesgroup.mde.cots.feature.feature.group" version="1.0.0.201203211850"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/latest/cots/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="fr.obeo.dsl.viewpoint.collab.security.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo.source.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.collab.ide.ui.tests.source.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.feature.doremi.collab.distrib.developer.feature.group" version="5.6.2.201402071113"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.collab.ide.ui.tests.support.source.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.collab.ide.ui.tests.support.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.feature.doremi.distrib.user.feature.group" version="5.6.2.201402071113"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.source.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.feature.doremi.test.feature.group" version="5.6.2.201402071113"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.collab.ide.ui.tests.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.feature.doremi.collab.distrib.user.feature.group" version="5.6.2.201402071113"/>
+<unit id="fr.obeo.dsl.feature.doremi.distrib.developer.feature.group" version="5.6.2.201402071113"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ocl.source.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo2.source.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ocl.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.feature.group" version="6.9.2.201402061628"/>
+<unit id="fr.obeo.dsl.viewpoint.collab.server.security.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.cdonative.source.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.cdonative.source.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.cdonative.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.cdonative.feature.group" version="6.9.2.201402061653"/>
+<unit id="fr.obeo.acceleo.feature.group" version="2.8.0.201102021515"/>
+<unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.1.201309031307"/>
+<unit id="fr.obeo.acceleo.ui.feature.group" version="2.8.0.201102021515"/>
+<unit id="org.eclipse.sdk.feature.group" version="3.8.2.v20130116-114247-7Q85DVDQQ3JLtb_hNUm3_MTesRM5RqdjCSfXEI7waiJ_N"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.8.3.v20130125-0826"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>
+<unit id="org.eclipse.emf.compare.source.feature.group" version="2.1.2.201310031412"/>
+<unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="2.1.2.201310031412"/>
+<unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="2.1.2.201310031412"/>
+<unit id="org.eclipse.emf.query.sdk.feature.group" version="1.6.0.v20120328-0001-67T-95GFz05DNIrNLOSNK_NPj507"/>
+<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.6.0.v20120328-0001-777Z-9A_WsZmcPluNecyPkvrPKlH"/>
+<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.6.0.v20120328-0001-67T-96SGR75UNqZNTdeQnghI6uFA"/>
+<unit id="org.eclipse.equinox.p2.user.ui.feature.group" version="2.2.0.v20121212-204731-62DG9JXTlTj-UXcQ2y3NLn6U4Z3H"/>
+<unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.0.201212170307"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.0.201212170307"/>
+<unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.6.0.v20120327-2213-47F08xGD6FxMBN7CJFV3CIKK9t84"/>
+<unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.6.2.201302122140"/>
+<unit id="com.google.guava.sdk.feature.feature.group" version="11.0.1"/>
+<unit id="org.eclipse.ocl.all.sdk.feature.group" version="4.0.2.v20130130-1128"/>
+<unit id="org.eclipse.emf.cdo.feature.patch.feature.group" version="1.0.0.201401131547"/>
+<unit id="org.eclipse.emf.cdo.server.feature.patch.feature.group" version="1.0.0.201401131547"/>
+<unit id="org.eclipse.gmf.runtime.notation.feature.patch.feature.group" version="1.0.0.201312111613"/>
+<unit id="org.eclipse.net4j.feature.patch.feature.group" version="1.0.0.201401131547"/>
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.0.201302221524"/>
+<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.1.0.201302221524"/>
+<unit id="org.eclipse.swtbot.feature.group" version="2.1.0.201302221524"/>
+<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.1.0.201302221524"/>
+<unit id="org.eclipse.uml2.sdk.feature.group" version="4.0.2.v20130114-0902"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/latest/doremi-3.8.2/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.diffmerge.sdk.source.feature.feature.group" version="0.1.0.v20121031-1122"/>
+<unit id="org.eclipse.emf.diffmerge.sdk.feature.feature.group" version="0.1.0.v20121031-1122"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/latest/diffmerge/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="com.thalesgroup.mde.validation.example.feature.feature.group" version="1.4.3.v20140122-0618"/>
+<unit id="com.thalesgroup.mde.validation.generic.provider.feature.feature.group" version="1.4.3.v20140122-0618"/>
+<unit id="com.thalesgroup.mde.af.feature.feature.group" version="2.5.0.v20140122-0626"/>
+<unit id="com.thalesgroup.mde.af.doremi.feature.feature.group" version="2.5.0.v20140122-0627"/>
+<unit id="com.thalesgroup.mde.af.sdk.feature.feature.group" version="2.5.0.v20140122-0626"/>
+<unit id="com.thalesgroup.mde.metamodel.allocation.base.feature.feature.group" version="1.4.1.v20140122-0620"/>
+<unit id="com.thalesgroup.mde.cadence.example.feature.feature.group" version="1.1.0.v20140122-0619"/>
+<unit id="com.thalesgroup.mde.cadence.feature.feature.group" version="1.1.0.v20140122-0619"/>
+<unit id="com.thalesgroup.mde.codegen.manager.feature.feature.group" version="1.4.1.v20140122-0620"/>
+<unit id="com.thalesgroup.mde.report.feature.feature.group" version="2.4.0.v20140122-0624"/>
+<unit id="com.thalesgroup.mde.extension.manager.unregistered.feature.feature.group" version="1.0.0.v20140122-0614"/>
+<unit id="org.eclipse.egf.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.portfolio.acceleo3.feature.group" version="1.1.0.v20140122-0549"/>
+<unit id="org.eclipselabs.egf.portfolio.acceleo2.feature.group" version="1.0.0.v20140122-0550"/>
+<unit id="org.eclipse.egf.portfolio.task.ant.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.portfolio.task.ant.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.portfolio.atl.source.feature.group" version="1.1.0.v20140122-0550"/>
+<unit id="org.eclipse.egf.portfolio.atl.feature.group" version="1.1.0.v20140122-0550"/>
+<unit id="org.eclipse.egf.common.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.common.ui.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.core.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.core.ui.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.core.ui.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.doc.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.doc.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.portfolio.emf.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.portfolio.emf.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.portfolio.genchain.ecoretools.feature.group" version="1.1.0.v20140122-0549"/>
+<unit id="org.eclipse.egf.portfolio.genchain.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.edit.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.fprod.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.fprod.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.fprod.edit.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.fprod.edit.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.ftask.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.ftask.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.ftask.edit.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.ftask.edit.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.model.ui.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="com.thalesgroup.mde.egf.design.feature.feature.group" version="2.3.0.v20140122-0615"/>
+<unit id="org.eclipse.egf.portfolio.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipselabs.egf.portfolio.task.jython.source.feature.group" version="1.0.0.v20140122-0552"/>
+<unit id="org.eclipselabs.egf.portfolio.task.jython.feature.group" version="1.0.0.v20140122-0552"/>
+<unit id="org.eclipselabs.egf.portfolio.task.ruby.feature.group" version="1.0.0.v20140122-0554"/>
+<unit id="org.eclipse.egf.sdk.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="com.thalesgroup.mde.simplecomponent.feature.feature.group" version="2.4.0.v20140122-0627"/>
+<unit id="com.thalesgroup.mde.transposer.transformation.emf.feature.feature.group" version="1.0.4.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpdiagram.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.commondata.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.codegen.manager.examples.feature.feature.group" version="1.4.1.v20140122-0621"/>
+<unit id="com.thalesgroup.mde.freeform.feature.feature.group" version="2.3.0.v20140122-0616"/>
+<unit id="com.thalesgroup.mde.docgen.html.common.feature.feature.group" version="2.3.0.v20140122-0610"/>
+<unit id="com.thalesgroup.mde.lvps.project.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.dashboard.feature.feature.group" version="1.0.0.v20140122-0623"/>
+<unit id="com.thalesgroup.mde.extension.source.feature.group" version="1.2.0.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.extension.sdk.source.feature.group" version="1.2.0.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.portfolio.emf.source.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.portfolio.emf.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.toolkit.emde.runtime.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.toolkit.emde.sdk.source.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.toolkit.emde.sdk.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.toolkit.core.feature.feature.group" version="2.3.0.v20140122-0607"/>
+<unit id="com.thalesgroup.mde.toolkit.detach.source.feature.feature.group" version="2.3.0.v20140122-0613"/>
+<unit id="com.thalesgroup.mde.toolkit.detach.feature.feature.group" version="2.3.0.v20140122-0613"/>
+<unit id="com.thalesgroup.mde.toolkit.ecore.source.feature.feature.group" version="2.3.0.v20140122-0608"/>
+<unit id="com.thalesgroup.mde.toolkit.ecore.feature.feature.group" version="2.3.0.v20140122-0608"/>
+<unit id="com.thalesgroup.mde.toolkit.extension.feature.feature.group" version="2.3.0.v20140122-0612"/>
+<unit id="com.thalesgroup.mde.toolkit.gendoc.feature.feature.group" version="2.3.0.v20140122-0610"/>
+<unit id="com.thalesgroup.mde.toolkit.shared.feature.feature.group" version="2.3.0.v20140122-0606"/>
+<unit id="com.thalesgroup.mde.mdk.product" version="0.0.0"/>
+<unit id="com.thalesgroup.mde.genchain.feature.feature.group" version="2.3.0.v20140122-0611"/>
+<unit id="com.thalesgroup.mde.mdk.product.feature.feature.group" version="3.0.0.v20140122-0635"/>
+<unit id="com.thalesgroup.mde.modelreuse.feature.feature.group" version="2.3.0.v20140122-0615"/>
+<unit id="com.thalesgroup.mde.examples.report.feature.feature.group" version="1.0.0.v20140122-0624"/>
+<unit id="com.thalesgroup.mde.examples.viewpoint.report.feature.feature.group" version="2.4.0.v20140122-0628"/>
+<unit id="com.thalesgroup.mde.report.ui.feature.feature.group" version="2.4.0.v20140122-0624"/>
+<unit id="com.thalesgroup.mde.validation.example.source.feature.feature.group" version="1.4.3.v20140122-0618"/>
+<unit id="com.thalesgroup.mde.validation.generic.provider.source.feature.feature.group" version="1.4.3.v20140122-0618"/>
+<unit id="com.thalesgroup.mde.af.source.feature.feature.group" version="2.5.0.v20140122-0626"/>
+<unit id="com.thalesgroup.mde.af.doremi.source.feature.feature.group" version="2.5.0.v20140122-0627"/>
+<unit id="com.thalesgroup.mde.af.sdk.source.feature.feature.group" version="2.5.0.v20140122-0626"/>
+<unit id="com.thalesgroup.mde.metamodel.allocation.base.source.feature.feature.group" version="1.4.1.v20140122-0620"/>
+<unit id="com.thalesgroup.mde.cadence.example.source.feature.feature.group" version="1.1.0.v20140122-0619"/>
+<unit id="com.thalesgroup.mde.cadence.source.feature.feature.group" version="1.1.0.v20140122-0619"/>
+<unit id="com.thalesgroup.mde.codegen.manager.source.feature.feature.group" version="1.4.1.v20140122-0620"/>
+<unit id="com.thalesgroup.mde.report.source.feature.feature.group" version="2.4.0.v20140122-0624"/>
+<unit id="com.thalesgroup.mde.extension.manager.unregistered.source.feature.feature.group" version="1.0.0.v20140122-0614"/>
+<unit id="org.eclipse.egf.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="org.eclipse.egf.portfolio.acceleo3.source.feature.group" version="1.1.0.v20140122-0549"/>
+<unit id="org.eclipselabs.egf.portfolio.acceleo2.source.feature.group" version="1.0.0.v20140122-0550"/>
+<unit id="org.eclipse.egf.portfolio.genchain.ecoretools.source.feature.group" version="1.1.0.v20140122-0549"/>
+<unit id="com.thalesgroup.mde.egf.design.source.feature.feature.group" version="2.3.0.v20140122-0615"/>
+<unit id="org.eclipselabs.egf.portfolio.task.ruby.source.feature.group" version="1.0.0.v20140122-0554"/>
+<unit id="org.eclipse.egf.sdk.source.feature.group" version="1.1.0.v20140122-0547"/>
+<unit id="com.thalesgroup.mde.emde.source.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.emde.sdk.source.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.simplecomponent.source.feature.feature.group" version="2.4.0.v20140122-0627"/>
+<unit id="com.thalesgroup.mde.emde.ui.source.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.transposer.transformation.emf.source.feature.feature.group" version="1.0.4.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.commondata.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpdiagram.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.codegen.manager.examples.source.feature.feature.group" version="1.4.1.v20140122-0621"/>
+<unit id="com.thalesgroup.mde.freeform.source.feature.feature.group" version="2.3.0.v20140122-0616"/>
+<unit id="com.thalesgroup.mde.docgen.html.common.source.feature.feature.group" version="2.3.0.v20140122-0610"/>
+<unit id="com.thalesgroup.mde.lvps.project.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.dashboard.source.feature.feature.group" version="1.0.0.v20140122-0623"/>
+<unit id="com.thalesgroup.mde.extension.ui.source.feature.group" version="1.2.0.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.toolkit.emde.runtime.source.feature.group" version="1.2.1.v20140122-0605"/>
+<unit id="com.thalesgroup.mde.toolkit.core.source.feature.feature.group" version="2.3.0.v20140122-0607"/>
+<unit id="com.thalesgroup.mde.toolkit.extension.source.feature.feature.group" version="2.3.0.v20140122-0612"/>
+<unit id="com.thalesgroup.mde.toolkit.gendoc.source.feature.feature.group" version="2.3.0.v20140122-0610"/>
+<unit id="com.thalesgroup.mde.toolkit.shared.source.feature.feature.group" version="2.3.0.v20140122-0606"/>
+<unit id="com.thalesgroup.mde.genchain.source.feature.feature.group" version="2.3.0.v20140122-0611"/>
+<unit id="com.thalesgroup.mde.mdk.product.source.feature.feature.group" version="3.0.0.v20140122-0635"/>
+<unit id="com.thalesgroup.mde.modelreuse.source.feature.feature.group" version="2.3.0.v20140122-0615"/>
+<unit id="com.thalesgroup.mde.examples.report.source.feature.feature.group" version="1.0.0.v20140122-0624"/>
+<unit id="com.thalesgroup.mde.examples.viewpoint.report.source.feature.feature.group" version="2.4.0.v20140122-0628"/>
+<unit id="com.thalesgroup.mde.report.ui.source.feature.feature.group" version="2.4.0.v20140122-0624"/>
+<unit id="com.thalesgroup.mde.eclipse.platform.modeler.source.feature.feature.group" version="2.3.0.v20140122-0617"/>
+<unit id="com.thalesgroup.mde.transposer.transformation.source.feature.feature.group" version="1.0.4.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.transposer.examples.source.feature.feature.group" version="1.0.4.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.transposer.source.feature.feature.group" version="1.0.7.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpservices.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpbuild.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.vpconf.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.mdk.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.generator.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpui.source.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.textedit.source.feature.feature.group" version="1.0.0.v20140122-0634"/>
+<unit id="com.thalesgroup.mde.eclipse.platform.modeler.feature.feature.group" version="2.3.0.v20140122-0617"/>
+<unit id="com.thalesgroup.mde.transposer.transformation.feature.feature.group" version="1.0.4.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.transposer.examples.feature.feature.group" version="1.0.4.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.transposer.feature.feature.group" version="1.0.7.v20140122-0622"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpservices.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpbuild.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.vpconf.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.mdk.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.generator.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.vpspec.aspects.vpui.feature.feature.group" version="1.0.0.v20140122-0631"/>
+<unit id="com.thalesgroup.mde.lvps.textedit.feature.feature.group" version="1.0.0.v20140122-0634"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/latest/MDK_EGF/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="false" type="InstallableUnit">
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.8.3.v20130125-0826"/>
+<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.0.2.v20130212-0719"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="1.3.3.v20130213-0806"/>
+<unit id="org.eclipse.emf.compare.sdk.feature.group" version="1.3.3.v20130213-0806"/>
+<unit id="org.eclipse.emf.transaction.examples.feature.group" version="1.6.0.v20120328-0001-47D8Z8yGE5PtKEQUIIOX6EAL3"/>
+<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.6.0.v20120328-0001-777Z-9A_WsZmcPluNecyPkvrPKlH"/>
+<unit id="org.eclipse.emf.validation.examples.feature.group" version="1.6.0.v20120328-0001-67I-BgJ9CT9IJc8PRNL"/>
+<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.6.0.v20120328-0001-67T-96SGR75UNqZNTdeQnghI6uFA"/>
+<repository location="file:/D:/CapellaOS/sources/updateSites/download.eclipse.org/releases/juno/"/>
+</location>
+</locations>
+<environment>
+<os>win32</os>
+<ws>win32</ws>
+<arch>x86</arch>
+<nl>fr_FR</nl>
+</environment>
+<launcherArgs>
+<vmArgs>-Dosgi.requiredJavaVersion=1.5 -Xms40m -Xmx512m</vmArgs>
+</launcherArgs>
+</target>

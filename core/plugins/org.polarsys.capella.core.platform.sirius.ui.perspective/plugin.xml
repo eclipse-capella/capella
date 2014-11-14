@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaPerspective"
+            icon="icons/CapellaAdavance16x16.gif"
+            id="capella.sirius.perspective"
+            name="%perspective.name">
+         <description>
+            This is the Capella Perspective.
+         </description>
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="capella.sirius.perspective">
+         <viewShortcut id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview"/>
+         <viewShortcut id="org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserID"/>
+         <viewShortcut
+               id="capella.project.explorer">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
+    <extension
+       point="org.eclipse.ui.views">
+      <category
+            id="org.polarsys.capella.views.category"
+            name="Capella">
+      </category>
+    </extension>
+    <extension
+          point="org.eclipse.core.runtime.preferences">
+       <initializer
+             class="org.polarsys.capella.core.platform.sirius.ui.PerspectivePreferencesInitializer">
+       </initializer>
+    </extension>
+    <extension
+          id="id"
+          point="org.eclipse.core.runtime.applications">
+       <application
+             cardinality="singleton-global"
+             thread="main"
+             visible="true">
+          <run
+                class="org.polarsys.capella.core.platform.sirius.ui.app.CapellaApplication">
+          </run>
+       </application>
+    </extension>
+    <extension
+          id="product"
+          point="org.eclipse.core.runtime.products">
+       <product
+             application="org.polarsys.capella.core.platform.sirius.ui.perspective.id"
+             name="Capella">
+             <property name="aboutImage" value="icons/CapellaAbout.png"/>
+         <property
+               name="aboutText"
+               value="%productBlurb"/>
+         <property  name="windowImages" value="icons/CapellaAdavance16x16.gif,icons/Capella32x32.png,icons/Capella48x48.png"/>
+         <property name="preferenceCustomization" value="plugin_customization.ini" /> 
+         <property name="startupForegroundColor" value="000000" /> 
+         <property name="startupMessageRect" value="10,220,438,20" /> 
+         <property name="startupProgressRect" value="0,280,455,15" />
+         <property
+               name="appName"
+               value="Capella">
+         </property>
+          <property
+                name="introTitle"
+                value="%productIntroTitle"/>
+          <property
+                name="introBrandingImage"
+                value="product:icons/intro-capella.png"/>
+          <property
+                name="introBrandingImageText"
+                value="%productIntroBrandingText"/>
+          <property
+                name="introDescription-firststeps"
+                value="%introDescription-firststeps"/>
+       </product>
+    </extension>
+   
+   <extension point= "org.eclipse.ui.activities" >
+     <!-- Declare the activity -->
+     <activity id= "org.polarsys.capella.core.hidden.activity" description= "Capella Hidden Activities" name= "Capella Hidden Activities"/>
+     <!-- hidden contributions-->
+     <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern="org\.eclipse\.debug\..*/.*"/>
+     <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.modelingproject.wizard"/>
+     <activityPatternBinding activityId="org.polarsys.capella.core.hidden.activity" pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard"/>
+   </extension>
+   <!--extension point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="org.polarsys.capella.core.platform.sirius.ui.perspective.CapellaSplashHandler"
+            id="org.polarsys.capella.core.product.splashHandler">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="org.polarsys.capella.core.platform.sirius.ui.perspective.product"
+            splashId="org.polarsys.capella.core.product.splashHandler">
+      </splashHandlerProductBinding>
+   </extension-->
+</plugin>

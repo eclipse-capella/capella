@@ -1,0 +1,153 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.sequencediag;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
+import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+
+import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.cs.CsFactory;
+import org.polarsys.capella.core.data.cs.SystemComponent;
+import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
+import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement;
+import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement;
+import org.polarsys.capella.core.data.interaction.Execution;
+import org.polarsys.capella.core.data.interaction.InstanceRole;
+import org.polarsys.capella.core.data.interaction.InteractionFactory;
+import org.polarsys.capella.core.data.interaction.InteractionFragment;
+import org.polarsys.capella.core.data.interaction.InteractionState;
+import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.la.CapabilityRealization;
+import org.polarsys.capella.core.data.capellacore.InvolvedElement;
+import org.polarsys.capella.core.data.capellacore.Involvement;
+import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
+import org.polarsys.capella.core.data.oa.OaFactory;
+import org.polarsys.capella.core.data.oa.OperationalCapability;
+
+/**
+ * This class checks that the creation of a message doesn't violate one or more constraints.
+ */
+@SuppressWarnings("nls")
+public class ScenarioContraintsService {
+
+  public static EObject traceScenario(EObject object_p, EObject o1) {
+    return object_p;
+  }
+
+  public static EObject traceScenario2(EObject object_p, EObject o1, EObject o2) {
+    EventEnd e1 = (EventEnd) o1;
+    EventEnd e2 = (EventEnd) o2;
+    if (object_p instanceof Execution) {
+      Execution e = (Execution) object_p;
+      System.out.print("moving execution " + e.getName());
+    } else if (object_p instanceof SequenceMessage) {
+        SequenceMessage msg = (SequenceMessage) object_p;
+        System.out.print("moving message " + msg.getName());
+    } else if (object_p instanceof InteractionState) {
+      InteractionState is = (InteractionState) object_p;
+      System.out.print("moving interaction state " + is.getName());
+    }
+    System.out.print(" after ");
+    display(e1);
+    System.out.print(" and ");
+    display(e2);
+    System.out.println();
+    return object_p;
+  }
+
+  
+  private static void display(EventEnd e) {
+    if (e == null) System.out.print("*NULL*");
+    if (e instanceof SingleEventEnd) {
+      displaySingle((SingleEventEnd) e);
+    }
+    if (e instanceof CompoundEventEnd) {
+      displayCompound((CompoundEventEnd) e);
+    }
+  }
+
+  private static void displaySingle(SingleEventEnd see) {
+    System.out.print(" (" +see.eClass().getName() + ") " + ((InteractionFragment) see.getSemanticEnd()).getName());
+  }
+
+  private static void displayCompound(CompoundEventEnd cee) {
+    System.out.print(" (" +cee.eClass().getName() + ") " + ((InteractionFragment) cee.getSemanticEnd()).getName());
+    System.out.print(" [ ");
+    for (EventEnd ee : cee.getEventEnds()) {
+      display(ee);
+    }
+    System.out.print(" ] ");
+  }
+
+  /**
+   * CHeck if the component (actor, system, logical or physicalComponent) is involved into the capability containing the scenario taken into parameters used in
+   * common.odesign
+   */
+  public static Scenario ensureCapabilityInvolvment(Scenario scenario_p, InvolvedElement component_p) {
+    AbstractCapability capability = (AbstractCapability) scenario_p.eContainer();
+    for (Involvement involv : capability.getInvolvedInvolvements()) {
+      if (involv.getInvolved() == component_p)
+        return scenario_p;
+    }
+
+    // if we are here, the involvement wasn't found, so we will have to create it.
+    Involvement result = null;
+    if (component_p instanceof org.polarsys.capella.core.data.ctx.System) {
+      result = CtxFactory.eINSTANCE.createSystemCapabilityInvolvement();
+      ((Capability) capability).setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement) result);
+    } else if (component_p instanceof Actor) {
+      result = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
+      ((Capability) capability).getOwnedActorCapabilityInvolvements().add((ActorCapabilityInvolvement) result);
+    } else if (component_p instanceof SystemComponent) {
+      result = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
+      ((CapabilityRealization) capability).getOwnedSystemComponentCapabilityRealizations().add((SystemComponentCapabilityRealizationInvolvement) result);
+    } else if (component_p instanceof AbstractActor) {
+      result = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
+      ((CapabilityRealization) capability).getOwnedActorCapabilityRealizations().add((ActorCapabilityRealizationInvolvement) result);
+    } else if (component_p instanceof Entity) {
+    	result = OaFactory.eINSTANCE.createEntityOperationalCapabilityInvolvement();
+    	((OperationalCapability) capability).getOwnedEntityOperationalCapabilityInvolvements().add((EntityOperationalCapabilityInvolvement) result);
+    } else if (component_p instanceof AbstractFunction) {
+    	result = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
+    	capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add ((AbstractFunctionAbstractCapabilityInvolvement) result);
+    }
+
+    result.setInvolver(capability);
+    result.setInvolved(component_p);
+
+    return scenario_p;
+  }
+
+  public void reorderInstanceRole(EObject context_p, EObject irToMove_p, EObject predecessor_p) {
+	  InstanceRole ir = (InstanceRole) irToMove_p;
+	  InstanceRole pred = (InstanceRole) predecessor_p;
+	  Scenario scenario = (Scenario) ir.eContainer();
+	  
+	  scenario.getOwnedInstanceRoles().remove(ir);
+	  if (predecessor_p == null) {
+		  scenario.getOwnedInstanceRoles().add(0, ir);
+	  } else {
+		  int pos =  scenario.getOwnedInstanceRoles().indexOf(pred);
+		  scenario.getOwnedInstanceRoles().add(pos + 1, ir);
+	  }
+  }
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.capellamodeller.Folder">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.capellamodeller.Project">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.capellamodeller.SystemEngineeringPkg">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.capellamodeller.SystemEngineering">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
+	  <propertySections contributorId="org.eclipse.sirius.diagram">
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
+	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.FolderSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.ProjectSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringPkgSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               filter="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               id="org.polarsys.capella.core.data.modeller.properties.sections.SystemEngineeringSection"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>

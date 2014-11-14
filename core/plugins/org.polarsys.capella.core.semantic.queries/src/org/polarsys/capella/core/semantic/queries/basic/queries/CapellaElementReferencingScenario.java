@@ -1,0 +1,91 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.semantic.queries.basic.queries;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.information.AbstractEventOperation;
+import org.polarsys.capella.core.data.information.ExchangeItemInstance;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.oa.Role;
+import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.helpers.query.IQuery;
+
+/**
+ * Return referencing Scenario of Component, Role, AbstractFunction, ExchangeItemInstance and 
+ * AbstractEventOperation
+ */
+public class CapellaElementReferencingScenario implements IQuery {
+
+  public CapellaElementReferencingScenario() {
+    // does nothing
+  }
+
+  /**
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object_p) {
+    List<Object> result = new ArrayList<Object>();
+    // Component, because of the part
+    if (object_p instanceof Component) {
+      Component component = (Component) object_p;
+      List<AbstractTypedElement> abstractTypedElements = component.getAbstractTypedElements();
+      for (AbstractTypedElement abstractTypedElement : abstractTypedElements) {
+    	  getReferencingScenarios(result, abstractTypedElement,InteractionPackage.Literals.INSTANCE_ROLE);
+	  }
+    }
+    // Role, ExchangeItemInstance & AbstractFunction
+    if (object_p instanceof Role || object_p instanceof AbstractFunction
+    		|| object_p instanceof ExchangeItemInstance) {
+    	 getReferencingScenarios(result, (EObject) object_p, InteractionPackage.Literals.INSTANCE_ROLE);
+    	 getReferencingScenarios(result, (EObject) object_p,InteractionPackage.Literals.STATE_FRAGMENT);
+    }
+    // AbstractEventOperation
+    if (object_p instanceof AbstractEventOperation) {
+    	 getReferencingScenarios(result, (EObject) object_p,InteractionPackage.Literals.EVENT_RECEIPT_OPERATION);
+    }
+    // State
+    if (object_p instanceof State) {
+    	getReferencingScenarios(result, (EObject) object_p,InteractionPackage.Literals.STATE_FRAGMENT);
+    }
+    
+    
+    return result;
+  }
+
+/**
+ * Return referencing Scenario
+ * @param result
+ * @param abstractTypedElement
+ */
+private void getReferencingScenarios(List<Object> result,
+		EObject eObject_p, EClass instanceToCompare) {
+	List<EObject> referencingElements = CrossReferencerHelper.getReferencingElements(eObject_p);	
+	  for (EObject eObject : referencingElements) {
+		if (eObject.eClass().equals(instanceToCompare)) {
+			EObject eContainer = eObject.eContainer();
+			if (null != eContainer && eContainer instanceof Scenario) {
+				result.add(eContainer);
+			}
+		}
+	  }
+}
+
+}

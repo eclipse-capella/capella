@@ -1,0 +1,21 @@
+h1. This document lists the changes made with this plug-in compared with Sirius.
+
+h2. Preferences
+
+h3. Save on close
+
+The Eclipse preference IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN (Preferences/General/Editors/Prompt to save on close even if still open elsewhere) is set to false.
+
+h3. Close last editor
+
+The preference org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE is set to false to stay in dirty state when closing the last editor of the session. If set to true, the session should return to the last {@link org.eclipse.sirius.business.api.session.SessionStatus.SYNC} state.
+
+h3. Save session on resource change with no editor opened
+
+In Sirius, the session is now automatically saved on a resource change if there is no opened editor. The preference org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR is set to false to avoid this behavior.
+
+h2. Others
+
+h3. Session name
+
+Override the name used to display a session (especially in the popup asking to save).

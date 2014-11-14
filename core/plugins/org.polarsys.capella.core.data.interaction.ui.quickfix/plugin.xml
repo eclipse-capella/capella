@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_08_Resolver"
+            desc="%quickFix.DWF_DS_08.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.DWF_DS_08.label">
+         <rules
+               ruleId="DWF_DS_08">
+         </rules>
+      </resolver>
+       <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_09_Resolver"
+            desc="%quickFix.DWF_DS_09.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="%quickFix.DWF_DS_09.label">
+         <rules
+               ruleId="DWF_DS_09">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_17_Resolver1"
+            desc="%quickFix1.DWF_DS_17.desc"
+            icon="icons/search16.gif"
+            label="%quickFix1.DWF_DS_17.label">
+         <rules
+               ruleId="DWF_DS_17">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_17_Resolver2"
+            desc="%quickFix2.DWF_DS_17.desc"
+            icon="icons/search16.gif"
+            label="%quickFix2.DWF_DS_17.label">
+         <rules
+               ruleId="DWF_DS_17">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_12_EditResolver"
+            desc="%quickFix1.DWF_DS_12.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+            label="%quickFix1.DWF_DS_12.label">
+         <rules
+               ruleId="DWF_DS_12">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.resolver.DWF_DS_12_RenameResolver"
+            desc="%quickFix2.DWF_DS_12.desc"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+            label="%quickFix2.DWF_DS_12.label">
+         <rules
+               ruleId="DWF_DS_12">
+         </rules>
+      </resolver>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_DS_04_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+         <attribute
+               name="ruleId"
+               value="org.polarsys.capella.core.data.interaction.validation.DWF_DS_04">
+         </attribute>
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_DS_18_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+         <attribute
+               name="ruleId"
+               value="org.polarsys.capella.core.data.interaction.validation.DWF_DS_18">
+         </attribute>
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_DS_19_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+         <attribute
+               name="ruleId"
+               value="org.polarsys.capella.core.data.interaction.validation.DWF_DS_19">
+         </attribute>
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_DS_20_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+         <attribute
+               name="ruleId"
+               value="org.polarsys.capella.core.data.interaction.validation.DWF_DS_20">
+         </attribute>
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_DS_21_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+         <attribute
+               name="ruleId"
+               value="org.polarsys.capella.core.data.interaction.validation.DWF_DS_21">
+         </attribute>
+      </markerResolutionGenerator>
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.interaction.ui.quickfix.generator.DWF_DS_22_Resolutions"
+            markerType="org.polarsys.capella.core.validation.markers">
+         <attribute
+               name="ruleId"
+               value="org.polarsys.capella.core.data.interaction.validation.DWF_DS_22">
+         </attribute>
+      </markerResolutionGenerator>
+   </extension>
+</plugin>

@@ -1,0 +1,102 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.core.properties.sections;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+
+import org.polarsys.capella.core.data.core.properties.Messages;
+import org.polarsys.capella.core.data.core.properties.controllers.TypedElementController;
+import org.polarsys.capella.core.data.information.Collection;
+import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
+import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
+import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+
+/**
+ * The TypedElement section.
+ */
+public abstract class TypedElementSection extends NamedElementSection {
+
+  private SimpleSemanticField _abstractTypeField;
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
+
+    boolean displayedInWizard = isDisplayedInWizard();
+
+    _abstractTypeField = createTypeField();
+    _abstractTypeField.setDisplayedInWizard(displayedInWizard);
+  }
+
+  /**
+   * 
+   */
+  protected SimpleSemanticField createTypeField() {
+    return new SimpleSemanticField(getReferencesGroup(), Messages.getString("TypedElement.TypeLabel"), getWidgetFactory(), new TypedElementController()) { //$NON-NLS-1$
+      /**
+       * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.SimpleSemanticField#handleOpenButtonClicked(org.eclipse.swt.widgets.Button)
+       */
+      @Override
+      protected void handleOpenButtonClicked(Button button_p) {
+        super.handleOpenButtonClicked(button_p);
+        // force the update of the enable status
+        refresh();
+      }
+      /**
+       * @see org.polarsys.capella.core.ui.properties.fields.custom.properties.fields.BrowseSemanticField#handleDeleteButtonClicked()
+       */
+      @Override
+      protected void handleDeleteButtonClicked() {
+        super.handleDeleteButtonClicked();
+        // force the update of the enable status
+        refresh();
+      }
+    };
+  }
+
+  /**
+   * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   */
+  @Override
+  public void loadData(CapellaElement capellaElement_p) {
+    super.loadData(capellaElement_p);
+
+    if (capellaElement_p instanceof AbstractTypedElement) {
+      _abstractTypeField.loadData(capellaElement_p, ModellingcorePackage.eINSTANCE.getAbstractTypedElement_AbstractType());
+    } else if (capellaElement_p instanceof Collection) {
+      _abstractTypeField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getCollection_Type());
+    }
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public List<AbstractSemanticField> getSemanticFields() {
+    List<AbstractSemanticField> fields = new ArrayList<AbstractSemanticField>();
+
+    fields.addAll(super.getSemanticFields());
+    fields.add(_abstractTypeField);
+
+    return fields;
+  }
+}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_22_Resolver"
+            desc="%quickFix.I_22_Resolver.desc"
+            label="%quickFix.I_22_Resolver.label"
+            icon="icons/search16.gif">
+         <rules
+               ruleId="I_22">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.I_23_Resolver"
+            desc="%quickFix.I_23_Resolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.I_23_Resolver.label">
+         <rules
+               ruleId="I_23">
+         </rules>
+      </resolver>
+   </extension>
+   <extension point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/core/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.CapellaElementNamingConflictDiagram"
+                  id="I_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_07 - Diagram Naming conflicts check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}"{1}" content has a naming conflict for: {2}.
+               </message>
+               <description>
+                  This rule checks  that a diagram doesn&apos;t contain a naming conflict.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.CapellaElementInDescriptionNameCheck"
+                  id="I_22"
+                  isEnabledByDefault="false"
+                  lang="java"
+                  mode="Batch"
+                  name="I_22 - HyperLink to capella element or diagram name check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="CapellaElement">
+               </target>
+               <description>
+                  This rule ensures that hyperLinks to capella elements or diagrams names are up to date.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.platform.sirius.sirius.validation.ddiagram.CapellaElementInDescriptionExistanceCheck"
+                  id="I_23"
+                  isEnabledByDefault="false"
+                  lang="java"
+                  mode="Batch"
+                  name="I_23 - HyperLink to capella element or diagram existance check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="CapellaElement">
+               </target>
+               <description>
+                  This rule ensures that hyperLinks to non existing capella element or diagram are removed from the description.
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

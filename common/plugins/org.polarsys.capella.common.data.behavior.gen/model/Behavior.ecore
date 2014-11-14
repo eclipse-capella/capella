@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="behavior" nsURI="http://www.polarsys.org/capella/common/behavior/0.8.0"
+    nsPrefix="org.polarsys.capella.common.data.behavior">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <details key="trackResourceModification" value="true"/>
+    <details key="useUUIDs" value="false"/>
+    <details key="useIDAttributes" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+    <details key="description" value="Behaviour aims at defining the core concepts of behavioural model.&#xD;&#xA;[source: Capella study]"/>
+    <details key="usage guideline" value="none"/>
+    <details key="used in levels" value="operational,system,logical,physical,epbs"/>
+    <details key="usage examples" value="none"/>
+    <details key="constraints" value="This package depends on the model ModellingCore.ecore"/>
+    <details key="comment/notes" value="none"/>
+    <details key="reference documentation" value="none"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
+    <details key="trackResourceModification" value="true"/>
+    <details key="useUUIDs" value="false"/>
+    <details key="useIDAttributes" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractBehavior" abstract="true" interface="true"
+      eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractNamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A Behavior is a specification of how its context classifier changes state over time.&#xD;&#xA;The concept of behavior is extended to own Parameter Sets.&#xD;&#xA;[source: UML superstructure v2.2]&#xD;&#xA;&#xD;&#xA;Dynamic response to an excitation of an engineering thing.&#xD;&#xA;[source: INCOSE AP233 WG, &quot;System Engineering Concepts - A semantic glossary and model&quot;]&#xD;&#xA;"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="This element is a combination of UML2's Behavior from BasicBehavior package, and Behavior from CompleteBehavior package.&#xD;&#xA;It has Parameters, and also has ParameterSets definition (e.g. specific groupings of some of the parameters)"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Behavior"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isControlOperator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether the type of this behavior node is to be treated as control&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="_todo_ Maybye it can be mapped to uml::ObjectNode::isControlType..."/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameterSet" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameterSet">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The ParameterSets owned by this Behavior&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Behavior::ownedParameterSet"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParameter" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractParameter">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="References a list of parameters to the behavior that describes the order and type of arguments that can be given&#xD;&#xA;when the behavior is invoked and of the values that will be returned when the behavior completes its execution&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Behavior::ownedParameter"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractSignal" abstract="true" interface="true"
+      eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractType">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A signal is a specification of send request instances communicated between objects. The receiving object handles the&#xD;&#xA;received request instances as specified by its receptions. The data carried by a send request (which was passed to it by the&#xD;&#xA;send invocation occurrence that caused that request) are represented as attributes of the signal. A signal is defined&#xD;&#xA;independently of the classifiers handling the signal occurrence&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (Abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="the UML2 definition of this element contains an attribute &quot;ownedAttribute [0..*]&quot;, that is absent here, because the Capella version is a simplified one.&#xD;&#xA;This element should be removed, since it is only used in Information package, (Signal and references to the Signal), no need for a decoupling class located here."/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Signal"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractEvent" abstract="true" interface="true"
+      eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractType">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An event is the specification of some occurrence that may potentially trigger effects by an object&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (Abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Event"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractTimeEvent" abstract="true" interface="true"
+      eSuperTypes="#//AbstractEvent">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A time event specifies a point in time by an expression. The expression might be absolute or might be relative to some&#xD;&#xA;other point in time.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (Abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::TimeEvent"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRelative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Specifies whether it is relative or absolute time&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::isRelative"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="when" lowerBound="1" eType="#//TimeExpression">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Specifies the corresponding time deadline&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeEvent::when"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Multiplicity must be [1..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractMessageEvent" abstract="true"
+      interface="true" eSuperTypes="#//AbstractEvent">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A message event specifies the receipt by an object of either a call or a signal&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (Abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::MessageEvent"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractSignalEvent" abstract="true"
+      interface="true" eSuperTypes="#//AbstractMessageEvent">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A signal event represents the receipt of an asynchronous signal. A signal event may cause a response, such as a state&#xD;&#xA;machine transition as specified in the classifier behavior of the classifier that specified the receiver object, if the signal&#xD;&#xA;referenced by the send request is mentioned in a reception owned or inherited by the classifier that specified the receiver&#xD;&#xA;object.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (Abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::SignalEvent"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="#//AbstractSignal">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The specific signal that is associated with this event&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::SignalEvent::signal"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeExpression" abstract="true" interface="true"
+      eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A Time Expression defines a value specification that represents a time value&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (Abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::TimeExpression"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="observations" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractNamedElement">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Refers to the time and duration observations that are involved in expr&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="cardinality of TimeExpression::observations should be changed to [0..*]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeExpression::observation"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Multiplicity must be [0..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The value of the time expression&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::TimeExpression::expr"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

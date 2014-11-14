@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+      <editpolicyProvider
+            class="org.polarsys.capella.core.ui.properties.policies.TabbedPropertiesEditPolicyProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+      </editpolicyProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.polarsys.capella.core.data.capellamodeller.properties"
+            labelProvider="org.polarsys.capella.core.ui.properties.TabbedPropertiesLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+         <propertyTab
+               label="%capellaLabel"
+               category="default"
+               id="Base">
+         </propertyTab>
+         <propertyTab
+               label="%managementLabel"
+               category="default"
+               id="Management"
+               afterTab="Base">
+         </propertyTab>
+         <propertyTab
+               label="%descriptionLabel"
+               category="default"
+               id="Description"
+               afterTab="Management">
+         </propertyTab>
+         <propertyTab
+               label="%extensionsLabel"
+               category="extended"
+               id="Extensions"
+               afterTab="Description">
+         </propertyTab>
+         <propertyTab
+               label="Expert"
+               category="advanced"
+               id="Advanced"
+               afterTab="Extensions">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.diagram">
+         <propertyTab
+               label="%capellaLabel"
+               category="semantic &amp; extension"
+               id="Base">
+         </propertyTab>
+         <propertyTab
+               label="%managementLabel"
+               category="semantic &amp; extension"
+               id="Management"
+               afterTab="Base">
+         </propertyTab>
+         <propertyTab
+               label="%descriptionLabel"
+               category="semantic &amp; extension"
+               id="Description"
+               afterTab="Management">
+         </propertyTab>
+         <propertyTab
+               label="%extensionsLabel"
+               category="semantic &amp; extension"
+               id="Extensions"
+               afterTab="Description">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertyTab
+               label="%capellaLabel"
+               category="default"
+               id="Base">
+         </propertyTab>
+         <propertyTab
+               label="%managementLabel"
+               category="default"
+               id="Management"
+               afterTab="Base">
+         </propertyTab>
+         <propertyTab
+               label="%descriptionLabel"
+               category="default"
+               id="Description"
+               afterTab="Management">
+         </propertyTab>
+         <propertyTab
+               label="%extensionsLabel"
+               category="default"
+               id="Extensions"
+               afterTab="Description">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+         <propertySection tab="Advanced"
+               class="org.polarsys.capella.core.ui.properties.sections.CapelladPropertySection"
+               id="org.polarsys.capella.common.data.modellingcore.section.advanced.ModelElement">
+          	<input type="org.polarsys.kitalpha.emde.model.Element"/>
+         </propertySection>
+         <propertySection tab="Management"
+               class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
+			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
+               id="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection.navigator">
+            <input
+                  type="org.polarsys.capella.core.data.capellacore.CapellaElement">
+            </input>
+         </propertySection>
+         <propertySection tab="Extensions"
+               class="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
+			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
+               id="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection.navigator">
+            <input
+                  type="org.polarsys.capella.core.data.capellacore.CapellaElement">
+            </input>
+         </propertySection>
+         <propertySection tab="Management"
+               class="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
+               filter="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
+               id="org.polarsys.capella.core.ui.properties.section.DiagramManagementPropertySection.navigator">
+            <input
+                  type="org.eclipse.sirius.viewpoint.DRepresentation">
+            </input>
+         </propertySection>
+         <propertySection tab="Base"
+               class="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
+               filter="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
+               id="org.polarsys.capella.core.ui.properties.section.DiagramRepresentationPropertySection.navigator">
+            <input
+                  type="org.eclipse.sirius.viewpoint.DRepresentation">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	  <propertySections contributorId="org.eclipse.sirius.diagram">
+         <propertySection tab="Management"
+               class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
+			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
+               id="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection.diagram">
+         </propertySection>
+         <propertySection tab="Extensions"
+               class="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
+			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
+               id="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection.diagram">
+         </propertySection>
+         <propertySection tab="Management"
+               class="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
+			   filter="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection"
+               id="org.polarsys.capella.core.ui.properties.sections.DiagramManagementPropertySection.diagram">
+            <input
+                  type="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+            </input>
+         </propertySection>
+         <propertySection tab="Base"
+               class="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
+               filter="org.polarsys.capella.core.ui.properties.sections.DiagramRepresentationPropertySection"
+               id="org.polarsys.capella.core.ui.properties.section.DiagramRepresentationPropertySection.diagram">
+            <input
+                  type="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertySection tab="Management"
+               class="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
+			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection"
+               id="org.polarsys.capella.core.ui.properties.sections.CapellaManagementPropertySection.table">
+         </propertySection>
+         <propertySection tab="Extensions"
+               class="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
+			   filter="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection"
+               id="org.polarsys.capella.core.ui.properties.sections.CapellaExtensionsPropertySection.table">
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.polarsys.capella.core.ui.properties.preferences.CapellaUIPropertiesPreferencesInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.ui.properties.preferences.TransfertViewerPreferencePage"
+            id="org.polarsys.capella.core.ui.properties.TransfertViewerPreferencePage"
+            name="%transfertViewerPreferencePageName">
+      </page>
+   </extension>
+      <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.ui.properties.preferences.TransfertViewerPreferencePage"
+            id="org.polarsys.capella.core.ui.properties.TransfertViewerPreferencePage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%transfertViewerPreferencePageName">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+   </extension>
+   <extension
+         id="id1"
+         point="org.eclipse.sirius.common.ui.propertyContributorLabelProviderDelegate">
+      <labelProviderProvider
+            class="org.polarsys.capella.core.ui.properties.TabbedPropertiesLabelProvider">
+      </labelProviderProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.sirius.diagram"
+            tabDescriptorProvider="org.polarsys.capella.core.ui.properties.tabbed.DiagramTabDescriptorProvider">
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.polarsys.capella.core.data.capellamodeller.properties"
+            tabDescriptorProvider="org.polarsys.capella.core.ui.properties.tabbed.CapellaTabDescriptorProvider">
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+      <propertyRenderer
+            id="toolkitBrowseRenderer"
+          class="org.polarsys.capella.core.ui.properties.renderer.ToolkitBrowseRenderer">
+      </propertyRenderer>
+   </extension>
+</plugin>

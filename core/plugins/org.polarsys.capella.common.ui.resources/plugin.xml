@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.common.ui.resources.prefs.ModelPreferencePage"
+            id="org.polarsys.capella.common.ui.resources.prefs.modelPage"
+            name="%modelPageName">
+      </page>
+   </extension>
+   
+   <extension point="org.eclipse.ui.propertyPages">
+     <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.common.ui.resources.prefs.ModelPreferencePage"
+            id="org.polarsys.capella.common.ui.resources.prefs.property.modelPage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%modelPageName">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+   </extension>
+   
+</plugin>

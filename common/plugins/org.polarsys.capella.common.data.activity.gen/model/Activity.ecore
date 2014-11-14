@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="activity" nsURI="http://www.polarsys.org/capella/common/activity/0.8.0"
+    nsPrefix="org.polarsys.capella.common.data.activity">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <details key="trackResourceModification" value="true"/>
+    <details key="useUUIDs" value="false"/>
+    <details key="useIDAttributes" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+    <details key="description" value="Activity aims at completing the implementation of the UML Activity provided by the FunctionalArchitecture in order to make it fully supportable anytime.&#xD;&#xA;[source: Capella study]"/>
+    <details key="usage guideline" value="none"/>
+    <details key="used in levels" value="operational,system,logical,physical,epbs"/>
+    <details key="usage examples" value="none"/>
+    <details key="constraints" value="This package depends on the model Behavior.ecore"/>
+    <details key="comment/notes" value="none"/>
+    <details key="reference documentation" value="none"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
+    <details key="trackResourceModification" value="true"/>
+    <details key="useUUIDs" value="false"/>
+    <details key="useIDAttributes" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractActivity" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractBehavior ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//TraceableElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An activity specifies the coordination of executions of subordinate behaviors, using a control and data flow model&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Activity"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isReadOnly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="If true, this activity must not make any changes to variables outside the activity or to objects. (This is an assertion, not&#xD;&#xA;an executable property. It may be used by an execution engine to optimize model execution. If the assertion is&#xD;&#xA;violated by the action, then the model is ill formed.)&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Activity::isReadOnly"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSingleExecution" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="If true, all invocations of the activity are handled by the same execution&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Activity::isSingleExecution"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedNodes" upperBound="-1"
+        eType="#//ActivityNode" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Nodes coordinated by the activity.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Activity::node"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEdges" upperBound="-1"
+        eType="#//ActivityEdge" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Edges expressing flow between nodes of the activity.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Activity::edge"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedGroups" upperBound="-1"
+        eType="#//ActivityGroup" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Top-level groups in the activity&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="The groups of an activity have no supergroups&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Activity::group"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStructuredNodes" upperBound="-1"
+        eType="#//StructuredActivityNode" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Nodes coordinated by the activity&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExceptionHandler" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An exception handler is an element that specifies a body to execute in case the specified exception occurs during the&#xD;&#xA;execution of the protected node&#xD;&#xA;[source: UML superstructure specification v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="Not used/implemented as of Capella 1.0.3"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ExceptionHandler"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="protectedNode" lowerBound="1"
+        eType="#//ExecutableNode" eOpposite="#//ExecutableNode/ownedHandlers">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The node protected by the handler. The handler is examined if an exception propagates to the outside of the node&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ExceptionHandler::protectedNode"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="handlerBody" lowerBound="1"
+        eType="#//ExecutableNode">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="A node that is executed if the handler satisfies an uncaught exception&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ExceptionHandler::handlerBody"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exceptionInput" lowerBound="1"
+        eType="#//ObjectNode">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="An object node within the handler body. When the handler catches an exception, the exception token is placed in this&#xD;&#xA;node, causing the body to execute&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ExceptionHandler::exceptionInput"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exceptionTypes" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractType">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The kind of instances that the handler catches. If an exception occurs whose type is any of the classifiers in the set,&#xD;&#xA;the handler catches the exception and executes its body&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ExceptionHandler::exceptionType"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityGroup" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ModelElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Activity groups are a generic grouping construct for nodes and edges. Nodes and edges can belong to more than one&#xD;&#xA;group. They have no inherent semantics and can be used for various purposes. Subclasses of ActivityGroup may add&#xD;&#xA;semantics.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella 1.0.3"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ActivityGroup"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superGroup" eType="#//ActivityGroup"
+        eOpposite="#//ActivityGroup/subGroups">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Group immediately containing the group&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="_todo_ If it is corresponding to UML, this attribute should be derived"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityGroup::superGroup#keyword::none"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subGroups" upperBound="-1"
+        eType="#//ActivityGroup" containment="true" eOpposite="#//ActivityGroup/superGroup">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Groups immediately contained in the group&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="_todo_ If it is corresponding to UML, this attribute should be derived"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityGroup::subgroup#keyword::none"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedNodes" upperBound="-1"
+        eType="#//ActivityNode" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Nodes immediately contained in the group. This is a derived union&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="_todo_ If it is corresponding to UML, this attribute should be derived"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityGroup::containedNode#keyword::none"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEdges" upperBound="-1"
+        eType="#//ActivityEdge" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Edges immediately contained in the group. This is a derived union&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="_todo_ If it is corresponding to UML, this attribute should be derived"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityGroup::containedEdge#keyword::none"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InterruptibleActivityRegion" abstract="true"
+      eSuperTypes="#//ActivityGroup">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An interruptible region contains activity nodes. When a token leaves an interruptible region via edges designated by the&#xD;&#xA;region as interrupting edges, all tokens and behaviors in the region are terminated&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented in Capella 1.0.3"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::InterruptibleActivityRegion"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interruptingEdges" upperBound="-1"
+        eType="#//ActivityEdge" eOpposite="#//ActivityEdge/interrupts">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The edges leaving the region that will abort other tokens flowing in the region&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::InterruptibleActivityRegion::interruptingEdge"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ObjectNodeOrderingKind">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="ObjectNodeOrderingKind is an enumeration indicating queuing order within a node&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value="uml::ObjectNodeOrderingKind"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eLiterals name="FIFO">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="First In First Out ordering"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNodeOrderingKind::FIFO"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="LIFO" value="1">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Last In First Out ordering"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNodeOrderingKind::LIFO"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="ordered" value="2">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Indicates that object node tokens are ordered."/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNodeOrderingKind::ordered"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="unordered" value="3">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Indicates that object node tokens are unordered."/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNodeOrderingKind::unordered"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ObjectNodeKind">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="specifies the type of behavior of the object node with respect to incoming data&#xD;&#xA;[source: Capella study]"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value=""/>
+    </eAnnotations>
+    <eLiterals name="Unspecified">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Used when incoming object node management policy is not precised"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="NoBuffer" value="1">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="When the &quot;nobuffer&quot; stereotype is applied to object nodes, tokens arriving at the node are discarded if they are refused by&#xD;&#xA;outgoing edges, or refused by actions for object nodes that are input pins&#xD;&#xA;[source: SysML specification v1.1]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Overwrite" value="2">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="When the &quot;overwrite&quot; stereotype is applied to object nodes, a token arriving at a full object node replaces the ones&#xD;&#xA;already there (a full object node has as many tokens as allowed by its upper bound)&#xD;&#xA;[source: SysML specification v1.1]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityEdge" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractRelationship">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="ActivityEdge is an abstract class for the connections along which tokens flow between activity nodes. It covers control&#xD;&#xA;and data flow edges. Activity edges can control token flow&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ActivityEdge"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kindOfRate" eType="ecore:EEnum ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//RateKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="characterizes the rate : typically, discrete versus continuous.&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="typically, &quot;discrete&quot; or &quot;continuous&quot;"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::specific"/>
+        <details key="explanation" value="Application of stereotypes that inherits from the SysML::Activities::Rate stereotype.&#xD;&#xA;It can be either SysML::Activities::Continuous or SysML::Activities::Discrete."/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inActivityPartition" eType="#//ActivityPartition"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Partitions containing the edge&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inInterruptibleRegion"
+        eType="#//InterruptibleActivityRegion" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="(automatically computed) Region containing this edge&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inStructuredNode" eType="#//StructuredActivityNode"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Structured activity node containing the edge&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rate" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="It specifies the expected value of the number of objects and&#xD;&#xA;values that traverse the edge per time interval, that is, the expected value rate at which they leave the source node and&#xD;&#xA;arrive at the target node. It does not refer to the rate at which a value changes over time&#xD;&#xA;[source: SysML specification v1.1]"/>
+        <details key="constraints" value="The rate of a parameter must be less than or equal to rates on edges that come into or go out from pins and parameters nodes corresponding to the parameter.&#xD;&#xA;[source: SysML specification v1.1]"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::specific"/>
+        <details key="explanation" value="Application of the SysML::Activities::Rate stereotype.&#xD;&#xA;SysML::Activities::Rate::rate"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="probability" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Likelihood that a value leaving the decision node or object node will traverse the edge.&#xD;&#xA;[source: SysML specification v1.1]"/>
+        <details key="constraints" value="Shall be between 0 and 1"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::specific"/>
+        <details key="explanation" value="Application of the SysML::Activities::Probability stereotype.&#xD;&#xA;SysML::Activities::Probability::probability"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//ActivityNode">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Node to which tokens are put when they traverse the edge&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityEdge::target"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//ActivityNode">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Node from which tokens are taken when they traverse the edge&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityEdge::source"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Specification evaluated at runtime to determine if the edge can be traversed&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityEdge::guard"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="weight" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The minimum number of tokens that must traverse the edge at the same time&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityEdge::weight"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interrupts" eType="#//InterruptibleActivityRegion"
+        eOpposite="#//InterruptibleActivityRegion/interruptingEdges">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Region that the edge can interrupt&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityEdge::interrupts"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlFlow" abstract="true" eSuperTypes="#//ActivityEdge">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A control flow is an edge that starts an activity node after the previous one is finished&#xD;&#xA;[Source : UML superstructure specification v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella 1.0.3"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ControlFlow"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectFlow" abstract="true" eSuperTypes="#//ActivityEdge">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An object flow models the flow of values to or from object nodes&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (guideline)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ObjectFlow"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMulticast" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether the objects in the flow are passed by multicasting&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectFlow:isMulticast"/>
+        <details key="explanation" value=""/>
+        <details key="constraints" value="The cardinality of uml::ObjectFlow::isMulticast is [1..1]."/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMultireceive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether the objects in the flow are gathered from respondents to multicasting&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectFlow::isMultireceive"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Cardinality of uml::ObjectFlow::isMultiReceive is [1..1]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transformation" eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractBehavior">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Changes or replaces data tokens flowing along edge&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectFlow::transformation"/>
+        <details key="explanation" value=""/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selection" eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractBehavior">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Selects tokens from a source object node&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectFlow::selection"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityPartition" abstract="true" eSuperTypes="#//ActivityGroup ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractNamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An activity partition is a kind of activity group for identifying actions that have some characteristic in common.&#xD;&#xA;[source: UML superstructure v2.2]&#xD;&#xA;"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ActivityPartition"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether the partition groups other partitions along a dimension&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityPartition::isDimension"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Cardinality of uml::ActivityPartition::isDimension is [1..1]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isExternal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether the partition represents an entity to which the partitioning structure does not apply&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityPartition::isExternal"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Cardinality of uml::ActivityPartition::isExternal is [1..1]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="representedElement" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractType">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="An element constraining behaviors invoked by nodes in the partition&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityPartition::represents"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superPartition" eType="#//ActivityPartition"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Partition immediately containing the partition.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subPartitions" upperBound="-1"
+        eType="#//ActivityPartition" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Partitions immediately contained in the partition.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ActivityPartition::subpartition"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityExchange" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractInformationFlow">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Interactions between Ports to support Functions, (e.g. Exchanges can be composed of system data, events, analogic signals...).&#xD;&#xA;Exchanges are a refinement of the interfaces requirements identified through behavioral modeling, and expressed through Functions.&#xD;&#xA;Hence any Function may identify a series of  Exchanges to fully transfer the required element "/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="realizingActivityFlows"
+        upperBound="-1" eType="#//ActivityEdge" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Determines which ActivityEdges will realize the specified flow.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityNode" abstract="true" interface="true"
+      eSuperTypes="../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractNamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An activity node is an abstract class for the steps of an activity. It covers executable nodes, control nodes, and object&#xD;&#xA;nodes.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="Activity nodes can only be owned by activities or groups.&#xD;&#xA;Activity nodes may be owned by at most one structured node.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ActivityNode"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inActivityPartition" eType="#//ActivityPartition"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Partitions containing the node&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inInterruptibleRegion"
+        eType="#//InterruptibleActivityRegion" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Interruptible regions containing the node&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inStructuredNode" eType="#//InterruptibleActivityRegion"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Structured activity node containing the node&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="node"/>
+        <details key="comment/notes" value="node"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//ActivityEdge" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Edges that have the node as source&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="incoming" upperBound="-1"
+        eType="#//ActivityEdge" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Edges that have the node as target.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutableNode" abstract="true" eSuperTypes="#//ActivityNode">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An executable node is an abstract class for activity nodes that may be executed. It is used as an attachment point for&#xD;&#xA;exception handlers.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella 1.0.3"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="should be on uml::ExecutableNode, but Activity"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedHandlers" upperBound="-1"
+        eType="#//ExceptionHandler" containment="true" eOpposite="#//ExceptionHandler/protectedNode">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="A set of exception handlers that are examined if an uncaught exception propagates to the outer level of the executable&#xD;&#xA;node.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ExecutableNode::handler"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredActivityNode" abstract="true"
+      eSuperTypes="#//ActivityGroup #//AbstractAction">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A structured activity node represents a structured portion of the activity that is not shared with any other structured node,&#xD;&#xA;except for nesting&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="The edges owned by a structured node must have source and target nodes in the structured node, and vice versa&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::StructuredActivityNode"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractAction" abstract="true" eSuperTypes="#//ExecutableNode ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractNamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An Action is a named element that is the fundamental unit of executable functionality. The execution of an action&#xD;&#xA;represents some transformation or processing in the modeled system, be it a computer system or otherwise&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Activity"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="localPrecondition" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The preconditions for an action define conditions that must be true when the action is invoked.&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Behavior::precondition"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="localPostcondition" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractConstraint"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The postconditions for an action define conditions that will be true when the invocation of the action completes&#xD;&#xA;successfully, assuming the preconditions were satisfied&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Behavior::postcondition"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractType">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The classifier that owns the behavior of which this action is a part.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Behavior::context#keyword::none"/>
+        <details key="explanation" value=""/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//InputPin" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The ordered set of input pins connected to the Action. These are among the total set of inputs&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Activity::node"/>
+        <details key="explanation" value="mapped to either InputPin or ActivityParameterNode, depending on whether the associated function is an Activity, or a callBehaviorAction to an Activity"/>
+        <details key="constraints" value="uml::Activity::node elements on which activity::InputPin stereotype or any stereotype that inherits from it is applied"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//OutputPin" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The ordered set of output pins connected to the Action. The action places its results onto pins in this set&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Activity::node"/>
+        <details key="explanation" value="mapped to either OutputPin or ActivityParameterNode, depending on whether the associated function is an Activity, or a callBehaviorAction to an Activity"/>
+        <details key="constraints" value="uml::Activity::node elements on which activity::OutputPin stereotype or any stereotype that inherits from it is applied"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AcceptEventAction" abstract="true" eSuperTypes="#//AbstractAction">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="AcceptEventAction is an action that waits for the occurrence of an event meeting specified condition&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="- AcceptEventActions may have no input pins.&#xD;&#xA;- There are no output pins if the trigger events are only ChangeEvents, or if they are only CallEvents when this action is an&#xD;&#xA;instance of AcceptEventAction and not an instance of a descendant of AcceptEventAction (such as AcceptCallAction).&#xD;&#xA;- If the trigger events are all TimeEvents, there is exactly one output pin.&#xD;&#xA;UML superstructure Specification, v2.2 235&#xD;&#xA;- If isUnmarshalled is true, there must be exactly one trigger for events of type SignalEvent. The number of result output&#xD;&#xA;pins must be the same as the number of attributes of the signal. The type and ordering of each result output pin must be the&#xD;&#xA;same as the corresponding attribute of the signal. The multiplicity of each result output pin must be compatible with the&#xD;&#xA;multiplicity of the corresponding attribute&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::AcceptEventAction"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isUnmarshall" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::AcceptEventAction::isUnmarshall"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="result" upperBound="-1"
+        eType="#//OutputPin" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Pins holding the received event objects or their attributes. Event objects may be copied in transmission, so identity&#xD;&#xA;might not be preserved&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::AcceptEventAction::result"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InvocationAction" abstract="true" eSuperTypes="#//AbstractAction">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="In addition to targeting an object, invocation actions can also invoke behavioral features on ports from where the&#xD;&#xA;invocation requests are routed onwards on links deriving from attached connectors. Invocation actions may also be sent to&#xD;&#xA;a target via a given port, either on the sending object or on another object.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::InvocationAction"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" upperBound="-1"
+        eType="#//InputPin" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="port(s) of the receiver object on which the behavioral feature is invoked&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::InvocationAction::argument"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SendSignalAction" abstract="true" eSuperTypes="#//InvocationAction">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="SendSignalAction is an action that creates a signal instance from its inputs, and transmits it to the target object, where it&#xD;&#xA;may cause the firing of a state machine transition or the execution of an activity. The argument values are available to the&#xD;&#xA;execution of associated behaviors. The requestor continues execution immediately. Any reply message is ignored and is&#xD;&#xA;not transmitted to the requestor. If the input is already a signal instance, use SendObjectAction&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="- The number and order of argument pins must be the same as the number and order of attributes in the signal.&#xD;&#xA;- The type, ordering, and multiplicity of an argument pin must be the same as the corresponding attribute of the signal.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="not used/implemented as of Capella"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::SendSignalAction"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//InputPin" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The target object to which the signal is sent.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::SendSignalAction::target"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="signal" lowerBound="1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractSignal">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The type of signal transmitted to the target object.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::SendSignalAction::signal"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallAction" abstract="true" eSuperTypes="#//InvocationAction">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="CallAction is an abstract class for actions that invoke behavior and receive return values&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="- Only synchronous call actions can have result pins.&#xD;&#xA;- The number and order of argument pins must be the same as the number and order of parameters of the invoked behavior&#xD;&#xA;or behavioral feature. Pins are matched to parameters by order.&#xD;&#xA;- The type, ordering, and multiplicity of an argument pin must be the same as the corresponding parameter of the behavior&#xD;&#xA;or behavioral feature.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::CallAction"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="results" upperBound="-1"
+        eType="#//OutputPin" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="A list of output pins where the results of performing the invocation are placed&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::CallAction::result"/>
+        <details key="explanation" value=""/>
+        <details key="constraints" value=""/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallBehaviorAction" abstract="true"
+      eSuperTypes="#//CallAction">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="CallBehaviorAction is a call action that invokes a behavior directly rather than invoking a behavioral feature that, in turn,&#xD;&#xA;results in the invocation of that behavior. The argument values of the action are available to the execution of the invoked&#xD;&#xA;behavior. For synchronous calls the execution of the call behavior action waits until the execution of the invoked behavior&#xD;&#xA;completes and a result is returned on its output pin. The action completes immediately without a result, if the call is&#xD;&#xA;asynchronous.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="- The number of argument pins and the number of parameters of the behavior of type in and in-out must be equal.&#xD;&#xA;- The number of result pins and the number of parameters of the behavior of type return, out, and in-out must be equal.&#xD;&#xA;- The type, ordering, and multiplicity of an argument or result pin is derived from the corresponding parameter of thebehavior.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::CallBehaviorAction"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behavior" eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractBehavior">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The invoked behavior. It must be capable of accepting and returning control&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="cannot map to uml::CallBehaviorAction::behavior since it just does not match (refers to different things)"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectNode" abstract="true" eSuperTypes="#//ActivityNode ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//AbstractTypedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An object node is an activity node that indicates an instance of a particular classifier, possibly in a particular state, may&#xD;&#xA;be available at a particular point in the activity&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="- All edges coming into or going out of object nodes must be object flow edges.&#xD;&#xA;- Object nodes are not unique typed elements.&#xD;&#xA;isUnique = false&#xD;&#xA;- If an object node has a selection behavior, then the ordering of the object node is ordered and vice versa.&#xD;&#xA;- A selection behavior has one input parameter and one output parameter. The input parameter must be a bag of elements of&#xD;&#xA;the same type as the object node or a supertype of the type of object node. The output parameter must be the same or a&#xD;&#xA;subtype of the type of object node. The behavior cannot have side effects.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="for the SysML profile, it will make sense to use the SysML stereotypes &quot;no buffer&quot; and &quot;overwrite&quot; over a UML ObjectNode (p99 and 100 of SysML spec)"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ObjectNode"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isControlType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether the type of the object node is to be treated as control&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNode::isControlType"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Cardinality of uml::ObjectNode::isControlType is [1..1]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kindOfNode" eType="#//ObjectNodeKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="characterizes the node"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="refer to ObjectNodeKind enumeration"/>
+        <details key="comment/notes" value="this field does not exist in UML but the related notion exists in SysML"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ordering" eType="#//ObjectNodeOrderingKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether and how the tokens in the object node are ordered for selection to traverse edges outgoing from the&#xD;&#xA;object node&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="Refer to ObjectNodeOrderingKind enumeration"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNode::ordering"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Cardinality of uml::ObjectNode::ordering is [1..1]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upperBound" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The maximum number of tokens allowed in the node. Objects cannot flow into the node if the upper bound is&#xD;&#xA;reached.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNode::upperBound"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Cardinality of uml::ObjectNode::upperBound is [1..1]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inState" upperBound="-1"
+        eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//IState">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The required states of the object available at this point in the activity&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNode::inState"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selection" eType="ecore:EClass ../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#//AbstractBehavior">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Selects tokens for outgoing edges.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ObjectNode::selection"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Pin" abstract="true" interface="true"
+      eSuperTypes="#//ObjectNode">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A pin is a typed element and multiplicity element that provides values to actions and accepts result values from them&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="If the action is an invocation action, the number and types of pins must be the same as the number of parameters and&#xD;&#xA;types of the invoked behavior or behavioral feature. Pins are matched to parameters by order&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Pin"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isControl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Tells whether the pins provide data to the actions, or just controls when it executes it.&#xD;&#xA;[source: UML superstructure v2.2]&#xD;&#xA;"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Cardinality of uml::Pin::isControl is [1..1]"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputPin" abstract="true" interface="true"
+      eSuperTypes="#//Pin">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An input pin is a pin that holds input values to be consumed by an action&#xD;&#xA;[source: UML superstructure v2.2]&#xD;&#xA;&#xD;&#xA;An action input pin is a kind of pin that executes an action to determine the values to input to another.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::InputPin"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputEvaluationAction"
+        eType="#//AbstractAction">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The action used to provide values&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="This association can be filled only if extended metaclass is ActionInputPin"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValuePin" abstract="true" interface="true"
+      eSuperTypes="#//InputPin">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A value pin is an input pin that provides a value by evaluating a value specification&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="not used/implemented, as of Capella 1.0.3"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::ValuePin"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#//ValueSpecification"
+        containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Value that the pin will provide&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::ValuePin::value"/>
+        <details key="explanation" value=""/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputPin" abstract="true" interface="true"
+      eSuperTypes="#//Pin">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An output pin is a pin that holds output values produced by an action&#xD;&#xA;[source: UML superstructure v2.2]&#xD;&#xA;&#xD;&#xA;An action input pin is a kind of pin that executes an action to determine the values to input to another.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="n/a"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::OutputPin"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

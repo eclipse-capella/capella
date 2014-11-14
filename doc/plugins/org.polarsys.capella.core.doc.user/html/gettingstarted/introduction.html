@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Capella Introduction</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<SCRIPT language=javascript>
+        var contextPath = '';
+        var i18n = [];
+    </SCRIPT>
+<LINK href="introduction_fichiers/main-action.css" type=text/css rel=stylesheet>
+
+<META content="MSHTML 6.00.2900.3243" name=GENERATOR>
+</HEAD>
+<BODY onload=placeFocus()>
+<DIV id=PageContent>
+<TABLE class=pagecontent cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+    <TR>
+      <TD class=pagebody vAlign=top>
+      <DIV class=pageheader><SPAN class=pagetitle>Capella Introduction</SPAN></DIV>
+      <!--
+    Root decorator: all decisions about how a page is to be decorated via the
+                    inline decoration begins here.
+--><!--
+    Switch based upon the context. However, for now, just delegate to a decorator
+    identified directly by the context.
+--><!--[if gte IE 5.5000]>
+      <SCRIPT language=JavaScript>
+function correctPNG() // correctly handle PNG transparency in Win IE 5.5 or higher.
+   {
+   for(var i=0; i<document.images.length; i++)
+      {
+	  var img = document.images[i]
+	  var imgName = img.src.toUpperCase()
+	  if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+	     {
+		 var imgID = (img.id) ? "id='" + img.id + "' " : ""
+		 var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+		 var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+		 var imgStyle = "display:inline-block;" + img.style.cssText
+		 if (img.align == "left") imgStyle = "float:left;" + imgStyle
+		 if (img.align == "right") imgStyle = "float:right;" + imgStyle
+		 if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+		 var strNewHTML = "<span " + imgID + imgClass + imgTitle
+		 + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+	     + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+		 + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>"
+		 img.outerHTML = strNewHTML
+		 i = i-1
+	     }
+      }
+   }
+window.attachEvent("onload", correctPNG);
+</SCRIPT>
+<![endif]-->
+      <STYLE>
+.imageLink {
+	FLOAT: left;
+	MARGIN: 2px;
+	VERTICAL-ALIGN: bottom
+}
+
+.greybox {
+	BORDER-RIGHT: 0px;
+	PADDING-RIGHT: 3px;
+	BORDER-TOP: #ddd 1px solid;
+	PADDING-LEFT: 3px;
+	PADDING-BOTTOM: 3px;
+	MARGIN: 0px;
+	BORDER-LEFT: 0px;
+	PADDING-TOP: 3px;
+	BORDER-BOTTOM: #ddd 1px solid;
+	BACKGROUND-COLOR: #f0f0f0
+}
+</STYLE>
+      <DIV class=wiki-content style="MARGIN-RIGHT: 10px"><!-- wiki content -->
+      <TABLE class=sectionMacro cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TBODY>
+          <TR>
+            <TD class=confluenceTd vAlign=top>
+            <DIV class=panelMacro>
+            <TABLE class=infoMacro>
+              <COLGROUP>
+                <COL width=24>
+                <COL>
+              </COLGROUP>
+              <TBODY>
+                <TR>
+                  <TD vAlign=top><IMG height=16 alt=""
+                    src="introduction_fichiers/information.gif" width=16 align=absMiddle border=0></TD>
+                  <TD>
+                  <P>A central activity of system engineering is the definition of both the
+                  architectures of the system and its software.<BR>
+                  <B>Capella is a tool intended to improve the quality of these
+                  architectures</B>.</P>
+                  </TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </DIV>
+            <H2><A name=CapellaIntroduction-System%2FSoftwareArchitectureDefinition></A>System
+            / Software Architecture Definition</H2>
+            <P>Defining a system architecture means</P>
+            <UL>
+              <LI>Defining and <B>refining use cases</B>
+              <LI>Performing and refining a <B>functional analysis</B>
+              <LI>Defining components realizing the functions of the system
+              <LI><B>Defining the interfaces</B> between these components
+              <LI><B>Model the dynamics</B> of the system <B>with scenarios</B>
+              <LI>Take into account <B>non functional constraints</B> (Performance, Safety,
+              Human Factors, etc.)</LI>
+            </UL>
+            <H2><A name=CapellaIntroduction-AMethodologicalGuide></A>A Methodological
+            Guide</H2>
+            <P>In Thales, methodologies exist to help and guide the various actors of the
+            engineering process. It is notably the case of</P>
+            <UL>
+              <LI><B>Sys-EM</B>, which defines the successive stages of the engineering process
+              <LI><B>Arcadia</B>, which compliments Sys-EM with a brick specifically dedicated
+              to the functional analysis and architecture definition.</LI>
+            </UL>
+            <P><B>Capella leverages these methodologies and embeds them in a tool
+            which is helping and guiding the system engineer in its activity</B>. Is also provides
+            Thales-wide language and tools, very close to (and interoperable with) industry
+            standards such as UML and Sys-ML. This ensures an better understanding between Thales
+            engineers from all domains.</P>
+            </TD>
+            <TD class=confluenceTd vAlign=top>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      <H2><A name=CapellaIntroduction-Principles></A>Principles</H2>
+      <P>As an input, the system is seen and defined as a "black box", on the basis of system
+      requirements and operational scenarios. Capella is intervening at the "white box" level
+      by allowing to specify how the internal components of the system are going to fulfill the
+      requirements. This process includes several activities:</P>
+      <UL>
+        <LI>Refinement of the functional analysis (enrichment of the functional trees and dataflows)
+        <LI>Re-use or creation of components,
+        <LI>allocation of the functions to components,
+        <LI>definition of the interfaces.</LI>
+      </UL>
+      <P><B>Capella supplies tools facilitating the daily work of the system engineer</B>
+      (transitions between architectures, filters and layers on diagrams, modeling acceleration
+      tools, synthetic business view of relationships between model elements, etc.) <B>and
+      guarantying the quality of the designed architectures</B> (impact analysis, model validation, etc.)
+      <BR>
+      &nbsp;
+</BODY>
+</HTML>

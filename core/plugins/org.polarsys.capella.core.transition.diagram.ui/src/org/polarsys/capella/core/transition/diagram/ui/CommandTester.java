@@ -1,0 +1,42 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.transition.diagram.ui;
+
+import org.eclipse.core.expressions.PropertyTester;
+import org.eclipse.sirius.viewpoint.DDiagram;
+
+import org.polarsys.capella.core.transition.common.context.TransitionContext;
+import org.polarsys.capella.core.transition.diagram.handlers.DiagramDescriptionHelper;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+
+public class CommandTester extends PropertyTester {
+
+  /**
+   * @see org.eclipse.core.expressions.IPropertyTester#test(java.lang.Object, java.lang.String, java.lang.Object[], java.lang.Object)
+   */
+  public boolean test(Object object_p, String propertyName_p, Object[] params_p, Object testedValue_p) {
+    if (propertyName_p.equals("transitionMode") || propertyName_p.equals("graphicalTransitionMode")) { //$NON-NLS-1$ //$NON-NLS-2$
+      if (object_p instanceof DDiagram) {
+        DDiagram diagram = (DDiagram) object_p;
+        IContext context = new TransitionContext();
+
+        if (DiagramDescriptionHelper.getService(context).handles(context, diagram.getDescription())) {
+          if (DiagramDescriptionHelper.getService(context).covers(context, diagram.getDescription())) {
+            if (DiagramDescriptionHelper.getService(context).covers(context, diagram)) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
+  }
+}

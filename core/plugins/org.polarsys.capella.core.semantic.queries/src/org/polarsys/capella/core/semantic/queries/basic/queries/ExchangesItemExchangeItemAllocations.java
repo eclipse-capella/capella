@@ -1,0 +1,72 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.semantic.queries.basic.queries;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.helpers.query.IQuery;
+import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+
+/**
+ * 
+ */
+public class ExchangesItemExchangeItemAllocations implements IQuery {
+
+  /**
+	 * 
+	 */
+  public ExchangesItemExchangeItemAllocations() {
+    // Does nothing
+  }
+
+  /**
+   * 
+   * current.flowSource.ownerElement
+   * 
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object_p) {
+    List<Object> result = new ArrayList<Object>();
+    if (object_p instanceof ExchangeItem) {
+      ExchangeItem exchangItem = (ExchangeItem) object_p;
+      List<ExchangeItemAllocation> elements = new ArrayList<ExchangeItemAllocation>(1);
+      
+      // gets the Semantic Editing Domain
+      SemanticEditingDomain semEditDomain = (SemanticEditingDomain) MDEAdapterFactory.getEditingDomain();
+      // Gets the Cross Referencer
+      ECrossReferenceAdapter crossReferencer = semEditDomain.getCrossReferencer();
+      Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(exchangItem);
+
+      for (Setting setting : inverseReferences) {
+        EObject eObject = setting.getEObject();
+        if (eObject != null) {
+          // filter ExchangeItemAllocation 
+          if (eObject instanceof ExchangeItemAllocation) {
+            result.add(eObject);
+          }
+        }
+      }
+      
+      if(!elements.isEmpty())
+        result.addAll(elements);
+      
+    }
+    return result;
+  }
+}

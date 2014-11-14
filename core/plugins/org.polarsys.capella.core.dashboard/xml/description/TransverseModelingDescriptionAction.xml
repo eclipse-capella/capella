@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+   
+  Contributors:
+     Thales - initial API and implementation
+-->
+<form>
+    <p><b>Describe the state machine of the system</b>, specifying which are its modes and states. Among others, state machines can be created on the following kinds of elements: system, components, actors, classes (data), etc.</p>
+    <p><b>Describe the domain elements and the actually exchanged data.</b></p>
+    <li>Domain Elements: modeling elements of the domain should not be "polluted" by technical considerations (e.g.: internal representation of data, database storage, access methods, etc.). In the beginning, concentrate only on elements that provide high-level semantic related to the domain.</li>
+    <li>Data actually exchanged between components: used for example to type parameters in interface operations. These data have to be unambiguous and consistent.</li>
+    <p>Both the domain elements and actual data are described in a Class diagram.</p>
+</form>

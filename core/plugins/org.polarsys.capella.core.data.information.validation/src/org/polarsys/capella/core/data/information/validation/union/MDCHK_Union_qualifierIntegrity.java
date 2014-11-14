@@ -1,0 +1,77 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.information.validation.union;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.validation.EMFEventType;
+import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.emf.validation.model.ConstraintStatus;
+
+import org.polarsys.capella.core.data.information.Union;
+import org.polarsys.capella.core.data.information.UnionKind;
+import org.polarsys.capella.core.data.information.UnionProperty;
+import org.polarsys.capella.core.data.information.datavalue.DataValue;
+import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
+
+/**
+ * This rule ensures that every union property of an union (except discriminant and default property) has at least one qualifier. [MultiStatus Message]
+ */
+public class MDCHK_Union_qualifierIntegrity extends AbstractValidationRule {
+
+  /**
+   * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
+   */
+  @Override
+  public IStatus validate(IValidationContext ctx_p) {
+    EObject eObj = ctx_p.getTarget();
+    EMFEventType eType = ctx_p.getEventType();
+    if (eType == EMFEventType.NULL) {
+      if (eObj instanceof Union) {
+        // Typing union
+        Union union = (Union) eObj;
+        List<IStatus> statuses = new ArrayList<IStatus>();
+        // make sure the kind is UNION
+        if (union.getKind() == UnionKind.UNION) {
+          // get discriminant from union
+          UnionProperty discriminant = union.getDiscriminant();
+          if (null != discriminant) {
+            // get default property from union
+            UnionProperty defaultPro = union.getDefaultProperty();
+            // get all properties
+            EList<UnionProperty> properties = union.getContainedUnionProperties();
+            for (UnionProperty property : properties) {
+              if ((discriminant != property) && (defaultPro != property)) {
+                EList<DataValue> qualifier = property.getQualifier();
+                // union property (other then default and discriminant) should have at least one qualifier
+                if (qualifier.isEmpty()) {
+                  IStatus status = createFailureStatus(ctx_p, new Object[] { property.getName(), union.getName() });
+                  statuses.add(status);
+                }
+              }
+            }
+          }
+
+        }
+        if (statuses.size() > 0) {
+          return ConstraintStatus.createMultiStatus(ctx_p, statuses);
+        }
+      }
+    }
+    // No problem encountered
+    return ctx_p.createSuccessStatus();
+  }
+
+}

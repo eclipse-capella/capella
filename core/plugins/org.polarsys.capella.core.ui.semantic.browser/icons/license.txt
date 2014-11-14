@@ -1,0 +1,8 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/sembrowser_16x16.png - capella.ui.semantic.browser - capella.ui.semantic.browser/icons/sembrowser_16x16.png
+/icons/packd_obj.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/th_showqualified.gif

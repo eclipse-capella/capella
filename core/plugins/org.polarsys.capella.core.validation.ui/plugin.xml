@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.emf.validation.ui.rootPage"
+            class="org.polarsys.capella.core.validation.ui.export.prefs.ExportValidationPreferencePage"
+            id="org.polarsys.capella.core.validation.ui.page1"
+            name="%export.validation.pref.page.name">
+      </page>
+   </extension>
+  <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider
+            class="org.polarsys.capella.core.validation.ui.actions.ValidationActionProvider"
+            id="capella.project.explorer.actions.ocdvalidation">
+         <enablement>
+                <instanceof value="org.eclipse.emf.ecore.EObject"/>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+   
+   
+   <!--extension id="ValidationContributionItemProvider" name="Validation"
+      point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <?gmfgen generated="true"?>
+      <contributionItemProvider
+         class="org.eclipse.sirius.diagram.internal.providers.ViewpointValidationProvider">
+         <Priority name="Low"/>
+         <partContribution id="org.eclipse.sirius.diagram.part.SiriusDiagramEditorID">
+            <partMenuGroup menubarPath="/diagramMenu/" id="validationGroup"/>
+            <partAction id="validateAction" menubarPath="/diagramMenu/validationGroup"/>
+         </partContribution>
+      </contributionItemProvider>
+   </extension-->
+   
+   <!--extension id="ValidationDiagramContributionItemProvider" point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders" name="validationDiagram">
+       <contributionItemProvider class="org.polarsys.capella.core.validation.ui.actions.CapellaDiagramContributionItemProvider" checkPluginLoaded="false">
+                                         
+            <Priority name="High"/>
+               <partContribution id="org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+                       <partMenuGroup menubarPath="/additions/" id="validationDiagramGroup" separator="true" />
+                       <partAction menubarPath="/additions/validationDiagramGroup" id="validateDiagramAction" />
+               </partContribution>
+               
+               <popupContribution class="org.polarsys.capella.core.validation.ui.actions.ValidationDiagramActionProvider" id="org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+                        <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+                         <popupMenuGroup path="/umlAddGroup/" id="validateDiagramGroup" />
+                        <popupAction id="validateDiagramAction" path="/additions/validateDiagramGroup" />
+               </popupContribution>
+       </contributionItemProvider>
+       
+   </extension-->
+   
+   
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution allPopups="false" locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu?before=org.polarsys.capella.common.re">
+
+         <dynamic class="org.polarsys.capella.core.validation.ui.DynamicCreateContributionItem"
+               id="org.polarsys.capella.core.validation.ui.dynamicCreateItems">
+         </dynamic>
+      </menuContribution>
+      <group
+            id="org.polarsys.capella.core.validation.ui.groupvalidation"
+            separatorsVisible="true">
+      </group>
+   
+    </extension>
+   
+ 
+   
+   
+</plugin>

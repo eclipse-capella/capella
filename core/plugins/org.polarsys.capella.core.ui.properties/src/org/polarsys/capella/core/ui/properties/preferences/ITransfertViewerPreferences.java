@@ -1,0 +1,45 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.ui.properties.preferences;
+
+/**
+ */
+public interface ITransfertViewerPreferences {
+  /**
+   * Whether or not automatically expand left viewer tree content
+   */
+  public static final String PREFS_EXPAND_LEFT_VIEWER_CONTENT = "expand.left.viewer.content"; //$NON-NLS-1$
+
+  /**
+   * Whether or not automatically expand right viewer tree content
+   */
+  public static final String PREFS_EXPAND_RIGHT_VIEWER_CONTENT = "expand.right.viewer.content"; //$NON-NLS-1$
+
+  /**
+   * Whether or not automatically expand single viewer tree content
+   */
+  public static final String PREFS_EXPAND_SINGLE_VIEWER_CONTENT = "expand.single.viewer.content"; //$NON-NLS-1$
+
+  /**
+   * Default value for automatically expand left viewer tree content preference
+   */
+  public static final Boolean PREFS_EXPAND_LEFT_VIEWER_CONTENT_DEFAULT = Boolean.TRUE;
+
+  /**
+   * Default value for automatically expand right viewer tree content preference
+   */
+  public static final Boolean PREFS_EXPAND_RIGHT_VIEWER_CONTENT_DEFAULT = Boolean.TRUE;
+
+  /**
+   * Default value for automatically expand single viewer tree content preference
+   */
+  public static final Boolean PREFS_EXPAND_SINGLE_VIEWER_CONTENT_DEFAULT = Boolean.TRUE;
+}

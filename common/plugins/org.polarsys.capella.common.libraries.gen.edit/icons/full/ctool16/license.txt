@@ -1,0 +1,9 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/ctool16/CreateAbstractModel_ownedReferences_LibraryReference.gif - shared.libraries.gen.edit - shared.libraries.gen.edit/icons/full/ctool16/CreateAbstractModel_ownedReferences_LibraryReference.gif
+/icons/full/ctool16/CreateExtensibleElement_ownedExtensions_ModelInformation.gif - shared.libraries.gen.edit - shared.libraries.gen.edit/icons/full/ctool16/CreateExtensibleElement_ownedExtensions_ModelInformation.gif
+/icons/full/ctool16/CreateModelInformation_ownedReferences_LibraryReference.gif - shared.libraries.gen.edit - shared.libraries.gen.edit/icons/full/ctool16/CreateModelInformation_ownedReferences_LibraryReference.gif

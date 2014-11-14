@@ -1,0 +1,47 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.transition.system.topdown.rules.oa;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+
+/**
+ *
+ */
+public class EntityRule extends org.polarsys.capella.core.transition.system.topdown.rules.cs.ComponentRule {
+
+  @Override
+  protected EClass getSourceType() {
+    return OaPackage.Literals.ENTITY;
+  }
+
+  @Override
+  protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
+    EObject currentContainer = element_p.eContainer();
+    EObject bestContainer = null;
+    while ((currentContainer != null)) {
+      bestContainer =
+          TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(currentContainer, context_p, CtxPackage.Literals.ACTOR_PKG, element_p,
+              result_p);
+
+      if (bestContainer != null) {
+        break;
+      }
+      currentContainer = currentContainer.eContainer();
+    }
+    return bestContainer;
+  }
+}

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.capella.core.tiger">
+         
+      <!-- CES2CES -->
+      <ruleset
+            context="org.polarsys.capella.core.projection.scenario.es2es"
+            rulepackage="org.polarsys.capella.core.projection.scenario.es2es.rules"
+            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
+            
+         <rule rulename="Rule_Scenario"/>
+         <rule rulename="Rule_InstanceRole"/>
+         <rule rulename="Rule_Execution"/>
+         <rule rulename="Rule_Event"/>
+         <rule rulename="Rule_Message"/>
+         <rule rulename="Rule_AbstractEnd"/>
+         
+         <sharedContext context="org.polarsys.capella.core.projection.capability"/>
+      
+         <sharedRuleset bundle="org.polarsys.capella.core.projection.common"
+          rulepackage="org.polarsys.capella.core.projection.common.rules.fa">
+          <rule rulename="Rule_Connection"/>
+          <rule rulename="Rule_ConnectionEnd"/>
+          <rule rulename="Rule_FunctionalExchange"/>
+          <rule rulename="Rule_Function"/>
+          <rule rulename="Rule_ConnectionFunctionalExchangeAllocation"/>
+          
+       </sharedRuleset>
+       
+      <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
+      
+      <sharedRuleset bundle="org.polarsys.capella.core.projection.common"
+          rulepackage="org.polarsys.capella.core.projection.common.rules.cs">
+          <rule rulename="Rule_Component"/>
+          <rule rulename="Rule_Part"/>
+          <rule rulename="Rule_ComponentFunctionalAllocation"/>
+       </sharedRuleset>
+       
+       <sharedRuleset bundle="org.polarsys.capella.core.projection.scenario"
+          rulepackage="org.polarsys.capella.core.projection.scenario.uml2.rules">
+         <rule rulename="Rule_CombinedFragment"/>
+         <rule rulename="Rule_FragmentEnd"/>
+         <rule rulename="Rule_InteractionOperand"/>
+         <rule rulename="Rule_InteractionUse"/>
+       </sharedRuleset>
+       
+       <sharedRuleset
+          bundle="org.polarsys.capella.core.projection.actors.oa2ctx"
+          rulepackage="org.polarsys.capella.core.projection.actors.oa2ctx.rules.byactor">
+            <rule rulename="Rule_OperationalEntity" />
+            <rule rulename="Rule_OperationalActor" />
+       </sharedRuleset>
+        
+       <rule rulename="Rule_InteractionState"/>
+         <rule rulename="Rule_StateFragment"/>
+        
+         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.es2es.rules.ScenarioFinalizer"/>
+         
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
+         <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
+         
+      </ruleset>
+      
+      
+      
+      <!-- CES2CIS -->
+      
+      <ruleset
+            context="org.polarsys.capella.core.projection.scenario.es2is"
+            rulepackage="org.polarsys.capella.core.projection.scenario.es2is.rules"
+            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
+         
+         <rule rulename="Rule_Execution"/>
+         <rule rulename="Rule_DFScenario_IScenario"/>
+         <rule rulename="Rule_Event"/>
+         <rule rulename="Rule_InstanceRole"/>
+         <rule rulename="Rule_Message"/>
+         <rule rulename="Rule_AbstractEnd"/>
+         
+         <rule rulename="Rule_InteractionState"/>
+         <rule rulename="Rule_StateFragment"/>
+       
+         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.es2is.rules.Df2IsFinalizer"/>
+        
+         <sharedContext context="org.polarsys.capella.core.projection.interfaces.generation"/>
+         
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
+         <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
+         
+      </ruleset>
+      
+      
+      
+      <!-- FS2CES -->
+      
+      <ruleset
+            context="org.polarsys.capella.core.projection.scenario.fs2es"
+            rulepackage="org.polarsys.capella.core.projection.scenario.fs2es.rules"
+            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
+         
+         <rule rulename="Rule_Execution"/>
+         <rule rulename="Rule_Scenario"/>
+         <rule rulename="Rule_Event"/>
+         <rule rulename="Rule_InstanceRole"/>
+         <rule rulename="Rule_Message"/>
+         <rule rulename="Rule_AbstractEnd"/>
+         
+         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.fs2es.rules.FS2CESFinalizer"/>
+         
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
+         <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
+         
+      </ruleset>
+      
+      
+      <!-- CESF2CESB -->
+      
+      <ruleset
+            context="org.polarsys.capella.core.projection.scenario.esf2esb"
+            rulepackage="org.polarsys.capella.core.projection.scenario.esf2esb.rules"
+            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
+         
+         <rule rulename="Rule_Execution"/>
+         <rule rulename="Rule_Scenario"/>
+         <rule rulename="Rule_Event"/>
+         <rule rulename="Rule_InstanceRole"/>
+         <rule rulename="Rule_Message"/>
+         <rule rulename="Rule_AbstractEnd"/>
+         
+         <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
+         <finalizer class="org.polarsys.capella.core.projection.scenario.esf2esb.rules.CESF2CESBFinalizer"/>
+         
+         <sharedContext context="org.polarsys.capella.core.projection.scenario.uml2.rules"/>
+         <sharedContext context="org.polarsys.capella.core.projection.common.resolver"/>
+         
+      </ruleset>
+      
+      <!-- UML2 concepts -->
+      
+      <ruleset
+            context="org.polarsys.capella.core.projection.scenario.uml2.rules"
+            rulepackage="org.polarsys.capella.core.projection.scenario.uml2.rules"
+            transfolink="org.polarsys.capella.core.projection.common.ProjectionTraceLinkProvider">
+         
+         <rule rulename="Rule_CombinedFragment"/>
+         <rule rulename="Rule_FragmentEnd"/>
+         <rule rulename="Rule_InteractionOperand"/>
+         <rule rulename="Rule_InteractionState"/>
+         <rule rulename="Rule_StateFragment"/>
+         <rule rulename="Rule_InteractionUse"/>
+         
+      </ruleset>
+      
+   </extension>
+
+</plugin>

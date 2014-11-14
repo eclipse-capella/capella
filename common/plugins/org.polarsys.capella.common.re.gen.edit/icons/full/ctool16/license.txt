@@ -1,0 +1,14 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/ctool16/CreateCatalogElement_ownedLinks_CatalogElementLink.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateCatalogElement_ownedLinks_CatalogElementLink.gif
+/icons/full/ctool16/CreateCatalogElementPkg_ownedElementPkgs_CatalogElementPkg.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateCatalogElementPkg_ownedElementPkgs_CatalogElementPkg.gif
+/icons/full/ctool16/CreateCatalogElementPkg_ownedElementPkgs_RecCatalog.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateCatalogElementPkg_ownedElementPkgs_RecCatalog.gif
+/icons/full/ctool16/CreateCatalogElementPkg_ownedElements_CatalogElement.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateCatalogElementPkg_ownedElements_CatalogElement.gif
+/icons/full/ctool16/CreateCompliancyDefinitionPkg_ownedDefinitions_CompliancyDefinition.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateCompliancyDefinitionPkg_ownedDefinitions_CompliancyDefinition.gif
+/icons/full/ctool16/CreateExtensibleElement_ownedExtensions_RecCatalog.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateExtensibleElement_ownedExtensions_RecCatalog.gif
+/icons/full/ctool16/CreateRecCatalog_ownedCompliancyDefinitionPkg_CompliancyDefinitionPkg.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateRecCatalog_ownedCompliancyDefinitionPkg_CompliancyDefinitionPkg.gif
+/icons/full/ctool16/CreateRecCatalog_ownedCompliancyDefinitions_CompliancyDefinitions.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/ctool16/CreateRecCatalog_ownedCompliancyDefinitions_CompliancyDefinitions.gif

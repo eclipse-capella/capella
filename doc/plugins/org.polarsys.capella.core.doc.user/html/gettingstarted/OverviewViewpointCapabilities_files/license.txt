@@ -1,0 +1,13 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/html/gettingstarted/OverviewViewpointCapabilities_files/information.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/obj16/information.gif
+/html/gettingstarted/OverviewViewpointCapabilities_files/link_attachement_7.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/ovr16/link_ovr.gif
+/html/gettingstarted/OverviewViewpointCapabilities_files/vp_pa.JPG - org.polarsys.capella.core.doc.user - org.polarsys.capella.core.doc.user/html/gettingstarted/OverviewViewpointCapabilities_files/vp_pa.JPG
+/html/gettingstarted/OverviewViewpointCapabilities_files/vp_perfoact1_.JPG - org.polarsys.capella.core.doc.user - org.polarsys.capella.core.doc.user/html/gettingstarted/OverviewViewpointCapabilities_files/vp_perfoact1_.JPG
+/html/gettingstarted/OverviewViewpointCapabilities_files/vp_perfomove.JPG - org.polarsys.capella.core.doc.user - org.polarsys.capella.core.doc.user/html/gettingstarted/OverviewViewpointCapabilities_files/vp_perfomove.JPG
+/html/gettingstarted/OverviewViewpointCapabilities_files/vp_safetyact1_.JPG - org.polarsys.capella.core.doc.user - org.polarsys.capella.core.doc.user/html/gettingstarted/OverviewViewpointCapabilities_files/vp_safetyact1_.JPG
+/html/gettingstarted/OverviewViewpointCapabilities_files/vp_safetyact2.JPG - org.polarsys.capella.core.doc.user - org.polarsys.capella.core.doc.user/html/gettingstarted/OverviewViewpointCapabilities_files/vp_safetyact2.JPG

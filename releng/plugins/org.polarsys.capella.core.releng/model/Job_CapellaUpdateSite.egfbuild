@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_DrDLoKYNEeOAGYjKNc8g9w" name="CapellaUpdateSite">
+  <properties xmi:id="_Gr3RQKYNEeOAGYjKNc8g9w" key="product" value="${publish}/product" type="INLINED"/>
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_OhoSoKYYEeOAGYjKNc8g9w" name="build4Juno3.8.2">
+    <properties xmi:id="_OhoSoaYYEeOAGYjKNc8g9w" key="eclipseCodeName" value="juno" type="INLINED"/>
+    <properties xmi:id="_OhoSoqYYEeOAGYjKNc8g9w" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/eclipse/updates/3.8" type="INLINED"/>
+    <properties xmi:id="_OhoSo6YYEeOAGYjKNc8g9w" key="secondary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
+    <properties xmi:id="_OhoSpKYYEeOAGYjKNc8g9w" key="site_COTS" value="${cots.repository.prefix}/cots-3.8.2" type="INLINED"/>
+    <properties xmi:id="_OhoSpaYYEeOAGYjKNc8g9w" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/releases/0.9.0/${eclipseCodeName}" type="INLINED"/>
+    <steps xsi:type="buildcore:ReuseStep" xmi:id="_OhoSpqYYEeOAGYjKNc8g9w" name="Build UpdSite">
+      <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#_mK9w4KYXEeOAGYjKNc8g9w"/>
+    </steps>
+  </steps>
+</buildcore:Job>

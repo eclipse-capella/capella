@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.projection.actorsandinterfaces.ctx2la
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.polarsys.capella.core.projection.common,
+ org.polarsys.capella.core.projection.systemfunction,
+ org.polarsys.capella.core.projection.interfaces.ctx2la
+Bundle-Localization: plugin

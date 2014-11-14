@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sharedmodel" nsURI="http://www.polarsys.org/capella/core/sharedmodel/0.8.0"
+    nsPrefix="org.polarsys.capella.core.data.sharedmodel">
+  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <details key="trackResourceModification" value="true"/>
+    <details key="useUUIDs" value="false"/>
+    <details key="useIDAttributes" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+    <details key="description" value="Shared aims at defining a structure for the shared model elements storage. It is dedicated to the model elements reuse. This is a rest of MDSysE and may be reengineered into more adapted solutions.&#xD;&#xA;[source: Capella study]"/>
+    <details key="usage guideline" value="none"/>
+    <details key="used in levels" value="n/a"/>
+    <details key="usage examples" value="none"/>
+    <details key="constraints" value="This package depends on the model CapellaModeller.ecore"/>
+    <details key="comment/notes" value="none"/>
+    <details key="reference documentation" value="none"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/extension">
+    <details key="trackResourceModification" value="true"/>
+    <details key="useUUIDs" value="false"/>
+    <details key="useIDAttributes" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="SharedPkg" eSuperTypes="CapellaCore.ecore#//ReuseableStructure CapellaModeller.ecore#//ModelRoot">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="SharedPkg"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Package"/>
+      <details key="stereotype" value="eng.SharedPkg"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a container specialized to hold elements intended to be shared across projects/analysis&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical,epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Package"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDataPkg" eType="ecore:EClass Information.ecore#//DataPkg"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="packagedElement"/>
+        <details key="featureOwner" value="Package"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="ownedDataPkg"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the data packages contained in this shared package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::nestedPackage elements on which DataPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedGenericPkg" eType="#//GenericPkg"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="packagedElement"/>
+        <details key="featureOwner" value="Package"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="genericPkg"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the generic packages contained in this shared package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::nestedPackage elements on which GenericPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Multiplicity must be [0..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GenericPkg" eSuperTypes="CapellaCore.ecore#//Structure">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="GenericPkg"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Package"/>
+      <details key="stereotype" value="eng.GenericPkg"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a generic container for Capella elements and sub packages&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational,system,logical,physical,epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Package"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subGenericPkgs" upperBound="-1"
+        eType="#//GenericPkg" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="packagedElement"/>
+        <details key="featureOwner" value="Package"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="subGenericPkgs"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="sub-packages contained in this package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::nestedPackage elements on which GenericPkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capellaElements" upperBound="-1"
+        eType="ecore:EClass CapellaCore.ecore#//CapellaElement" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="packagedElement"/>
+        <details key="featureOwner" value="Package"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="capellaElements"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the Capella model elements stored directly under this package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::packagedElement elements on which CapellaElement stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

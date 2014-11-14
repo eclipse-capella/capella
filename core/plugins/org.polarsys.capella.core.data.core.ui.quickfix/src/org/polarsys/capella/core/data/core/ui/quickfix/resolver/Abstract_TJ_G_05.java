@@ -1,0 +1,101 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.core.ui.quickfix.resolver;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+
+import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
+import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory;
+import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+
+/**
+ * Rename source or target name
+ */
+public abstract class Abstract_TJ_G_05 extends AbstractCapellaMarkerResolution {
+
+  protected Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.VALIDATION);
+
+  /**
+   * {@inheritDoc}
+   */
+  public void run(IMarker marker_p) {
+    final List<EObject> modelElements = getModelElements(marker_p);
+    final boolean[] flag = { false };
+    if (!modelElements.isEmpty()) {
+      final Object obj = modelElements.get(0);
+      AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
+
+        @Override
+        public String getName() {
+          return getLabel();
+        }
+
+        public void run() {
+          if (obj instanceof TraceableElement) {
+            TraceableElement cst = (TraceableElement) obj;
+            EList<AbstractTrace> outgoingTraces = cst.getOutgoingTraces();
+            for (AbstractTrace abstractTrace : outgoingTraces) {
+              // OK for validation
+              if (CapellaElementExt.isValidTransitionTrace(abstractTrace)) {
+                TraceableElement sourceElement = abstractTrace.getSourceElement();
+                TraceableElement targetElement = abstractTrace.getTargetElement();
+                // not null
+                if ((null != sourceElement) && (null != targetElement) && (sourceElement instanceof AbstractNamedElement)
+                    && (targetElement instanceof AbstractNamedElement)) {
+                  // are of valid layering
+                  if ((sourceElement instanceof CapellaElement) && (targetElement instanceof CapellaElement)) {
+                    if (CapellaLayerCheckingExt.isElementFromUpperLayer((CapellaElement) targetElement, (CapellaElement) sourceElement)) {
+                      // are nameable
+                      AbstractNamedElement sourceNamedElement = (AbstractNamedElement) sourceElement;
+                      AbstractNamedElement targetNamedElement = (AbstractNamedElement) targetElement;
+                      // if names not equal raise warning message
+                      if (!sourceNamedElement.getName().equals(targetNamedElement.getName())) {
+                        rename(sourceNamedElement, targetNamedElement);
+                        flag[0] = true;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      };
+
+      // execute the command
+      MDEAdapterFactory.getExecutionManager().execute(abstrctCommand);
+      if (flag[0]) {
+        try {
+          marker_p.delete();
+        } catch (CoreException exception_p) {
+          _logger.error("Exception while deleting marker : " + exception_p.toString()); //$NON-NLS-1$
+        }
+      }
+    }
+  }
+
+  abstract public void rename(AbstractNamedElement sourceNamedElement, AbstractNamedElement targetNamedElement);
+}

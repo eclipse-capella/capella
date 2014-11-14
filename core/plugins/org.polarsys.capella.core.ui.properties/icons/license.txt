@@ -1,0 +1,12 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/Delete_16x16.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/delete_config.gif
+/icons/Add_16x16.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/monitorexpression_tsk.gif
+/icons/Browse_16x16.gif - org.eclipse.ui.navigator - org.eclipse.ui.navigator/icons/full/clcl16/elipses.gif
+/icons/ArrowUp_16x16.gif - org.eclipse.emf.generic.editor - org.eclipse.emf.generic.editor/icons/common/up.gif
+/icons/Lock_8x8.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/deadlock_ovr.gif
+/icons/ArrowDown_16x16.gif - org.eclipse.compare - org.eclipse.compare/icons/full/elcl16/next_nav.gif

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="sessionAdvisor" name="Session Advisor" schema="schema/sessionAdvisor.exsd"/>
+   <extension-point id="copylayoutProvider" name="Copy Layout Provider" schema="schema/copylayoutProvider.exsd"/>
+   <extension-point id="sessionActionListener" name="Session Action Listener" schema="schema/sessionActionListener.exsd"/>
+   
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="org.polarsys.capella.core.data.capellamodeller.util.CapellamodellerResourceFactoryImpl"
+            type="melodyfragment">
+      </parser>
+   </extension>
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="org.polarsys.capella.core.sirius.ui.editor.CapellaDashboardEditorInputFactory"
+            id="org.polarsys.capella.core.sirius.ui.editor.CapellaDashboardEditorInputFactory">
+      </factory>
+   </extension>
+    <extension
+         point="org.eclipse.sirius.analysisSelectorProvider">
+      <provider id="org.polarsys.capella.core.sirius.ui.danalysis.CapellaAnalysisSelectorProvider"
+            providerClass="org.polarsys.capella.core.sirius.ui.danalysis.CapellaAnalysisSelectorProvider">
+      </provider>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+         type="airdfragment"
+         class="org.eclipse.sirius.diagram.business.internal.parser.AirDResourceFactory">
+      </parser>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+      <GlobalActionHandlerProvider
+            class="org.polarsys.capella.core.sirius.ui.CapellaGlobalActionHandlerProvider"
+            id="org.polarsys.capella.core.sirius.ui.CapellaGlobalActionHandlerProvider">
+         <Priority
+               name="Highest">
+         </Priority>
+         <ViewId
+               id="org.eclipse.sirius.diagram.part.SiriusDiagramEditorID">
+            <ElementType
+                  class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId
+                     actionId="cut">
+               </GlobalActionId>
+               <GlobalActionId
+                     actionId="copy">
+               </GlobalActionId>
+               <GlobalActionId
+                     actionId="paste">
+               </GlobalActionId>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+   
+   <extension
+         point="org.polarsys.capella.core.sirius.ui.copylayoutProvider">
+      <keysProvider
+            class="org.polarsys.capella.core.sirius.ui.copylayout.keyproviders.TraceabilityKeyProvider">
+      </keysProvider>
+   </extension>
+   
+   <extension
+         point="org.eclipse.sirius.diagram.layoutDataManager">
+      <layoutDataManagerProvider
+            class="org.polarsys.capella.core.sirius.ui.copylayout.CapellaLayoutDataManagerProvider"
+            id="org.polarsys.capella.core.sirius.ui.layoutDataManagerProvider">
+      </layoutDataManagerProvider>
+   </extension>
+   <extension
+         point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+      <GlobalActionHandlerProvider
+            class="org.polarsys.capella.core.sirius.ui.actions.CapellaSiriusDeleteGlobalActionHandlerProvider"
+            id="org.polarsys.capella.core.sirius.ui.CapellaGlobalActionHandlerProvider_prod00088921">
+         <Priority
+               name="Highest">
+         </Priority>
+         <ViewId
+               id="org.eclipse.sirius.diagram.part.SiriusDiagramEditorID">
+            <ElementType
+                  class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId
+                     actionId="delete">
+               </GlobalActionId>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+</plugin>

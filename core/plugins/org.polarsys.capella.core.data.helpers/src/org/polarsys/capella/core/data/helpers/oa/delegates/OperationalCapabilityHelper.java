@@ -1,0 +1,84 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.helpers.oa.delegates;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.helpers.interaction.delegates.AbstractCapabilityHelper;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.AbstractCapabilityRealization;
+import org.polarsys.capella.core.data.capellacore.Involvement;
+import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+
+public class OperationalCapabilityHelper {
+  private static OperationalCapabilityHelper instance;
+
+  private OperationalCapabilityHelper() {
+    // do nothing
+  }
+
+  public static OperationalCapabilityHelper getInstance() {
+    if (instance == null)
+      instance = new OperationalCapabilityHelper();
+    return instance;
+  }
+
+  public Object doSwitch(OperationalCapability element_p, EStructuralFeature feature_p) {
+    Object ret = null;
+
+    if (feature_p.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY__REALIZING_CAPABILITIES)) {
+      ret = getRealizingCapabilities(element_p);
+    } else if (feature_p.equals(OaPackage.Literals.OPERATIONAL_CAPABILITY__INVOLVED_ENTITIES)) {
+      ret = getInvolvedEntities(element_p);
+    }
+
+    // no helper found... searching in super classes...
+    if (null == ret) {
+      ret = AbstractCapabilityHelper.getInstance().doSwitch(element_p, feature_p);
+    }
+
+    return ret;
+  }
+
+  protected List<Capability> getRealizingCapabilities(OperationalCapability element_p) {
+    List <Capability> ret = new ArrayList<Capability>();
+    for (AbstractTrace trace : element_p.getIncomingTraces()) {
+      if (trace instanceof AbstractCapabilityRealization){
+        AbstractCapability capability = ((AbstractCapabilityRealization) trace).getRealizingCapability();
+        if (capability instanceof Capability) {
+          ret.add((Capability) capability);
+        }
+      }
+    }
+    return ret;
+  }
+
+  protected List<Entity> getInvolvedEntities(OperationalCapability element_p) {
+    List<Entity> ret = new ArrayList<Entity>();
+    for (Involvement trace : element_p.getInvolvedInvolvements()) {
+      if (trace instanceof EntityOperationalCapabilityInvolvement) {
+        Entity entity = ((EntityOperationalCapabilityInvolvement) trace).getEntity();
+        if (null != entity) {
+          ret.add(entity);
+        }
+      }
+    }
+    return ret;
+  }
+}

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.activities.AttachmentActivity"
+            Identifier="org.polarsys.capella.core.re.activities.AttachmentActivity"
+            Multiple="false"
+            Name="Initialization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transition.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+
+
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.activities.InitializeReMgtActivity"
+            Identifier="org.polarsys.capella.core.re.activities.InitializeReMgtActivity"
+            Multiple="false"
+            Name="Initialization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transition.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.rpl2re.activities.InitializeTransitionActivity"
+            Identifier="org.polarsys.capella.core.re.rpl2re.activities.InitializeTransitionActivity"
+            Multiple="false"
+            Name="Initialization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transition.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.activities.DifferencesComputingActivity"
+            Identifier="org.polarsys.capella.core.re.activities.DifferencesComputingActivity"
+            Multiple="false"
+            Name="Differences Filtering DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.re2rpl.activities.InitializeTransitionActivity"
+            Identifier="org.polarsys.capella.core.re.re2rpl.activities.InitializeTransitionActivity"
+            Multiple="false"
+            Name="Initialization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transition.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.re2rpl.activities.DifferencesFilteringActivity"
+            Identifier="org.polarsys.capella.core.re.re2rpl.activities.DifferencesFilteringActivity"
+            Multiple="false"
+            Name="Differences Filtering DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.re.rpl2re.activities.DifferencesFilteringActivity"
+            Identifier="org.polarsys.capella.core.re.rpl2re.activities.DifferencesFilteringActivity"
+            Multiple="false"
+            Name="Differences Filtering DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   
+   
+   <extension id="org.polarsys.capella.core.re"
+         name="Create Replicable Element"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.transition.system;org.polarsys.capella.common.re"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+            
+            
+         <mappingPackage name="capellacore">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.Allocation"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.AllocationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.AllocationRule"
+                     enabled="true"
+                     name="Allocation">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+         </mappingPackage>
+            
+         <mappingPackage name="cs">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.Part"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.cs.PartRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.cs.PartRule"
+                     enabled="true"
+                     name="Part">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+         </mappingPackage>
+         
+         <mappingPackage name="cs">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.PhysicalLink"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.cs.PhysicalLinkRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.cs.PhysicalLinkRule"
+                     enabled="true"
+                     name="PhysicalLink">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+         </mappingPackage>
+         
+         <mappingPackage name="fa">
+         
+         
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ComponentExchange"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.fa.ComponentExchangeRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.fa.ComponentExchangeRule"
+                     enabled="true"
+                     name="ComponentExchange">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.AbstractFunction"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.fa.AbstractFunctionRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.fa.AbstractFunctionRule"
+                     enabled="true"
+                     name="AbstractFunction">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.FunctionInputPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.fa.FunctionInputPortRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.fa.FunctionInputPortRule"
+                     enabled="true"
+                     name="FunctionInputPort">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.FunctionOutputPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.fa.FunctionOutputPortRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.fa.FunctionOutputPortRule"
+                     enabled="true"
+                     name="FunctionOutputPort">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.FunctionalChain"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.re.rules.fa.FunctionalChainRule"
+                     incompleteRule="org.polarsys.capella.core.re.rules.fa.FunctionalChainRule"
+                     enabled="true"
+                     name="FunctionalChain">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+         </mappingPackage>
+         
+      </mapping>
+      
+   </extension>
+   
+   
+   
+   <extension id="org.polarsys.capella.core.re.createRec"
+         name="Create Replicable Element"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.re;org.polarsys.capella.common.re.createRec"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   <extension id="org.polarsys.capella.core.re.updateCur"
+         name="Update current Replicable Element"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.re;org.polarsys.capella.common.re.updateCur"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   
+   <extension id="org.polarsys.capella.core.re.updateDef"
+         name="Update definition  Replicable Element"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.re;org.polarsys.capella.common.re.updateDef"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   
+   
+   <extension id="org.polarsys.capella.core.re.createReplica"
+         name="Create Replica"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.re;org.polarsys.capella.common.re.createReplica"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   
+   <extension id="org.polarsys.capella.core.re.updateReplica"
+         name="Update Replica"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.core.re;org.polarsys.capella.common.re.updateReplica"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.capella.common.flexibility.properties">
+      <properties
+            id="org.polarsys.capella.core.re.createRec">
+            <inheritance properties="org.polarsys.capella.common.re.createRec" />
+            
+        
+      </properties>
+      
+      <properties
+            id="org.polarsys.capella.core.re.createReplica">
+            <inheritance properties="org.polarsys.capella.common.re.createReplica" />
+            
+      </properties>
+      
+      <properties
+            id="org.polarsys.capella.core.re.updateCur">
+            <inheritance properties="org.polarsys.capella.common.re.updateCur" />
+            
+      </properties>
+      
+      <properties
+            id="org.polarsys.capella.core.re.updateDef">
+            <inheritance properties="org.polarsys.capella.common.re.updateDef" />
+            
+      </properties>
+      
+      <properties
+            id="org.polarsys.capella.core.re.updateReplica">
+            <inheritance properties="org.polarsys.capella.common.re.updateReplica" />
+            
+      </properties>
+   </extension>
+   
+   <extension
+         point="org.polarsys.capella.common.queries.query">
+         <querySpecification
+               queryIdentifier="CapellaGetAllCatalogPkgQuery">
+            <queryAlgorithm algorithm="org.polarsys.capella.core.re.queries.GetAllCatalogPkgQuery"></queryAlgorithm>
+         </querySpecification>
+         
+         <querySpecification
+               extendedQueryIdentifier="CapellaGetAllCatalogPkgQuery"
+               queryIdentifier="GetAllCatalogPkgsForLib">
+               
+            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
+         </querySpecification>
+         
+         <querySpecification
+               queryIdentifier="CapellaGetAllCatalogElementsQuery">
+            <queryAlgorithm algorithm="org.polarsys.capella.core.re.queries.GetAllCatalogElementsQuery"></queryAlgorithm>
+         </querySpecification>
+         
+         <querySpecification
+               extendedQueryIdentifier="CapellaGetAllCatalogElementsQuery"
+               queryIdentifier="GetAllCatalogElementsForLib">
+               
+            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
+         </querySpecification>
+         
+         
+         
+         <querySpecification
+               queryIdentifier="CapellaGetAllCompliancyDefinitionsQuery">
+            <queryAlgorithm algorithm="org.polarsys.capella.core.re.queries.GetAllCompliancyDefinitionsQuery"></queryAlgorithm>
+         </querySpecification>
+         
+         <querySpecification
+               extendedQueryIdentifier="CapellaGetAllCompliancyDefinitionsQuery"
+               queryIdentifier="GetAllCompliancyDefinitionsQueryForLib">
+               
+            <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.extendedqueries.GenericGetForLibWithSystemEngineering"></queryAlgorithm>
+         </querySpecification>
+         
+         
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.model.handler.deleteCommandProvider">
+      <deleteHelper
+            class="org.polarsys.capella.core.re.delete.ReDeleteHelper">
+      </deleteHelper>
+   </extension>
+   
+   
+</plugin>

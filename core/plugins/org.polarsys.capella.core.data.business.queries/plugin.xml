@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+  <extension-point id="MDEBusinessQueries" name="MDEBusinessQueries" schema="schema/MDEBusinessQueries.exsd" />
+  <extension name="cs" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Interface_InheritedInterfaces" id="org.polarsys.capella.core.business.queries.cs.Interface_InheritedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Part_MaxCardinality" id="org.polarsys.capella.core.business.queries.cs.Part_MaxCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Part_MinCardinality" id="org.polarsys.capella.core.business.queries.cs.Part_MinCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Part_Type" id="org.polarsys.capella.core.business.queries.cs.Part_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Part_TypePorts" id="org.polarsys.capella.core.business.queries.cs.Part_TypePorts" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Part_DeployedElements" id="org.polarsys.capella.core.business.queries.cs.Part_DeployedElements" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Component_ImplementedInterfaces" id="org.polarsys.capella.core.business.queries.cs.Component_ImplementedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.InterfaceImpl_ImplementedInterface" id="org.polarsys.capella.core.business.queries.cs.InterfaceImpl_ImplementedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.InterfaceUse_UsedInterface" id="org.polarsys.capella.core.business.queries.cs.InterfaceUse_UsedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.Interface_ExchangeItems" id="org.polarsys.capella.core.business.queries.cs.Interface_ExchangeItems" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.ExchangeItemAllocation_AllocatedItem" id="org.polarsys.capella.core.business.queries.cs.ExchangeItemAllocation_AllocatedItem" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalPath_AllocatedComponentExchanges" id="org.polarsys.capella.core.business.queries.cs.PhysicalPath_AllocatedComponentExchanges" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalPath_RealizedPhysicalPaths" id="org.polarsys.capella.core.business.queries.cs.PhysicalPath_RealizedPhysicalPaths" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges" id="org.polarsys.capella.core.business.queries.cs.PhysicalLink_AllocatedComponentExchanges" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalLink_RealizedPhysicalLinks" id="org.polarsys.capella.core.business.queries.cs.PhysicalLink_RealizedPhysicalLinks" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts" id="org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedComponentPorts" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedFunctionPorts" id="org.polarsys.capella.core.business.queries.cs.PhysicalPort_AllocatedFunctionPorts" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalPort_RealizedPhysicalPorts" id="org.polarsys.capella.core.business.queries.cs.PhysicalPort_RealizedPhysicalPorts" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalLink_Categories" id="org.polarsys.capella.core.business.queries.cs.PhysicalLink_Categories" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.cs.PhysicalLinkCategory_Links" id="org.polarsys.capella.core.business.queries.cs.PhysicalLinkCategory_Links" />
+  </extension>
+  <extension name="ctx" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_FunctionalAllocation" id="org.polarsys.capella.core.business.queries.ctx.Actor_FunctionalAllocation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_ImplementedInterfaces" id="org.polarsys.capella.core.business.queries.ctx.Actor_ImplementedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_InheritedActors" id="org.polarsys.capella.core.business.queries.ctx.Actor_InheritedActors" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_InteractingCapabilities" id="org.polarsys.capella.core.business.queries.ctx.Actor_InteractingCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_RealizedCapabilities" id="org.polarsys.capella.core.business.queries.ctx.Actor_RealizedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_RealizedOperationalActors" id="org.polarsys.capella.core.business.queries.ctx.Actor_RealizedOperationalActors" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_RealizedOperationalEntities" id="org.polarsys.capella.core.business.queries.ctx.Actor_RealizedOperationalEntities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Actor_UsedInterfaces" id="org.polarsys.capella.core.business.queries.ctx.Actor_UsedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_AvailableInStates" id="org.polarsys.capella.core.business.queries.ctx.Capability_AvailableInStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_ExtendedCapabilities" id="org.polarsys.capella.core.business.queries.ctx.Capability_ExtendedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_IncludedCapabilities" id="org.polarsys.capella.core.business.queries.ctx.Capability_IncludedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InheritedCapabilities" id="org.polarsys.capella.core.business.queries.ctx.Capability_InheritedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InteractingActors" id="org.polarsys.capella.core.business.queries.ctx.Capability_InteractingActors" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedAbstractFunctions" id="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedAbstractFunctions" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains" id="org.polarsys.capella.core.business.queries.ctx.Capability_InvolvedFunctionalChains" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Capability_RealizedCapabilities" id="org.polarsys.capella.core.business.queries.ctx.Capability_RealizedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Mission_IncludedCapabilities" id="org.polarsys.capella.core.business.queries.ctx.Mission_IncludedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.Mission_InteractingActors" id="org.polarsys.capella.core.business.queries.ctx.Mission_InteractingActors" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.System_ImplementedInterfaces" id="org.polarsys.capella.core.business.queries.ctx.System_ImplementedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.System_UsedInterfaces" id="org.polarsys.capella.core.business.queries.ctx.System_UsedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.System_FunctionalAllocation" id="org.polarsys.capella.core.business.queries.ctx.System_FunctionalAllocation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.System_RealizedOperationalEntities" id="org.polarsys.capella.core.business.queries.ctx.System_RealizedOperationalEntities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization" id="org.polarsys.capella.core.business.queries.ctx.SystemFunction_FunctionRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.ctx.SystemFunction_AvailableInstates" id="org.polarsys.capella.core.business.queries.ctx.SystemFunction_AvailableInstates" />
+  </extension>
+  <extension name="epbs" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_ImplementedInterfaces" id="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_ImplementedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_ImplementedPC" id="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_ImplementedPC" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_InvolvedRealization" id="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_InvolvedRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_UsedInterfaces" id="org.polarsys.capella.core.business.queries.epbs.ConfigurationItem_UsedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.epbs.EPBSArchitecture_AllocatedPhysicalArchitecture" id="org.polarsys.capella.core.business.queries.epbs.EPBSArchitecture_AllocatedPhysicalArchitecture" />
+  </extension>
+  <extension name="fa" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.Connection_ConnectionRealizations" id="org.polarsys.capella.core.business.queries.fa.Connection_ConnectionRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.Connection_ConnectionFunctionalExchangeAllocations" id="org.polarsys.capella.core.business.queries.fa.Connection_ConnectionFunctionalExchangeAllocations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ExchangeCategory_Exchanges" id="org.polarsys.capella.core.business.queries.fa.ExchangeCategory_Exchanges" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchangeCategory_Exchanges" id="org.polarsys.capella.core.business.queries.fa.ComponentExchangeCategory_Exchanges" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChain_RealizedFunctionalChains" id="org.polarsys.capella.core.business.queries.fa.FunctionalChain_RealizedFunctionalChains" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates" id="org.polarsys.capella.core.business.queries.fa.FunctionalChain_AvailableInStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvement_ExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionalChainInvolvement_ExchangeItems" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_FunctionalExchangeRealizations" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_FunctionalExchangeRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.Connection_ConvoyedInformation" id="org.polarsys.capella.core.business.queries.fa.Connection_ConvoyedInformation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_InComingExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_InComingExchangeItems" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_OutGoingExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_OutGoingExchangeItems" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RealizedFunctionInputPort" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RealizedFunctionInputPort" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RealizedFunctionOutputPort" id="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RealizedFunctionOutputPort" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_Categories" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories" id="org.polarsys.capella.core.business.queries.fa.ComponentExchange_Categories" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_RealizedComponentPort" id="org.polarsys.capella.core.business.queries.fa.ComponentPorts_RealizedComponentPort" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_ConnectedPorts" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_ConnectedPorts" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_AllocatedPort" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_AllocatedPort" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_MaxCardinality" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_MaxCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_MinCardinality" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_MinCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_RequiredInterfaces" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_RequiredInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_ProvidedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.ComponentPort_Type" id="org.polarsys.capella.core.business.queries.fa.ComponentPort_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_ProvidedInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_ProvidedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RequiredInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionOutputPort_RequiredInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_ProvidedInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_ProvidedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RequiredInterface" id="org.polarsys.capella.core.business.queries.fa.FunctionInputPort_RequiredInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_ExchangeItems" id="org.polarsys.capella.core.business.queries.fa.FunctionalExchange_ExchangeItems" />
+  </extension>
+  <extension name="information" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_LeftOperand" id="org.polarsys.capella.core.business.queries.information.BinaryExpression_LeftOperand" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_RightOperand" id="org.polarsys.capella.core.business.queries.information.BinaryExpression_RightOperand" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_Type" id="org.polarsys.capella.core.business.queries.information.BinaryExpression_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanReference_AbstractType" id="org.polarsys.capella.core.business.queries.information.BooleanReference_AbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanType_DefaultValue" id="org.polarsys.capella.core.business.queries.information.BooleanType_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanType_InheritedBooleanType" id="org.polarsys.capella.core.business.queries.information.BooleanType_InheritedBooleanType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanType_RealizedBooleanType" id="org.polarsys.capella.core.business.queries.information.BooleanType_RealizedBooleanType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Class_InheritedClasses" id="org.polarsys.capella.core.business.queries.information.Class_InheritedClasses" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Class_RealizedClasses" id="org.polarsys.capella.core.business.queries.information.Class_RealizedClasses" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_MaxCardinality" id="org.polarsys.capella.core.business.queries.information.Collection_MaxCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_MinCardinality" id="org.polarsys.capella.core.business.queries.information.Collection_MinCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_Type" id="org.polarsys.capella.core.business.queries.information.Collection_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_InheritedCollection" id="org.polarsys.capella.core.business.queries.information.Collection_InheritedCollection" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.CollectionValue_Type" id="org.polarsys.capella.core.business.queries.information.CollectionValue_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValue_Type" id="org.polarsys.capella.core.business.queries.information.ComplexValue_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_DefaultValue" id="org.polarsys.capella.core.business.queries.information.Enumeration_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_DomainType" id="org.polarsys.capella.core.business.queries.information.Enumeration_DomainType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_InheritedEnumeration" id="org.polarsys.capella.core.business.queries.information.Enumeration_InheritedEnumeration" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_NullValue" id="org.polarsys.capella.core.business.queries.information.Enumeration_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_RealizedEnumeration" id="org.polarsys.capella.core.business.queries.information.Enumeration_RealizedEnumeration" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Exception_InheritedException" id="org.polarsys.capella.core.business.queries.information.Exception_InheritedException" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralBooleanValue_AbstractType" id="org.polarsys.capella.core.business.queries.information.LiteralBooleanValue_AbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralNumericValue_AbstractType" id="org.polarsys.capella.core.business.queries.information.LiteralNumericValue_AbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType" id="org.polarsys.capella.core.business.queries.information.LiteralStringValue_AbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Message_InheritedMessage" id="org.polarsys.capella.core.business.queries.information.Message_InheritedMessage" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericReference_AbstractType" id="org.polarsys.capella.core.business.queries.information.NumericReference_AbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_DefaultValue" id="org.polarsys.capella.core.business.queries.information.NumericType_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_InheritedNumericType" id="org.polarsys.capella.core.business.queries.information.NumericType_InheritedNumericType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_MaxValue" id="org.polarsys.capella.core.business.queries.information.NumericType_MaxValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_MinValue" id="org.polarsys.capella.core.business.queries.information.NumericType_MinValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_NullValue" id="org.polarsys.capella.core.business.queries.information.NumericType_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_RealizedNumericType" id="org.polarsys.capella.core.business.queries.information.NumericType_RealizedNumericType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericValue_Type" id="org.polarsys.capella.core.business.queries.information.NumericValue_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_MaxCardinality" id="org.polarsys.capella.core.business.queries.information.Parameter_MaxCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_MinCardinality" id="org.polarsys.capella.core.business.queries.information.Parameter_MinCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_Type" id="org.polarsys.capella.core.business.queries.information.Parameter_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_Unit" id="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_Unit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_DefaultValue" id="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_InheritedType" id="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_InheritedType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_MaxValue" id="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_MaxValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_MinValue" id="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_MinValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_NullValue" id="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_RealizedPhysicalQuantity" id="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_RealizedPhysicalQuantity" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_DefaultValue" id="org.polarsys.capella.core.business.queries.information.Property_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_MaxCardinality" id="org.polarsys.capella.core.business.queries.information.Property_MaxCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_MinCardinality" id="org.polarsys.capella.core.business.queries.information.Property_MinCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_MaxLength" id="org.polarsys.capella.core.business.queries.information.Property_MaxLength" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_MinLength" id="org.polarsys.capella.core.business.queries.information.Property_MinLength" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_Type" id="org.polarsys.capella.core.business.queries.information.Property_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Service_ReferencedMessage" id="org.polarsys.capella.core.business.queries.information.Service_ReferencedMessage" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Service_ThrownException" id="org.polarsys.capella.core.business.queries.information.Service_ThrownException" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Signal_InheritedSignals" id="org.polarsys.capella.core.business.queries.information.Signal_InheritedSignals" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringReference_AbstractType" id="org.polarsys.capella.core.business.queries.information.StringReference_AbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringType_DefaultValue" id="org.polarsys.capella.core.business.queries.information.StringType_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringType_InheritedStringType" id="org.polarsys.capella.core.business.queries.information.StringType_InheritedStringType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringType_MaxLength" id="org.polarsys.capella.core.business.queries.information.StringType_MaxLength" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringType_MinLength" id="org.polarsys.capella.core.business.queries.information.StringType_MinLength" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringType_NullValue" id="org.polarsys.capella.core.business.queries.information.StringType_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringType_RealizedStringType" id="org.polarsys.capella.core.business.queries.information.StringType_RealizedStringType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringValue_Type" id="org.polarsys.capella.core.business.queries.information.StringValue_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Union_DefaultProperty" id="org.polarsys.capella.core.business.queries.information.Union_DefaultProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Union_Discriminant" id="org.polarsys.capella.core.business.queries.information.Union_Discriminant" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Union_DiscriminantType" id="org.polarsys.capella.core.business.queries.information.Union_DiscriminantType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_NullValue" id="org.polarsys.capella.core.business.queries.information.Property_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_DefaultValue" id="org.polarsys.capella.core.business.queries.information.Parameter_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Parameter_NullValue" id="org.polarsys.capella.core.business.queries.information.Parameter_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanType_Property" id="org.polarsys.capella.core.business.queries.information.BooleanType_Property" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericType_Property" id="org.polarsys.capella.core.business.queries.information.NumericType_Property" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.PhysicalQuantity_Property" id="org.polarsys.capella.core.business.queries.information.PhysicalDimension_Property" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringType_Property" id="org.polarsys.capella.core.business.queries.information.StringType_Property" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Service_ExchangeItemRealization" id="org.polarsys.capella.core.business.queries.information.Service_ExchangeItemRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_MaxCardinality" id="org.polarsys.capella.core.business.queries.information.UnionProperty_MaxCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_MinCardinality" id="org.polarsys.capella.core.business.queries.information.UnionProperty_MinCardinality" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_MaxLength" id="org.polarsys.capella.core.business.queries.information.UnionProperty_MaxLength" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_MinLength" id="org.polarsys.capella.core.business.queries.information.UnionProperty_MinLength" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_Type" id="org.polarsys.capella.core.business.queries.information.UnionProperty_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_Qualifiers" id="org.polarsys.capella.core.business.queries.information.UnionProperty_Qualifiers" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_DefaultValue" id="org.polarsys.capella.core.business.queries.information.UnionProperty_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_NullValue" id="org.polarsys.capella.core.business.queries.information.UnionProperty_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Union_InheritedClasses" id="org.polarsys.capella.core.business.queries.information.Union_InheritedClasses" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_MinValue" id="org.polarsys.capella.core.business.queries.information.Property_MinValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Property_MaxValue" id="org.polarsys.capella.core.business.queries.information.Property_MaxValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_MinValue" id="org.polarsys.capella.core.business.queries.information.UnionProperty_MinValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnionProperty_MaxValue" id="org.polarsys.capella.core.business.queries.information.UnionProperty_MaxValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_MaxValue" id="org.polarsys.capella.core.business.queries.information.Enumeration_MaxValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Enumeration_MinValue" id="org.polarsys.capella.core.business.queries.information.Enumeration_MinValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanReference_ReferencedValue" id="org.polarsys.capella.core.business.queries.information.BooleanReference_ReferencedValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedValue" id="org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringReference_ReferencedValue" id="org.polarsys.capella.core.business.queries.information.StringReference_ReferencedValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationReference_ReferencedValue" id="org.polarsys.capella.core.business.queries.information.EnumerationReference_ReferencedValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BooleanReference_ReferencedProperty" id="org.polarsys.capella.core.business.queries.information.BooleanReference_ReferencedProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationReference_ReferencedProperty" id="org.polarsys.capella.core.business.queries.information.EnumerationReference_ReferencedProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty" id="org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.StringReference_ReferencedProperty" id="org.polarsys.capella.core.business.queries.information.StringReference_ReferencedProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationReference_AbstractType" id="org.polarsys.capella.core.business.queries.information.EnumerationReference_AbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_MinValue" id="org.polarsys.capella.core.business.queries.information.Collection_MinValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_MaxValue" id="org.polarsys.capella.core.business.queries.information.Collection_MaxValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_NullValue" id="org.polarsys.capella.core.business.queries.information.Collection_NullValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_DefaultValue" id="org.polarsys.capella.core.business.queries.information.Collection_DefaultValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.Collection_Index" id="org.polarsys.capella.core.business.queries.information.Collection_Index" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnaryExpression_Operand" id="org.polarsys.capella.core.business.queries.information.UnaryExpression_Operand" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnaryExpression_Type" id="org.polarsys.capella.core.business.queries.information.UnaryExpression_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ValuePart_ReferencedProperty" id="org.polarsys.capella.core.business.queries.information.ValuePart_ReferencedProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItem_RealizedInformations" id="org.polarsys.capella.core.business.queries.information.ExchangeItem_RealizedInformations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItemElement_Type" id="org.polarsys.capella.core.business.queries.information.ExchangeItemElement_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties" id="org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.CommunicationLink_ExchangeItems" id="org.polarsys.capella.core.business.queries.information.CommunicationLink_ExchangeItems" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.BinaryExpression_Unit" id="org.polarsys.capella.core.business.queries.information.BinaryExpression_Unit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.UnaryExpression_Unit" id="org.polarsys.capella.core.business.queries.information.UnaryExpression_Unit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.NumericValueReference_Unit" id="org.polarsys.capella.core.business.queries.information.NumericValueReference_Unit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.LiteralNumericValue_Unit" id="org.polarsys.capella.core.business.queries.information.LiteralNumericValue_Unit" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationLiteralDomainValue" id="org.polarsys.capella.core.business.queries.information.EnumerationLiteralDomainValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.EnumerationLiteralAbstractType" id="org.polarsys.capella.core.data.business.queries.information.EnumerationLiteralAbstractType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItemElementMinCard" id="org.polarsys.capella.core.business.queries.information.ExchangeItemElementMinCard1" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ExchangeItemElementMaxCard" id="org.polarsys.capella.core.business.queries.information.ExchangeItemElementMaxCard2" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.CollectionValueReferenceType" id="org.polarsys.capella.core.data.business.queries.information.CollectionValueReferenceType" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.CollectionValueRefReferencedValue" id="org.polarsys.capella.core.data.business.queries.information.CollectionValueRefReferencedValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.CollectionValueRefReferencedProperty" id="org.polarsys.capella.core.data.business.queries.information.CollectionValueRefReferencedProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueRefReferencedValue" id="org.polarsys.capella.core.data.business.queries.information.ComplexValueRefReferencedValue" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueRefReferencedProperty" id="org.polarsys.capella.core.data.business.queries.information.ComplexValueRefReferencedProperty" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.information.ComplexValueReferenceType" id="org.polarsys.capella.core.data.business.queries.information.ComplexValueReferenceType" />
+  </extension>
+  <extension name="interaction" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation" id="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_ExchangedItems" id="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_ExchangedItems" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.InstanceRole_RepresentedInstance" id="org.polarsys.capella.core.business.queries.interaction.InstanceRole_RepresentedInstance" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_ServiceInterface" id="org.polarsys.capella.core.business.queries.interaction.SequenceMessage_ServiceInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.InteractionUse_ReferencedScenario" id="org.polarsys.capella.core.business.queries.interaction.InteractionUse_ReferencedScenario" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractFunction" id="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractFunction" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractState" id="org.polarsys.capella.core.business.queries.interaction.StateFragment_RelatedAbstractState" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario" id="org.polarsys.capella.core.business.queries.interaction.Scenario_RealizedScenario" />
+  </extension>
+  <extension name="la" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ActorCapabilityRealization" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ActorCapabilityRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ComponentCapabilityRealization" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_ComponentCapabilityRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_AvailableInStates" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_AvailableInStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InheritedCapabilities" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InheritedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InteractingComponents" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InteractingComponents" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.CapabilityRealization_RealizedCapabilities" id="org.polarsys.capella.core.business.queries.la.CapabilityRealization_RealizedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalActor_ActorRealization" id="org.polarsys.capella.core.business.queries.la.LogicalActor_ActorRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation" id="org.polarsys.capella.core.business.queries.la.LogicalActor_FunctionalAllocation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalActor_ImplInterfaces" id="org.polarsys.capella.core.business.queries.la.LogicalActor_ImplInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalActor_InheritedActors" id="org.polarsys.capella.core.business.queries.la.LogicalActor_InheritedActors" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalActor_UsedInterfaces" id="org.polarsys.capella.core.business.queries.la.LogicalActor_UsedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalComponent_FunctionalAllocation" id="org.polarsys.capella.core.business.queries.la.LogicalComponent_FunctionalAllocation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalComponent_ImplementedInterfaces" id="org.polarsys.capella.core.business.queries.la.LogicalComponent_ImplementedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalComponent_InvolvedRealizations" id="org.polarsys.capella.core.business.queries.la.LogicalComponent_InvolvedRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalComponent_UsedInterfaces" id="org.polarsys.capella.core.business.queries.la.LogicalComponent_UsedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalComponentShortcut_ReferencedLC" id="org.polarsys.capella.core.business.queries.la.LogicalComponentShortcut_ReferencedLC" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalFunction_AvailableInstates" id="org.polarsys.capella.core.business.queries.la.LogicalFunction_AvailableInstates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.la.LogicalFunction_FunctionalRealization" id="org.polarsys.capella.core.business.queries.la.LogicalFunction_FunctionalRealization" />
+  </extension>
+  <extension name="capellacommon" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_Activity" id="org.polarsys.capella.core.business.queries.capellacommon.State_Activity" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_AvailableInStates" id="org.polarsys.capella.core.business.queries.capellacommon.State_AvailableInStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.State_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.State_ReferencedStates" id="org.polarsys.capella.core.business.queries.capellacommon.State_ReferencedStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Activity" id="org.polarsys.capella.core.business.queries.capellacommon.FinalState_Activity" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.FinalState_AvailableInStates" id="org.polarsys.capella.core.business.queries.capellacommon.FinalState_AvailableInStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.FinalState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.FinalState_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.Mode_Activity" id="org.polarsys.capella.core.business.queries.capellacommon.Mode_Activity" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.Mode_AvailableInStates" id="org.polarsys.capella.core.business.queries.capellacommon.Mode_AvailableInStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.Mode_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.Mode_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.Mode_ReferencedStates" id="org.polarsys.capella.core.business.queries.capellacommon.Mode_ReferencedStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.StateTransitionEffect" id="org.polarsys.capella.core.business.queries.capellacommon.StateTransitionEffect" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.StateTransitionTrigger" id="org.polarsys.capella.core.business.queries.capellacommon.StateTransitionTrigger" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.StateTransition_StateTransitionRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.StateTransition_StateTransitionRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.ChoicePseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.ChoicePseudoState_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.ForkPseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.ForkPseudoState_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.InitialPseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.InitialPseudoState_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.JoinPseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.JoinPseudoState_StateRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacommon.TerminatePseudoState_StateRealizations" id="org.polarsys.capella.core.business.queries.capellacommon.TerminatePseudoState_StateRealizations" />
+  </extension>
+  <extension name="capellacore" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.Constraint_ConstrainedElements" id="org.polarsys.capella.core.business.queries.capellacore.Constraint_ConstrainedElements" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.Constraint_Expression" id="org.polarsys.capella.core.business.queries.capellacore.Constraint_Expression" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Type" id="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Type" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Value" id="org.polarsys.capella.core.business.queries.capellacore.EnumerationPropertyValue_Value" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_Status" id="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_Status" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValues" id="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValues" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValueGroups" id="org.polarsys.capella.core.business.queries.capellacore.CapellaElement_AppliedPropertyValueGroups" />
+  </extension>
+  <extension name="capellamodeller" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.capellamodeller.SystemEngineering_ReusedSharedPkg" id="org.polarsys.capella.core.business.queries.capellamodeller.SystemEngineering_ReusedSharedPkg" />
+  </extension>
+  <extension name="oa" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.Entity_AllocatedActivities" id="org.polarsys.capella.core.business.queries.oa.Entity_AllocatedActivities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles" id="org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.CommunicationMean_ConvoyedInformation" id="org.polarsys.capella.core.business.queries.oa.CommunicationMenu_ConvoyedInformation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.CommunicationMean_FunctionalExchanges" id="org.polarsys.capella.core.business.queries.oa.CommunicationMenu_FunctionalExchanges" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalActivity_AvailableInstates" id="org.polarsys.capella.core.business.queries.oa.OperationalActivity_AvailableInstates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedRoles" id="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedRoles" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedClasses" id="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InheritedClasses" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InvolvedEntities" id="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InvolvedEntities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedActivities" id="org.polarsys.capella.core.business.queries.oa.OperationalActor_AllocatedActivities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalProcess_AvailableInStates" id="org.polarsys.capella.core.business.queries.oa.OperationalProcess_AvailableInStates" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.Role_AllocatedActivities" id="org.polarsys.capella.core.business.queries.oa.Role_AllocatedActivities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InvolvedActivity" id="org.polarsys.capella.core.data.business.queries.oa.OperationalCapabilityInvolvedActivity" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_InvolvedOperationalProcess" id="org.polarsys.capella.core.data.business.queries.oa.OperationalCapabilityInvolvedOperationalProcess" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates" id="org.polarsys.capella.core.data.business.queries.oa.OperationalCapabilityAvailableInStates" />
+  </extension>
+  <extension name="pa" point="org.polarsys.capella.core.data.business.queries.MDEBusinessQueries">
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.DeployConf_Deployments" id="org.polarsys.capella.core.business.queries.pa.DeployConf_Deployments" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalActor_FunctionalAllocation" id="org.polarsys.capella.core.business.queries.pa.PhysicalActor_FunctionalAllocation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalActor_ImplementedInterfaces" id="org.polarsys.capella.core.business.queries.pa.PhysicalActor_ImplementedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors" id="org.polarsys.capella.core.business.queries.pa.PhysicalActor_InheritedActors" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalActor_InteractingCapabilities" id="org.polarsys.capella.core.business.queries.pa.PhysicalActor_InteractingCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalActor_LogicalActorRealization" id="org.polarsys.capella.core.business.queries.pa.PhysicalActor_LogicalActorRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalActor_RealizedCapabilities" id="org.polarsys.capella.core.business.queries.pa.PhysicalActor_RealizedCapabilities" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalActor_UsedInterfaces" id="org.polarsys.capella.core.business.queries.pa.PhysicalActor_UsedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalArchitecture_AllocatedLogicalArchitecture" id="org.polarsys.capella.core.business.queries.pa.PhysicalArchitecture_AllocatedLogicalArchitecture" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_DefineRealizations" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_DefineRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_Deployers" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_Deployers" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_Deployments" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_Deployments" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_ImplementedInterface" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_ImplementedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComponent_DeployedComponents" id="org.polarsys.capella.core.business.queries.pa.PhysicalComponent_DeployedComponents" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComponent_LogicalComponentRealization" id="org.polarsys.capella.core.business.queries.pa.PhysicalComponent_LogicalComponentRealisation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComponent_FunctionalAllocation" id="org.polarsys.capella.core.business.queries.pa.PhysicalComponent_FunctionalAllocation" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalInterface_InheritedInterfaces" id="org.polarsys.capella.core.business.queries.pa.PhysicalInterface_InheritedInterfaces" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_DefineRealizations" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_DefineRealizations" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployers" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployers" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployments" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_Deployments" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedInterface" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedLCS" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_ImplementedLCS" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalNode_UsedInterface" id="org.polarsys.capella.core.business.queries.pa.PhysicalNode_UsedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployers" id="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployers" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployments" id="org.polarsys.capella.core.business.queries.pa.ComponentInstance_Deployments" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_ImplementedLCS" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_ImplementedLCS" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalComp_UsedInterface" id="org.polarsys.capella.core.business.queries.pa.PhysicalComp_UsedInterface" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_FunctionalRealization" id="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_FunctionalRealization" />
+    <MDEBusinessQueries class="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_AvailableInstates" id="org.polarsys.capella.core.business.queries.pa.PhysicalFunction_AvailableInstates" />
+  </extension>
+  <extension point="org.polarsys.capella.common.queries.query">
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_ProvidedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_ComponentPort_ProvidedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ComponentPort_RequiredInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_ComponentPort_RequiredInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalComponent_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_LogicalComponent_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalComponent_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_LogicalComponent_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_PhysicalActor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComponent_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_PhysicalComponent_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalActor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_LogicalActor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Actor_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_System_FunctionalAllocation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_System_FunctionalAllocation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Entity_AllocatedActivities">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Entity_AllocatedActivities" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionalExchange_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_FunctionalExchange_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionInputPort_InComingExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_FunctionInputPort_InComingExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_FunctionOutputPort_OutGoingExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_FunctionOutputPort_OutGoingExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Interface_InheritedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Interface_InheritedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Interface_ExchangeItems">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.GetAvailable_Interface_ExchangeItems" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Class_InheritedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Class_InheritedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Class_InheritedClasses">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Class_InheritedClasses" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComp_UsedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_UsedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComp_UsedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_UsedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalComp_ImplementedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalComp_ImplementedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalComp_ImplementedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalComp_ImplementedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_System_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_System_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_System_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_System_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_System_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_System_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_System_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_System_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Actor_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetAvailable_Actor_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Actor_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.ctx.GetCurrent_Actor_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalActor_ImplInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalActor_ImplInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalActor_ImplInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalActor_ImplInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalActor_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalActor_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalActor_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalActor_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Component_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Component_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Component_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Component_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ConfigurationItem_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ConfigurationItem_ImplementedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_ImplementedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ConfigurationItem_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetAvailable_ConfigurationItem_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ConfigurationItem_UsedInterfaces">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.epbs.GetCurrent_ConfigurationItem_UsedInterfaces" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StateTransitionTrigger">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetAvailable_StateTransitionTrigger" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StateTransitionTrigger">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetCurrent_StateTransitionTrigger" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StateTransitionEffect">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetAvailable_StateTransitionEffect" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StateTransitionEffect">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.melodycommon.GetCurrent_StateTransitionEffect" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Part_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Part_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_InterfaceImplementation_ImplementedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_InterfaceImplementation_ImplementedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_InterfaceUse_UsedInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_InterfaceUse_UsedInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_CommunicationLink_ExchangeItem">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_CommunicationLink_ExchangeItem" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_ExchangeItemElement_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_ExchangeItemElement_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ExchangeItemElement_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ExchangeItemElement_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_NumericType_InheritedNumericType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_NumericType_InheritedNumericType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericType_InheritedNumericType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericType_InheritedNumericType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalQuantity_InheritedType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_PhysicalQuantity_InheritedType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_InheritedType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_InheritedType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalQuantity_Unit">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_PhysicalQuantity_Unit" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_Unit">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_Unit" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Property_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Collection_InheritedCollection">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Collection_InheritedCollection" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Collection_InheritedCollection">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Collection_InheritedCollection" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_BooleanType_InheritedBooleanType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_BooleanType_InheritedBooleanType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BooleanType_InheritedBooleanType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BooleanType_InheritedBooleanType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Enumeration_InheritedEnumeration">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Enumeration_InheritedEnumeration" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Enumeration_InheritedEnumeration">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_InheritedEnumeration" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_SequenceMessage_ServiceInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_SequenceMessage_ServiceInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_SequenceMessage_ServiceInterface">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_SequenceMessage_ServiceInterface" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_InstanceRole_RepresentedInstance">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetAvailable_InstanceRole_RepresentedInstance" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_InstanceRole_RepresentedInstance">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.interaction.GetCurrent_InstanceRole_RepresentedInstance" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Part_DeployedElements">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetAvailable_Part_DeployedElements" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Part_DeployedElements">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.cs.GetCurrent_Part_DeployedElements" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Connection_ConvoyedInformation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetAvailable_Connection_ConvoyedInformation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Connection_ConvoyedInformation">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.fa.GetCurrent_Connection_ConvoyedInformation" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LiteralNumericValue_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_LiteralNumericValue_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LiteralNumericValue_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_LiteralNumericValue_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LiteralNumericValue_Unit">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_LiteralNumericValue_Unit" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LiteralStringValue_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_LiteralStringValue_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LiteralStringValue_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_LiteralStringValue_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Enumeration_DomainType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Enumeration_DomainType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Enumeration_DomainType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_DomainType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BooleanReference_ReferencedValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BooleanReference_ReferencedValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_BooleanType_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_BooleanType_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BooleanType_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BooleanType_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EnumerationReference_ReferencedValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_EnumerationReference_ReferencedValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericReference_ReferencedValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericReference_ReferencedValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericType_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericType_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericType_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericType_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_NumericType_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_NumericType_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericType_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericType_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringReference_ReferencedValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringReference_ReferencedValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StringType_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_StringType_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringType_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringType_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_StringType_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_StringType_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringType_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringType_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BooleanReference_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BooleanReference_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EnumerationReference_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_EnumerationReference_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericReference_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericReference_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringReference_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringReference_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BinaryExpression_Unit">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BinaryExpression_Unit" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BinaryExpression_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BinaryExpression_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BinaryExpression_LeftOperand">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BinaryExpression_LeftOperand" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BinaryExpression_RightOperand">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BinaryExpression_RightOperand" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnaryExpression_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnaryExpression_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnaryExpression_Unit">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnaryExpression_Unit" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnaryExpression_Operand">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnaryExpression_Operand" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_BooleanReference_ReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_BooleanReference_ReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CollectionValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_CollectionValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CollectionValueReferenceType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_CollectionValueReferenceType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CollectionValueRefReferencedValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_CollectionValueRefReferencedValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_CollectionValueRefReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_CollectionValueRefReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EnumerationReference_ReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_EnumerationReference_ReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericReference_ReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericReference_ReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringReference_ReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringReference_ReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_MinCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MinCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_MaxCardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MaxCardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_UnionProperty_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_UnionProperty_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_UnionProperty_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_UnionProperty_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_UnionProperty_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_UnionProperty_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComplexValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ComplexValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComplexValueReferenceType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ComplexValueReferenceType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComplexValueRefReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ComplexValueRefReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_ComplexValueRefReferencedValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_ComplexValueRefReferencedValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Generic_ReferencedValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Generic_ReferencedValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_AbstractExpressionValue_Type">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_AbstractExpressionValue_Type" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_DataValue_AbstractType">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_DataValue_AbstractType" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_NumericValue_Unit">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_NumericValue_Unit" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericValueReference_Unit">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericValueReference_Unit" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Generic_ReferencedProperty">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Generic_ReferencedProperty" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_AbstractExpressionValue_Operand">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_AbstractExpressionValue_Operand" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Property_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_NumericType_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_NumericType_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_NumericType_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_NumericType_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalQuantity_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_PhysicalQuantity_NullValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringType_MinLength">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringType_MinLength" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_StringType_MaxLength">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_StringType_MaxLength" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_MinLength">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MinLength" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Property_MaxLength">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Property_MaxLength" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_MinLength">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MinLength" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_UnionProperty_MaxLength">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_UnionProperty_MaxLength" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Property_Cardinality">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Property_Cardinality" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_EnumerationLiteralDomainValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_EnumerationLiteralDomainValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_EnumerationLiteralDomainValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_EnumerationLiteralDomainValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_LogicalActor_InheritedActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetAvailable_LogicalActor_InheritedActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_LogicalActor_InheritedActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.la.GetCurrent_LogicalActor_InheritedActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_PhysicalActor_InheritedActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetAvailable_PhysicalActor_InheritedActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_PhysicalActor_InheritedActors">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.pa.GetCurrent_PhysicalActor_InheritedActors" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Enumeration_MinValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_MinValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Enumeration_MaxValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_MaxValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetAvailable_Enumeration_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetAvailable_Enumeration_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Enumeration_DefaultValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_DefaultValue" />
+    </querySpecification>
+    <querySpecification queryIdentifier="GetCurrent_Enumeration_NullValue">
+      <queryAlgorithm algorithm="org.polarsys.capella.core.business.queries.queries.information.GetCurrent_Enumeration_NullValue" />
+    </querySpecification>
+  </extension>
+</plugin>
+
+

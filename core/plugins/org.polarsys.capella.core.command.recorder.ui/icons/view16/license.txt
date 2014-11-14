@@ -1,0 +1,9 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/view16/capella_16x16_changerecorder.gif - capella.command.recorder.ui - capella.command.recorder.ui/icons/view16/capella_16x16_changerecorder.gif
+/icons/view16/capella_16.png - capella.command.recorder.ui - capella.command.recorder.ui/icons/view16/capella_16.png
+/icons/view16/tape16.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/save_edit.gif

@@ -1,0 +1,11 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/navigable/off/welcome-logical-architecture-off.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/navigable/off/welcome-logical-architecture-off.png
+/icons/full/navigable/off/welcome-system-analysis-off.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/navigable/off/welcome-system-analysis-off.png
+/icons/full/navigable/off/welcome-physical-architecture-off.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/navigable/off/welcome-physical-architecture-off.png
+/icons/full/navigable/off/welcome-operational-analysis-off.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/navigable/off/welcome-operational-analysis-off.png
+/icons/full/navigable/off/welcome-epbs-off.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/navigable/off/welcome-epbs-off.png

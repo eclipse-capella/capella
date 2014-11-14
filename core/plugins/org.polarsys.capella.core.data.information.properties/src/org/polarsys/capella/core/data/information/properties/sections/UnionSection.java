@@ -1,0 +1,94 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.information.properties.sections;
+
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+
+import org.polarsys.capella.core.data.core.properties.sections.NamedElementSection;
+import org.polarsys.capella.core.data.information.InformationPackage;
+import org.polarsys.capella.core.data.information.properties.Messages;
+import org.polarsys.capella.core.data.information.properties.fields.UnionBooleanPropertiesCheckbox;
+import org.polarsys.capella.core.data.information.properties.fields.UnionKindGroup;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
+import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
+import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
+
+/**
+ * The Union section.
+ */
+public class UnionSection extends NamedElementSection {
+
+  private UnionBooleanPropertiesCheckbox _unionBooleanPropertiesCheckbox;
+  private UnionKindGroup _unionKindGroup;
+  private SimpleSemanticField _discriminantField;
+  private SimpleSemanticField _defaultPropertyField;
+
+  @Override
+  public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
+    super.createControls(parent, aTabbedPropertySheetPage);
+
+    boolean displayedInWizard = isDisplayedInWizard();
+
+    _unionBooleanPropertiesCheckbox = new UnionBooleanPropertiesCheckbox(getCheckGroup(), getWidgetFactory());
+    _unionBooleanPropertiesCheckbox.setDisplayedInWizard(displayedInWizard);
+
+    _discriminantField = new SimpleSemanticField(getReferencesGroup(), Messages.getString("UnionSection_Discriminant_Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    _discriminantField.setDisplayedInWizard(displayedInWizard);
+
+    _defaultPropertyField = new SimpleSemanticField(getReferencesGroup(), Messages.getString("UnionSection_DefaultProperty_Label"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
+    _defaultPropertyField.setDisplayedInWizard(displayedInWizard);
+
+    _unionKindGroup = new UnionKindGroup(_rootParentComposite, getWidgetFactory());
+    _unionKindGroup.setDisplayedInWizard(displayedInWizard);
+  }
+
+  /**
+   * @see org.polarsys.capella.core.ui.properties.sections.AbstractSection#loadData(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   */
+  @Override
+  public void loadData(CapellaElement capellaElement_p) {
+    super.loadData(capellaElement_p);
+
+    _unionBooleanPropertiesCheckbox.loadData(capellaElement_p);
+    _discriminantField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getUnion_Discriminant());
+    _defaultPropertyField.loadData(capellaElement_p, InformationPackage.eINSTANCE.getUnion_DefaultProperty());
+    _unionKindGroup.loadData(capellaElement_p, InformationPackage.eINSTANCE.getUnion_Kind());
+  }
+
+  /**
+   * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+   */
+  @Override
+  public boolean select(Object toTest) {
+    EObject eObjectToTest = super.selection(toTest);
+    return ((eObjectToTest != null) && (eObjectToTest.eClass() == InformationPackage.eINSTANCE.getUnion()));
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public List<AbstractSemanticField> getSemanticFields() {
+    List<AbstractSemanticField> fields = super.getSemanticFields();
+
+    fields.add(_unionBooleanPropertiesCheckbox);
+    fields.add(_discriminantField);
+    fields.add(_defaultPropertyField);
+    fields.add(_unionKindGroup);
+
+    return fields;
+  }
+}

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.ComponentInstance">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.ConnectionInstance">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.DeploymentAspect">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.DeploymentConfiguration">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.PartDeploymentLink">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.PortInstance">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.pa.deployment.TypeDeploymentLink">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
+	  <propertySections contributorId="org.eclipse.sirius.diagram">
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
+	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ComponentInstanceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.ConnectionInstanceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentAspectSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.DeploymentConfigurationSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.InstanceDeploymentLinkSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PartDeploymentLinkSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.PortInstanceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               filter="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               id="org.polarsys.capella.core.data.pa.deployment.properties.sections.TypeDeploymentLinkSection"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>

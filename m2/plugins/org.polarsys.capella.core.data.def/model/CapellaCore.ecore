@@ -1,0 +1,1915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="capellacore"
+    nsURI="http://www.polarsys.org/capella/core/core/0.8.0" nsPrefix="org.polarsys.capella.core.data.capellacore">
+  <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+    <details key="profileName" value="Capella"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/dsl/2007/dslfactory">
+    <details key="trackResourceModification" value="true"/>
+    <details key="useUUIDs" value="false"/>
+    <details key="useIDAttributes" value="true"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+    <details key="description" value="CapellaCore aims at defining the core concepts of the other languages.&#xD;&#xA;[source: Capella study]"/>
+    <details key="usage guideline" value="none"/>
+    <details key="used in levels" value="operational,system,logical,physical,epbs"/>
+    <details key="usage examples" value="none"/>
+    <details key="constraints" value="This package depends on the model ModellingCore.ecore"/>
+    <details key="comment/notes" value="none"/>
+    <details key="reference documentation" value="none"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CapellaElement" abstract="true" interface="true"
+      eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//TraceableElement ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//PublishableElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="CapellaElement"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Element"/>
+      <details key="stereotype" value="eng.CapellaElement"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A Capella element is a model element that is lockable, has a version and has incoming and outgoing traces, it has a summary and a description.&#xD;&#xA;[source:Capella study]&#xD;&#xA;&#xD;&#xA;A capella element can be compared to an UML element : An element is a constituent of a model.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="n/a"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Element"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="summary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Summary of the element&#xD;&#xA;[Capella study]"/>
+        <details key="constraints" value="None"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Description of the Capella element&#xD;&#xA;[Capella study]"/>
+        <details key="constraints" value="None"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="review" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Review description on the Capella element"/>
+        <details key="constraints" value="None"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPropertyValues" upperBound="-1"
+        eType="#//AbstractPropertyValue" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the property values that are contained in this element&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Element::ownedComment"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Element::ownedComment elements on which AbstractPropertyValue stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEnumerationPropertyTypes"
+        upperBound="-1" eType="#//EnumerationPropertyType" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the enumeration property types that are contained in this element&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="elements on which EnumerationPropertyType stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedPropertyValues"
+        upperBound="-1" eType="#//AbstractPropertyValue">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the property values that are applied on this element (whether they are actually stored under this element or not)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPropertyValueGroups"
+        upperBound="-1" eType="#//PropertyValueGroup" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the property value groups that are stored/contained in this element&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Element::ownedComment"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Element::ownedComment elements on which PropertyValueGroup stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedPropertyValueGroups"
+        upperBound="-1" eType="#//PropertyValueGroup">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the property value groups that apply to this element (whether or not they are actually stored under this element)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" eType="#//EnumerationPropertyLiteral">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the enumeration property literal that applies to this element"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//EnumerationPropertyLiteral">
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="appliedRequirements" upperBound="-1"
+        eType="ecore:EClass Requirement.ecore#//Requirement" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractNamedElement #//CapellaElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A named element is a Capella element that has a name&#xD;&#xA;[source:Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::NamedElement"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relationship" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractRelationship #//CapellaElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Relationship is an abstract concept that specifies some kind of relationship between elements.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Namespace" abstract="true" interface="true"
+      eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Namespace"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Namespace"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A namespace is an element in a model that contains a set of named elements that can be identified by name.&#xD;&#xA;[source: UML superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Namespace"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTraces" upperBound="-1"
+        eType="#//Trace" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="packagedElement"/>
+        <details key="featureOwner" value="Package"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="ownedTraces"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the trace link contained/stored in this element&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::nearestpackage"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Some packaged elements of the nearest package on which Trace stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedGenericTraces"
+        upperBound="-1" eType="ecore:EClass CapellaCommon.ecore#//GenericTrace" changeable="false"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the set of typed elements which eAttribute type value is the owner type.&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="None"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic">
+        <details key="feature" value="ownedTraces"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedRequirementsTraces"
+        upperBound="-1" eType="ecore:EClass Requirement.ecore#//RequirementsTrace"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the set of typed elements which eAttribute type value is the owner type.&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="None"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic">
+        <details key="feature" value="ownedTraces"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="namingRules" upperBound="-1"
+        eType="#//NamingRule" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="ownedComment"/>
+        <details key="featureOwner" value="Element"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="namingRules"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifications of constraints on the naming of the element&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Element::ownedComment"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedRelationship" abstract="true" interface="true"
+      eSuperTypes="#//Relationship #//NamedElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="NamedRelationship"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Relationship"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A named relationship is a relationship that has a name&#xD;&#xA;[source:Capella study]&#xD;&#xA;&#xD;&#xA;A named relationship can be compared to an UML Association :&#xD;&#xA;An association specifies a semantic relationship that can occur between typed instances. It has at least two ends&#xD;&#xA;represented by properties, each of which is connected to the type of the end. More than one end of the association may&#xD;&#xA;have the same type.&#xD;&#xA;An end property of an association that is owned by an end class or that is a navigable owned end of the association&#xD;&#xA;indicates that the association is navigable from the opposite ends; otherwise, the association is not navigable from the&#xD;&#xA;opposite ends.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Relationship"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="namingRules" upperBound="-1"
+        eType="#//NamingRule" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="ownedComment"/>
+        <details key="featureOwner" value="Element"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="namingRules"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifications of constraints applying to the naming of the relationship&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Element::ownedComment"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Element::ownedComment elements on which NamingRule stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Structure" abstract="true" interface="true"
+      eSuperTypes="#//Namespace">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Structure"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Element"/>
+      <details key="stereotype" value="eng.CapellaElement"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="The relationships between the components that contribute to the properties of the whole, and enable them to interact (inter-relate).&#xD;&#xA;[source: SysML glossary for SysML v1.0]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPropertyValuePkgs"
+        upperBound="-1" eType="#//PropertyValuePkg" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to packages that contain light extensions property values&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::nestedPackage elements on which PropertyValuePkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractModellingStructure" abstract="true"
+      eSuperTypes="#//ReuserStructure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An abstract modelling structure is a base structure for a model.&#xD;&#xA;For example, a system engineering is an abstract modelling structure.&#xD;&#xA;[source:Capella study]"/>
+      <details key="usage guideline" value="System enginering is an abstract modelling structure&#xD;&#xA;[source:Capella study]"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value=""/>
+      <details key="constraints" value="None"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedArchitectures" upperBound="-1"
+        eType="#//ModellingArchitecture" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the modeling architectures contained in this structure&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::nestedPackage elements on which ModellingArchitecture stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedArchitecturePkgs"
+        upperBound="-1" eType="#//ModellingArchitecturePkg" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the architecture packages contained in this structure&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::nestedPackage#uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::nestedPackage elements on which ModellingArchitecturePkg stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModellingBlock" abstract="true" interface="true"
+      eSuperTypes="#//Type">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A modular unit that describes the structure of a system or element.&#xD;&#xA;A class (or block) that cannot be directly instantiated. Contrast: concrete class.&#xD;&#xA;[source:SysML v1.1]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModellingArchitecture" abstract="true"
+      interface="true" eSuperTypes="#//Structure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="the base class supporting the definition of the structure of the model at a given design level.&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModellingArchitecturePkg" abstract="true"
+      interface="true" eSuperTypes="#//Structure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a container for modelling architectures&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractType #//Namespace">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Type"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Type"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A type represents a set of values. A typed element that has this type is constrained to represent values within this set.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typedElements" upperBound="-1"
+        eType="#//TypedElement" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the set of typed elements which eAttribute type value is the owner type.&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="None"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypedElement" abstract="true" eSuperTypes="../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractTypedElement #//NamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A typed element is an element that has a type that serves as a constraint on the range of values the element can represent.&#xD;&#xA;Typed element is an abstract metaclass.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type" changeable="false"
+        volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The type of the TypedElement&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic">
+        <details key="feature" value="abstractType"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trace" abstract="true" eSuperTypes="#//Relationship ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractTrace">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Trace"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Dependency"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A dependency that indicates a historical or process relationship between two elements that represent the same concept without specific rules for deriving one from the other. Trace dependencies are used to track requirements and changes across models.&#xD;&#xA;[source: SysML glossary for SysML v1.0]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractAnnotation" abstract="true"
+      interface="true" eSuperTypes="#//CapellaElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="AbstractAnnotation"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An abstract Annotation can be compared to an UML comment : A comment gives the ability to attach various remarks to elements. A comment carries no semantic force, but may contain information that is useful to a modeler.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Comment"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="body"/>
+        <details key="featureOwner" value="Comment"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The textual content of the annotation (free format)&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="None"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::specific"/>
+        <details key="explanation" value="uml::Comment::body or creation of an Expression as specification of a uml::Constraint"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamingRule" eSuperTypes="#//AbstractAnnotation">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="NamingRule"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Comment"/>
+      <details key="stereotype" value="eng.NamingRule"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Naming rule to apply to instances which type is equal to targetType"/>
+      <details key="usage guideline" value="this is used whenever there is a need to constraint the naming of a given type of element"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="targetType"/>
+        <details key="featureOwner" value="eng.NamingRule"/>
+        <details key="fromStereotype" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Type to which instances the naming rule has to be applied"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constraint" eSuperTypes="#//AbstractAnnotation ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractConstraint ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractNamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A constraint is a condition or restriction expressed in natural language text or in a machine readable language for the purpose of declaring some of the semantics of an element&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Constraint"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="ecore:EClass Information.ecore#//datavalue/AbstractExpressionValue">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="n/a"/>
+        <details key="usage guideline" value="n/a"/>
+        <details key="used in levels" value="n/a"/>
+        <details key="usage examples" value="n/a"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+        <details key="reference documentation" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="base metaclass in UML/SysML profile " value=""/>
+        <details key="explanation" value=""/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KeyValue" eSuperTypes="#//CapellaElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="KeyValue"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Comment"/>
+      <details key="stereotype" value="eng.KeyValue"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a generic key/value pair used to index data&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="key"/>
+        <details key="featureOwner" value="eng.KeyValue"/>
+        <details key="fromStereotype" value="true"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="(textual) content representing the key&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="body"/>
+        <details key="featureOwner" value="Comment"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="textual content representing the value associated to the key&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Comment::body"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReuseLink" eSuperTypes="#//Relationship">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="ReuseLink"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Dependency"/>
+      <details key="stereotype" value="eng.ReuseLink"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Link of reusability between a reuser and a reused structure&#xD;&#xA;[Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Dependency"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reused" lowerBound="1"
+        eType="#//ReuseableStructure" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="supplier"/>
+        <details key="featureOwner" value="Dependency"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="sharedPkg"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the structure that is reused&#xD;&#xA;[Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Dependency::supplier"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Multiplicity must be [1..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reuser" lowerBound="1"
+        eType="#//ReuserStructure">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="client"/>
+        <details key="featureOwner" value="Dependency"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="systemEngineering"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="constraints" value="none"/>
+        <details key="description" value="Link to the structure that reuses&#xD;&#xA;[Capella study]"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Dependency::client"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Multiplicity must be [1..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReuseableStructure" abstract="true"
+      interface="true" eSuperTypes="#//Structure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="specialization of a structure, to add the semantic of a package that is intended to be reused across various architectures&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reuseLinks" upperBound="-1"
+        eType="#//ReuseLink">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="umlOppositeReference" value="supplier"/>
+        <details key="umlOppositeReferenceOwner" value="Dependency"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="reuseLinks"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the set of reused links of this structure&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Opposite reference of uml::Dependency::supplier"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReuserStructure" abstract="true" interface="true"
+      eSuperTypes="#//Structure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a structure that is capable of leveraging existing other structures to build upon them, i.e. reuse them.&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reuseLinks" upperBound="-1"
+        eType="#//ReuseLink">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="clientDependency"/>
+        <details key="featureOwner" value="NamedElement"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="reuseLinks"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the reuse links that involve this structure&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::NamedElement::clientDependency"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::NamedElement::clientDependency elements on which ReuseLink stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedReuseLinks" upperBound="-1"
+        eType="#//ReuseLink" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="packagedElement"/>
+        <details key="featureOwner" value="Package"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="ownedReuseLinks"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the reuse links that are stored in this structure (may or may not involve it)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::packagedElement elements on which ReuseLink stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralizableElement" abstract="true"
+      eSuperTypes="#//Type">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A generalizable element is an abstract metaclass.&#xD;&#xA;A generalizable element is a type and can own generalizations, thereby making it possible to define generalization relationships to&#xD;&#xA;other generalizable elements.&#xD;&#xA;A generalizable element can specify a generalization hierarchy by referencing its general classifiers.&#xD;&#xA;A generalizable element is a redefinable element, meaning that it is possible to redefine nested classifiers.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::RedefinableElement"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="isAbstract"/>
+        <details key="featureOwner" value="Classifier"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifies whether this classifier is abstract or concrete&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Classifier::isAbstract"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedGeneralizations" upperBound="-1"
+        eType="#//Generalization" containment="true">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="generalization"/>
+        <details key="featureOwner" value="Classifier"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="superGeneralization"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the links to this classifier's parent(s)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Classifier::generalization"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superGeneralizations" upperBound="-1"
+        eType="#//Generalization" changeable="false" volatile="true" transient="true"
+        derived="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="generalization"/>
+        <details key="featureOwner" value="Classifier"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="superGeneralization"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="(automatically computed) the links to this classifier's parent(s)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Classifier::generalization"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subGeneralizations" upperBound="-1"
+        eType="#//Generalization" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="(automatically computed) the links to this classifier's child(ren)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Opposite reference of uml::Generalization::general"/>
+        <details key="constraints" value="Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="super" upperBound="-1"
+        eType="#//GeneralizableElement" changeable="false" volatile="true" transient="true"
+        derived="true" eOpposite="#//GeneralizableElement/sub">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="(automatically computed) parent classifiers&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub" upperBound="-1" eType="#//GeneralizableElement"
+        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//GeneralizableElement/super">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="(automatically computed) children classifiers&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Classifier" abstract="true" eSuperTypes="#//GeneralizableElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Classifier"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Classifier"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A classifier is a namespace whose members can include features.&#xD;&#xA;A classifier is an abstract metaclass.&#xD;&#xA;A classifier is a type.&#xD;&#xA;A classifier is a redefinable element, meaning that it is possible to redefine nested classifiers.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Classifier"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedFeatures" upperBound="-1"
+        eType="#//Feature" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the features contained in this classifier&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Classifier::feature#keyword::none"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedProperties" upperBound="-1"
+        eType="ecore:EClass Information.ecore#//Property" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic">
+        <details key="feature" value="ownedFeatures"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralClass" abstract="true" eSuperTypes="#//Classifier ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//FinalizableElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="GeneralClass"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Classifier"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="an abstract concept allowing the nesting of classes in classes&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Class"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the visibility of this class (refer to VisibilityKind definition)&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="refer to VisibilityKind"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::NamedElement::visibility"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedOperations" upperBound="-1"
+        eType="ecore:EClass Information.ecore#//Operation" changeable="false" volatile="true"
+        transient="true" derived="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="ownedOperation"/>
+        <details key="featureOwner" value="GeneralClass"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="operations"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The operations owned by the general class. The association is ordered&#xD;&#xA;[source: UML superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Class:ownedOperation"/>
+        <details key="explanation" value="Derived and transient but mapped to ease the transformation : pick the corresponding containment reference that stores Operations, in uml::Class"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic">
+        <details key="feature" value="ownedFeatures"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nestedGeneralClasses" upperBound="-1"
+        eType="#//GeneralClass" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="nestedClassifier"/>
+        <details key="featureOwner" value="Class"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="nestedGeneralClasses"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the classes contained/nested into this class&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::specific"/>
+        <details key="explanation" value="uml::Class::nestedClassifier || uml::Interface::nestedClassifier"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic">
+        <details key="feature" value="ownedFeatures"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Generalization" eSuperTypes="#//Relationship">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Generalization"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Generalization"/>
+      <details key="stereotype" value="eng.Generalization"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an indirect instance of the general classifier. Thus, the specific classifier inherits the features of the more general classifier.&#xD;&#xA;[source:Capella study]"/>
+      <details key="usage guideline" value="used to declare a parent/child relationship between two classes"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Generalization"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="super" lowerBound="1" eType="#//GeneralizableElement">
+      <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+        <details key="featureName" value="general"/>
+        <details key="featureOwner" value="Generalization"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+        <details key="Label" value="super"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Segment"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Same as UML Generalization general association : References the general classifier in the Generalization relationship.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Generalization::general"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub" lowerBound="1" eType="#//GeneralizableElement">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Same as UML Generalization specific association : References the specializing classifier in the Generalization relationship.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Generalization::specific"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Feature"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A feature declares a behavioral or structural characteristic of instances of classifiers.&#xD;&#xA;[source:UML Superstructure v2.2]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Feature"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::BehavioralFeature::isAbstract"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="specifies whether the Feature is abstract or concrete&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="true is Feature is abstract"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStatic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Feature::isStatic"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Specifies whether the Feature is static&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="true if Feature is static"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//VisibilityKind">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the type of visibility of this feature&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="refer to VisibilityKind"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::NamedElement::visibility"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractExchangeItemPkg" abstract="true"
+      eSuperTypes="#//Structure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a container for exchange items&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedExchangeItems" upperBound="-1"
+        eType="ecore:EClass Information.ecore#//ExchangeItem" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the exchange items contained in this package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Package::packagedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Package::packagedElement elements on which AbstractExchangeItem stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Allocation" abstract="true" eSuperTypes="#//Relationship ../../org.polarsys.capella.common.data.def/model/ModellingCore.ecore#//AbstractTrace">
+    <eAnnotations source="http://www.polarsys.org/capella/2007/BusinessInformation">
+      <details key="Label" value="Allocation"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/UML2Mapping">
+      <details key="metaclass" value="Dependency"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/2007/ImpactAnalysis/Ignore"/>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Allocation is similar to SysML Allocate concept : It is a mechanism for associating elements of different types, or in&#xD;&#xA;different hierarchies, at an abstract level. Allocate is used for assessing user model consistency and directing future design&#xD;&#xA;activity. It is expected that an &quot;allocate&quot; relationship between model elements is a precursor to a more concrete&#xD;&#xA;relationship between the elements, their properties, operations, attributes, or sub-classes.&#xD;&#xA;[source:SysML v1.1]"/>
+      <details key="usage guideline" value="Allocation is an abstract concept and cannot be used directly."/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="Allocation is an abstract concept"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="SysML::Allocations::Allocate"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Involvement" abstract="true" interface="true"
+      eSuperTypes="#//Relationship">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Link that denotes some involvement relationship of an element that is involved in another one&#xD;&#xA;[Capella study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Dependency"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involver" lowerBound="1"
+        eType="#//InvolverElement">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the element that involves&#xD;&#xA;[Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Dependency::client"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Multiplicity must be [0..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involved" lowerBound="1"
+        eType="#//InvolvedElement">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the element that is involved&#xD;&#xA;[Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Dependency::supplier"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="Multiplicity must be [0..1]"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InvolverElement" abstract="true" interface="true"
+      eSuperTypes="#//CapellaElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An involver element is a capella element that is, at least, involved in an involvement relationship with the role of the element that involves the other one&#xD;&#xA;[source:Meleody light-like study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedInvolvements" upperBound="-1"
+        eType="#//Involvement" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the set of involvement relationships for which the element is involved with the role of the element which is involved&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and Transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InvolvedElement" abstract="true" interface="true"
+      eSuperTypes="#//CapellaElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="An involved element is a capella element that is, at least, involved in an involvement relationship with the role of the element that is involved&#xD;&#xA;[source:Meleody light-like study]"/>
+      <details key="usage guideline" value="n/a"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involvingInvolvements"
+        upperBound="-1" eType="#//Involvement" changeable="false" volatile="true"
+        transient="true" derived="true">
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Link to the set of involvement relationships for which the element is involved with the role of the element which involves another one&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="keyword::none"/>
+        <details key="explanation" value="Derived and Transient"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractPropertyValue" abstract="true"
+      eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="It is a way to define extension properties for any capella elements&#xD;&#xA;A property value is a named element that has a value. This value has no specific format, it is described as a string.&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Comment"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="involvedElements" upperBound="-1"
+        eType="#//CapellaElement">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the model elements involved by this property value&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Comment:annotatedElement"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="uml::Comment::annotatedElement elements on which CapellaElement stereotype or any stereotype that inherits from it is applied&#xD;&#xA;Order must be computed"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valuedElements" upperBound="-1"
+        eType="#//CapellaElement" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the model elements to which this property value is applied&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringPropertyValue" eSuperTypes="#//AbstractPropertyValue">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="It is a way to define extension properties for any capella elements&#xD;&#xA;A property value is a named element that has a value. This value has no specific format, it is described as a string.&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Value of this property, described in string format&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="value will be stored as a stereotype-specific property, of type String"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerPropertyValue" eSuperTypes="#//AbstractPropertyValue">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="It is a way to define extension properties for any capella elements&#xD;&#xA;A property value is a named element that has a value. This value has no specific format, it is described as a string.&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Value of this property, described in string format&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="value will be stored as a stereotype-specific property, of type Int"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanPropertyValue" eSuperTypes="#//AbstractPropertyValue">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="It is a way to define extension properties for any capella elements&#xD;&#xA;A property value is a named element that has a value. This value has no specific format, it is described as a string.&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Value of this property, described in string format&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="value will be stored as a stereotype-specific property, of type Boolean"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatPropertyValue" eSuperTypes="#//AbstractPropertyValue">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="It is a way to define extension properties for any capella elements&#xD;&#xA;A property value is a named element that has a value. This value has no specific format, it is described as a string.&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Value of this property, described in string format&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="value will be stored as a stereotype-specific property, of type Float"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumerationPropertyValue" eSuperTypes="#//AbstractPropertyValue">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="It is a way to define extension properties for any capella elements&#xD;&#xA;A property value is a named element that has a value. This value has no specific format, it is described as a string.&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//EnumerationPropertyType">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Type of this property&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//EnumerationPropertyLiteral">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="Value of this property, described in string format&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="value will be stored as a stereotype-specific property, as a reference to an EnumerationPropertyLiteral"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumerationPropertyType" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="It is a way to define extension properties for any capella elements&#xD;&#xA;A property value is a named element that has a value. This value has no specific format, it is described as a string.&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Enumeration"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLiterals" upperBound="-1"
+        eType="#//EnumerationPropertyLiteral" containment="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="The literal values that are part of this enumeration&#xD;&#xA;[source:Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="type" value="n/a"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::Enumeration::ownedLiteral"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumerationPropertyLiteral" eSuperTypes="#//NamedElement">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A literal value, used in an EnumerationPropertyType&#xD;&#xA;[Capella study]&#xD;&#xA;"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::EnumerationLiteral"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyValueGroup" eSuperTypes="#//Namespace">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="Package that contain property values&#xD;&#xA;[Capella study]"/>
+      <details key="usage guideline" value="none"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Comment"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valuedElements" upperBound="-1"
+        eType="#//CapellaElement" changeable="false" volatile="true" transient="true"
+        derived="true">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="the model elements to which this property group is applied&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/derived"/>
+      <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyValuePkg" eSuperTypes="#//Structure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="A container for PropertyValues/PropertyValueGroups.&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="Whereas PropertyValueGroups are used to group semantically linked PropertyValues, this container structure can be used more arbitrarily to structure the properties hierarchy in the model"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value="uml::Package"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/semantic"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractDependenciesPkg" abstract="true"
+      eSuperTypes="#//Structure">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="a base class for structures that need to contain dependency links&#xD;&#xA;[source: Capella study]"/>
+      <details key="usage guideline" value="n/a (abstract)"/>
+      <details key="used in levels" value="operational, system, logical, physical, epbs"/>
+      <details key="usage examples" value="n/a"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+      <details key="reference documentation" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value=""/>
+      <details key="base metaclass in UML/SysML profile " value=""/>
+      <details key="explanation" value="uml::Package"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="VisibilityKind">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+      <details key="description" value="enumeration listing the various possibilities regarding the visibility of a feature of a class&#xD;&#xA;[source: Capella study]"/>
+      <details key="constraints" value="none"/>
+      <details key="comment/notes" value="none"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+      <details key="UML/SysML semantic equivalences" value="uml::VisibilityKind"/>
+      <details key="explanation" value="none"/>
+      <details key="constraints" value="none"/>
+    </eAnnotations>
+    <eLiterals name="UNSET">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="used when visibility is not precised&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value=""/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PUBLIC" value="1">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="used when the feature offers public access&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::VisibilityKind::public"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PROTECTED" value="2">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="used when the feature offers restricted visibility, only to children of the class&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::VisibilityKind::protected"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PRIVATE" value="3">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="used when the feature is only visible/accessible from the class itself&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::VisibilityKind::private"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="PACKAGE" value="4">
+      <eAnnotations source="http://www.polarsys.org/kitalpha/ecore/documentation">
+        <details key="description" value="used when the feature is accessible from any element stored within the same package&#xD;&#xA;[source: Capella study]"/>
+        <details key="constraints" value="none"/>
+        <details key="comment/notes" value="none"/>
+      </eAnnotations>
+      <eAnnotations source="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping">
+        <details key="UML/SysML semantic equivalences" value="uml::VisibilityKind::private"/>
+        <details key="explanation" value="none"/>
+        <details key="constraints" value="none"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+</ecore:EPackage>

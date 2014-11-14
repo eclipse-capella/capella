@@ -1,0 +1,43 @@
+<%
+String body = null;
+EOperation eOperation = genOperation.getEcoreOperation();
+EAnnotation ocl = eOperation.getEAnnotation(oclNsURI);
+if (ocl != null) body = ocl.getDetails().get("body");
+if (body == null) { %>
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+<% } else {
+	final String expr = genOperation.getName() + "BodyOCL"; %>
+		if (<%=expr%> == null) {
+			<%=genModel.getImportedName("org.eclipse.emf.ecore.EOperation")%> eOperation = <%=genOperation.getGenClass().getQualifiedClassifierAccessor()%>.getEOperations().get(<%=genOperation.getGenClass().getGenOperations().indexOf(genOperation)%>);
+			<%=genModel.getImportedName("org.eclipse.ocl.ecore.OCL")%>.Helper helper = OCL_ENV.createOCLHelper();
+			helper.setOperationContext(<%=genOperation.getGenClass().getQualifiedClassifierAccessor()%>, eOperation);
+			<%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> ocl = eOperation.getEAnnotation(OCL_ANNOTATION_SOURCE);
+			String body = ocl.getDetails().get("body");<%=genModel.getNonNLS()%>
+			
+			try {
+				<%=expr%> = helper.createQuery(body);
+			} catch (<%=genModel.getImportedName("org.eclipse.ocl.ParserException")%> e) {
+				throw new UnsupportedOperationException(e.getLocalizedMessage());
+			}
+		}
+		
+		<%=genModel.getImportedName("org.eclipse.ocl.Query")%><<%=genModel.getImportedName("org.eclipse.emf.ecore.EClassifier")%>, ?, ?> query = OCL_ENV.createQuery(<%=expr%>);
+	<% if (!genOperation.getEcoreOperation().getEParameters().isEmpty()) { %> 
+		<%=genModel.getImportedName("org.eclipse.ocl.EvaluationEnvironment")%><?, ?, ?, ?, ?> evalEnv = query.getEvaluationEnvironment();
+		<% for (EParameter param : genOperation.getEcoreOperation().getEParameters()) { %>
+		evalEnv.add("<%=param.getName()%>", <%=param.getName()%>);<%=genModel.getNonNLS()%>
+	  <% }
+	} 
+	
+	if (genOperation.isListType()) { %>
+		@SuppressWarnings("unchecked")
+		<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType()%>> result = (<%=genModel.getImportedName("java.util.Collection")%><<%=genOperation.getListItemType()%>>) query.evaluate(this);
+		return new <%=genModel.getImportedName("org.eclipse.emf.common.util.BasicEList")%>.UnmodifiableEList<<%=genOperation.getListItemType()%>>(result.size(), result.toArray());
+	<% } else if (genOperation.isPrimitiveType()) { %>
+		return ((<%=genOperation.getObjectType()%>) query.evaluate(this)).<%=genOperation.getPrimitiveValueFunction()%>();
+	<% } else { %>
+		return (<%=genOperation.getImportedType()%>) query.evaluate(this);
+	<% }
+} %>

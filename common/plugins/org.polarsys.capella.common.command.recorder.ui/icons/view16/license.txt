@@ -1,0 +1,15 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/view16/add.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/add_obj.gif
+/icons/view16/addmany.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/add_obj.gif
+/icons/view16/delete.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
+/icons/view16/deletemany.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
+/icons/view16/done.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/obj16
+/icons/view16/redo.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/redo_edit.gif
+/icons/view16/set.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/editor_area.gif
+/icons/view16/tape16.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/save_edit.gif
+/icons/view16/undo.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/undo_edit.gif

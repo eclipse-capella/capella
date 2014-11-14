@@ -1,0 +1,16 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/obj16/CatalogElement.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CatalogElement.gif
+/icons/full/obj16/CatalogElementLink.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CatalogElementLink.gif
+/icons/full/obj16/CatalogElementPkg.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CatalogElementPkg.gif
+/icons/full/obj16/CompliancyDefinition.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CompliancyDefinition.gif
+/icons/full/obj16/CompliancyDefinitionPkg.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/CompliancyDefinitionPkg.gif
+/icons/full/obj16/GatheringElement.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/GatheringElement.gif
+/icons/full/obj16/RecCatalog.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/RecCatalog.gif
+/icons/full/obj16/Replica.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/Replica.gif
+/icons/full/obj16/ReplicableElement.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/ReplicableElement.gif
+/icons/full/obj16/ReplicableElementReplica.gif - shared.re.gen.edit - shared.re.gen.edit/icons/full/obj16/ReplicableElementReplica.gif

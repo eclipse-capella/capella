@@ -1,0 +1,1002 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+         
+      <bindings properties="org.polarsys.capella.common.re.ReNamedElement">
+        
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.ReNamedElement_name"
+            renderer="textRenderer">
+        </propertyBinding>
+      
+      </bindings>
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.ReDescriptionElement">
+        
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.ReDescriptionElement_description"
+            renderer="textRenderer">
+        </propertyBinding>
+      
+        
+      </bindings>
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.CatalogElement">
+        
+      
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.CatalogElement_author"
+            renderer="textRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.CatalogElement_environment"
+            renderer="textRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.CatalogElement_tags"
+            renderer="textRenderer">
+        </propertyBinding>
+        
+      </bindings>
+      
+      
+   </extension>
+   
+   
+   
+   <extension point="org.polarsys.capella.common.flexibility.properties">
+      <properties
+            id="org.polarsys.capella.common.re.retrieve.allElements">
+         <inheritance properties="org.polarsys.capella.common.re.selection" />
+        
+        <property
+               class="org.polarsys.capella.common.re.ui.subcommands.properties.AllElementsProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description"
+               id="org.polarsys.capella.common.re.retrieve.allElements"
+               name="Select elements"
+               description="Select elements from model">
+         </property>
+         
+      </properties>
+      
+      <properties
+            id="org.polarsys.capella.common.re.retrieve.scopeElements">
+         <inheritance properties="org.polarsys.capella.common.re.selection" />
+        
+        <property
+               class="org.polarsys.capella.common.re.ui.subcommands.properties.RelatedElementsProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description"
+               id="org.polarsys.capella.common.re.retrieve.scopeElements"
+               name="Select elements"
+               description="Select elements related to selected element">
+         </property>
+         
+      </properties>
+      
+      
+      <properties
+            id="org.polarsys.capella.common.re.retrieve.dependenciesElements">
+         <inheritance properties="org.polarsys.capella.common.re.selection" />
+        
+        <property
+               class="org.polarsys.capella.common.re.ui.subcommands.properties.SelectionDependenciesProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description"
+               id="org.polarsys.capella.common.re.retrieve.dependenciesElements"
+               name="Select elements"
+               description="Select elements related to selected element">
+         </property>
+         
+      </properties>
+      
+      
+   </extension>
+   
+   
+   
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+   
+      <propertyRenderer 
+            id="sharedElementRenderer"
+            class="org.polarsys.capella.common.re.ui.renderers.SharedElementsRenderer">
+      </propertyRenderer>
+      
+      
+      <propertyRenderer 
+            id="replicableElementRenderer"
+            class="org.polarsys.capella.common.re.ui.renderers.ReplicableElementRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="sourceScopeRenderer"
+            class="org.polarsys.capella.common.re.ui.renderers.ReplicaRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="targetTextRenderer"
+            class="org.polarsys.capella.common.re.ui.renderers.TargetTextRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="uneditReTextRenderer"
+            class="org.polarsys.capella.common.re.ui.renderers.UneditReTextRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="scopeElementsRenderer"
+            class="org.polarsys.capella.common.re.ui.subcommands.renderers.ScopeElementsRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="allElementsRenderer"
+            class="org.polarsys.capella.common.re.ui.subcommands.renderers.AllElementsRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="dependenciesElementsRenderer"
+            class="org.polarsys.capella.common.re.ui.subcommands.renderers.DependenciesElementsRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="replicaContentRenderer"
+            class="org.polarsys.capella.common.re.ui.renderers.ReplicaContentRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="replicaContentLocationRenderer"
+            class="org.polarsys.capella.common.re.ui.renderers.ReplicaContentLocationRenderer">
+      </propertyRenderer>
+      
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+         
+      <bindings properties="org.polarsys.capella.common.re.retrieve.scopeElements">
+        
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.retrieve.scopeElements"
+            renderer="scopeElementsRenderer">
+        </propertyBinding>
+      
+      </bindings>
+     
+      <bindings properties="org.polarsys.capella.common.re.retrieve.allElements">
+        
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.retrieve.allElements"
+            renderer="allElementsRenderer">
+        </propertyBinding>
+      
+      </bindings>
+      
+      <bindings properties="org.polarsys.capella.common.re.retrieve.dependenciesElements">
+        
+        <propertyBinding 
+            property="org.polarsys.capella.common.re.retrieve.dependenciesElements"
+            renderer="dependenciesElementsRenderer">
+        </propertyBinding>
+      
+      </bindings>
+      
+      
+      <groupRenderer
+            id="replicaGroupRenderer"
+            class="org.polarsys.capella.common.re.ui.group.renderers.ReplicaGroupRenderer">
+      </groupRenderer>
+      
+      <bindings properties="org.polarsys.capella.common.re">
+        
+        <groupBinding
+              group="replicaGroup"
+              renderer="replicaGroupRenderer">
+        </groupBinding>
+        
+        <propertyBinding property="sharedElements" renderer="sharedElementRenderer" />
+        <!--propertyBinding property="invalidSharedElements" renderer="sharedElementRenderer" /-->
+        
+        <!--propertyBinding property="dependencies" renderer="browseRenderer" />
+        <propertyBinding property="merge_sourceScope" renderer="browseRenderer" />
+        <propertyBinding property="merge_targetScope" renderer="browseRenderer" /-->
+        
+      </bindings>
+      
+      
+      <bindings properties="org.polarsys.capella.common.re">
+        
+        <propertyBinding property="locationTarget"  renderer="browseImageRenderer" />
+        <propertyBinding property="locationSource"  renderer="browseImageRenderer" />
+      
+      </bindings>
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.rpl2re">
+        
+        <propertyBinding property="source.allScopeElements" renderer="sourceScopeRenderer" />
+      
+      
+        <propertyBinding 
+            property="childrenCompliancy"
+            renderer="browseImageRenderer">
+        </propertyBinding>
+        
+      </bindings>
+      
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.createRec">
+        
+        
+        
+        <propertyBinding 
+            property="locationSource"
+            renderer="none">
+        </propertyBinding>
+      
+        <propertyBinding 
+            property="target"
+            renderer="none">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="source"
+            renderer="none">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="targetName"
+            renderer="targetTextRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="sourceName"
+            renderer="none">
+        </propertyBinding>
+        
+      </bindings>
+      
+      
+      
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.updateDef">
+        
+        <propertyBinding 
+            property="target"
+            renderer="replicableElementRenderer">
+        </propertyBinding>
+      
+        <propertyBinding 
+            property="targetName"
+            renderer="targetTextRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="source"
+            renderer="replicaRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="locationSource"
+            renderer="none">
+        </propertyBinding>
+        
+      </bindings>
+      
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.updateCur">
+        
+        <propertyBinding 
+            property="target"
+            renderer="replicableElementRenderer">
+        </propertyBinding>
+      
+        <propertyBinding 
+            property="targetName"
+            renderer="targetTextRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="source"
+            renderer="none">
+        </propertyBinding>
+        
+       <propertyBinding 
+            property="sourceName"
+            renderer="none">
+       </propertyBinding>
+       
+       <propertyBinding 
+            property="locationTarget"
+            renderer="none">
+       </propertyBinding>
+      
+       <propertyBinding 
+            property="locationSource"
+            renderer="none">
+       </propertyBinding>
+        
+      </bindings>
+      
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.re2rpl">
+        
+        <propertyBinding 
+            property="locationSource"
+            renderer="none">
+        </propertyBinding>
+      
+      
+        <propertyBinding 
+            property="currentCompliancy"
+            renderer="browseImageRenderer">
+        </propertyBinding>
+        
+      </bindings>
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.createReplica">
+        
+        <propertyBinding 
+            property="source"
+            renderer="replicableElementRenderer">
+            <!-- ReplicableElement, no edit, browse allowed -->
+        </propertyBinding>
+      
+        <propertyBinding 
+            property="targetContent"
+            renderer="browseRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="suffix"
+            renderer="textRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="targetName"
+            renderer="targetTextRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="useDefaultLocation"
+            renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="targetContent"
+            renderer="replicaContentRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="targetContentLocation"
+            renderer="replicaContentLocationRenderer">
+        </propertyBinding>
+        
+      </bindings>
+      
+      
+      
+      
+      <bindings properties="org.polarsys.capella.common.re.updateReplica">
+      
+      
+        <propertyBinding 
+            property="source"
+            renderer="uneditReTextRenderer">
+            <!-- ReplicableElement, name edit not allowed -->
+        </propertyBinding>
+      
+        <propertyBinding 
+            property="useDefaultLocation"
+            renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="target"
+            renderer="reTextRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="suffix"
+            renderer="textRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="targetName"
+            renderer="targetTextRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="targetContent"
+            renderer="replicaContentRenderer">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="locationSource"
+            renderer="none">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="locationTarget"
+            renderer="none">
+        </propertyBinding>
+        
+        <propertyBinding 
+            property="targetContentLocation"
+            renderer="replicaContentLocationRenderer">
+        </propertyBinding>
+      </bindings>
+      
+      
+   </extension>
+   
+   
+   <!--extension
+         name="Decorator for sirius diagram concerning REC"
+         point="org.polarsys.capella.common.sirius.decorators.diagramDecorators">
+      <decorator
+            class="org.polarsys.capella.common.re.ui.decorators.InstanciationLabelDecorator">
+      </decorator>
+   </extension-->
+   
+   
+   <extension point="org.eclipse.ui.decorators">
+   
+      <decorator
+            adaptable="true"
+            class="org.polarsys.capella.common.re.ui.decorators.InstanciationLabelDecorator"
+            id="org.polarsys.capella.common.re.ui.decorators.text"
+            label="Instanciation Text Decorator"
+            lightweight="false"
+            state="true">
+         <enablement>
+            <objectClass
+                  name="org.eclipse.emf.ecore.EObject">
+            </objectClass>
+         </enablement>
+      </decorator>
+      
+   </extension>
+   
+   <extension
+         id="org.polarsys.capella.common.re"
+         point="org.polarsys.capella.common.ui.toolkit.browser.contentProviderCategory">
+     
+      <category
+            id="---------- Replicable Element ----------">
+      </category>
+      
+      
+      <category
+            id="org.polarsys.capella.common.re.ui.queries.CatalogElementRelatedSemanticElements"
+            isTopLevel="true"
+            name="Related Elements">
+         <availableForType
+               class="org.polarsys.capella.common.re.CatalogElement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.common.re.ui.queries.CatalogElementRelatedSemanticElements">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      
+       <category
+            id="org.polarsys.capella.common.re.ui.queries.CatalogElementRelatedReplicas"
+            isTopLevel="true"
+            name="Related Replicable Elements">
+         <availableForType
+               class="org.polarsys.capella.common.re.CatalogElement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.common.re.ui.queries.CatalogElementRelatedReplicas">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      
+      
+      
+      <category
+            id="org.polarsys.capella.common.re.ui.queries.ReplicableElementReverseOrigin"
+            isTopLevel="true"
+            name="RPL">
+         <availableForType
+               class="org.polarsys.capella.common.re.CatalogElement">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.common.re.ui.queries.CatalogElementReverseOrigin">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      
+      
+      <category
+            id="org.polarsys.capella.common.re.ui.queries.ReferencingReplicas"
+            isTopLevel="true"
+            name="RPL">
+         <availableForType
+               class="org.eclipse.emf.ecore.EObject">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.common.re.ui.queries.ReferencingReplicas">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      
+      
+      <category
+            id="org.polarsys.capella.common.re.ui.queries.ReferencingReplicableElements"
+            isTopLevel="true"
+            name="REC">
+         <availableForType
+               class="org.eclipse.emf.ecore.EObject">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencingElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.common.re.ui.queries.CatalogElementOrigin">
+            </basicQuery>
+         </categoryQuery>
+         
+      </category>
+      
+      
+      
+      <category
+            id="org.polarsys.capella.common.re.ui.queries.ReferencingReplicableElementLinks"
+            isTopLevel="true"
+            name="REC Source Element">
+         <availableForType
+               class="org.eclipse.emf.ecore.EObject">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.common.re.ui.queries.ReferencingReplicableElementLinks">
+            </basicQuery>
+         </categoryQuery>
+         <itemQueries>
+         <basicQuery class="org.polarsys.capella.common.re.ui.queries.ReferencingReplicableElements">
+         </basicQuery>
+         </itemQueries>
+      </category>
+      
+      
+      <category
+            id="org.polarsys.capella.common.re.ui.queries.CatalogElementLinkReferencedElement"
+            isTopLevel="true"
+            name="Referenced Element">
+         <availableForType
+               class="org.polarsys.capella.common.re.CatalogElementLink">
+         </availableForType>
+         <targetBrowserId
+               id="ReferencedElementBrowser">
+         </targetBrowserId>
+         <categoryQuery>
+            <basicQuery
+                  class="org.polarsys.capella.common.re.ui.queries.CatalogElementLinkReferencedElement">
+            </basicQuery>
+         </categoryQuery>
+      </category>
+      
+      
+   </extension>
+
+
+
+
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.common.re.ui.isReplicableElementMenu">
+         <with
+               variable="activeMenuSelection">
+               <iterate ifEmpty="false">
+                  <or>
+                     <instanceof
+                           value="org.eclipse.emf.ecore.EObject">
+                     </instanceof>
+                     <instanceof
+                           value="org.eclipse.gef.GraphicalEditPart">
+                     </instanceof>
+                  </or>
+               </iterate>
+         </with>
+      </definition>
+   </extension>
+      
+   <extension point="org.eclipse.ui.menus">
+     
+      <menuContribution locationURI="popup:org.eclipse.ui.popup.any?after=group.rec">
+         
+         <separator visible="false" name="group.instanciation"/>
+         
+         <menu id="org.polarsys.capella.common.re"
+              icon="icons/full/etool16/plugin.gif"
+              label="REC / RPL">
+         
+         <visibleWhen
+               checkEnabled="true">
+               <reference
+                     definitionId="org.polarsys.capella.common.re.ui.isReplicableElementMenu">
+               </reference>
+         </visibleWhen>
+         
+              <separator visible="true" name="replicableElement"/>
+              <separator visible="true" name="replica"/>
+              <separator visible="true" name="others"/>
+              <separator visible="true" name="additions"/>
+         </menu>
+         
+         <!--separator visible="true" name="group.instanciation.end"/-->
+         
+      </menuContribution>
+      
+      
+   </extension>
+   
+   
+   
+   <extension point="org.eclipse.ui.handlers"> <!-- should be named org.eclipse.core.handlers -->
+    
+     <handler commandId="org.polarsys.capella.common.re.createRec"
+            class="org.polarsys.capella.common.re.ui.handlers.CreateRecUiHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.updateCur"
+            class="org.polarsys.capella.common.re.ui.handlers.UpdateCurUiHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.updateDef"
+            class="org.polarsys.capella.common.re.ui.handlers.UpdateDefUiHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.updateReplica"
+            class="org.polarsys.capella.common.re.ui.handlers.UpdateReplicaUiHandler">
+     </handler>
+      
+     <handler commandId="org.polarsys.capella.common.re.createReplica"
+            class="org.polarsys.capella.common.re.ui.handlers.CreateReplicaUiHandler">
+     </handler>
+     
+   </extension>
+   
+   
+   
+   <extension point="org.eclipse.ui.menus">
+         
+      <menuContribution locationURI="popup:org.polarsys.capella.common.re?after=replicableElement">
+         
+         <command
+               commandId="org.polarsys.capella.common.re.createRec"
+               id="org.polarsys.capella.common.re.createRec"
+               style="push">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.updateDef"
+               id="org.polarsys.capella.common.re.updateDef"
+               style="push">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.updateCur"
+               id="org.polarsys.capella.common.re.updateCur"
+               style="push">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         
+      </menuContribution>
+      
+         <menuContribution locationURI="popup:org.polarsys.capella.common.re?after=replica">
+      
+         <command
+               commandId="org.polarsys.capella.common.re.createReplica"
+               id="org.polarsys.capella.common.re.createReplica"
+               style="push">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.updateReplica"
+               id="org.polarsys.capella.common.re.updateReplica"
+               style="push">
+            <visibleWhen checkEnabled="true"/>
+         </command>
+         
+      </menuContribution>
+         
+      
+   </extension>
+   
+   
+   
+   
+      
+   <extension point="org.eclipse.ui.menus">
+      
+      <menuContribution allPopups="false" locationURI="toolbar:org.polarsys.capella.common.re.createRec">
+
+        <command
+              commandId="org.polarsys.capella.common.re.subcommands.suffixElement"
+               id="org.polarsys.capella.common.re.subcommands.suffixElement"
+               style="push">
+        </command>
+    
+    
+         <separator name="org.polarsys.capella.common.re.ui.separator" visible="true">
+         </separator>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.subcommands.browse.addElements"
+               id="org.polarsys.capella.common.re.subcommands.browse.addElements"
+               style="push">
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.subcommands.delete"
+               id="org.polarsys.capella.common.re.subcommands.delete"
+               style="push">
+         </command>
+
+        <!--command
+              commandId="org.polarsys.capella.common.re.subcommands.deleteChildren"
+               id="org.polarsys.capella.common.re.subcommands.delete"
+               style="push">
+        </command-->
+    
+         <separator name="org.polarsys.capella.common.re.ui.separator2" visible="true">
+         </separator>
+    
+    
+
+         <command
+               commandId="org.polarsys.capella.common.re.subcommands.browse.allElements"
+               id="org.polarsys.capella.common.re.subcommands.browse.allElements"
+               style="push">
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.subcommands.browse.scopeElements"
+               id="org.polarsys.capella.common.re.subcommands.browse.scopeElements"
+               style="push">
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.re.subcommands.browse.addChildren"
+               id="org.polarsys.capella.common.re.subcommands.browse.addChildren"
+               style="push">
+         </command>
+         
+         
+         <command
+               commandId="org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"
+               id="org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"
+               style="push">
+         </command>
+         
+         
+         <command
+               commandId="org.polarsys.capella.common.re.subcommands.browse.addDependencies"
+               id="org.polarsys.capella.common.re.subcommands.browse.addDependencies"
+               style="push">
+         </command>
+         
+      </menuContribution>
+      
+      
+      
+      <menuContribution allPopups="false" locationURI="popup:org.polarsys.capella.common.re.createReplica.location">
+
+         
+      </menuContribution>
+      
+      
+      
+      
+      <menuContribution allPopups="false" locationURI="toolbar:org.polarsys.capella.common.re.sample">
+
+      </menuContribution>
+      
+      
+      
+      
+      <menuContribution allPopups="false" locationURI="toolbar:org.polarsys.capella.common.re.sample2">
+
+      </menuContribution>
+      
+   </extension>
+   
+   
+   
+   <extension point="org.eclipse.ui.commands"> <!-- should be named org.eclipse.core.commands -->
+
+    <category
+          id="org.polarsys.capella.common.re.subcommands"
+          name="Replicable Elements"
+          description="Replicable Elements manipulation commands">
+    </category>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.browse.addElements"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Update REC from selection"
+          name="Include selected elements">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.browse.allElements"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Create a REC from selection"
+          name="Include elements from model">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.browse.scopeElements"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Update REC from selection"
+          name="Include related elements">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.browse.addChildren"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Update REC from selection"
+          name="Include children of selected elements">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Update REC from selection"
+          name="Include required dependencies of selected elements">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.browse.addDependencies"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Update REC from selection"
+          name="Include all required dependencies">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.delete"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Update REC from selected RPL"
+          name="Remove selected elements">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.deleteChildren"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Update REC from selected RPL"
+          name="Remove selected elements and children">
+    </command>
+    
+    <command id="org.polarsys.capella.common.re.subcommands.suffixElement"
+          categoryId="org.polarsys.capella.common.re.subcommands"
+          description="Suffix elements"
+          name="Add/remove suffix">
+    </command>
+    
+   </extension>
+
+   <extension point="org.eclipse.ui.commandImages"> <!-- should be named org.eclipse.core.commandImages -->
+       org.polarsys.capella.common.re.subcommands.browse.addElement
+       
+        <image commandId="org.polarsys.capella.common.re.subcommands.browse.addElements"
+               icon="icons/full/etool16/add_element.gif">
+        </image>
+       
+        <image commandId="org.polarsys.capella.common.re.subcommands.browse.allElements"
+               icon="icons/full/etool16/add_model.gif">
+        </image>
+        
+        <image commandId="org.polarsys.capella.common.re.subcommands.browse.scopeElements"
+               icon="icons/full/etool16/add_link.gif">
+        </image>
+        
+        <image commandId="org.polarsys.capella.common.re.subcommands.browse.addChildren"
+               icon="icons/full/etool16/add_children.gif">
+        </image>
+        
+        <image commandId="org.polarsys.capella.common.re.subcommands.delete"
+               icon="icons/full/etool16/delete_element.gif">
+        </image>
+        
+        <image commandId="org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"
+               icon="icons/full/etool16/add_dependencies.gif">
+        </image>
+        
+        <image commandId="org.polarsys.capella.common.re.subcommands.deleteChildren"
+               icon="icons/full/etool16/delete_children.gif">
+        </image>
+        
+        <image commandId="org.polarsys.capella.common.re.subcommands.browse.addDependencies"
+               icon="icons/full/etool16/add_alldependencies.gif">
+        </image>
+        <image commandId="org.polarsys.capella.common.re.subcommands.suffixElement"
+               icon="icons/full/etool16/suffix.gif">
+        </image>
+        
+   </extension>
+   
+   <extension point="org.eclipse.ui.handlers"> <!-- should be named org.eclipse.core.handlers -->
+    
+     <handler commandId="org.polarsys.capella.common.re.subcommands.browse.addElements"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.AddElementsScopeHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.subcommands.browse.allElements"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.AllElementsScopeHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.subcommands.browse.scopeElements"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.BrowseScopeHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.subcommands.browse.addChildren"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.ChildrenScopeHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.subcommands.browse.addSelectionDependencies"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.SelectionDependenciesScopeHandler">
+     </handler>
+
+     <handler commandId="org.polarsys.capella.common.re.subcommands.browse.addDependencies"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.DependenciesScopeHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.subcommands.delete"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.DeleteHandler">
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.subcommands.deleteChildren"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.DeleteChildrenHandler">
+     </handler>
+        
+     <handler commandId="org.polarsys.capella.common.re.subcommands.suffixElement"
+            class="org.polarsys.capella.common.re.ui.subcommands.handlers.SuffixableHandler">
+     </handler>
+     
+   </extension>
+   
+</plugin>

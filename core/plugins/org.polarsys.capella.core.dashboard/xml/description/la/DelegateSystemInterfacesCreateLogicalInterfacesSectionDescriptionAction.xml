@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+   
+  Contributors:
+     Thales - initial API and implementation
+-->
+<form>
+    <p>Use the automated synchronisation tool to initialise the root logical system according to the interfaces defined in System Analysis. </p>
+    <p>Delegate each system interface to one or more logical components. Create internal interfaces between sub components.</p>
+</form>

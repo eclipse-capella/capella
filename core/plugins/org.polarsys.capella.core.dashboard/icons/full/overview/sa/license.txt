@@ -1,0 +1,9 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/overview/sa/systemanalysis_overview_03.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/overview/sa/systemanalysis_overview_03.png
+/icons/full/overview/sa/systemanalysis_overview_02.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/overview/sa/systemanalysis_overview_02.png
+/icons/full/overview/sa/systemanalysis_overview_01.png - org.polarsys.capella.core.dashboard - org.polarsys.capella.core.dashboard/icons/full/overview/sa/systemanalysis_overview_01.png

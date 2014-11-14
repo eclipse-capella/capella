@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+<extension
+         name="Capella Project Explorer"
+         point="org.eclipse.ui.navigator.navigatorContent">
+         
+         <commonFilter
+            activeByDefault="false"
+            visibleInUI="true"
+            description="Hides all Replicable Element Links to Semantic Elements"
+            id="capella.project.explorer.filters.replicableElementsLinks"
+            name="Replicable Elements Links">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.common.re.CatalogElementLink">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      
+      
+         <commonFilter
+            activeByDefault="false"
+            visibleInUI="true"
+            description="Hides Compliancy Definitions"
+            id="capella.project.explorer.filters.reEnumerationProperty"
+            name="Replicable Element Compliancy Definitions">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.common.re.CompliancyDefinitions">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      
+   </extension>
+      
+      
+      
+      
+      
+      
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+   
+      <propertyRenderer 
+            id="capellaReplicaContentLocationRenderer"
+            class="org.polarsys.capella.core.re.ui.renderers.ReplicaContentLocationRenderer">
+      </propertyRenderer>
+      
+      
+      <bindings properties="org.polarsys.capella.core.re.createReplica">
+      
+        <propertyBinding 
+            property="targetContentLocation"
+            renderer="capellaReplicaContentLocationRenderer">
+        </propertyBinding>
+        
+      </bindings>
+      
+      <bindings properties="org.polarsys.capella.core.re.updateReplica">
+      
+        <propertyBinding 
+            property="targetContentLocation"
+            renderer="capellaReplicaContentLocationRenderer">
+        </propertyBinding>
+        
+      </bindings>
+      
+   </extension>
+   
+   
+   <extension point="org.eclipse.ui.handlers"> <!-- should be named org.eclipse.core.handlers -->
+   
+     <handler commandId="org.polarsys.capella.common.re.createRec"
+            class="org.polarsys.capella.core.re.ui.handlers.CreateRecUiHandler">
+         <activeWhen>
+            <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.re.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.updateCur"
+            class="org.polarsys.capella.core.re.ui.handlers.UpdateCurUiHandler">
+         <activeWhen>
+             <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.re.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.updateDef"
+            class="org.polarsys.capella.core.re.ui.handlers.UpdateDefUiHandler">
+         <activeWhen>
+            <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.re.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.updateReplica"
+            class="org.polarsys.capella.core.re.ui.handlers.UpdateReplicaUiHandler">
+         <activeWhen>
+            <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.re.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+     </handler>
+     
+     <handler commandId="org.polarsys.capella.common.re.createReplica"
+            class="org.polarsys.capella.core.re.ui.handlers.CreateReplicaUiHandler">
+         <activeWhen>
+             <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.re.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+     </handler>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.core.re.ui.propertyTester.ActivationPropertyTester"
+            id="org.polarsys.capella.core.re.activation"
+            namespace="org.polarsys.capella.core.re"
+            properties="activation"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+   
+      
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution allPopups="false" locationURI="popup:org.polarsys.capella.common.re.createReplica.location">
+
+         <dynamic class="org.polarsys.capella.core.re.ui.subcommands.DynamicCreateContributionItem"
+               id="org.polarsys.capella.core.re.ui.dynamicCreateElements">
+         </dynamic>
+      </menuContribution>
+    </extension>
+    
+   <extension
+         point="org.polarsys.capella.core.sirius.ui.copylayoutProvider">
+      <keysProvider
+            class="org.polarsys.capella.core.re.ui.copylayout.ReplicableElementKeyProvider">
+      </keysProvider>
+   </extension>
+   
+   
+</plugin>

@@ -1,0 +1,259 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.business.queries.information;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.ReuseLink;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentArchitecture;
+import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
+import org.polarsys.capella.core.data.information.DataPkg;
+import org.polarsys.capella.core.data.information.communication.CommunicationPackage;
+import org.polarsys.capella.core.data.information.communication.Signal;
+import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.sharedmodel.GenericPkg;
+import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
+import org.polarsys.capella.core.model.helpers.DataPkgExt;
+import org.polarsys.capella.core.model.helpers.GenericPkgExt;
+import org.polarsys.capella.core.model.helpers.SignalExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
+import org.polarsys.capella.core.model.utils.ListExt;
+
+/**
+ */
+public class Signal_InheritedSignals implements IBusinessQuery {
+
+	/**
+	 * All the Signals contained by the Signal Package (and all of its
+	 * sub-packages) of the current Element.
+	 */
+	private List<CapellaElement> getRule_MQRY_Signal_Inherited_11(Signal currentSignal, SystemEngineering systemEngineering) {
+		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+
+		DataPkg signalPkg = SignalExt.getRootOwnerDataPkg(currentSignal);
+		if (signalPkg != null) {
+			for (Signal signal : DataPkgExt.getAllSignals(signalPkg)) {
+				if ((signal == null) || (signal.equals(currentSignal)))
+					continue;
+				if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
+				    && !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
+					availableElements.add(signal);
+				}
+			}
+		}
+
+		return availableElements;
+	}
+
+	/**
+	 * All the Signals contained by the Signal Package (and all of its
+	 * sub-packages) of the current Element's parent (can be a Component, a
+	 * Component Architecture Decomposition package, or a Component Architecture
+	 * root package).
+	 */
+	private List<CapellaElement> getRule_MQRY_Signal_Inherited_12(Signal currentSignal, SystemEngineering systemEngineering) {
+		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+		DataPkg signalPkg = SignalExt.getRootOwnerDataPkg(currentSignal);
+		if (signalPkg != null) {
+			ComponentArchitecture compArch = DataPkgExt.getRootComponentArchitecture(signalPkg);
+			if (null != compArch) {
+				DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(compArch);
+				if (null != dataPkg) {
+					for (Signal signal : DataPkgExt.getAllSignals(dataPkg)) {
+						if ((signal == null) || (signal.equals(currentSignal)))
+							continue;
+						if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
+						    && !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
+							availableElements.add(signal);
+						}
+					}
+				}
+			}
+			Component parentComponent = DataPkgExt.getRootComponent(signalPkg);
+			if (null != parentComponent) {
+				if (parentComponent instanceof LogicalComponent) {
+					DataPkg dataPkg = ((LogicalComponent) parentComponent).getOwnedDataPkg();
+					if (null != dataPkg) {
+						for (Signal signal : DataPkgExt.getAllSignals(dataPkg)) {
+							if ((signal == null) || (signal.equals(currentSignal)))
+								continue;
+							if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
+							    && !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
+								availableElements.add(signal);
+							}
+						}
+					}
+				}
+			}
+		}
+		return availableElements;
+	}
+
+	/**
+	 * All the Signals contained by the Signal Package (and all of its
+	 * sub-packages) of the current Element's parents hierarchy.
+	 */
+	private List<CapellaElement> getRule_MQRY_Signal_Inherited_13(Signal currentSignal, SystemEngineering systemEngineering) {
+		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+		DataPkg signalPkg = SignalExt.getRootOwnerDataPkg(currentSignal);
+		for (Signal signal : DataPkgExt.getSignalsFromParentHierarchy(signalPkg)) {
+			if ((signal == null) || (signal.equals(currentSignal)))
+				continue;
+			if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
+			    && !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
+				availableElements.add(signal);
+			}
+		}
+		return availableElements;
+	}
+
+	/**
+	 * All the Signals contained by the Shared Package (and all of its
+	 * sub-packages).
+	 */
+	private List<CapellaElement> getRule_MQRY_Signal_Inherited_14(Signal currentSignal, SystemEngineering systemEngineering) {
+		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+
+		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering)) {
+			GenericPkg pkg = sharedPkg.getOwnedGenericPkg();
+			if (pkg != null) {
+				for (Signal signal : GenericPkgExt.getAllSignals(pkg)) {
+					if ((signal == null) || (signal.equals(currentSignal)))
+						continue;
+					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
+					    && !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
+						availableElements.add(signal);
+					}
+				}
+			}
+
+			if (sharedPkg.getOwnedDataPkg() != null) {
+				for (Signal signal : DataPkgExt.getAllSignals(sharedPkg.getOwnedDataPkg())) {
+					if ((signal == null) || (signal.equals(currentSignal)))
+						continue;
+					if (!GeneralizableElementExt.getAllSuperGeneralizableElements(currentSignal).contains(signal)
+					    && !GeneralizableElementExt.getAllSuperGeneralizableElements(signal).contains(currentSignal)) {
+						availableElements.add(signal);
+					}
+				}
+			}
+		}
+
+		return availableElements;
+	}
+
+	/**
+	 * <p>
+	 * Gets all the signals contained by the signal package (and all sub
+	 * packages) of the current element's parent, and all the signals contained
+	 * by the signal package (and all sub packages) of the current element's
+	 * parent hierarchy
+	 * </p>
+	 * <p>
+	 * Except the current signal and the signals in the inheritance hierarchy of
+	 * the current signal
+	 * </p>
+	 * <p>
+	 * Refer MQRY_Signal_Inherited_1
+	 * </p>
+	 * 
+	 * @see IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
+	 */
+	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+		boolean isSignalFromSharedPkg = false;
+
+		if (null == systemEngineering) {
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			for (ReuseLink link : sharedPkg.getReuseLinks()) {
+				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
+					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
+					isSignalFromSharedPkg = true;
+					break;
+				}
+			}
+			if (systemEngineering == null)
+				return availableElements;
+		}
+
+		if (element_p instanceof Signal) {
+			if (!isSignalFromSharedPkg) {
+				availableElements.addAll(getRule_MQRY_Signal_Inherited_11((Signal) element_p, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Signal_Inherited_12((Signal) element_p, systemEngineering));
+				availableElements.addAll(getRule_MQRY_Signal_Inherited_13((Signal) element_p, systemEngineering));
+			}
+			availableElements.addAll(getRule_MQRY_Signal_Inherited_14((Signal) element_p, systemEngineering));
+		}
+
+		availableElements = ListExt.removeDuplicates(availableElements);
+		availableElements.remove(element_p);
+
+		return availableElements;
+	}
+
+	/**
+	 * <p>
+	 * Gets all the signals in the inheritance hierarchy of the current signal;
+	 * except the current signal
+	 * </p>
+	 * <p>
+	 * Refer MQRY_Signal_Inherited_1
+	 * <p>
+	 * 
+	 * @see IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,
+	 *      boolean)
+	 */
+	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+
+		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+
+		if (null == systemEngineering) {
+			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+			for (ReuseLink link : sharedPkg.getReuseLinks()) {
+				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
+					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
+					break;
+				}
+			}
+			if (systemEngineering == null)
+				return currentElements;
+		}
+
+		if (element_p instanceof Signal) {
+			Signal currentSignal = (Signal) element_p;
+			currentElements.addAll(currentSignal.getSuper());
+			currentElements = ListExt.removeDuplicates(currentElements);
+			currentElements.remove(currentSignal);
+		}
+		return currentElements;
+	}
+
+	public EClass getEClass() {
+		return CommunicationPackage.Literals.SIGNAL;
+	}
+
+	public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(CapellacorePackage.Literals.GENERALIZABLE_ELEMENT__SUPER_GENERALIZATIONS);
+	}
+}

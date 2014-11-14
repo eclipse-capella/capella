@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package namespaceUri="http://www.polarsys.org/capella/core/fa/0.8.0">
+         </package>
+         
+         <constraints categories="capella.category/design/completeness">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_ActivityAllocation" id="DCOM_11" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCOM_11 - Activity Allocation Consistency" severity="ERROR" statusCode="1">
+               <message>
+                  The non-leaf Operational Activity &quot;{0}&quot;  is allocated the Operational Entity or role &quot;{1}&quot;.
+               </message>
+               <description>
+                  This rule checks the activity allocations consistency.
+               </description>
+               <target class="AbstractFunction">
+               </target>
+            </constraint><constraint class="org.polarsys.capella.core.data.fa.validation.function.LFCompAllocationLeastwise" id="DCOM_03" isEnabledByDefault="true" lang="java" mode="Batch" name="DCOM_03 - Terminating Function and ControlNode Allocation" severity="WARNING" statusCode="1">
+               <message>
+                  The leaf &quot;{0}&quot;({1})  is not allocated by any Component.
+               </message>
+               <target class="AbstractFunction">
+               </target>
+               <description>
+                  This rule ensures that a leaf Function and ControlNode should be allocated by a Component.
+               </description>
+            </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.functionalExchange.FunctionalExchange_exchangeItemsOnFunctionPorts"
+                               id="DCOM_13"
+                               isEnabledByDefault="true"
+                               lang="java"
+                               mode="Batch"
+                               name="DCOM_13 - Exchange items allocation on Function Ports check"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               {0} (Function Exchange) conveys some Exchange Items which are not allocated to its source ({1}) and/or its target port ({2}).
+                            </message>
+                            <target
+                                  class="FunctionalExchange">
+                            </target>
+                            <description>
+                               This rule generates a warning if the Function Exchange conveys some Exchange Items which are not allocated to its source ({1}) and/or its target port ({2}).
+                            </description>
+                         </constraint>
+         </constraints> 
+         
+         
+         
+         <constraints categories="capella.category/design/consistency">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_providedItf_1" id="DCON_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCON_02 - Component port interface implemention check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component port) provides {1} (Interface) not implemented by its owner Component.
+               </message>
+               <description>
+                  This rule checks that interfaces provided by component ports are implemented by their owner Components.
+               </description>
+               <target class="ComponentPort">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_requiredItf_2" id="DCON_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="DCON_03 - Component port interface use check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component port) requires {1} (Interface) not used by its owner Component.
+               </message>
+               <description>
+                  This rule checks that interfaces requires by component ports are used by their owner Component.
+               </description>
+               <target class="ComponentPort">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/transition/justification/generic">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_Realization_1" id="TJ_G_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TJ_G_01 - Component Port Realization " severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component Port) is not realized by any other Component Port.
+               </message>
+               <description>
+                  This rule checks that an Component Port is realized by at least one Component Port.
+               </description>
+               <target class="ComponentPort">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.connection.MDCHK_Connection_Realization_1" id="TJ_G_02" isEnabledByDefault="true" lang="Java" mode="Batch" name="TJ_G_02 - ComponentExchange realization" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component Exchange) in {1} is not realized by any other Component Exchange in {2}.
+               </message>
+               <description>
+                  This rule checks that a Component Exchange is realized by at least one Component Exchange
+               </description>
+               <target class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.MDCHK_FunctionalExchange_Realization_1"
+                  id="TJ_G_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_G_03 - Functional Exchange Realization "
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Functional Exchange) in {1} is not realized by any other Functional Exchange in {2}.
+               </message>
+               <description>
+                  This rule checks that a Functional Exchange is realized by at least one Functional Exchange.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.Functional_Exchange_Transitioned"
+                  id="TJ_G_04"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_G_04 - Functional Exchange Transitioned"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Functional Exchange)  is defined between {1} and {2}, but there is no exchange defined between the corresponding source and target elements in the previous phase.
+               </message>
+               <description>
+                  This rule checks that a Functional Exchange is transitioned from the upper Level.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/design/well-formedness/dataflows">
+                  
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.AbstractFunction_LeafFunctionKind"
+                  id="DWF_DF_12"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_12 - A duplicate, a gather, a route, a select or a split function must be a leaf function"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) must be a leaf function.
+               </message>
+               <target
+                     class="AbstractFunction">
+               </target>
+               <description>
+                  This rule check that a duplicate, a gather, a route, a select or a split function must be a leaf function.
+               </description>
+            </constraint>
+            
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.FunctionalChainInvolvement_ExchangeItems" 
+                id="DWF_DF_14" 
+                isEnabledByDefault="true" 
+                lang="Java"
+                mode="Batch" 
+                name="DWF_DF_14 - Functional chain involvement allocated exchange items"
+                severity="ERROR" 
+                statusCode="1">
+               <message>
+                  {0} (FunctionalChainInvolvement) allocates {1}(ExchangeItem) which {2} not allocated by involved functional exchange.
+               </message>
+               <description>
+                  This rule ensures that a functional chain involvement does not allocate exchange items which are not allocated by involved functional exchange.
+               </description>
+               <target class="FunctionalChainInvolvement">
+               </target>
+            </constraint>
+            
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.AbstractFunction_OneIncoming"
+                  id="DWF_DF_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_01 - A duplicate or a split function must have only one incoming exchange"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) must only have one incoming {2}.
+               </message>
+               <target
+                     class="AbstractFunction">
+               </target>
+               <description>
+                  This rule checks that a duplicate or a split function have only one incoming exchange.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.AbstractFunction_OneOutgoing"
+                  id="DWF_DF_02"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_02 - A gather function must have only one outgoing exchange"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) must have only one outgoing {2}.
+               </message>
+               <target
+                     class="AbstractFunction">
+               </target>
+               <description>
+                  This rule checks that a gather function must have only one outgoing exchange.
+               </description>
+            </constraint>
+            
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChain.MDCHK_FunctionalChain_Involvements_1" id="DWF_DF_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DF_03 - Functional chain check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (FunctionalChain) {1}
+               </message>
+               <description>
+                  This rule checks that a FunctionalChain is valid.
+               </description>
+               <target class="FunctionalChain">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_Involved_1" id="DWF_DF_04" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DF_04 - Functional chain involvement check 1" severity="WARNING" statusCode="1">
+               <message>
+                  ({0}) is not well formed. Involved element shall be set to {1}.
+               </message>
+               <description>
+                  This rule checks that a Functional Chain Involvement only involves an Abstract Function, a Functional Exchange or a Functional Chain.
+               </description>
+               <target class="FunctionalChainInvolvement">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainFunctionActiveInState" id="DWF_DF_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DF_05 - Functional chain involved functions active in state" severity="WARNING" statusCode="1">
+               <message>
+                  Function {3} {1} involved in {0}({4}) {2} not active in relevant State/Mode.
+               </message>
+               <description>
+                  This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain.
+               </description>
+               <target class="FunctionalChain">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalExchange.FunctionalExchange_Location" id="DWF_DF_06" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_DF_06 - Functional Exchange location check" severity="WARNING" statusCode="1">
+               <message>
+                  The Functional Exchange &quot;{0}&quot; is not located in &quot;{1}&quot;, the common ancestor between its source/target elements.
+               </message>
+               <description>
+                  This rule ensures that Functional Exchange is located in the common ancestor between its source/target elements.
+               </description>
+               <target class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.connection.DelegationOutOfPlace"
+                  id="DWF_DF_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_07 - Delegation out of place check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule check that Component Exchange of kind Delegation if not out of place and useless.
+It also make sure if Delegation source and target are not null.
+               </description>
+               <target
+                     class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchangeFEAllocation"
+                  id="DWF_DF_08"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_08 - Component Exchange Functional Exchange consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="ComponentExchange">
+               </target>
+               <description>
+                  This rule ensures that Component Exchange allocates valid functional exchanges (regarding ports directions).
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.componentPort.ComponentPortOnNodePC"
+                  id="DWF_DF_10"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_10 - ComponentPort on NodePC"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that ComponentPort is not contained in NodePC.
+
+NodePC=Physical Component of nature NODE
+               </description>
+               <target
+                     class="ComponentPort">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchagneWithmOutPortOnNodePC"
+                  id="DWF_DF_11"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_11 - Component Exchange with out port on NodePC"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that ComponentExchange with out port sourceEnd or target end is not NodePC.
+
+NodePC=Physical Component of nature NODE
+               </description>
+               <target
+                     class="ComponentExchange">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/design/coverage">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_Connections" id="DCOV_09" isEnabledByDefault="true" lang="java" mode="Batch" name="DCOV_09 - Component port Component Exchanges check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component Port) is neither used by any Component Exchange nor providing/requiring any Interface.
+               </message>
+               <target class="ComponentPort">
+               </target>
+               <description>
+                  This rule generates a warning if there is neither Component Exchanges using the target Component Port nor providing/requiring any Interface.
+               </description>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionPort.MDCHK_FunctionPort_functionalExchange" id="DCOV_10" isEnabledByDefault="true" lang="java" mode="Batch" name="DCOV_10 - Function port exchanges check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Function Port) is not used by any functional exchange
+               </message>
+               <target class="FunctionPort">
+               </target>
+               <description>
+                  This rule generates a warning if there is no functional exchange using the target Input/Output Function Port
+               </description>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/integrity">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_FunctionRealization" id="I_12" isEnabledByDefault="true" lang="Java" mode="Batch" name="I_12 - Function Realization" severity="ERROR" statusCode="1">
+               <message>
+                  Realization consistency error for {0}.
+               </message>
+               <description>
+                  This test checks the realization consistency between functions.
+               </description>
+               <target class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_Involver_1" id="I_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="I_13 - Functional chain involvement check 2" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Functional Chain Involvement) involver shall be its owning Functional Chain.
+               </message>
+               <description>
+                  This rule checks that a Functional Chain Involvement involver is its owning Functional Chain.
+               </description>
+               <target class="FunctionalChainInvolvement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_NextAndPrevious_1"
+                  id="I_27"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_27 - Functional chain involvement check 3"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Functional Chain Involvement) has an empty next and/or previous involvement.
+               </message>
+               <description>
+                  This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (not empty)
+               </description>
+               <target
+                     class="FunctionalChainInvolvement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.MDCHK_FunctionalChainInvolvement_NextAndPrevious_2"
+                  id="I_28"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_28 - Functional chain involvement check 4"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Functional Chain Involvement) has an invalid next and/or previous involvement.
+               </message>
+               <description>
+                  This rule checks that a Functional Chain Involvement has a valid next and/or previous involvement (contained by the same functional chain)
+               </description>
+               <target
+                     class="FunctionalChainInvolvement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.MDCHK_FunctionalExchange_FunctionalExchangeRealization"
+                  id="I_14"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_14 - Functional Exchange Realization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Realization consistency error for {0}.
+               </message>
+               <description>
+                  This rule checks the realization consistency between functional exchanges.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.MDCHK_FunctionalExchange_ConnectionFunctionalExchangeAllocation"
+                  id="I_15"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_15 - Component Exchange Functional Exchange Realization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Realization consistency error for {0}.
+               </message>
+               <description>
+                  This rule checks the realization consistency between Functional Exchanges and Component Exchange.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_Orientation"
+                  id="I_20"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_20 - ComponentExchange port orientation"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="ComponentExchange">
+               </target>
+               <description>
+                  This rule cheks that source and target port orientations of a ComponentExchange are consistent, i.e.
+
+- A source port cannot have orientation&apos;IN&apos;
+- A target port cannot have orientation &apos;OUT&apos;
+
+In Case the ComponentExchange is of kind DELEGATION
+- &quot;source port/target Port&quot; can only have orientation &apos;IN/IN&apos; or &apos;OUT/OUT&apos;
+               </description>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/design/well-formedness/components">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_ComponentFunctionAllocation" id="DWF_DC_11" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DC_11 - Component Functional Allocation" severity="ERROR" statusCode="1">
+               <message>
+                  Function allocation level consistency error for {0}.
+               </message>
+               <description>
+                  This rule checks the allocation level consistency between functions and components to avoid allocations of system functions in logical architecture.
+               </description>
+               <target class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_ComponentAllocationUnicity" id="DWF_DC_12" isEnabledByDefault="true" lang="java" mode="Batch" name="DWF_DC_12 - Function Allocation Unicity" severity="ERROR" statusCode="1">
+               <message>
+                  Non-unicity of function allocation for {0}
+               </message>
+               <description>
+                  This rule checks that a function is allocated to only one component (including Actor)
+               </description>
+               <target class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.connection.MDCHK_Connection_FunctionalExchangeAllocation" id="DWF_DC_13" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DC_13 - Component Exchange Functional Exchanges Realization " severity="ERROR" statusCode="1">
+               <message>
+                  {0} ({1}) which is at level {2} should not realize {3} ({4}) which is at level {5}.
+               </message>
+               <description>
+                  This rule checks that the Functional Exchanges allocated to a Component Exchange come from the same level.
+               </description>
+               <target class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_PortAllocation" id="DWF_DC_14" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DC_14 - Component Port Allocation" severity="ERROR" statusCode="1">
+               <message>
+                  Allocation consistency error for {0} (Component Port).
+               </message>
+               <description>
+                  This rule checks Ports Allocations consistency.
+               </description>
+               <target class="ComponentPort">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.function.MDCHK_Function_FunctionAllocationConstency" id="DWF_DC_15" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DC_15 - Function Allocation Consistency" severity="ERROR" statusCode="1">
+               <message>
+                  Leaf Function Allocation Consistency error for {0}.
+               </message>
+               <description>
+                  This rule checks that only leaf functions are allocated.
+               </description>
+               <target class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.connection.DirectComponentExchanges" id="DWF_DC_16" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_DC_16 - Component Exchange encapsulation problem check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component Exchange) causes an encapsulation problem.
+               </message>
+               <description>
+                  This rule raises a warning if a Component Exchange is linked between two internal components. These components can be directly connected, only if the ports are delegated throughout the owning components which are connected by another Component Exchange.
+               </description>
+               <target class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchange_Location" id="DWF_DC_18" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_DC_18 - Component Exchange location check" severity="WARNING" statusCode="1">
+               <message>
+                  The Component Exchange &quot;{0}&quot; is not located in &quot;{1}&quot;, the common ancestor between its source/target elements &quot;{1}&quot;.
+               </message>
+               <description>
+                  This rule ensures that Component Exchange is located in the common ancestor between its source/target elements.
+               </description>
+               <target class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.DWF_DC_27_FunctionalExchangeComponentExchangeAllocationUnicity"
+                  id="DWF_DC_27"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_27 - Functional Exchange Component Exchange Allocation Unicity"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Non-unicity of component exchange allocation for {0}
+               </message>
+               <description>
+                  This rule checks that a functional exchange is allocated to only one component exchange.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/transition/consistency/dataflows">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.connection.CN01_Connection_RealizingBound" id="TC_DF_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DF_01 - Component Exchange realization consistency" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component Exchange) realizes a ComponentExchange from a previous level. Bounds of this Component Exchange should be consistent with definition from previous phase.
+A bound ComponentPort should realize the bound ComponentPort of the realized Component Exchange or be a delegated port of a realizing port.
+               </message>
+               <description>
+                  This rule checks that a Component Exchange realizing a Component Exchange from a previous level has bounds consistent with realized Component Exchange bounds.
+               </description>
+               <target class="ComponentExchange">
+               </target>
+            </constraint>
+            
+            
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionPort.FP01_FunctionPort_RealizingPorts" id="TC_DF_02" isEnabledByDefault="true" lang="java" mode="Batch" name="TC_DF_02 - Function port refinement check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Function Port) isn't defined in a function or a sub-function realizing the function containing the port which has been realized.
+               </message>
+               <target class="FunctionPort">
+               </target>
+               <description>
+                  This rule generates a warning if a port isn&apos;t defined in a function or a sub-function realizing the function 
+containing the port which has been realized.
+A warning can be raised if you have performed a drag and drop of the port to another function but this function is 
+not a sub-function of the function containing the port which has been realized and there is no traceability 
+link from the current function and the function containing the port which has been realized.
+You should add manually a traceability link from the parent function of the realized port and the function 
+containing the port which has been realized.
+               </description>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChainInvolvement.FCI01_FunctionalChainInvolvement_RealizingFunction" id="TC_DF_03" isEnabledByDefault="true" lang="java" mode="Batch" name="TC_DF_03 - Functional chain involvement refinement check" severity="WARNING" statusCode="1">
+               <message>
+                  A FunctionalChainInvolvement with a tracability link to another FunctionalChainInvolvement involving a function 
+should involves a function or a sub-function realizing the involved function of the FunctionalChainInvolvement which has been realized.
+               </message>
+               <target class="FunctionalChainInvolvement">
+               </target>
+               <description>
+                  This rule generates a warning if a FunctionalChainInvolvement doesn't involves a function or a sub-function of the function which is involved by the FunctionalChainInvolvement which has been realized.
+               </description>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.connection.ME01G_Connection" id="TC_DF_04" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DF_04 - Component Exchange conveyed information check" severity="WARNING" statusCode="1">
+               <message>
+                  The {1} (ExchangeItem) is defined into {2} level and realized into the {3} level. {0} Component Exchange conveys {1} ExchangeItem
+instead of conveying realized ExchangeItem.
+               </message>
+               <description>
+                  This rule checks that a Component Exchange conveying ExchangeItems doesn&apos;t convey an ExchangeItem from a previous level whereas it
+is realized in the same level than the Component Exchange. Component Exchange should convey the realized ExchangeItem.
+A warning can be raised if you have performed a transition of the Component Exchange before performing a transition of the conveyed ExchangeItem. 
+You should perform another transition of the Component Exchange from the lower level to use the realized ExchangeItem.
+               </description>
+               <target class="ComponentExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.FunctionalExchange_RealizingPortsConsistency"
+                  id="TC_DF_05"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_DF_05 - Functional exchange bounds refinement consistency check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Both bounds of Functional Exchange should realize bounds of the realized FunctionalExchange.
+               </message>
+               <target
+                     class="FunctionalExchange">
+               </target>
+               <description>
+                  This rule generates a warning if a bound of the FunctionalExchange doesn't realize a bound of the realized FunctionalExchange.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.FE01_FunctionalExchange_RealizingPorts"
+                  id="TC_DF_06"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_DF_06 - Functional exchange bounds refinement check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  A bound of {0} (FunctionalExchange) isn't defined in a function or a sub-function realizing the function containing the bound of the realized FunctionalExchange.
+               </message>
+               <target
+                     class="FunctionalExchange">
+               </target>
+               <description>
+                  This rule generates a warning if a bound of FunctionalExchange isn't defined in a function or a sub-function 
+of the function containing the bound which has been realized.
+A warning can be raised if you have performed a drag and drop of the bound to another function but this function 
+is not a sub-function realizing the function containing the bound which has been realized and there is no 
+traceability link from the current function and the function containing the bound which has been realized.
+You should add manually a traceability link from the parent function of the realized bound and the 
+function containing the bound which has been realized.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionalExchange.ME01G_FunctionalExchange"
+                  id="TC_DF_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DF_07 - Functional exchange convoyed exchange items check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The {1} (ExchangeItem) is defined into {2} level and realized into the {3} level. {0} FunctionalExchange is linked to {1} 
+ExchangeItem instead of be linked to realized ExchangeItem.
+               </message>
+               <description>
+                  This rule checks that a FunctionalExchange isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the FunctionalExchange. FunctionalExchange should be linked to the realized ExchangeItem.
+A warning can be raised if you have performed a transition of the FunctionalExchange before performing a transition of the linked ExchangeItem.
+You should perform another transition of the FunctionalExchange from the lower level to use the realized ExchangeItem.
+               </description>
+               <target
+                     class="FunctionalExchange">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.AbstractFunction_TransitionFunctionKind"
+                  id="TC_DF_08"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DF_08 - Function Kind consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) doesn't have same kind than realized Function {2} ({3}).
+               </message>
+               <description>
+                  This rule checks that a Function realizing a Function from a previous level has same kind.
+               </description>
+               <target
+                     class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.function.AbstractFunction_ConditionField"
+                  id="TC_DF_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DF_09 - Function kind condition consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  The rule ensure that Funtion of kind ROUTE and SELECT can only have Condition set.
+               </description>
+               <target
+                     class="AbstractFunction">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionPort.FP02_FunctionPort_RealizingPorts"
+                  id="TC_DF_10"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_DF_10 - Function port realization check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Function Port) shall be realized by a lower level function port.
+               </message>
+               <target
+                     class="FunctionPort">
+               </target>
+               <description>
+                  This rule generates a warning if a function port is not realized by a lower level function port.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionPort.FP03_FunctionPort_RealizedPorts"
+                  id="TC_DF_11"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_DF_11 - Function port realization check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Function Port) on {1} (Function) shall realize {2} (Function Port) on {3} (Function)
+               </message>
+               <target
+                     class="FunctionPort">
+               </target>
+               <description>
+                  This rule checks that considering a Function F1 containing this Function Port P1 that carries an Exchange Item E1.
+If E1 is carried by another Function Port P2 contained by a Function F2 and F2 is realized by F1, then a warning is generated if P2 is not realized by P1.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionPort.FP03_FunctionPort_RealizingPorts"
+                  id="TC_DF_12"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_DF_12 - Function port realization check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Function Port) on {1} (Function) shall be realized by {2} (Function Port) on {3} (Function)
+               </message>
+               <target
+                     class="FunctionPort">
+               </target>
+               <description>
+                  This rule checks that considering a Function F1 containing this Function Port P1 that carries an Exchange Item E1.
+If E1 is carried by another Function Port P2 contained by a Function F2 and F2 realizes F1, then a warning is generated if P2 doesn&apos;t realize P1.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionPort.FP04_FunctionPort_AllocatedEI"
+                  id="TC_DF_13"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_DF_13 - Function port allocated exchange items check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  All exchange items allocated by {0} (FunctionPort) shall be allocated by one of its realizing function ports
+               </message>
+               <target
+                     class="FunctionPort">
+               </target>
+               <description>
+                  This rule verifies that all exchange items allocated by a function port are allocated by one of its realizing function ports.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.fa.validation.functionPort.FP05_FunctionPort_OwningFunction"
+                  id="TC_DF_14"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_DF_14 - Function port owner realization check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Function} shall be realized by {1} (Function} : both contain a function port having a realization link between them
+               </message>
+               <target
+                     class="FunctionPort">
+               </target>
+               <description>
+                  This rule verifies that a realization link exists between two functions containing a function port having a realization link.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/transition/consistency/components">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.connection.ComponentExchange_RealizingPortsConsistency" id="TC_DC_05" isEnabledByDefault="true" lang="java" mode="Batch" name="TC_DC_05 - Component exchange bounds refinement consistency check" severity="WARNING" statusCode="1">
+               <message>
+                  Both bounds of Component Exchange should realize bounds of the realized ComponentExchange
+               </message>
+               <target class="ComponentExchange">
+               </target>
+               <description>
+                  This rule generates a warning if a bound of the ComponentExchange doesn't realize a bound of the realized ComponentExchange.
+               </description>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.CP01_ComponentPort_Realization" id="TC_DC_06" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DC_06 - Component Port Realization" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (ComponentPort) realizes a ComponentPort from a previous level.
+It should be consistent with definition from previous level: the ComponentPort should realize the ComponentPort
+or should be a delegated port of the realizing port.
+               </message>
+               <description>
+                  This rule checks that a Component Port realizing a Component Port from a previous level is contained into a Component realizing the Component which contains the realized port (or in a sub-component).
+               </description>
+               <target class="ComponentPort">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.function.CFA01_ComponentFunctionAllocation" id="TC_DC_07" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DC_07 - Component Functional Allocation" severity="WARNING" statusCode="1">
+               <message>
+                  The ComponentFunctionalAllocation realizes a ComponentFunctionalAllocation from a previous level.
+The allocating component should realize the allocating component of the realized ComponentFunctionalAllocation
+or be contained by a realizing component. 
+The allocated function of the ComponentFunctionalAllocation should also realize the allocated 
+function defined in the realized ComponentFunctionalAllocation or be a sub-function of a realizing function.
+               </message>
+               <description>
+                  The rule checks if ComponentFunctionalAllocation which realizes a ComponentFunctionalAllocation from a previous 
+level has its allocated component and its allocating function related to the realized ComponentFunctionalAllocation
+component and function.
+               </description>
+               <target class="ComponentFunctionalAllocation">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.fa.validation.functionalExchange.CFEA01_ConnectionFunctionalExchangeAllocation_Realization" id="TC_DC_08" isEnabledByDefault="true" lang="Java" mode="Batch" name="TC_DC_08 - Component Exchange Functional Exchange Allocation" severity="WARNING" statusCode="1">
+               <message>
+                  The ComponentExchangeFunctionalExchangeAllocation realizes a ComponentExchangeFunctionalExchangeAllocation from a previous level.
+The allocating ComponentExchange should realize the allocating Component Exchange of the realized ComponentExchangeFunctionalExchangeAllocation.
+The allocated FunctionalExchange of the ComponentExchangeFunctionalExchangeAllocation should also realize the allocated 
+FunctionalExchange defined in the realized ComponentExchangeFunctionalExchangeAllocation.
+               </message>
+               <description>
+                  The rule checks if ComponentExchangeFunctionalExchangeAllocation which realizes a ComponentExchangeFunctionalExchangeAllocation 
+from a previous level has its allocated Component Exchange and its allocating FunctionalExchange related to the realized
+ComponentExchangeFunctionalExchangeAllocation ComponentExchange and FunctionalExchange.
+               </description>
+               <target class="ComponentExchangeFunctionalExchangeAllocation">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints categories="capella.category/design/well-formedness/interfaces">
+            <constraint class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_All_Interfaces" id="DWF_I_08" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_I_08 - Component port required and provided interface check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Component port) is not supposed to provide / require an interface defined elsewhere than the physical architecture.
+               </message>
+               <description>
+                  This rule checks that a Component port requires/provides the interfaces of its own level.
+               </description>
+               <target class="ComponentPort">
+               </target>
+            </constraint>
+         </constraints>
+         
+      </constraintProvider>
+   </extension>
+</plugin>

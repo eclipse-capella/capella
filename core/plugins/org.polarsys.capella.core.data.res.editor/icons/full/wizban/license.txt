@@ -1,0 +1,23 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/wizban/NewOa.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewOa.gif
+/icons/full/wizban/NewDatatype.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewDatatype.gif
+/icons/full/wizban/NewDatavalue.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewDatavalue.gif
+/icons/full/wizban/NewFa.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewFa.gif
+/icons/full/wizban/NewCapellacore.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewCapellacore.gif
+/icons/full/wizban/NewSharedmodel.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewSharedmodel.gif
+/icons/full/wizban/NewCs.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewCs.gif
+/icons/full/wizban/NewInformation.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewInformation.gif
+/icons/full/wizban/NewInteraction.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewInteraction.gif
+/icons/full/wizban/NewPa.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewPa.gif
+/icons/full/wizban/NewCapellamodeller.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewCapellamodeller.gif
+/icons/full/wizban/NewCapellacommon.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewCapellacommon.gif
+/icons/full/wizban/NewLa.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewLa.gif
+/icons/full/wizban/NewRequirement.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewRequirement.gif
+/icons/full/wizban/NewCtx.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewCtx.gif
+/icons/full/wizban/NewCommunication.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewCommunication.gif
+/icons/full/wizban/NewEpbs.gif - capella.data.res.editor - capella.data.res.editor/icons/full/wizban/NewEpbs.gif

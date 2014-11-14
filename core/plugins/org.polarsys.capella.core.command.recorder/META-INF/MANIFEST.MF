@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.command.recorder
+Bundle-Version: 0.8.0.qualifier
+Bundle-Activator: org.polarsys.capella.core.command.recorder.CapellaCommandRecorderActivator
+Bundle-Vendor: %providerName
+Require-Bundle: org.polarsys.capella.common.command.recorder.core;visibility:=reexport,
+ org.polarsys.capella.core.data.gen,
+ org.eclipse.sirius
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.core.command.recorder.internal;x-friends:="org.polarsys.capella.core.command.recorder.ui",
+ org.polarsys.capella.core.command.recorder.internal.utils;x-friends:="org.polarsys.capella.core.command.recorder.ui"
+Bundle-Localization: plugin

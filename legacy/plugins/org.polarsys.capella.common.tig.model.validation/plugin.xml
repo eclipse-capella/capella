@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+         id="org.polarsys.capella.common.tig.model.validation.expressions.EObjectPropertyTester"
+         type="org.eclipse.emf.ecore.EObject"
+         namespace="org.polarsys.capella.common.tig.model.validation.expressions"
+         properties="ePackage"
+         class="org.polarsys.capella.common.tig.model.validation.expressions.EObjectPropertyTester">
+      </propertyTester>
+   </extension>
+</plugin>

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.common.data.behavior.gen.edit; singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: org.polarsys.capella.common.data.behavior.provider.BehaviorEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.polarsys.capella.common.data.behavior.provider
+Require-Bundle: org.eclipse.core.runtime,
+ org.polarsys.capella.common.data.behavior.gen;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.polarsys.capella.common.data.core.gen;visibility:=reexport,
+ org.polarsys.capella.common.data.core.gen.edit;visibility:=reexport,
+ org.polarsys.kitalpha.emde.xmi
+Bundle-ActivationPolicy: lazy

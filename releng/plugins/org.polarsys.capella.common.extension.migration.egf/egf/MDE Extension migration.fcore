@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:domain="http://www.eclipse.org/egf/1.0.0/domain"
+    xmlns:fcore="http://www.eclipse.org/egf/1.0.0/fcore" xmlns:fprod="http://www.eclipse.org/egf/1.0.0/fprod"
+    xmlns:ftask="http://www.eclipse.org/egf/1.0.0/ftask" xmlns:javapattern="http://www.eclipse.org/egf/1.0.0/javapattern"
+    xmlns:pattern="http://www.eclipse.org/egf/1.0.0/pattern" xmlns:types="http://www.eclipse.org/egf/1.0.0/types">
+  <fcore:FactoryComponent xmi:id="__3QD4O6BEeC_ud9p2zhsbQ" name="Migration Laucher [G2]">
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_EOCd8O6CEeC_ud9p2zhsbQ"
+        description="">
+      <invocations xmi:id="_RNVl8O6CEeC_ud9p2zhsbQ" invokedActivity="#_qSeIQempEeCU5r5nVebqAg"/>
+      <invocations xmi:id="_HmF-4O6CEeC_ud9p2zhsbQ" invokedActivity="#_SLYK4ZslEeCtH-yCwLxcDg"/>
+      <invocations xmi:id="_h-DwIO6NEeClCb2x_73DSA" invokedActivity="#_CwhWEO6NEeClCb2x_73DSA"/>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_Jz89kO6CEeC_ud9p2zhsbQ" name="Migration Laucher [G3/G4]">
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_TDDxcO6CEeC_ud9p2zhsbQ"
+        description="">
+      <invocations xmi:id="_TDDxce6CEeC_ud9p2zhsbQ" invokedActivity="#_qSeIQempEeCU5r5nVebqAg"/>
+      <invocations xmi:id="_TDDxeO6CEeC_ud9p2zhsbQ" invokedActivity="#_SLYK4ZslEeCtH-yCwLxcDg"/>
+      <invocations xmi:id="_Y91GwO6CEeC_ud9p2zhsbQ" invokedActivity="#_UqGyIe5eEeC_ud9p2zhsbQ"/>
+      <invocations xmi:id="_aCCY8O6GEeC_ud9p2zhsbQ" invokedActivity="#_jT1b0O6DEeC_ud9p2zhsbQ"/>
+      <invocations xmi:id="_hqPcQO6NEeClCb2x_73DSA" invokedActivity="#_CwhWEO6NEeClCb2x_73DSA"/>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_SLYK4ZslEeCtH-yCwLxcDg" name="Annotation &amp; GenModel Migration Launcher">
+    <viewpointContainer xmi:id="_Vfj4cJslEeCtH-yCwLxcDg">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_Vfj4cZslEeCtH-yCwLxcDg">
+        <domains xmi:type="domain:EMFDomain" xmi:id="_Vfj4cpslEeCtH-yCwLxcDg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/org.polarsys.capella.common.data.core.gen/model/ModellingCore.genmodel"/>
+        <domains xmi:type="domain:EMFDomain" xmi:id="_Vfj4c5slEeCtH-yCwLxcDg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/org.polarsys.capella.common.data.activity.gen/model/Activity.genmodel"/>
+        <domains xmi:type="domain:EMFDomain" xmi:id="_Vfj4dJslEeCtH-yCwLxcDg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/org.polarsys.capella.common.data.behavior.gen/model/Behavior.genmodel"/>
+        <domains xmi:type="domain:EMFDomain" xmi:id="_Vfj4dpslEeCtH-yCwLxcDg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/org.polarsys.capella.core.data.gen/model/CapellaModeller.genmodel"/>
+        <domains xmi:type="domain:EMFDomain" xmi:id="_EbzT0PCjEeO0jMQH5knLQg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/org.polarsys.capella.common.re.gen/model/re.genmodel"/>
+        <domains xmi:type="domain:EMFDomain" xmi:id="_Eg3aAPCjEeO0jMQH5knLQg" helperImplementation="org.eclipse.egf.domain.emf.EMFDomainHelper"
+            uri="platform:/resource/org.polarsys.capella.common.libraries.gen/model/libraries.genmodel"/>
+      </viewpoints>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_WE9rkJslEeCtH-yCwLxcDg">
+      <invocations xmi:id="_WE9rkZslEeCtH-yCwLxcDg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
+        <invocationContractContainer xmi:id="_WE9rkpslEeCtH-yCwLxcDg">
+          <invocationContracts xmi:id="_WE9rk5slEeCtH-yCwLxcDg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_WE9rlJslEeCtH-yCwLxcDg" domain="#_Vfj4cpslEeCtH-yCwLxcDg"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_WE9rlZslEeCtH-yCwLxcDg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
+        <invocationContractContainer xmi:id="_WE9rlpslEeCtH-yCwLxcDg">
+          <invocationContracts xmi:id="_WE9rl5slEeCtH-yCwLxcDg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_WE9rmJslEeCtH-yCwLxcDg" domain="#_Vfj4c5slEeCtH-yCwLxcDg"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_WE9rmZslEeCtH-yCwLxcDg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
+        <invocationContractContainer xmi:id="_WE9rmpslEeCtH-yCwLxcDg">
+          <invocationContracts xmi:id="_WE9rm5slEeCtH-yCwLxcDg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_WE9rnJslEeCtH-yCwLxcDg" domain="#_Vfj4dJslEeCtH-yCwLxcDg"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_WE9roZslEeCtH-yCwLxcDg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
+        <invocationContractContainer xmi:id="_WE9ropslEeCtH-yCwLxcDg">
+          <invocationContracts xmi:id="_WE9ro5slEeCtH-yCwLxcDg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_WE9rpJslEeCtH-yCwLxcDg" domain="#_Vfj4dpslEeCtH-yCwLxcDg"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_H2kxkPCjEeO0jMQH5knLQg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
+        <invocationContractContainer xmi:id="_H2kxkfCjEeO0jMQH5knLQg">
+          <invocationContracts xmi:id="_H2kxkvCjEeO0jMQH5knLQg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_H2kxk_CjEeO0jMQH5knLQg" domain="#_Eg3aAPCjEeO0jMQH5knLQg"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_H6HNwPCjEeO0jMQH5knLQg" invokedActivity="#_ThWfUJslEeCtH-yCwLxcDg">
+        <invocationContractContainer xmi:id="_H6HNwfCjEeO0jMQH5knLQg">
+          <invocationContracts xmi:id="_H6HNwvCjEeO0jMQH5knLQg" invokedContract="#_fjSAIJslEeCtH-yCwLxcDg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_H6HNw_CjEeO0jMQH5knLQg" domain="#_Vfj4dpslEeCtH-yCwLxcDg"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_ThWfUJslEeCtH-yCwLxcDg" name="Annotation &amp; GenModel Migration">
+    <contractContainer xmi:id="_fPwnMJslEeCtH-yCwLxcDg">
+      <contracts xmi:type="fcore:FactoryComponentContract" xmi:id="_fjSAIJslEeCtH-yCwLxcDg"
+          name="genmodel" mandatory="true" invocationContracts="#_gHJFspsmEeCtH-yCwLxcDg">
+        <type xmi:type="domain:TypeDomain" xmi:id="_gOMlYJslEeCtH-yCwLxcDg"/>
+      </contracts>
+    </contractContainer>
+    <viewpointContainer xmi:id="_5mGBwJslEeCtH-yCwLxcDg">
+      <viewpoints xmi:type="pattern:PatternViewpoint" xmi:id="_78TEIJslEeCtH-yCwLxcDg">
+        <libraries xmi:id="_8OLeUJslEeCtH-yCwLxcDg" name="org.polarsys.capella.common.extension.migration.egf">
+          <elements xmi:id="_xYnB8JswEeCtH-yCwLxcDg" name="genPackage" headerMethod="#_xYnB8pswEeCtH-yCwLxcDg"
+              conditionMethod="#_xYnB9JswEeCtH-yCwLxcDg" initMethod="#_xYnB85swEeCtH-yCwLxcDg"
+              footerMethod="#_xYnB9pswEeCtH-yCwLxcDg">
+            <nature xmi:type="javapattern:JavaNature" xmi:id="_xYnB8ZswEeCtH-yCwLxcDg"
+                name="Java"/>
+            <methods xmi:id="_xYnB8pswEeCtH-yCwLxcDg" name="header" patternFilePath="templates/pattern._xYnB8JswEeCtH-yCwLxcDg/method._xYnB8pswEeCtH-yCwLxcDg.pt"/>
+            <methods xmi:id="_xYnB85swEeCtH-yCwLxcDg" name="init" patternFilePath="templates/pattern._xYnB8JswEeCtH-yCwLxcDg/method._xYnB85swEeCtH-yCwLxcDg.pt"/>
+            <methods xmi:id="_xYnB9JswEeCtH-yCwLxcDg" name="preCondition" patternFilePath="templates/pattern._xYnB8JswEeCtH-yCwLxcDg/method._xYnB9JswEeCtH-yCwLxcDg.pt"/>
+            <methods xmi:id="_xYnB9ZswEeCtH-yCwLxcDg" name="body" patternFilePath="templates/pattern._xYnB8JswEeCtH-yCwLxcDg/method._xYnB9ZswEeCtH-yCwLxcDg.pt"/>
+            <methods xmi:id="_xYnB9pswEeCtH-yCwLxcDg" name="footer" patternFilePath="templates/pattern._xYnB8JswEeCtH-yCwLxcDg/method._xYnB9pswEeCtH-yCwLxcDg.pt"/>
+            <parameters xmi:id="_D22e4JsxEeCtH-yCwLxcDg" name="genPackage" type="http://www.eclipse.org/emf/2002/GenModel#//GenPackage"/>
+            <orchestration xmi:type="pattern:MethodCall" xmi:id="_H_V-QJsxEeCtH-yCwLxcDg"
+                called="#_xYnB9ZswEeCtH-yCwLxcDg"/>
+          </elements>
+        </libraries>
+      </viewpoints>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_3lgDAJslEeCtH-yCwLxcDg">
+      <invocations xmi:id="_gHJFsJsmEeCtH-yCwLxcDg" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_8FZ3aof6eEd64XYPo3s6sPg">
+        <invocationContractContainer xmi:id="_gHJFsZsmEeCtH-yCwLxcDg">
+          <invocationContracts xmi:id="_gHJFspsmEeCtH-yCwLxcDg" factoryComponentContract="#_fjSAIJslEeCtH-yCwLxcDg"
+              invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_DgB2IP6fEd64XaYPo3s6sPg"/>
+          <invocationContracts xmi:id="_gHJFs5smEeCtH-yCwLxcDg" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_nz1HkSCaEd-Sse0r9LJWbA">
+            <type xmi:type="pattern:TypePatternList" xmi:id="_iVcwUJsmEeCtH-yCwLxcDg"
+                elements="#_8OLeUJslEeCtH-yCwLxcDg"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_UqGyIe5eEeC_ud9p2zhsbQ" name="Dependencies migration for G3/G4">
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_VqDzQO5eEeC_ud9p2zhsbQ">
+      <invocations xmi:id="_yxs_YO6AEeC_ud9p2zhsbQ" invokedActivity="#_pf5c0O6AEeC_ud9p2zhsbQ"/>
+      <invocations xmi:id="_z8fXgO6AEeC_ud9p2zhsbQ" invokedActivity="#_rYtYkO6AEeC_ud9p2zhsbQ"/>
+      <invocations xmi:id="_5H8vwO6AEeC_ud9p2zhsbQ" invokedActivity="#_0zKg0O6AEeC_ud9p2zhsbQ"/>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_pf5c0O6AEeC_ud9p2zhsbQ" name="Manifest Migration">
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_p7dXcO6AEeC_ud9p2zhsbQ">
+      <invocations xmi:id="_ya5kkO5iEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_ya5kke5iEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_ya5kku5iEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_zYJP8O5iEeC_ud9p2zhsbQ" value="/org.polarsys.capella.core.data.gen/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_1P74AO5iEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_1P74Ae5iEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_1P74Au5iEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_1P74A-5iEeC_ud9p2zhsbQ" value="/org.polarsys.capella.core.data.gen.edit/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_1dfL0O5iEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_1dfL0e5iEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_1dfL0u5iEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_1dfL0-5iEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.activity.gen/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_1kfywO5iEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_1kfywe5iEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_1kfywu5iEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_1kfyw-5iEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.activity.gen.edit/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_1q58wO5iEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_1q58we5iEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_1q58wu5iEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_1q58w-5iEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.behavior.gen/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_1xAkwO5iEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_1xAkwe5iEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_1xAkwu5iEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_1xAkw-5iEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.behavior.gen.edit/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_13auwO5iEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_13auwe5iEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_13auwu5iEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_13auw-5iEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.core.gen/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_HwWC4O6JEeC_ud9p2zhsbQ" invokedActivity="#_W7NcoO5fEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_HwWC4e6JEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_HwWC4u6JEeC_ud9p2zhsbQ" invokedContract="#_MtBU4O5gEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_HwWC4-6JEeC_ud9p2zhsbQ" value="/org.polarsys.capella.core.data.gen.editor/META-INF/MANIFEST.MF"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_rYtYkO6AEeC_ud9p2zhsbQ" name="ModelElementItemProvider Migration">
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_r2gu4O6AEeC_ud9p2zhsbQ">
+      <invocations xmi:id="_pfaeAO5nEeC_ud9p2zhsbQ" invokedActivity="#_Kw-FoO5lEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_pfaeAe5nEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_pfaeAu5nEeC_ud9p2zhsbQ" invokedContract="#_PyWU0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_sIhOQO5nEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.core.gen.edit/src/org/polarsys/capella/common/data/modellingcore/provider/ModelElementItemProvider.java"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_pfaeA-5nEeC_ud9p2zhsbQ" invokedContract="#_Spdr4O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_ur0RcO5nEeC_ud9p2zhsbQ" value="import org.polarsys.capella.common.mdsofa.emf.edit.provider.DslfactoryExtensibleProviderItemProviderAdapter;"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_pfaeBO5nEeC_ud9p2zhsbQ" invokedContract="#_Ublw0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_vvdfwO5nEeC_ud9p2zhsbQ" value="import org.polarsys.kitalpha.emde.ui.edit.provider.ExtensionItemProviderAdapter;"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_mwMz0O5pEeC_ud9p2zhsbQ" invokedActivity="#_Kw-FoO5lEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_mwMz0e5pEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_mwMz0u5pEeC_ud9p2zhsbQ" invokedContract="#_PyWU0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_mwMz0-5pEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.core.gen.edit/src/org/polarsys/capella/common/data/modellingcore/provider/ModelElementItemProvider.java"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_mwMz1O5pEeC_ud9p2zhsbQ" invokedContract="#_Spdr4O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_mwMz1e5pEeC_ud9p2zhsbQ" value="import org.polarsys.capella.common.mdsofa.emf.edit.provider.DslfactoryItemPropertyDescriptor;"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_mwMz1u5pEeC_ud9p2zhsbQ" invokedContract="#_Ublw0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_mwMz1-5pEeC_ud9p2zhsbQ" value="import org.polarsys.kitalpha.emde.ui.edit.provider.ExtensionItemPropertyDescriptor;"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_qdSwoO5pEeC_ud9p2zhsbQ" invokedActivity="#_Kw-FoO5lEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_qdSwoe5pEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_qdSwou5pEeC_ud9p2zhsbQ" invokedContract="#_PyWU0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_qdSwo-5pEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.core.gen.edit/src/org/polarsys/capella/common/data/modellingcore/provider/ModelElementItemProvider.java"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_qdSwpO5pEeC_ud9p2zhsbQ" invokedContract="#_Spdr4O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_qdSwpe5pEeC_ud9p2zhsbQ" value="extends DslfactoryExtensibleProviderItemProviderAdapter"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_qdSwpu5pEeC_ud9p2zhsbQ" invokedContract="#_Ublw0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_qdSwp-5pEeC_ud9p2zhsbQ" value="extends ExtensionItemProviderAdapter"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_qkI_gO5pEeC_ud9p2zhsbQ" invokedActivity="#_Kw-FoO5lEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_qkI_ge5pEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_qkI_gu5pEeC_ud9p2zhsbQ" invokedContract="#_PyWU0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_qkI_g-5pEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.core.gen.edit/src/org/polarsys/capella/common/data/modellingcore/provider/ModelElementItemProvider.java"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_qkI_hO5pEeC_ud9p2zhsbQ" invokedContract="#_Spdr4O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_qkI_he5pEeC_ud9p2zhsbQ" value="return new DslfactoryItemPropertyDescriptor"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_qkI_hu5pEeC_ud9p2zhsbQ" invokedContract="#_Ublw0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_qkI_h-5pEeC_ud9p2zhsbQ" value="return new ExtensionItemPropertyDescriptor"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_0zKg0O6AEeC_ud9p2zhsbQ" name="CapellaXMLSaveImpl Migration">
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_BStKsO6BEeC_ud9p2zhsbQ">
+      <invocations xmi:id="_CTggYO6BEeC_ud9p2zhsbQ" invokedActivity="#_Kw-FoO5lEeC_ud9p2zhsbQ">
+        <invocationContractContainer xmi:id="_CTggYe6BEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_CTggYu6BEeC_ud9p2zhsbQ" invokedContract="#_PyWU0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_EaeM4O6BEeC_ud9p2zhsbQ" value="/org.polarsys.capella.common.data.core.gen/src/org/polarsys/capella/common/data/core/gen/xmi/impl/CapellaXMLSaveImpl.java"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_CTggY-6BEeC_ud9p2zhsbQ" invokedContract="#_Spdr4O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_ItoEIO6BEeC_ud9p2zhsbQ" value="import org.polarsys.capella.common.mdsofa.emf.xmi.XMIExtensionSaveImpl;"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_CTggZO6BEeC_ud9p2zhsbQ" invokedContract="#_Ublw0O5lEeC_ud9p2zhsbQ">
+            <type xmi:type="types:TypeString" xmi:id="_KnyqwO6BEeC_ud9p2zhsbQ" value="import org.polarsys.kitalpha.emde.xmi.XMIExtensionSaveImpl;"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <fcore:FactoryComponent xmi:id="_jT1b0O6DEeC_ud9p2zhsbQ" name="replaceOldImports">
+    <viewpointContainer xmi:id="_j4MGEO6DEeC_ud9p2zhsbQ">
+      <viewpoints xmi:type="domain:DomainViewpoint" xmi:id="_kTwnwO6DEeC_ud9p2zhsbQ">
+        <domains xmi:type="domain:WorkspaceDomain" xmi:id="_k3-IEO6DEeC_ud9p2zhsbQ"
+            helperImplementation="org.polarsys.capella.common.extension.migration.egf.SkippingWorkspaceDomainHelper"
+            path="/org.polarsys.capella.core.data.gen.edit"/>
+        <domains xmi:type="domain:WorkspaceDomain" xmi:id="_4AZfkO6FEeC_ud9p2zhsbQ"
+            helperImplementation="org.polarsys.capella.common.extension.migration.egf.SkippingWorkspaceDomainHelper"
+            path="/org.polarsys.capella.common.data.activity.gen.edit"/>
+        <domains xmi:type="domain:WorkspaceDomain" xmi:id="_40_lQO6FEeC_ud9p2zhsbQ"
+            helperImplementation="org.polarsys.capella.common.extension.migration.egf.SkippingWorkspaceDomainHelper"
+            path="/org.polarsys.capella.common.data.behavior.gen.edit"/>
+        <domains xmi:type="domain:WorkspaceDomain" xmi:id="_5RAy4O6FEeC_ud9p2zhsbQ"
+            helperImplementation="org.polarsys.capella.common.extension.migration.egf.SkippingWorkspaceDomainHelper"
+            path="/org.polarsys.capella.common.data.core.gen.edit"/>
+        <domains xmi:type="domain:WorkspaceDomain" xmi:id="_N8zP4ArqEeGibqR2ZBYSmw"
+            helperImplementation="org.polarsys.capella.common.extension.migration.egf.SkippingWorkspaceDomainHelper"
+            path="/org.polarsys.capella.core.data.migration"/>
+      </viewpoints>
+      <viewpoints xmi:type="pattern:PatternViewpoint" xmi:id="_6hBUIO6DEeC_ud9p2zhsbQ">
+        <libraries xmi:id="_6zWaQO6DEeC_ud9p2zhsbQ" name="org.polarsys.capella.common.extension.migration.egf">
+          <elements xmi:id="_k0sVIO6EEeC_ud9p2zhsbQ" name="replaceOldImports" headerMethod="#_k0sVIu6EEeC_ud9p2zhsbQ"
+              conditionMethod="#_k0sVJO6EEeC_ud9p2zhsbQ" initMethod="#_k0sVI-6EEeC_ud9p2zhsbQ"
+              footerMethod="#_k0sVJu6EEeC_ud9p2zhsbQ">
+            <nature xmi:type="javapattern:JavaNature" xmi:id="_k0sVIe6EEeC_ud9p2zhsbQ"
+                name="Java"/>
+            <methods xmi:id="_k0sVIu6EEeC_ud9p2zhsbQ" name="header" patternFilePath="templates/pattern._k0sVIO6EEeC_ud9p2zhsbQ/method._k0sVIu6EEeC_ud9p2zhsbQ.pt"/>
+            <methods xmi:id="_k0sVI-6EEeC_ud9p2zhsbQ" name="init" patternFilePath="templates/pattern._k0sVIO6EEeC_ud9p2zhsbQ/method._k0sVI-6EEeC_ud9p2zhsbQ.pt"/>
+            <methods xmi:id="_k0sVJO6EEeC_ud9p2zhsbQ" name="preCondition" patternFilePath="templates/pattern._k0sVIO6EEeC_ud9p2zhsbQ/method._k0sVJO6EEeC_ud9p2zhsbQ.pt"/>
+            <methods xmi:id="_k0sVJe6EEeC_ud9p2zhsbQ" name="body" patternFilePath="templates/pattern._k0sVIO6EEeC_ud9p2zhsbQ/method._k0sVJe6EEeC_ud9p2zhsbQ.pt"/>
+            <methods xmi:id="_k0sVJu6EEeC_ud9p2zhsbQ" name="footer" patternFilePath="templates/pattern._k0sVIO6EEeC_ud9p2zhsbQ/method._k0sVJu6EEeC_ud9p2zhsbQ.pt"/>
+            <parameters xmi:id="_OaKzYO6FEeC_ud9p2zhsbQ" name="iFile" type="org.eclipse.core.resources.IFile"/>
+            <orchestration xmi:type="pattern:MethodCall" xmi:id="_Vq7rQO6FEeC_ud9p2zhsbQ"
+                called="#_k0sVJe6EEeC_ud9p2zhsbQ"/>
+          </elements>
+        </libraries>
+      </viewpoints>
+    </viewpointContainer>
+    <orchestration xmi:type="fprod:ProductionPlan" xmi:id="_sNpVIO6DEeC_ud9p2zhsbQ">
+      <invocations xmi:id="_3j7Q4O6DEeC_ud9p2zhsbQ" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_8FZ3aof6eEd64XYPo3s6sPg">
+        <invocationContractContainer xmi:id="_3j7Q4e6DEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_3j7Q4u6DEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_DgB2IP6fEd64XaYPo3s6sPg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_4rv0kO6DEeC_ud9p2zhsbQ" domain="#_k3-IEO6DEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_3j7Q5u6DEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_nz1HkSCaEd-Sse0r9LJWbA">
+            <type xmi:type="pattern:TypePatternList" xmi:id="_Ee75UO6FEeC_ud9p2zhsbQ"
+                elements="#_k0sVIO6EEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_DW0lQO6GEeC_ud9p2zhsbQ" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_8FZ3aof6eEd64XYPo3s6sPg">
+        <invocationContractContainer xmi:id="_DW0lQe6GEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_DW0lQu6GEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_DgB2IP6fEd64XaYPo3s6sPg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_DW0lQ-6GEeC_ud9p2zhsbQ" domain="#_4AZfkO6FEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_DW0lRO6GEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_nz1HkSCaEd-Sse0r9LJWbA">
+            <type xmi:type="pattern:TypePatternList" xmi:id="_DW0lRe6GEeC_ud9p2zhsbQ"
+                elements="#_k0sVIO6EEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_DnNxsO6GEeC_ud9p2zhsbQ" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_8FZ3aof6eEd64XYPo3s6sPg">
+        <invocationContractContainer xmi:id="_DnNxse6GEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_DnNxsu6GEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_DgB2IP6fEd64XaYPo3s6sPg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_DnNxs-6GEeC_ud9p2zhsbQ" domain="#_40_lQO6FEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_DnNxtO6GEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_nz1HkSCaEd-Sse0r9LJWbA">
+            <type xmi:type="pattern:TypePatternList" xmi:id="_DnNxte6GEeC_ud9p2zhsbQ"
+                elements="#_k0sVIO6EEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+      <invocations xmi:id="_DuhTkO6GEeC_ud9p2zhsbQ" invokedActivity="ftask:Task platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_8FZ3aof6eEd64XYPo3s6sPg">
+        <invocationContractContainer xmi:id="_DuhTke6GEeC_ud9p2zhsbQ">
+          <invocationContracts xmi:id="_DuhTku6GEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_DgB2IP6fEd64XaYPo3s6sPg">
+            <type xmi:type="domain:TypeDomain" xmi:id="_DuhTk-6GEeC_ud9p2zhsbQ" domain="#_5RAy4O6FEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+          <invocationContracts xmi:id="_DuhTlO6GEeC_ud9p2zhsbQ" invokedContract="platform:/plugin/org.eclipse.egf.pattern.ftask/egf/Model_driven_pattern_strategy_task.fcore#_nz1HkSCaEd-Sse0r9LJWbA">
+            <type xmi:type="pattern:TypePatternList" xmi:id="_DuhTle6GEeC_ud9p2zhsbQ"
+                elements="#_k0sVIO6EEeC_ud9p2zhsbQ"/>
+          </invocationContracts>
+        </invocationContractContainer>
+      </invocations>
+    </orchestration>
+  </fcore:FactoryComponent>
+  <ftask:Task xmi:id="_qSeIQempEeCU5r5nVebqAg" name="generateGenModels" kind="java"
+      implementation="org.polarsys.capella.common.extension.migration.egf.GenerateGenModelsTask"/>
+  <ftask:Task xmi:id="_W7NcoO5fEeC_ud9p2zhsbQ" name="Manifest Modification" kind="java"
+      implementation="org.polarsys.capella.common.extension.migration.egf.ManifestModificationTask">
+    <contractContainer xmi:id="_MbJhwO5gEeC_ud9p2zhsbQ">
+      <contracts xmi:id="_MtBU4O5gEeC_ud9p2zhsbQ" name="ManifestMFPath" mandatory="true">
+        <type xmi:type="types:TypeString" xmi:id="_NCU2gO5gEeC_ud9p2zhsbQ" value=""/>
+      </contracts>
+    </contractContainer>
+  </ftask:Task>
+  <ftask:Task xmi:id="_Kw-FoO5lEeC_ud9p2zhsbQ" name="File Modification" kind="java"
+      implementation="org.polarsys.capella.common.extension.migration.egf.FileModificationTask">
+    <contractContainer xmi:id="_Ohl3kO5lEeC_ud9p2zhsbQ">
+      <contracts xmi:id="_PyWU0O5lEeC_ud9p2zhsbQ" name="filePath" mandatory="true">
+        <type xmi:type="types:TypeString" xmi:id="_Vn39wO5lEeC_ud9p2zhsbQ"/>
+      </contracts>
+      <contracts xmi:id="_Spdr4O5lEeC_ud9p2zhsbQ" name="toReplace" mandatory="true">
+        <type xmi:type="types:TypeString" xmi:id="_V7sRoO5lEeC_ud9p2zhsbQ"/>
+      </contracts>
+      <contracts xmi:id="_Ublw0O5lEeC_ud9p2zhsbQ" name="replacement" mandatory="true">
+        <type xmi:type="types:TypeString" xmi:id="_WEMGUO5lEeC_ud9p2zhsbQ"/>
+      </contracts>
+    </contractContainer>
+  </ftask:Task>
+  <ftask:Task xmi:id="_CwhWEO6NEeClCb2x_73DSA" name="RefreshWorkspace" kind="java"
+      implementation="org.polarsys.capella.common.extension.migration.egf.RefreshWorkspaceTask"/>
+</xmi:XMI>

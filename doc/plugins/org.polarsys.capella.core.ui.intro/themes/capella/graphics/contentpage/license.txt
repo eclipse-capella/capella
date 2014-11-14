@@ -1,0 +1,13 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/themes/capella/graphics/contentpage/wn_banner.jpg - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/contentpage/wn_banner.jpg
+/themes/capella/graphics/contentpage/fs_banner.jpg - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/contentpage/fs_banner.jpg
+/themes/capella/graphics/contentpage/sa_banner.jpg - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/contentpage/sa_banner.jpg
+/themes/capella/graphics/contentpage/ov_banner.jpg - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/contentpage/ov_banner.jpg
+/themes/capella/graphics/contentpage/tu_banner.jpg - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/contentpage/tu_banner.jpg
+/themes/capella/graphics/contentpage/mi_banner.jpg - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/contentpage/mi_banner.jpg
+/themes/capella/graphics/contentpage/wr_banner.jpg - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/themes/circles/graphics/contentpage/wr_banner.jpg

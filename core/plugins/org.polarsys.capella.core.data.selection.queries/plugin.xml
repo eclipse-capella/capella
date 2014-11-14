@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension name="cs" point="org.polarsys.capella.common.helpers.LinkSelection">
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.cs.PhysicalLinkSelection"
+            id="org.polarsys.capella.core.data.selection.queries.cs.physicalLinkSelection">
+      </LinkSelection>
+   </extension>
+   <extension name="fa" point="org.polarsys.capella.common.helpers.LinkSelection">
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.fa.FunctionalExchangeSelection"
+            id="org.polarsys.capella.core.data.selection.queries.fa.functionalExchangeSelection">
+      </LinkSelection>
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.fa.ConnectionSelection"
+            id="org.polarsys.capella.core.data.selection.queries.fa.connectionSelection">
+      </LinkSelection>
+   </extension>
+   <extension name="information" point="org.polarsys.capella.common.helpers.LinkSelection">
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.information.AssociationSelection"
+            id="org.polarsys.capella.core.data.selection.queries.information.associationSelection">
+      </LinkSelection>
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.information.PortAllocationSelection"
+            id="org.polarsys.capella.core.data.selection.queries.information.portallocationSelection">
+      </LinkSelection>
+   </extension>
+   <extension name="interaction" point="org.polarsys.capella.common.helpers.LinkSelection">
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.interaction.AbstractCapabilityExtendSelection"
+            id="org.polarsys.capella.core.data.selection.queries.interaction.abstractCapabilityExtendSelection">
+      </LinkSelection>
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.interaction.AbstractCapabilityGeneralizationSelection"
+            id="org.polarsys.capella.core.data.selection.queries.interaction.abstractCapabilityGeneralizationSelection">
+      </LinkSelection>
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.interaction.AbstractCapabilityIncludeSelection"
+            id="org.polarsys.capella.core.data.selection.queries.interaction.abstractCapabilityIncludeSelection">
+      </LinkSelection>
+   </extension>
+   <extension name="capellacore" point="org.polarsys.capella.common.helpers.LinkSelection">
+      <LinkSelection
+            class="org.polarsys.capella.core.data.selection.queries.capellacore.GeneralizationSelection"
+            id="org.polarsys.capella.core.data.selection.queries.capellacore.generalizationSelection">
+      </LinkSelection>
+   </extension>
+</plugin>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/core/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/data">
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHK_Class_Generalization_2"
+                  id="DWF_D_19"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_19 - Class Multiple Inheritance"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) should not inherit from multiple class or component
+               </message>
+               <target
+                     class="GeneralizableElement">
+               </target>
+               <description>
+                  This rule checks that a Class (or a Component) cannot inherit from multiple classes (resp. Components) if the dedicated configuration option does not allow it.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.MDCHK_Constraint_Expression"
+                  id="DWF_D_20"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_20 - Constraint expression type check 1"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  "{0}" constraint expression type shall be BooleanType.
+               </message>
+               <description>
+                  This rule checks that a constraint expression is typed by a BooleanType.
+               </description>
+               <target
+                     class="Constraint">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHKClassWithAbstractAttributes"
+                  id="DWF_D_41"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_41 - class with an abstract attribute/role"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} with an abstract {1} {2} shall be abstract.
+               </message>
+               <description>
+                  This rule chekcs if a class has an abstract attribute or a abstract role of an association on the navigable side, the class shall be abstract.
+               </description> 
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>    
+         </constraints>
+         <constraints
+               categories="capella.category/quality">
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.MDCHK_ModelElement_SummaryNotEmpty"
+                  id="Q_01"
+                  isEnabledByDefault="falsee"
+                  lang="Java"
+                  mode="Batch"
+                  name="Q_01 - Mandatory summaries"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {1} ({0})  doesn't have a summary
+               </message>
+               <description>
+                  This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges must have a summary.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.MDCHK_ModelElement_DescriptionNotEmpty"
+                  id="Q_02"
+                  isEnabledByDefault="falsee"
+                  lang="Java"
+                  mode="Batch"
+                  name="Q_02 - Mandatory descriptions"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {1} ({0})  doesn't have a description
+               </message>
+               <description>
+                  This rule checks that Functions, Components, Actors, Functional Exchanges and Component Exchanges have a description.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.CapellaElementReviewFieldNotEmpty"
+                  id="Q_03"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="Q_03 - Review Field Not Empty"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that review field of an element is always empty.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.MDCHK_CapellaElement_Naming_1"
+                  id="I_08"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_08 - Naming conflicts check 1"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}"{1}" content has a naming conflict for: {2}.
+               </message>
+               <description>
+                  NOTE: This constraint is replaced by &quot;I_19 - Name conflict&quot; and thus disabled by default.
+
+This rule checks that an element doesn&apos;t contain a naming conflict. Usually this means that two elements in the same container cannot have the same name, e.g. one cannot create two classes in a package and assign them identical names. Below we list the special cases:
+
+ExchangeItems
+Two exchange items that share a common container have conflicting names if both have the same name, and the order, number and type of their ExchangeItemElements is identical.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.MDCHK_DE_CE_PL_Naming_1"
+                  id="I_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_09 - Exchanges Naming conflicts check 1"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}{1} content has a naming conflict for: {2}.
+               </message>
+               <description>
+                  This rule ensures that an element doesn&apos;t contain a naming conflict. This rule only applies to exchanges (Component Exchanges, Physical Links and Functional Exchanges).
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.UnnamedElement"
+                  id="I_10"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_10 - Unnamed Element"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} does not have a name.
+               </message>
+               <description>
+                  This rule checks that an element has a name and does not contain a naming conflict. This rule does not check ExchangeItemAllocations and DataValues.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.NameConflict"
+                  id="I_19"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_19 - Name conflict"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} contains {1} elements with conflicting names: {2}
+               </message>
+               <target
+                     class="CapellaElement">
+               </target>
+               <description>
+                  This rule Finds name conflicts.
+                    NOTE: This constraint include all Naming conflict detection and it is enabled by default.
+
+This rule checks that an capella element doesn&apos;t contain any naming conflict. Usually this means that two elements in the same container cannot have the same name
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.UniqueModelElementIDs"
+                  id="I_21"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="I_21 - Unique Model Element IDs"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The ID &quot;{0}&quot; of &quot;{1}&quot; collides with that of &quot;{2}&quot;
+               </message>
+               <target
+                     class="CapellaElement">
+               </target>
+               <description>
+                  This rule checks that all capella elements have a unique ID.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.DWF_D_31"
+                  id="I_25"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_25 - Description is well formed XML"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Description of"{0}" is not well formed: {1}
+               </message>
+               <description>
+                  This rule checks whether the description of a model element is well formed XML.
+               </description>
+               <target
+                     class="CapellaElement">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/modeller/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/data">
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHK_SystemEngineering_Cycle_Dependencies"
+                  id="DWF_D_25"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_25 - Dependency Cycle Detection"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Some dependency cycle(s) has(ve) been detected that implies {0} packages
+               </message>
+               <description>
+                  This rule detects Cycle of Dependencies.
+               </description>
+               <target
+                     class="SystemEngineering">
+               </target>
+            </constraint>
+  
+        	<constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHKPackageVisibility"
+                  id="DWF_D_42"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_42 - Packages visibility problem"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Some packages visibility problem has been detected between {0} and {1}.
+               </message>
+               <description>
+                  This rule detects that it is impossible to create an association from Class1 to Class2 if Class2 is in package0, and Class1 in packag1 within package0.
+               </description> 
+               <target
+                     class="SystemEngineering">
+               </target>
+            </constraint> 
+            
+         </constraints>  
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.Requirement_ID"
+                  id="I_11"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_11 - Requirement ID check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Requirement Id conflict ({0}) on&quot;{1}&quot; and &quot;{2}&quot;
+               </message>
+               <description>
+                  This rule checks that all Requirements have a unique ID attribute.
+               </description>
+               <target
+                     class="SystemEngineering">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/common/core/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/transition/justification/generic">
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.capellaelement.AbstractTraceSourceAndTargetNaming"
+                  id="TJ_G_05"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_G_05 - Trace source and target naming"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The source &quot;{0}&quot; ({1}) traced a target model element with different name &quot;{2}&quot; ({3})
+               </message>
+               <description>
+                  This rule ensures that abstract trace&apos;s source and target element names are same.
+               </description>
+               <target
+                     class="TraceableElement">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.core.validation.constraint.UniqueAbstractTraceConstraint"
+                  id="I_26"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_26 - Equivalent Trace Elements"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Message body provided by implementation
+               </message>
+               <description>
+                  Checks that there are no equivalent trace elements. Two trace elements are equivalent if they have identical types and identical source and target elements.
+               </description>
+               <target
+                     class="AbstractTrace">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

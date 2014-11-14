@@ -1,0 +1,8 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/eaction16/import_records.gif - org.eclipse.ui.views.log - org.eclipse.ui.views.log/icons/elcl16/import_log.gif
+/icons/eaction16/clear.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/clear_co.gif

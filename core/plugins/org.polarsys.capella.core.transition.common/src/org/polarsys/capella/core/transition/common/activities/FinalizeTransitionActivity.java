@@ -1,0 +1,79 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.transition.common.activities;
+
+import java.io.IOException;
+import java.util.Collections;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+
+import org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters;
+import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
+import org.polarsys.capella.core.transition.common.constants.Messages;
+import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
+import org.polarsys.kitalpha.transposer.api.ITransposerWorkflow;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+
+/**
+ * 
+ */
+public class FinalizeTransitionActivity extends AbstractActivity implements ITransposerWorkflow {
+
+  public static final String ID = "org.polarsys.capella.core.transition.common.activities.FinalizeTransitionActivity"; //$NON-NLS-1$
+
+  /*
+   * (non-Javadoc)
+   * @see org.polarsys.kitalpha.cadence.core.api.IActivity#run(org.polarsys.kitalpha.cadence.core.api.parameter.ActivityParameters)
+   */
+  @Override
+  public IStatus _run(ActivityParameters activityParams_p) {
+    IContext context = (IContext) activityParams_p.getParameter(ITransposerWorkflow.TRANSPOSER_CONTEXT).getValue();
+
+    boolean shouldSave = Boolean.TRUE.equals(context.get(ITransitionConstants.SAVE_REQUIRED));
+
+    if (shouldSave) {
+
+      //Maybe with an option of configuration ?
+      //Save if it another resource than the source resource
+      Resource sourceResource = (Resource) context.get(ITransitionConstants.TRANSITION_SOURCE_RESOURCE);
+      Resource targetResource = (Resource) context.get(ITransitionConstants.TRANSITION_TARGET_RESOURCE);
+
+      if ((targetResource != null) && (targetResource != sourceResource)) {
+        Session session = SessionManager.INSTANCE.getSession(targetResource);
+        if (session != null) {
+          if (session.isOpen()) {
+            session.save(new NullProgressMonitor());
+            LogHelper.getInstance().info(NLS.bind("Session for ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
+          }
+        } else {
+          try {
+            LogHelper.getInstance().info(NLS.bind("Resource ''{0}'' has been saved automatically.", targetResource.getURI()), Messages.Activity_Transition);
+            targetResource.save(Collections.EMPTY_MAP);
+          } catch (IOException exception_p) {
+            exception_p.printStackTrace();
+            LogHelper.getInstance().warn(exception_p.getMessage(), Messages.Activity_Transition);
+          }
+        }
+      }
+    }
+
+    LogHelper.getInstance().info("Operation has been successful.", Messages.Activity_Transition);
+
+    return Status.OK_STATUS;
+  }
+
+}

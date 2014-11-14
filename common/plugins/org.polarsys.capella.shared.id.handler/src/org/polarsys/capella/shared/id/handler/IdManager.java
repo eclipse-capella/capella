@@ -1,0 +1,86 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.shared.id.handler;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.emf.ecore.EObject;
+
+import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+
+/**
+ */
+public class IdManager {
+
+  // The singleton instance
+  private static IdManager __instance;
+
+  // The cache to store all contributors
+  private static List<IIdHandler> __contributedIdHandlers;
+
+  /**
+   * 
+   */
+  private IdManager() {
+    // do nothing
+  }
+
+  /**
+   * 
+   */
+  public static IdManager getInstance() {
+    if (null == __instance) {
+      __instance = new IdManager();
+    }
+    return __instance;
+  }
+
+  /**
+   * 
+   */
+  public EObject getEObject(String id, IScope scope) {
+    for (IIdHandler handler : getContributedIdHandlers()) {
+      EObject object = handler.getEObject(id, scope);
+      if (null != object) return object;
+    }
+    return null;
+  }
+
+  /**
+   * 
+   */
+  public String getId(EObject object) {
+    for (IIdHandler handler : getContributedIdHandlers()) {
+      String id = handler.getId(object);
+      if (null != id) return id;
+    }
+    return null;
+  }
+
+  /**
+   * 
+   */
+  private List<IIdHandler> getContributedIdHandlers() {
+    if (null == __contributedIdHandlers) {
+      __contributedIdHandlers = new ArrayList<IIdHandler>();
+      IConfigurationElement[] element = ExtensionPointHelper.getConfigurationElements(IdHandlerPlugin.getDefault().getPluginId(), "IdHandler"); //$NON-NLS-1$
+      for (IConfigurationElement ce : element) {
+        IIdHandler extension = (IIdHandler) ExtensionPointHelper.createInstance(ce, "handler"); //$NON-NLS-1$
+        if (extension != null) {
+          __contributedIdHandlers.add(extension);
+        }
+      }
+    }
+    return __contributedIdHandlers;
+  }
+}

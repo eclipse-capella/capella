@@ -1,0 +1,888 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="7.0.0">
+  <ownedViewpoints name="EPBS architecture" modelFileExtension="melodymodeller">
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Requirements" domainClass="EPBSArchitecture">
+      <ownedLineMappings name="Configuration Item 2" domainClass="ConfigurationItem" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;ConfigurationItem&quot;)[! current.eContainer().isA(&quot;EPBSArchitecture&quot;)]%>" headerLabelExpression="&lt;%computeComponentLabel()%>">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Requirements 7" headerLabelExpression="&lt;%getRequirementElementLabel()%>" domainClass="Requirement">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
+      <intersection name="Trace 7" lineMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Requirements']/@ownedLineMappings[name='Configuration%20Item%202']" columnMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Requirements']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="RequirementsTrace">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="TR7" forceRefresh="true">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$columnSemantic.ancestor.filter(&quot;RequirementsPkg&quot;).nFirst()%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot;%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="RequirementsTrace" referenceName="ownedTraces">
+                <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="&lt;%$lineSemantic%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="&lt;%$columnSemantic%>"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Physical Artifacts" domainClass="EPBSArchitecture">
+      <ownedLineMappings name="Configuration Item 1" domainClass="ConfigurationItem" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;ConfigurationItem&quot;)[! current.eContainer().isA(&quot;EPBSArchitecture&quot;)]%>" headerLabelExpression="&lt;%computeComponentLabel()%>">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Physical Component" headerLabelExpression="&lt;%computeComponentLabel()%>" domainClass="AbstractPhysicalArtifact" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents().filter(&quot;PhysicalComponent&quot;).nFirst().eAllContents()[filter(&quot;PhysicalComponent&quot;) || filter(&quot;PhysicalLink&quot;) || filter(&quot;PhysicalPort&quot;)]%>">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
+      <intersection name="Physical Component Allocation" lineMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Physical%20Artifacts']/@ownedLineMappings[name='Configuration%20Item%201']" columnMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20-%20Physical%20Artifacts']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="PhysicalArtifactRealization">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $lineSemantic.ownedPhysicalArtifactRealizations[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ownedPhysicalArtifactRealizations[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="LCR" forceRefresh="true">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot;%>">
+              <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$lineSemantic.ownedPhysicalArtifactRealizations.targetElement.nContains($columnSemantic) &amp;&amp; !$lineSemantic.eContainer(&quot;EPBSArchitecture&quot;).eAllContents().filter(&quot;ConfigurationItem&quot;).ownedPhysicalArtifactRealizations.targetElement.nContains($columnSemantic)  %>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalArtifactRealization" referenceName="ownedPhysicalArtifactRealizations">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="&lt;%$lineSemantic%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="&lt;%$columnSemantic%>"/>
+                </subModelOperations>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="EPBS Requirement Refinements" domainClass="EPBSArchitecture">
+      <ownedLineMappings name="ERR RequirementsPkg" reusedSubLines="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']" reusedInMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']" domainClass="RequirementsPkg" semanticCandidatesExpression="&lt;%eContents().filter(&quot;RequirementsPkg&quot;)%>" headerLabelExpression="&lt;%getRequirementElementLabel()%>">
+        <ownedSubLines name="Requirements 2" domainClass="Requirement" semanticCandidatesExpression="&lt;%ownedRequirements%>" headerLabelExpression="&lt;%getRequirementElementLabel()%>">
+          <delete name="No delete" precondition="false">
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          </delete>
+        </ownedSubLines>
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Requirements 8" headerLabelExpression="&lt;%getRequirementElementLabel()%>" domainClass="Requirement" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents().filter(&quot;LogicalArchitecture&quot;).eAllContents().filter(&quot;Requirement&quot;)%>">
+        <delete name="No delete" precondition="false">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+        </delete>
+      </ownedColumnMappings>
+      <intersection name="Trace 8" lineMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedLineMappings[name='ERR%20RequirementsPkg']/@ownedSubLines[name='Requirements%202']" columnMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Requirement%20Refinements']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="feature:targetElement" lineFinderExpression="feature:sourceElement" domainClass="RequirementsTrace">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;&quot; &amp;&amp; $root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nSize() > 0%>">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$root.eAllContents().filter(&quot;RequirementsTrace&quot;)[targetElement == $columnSemantic &amp;&amp; sourceElement == $lineSemantic].nFirst()%>">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="TR 8" forceRefresh="true">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.ancestor.filter(&quot;RequirementsPkg&quot;).nFirst()%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot;%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="RequirementsTrace" referenceName="ownedTraces">
+                <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="&lt;%$lineSemantic%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="&lt;%$columnSemantic%>"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20CI'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="EPBS Architecture Blank" titleExpression="[EAB] &lt;%current.name%> - EPBS Architecture Blank" domainClass="ConfigurationItem">
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#//deployment"/>
+      <metamodel href="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide Physical Artifacts">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']"/>
+      </filters>
+      <defaultLayer name="DefaultEpbsLayer">
+        <containerMappings name="CI container mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20a%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="" createElements="false" semanticElements="&lt;%getPartSemanticElements()%>" domainClass="Part" dropDescriptions="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20Physical%20Artifacts']" reusedContainerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']">
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
+          <detailDescriptions xsi:type="description_1:TableCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
+          <subNodeMappings name="PhysicalComponentInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalComponent&quot;)]%>" domainClass="PhysicalComponent">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+            <conditionnalStyles predicateExpression="&lt;%nature == &quot;NODE&quot;%>">
+              <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              </style>
+            </conditionnalStyles>
+          </subNodeMappings>
+          <subNodeMappings name="PhysicalLinkInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalLink&quot;)]%>" domainClass="PhysicalLink">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="5" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="PhysicalPortInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalPort&quot;)]%>" domainClass="PhysicalPort">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%computePartLabelMultiPartMode()%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </containerMappings>
+        <reusedMappings xsi:type="description:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+        <reusedMappings xsi:type="description:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+        <toolSections name="EPBS Elements">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="COTS " containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/COTSCI.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCOTSCI() %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="CS" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CSCI.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCSCI() %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="HW" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/HWCI.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createHWCI() %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="Interface" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InterfaceCI.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createInterfaceCI() %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="NDI" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/NDICI.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createNDICI() %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="Prime Item" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PrimeItemCI.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createPrimeItemCI() %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Creates a new Configuration Item with kind System." name="System" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemCI.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createSystemCI() %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current.representingPartitions.nLast() %>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Part allowing to reuse an existing Configuration Item." name="Reuse Configuration Item" precondition="&lt;% !($containerView.isA(&quot;DDiagram&quot;) &amp;&amp; $containerView.getABTarget().isA(&quot;ModellingArchitecture&quot;))%>" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Insert.gif">
+            <filters precondition="&lt;%!isPreferenceEnabled(&quot;multipart.allowed&quot;)%>" elementsToListen="&lt;%getPreferenceListener()%>">
+              <listeners domainClass="org.polarsys.capella.core.preferences.Listener" featureName="multipart.allowed"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.getDiagramContainer() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerView.getABTarget().getComponentType() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerTarget" computationExpression="&lt;% $containerView.getABTarget() %>"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="select Components" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
+                  <parameters name="context" value="&lt;% $containerType %>"/>
+                  <parameters name="scope" value="&lt;% $containerType.getABInsertComponent%>"/>
+                  <parameters name="multiple" value="true"/>
+                  <parameters name="resultVariable" value="components"/>
+                  <parameters name="wizardMessage" value="Select a Configuration Item."/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $components != &quot;WIZARD_CANCELED&quot; %>">
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$components%>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerTarget.isA(&quot;BlockArchitecture&quot;) %>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerTarget.getContext() %>">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% !$containerTarget.isA(&quot;BlockArchitecture&quot;) %>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerType%>">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="Part" referenceName="ownedFeatures" variableName="part">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="abstractType" valueExpression="&lt;%$i%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates new Realization relationships from the selected Configuration Item towards the target Physical Artifact (Phsyical Component, Physical Port, Physical Link). The newly realized Physical Artifacts are automatically displayed on the target Configuration Item. This tool modifies the semantic model." name="Manage Realized Physical Artifacts" label="Manage Realized Physical Artifacts" precondition="&lt;% $containerView.target.type.filter(&quot;ConfigurationItem&quot;).nSize() > 0%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Manage.gif">
+            <variable name="container">
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% getComponentType() %>"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerType%>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectPC" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% $containerType.getAllRealizablePhysicalArtefacts[! current.eContainer().isA(&quot;PhysicalArchitecture&quot;)]%>"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="Select Physical Components, Physical Links and Physical Ports  to allocate to &lt;%$container.type.name%>."/>
+                  <parameters name="initialSelection" value="&lt;% $containerType.ownedPhysicalArtifactRealizations.targetElement%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$selection%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType %>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$containerType.ownedPhysicalArtifactRealizations.targetElement.nContains($i)%>">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalArtifactRealization" referenceName="ownedPhysicalArtifactRealizations" variableName="pca">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="sourceElement" valueExpression="&lt;% $containerType %>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="targetElement" valueExpression="&lt;% $i%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i%>">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;PhysicalComponent&quot;).nSize() > 0%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping']" containerViewExpression="&lt;%$containerView%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;PhysicalLink&quot;).nSize() > 0%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']" containerViewExpression="&lt;%$containerView%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;PhysicalPort&quot;).nSize() > 0%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']" containerViewExpression="&lt;%$containerView%>"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$containerType.ownedPhysicalArtifactRealizations.targetElement%>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$selection.nContains($i)%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerType.ownedPhysicalArtifactRealizations[targetElement == $i]%>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%removeCapellaElement()%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create or delete graphical objects corresponding to existing Configuration Items. Removing a Configuration Item graphical object does not delete this Configuration Item from the model. This tool does not modify the semantic model." name="Show/Hide Configuration Items" label="Configuration Items" containerMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $containerView.eContainer(&quot;DDiagram&quot;) %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% $containerType() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="scope" computationExpression="&lt;% $containerView.getABShowHideComponent() %>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="ownedNodeContainer" computationExpression="&lt;%$containerView.eAllContents().filter(&quot;DNodeContainer&quot;)%>"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectSubComponent" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% $scope %>"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="Select Sub Components to show in &lt;%$container.name%>."/>
+                  <parameters name="initialSelection" value="&lt;% getIntersection($ownedNodeContainer[visible].target, $scope) %>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container %>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;% getIntersection(($ownedNodeContainer[visible].target+$diagram.target), $scope) - $selection %>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $ownedNodeContainer[target == $i] %>">
+                        <subModelOperations xsi:type="tool:DeleteView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;% $selection %>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $ownedNodeContainer[target == $i].nSize() > 0 %>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $ownedNodeContainer[target == $i].show %>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $ownedNodeContainer[target == $i].nSize() == 0 %>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $i %>">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ($ownedNodeContainer+$containerView)[(target == $i.eContainer || target.type == $i.eContainer)] == null %>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" containerViewExpression="&lt;% $containerView %>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ($ownedNodeContainer+$containerView)[(target == $i.eContainer || target.type == $i.eContainer)] != null %>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" containerViewExpression="&lt;%($ownedNodeContainer+$containerView)[(target == $i.eContainer || target.type == $i.eContainer)] %>"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create or delete graphical objects corresponding to already realized Physical Artifacts. Removing a Physical Artifacts graphical object from a Configuration Item does not delete the realization relationship between this Configuration Item and the Physical Artifact. This tool does not modify the semantic model." name="Show/Hide Realized Physical Artifacts" label="Realized Physical Artifacts" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <filters precondition="&lt;%current.isSynchronized()%>" elementsToListen="&lt;%current%>">
+              <listeners domainClass="DDiagram" featureName="synchronized"/>
+            </filters>
+            <variable name="container">
+              <subVariables xsi:type="tool:AcceleoVariable" name="containerType" computationExpression="&lt;% getComponentType() %>"/>
+            </variable>
+            <viewVariable name="containerView">
+              <subVariables xsi:type="tool:AcceleoVariable" name="containedPhysicalComponent" computationExpression="&lt;%$containerView.getNodesAndNodeListElements()[target.filter(&quot;PhysicalComponent&quot;)] + $containerView.getNodesAndNodeListElements()[target.filter(&quot;PhysicalLink&quot;)] + $containerView.getNodesAndNodeListElements()[target.filter(&quot;PhysicalPort&quot;)]%>"/>
+              <subVariables xsi:type="tool:AcceleoVariable" name="containedPhysicalComponentTarget" computationExpression="&lt;%$containerView.getNodesAndNodeListElements().target[filter(&quot;PhysicalComponent&quot;)] + $containerView.getNodesAndNodeListElements().target[filter(&quot;PhysicalLink&quot;)] +$containerView.getNodesAndNodeListElements().target[filter(&quot;PhysicalPort&quot;)]%>"/>
+            </viewVariable>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $containerType %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectPhysicalComponent" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
+                  <parameters name="context" value="&lt;% $containerType %>"/>
+                  <parameters name="scope" value="&lt;%$containerType.ownedPhysicalArtifactRealizations.targetElement%>"/>
+                  <parameters name="resultVariable" value="selection"/>
+                  <parameters name="wizardMessage" value="Select allocated Physical Components, Physical Links and Physical Ports to show in &lt;%$container.name%>."/>
+                  <parameters name="initialSelection" value="&lt;% $containerView.getNodesAndNodeListElements().target.filter(&quot;PhysicalComponent&quot;) +  $containerView.getNodesAndNodeListElements().target.filter(&quot;PhysicalLink&quot;)  +  $containerView.getNodesAndNodeListElements().target.filter(&quot;PhysicalPort&quot;) %>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selection == &quot;WIZARD_CANCELED&quot;) %>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container %>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;% $containedPhysicalComponent%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selection.nContains($i.target) %>">
+                        <subModelOperations xsi:type="tool:DeleteView"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;% $selection %>" iteratorName="j">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $containedPhysicalComponentTarget.nContains($j)%>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $j%>">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping']" containerViewExpression="&lt;% $containerView %>"/>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$j.isA(&quot;PhysicalComponent&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping']" containerViewExpression="&lt;% $containerView %>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$j.isA(&quot;PhysicalLink&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping']" containerViewExpression="&lt;% $containerView %>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$j.isA(&quot;PhysicalPort&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']" containerViewExpression="&lt;% $containerView %>"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getDiagramContainer().forceRefresh%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="rename CI">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;% $0 %>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete a CI" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="view"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction"/>
+              </firstModelOperations>
+            </initialOperation>
+            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete PC allocation in CI" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="view"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="deleteCapellaElement" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction"/>
+              </firstModelOperations>
+            </initialOperation>
+            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="EPBS Architecture Blank" precondition="&lt;%isA(&quot;ConfigurationItem&quot;)%>" forceRefresh="true" titleExpression="[EAB] &lt;%current.name%> - EPBS Architecture Blank" diagramDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+              <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.filter(&quot;DDiagram&quot;).nSize() == 1 %>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="&lt;%!( $preSource.constrainedElements.nContains($preTarget))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Constraint&quot;).nSize() == 1%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $source.constrainedElements.nSize() == 0%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="&lt;%$target%>"/>
+                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$target%>" featureName="ownedConstraints"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $source.constrainedElements.nSize() != 0%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="&lt;%$target%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <element name="element"/>
+              <elementView name="elementView">
+                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+              </elementView>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                    <parameters name="context" value="&lt;% $elementView%>"/>
+                    <parameters name="scope" value="&lt;% getConstraintToInsertInDiagram() - $constraintsInDiagram%>"/>
+                    <parameters name="initialSelection" value="&lt;%$constraintsInDiagram%>"/>
+                    <parameters name="resultVariable" value="selectedConstraints"/>
+                    <parameters name="wizardMessage" value="Select Constraints to show."/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedConstraints != &quot;WIZARD_CANCELED&quot;)%>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selectedConstraints%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$constraintsInDiagram%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selectedConstraints.nContains($i)%>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().getNodesAndNodeListElements()[target == $i]%>">
+                          <subModelOperations xsi:type="tool:DeleteView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D CI" forceRefresh="true" mappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD AB Physical Artifacts" mappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalComponentInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalLinkInCI%20mapping'] //@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='CI%20container%20mapping']/@subNodeMappings[name='PhysicalPortInCI%20mapping']" moveEdges="true">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.dndABPhysicalArtifacts($oldSemanticContainer, $newSemanticContainer)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="&lt;% $element.isA(&quot;Constraint&quot;) &amp;&amp; $element.canBeDropped($newViewContainer) %>" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+            <mappings xsi:type="description:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <reusedMappings xsi:type="description:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Constraints%20From%20Project%20Explorer']" name="Configuration Items Breakdown" titleExpression="[CIBD] &lt;%current.name%> - Configuration Items Breakdown" domainClass="ConfigurationItem">
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.activity.gen/model/Activity.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.behavior.gen/model/Behavior.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//communication"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CompositeStructure.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/ContextArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datatype"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#//datavalue"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/PhysicalArchitecture.ecore#//deployment"/>
+      <metamodel href="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/EPBSArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/FunctionalAnalysis.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Information.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/Interaction.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/LogicalArchitecture.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCommon.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaCore.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#/"/>
+      <metamodel href="platform:/plugin/org.polarsys.capella.common.data.core.gen/model/ModellingCore.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layout xsi:type="description:OrderedTreeLayout" childrenExpression="&lt;%ownedFeatures.filter(&quot;Part&quot;).abstractType%>" nodeMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="CIBD_ConfigurationItem" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20Configuration%20Item']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%current[representingPartitions.eContainer().filter(&quot;ComponentContext&quot;).nSize == 0] + getAllDescendants()%>" synchronizationLock="true" domainClass="ConfigurationItem">
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Configuration%20Items%20BreakDown']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="#//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='EPBS%20Architecture%20Blank']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
+          <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
+          <detailDescriptions xsi:type="description_1:TableCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%current == $container%>">
+            <style xsi:type="style:SquareDescription" labelFormat="bold" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%abstract==true%>">
+            <style xsi:type="style:SquareDescription" labelFormat="italic" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="CIBD_ConfigurationItem_subComponents" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subComponentLink']" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="&lt;%getLogicalParent%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetFinderExpression="&lt;%getLogicalParent%>" reconnections="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
+          <style sizeComputationExpression="1" routingStyle="tree" foldingStyle="TARGET">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <reusedMappings xsi:type="description:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+        <reusedMappings xsi:type="description:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+        <toolSections name="Components">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="COTS" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/COTSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCOTSCI() %>">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="CS" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCSCI() %>">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="HW" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/HWCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createHWCI() %>">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="Interface" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InterfaceCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createInterfaceCI() %>">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="NDI" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/NDICI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createNDICI() %>">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="Prime Item" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PrimeItemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createPrimeItemCI() %>">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Creates a new Configuration Item with kind System." name="System" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createSystemCI() %>">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Move a Source Configuration Item Part from its Container to Target Configuration Item Part." name="Contained In" precondition="&lt;%($preSource != $preTarget) &amp;&amp; (! getAllAncestors($preTarget).nContains($preSource))%>" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@edgeMappings[name='CIBD_ConfigurationItem_subComponents']" iconPath="/org.polarsys.capella.core.sirius.analysis/description/images/containedIn.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%($sourceView.eContainer(&quot;DDiagram&quot;).getNodesAndNodeListElements() + $sourceView.eContainer(&quot;DDiagram&quot;)).target.nMinimize.ownedFeatures.filter(&quot;Part&quot;)[abstractType == $source]%>">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$target%>" featureName="ownedFeatures"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedConfigurationItems"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="changeContainer" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.ownedFeatures.filter(&quot;Part&quot;)[abstractType == $edgeView.sourceNode.target]%>">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$target%>" featureName="ownedFeatures"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current.type %>">
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedConfigurationItems"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$edgeView%>">
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%sourceNode.target.ownedPartitions.filter(&quot;FlowPort&quot;).exchanges%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i%>">
+                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;% getCommonComponentAncestor($i.source.parent, $i.target.parent) %>" featureName="ownedExchanges"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete Configuration Item" precondition="&lt;%!($containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target + $containerView[filter(&quot;DDiagram&quot;)].target.ancestor + $containerView[filter(&quot;DDiagram&quot;)].target + $containerView[!filter(&quot;DDiagram&quot;)].eContainer(&quot;DDiagram&quot;).target.ancestor).nContains($element)%>" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $element %>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CapellaDeleteExternalAction" forceRefresh="true" id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteExternalAction"/>
+              </firstModelOperations>
+            </initialOperation>
+            <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="delete subComponentLink" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target.typedElements%>">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$containerView.target%>" featureName="ownedFeatures">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%sourceNode.target.ownedPartitions.filter(&quot;FlowPort&quot;).exchanges%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i%>">
+                        <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$containerView.target%>" featureName="ownedExchanges"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target%>">
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$containerView.target%>" featureName="ownedConfigurationItems"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Configuration Items BreakDown" precondition="&lt;%isA(&quot;ConfigurationItem&quot;)%>" forceRefresh="true" titleExpression="[CIBD] &lt;%current.name%> -Configuration Items Breakdown" diagramDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
+              <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $containerView.filter(&quot;DDiagram&quot;).nSize() == 1 %>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Constraint" referenceName="ownedConstraints"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Allocate a Source Constraint to an available Target Capella Element." name="ConstraintElement" precondition="&lt;%!( $preSource.constrainedElements.nContains($preTarget))%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ClassCarries.gif">
+              <edgeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Constraint&quot;).nSize() == 1%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $source.constrainedElements.nSize() == 0%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="&lt;%$target%>"/>
+                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$target%>" featureName="ownedConstraints"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $source.constrainedElements.nSize() != 0%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="constrainedElements" valueExpression="&lt;%$target%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Constraints. Removing a Constraint graphical object does not delete this Constraint from the model. This tool does not modify the semantic model." name="Show/Hide Constraints" label="Constraints" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+              <element name="element"/>
+              <elementView name="elementView">
+                <subVariables xsi:type="tool:AcceleoVariable" name="constraintsInDiagram" computationExpression="&lt;% getExistingConstraintsFromDiagram($elementView.getDiagramContainer())%>"/>
+                <subVariables xsi:type="tool:AcceleoVariable" name="diagram" computationExpression="&lt;% $elementView.eContainer(&quot;DDiagram&quot;) %>"/>
+              </elementView>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectedConstraints" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                    <parameters name="context" value="&lt;% $elementView%>"/>
+                    <parameters name="scope" value="&lt;% getConstraintToInsertInDiagram() - $constraintsInDiagram%>"/>
+                    <parameters name="initialSelection" value="&lt;%$constraintsInDiagram%>"/>
+                    <parameters name="resultVariable" value="selectedConstraints"/>
+                    <parameters name="wizardMessage" value="Select Constraints to show."/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedConstraints != &quot;WIZARD_CANCELED&quot;)%>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selectedConstraints%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%createConstraintWithConstaintedElementInDiagram($i,$diagram,$constraintsInDiagram,true)%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$constraintsInDiagram%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%! $selectedConstraints.nContains($i)%>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().getNodesAndNodeListElements()[target == $i]%>">
+                          <subModelOperations xsi:type="tool:DeleteView"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="D&amp;D Constraints From Project Explorer" precondition="&lt;% $element.isA(&quot;Constraint&quot;) &amp;&amp; $element.canBeDropped($newViewContainer) %>" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+            <mappings xsi:type="description:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.ConfigurationItemServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.CsServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.RequirementServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.polarsys.capella.core.sirius.analysis.DiagramServices"/>
+  </ownedViewpoints>
+</description:Group>

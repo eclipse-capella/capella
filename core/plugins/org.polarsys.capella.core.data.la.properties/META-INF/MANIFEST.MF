@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.data.la.properties;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Activator: org.polarsys.capella.core.data.la.properties.LaPropertiesPlugin
+Bundle-Vendor: %providerName
+Require-Bundle: org.polarsys.capella.core.data.fa.properties;visibility:=reexport,
+ org.polarsys.capella.core.data.interaction.properties;visibility:=reexport,
+ org.polarsys.capella.core.data.cs.properties;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.core.data.la.properties,
+ org.polarsys.capella.core.data.la.properties.controllers,
+ org.polarsys.capella.core.data.la.properties.sections
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Localization: plugin

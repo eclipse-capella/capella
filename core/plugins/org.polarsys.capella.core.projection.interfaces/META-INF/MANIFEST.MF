@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.projection.interfaces;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Export-Package: org.polarsys.capella.core.projection.interfaces,
+ org.polarsys.capella.core.projection.interfaces.rules
+Require-Bundle: org.polarsys.capella.core.projection.misc,
+ org.polarsys.capella.core.projection.common,
+ org.polarsys.capella.core.projection.data,
+ org.polarsys.capella.core.projection.preferences,
+ org.polarsys.capella.core.platform.sirius.ui.actions
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Eclipse-LazyStart: true
+Bundle-Activator: org.polarsys.capella.core.projection.interfaces.Activator
+Bundle-Localization: plugin

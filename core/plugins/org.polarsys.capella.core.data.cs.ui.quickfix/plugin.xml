@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
+     <resolver
+           class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.I_29_Resolver"
+           desc="%quickFix.I_29.desc"
+           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+           label="%quickFix.I_29.label">
+         <rules
+               ruleId="I_28">
+         </rules>
+     </resolver>
+     <resolver
+           class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.I_30_Resolver"
+           desc="%quickFix.I_30.desc"
+           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+           label="%quickFix.I_30.label">
+         <rules
+               ruleId="I_29">
+         </rules>
+     </resolver>
+     <resolver
+           class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DWF_DC_24_Resolver"
+           desc="%quickFix.DWF_DC_24.desc"
+           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+           label="%quickFix.DWF_DC_24.label">
+         <rules
+               ruleId="DWF_DC_24">
+         </rules>
+     </resolver>
+     <resolver
+           class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DWF_DC_25_Resolver"
+           desc="%quickFix.DWF_DC_25.desc"
+           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+           label="%quickFix.DWF_DC_25.label">
+         <rules
+               ruleId="DWF_DC_25">
+         </rules>
+     </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DFW_DC_08_Resolver"
+            desc="%quickFix.DWF_DC_08_Resolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.DWF_DC_08_Resolver.label">
+         <rules
+               ruleId="DWF_DC_08">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DFW_I_11_Delete_Resolver"
+            desc="%quickFix.DWF_I_11_Delete_Resolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.DWF_I_11_Delete_Resolver.label">
+         <rules
+               ruleId="DWF_I_11">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DFW_I_11_Edit_Resolver"
+            desc="%quickFix.DWF_I_11_Edit_Resolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.DWF_I_11_Edit_Resolver.label">
+         <rules
+               ruleId="DWF_I_11">
+         </rules>
+         <rules
+               ruleId="DWF_I_12">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DCOM_17_Resolver"
+            desc="%quickFix.DCOM_17_Resolver.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.DCOM_17_Resolver.label">
+         <rules
+               ruleId="DCOM_17">
+         </rules>
+      </resolver>
+     <resolver
+           class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DCOV_11_Resolver"
+           desc="%quickFix.DCOV_11.desc"
+           icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+           label="%quickFix.DCOV_11.label">
+         <rules
+               ruleId="DCOV_11">
+         </rules>
+         <rules
+               ruleId="DWF_DF_09">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DWF_DC_19_Resolver"
+            desc="%quickFix.DWF_DC_19.desc"
+            label="%quickFix.DWF_DC_19.label">
+         <rules
+               ruleId="DWF_DC_19">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.EditContainterPCOfPhysicalPort"
+            desc="%quickFix.DWF_DF_09.desc"
+            label="%quickFix.DWF_DF_09.label">
+         <rules
+               ruleId="DWF_DF_09">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.resolver.DWF_DC_26_Resolver"
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_delete.gif"
+            label="Delete all ports">
+         <rules
+               ruleId="DWF_DC_26">
+         </rules>
+      </resolver>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.data.cs.ui.quickfix.generator.ComponentFunctionAllocationResoultions"
+            markerType="org.polarsys.capella.core.validation.markers">
+         <attribute
+               name="ruleId"
+               value="org.polarsys.capella.core.data.cs.validation.DWF_DC_09">
+         </attribute>
+      </markerResolutionGenerator>
+   </extension>
+
+</plugin>

@@ -1,0 +1,93 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.re.ui.renderers;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.viewers.ICellModifier;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.widgets.TreeItem;
+
+import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
+import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
+import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementLink;
+import org.polarsys.capella.common.re.constants.IReConstants;
+import org.polarsys.capella.common.re.handlers.attributes.AttributesHandlerHelper;
+import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
+
+/**
+ *
+ */
+public class NameCellModifier implements ICellModifier {
+  private Viewer viewer;
+  IRendererContext context;
+
+  public NameCellModifier(Viewer viewer, IRendererContext context_p) {
+    this.viewer = viewer;
+    this.context = context_p;
+  }
+
+  public boolean canModify(Object element, String property) {
+    if (element instanceof CatalogElementLink) {
+      EObject target = ((CatalogElementLink) element).getTarget();
+      return (target != null) && canModify(target, property);
+    }
+    if (element instanceof EObject) {
+      EStructuralFeature feature = ((EObject) element).eClass().getEStructuralFeature(property);
+      return feature != null;
+    }
+    return false;
+  }
+
+  public Object getValue(Object element, String property) {
+    if ((element instanceof CatalogElementLink) || (element instanceof CatalogElement)) {
+      IPropertyContext pContext = context.getPropertyContext();
+      IContext iContext = (IContext) pContext.getSource();
+      return AttributesHandlerHelper.getInstance(iContext).getName((EObject) element, iContext, pContext);
+
+    } else if (element instanceof EObject) {
+      EStructuralFeature feature = ((EObject) element).eClass().getEStructuralFeature(property);
+      return ((EObject) element).eGet(feature);
+    }
+    return element;
+  }
+
+  public void modify(Object element, String property, Object value) {
+
+    if (element instanceof TreeItem) {
+      Object data = ((TreeItem) element).getData();
+      modify(data, property, value);
+      return;
+
+    } else if ((element instanceof CatalogElementLink) || (element instanceof CatalogElement)) {
+      IPropertyContext pContext = context.getPropertyContext();
+      IContext iContext = (IContext) pContext.getSource();
+
+      if ((value == null) || ((value instanceof String) && ((String) value).isEmpty())) {
+        AttributesHandlerHelper.getInstance(iContext).unsetName((EObject) element, (String) value, iContext, pContext);
+
+      } else {
+        AttributesHandlerHelper.getInstance(iContext).setName((EObject) element, (String) value, iContext, pContext);
+
+      }
+
+    } else if (element instanceof EObject) {
+      EObject object = (EObject) element;
+      EStructuralFeature feature = object.eClass().getEStructuralFeature(property);
+      object.eSet(feature, value);
+    }
+
+    IProperty suffix = context.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__SUFFIX);
+    context.getPropertyContext().setCurrentValue(suffix, context.getPropertyContext().getCurrentValue(suffix));
+  }
+}

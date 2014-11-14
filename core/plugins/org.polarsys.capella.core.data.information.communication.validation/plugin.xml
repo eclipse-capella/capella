@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/information/communication/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/interfaces">
+            <constraint
+                  class="org.polarsys.capella.core.data.information.communication.CommunicationLinkkindRule"
+                  id="DWF_I_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_09 - CommunicationLink kind and ExchangeItem kind"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}(CommunicationLink) of kind [{2}] should only have {1}(ExchangeItem) of kind [{3}]
+               </message>
+               <description>
+                  This rule checks that a CommunicationLink kind is only used with  a specific CommunicatinLink protocol.
+               </description>
+               <target
+                     class="CommunicationLink">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocolRule"
+                  id="DWF_I_10"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_10 - CommunicationLink protocol and  ExchangeItem kind"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}(CommunicationLink) of kind [{1}] should only have protocol of kind [{2}].
+               </message>
+               <description>
+                  This rule checks that a CommunicationLink protocol are only used with a specific CommunicatinLink kind.
+               </description>
+               <target
+                     class="CommunicationLink">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/consistency/interfaces">
+              <constraint
+                    class="org.polarsys.capella.core.data.information.communication.CL01_CommunicationLink_KindProtocol"
+                    id="TC_I_04"
+                    isEnabledByDefault="true"
+                    lang="Java"
+                    mode="Batch"
+                    name="TC_I_04 - CommunicationLink kind and protocol realization check"
+                    severity="WARNING"
+                    statusCode="1">
+               <message>
+                  {0} (CommunicationLink) realizes a CommunicationLink from a previous level. It should have same protocol and kind than realized CommunicationLink.
+               </message>
+               <description>
+                  This rule checks that a CommunicationLink realizing a CommunicationLink has the same protocol and kind than the realized CommunicationLink.
+               </description>
+               <target
+                     class="CommunicationLink">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.communication.ME01G_CommunicationLink"
+                  id="TC_I_05"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_I_05 - CommunicationLink exchange item check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The {1} (ExchangeItem) is defined into {2} level and realized into the {3} level. {0} Component is linked to {1} ExchangeItem instead of be linked to realized ExchangeItem.
+               </message>
+               <description>
+                  This rule checks that a CommunicationLink isn&apos;t linked to an ExchangeItem from a previous level whereas it is realized in the same level than the CommunicationLink. CommunicationLink should be linked to the realized ExchangeItem.
+A warning can be raised if you have performed a transition of the Component before performing a transition of the linked ExchangeItem. 
+You should perform another transition of the Component from the lower level to use the realized ExchangeItem.
+               </description>
+               <target
+                     class="CommunicationLink">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

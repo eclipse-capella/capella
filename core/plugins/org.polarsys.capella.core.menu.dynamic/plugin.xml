@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+  <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider
+            class="org.polarsys.capella.core.menu.dynamic.DynamicActionProvider"
+            id="capella.project.explorer.actions.dynamic">
+         <enablement>
+                <and> 
+	               <instanceof
+	                     value="org.polarsys.kitalpha.emde.model.Element">
+	               </instanceof>
+	                
+		           <test forcePluginActivation="false"
+					    property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsPreferences"
+					    args="addCapellaElement"
+					    value="capella.project.explorer.actions.dynamic">
+				    </test>
+			   </and>
+               
+            </enablement>
+         
+      </actionProvider>
+   </extension>
+  <extension
+        point="org.polarsys.capella.core.preferences.capellaPreferences">
+     <category
+           class="Enter an description for the selected category"
+           code="ADD_CAPELLA_ELEMENT_Preference"
+           description="add an Capella Element to the model "
+           id="capella.project.explorer.actions.dynamic"
+           name="Other">
+        <item
+              description="this selected item allow a user to create a new capella element in the model"
+              id="capella.project.explorer.actions.dynamic"
+              name="ADD CAPELLA ELEMENT">
+        </item>
+     </category>
+  </extension>
+</plugin>

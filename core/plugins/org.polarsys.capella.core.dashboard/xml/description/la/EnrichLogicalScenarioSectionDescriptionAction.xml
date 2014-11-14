@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+   
+  Contributors:
+     Thales - initial API and implementation
+-->
+<form>
+    <p>Specify the dynamical behaviour of the logical components by completing the interaction sequences coming from the System Analysis. The enrichment of the interaction sequences and the identification of the logical interfaces are two very tight and iterative activities.</p>
+    <p>The scenario refinement process is iterative, each update on a source can be automatically propagated to the target.</p>
+</form>

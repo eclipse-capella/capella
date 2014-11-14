@@ -1,0 +1,125 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.menu.contributions.ctx;
+
+import java.util.Collection;
+import java.util.Collections;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CommandWrapper;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.command.CreateChildCommand;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+
+import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.ctx.Capability;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.ctx.System;
+import org.polarsys.capella.core.data.ctx.SystemAnalysis;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
+import org.polarsys.capella.core.data.fa.FaPackage;
+import org.polarsys.capella.core.data.la.LaPackage;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.core.data.pa.PaPackage;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
+
+public class CapabilityItemContribution implements IMDEMenuItemContribution {
+
+  /**
+   * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#executionContribution()
+   */
+  public Command executionContribution(final EditingDomain editingDomain_p, ModelElement containerElement_p, final ModelElement createdElement_p,
+      EStructuralFeature feature_p) {
+    if (createdElement_p instanceof Capability) {
+      final Capability capability = (Capability) createdElement_p;
+      // Links the capability to the System
+      SystemEngineering sysEng = (SystemEngineering) EcoreUtil2.getFirstContainer(containerElement_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+      if (sysEng != null) {
+        SystemAnalysis ca = SystemEngineeringExt.getOwnedSystemAnalysis(sysEng);
+        if (ca != null) {
+          final System sys = ca.getOwnedSystem();
+          if (sys != null) {
+            CompoundCommand cmd = new CompoundCommand();
+
+            // Creates the capability supplier link.
+            final Command createLinkCmd =
+                CreateChildCommand.create(editingDomain_p, createdElement_p, new CommandParameter(createdElement_p,
+                    CtxPackage.Literals.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, CtxFactory.eINSTANCE.createSystemCapabilityInvolvement()),
+                    Collections.EMPTY_LIST);
+            cmd.append(createLinkCmd);
+
+            // Sets the linked system.
+            Command setLinkedSystemCmd = new CommandWrapper() {
+              @Override
+              public Command createCommand() {
+                Collection<?> res = createLinkCmd.getResult();
+                if (res.size() == 1) {
+                  Object createdObj = res.iterator().next();
+                  if (createdObj instanceof EObject) {
+                    return new SetCommand(editingDomain_p, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVED, sys);
+                  }
+                }
+                return null;
+              }
+            };
+            cmd.append(setLinkedSystemCmd);
+
+            // Sets the linked capability.
+            Command setLinkedCapabilityCmd = new CommandWrapper() {
+              @Override
+              public Command createCommand() {
+                Collection<?> res = createLinkCmd.getResult();
+                if (res.size() == 1) {
+                  Object createdObj = res.iterator().next();
+                  if (createdObj instanceof EObject) {
+                    return new SetCommand(editingDomain_p, (EObject) createdObj, CapellacorePackage.Literals.INVOLVEMENT__INVOLVER, capability);
+                  }
+                }
+                return null;
+              }
+            };
+            cmd.append(setLinkedCapabilityCmd);
+
+            return cmd;
+          }
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#getMetaclass()
+   */
+  public EClass getMetaclass() {
+    return CtxPackage.Literals.CAPABILITY;
+  }
+
+  /**
+   * @see org.polarsys.capella.common.ui.menu.IMDEMenuItemContribution#selectionContribution()
+   */
+  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+    return (!EcoreUtil2.isContainedBy(modelElement_p, LaPackage.Literals.LOGICAL_ARCHITECTURE)
+            && !EcoreUtil2.isContainedBy(modelElement_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE)
+            && !EcoreUtil2.isContainedBy(modelElement_p, EpbsPackage.Literals.EPBS_ARCHITECTURE) && !EcoreUtil2.isContainedBy(modelElement_p,
+        FaPackage.Literals.FUNCTION_PKG));
+  }
+}

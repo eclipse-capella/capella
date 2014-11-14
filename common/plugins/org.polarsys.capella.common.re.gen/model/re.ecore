@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="re" nsURI="http://www.polarsys.org/capella/common/re/1.0.0"
+    nsPrefix="re">
+  <eClassifiers xsi:type="ecore:EClass" name="ReAbstractElement" abstract="true" eSuperTypes="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReNamedElement" abstract="true" eSuperTypes="#//ReAbstractElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReDescriptionElement" abstract="true"
+      eSuperTypes="#//ReNamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReElementContainer" abstract="true"
+      interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElements" upperBound="-1"
+        eType="#//CatalogElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RecCatalog" eSuperTypes="#//CatalogElementPkg platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
+      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/0.8.0#//SystemEngineering "/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
+      <details key="Mapping" value="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//SystemEngineering "/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCompliancyDefinitionPkg"
+        eType="#//CompliancyDefinitionPkg" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CatalogElementPkg" eSuperTypes="#//ReNamedElement #//ReElementContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedElementPkgs" upperBound="-1"
+        eType="#//CatalogElementPkg" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CatalogElementLink" eSuperTypes="#//ReAbstractElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//CatalogElement"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="origin" eType="#//CatalogElementLink"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unsynchronizedFeatures"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CatalogElement" eSuperTypes="#//ReDescriptionElement #//ReElementContainer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="#//CatalogElementKind"
+        defaultValueLiteral="REC"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="author" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tags" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="origin" eType="#//CatalogElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentCompliancy" eType="#//CompliancyDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultReplicaCompliancy"
+        eType="#//CompliancyDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLinks" upperBound="-1"
+        eType="#//CatalogElementLink" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CatalogElementKind">
+    <eLiterals name="REC" literal="REC"/>
+    <eLiterals name="RPL" value="1" literal="RPL"/>
+    <eLiterals name="REC_RPL" value="2" literal="REC_RPL"/>
+    <eLiterals name="GATHERING" value="3" literal="GATHERING"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompliancyDefinitionPkg" eSuperTypes="#//ReNamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDefinitions" upperBound="-1"
+        eType="#//CompliancyDefinition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompliancyDefinition" eSuperTypes="#//ReDescriptionElement"/>
+</ecore:EPackage>

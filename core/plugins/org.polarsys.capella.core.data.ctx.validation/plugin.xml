@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+<extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/ctx/0.8.0">
+         </package>
+      <constraints
+            categories="capella.category/design/well-formedness/capabilities">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Location_1"
+               id="DWF_CA_01"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DWF_CA_01 - Capability location"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               {0} (Capability) can only be located in System Context.
+            </message>
+            <description>
+               This rule checks that an Capability can only be located in System Context.
+            </description>
+            <target
+                  class="Capability">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Extension_1"
+               id="DWF_CA_02"
+               isEnabledByDefault="true"
+               lang="java"
+               mode="Batch"
+               name="DWF_CA_02 - Capability self extension"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               {0} (Capability) extends itself.
+            </message>
+            <description>
+               This rule ensures that a capability cannot extend itself.
+            </description>
+            <target
+                  class="Capability">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Generalization_1"
+               id="DWF_CA_03"
+               isEnabledByDefault="true"
+               lang="java"
+               mode="Batch"
+               name="DWF_CA_03 - Capability self generalization"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               {0} (Capability) generalizes itself.
+            </message>
+            <target
+                  class="Capability">
+            </target>
+            <description>
+               This rule ensures that a capability cannot generalize itself.
+            </description>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Inclusion_1"
+               id="DWF_CA_04"
+               isEnabledByDefault="true"
+               lang="java"
+               mode="Batch"
+               name="DWF_CA_04 - Capability self inclusion"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               {0} (Capability) includes itself.
+            </message>
+            <target
+                  class="Capability">
+            </target>
+            <description>
+               This rule ensures that a capability does not include itself.
+            </description>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_Actor_Generalization"
+               id="DWF_CA_05"
+               isEnabledByDefault="true"
+               lang="java"
+               mode="Batch"
+               name="DWF_CA_05 - Actor self generalization"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               {0} (Actor) generalizes itself.
+            </message>
+            <target
+                  class="Actor">
+            </target>
+            <description>
+               This rule ensures that an actor cannot generalize itself.
+            </description>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_ActorInvolvedMissionsAndCapabilityConforms"
+               id="DWF_CA_06"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DWF_CA_06 - Actor involvement in capabilities related to a mission in which it is involved check"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Actor) is declared to be involved in {1} (Mission) but it is not involved in any of the exploited capabilities of {1} .
+            </message>
+            <description>
+               This rule checks that the current Actor is involved with the Mission, and then involved in any of its Capabilities.
+            </description>
+            <target
+                  class="Actor">
+            </target>
+         </constraint>
+      </constraints>
+      <constraints
+            categories="capella.category/design/completeness">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_SystemDelegationConforms_2"
+               id="DCOM_14"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOM_14 - Implemented interface delegation"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (System) does not delegate its Implemented Interface {1}.
+            </message>
+            <description>
+               This rule checks that a System delegates its Implemented Interface.
+            </description>
+            <target
+                  class="System">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_SystemDelegationConforms_1"
+               id="DCOM_10"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOM_10 - Used interface delegation"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (System) does not delegate its Used Interface {1}.
+            </message>
+            <description>
+               This rule checks that a System delegates its used Interface
+            </description>
+            <target
+                  class="System">
+            </target>
+         </constraint>
+      </constraints>
+      <constraints
+            categories="capella.category/design/coverage">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Exploitation_1"
+               id="DCOV_02"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOV_02 - Capability exploitation check"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Capability) is not exploited by any Mission.
+            </message>
+            <description>
+               This rule checks that a Capability is exploited by at least one Mission.
+            </description>
+            <target
+                  class="Capability">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.mission.MDCHK_Mission_Exploitation_1"
+               id="DCOV_03"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOV_03 - Mission capability exploitation test"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               {0} (Mission) does not exploit any Capability.
+            </message>
+            <description>
+               This rule checks that a Mission exploit at least one Capability.
+            </description>
+            <target
+                  class="Mission">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.mission.MDCHK_Mission_Interactions_1"
+               id="DCOV_04"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOV_04 - Mission involves an actor check"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Mission) does not involve any Actor.
+            </message>
+            <description>
+               This rule checks that a Mission involves at least one actor.
+            </description>
+            <target
+                  class="Mission">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.mission.MDCHK_Mission_Inclusion_1"
+               id="DCOV_05"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOV_05 - Actor involvement in a mission check"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Actor) is not involved in {1} (Mission), although it is involved in {2}
+            </message>
+            <description>
+               This rule checks that an Actor is involved in at least one Mission.
+            </description>
+            <target
+                  class="Mission">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_Actor_Participations_1"
+               id="DCOV_06"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOV_06 - Actor participation in capabilities minimal number"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Actor) is not involved in any Capability.
+            </message>
+            <description>
+               This rule checks that the minimum number of participation from an Actor towards a Capability is one.
+            </description>
+            <target
+                  class="Actor">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Interactions_1"
+               id="DCOV_07"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOV_07 - Capability interation with actors check"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Capability) does not involve any Actor.
+            </message>
+            <description>
+               This rule checks that a Capability is involved by at least one Actor.
+            </description>
+            <target
+                  class="Capability">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.actor.MDCHK_ActorInvolvedCapabilityConforms"
+               id="DCOV_08"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="DCOV_08 - Actor involvement in at least one scenario related to the capabilities it participates"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Actor) is declared to be involved in {1} (Capability Realization) but it does not appear in any of its Scenario(s).
+            </message>
+            <description>
+               This rule checks that the current Actor involved with capabilities appears in at least one scenario related to the capabilities it participates.
+            </description>
+            <target
+                  class="Actor">
+            </target>
+         </constraint>
+      </constraints>
+      <constraints
+            categories="capella.category/transition/justification/logical_architecture">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.capability.MDCHK_Capability_Refinement_1"
+               id="TJ_LA_02"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="TJ_LA_02 - Capability refinement check"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (Capability) should be refined towards the Logical Architecture.
+            </message>
+            <description>
+               This rule checks that a Capability is refined toward a CapabilityRealization in LogicalArchitecture layer.
+            </description>
+            <target
+                  class="Capability">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.systemFunction.MDCHK_SystemFunction_Realization_1"
+               id="TJ_LA_03"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="TJ_LA_03 - System Function Realization"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0} (System Function) is not realized by any Logical Function.
+            </message>
+            <description>
+               This rule checks that a System Function is realized by at least one Logical Function.
+            </description>
+            <target
+                  class="SystemFunction">
+            </target>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.system.MDCHK_System_Realization"
+               id="TJ_LA_04"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="TJ_LA_04 - System Realization"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               Realization consistency error for {0}.
+            </message>
+            <target
+                  class="System">
+            </target>
+            <description>
+               This rule checks the realization consistency between Logical Component and System.
+            </description>
+         </constraint>
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.ca.MDCHK_CA_CARealization"
+               id="TJ_LA_05"
+               lang="Java"
+               mode="Batch"
+               name="TJ_LA_05 - System Analysis Realization"
+               severity="ERROR"
+               statusCode="1">
+            <message>
+               Realization consistency error for {0}.
+            </message>
+            <target
+                  class="SystemAnalysis">
+            </target>
+            <description>
+               This rule checks the realization consistency between Logical Architecture and System Analysis.
+            </description>
+         </constraint>
+      </constraints>
+      <constraints
+            categories="capella.category/integrity">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.actor.SystemActorRealizationConsistency"
+               id="I_04"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="I_04 - System Actor Realizationtion"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0}
+            </message>
+            <target
+                  class="Actor">
+            </target>
+            <description>
+               This rule Ensures that System Actor always realizes an Entity (that is aslo an Operational Actor).
+            </description>
+         </constraint>
+      </constraints>
+      <constraints
+            categories="capella.category/transition/justification/logical_architecture">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.actor.SystemActorRealizedByLogicalActor"
+               id="TJ_LA_06"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="TJ_LA_06 - System Actor Realized by Logical Actor"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0}
+            </message>
+            <description>
+               This rule ensures that an Actor is realized by at least one Logical Actor.
+            </description>
+            <target
+                  class="Actor">
+            </target>
+         </constraint>
+      </constraints>
+      <constraints
+            categories="capella.category/transition/justification/system_analysis">
+         <constraint
+               class="org.polarsys.capella.core.data.ctx.validation.actor.SystemActorEntityRealization"
+               id="TJ_SA_02"
+               isEnabledByDefault="true"
+               lang="Java"
+               mode="Batch"
+               name="TJ_SA_02 - System Actor to Entity Realization"
+               severity="WARNING"
+               statusCode="1">
+            <message>
+               {0}
+            </message>
+            <target
+                  class="Actor">
+            </target>
+            <description>
+               This rule ensures that an Actor Realizes at least one Entity.
+            </description>
+         </constraint>
+      </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

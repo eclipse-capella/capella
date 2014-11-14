@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+      <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/full/etool8/library_nature.png"
+            id="capella.library.nature.image"
+            natureId="org.polarsys.capella.library.nature">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.polarsys.capella.common.mdsofa.category.wizards"
+            class="org.polarsys.capella.core.libraries.ui.wizard.newLibrary.NewLibraryProjectWizard"
+            hasPages="true"
+            icon="icons/full/etool16/Library.gif"
+            id="capella.library.wizard"
+            name="Capella Library"
+            project="true">
+         <description>  
+            Create a Capella library
+         </description>
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+         <newWizardShortcut
+               id="capella.library.wizard">
+         </newWizardShortcut>
+         
+         
+      </perspectiveExtension>
+   </extension>   
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="all-categorized-capella"
+            type="new"
+            wizardId="capella.library.wizard">
+         <enablement>
+            <or>
+                <adapt type="org.eclipse.core.resources.IFile" /> 
+                <adapt type="org.eclipse.core.resources.IFolder" />
+                <adapt type="org.eclipse.core.resources.IProject" /> 
+                <adapt type="org.eclipse.core.resources.IWorkspaceRoot" />
+                <count
+                      value="0">
+                </count> 
+            </or>
+         </enablement>
+      </commonWizard>
+   </extension>   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               icon="icons/full/etool16/Library.gif"
+               id="org.polarsys.capella.core.libraries.menu"
+               label="Libraries">
+               
+            <command
+                  commandId="org.polarsys.capella.core.libraries.commands.manageReferences"
+                  icon="icons/full/etool16/library_command_manage.png"
+                  label="Manage references"
+                  style="push">
+               <visibleWhen checkEnabled="false">
+                  <iterate operator="and" ifEmpty="false">
+                      <adapt type="org.eclipse.core.resources.IResource">
+                        <test property="org.eclipse.core.resources.name" value="*.aird"/> 
+                      </adapt>
+                   </iterate>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.core.libraries.commands.manageVersion"
+                  label="Manage version"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="true">
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.core.libraries.commands.test"
+                  label="Unit test cases"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="true">
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.core.libraries.commands.debugInfos"
+                  label="Debug"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="true">
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+      <extension
+            point="org.polarsys.capella.common.flexibility.wizards">
+            
+         <propertyRenderer
+            id="org.polarsys.capella.core.libraries.ui.views.libraryManager.referencesManager.ReferencesRenderer"
+            class="org.polarsys.capella.core.libraries.ui.views.libraryManager.referencesManager.ReferencesRenderer">
+         </propertyRenderer>
+            
+         <propertyRenderer
+            id="org.polarsys.capella.core.libraries.ui.views.libraryManager.activeStateManager.ActiveStateRenderer"
+            class="org.polarsys.capella.core.libraries.ui.views.libraryManager.activeStateManager.ActiveStateRenderer">
+         </propertyRenderer>
+         
+         <propertyRenderer
+            id="org.polarsys.capella.core.libraries.ui.views.libraryManager.accessPolicyManager.AccessPolicyRenderer"
+            class="org.polarsys.capella.core.libraries.ui.views.libraryManager.accessPolicyManager.AccessPolicyRenderer">
+         </propertyRenderer>
+         
+         <bindings properties="org.polarsys.capella.core.libraries.manageReferences">
+         
+            <propertyBinding 
+                  property="org.polarsys.capella.core.libraries.manageReferences.referenceProperty"
+                  renderer="org.polarsys.capella.core.libraries.ui.views.libraryManager.referencesManager.ReferencesRenderer">
+            </propertyBinding>
+            
+            <propertyBinding 
+                  property="org.polarsys.capella.core.libraries.manageReferences.activeStateProperty"
+                  renderer="org.polarsys.capella.core.libraries.ui.views.libraryManager.activeStateManager.ActiveStateRenderer">
+            </propertyBinding>
+            
+            <propertyBinding 
+                  property="org.polarsys.capella.core.libraries.manageReferences.accessPolicyProperty"
+                  renderer="org.polarsys.capella.core.libraries.ui.views.libraryManager.accessPolicyManager.AccessPolicyRenderer">
+            </propertyBinding>
+            
+         </bindings>
+         
+      </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.core.libraries.ui.propertyTester.ActivationPropertyTester"
+            id="org.polarsys.capella.core.libraries.activation"
+            namespace="org.polarsys.capella.core.libraries"
+            properties="activation"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.polarsys.capella.core.libraries.ui.propertyTester.CapellaModelIsLocalPropertyTester"
+            id="org.polarsys.capella.core.libraries.ui.propertyTester.capellaModelIsLocalPropertyTester"
+            namespace="org.polarsys.capella.core.libraries.ui.propertyTester"
+            properties="capellaModelIsLocalPropertyTester"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers"> <!-- should be named org.eclipse.core.handlers -->   
+     <handler commandId="org.polarsys.capella.core.libraries.commands.manageReferences"
+            class="org.polarsys.capella.core.libraries.ui.handlers.ManageReferencedLibrariesHandler">
+         <activeWhen>
+             <and>
+                <test forcePluginActivation="true" property="org.polarsys.capella.core.libraries.activation" value="true" />
+                <reference definitionId="org.polarsys.capella.core.isInCapellaContext" />
+            </and>
+         </activeWhen>
+         <enabledWhen>
+            <with variable="selection">
+                <test property="org.polarsys.capella.core.libraries.ui.propertyTester.capellaModelIsLocalPropertyTester"/>
+            </with>         
+         </enabledWhen>
+     </handler>   
+   </extension>
+
+</plugin>

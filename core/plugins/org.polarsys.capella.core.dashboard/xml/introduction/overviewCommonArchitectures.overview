@@ -1,0 +1,9 @@
+    <p>
+        <a href="org.polarsys.capella.core.dashboard.editor.pages.SystemAnalysisDashboardPage"><img href="org.polarsys.capella.core.dashboard.editor.pages.SystemAnalysisDashboardPage" /></a><img href="sa_text" />
+    </p>
+    <p>
+        <a href="org.polarsys.capella.core.dashboard.editor.pages.LogicalArchitectureDashboardPage"><img href="org.polarsys.capella.core.dashboard.editor.pages.LogicalArchitectureDashboardPage" /></a><img href="la_text" />
+    </p>
+    <p>
+        <a href="org.polarsys.capella.core.dashboard.editor.pages.PhysicalArchitectureDashboardPage"><img href="org.polarsys.capella.core.dashboard.editor.pages.PhysicalArchitectureDashboardPage" /></a><img href="pa_text" />
+    </p>

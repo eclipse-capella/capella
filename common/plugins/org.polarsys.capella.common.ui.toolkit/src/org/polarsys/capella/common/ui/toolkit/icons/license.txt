@@ -1,0 +1,10 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/src/org/polarsys/capella/common/ui/toolkit/icons/add_element.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/monitorexpression_tsk.gif
+/src/org/polarsys/capella/common/ui/toolkit/icons/arrow_down.gif - org.eclipse.search - org.eclipse.search/icons/full/elcl16/search_next.gif
+/src/org/polarsys/capella/common/ui/toolkit/icons/arrow_up.gif - org.eclipse.search - org.eclipse.search/icons/full/elcl16/search_prev.gif
+/src/org/polarsys/capella/common/ui/toolkit/icons/delete_element.gif - org.eclipse.birt.chart.ui - org.eclipse.birt.chart.ui/icons/obj16/delete_edit.gif

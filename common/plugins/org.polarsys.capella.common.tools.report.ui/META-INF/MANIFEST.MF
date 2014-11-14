@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.common.tools.report.ui;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Require-Bundle: org.eclipse.ui,
+ org.polarsys.capella.common.tools.report;visibility:=reexport
+Eclipse-LazyStart: true
+Export-Package: org.polarsys.capella.common.tools.report.ui.pref
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Localization: plugin

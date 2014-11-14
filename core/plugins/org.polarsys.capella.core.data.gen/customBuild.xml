@@ -1,0 +1,189 @@
+<!-- ===================================================================== -->
+<!-- Custom targets called from a project's generated build.xml            -->
+<!-- Set customBuildCallbacks=<path/to/this/file> in your build.properties.-->
+<!-- ===================================================================== -->
+<project name="Build specific targets and properties" default="noDefault">
+
+	<!-- ===================================================================== -->
+	<!-- Default target                                                        -->
+	<!-- ===================================================================== -->
+	<target name="noDefault">
+		<echo message="This file must be called with explicit targets" />
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do before the target build.jars                              -->
+	<!-- Available parameters :                                                -->
+	<!--   build.result.folder - folder to contain the build results           -->
+	<!-- ===================================================================== -->
+	<target name="pre.build.jars">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do after the target build.jars                               -->
+	<!-- Available parameters :                                                -->
+	<!--   build.result.folder - folder to contain the build results           -->
+	<!-- ===================================================================== -->
+	<target name="post.build.jars">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do before the target build.sources                           -->
+	<!-- Available parameters :                                                -->
+	<!--   build.result.folder - folder to contain the build results           -->
+	<!-- ===================================================================== -->
+	<target name="pre.build.sources">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do after the target build.sources                            -->
+	<!-- Available parameters :                                                -->
+	<!--   build.result.folder - folder to contain the build results           -->
+	<!-- ===================================================================== -->
+	<target name="post.build.sources">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do before the compilation target <name>                      -->
+	<!-- Substitute "name" with the name of the compilation target, eg @dot    -->
+	<!-- Available parameters :                                                -->
+	<!--   source.foldern : n = 1 ... N, the source folders                    -->
+	<!--   target.folder  : where the results of the compilation go            -->
+	<!--   <name>.classpath : name = name of the compilation target. A         -->
+	<!--                      reference to the classpath structure.            -->
+	<!-- ===================================================================== -->
+	<target name="pre.name">
+	</target>
+
+	<target name="pre.@dot">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do during the compilation target <name>, after the compile   -->
+	<!-- but before jaring.  Substitute "name" with the name of the compilation-->
+	<!-- target, eg @dot                                                       -->
+	<!-- Available parameters :                                                -->
+	<!--   source.foldern : n = 1 ... N, the source folders                    -->
+	<!--   target.folder  : where the results of the compilation go            -->
+	<!--   <name>.classpath : name = name of the compilation target. A         -->
+	<!--                      reference to the classpath structure.            -->
+	<!-- ===================================================================== -->
+	<target name="post.compile.name">
+	</target>
+
+	<target name="post.compile.@dot">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do after the compilation target <name>                       -->
+	<!-- Substitute "name" with the name of the compilation target, eg @dot    -->
+	<!-- Available parameters :                                                -->
+	<!--   jar.location - the location of the compilation results              -->
+	<!--   <name>.classpath : name = name of the compilation target. A         -->
+	<!--                      reference to the classpath structure.            -->
+	<!-- ===================================================================== -->
+	<target name="post.name">
+	</target>
+
+	<target name="post.@dot">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do before the target gather.bin.parts                         -->
+	<!-- Available parameters :                                                -->
+	<!--   build.result.folder - folder containing the build results           -->
+	<!--   target.folder - destination folder                                  -->
+	<!-- ===================================================================== -->
+	<target name="pre.gather.bin.parts">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do after the target gather.bin.parts                         -->
+	<!-- Available parameters :                                                -->
+	<!--   build.result.folder - folder containing the build results           -->
+	<!--   target.folder - destination folder                                  -->
+	<!-- ===================================================================== -->
+	<target name="post.gather.bin.parts">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do before the target gather.sources                          -->
+	<!-- Available parameters :                                                -->
+	<!--   destination.temp.folder - destination folder                        -->
+	<!-- ===================================================================== -->
+	<target name="pre.gather.sources">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do after the target gather.sources                           -->
+	<!-- Available parameters :                                                -->
+	<!--   destination.temp.folder - destination folder                        -->
+	<!-- ===================================================================== -->
+	<target name="post.gather.sources">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do before the target gather.logs                             -->
+	<!-- Available parameters :                                                -->
+	<!--   destination.temp.folder - destination folder                        -->
+	<!-- ===================================================================== -->
+	<target name="pre.gather.logs">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do after the target gather.logs                              -->
+	<!-- Available parameters :                                                -->
+	<!--   destination.temp.folder - destination folder                        -->
+	<!-- ===================================================================== -->
+	<target name="post.gather.logs">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do before the target clean                                   -->
+	<!-- Available parameters :                                                -->
+	<!--   destination.temp.folder - destination folder                        -->
+	<!-- ===================================================================== -->
+	<target name="pre.clean">
+	</target>
+
+	<!-- ===================================================================== -->
+	<!-- Steps to do after the target clean                                    -->
+	<!-- Available parameters :                                                -->
+	<!--   plugin.destination - final destination of the build                 -->
+	<!--   build.result.folder - results of the compilation                    -->
+	<!--   temp.folder - temporary folder                                      -->
+	<!-- ===================================================================== -->
+	<target name="post.clean">
+		<!-- Generate Capella sources here to make sure all generated code will be included in source plugins -->
+		<!-- Add all plug-ins that host code generation -->
+		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../org.polarsys.capella.common.data.core.gen#${basedir}/../org.polarsys.capella.common.data.core.gen.edit#${basedir}/../org.polarsys.capella.common.data.behavior.gen#${basedir}/../org.polarsys.capella.common.data.behavior.gen.edit#${basedir}/../org.polarsys.capella.common.data.activity.gen#${basedir}/../org.polarsys.capella.common.data.activity.gen.edit#${basedir}/../org.polarsys.capella.core.data.gen#${basedir}/../org.polarsys.capella.core.data.gen.edit#${basedir}/../org.polarsys.capella.core.data.gen.editor" />
+		<!-- Add Model definitions -->
+		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../org.polarsys.capella.core.data.common.def#${basedir}/../org.polarsys.capella.core.data.core.def#${basedir}/../org.polarsys.capella.core.data.cs.def#${basedir}/../org.polarsys.capella.core.data.ctx.def#${basedir}/../org.polarsys.capella.core.data.epbs.def#${basedir}/../org.polarsys.capella.core.data.fa.def#${basedir}/../org.polarsys.capella.core.data.information.def#${basedir}/../org.polarsys.capella.core.data.interaction.def" />
+		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../org.polarsys.capella.core.data.la.def#${basedir}/../org.polarsys.capella.core.data.modeller.def#${basedir}/../org.polarsys.capella.core.data.oa.def#${basedir}/../org.polarsys.capella.core.data.pa.def#${basedir}/../org.polarsys.capella.core.data.requirement.def#${basedir}/../org.polarsys.capella.core.data.sharedmodel.def#${basedir}/../org.polarsys.capella.common.data.activity.def" />
+		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../org.polarsys.capella.common.data.behavior.def#${basedir}/../org.polarsys.capella.common.data.core.def" />
+		<!-- Add Plug-in that hosts generated creation tool icons -->
+		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../org.polarsys.capella.core.data.res.edit" />
+		<!-- Add Features that contain the generated plug-ins -->
+		<eclipse.addProjectIntoWorkspace projectPaths="${basedir}/../../features/org.polarsys.capella.core.data.merged" />
+
+		<!-- Call SolFa to generate Capella code -->
+		<solfa.FactoryComponentRunnerInWorkbenchWindow factoryComponentId="asset.1231837376033.174" />
+
+		<!-- Call SolFa to generate Creation tool icons -->
+		<solfa.FactoryComponentRunnerInWorkbenchWindow factoryComponentId="asset.1248704468359.87" />
+
+		<!-- Delete bin folders -->
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${basedir}/../org.polarsys.capella.common.data.core.gen/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.common.data.core.gen.edit/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.common.data.behavior.gen/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.common.data.behavior.gen.edit/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.common.data.activity.gen/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.common.data.activity.gen.edit/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.core.data.gen/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.core.data.gen.edit/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.core.data.gen.editor/bin" includes="**/*" />
+			<fileset dir="${basedir}/../org.polarsys.capella.core.data.res.edit/bin" includes="**/*" />
+		</delete>
+	</target>
+</project>

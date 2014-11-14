@@ -1,0 +1,80 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.Trace;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+
+/**
+ * <code>SourceElementContentProvider</code> provides the source elements trace for
+ * a NamedElement.
+ * 
+ */
+public class TargetElementContentProvider extends SourceElementContentProvider {
+
+  /**
+   * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
+   */
+  @Override
+  public Object[] getChildren(Object parentElement_p) {
+    
+    //It's a class we get all instances of trace of this type
+    if(parentElement_p instanceof Class){
+      // Retrieve all source traces from current element 
+      List<AbstractTrace> targetTraceList = _currentElement.getOutgoingTraces();
+      List<AbstractTrace> result=new ArrayList<AbstractTrace>();
+      for (AbstractTrace trace : targetTraceList) {
+        if(trace.getClass().equals(parentElement_p)){
+          result.add(trace);
+        }
+      }
+      return result.toArray();
+    }
+    //It's a instance of trace we get all related NamedElement
+    else if(parentElement_p instanceof Trace){
+      TraceableElement result=((AbstractTrace) parentElement_p).getTargetElement();
+      if (result!=null){
+        //To have the parent link
+          _parentLinkMap.put(result, (Trace)parentElement_p);
+        return Collections.singletonList(result).toArray();
+      }
+    }
+    
+    return null;
+  }
+
+  /**
+   * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
+   */
+  @Override
+  public Object[] getElements(Object inputElement_p) {
+    
+    if(inputElement_p instanceof CapellaElement){
+      _currentElement=(CapellaElement) inputElement_p;
+      // Retrieve all source traces from current element 
+      List<AbstractTrace> targetTraceList = ((CapellaElement) inputElement_p).getOutgoingTraces();
+      _traceType=new ArrayList<Class<? extends AbstractTrace>>();
+      // Build the list of type trace
+      for (AbstractTrace currentTrace : targetTraceList) {
+        if(!_traceType.contains(currentTrace.getClass()))
+          _traceType.add(currentTrace.getClass());
+      }
+      return _traceType.toArray();
+    }
+    return null;
+  }
+}

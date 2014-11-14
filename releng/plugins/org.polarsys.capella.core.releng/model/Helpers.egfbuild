@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ASCII"?>
+<buildcore:StepContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_jLXOkE21EeGhsO9pPJ3cDA" name="Helpers">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_hLxsgGEpEeGOvKnARBvzFg" name="ArchiveArtifact">
+    <steps xsi:type="buildfile:ZipStep" xmi:id="_TdR2UV1yEeGnJaeCI-TkHw" name="ArchiveArtifact" description="" baseDir="${product}" destinationFilePath="${publish}/${archiveName}-${buildVersion}${archiveSuffix}.zip"/>
+  </steps>
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_NGDOgF1yEeGnJaeCI-TkHw" name="PrepareCleanTP">
+    <steps xsi:type="buildfile:DeleteStep" xmi:id="_RKR90E2sEeGhsO9pPJ3cDA" name="Delete product">
+      <additionalParameters xmi:id="_QGpZYFcqEeGBLcoFwPOnVA" key="dir" value="${product}"/>
+    </steps>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_3T7uYJPLEeOsBuJqo0_MQw" name="Install Eclipse SDK" description="" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+      <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
+      <featureNames>org.eclipse.sdk</featureNames>
+      <productNames>org.eclipse.platform.ide</productNames>
+    </steps>
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_M-34IKBpEeKMQb8Rddw1Vg" name="Install Eclipse Basics" description="" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+      <!--updateSiteUrls>${site_Acceleo_2.8}</updateSiteUrls-->
+      <!--updateSiteUrls>${site_EMFCompare}</updateSiteUrls-->
+      <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
+      <updateSiteUrls>${secondary_eclipseUpdateSite}</updateSiteUrls>
+      <featureNames>org.eclipse.emf.sdk</featureNames>
+      <featureNames>org.eclipse.emf.query.sdk</featureNames>
+      <featureNames>org.eclipse.emf.transaction.sdk</featureNames>
+      <featureNames>org.eclipse.emf.validation.sdk</featureNames>
+      <featureNames>org.eclipse.gef.sdk</featureNames>
+      <featureNames>org.eclipse.gmf.runtime.sdk</featureNames>
+      <!--featureNames>org.eclipse.uml2.sdk</featureNames-->
+      <!--featureNames>org.eclipse.ocl.all.sdk</featureNames-->
+      <!--featureNames>fr.obeo.acceleo</featureNames-->
+      <!--featureNames>fr.obeo.acceleo.ui</featureNames-->
+    </steps>
+    <steps xsi:type="buildcore:ReuseStep" xmi:id="_ZCQuQKEpEeKMQb8Rddw1Vg" name="FinalizeTP" reusedStep="_xh-N4KG3EeKjzsUfibKjCg"/>
+  </steps>
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_xh-N4KG3EeKjzsUfibKjCg" name="FinalizeTP">
+    <properties xmi:id="_P5DYAl4qEeGjYKPu-vkVIA" key="resourcesDir" value="${relengDir}/../../../resources/${eclipseCodeName}" type="INLINED"/>
+    <steps xsi:type="buildcore:StepContainer" xmi:id="__Fm_AKEoEeKMQb8Rddw1Vg" name="UpdateEclipseINI">
+      <steps xsi:type="buildfile:DeleteStep" xmi:id="_R8q_4E2zEeGhsO9pPJ3cDA" name="Remove eclipse.exe and eclipse.ini">
+        <filePaths>${product}/capella/eclipse/eclipse.exe</filePaths>
+        <filePaths>${product}/capella/eclipse/eclipse.ini</filePaths>
+        <filePaths>${product}/capella/eclipse/eclipse_linux.ini</filePaths>
+      </steps>
+      <steps xsi:type="buildfile:CopyStep" xmi:id="_j81ZsE2zEeGhsO9pPJ3cDA" name="Copy capella.exe and capella.ini" destinationFolderPath="${product}/capella/eclipse">
+        <filePaths>${resourcesDir}/${os}-${arch}/eclipse.exe</filePaths>
+        <filePaths>${resourcesDir}/${os}-${arch}/eclipse.ini</filePaths>
+      </steps>
+    </steps>
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_8DmKEKEpEeKMQb8Rddw1Vg" name="UpdateConfigINI">
+      <steps xsi:type="buildfile:DeleteStep" xmi:id="_8DmKEaEpEeKMQb8Rddw1Vg" name="Remove config.ini">
+        <filePaths>${product}/capella/eclipse/configuration/config.ini</filePaths>
+      </steps>
+      <steps xsi:type="buildfile:CopyStep" xmi:id="_8DmKE6EpEeKMQb8Rddw1Vg" name="Copy config.ini" destinationFolderPath="${product}/capella/eclipse/configuration">
+        <filePaths>${resourcesDir}/${os}-${arch}/config.ini</filePaths>
+      </steps>
+    </steps>
+  </steps>
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_NB1YMNRAEeK9L_VQW76S8A" name="InitializeEnv">
+    <steps xsi:type="buildstep:CleanStep" xmi:id="_34NbYJMKEeKKWIqJCUuOog" name="Clean Result" type="Result"/>
+    <steps xsi:type="buildfile:DeleteStep" xmi:id="_34NbYZMKEeKKWIqJCUuOog" name="delete TP" description="">
+      <additionalParameters xmi:id="_34NbYpMKEeKKWIqJCUuOog" key="dir" value="${usedTP}"/>
+    </steps>
+    <steps xsi:type="buildstep:AntStep" xmi:id="_34NbY5MKEeKKWIqJCUuOog" name="Unzip TP" targetName="unzipTP" xml="&lt;target name=&quot;unzipTP&quot;>&#xD;&#xA;&#x9;&lt;unzip dest=&quot;${usedTP}&quot; >&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${fileLocation}&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;${filePattern}&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/unzip>&#xD;&#xA;&lt;/target>"/>
+  </steps>
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_ZHUroJMLEeKKWIqJCUuOog" name="TestSuites">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJtJMLEeKKWIqJCUuOog" name="Import Test Plugins" noBuildersInvocation="true">
+      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_fdrJtZMLEeKKWIqJCUuOog" path="${capellaGitRepo}/releng/plugins"/>
+      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_fdrJtpMLEeKKWIqJCUuOog" path="${capellaGitRepo}/test/plugins"/>
+      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_fdrJt5MLEeKKWIqJCUuOog" path="${capellaGitRepo}/test/features"/>
+      <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJuZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_fdrJupMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.bq.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_fdrJu5MLEeKKWIqJCUuOog" id="org.polarsys.capella.test.diagram.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_fdrJvZMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.other.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_fdrJvpMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.table.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_fdrJv5MLEeKKWIqJCUuOog" id="org.polarsys.capella.test.transfo.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_fdrJwJMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.utils.feature"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_fdrJwZMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.feature"/>
+      <components xsi:type="buildstep:Plugin" xmi:id="_fdrJwpMLEeKKWIqJCUuOog" id="org.polarsys.capella.core.releng.junit"/>
+    </steps>
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJw5MLEeKKWIqJCUuOog" name="Reset TP" noBuildersInvocation="true">
+      <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJxJMLEeKKWIqJCUuOog" path="${tools}/egf"/>
+      <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJxZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
+    </steps>
+    <steps xsi:type="buildstep:EgfStep" xmi:id="_fdrJxpMLEeKKWIqJCUuOog" name="Generate Tests" enabled="false">
+      <egfActivities xmi:id="_fdrJx5MLEeKKWIqJCUuOog" uri="platform:/plugin/org.polarsys.capella.core.egf/egf/capella.fcore#_3DU-UG9xEeGKseYOgPRMNw"/>
+    </steps>
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJyJMLEeKKWIqJCUuOog" name="Build Test Plugins">
+      <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJyZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
+    </steps>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJy5MLEeKKWIqJCUuOog" name="BQTestSuite" launchConfigurationPath="${launch_configs}/BQTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_WhISYJh7EeOGSJ9psnDt6w" name="DiagramOnFullModelTestSuite" launchConfigurationPath="${launch_configs}/DiagramOnFullModelTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJzJMLEeKKWIqJCUuOog" name="DiagramOnBlankModelTestSuite" launchConfigurationPath="${launch_configs}/DiagramOnBlankModelTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJzpMLEeKKWIqJCUuOog" name="OtherTestSuite" launchConfigurationPath="${launch_configs}/OtherTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJz5MLEeKKWIqJCUuOog" name="TransfoTestSuite" launchConfigurationPath="${launch_configs}/TransfoTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJ0JMLEeKKWIqJCUuOog" name="TableTestSuite" launchConfigurationPath="${launch_configs}/TableTestSuite.launch"/>
+  </steps>
+</buildcore:StepContainer>

@@ -1,0 +1,1 @@
+    tests.add(new Test_<%=genClass.getEcoreClass().getName()%>(this));

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.data.core.validation;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.polarsys.capella.core.validation,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.common.helpers,
+ org.polarsys.capella.core.model.helpers
+Export-Package: org.polarsys.capella.core.data.core.validation.capellaelement,
+ org.polarsys.capella.core.data.capellamodeller.validation
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin

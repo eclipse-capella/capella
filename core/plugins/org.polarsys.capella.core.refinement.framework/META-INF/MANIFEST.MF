@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.refinement.framework;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Export-Package: org.polarsys.capella.core.refinement.scenarios.core,
+ org.polarsys.capella.core.refinement.scenarios.core.datastructures,
+ org.polarsys.capella.core.refinement.scenarios.core.exceptions,
+ org.polarsys.capella.core.refinement.scenarios.core.plugs
+Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
+ org.polarsys.capella.common.tools.report;visibility:=reexport,
+ org.polarsys.capella.core.projection.misc
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin

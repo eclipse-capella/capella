@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.polarsys.capella.views.category"
+            class="org.polarsys.capella.core.command.recorder.ui.view.CapellaRecorderView"
+            icon="icons/view16/capella_16x16_changerecorder.gif"
+            id="org.polarsys.capella.core.command.recorder.ui.recorder"
+            name="%view.name">
+         <description>
+            This view allow to record and display all user actions.
+         </description>
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.common.command.recorder.ui.preferences.RecorderPreferencePage"
+            id="org.polarsys.capella.core.command.recorder.ui.main"
+            name="%recorder.preference.page.main.name">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+   </extension>
+      
+      <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.common.command.recorder.ui.preferences.RecorderPreferencePage"
+            id="org.polarsys.capella.core.command.recorder.ui.main"
+            name="%recorder.preference.page.main.name">
+      </page>
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.platform.sirius.ui.navigator.sessionListener">
+      <sessionListener
+            class="org.polarsys.capella.core.command.recorder.ui.handler.CapellaDummySessionListener">
+      </sessionListener>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+         <viewShortcut
+               id="org.polarsys.capella.core.command.recorder.ui.recorder">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
+   
+   
+   
+<!--
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.polarsys.capella.core.command.recorder.ui.actionSet"
+            label="label"
+            visible="true">
+         <action
+               class="org.polarsys.capella.core.command.recorder.ui.actions.RecorderAction"
+               enablesFor="*"
+               icon="icons/view16/tape16.gif"
+               id="org.polarsys.capella.core.command.recorder.ui.action1"
+               label="label"
+               state="false"
+               style="toggle"
+               toolbarPath="recorder">
+         </action>
+      </actionSet>
+   </extension>
+-->
+
+</plugin>

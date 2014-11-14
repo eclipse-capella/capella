@@ -1,0 +1,1886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+   <!--extension
+         point="org.eclipse.ui.popupMenus">
+      
+      <objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <menu
+               id="capella.core.transition.system.topdown.ui.mainMenu"
+               label="%topdown_label"
+               path="groupTransitions">
+            <separator name="additions">
+            </separator>
+         </menu>
+      </objectContribution>
+      
+      <objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.explorer"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <menu
+               id="capella.core.transition.system.topdown.ui.mainMenu"
+               label="%topdown_label"
+               path="groupTransitions">
+            <separator name="additions">
+            </separator>
+         </menu>
+      </objectContribution>
+      
+   </extension-->
+   
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferencePage"
+            id="org.polarsys.capella.core.projection.preferences.ProjectionPreferencePage"
+            name="Transitions/Generation">
+      </page>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferencePage"
+            id="org.polarsys.capella.core.projection.preferences.ProjectionPreferencePage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="Transitions/Generation">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.popupMenus">
+         
+      <!-- Interface -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionInterface">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.InterfaceTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Interface_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionInterface">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.InterfaceTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Interface_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!-- Functional -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionFunctional">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.FunctionalTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Functional_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionFunctional">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.FunctionalTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Functional_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!-- StateMachine -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionStateMachine">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.StateMachineTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_StateMachine_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionStateMachine">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.StateMachineTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_StateMachine_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      <!-- Data -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionData">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.DataTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Data_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionData">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.DataTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Data_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      <!-- PropertyValue -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionPropertyValue">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.PropertyValueTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_PropertyValue_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionPropertyValue">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.PropertyValueTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_PropertyValue_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      <!-- ExchangeItem -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionExchangeItem">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.ExchangeItemTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_ExchangeItem_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionExchangeItem">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.ExchangeItemTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_ExchangeItem_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      <!-- Actor -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionActor">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.ActorTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Actor_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionActor">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.ActorTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Actor_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!-- System -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionSystem">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.SystemTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_System_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionSystem">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.SystemTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_System_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      <!-- LC2PC -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionLC2PC">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.LC2PCTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_LC2PC_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionLC2PC">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.LC2PCTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_LC2PC_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!-- OE2Actor -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOE2Actor">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2ActorTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OE2Actor_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOE2Actor">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2ActorTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OE2Actor_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!-- OE2System -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOE2System">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2SystemTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OE2System_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOE2System">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2SystemTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OE2System_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!-- Capability -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionCapability">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.CapabilityTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Capability_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionCapability">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.CapabilityTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_Capability_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!-- OC2SM -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOC2SM">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OC2SMTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OC2SM_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOC2SM">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OC2SMTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OC2SM_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      
+      <!-- OA2SC -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOA2SC">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SCTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OA2SC_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOA2SC">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SCTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OA2SC_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      <!-- OA2SM -->
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOA2SM">
+            </test>
+         </enablement> 
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SMTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OA2SM_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.transition.system.topdown.ui.graphical.action"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.transition.system.topdown.transitionMode"
+                  value="transitionOA2SM">
+            </test>
+         </enablement>
+         
+         <action
+               class="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SMTransitionAction"
+               enablesFor="*"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.actions.LaunchTransitionAction"
+               label="%topdownTransition_OA2SM_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+   </extension>
+   
+   
+   
+   
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+      
+      <bindings properties="capella.core.transition.system.topdown">
+        
+        <propertyBinding
+                  property="interface.mode"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="projection.exchangeItems"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+      
+        <propertyBinding
+                  property="projection.dataType"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="projection.component.stateMachine"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="projection.functional"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="projection.lcpc.mode"
+                  renderer="optionRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="outputModel"
+                  renderer="none">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="log.enabled"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="projection.propertyValue.involvedElements"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        
+        
+        
+        <propertyBinding
+                  property="projection.propertyValue"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="projection.propertyValue.appliedPropertyValues"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="transition.system.scope.appliedPropertyValues"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="transition.system.scope.ownedPropertyValues"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+      
+      </bindings>
+      
+      
+      <bindings properties="capella.core.transition.generation">
+      
+      
+        <propertyBinding
+                  property="projection.useStandardPortInsteadFlowPort"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+        
+        <propertyBinding
+                  property="projection.interfaces.linkToComponentPort"
+                  renderer="checkboxRenderer">
+        </propertyBinding>
+      </bindings>
+      
+      
+      
+   </extension>
+   
+   
+
+    <extension
+         point="org.eclipse.ui.menus">
+         
+       <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=group.transition">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2" style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+            
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionInterface">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+        </visibleWhen>
+       </command>
+         
+      </menuContribution>
+      
+      <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionFunctional">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+      
+      <!--  Diagram State Machine -->
+      <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+           
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionStateMachine">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+           
+        </command> 
+      </menuContribution>
+      
+      <!-- Data -->
+      <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >  
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionData">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+      
+      
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionPropertyValue">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command>
+      </menuContribution>
+      
+       <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >  
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionExchangeItem">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionActor">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionSystem">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+           <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionLC2PC">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionOE2Actor">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionOE2System">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionCapability">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionOC2SM">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionOA2SC">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+       <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+                               value="transitionOA2SM">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+        </command>
+      </menuContribution>
+      
+      </extension>
+   
+     <extension point="org.eclipse.ui.menus">
+	  <menuContribution
+            locationURI="popup:capella.project.explorer#PopupMenu?after=group.transition">
+         <menu
+               id="capella.project.explorer.menu.transitions.preferences"
+               label="Transitions">
+               <visibleWhen
+                     checkEnabled="false">
+                     <reference
+                           definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression">
+                     </reference>
+               </visibleWhen>
+            
+         </menu>
+      </menuContribution>
+      </extension>
+      
+       <extension
+         point="org.eclipse.ui.menus">
+          <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram">
+            
+         <menu
+               id="capella.project.explorer.menu.transitions.diagram.preferences"  label="Transitions">
+            
+         </menu>
+                      
+      </menuContribution>
+      
+      
+      
+      
+      </extension>
+		
+		
+		<!--                     MODEL                             -->
+	<extension point="org.eclipse.ui.menus"> 
+      <!-- Interface -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >  
+		 <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionInterface">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+		</visibleWhen>
+
+		 </command> 
+      </menuContribution>
+      
+      
+     
+      
+      <!-- Functional -->
+      
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+		 <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionFunctional">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+       </command>
+      </menuContribution>
+      
+      
+      <!-- StateMachine -->
+      
+      
+      
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionStateMachine">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+         </command>
+      </menuContribution>
+      
+      
+      
+      
+      <!-- Data -->
+           
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionData">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		 </command>
+         
+      </menuContribution>
+      
+      
+      
+      
+      <!-- PropertyValue -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >  
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionPropertyValue">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+      
+      
+      
+      <!-- ExchangeItem -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionExchangeItem">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+     
+      
+      
+      
+      <!-- Actor -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionActor">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		 </command> 
+      </menuContribution>
+      
+      
+      
+      
+      
+      
+      <!-- System -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionSystem">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+      
+      
+      
+      
+      
+      <!-- LC2PC -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionLC2PC">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+      
+      
+      <!-- OE2Actor -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionOE2Actor">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+      
+      
+      
+      
+      <!-- OE2System -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionOE2System">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+	    </command> 
+      </menuContribution>
+      
+      
+      
+      
+      <!-- Capability -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionCapability">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+      
+      
+      
+      <!-- OC2SM -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionOC2SM">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+      
+      
+      
+      
+      
+      <!-- OA2SC -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" > 
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionOA2SC">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+      
+      
+      
+      
+      <!-- OA2SM -->
+      <menuContribution  allPopups="false"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+          <visibleWhen checkEnabled="false">
+      		<with variable="selection">
+		        <iterate>
+		            	<and>
+				        <reference definitionId="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression"/>
+			            	<test property="org.polarsys.capella.core.transition.system.topdown.transitionMode" forcePluginActivation="true"
+			                   value="transitionOA2SM">
+			             	</test>
+		            	</and>
+		      	</iterate>
+      		</with>
+         </visibleWhen> 
+		</command> 
+      </menuContribution>
+      
+      
+     
+   </extension>  
+   
+   
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.polarsys.capella.core.transitions.ui.category"
+            name="Transitions">
+      </category>
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.InterfaceTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2"
+               name="%topdownTransition_Interface_label"
+               >
+         </command>
+		 
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.FunctionalTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command3"
+               name="%topdownTransition_Functional_label"
+              >
+         </command-->
+
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.FunctionalTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4"
+               name="%topdownTransition_Functional_label"
+               >
+         </command>
+
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.StateMachineTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command5"
+               name="%topdownTransition_StateMachine_label"
+              >
+         </command-->
+
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.StateMachineTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6"
+               name="%topdownTransition_StateMachine_label"
+               >
+         </command>
+
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.DataTransitionAction"
+               
+               
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command7"
+               name="%topdownTransition_Data_label"
+              >
+         </command-->
+
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.DataTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8"
+               name="%topdownTransition_Data_label"
+               >
+         </command>
+		 
+		 
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.PropertyValueTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command9"
+               name="%topdownTransition_PropertyValue_label"
+              >
+         </command-->
+
+         <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.PropertyValueTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10"
+               name="%topdownTransition_PropertyValue_label"
+               >
+         </command>
+
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.ExchangeItemTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command11"
+               name="%topdownTransition_ExchangeItem_label"
+              >
+         </command-->
+
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.ExchangeItemTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12"
+               name="%topdownTransition_ExchangeItem_label"
+               >
+         </command>
+
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.ActorTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command13"
+               name="%topdownTransition_Actor_label"
+              >
+         </command-->
+		 
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.ActorTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14"
+               name="%topdownTransition_Actor_label"
+               >
+         </command>
+
+         <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.SystemTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command15"
+               name="%topdownTransition_System_label"
+              >
+         </command-->
+
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.SystemTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16"
+               name="%topdownTransition_System_label"
+               >
+         </command>
+		 
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.LC2PCTransitionAction"
+               
+               
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command17"
+               name="%topdownTransition_LC2PC_label"
+              >
+         </command-->
+		 
+		 <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.LC2PCTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18"
+               name="%topdownTransition_LC2PC_label"
+               >
+         </command>
+		         		          		          		          
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2ActorTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command19"
+               name="%topdownTransition_OE2Actor_label"
+              >
+         </command-->
+
+         <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2ActorTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20"
+               name="%topdownTransition_OE2Actor_label"
+               >
+         </command>
+
+         <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2SystemTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command21"
+               name="%topdownTransition_OE2System_label"
+              >
+         </command-->
+
+         <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OE2SystemTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22"
+               name="%topdownTransition_OE2System_label"
+               >
+         </command>
+
+         <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.CapabilityTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command23"
+               name="%topdownTransition_Capability_label"
+              >
+         </command-->
+
+         <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.CapabilityTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24"
+               name="%topdownTransition_Capability_label"
+               >
+         </command>
+
+         <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OC2SMTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command25"
+               name="%topdownTransition_OC2SM_label"
+              >
+         </command-->
+ 
+         <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OC2SMTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26"
+               name="%topdownTransition_OC2SM_label"
+               >
+         </command>
+
+		 <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SCTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command27"
+               name="%topdownTransition_OA2SC_label"
+              >
+         </command-->
+
+         <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SCTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28"
+               name="%topdownTransition_OA2SC_label"
+               >
+         </command>
+
+         <!--command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SMTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command29"
+               name="%topdownTransition_OA2SM_label"
+              >
+         </command-->
+     
+         <command
+               defaultHandler="org.polarsys.capella.core.transition.system.topdown.ui.actions.OA2SMTransitionAction"
+               id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30"
+               name="%topdownTransition_OA2SM_label"
+               >
+         </command>
+	  
+    </extension>
+  
+    <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityModelElementExpression">
+             <with variable="selection">
+                    <and>
+                       <iterate>
+                             <instanceof
+                                   value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                             </instanceof>
+                       </iterate>
+                        <count
+                     value="+">
+                  </count>
+                </and>
+             </with>
+      </definition>
+   </extension>
+   
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.transition.system.topdown.ui.expression.transitionVisibilityDiagramElementExpression">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate>
+                       <or>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+                        </instanceof>
+                       </or>
+                  </iterate>
+               </and>
+            </with>
+      </definition>
+   </extension>
+
+
+<extension point="org.eclipse.core.expressions.propertyTesters">
+         <propertyTester
+             id="org.polarsys.capella.core.diagram.transition.system.topdown.property"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.diagram.transition.system.topdown"
+             properties="transitionMode"
+             class="org.polarsys.capella.core.transition.system.topdown.ui.actions.tester.CommandTester">
+         </propertyTester>    
+</extension>
+
+<extension point="org.eclipse.core.expressions.propertyTesters">
+         <propertyTester
+             id="org.polarsys.capella.core.transition.system.topdown.property"
+             type="org.polarsys.capella.common.data.modellingcore.ModelElement"
+             namespace="org.polarsys.capella.core.transition.system.topdown"
+             properties="transitionMode"
+             class="org.polarsys.capella.core.transition.system.topdown.ui.actions.tester.CommandTester"
+         >
+         </propertyTester>    
+         
+         <propertyTester
+             id="org.polarsys.capella.core.transition.system.topdown.graphicalProperty"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.transition.system.topdown"
+             properties="transitionMode"
+             class="org.polarsys.capella.core.transition.system.topdown.ui.actions.tester.CommandTester"
+         >
+         </propertyTester>
+         
+   </extension>
+<extension
+      point="org.polarsys.capella.core.preferences.capellaPreferences">
+   <category
+         description="This commands categories allow a user to perform some transtion of capella elements from sytem to subsytem"
+         name="Transition">
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command2"
+            name="%topdownTransition_Interface_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command4"
+            name="%topdownTransition_Functional_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command6"
+            name="%topdownTransition_StateMachine_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command8"
+            name="%topdownTransition_Data_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command10"
+            name="%topdownTransition_PropertyValue_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command12"
+            name="%topdownTransition_ExchangeItem_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command14"
+            name="%topdownTransition_Actor_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command16"
+            name="%topdownTransition_System_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command18"
+            name="%topdownTransition_LC2PC_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command20"
+            name="%topdownTransition_OE2Actor_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command22"
+            name="%topdownTransition_OE2System_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command24"
+            name="%topdownTransition_Capability_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command26"
+            name="%topdownTransition_OC2SM_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command28"
+            name="%topdownTransition_OA2SC_label">
+      </item>
+      <item
+            id="org.polarsys.capella.core.transition.system.topdown.ui.commands.command30"
+            name="%topdownTransition_OA2SM_label">
+      </item>
+   </category>
+</extension>
+   
+  
+  </plugin>

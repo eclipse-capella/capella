@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/common/0.8.0">
+         </package>
+         <constraints
+               categories=" capella.category/transition/consistency/state_machines">
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.T01_StateTransition_RealizationBounds"
+                  id="TC_SM_01"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="TC_SM_01 - StateTransition Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (StateTransition) realizes a StateTransition from a previous level. It should be consistent with the realized StateTransition.
+               </message>
+               <target
+                     class="StateTransition">
+               </target>
+               <description>
+                  This rule checks that a StateTransition realizing a StateTransition from a previous level is consistent with the realized StateTransition and the Bounds of the StateTransition realize both bounds of the realized StateTransition.
+               </description>
+            </constraint>
+               
+         </constraints>
+         <constraints
+               categories="capella.category/design/well-formedness/state_machines">
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_ControleNode_Transition"
+                  id="DWF_SM_04"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_04 - A decision or a fork must have only one entering transition"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) must only have one incoming transition.
+               </message>
+               <target
+                     class="Pseudostate">
+               </target>
+               <description>
+                  This rule checks that a decision or a fork have only one entering transition.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_JoinNode_Transition"
+                  id="DWF_SM_05"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_05 - A join connector must have only one outgoing transition"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  the {0} ({1}) must have only one outgoing transition
+               </message>
+               <target
+                     class="JoinPseudoState">
+               </target>
+               <description>
+                  This rule checks that a join connector have only one outgoing transition.
+               </description>
+            </constraint>
+            
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_StateMachine_InitialState"
+                  id="DWF_SM_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_01 - A state machine must have only one initial state"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (StateMachine) have more than one initial state.
+               </message>
+               <target
+                     class="StateMachine">
+               </target>
+               <description>
+                  This rule checks that a state machine have only one initial state
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_InitialState_Transition"
+                  id="DWF_SM_02"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_02 - An initial state must have only one outgoing transition"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) have more than one outgoing transition
+               </message>
+               <target
+                     class="InitialPseudoState">
+               </target>
+               <description>
+                  This rule checks that an initial state have only one outgoing transition.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_State_InvolvedStates"
+                  id="DWF_SM_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_03 - Referenced states of a state must be all involved states in its subregions"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The State/Mode {0} have an incoherent involvedStates list.
+               </message>
+               <target
+                     class="State">
+               </target>
+               <description>
+                  This rule checks that referenced  States in a State are the sum of all involved States of sub regions.
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

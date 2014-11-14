@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.command.recorder.ui;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Activator: org.polarsys.capella.core.command.recorder.ui.CapellaRecorderUIActivator
+Bundle-Vendor: %providerName
+Bundle-localization: plugin
+Require-Bundle: org.polarsys.capella.core.command.recorder,
+ org.polarsys.capella.common.command.recorder.ui,
+ org.eclipse.sirius,
+ org.polarsys.capella.core.platform.sirius.ui.navigator
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.core.command.recorder.ui.handler
+Bundle-Localization: plugin

@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.polarsys.capella.common.ui.toolkit.browser" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.polarsys.capella.common.ui.toolkit.browser" id="content.provider.category" name="Content Provider Category"/>
+      </appInfo>
+      <documentation>
+         [Enter description of this extension point.]
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+         <documentation>
+            This extension allows to declare 1 or more Category for contributing to the SemanticBrowser.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="category" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="category">
+      <annotation>
+         <documentation>
+            Define a category of a browser.
+A category is composed of :
+- an id
+- a class type for which the category is available
+- a set of viewers (targetBrowsers) where the category will be docked.
+- a set of sub categories referenced by Id.
+- a set of queries associated to this category
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="1">
+            <element ref="availableForType"/>
+            <element ref="targetBrowserId"/>
+            <element ref="subCategories"/>
+            <element ref="categoryQuery"/>
+            <element ref="itemQueries"/>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  An id which allows to order categories &amp; to reference each other.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="isTopLevel" type="boolean" use="default" value="false">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="availableForType">
+      <annotation>
+         <documentation>
+            Category is available only if the current element type matches the specified type &amp; target browser matches.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.emf.ecore.impl.EObjectImpl:"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="targetBrowserId">
+      <annotation>
+         <documentation>
+            Category is available only if the current element type matches the specified type &amp; target browser matches.
+A Category can be displayed in several browsers.
+A browser is associated to 1 kind among the following list : 
+- CurrentElementBrowser : browser of the element that has just been dble-clicked.
+- ReferencedElementBrowser : browser of the elements that refer to the current element.
+- ReferencingElementBrowser : browser of the elements that current element is referencing to.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" use="required">
+            <annotation>
+               <documentation>
+                  Id is restricted to the following choices : 
+- CurrentElementBrowser : browser of the element that has just been dble-clicked.
+- ReferencedElementBrowser : browser of the elements that refer to the current element.
+- ReferencingElementBrowser : browser of the elements that current element is referencing to.
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="CurrentElementBrowser">
+                  </enumeration>
+                  <enumeration value="ReferencingElementBrowser">
+                  </enumeration>
+                  <enumeration value="ReferencedElementBrowser">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="subCategories">
+      <annotation>
+         <documentation>
+            A sub category is a referenced to a category.
+A sub category is identified by an string id.
+At this time, no compliancy control is applied to detect cycle between categories.
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="1">
+            <element ref="category" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="categoryQuery">
+      <annotation>
+         <documentation>
+            The content of a category results from the computation of a query.
+         </documentation>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="basicQuery"/>
+            <element ref="navigationQuery"/>
+         </choice>
+      </complexType>
+   </element>
+
+   <element name="itemQueries">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <choice>
+               <element ref="basicQuery" minOccurs="0" maxOccurs="1"/>
+               <element ref="navigationQuery" minOccurs="0" maxOccurs="1"/>
+            </choice>
+         </sequence>
+      </complexType>
+   </element>
+
+   <element name="basicQuery">
+      <complexType>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.common.ui.toolkit.browser.query.IQuery"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="navigationQuery">
+      <complexType>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.polarsys.capella.common.mdsofa.dsl.navigation.instance.IDSLInstanceNavigationQuery"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         [Enter the first release in which this extension point appears.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         [Enter extension point usage example here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="implementation"/>
+      </appInfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+   Thales - initial API and implementation
+      </documentation>
+   </annotation>
+
+</schema>

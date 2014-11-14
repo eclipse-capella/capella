@@ -1,0 +1,384 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.data.modellingcore.impl;
+
+import java.util.Collection;
+
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IAdapterManager;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.emf.transaction.impl.InternalTransaction;
+import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.platform.sirius.tig.ef.SemanticEditingDomainFactory.SemanticEditingDomain;
+import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
+import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
+import org.polarsys.capella.common.tig.model.IHelper;
+import org.polarsys.kitalpha.emde.model.impl.ExtensibleElementImpl;
+
+/**
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Model Element</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getSid <em>Sid</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.data.modellingcore.impl.ModelElementImpl#getConstraints <em>Constraints</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public abstract class ModelElementImpl extends ExtensibleElementImpl implements ModelElement {
+
+  /**
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+  protected static final String ID_EDEFAULT = null;
+  /**
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getId()
+	 * @generated
+	 * @ordered
+	 */
+  protected String id = ID_EDEFAULT;
+  /**
+	 * The default value of the '{@link #getSid() <em>Sid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSid()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SID_EDEFAULT = null;
+		/**
+	 * The cached value of the '{@link #getSid() <em>Sid</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSid()
+	 * @generated
+	 * @ordered
+	 */
+	protected String sid = SID_EDEFAULT;
+		/**
+   * @generated NOT
+   */
+  protected ModelElementImpl() {
+    super();
+    SemanticEditingDomain capellaEditingDomain =
+        (SemanticEditingDomain) ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName()).getEditingDomain();
+    // Don't mess with resource when loading.
+    if (capellaEditingDomain.getResourceSet().isResourceLoading()) {
+      return;
+    }
+    // Add newly created object to cross referencer resource.
+    InternalTransaction activeTransaction = capellaEditingDomain.getActiveTransaction();
+    if ((null != activeTransaction) && (!activeTransaction.isReadOnly()) && (Thread.currentThread() == activeTransaction.getOwner())) {
+      Resource holdingResource = capellaEditingDomain.getHoldingResource();
+      // Do not add element if resource is null.
+      if (null != holdingResource) {
+        holdingResource.getContents().add(this);
+      }
+    }
+  }
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  protected EClass eStaticClass() {
+		return ModellingcorePackage.Literals.MODEL_ELEMENT;
+	}
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated NOT
+   */
+  public String getId() {
+    if (null == id) {
+      id = org.polarsys.capella.common.lib.IdGenerator.createId();
+    }
+    return id;
+  }
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  public void setId(String newId) {
+
+		String oldId = id;
+		id = newId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.MODEL_ELEMENT__ID, oldId, id));
+
+	}
+
+  /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public String getSid() {
+
+		return sid;
+	}
+
+		/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setSid(String newSid) {
+
+		String oldSid = sid;
+		sid = newSid;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ModellingcorePackage.MODEL_ELEMENT__SID, oldSid, sid));
+
+	}
+
+		/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  public EList<AbstractConstraint> getConstraints() {
+
+
+    Object result = null;
+    // Helper that can get value for current feature.
+    IHelper helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof IAdaptable) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      IAdapterManager adapterManager = Platform.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      EPackage package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI());  //$NON-NLS-1$
+    } 
+    // A helper is found, let's use it. 
+    EAnnotation annotation = ModellingcorePackage.Literals.MODEL_ELEMENT__CONSTRAINTS.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, ModellingcorePackage.Literals.MODEL_ELEMENT__CONSTRAINTS, annotation);
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractConstraint> resultAsList = (Collection<AbstractConstraint>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractConstraint>(this, ModellingcorePackage.Literals.MODEL_ELEMENT__CONSTRAINTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  public void destroy() {
+		org.eclipse.emf.ecore.util.EcoreUtil.delete(this);
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  public String getFullLabel() {
+		return org.polarsys.capella.common.model.label.LabelRetriever.getFullLabel(this);
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  public String getLabel() {
+		return org.polarsys.capella.common.model.label.LabelRetriever.getLabel(this);
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  public boolean hasUnnamedLabel() {
+		return org.polarsys.capella.common.model.label.LabelRetriever.UNNAMED_ELEMENT.equals(this.getLabel());
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case ModellingcorePackage.MODEL_ELEMENT__ID:
+				return getId();
+			case ModellingcorePackage.MODEL_ELEMENT__SID:
+				return getSid();
+			case ModellingcorePackage.MODEL_ELEMENT__CONSTRAINTS:
+				return getConstraints();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case ModellingcorePackage.MODEL_ELEMENT__ID:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setId((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case ModellingcorePackage.MODEL_ELEMENT__SID:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setSid((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public void eUnset(int featureID) {
+		switch (featureID) {
+			case ModellingcorePackage.MODEL_ELEMENT__ID:
+				setId(ID_EDEFAULT);
+				return;
+			case ModellingcorePackage.MODEL_ELEMENT__SID:
+				setSid(SID_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case ModellingcorePackage.MODEL_ELEMENT__ID:
+				return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+			case ModellingcorePackage.MODEL_ELEMENT__SID:
+				return SID_EDEFAULT == null ? sid != null : !SID_EDEFAULT.equals(sid);
+			case ModellingcorePackage.MODEL_ELEMENT__CONSTRAINTS:
+				return !getConstraints().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+  /**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+  @Override
+  public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (id: "); //$NON-NLS-1$
+		result.append(id);
+		result.append(", sid: "); //$NON-NLS-1$
+		result.append(sid);
+		result.append(')');
+		return result.toString();
+	}
+
+  /**
+   * @see org.eclipse.emf.ecore.impl.BasicEObjectImpl#eBasicSetContainer(org.eclipse.emf.ecore.InternalEObject, int,
+   *      org.eclipse.emf.common.notify.NotificationChain)
+   * @generated NOT
+   */
+  @Override
+  public NotificationChain eBasicSetContainer(InternalEObject newContainer_p, int newContainerFeatureID_p, NotificationChain messages_p) {
+    SemanticEditingDomain capellaEditingDomain =
+        (SemanticEditingDomain) ExecutionManagerRegistry.getInstance().getExecutionManager(TigEfProvider.getExecutionManagerName()).getEditingDomain();
+    // Get element direct resource.
+    Resource.Internal oldResource = eDirectResource();
+    // If it happens to be the holding resource, the element should be moved to the container resource, instead of staying in this one.
+    Resource holdingResource = capellaEditingDomain.getHoldingResource();
+    if ((null != oldResource) && (oldResource == holdingResource)) {
+      // Get the new container resource.
+      Resource.Internal newResource = (Resource.Internal) newContainer_p.eResource();
+      if (null != newResource) {
+        oldResource.getContents().remove(this);
+        oldResource.detached(this);
+        // Detached subtree
+        TreeIterator<EObject> eAllContents = eAllContents();
+        while (eAllContents.hasNext()) {
+          detachFromResource((InternalEObject) eAllContents.next(), holdingResource);
+        }
+      }
+    }
+    return super.eBasicSetContainer(newContainer_p, newContainerFeatureID_p, messages_p);
+  }
+
+  /**
+   * Detach specified element from cross-referencer resource, if still attached to it.
+   * @param element_p
+   * @param resource_p
+   * @generated NOT
+   */
+  protected void detachFromResource(InternalEObject element_p, Resource resource_p) {
+    // Get element direct resource.
+    Resource.Internal oldResource = element_p.eDirectResource();
+    if ((null != oldResource) && (oldResource == resource_p)) {
+      oldResource.getContents().remove(element_p);
+      oldResource.detached(element_p);
+    }
+  }
+}

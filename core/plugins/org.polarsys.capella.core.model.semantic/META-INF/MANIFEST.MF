@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.model.semantic;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Activator: org.polarsys.capella.core.model.semantic.internal.SemanticModelActivator
+Bundle-Vendor: %providerName
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore,
+ org.apache.log4j
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.core.model.semantic,
+ org.polarsys.capella.core.model.semantic.internal,
+ org.polarsys.capella.core.model.semantic.prefs
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Localization: plugin

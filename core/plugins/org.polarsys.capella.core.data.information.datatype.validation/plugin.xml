@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+ <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/information/datatype/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/data">
+            <constraint
+                  class="org.polarsys.capella.core.data.information.datatype.validation.DatatypePattern"
+                  id="DWF_D_21"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_21 - DataType Pattern Validation"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} value of {1} ({2}) is not a valide Regular Expression
+               </message>
+               <description>
+                  This rule checks that the pattern of a data type is a Regular expression.
+               </description>
+               <target
+                     class="DataType">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.datatype.validation.BooleanTypeLiteralsIncorrectValues"
+                  id="DWF_D_22"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_22 - Boolean Type Incorrect literals values"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}(BooleanType) should not contain literals with same value.
+               </message>
+               <description>
+                  This rule ensures that a BooleanType can not have literals with same values.
+               </description>
+               <target
+                     class="BooleanType">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/data">
+            <constraint
+                  class="org.polarsys.capella.core.data.information.datatype.validation.datatypepkg.DataValueUnitconsistency"
+                  id="DWF_D_23"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_23 - NumericValue Unit Consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}(NumericValue)  has a unit value which is not consistent with unit value of its type Length (PhysicalQuantity).
+               </message>
+               <description>
+                  This rule ensures that a NumericValue can not have an unit value different from the unit value of its type Length PhysicalQuantity.
+               </description>
+               <target
+                     class="NumericValue">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.information.datatype.validation.DataValuePattern"
+                  id="DWF_D_24"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_24 - DataValue Pattern Validation"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule checks that the value of the DataValue(LiteralNumericValue or LiteralStringValue) matches with the data type Regular expression.
+
+1) value of dataValue must be set.
+2) if dataValue typed, pattern should not be null.
+               </description>
+               <target
+                     class="DataValue">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

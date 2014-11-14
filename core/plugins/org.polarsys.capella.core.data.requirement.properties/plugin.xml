@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.requirement.RequirementsPkg">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.requirement.RequirementsTrace">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.requirement.SystemFunctionalInterfaceRequirement">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.requirement.SystemFunctionalRequirement">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.requirement.SystemNonFunctionalInterfaceRequirement">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.requirement.SystemNonFunctionalRequirement">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               tab="Base">
+            <input
+                  type="org.polarsys.capella.core.data.requirement.SystemUserRequirement">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
+	  <propertySections contributorId="org.eclipse.sirius.diagram">
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">      
+	  <propertySections contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsPkgSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.RequirementsTraceSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalInterfaceRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemFunctionalRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalInterfaceRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemNonFunctionalRequirementSection"
+               tab="Base">
+         </propertySection>
+         <propertySection
+               class="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               filter="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               id="org.polarsys.capella.core.data.requirement.properties.sections.SystemUserRequirementSection"
+               tab="Base">
+         </propertySection>
+      </propertySections>
+   </extension>
+</plugin>

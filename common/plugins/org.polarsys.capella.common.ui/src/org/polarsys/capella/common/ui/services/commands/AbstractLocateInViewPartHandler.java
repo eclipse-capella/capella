@@ -1,0 +1,47 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.ui.services.commands;
+
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PartInitException;
+
+/**
+ */
+public abstract class AbstractLocateInViewPartHandler extends AbstractLocateInWorkbenchPartHandler {
+
+  /**
+   * Get the targeted part id i.e the part id in which a new selection will be sent.
+   * @return can be <code>null</code>.
+   */
+  protected abstract String getTargetedPartId();
+
+  /**
+   * Overridden to show the view in which the handled selection will be considered as new selection.<br>
+   * @see org.polarsys.capella.common.ui.services.commands.AbstractLocateInWorkbenchPartHandler#handleSelection(org.eclipse.jface.viewers.ISelection,
+   *      org.eclipse.ui.IWorkbenchPart, org.eclipse.core.commands.ExecutionEvent)
+   * @return the targeted view.
+   */
+  @Override
+  protected IViewPart handleSelection(ISelection selection_p, IWorkbenchPart activePart_p, ExecutionEvent event_p) {
+    String targetedPartId = getTargetedPartId();
+    if (null != targetedPartId) {
+      try {
+        return getWorkbenchWindow(event_p).getActivePage().showView(targetedPartId);
+      } catch (PartInitException exception_p) {
+        // Do nothing.
+      }
+    }
+    return null;
+  }
+}

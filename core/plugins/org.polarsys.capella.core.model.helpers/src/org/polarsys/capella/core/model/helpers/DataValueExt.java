@@ -1,0 +1,362 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.model.helpers;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.cs.ComponentArchitecture;
+import org.polarsys.capella.core.data.information.Class;
+import org.polarsys.capella.core.data.information.CollectionValueReference;
+import org.polarsys.capella.core.data.information.DataPkg;
+import org.polarsys.capella.core.data.information.Property;
+import org.polarsys.capella.core.data.information.datatype.BooleanType;
+import org.polarsys.capella.core.data.information.datatype.DataType;
+import org.polarsys.capella.core.data.information.datatype.Enumeration;
+import org.polarsys.capella.core.data.information.datatype.NumericType;
+import org.polarsys.capella.core.data.information.datatype.PhysicalQuantity;
+import org.polarsys.capella.core.data.information.datatype.StringType;
+import org.polarsys.capella.core.data.information.datavalue.AbstractBooleanValue;
+import org.polarsys.capella.core.data.information.datavalue.AbstractEnumerationValue;
+import org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue;
+import org.polarsys.capella.core.data.information.datavalue.AbstractStringValue;
+import org.polarsys.capella.core.data.information.datavalue.BooleanReference;
+import org.polarsys.capella.core.data.information.datavalue.ComplexValueReference;
+import org.polarsys.capella.core.data.information.datavalue.DataValue;
+import org.polarsys.capella.core.data.information.datavalue.EnumerationReference;
+import org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue;
+import org.polarsys.capella.core.data.information.datavalue.NumericReference;
+import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.information.datavalue.StringReference;
+import org.polarsys.capella.core.data.capellacore.Classifier;
+import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+
+/**
+ */
+public class DataValueExt {
+  public static ComponentArchitecture getRootComponentArchitecture(DataValue dataValue_p) {
+    ComponentArchitecture arch = null;
+    if (dataValue_p != null) {
+      Object container = dataValue_p.eContainer();
+      if (container instanceof Component) {
+        arch = ComponentExt.getRootComponentArchitecture((Component) container);
+      } else if (container instanceof Structure) {
+        arch = StructureExt.getRootComponentArchitecture((Structure) container);
+      }
+    }
+    return arch;
+  }
+
+  /**
+   * @param modelElement_p : any 'ModelElement'
+   * @return : 'BlockArchitecture', value can also be null
+   */
+  public static BlockArchitecture getRootBlockArchitecture(ModelElement modelElement_p) {
+    BlockArchitecture arch = null;
+    if (modelElement_p != null) {
+      EObject container = modelElement_p.eContainer();
+      if (container instanceof BlockArchitecture) {
+        return (BlockArchitecture) container;
+      } else if (container instanceof Component) {
+        arch = ComponentExt.getRootBlockArchitecture((Component) container);
+      } else if (container instanceof Structure) {
+        arch = StructureExt.getRootBlockArchitecture((Structure) container);
+      } else if (container instanceof Classifier) {
+        arch = ClassifierExt.getRootBlockArchitecture((Classifier) container);
+      } else {
+        EObject container2 = container.eContainer();
+        if (null != container2) {
+          arch = getRootBlockArchitecture((ModelElement) container2);
+        }
+      }
+    }
+    return arch;
+  }
+
+  public static Component getRootComponent(ModelElement modelElement_p) {
+    Component comp = null;
+    if (modelElement_p != null) {
+      Object container = modelElement_p.eContainer();
+      if (container instanceof Component) {
+        comp = (Component) container;
+      } else if (container instanceof Structure) {
+        comp = StructureExt.getRootComponent((Structure) container);
+      }
+    }
+    return comp;
+  }
+
+  /**
+   * Gets all the DataPkgs from the Parent Hierarchy of the root component/component architecture of the current DataTypePkg according to layer visibility and
+   * multiple decomposition rules
+   * @param dataTypePkg_p the DataTypePkg
+   * @return list of DataPkgs
+   */
+  static public List<DataPkg> getDataPkgsFromParentHierarchy(ModelElement modelElement_p) {
+    List<DataPkg> list = new ArrayList<DataPkg>(1);
+    if (null != modelElement_p) {
+      BlockArchitecture compArch = getRootBlockArchitecture(modelElement_p);
+      if (null != compArch) {
+        DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(compArch);
+        if (null != dataPkg) {
+          list.add(dataPkg);
+        }
+        // if the layer visibility is there
+        if (compArch instanceof SystemEngineering) {
+          return list; // return if SystemEngineering
+        }
+        list.addAll(DataPkgExt.getDataPkgsFromBlockArchitectureParent(compArch));
+      }
+      Component parentComp = getRootComponent(modelElement_p);
+      if (null != parentComp) {
+        DataPkg dataPkg = parentComp.getOwnedDataPkg();
+        if (null != dataPkg) {
+          list.add(dataPkg);
+        }
+        list.addAll(DataPkgExt.getDataPkgsFromComponentParent(parentComp));
+      }
+    }
+    return list;
+  }
+
+  /**
+   * Return cardValue or cardName depending on the NumericValue if 'numericValue_p' Type is LiteralNumericValue - return its value if 'numericValue_p' Type is
+   * AbstractExpression - return its Name if 'numericValue_p' Type is NumericReference - return its Name [if referencedProperty - calculate cardName as
+   * (OwnerClass name :: referencedPropertyName)
+   * @param numericValue_p
+   * @return cardValue or cardName depending on the NumericValue
+   */
+  static public String getCardValue(NumericValue numericValue_p) {
+    String cardValue = ""; //$NON-NLS-1$
+    if (numericValue_p == null) {
+      return ""; //$NON-NLS-1$
+    }
+
+    if (numericValue_p instanceof LiteralNumericValue) {
+      cardValue = getLiteralNumericValue((LiteralNumericValue) numericValue_p);
+    } else if (numericValue_p instanceof AbstractExpressionValue) {
+      cardValue = getAbstractExpressionExp((AbstractExpressionValue) numericValue_p);
+    } else if (numericValue_p instanceof NumericReference) {
+      NumericReference ref = (NumericReference) numericValue_p;
+      Property referencedProperty = ref.getReferencedProperty();
+      if (referencedProperty != null) {
+        EObject container = referencedProperty.eContainer();
+        if (container instanceof Class) {
+          cardValue = ((Class) container).getName() + "::" + referencedProperty.getName(); //$NON-NLS-1$
+        } else {
+          cardValue = referencedProperty.getName();
+        }
+      } else {
+        NumericValue referencedValue = ref.getReferencedValue();
+        if (referencedValue != null) {
+          if (referencedValue instanceof NumericReference) {
+            cardValue = ((NumericReference) referencedValue).getName();
+          } else if (referencedValue instanceof LiteralNumericValue) {
+            cardValue = getLiteralNumericValue((LiteralNumericValue) referencedValue);
+          } else if (referencedValue instanceof AbstractExpressionValue) {
+            cardValue = getAbstractExpressionExp((AbstractExpressionValue) referencedValue);
+          }
+        }
+      }
+    }
+
+    return cardValue;
+  }
+
+  /**
+   * @return expression (if null return numericValue name)
+   */
+  static private String getAbstractExpressionExp(AbstractExpressionValue numValue_p) {
+    String cardValue;
+    AbstractExpressionValue expValue = numValue_p;
+    String expression = expValue.getExpression();
+    if (expression != null) {
+      cardValue = expression;
+    } else {
+      cardValue = expValue.getName();
+    }
+    return cardValue;
+  }
+
+  /**
+   * @return value of literalNumericValue
+   */
+  static private String getLiteralNumericValue(LiteralNumericValue numValue_p) {
+    String cardValue;
+    LiteralNumericValue lnv = numValue_p;
+    String value = lnv.getValue();
+    if (value != null) {
+      cardValue = value.toString();
+    } else {
+      cardValue = ""; //$NON-NLS-1$
+    }
+
+    return cardValue;
+  }
+
+  /**
+   * check data value and data type consistency
+   * @param datValue_p
+   * @param dataType_p
+   * @return true if valid
+   */
+  static public boolean isDataValueConsitantWithDataType(DataValue datValue_p, DataType dataType_p) {
+    if ((null != dataType_p) && (null != datValue_p)) {
+      if ((dataType_p instanceof NumericType) || (dataType_p instanceof PhysicalQuantity)) {
+        if (datValue_p instanceof NumericValue) {
+          return true;
+        }
+      } else if (dataType_p instanceof BooleanType) {
+        if (datValue_p instanceof AbstractBooleanValue) {
+          return true;
+        }
+      } else if (dataType_p instanceof StringType) {
+        if (datValue_p instanceof AbstractStringValue) {
+          return true;
+        }
+      } else if (dataType_p instanceof Enumeration) {
+        if (datValue_p instanceof AbstractEnumerationValue) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * @param eObj
+   * @param referencedValue
+   * @return
+   */
+  public static DataValue getReferencedValue(EObject eObj) {
+    DataValue referencedValue = null;
+    if (eObj instanceof BooleanReference) {
+      referencedValue = ((BooleanReference) eObj).getReferencedValue();
+    } else if (eObj instanceof NumericReference) {
+      referencedValue = ((NumericReference) eObj).getReferencedValue();
+    } else if (eObj instanceof StringReference) {
+      referencedValue = ((StringReference) eObj).getReferencedValue();
+    } else if (eObj instanceof EnumerationReference) {
+      referencedValue = ((EnumerationReference) eObj).getReferencedValue();
+    } else if (eObj instanceof ComplexValueReference) {
+      referencedValue = ((ComplexValueReference) eObj).getReferencedValue();
+    } else if (eObj instanceof CollectionValueReference) {
+      referencedValue = ((CollectionValueReference) eObj).getReferencedValue();
+    }
+    return referencedValue;
+  }
+
+  /**
+   * Return if true dataValue is type reference
+   * @param eObj
+   * @return
+   */
+  public static boolean isDataValueReferenceType(Object eObj) {
+    if (null != eObj) {
+      if ((eObj instanceof BooleanReference) || (eObj instanceof NumericReference) || (eObj instanceof StringReference)
+          || (eObj instanceof EnumerationReference) || (eObj instanceof ComplexValueReference) || (eObj instanceof CollectionValueReference)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Return appropriate dataValues from map of EObject with EReferences
+   * @param mapOfDataTypeWithFeatures
+   * @return list of dataValue
+   */
+  public static List<DataValue> getDataValuesFromMapOfEObjectAndEReferences(Map<EObject, List<EReference>> mapOfDataTypeWithFeatures) {
+    List<DataValue> result = new ArrayList<DataValue>(1);
+    Set<EObject> keySet = mapOfDataTypeWithFeatures.keySet();
+    if (null == keySet) {
+      return result;
+    }
+    for (EObject dataType : keySet) {
+      List<EReference> referencesList = mapOfDataTypeWithFeatures.get(dataType);
+      for (EReference eReference : referencesList) {
+        if (eReference.isMany()) {
+          @SuppressWarnings("unchecked")
+          List<Object> listObjects = (List<Object>) dataType.eGet(eReference);
+          if (null != listObjects) {
+            Iterator<Object> iterator = listObjects.iterator();
+            while (iterator.hasNext()) {
+              Object object = iterator.next();
+              if (object instanceof DataValue) {
+                result.add((DataValue) object);
+              }
+            }
+          }
+        } else {
+          Object object = dataType.eGet(eReference);
+          if ((null != object) && (object instanceof DataValue)) {
+            result.add((DataValue) object);
+          }
+        }
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * Return true if dataValue is of kind (ownedDataValue)
+   * @param dataValue_p
+   * @return
+   */
+  public static String getContainementFeatureofDataValue(DataValue eObject_p) {
+    if (null == eObject_p) {
+      return ICommonConstants.EMPTY_STRING;
+    }
+    EReference eContainmentFeature = eObject_p.eContainmentFeature();
+    if (null != eContainmentFeature) {
+      return getReableFeatureName(eContainmentFeature);
+    }
+
+    return eObject_p.getName();
+  }
+
+  public static String getReableFeatureName(EStructuralFeature eStrFea) {
+    String eStrFeaName = eStrFea.getName();
+    String readableFeatureName = eStrFeaName.replaceAll("owned", ICommonConstants.EMPTY_STRING); //$NON-NLS-1$
+    return readableFeatureName;
+  }
+
+  /**
+   * Return true if dataValue is typed
+   * @param ownedDefaultValue
+   * @return
+   */
+  public static boolean isDataValueTyped(DataValue ownedDefaultValue) {
+    if (null == ownedDefaultValue) {
+      return false;
+    }
+    AbstractType type = ownedDefaultValue.getAbstractType();
+    if (null == type) {
+      return false;
+    }
+    return true;
+  }
+}

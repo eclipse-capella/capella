@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            id="capella.category"
+            name="Capella">
+         <category
+               id="quality"
+               name="Quality">
+         </category>
+         <category
+               id="integrity"
+               name="Integrity">
+         </category>
+         <category
+               id="design"
+               name="Design">
+            <category
+                  id="coverage"
+                  name="Coverage">
+            </category>
+            <category
+                  id="well-formedness"
+                  name="Well-Formedness">
+               <category
+                     id="state_machines"
+                     name="State Machines">
+               </category>
+               <category
+                     id="dataflows"
+                     name="Dataflows">
+               </category>
+               <category
+                     id="components"
+                     name="Components">
+               </category>
+               <category
+                     id="data"
+                     name="Data">
+               </category>
+               <category
+                     id="interfaces"
+                     name="Interfaces">
+               </category>
+               <category
+                     id="scenarios"
+                     name="Scenarios">
+               </category>
+               <category
+                     id="capabilities"
+                     name="Capabilities">
+               </category>
+               <category
+                     id="use_cases"
+                     name="Use Cases">
+               </category>
+            </category>
+            <category
+                  id="consistency"
+                  name="Consistency">
+            </category>
+            <category
+                  id="completeness"
+                  name="Completeness">
+            </category>
+         </category>
+         <category
+               id="structural_conformance_to_m2"
+               name="Structural Conformance to M2">
+         </category>
+         <category
+               id="transition"
+               name="Transition">
+            <category
+                  id="consistency"
+                  name="Consistency">
+               <category
+                     id="data"
+                     name="Data">
+               </category>
+               <category
+                     id="state_machines"
+                     name="State Machines">
+               </category>
+               <category
+                     id="interfaces"
+                     name="Interfaces">
+               </category>
+               <category
+                     id="dataflows"
+                     name="Dataflows">
+               </category>
+               <category
+                     id="components"
+                     name="Components">
+               </category>
+               <category
+                     id="scenarios"
+                     name="Scenarios">
+               </category>
+               <category
+                     id="capabilities"
+                     name="Capabilities">
+               </category>
+            </category>
+            <category
+                  id="justification"
+                  name="Justification">
+               <category
+                     id="physical_architecture"
+                     name="Physical Architecture">
+               </category>
+               <category
+                     id="logical_architecture"
+                     name="Logical Architecture">
+               </category>
+               <category
+                     id="epbs"
+                     name="EPBS">
+               </category>
+               <category
+                     id="generic"
+                     name="Generic">
+               </category>
+               <category
+                     id="system_analysis"
+                     name="System Analysis">
+               </category>
+            </category>
+         </category>
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintBindings">
+      <clientContext
+            id="CapellaValidationRulesContext">
+         <selector
+               class="org.polarsys.capella.core.validation.ValidationDelegateClientSelector">
+         </selector>
+      </clientContext>
+      <binding
+            category="capella.category"
+            context="CapellaValidationRulesContext">
+      </binding>
+   </extension>
+   
+  <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.polarsys.capella.core.validation.prefs.ExportValidationPreferenceInitializer">
+      </initializer>
+   </extension>
+  <extension
+        id="markers"
+        name="%capella.maker.name"
+        point="org.eclipse.core.resources.markers">
+     <super
+           type="org.eclipse.emf.ecore.diagnostic">
+     </super>
+     <persistent
+           value="false">
+     </persistent>
+  </extension>
+  <extension
+        point="org.polarsys.capella.core.model.handler.diagnosticianProviders">
+     <provider
+           class="org.polarsys.capella.core.validation.DiagnosticianProvider">
+     </provider>
+  </extension>
+   
+</plugin>

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.common.ui.services;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Require-Bundle: org.polarsys.capella.common.data.core.gen;visibility:=reexport,
+ org.eclipse.ui;visibility:=reexport,
+ org.eclipse.emf.edit.ui;visibility:=reexport,
+ org.polarsys.capella.common.ui;visibility:=reexport,
+ org.eclipse.core.expressions;bundle-version="3.4.200"
+Export-Package: org.polarsys.capella.common.ui.actions,
+ org.polarsys.capella.common.ui.services
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Localization: plugin

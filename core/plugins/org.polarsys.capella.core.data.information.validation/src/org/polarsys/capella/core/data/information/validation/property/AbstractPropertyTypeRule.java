@@ -1,0 +1,72 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.information.validation.property;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.validation.EMFEventType;
+import org.eclipse.emf.validation.IValidationContext;
+
+import org.polarsys.capella.core.data.information.Class;
+import org.polarsys.capella.core.data.information.Collection;
+import org.polarsys.capella.core.data.information.Property;
+import org.polarsys.capella.core.model.helpers.PropertyExt;
+import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+
+/**
+ * This check ensures that properties are of type primitive if not bound to an Association.
+ */
+public abstract class AbstractPropertyTypeRule extends AbstractValidationRule {
+	  /**
+	   * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
+	   */
+	  @Override
+	  public IStatus validate(IValidationContext ctx_p) {
+	    EObject eObj = ctx_p.getTarget();
+	    EMFEventType eType = ctx_p.getEventType();
+
+	    if (eType == EMFEventType.NULL) {
+	      if (eObj instanceof Property) {
+	        Property property = (Property) eObj;
+	        EObject eContainer = property.eContainer();
+	        // decide weather to continue the validation rule: based on primitive type check 
+	        // of a container
+	        if(isParentPrimitiveCheckApplied(eContainer))
+	        	return  ctx_p.createSuccessStatus();
+	        
+	        // Filter the property bound to an Association
+	        if (PropertyExt.getRegardingAssociation(property) == null) {
+	          AbstractType abstractType = property.getAbstractType();
+	          if (abstractType instanceof Class) {
+	            Class cls = (Class) abstractType;
+	            if (!cls.isIsPrimitive()) {
+	              return createFailureStatus(ctx_p, new Object[] { property.getName(), cls.getName(),cls.eClass().getName() });
+	            }
+	          }else if (abstractType instanceof Collection) {
+	            Collection collection = (Collection) abstractType;
+	            if (!collection.isIsPrimitive()) {
+	              return createFailureStatus(ctx_p, new Object[] { property.getName(), collection.getName(),collection.eClass().getName()});
+	            }
+	          }
+	        }
+	      }
+	    }
+	    return ctx_p.createSuccessStatus();
+	  }
+
+	/**
+	 * @param ctx_p
+	 * @param eContainer_p
+	 * @return
+	 */
+	public abstract boolean isParentPrimitiveCheckApplied(EObject eContainer_p);
+}

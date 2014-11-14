@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+   <extension-point id="org.polarsys.capella.common.flexibility.wizards" name="org.polarsys.capella.common.flexibility.wizards" schema="schema/wizards.exsd"/>
+   
+   <extension
+         point="org.polarsys.capella.common.flexibility.wizards">
+         
+      <propertyRenderer 
+            id="none" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.NullRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="textRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.TextRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="checkboxRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.CheckboxRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="optionRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.OptionRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="browseRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.BrowseRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="browseImageRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.BrowseImageRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="passwordRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.PasswordTextRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="booleanTextRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.BooleanTextRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="editListRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.EditListRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="selectListRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.SelectListRenderer">
+      </propertyRenderer>
+      
+      <propertyRenderer 
+            id="copyTextRenderer" 
+            class="org.polarsys.capella.common.flexibility.wizards.renderer.CopyTextRenderer">
+      </propertyRenderer>
+      
+   </extension>
+
+</plugin>

@@ -1,0 +1,31 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/all_instances.gif - org.eclipse.team.ui - org.eclipse.team.ui/icons/full/elcl16/flatLayout.gif
+/icons/class_hi.gif - org.eclipse.emf.compare.diff.edit - org.eclipse.emf.compare.diff.edit/icons/full/obj16/DiffModel.gif
+/icons/clear.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/clear_co.gif
+/icons/collapseall.png - org.eclipse.mylyn.commons.ui - org.eclipse.mylyn.commons.ui/icons/elcl16/collapseall.png
+/icons/connection.gif - org.eclipse.pde.api.tools.ui - org.eclipse.pde.api.tools.ui/icons/full/obj16/plugin_obj.gif
+/icons/debug.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/eview16
+/icons/deleteSimilar.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
+/icons/disabled_co.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/disabled_co.gif
+/icons/e_contents_view.gif - org.eclipse.help.base - org.eclipse.help.base/doc/contents_view.gif
+/icons/error.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/obj16/error_tsk.gif
+/icons/expandall.gif - org.eclipse.mylyn.commons.ui - org.eclipse.mylyn.commons.ui/icons/elcl16/expandall.gif
+/icons/fatal.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/ovr16/error_co_buildpath.gif
+/icons/file_obj.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/file_obj.gif
+/icons/full_hierarchy.gif - org.eclipse.m2m.qvt.oml.common.ui - org.eclipse.m2m.qvt.oml.common.ui/icons/showinherf.gif
+/icons/inform.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/info_obj.gif
+/icons/information_16x16.png - shared.tools.report.appenders.reportlogview - shared.tools.report.appenders.reportlogview/icons/information_16x16.png
+/icons/log.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/det_pane_right.gif
+/icons/capella_16.png - shared.tools.report.appenders.reportlogview - shared.tools.report.appenders.reportlogview/icons/capella_16.png
+/icons/quickfix.gif - org.eclipse.compare - org.eclipse.compare/icons/full/elcl16/smartmode_co.gif
+/icons/quickfixAll-repository.png - shared.tools.report.appenders.reportlogview - shared.tools.report.appenders.reportlogview/icons/quickfixAll-repository.png
+/icons/sample.gif - org.eclipse.emf.cdo.ui - org.eclipse.emf.cdo.ui/icons/sample.gif
+/icons/save.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/save_edit.gif
+/icons/show_categories.gif - org.eclipse.help.ui - org.eclipse.help.ui/icons/elcl16/show_categories.gif
+/icons/tree_mode.gif - org.eclipse.ui.views - org.eclipse.ui.views/icons/full/elcl16/tree_mode.gif
+/icons/warn.gif - org.eclipse.compare - org.eclipse.compare/icons/full/ovr16/warning_ov.gif

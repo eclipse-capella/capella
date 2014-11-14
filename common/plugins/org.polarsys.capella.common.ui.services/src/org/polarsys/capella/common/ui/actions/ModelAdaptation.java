@@ -1,0 +1,90 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.ui.actions;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.viewers.IStructuredSelection;
+
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+
+/**
+ * The Capella adaptation.
+ */
+public class ModelAdaptation {
+  
+  /**
+   * Adapt a Sirius element into a Capella element.
+   * And return the first element, if multiple selection.
+   * @param element_p The Sirius element.
+   * @return The Capella element.
+   */
+  public static ModelElement adaptToCapella(Object element_p) {
+    if (element_p instanceof IStructuredSelection) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) element_p;
+      return adaptFromStructuredSelection(structuredSelection).get(0);
+    }
+    return adaptFromObject(element_p);
+  }
+
+  /**
+   * Adapt a Sirius elements into a Capella elements.
+   * @param element_p the selected element (could be the list of elements)
+   * @return The Capella element.
+   */
+  public static List<ModelElement> adaptToCapellaElements(Object element_p) {
+    List<ModelElement> result = new ArrayList<ModelElement>();
+    if (element_p instanceof IStructuredSelection) {
+      IStructuredSelection structuredSelection = (IStructuredSelection) element_p;
+      return adaptFromStructuredSelection(structuredSelection);
+    }
+    result.add(adaptFromObject(element_p));
+    return result;
+  }
+  
+  private static ModelElement adaptFromObject(Object element_p) {
+    ModelElement result = null;
+    if (element_p instanceof ModelElement){
+      result = (ModelElement) element_p;
+    } else {
+      if (element_p instanceof IAdaptable){
+        // FIXME why not also ask the adapter manager?
+        // GMF level adaptation
+        Object dnodeElement = ((IAdaptable) element_p).getAdapter(EObject.class);
+        if (dnodeElement != null){
+          // Business level adaptation
+          result = (ModelElement) Platform.getAdapterManager().getAdapter(dnodeElement, ModelElement.class);
+          if (result == null) {
+            result = (ModelElement) Platform.getAdapterManager().loadAdapter(dnodeElement, ModelElement.class.getName());
+          }
+        }
+      }
+    }
+    return result;
+  }
+
+  private static List<ModelElement> adaptFromStructuredSelection(IStructuredSelection structuredSelection) {
+    List<ModelElement> result = new ArrayList<ModelElement>(0);
+    Iterator<?> it = structuredSelection.iterator();
+    while (it.hasNext()) {
+      Object nextSelected = it.next();
+      result.add(adaptFromObject(nextSelected));
+    }
+    
+    return result;
+  }
+  
+}

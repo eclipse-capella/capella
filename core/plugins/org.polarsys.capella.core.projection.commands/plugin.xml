@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.generateComponentExchanges"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generateComponentExchanges">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateConnectionsAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transfo.commands.actions.MDGenerateConnectionsAction"
+               label="%generateComponentExchanges_label"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.generateCommunicationMeans"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generateCommunicationMeans">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateConnectionsAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transfo.commands.actions.MDGenerateConnectionsAction"
+               label="%generateCommunicationMeans_label"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.generatePhysicalLinks"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generatePhysicalLinks">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateLinksAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinks"
+               label="%generatePhysicalLinks_label"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.generatePhysicalLinksComponentExchanges"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generatePhysicalLinksComponentExchanges">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateConnectionsAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transfo.commands.actions.generatePhysicalLinksComponentExchanges"
+               label="%generatePhysicalLinksComponentExchanges_label"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.generateInterfaces"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generateInterfaces">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.GenerateInterfacesAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="org.polarsys.capella.core.transfo.commands.actions.GenerateInterfacesAction"
+               label="%generateInterfaces_label"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      
+       <objectContribution
+            id="capella.project.explorer.toolsContributor.generateComponentExchanges"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generateComponentExchanges">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateConnectionsAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.generateConnections"
+               label="%generateComponentExchanges_label"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.generateCommunicationMeans"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generateCommunicationMeans">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateConnectionsAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.generateConnections"
+               label="%generateCommunicationMeans_label"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.generatePhysicalLinks"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generatePhysicalLinks">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateLinksAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.generatePhysicalLinks"
+               label="%generatePhysicalLinks_label"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.generatePhysicalLinksComponentExchanges"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generatePhysicalLinksComponentExchanges">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.MDGenerateConnectionsAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.generatePhysicalLinksComponentExchanges"
+               label="%generatePhysicalLinksComponentExchanges_label"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.generateInterfaces"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="generateInterfaces">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.GenerateInterfacesAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.generateInterfaces"
+               label="%generateInterfaces_label"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      
+      
+      
+      
+      
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionES2ES.OAtoSA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2ES-OASA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2esoasa"
+               label="%transitionES2ES_OAtoSA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionES2ES.SAtoLA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2ES-SALA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2essala"
+               label="%transitionES2ES_SAtoLA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionES2ES.LAtoPA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2ES-LAPA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2eslapa"
+               label="%transitionES2ES_LAtoPA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionES2IS"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2IS">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToISAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2is"
+               label="%transitionES2IS_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionESF2ESB"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionESF2ESB">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESFToESBAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.esf2esb"
+               label="%transitionESF2ESB_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionFS2ES-SALAPA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2ES-SALAPA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2es"
+               label="%transitionFS2ES_SALAPA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionFS2ES-OASA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2ES-OASA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2es"
+               label="%transitionFS2ES_OASA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionFS2FS-OASA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2FS-OASA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2fs"
+               label="%transitionFS2FS_OAtoSA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionFS2FS-SALA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2FS-SALA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2fs"
+               label="%transitionFS2FS_SAtoLA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.transitionFS2FS-LAPA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2FS-LAPA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2fs"
+               label="%transitionFS2FS_LAtoPA_label"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+      
+      <!--objectContribution
+            id="capella.project.explorer.toolsContributor.transitionES2ES.OAtoSA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2ES-OASA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2esoasa"
+               label="%transitionES2ES_OAtoSA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionES2ES.SAtoLA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2ES-SALA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2essala"
+               label="%transitionES2ES_SAtoLA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionES2ES.LAtoPA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2ES-LAPA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2eslapa"
+               label="%transitionES2ES_LAtoPA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionES2IS"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionES2IS">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESToISAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.es2is"
+               label="%transitionES2IS_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionESF2ESB"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionESF2ESB">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.ESFToESBAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.esf2esb"
+               label="%transitionESF2ESB_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionFS2ES-SALAPA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2ES-SALAPA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2es"
+               label="%transitionFS2ES_SALAPA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionFS2ES-OASA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2ES-OASA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToESAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2es"
+               label="%transitionFS2ES_OASA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionFS2FS-OASA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2FS-OASA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2fs.OASA"
+               label="%transitionFS2FS_OAtoSA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionFS2FS-SALA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2FS-SALA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2fs.SALA"
+               label="%transitionFS2FS_SAtoLA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.transitionFS2FS-LAPA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.projectionMode"
+                  value="transitionFS2FS-LAPA">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               enablesFor="+"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.fs2fs.LAPA"
+               label="%transitionFS2FS_LAtoPA_label"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      
+   </extension>
+   
+   
+   
+   <!--  Model Editor Transition Initialization -->
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      
+      <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command1"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2ES-OASA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command3"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2ES-SALA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command5"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2ES-LAPA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command7"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2IS">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command9"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionESF2ESB">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command11"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2ES-SALAPA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command13"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2ES-OASA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command15"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2FS-OASA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command17"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2FS-SALA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command19"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2FS-LAPA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+        
+      </extension>
+      
+      
+      
+      
+         
+   <!--  Capella Project Explorer Transitions Initialization -->
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      
+      <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command1"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2ES-OASA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command3"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2ES-SALA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command5"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2ES-LAPA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command7"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionES2IS">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command9"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionESF2ESB">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command11"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2ES-SALAPA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command13"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2ES-OASA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command15"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2FS-OASA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command17"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2FS-SALA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+            <menuContribution  allPopups="true"
+            locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+         <command  commandId="org.polarsys.capella.core.projection.commands.ui.commands.command19"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+         <visibleWhen checkEnabled="false">
+            <with variable="selection">
+                <iterate>
+                        <and>
+                        <reference definitionId="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                            <test property="org.polarsys.capella.core.platform.sirius.ui.projectionMode" forcePluginActivation="true"
+                               value="transitionFS2FS-LAPA">
+                            </test>
+                        </and>
+                </iterate>
+            </with>
+         </visibleWhen> 
+         </command> 
+      </menuContribution>
+        
+      </extension>
+         <extension   point="org.eclipse.ui.commands">
+          <category
+                id="org.polarsys.capella.core.transitions.ui.category"
+                name="Transitions">
+          </category>
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command1"
+               name="%transitionES2ES_OAtoSA_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command3"
+               name="%transitionES2ES_SAtoLA_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.ESToESAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command5"
+               name="%transitionES2ES_LAtoPA_label"
+               >
+         </command>
+             
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.ESToISAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command7"
+               name="%transitionES2IS_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.ESFToESBAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command9"
+               name="%transitionESF2ESB_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.FSToESAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command11"
+               name="%transitionFS2ES_SALAPA_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.FSToESAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command13"
+               name="%transitionFS2ES_OASA_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command15"
+               name="%transitionFS2FS_OAtoSA_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command17"
+               name="%transitionFS2FS_SAtoLA_label"
+               >
+         </command>
+         
+         <command
+               defaultHandler="org.polarsys.capella.core.projection.commands.actions.FSToFSAction"
+               id="org.polarsys.capella.core.projection.commands.ui.commands.command19"
+               name="%transitionFS2FS_LAtoPA_label"
+               >
+         </command>
+                  
+     </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+   
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.property.projectionMode"
+             type="org.polarsys.capella.common.data.modellingcore.ModelElement"
+             namespace="org.polarsys.capella.core.platform.sirius.ui"
+             properties="projectionMode"
+             class="org.polarsys.capella.core.projection.commands.CommandTester"
+         >
+         </propertyTester>    
+         
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.property.graphicalProjectionMode"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.platform.sirius.ui"
+             properties="projectionMode"
+             class="org.polarsys.capella.core.projection.commands.CommandTester"
+         >
+         </propertyTester>   
+         
+   </extension>
+   
+   
+     <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityDiagramElementExpression">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate>
+                       <or>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+                        </instanceof>
+                       </or>
+                  </iterate>
+               </and>
+            </with>
+      </definition>
+   </extension>
+   
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.projection.commands.ui.expression.transitionVisibilityModelElementExpression">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate>
+                        <instanceof
+                              value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                        </instanceof>
+                  </iterate>
+               </and>
+            </with>
+               
+      </definition>
+   </extension>
+   
+</plugin>

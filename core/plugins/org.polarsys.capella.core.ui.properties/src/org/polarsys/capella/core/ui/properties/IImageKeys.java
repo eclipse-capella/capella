@@ -1,0 +1,45 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.ui.properties;
+
+/**
+ */
+public interface IImageKeys {
+  /**
+   * Arrow Down image id.
+   */
+  public final static String IMG_ARROW_DOWN = "ArrowDown_16x16.gif"; //$NON-NLS-1$
+
+  /**
+   * Arrow Up image id.
+   */
+  public final static String IMG_ARROW_UP = "ArrowUp_16x16.gif"; //$NON-NLS-1$
+
+  /**
+   * Add button image id.
+   */
+  public final static String IMG_ADD_BUTTON = "Add_16x16.gif"; //$NON-NLS-1$
+
+  /**
+   * Delete button image id.
+   */
+  public final static String IMG_DELETE_BUTTON = "Delete_16x16.gif"; //$NON-NLS-1$
+
+  /**
+   * Browse button image id.
+   */
+  public final static String IMG_BROWSE_BUTTON = "Browse_16x16.gif"; //$NON-NLS-1$
+
+  /**
+   * Lock image id.
+   */
+  public final static String IMG_LOCK = "Lock_8x8.gif"; //$NON-NLS-1$
+}

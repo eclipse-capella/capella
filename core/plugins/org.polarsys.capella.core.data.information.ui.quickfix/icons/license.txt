@@ -1,0 +1,10 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/delete_element.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/delete_config.gif
+/icons/goto_16.png - org.eclipse.jdt.doc.user - org.eclipse.jdt.doc.user/images/org.eclipse.jdt.ui/elcl16/goto_input.png
+/icons/move.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/restart_task.gif
+/icons/search16.gif - org.eclipse.search - org.eclipse.search/icons/full/etool16/search.gif

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+   
+  Contributors:
+     Thales - initial API and implementation
+-->
+<form>
+    <p>The initialisation and automated updated of the logical actors can be performed according to system actors. </p>
+    <p>Use an architecture or breakdown diagram to describe the system internal building blocks from a logical point of view. Logical components are intended to interact with each other to achieve the functional goals of the system.</p>
+</form>

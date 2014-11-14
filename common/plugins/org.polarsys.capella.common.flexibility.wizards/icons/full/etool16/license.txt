@@ -1,0 +1,15 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/etool16/empty.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/blank.gif
+/icons/full/etool16/info_tsk.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/info_tsk.gif
+/icons/full/etool16/copy.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/copy_edit.gif
+/icons/full/etool16/delete_edit.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/delete_config.gif
+/icons/full/etool16/add_att.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/monitorexpression_tsk.gif
+/icons/full/etool16/error_tsk.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/obj16/error_tsk.gif
+/icons/full/etool16/browse.gif - org.eclipse.ui.navigator - org.eclipse.ui.navigator/icons/full/clcl16/elipses.gif
+/icons/full/etool16/search.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/focus.gif
+/icons/full/etool16/warn_tsk.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/obj16/warn_tsk.gif

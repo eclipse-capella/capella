@@ -1,0 +1,1346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="sessionListener" name="Session Listener" schema="schema/sessionListener.exsd"/>
+   <extension point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            category="org.polarsys.capella.views.category"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator"
+            icon="icons/capella_16.png"
+            id="capella.project.explorer"
+            name="Capella Project Explorer">
+         <description>
+            This explorer displays all the model elements except the aspect elements which are displayed into the Aspect Explorer and the diagram elements which are displayed into the Diagram Explorer.
+         </description>
+      </view>
+   </extension>
+   <extension
+      point="org.eclipse.ui.navigator.viewer">
+   <viewer
+         viewerId="capella.project.explorer">
+      <popupMenu
+            allowsPlatformContributions="true"
+            id="capella.project.explorer#PopupMenu">
+         <insertionPoint
+               name="group.new"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.goto">
+         </insertionPoint>
+         <insertionPoint
+               name="group.open"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.edit"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.show"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.reorganize">
+         </insertionPoint>
+         <insertionPoint
+               name="group.port">
+         </insertionPoint>
+         <insertionPoint
+               name="group.generate"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.build"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.audit"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.project"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint 
+               name="group.team"
+               separator="true">
+         </insertionPoint>
+         
+         
+         <insertionPoint 
+               name="group.validation"
+               separator="false">
+         </insertionPoint>
+         
+         <insertionPoint 
+               name="group.rec"
+               separator="false">
+         </insertionPoint>
+         
+         <insertionPoint 
+               name="group.pattern"
+               separator="false">
+         </insertionPoint>
+         
+        
+         
+         <insertionPoint 
+               name="group.transition"
+               separator="false">
+         </insertionPoint>
+         
+          <insertionPoint 
+               name="group.wizard"
+               separator="false">
+         </insertionPoint>
+         
+         <insertionPoint 
+               name="group.accelerator"
+               separator="false">
+         </insertionPoint>
+         
+         
+         
+         
+         <insertionPoint
+               name="additions"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.migration"
+               separator="true">
+         </insertionPoint>
+         <insertionPoint
+               name="group.properties"
+               separator="true">
+         </insertionPoint>
+      </popupMenu>
+   </viewer>
+   <viewerContentBinding
+         viewerId="capella.project.explorer">
+      <includes>
+         <contentExtension pattern="org.eclipse.ui.navigator.resourceContent"/>
+         <contentExtension pattern="org.eclipse.ui.navigator.resources.filters.*"/>
+         <contentExtension pattern="capella.project.explorer.content"/>
+         <contentExtension pattern="capella.project.explorer.filters.*"/>
+         <contentExtension
+               pattern="capella.project.explorer.linkHelper.*">
+         </contentExtension>
+      </includes>   
+   </viewerContentBinding>
+   <viewerActionBinding
+         viewerId="capella.project.explorer">
+      <includes>
+         <actionExtension pattern="capella.project.explorer.actions.*"/>
+         <actionExtension pattern="org.eclipse.ui.navigator.resources.NewActions"/>
+         <actionExtension pattern="org.eclipse.ui.navigator.resources.PortingActions"/>
+         <actionExtension pattern="org.eclipse.ui.navigator.resources.actions.EditActions"/>
+         <actionExtension pattern="org.eclipse.ui.navigator.resources.actions.RefactorActions"/>
+         <actionExtension pattern="org.eclipse.ui.navigator.resources.PropertiesActionProvider"/>
+         <actionExtension pattern="org.eclipse.ui.navigator.resources.WorkManagementActionProvider"/>
+      </includes>
+      <excludes>
+         <actionExtension
+               pattern="org.polarsys.capella.core.platform.sirius.ui.actions.*">
+         </actionExtension>
+         <actionExtension
+               pattern="org.polarsys.capella.core.sirius.explorer.menus">
+         </actionExtension>
+         <actionExtension
+               pattern="CapellaExplorerCommands">
+         </actionExtension>
+      </excludes>
+   </viewerActionBinding>
+   <dragAssistant
+         class="org.polarsys.capella.core.platform.sirius.ui.navigator.drag.CapellaCommonDragAdapterAssistant"
+         viewerId="capella.project.explorer">
+   </dragAssistant>
+   </extension>
+   <extension
+         name="Capella Project Explorer"
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            contentProvider="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorContentProvider"
+            icon="icons/capella_16.png"
+            id="capella.project.explorer.content"
+            labelProvider="org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider"
+            name="Capella Content"
+            priority="normal"
+            providesSaveables="true">
+         <triggerPoints>
+                <or>
+               <adapt type="org.eclipse.core.resources.IProject">
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.projectNature"
+                        value="org.polarsys.capella.project.nature">
+                  </test>
+               </adapt>
+                <and> 
+                    <instanceof value="org.eclipse.core.resources.IResource"/> 
+                    <test 
+                        forcePluginActivation="true" 
+                        property="org.eclipse.core.resources.extension" 
+                        value="aird"/> 
+                </and>
+                <and> 
+                    <instanceof value="org.eclipse.core.resources.IResource"/> 
+                    <test 
+                        forcePluginActivation="true" 
+                        property="org.eclipse.core.resources.extension" 
+                        value="melodymodeller"/> 
+                </and>
+                </or>
+         </triggerPoints>
+         <possibleChildren>
+                <or>
+                    <instanceof value="org.eclipse.emf.ecore.resource.Resource"/>
+                    <instanceof value="org.eclipse.emf.ecore.EObject"/>
+                    <adapt type="org.eclipse.emf.ecore.EObject"/>
+                    <instanceof value="org.eclipse.sirius.business.api.session.Session"/>
+                </or> 
+         </possibleChildren>
+
+         <commonSorter
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.sorter.ModelElementViewerSorter"
+               id="capella.project.explorer.sorter">
+            <parentExpression>
+               <or>
+                  <instanceof
+                        value="org.eclipse.emf.ecore.EObject">
+                  </instanceof>
+                  <instanceof
+                        value="org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem">
+                  </instanceof>
+               </or>
+            </parentExpression>
+         </commonSorter>
+
+         <commonSorter
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.sorter.AirdContentSorter"
+               id="capella.project.explorer.airdSorter">
+            <parentExpression>
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.extension"
+                        value="aird">
+                  </test>
+               </adapt>
+            </parentExpression>
+         </commonSorter>
+
+         <commonSorter
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.sorter.ViewpointItemSorter"
+               id="capella.project.explorer.ViewpointItemSorter">
+            <parentExpression>
+               <instanceof
+                     value="org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem">
+               </instanceof>
+            </parentExpression>
+         </commonSorter>
+
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.NewModelActionProvider"
+               id="capella.project.explorer.newModelContributor">
+            <enablement>
+               <instanceof
+                     value="org.polarsys.capella.core.data.capellamodeller.Project">
+               </instanceof>
+            </enablement>
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.ControlActionProvider"
+               id="capella.project.explorer.controlContributor">
+            <enablement>
+               <adapt
+                     type="org.polarsys.kitalpha.emde.model.ExtensibleElement">
+               </adapt></enablement>
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.RepresentationActionProvider"
+               id="capella.project.explorer.representationContributor">
+            <enablement>
+               <or>
+                  <instanceof
+                        value="org.eclipse.sirius.viewpoint.DRepresentation">
+                  </instanceof>
+                  <test
+                        forcePluginActivation="false"
+                        property="org.polarsys.capella.core.platform.sirius.ui.navigator.itemWrapperPropertyTester">
+                  </test>
+               </or>
+            </enablement>
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.AirdCommonActionProvider"
+               id="capella.project.explorer.airdContributor">
+            <enablement>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IResource">
+                  </instanceof>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.extension"
+                        value="aird">
+                  </test>
+               </and>
+            </enablement>
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.NewRepresentationActionProvider"
+               id="capella.project.explorer.newRepresentationContributor">
+               <!--enablement>
+                   	   <and>
+		                  <test forcePluginActivation="false"
+					               property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsPreferences"
+					               args="addCapellaDiagram"
+					               value="capella.project.explorer.newRepresentationContributor">
+				       	  </test>
+				       </and>
+            	</enablement-->
+                     
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.EditCommonActionProvider"
+               id="capella.project.explorer.editContributor">
+            <enablement>
+            
+               <and>
+                  
+                  <not>
+                     <instanceof
+                           value="org.eclipse.sirius.viewpoint.DRepresentation">
+                     </instanceof>
+                  </not>
+                  <adapt
+                        type="org.eclipse.emf.ecore.EObject">
+                  </adapt>
+                  
+                  
+               </and>
+            </enablement>
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.UndoRedoActionProvider"
+               id="capella.project.explorer.undoredoContributor">
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.ProjectActionProvider"
+               id="capella.project.explorer.projectContributor"
+               overrides="org.eclipse.ui.navigator.resources.actions.EditActions">
+               <enablement>
+                <or>
+                    <adapt type="org.eclipse.core.resources.IProject" />
+                    <instanceof
+                          value="org.eclipse.core.resources.IResource">
+                    </instanceof>    
+                </or>
+           </enablement>
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.RefactorActionProvider"
+               id="capella.project.explorer.refactorContributor"
+               overrides="org.eclipse.ui.navigator.resources.actions.RefactorActions">
+            <enablement>
+               <or>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IFile">
+                  </instanceof>
+                  <or>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.eclipse.core.resources.extension"
+                           value="aird">
+                     </test>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.eclipse.core.resources.extension"
+                           value="melodymodeller">
+                     </test>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.eclipse.core.resources.extension"
+                           value="melodyfragment">
+                     </test>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.eclipse.core.resources.extension"
+                           value="airdfragment">
+                     </test>
+                  </or>
+               </and>
+               <instanceof
+                        value="org.eclipse.core.resources.IFolder">
+                  </instanceof>
+               </or>
+            </enablement>
+         </actionProvider>
+         <actionProvider
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.providers.ModelElementActionProvider"
+               id="capella.project.explorer.modelElementActionProvider">
+            <enablement>
+               <instanceof
+                     value="org.polarsys.kitalpha.emde.model.Element">
+               </instanceof>
+            </enablement>
+         </actionProvider>
+          <dropAssistant
+               class="org.polarsys.capella.core.platform.sirius.ui.navigator.drop.ExplorerDropAdapterAssistant"
+               id="capellaDropAssistant">
+            <possibleDropTargets>
+               <instanceof
+                     value="org.polarsys.kitalpha.emde.model.Element">
+               </instanceof></possibleDropTargets>
+         </dropAssistant>
+          <dropAssistant
+                class="org.polarsys.capella.core.platform.sirius.ui.navigator.drop.DiagramDropAdapterAssistant"
+                id="org.polarsys.capella.core.platform.sirius.ui.navigator.diagramDropAssistant">
+             <possibleDropTargets>
+                <instanceof
+                      value="org.polarsys.kitalpha.emde.model.Element">
+                </instanceof></possibleDropTargets>
+          </dropAssistant>
+      </navigatorContent>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides resources that end with &quot;.melodymodeller&quot;"
+            id="capella.project.explorer.filters.capellaModeller"
+            name="*.melodymodeller resources">
+         <filterExpression>
+            <adapt
+                  type="org.eclipse.core.resources.IFile">
+               <test
+                     forcePluginActivation="true"
+                     property="org.eclipse.core.resources.extension"
+                     value="melodymodeller">
+               </test>
+            </adapt>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter 
+      		id="capella.project.explorer.filters.parts"
+      		name="Part with hidden abstract type"
+      		activeByDefault="true" 
+      		visibleInUI="false"
+      		class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.PartFilter"/>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides resources that end with &quot;.aird&quot;"
+            id="capella.project.explorer.filters.capellaAird"
+            name="*.aird">
+         <filterExpression>
+            <adapt
+                  type="org.eclipse.core.resources.IFile">
+               <test
+                     forcePluginActivation="true"
+                     property="org.eclipse.core.resources.extension"
+                     value="aird">
+               </test>
+            </adapt>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hide EMF Resources"
+            id="capella.project.explorer.filters.EMFResource"
+            name="EMF Resources">
+         <filterExpression>
+            <instanceof
+                  value="org.eclipse.emf.ecore.resource.Resource">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella merge links"
+            id="capella.project.explorer.filters.mergeLink"
+            name="Merge Links">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.MergeLink">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella refinement links"
+            id="capella.project.explorer.filters.refinementLinks"
+            name="Refinement Links">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.RefinementLink">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella naming rules"
+            id="capella.project.explorer.filters.namingRules"
+            name="Naming Rules">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.capellacore.NamingRule">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella reuse links"
+            id="capella.project.explorer.filters.reuseLinks"
+            name="Reuse Links">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.capellacore.ReuseLink">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella transformation links"
+            id="capella.project.explorer.filters.transfoLinks"
+            name="Transformation Links">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.capellacommon.TransfoLink">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella events"
+            id="capella.project.explorer.filters.events"
+            name="Events">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.Event">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="%common.filter.abstractfunctionabstractcapabilityinvolvement.filter.description"
+            id="capella.project.explorer.filters.AbstractFunctionAbstractCapabilityInvolvement"
+            name="%common.filter.abstractfunctionabstractcapabilityinvolvement.filter.name">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella actor capability and mission involvements"
+            id="capella.project.explorer.filters.actorcapabilitymissioninvolvement"
+            name="Actor Capability and Mission Involvements">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.ctx.ActorCapabilityInvolvement">
+               </instanceof>
+               <instanceof
+                     value="org.polarsys.capella.core.data.ctx.ActorMissionInvolvement">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella system capability and mission involvements"
+            id="capella.project.explorer.filters.systemcapabilitymissioninvolvement"
+            name="System Capability and Mission Involvements">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.ctx.SystemCapabilityInvolvement">
+               </instanceof>
+               <instanceof
+                     value="org.polarsys.capella.core.data.ctx.SystemMissionInvolvement">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella capability realization involvements"
+            id="capella.project.explorer.filters.capabilityrealizationinvolvement"
+            name="Capability Realization Involvements">
+         <filterExpression>
+           <instanceof
+                 value="org.polarsys.capella.core.data.capellacommon.CapabilityRealizationInvolvement">
+           </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella entity operational capability involvements"
+            id="capella.project.explorer.filters.entityoperationalcapabilityinvolvement"
+            name="Entity Operational Capability Involvements">
+         <filterExpression>
+           <instanceof
+                 value="org.polarsys.capella.core.data.oa.EntityOperationalCapabilityInvolvement">
+           </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella functional chain involvements"
+            id="capella.project.explorer.filters.functionalchaininvolvement"
+            name="Functional Chain Involvements">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.interaction.FunctionalChainAbstractCapabilityInvolvement">
+               </instanceof>
+               <instanceof
+                     value="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella message ends"
+            id="capella.project.explorer.filters.messageEnds"
+            name="Message Ends">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.MessageEnd">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella execution ends"
+            id="capella.project.explorer.filters.executionEnd"
+            name="Execution Ends">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.ExecutionEnd">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella fragment ends"
+            id="capella.project.explorer.filters.fragmentEnds"
+            name="Fragment Ends">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.FragmentEnd">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella sequence messages"
+            id="capella.project.explorer.filters.sequenceMessages"
+            name="Sequence Messages">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.SequenceMessage">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella combined fragments"
+            id="capella.project.explorer.filters.combinedFragments"
+            name="Combined Fragments">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.CombinedFragment">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella interaction operands"
+            id="capella.project.explorer.filters.interactionOperands"
+            name="Interaction Operands">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.InteractionOperand">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella interaction states"
+            id="capella.project.explorer.filters.interactionStates"
+            name="Interaction States">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.InteractionState">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella interaction uses."
+            id="capella.project.explorer.filters.interactionUses"
+            name="Interaction Uses">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.InteractionUse">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella executions."
+            id="capella.project.explorer.filters.execution"
+            name="Executions">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.interaction.Execution">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella parts."
+            id="capella.project.explorer.filters.part"
+            name="Parts">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.cs.Part">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            description="Hides all Capella contexts."
+            id="capella.project.explorer.filters.context"
+            name="Contexts">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.cs.ComponentContext">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella component exchanges."
+            id="capella.project.explorer.filters.componentExchange"
+            name="Component Exchanges">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.fa.ComponentExchange">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella property value packages."
+            id="capella.project.explorer.filters.propertyValuePkg"
+            name="Property Value Packages">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.capellacore.PropertyValuePkg">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella component exchange ends."
+            id="capella.project.explorer.filters.componentExchangeEnd"
+            name="Component Exchange Ends">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.fa.ComponentExchangeEnd">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella functional exchanges."
+            id="capella.project.explorer.filters.functionalExchange"
+            name="Functional Exchanges">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.fa.FunctionalExchange">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="Hides all Capella physical links."
+            id="capella.project.explorer.filters.physicalLink"
+            name="Physical Links">
+         <filterExpression>
+            <instanceof
+                  value="org.polarsys.capella.core.data.cs.PhysicalLink">
+            </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.ResourcesFolderItemFilter"
+            description="%common.filter.resourcefolderitem.description"
+            id="capella.project.explorer.filters.ResourcesFolderItem"
+            name="%common.filter.resourcefolderitem.name">
+      </commonFilter>
+      <commonFilter
+            activeByDefault="false"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.ViewpointsFolderItemFilter"
+            description="%common.filter.viewpointsfolderitem.description"
+            id="capella.project.explorer.filters.ViewpointsFolderItem"
+            name="%common.filter.viewpointsfolderitem.name">
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.MergedScenarioFilter"
+            description="%common.filter.mergedscenario.filter.description"
+            id="capella.project.explorer.filters.MergedScenarioFilter"
+            name="%common.filter.mergedscenario.filter.name">
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.filters.TraceFilter"
+            description="%common.filter.trace.filter.description"
+            id="capella.project.explorer.filters.traceFilter"
+            name="%common.filter.trace.filter.name">
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="%common.filter.interfaceUseAndImplementation.filter.description"
+            id="capella.project.explorer.filters.InterfaceUseAndImplementation"
+            name="%common.filter.interfaceUseAndImplementation.filter.name">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.cs.InterfaceUse">
+               </instanceof>
+               <instanceof
+                     value="org.polarsys.capella.core.data.cs.InterfaceImplementation">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="%common.filter.association.filter.description"
+            id="capella.project.explorer.filters.Association"
+            name="%common.filter.association.filter.name">
+         <filterExpression>
+           <instanceof
+                 value="org.polarsys.capella.core.data.information.Association">
+           </instanceof>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="%common.filter.physicalpathinvolvement.filter.description"
+            id="capella.project.explorer.filters.physicalpathinvolvement"
+            name="%common.filter.physicalpathinvolvement.filter.name">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.cs.PhysicalPathInvolvement">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="%common.filter.functionport.filter.description"
+            id="capella.project.explorer.filters.functionport"
+            name="%common.filter.functionport.filter.name">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.fa.FunctionPort">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="%common.filter.componentport.filter.description"
+            id="capella.project.explorer.filters.componentport"
+            name="%common.filter.componentport.filter.name">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.fa.ComponentPort">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+      <commonFilter
+            activeByDefault="true"
+            description="%common.filter.physicalport.filter.description"
+            id="capella.project.explorer.filters.physicalport"
+            name="%common.filter.physicalport.filter.name">
+         <filterExpression>
+            <or>
+               <instanceof
+                     value="org.polarsys.capella.core.data.cs.PhysicalPort">
+               </instanceof>
+            </or>
+         </filterExpression>
+      </commonFilter>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.linkHelper">
+      <linkHelper
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.view.AirdDiagramLinkHelper"
+            id="capella.project.explorer.linkHelper.airdDiagrams">
+         
+         <editorInputEnablement>
+            <instanceof
+                  value="org.eclipse.emf.common.ui.URIEditorInput">
+            </instanceof>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof
+                  value="org.eclipse.sirius.viewpoint.DSemanticDiagram">
+            </instanceof>
+         </selectionEnablement>
+         
+      </linkHelper>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.helpers.longRunningOperationsListener">
+      <listener
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.internal.ExplorerLongRunningOperationsListener">
+      </listener>
+   </extension>
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.decorator.CapellaScmLabelDecorator"
+            id="org.polarsys.capella.common.menu.dynamic.CapellaScmDecorator"
+            label="Capella SCM Decorator"
+            lightweight="true"
+            location="BOTTOM_RIGHT"
+            state="true">
+         <enablement>
+            <or>
+               <objectClass
+                     name="org.polarsys.kitalpha.emde.model.Element">
+               </objectClass>
+               <objectClass
+                     name="org.eclipse.sirius.viewpoint.DRepresentation">
+               </objectClass>
+            </or>
+         </enablement>
+      </decorator>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.CapellaNavigatorPreferencesInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.CapellaNavigatorPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPreferencePage"
+            name="%capellaNavigatorPreferencePage">
+      </page>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.preferences.CapellaNavigatorPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPreferencePage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%capellaNavigatorPreferencePage">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.moveDown"
+            sequence="CTRL+PAGE_DOWN"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.moveUp"
+            sequence="CTRL+PAGE_UP"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="F8">
+      </key>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="F10">
+      </key>
+      <key
+            commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="F7">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.handlers.MoveDownHandler"
+            description="%command.moveDown.description"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.moveDown"
+            name="%command.moveDown.name">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.handlers.MoveUpHandler"
+            description="%command.moveUp.description"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.moveUp"
+            name="%command.moveUp.name">
+      </command>
+      <category
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            name="%category.capella.navigator.name">
+      </category>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.LocateInCapellaExplorerHandler"
+            description="%command.locateInCapellaExplorer.description"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
+            name="%command.locateInCapellaExplorer.name">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.ShowInDiagramHandler"
+            description="%command.showInDiagramHandler.description"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.showInDiagramCommand"
+            name="%command.showInDiagramHandler.name">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.ShowRelatedElementsHandler"
+            description="%command.showRelatedElements.description"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
+            name="%command.showRelatedElements.name">
+      </command>
+      <command
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.ShowImpactAnalysisHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
+            name="%showImpactAnalysis">
+      </command>
+      
+      
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.FixDiagramFiltersHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
+            name="%command.fixFilters"
+            description="%command.fixFilters.description">
+      </command>
+      
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RefreshDiagramsCommandHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+            name="%command.refreshDiagrams"
+            description="%command.refreshDiagrams.description">
+      </command>
+      
+      <command
+            categoryId="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            defaultHandler="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.RemoveHiddenElementsHandler"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+            name="%command.removeHiddenElements"
+            description="%command.removeHiddenElements.description">
+      </command>
+      
+      
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+         
+      <menuContribution locationURI="popup:capella.project.explorer#PopupMenu?before=group.show">
+         
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+               icon="icons/viewpoint.gif"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.refreshAird"
+               label="%command.refreshDiagrams"
+               style="push">
+            <visibleWhen checkEnabled="true">
+               <with variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <or>
+                           <and>
+                              <instanceof
+                                    value="org.eclipse.core.resources.IFile">
+                              </instanceof>
+                              <test
+                                    forcePluginActivation="true"
+                                    property="org.eclipse.core.resources.extension"
+                                    value="aird">
+                              </test>
+                           </and>
+                           <instanceof
+                                 value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                           </instanceof>
+                        </or>
+                     </iterate>
+                     <count value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
+               icon="icons/viewpoint.gif"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.fixFilters"
+               label="%command.fixFilters"
+               style="push">
+            <visibleWhen checkEnabled="true">
+               <with variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <and>
+                           <instanceof
+                                 value="org.eclipse.core.resources.IFile">
+                           </instanceof>
+                           <test
+                                 forcePluginActivation="true"
+                                 property="org.eclipse.core.resources.extension"
+                                 value="aird">
+                           </test>
+                        </and>
+                     </iterate>
+                     <count value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+               icon="icons/viewpoint.gif"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.removeHiddenElements"
+               label="%command.removeHiddenElements"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <or>
+                           <and>
+                              <instanceof
+                                    value="org.eclipse.core.resources.IFile">
+                              </instanceof>
+                              <test
+                                    forcePluginActivation="true"
+                                    property="org.eclipse.core.resources.extension"
+                                    value="aird">
+                              </test>
+                           </and>
+                           <instanceof
+                                 value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                           </instanceof>
+                        </or>
+                     </iterate>
+                     <count
+                           value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+     
+     
+         
+         
+      </menuContribution>
+         
+         
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=navigateGroup">
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"
+               icon="icons/capella_16.png"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.LocateInCapellaExplorerActionFromDiagram"
+               label="%showInCapellaExplorerAction"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <or>
+                           <instanceof
+                                 value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                           </instanceof>
+                           <instanceof
+                                 value="org.eclipse.sirius.table.metamodel.table.DTableElement">
+                           </instanceof>
+                        </or>
+                     </iterate>
+                     <count
+                           value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementsCommand"
+               icon="icons/capella_16.png"
+               id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram"
+               label="%showSemanticInCapellaExplorerAction"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <instanceof
+                              value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                        </instanceof>
+                     </iterate>
+                     <count
+                           value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+         <menu
+               icon="icons/capella_16.png"
+               label="%gotoRelatedElementsAction">
+            <dynamic
+                  class="org.polarsys.capella.core.platform.sirius.ui.navigator.handlers.GotoRelatedElementsHandler"
+                  id="org.polarsys.capella.core.platform.sirius.ui.navigator.showRelatedElementFromDiagram2">
+            </dynamic>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=org.polarsys.capella.core.sirius.diagram.editor.wizards">
+           <command
+               commandId="org.polarsys.capella.core.platform.sirius.ui.navigator.showImpactAnalysisCommand"
+               icon="icons/elcl16/ch_callers.gif"
+               id="%showImpactAnalysis"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+               <with
+                     variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <or>
+                           <instanceof
+                                 value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                           </instanceof>
+                           <instanceof
+                                 value="org.eclipse.sirius.table.metamodel.table.DTableElement">
+                           </instanceof>
+                        </or>
+                     </iterate>
+                     <count
+                           value="1">
+                     </count>
+                  </and>
+               </with>
+            </visibleWhen>
+         </command>
+         
+      </menuContribution>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.CapellaPage"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.capella.page"
+            name="Capella">
+         <enabledWhen>
+            <and>
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+               </adapt>
+               <or>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.extension"
+                        value="melodymodeller">
+                  </test>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.extension"
+                        value="melodyfragment">
+                  </test>
+               </or>
+            </and>
+         </enabledWhen>
+      </page>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.property.ItemWrapperPropertyTester"
+            id="org.polarsys.capella.core.platform.sirius.ui.navigator.ItemWrapperPropertyTester"
+            namespace="org.polarsys.capella.core.platform.sirius.ui.navigator"
+            properties="itemWrapperPropertyTester"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+
+   <extension
+         point="org.polarsys.capella.core.platform.sirius.ui.navigator.sessionListener">
+      <sessionListener
+            class="org.polarsys.capella.core.platform.sirius.ui.navigator.listeners.SessionCheckingListener">
+      </sessionListener>
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.preferences.capellaPreferences">
+      <category
+            description="test"
+            name="Other">
+         <item
+               description="create a new table or diagram in Capella"
+               enableByDefault="true"
+               id="capella.project.explorer.newRepresentationContributor"
+               name="Add Table/ Diagram">
+         </item>
+      </category>
+   </extension>
+   
+    
+     
+     
+   
+</plugin>

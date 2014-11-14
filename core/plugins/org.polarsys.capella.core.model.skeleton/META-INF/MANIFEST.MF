@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.model.skeleton;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.polarsys.capella.core.data.gen,
+ org.polarsys.capella.common.tig.efprovider,
+ org.polarsys.capella.core.model.handler,
+ org.polarsys.capella.core.model.helpers;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Export-Package: org.polarsys.capella.core.model.skeleton,
+ org.polarsys.capella.core.model.skeleton.helpers,
+ org.polarsys.capella.core.model.skeleton.impl,
+ org.polarsys.capella.core.model.skeleton.impl.cmd
+Bundle-Localization: plugin

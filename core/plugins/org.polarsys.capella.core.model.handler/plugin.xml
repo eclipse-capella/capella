@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="fileModificationPreconditionChecker" name="File Modification Precondition Checker" schema="schema/fileModificationPreconditionChecker.exsd"/>
+   <extension-point id="delegatedSemanticEditingDomainProviders" name="Delegated Semantic Editing Domain Providers" schema="schema/delegatedSemanticEditingDomainProviders.exsd"/>
+   <extension-point id="delegatedCapellaResourceHelper" name="Delegated Capella Resource Helper" schema="schema/delegatedCapellaResourceHelper.exsd"/>
+   <extension-point id="readOnlySectionHandler" name="Read Only Section Handler" schema="schema/readOnlySectionHandler.exsd"/>
+   <extension-point id="diagnosticianProviders" name="diagnosticianProviders" schema="schema/diagnosticianProviders.exsd"/>
+   <extension-point id="delegateWorkbenchAdvisor" name="Delegate Application Advisor" schema="schema/delegateWorkbenchAdvisor.exsd"/>
+    <extension-point id="deleteCommandProvider" name="Delete Command Provider" schema="schema/deleteCommandProvider.exsd"/>
+   <extension
+         point="org.polarsys.capella.common.platform.sirius.tig.semanticEditingDomainProviders">
+      <semanticEditingDomainProviders
+            class="org.polarsys.capella.core.model.handler.provider.CapellaSemanticEditingDomainProviders">
+      </semanticEditingDomainProviders>
+   </extension>
+   <extension
+         id="capellaEditingDomainFactoryId"
+         name="Capella Editing Domain Factory"
+         point="org.eclipse.sirius.common.editingDomainFactory">
+      <editingDomainFactory
+            class="org.polarsys.capella.common.platform.sirius.tig.ef.SiriusEditingDomainProvider"
+            override="org.eclipse.sirius.LocalSessionEditingDomainFactory">
+      </editingDomainFactory>
+   </extension>
+</plugin>

@@ -1,0 +1,96 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.fa.validation.functionalExchange;
+
+import java.util.List;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.validation.EMFEventType;
+import org.eclipse.emf.validation.IValidationContext;
+
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.fa.FunctionInputPort;
+import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+
+/**
+ * This rule ensures that the target flow port is used by a functional exchange
+ */
+public class FunctionalExchange_exchangeItemsOnFunctionPorts extends AbstractValidationRule {
+
+  /**
+   * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
+   */
+  @Override
+  public IStatus validate(IValidationContext ctx_p) {
+    // Raise a warning if one of exchange item convoyed by related functional exchanges are not convoyed by the port
+    EObject eObj = ctx_p.getTarget();
+    EMFEventType eType = ctx_p.getEventType();
+
+    if (eType == EMFEventType.NULL) {
+      if (eObj instanceof AbstractNamedElement) {
+        String resultSource = ICommonConstants.EMPTY_STRING;
+        String resultTarget = ICommonConstants.EMPTY_STRING;
+
+        if (eObj instanceof FunctionalExchange) {
+          List<ExchangeItem> eisSource = null;
+          List<ExchangeItem> eisTarget = null;
+          FunctionalExchange fe = (FunctionalExchange) eObj;
+          ActivityNode source = fe.getSource();
+          ActivityNode target = fe.getTarget();
+
+          
+          if (target instanceof FunctionInputPort) {
+            eisTarget = ((FunctionInputPort) target).getIncomingExchangeItems();
+          }
+
+          if (source instanceof FunctionOutputPort) {
+            eisSource = ((FunctionOutputPort) source).getOutgoingExchangeItems();
+          }
+          
+          if (null != eisTarget && null != eisSource) {
+              for (AbstractExchangeItem item : fe.getExchangedItems()) {
+                  if (!eisSource.contains(item)) {
+                    resultSource +=
+                        (resultSource.length() > 0 ? ICommonConstants.EMPTY_STRING + ICommonConstants.COMMA_CHARACTER + ICommonConstants.WHITE_SPACE_CHARACTER
+                                                  : ICommonConstants.EMPTY_STRING) + item.getName();
+                  }
+                  if (!eisTarget.contains(item)) {
+                    resultTarget +=
+                        (resultTarget.length() > 0 ? ICommonConstants.EMPTY_STRING + ICommonConstants.COMMA_CHARACTER + ICommonConstants.WHITE_SPACE_CHARACTER
+                                                  : ICommonConstants.EMPTY_STRING) + item.getName();
+                  }
+                }
+
+                if (resultSource.length() > 0 || resultTarget.length() > 0) {
+                  if (resultSource.length() == 0) {
+                    resultSource = "all are allocated"; //$NON-NLS-1$
+                  }
+                  if (resultTarget.length() == 0) {
+                    resultTarget = Messages.exchangeItemsOnFunctionPorts_allocated;
+                  }
+
+                  return createFailureStatus(ctx_p, new Object[] { ((FunctionalExchange) eObj).getName(), resultSource, resultTarget });
+                }
+		  }
+
+        }
+      }
+    }
+    return ctx_p.createSuccessStatus();
+  }
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="defaultProjectLocationProvider" name="Default Project Location Provider" schema="schema/defaultProjectLocationProvider.exsd"/>
+   <extension 
+   		id="org.polarsys.capella.project.nature"
+   		name="Capella Nature"
+   		point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.polarsys.capella.core.platform.sirius.ui.project.CapellaNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/capella_8x8.png"
+            id="capella.project.nature.image"
+            natureId="org.polarsys.capella.project.nature">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.polarsys.capella.common.mdsofa.category.wizards"
+            class="org.polarsys.capella.core.platform.sirius.ui.project.NewProjectWizard"
+            hasPages="true"
+            icon="icons/capella_16.png"
+            id="capella.project.wizard"
+            name="Capella Project"
+            project="true">
+         <description>
+            Create a Capella project
+         </description>
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+         <newWizardShortcut
+               id="capella.project.wizard">
+         </newWizardShortcut>
+         
+         <newWizardShortcut
+               id="capella.project.configuration.wizard">
+         </newWizardShortcut>
+         
+      </perspectiveExtension>
+   </extension>
+   
+   
+   
+   
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="all-categorized-capella"
+            type="new"
+            wizardId="capella.project.wizard">
+         <enablement>
+            <or>
+                <adapt type="org.eclipse.core.resources.IFile" /> 
+                <adapt type="org.eclipse.core.resources.IFolder" />
+                <adapt type="org.eclipse.core.resources.IProject" /> 
+                <adapt type="org.eclipse.core.resources.IWorkspaceRoot" />
+                <count
+                      value="0">
+                </count> 
+            </or>
+         </enablement>
+      </commonWizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences.PreferencesInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences.ScmPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.project.page1"
+            name="%SCM_Page_Name">
+      </page>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.project.internal.preferences.ScmPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.project.page1"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%SCM_Page_Name">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+      </page>
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.capella.core.preferences.capellaPreferences">
+      <projectNature
+            id="org.polarsys.capella.project.nature">
+      </projectNature>
+   </extension>
+</plugin>

@@ -1,0 +1,41 @@
+<%if (isImplementation) { boolean hasOCL = false;%>
+  <%for (GenOperation genOperation : genClass.getImplementedGenOperations()) {
+	String body = null;
+	EAnnotation ocl = genOperation.getEcoreOperation().getEAnnotation(oclNsURI);
+	if (ocl != null) body = ocl.getDetails().get("body");
+	if (body != null) { hasOCL = true;%>
+	/**
+	 * The parsed OCL expression for the body of the '{@link #<%=genOperation.getName()%> <em><%=genOperation.getFormattedName()%></em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #<%=genOperation.getName()%>
+	 * @generated
+	 */
+	private static <%=genModel.getImportedName("org.eclipse.ocl.expressions.OCLExpression")%><<%=genModel.getImportedName("org.eclipse.emf.ecore.EClassifier")%>> <%=genOperation.getName()%>BodyOCL;
+	
+    <%}
+  }
+    
+  for (GenFeature genFeature : genClass.getImplementedGenFeatures()) {
+	String derive = null;
+	EAnnotation ocl = genFeature.getEcoreFeature().getEAnnotation(oclNsURI);
+	if (ocl != null) derive = ocl.getDetails().get("derive");
+	if (derive != null) { hasOCL = true;%>
+	/**
+	 * The parsed OCL expression for the derivation of '{@link #<%=genFeature.getGetAccessor()%> <em><%=genFeature.getFormattedName()%></em>}' property.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #<%=genFeature.getGetAccessor()%>
+	 * @generated
+	 */
+	private static <%=genModel.getImportedName("org.eclipse.ocl.expressions.OCLExpression")%><<%=genModel.getImportedName("org.eclipse.emf.ecore.EClassifier")%>> <%=genFeature.getSafeName()%>DeriveOCL;
+	
+    <%}
+  }
+    
+  if (hasOCL) { %>
+	private static final String OCL_ANNOTATION_SOURCE = "<%=oclNsURI%>";<%=genModel.getNonNLS()%>
+	
+	private static final <%=genModel.getImportedName("org.eclipse.ocl.ecore.OCL")%> OCL_ENV = <%=genModel.getImportedName("org.eclipse.ocl.ecore.OCL")%>.newInstance();
+  <% }
+}%>

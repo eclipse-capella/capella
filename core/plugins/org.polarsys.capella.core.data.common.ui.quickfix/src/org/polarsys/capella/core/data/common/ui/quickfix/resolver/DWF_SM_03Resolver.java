@@ -1,0 +1,88 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.common.ui.quickfix.resolver;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.ecore.EObject;
+
+import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
+import org.polarsys.capella.common.data.modellingcore.IState;
+import org.polarsys.capella.common.tig.efprovider.TigEfProvider;
+import org.polarsys.capella.common.tig.ef.ExecutionManager;
+import org.polarsys.capella.common.tig.ef.command.AbstractReadWriteCommand;
+import org.polarsys.capella.common.tig.ef.registry.ExecutionManagerRegistry;
+
+public class DWF_SM_03Resolver extends AbstractCapellaMarkerResolution {
+
+	class DWF_SM_03ResolverCommand extends AbstractReadWriteCommand {
+
+		List<EObject> _tgts;
+
+		public DWF_SM_03ResolverCommand(List<EObject> tgts) {
+			_tgts = tgts;
+		}
+
+		public void run() {
+			for (EObject eObject : _tgts) {
+				if (eObject instanceof State) {
+					State stateToCorrect = (State) eObject;
+					List<IState> ReferencedStates = stateToCorrect.getReferencedStates();
+					List<IState> involvedStates = new ArrayList<IState>();
+					for (Region region : stateToCorrect.getOwnedRegions()) {
+						for (IState iState : region.getInvolvedStates()) {
+							involvedStates.add(iState);
+						}
+					}
+
+					/* Leveling both lists to have the same content */
+					Set<IState> lst = new HashSet<IState>();
+					lst.addAll(involvedStates);
+					lst.addAll(ReferencedStates);
+
+					for (IState iState : lst) {
+						if (!involvedStates.contains(iState))
+							stateToCorrect.getOwnedRegions().get(0).getInvolvedStates().add((AbstractState) iState);
+						if (!ReferencedStates.contains(iState))
+							stateToCorrect.getReferencedStates().add(iState);
+					}
+				}
+			}
+		}
+
+	}
+
+	public void run(IMarker marker_p) {
+		List<EObject> tgts = getModelElements(marker_p);
+		
+		DWF_SM_03ResolverCommand cmd = new DWF_SM_03ResolverCommand(
+				tgts);
+		ExecutionManager em = ExecutionManagerRegistry.getInstance()
+				.getExecutionManager(TigEfProvider.getExecutionManagerName());
+		em.execute(cmd);
+		try {
+			marker_p.delete();
+		} catch (CoreException e) {
+			//Catch exception silently,
+			e.printStackTrace();
+		}
+
+	}
+
+}

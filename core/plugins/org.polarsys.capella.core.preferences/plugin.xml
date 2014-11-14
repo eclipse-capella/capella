@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="capellaPreferences" name="Custom Capella Preferences" schema="schema/org.polarsys.capella.core.preferences.exsd"/>
+
+	<extension point="org.eclipse.ui.preferencePages">
+	 <page
+	  		category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.AbstractCapellaCommandsPreferencePage"
+            id="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
+            name="Commands Configurability">
+      </page>
+      
+	
+      <page
+            category="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.UserProfilePreferencePage"
+            id="org.polarsys.capella.core.commands.preferences.ui.validationPreferencePage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="User Profile">
+      </page>
+      
+       <page
+            category="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.ItemsPreferencePage"
+            id="org.polarsys.capella.core.commands.preferences.ui.constraintsPreferencePage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="Commands">
+      </page>
+      
+    </extension>
+    
+     <!--extension point="org.eclipse.ui.propertyPages">
+         <page
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.eclipse.sirius.ui.tools.internal.preference.DesignerPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.page"
+            name="ViewPoint">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+          </page>
+   </extension-->
+    
+    <!--        Team Preferences     --> 
+    <!--extension point="org.eclipse.ui.propertyPages">
+        <page
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.team.TeamPropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.team.page"
+            name="Team">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+        </page>
+         
+        <page
+            category="org.eclipse.sirius.ui.tools.internal.preference.team.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.team.FileContentPropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.team.file.content.page"
+            name="File content">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+         </page>
+          
+         <page
+            category="org.eclipse.sirius.ui.tools.internal.preference.team.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.team.TeamIgnorePropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.team.ignore.page"
+            name="Ignored Resources">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+         </page>
+         <page
+            category="org.eclipse.sirius.ui.tools.internal.preference.team.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.team.ResourceModelPropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.team.resource.model.page"
+            name="Models">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+          </page>
+          
+   </extension-->
+   
+    
+    <!--        Views Point Preferences     --> 
+    <!--extension point="org.eclipse.ui.propertyPages">
+         <page
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.viewpoint.ViewPointPropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.page"
+            name="ViewPoint">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+          </page>
+          
+          <page
+           category="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.viewpoint.ViewPointDiagramPropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.diagram.page"
+            name="Viewpoint Diagram">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+          </page>
+
+
+          <page
+            category="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.diagram.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.viewpoint.DiagramAppearancePropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.diagram.appearence.page"
+            name="Appearance">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+          </page>
+          
+          <page
+           category="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.diagram.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.viewpoint.ViewPointPrintingPropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.printing.page"
+            name="Printing">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+          </page>
+
+          <page
+            category="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.diagram.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.commands.preferences.ui.viewpoint.ViewPointRulerGridPropertyPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.ruler.grid.page"
+            name="Rulers And Grid">
+                        <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+          </page>
+   </extension-->
+   
+   
+    
+    <extension point="org.eclipse.ui.propertyPages">
+     <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.AbstractCapellaCommandsPreferencePage"
+            id="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="Commands Configurability">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+      
+    
+      <page
+            category="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.UserProfilePreferencePage"
+            id="org.polarsys.capella.core.commands.preferences.ui.validationPreferencePage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="User Profile">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+      
+      
+       <page
+            category="org.polarsys.capella.core.commands.preferences.capella.contextual.commands.preferences.page"
+            class="org.polarsys.capella.core.commands.preferences.ui.ItemsPreferencePage"
+            id="org.polarsys.capella.core.commands.preferences.ui.constraintsPreferencePage"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="Commands">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+      
+      <page
+            class="org.polarsys.capella.core.commands.preferences.ui.ProjectReferencesPreferencePage"
+            id="org.eclipse.ui.propertypages.project.reference"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="Capella Project References">
+         <filter
+               name="nature"
+               value="org.polarsys.capella.project.nature">
+         </filter>
+         <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+         </enabledWhen>
+         
+      </page>
+      
+    </extension>
+    
+    <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.polarsys.capella.core.commands.preferences.CommandsPreferencesInitializer">
+      </initializer>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+	      <propertyTester
+	            class="org.polarsys.capella.core.commands.preferences.properties.CapellaCommandsPreferencesPropertyTester"
+	            id="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsPrfModeling"
+	            namespace="org.polarsys.capella.core.commands.preferences.properties"
+	            properties="capellaCommandsModelingPreferences"
+	            type="org.polarsys.capella.common.data.modellingcore.ModelElement">
+	      </propertyTester>
+	      
+	      <propertyTester
+	            class="org.polarsys.capella.core.commands.preferences.properties.CapellaCommandsPreferencesPropertyTester"
+	            id="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsPrf"
+	            namespace="org.polarsys.capella.core.commands.preferences.properties"
+	            properties="capellaCommandsPreferences"
+	            type="java.lang.Object">
+	      </propertyTester>
+	      
+	      
+   </extension>
+
+
+  <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider
+            class="org.polarsys.capella.core.commands.preferences.model.TestActionProvider"
+            id="capella.preferences.actions.dynamic">
+         <enablement>
+		                  <test forcePluginActivation="true"
+					               property="org.polarsys.capella.core.commands.preferences.properties.capellaCommandsPreferences"
+					               value="org.polarsys.capella.core.patterns.ui.applyPattern">
+				       	  </test>
+           </enablement>
+         
+      </actionProvider>
+   </extension>
+   
+   
+   <!-- shall not be activated : not fully tested -->
+   <!--extension
+         point="org.eclipse.ui.preferenceTransfer">
+       <transfer
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
+            name="Capella Preferences"
+            id="org.eclipse.ui.tests.all">
+           <mapping scope="instance">
+            <entry node="org.eclipse.emf.validation"/>
+         </mapping>
+            <mapping scope="project"/>
+   	  <description>
+             Export all  Capella Model Validation Preferences, exports all nodes for specified scopes
+      </description>
+    </transfer>
+   </extension-->
+   
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression">
+                <and>
+                       <instanceof 
+                              value="org.eclipse.core.resources.IProject">
+                       </instanceof>
+                        <or>        
+                             <adapt type="org.eclipse.core.resources.IProject">
+                                  <test
+                                     property="org.eclipse.core.resources.projectNature"
+                                     value="org.polarsys.capella.core.preferences.project.nature.configNature"/>
+                             </adapt>
+                             
+                             <adapt type="org.eclipse.core.resources.IProject">
+                                  <test
+                                     property="org.eclipse.core.resources.projectNature"
+                                     value="org.polarsys.capella.project.nature"/>
+                             </adapt>
+                       </or>
+                  </and> 
+      </definition>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.preferenceTransfer">
+
+      <transfer icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
+       id="org.polarsys.capella.core.preferences.preferenceTransfer"
+            name="Capella Preferences">
+         <!--mapping scope="project"></mapping-->
+         <mapping scope="instance"></mapping>
+       <description>
+             Export all  Capella Preferences, exports all nodes for project scope
+      </description>
+           
+      </transfer>
+      
+     
+    
+    <transfer
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
+            id="org.polarsys.capella.core.model.preferences.transfer2"
+            name="Model Validation Preferences">
+         <description>
+            Model Validation Preferences
+         </description>
+         <mapping scope="instance">
+            <entry node="org.eclipse.emf.validation"/>
+         </mapping>
+         <mapping scope="project">
+            <entry node="org.eclipse.emf.validation"/>
+         </mapping>
+     </transfer>
+     
+     
+     
+         <transfer
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
+            id="org.polarsys.capella.core.model.preferences.transfer3"
+            name="ViewPoints Preferences">
+         <description>
+            ViewPoints Preferences
+         </description>
+         <mapping scope="instance">
+            <entry node="org.eclipse.sirius.ui"/>
+         </mapping>
+     </transfer>
+     
+     
+     
+     
+   </extension>
+   
+  
+  <!--extension
+        point="org.eclipse.ui.startup">
+     <startup
+           class="org.polarsys.capella.core.preferences.autostatrt.PreferenceBundleAutoStart">
+     </startup>
+  </extension-->
+</plugin>

@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-SymbolicName: org.polarsys.capella.core.egf;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Activator: org.polarsys.capella.core.egf.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.egf.pattern;visibility:=reexport,
+ org.eclipse.egf.pattern.ftask;visibility:=reexport,
+ org.eclipse.egf.emf.pattern,
+ org.eclipse.egf.model.ftask;visibility:=reexport,
+ org.eclipse.pde.ui,
+ org.eclipse.egf.emf.pattern.cdo,
+ org.polarsys.kitalpha.emde.egf,
+ org.polarsys.kitalpha.emde
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: 
+ org.polarsys.capella.core.edit,
+ org.polarsys.capella.core.editor,
+ org.polarsys.capella.core.egf,
+ org.polarsys.capella.core.model,
+ org.polarsys.capella.test,
+ org.polarsys.capella.common.cdo
+Bundle-Localization: plugin

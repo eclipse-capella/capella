@@ -1,0 +1,13 @@
+	// begin-capella-code
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected <%=genModel.getImportedName("org.eclipse.emf.common.command.Command")%> createInitializeCopyCommand(<%=genModel.getImportedName("org.eclipse.emf.edit.domain.EditingDomain")%> domain_p, <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> owner_p, <%=genModel.getImportedName("org.eclipse.emf.edit.command.CopyCommand.Helper")%> helper_p) {
+		return new <%=genModel.getImportedName("org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand")%>(domain_p, owner_p, helper_p);
+	}
+	// end-capella-code

@@ -1,0 +1,16 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/etool16/add_alldependencies.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/loop_obj.gif
+/icons/full/etool16/add_children.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/hierarchy_co.gif
+/icons/full/etool16/add_dependencies.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/loop_node_obj.gif
+/icons/full/etool16/add_element.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/monitorexpression_tsk.gif
+/icons/full/etool16/add_link.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/link_obj.gif
+/icons/full/etool16/add_model.gif - org.eclipse.emf.compare.ui - org.eclipse.emf.compare.ui/icons/full/editorIcon.gif
+/icons/full/etool16/delete_children.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/delete_config.gif
+/icons/full/etool16/delete_element.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/delete_config.gif
+/icons/full/etool16/plugin.gif - org.eclipse.pde.runtime - org.eclipse.pde.runtime/icons/obj16/package_obj.gif
+/icons/full/etool16/suffix.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/html_tag_obj.gif

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="capellaArchitecturePagesProvider" name="Capella Architecture Pages Provider" schema="schema/capellaArchitecturePagesProvider.exsd"/>
+   <extension-point id="documentationDashboardPageProvider" name="Capella Documentation Dashboard Page Provider" schema="schema/documentationDashboardPageProvider.exsd"/>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider
+            class="org.polarsys.capella.core.dashboard.actions.CapellaDashboardActionProvider"
+            id="capella.project.explorer.actions.dashboard">
+            <enablement>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IFile">
+                  </instanceof>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.extension"
+                        value="aird">
+                  </test>
+               </and>
+            </enablement>
+      </actionProvider>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.polarsys.capella.core.dashboard.editor.CapellaDashboardEditor"
+            default="false"
+            icon="icons/full/obj16/menu-overview.gif"
+            id="org.polarsys.capella.core.dashboard.editor.capellaDashboardEditor"
+            name="%dashboardName">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.CapellaDashboardPagesPreferencesInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.CapellaDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            name="%capellaDashboardPreferencePage">
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.OperationalAnalysisDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.oa.page"
+            name="%operationalAnalysisPreferencePage">
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.SystemAnalysisDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.sa.page"
+            name="%systemAnalysisPreferencePage">
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.LogicalArchitectureDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.la.page"
+            name="%logicalArchitecturePreferencePage">
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.PhysicalArchitectureDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.pa.page"
+            name="%physicalArchitecturePreferencePage">
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.EpbsArchitectureDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.epbs.page"
+            name="%epbsArchitecturePreferencePage">
+      </page>
+   </extension>
+      <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.CapellaDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            name="%capellaDashboardPreferencePage">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.OperationalAnalysisDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.oa.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%operationalAnalysisPreferencePage">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.SystemAnalysisDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.sa.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%systemAnalysisPreferencePage">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.LogicalArchitectureDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.la.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%logicalArchitecturePreferencePage">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.PhysicalArchitectureDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.pa.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%physicalArchitecturePreferencePage">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+      </page>
+      <page
+            category="org.polarsys.capella.core.dashboard.capellaDashboard.page"
+            class="org.polarsys.capella.core.dashboard.editor.pages.preferences.EpbsArchitectureDashboardPreferencePage"
+            id="org.polarsys.capella.core.dashboard.epbs.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%epbsArchitecturePreferencePage">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+      </page>
+   </extension>
+</plugin>

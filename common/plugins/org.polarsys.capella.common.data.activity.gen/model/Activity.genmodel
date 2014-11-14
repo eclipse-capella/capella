@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText=" Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.&#xA; All rights reserved. This program and the accompanying materials&#xA; are made available under the terms of the Eclipse Public License v1.0&#xA; which accompanies this distribution, and is available at&#xA; http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA; Contributors:&#xA;    Thales - initial API and implementation"
+    modelDirectory="/org.polarsys.capella.common.data.activity.gen/generated/" modelPluginID="org.polarsys.capella.common.data.activity.gen"
+    modelName="Activity" nonNLSMarkers="true" importerID="org.eclipse.emf.importer.ecore"
+    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../org.polarsys.capella.common.data.behavior.gen/model/Behavior.genmodel#//behavior ../../org.polarsys.capella.common.data.core.gen/model/ModellingCore.genmodel#//modellingcore platform:/plugin/org.polarsys.kitalpha.emde.model/model/eMDE.genmodel#//emde">
+  <foreignModel>../../org.polarsys.capella.common.data.def/model/Activity.ecore</foreignModel>
+  <genPackages prefix="Activity" basePackage="org.polarsys.capella.common.data" resource="XMI"
+      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="Activity.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Activity.ecore#//ObjectNodeOrderingKind">
+      <genEnumLiterals ecoreEnumLiteral="Activity.ecore#//ObjectNodeOrderingKind/FIFO"/>
+      <genEnumLiterals ecoreEnumLiteral="Activity.ecore#//ObjectNodeOrderingKind/LIFO"/>
+      <genEnumLiterals ecoreEnumLiteral="Activity.ecore#//ObjectNodeOrderingKind/ordered"/>
+      <genEnumLiterals ecoreEnumLiteral="Activity.ecore#//ObjectNodeOrderingKind/unordered"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Activity.ecore#//ObjectNodeKind">
+      <genEnumLiterals ecoreEnumLiteral="Activity.ecore#//ObjectNodeKind/Unspecified"/>
+      <genEnumLiterals ecoreEnumLiteral="Activity.ecore#//ObjectNodeKind/NoBuffer"/>
+      <genEnumLiterals ecoreEnumLiteral="Activity.ecore#//ObjectNodeKind/Overwrite"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="Activity.ecore#//AbstractActivity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//AbstractActivity/isReadOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//AbstractActivity/isSingleExecution"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractActivity/ownedNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractActivity/ownedEdges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractActivity/ownedGroups"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//AbstractActivity/ownedStructuredNodes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ExceptionHandler">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ExceptionHandler/protectedNode"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ExceptionHandler/handlerBody"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ExceptionHandler/exceptionInput"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ExceptionHandler/exceptionTypes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ActivityGroup">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityGroup/superGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityGroup/subGroups"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityGroup/ownedNodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityGroup/ownedEdges"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//InterruptibleActivityRegion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//InterruptibleActivityRegion/interruptingEdges"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ActivityEdge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ActivityEdge/kindOfRate"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/inActivityPartition"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/inInterruptibleRegion"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/inStructuredNode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/rate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/probability"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/weight"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityEdge/interrupts"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ControlFlow"/>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ObjectFlow">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ObjectFlow/isMulticast"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ObjectFlow/isMultireceive"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ObjectFlow/transformation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ObjectFlow/selection"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ActivityPartition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ActivityPartition/isDimension"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ActivityPartition/isExternal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ActivityPartition/representedElement"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityPartition/superPartition"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityPartition/subPartitions"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ActivityExchange">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityExchange/realizingActivityFlows"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ActivityNode">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityNode/inActivityPartition"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityNode/inInterruptibleRegion"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityNode/inStructuredNode"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityNode/outgoing"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Activity.ecore#//ActivityNode/incoming"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ExecutableNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ExecutableNode/ownedHandlers"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//StructuredActivityNode"/>
+    <genClasses image="false" ecoreClass="Activity.ecore#//AbstractAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractAction/localPrecondition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractAction/localPostcondition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractAction/context"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractAction/inputs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AbstractAction/outputs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//AcceptEventAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//AcceptEventAction/isUnmarshall"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//AcceptEventAction/result"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//InvocationAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//InvocationAction/arguments"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//SendSignalAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//SendSignalAction/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//SendSignalAction/signal"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//CallAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//CallAction/results"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//CallBehaviorAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//CallBehaviorAction/behavior"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ObjectNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ObjectNode/isControlType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ObjectNode/kindOfNode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//ObjectNode/ordering"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ObjectNode/upperBound"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ObjectNode/inState"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//ObjectNode/selection"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//Pin">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Activity.ecore#//Pin/isControl"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//InputPin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Activity.ecore#//InputPin/inputEvaluationAction"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//ValuePin">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Activity.ecore#//ValuePin/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Activity.ecore#//OutputPin"/>
+  </genPackages>
+</genmodel:GenModel>

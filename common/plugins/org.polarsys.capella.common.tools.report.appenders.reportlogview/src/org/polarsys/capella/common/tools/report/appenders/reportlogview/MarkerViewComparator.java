@@ -1,0 +1,54 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.tools.report.appenders.reportlogview;
+
+import java.util.Comparator;
+
+import org.eclipse.core.resources.IMarker;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerComparator;
+
+/**
+ * A ViewerComparator that delegates comparation of IMarkers 
+ * to a java.util.Comparator.
+ * 
+ */
+class MarkerViewComparator extends ViewerComparator {
+
+  /* the comparator we use to compare IMarkers */
+  private Comparator<IMarker> comparator;
+  
+  /**
+   * Set the comparator for IMarkers
+   * @param comparator_p
+   */
+  public void setMarkerComparator(Comparator<IMarker> comparator_p){
+    comparator = comparator_p;
+  }
+  
+  @Override
+  public int compare(Viewer v, Object e1, Object e2){
+    if (e1 instanceof IMarker && e2 instanceof IMarker){
+      if (comparator != null){
+        return comparator.compare((IMarker) e1, (IMarker) e2);
+      }
+    } 
+    return super.compare(v, e1, e2);
+  }
+  
+  /**
+   * @return the Comparator we use to compare IMarkers
+   */
+  public Comparator<IMarker> getMarkerComparator(){
+    return comparator;
+  }
+
+}

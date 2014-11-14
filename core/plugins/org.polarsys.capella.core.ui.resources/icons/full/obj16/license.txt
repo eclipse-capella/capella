@@ -1,0 +1,27 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/obj16/capella_analysis.gif - org.eclipse.emf.generic.editor - org.eclipse.emf.generic.editor/icons/complete_task.gif
+/icons/full/obj16/capella_audit.gif - capella.ui.resources - capella.ui.resources/icons/full/obj16/capella_audit.gif
+/icons/full/obj16/capella_consult.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/read_obj.gif
+/icons/full/obj16/capella_copy_path.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/cpyqual_menu.gif
+/icons/full/obj16/capella_copy.gif - org.eclipse.gmf.runtime.common.ui.action - org.eclipse.gmf.runtime.common.ui.action/icons/full/ctool16/copy_edit.gif
+/icons/full/obj16/capella_cut.gif - org.eclipse.gmf.runtime.common.ui.action - org.eclipse.gmf.runtime.common.ui.action/icons/full/ctool16/cut_edit.gif
+/icons/full/obj16/capella_delete.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/delete_config.gif
+/icons/full/obj16/capella_edit.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/editor_area.gif
+/icons/full/obj16/capella_explorer.png - capella.ui.resources - capella.ui.resources/icons/full/obj16/capella_explorer.png
+/icons/full/obj16/capella_export.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/etool16/export_wiz.gif
+/icons/full/obj16/capella_import.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/etool16/import_wiz.gif
+/icons/full/obj16/capella_manage.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/persp_tab.gif
+/icons/full/obj16/capella_navigate.gif - org.eclipse.team.cvs.ui - org.eclipse.team.cvs.ui/icons/full/glyphs/glyph3.gif
+/icons/full/obj16/capella_paste.gif - org.eclipse.gmf.examples.ui.pde - org.eclipse.gmf.examples.ui.pde/icons/clipboard.gif
+/icons/full/obj16/capella_process.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/debugt_obj.gif
+/icons/full/obj16/capella_semantic_browser.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/ch_callees.gif
+/icons/full/obj16/capella_sort_disabled.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/dlcl16/alphab_sort_co.gif
+/icons/full/obj16/capella_sort.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/alphab_sort_co.gif
+/icons/full/obj16/capella_trace.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/dep_loop.gif
+/icons/full/obj16/capella_validate.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/complete_task.gif
+/icons/full/obj16/capella.png - capella.ui.resources - capella.ui.resources/icons/full/obj16/capella.png

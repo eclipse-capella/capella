@@ -1,0 +1,15 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/diagram-type.gif - org.eclipse.ui.ide/icons/full/obj16/fileType_filter.gif
+/icons/capella_16.png - capella.platform.sirius.ui.navigator - capella.platform.sirius.ui.navigator/icons/capella_16.png
+/icons/capella_75x75.png - capella.platform.sirius.ui.navigator - capella.platform.sirius.ui.navigator/icons/capella_75x75.png
+/icons/capella_import_16.gif - org.eclipse.emf.cdo.ui.ide - org.eclipse.emf.cdo.ui.ide/icons/full/elcl16/import_wiz.gif
+/icons/capella_validate_16.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/complete_task.gif
+/icons/capella_validate_disabled_16.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/dlcl16/complete_task.gif
+/icons/search.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/focus.gif
+/icons/showInDiagram.gif - capella.platform.sirius.ui.navigator - capella.platform.sirius.ui.navigator/icons/showInDiagram.gif
+/icons/viewpoint.gif - org.eclipse.gmf.runtime.common.ui - org.eclipse.gmf.runtime.common.ui/icons/topic.gif

@@ -1,0 +1,491 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.sirius.analysis;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+
+import org.polarsys.capella.core.business.queries.IBusinessQuery;
+import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.data.cs.Component;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
+import org.polarsys.capella.core.data.information.PartitionableElement;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.oa.ActivityAllocation;
+import org.polarsys.capella.core.data.oa.CommunicationMean;
+import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.EntityPkg;
+import org.polarsys.capella.core.data.oa.OaFactory;
+import org.polarsys.capella.core.data.oa.OaPackage;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.core.data.oa.OperationalActor;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.data.oa.OperationalCapability;
+import org.polarsys.capella.core.data.oa.OperationalCapabilityPkg;
+import org.polarsys.capella.core.data.oa.OperationalContext;
+import org.polarsys.capella.core.data.oa.Role;
+import org.polarsys.capella.core.data.oa.RoleAllocation;
+import org.polarsys.capella.core.data.oa.RolePkg;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
+import org.polarsys.capella.core.model.helpers.OperationalAnalysisExt;
+import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.common.data.activity.ActivityEdge;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+
+/**
+ */
+public class OAServices {
+
+  /** A shared instance. */
+  private static OAServices _service;
+
+  /**
+   * returns a shared instance of this services.
+   * @return a shared instance of this services.
+   */
+  public static OAServices getService() {
+    if (_service == null) {
+      _service = new OAServices();
+    }
+    return _service;
+  }
+
+  public List<EObject> getOEBScopeBreakdown(EObject eObject_p) {
+    List<Entity> roots = new ArrayList<Entity>();
+    List<EObject> result = new ArrayList<EObject>();
+
+    if (eObject_p instanceof OperationalContext) {
+      roots.addAll(getRootEntityPkg(eObject_p).getOwnedEntities());
+    } else if (eObject_p instanceof Entity) {
+      roots.add((Entity) eObject_p);
+    } else if (eObject_p instanceof EntityPkg) {
+      roots.addAll(((EntityPkg) eObject_p).getOwnedEntities());
+    }
+
+    for (Entity entity : roots) {
+      if ((entity.getRepresentingPartitions().size() > 0) && !result.contains(entity)) {
+        result.add(entity);
+      }
+      for (PartitionableElement pe : CapellaServices.getService().getAllDescendants(entity)) {
+        if (!result.contains(pe)) {
+          result.add(pe);
+        }
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * Gets the iB target.
+   */
+  public EObject getOEBTarget(DSemanticDecorator decorator_p) {
+    if (decorator_p instanceof DDiagram) {
+      for (DDiagramElement element : ((DDiagram) decorator_p).getOwnedDiagramElements()) {
+        if (element.getTarget() == decorator_p.getTarget()) {
+          EObject target = CsServices.getService().getParentContainer(decorator_p.getTarget());
+          if (target instanceof BlockArchitecture) {
+            return BlockArchitectureExt.getContext((BlockArchitecture) target);
+          }
+          return target;
+        }
+      }
+      return decorator_p.getTarget();
+    }
+    return decorator_p.getTarget();
+  }
+
+  /**
+   * Retrieve the root role pkg, create one if required
+   */
+  public RolePkg getRootRolePkg(EObject object_p) {
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object_p);
+    if (architecture instanceof OperationalAnalysis) {
+      OperationalAnalysis analysis = (OperationalAnalysis) architecture;
+      if (analysis.getOwnedRolePkg() == null) {
+        RolePkg pkg = OaFactory.eINSTANCE.createRolePkg("Roles"); //$NON-NLS-1$
+        analysis.setOwnedRolePkg(pkg);
+      }
+      return analysis.getOwnedRolePkg();
+    }
+    return null;
+  }
+
+  /**
+   * Retrieve the root entity pkg, create one if required
+   */
+  public EntityPkg getRootEntityPkg(EObject object_p) {
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object_p);
+    if (architecture instanceof OperationalAnalysis) {
+      OperationalAnalysis analysis = (OperationalAnalysis) architecture;
+      if (analysis.getOwnedEntityPkg() == null) {
+        EntityPkg pkg = OaFactory.eINSTANCE.createEntityPkg("Operational Entities"); //$NON-NLS-1$
+        analysis.setOwnedEntityPkg(pkg);
+      }
+      return analysis.getOwnedEntityPkg();
+    }
+    return null;
+  }
+
+  /**
+   * get all the outgoing and incoming exchanges of Operational Function used in oa.odesign
+   * @param eObject_p
+   * @return
+   */
+  public List<FunctionalExchange> getAllAvailableExchanges(EObject eObject_p) {
+    List<FunctionalExchange> list = new ArrayList<FunctionalExchange>();
+
+    // null value check
+    if (eObject_p == null) {
+      return list;
+    }
+
+    if (eObject_p instanceof OperationalActivity) {
+      OperationalActivity oa = (OperationalActivity) eObject_p;
+
+      // exchanges of current operational Activity
+      list.addAll(getOutgoingAndIncomingExchanges(oa));
+
+      // get all children
+      List<AbstractFunction> allAbstractFunctions = FunctionExt.getAllAbstractFunctions(oa);
+      for (AbstractFunction abstractFunction : allAbstractFunctions) {
+        list.addAll(getOutgoingAndIncomingExchanges(abstractFunction));
+      }
+    }
+
+    return list;
+  }
+
+  /**
+   * get all the outGoing and inComing exchanges
+   * @param function_p
+   * @return list of FunctionalExchanges
+   */
+  private List<FunctionalExchange> getOutgoingAndIncomingExchanges(AbstractFunction function_p) {
+    List<FunctionalExchange> list = new ArrayList<FunctionalExchange>();
+
+    // incoming
+    EList<ActivityEdge> incoming = function_p.getIncoming();
+    for (ActivityEdge activityEdge : incoming) {
+      // filter functional exchanges
+      if (activityEdge instanceof FunctionalExchange) {
+        list.add((FunctionalExchange) activityEdge);
+      }
+    }
+    // outgoing
+    EList<ActivityEdge> outgoing = function_p.getOutgoing();
+    for (ActivityEdge activityEdge2 : outgoing) {
+      // filter functional exchanges
+      if (activityEdge2 instanceof FunctionalExchange) {
+        list.add((FunctionalExchange) activityEdge2);
+      }
+    }
+
+    return list;
+  }
+
+  /**
+   * check if role is allocated in entity used in oa.odesign
+   * @param context
+   * @param current - Role
+   * @param container - Entity
+   * @return return true if given role is allocated in given entity
+   */
+  public boolean isAllocatedRole(EObject context, EObject role, Entity container) {
+
+    if ((role == null) || (container == null) || !(role instanceof Role)) {
+      return false;
+    }
+    // get owned role allocations
+    EList<RoleAllocation> ownedRoleAllocations = container.getOwnedRoleAllocations();
+    for (RoleAllocation roleAllocation : ownedRoleAllocations) {
+      if (roleAllocation.getRole().equals(role)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public boolean isInOperationalAnalysis(EObject context) {
+    return (context instanceof CapellaElement) && CapellaLayerCheckingExt.isInOperationalAnalysisLayer((CapellaElement) context);
+  }
+
+  /**
+   * check if function is allocated in role used in oa.odesign
+   * @param context
+   * @param current - OperationialActivity
+   * @param container - Role
+   * @return return true if given function is allocated in given role
+   */
+  public boolean isAllocatedFunctionInRole(EObject context, OperationalActivity current, Role container) {
+    // null value check
+    if ((current == null) || (container == null)) {
+      return false;
+    }
+    // return false if current function is not a leaf
+    if (!FunctionExt.isLeaf(current)) {
+      return false;
+    }
+    // get Owned Activity Allocations
+    EList<ActivityAllocation> ownedActivityAllocations = container.getOwnedActivityAllocations();
+    for (ActivityAllocation activityAllocation : ownedActivityAllocations) {
+      if (activityAllocation.getActivity().equals(current)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * used in oa.odesign
+   * @param view_p
+   * @return available entities to insert in OEB
+   */
+  public Collection<? extends Component> getAvailableEntitiesToInsert(DSemanticDecorator view_p) {
+    EObject target = view_p.getTarget();
+    if ((target instanceof Entity) || (target instanceof EntityPkg) || (target instanceof OperationalContext) || (target instanceof OperationalActor)) {
+      target = getOEBTarget(view_p);
+      if (target instanceof OperationalContext) {
+        target = getRootEntityPkg(BlockArchitectureExt.getRootBlockArchitecture(target));
+      } else if (target instanceof OperationalActor) {
+        // eContainer of operational Actor is either Entity or EntityPkg
+        target = target.eContainer();
+      }
+
+      if ((null != target) && (target instanceof Entity)) {
+        return ComponentExt.getAllSubUsedComponents((Entity) target);
+
+      } else if ((null != target) && (target instanceof EntityPkg)) {
+        return OperationalAnalysisExt.getAllEntity((EntityPkg) target);
+      }
+
+    } else if ((target instanceof OperationalCapabilityPkg) || (target instanceof OperationalCapability)) {
+      BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(target);
+      if (arch instanceof OperationalAnalysis) {
+        OperationalAnalysis opAnalysis = (OperationalAnalysis) arch;
+        EntityPkg pkg = opAnalysis.getOwnedEntityPkg();
+        return OperationalAnalysisExt.getAllEntity(pkg);
+      }
+    }
+    return new ArrayList<Entity>(0);
+  }
+
+  public List<CommunicationMean> getAllCommunicationMeans(OperationalAnalysis arch_p) {
+    return OperationalAnalysisExt.getAllCommunicationMeans(arch_p);
+  }
+
+  /**
+   * used in OA (Operational Entity Blank diagram)
+   * @param entityView_p
+   * @param selectedComMeans_p
+   * @return
+   */
+  public EObject insertRemoveCommunicationMeans(DNodeContainer entityView_p, List<CommunicationMean> selectedComMeans_p) {
+    Set<CommunicationMean> displayedComMeans = new HashSet<CommunicationMean>();
+    Set<DEdge> incomingOutgoingEdges = new HashSet<DEdge>();
+    Map<Entity, DNodeContainer> displayedEntities = new HashMap<Entity, DNodeContainer>();
+
+    incomingOutgoingEdges.addAll(entityView_p.getIncomingEdges());
+    incomingOutgoingEdges.addAll(entityView_p.getOutgoingEdges());
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(entityView_p);
+
+    ContainerMapping entityMapping = DiagramServices.getDiagramServices().getContainerMapping(diagram, IMappingNameConstants.OAB_ENTITY_MAPPING_NAME);
+    EdgeMapping comMeanMapping = DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.OAB_COMMUNICATION_MEAN_MAPPING_NAME);
+
+    for (AbstractDNode aContainer : diagram.getContainers()) {
+      if (aContainer.getTarget() instanceof Entity) {
+        displayedEntities.put((Entity) aContainer.getTarget(), (DNodeContainer) aContainer);
+      }
+    }
+
+    for (DEdge anEdge : incomingOutgoingEdges) {
+      if (anEdge.getTarget() instanceof CommunicationMean) {
+        if (!selectedComMeans_p.contains(anEdge.getTarget())) {
+          DiagramServices.getDiagramServices().removeEdgeView(anEdge);
+        } else {
+          displayedComMeans.add((CommunicationMean) anEdge.getTarget());
+        }
+      }
+    }
+    for (CommunicationMean aCommunicationMean : selectedComMeans_p) {
+      if (!displayedComMeans.contains(aCommunicationMean)) {
+        DNodeContainer sourceView = displayedEntities.get(aCommunicationMean.getSource());
+        DNodeContainer targetView = displayedEntities.get(aCommunicationMean.getTarget());
+        if (sourceView == null) {
+          sourceView = DiagramServices.getDiagramServices().createContainer(entityMapping, aCommunicationMean.getSource(), diagram, diagram);
+          displayedEntities.put((Entity) aCommunicationMean.getSource(), sourceView);
+        }
+        if (targetView == null) {
+          targetView = DiagramServices.getDiagramServices().createContainer(entityMapping, aCommunicationMean.getTarget(), diagram, diagram);
+          displayedEntities.put((Entity) aCommunicationMean.getTarget(), targetView);
+        }
+        DiagramServices.getDiagramServices().createEdge(comMeanMapping, sourceView, targetView, aCommunicationMean);
+      }
+    }
+    return entityView_p;
+  }
+
+  public EObject insertRemoveEntities(EObject view_p, List<Entity> selectedEntities_p) {
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(view_p);
+    // Get all container of the diagram
+    for (AbstractDNode aContainer : diagram.getContainers()) {
+      // Test if the model element is an Entity and the view is a DNodeContainer
+      if ((aContainer.getTarget() instanceof Entity) && (aContainer instanceof DNodeContainer)) {
+        Entity currentEntity = (Entity) aContainer.getTarget();
+        aContainer.setVisible(selectedEntities_p.contains(currentEntity));
+
+      }
+    }
+
+    return view_p;
+  }
+
+  public OperationalActivity getInteractionSourceInDiagram(FunctionalExchange interaction_p, DDiagram diagram_p) {
+    Set<OperationalActivity> displayedActivities = new HashSet<OperationalActivity>();
+    for (DDiagramElement anElement : diagram_p.getDiagramElements()) {
+      if ((anElement.getTarget() != null) && (anElement.getTarget() instanceof OperationalActivity)) {
+        displayedActivities.add((OperationalActivity) anElement.getTarget());
+      }
+    }
+
+    OperationalActivity source = (OperationalActivity) interaction_p.getSource();
+    EObject parent = source;
+    while ((parent != null) && (parent instanceof OperationalActivity)) {
+      if (displayedActivities.contains(parent)) {
+        return ((OperationalActivity) parent);
+      }
+      parent = parent.eContainer();
+    }
+    return source;
+  }
+
+  public OperationalActivity getInteractionTargetInDiagram(FunctionalExchange interaction_p, DDiagram diagram_p) {
+    Set<OperationalActivity> displayedActivities = new HashSet<OperationalActivity>();
+    for (DDiagramElement anElement : diagram_p.getDiagramElements()) {
+      if ((anElement.getTarget() != null) && (anElement.getTarget() instanceof OperationalActivity)) {
+        displayedActivities.add((OperationalActivity) anElement.getTarget());
+      }
+    }
+
+    OperationalActivity target = (OperationalActivity) interaction_p.getTarget();
+    EObject parent = target;
+    while ((parent != null) && (parent instanceof OperationalActivity)) {
+      if (displayedActivities.contains(parent)) {
+        return ((OperationalActivity) parent);
+      }
+      parent = parent.eContainer();
+    }
+    return target;
+  }
+
+  public List<CapellaElement> getAvailableOperationalActivityAllocations(Role role_p) {
+    List<CapellaElement> returnedList = new ArrayList<CapellaElement>();
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(role_p.eClass(), OaPackage.Literals.ROLE__OWNED_ACTIVITY_ALLOCATIONS);
+    if (query != null) {
+      returnedList.addAll(query.getAvailableElements(role_p));
+    }
+    return returnedList;
+  }
+
+  /**
+   * A boring helper for COAI since sirius has changed something on import mapping management but we don't know what To remove when contextual diagrams will be
+   * removed
+   * @param containerView_p
+   * @param target
+   * @return
+   */
+  @Deprecated
+  public boolean isOAInternalValid(DSemanticDecorator containerView_p) {
+
+    // Avoid creation of mapping COAI_OPERATIONAL_ACTIVITY_IMPORT_SUB_MAPPING_NAME into diagram (only into a node)
+    if (!(containerView_p instanceof DDiagram)) {
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * A boring helper for COAI since sirius has changed something on import mapping management but we don't know what To remove when contextual diagrams will be
+   * removed
+   * @param containerView_p
+   * @param target
+   * @return
+   */
+  @Deprecated
+  public boolean isOARootValid(DSemanticDecorator containerView_p, EObject target) {
+    if ((target instanceof AbstractNamedElement) && ((AbstractNamedElement) target).getName().equals("OA2")) {
+      System.out.println(0);
+    }
+    // Avoid creation of mapping COAI_OPERATIONAL_ACTIVITY_IMPORT_MAPPING_NAME for internal data flow
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView_p);
+    if (diagram instanceof DSemanticDecorator) {
+      if (EcoreUtil.isAncestor(((DSemanticDecorator) diagram).getTarget(), target)) {
+        return target == ((DSemanticDecorator) diagram).getTarget();
+      }
+    }
+    return false;
+  }
+
+  /**
+   * A boring helper for COAI since sirius has changed something on import mapping management but we don't know what To remove when contextual diagrams will be
+   * removed
+   * @param containerView_p
+   * @param target
+   * @return
+   */
+  @Deprecated
+  public boolean isOARootValidA(DSemanticDecorator containerView_p, EObject target) {
+    if ((target instanceof AbstractNamedElement) && ((AbstractNamedElement) target).getName().equals("OA2")) {
+      System.out.println(0);
+    }
+    // Avoid creation of mapping COAI_OPERATIONAL_ACTIVITY_IMPORT_MAPPING_NAME for internal data flow
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(containerView_p);
+    if (diagram instanceof DSemanticDecorator) {
+      if (EcoreUtil.isAncestor(((DSemanticDecorator) diagram).getTarget(), target)) {
+        return target == ((DSemanticDecorator) diagram).getTarget();
+      }
+    }
+    return true;
+  }
+
+  // return all the operational capabilities
+  public List<Object> getAllOperationalCapabilities(CapellaElement element_p) {
+    List<Object> result = new ArrayList<Object>(0);
+    BlockArchitecture arch = BlockArchitectureExt.getRootBlockArchitecture(element_p);
+    if ((null != arch) && (arch instanceof OperationalAnalysis)) {
+      result.addAll(OperationalAnalysisExt.getAllOperationalCapabilities((OperationalAnalysis) arch));
+    }
+
+    return result;
+  }
+}

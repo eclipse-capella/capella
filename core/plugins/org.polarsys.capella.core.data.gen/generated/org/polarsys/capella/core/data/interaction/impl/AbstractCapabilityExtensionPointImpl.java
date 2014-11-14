@@ -1,0 +1,537 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.interaction.impl;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.polarsys.capella.common.data.modellingcore.AbstractConstraint;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellacore.NamingRule;
+import org.polarsys.capella.core.data.capellacore.impl.RelationshipImpl;
+import org.polarsys.capella.core.data.interaction.AbstractCapability;
+import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend;
+import org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Abstract Capability Extension Point</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getOwnedConstraints <em>Owned Constraints</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getNamingRules <em>Naming Rules</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getAbstractCapability <em>Abstract Capability</em>}</li>
+ *   <li>{@link org.polarsys.capella.core.data.interaction.impl.AbstractCapabilityExtensionPointImpl#getExtendLinks <em>Extend Links</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @generated
+ */
+public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl implements AbstractCapabilityExtensionPoint {
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getOwnedConstraints() <em>Owned Constraints</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedConstraints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractConstraint> ownedConstraints;
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNamingRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamingRule> namingRules;
+
+
+
+
+
+
+
+
+
+	/**
+	 * The cached value of the '{@link #getExtendLinks() <em>Extend Links</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtendLinks()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractCapabilityExtend> extendLinks;
+
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AbstractCapabilityExtensionPointImpl() {
+
+		super();
+
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return InteractionPackage.Literals.ABSTRACT_CAPABILITY_EXTENSION_POINT;
+	}
+
+
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public String getName() {
+
+		return name;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setName(String newName) {
+
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME, oldName, name));
+
+	}
+
+
+
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<AbstractConstraint> getOwnedConstraints() {
+
+		if (ownedConstraints == null) {
+			ownedConstraints = new EObjectContainmentEList.Resolving<AbstractConstraint>(AbstractConstraint.class, this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS);
+		}
+		return ownedConstraints;
+	}
+
+
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<NamingRule> getNamingRules() {
+
+		if (namingRules == null) {
+			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES);
+		}
+		return namingRules;
+	}
+
+
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public AbstractCapability getAbstractCapability() {
+
+		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY) return null;
+		return (AbstractCapability)eContainer();
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public AbstractCapability basicGetAbstractCapability() {
+
+		if (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY) return null;
+		return (AbstractCapability)eInternalContainer();
+	}
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public NotificationChain basicSetAbstractCapability(AbstractCapability newAbstractCapability, NotificationChain msgs) {
+
+		msgs = eBasicSetContainer((InternalEObject)newAbstractCapability, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY, msgs);
+
+		return msgs;
+	}
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public void setAbstractCapability(AbstractCapability newAbstractCapability) {
+
+		if (newAbstractCapability != eInternalContainer() || (eContainerFeatureID() != InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY && newAbstractCapability != null)) {
+			if (EcoreUtil.isAncestor(this, newAbstractCapability))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newAbstractCapability != null)
+				msgs = ((InternalEObject)newAbstractCapability).eInverseAdd(this, InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS, AbstractCapability.class, msgs);
+			msgs = basicSetAbstractCapability(newAbstractCapability, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY, newAbstractCapability, newAbstractCapability));
+
+	}
+
+
+
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+
+	public EList<AbstractCapabilityExtend> getExtendLinks() {
+
+		if (extendLinks == null) {
+			extendLinks = new EObjectWithInverseResolvingEList<AbstractCapabilityExtend>(AbstractCapabilityExtend.class, this, InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS, InteractionPackage.ABSTRACT_CAPABILITY_EXTEND__EXTENSION_LOCATION);
+		}
+		return extendLinks;
+	}
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetAbstractCapability((AbstractCapability)otherEnd, msgs);
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getExtendLinks()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
+				return ((InternalEList<?>)getOwnedConstraints()).basicRemove(otherEnd, msgs);
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
+				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
+				return basicSetAbstractCapability(null, msgs);
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
+				return ((InternalEList<?>)getExtendLinks()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
+				return eInternalContainer().eInverseRemove(this, InteractionPackage.ABSTRACT_CAPABILITY__ABSTRACT_CAPABILITY_EXTENSION_POINTS, AbstractCapability.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType) {
+		switch (featureID) {
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
+				return getName();
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
+				return getOwnedConstraints();
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
+				return getNamingRules();
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
+				if (resolve) return getAbstractCapability();
+				return basicGetAbstractCapability();
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
+				return getExtendLinks();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void eSet(int featureID, Object newValue) {
+		switch (featureID) {
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setName((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
+				getOwnedConstraints().clear();
+				getOwnedConstraints().addAll((Collection<? extends AbstractConstraint>)newValue);
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
+				getNamingRules().clear();
+				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof AbstractCapability) {
+				// end-extension-code
+					setAbstractCapability((AbstractCapability)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
+				getExtendLinks().clear();
+				getExtendLinks().addAll((Collection<? extends AbstractCapabilityExtend>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID) {
+		switch (featureID) {
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
+				getOwnedConstraints().clear();
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
+				getNamingRules().clear();
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
+				setAbstractCapability((AbstractCapability)null);
+				return;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
+				getExtendLinks().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS:
+				return ownedConstraints != null && !ownedConstraints.isEmpty();
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAMING_RULES:
+				return namingRules != null && !namingRules.isEmpty();
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__ABSTRACT_CAPABILITY:
+				return basicGetAbstractCapability() != null;
+			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__EXTEND_LINKS:
+				return extendLinks != null && !extendLinks.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractNamedElement.class) {
+			switch (derivedFeatureID) {
+				case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME;
+				case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS: return ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == NamedElement.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractNamedElement.class) {
+			switch (baseFeatureID) {
+				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__NAME: return InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__NAME;
+				case ModellingcorePackage.ABSTRACT_NAMED_ELEMENT__OWNED_CONSTRAINTS: return InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT__OWNED_CONSTRAINTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == NamedElement.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: "); //$NON-NLS-1$
+		result.append(name);
+		result.append(')');
+		return result.toString();
+	}
+
+
+} //AbstractCapabilityExtensionPointImpl

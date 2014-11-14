@@ -1,0 +1,15 @@
+<%//IN : GenClass genClass%>	
+<%//IN : GenFeature namingAttribute%>	
+	/**
+	 * Creates class and sets its name
+	 * (This method comes from a customization of the standard EMF generator)
+	 *
+	 * @param name_p : default name of created element
+	 * @generated
+	 */
+	public <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> create<%=genClass.getName()%>(String name_p)
+	{
+	  <%=genClass.getTypeParameters()%><%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceTypeArguments()%> <%=genClass.getSafeUncapName()%> = create<%=genClass.getName()%>();
+		<%=genClass.getSafeUncapName()%>.set<%=namingAttribute.getCapName()%>(name_p);	  
+		return <%=genClass.getSafeUncapName()%>;
+	}

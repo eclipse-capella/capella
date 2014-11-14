@@ -1,0 +1,49 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.data.information.validation.dataValue;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.validation.IValidationContext;
+
+import org.polarsys.capella.core.data.information.datavalue.DataValue;
+import org.polarsys.capella.core.model.helpers.DataValueExt;
+import org.polarsys.capella.core.model.helpers.CapellaElementExt;
+import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+
+/**
+ */
+public abstract class AbstractDataValueTypeCheck extends AbstractValidationRule {
+
+  /**
+   * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
+   */
+  @Override
+  public IStatus validate(IValidationContext ctx_p) {
+    EObject eObj = ctx_p.getTarget();
+    if (isInstanceOf(eObj) && (eObj instanceof DataValue)) {
+      DataValue value = (DataValue) eObj;
+      AbstractType abstractType = value.getAbstractType();
+      if (null == abstractType) {
+        return ctx_p.createFailureStatus(CapellaElementExt.getCapellaExplorerLabel(value), "[" + DataValueExt.getContainementFeatureofDataValue(value) + "]"); //$NON-NLS-1$ //$NON-NLS-2$
+      }
+    }
+
+    return ctx_p.createSuccessStatus();
+  }
+
+  /**
+   * @param eObj_p
+   * @return
+   */
+  public abstract boolean isInstanceOf(EObject eObj_p);
+}

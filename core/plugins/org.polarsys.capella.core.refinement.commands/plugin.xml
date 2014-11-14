@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <!--objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.scenarioWizard"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.classOf"
+                  value="Scenario">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.AddExistingSubScenarioAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+               id="org.polarsys.capella.core.refinement.commands.actions.AddExistingSubScenarioAction"
+               label="Add existing sub scenario"
+               menubarPath="WizardDiagramCommands/groupWizards">
+         </action>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.AddNewSubScenarioAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+               id="org.polarsys.capella.core.refinement.commands.actions.AddNewSubScenarioAction"
+               label="Add new sub scenario"
+               menubarPath="WizardDiagramCommands/groupWizards">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.scenarioWizard"
+            objectClass="org.polarsys.capella.core.data.interaction.Scenario">
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.AddExistingSubScenarioAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+               id="org.polarsys.capella.core.refinement.commands.actions.AddExistingSubScenarioAction"
+               label="Add existing sub scenario"
+               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
+         </action>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.AddNewSubScenarioAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif"
+               id="org.polarsys.capella.core.refinement.commands.actions.AddNewSubScenarioAction"
+               label="Add new sub scenario"
+               menubarPath="capella.project.explorer.menu.wizards/groupWizards">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.contextLayer"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOfWithOutDataFlowScenario"
+                  value="SystemAnalysis">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.ScenarioRefinementAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.capabilityScenarioRefinement"
+               label="Capability Scenario Refinement"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.logicalLayer"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOfWithOutDataFlowScenario"
+                  value="LogicalArchitecture">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.ScenarioRefinementAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.capabilityScenarioRefinement"
+               label="Capability Scenario Refinement"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.physicalLayer"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOfWithOutDataFlowScenario"
+                  value="PhysicalArchitecture">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.ScenarioRefinementAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.capabilityScenarioRefinement"
+               label="Capability Scenario Refinement"
+               menubarPath="TransitionDiagramCommands/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.contextLayer"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.layerOfWithOutDataFlowScenario"
+                  value="SystemAnalysis">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.ScenarioRefinementAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.capabilityScenarioRefinement"
+               label="Capability Scenario Refinement"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.physicalLayer"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.layerOfWithOutDataFlowScenario"
+                  value="PhysicalArchitecture">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.ScenarioRefinementAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.capabilityScenarioRefinement"
+               label="Capability Scenario Refinement"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.logicalLayer"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test
+                  forcePluginActivation="true"
+                  property="org.polarsys.capella.core.platform.sirius.ui.layerOfWithOutDataFlowScenario"
+                  value="LogicalArchitecture">
+            </test>
+         </enablement>
+         <action
+               class="org.polarsys.capella.core.refinement.commands.actions.ScenarioRefinementAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="capella.action.capabilityScenarioRefinement"
+               label="Capability Scenario Refinement"
+               menubarPath="capella.project.explorer.menu.transitions/groupTransitions">
+         </action>
+      </objectContribution-->
+      
+      <!-- oooooooooooooooooooo  ACCELERATORS oooooooooooooooooooooooooo -->
+
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.propagateInterfacesSAtoLA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="propagateInterfacesSAtoLA">
+            </test>
+         </enablement>
+         <action label="%propagateInterfacesSAtoLA_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.propagateInterfacesSAtoLA"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.propagateInterfacesLCtoPC"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="propagateInterfacesLCtoPC">
+            </test>
+         </enablement>
+         <action label="%propagateInterfacesLCtoPC_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.PropagateLinksAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.propagateInterfacesLCtoPC"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.propagateInterfacesPCtoCI"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="propagateInterfacesPCtoCI">
+            </test>
+         </enablement>
+         <action label="%propagateInterfacesPCtoCI_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.PropagateLinksAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.propagateInterfacesPCtoCI"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeInterfacesLA"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="synchronizeInterfacesLA">
+            </test>
+         </enablement>
+         <action label="%synchronizeInterfacesLA_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.synchronizeInterfacesLA"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeInterfacesPC"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="synchronizeInterfacesPC">
+            </test>
+         </enablement>
+         <action label="%synchronizeInterfacesPC_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.SynchronizeLinksAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.synchronizeInterfacesPC"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.polarsys.capella.core.sirius.menus.graphical.synchronizeInterfacesCI"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.graphicalRefinementMode"
+                  value="synchronizeInterfacesCI">
+            </test>
+         </enablement>
+         <action label="%synchronizeInterfacesCI_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.SynchronizeLinksAction"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="graphicalRefinementMode.synchronizeInterfacesCI"
+               menubarPath="AcceleratorDiagramCommands/groupAccelerator">
+         </action>
+      </objectContribution>
+
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.propagateInterfacesSAtoLA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="propagateInterfacesSAtoLA">
+            </test>
+         </enablement>
+         <action label="%propagateInterfacesSAtoLA_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.propagateInterfacesSAtoLA"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.propagateInterfacesLCtoPC"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="propagateInterfacesLCtoPC">
+            </test>
+         </enablement>
+         <action label="%propagateInterfacesLCtoPC_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.PropagateLinksAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.propagateInterfacesLCtoPC"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.propagateInterfacesPCtoCI"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="propagateInterfacesPCtoCI">
+            </test>
+         </enablement>
+         <action label="%propagateInterfacesPCtoCI_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.PropagateLinksAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.propagateInterfacesPCtoCI"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeInterfacesLA"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="synchronizeInterfacesLA">
+            </test>
+         </enablement>
+         <action label="%synchronizeInterfacesLA_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.GenerateInterfaceDelegationsAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.synchronizeInterfacesLA"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeInterfacesPC"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="synchronizeInterfacesPC">
+            </test>
+         </enablement>
+         <action label="%synchronizeInterfacesPC_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.SynchronizeLinksAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.synchronizeInterfacesPC"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="capella.project.explorer.toolsContributor.synchronizeInterfacesCI"
+            objectClass="org.polarsys.capella.common.data.modellingcore.ModelElement">
+         <enablement>
+            <test forcePluginActivation="true"
+                  property="org.polarsys.capella.core.refinement.commands.refinementMode"
+                  value="synchronizeInterfacesCI">
+            </test>
+         </enablement>
+         <action label="%synchronizeInterfacesCI_label"
+               class="org.polarsys.capella.core.refinement.commands.actions.SynchronizeLinksAction"
+               enablesFor="1"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               id="refinementMode.synchronizeInterfacesCI"
+               menubarPath="capella.project.explorer.menu.accelerator/groupAccelerator">
+         </action>
+      </objectContribution>
+   </extension>
+
+
+	  <!-- ooooooooooooooooooooo TRANSITIONS REFINEMENT ooooooooooooooooooooo -->
+	  
+	  
+	      <!--   Refinement transitions diagram --> 
+	     <extension
+         point="org.eclipse.ui.menus">
+      
+          <menuContribution  allPopups="true"
+                locationURI="popup:capella.project.explorer.menu.transitions.diagram.preferences?after=additions">
+             <command  commandId="org.polarsys.capella.core.refinement.commands.actions.scenarioRefinementAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+             <visibleWhen checkEnabled="false">
+                <with variable="selection">
+                    <iterate>
+                            <and>
+                            <reference definitionId="org.polarsys.capella.core.refinement.commands.ui.expression.transitionVisibilityDiagramElementExpression"/>
+                                
+                                <or>
+                                <test
+                                      forcePluginActivation="true"
+                                      property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOfWithOutDataFlowScenario"
+                                      value="SystemAnalysis">
+                                </test>
+                                <test
+                                        forcePluginActivation="true"
+                                      property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOfWithOutDataFlowScenario"
+                                      value="LogicalArchitecture">
+                                </test>
+                                <test
+                                      forcePluginActivation="true"
+                                      property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOfWithOutDataFlowScenario"
+                                      value="PhysicalArchitecture">
+                                </test>
+                             </or>
+                            </and>
+                    </iterate>
+                </with>
+             </visibleWhen> 
+             </command> 
+          </menuContribution>
+      
+      </extension>
+      
+      
+   <!-- Refinement transitions Project Explorer -->
+   <extension
+         point="org.eclipse.ui.menus">
+          <menuContribution  allPopups="true"
+                locationURI="popup:capella.project.explorer.menu.transitions.preferences?after=additions">
+             <command  commandId="org.polarsys.capella.core.refinement.commands.actions.scenarioRefinementAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif" >
+             <visibleWhen checkEnabled="false">
+                <with variable="selection">
+                    <iterate>
+                            <and>
+                               <reference definitionId="org.polarsys.capella.core.refinement.commands.ui.expression.transitionVisibilityModelElementExpression"/>
+                                <or>
+                                    <test
+                                          forcePluginActivation="true"
+                                          property="org.polarsys.capella.core.platform.sirius.ui.layerOfWithOutDataFlowScenario"
+                                          value="SystemAnalysis">
+                                    </test>
+                                    <test
+                                          forcePluginActivation="true"
+                                          property="org.polarsys.capella.core.platform.sirius.ui.layerOfWithOutDataFlowScenario"
+                                          value="PhysicalArchitecture">
+                                    </test>
+                                    <test
+                                          forcePluginActivation="true"
+                                          property="org.polarsys.capella.core.platform.sirius.ui.layerOfWithOutDataFlowScenario"
+                                          value="LogicalArchitecture">
+                                    </test>
+                
+                             </or>
+                            </and>
+                    </iterate>
+                </with>
+             </visibleWhen> 
+             </command> 
+          </menuContribution>
+      
+      </extension>
+      
+      <extension point="org.eclipse.ui.commands">
+          <category
+                id="org.polarsys.capella.core.transitions.ui.category"
+                name="Transitions">
+          </category>
+             <command
+                   defaultHandler="org.polarsys.capella.core.refinement.commands.actions.ScenarioRefinementAction"
+                   id="org.polarsys.capella.core.refinement.commands.actions.scenarioRefinementAction"
+                   name="Capability Scenario Refinement"
+                   >
+             </command>
+      </extension>
+	  
+	  
+	  <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.refinement.commands.ui.expression.transitionVisibilityModelElementExpression">
+             <with variable="selection">
+                    <and>
+                       <iterate>
+                             <instanceof
+                                   value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                             </instanceof>
+                       </iterate>
+                    </and>
+             </with>
+      </definition>
+   </extension>
+   
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.refinement.commands.ui.expression.transitionVisibilityDiagramElementExpression">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate>
+                       <or>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart">
+                        </instanceof>
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+                        </instanceof>
+                       </or>
+                  </iterate>
+               </and>
+            </with>
+      </definition>
+   </extension>
+	  
+	  
+	  
+	  
+	  <!-- oooooooooooooooooooooooooooooooooooooooooooooo -->
+	  
+	  
+	  
+
+   <extension point="org.eclipse.core.expressions.propertyTesters">
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.property.projectionMode"
+             type="org.polarsys.capella.common.data.modellingcore.ModelElement"
+             namespace="org.polarsys.capella.core.refinement.commands"
+             properties="refinementMode"
+             class="org.polarsys.capella.core.refinement.commands.RefinementCommandTester">
+         </propertyTester>    
+         <propertyTester
+             id="org.polarsys.capella.core.platform.sirius.ui.property.graphicalProjectionMode"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.refinement.commands"
+             properties="graphicalRefinementMode"
+             class="org.polarsys.capella.core.refinement.commands.RefinementCommandTester">
+         </propertyTester>   
+   </extension>
+   
+   
+    <extension
+         point="org.eclipse.ui.menus">
+         <menuContribution  allPopups="false"
+                locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.wizards?after=additions">
+             <command  commandId="org.polarsys.capella.core.refinement.commands.actions.addExistingSubScenarioAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >
+              <visibleWhen checkEnabled="false">
+                <with variable="selection">
+                    <iterate>
+                            <and>
+                                <test property="org.polarsys.capella.core.platform.sirius.ui.classOf"
+                                 forcePluginActivation="true"
+                                   value="Scenario">
+                                </test>
+                            </and>
+                    </iterate>
+                </with>
+             </visibleWhen> 
+             </command>
+          </menuContribution>
+          
+          <menuContribution  allPopups="false"
+                locationURI="popup:org.polarsys.capella.core.sirius.diagram.editor.wizards?after=additions">
+             <command  commandId="org.polarsys.capella.core.refinement.commands.actions.addNewSubScenarioAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >
+              <visibleWhen checkEnabled="false">
+                <with variable="selection">
+                    <iterate>
+                            <and>
+                                <test property="org.polarsys.capella.core.platform.sirius.ui.classOf"
+                                 forcePluginActivation="true"
+                                   value="Scenario">
+                                </test>
+                            </and>
+                    </iterate>
+                </with>
+             </visibleWhen> 
+             </command>
+          </menuContribution>
+          
+          
+          
+     </extension>
+      
+      <extension
+         point="org.eclipse.ui.menus">
+         <menuContribution  allPopups="false"
+                locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
+             <command  commandId="org.polarsys.capella.core.refinement.commands.actions.addExistingSubScenarioAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >
+              <visibleWhen checkEnabled="false">
+                <with variable="selection">
+                 <and>
+                    <iterate>
+                            <instanceof value="org.polarsys.capella.core.data.interaction.Scenario" />
+                    </iterate>
+                    </and>
+                </with>
+             </visibleWhen> 
+             </command>
+          </menuContribution>
+          
+          <menuContribution  allPopups="false"
+                locationURI="popup:org.polarsys.capella.core.wizards?after=additions">
+             <command  commandId="org.polarsys.capella.core.refinement.commands.actions.addNewSubScenarioAction"  style="push" icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_edit.gif" >
+              <visibleWhen checkEnabled="false">
+                <with variable="selection">
+                 <and>
+                    <iterate>
+                            <instanceof value="org.polarsys.capella.core.data.interaction.Scenario" />
+                    </iterate>
+                 </and>
+                </with>
+             </visibleWhen> 
+             </command>
+          </menuContribution>
+          
+          
+          
+     </extension>
+      
+     <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.polarsys.capella.core.wizard.ui.category"
+            name="Wizards">
+      </category>
+      <command
+               defaultHandler="org.polarsys.capella.core.refinement.commands.actions.AddExistingSubScenarioAction"
+               id="org.polarsys.capella.core.refinement.commands.actions.addExistingSubScenarioAction"
+               name="Add existing sub scenario"
+               >
+      </command>
+      <command
+               defaultHandler="org.polarsys.capella.core.refinement.commands.actions.AddNewSubScenarioAction"
+               id="org.polarsys.capella.core.refinement.commands.actions.addNewSubScenarioAction"
+               name="Add new sub scenario"
+               >
+      </command>
+      
+    </extension>  
+   
+   
+</plugin>

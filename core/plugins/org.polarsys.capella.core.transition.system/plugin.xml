@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.system.activities.DifferencesFilteringActivity"
+            Identifier="org.polarsys.capella.core.transition.system.activities.DifferencesFilteringActivity"
+            Multiple="false"
+            Name="Selection of differences"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+<extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.system.activities.InitializeDiffMergeActivity"
+            Identifier="org.polarsys.capella.core.transition.system.activities.InitializeDiffMergeActivity"
+            Multiple="false"
+            Name="Interphases Initialization of Capella DiffMerge From Scope"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.system.activities.InitializeTransformationActivity"
+            Identifier="org.polarsys.capella.core.transition.system.activities.InitializeTransformationActivity"
+            Multiple="false"
+            Name="Initialization of transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transformation.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.system.activities.InitializeTransitionActivity"
+            Identifier="org.polarsys.capella.core.transition.system.activities.InitializeTransitionActivity"
+            Multiple="false"
+            Name="Initialization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transition.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+<extension
+         id="org.polarsys.capella.core.transition.system"
+         name="Transition System Mapping"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="A system transition"
+            domainHelper="org.polarsys.capella.core.transition.system.domain.CapellaTransitionDomainHelper"
+            mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.core.transition">
+            
+         <mappingPackage
+               name="common">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.AbstractState"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.AbstractStateRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.AbstractStateRule"
+                     enabled="true"
+                     name="AbstractState">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.Region"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.RegionRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.RegionRule"
+                     enabled="true"
+                     name="Region">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.StateMachine"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.StateMachineRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.StateMachineRule"
+                     enabled="true"
+                     name="StateMachine">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.StateTransition"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.common.StateTransitionRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.common.StateTransitionRule"
+                     enabled="true"
+                     name="StateTransition">
+               </defaultMappingPossibility>
+            </mappingElement>
+        </mappingPackage>
+            
+            
+        <mappingPackage name="core">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.AbstractPropertyValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.PropertyValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.PropertyValueRule"
+                     enabled="true"
+                     name="PropertyValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.Constraint"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.ConstraintRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.ConstraintRule"
+                     enabled="true"
+                     name="Constraint">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.EnumerationPropertyLiteralRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.EnumerationPropertyLiteralRule"
+                     enabled="true"
+                     name="EnumerationPropertyLiteral">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.EnumerationPropertyType"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.EnumerationPropertyTypeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.EnumerationPropertyTypeRule"
+                     enabled="true"
+                     name="EnumerationPropertyType">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.Generalization"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.GeneralizationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.GeneralizationRule"
+                     enabled="true"
+                     name="Generalization">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.PropertyValuePkg"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.PropertyValuePkgRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.PropertyValuePkgRule"
+                     enabled="true"
+                     name="PropertyValuePkg">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+         
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.PropertyValueGroup"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.core.PropertyValueGroupRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.core.PropertyValueGroupRule"
+                     enabled="true"
+                     name="PropertyValueGroup">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            
+         </mappingPackage>
+            
+            
+        <mappingPackage name="cs">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.BlockArchitecture"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.BlockArchitectureRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.BlockArchitectureRule"
+                     enabled="true"
+                     name="BlockArchitecture">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.AbstractDeploymentLink"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.AbstractDeploymentLinkRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.AbstractDeploymentLinkRule"
+                     enabled="true"
+                     name="AbstractDeploymentLink">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.Component"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.ComponentRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.ComponentRule"
+                     enabled="true"
+                     name="Component">
+               </defaultMappingPossibility>
+            </mappingElement>
+         
+         
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.ExchangeItemAllocation"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.ExchangeItemAllocationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.ExchangeItemAllocationRule"
+                     enabled="true"
+                     name="ExchangeItemAllocation">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.InterfaceImplementation"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.InterfaceImplementationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.InterfaceImplementationRule"
+                     enabled="true"
+                     name="InterfaceImplementation">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.InterfacePkg"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.InterfacePkgRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.InterfacePkgRule"
+                     enabled="true"
+                     name="InterfacePkg">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.Interface"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.InterfaceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.InterfaceRule"
+                     enabled="true"
+                     name="Interface">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.InterfaceUse"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.InterfaceUseRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.InterfaceUseRule"
+                     enabled="true"
+                     name="InterfaceUse">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.Part"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.PartRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.PartRule"
+                     enabled="true"
+                     name="Part">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.PhysicalPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalPortRule"
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalPortRule"
+                     enabled="true"
+                     name="PhysicalPort">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.PhysicalLinkEnd"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalLinkEndRule"
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalLinkEndRule"
+                     enabled="true"
+                     name="PhysicalLinkEnd">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.PhysicalPath"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalPathRule"
+                     enabled="true"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalPathRule"
+                     name="PhysicalPath">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.cs.PhysicalPathInvolvement"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalPathInvolvementRule"
+                     enabled="true"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.cs.PhysicalPathInvolvementRule"
+                     name="PhysicalPathInvolvement">
+               </defaultMappingPossibility>
+            </mappingElement>
+         </mappingPackage>
+
+         <mappingPackage name="fa">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.AbstractFunction"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.AbstractFunctionRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.AbstractFunctionRule"
+                     enabled="true"
+                     name="AbstractFunction">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ComponentExchange"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeRule"
+                     enabled="true"
+                     name="ComponentExchange">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ComponentExchangeEnd"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeEndRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeEndRule"
+                     enabled="true"
+                     name="ComponentExchangeEnd">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ComponentFunctionalAllocation"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentFunctionalAllocationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentFunctionalAllocationRule"
+                     enabled="true"
+                     name="ComponentFunctionalAllocation">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ComponentPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentPortRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentPortRule"
+                     enabled="true"
+                     name="ComponentPort">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+          <mappingElement
+                domainMetaClass="org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation"
+                reuseExtendedElementDefaultPossibility="true"
+                reuseExtendedElementPossibilities="true">
+             <defaultMappingPossibility
+                   completeRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeFunctionalExchangeAllocationRule"
+                   incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeFunctionalExchangeAllocationRule"
+                   enabled="true"
+                   name="ComponentExchangeFunctionalExchangeAllocation">
+             </defaultMappingPossibility>
+          </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ExchangeCategory"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.ExchangeCategoryRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ExchangeCategoryRule"
+                     enabled="true"
+                     name="ExchangeCategory">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+          <mappingElement
+                domainMetaClass="org.polarsys.capella.core.data.fa.FunctionalChain"
+                reuseExtendedElementDefaultPossibility="true"
+                reuseExtendedElementPossibilities="true">
+             <defaultMappingPossibility
+                   completeRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalChainRule"
+                   incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalChainRule"
+                   enabled="true"
+                   name="FunctionalChain">
+             </defaultMappingPossibility>
+          </mappingElement>
+          
+          <mappingElement
+                domainMetaClass="org.polarsys.capella.core.data.fa.FunctionalChainInvolvement"
+                reuseExtendedElementDefaultPossibility="true"
+                reuseExtendedElementPossibilities="true">
+             <defaultMappingPossibility
+                   completeRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalChainInvolvementRule"
+                   incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalChainInvolvementRule"
+                   enabled="true"
+                   name="FunctionalChainInvolvement">
+             </defaultMappingPossibility>
+          </mappingElement>
+          
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.FunctionPkg"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionPkgRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionPkgRule"
+                     enabled="true"
+                     name="FunctionPkg">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.FunctionInputPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionInputPortRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionInputPortRule"
+                     enabled="true"
+                     name="FunctionInputPort">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.FunctionOutputPort"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionOutputPortRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionOutputPortRule"
+                     enabled="true"
+                     name="FunctionOutputPort">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.FunctionalExchange"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalExchangeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.FunctionalExchangeRule"
+                     enabled="true"
+                     name="FunctionalExchange">
+               </defaultMappingPossibility>
+            </mappingElement>
+
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.fa.ComponentExchangeAllocation"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeAllocationRule"
+                     completeRule="org.polarsys.capella.core.transition.system.rules.fa.ComponentExchangeAllocationRule"
+                     enabled="true"
+                     name="ComponentExchangeAllocation">
+               </defaultMappingPossibility>
+            </mappingElement>
+
+         </mappingPackage>
+         
+         
+         <mappingPackage
+               name="information">
+               
+               <mappingPackage name="datavalue">
+               
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.BinaryExpression"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.BinaryExpressionRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.BinaryExpressionRule"
+                     enabled="true"
+                     name="BinaryExpression">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.BooleanReference"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.BooleanReferenceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.BooleanReferenceRule"
+                     enabled="true"
+                     name="BooleanReference">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.ComplexValueReference"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ComplexValueReferenceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ComplexValueReferenceRule"
+                     enabled="true"
+                     name="ComplexValueReference">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.ComplexValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ComplexValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ComplexValueRule"
+                     enabled="true"
+                     name="ComplexValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.DataValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.DataValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.DataValueRule"
+                     enabled="true"
+                     name="DataValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+               
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.EnumerationLiteralRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.EnumerationLiteralRule"
+                     enabled="true"
+                     name="EnumerationLiteral">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.EnumerationReference"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.EnumerationReferenceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.EnumerationReferenceRule"
+                     enabled="true"
+                     name="EnumerationReference">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.AbstractExpressionValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ExpressionValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ExpressionValueRule"
+                     enabled="true"
+                     name="ExpressionValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.LiteralBooleanValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.LiteralBooleanValueRule"
+                     enabled="true"
+                     name="LiteralBooleanValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.LiteralNumericValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.LiteralNumericValueRule"
+                     enabled="true"
+                     name="LiteralNumericValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.LiteralStringValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.LiteralStringValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.LiteralStringValueRule"
+                     enabled="true"
+                     name="LiteralStringValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.NumericReference"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.NumericReferenceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.NumericReferenceRule"
+                     enabled="true"
+                     name="NumericReference">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.StringReference"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.StringReferenceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.StringReferenceRule"
+                     enabled="true"
+                     name="StringReference">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.NumericValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.NumericValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.NumericValueRule"
+                     enabled="true"
+                     name="NumericValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.UnaryExpression"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.UnaryExpressionRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.UnaryExpressionRule"
+                     enabled="true"
+                     name="UnaryExpression">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datavalue.ValuePart"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ValuePartRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datavalue.ValuePartRule"
+                     enabled="true"
+                     name="ValuePart">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+               </mappingPackage>
+               
+               <mappingPackage name="datatype">
+               
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datatype.BooleanType"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datatype.BooleanTypeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datatype.BooleanTypeRule"
+                     enabled="true"
+                     name="BooleanType">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datatype.DataType"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datatype.DataTypeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datatype.DataTypeRule"
+                     enabled="true"
+                     name="DataType">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datatype.Enumeration"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datatype.EnumerationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datatype.EnumerationRule"
+                     enabled="true"
+                     name="Enumeration">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datatype.NumericType"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datatype.NumericTypeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datatype.NumericTypeRule"
+                     enabled="true"
+                     name="NumericType">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datatype.PhysicalQuantity"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datatype.PhysicalQuantityRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datatype.PhysicalQuantityRule"
+                     enabled="true"
+                     name="PhysicalQuantity">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.datatype.StringType"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.datatype.StringTypeRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.datatype.StringTypeRule"
+                     enabled="true"
+                     name="StringType">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            
+           </mappingPackage>
+               
+               
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Collection"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.CollectionRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.CollectionRule"
+                     enabled="true"
+                     name="Collection">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Unit"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.UnitRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.UnitRule"
+                     enabled="true"
+                     name="Unit">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.CollectionValueReference"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.CollectionValueReferenceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.CollectionValueReferenceRule"
+                     enabled="true"
+                     name="CollectionValueReference">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.CollectionValue"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.CollectionValueRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.CollectionValueRule"
+                     enabled="true"
+                     name="CollectionValue">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.DataPkg"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.DataPkgRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.DataPkgRule"
+                     enabled="true"
+                     name="DataPkg">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.ExchangeItem"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.ExchangeItemRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.ExchangeItemRule"
+                     enabled="true"
+                     name="ExchangeItem">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.ExchangeItemElement"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.ExchangeItemElementRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.ExchangeItemElementRule"
+                     enabled="true"
+                     name="ExchangeItemElement">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.PortAllocation"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.PortAllocationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.PortAllocationRule"
+                     enabled="true"
+                     name="PortAllocation">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Association"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.AssociationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.AssociationRule"
+                     enabled="true"
+                     name="Association">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Class"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.ClassRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.ClassRule"
+                     enabled="true"
+                     name="Class">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Union"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.UnionRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.UnionRule"
+                     enabled="true"
+                     name="Union">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Parameter"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.ParameterRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.ParameterRule"
+                     enabled="true"
+                     name="Parameter">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Property"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.PropertyRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.PropertyRule"
+                     enabled="true"
+                     name="Property">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.UnionProperty"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.UnionPropertyRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.UnionPropertyRule"
+                     enabled="true"
+                     name="UnionProperty">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.information.Service"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.information.ServiceRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.information.ServiceRule"
+                     enabled="true"
+                     name="Service">
+               </defaultMappingPossibility>
+            </mappingElement>
+         </mappingPackage>
+         
+         
+         <mappingPackage
+               name="interaction">
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.interaction.AbstractCapabilityPkgRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.interaction.AbstractCapabilityPkgRule"
+                     enabled="true"
+                     name="AbstractCapabilityPkg">
+               </defaultMappingPossibility>
+            </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.interaction.AbstractCapability"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.rules.interaction.AbstractCapabilityRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.rules.interaction.AbstractCapabilityRule"
+                     enabled="true"
+                     name="AbstractCapability">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+         </mappingPackage>
+         
+     </mapping>
+</extension>
+
+
+<extension
+         point="org.polarsys.capella.common.flexibility.properties">
+      <properties
+            id="capella.core.transition.system">
+         <inheritance properties="capella.core.transition" />
+         
+         <property
+               class="org.polarsys.capella.common.flexibility.properties.property.BooleanDefaultValueProperty"
+               enabled="true"
+               group="defaultGroup"
+               id="transition.system.scope.appliedPropertyValues"
+               name="%transition.system.scope.appliedPropertyValues.name"
+               description="%transition.system.scope.appliedPropertyValues.description">
+               <argument id="default" value="true" />
+         </property>
+         
+         <property
+               class="org.polarsys.capella.common.flexibility.properties.property.BooleanDefaultValueProperty"
+               enabled="true"
+               group="defaultGroup"
+               id="transition.system.scope.ownedPropertyValues"
+               name="%transition.system.scope.ownedPropertyValues.name"
+               description="%transition.system.scope.ownedPropertyValues.description">
+               <argument id="default" value="true" />
+         </property>
+         
+         
+      </properties>
+         
+</extension>
+
+</plugin>

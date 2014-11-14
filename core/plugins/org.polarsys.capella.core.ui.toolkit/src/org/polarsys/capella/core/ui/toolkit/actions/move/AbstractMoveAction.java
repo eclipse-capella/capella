@@ -1,0 +1,214 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.ui.toolkit.actions.move;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edit.command.MoveCommand;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.ui.action.CommandActionHandler;
+import org.eclipse.jface.viewers.IStructuredSelection;
+
+import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+
+/**
+ * Base class to implement a move action for selected Capella Elements.<br>
+ * Selected elements must have the same type and the same parent.
+ */
+public abstract class AbstractMoveAction extends CommandActionHandler {
+  /**
+   * Constructor.
+   * @param text_p
+   */
+  protected AbstractMoveAction(EditingDomain domain_p, String text_p) {
+    super(domain_p, text_p);
+  }
+
+  /**
+   * @see org.eclipse.ui.actions.BaseSelectionListenerAction#updateSelection(org.eclipse.jface.viewers.IStructuredSelection)
+   */
+  @Override
+  public boolean updateSelection(IStructuredSelection selection_p) {
+    boolean result = true;
+    if (!selection_p.isEmpty()) {
+      Iterator<?> iterator = selection_p.iterator();
+      EObject parent = null;
+      while (iterator.hasNext() && result) {
+        Object selectedObject = iterator.next();
+        if (!(CapellaResourceHelper.isSemanticElement(selectedObject))) {
+          result = false;
+        } else {
+          EObject selectedElement = (EObject) selectedObject;
+          // Selected elements must have the same parent i.e container.
+          if ((null != parent) && !selectedElement.eContainer().equals(parent)) {
+            result = false;
+          } else {
+            parent = selectedElement.eContainer();
+            // The parent must be not null to be able to move its children.
+            result = (null != parent) ? true : false;
+          }
+        }
+      }
+    } else {
+      result = false;
+    }
+    if (result) {
+      // Take into account created command criteria.
+      result = super.updateSelection(selection_p);
+
+    } else {
+      //If selection is invalid, free current command to avoid memory leak
+      List<?> list = selection_p.toList();
+      command = super.createCommand(list);
+    }
+    return result;
+  }
+
+  /**
+   * Capella move command.<br>
+   * This class is intended to be run only by {@link AbstractMoveAction}.<br>
+   * Selected elements must have the same type and the same parent.
+   */
+  protected class CapellaMoveCommand extends CompoundCommand {
+    /**
+     * This is the editing domain in which this command operates.
+     */
+    private EditingDomain _domain;
+    /**
+     * This is the collection of objects to be moved.
+     */
+    private List<?> _collection;
+
+    /**
+     * The way the move has to be performed.
+     */
+    private boolean _isMovingUp;
+
+    /**
+     * @return the sortedElementToMove
+     */
+    protected List<?> getSortedElementsToMove() {
+      // Sort selected elements by their index in the containment feature.
+      Collections.sort(_collection, new Comparator<Object>() {
+        /**
+         * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+         */
+        @SuppressWarnings("unchecked")
+        public int compare(Object o1_p, Object o2_p) {
+          int result = 0;
+          if ((o1_p instanceof EObject) && (o2_p instanceof EObject)) {
+            EObject object1 = (EObject) o1_p;
+            EObject object2 = (EObject) o2_p;
+            // Get the container of 1st object. 2nd object has the same one, this condition has been checked earlier.
+            EObject container = object1.eContainer();
+            // Get the containing feature.
+            EReference containmentFeature = object1.eContainmentFeature();
+            // Get children.
+            List<EObject> children = (List<EObject>) container.eGet(containmentFeature);
+            // Get indexes
+            int index1 = children.indexOf(object1);
+            int index2 = children.indexOf(object2);
+            // Compare indexes.
+            if (index1 > index2) {
+              result = 1;
+            } else if (index2 > index1) {
+              result = -1;
+            }
+          }
+          return result;
+        }
+      });
+      return _collection;
+    }
+
+    /**
+     * Constructor.
+     * @param domain_p
+     * @param label_p
+     * @param collection_p
+     * @param isMovingUp_p
+     */
+    public CapellaMoveCommand(EditingDomain domain_p, String label_p, Collection<?> collection_p, boolean isMovingUp_p) {
+      super(MERGE_COMMAND_ALL, label_p, Messages.AbstractMoveAction_MoveCommand_Description);
+      _domain = domain_p;
+      _collection = new ArrayList<Object>(collection_p);
+      _isMovingUp = isMovingUp_p;
+    }
+
+    /**
+     * Override this method to postpone nested commands creation.
+     * @see org.eclipse.emf.common.command.CompoundCommand#prepare()
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    protected boolean prepare() {
+      boolean result = true;
+      // Iterate over selected elements to check all conditions are fitted to be able to run the command.
+      for (Iterator<?> iterator = _collection.iterator(); iterator.hasNext() && result;) {
+        EObject object = (EObject) iterator.next();
+        EObject container = object.eContainer();
+        // Get the containing feature.
+        EReference containmentFeature = object.eContainmentFeature();
+        // To move elements the containment feature must have more than one value possible.
+        if (!containmentFeature.isMany()) {
+          result = false;
+          break;
+        }
+        // Get the current index for current object.
+        List<EObject> children = (List<EObject>) container.eGet(containmentFeature);
+        int index = children.indexOf(object);
+        // Handle border index.
+        if ((index == 0) && _isMovingUp) {
+          // Move up an object at the top index is impossible.
+          result = false;
+          break;
+        }
+        if ((index == (children.size() - 1)) && !_isMovingUp) {
+          // Move down an object at the last index is impossible.
+          result = false;
+          break;
+        }
+      }
+      return result;
+    }
+
+    /**
+     * Override this method because nested move commands are instantiated just before their execution.<br>
+     * That ensures all indexes are up-to-date when a move command is run.
+     * @see org.eclipse.emf.common.command.CompoundCommand#execute()
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public void execute() {
+      for (Object name : getSortedElementsToMove()) {
+        EObject object = (EObject) name;
+        EObject container = object.eContainer();
+        // Get the containing feature.
+        EReference containmentFeature = object.eContainmentFeature();
+        // Get the current index for current object.
+        List<EObject> children = (List<EObject>) container.eGet(containmentFeature);
+        int index = children.indexOf(object);
+        // Compute the new position.
+        index += _isMovingUp ? -1 : 1;
+        // Append and execute immediately the command.
+        appendAndExecute(MoveCommand.create(_domain, container, containmentFeature, object, index));
+      }
+    }
+  }
+}

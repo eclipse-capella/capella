@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="org.polarsys.capella.core.transition.handlers" name="Transitions handlers" schema="schema/org.polarsys.capella.core.transition.handlers.exsd"/>
+
+    <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.PostTransformationActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.PostTransformationActivity"
+            Multiple="false"
+            Name="Computation of differences"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+	<extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.DifferencesComputingActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.DifferencesComputingActivity"
+            Multiple="false"
+            Name="Computation of differences"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   
+    <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.TransformationActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.TransformationActivity"
+            Multiple="false"
+            Name="Computation of differences"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.DifferencesFilteringActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.DifferencesFilteringActivity"
+            Multiple="false"
+            Name="Selection of differences"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.DifferencesMergingActivity"
+            Multiple="false"
+            Name="Merge of differences in target model"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+	<extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.PostDiffMergeActivity"
+            Multiple="false"
+            Name="Finalization of Capella DiffMerge"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+      
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.FinalizeTransitionActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.FinalizeTransitionActivity"
+            Multiple="false"
+            Name="Finalization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+      
+   </extension>
+   
+   
+   
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromTransformationActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromTransformationActivity"
+            Multiple="false"
+            Name="Initialization of Capella DiffMerge From Transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+      
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromScopeActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.InitializeDiffMergeFromScopeActivity"
+            Multiple="false"
+            Name="Initialization of Capella DiffMerge From Scope"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.after.rule.execution"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.InitializeScopeActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.InitializeScopeActivity"
+            Multiple="false"
+            Name="Scope computation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize Transposer for Capella Transformation execution.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.InitializeTransitionWithTransformationActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.InitializeTransitionWithTransformationActivity"
+            Multiple="false"
+            Name="Initialization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transition.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.InitializeTransitionActivity"
+            Multiple="false"
+            Name="Initialization of transition"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transition.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   
+   <extension
+         point="org.polarsys.kitalpha.cadence.core.activity.declaration">
+      <ActivityDeclaration
+            ActivityClass="org.polarsys.capella.core.transition.common.activities.InitializeTransformationActivity"
+            Identifier="org.polarsys.capella.core.transition.common.activities.InitializeTransformationActivity"
+            Multiple="false"
+            Name="Initialization of transformation"
+            WorkflowElementIdentifier="org.polarsys.kitalpha.transposer.before.analysis"
+            WorkflowIdentifier="org.polarsys.kitalpha.transposer.workflow">
+         <Description>
+            This activity initialize transformation.
+         </Description>
+      </ActivityDeclaration>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.flexibility.properties">
+      <properties
+            id="capella.core.transition">
+         <group
+               id="defaultGroup"
+               name="%group.default">
+         </group>
+         <group
+               id="extensionGroup"
+               name="%group.extensions">
+         </group>
+      </properties>
+   </extension>
+   
+   
+   
+   
+   
+</plugin>

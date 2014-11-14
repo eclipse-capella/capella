@@ -1,0 +1,93 @@
+	 String[] result = new String[] { null };
+
+<%if (genClass.isMapEntry()) {%>
+		<%=genClass.getImportedInterfaceName()%><%if (genModel.useGenerics()) {%><?, ?><%}%> <%=genClass.getSafeUncapName()%> = (<%=genClass.getImportedInterfaceName()%><%if (genModel.useGenerics()) {%><?, ?><%}%>)object;
+  <%if (!genClass.getMapEntryKeyFeature().isPropertyMultiLine() && !genClass.getMapEntryValueFeature().isPropertyMultiLine()) {%>
+		result[0] = "" + <%=genClass.getSafeUncapName()%>.getKey() + " -> " + <%=genClass.getSafeUncapName()%>.getValue();<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+  <%} else {%>
+    <%if (genClass.getMapEntryKeyFeature().isPropertyMultiLine()) {%>
+		String key = crop("" + <%=genClass.getSafeUncapName()%>.getKey());<%=genModel.getNonNLS()%>
+    <%} else {%>
+		String key = "" + <%=genClass.getSafeUncapName()%>.getKey();<%=genModel.getNonNLS()%>
+    <%}%>
+    <%if (genClass.getMapEntryValueFeature().isPropertyMultiLine()) {%>
+		String value = crop("" + <%=genClass.getSafeUncapName()%>.getValue());<%=genModel.getNonNLS()%>
+    <%} else {%>
+		String value = "" + <%=genClass.getSafeUncapName()%>.getValue();<%=genModel.getNonNLS()%>
+    <%}%>
+		result[0] = key + " -> " + value;<%=genModel.getNonNLS()%>
+  <%}%>
+<%} else if (genClass.getLabelFeature() != null) { GenFeature labelFeature = genClass.getLabelFeature();%>
+  <%if (labelFeature.isPrimitiveType() && !labelFeature.getGenClass().isDynamic() && !labelFeature.isSuppressedGetVisibility()) {%>
+		<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%> <%=genClass.getSafeUncapName()%> = (<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object;
+		//begin-capella-code
+		result[0] = "[" + etString("_UI_<%=genClass.getName()%>_type")  + "]" + " " + <%=genClass.getSafeUncapName()%>.<%=genClass.getLabelFeature().getGetAccessor()%>();<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+		//end-capella-code
+  <%} else {%>
+    <%if (labelFeature.isStringType() && !labelFeature.getGenClass().isDynamic() && !labelFeature.isSuppressedGetVisibility()) {%>
+      <%if (labelFeature.isPropertyMultiLine()) {%>
+		String label = crop(((<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object).<%=labelFeature.getGetAccessor()%>());
+      <%} else {%>
+    	//begin-capella-code
+        <%if (labelFeature.getName().equals("name")) {%>
+		String label = ((<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object).<%=labelFeature.getGetAccessor()%>();
+        <%} else {%>
+        String label = "";<%=genModel.getNonNLS()%>
+        String targetName = "";<%=genModel.getNonNLS()%>
+        <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> target = null;
+
+<%List<GenClass> superclasses = genClass.getAllBaseGenClasses(); superclasses.add(genClass);%>
+<%for (GenClass cls : superclasses) {%>
+  <%if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("AbstractTrace")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.common.data.modellingcore.AbstractTrace")%>) object).getTargetElement();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("StateTransition")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.capellacommon.StateTransition")%>) object).getTarget();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("Involvement")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.capellacore.Involvement")%>) object).getInvolved();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("Generalization")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.capellacore.Generalization")%>) object).getSuper();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("InterfaceUse")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.cs.InterfaceUse")%>) object).getUsedInterface();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("InterfaceImplementation")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.cs.InterfaceImplementation")%>) object).getImplementedInterface();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("CapabilityExploitation")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.ctx.CapabilityExploitation")%>) object).getCapability();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("CapabilityExploitation")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.ctx.CapabilityExploitation")%>) object).getCapability();
+	<%} else if ((cls.getEcoreModelElement() instanceof EClass) && ((EClass) cls.getEcoreModelElement()).getName().equals("AbstractDeployment")) {%>
+ 		target = ((<%=genModel.getImportedName("org.polarsys.capella.core.data.cs.AbstractDeployment")%>) object).getDeployedElement();
+	<%}%>
+<%}%>
+	 	if (null != target) {
+			if (target instanceof <%=genModel.getImportedName("org.polarsys.capella.common.data.modellingcore.AbstractNamedElement")%>) {
+				targetName = ((<%=genModel.getImportedName("org.polarsys.capella.common.data.modellingcore.AbstractNamedElement")%>) target).getName();
+			}
+
+			if (null == targetName || "" == targetName) {<%=genModel.getNonNLS()%>
+				targetName = "[" + target.eClass().getName() + "]";<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%>
+			}
+	 	}
+	 	label = "[" + getString("_UI_<%=genClass.getName()%>_type") + "] to " + targetName;<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+		<%}%>
+		//end-capella-code
+	  <%}%>
+	<%} else {%>
+	  <%if (labelFeature.isSuppressedGetVisibility() || labelFeature.getGenClass().isDynamic()) {%>
+		<%=genModel.getImportedName("java.lang.Object")%> labelValue = ((<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%>)object).eGet(<%=labelFeature.getQualifiedFeatureAccessor()%>);
+	  <%} else {%>
+		<%=labelFeature.getRawImportedType()%> labelValue = ((<%=genClass.getImportedInterfaceName()%><%=genClass.getInterfaceWildTypeArguments()%>)object).<%=labelFeature.getGetAccessor()%>();
+	  <%}%>
+		String label = labelValue == null ? null : labelValue.toString();
+	<%}%>
+			result[0] = label == null || label.length() == 0 ?
+			//begin-capella-code
+			"[" + getString("_UI_<%=genClass.getName()%>_type") + "]" : label;<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+			//end-capella-code
+  <%}%>
+<%} else {%>
+		//begin-capella-code
+		result[0] = "[" + getString("_UI_<%=genClass.getName()%>_type") + "]";<%=genModel.getNonNLS()%><%=genModel.getNonNLS(2)%><%=genModel.getNonNLS(3)%>
+		//end-capella-code
+<%}%>
+
+		return result[0];

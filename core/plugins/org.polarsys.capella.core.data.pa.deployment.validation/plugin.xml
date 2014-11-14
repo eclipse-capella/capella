@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package namespaceUri="http://www.polarsys.org/capella/core/pa/deployment/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/use_cases">
+         </constraints>
+      </constraintProvider>
+      <constraintProvider>
+         <package namespaceUri="http://www.polarsys.org/capella/core/pa/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/components">
+            <constraint
+                  class="org.polarsys.capella.core.data.pa.validation.physicalComponent.PhysicalPortOnRootPhysicalComponent"
+                  id="DWF_DC_26"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_26 - Root Physical Component Ports Check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Root Physical Component &quot;{0}&quot; should not have physical ports.
+               </message>
+               <description>
+                  This rule ensures that the Root Physical Component has no physical ports.
+               </description>
+               <target
+                     class="PhysicalComponent">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

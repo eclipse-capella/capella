@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="capellaQuickFix" name="%extpoint.capellaQuickFix.name" schema="schema/capellaQuickFix.exsd"/>
+   <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            class="org.polarsys.capella.core.validation.ui.ide.internal.quickfix.CapellaMarkerResolutionGenerator"
+            markerType="org.polarsys.capella.core.validation.markers">
+      </markerResolutionGenerator>
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
+      <resolver
+            class="org.polarsys.capella.core.validation.ui.ide.quickfix.EObjectMultiplicityResolver"
+            label="Delete element">
+         <rules
+               ruleId="org.eclipse.emf.ecore.1">
+         </rules>
+      </resolver>
+   </extension>
+
+</plugin>

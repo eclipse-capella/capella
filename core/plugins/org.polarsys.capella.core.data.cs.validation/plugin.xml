@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+<extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/cs/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/well-formedness/dataflows">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalPort.PhysicalPortOnBehaviourPC"
+                  id="DWF_DF_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_09 - PhysicalPort on BehaviourPC"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule ensures that PhysicalPort is not contained in BehaviourPC.
+
+BehaviourPC=Physical Component of nature BEHAVIOUR
+               </description>
+               <target
+                     class="PhysicalPort">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalPath.PhysicalPathComponentExchangeAllocation"
+                  id="DWF_DF_13"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DF_13 - PhysicalPath allocated CE"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule checks that a PhysicalPath should allocated component exchage between its path.
+               </description>
+               <target
+                     class="PhysicalPath">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/well-formedness/interfaces">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_Component_Interfaces_Level"
+                  id="DWF_I_04"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_04 - Components must implements/uses accessible interfaces"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The component {0} uses or implements the interface {1} defined in the {2} level
+               </message>
+               <description>
+                  This rule checks that a component uses and implements only interface from valid architecture.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.ComponentCommunicationLinkRule"
+                  id="DWF_I_05"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_I_05 - Component Communication Link kind"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}(Component) has more than one {2} CommunicationLink targeting {3}(ExchangeItem)
+               </message>
+               <target
+                     class="Component">
+               </target>
+               <description>
+                  This rule checks that the component cannot have the same kind of communication link targeting to the same exchange item.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interfacePkg.MDCHK_InterfacePkg_Location_1"
+                  id="DWF_I_06"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_06 - Interface location check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (Interface Package) cannot be located under EPBS Architecture.
+               </message>
+               <description>
+                  This rule checks that no Interface is located in EPBS.
+               </description>
+               <target
+                     class="InterfacePkg">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Component_InterfaceLevel"
+                  id="DWF_I_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_07 - Interface location level"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}({1}) uses or implements the interface {2} from {3} level.
+               </message>
+               <target
+                     class="Component">
+               </target>
+               <description>
+                  This rule checks that a component uses/implements interfaces from the same level or from an upper level.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.ExchangeItemAllocationAllocatedItem"
+                  id="DWF_I_11"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_11 - ExchangeItemAllocation AllocatedItem Check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="ExchangeItemAllocation">
+               </target>
+               <description>
+                  This rule checks that a ExchangeItemAllocation AllocatedItem value is not null.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.EIAAllocatedItemLayerConsistency"
+                  id="DWF_I_12"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_I_12 - Exchange item allocation layer consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (ExchangeItemAllocation) should not allocate {1} ({2}) of lower Architecture layer.
+               </message>
+               <description>
+                  This rule ensures that an ExchangeItemAllocation from given layer should not allocate element of lower Architecture layer.
+
+Exmaple:
+If an ExchangeItemAllocation is on SystemArchitecture layer. It should not allocate any element from Logical or Physical Layer.
+               </description>
+               <target
+                     class="ExchangeItemAllocation">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/well-formedness/components">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.part.PartAccessibleType"
+                  id="DWF_DC_05"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_DC_05 - Part type accessibility check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Part) is typed by an inaccessible Component.
+               </message>
+               <target
+                     class="Part">
+               </target>
+               <description>
+                  This rule ensures that a part is typed by an accessible Component.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_Component_PartTypeLevel"
+                  id="DWF_DC_06"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_DC_06 - Component Parts type level check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Part {2} of {0} ({1}) is typed by {4} ({3}) which does not belong to the same level.
+               </message>
+               <target
+                     class="Component">
+               </target>
+               <description>
+                  This rule ensures that each parts of a component have the same level (i.e context, logical, physical,...) that the component itself.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.componentcontext.MDCHK_ComponentContext_AbstractActor_Part"
+                  id="DWF_DC_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_07 - Contexts Abstract Actor Parts Check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Component Context) has a part typed by {1} which is abstract.
+               </message>
+               <description>
+                  This rule checks that a Component Context cannot have a part typed by an abstract type.
+               </description>
+               <target
+                     class="ComponentContext">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.part.MDCHK_Part_PartType"
+                  id="DWF_DC_08"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_DC_08 - Part typed"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (Part) does not have a type.
+               </message>
+               <target
+                     class="Part">
+               </target>
+               <description>
+                  This rule ensures that a part has always a type.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_Component_AllocatedFunctions_1"
+                  id="DWF_DC_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_09 - Component allocated functions types check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule checks that a Component allocates only leaf Functions of its own level.
+               </description>
+               <target
+                     class="Component">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.part.MDCHK_Part_PartLocation"
+                  id="DWF_DC_10"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_DC_10 - Actors Part Locations Check "
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Part {0} representing {1} ({2}) should not have the owner: {3} ({4}).
+               </message>
+               <target
+                     class="Part">
+               </target>
+               <description>
+                  This rule checks the parts locations for actors and root components.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalPath.MDCHK_PhysicalPath_InvolvedLinks"
+                  id="DWF_DC_03"
+                  isEnabledByDefault="true"
+                  lang="java"
+                  mode="Batch"
+                  name="DWF_DC_03 - Physical Path Involved Links check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (PhysicalPath) {1}
+               </message>
+               <description>
+                  This rule checks that a PhysicalPath is valid.
+               </description>
+               <target
+                     class="PhysicalPath">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalPathInvolvement.PhysicalPathInvolvement_Involved" 
+                        id="DWF_DC_24" 
+                        isEnabledByDefault="true" 
+            			lang="Java" 
+                        mode="Batch" 
+            			name="DWF_DC_24 - Physical Path involvement check involved element" 
+                        severity="WARNING" 
+            			statusCode="1">
+               <message>
+                  ({0}) is not well formed. Involved element shall be set to {1}.
+               </message>
+               <description>
+                  This rule checks that a Physical Path Involvement only involves an Part, a Physical Link or a Physical Path.
+               </description>
+               <target class="PhysicalPathInvolvement">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalPathInvolvement.PhysicalPathInvolvement_Involver" 
+                        id="DWF_DC_25" 
+                        isEnabledByDefault="true" 
+            			lang="Java" 
+                        mode="Batch" 
+            			name="DWF_DC_25 - Physical Path involvement check involver element" 
+                        severity="WARNING" 
+            			statusCode="1">
+               <message>
+                  This rule checks that a Functional Chain Involvement involver is its owning Functional Chain.
+               </message>
+               <description>
+                  This rule checks that a Physical Path Involvement involver is its owning Physical Path.
+               </description>
+               <target class="PhysicalPathInvolvement">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalLink.PhysicalLink_Location" id="DWF_DC_19" isEnabledByDefault="false" lang="Java" mode="Batch" name="DWF_DC_19 - Physical Link location check" severity="WARNING" statusCode="1">
+               <message>
+                  The Physical Link &quot;{0}&quot; is not located in &quot;{1}&quot;, the common ancestor between its source/target elements.
+               </message>
+               <description>
+                  This rule ensures that Physical Link is located in the common ancestor between its source/target elements.
+               </description>
+               <target class="PhysicalLink">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.component.MDCHK_Component_MultipleUseOrImplementationOfSameItfCheck"
+                  id="I_16"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_16 - Several Implementation/Use of the same interface by a component Check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (Component) cannot {1} {2} (Interface) several times.
+               </message>
+               <description>
+                  This rule allows to ensure that a component cannot implement the same interface several times or use the same interface several times.
+               </description>
+               <target
+                     class="Component">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.part.MDCHK_ComponentContextPartitions"
+                  id="I_17"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_17 - Contexts minimal content check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) does not contain any root component part.
+               </message>
+               <description>
+                  This rule checks that context packages contain at least one component (the root component) of the correct level.
+               </description>
+               <target
+                     class="ComponentContext">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_OperationsSignatureUniqueness"
+                  id="I_18"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_18 - Interface operation signature check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) contains {1} several times with the same signature.
+               </message>
+               <description>
+                  This rule checks that an Interface does not contain the same operation several times.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalPathInvolvement.PhysicalPathInvolvement_NextAndPrevious_1"
+                  id="I_29"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_29 - Physical path involvement check 1"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Physical Path Involvement) has an empty next and/or previous involvement.
+               </message>
+               <description>
+                  This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (not empty)
+               </description>
+               <target
+                     class="PhysicalPathInvolvement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalPathInvolvement.PhysicalPathInvolvement_NextAndPrevious_2"
+                  id="I_30"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_30 - Physical path involvement check 2"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Physical Path Involvement) has an invalid next and/or previous involvement.
+               </message>
+               <description>
+                  This rule checks that a Physical Path Involvement has a valid next and/or previous involvement (contained by the same physical path)
+               </description>
+               <target
+                     class="PhysicalPathInvolvement">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/justification/physical_architecture">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_Realization_2"
+                  id="TJ_PA_11"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_11 - Interface realization check 2"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) is not realized by any Physical Interface.
+               </message>
+               <description>
+                  This rule checks that a Logical Interface is realized by at least one Physical Interface.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.physicalArtifact.PhysicalArtifactAllocated"
+                  id="TJ_PA_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_09 - Physical Artifact Allocation"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} ({1}) is not realized by any Configuration Item.
+               </message>
+               <target
+                     class="AbstractPhysicalArtifact">
+               </target>
+               <description>
+                  This rule checks that a Physical Artifact is realized by at least one Configuration Item.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/completeness">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_Implementation_1"
+                  id="DCOM_06"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_06 - Interface implementation 1"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) is not implemented by any Component or provided by any Component Port.
+               </message>
+               <description>
+                  This rule checks that an Interface is implemented by at least one Component.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_Usage_2"
+                  id="DCOM_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_07 - Interface used one sub component at least"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) is not used by one of the sub Logical Component.
+               </message>
+               <description>
+                  This rule checks that an interface is used by one of the sub Logical Component
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_Implementation_2"
+                  id="DCOM_08"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_08 - Interface implemented by one component"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) is not implemented by one of the sub Logical Component.
+               </message>
+               <description>
+                  This rule checks that an Interface is implemented by one of the sub Logical Component.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_Operations"
+                  id="DCOM_09"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_09 - Interface operations number check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) doesn't contains any operation.
+               </message>
+               <description>
+                  This rule checks that an Interface contains at least one operation.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/coverage">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHK_Interface_Usage_1"
+                  id="DCOV_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOV_01 - Interface used one component at least"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Interface) is not used by any Component or required by any Component Port.
+               </message>
+               <description>
+                  This rule checks that an Interface is used by at least one Component.
+               </description>
+               <target
+                     class="Interface">
+               </target>
+            </constraint>
+            <constraint class="org.polarsys.capella.core.data.cs.validation.physicalPort.PhysicalPortPhysicalLink" id="DCOV_11" isEnabledByDefault="true" lang="java" mode="Batch" name="DCOV_11 - Physical port Physical Link check" severity="WARNING" statusCode="1">
+               <message>
+                  {0} (Physical Port) is not used by any Physical Link.
+               </message>
+               <target class="PhysicalPort">
+               </target>
+               <description>
+                  This rule generates a warning if there is no Physical Links using the target Physical Port.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/consistency/interfaces">
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.ME01G_ExchangeItemAllocation"
+                  id="TC_I_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_I_03 - Exchange item allocation check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  The {1} (ExchangeItem) is defined into {2} level and realized into the {3} level. {0} Interface allocates {1} ExchangeItem instead of allocating realized ExchangeItem.
+               </message>
+               <target
+                     class="ExchangeItemAllocation">
+               </target>
+               <description>
+                  This rule checks that an Interface isn't linked to an ExchangeItem from a previous level whereas it is realized in the same level than the Interface.
+A warning can be raised if you have performed a transition of the Interface before performing a transition of the allocated ExchangeItem.
+You should perform another transition of the Interface from the lower level to use the realized ExchangeItem. 
+Interface should be linked to the realized ExchangeItem.
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+      
+      
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/common/core/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/completeness">
+               
+               <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHKComponentInterfaceFunctionPortExchangeItemAllocationConsistency"
+                  id="DCOM_15"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_15 - Exchange item allocation consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} 
+               </message>
+               <description>
+               This rule is applied to a Component 
+ 1) Checks that all Exchange Items allocated by its Interfaces are allocated to one of Function Ports of its allocated Functions.
+ 2) Checks that all Exchange Items allocated by Function Ports of its allocated Functions are allocated to one of its Interfaces(used/implemented/provided/required).
+               
+				 
+               </description>
+               <target
+                     class="ModelElement">
+               </target>
+            </constraint>
+               
+         
+               <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHKInterfaceExchangeItemAllocationConsistency"
+                  id="DCOM_16"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_16 - Interface Exchange item allocation consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  All exchange items allocated by {0} of {1} shall be allocated to one of functions ports of its allocated functions 
+               </message>
+               <description>
+               This rule is applied to an Interface and checks that all Exchange Items allocated by an Interface of a Component are allocated to one of Function Ports of its allocated Functions.
+               </description>
+               <target
+                     class="ModelElement">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.cs.validation.interface_.MDCHKFunctionPortExchangeItemAllocationConsistency"
+                  id="DCOM_17"
+                  isEnabledByDefault="false"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_17 - Function Port Exchange item allocation consistency"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  All exchange items allocated by {0} shall be allocated to one of Interfaces of {1} 
+               </message>
+               <description>
+
+This rule is applied to a Function Port and checks that all Exchange Items allocated by a Function Port are allocated to one of Interfaces of its allocating Component
+
+               </description>
+               <target
+                     class="ModelElement">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

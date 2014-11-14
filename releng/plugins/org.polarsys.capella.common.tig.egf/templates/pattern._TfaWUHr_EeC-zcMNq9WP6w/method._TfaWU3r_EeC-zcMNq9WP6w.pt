@@ -1,0 +1,3 @@
+<%// add initialisation of the pattern variables (declaration has been already done).
+final String oclNsURI = org.polarsys.capella.common.tig.model.IModelConstants.OCL_ANNOTATION_SOURCE;
+%>

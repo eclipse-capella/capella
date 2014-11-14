@@ -1,0 +1,330 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.re;
+
+import org.eclipse.emf.common.util.EList;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Catalog Element</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * <ul>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getKind <em>Kind</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getAuthor <em>Author</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getOrigin <em>Origin</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getCurrentCompliancy <em>Current Compliancy</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getDefaultReplicaCompliancy <em>Default Replica Compliancy</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getOwnedLinks <em>Owned Links</em>}</li>
+ * </ul>
+ * </p>
+ *
+ * @see org.polarsys.capella.common.re.RePackage#getCatalogElement()
+ * @model
+ * @generated
+ */
+
+public interface CatalogElement extends ReDescriptionElement, ReElementContainer {
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The default value is <code>"REC"</code>.
+	 * The literals are from the enumeration {@link org.polarsys.capella.common.re.CatalogElementKind}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.common.re.CatalogElementKind
+	 * @see #setKind(CatalogElementKind)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Kind()
+	 * @model default="REC"
+	 * @generated
+	 */
+
+	CatalogElementKind getKind();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getKind <em>Kind</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.common.re.CatalogElementKind
+	 * @see #getKind()
+	 * @generated
+	 */
+
+	void setKind(CatalogElementKind value);
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Author</b></em>' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Author</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Author</em>' attribute.
+	 * @see #setAuthor(String)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Author()
+	 * @model
+	 * @generated
+	 */
+
+	String getAuthor();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getAuthor <em>Author</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Author</em>' attribute.
+	 * @see #getAuthor()
+	 * @generated
+	 */
+
+	void setAuthor(String value);
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Environment</b></em>' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Environment</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Environment</em>' attribute.
+	 * @see #setEnvironment(String)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Environment()
+	 * @model
+	 * @generated
+	 */
+
+	String getEnvironment();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getEnvironment <em>Environment</em>}' attribute.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Environment</em>' attribute.
+	 * @see #getEnvironment()
+	 * @generated
+	 */
+
+	void setEnvironment(String value);
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Tags</b></em>' attribute list.
+	 * The list contents are of type {@link java.lang.String}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Tags</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Tags</em>' attribute list.
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Tags()
+	 * @model
+	 * @generated
+	 */
+
+	EList<String> getTags();
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Origin</b></em>' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Origin</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Origin</em>' reference.
+	 * @see #setOrigin(CatalogElement)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Origin()
+	 * @model
+	 * @generated
+	 */
+
+	CatalogElement getOrigin();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getOrigin <em>Origin</em>}' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Origin</em>' reference.
+	 * @see #getOrigin()
+	 * @generated
+	 */
+
+	void setOrigin(CatalogElement value);
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Current Compliancy</b></em>' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Current Compliancy</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Current Compliancy</em>' reference.
+	 * @see #setCurrentCompliancy(CompliancyDefinition)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_CurrentCompliancy()
+	 * @model
+	 * @generated
+	 */
+
+	CompliancyDefinition getCurrentCompliancy();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getCurrentCompliancy <em>Current Compliancy</em>}' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Current Compliancy</em>' reference.
+	 * @see #getCurrentCompliancy()
+	 * @generated
+	 */
+
+	void setCurrentCompliancy(CompliancyDefinition value);
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Default Replica Compliancy</b></em>' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Default Replica Compliancy</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Default Replica Compliancy</em>' reference.
+	 * @see #setDefaultReplicaCompliancy(CompliancyDefinition)
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_DefaultReplicaCompliancy()
+	 * @model
+	 * @generated
+	 */
+
+	CompliancyDefinition getDefaultReplicaCompliancy();
+
+
+
+
+	/**
+	 * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getDefaultReplicaCompliancy <em>Default Replica Compliancy</em>}' reference.
+
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Replica Compliancy</em>' reference.
+	 * @see #getDefaultReplicaCompliancy()
+	 * @generated
+	 */
+
+	void setDefaultReplicaCompliancy(CompliancyDefinition value);
+
+
+
+
+
+
+
+	/**
+	 * Returns the value of the '<em><b>Owned Links</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.re.CatalogElementLink}.
+
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Links</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned Links</em>' containment reference list.
+	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_OwnedLinks()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+
+	EList<CatalogElementLink> getOwnedLinks();
+
+
+
+
+
+} // CatalogElement

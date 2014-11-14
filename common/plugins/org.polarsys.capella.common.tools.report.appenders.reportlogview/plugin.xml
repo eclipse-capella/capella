@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+<!--
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="org.polarsys.capella.views.category"
+            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView"
+            icon="icons/information_16x16.png"
+            id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview"
+            name="%view.name">
+      </view>
+   </extension>
+-->   
+   
+<extension-point
+	id="filterOnReportView"
+	name="Filtering marker type for reportlogview"
+	schema="schema/filteronreportview.exsd"
+/>   
+   
+   
+<extension point="org.eclipse.ui.commands">
+
+    <category
+          id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.actions"
+          name="%category.name"
+          description="%category.description">
+    </category>
+    
+    <command id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.open"
+          categoryId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.actions"
+          description="%openCommand.description"
+          name="%openCommand.name">
+          
+          <commandParameter
+                id="index"
+                name="index"
+                optional="true">
+          </commandParameter>
+          
+    </command>
+    
+    <command id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.export"
+          categoryId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.actions"
+          name="%exportCommand.name"
+          description="%exportCommand.description">
+    </command>
+     
+     <command id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteAll"
+          categoryId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.actions"
+          name="%clearCommand.name"
+          description="%clearCommand.description">
+     </command>
+     
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.GroupHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+           name="Group">
+        <commandParameter
+              id="org.eclipse.ui.commands.radioStateParameter"
+              name="groupParameter"
+              optional="false">
+        </commandParameter>
+        <state
+              class="org.eclipse.ui.handlers.RadioState:CATEGORY"
+              id="org.eclipse.ui.commands.radioState">
+        </state>
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SelectionFilterHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
+           name="SelectionFilter">
+        <commandParameter
+              id="org.eclipse.ui.commands.radioStateParameter"
+              name="selectionFilterParameter"
+              optional="false">
+        </commandParameter>
+        <state
+              class="org.eclipse.ui.handlers.RadioState:ALL"
+              id="org.eclipse.ui.commands.radioState">
+        </state>
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SeverityFilterHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.debug"
+           name="Debug">
+        <state
+              class="org.eclipse.ui.handlers.RegistryToggleState:true"
+              id="org.eclipse.ui.commands.toggleState">
+        </state>
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SeverityFilterHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.info"
+           name="Info">
+        <state
+              class="org.eclipse.ui.handlers.RegistryToggleState:true"
+              id="org.eclipse.ui.commands.toggleState">
+        </state>
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SeverityFilterHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.warning"
+           name="Warning">
+        <state
+              class="org.eclipse.ui.handlers.RegistryToggleState:true"
+              id="org.eclipse.ui.commands.toggleState">
+        </state>
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SeverityFilterHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.error"
+           name="Error">
+        <state
+              class="org.eclipse.ui.handlers.RegistryToggleState:true"
+              id="org.eclipse.ui.commands.toggleState">
+        </state>
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SeverityFilterHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.fatal"
+           name="Fatal">
+        <state
+              class="org.eclipse.ui.handlers.RegistryToggleState:true"
+              id="org.eclipse.ui.commands.toggleState">
+        </state>
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.DisableConstraintHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.disableconstraint"
+           name="%disableConstraintCommand.label">
+     </command>
+     <command
+           description="Delete Constraint Markers"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteconstraintmarkers"
+           name="Delete Constraint Markers">
+     </command>
+     <command
+           defaultHandler="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ExpandHandler"
+           id="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
+           name="Expand All">
+        <commandParameter
+              id="type"
+              name="type"
+              optional="false">
+        </commandParameter>
+     </command>
+
+    
+</extension>
+
+<extension point="org.eclipse.ui.handlers">
+    
+    <handler commandId="org.eclipse.ui.edit.delete"
+            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.DeleteHandler">
+         
+         
+         <activeWhen>
+            <and>
+               <with
+                     variable="activePartId">
+                  <equals
+                        value="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview">
+                  </equals>
+               </with>
+               <not>
+                  <count
+                        value="0">
+                  </count>
+               </not>
+            </and>
+         </activeWhen>
+         
+    </handler>
+    
+    <handler commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.open"
+            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.OpenHandler">
+    </handler>
+       
+    <handler commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteAll"
+            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ClearLogHandler">
+    </handler>
+           
+    <handler commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.export"
+            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.SaveLogHandler">
+    </handler>
+    <handler
+          class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.CopyHandler"
+          commandId="org.eclipse.ui.edit.copy">
+       <enabledWhen>
+          <iterate
+                ifEmpty="false">
+             <instanceof
+                   value="org.eclipse.core.resources.IMarker">
+             </instanceof>
+          </iterate>
+       </enabledWhen>
+       <activeWhen>
+          <with
+                variable="activePartId">
+             <equals
+                   value="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview">
+             </equals>
+          </with>
+       </activeWhen>
+    </handler>
+    <handler
+          class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.DeleteConstraintMarkersHandler"
+          commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteconstraintmarkers">
+    </handler>
+
+           
+</extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+         
+      
+      <menuContribution
+            locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=navigation">
+          
+         <dynamic
+               class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.QuickfixHandler"
+               id="org.polarsys.capella.core.validation.quickfix.quickfixActions">
+         </dynamic>
+         <dynamic
+               class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.QuickFixAllConstraintMarkersHandler"
+               id="org.polarsys.capella.core.validation.quickfix.quickfixAllActions">
+         </dynamic>
+         
+     </menuContribution>
+      
+       <menuContribution
+             locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=navigation">
+          <dynamic
+                class="org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.GotoHandler"
+                id="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.showRelatedElementProjectExplorer">
+          </dynamic>
+       </menuContribution>
+      
+      <menuContribution
+            locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=use">
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.disableconstraint"
+               icon="icons/disabled_co.gif"
+               label="%disableConstraintCommand.label"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      
+      <menuContribution
+            locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=use">
+         <command
+               commandId="org.eclipse.ui.edit.copy">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="org.eclipse.ui.edit.delete">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+           <command
+                 commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteconstraintmarkers"
+                 label="%deleteSimilarMarkers.label"
+                 style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         
+
+      </menuContribution>
+         
+         
+      
+      <menuContribution
+            locationURI="toolbar:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview">
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
+               icon="icons/show_categories.gif"
+               label="Show categories"
+               style="push"
+               tooltip="%tooltip.ShowCategories">
+            <parameter
+                  name="type"
+                  value="DEFAULT">
+            </parameter>
+         </command>
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
+               icon="icons/expandall.gif"
+               label="Expand all"
+               style="push"
+               tooltip="%tooltip.ExpandAll">
+            <parameter
+                  name="type"
+                  value="ALL">
+            </parameter>
+         </command>
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.expandAll"
+               icon="icons/collapseall.png"
+               label="Collapse all"
+               style="push"
+               tooltip="%tooltip.CollapseAll">
+            <parameter
+                  name="type"
+                  value="NONE">
+            </parameter>
+         </command>
+         <separator
+               name="expand"
+               visible="true">
+         </separator>
+         
+         
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.deleteAll"
+               icon="icons/clear.gif"
+               label="%clearCommand.description"
+               tooltip="%tooltip.Clear">
+         </command>
+         
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.export"
+               icon="icons/save.gif"
+               label="%exportCommand.description"
+               tooltip="%tooltip.Export">
+         </command>
+         
+         <separator name="group.filter" visible="true" />
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.debug"
+               icon="icons/debug.gif"
+               label="%filterDebug.label"
+               style="toggle"
+               tooltip="%tooltip.ToggleDebug">
+         </command>
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.info"
+               icon="icons/inform.gif"
+               label="%filterInfo.label"
+               style="toggle"
+               tooltip="%tooltip.ToggleInfo">
+         </command>
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.warning"
+               icon="icons/warn.gif"
+               label="%filterWarning.label"
+               style="toggle"
+               tooltip="%tooltip.ToggleWarning">
+         </command>
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.error"
+               icon="icons/error.gif"
+               label="%filterError.label"
+               style="toggle"
+               tooltip="%tooltip.ToggleError">
+         </command>
+         <command
+               commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.fatal"
+               icon="icons/fatal.gif"
+               label="%filterFatal.label"
+               style="toggle"
+               tooltip="%tooltip.ToggleFatal">
+         </command>
+                
+         
+         
+         
+         
+         
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview">
+         <menu
+               label="Show">
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.debug"
+                  icon="icons/debug.gif"
+                  label="%filterDebug.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.info"
+                  icon="icons/inform.gif"
+                  label="%filterInfo.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.warning"
+                  icon="icons/warn.gif"
+                  label="%filterWarning.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.error"
+                  icon="icons/error.gif"
+                  label="%filterError.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.fatal"
+                  icon="icons/fatal.gif"
+                  label="%filterFatal.label"
+                  style="toggle">
+            </command>
+            <separator
+                  name="reportlogmenumock.separator1"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
+                  label="All elements"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="ALL">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
+                  label="Elements for active project"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="PROJECT">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
+                  label="Elements for active selection"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="SELECTION">
+               </parameter>
+            </command>
+         </menu>
+         <menu
+               label="Group by">
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="Severity"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="SEVERITY">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="Category"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="CATEGORY">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="Rule ID"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="RULE">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="None"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="NONE">
+               </parameter>
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.polarsys.capella.common.tools.report.appenders.reportlogview.logview?after=additions">
+         <menu
+               label="Show">
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.debug"
+                  icon="icons/debug.gif"
+                  label="%filterDebug.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.info"
+                  icon="icons/inform.gif"
+                  label="%filterInfo.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.warning"
+                  icon="icons/warn.gif"
+                  label="%filterWarning.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.error"
+                  icon="icons/error.gif"
+                  label="%filterError.label"
+                  style="toggle">
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.severityfilter.fatal"
+                  icon="icons/fatal.gif"
+                  label="%filterFatal.label"
+                  style="toggle">
+            </command>
+            <separator
+                  name="reportlogmenumock.separator1"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
+                  label="All elements"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="ALL">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
+                  label="Elements for active project"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="PROJECT">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.selectionfilter"
+                  label="Elements for active selection"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="SELECTION">
+               </parameter>
+            </command>
+         </menu>
+         <menu
+               label="Group by">
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="Severity"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="SEVERITY">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="Category"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="CATEGORY">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="Rule ID"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="RULE">
+               </parameter>
+            </command>
+            <command
+                  commandId="org.polarsys.capella.common.tools.report.appenders.reportlogview.logview.group"
+                  label="None"
+                  style="radio">
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="NONE">
+               </parameter>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.polarsys.capella.common.tools.report.Log4jAppendersExtension">
+      <Log4jAppendersExtension
+            class="org.polarsys.capella.common.tools.report.appenders.reportlogview.ReportManagerLogViewAppender"
+            id="org.polarsys.capella.common.tools.report.appenders.reportlogview.Log4jAppendersExtension1"/>
+   </extension>
+</plugin>

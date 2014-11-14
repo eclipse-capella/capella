@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.refinement.mapper.broadcastpattern;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Require-Bundle: org.polarsys.capella.core.refinement.framework
+Export-Package: org.polarsys.capella.core.refinement.mapper
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Localization: plugin

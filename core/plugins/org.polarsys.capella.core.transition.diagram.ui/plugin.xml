@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+
+<extension point="org.eclipse.ui.commands">
+
+    <category
+          id="org.polarsys.capella.core.transition"
+          name="%category.name"
+          description="%category.description">
+    </category>
+    
+    <command id="org.polarsys.capella.core.transition.diagram"
+          categoryId="org.polarsys.capella.core.transition"
+          description="%diagramTransition.description"
+          name="%diagramTransition.name">
+    </command>
+
+</extension>
+
+<extension point="org.eclipse.ui.handlers">
+    
+    <handler commandId="org.polarsys.capella.core.transition.diagram"
+            class="org.polarsys.capella.core.transition.diagram.ui.handlers.DiagramTransitionHandler">
+            
+    </handler>
+    
+</extension>
+
+<extension point="org.eclipse.ui.menus">
+      
+      <menuContribution locationURI="popup:org.eclipse.ui.examples.contributions.editor.menu">
+         <command
+               commandId="org.polarsys.capella.core.transition.diagram"
+               icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella_process.gif"
+               label="%diagramTransition.name"
+               style="push">
+         <visibleWhen checkEnabled="true">
+             <with variable="activeMenuSelection">
+                  <and>
+                     <iterate>
+                        <and>
+                           <instanceof
+                                 value="org.eclipse.sirius.viewpoint.DDiagram">
+                           </instanceof>
+                           <test
+                                forcePluginActivation="true"
+                                property="org.polarsys.capella.core.transition.diagram.transitionMode"
+                                value="transitionDiagram">
+                            </test>
+                        </and>
+                     </iterate>
+                     <count
+                           value="+">
+                     </count>
+                     
+                  </and>
+               </with>
+         </visibleWhen>
+         </command>
+      </menuContribution>
+      
+</extension>
+
+<extension point="org.eclipse.ui.menus">
+      
+      <menuContribution locationURI="popup:capella.project.explorer#PopupMenu?after=group.transition">
+         <menu
+               id="org.eclipse.ui.examples.contributions.editor.menu"
+               label="Transitions">
+               
+              <visibleWhen checkEnabled="false">
+                   <reference
+                         definitionId="org.polarsys.capella.core.transition.ui.expression.transitionVisibilityModelElementExpression">
+                   </reference>
+              </visibleWhen>
+        </menu>
+      </menuContribution>
+      
+</extension>
+
+<extension
+         point="org.eclipse.core.expressions.propertyTesters">
+   
+         <propertyTester
+             id="org.polarsys.capella.core.transition.diagram.transitionMode"
+             type="org.eclipse.sirius.viewpoint.DDiagram"
+             namespace="org.polarsys.capella.core.transition.diagram"
+             properties="transitionMode"
+             class="org.polarsys.capella.core.transition.diagram.ui.CommandTester"
+         >
+         </propertyTester>    
+         
+         <propertyTester
+             id="org.polarsys.capella.core.transition.diagram.graphicalTransitionMode"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+             namespace="org.polarsys.capella.core.transition.diagram"
+             properties="graphicalTransitionMode"
+             class="org.polarsys.capella.core.transition.diagram.ui.CommandTester"
+         >
+         </propertyTester>   
+         
+   </extension>
+   
+   
+   <extension point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.polarsys.capella.core.transition.ui.expression.transitionVisibilityModelElementExpression">
+               <with
+                  variable="selection">
+               <and>
+                  <iterate>
+                        <instanceof
+                              value="org.polarsys.capella.common.data.modellingcore.ModelElement">
+                        </instanceof>
+                  </iterate>
+                  <count
+                     value="+">
+                  </count>
+               </and>
+            </with>
+      </definition>
+   </extension>
+   
+   
+   
+   
+
+</plugin>

@@ -1,0 +1,24 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+/icons/full/obj16/CtxModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/OaModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/LaModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/RequirementModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/PaModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/CapellacommonModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/SharedmodelModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/CapellacoreModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/Capellamodeller.gif - org.polarsys.capella.data.res.editor - org.polarsys.capella.data.res.editor/icons/full/obj16/Capellamodeller.gif
+/icons/full/obj16/DatatypeModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/CsModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/InformationModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/FaModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/EpbsModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/CapellamodellerModelFile.gif - org.polarsys.capella.data.res.editor - org.polarsys.capella.data.res.editor/icons/full/obj16/CapellamodellerModelFile.gif
+/icons/full/obj16/InteractionModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/CommunicationModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif
+/icons/full/obj16/DatavalueModelFile.gif - org.eclipse.emf.edit - org.eclipse.emf.edit/icons/full/obj16/ModelFile.gif

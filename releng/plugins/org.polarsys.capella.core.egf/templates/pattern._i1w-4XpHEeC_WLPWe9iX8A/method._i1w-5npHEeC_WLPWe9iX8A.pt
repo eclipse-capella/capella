@@ -1,0 +1,698 @@
+<%
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2002-2006 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - Initial API and implementation
+ *
+ * </copyright>
+ */
+%>
+<%GenPackage genPackage = (GenPackage)argument; GenModel genModel=genPackage.getGenModel(); ExtendedMetaData extendedMetaData= genModel.getExtendedMetaData();%>
+<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern.base/egf/EMF_Pattern_Base.fcore#LogicalName=org.eclipse.egf.emf.pattern.base.HeaderJava" args="parameter:argument"%>
+package <%=genPackage.getUtilitiesPackageName()%>;
+
+<%genModel.getImportedName("org.eclipse.emf.common.util.URI");%>
+<%genModel.markImportLocation(stringBuffer);%>
+
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
+
+/**
+ * <!-- begin-user-doc -->
+ * The <b>Resource </b> associated with the package.
+ * <!-- end-user-doc -->
+ * @see <%=genPackage.getQualifiedResourceFactoryClassName()%>
+ * @generated
+ */
+public class <%=genPackage.getResourceClassName()%> extends <%=genPackage.getImportedResourceBaseClassName()%>
+{
+<%if (genModel.hasCopyrightField()) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final <%=genModel.getImportedName("java.lang.String")%> copyright = <%=genModel.getCopyrightFieldLiteral()%>;<%=genModel.getNonNLS()%>
+
+<%}%>
+<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL || genPackage.getResource() == GenResourceKind.XMI_LITERAL) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */  
+	private <%=genModel.getImportedName("java.util.List")%><Object> lookupTable = new <%=genModel.getImportedName("java.util.ArrayList")%><Object>();
+  
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */  
+	private <%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLParserPool")%> parserPool = new <%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl")%>();  
+  
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */  
+	private <%=genModel.getImportedName("java.util.Map")%><Object, Object> nameToFeatureMap = new <%=genModel.getImportedName("java.util.HashMap")%><Object, Object>();
+	
+<%}%>
+	/**
+	 * Creates an instance of the resource.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param uri the URI of the new resource.
+	 * @generated
+	 */
+	public <%=genPackage.getResourceClassName()%>(URI uri)
+	{
+		super(uri);
+<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL) { // Do nothing%>
+<%}%>
+	}	
+<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL || genPackage.getResource() == GenResourceKind.XMI_LITERAL) {%>
+<%if (genPackage.isExtensibleProviderFactory() || genPackage.isChildCreationExtenders()) {%>
+
+      //begin-capella-code
+	  /**
+	   * {@inheritDoc}
+	   * @generated
+	   */
+	  @Override
+	  protected void attachedHelper(<%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> eObject_p) {
+	    // Make sure specified object has its id generated.
+	    if (eObject_p instanceof <%=genModel.getImportedName("org.polarsys.capella.common.data.modellingcore.ModelElement")%>) {
+	      setID(eObject_p, ((ModelElement) eObject_p).getId());
+	    }
+	    super.attachedHelper(eObject_p);
+	  }
+      //end-capella-code
+      
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected <%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLSave")%> createXMLSave() {
+<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL) {%>
+		return new <%=genModel.getImportedName("org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl")%>(createXMLHelper());
+<%}else{%>
+		return new <%=genModel.getImportedName("org.polarsys.capella.common.data.core.gen.xmi.impl.CapellaXMLSaveImpl")%>(createXMLHelper());
+<%}%>
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected <%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLHelper")%> createXMLHelper() {
+<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL) {%>
+		return new <%=genModel.getImportedName("org.polarsys.kitalpha.emde.xmi.XMLExtensionHelperImpl")%>(this);
+<%}else{%>
+		return new <%=genModel.getImportedName("org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl")%>(this);
+<%}%>	
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected <%=genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLLoad")%> createXMLLoad() {
+<%if (genPackage.getResource() == GenResourceKind.XML_LITERAL) {%>
+		return new <%=genModel.getImportedName("org.polarsys.kitalpha.emde.xmi.XMLExtensionLoadImpl")%>((<%=genModel.getImportedName("org.polarsys.kitalpha.emde.xmi.XMLExtensionHelperImpl")%>) createXMLHelper());
+<%}else{%>
+		return new <%=genModel.getImportedName("org.polarsys.kitalpha.emde.xmi.XMIExtensionLoadImpl")%>((<%=genModel.getImportedName("org.polarsys.kitalpha.emde.xmi.XMIExtensionHelperImpl")%>) createXMLHelper());
+<%}%>	
+	}	
+<%}%>
+<%if (ExtensionHelper.isUseIDAttributes(genPackage) == false) {%>
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected boolean useIDAttributes() {
+		return false;
+	}
+<%}%>
+<%if (ExtensionHelper.isUseUUIDS(genPackage)) {%>
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected boolean useUUIDs() {
+		return true;
+	}
+<%}%>
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected void init() {
+		super.init();
+
+<%if (ExtensionHelper.isTrackResourceModification(genPackage)) {%>
+		setTrackingModification(true);
+<%}%>
+		// Save Options
+		getDefaultSaveOptions().put(XMLResource.OPTION_ENCODING, "UTF-8");  //$NON-NLS-1$
+		getDefaultSaveOptions().put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
+		getDefaultSaveOptions().put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE, lookupTable);    
+		getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);    
+		getDefaultSaveOptions().put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);    
+		getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, new Integer(80));
+		getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());		        
+		getDefaultSaveOptions().put(XMLResource.OPTION_FLUSH_THRESHOLD, Integer.valueOf(0x01000000));
+		getDefaultSaveOptions().put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
+
+		// Load Options
+		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_ATTACHMENT, Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_DEPRECATED_METHODS, Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL, parserPool);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, nameToFeatureMap);
+		getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
+		getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);	}
+
+	//begin-capella-code
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#getEObjectByID(java.lang.String)
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected <%=genModel.getImportedName("org.eclipse.emf.ecore.EObject")%> getEObjectByID(String id) {
+		if (idToEObjectMap == null)
+			return super.getEObjectByID(id);
+		return getIDToEObjectMap().get(id);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#getIntrinsicIDToEObjectMap()
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	@SuppressWarnings("unchecked")
+	public <%=genModel.getImportedName("java.util.Map")%> getIntrinsicIDToEObjectMap() {
+		return getIDToEObjectMap();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl#doUnload()
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected void doUnload() {
+    	List< <%=genModel.getImportedName("org.eclipse.emf.ecore.resource.Resource")%> > resourcesToNotUnload = (List<Resource>) <%=genModel.getImportedName("org.polarsys.capella.common.helpers.adapters.MDEAdapterFactory")%>.getResourceSet().getLoadOptions().get("hackDoremi");
+		// Dirty hack to allow libraries to work until TIG is not modified to support multiple ResourceSet (as it should be according to the philosophy of session
+		// management in DOREMI)
+		// Explanation : because TIG does not follow the right way to use DOREMI session, when a session is closed, resources of libraries dependent of the model
+		// session are unloaded. The result is that semantics resources of session become inconsistent.
+		// Let say we have a project P1 referencing a library L1. We open session of L1, then close it. If we open the session of P1, the resources representing
+		// L1 in semantic resources of P1 and L1 are different (which must not be the case) because doremi unload resource of L1 in context of P1 during the
+		// close of L1.
+		// To avoid that behavior, the implementation of session close defines in the resource set (key "hackDoremi") the set of resources not to be unloaded. 
+    	if ((resourcesToNotUnload == null) || !resourcesToNotUnload.contains(this)) {
+    		super.doUnload();
+    	}
+    	this.idToEObjectMap = null;
+
+		// original code
+		//super.doUnload();
+		//this.idToEObjectMap = null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Dirty hack to allow libraries to work until TIG is not modified to support multiple ResourceSet
+	 * (as it should be according to the philosophy of session management in DOREMI)
+	 * Explanation : When we do not the unload (hack of doUnload()), we must discard the fact that the Resource is set as not loaded (pcr00116186)
+	 * <!-- end-user-doc -->
+	 * 
+	 * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#setLoaded()
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	protected <%=genModel.getImportedName("org.eclipse.emf.common.notify.Notification")%> setLoaded(boolean isLoaded) {
+		List<Resource> resourcesToNotUnload = (List<Resource>) MDEAdapterFactory.getResourceSet().getLoadOptions().get("hackDoremi");
+		if ((resourcesToNotUnload == null) || !resourcesToNotUnload.contains(this)) {
+			return super.setLoaded(isLoaded);
+		} else {
+			return null;
+		}
+	}
+	//end-capella-code
+	
+<%}%>
+<%if (genPackage.isDataTypeConverters() && (genPackage.hasDocumentRoot() || org.eclipse.emf.ecore.xml.type.XMLTypePackage.eNS_URI.equals(genPackage.getNSURI()))) { boolean isXMLTypePackage = org.eclipse.emf.ecore.xml.type.XMLTypePackage.eNS_URI.equals(genPackage.getNSURI());%>
+<%final String _Map = genModel.useGenerics() ? "Map<?, ?>" : "Map";%>
+<%final String _MapStringBoolean = genModel.useGenerics() ? "Map<String, Boolean>" : "Map";%>
+<%final String _MapStringWildcard = genModel.useGenerics() ? "Map<String, ?>" : "Map";%>
+<%if (!isXMLTypePackage) {%>
+<%genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLResource");%>
+<%genModel.getImportedName("org.eclipse.emf.ecore.xmi.XMLParserPool");%>
+<%genModel.getImportedName("org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl");%>
+<%genModel.getImportedName("java.io.InputStream");%>
+<%genModel.getImportedName("java.io.IOException");%>
+<%genModel.getImportedName("org.eclipse.emf.ecore.EObject");%>
+<%genModel.getImportedName("java.util.Collections");%>
+<%genModel.getImportedName("java.util.HashMap");%>
+<%genModel.getImportedName("java.util.Map");%>
+<%genModel.getImportedName("org.xml.sax.InputSource");%>
+<%genModel.getImportedName("javax.xml.parsers.SAXParser");%>
+<%}%>
+<%genModel.getImportedName("org.xml.sax.Attributes");%>
+<%genModel.getImportedName("org.xml.sax.SAXException");%>
+<%String _StackFrame = genModel.getImportedName("org.eclipse.emf.ecore.xml.type.util.XMLTypeResourceImpl")+".StackFrame";%>
+<%String _DataFrame = genModel.getImportedName("org.eclipse.emf.ecore.xml.type.util.XMLTypeResourceImpl")+".DataFrame";%>
+<%if (!isXMLTypePackage) {%>
+	/**
+	 * A load option that turns of the use of the generate data converters.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String OPTION_USE_DATA_CONVERTER = "USE_DATA_CONVERTER"; <%=genModel.getNonNLS()%>
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
+	public void doLoad(InputStream inputStream, <%=_Map%> options) throws IOException
+	{
+		if (options != null && Boolean.TRUE.equals(options.get(OPTION_USE_DATA_CONVERTER)))
+		{
+		  getContents().add
+			 (load
+				 (new InputSource(inputStream), 
+				  (<%=_MapStringBoolean%>)options.get(XMLResource.OPTION_PARSER_FEATURES), 
+				  (<%=_MapStringWildcard%>)options.get(XMLResource.OPTION_PARSER_PROPERTIES), 
+				  Boolean.TRUE.equals(options.get(XMLResource.OPTION_USE_LEXICAL_HANDLER))).eContainer());
+		}
+		else
+		{  
+			super.doLoad(inputStream, options);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+  <%}%>
+	public void doLoad(InputSource inputSource, <%=_Map%> options) throws IOException
+	{
+		if (options != null && Boolean.TRUE.equals(options.get(OPTION_USE_DATA_CONVERTER)))
+		{
+		  getContents().add
+			 (load
+				 (inputSource,
+				  (<%=_MapStringBoolean%>)options.get(XMLResource.OPTION_PARSER_FEATURES), 
+				  (<%=_MapStringWildcard%>)options.get(XMLResource.OPTION_PARSER_PROPERTIES), 
+				  Boolean.TRUE.equals(options.get(XMLResource.OPTION_USE_LEXICAL_HANDLER))).eContainer());
+		}
+		else
+		{  
+			super.doLoad(inputSource, options);
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final XMLParserPool parserPool = new XMLParserPoolImpl();
+
+	/**
+	 * Loads an instance from the input.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param inputSource the input from which to load.
+	 * @param features a map of the parser features and their values.
+	 * @param properties a map of a parser properties and their values.
+	 * @param useLexicalHandler whether a lexical handler should be used during loading.
+	 * @return the root object; for the case of a document root, the child of that document root is return.
+	 * @throws ParserConfigurationException
+	 * @throws SAXException
+	 * @generated
+	 */
+	public static EObject load(InputSource inputSource, <%=_MapStringBoolean%> features, <%=_MapStringWildcard%> properties, boolean useLexicalHandler) throws IOException
+	{
+		<%=_MapStringBoolean%> requiredFeatures = new <%=_MapStringBoolean.replaceAll("Map","HashMap")%>();
+		requiredFeatures.put("http://xml.org/sax/features/namespaces", Boolean.TRUE); <%=genModel.getNonNLS()%> 
+		if (features != null)
+		{
+			requiredFeatures.putAll(features);
+		}
+		
+		if (properties == null)
+		{
+			properties = Collections.<%if (genModel.useGenerics()) {%>emptyMap()<%} else {%>EMPTY_MAP<%}%>;
+		}
+		
+		SAXParser saxParser = null;
+		try
+		{
+			saxParser = parserPool.get(requiredFeatures, properties, useLexicalHandler);
+			final FrameFactory.DocumentRootStackFrame documentRoot = FrameFactory.INSTANCE.pushDocumentRoot(null, null);
+			XMLTypeResourceImpl.Handler handler = new XMLTypeResourceImpl.Handler(documentRoot);
+			saxParser.parse(inputSource, handler);
+<%if (genModel.isSuppressEMFTypes()) {%>
+			return (EObject)((EObject)FrameFactory.INSTANCE.popDocumentRoot(documentRoot)).eContents().get(0);
+<%} else {%>
+			return FrameFactory.INSTANCE.popDocumentRoot(documentRoot).eContents().get(0);
+<%}%>
+		}
+		catch (Exception exception)
+		{
+			throw new IOWrappedException(exception);
+		}
+		finally
+		{
+			parserPool.release(saxParser, requiredFeatures, properties, useLexicalHandler);
+		}
+	}
+
+<%}%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public final static class FrameFactory
+	{
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final FrameFactory INSTANCE = new FrameFactory();
+	
+<%for (GenClass genClass : genPackage.getGenClasses()) {%>
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected <%=genClass.getName()%>StackFrame <%=genClass.getSafeUncapName()%>;
+
+<%}%>
+<%for (GenDataType genDataType : genPackage.getAllGenDataTypes()) {%>
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected <%=_DataFrame%> <%=genDataType.getSafeUncapName()%>;
+
+<%}%>
+<%for (GenClass genClass : genPackage.getGenClasses()) {%>
+<%List<EStructuralFeature> attributes = extendedMetaData.getAllAttributes(genClass.getEcoreClass());%>
+<%List<EStructuralFeature> elements = extendedMetaData.getAllElements(genClass.getEcoreClass());%>
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public <%=genClass.getName()%>StackFrame push<%=genClass.getName()%>(<%=_StackFrame%> previous, Attributes attributes)
+		{
+			 <%=genClass.getName()%>StackFrame result<%=genClass.getName()%> = <%=genClass.getSafeUncapName()%> == null ? new <%=genClass.getName()%>StackFrame() : <%=genClass.getSafeUncapName()%>;
+			 <%=genClass.getSafeUncapName()%> = null;
+			 result<%=genClass.getName()%>.pushOnto(previous);
+			 result<%=genClass.getName()%>.handleAttributes(attributes);
+			 return result<%=genClass.getName()%>;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public <%=genClass.getImportedInterfaceName()%> pop<%=genClass.getName()%>(<%=genClass.getName()%>StackFrame <%=genClass.getSafeUncapName()%>)
+		{
+			<%=genClass.getImportedInterfaceName()%> result<%=genClass.getName()%>Value = <%=genClass.getSafeUncapName()%>.pop<%=genClass.getName()%>();
+			this.<%=genClass.getSafeUncapName()%> = <%=genClass.getSafeUncapName()%>;
+			return result<%=genClass.getName()%>Value;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static class <%=genClass.getName()%>StackFrame extends <%=_StackFrame%>
+		{
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected <%=genClass.getImportedInterfaceName()%> the<%=genClass.getName()%>;
+		
+<%for (GenFeature genFeature : genClass.getAllGenFeatures()) {%>
+<%String name = extendedMetaData.getName(genFeature.getEcoreFeature());%>
+<%if ((elements.contains(genFeature.getEcoreFeature()) || attributes.contains(genFeature.getEcoreFeature())) && name.indexOf(":") == -1) {%>
+<%if (genFeature.isReferenceType()) {%>
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected <%=genFeature.getTypeGenClass().getGenPackage().getImportedResourceClassName()%>.FrameFactory.<%=genFeature.getTypeGenClass().getName()%>StackFrame <%=genFeature.getSafeName()%>;
+
+<%} else {%>
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected <%=_DataFrame%> <%=genFeature.getSafeName()%>;
+		
+<%}%>
+<%}%>
+<%}%>
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+			@Override
+  <%}%>
+			public void handleAttributes(Attributes attributes)
+			{
+<%int count = 0; for (GenFeature genFeature : genClass.getAllGenFeatures()) {%>
+<%String name = extendedMetaData.getName(genFeature.getEcoreFeature());%>
+<%if (attributes.contains(genFeature.getEcoreFeature()) && !genFeature.isDerived() && name.indexOf(":") == -1) {%>
+<%String namespace = Literals.toStringLiteral(extendedMetaData.getNamespace(genFeature.getEcoreFeature()), genModel); if ("null".equals(namespace)) namespace = "\"\"";%>
+<%if (!genFeature.isReferenceType()) { GenClassifier genClassifier = genFeature.getTypeGenClassifier();%>
+<%if (count++ == 0) {%>
+				String theValue = attributes.getValue(<%=namespace%>, "<%=name%>");
+<%} else {%>
+				theValue = attributes.getValue(<%=namespace%>, "<%=name%>");
+<%}%>
+				if (theValue != null)
+				{
+<%if (genClassifier.getGenPackage().isDataTypeConverters()) {%>
+					the<%=genClass.getName()%>.set<%=genFeature.getAccessorName()%>(<%=genClassifier.getGenPackage().getQualifiedFactoryInstanceAccessor()%>.create<%=genClassifier.getName()%>(theValue));
+<%} else {%>
+					the<%=genClass.getName()%>.set<%=genFeature.getAccessorName()%>((<%=genFeature.getImportedType(null)%>)<%=genClassifier.getGenPackage().getQualifiedEFactoryInstanceAccessor()%>.createFromString(<%=genClassifier.getQualifiedClassifierAccessor()%>, theValue));
+<%}%>
+				}
+<%}%>
+<%}%>
+<%}%>
+<%if (count == 0) {%>
+				// There are attributes to handle.
+<%}%>
+			}
+		
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+			@Override
+  <%}%>
+			public <%=_StackFrame%> startElement(String namespace, String localName, String qName, Attributes attributes) throws SAXException
+			{
+<%count = 0; for (GenFeature genFeature : genClass.getAllGenFeatures()) {%>
+<%String name = extendedMetaData.getName(genFeature.getEcoreFeature());%>
+<%if (elements.contains(genFeature.getEcoreFeature()) && name.indexOf(":") == -1) {%>
+<%String namespace = Literals.toStringLiteral(extendedMetaData.getNamespace(genFeature.getEcoreFeature()), genModel); if ("null".equals(namespace)) namespace = "\"\"";%>
+				<%if (count++ != 0) {%>else <%}%>if ("<%=name%>".equals(localName) && <%=namespace%>.equals(namespace))
+				{
+					return <%=genFeature.getSafeName()%> = <%=genFeature.getTypeGenClassifier().getGenPackage().getImportedResourceClassName()%>.FrameFactory.INSTANCE.push<%=genFeature.getTypeGenClassifier().getName()%>(this, attributes);
+				}
+<%}%>
+<%}%>
+<%if (count == 0) {%>
+				return super.startElement(namespace, localName, qName, attributes);
+<%} else {%>
+				else
+				{
+					return super.startElement(namespace, localName, qName, attributes);
+				}
+<%}%>
+			}
+
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+			@Override
+  <%}%>
+			public void endElement(<%=_StackFrame%> child) throws SAXException
+			{
+<%count = 0; for (GenFeature genFeature : genClass.getAllGenFeatures()) {%>
+<%String name = extendedMetaData.getName(genFeature.getEcoreFeature());%>
+<%if (elements.contains(genFeature.getEcoreFeature()) && name.indexOf(":") == -1) {%>
+				<%if (count++ != 0) {%>else <%}%>if (child == <%=genFeature.getSafeName()%>)
+				{
+<%if (genFeature.isListType()) {%>
+					the<%=genClass.getName()%>.<%=genFeature.getGetAccessor()%>().add(<%=genFeature.getTypeGenClassifier().getGenPackage().getImportedResourceClassName()%>.FrameFactory.INSTANCE.pop<%=genFeature.getTypeGenClassifier().getName()%>(<%=genFeature.getSafeName()%>));
+<%} else {%>
+					the<%=genClass.getName()%>.set<%=genFeature.getAccessorName()%>(<%=genFeature.getTypeGenClassifier().getGenPackage().getImportedResourceClassName()%>.FrameFactory.INSTANCE.pop<%=genFeature.getTypeGenClassifier().getName()%>(<%=genFeature.getSafeName()%>));
+<%}%>
+					<%=genFeature.getSafeName()%> = null;
+				}
+<%}%>
+<%}%>
+<%if (count == 0) {%>
+				super.endElement(child);
+<%} else {%>
+				else
+				{
+					super.endElement(child);
+				}
+<%}%>
+			}
+
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+  <%if (genModel.useClassOverrideAnnotation()) {%>
+			@Override
+  <%}%>
+			public void create()
+			{
+				the<%=genClass.getName()%> = <%=genPackage.getQualifiedFactoryInstanceAccessor()%>.create<%=genClass.getName()%>();
+			}
+		
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected <%=genClass.getImportedInterfaceName()%> pop<%=genClass.getName()%>()
+			{
+				pop();
+				<%=genClass.getImportedInterfaceName()%> result<%=genClass.getName()%>Value = the<%=genClass.getName()%>;
+				the<%=genClass.getName()%> = null;
+				return result<%=genClass.getName()%>Value;
+			}
+		
+		}
+
+<%}%>
+<%for (GenDataType genDataType : genPackage.getAllGenDataTypes()) {%>
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public <%=_DataFrame%> push<%=genDataType.getName()%>(<%=_StackFrame%> previous, Attributes attributes)
+		{
+			 <%=_DataFrame%> result<%=genDataType.getName()%> = <%=genDataType.getSafeUncapName()%> == null ? new <%=_DataFrame%>() : <%=genDataType.getSafeUncapName()%>;
+			 <%=genDataType.getSafeUncapName()%> = null;
+			 result<%=genDataType.getName()%>.pushOnto(previous);
+			 result<%=genDataType.getName()%>.handleAttributes(attributes);
+			 return result<%=genDataType.getName()%>;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public <%=genDataType.getImportedParameterizedInstanceClassName()%> pop<%=genDataType.getName()%>(<%=_DataFrame%> <%=genDataType.getSafeUncapName()%>)
+		{
+<%if (genDataType.getGenPackage().isDataTypeConverters()) {%>
+			<%=genDataType.getImportedParameterizedInstanceClassName()%> result<%=genDataType.getName()%>Value = <%=genDataType.getGenPackage().getQualifiedFactoryInstanceAccessor()%>.create<%=genDataType.getName()%>(<%=genDataType.getSafeUncapName()%>.popValue());
+<%} else if (genDataType.isPrimitiveType() && genModel.getComplianceLevel().getValue() < GenJDKLevel.JDK50) {%>
+			<%=genDataType.getImportedInstanceClassName()%> result<%=genDataType.getName()%>Value = ((<%=genDataType.getObjectInstanceClassName()%>)<%=genDataType.getGenPackage().getQualifiedEFactoryInstanceAccessor()%>.createFromString(<%=genDataType.getQualifiedClassifierAccessor()%>, <%=genDataType.getSafeUncapName()%>.popValue())).<%=genDataType.getPrimitiveValueFunction()%>();
+<%} else {%>
+			<%=genDataType.getImportedInstanceClassName()%> result<%=genDataType.getName()%>Value = (<%=genDataType.getObjectInstanceClassName()%>)<%=genDataType.getGenPackage().getQualifiedEFactoryInstanceAccessor()%>.createFromString(<%=genDataType.getQualifiedClassifierAccessor()%>, <%=genDataType.getSafeUncapName()%>.popValue());
+<%}%>
+			this.<%=genDataType.getSafeUncapName()%> = <%=genDataType.getSafeUncapName()%>;
+			return result<%=genDataType.getName()%>Value;
+		}
+
+<%}%>
+	}
+
+<%}%>
+} //<%=genPackage.getResourceClassName()%>
+<%genModel.emitSortedImports();%>

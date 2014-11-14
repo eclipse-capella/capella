@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.core.diagram.helpers;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.polarsys.capella.core.model.helpers;visibility:=reexport,
+ org.polarsys.capella.core.model.handler,
+ org.eclipse.sirius,
+ org.eclipse.sirius.table
+Export-Package: org.polarsys.capella.core.diagram.helpers,
+ org.polarsys.capella.core.diagram.helpers.naming,
+ org.polarsys.capella.core.diagram.helpers.traceability
+Bundle-Localization: plugin

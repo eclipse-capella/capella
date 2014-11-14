@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/oa/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/design/completeness">
+            <constraint
+                  class="org.polarsys.capella.core.data.oa.validation.operationalActivity.MDCHK_OperationalActivity_ActivityAllocation"
+                  id="DCOM_04"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_04 - Activity Allocation"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Allocation consistancy error for {0} (Operational Activity).
+               </message>
+               <target
+                     class="OperationalActivity">
+               </target>
+               <description>
+                  This rule checks the allocation consistency between operational activities and Operational Entities / Roles.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/well-formedness/components">
+            <constraint
+                  class="org.polarsys.capella.core.data.oa.validation.role.MDCHK_Role_RoleAllocation"
+                  id="DWF_DC_02"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DC_02 - Role Allocation"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Allocation consistency error for {0} (Role).
+               </message>
+               <target
+                     class="Role">
+               </target>
+               <description>
+                  This rule checks the role allocations consistency between roles and entities.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/justification/system_analysis">
+            <constraint
+                  class="org.polarsys.capella.core.data.oa.validation.operationalActivity.MDCHK_OperationalActivity_Realization_1"
+                  id="TJ_SA_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_SA_01 - Operational Activity Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Operational Activity) is not realized by any System Function.
+               </message>
+               <description>
+                  This rule checks that an Operational Activity is realized by at least one System Function.
+               </description>
+               <target
+                     class="OperationalActivity">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.oa.validation.operationalActivity.EntityRealizedByActor"
+                  id="TJ_SA_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_SA_03 - Entity Realized by System Actor"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  This rule checks that an Entity is realized by at least one System Actor.
+               </description>
+               <target
+                     class="Entity">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.oa.validation.operationalActivity.MDCHK_OperationalAnalysis_OperationalAnalysisRealization"
+                  id="I_24"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_24 - Operational Analysis Realization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Realization consistancy error: {0} (OperationalAnalysis) is targeted by an Operational Analysis Realization link which do not have a System Analysis as source.
+               </message>
+               <target
+                     class="OperationalAnalysis">
+               </target>
+               <description>
+                  This rule ensures that Operational Analysis Realization links targeting Operational Analysis instances have System Analysis instances as source.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.oa.validation.operationalActivity.MDCHK_OperationalEntity_Realization"
+                  id="I_05"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_05 - Operational Entity Realization"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  Realization consistency error: the Operational Entity with {0} ({1}) as source and {2} ({3}) as target is inconsistant.
+               </message>
+               <target
+                     class="Entity">
+               </target>
+               <description>
+                  This rule ensures that Operational Entities Realizations always have Actor or System instances as source and Operational Entity instances as target.
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+</plugin>

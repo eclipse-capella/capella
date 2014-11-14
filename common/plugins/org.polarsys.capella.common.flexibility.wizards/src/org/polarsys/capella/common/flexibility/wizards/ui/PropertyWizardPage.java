@@ -1,0 +1,176 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.common.flexibility.wizards.ui;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.jface.dialogs.IMessageProvider;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.widgets.Composite;
+
+import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
+import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
+import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
+import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
+import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
+import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
+import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
+
+/**
+ * Dialog which allows to modify a list of property element
+ */
+public class PropertyWizardPage extends WizardPage implements PropertyChangeListener {
+
+  protected IPropertyContext _context;
+
+  protected IRendererContext _renderers;
+
+  protected IStatus _lastStatus;
+
+  protected IProperty _lastProperty;
+
+  /**
+   * @return the context
+   */
+  protected IPropertyContext getContext() {
+    return _context;
+  }
+
+  /**
+   * @return the renderers
+   */
+  protected IRendererContext getRendererContext() {
+    return _renderers;
+  }
+
+  public PropertyWizardPage(String pageName, IPropertyContext context_p, IRendererContext renderers_p) {
+    super(pageName);
+    this._context = context_p;
+    this._renderers = renderers_p;
+
+    IPropertyContext context = getContext();
+    context.registerListener(this);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void dispose() {
+    try {
+
+      for (IProperty property : getContext().getProperties().getAllItems()) {
+        IRenderer renderer = getRendererContext().getRenderer(property);
+        if (renderer != null) {
+          try {
+            renderer.dispose(getRendererContext());
+          } catch (Exception e) {
+            //Nothing here
+          }
+        }
+      }
+    } catch (Exception e) {
+      //Nothing here
+    }
+
+    super.dispose();
+  }
+
+  /**
+   * @return
+   */
+  protected ILabelProvider getLabelProvider() {
+    return getRendererContext().getLabelProvider();
+  }
+
+  /**
+   * {@inheritDoc} 
+   */
+  public void createControl(Composite parent_p) {
+    ILabelProvider labelProvider = getLabelProvider();
+    PropertyControl control = new PropertyControl(labelProvider, getContext(), getRendererContext());
+    setControl(control.createControl(parent_p));
+
+    update(null);
+  }
+
+  protected void applyToStatusLine() {
+    if (_lastStatus != null) {
+      String message = _lastStatus.getMessage();
+      if ((message == null) || (message.length() == 0)) {
+        setErrorMessage(null);
+        setMessage(getDescription());
+
+      } else {
+        switch (_lastStatus.getSeverity()) {
+          case IStatus.OK:
+            setErrorMessage(null);
+            setMessage(getDescription());
+          break;
+          case IStatus.WARNING:
+            setErrorMessage(null);
+            setMessage(message, IMessageProvider.WARNING);
+          break;
+          case IStatus.INFO:
+            setErrorMessage(null);
+            setMessage(message, IMessageProvider.INFORMATION);
+          break;
+          default:
+            setErrorMessage(null);
+            setMessage(message, IMessageProvider.ERROR);
+          break;
+        }
+      }
+    }
+  }
+
+  @Override
+  public boolean isPageComplete() {
+    if (_lastStatus == null) {
+      return true;
+    }
+    boolean isError = _lastStatus.matches(IStatus.ERROR);
+    return !isError;
+  }
+
+  protected void findMostSevere() {
+    IPropertyContext context = getContext();
+
+    int level = IStatus.OK;
+    _lastStatus = Status.OK_STATUS;
+    _lastProperty = null;
+
+    if (context != null) {
+      IProperties properties = context.getProperties();
+      if (properties != null) {
+        for (IProperty item : properties.getAllItems()) {
+          IStatus status = item.validate(context.getCurrentValue(item), context);
+          if ((status != null) && !status.isOK() && (level < status.getSeverity())) {
+            level = status.getSeverity();
+            _lastStatus = status;
+            _lastProperty = item;
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public void update(PropertyChangedEvent event_p) {
+    findMostSevere();
+    applyToStatusLine();
+    setPageComplete(isPageComplete());
+  }
+
+}

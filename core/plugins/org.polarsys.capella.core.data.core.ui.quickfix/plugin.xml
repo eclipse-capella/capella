@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.polarsys.capella.core.validation.ui.ide.capellaQuickFix">
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.DWF_D25_Resolver"
+            desc="%quickFix.CO21.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.CO21.label">
+         <rules
+               ruleId="DWF_D_25">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.TJ_G_05_SourceNameEqualsTargetName"
+            desc="%quickFix.TJ_G_05_a.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.TJ_G_05_a.label">
+         <rules
+               ruleId="TJ_G_05">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.TJ_G_05_TargetNameEqualsSourceName"
+            desc="%quickFix.TJ_G_05_b.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.TJ_G_05_b.label">
+         <rules
+               ruleId="TJ_G_05">
+         </rules>
+      </resolver>
+      <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.Q3_Edit_Resolver"
+            desc="%quickFix.Q3.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.Q3.label">
+         <rules
+               ruleId="Q_03">
+         </rules>
+      </resolver>
+   </extension>
+
+</plugin>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.5"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="org.polarsys.capella.core.preferences.project" name="Configuration Project" schema="schema/org.polarsys.capella.configuration.project.exsd"/>
+   <extension
+         id="org.polarsys.capella.core.preferences.project.nature.configNature"
+         name="Configuration Nature Projet"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.polarsys.capella.core.preferences.configuration.project.nature.ConfigurationProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/config_8x8.gif"
+            id="org.polarsys.capella.core.preferences.project.nature.image1"
+            natureId="org.polarsys.capella.core.preferences.project.nature.configNature">
+      </image>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.polarsys.capella.core.preferences.configuration.project.category.wizards"
+            class="org.polarsys.capella.core.preferences.configuration.project.ProjectWizard"
+            hasPages="true"
+            icon="icons/config_16x16.gif"
+            id="capella.project.configuration.wizard"
+            name="Capella Configuration Project"
+            preferredPerspectives="capella.sirius.perspective"
+            project="true">
+         <description>
+            Create a Capella Configuration project
+         </description>
+      </wizard>
+   </extension>
+   
+   
+   
+   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+         <newWizardShortcut
+               id="capella.project.configuration.wizard">
+         </newWizardShortcut>
+         
+      </perspectiveExtension>
+   </extension>
+   
+   
+   <!--extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+            
+      <actionSet id="configuration.project.actionSet"/>
+            
+      </perspectiveExtension>
+   </extension>
+   
+   
+   <extension
+    point="org.eclipse.ui.actionSets">
+    <actionSet
+        label="%CHEAT_SHEETS"
+        visible="false"
+        id="configuration.project.actionSet">
+        <action
+            label="CHEAT_SHEETS_MENU"
+            class="org.polarsys.capella.core.preferences.project.actions.NewProjectAction"
+            menubarPath="file/New"
+            id="org.polarsys.capella.core.preferences.project.actions.newProjectConfigurationAction">
+        </action>
+    </actionSet>
+</extension-->
+   
+  
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="all-categorized-capella"
+            type="new"
+            wizardId="capella.project.configuration.wizard">
+         <enablement>
+            <or>
+                <adapt type="org.eclipse.core.resources.IFile" /> 
+                <adapt type="org.eclipse.core.resources.IFolder" />
+                <adapt type="org.eclipse.core.resources.IProject" /> 
+                <adapt type="org.eclipse.core.resources.IWorkspaceRoot" />
+                <count
+                      value="0">
+                </count> 
+            </or>
+         </enablement>
+      </commonWizard>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.runtime.preferences">         
+         <scope name="project" class="org.eclipse.core.internal.resources.ProjectPreferences"/>
+      <initializer
+            class="org.polarsys.capella.core.preferences.project.configuration.preferences.CapellaModelPreferencesInitializer">
+      </initializer>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="capella.sirius.perspective">
+         <actionSet
+               id="org.eclipse.debug.ui.launchActionSet">
+         </actionSet>
+      </perspectiveExtension>
+   </extension>
+  
+   <extension
+         point="org.polarsys.capella.core.preferences.capellaPreferences">
+      <projectNature
+            id="org.polarsys.capella.core.preferences.project.nature.configNature">
+      </projectNature>
+   </extension>
+   
+</plugin>

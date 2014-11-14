@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="libraries" nsURI="http://www.polarsys.org/capella/common/libraries/1.0.0"
+    nsPrefix="libraries">
+  <eClassifiers xsi:type="ecore:EClass" name="ModelInformation" eSuperTypes="#//LibraryAbstractElement platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ElementExtension">
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint">
+      <details key="ExtendedElement" value="http://www.polarsys.org/capella/core/modeller/0.8.0#//Project"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping">
+      <details key="Mapping" value="platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedReferences" upperBound="-1"
+        eType="#//LibraryReference" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" lowerBound="1"
+        eType="#//ModelVersion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LibraryReference" eSuperTypes="#//LibraryAbstractElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="library" lowerBound="1"
+        eType="#//ModelInformation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accessPolicy" lowerBound="1"
+        eType="#//AccessPolicy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" lowerBound="1"
+        eType="#//ModelVersion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelVersion" eSuperTypes="#//LibraryAbstractElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="majorVersionNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minorVersionNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastModifiedFileStamp"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AccessPolicy">
+    <eLiterals name="readOnly"/>
+    <eLiterals name="readAndWrite" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LibraryAbstractElement" abstract="true"
+      eSuperTypes="platform:/plugin/org.polarsys.kitalpha.emde/model/eMDE.ecore#//ExtensibleElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+</ecore:EPackage>

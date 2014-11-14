@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+   
+  Contributors:
+     Thales - initial API and implementation
+-->
+<form>
+	<p>The Logical Architecture is used to model the system viewed like a white box. The Logical Architecture is a justified breakdown of the system or software, compliant not only
+with functional issues, but also with all main non-functional concerns susceptible to impact the breakdown. </p>
+    <p>The Logical Architecture is expected to be stable against further engineering steps and detailed design choices (unlike the physical architecture).</p>
+</form>

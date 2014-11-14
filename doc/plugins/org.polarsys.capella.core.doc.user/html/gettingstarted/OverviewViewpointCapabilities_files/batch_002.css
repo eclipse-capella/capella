@@ -1,0 +1,93 @@
+.recently-updated .more-link-container{display:none;}
+/* Confluence print stylesheet. Common to all themes for print media */
+
+#main {
+    padding-bottom: 1em !important; /* The default padding of 6em is too much for printouts */
+}
+
+body {
+    background-color: #fff;
+    font-size: 10pt;
+    line-height: 1.2;
+}
+a, a:link, a:visited, a:hover {
+    color: #000;
+}
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6 {
+    font-family: Helvetica, Arial, sans-serif;
+    page-break-after: avoid;
+}
+pre {
+    font-family: Monaco, "Courier New", monospace;
+}
+
+#header,
+#page-view-panel,
+#user-control-panel,
+#navigation,
+#sidebar,
+.sidebar,
+#personal-info-sidebar,
+.page-actions,
+.navmenu,
+.ajs-menu-bar,
+.noprint,
+.inline-control-link,
+.inline-control-link a,
+a.show-labels-editor,
+.global-comment-actions,
+.comment-actions {
+    display: none;
+}
+
+#com-atlassian-confluence h1 img {
+    height: auto;
+    width: auto;
+}
+
+.print-only {
+    display: block;
+}
+#footer {
+    position: relative !important; /* CONF-17506 Place the footer at end of the content */
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+#poweredby {
+    border-top: none;
+    background: none;
+}
+
+#poweredby li.print-only {
+    display: list-item;
+    font-style: italic;
+}
+
+/* TODO - should this work? */
+#children-section {
+    page-break-inside: avoid;
+}
+
+#page-children a {
+    text-decoration: none;
+}
+
+.has-personal-sidebar #content {
+    margin-right: 0px;
+}
+
+.has-personal-sidebar #content .pageSection {
+    margin-right: 0px;
+}
+
+#poweredby li.noprint {
+    display:none;
+}
+

@@ -1,0 +1,144 @@
+<%
+/**
+ * <copyright>
+ *
+ * Copyright (c) 2002-2004 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - Initial API and implementation
+ *
+ * </copyright>
+ */
+%>
+<%GenModel genModel = (GenModel)argument; /* Trick to import java.util.* without warnings */Iterator.class.getName();%>
+<%@ egf:patternCall patternId="platform:/plugin/org.eclipse.egf.emf.pattern.base/egf/EMF_Pattern_Base.fcore#LogicalName=org.eclipse.egf.emf.pattern.base.HeaderJava" args="parameter:argument"%>
+package <%=genModel.getEditorPluginPackageName()%>;
+
+<%genModel.addImport("org.eclipse.emf.common.EMFPlugin");%>
+<%genModel.addImport("org.eclipse.emf.common.util.ResourceLocator");%>
+<%genModel.markImportLocation(stringBuffer);%>
+
+/**
+ * This is the central singleton for the <%=genModel.getModelName()%> editor plugin.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ * @generated
+ */
+public final class <%=genModel.getEditorPluginClassName()%> extends EMFPlugin
+{
+<%if (genModel.hasCopyrightField()) {%>
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final <%=genModel.getImportedName("java.lang.String")%> copyright = <%=genModel.getCopyrightFieldLiteral()%>;<%=genModel.getNonNLS()%>
+	
+<%}%>
+	/**
+	 * Keep track of the singleton.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final <%=genModel.getEditorPluginClassName()%> INSTANCE = new <%=genModel.getEditorPluginClassName()%>();
+	
+	/**
+	 * Keep track of the singleton.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static Implementation plugin;
+
+	/**
+	 * Create the instance.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <%=genModel.getEditorPluginClassName()%>()
+	{
+		super
+			(new ResourceLocator [] 
+			{
+<%for (String pluginClassName : genModel.getEditResourceDelegateImportedPluginClassNames()) {%>
+				<%=pluginClassName%>.INSTANCE,
+<%}%>
+			});
+	}
+
+	/**
+	 * Returns the singleton instance of the Eclipse plugin.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the singleton instance.
+	 * @generated
+	 */
+<%if (genModel.useClassOverrideAnnotation()) {%>
+	@Override
+<%}%>
+	public ResourceLocator getPluginResourceLocator()
+	{
+		return plugin;
+	}
+	
+	/**
+	 * Returns the singleton instance of the Eclipse plugin.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the singleton instance.
+	 * @generated
+	 */
+	public static Implementation getPlugin()
+	{
+		return plugin;
+	}
+	
+	/**
+	 * The actual implementation of the Eclipse <b>Plugin</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static class Implementation extends <%=genModel.getImportedName("org.eclipse.emf.common.ui.EclipseUIPlugin")%>
+	{
+		/**
+		 * Creates an instance.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+<%if (genModel.needsRuntimeCompatibility()) {%>
+		 * @param descriptor the description of the plugin.
+<%}%>
+		 * @generated
+		 */
+		public Implementation(<%if (genModel.needsRuntimeCompatibility()) {%><%=genModel.getImportedName("org.eclipse.core.runtime.IPluginDescriptor")%> descriptor<%}%>)
+		{
+			super(<%if (genModel.needsRuntimeCompatibility()) {%>descriptor<%}%>);
+	
+			// Remember the static instance.
+			//
+			plugin = this;
+		}
+
+		//begin-capella-code
+		/**
+		 * Returns the object's graphical representation.
+		 * (This method comes from a customization of the standard EMF generator)
+		 *
+		 * @param key the identifier of the object.
+		 * @generated
+		 */
+		@Override
+		public Object getImage(String key) {
+			return <%=genModel.getImportedName("org.eclipse.core.runtime.FileLocator")%>.find(this.getBundle(), new <%=genModel.getImportedName("org.eclipse.core.runtime.Path")%>("icons/" + key + ".gif"), null);
+		}
+		//end-capella-code
+	}
+
+}
+<%genModel.emitSortedImports();%>

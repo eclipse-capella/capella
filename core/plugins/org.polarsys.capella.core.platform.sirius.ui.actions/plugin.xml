@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="deleteCommandDelegation" name="Delete Command Delegation" schema="schema/deleteCommandDelegation.exsd"/>
+   
+   <extension point="org.eclipse.ui.propertyPages">
+      <page
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            name="%Capella_Page_Name">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+      
+      
+      
+      
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.deletion.property.page"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%Delete_Page_Name">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+      
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesPage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"
+            objectClass="org.eclipse.core.resources.IProject"
+            name="%ModelValidationPreferencePage_Name">
+            <enabledWhen>
+                 <reference definitionId="org.polarsys.capella.core.preferences.project.property.pages.visibilityExpression"/>
+            </enabledWhen>
+            
+      </page>
+      
+      
+      
+   </extension>
+   
+   <!--extension point="org.eclipse.ui.propertyPages">
+         <page
+            objectClass="org.eclipse.core.resources.IProject"
+            class="org.eclipse.sirius.ui.tools.internal.preference.DesignerPreferencePage"
+            id="org.eclipse.sirius.ui.tools.internal.preference.viewpoint.page"
+            name="ViewPoint">
+          </page>
+   </extension-->
+   
+   
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            name="%Capella_Page_Name">
+      </page>
+      
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePreferencePage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.deletion.page"
+            name="%Delete_Page_Name">
+      </page>
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.actions.Capella.page"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesPage"
+            id="org.polarsys.capella.core.platform.sirius.ui.actions.preferences.CapellaValidationPreferences"
+            name="%ModelValidationPreferencePage_Name">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.ActionsPreferenceInitializer">
+      </initializer>
+      <initializer
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaValidationPreferencesInitializer">
+      </initializer>
+      <initializer
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.ProtectedElementsPreferences">
+      </initializer>
+      <initializer
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePreferences">
+      </initializer>
+   </extension>
+   <!-- shall not be activated : not fully tested -->
+   <!--extension
+         point="org.eclipse.ui.preferenceTransfer">
+      <transfer
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
+            id="org.polarsys.capella.core.model.preferences.transfer1"
+            name="Capella Preferences">
+         <description>
+            Capella Preferences
+         </description>
+         <mapping scope="instance">
+            <entry node="org.polarsys.capella.core.model.preferences"/>
+            <entry node="org.polarsys.capella.core.platform.sirius.ui.actions"/>
+            <entry node="org.polarsys.capella.core.platform.sirius.ui.navigator"/>
+            <entry node="org.polarsys.capella.core.platform.sirius.ui.project"/>
+            <entry node="org.polarsys.capella.core.projection.preferences"/>
+         </mapping>
+      </transfer>
+      <transfer
+            icon="platform:/plugin/org.polarsys.capella.core.ui.resources/icons/full/obj16/capella.png"
+            id="org.polarsys.capella.core.model.preferences.transfer2"
+            name="Model Validation Preferences">
+         <description>
+            Model Validation Preferences
+         </description>
+         <mapping scope="instance">
+            <entry node="org.eclipse.emf.validation"/>
+         </mapping>
+      </transfer>
+   </extension-->
+   <!--extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPropertiesPage"
+            id="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPropertiesPage"
+            name="Capella">
+         <enabledWhen>
+		     <adapt type="org.eclipse.core.resources.IProject">
+		          <test property="org.eclipse.core.resources.projectNature" value="org.polarsys.capella.project.nature"/>
+		     </adapt>         
+         </enabledWhen>
+      </page>
+      <page
+            category="org.polarsys.capella.core.platform.sirius.ui.preferences.CapellaPropertiesPage"
+            class="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePropertiesPage"
+            id="org.polarsys.capella.core.platform.sirius.ui.preferences.DeletePropertiesPage"
+            name="Delete">
+         <enabledWhen>
+		     <adapt type="org.eclipse.core.resources.IProject">
+		          <test property="org.eclipse.core.resources.projectNature" value="org.polarsys.capella.project.nature"/>
+		     </adapt>         
+         </enabledWhen>
+      </page>
+   </extension-->
+   <extension
+         point="org.polarsys.capella.common.model.DroppedReferencesOnCopy">
+      <reference
+            className="CapellaElement"
+            referenceName="appliedPropertyValues">
+         reference body text
+      </reference>
+      <reference
+            className="CapellaElement"
+            referenceName="appliedPropertyValueGroups">
+      </reference>
+      <reference
+            className="LogicalComponent"
+            referenceName="ownedFunctionalAllocation">
+      </reference>
+   </extension>
+   <extension
+         id="capella.delete.helper"
+         name="Delete Helper for all Capella Elements"
+         point="org.polarsys.capella.core.model.handler.deleteCommandProvider">
+      <deleteHelper
+            class="org.polarsys.capella.core.platform.sirius.ui.commands.DeleteHelper">
+      </deleteHelper>
+   </extension>
+
+</plugin>

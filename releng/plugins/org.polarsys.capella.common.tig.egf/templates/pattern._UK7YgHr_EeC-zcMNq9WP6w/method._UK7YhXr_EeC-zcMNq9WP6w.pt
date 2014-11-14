@@ -1,0 +1,117 @@
+<%
+String derive = null;
+EStructuralFeature eFeature = genFeature.getEcoreFeature();
+if (genFeature.isDerived() && genFeature.isVolatile() && !genFeature.isChangeable() && genFeature.getEcoreFeature().isTransient()) { // Check if current feature is a derived property.
+EAnnotation ocl = eFeature.getEAnnotation(oclNsURI);
+if (ocl != null) {
+	derive = ocl.getDetails().get("derive");
+}
+if (derive != null) {
+	final String expr = genFeature.getSafeName() + "DeriveOCL";
+	if (genFeature.isListType()) { // we will need the feature to create the EcoreEList %>
+		<%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eFeature = <%=genFeature.getQualifiedFeatureAccessor()%>;
+	<% } %>
+	if (<%=expr%> == null) { <% if (!genFeature.isListType()) { // declare locally for OCL initialization only %>
+		<%=genModel.getImportedName("org.eclipse.emf.ecore.EStructuralFeature")%> eFeature = (<%=genFeature.getQualifiedFeatureAccessor()%>);
+		<% } %>
+		<%=genModel.getImportedName("org.eclipse.ocl.ecore.OCL.Helper")%> helper = OCL_ENV.createOCLHelper();
+		helper.setAttributeContext(<%=genFeature.getGenClass().getQualifiedClassifierAccessor()%>, eFeature);
+		
+		<%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> ocl = eFeature.getEAnnotation(OCL_ANNOTATION_SOURCE);
+		String derive = ocl.getDetails().get("derive");<%=genModel.getNonNLS()%>
+
+		try {
+			<%=expr%> = helper.createQuery(derive);
+		} catch (<%=genModel.getImportedName("org.eclipse.ocl.ParserException")%> e) {
+			throw new UnsupportedOperationException(e.getLocalizedMessage());
+		}
+	}
+
+	<%=genModel.getImportedName("org.eclipse.ocl.Query")%><<%=genModel.getImportedName("org.eclipse.emf.ecore.EClassifier")%>, ?, ?> query = OCL_ENV.createQuery(<%=expr%>);
+	Object result = query.evaluate(this);
+
+	<% if (genFeature.isListType()) { %>
+	try {
+	  @SuppressWarnings("unchecked")
+		<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>> resultAsList = (<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>>) result;
+		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<<%=genFeature.getListItemType()%>>(this, eFeature, resultAsList.size(), resultAsList.toArray());
+	} catch (ClassCastException cce_p) {
+	  cce_p.printStackTrace();
+	  return org.eclipse.emf.common.util.ECollections.emptyEList();
+	}
+	<% } else if (genFeature.isPrimitiveType()) { %>
+		return ((<%=genFeature.getObjectType()%>) result).<%=genFeature.getPrimitiveValueFunction()%>();
+	<% } else { %>
+	try {
+		return (<%=genFeature.getImportedType()%>) result;
+	} catch (ClassCastException cce_p) {
+	  cce_p.printStackTrace();
+	  return null;
+	}
+	<% } %>
+<%} else { %>
+<%// Check if the feature has the helper annotation.%>
+<%EAnnotation annotationHelper = eFeature.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);%>
+  <%if (null != annotationHelper) { %>
+    <%// Generate The helper framework code.%>
+    Object result = null;
+    // Helper that can get value for current feature.
+    <%=genModel.getImportedName("org.polarsys.capella.common.tig.model.IHelper")%> helper = null;
+    // If current object is adaptable, ask it to get its IHelper.
+    if (this instanceof <%=genModel.getImportedName("org.eclipse.core.runtime.IAdaptable")%>) {
+    	helper = (IHelper) ((IAdaptable) this).getAdapter(IHelper.class);
+    }
+    if (null == helper) {
+      // No helper found yet.
+      // Ask the platform to get the adapter 'IHelper.class' for current object.
+      <%=genModel.getImportedName("org.eclipse.core.runtime.IAdapterManager")%> adapterManager = <%=genModel.getImportedName("org.eclipse.core.runtime.Platform")%>.getAdapterManager();
+      helper = (IHelper) adapterManager.getAdapter(this, IHelper.class);
+    }
+    if (null == helper) {
+      <%=genModel.getImportedName("org.eclipse.emf.ecore.EPackage")%> package_l = eClass().getEPackage();
+      // Get the root package of the owner package.
+      EPackage rootPackage = org.polarsys.capella.common.mdsofa.common.helper.EcoreHelper.getRootPackage(package_l);
+      throw new org.polarsys.capella.common.tig.model.HelperNotFoundException("No helper retrieved for nsURI " + rootPackage.getNsURI()); <%=genModel.getNonNLS()%>
+    } 
+    // A helper is found, let's use it. 
+    <%=genModel.getImportedName("org.eclipse.emf.ecore.EAnnotation")%> annotation = <%=genFeature.getQualifiedFeatureAccessor()%>.getEAnnotation(org.polarsys.capella.common.tig.model.IModelConstants.HELPER_ANNOTATION_SOURCE);
+    result = helper.getValue(this, <%=genFeature.getQualifiedFeatureAccessor()%>, annotation);
+		<% if (genFeature.isListType()) {%>
+		try {
+		@SuppressWarnings("unchecked")
+		<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>> resultAsList = (<%=genModel.getImportedName("java.util.Collection")%><<%=genFeature.getListItemType()%>>) result;
+		return new <%=genModel.getImportedName("org.eclipse.emf.ecore.util.EcoreEList")%>.UnmodifiableEList<<%=genFeature.getListItemType()%>>(this, <%=genFeature.getQualifiedFeatureAccessor()%>, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		<% } else if (genFeature.isPrimitiveType()) {%>
+			return ((<%=genFeature.getObjectType()%>) result).<%=genFeature.getPrimitiveValueFunction()%>();
+		<% } else {%>
+		try {
+			return (<%=genFeature.getImportedType()%>) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		<% } %>
+  <%} else { // End of if (null != annotationHelper)%>
+		// TODO: implement this method to return the '<%=genFeature.getFormattedName()%>' <%=genFeature.getFeatureKind()%>
+		// Ensure that you remove @generated or mark it @generated NOT
+			<%if (genFeature.isListType()) {%>
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.<%if (genFeature.isMapType()) {%>EcoreEMap<%} else if (genFeature.isFeatureMapType()) {%>BasicFeatureMap<%} else {%>EcoreEList<%}%> should be used.
+			<%}%>
+		throw new UnsupportedOperationException();
+<%} // End of Unsupported exception. %>
+<%} // End of else block where the helper annotation is checked.%>
+<%} // End of is a derived property.%>
+<%else { %>
+		// TODO: implement this method to return the '<%=genFeature.getFormattedName()%>' <%=genFeature.getFeatureKind()%>
+		// Ensure that you remove @generated or mark it @generated NOT
+			<%if (genFeature.isListType()) {%>
+		// The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+		// so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.<%if (genFeature.isMapType()) {%>EcoreEMap<%} else if (genFeature.isFeatureMapType()) {%>BasicFeatureMap<%} else {%>EcoreEList<%}%> should be used.
+			<%}%>
+		throw new UnsupportedOperationException();
+<%}%>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildcore:Chain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_4-dhIEHFEeGR0qHofFpKtQ" name="Job">
+  <propertyPackages xmi:id="_fpDlcGOuEeGSqYRIJfl_UQ" name="General Properties">
+    <properties xmi:id="_VPrWUFZGEeGR2_cB4MDfaQ" key="VERSION" value="(must be provided)"/>
+    <properties xmi:id="_L7cW0Ev-EeG48a7kaF1Bnw" key="buildVersion" value="${VERSION}.${timestamp}"/>
+    <properties xmi:id="_JAvf4G3iEeGehoHCqtPcvA" key="qualifier.replacement.*" value="${timestamp}"/>
+    <properties xmi:id="_8MLOQKmXEeGgdYucafxWmg" key="branch" value="(must be provided)"/>
+    <properties xmi:id="_475cAHlDEeOTFv-zjnXYvg" key="capellaGitRepo" value="(must be provided)"/>
+  </propertyPackages>
+  <propertyPackages xmi:id="_K0cHAGOuEeGSqYRIJfl_UQ" name="Update Sites">
+    <properties xmi:id="_-LhNwAlPEeG4BfvqpBKjJQ" key="eclipse.download.prefix" value="(must be provided)"/>
+    <properties xmi:id="_-LhNwQlPEeG4BfvqpBKjJQ" key="cloudsmith.download.prefix" value="(must be provided)"/>
+    <properties xmi:id="_-LhNwglPEeG4BfvqpBKjJQ" key="polarion.download.prefix" value="(must be provided)"/>
+    <properties xmi:id="_OShowHKnEeGQQdxt-QugRg" key="cots.repository.prefix" value="(must be provided)"/>
+    <!--properties xmi:id="_tq8mgHKOEeGk8-zOAaqAYg" key="site_Acceleo_2.8" value="${cots.repository.prefix}/acceleo/2.8"/-->
+    <!--properties xmi:id="_EtdpcHKbEeGQQdxt-QugRg" key="site_Acceleo_3.2" value="${cots.repository.prefix}/acceleo/3.2"/-->
+    <properties xmi:id="_xJ7uoPCvEeOiS52wF1-fPg" key="site_QueryLegacy" value="${cots.repository.prefix}/acceleo/2.light"/>
+    <properties xmi:id="_K2caEAyPEeKIGKNriwuyOw" key="site_DiffMerge" value="${cots.repository.prefix}/diffmerge/"/>
+    <!--properties xmi:id="_h6BosKDzEeKMQb8Rddw1Vg" key="site_EMFCompare" value="${cots.repository.prefix}/emfcompare/2.1.0"/-->
+    <properties xmi:id="_wKYdYHKOEeGk8-zOAaqAYg" key="site_Kitalpha" value="${cots.repository.prefix}/kitalpha/"/>
+    <properties xmi:id="_kJ5JYOsVEeOFI9x8pviLwQ" key="site_EGF" value="${cots.repository.prefix}/egf/"/>
+  </propertyPackages>
+  <jobs href="Job_EGF.egfbuild#_qIEfMEHGEeGR0qHofFpKtQ"/>
+  <jobs href="Job_Capella.egfbuild#_P5DYAF4qEeGjYKPu-vkVIA"/>
+  <jobs href="Job_CapellaUpdateSite.egfbuild#_DrDLoKYNEeOAGYjKNc8g9w"/>
+  <jobs href="Job_CapellaTestSuite.egfbuild#_AkGK4UHIEeG_UKzFyZlgCA"/>
+</buildcore:Chain>

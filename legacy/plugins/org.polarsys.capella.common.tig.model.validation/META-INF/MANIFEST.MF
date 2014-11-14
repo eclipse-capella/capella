@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.polarsys.capella.common.tig.model.validation;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-Vendor: %providerName
+Eclipse-LazyStart: true
+Export-Package: org.polarsys.capella.common.tig.model.validation.adapter,
+ org.polarsys.capella.common.tig.model.validation.expressions
+Require-Bundle: org.polarsys.capella.common.tig.common,
+ org.eclipse.core.expressions,
+ org.eclipse.emf.validation;visibility:=reexport
+Bundle-Localization: plugin

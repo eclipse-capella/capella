@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension 
+        id="org.polarsys.capella.library.nature"
+        name="Capella library Nature"
+        point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.polarsys.capella.core.libraries.nature.LibraryNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.polarsys.capella.core.libraries.commands.category1"
+            name="libraries commands">
+      </category>
+      <command
+            categoryId="org.polarsys.capella.core.libraries.commands.category1"
+            id="org.polarsys.capella.core.libraries.commands.manageReferences"
+            name="Manage references">
+      </command>
+      <command
+            categoryId="org.polarsys.capella.core.libraries.commands.category1"
+            id="org.polarsys.capella.core.libraries.commands.manageVersion"
+            name="Manage version">
+      </command>
+   </extension>
+   <extension
+         point="org.polarsys.capella.common.flexibility.properties">
+      <properties
+            id="org.polarsys.capella.core.libraries.manageReferences">
+         <group
+               name="Manage References"
+               id="org.polarsys.capella.core.libraries.manageReferences.group">
+         </group>
+         <group
+               name="Active States"
+               id="org.polarsys.capella.core.libraries.activeStates.group">
+         </group>
+         <group
+               id="org.polarsys.capella.core.libraries.accessPolicies.group"
+               name="Access Policies">
+         </group>
+         <property
+               class="org.polarsys.capella.core.libraries.flexibilityProperties.ReferencesProperty"
+               enabled="true"
+               group="org.polarsys.capella.core.libraries.manageReferences.group"
+               id="org.polarsys.capella.core.libraries.manageReferences.referenceProperty"
+               name="Referenced Libraries">
+         </property>
+         <property
+               class="org.polarsys.capella.core.libraries.flexibilityProperties.ActiveStateProperty"
+               enabled="true"
+               group="org.polarsys.capella.core.libraries.activeStates.group"
+               id="org.polarsys.capella.core.libraries.manageReferences.activeStateProperty"
+               name="Library States Configuration">
+         </property>
+         <property
+               class="org.polarsys.capella.core.libraries.flexibilityProperties.AccessPolicyProperty"
+               enabled="true"
+               group="org.polarsys.capella.core.libraries.accessPolicies.group"
+               id="org.polarsys.capella.core.libraries.manageReferences.accessPolicyProperty"
+               name="Library Access Policy">
+         </property>
+      </properties>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.polarsys.capella.core.libraries.commands.ManageReferencedLibrariesCommand"
+            commandId="org.polarsys.capella.core.libraries.commands.manageReferences">
+      </handler>
+      <handler
+            class="org.polarsys.capella.core.libraries.commands.ManageLibraryVersionCommand"
+            commandId="org.polarsys.capella.core.libraries.commands.manageVersion">
+         <activeWhen>
+            <equals
+                  value="false">
+            </equals>
+         </activeWhen>
+      </handler>
+   </extension>
+   
+   <extension
+         point="org.polarsys.capella.common.queries.query">
+      <querySpecification
+            queryIdentifier="org.polarsys.capella.common.libraries.libraryManager">
+         <queryAlgorithm algorithm="org.polarsys.capella.core.libraries.manager.LibraryManagerProvider"></queryAlgorithm>
+      </querySpecification>
+   </extension>
+
+</plugin>

@@ -1,0 +1,98 @@
+#add-labels-form {
+    margin: 0; 
+    padding: 0;
+    clear: left; /* makes sure top margins of stuff following labels are effective */
+}
+.labels-input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    background-color: #f0f0f0;
+}
+
+#labelOperationStatus {
+    vertical-align: middle;
+}
+
+#labels-section #labelInputSpan {
+    display: none;
+    clear: left;
+    margin-top: 5px;
+}
+#labels-section.open #labelInputSpan {
+    display: block;
+}
+
+#labels-section .remove-label {
+    display: none;
+    background: url(../../../images/icons/del_8.gif) no-repeat 100% 50%;
+    width: 8px;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    text-indent: -999em;
+}
+#labels-section.open .remove-label {
+    display: block;
+}
+#labels-section .confluence-label {
+    display: inline;
+    float: left;
+    margin-right: .5em;
+    margin-bottom: 5px;
+    position: relative; /* allows positioning of delete link within this */
+}
+#labels-section .remove-label-caption {
+    display: none;
+}
+#labels-section.open .remove-label-caption {
+    display: inline;
+    margin: 2px 16px 2px 0;
+}
+#labels-section a.label {
+    font-weight: normal;
+}
+
+#labels-section.open a.label {
+    display: none;
+}
+#labels-section a.remove-label:focus {
+    outline: none;
+}
+#labels-section-title {
+    padding-right: 5px;
+}
+#labels-section-title.hidden {
+    display: none;
+}
+#label-input-fields {
+    width: 100%;
+}
+#waitImageAndStatus {
+    display: none;
+    height: 16px;
+}
+#waitImageAndStatus.open {
+    display: inline;
+}
+.labels-tip {
+    color: #666;
+    font-size: .9em;
+    margin-top: .3em;
+}
+.suggested-label {
+    padding-right: .3em;
+}
+a.suggested-label:focus {
+    outline: none;
+}
+
+#labels-section .waiting {
+    vertical-align: middle;
+    border: none;
+}
+#labelsAutocompleteList .aui-dropdown li a span {
+    padding-left: 0;
+}
+#labels_div #labelsString {
+    width: 100%;
+}

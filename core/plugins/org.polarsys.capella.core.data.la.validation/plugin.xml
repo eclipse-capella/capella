@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider>
+         <package
+               namespaceUri="http://www.polarsys.org/capella/core/la/0.8.0">
+         </package>
+         <constraints
+               categories="capella.category/transition/justification/physical_architecture">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.MDCHK_LogicalComponent_Realization_1"
+                  id="TJ_PA_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_01 - Logical Component Realization check 1"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Component) is not realized by any Physical Component.
+               </message>
+               <description>
+                  This rule checks that a leaf of Logical Component is realized by at least one Physical Component.
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.MDCHK_LogicalComponent_Realization_2"
+                  id="TJ_PA_02"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_02 - Logical Component Realization check 2"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Component) is realized by more than one (Physical Component) {1}.
+               </message>
+               <description>
+                  This rule checks that a Logical Component is not realized by more than one Physical Component.
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalActor.LogicalActorRealizedByPhysicalActor"
+                  id="TJ_PA_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_03 - Logical Actor Realized by Physical Actor"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Actor) is not realized by any Physical Actor.
+               </message>
+               <target
+                     class="LogicalActor">
+               </target>
+               <description>
+                  This rule ensures that a Logical Actor is realized by at least one Physical Actor.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalFunction.MDCHK_LogicalFunction_Realization_1"
+                  id="TJ_PA_04"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_04 - Logical Function Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Function) is not realized by any Physical Function.
+               </message>
+               <description>
+                  This rule checks that a Logical Function is realized by at least one Physical Function.
+               </description>
+               <target
+                     class="LogicalFunction">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Refinement_2"
+                  id="TJ_PA_05"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_PA_05 - Capability realization refinement check 2"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Capability Realization) should be refined towards Physical Architecture layer.
+               </message>
+               <description>
+                  This rule checks that the Capability Realization in LogicalArchitecture layer is refined toward CapabilityRealization in PhysicalArchitecture layer.
+               </description>
+               <target
+                     class="CapabilityRealization">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/well-formedness/use_cases">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Location_1"
+                  id="DWF_UC_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_UC_01 - Capability realization location check in logical, physical or EPBS level"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (Capability Realization) cannot be located in Operational Analysis or System Context.
+               </message>
+               <description>
+                  This rule checks that an Capability Realization can only be located in Logical, Physical and EPBS level.
+               </description>
+               <target
+                     class="CapabilityRealization">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/consistency/components">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.la.MDCHK_LogicalArchitecture_laRealization"
+                  id="TC_DC_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TC_DC_03 - Logical Architecture Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  Realization consistency error for {0}.
+               </message>
+               <description>
+                  The rule checks the realization consistency between logical architecture and physical architecture.
+               </description>
+               <target
+                     class="LogicalArchitecture">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/completeness">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.MDCHK_LCDelegationConforms_1"
+                  id="DCOM_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_01 - Logical component used interfaces delegation check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Component) does not delegate its used Interface {1}.
+               </message>
+               <description>
+                  This rule checks that a Logical Component delegates its used Interface.
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.MDCHK_LCDelegationConforms_2"
+                  id="DCOM_02"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_02 - Logical component implemented interfaces delegation check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Component) does not delegate its implemented Interface {1}.
+               </message>
+               <description>
+                  This rule checks that a Logical Component delegates its implemented Interface.
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/design/well-formedness/scenarios">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.MDCHK_LCDecompInvolvedScenarioConforms"
+                  id="DWF_DS_16"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_DS_16 - Logical component scenario involvement decomposition check"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} (Aspects) has not been refined towards the interacting Logical Composite Component {1}.
+               </message>
+               <description>
+                  This rule checks the refinement needed for decomposed Logical components.
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/integrity">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalActor.MDCHK_LogicalActor_ActorRealization"
+                  id="I_03"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="I_03 - Logical Actor Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="LogicalActor">
+               </target>
+               <description>
+                  This rule Ensures that Logical Actor always realizes a Sytem Actor.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/justification/logical_architecture">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Refinement_1"
+                  id="TJ_LA_01"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_LA_01 - Capability realization refinement check 1"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Capability Realization) should be linked with a source Capability or CapabilityRealization.
+               </message>
+               <description>
+                  This rule checks that a Capability Realization is linked from a source CapabilityRealization or Capability.
+               </description>
+               <target
+                     class="CapabilityRealization">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalActor.LogicalActor_PhysicalActor_ActorRealization"
+                  id="TJ_LA_07"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_LA_07 - Logical Actor to System Actor Realization"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <target
+                     class="LogicalActor">
+               </target>
+               <description>
+                  This rule ensures that a Logical Actor realizes at least one System Actor.
+               </description>
+            </constraint>
+         </constraints>
+         <constraints
+               categories="capella.category/transition/justification/epbs">
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.capabilityRealization.MDCHK_CapabilityRealization_Refinement_3"
+                  id="TJ_EPBS_02"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="TJ_EPBS_02 - Capability realization refinement check 3"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Capability Realization) should be refined towards EPBS layer.
+               </message>
+               <description>
+                  This rule checks that a Capability Realization in PhysicalArchitecture layer is refined toward a CapabilityRealization in EPBS layer.
+               </description>
+               <target
+                     class="CapabilityRealization">
+               </target>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+
+</plugin>

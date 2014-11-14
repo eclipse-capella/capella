@@ -1,0 +1,243 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<title>Capella Overview of Viewpoint Capabilities</title>
+
+
+
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="atlassian-token" name="atlassian-token" content="UoeBbClI6Y">
+<meta id="confluence-space-key" name="confluence-space-key" content="sswb">
+
+<script type="text/javascript">
+    // Deprecated global variables. To be removed in a future version of Confluence.
+    var contextPath = '';
+</script>
+
+
+
+<!-- include system css resources -->
+<link type="text/css" rel="stylesheet" href="OverviewViewpointCapabilities_files/batch.css"
+  media="all">
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1725/2/1/_/download/superbatch/css/batch.css?ieonly=true" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="OverviewViewpointCapabilities_files/batch_002.css"
+  media="print">
+<link type="text/css" rel="stylesheet" href="OverviewViewpointCapabilities_files/confluence_002.css"
+  media="all">
+<link type="text/css" rel="stylesheet" href="OverviewViewpointCapabilities_files/com.css"
+  media="all">
+<link type="text/css" rel="stylesheet" href="OverviewViewpointCapabilities_files/confluence.css"
+  media="all">
+
+<!-- end system css resources -->
+
+</head>
+<body onload="placeFocus()">
+
+<div id="PageContent">
+<table class="pagecontent" border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tbody>
+    <tr>
+      <td class="pagebody" valign="top">
+      <div class="pageheader"><span class="pagetitle">Capella Overview of
+      Viewpoint Capabilities</span></div>
+
+      <!--[if gte IE 5.5000]>
+<script language="JavaScript">
+function correctPNG() // correctly handle PNG transparency in Win IE 5.5 or higher.
+   {
+   for(var i=0; i<document.images.length; i++)
+      {
+	  var img = document.images[i]
+	  var imgName = img.src.toUpperCase()
+	  if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+	     {
+		 var imgID = (img.id) ? "id='" + img.id + "' " : ""
+		 var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+		 var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+		 var imgStyle = "display:inline-block;" + img.style.cssText
+		 if (img.align == "left") imgStyle = "float:left;" + imgStyle
+		 if (img.align == "right") imgStyle = "float:right;" + imgStyle
+		 if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+		 var strNewHTML = "<span " + imgID + imgClass + imgTitle
+		 + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+	     + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+		 + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>"
+		 img.outerHTML = strNewHTML
+		 i = i-1
+	     }
+      }
+   }
+window.attachEvent("onload", correctPNG);
+</script>
+<![endif]-->
+
+
+      <div class="wiki-content" style="margin-right: 10px;"><!-- wiki content -->
+      <p><br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      </p>
+      <div class="panelMacro">
+      <table class="infoMacro">
+        <colgroup>
+          <col width="24">
+          <col>
+        </colgroup>
+        <tbody>
+          <tr>
+            <td valign="top"><img src="OverviewViewpointCapabilities_files/information.gif"
+              alt="" align="absmiddle" border="0" height="16" width="16"></td>
+            <td>Note: No Viewpoint is provided included by default in Capella package.
+            Basic demo viewpoints are available on-demand. It is up to each programme / unit to
+            design the viewpoints suiting their domain. EPM's role is
+            <ul>
+              <li>to provide support for developing extensions on top of Capella,</li>
+              <li>to help capitalizing and distributing viewpoints developed by customizers in
+              units,</li>
+              <li>to develop specific viewpoints on-demand (work on quotation)</li>
+            </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p><br class="atl-forced-newline">
+      </p>
+
+      <h1><a name="CapellaOverviewofViewpointCapabilities-Principles"></a>Principles</h1>
+
+
+      <hr>
+      <p><br class="atl-forced-newline">
+      <b>Multi-viewpoints approach enables to emphasize/filter and/or automatically check models
+      according to particular concerns</b> (e.g. Safety, Performance, Interfaces...). This approach
+      helps identifying the best architectural compromises to identify the optimal architecture that
+      best meets requirements and constraints. <b>Each viewpoint must be specified and
+      implemented as a Capella extension</b> (for example as a meta-model extension to add
+      specific concepts, diagrams definitions, rules definitions and implementation). <br
+        class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      Viewpoints can extend basic Capella engineering approaches (both Use Case and
+      Functional Analysis). <b>This mechanism can provide additional concepts &amp; tools
+      (edition, analysis) for Non Functional Analysis</b>: safety, dependability / fault tolerance,
+      certification; time-critical functional paths; performances &amp; required hardware resources;
+      mapping on existing hardware, middleware, reference architecture; functional grouping
+      consistency; complexity of internal interfaces; human factors; dependency in system
+      integration; security; ease of sub-contracting; reuse, existing legacy, product line policy,
+      modularity, ability to evolve, available technologies, COTS, weight; etc. It can also provide
+      additional concepts &amp; tools for multi-criteria analysis (for early validation). <br
+        class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <b>The Viewpoint mechanism can also be used for basic concepts and tools specialisation</b>:
+      physical architecture specialisation (physical component characterisation), alternate
+      rendering of the same model, adaptation for allowing bridging to another engineering
+      domain/environment, generic viewpoint specialisation, etc. <br class="atl-forced-newline">
+      </p>
+
+      <h1><a name="CapellaOverviewofViewpointCapabilities-Illustration"></a>Illustration</h1>
+
+
+      <hr>
+      <p><br class="atl-forced-newline">
+      The following illustrates the use of two very basic Safety and Performance viewpoints (based
+      on PropertyValues) in Capella.</p>
+      <ul>
+        <li>The <b>Safety viewpoint</b> introduces the notion of State for a component: a
+        Component is LOST or OK. Functions allocated to a Component are not performed in the
+        Component is LOST and thus, the outgoing Exchanges of this Function are not ensured either.</li>
+        <li>The <b>Performance viewpoint</b> simply specifies a required resource for Functions
+        and a Capacity for Components. If the sum of the required resources of Functions allocated
+        to a Component is greater than the Component capacity, then a problem is identified. <br
+          class="atl-forced-newline">
+        <br class="atl-forced-newline">
+        <span class="image-wrap" style="display: block; text-align: center;"><img
+          src="OverviewViewpointCapabilities_files/vp_pa.JPG" style="border: 0px solid black;"></span>
+        <div class="" align="center"><em>Basic Physical Architecture diagram</em></div>
+        </li>
+      </ul>
+
+
+      <h4><a name="CapellaOverviewofViewpointCapabilities-ActivationofSafetyViewpoint"></a>Activation
+      of Safety Viewpoint</h4>
+
+
+      <hr>
+      <p><br class="atl-forced-newline">
+      The Safety annotations on the components are analyzed and the Physical Architecture diagram is
+      updated accordingly. The updated diagram shows that one of the final Functions "Visualize
+      Attitude &amp; Heading" is not performed anymore.<br>
+      <span class="image-wrap" style="display: block; text-align: center;"><img
+        src="OverviewViewpointCapabilities_files/vp_safetyact1_.JPG"
+        style="border: 0px solid black;"></span><br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      </p>
+
+      <h4><a
+        name="CapellaOverviewofViewpointCapabilities-ActivationofPerformanceViewpoint"></a>Activation
+      of Performance Viewpoint</h4>
+
+
+      <hr>
+      <p><br class="atl-forced-newline">
+      <span class="image-wrap" style="display: block; text-align: center;"><img
+        src="OverviewViewpointCapabilities_files/vp_perfoact1_.JPG" style="border: 0px solid black;"></span><br>
+      As the "AHRS_1" capacity is not sufficient for satisfying "Elaborate Attitude &amp; heading_A"
+      constraints, it appears in red. One option is to move this function to another more powerful
+      component. No Performance issue is detected anymore. <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <span class="image-wrap" style="display: block; text-align: center;"><img
+        src="OverviewViewpointCapabilities_files/vp_perfomove.JPG" style="border: 0px solid black;"></span><br
+        class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      </p>
+
+      <h4><a name="CapellaOverviewofViewpointCapabilities-ReactivationofSafetyViewpoint"></a>Re-activation
+      of Safety Viewpoint</h4>
+
+
+      <hr>
+      <p><br class="atl-forced-newline">
+      The change performed for satisfying performance constraints has an impact on Safety.
+      Compromises have to be found by System Engineers.<br>
+      <span class="image-wrap" style="display: block; text-align: center;"><img
+        src="OverviewViewpointCapabilities_files/vp_safetyact2.JPG" style="border: 0px solid black;"></span><br
+        class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      <br class="atl-forced-newline">
+      </p>
+      </div>
+
+
+
+
+
+
+
+      <div class="wiki-content" style="margin-right: 10px;">
+      <p style="clear: both;"><!-- comments should always display underneath the content. we should have a 'clear:both' here just in case there are floats or aligned images in the content -->
+
+
+
+
+
+      </p>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</body>
+</html>

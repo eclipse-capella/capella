@@ -1,0 +1,47 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.semantic.queries.basic.queries;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.helpers.query.IQuery;
+
+/**
+ * 
+ */
+public class ItemQuery_ActivityNode_owner implements IQuery {
+
+  /**
+	 * 
+	 */
+  public ItemQuery_ActivityNode_owner() {
+    //Does nothing
+  }
+
+  /**
+   * 
+   * (source and target).owner
+   * 
+   * @see org.polarsys.capella.common.helpers.query.IQuery#compute(java.lang.Object)
+   */
+  public List<Object> compute(Object object_p) {
+    List<Object> result = new ArrayList<Object>();
+    //This query musn't return any data if the object is an operational activity
+    if (object_p instanceof ActivityNode && !(object_p instanceof OperationalActivity)) {
+      ActivityNode an = (ActivityNode) object_p;
+      result.add(an.eContainer());
+    }
+    return result;
+  }
+}
