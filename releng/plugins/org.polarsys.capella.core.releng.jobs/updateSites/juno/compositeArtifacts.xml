@@ -5,14 +5,14 @@
   <properties size='1'>
     <property name='p2.timestamp' value='1243822502440'/>
   </properties>
-  <children size='1'>
-    <child location='file:/d:/updateSites/download.eclipse.org/eclipse/updates/3.8'/>
-    <child location='file:/d:/updateSites/download.eclipse.org/releases/juno'/>
-    <child location='file:/d:/updateSites/download.eclipse.org/sirius/updates/releases/2.0.0-S20140930-084650/juno'/>
-    <child location='file:/d:/updateSites/download.eclipse.org/sirius/updates/legacy'/>
-    <child location='file:/d:/updateSites/integ/kitalpha'/>
-    <child location='file:/d:/updateSites/integ/diffmerge'/>
-    <child location='file:/d:/updateSites/integ/patterns'/>
-    <child location='file:/d:/updateSites/integ/cots-3.8.2'/>
+  <children size='8'>
+    <child location='http://download.eclipse.org/eclipse/updates/3.8'/>
+    <child location='http://download.eclipse.org/releases/juno'/>
+    <child location='http://download.eclipse.org/sirius/updates/releases/2.0.0-S20140930-084650/juno'/>
+    <child location='http://download.eclipse.org/sirius/updates/legacy'/>
+    <child location='http://download.eclipse.org/kitalpha'/>
+    <child location='http://download.eclipse.org/diffmerge'/>
+    <child location='http://download.eclipse.org/patterns'/>
+    <child location='http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository'/>
   </children>
 </repository>
