@@ -1,0 +1,28 @@
+    <target name="install.buckminster">
+        <available file="${tools}/buckminster/buckminster" property="buckminster.exists" />
+        <antcall target="do.install.buckminster" />
+	</target>
+	
+    <target name="do.install.buckminster" unless="buckminster.exists" depends="install.director">
+        <echo message="Configuring headless buckminster with needed features" />
+        <echo message="Headless site: ${bm.headless.site}" />
+        <echo message="External site: ${bm.external.site}" />
+        <eclipse.launch app="director">
+            <args>
+                <jvmarg value="-Declipse.p2.mirrors=false" />
+                <arg value="-r" />
+                <arg value="${bm.headless.site}" />
+                <arg value="-d" />
+                <arg value="${tools}/buckminster" />
+                <arg value="-p" />
+                <arg value="Buckminster" />
+                <arg value="-i" />
+                <arg value="org.eclipse.buckminster.cmdline.product" />
+                <arg value="-i" />
+                <arg value="org.eclipse.buckminster.core.headless.feature.feature.group" />
+                <arg value="-i" />
+                <arg value="org.eclipse.buckminster.pde.headless.feature.feature.group" />
+            </args>
+        </eclipse.launch>
+    </target>
+    
