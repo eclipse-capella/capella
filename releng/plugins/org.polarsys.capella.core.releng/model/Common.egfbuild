@@ -50,7 +50,7 @@
       <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_nzVoYC0YEeSpNZCH09tG3Q" pattern="" path="${capellaGitRepo}/patterns/features"/>
       <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_nzVoYS0YEeSpNZCH09tG3Q" pattern="" path="${capellaGitRepo}/patterns/plugins"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_QueryLegacy}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_4o96b-9UEeCKw7_91ITV8w" url="${site_COTS}"/>
+      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_4o96b-9UEeCKw7_91ITV8w" url="${orbit.download.url}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_f-HXYAyPEeKIGKNriwuyOw" url="${site_DiffMerge}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ypzboC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_Sirius}"/>
@@ -95,7 +95,7 @@
     </steps>
     <steps xsi:type="buildstep:BuildStep" xmi:id="_ZWa30AlbEeGRT7uzWt0LYA" name="Build All Capella Plugins">
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_xE8HYKBpEeKMQb8Rddw1Vg" url="${site_QueryLegacy}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa35QlbEeGRT7uzWt0LYA" url="${site_COTS}"/>
+      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa35QlbEeGRT7uzWt0LYA" url="${orbit.download.url}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_TSa0wA7oEeKs5rrFu_4qSg" url="${site_DiffMerge}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_7ZSUQC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa36QlbEeGRT7uzWt0LYA" url="${site_Sirius}"/>
@@ -119,7 +119,7 @@
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_Y3638IOvEeGEKpWdrghARA" name="Archive Update Site">
       <steps xsi:type="buildstep:AggregateStep" xmi:id="_aFZ-wIOvEeGEKpWdrghARA" name="Capella Update Site" id="org.polarsys.capella" publishSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _5ozugD27EeG0_cmFvR9Vkw _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q"/>
-      <steps xsi:type="buildfile:ZipStep" xmi:id="_PxpxgIoGEeGSbqNfjJWsgA" name="Archive Capella Update Site" description="" baseDir="${publish}/org.polarsys.capella/site.p2" destinationFilePath="${publish}/capella-${archiveSuffix}.zip"/>
+      <steps xsi:type="buildfile:ZipStep" xmi:id="_PxpxgIoGEeGSbqNfjJWsgA" name="Archive Capella Update Site" description="" enabled="false" baseDir="${publish}/org.polarsys.capella/site.p2" destinationFilePath="${publish}/capella-${archiveSuffix}.zip"/>
     </steps>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_kHh48CRDEeOnIKnzUVrqew" name="Archive Capella MultiOS">
@@ -216,7 +216,7 @@
       </steps>
       <steps xsi:type="buildstep:InstallStep" xmi:id="_AnVYYD0jEeGbsMS9ntA4kQ" name="Install Capella NoSrc" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
         <updateSiteUrls>${site_Kitalpha}</updateSiteUrls>
-        <updateSiteUrls>${site_COTS}</updateSiteUrls>
+        <updateSiteUrls>${orbit.download.url}</updateSiteUrls>
         <updateSiteUrls>${site_QueryLegacy}</updateSiteUrls>
         <updateSiteUrls>${site_Sirius}</updateSiteUrls>
         <updateSiteUrls>${site_DiffMerge}</updateSiteUrls>
@@ -237,7 +237,7 @@
       </steps>
       <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella Src" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _5ozugD27EeG0_cmFvR9Vkw _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
         <updateSiteUrls>${site_Kitalpha}</updateSiteUrls>
-        <updateSiteUrls>${site_COTS}</updateSiteUrls>
+        <updateSiteUrls>${orbit.download.url}</updateSiteUrls>
         <updateSiteUrls>${site_QueryLegacy}</updateSiteUrls>
         <updateSiteUrls>${site_Sirius}</updateSiteUrls>
         <updateSiteUrls>${site_DiffMerge}</updateSiteUrls>
