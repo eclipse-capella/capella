@@ -19,7 +19,7 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_mEA7QJMGEeOMQMHiDBX4Dw" name="build4Juno3.8.2">
     <properties xmi:id="_mEA7QZMGEeOMQMHiDBX4Dw" key="eclipseCodeName" value="juno" type="INLINED"/>
-    <properties xmi:id="_oqCyQJMaEeO7u6f29_-yFQ" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/eclipse/updates/3.8" type="INLINED"/>
+    <properties xmi:id="_oqCyQJMaEeO7u6f29_-yFQ" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/eclipse/updates/3.8/R-3.8.2-201301310800" type="INLINED"/>
     <properties xmi:id="_UBi1gJMgEeO7u6f29_-yFQ" key="secondary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
     <properties xmi:id="_xaG_5HKOEeGk8-zOAaqAYg" key="site_COTS" value="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository" type="INLINED"/>
     <properties xmi:id="_xGI7A3KOEeGk8-zOAaqAYg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/2.0.1-S20141106-093454/${eclipseCodeName}" type="INLINED"/>
