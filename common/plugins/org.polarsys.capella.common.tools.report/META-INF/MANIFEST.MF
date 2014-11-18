@@ -5,8 +5,7 @@ Bundle-SymbolicName: org.polarsys.capella.common.tools.report;singleton:=true
 Bundle-Version: 0.8.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.polarsys.capella.common.helpers;visibility:=reexport,
- org.apache.log4j;visibility:=reexport,
- com.sun.jaxb;visibility:=reexport
+ org.apache.log4j;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.common.tools.report,
  org.polarsys.capella.common.tools.report.appenders,
