@@ -30,7 +30,6 @@
       <steps xsi:type="buildfile:DeleteStep" xmi:id="_R8q_4E2zEeGhsO9pPJ3cDA" name="Remove eclipse.exe and eclipse.ini">
         <filePaths>${product}/capella/eclipse/eclipse.exe</filePaths>
         <filePaths>${product}/capella/eclipse/eclipse.ini</filePaths>
-        <filePaths>${product}/capella/eclipse/eclipse_linux.ini</filePaths>
       </steps>
       <steps xsi:type="buildfile:CopyStep" xmi:id="_j81ZsE2zEeGhsO9pPJ3cDA" name="Copy capella.exe and capella.ini" destinationFolderPath="${product}/capella/eclipse">
         <filePaths>${resourcesDir}/${os}-${arch}/eclipse.exe</filePaths>

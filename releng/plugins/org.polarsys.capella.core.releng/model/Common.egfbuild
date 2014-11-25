@@ -160,36 +160,36 @@
       <steps xsi:type="buildstep:InstallStep" xmi:id="_Xyue8LyGEeK1gbuoK98GJA" name="Install EPF Richtext win32 nosrc" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_FIGL0LyGEeK1gbuoK98GJA" name="Post-Install MA nosrc" reusedStep="_FuVh4LyFEeK1gbuoK98GJA"/>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_9hLeoHn_EeOTFv-zjnXYvg" name="linux-gtk-x86-src" enabled="false">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_9hLeoHn_EeOTFv-zjnXYvg" name="linux-gtk-x86-src">
       <properties xmi:id="_9hLeoXn_EeOTFv-zjnXYvg" key="arch" value="x86" type="INLINED"/>
       <properties xmi:id="_9hLeonn_EeOTFv-zjnXYvg" key="os" value="linux" type="INLINED"/>
       <properties xmi:id="_9hLeo3n_EeOTFv-zjnXYvg" key="ws" value="gtk" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_9hLepHn_EeOTFv-zjnXYvg" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_9hLepXn_EeOTFv-zjnXYvg" name="Install EPF Richtext linux src" description="" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_9hLepXn_EeOTFv-zjnXYvg" name="Install EPF Richtext linux src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_9hLepnn_EeOTFv-zjnXYvg" name="Post-Install MA src" reusedStep="_6eDZELyHEeK1gbuoK98GJA"/>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_9hLep3n_EeOTFv-zjnXYvg" name="linux-gtk-x86-nosrc" enabled="false">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_9hLep3n_EeOTFv-zjnXYvg" name="linux-gtk-x86-nosrc">
       <properties xmi:id="_9hLeqHn_EeOTFv-zjnXYvg" key="arch" value="x86" type="INLINED"/>
       <properties xmi:id="_9hLeqXn_EeOTFv-zjnXYvg" key="os" value="linux" type="INLINED"/>
       <properties xmi:id="_9hLeqnn_EeOTFv-zjnXYvg" key="ws" value="gtk" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_9hLeq3n_EeOTFv-zjnXYvg" name="Pre-Install MA nosrc" reusedStep="_XbW0sLxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_9hLerHn_EeOTFv-zjnXYvg" name="Install EPF Richtext linux nosrc" description="" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_9hLerHn_EeOTFv-zjnXYvg" name="Install EPF Richtext linux nosrc" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_9hLerXn_EeOTFv-zjnXYvg" name="Post-Install MA nosrc" reusedStep="_FuVh4LyFEeK1gbuoK98GJA"/>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_QrpcoLyIEeK1gbuoK98GJA" name="linux-gtk-x86_64-src" enabled="false">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_QrpcoLyIEeK1gbuoK98GJA" name="linux-gtk-x86_64-src">
       <properties xmi:id="_XnOusLyIEeK1gbuoK98GJA" key="arch" value="x86_64" type="INLINED"/>
       <properties xmi:id="_XnOusbyIEeK1gbuoK98GJA" key="os" value="linux" type="INLINED"/>
       <properties xmi:id="_XnOusryIEeK1gbuoK98GJA" key="ws" value="gtk" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jL1aULyIEeK1gbuoK98GJA" name="Pre-Install MA src" reusedStep="_o0lKULxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_1fErsLyJEeK1gbuoK98GJA" name="Install EPF Richtext linux src" description="" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_1fErsLyJEeK1gbuoK98GJA" name="Install EPF Richtext linux src" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_jL1aUbyIEeK1gbuoK98GJA" name="Post-Install MA src" reusedStep="_6eDZELyHEeK1gbuoK98GJA"/>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_DImT4LxzEeK1gbuoK98GJA" name="linux-gtk-x86_64-nosrc" enabled="false">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_DImT4LxzEeK1gbuoK98GJA" name="linux-gtk-x86_64-nosrc">
       <properties xmi:id="_DImT4bxzEeK1gbuoK98GJA" key="arch" value="x86_64" type="INLINED"/>
       <properties xmi:id="_DImT4rxzEeK1gbuoK98GJA" key="os" value="linux" type="INLINED"/>
       <properties xmi:id="_DImT47xzEeK1gbuoK98GJA" key="ws" value="gtk" type="INLINED"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_DImT5LxzEeK1gbuoK98GJA" name="Pre-Install MA nosrc" reusedStep="_XbW0sLxuEeK1gbuoK98GJA"/>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_YHayALyFEeK1gbuoK98GJA" name="Install EPF Richtext linux nosrc" description="" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_YHayALyFEeK1gbuoK98GJA" name="Install EPF Richtext linux nosrc" description="" enabled="false" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_MYXJ4LyFEeK1gbuoK98GJA" name="Post-Install MA nosrc" reusedStep="_FuVh4LyFEeK1gbuoK98GJA"/>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_RBslILyIEeK1gbuoK98GJA" name="macosx-cocoa-x86_64-src">
@@ -264,6 +264,7 @@
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_AaPCoKG4EeKjzsUfibKjCg" name="FinalizeTP">
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_xh-N4KG3EeKjzsUfibKjCg"/>
       </steps>
+      <steps xsi:type="buildstep:AntStep" xmi:id="_mJdV4HSoEeSsucpMpe3ovg" name="Change EXE permissions" targetName="${os}_${ws}_${arch}_src_chmodExe" xml="&lt;target name=&quot;${os}_${ws}_${arch}_src_chmodExe&quot;>&#xD;&#xA;&#x9;&lt;!-- linux eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod file=&quot;${product}/capella/eclipse/eclipse&quot; perm=&quot;777&quot;/>&#xD;&#xA;&#x9;&lt;!-- macosx eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod file=&quot;${product}/capella/eclipse/Eclipse.app/Contents/MacOS/eclipse&quot; perm=&quot;777&quot;/>&#xD;&#xA;&lt;/target>"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_9AuboF1vEeGnJaeCI-TkHw" name="ArchiveArtifact">
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_hLxsgGEpEeGOvKnARBvzFg"/>
       </steps>
@@ -273,6 +274,7 @@
       <steps xsi:type="buildcore:ReuseStep" xmi:id="__adnsKG3EeKjzsUfibKjCg" name="FinalizeTP">
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_xh-N4KG3EeKjzsUfibKjCg"/>
       </steps>
+      <steps xsi:type="buildstep:AntStep" xmi:id="_TVvxgHSjEeSsucpMpe3ovg" name="Change EXE permissions" targetName="${os}_${ws}_${arch}_nosrc_chmodExe" xml="&lt;target name=&quot;${os}_${ws}_${arch}_nosrc_chmodExe&quot;>&#xD;&#xA;&#x9;&lt;!-- linux eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod file=&quot;${product}/capella/eclipse/eclipse&quot; perm=&quot;777&quot;/>&#xD;&#xA;&#x9;&lt;!-- macosx eclipse executable -->&#xD;&#xA;&#x9;&lt;chmod file=&quot;${product}/capella/eclipse/Eclipse.app/Contents/MacOS/eclipse&quot; perm=&quot;777&quot;/>&#xD;&#xA;&lt;/target>"/>
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_JMBeYF1xEeGnJaeCI-TkHw" name="ArchiveArtifact">
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_hLxsgGEpEeGOvKnARBvzFg"/>
       </steps>
