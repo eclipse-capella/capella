@@ -58,10 +58,16 @@
                afterTab="Management">
          </propertyTab>
          <propertyTab
+               label="%simpleDescriptionLabel"
+               category="default"
+               id="SimpleDescription"
+               afterTab="Description">
+         </propertyTab>
+         <propertyTab
                label="%extensionsLabel"
                category="extended"
                id="Extensions"
-               afterTab="Description">
+               afterTab="SimpleDescription">
          </propertyTab>
          <propertyTab
                label="Expert"
@@ -93,10 +99,16 @@
                afterTab="Management">
          </propertyTab>
          <propertyTab
+               label="%simpleDescriptionLabel"
+               category="semantic &amp; extension"
+               id="SimpleDescription"
+               afterTab="Description">
+         </propertyTab>
+         <propertyTab
                label="%extensionsLabel"
                category="semantic &amp; extension"
                id="Extensions"
-               afterTab="Description">
+               afterTab="SimpleDescription">
          </propertyTab>
       </propertyTabs>
    </extension>
@@ -122,10 +134,16 @@
                afterTab="Management">
          </propertyTab>
          <propertyTab
+               label="%simpleDescriptionLabel"
+               category="default"
+               id="SimpleDescription"
+               afterTab="Description">
+         </propertyTab>
+         <propertyTab
                label="%extensionsLabel"
                category="default"
                id="Extensions"
-               afterTab="Description">
+               afterTab="SimpleDescription">
          </propertyTab>
       </propertyTabs>
    </extension>
