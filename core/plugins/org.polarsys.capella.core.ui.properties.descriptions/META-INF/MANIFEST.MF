@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-SymbolicName: org.polarsys.capella.core.ui.properties.descriptions;singleton:=true
+Bundle-Version: 0.8.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.sirius.diagram.ui,
+ org.polarsys.capella.core.ui.properties
+Export-Package: org.polarsys.capella.core.ui.properties.descriptions,
+ org.polarsys.capella.core.ui.properties.descriptions.fields,
+ org.polarsys.capella.core.ui.properties.descriptions.sections
+Bundle-Activator: org.polarsys.capella.core.ui.properties.descriptions.CapellaUIPropertiesDescriptionPlugin
