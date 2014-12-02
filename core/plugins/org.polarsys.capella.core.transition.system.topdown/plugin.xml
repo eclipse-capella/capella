@@ -770,6 +770,17 @@
                      name="StateTransition">
                </defaultMappingPossibility>
             </mappingElement>
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacommon.StateMachine"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.common.StateMachineRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.common.StateMachineRule"
+                     enabled="true"
+                     name="StateMachine">
+               </defaultMappingPossibility>
+            </mappingElement>
          </mappingPackage>
          
          

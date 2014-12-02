@@ -79,7 +79,7 @@ public class TransformationSelectionContextsHandler extends DefaultSelectionCont
 
           //We put in targetArchi only if DataType transition or preference is enabled
           transition =
-              ITopDownConstants.TRANSITION_TOPDOWN_DATA.equals(transitionKind)
+              ITopDownConstants.TRANSITION_TOPDOWN_DATA.equals(transitionKind) || ITopDownConstants.TRANSITION_TOPDOWN_STATEMACHINE.equals(transitionKind)
 
                   || (ITopDownConstants.TRANSITION_TOPDOWN_EXCHANGEITEM.equals(transitionKind) && options.getBooleanValue(context_p,
                       ITopDownConstants.TRANSITION_TOPDOWN, ITopDownConstants.OPTIONS_TRANSITION__DATATYPE,
