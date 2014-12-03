@@ -1101,10 +1101,10 @@
                   <iterate>
                        <or>
                         <instanceof
-                              value="org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart">
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
                         </instanceof>
                         <instanceof
-                              value="org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart">
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                         </instanceof>
                        </or>
                   </iterate>

@@ -30,7 +30,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.projection.interfaces.ctx2la,
  org.eclipse.core.expressions,
  org.polarsys.capella.core.projection.exchanges,
- org.polarsys.capella.core.projection.scenario
+ org.polarsys.capella.core.projection.scenario,
+ org.eclipse.sirius.diagram.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.projection.commands
