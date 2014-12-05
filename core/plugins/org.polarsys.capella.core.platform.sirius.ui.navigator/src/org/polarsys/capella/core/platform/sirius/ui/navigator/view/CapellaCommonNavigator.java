@@ -416,7 +416,7 @@ public class CapellaCommonNavigator extends CommonNavigator implements ITabbedPr
     protected void updateToolbar(boolean visible_p) {
       // Do nothing as we want to always see the toolbar to access search in description.
       IContributionItem[] items = filterToolBar.getItems();
-      items[1].setVisible(visible_p);
+      items[hasNativeClearButton() ? 0 : 1].setVisible(visible_p);
       filterToolBar.update(true);
     }
 
