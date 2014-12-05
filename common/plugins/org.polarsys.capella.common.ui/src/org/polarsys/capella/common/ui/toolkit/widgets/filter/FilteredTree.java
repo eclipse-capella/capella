@@ -267,27 +267,33 @@ public class FilteredTree extends Composite {
   }
 
   /**
+   * @return {@code true} if the widget natively supports a clear button, {@code false} otherwise
+   */
+  protected boolean hasNativeClearButton() {
+	return (filterText.getStyle() & SWT.CANCEL) != 0;
+  }
+
+  /**
    * Create the button that clears the text.
    * @param parent_p parent <code>Composite</code> of toolbar button
    */
   protected void createClearText(Composite parent_p) {
     // only create the button if the text widget doesn't support one natively
-    if ((filterText.getStyle() & SWT.CANCEL) == 0) {
+    if (!hasNativeClearButton()) {
       if (null == filterToolBar) {
         filterToolBar = new ToolBarManager(SWT.FLAT | SWT.HORIZONTAL);
         filterToolBar.createControl(parent_p);
       }
-      IAction clearTextAction = new Action("", IAction.AS_PUSH_BUTTON) {//$NON-NLS-1$
-            /*
-             * (non-Javadoc)
-             * @see org.eclipse.jface.action.Action#run()
-             */
-            @Override
-            public void run() {
-              clearText();
-            }
-          };
 
+      IAction clearTextAction = new Action(ICommonConstants.EMPTY_STRING, IAction.AS_PUSH_BUTTON) {
+        /**
+         * @see org.eclipse.jface.action.Action#run()
+         */
+        @Override
+        public void run() {
+          clearText();
+        }
+      };
       clearTextAction.setToolTipText(WorkbenchMessages.FilteredTree_ClearToolTip);
       clearTextAction.setImageDescriptor(MdeCommonUiActivator.getDefault().getImageDescriptor(IImageKeys.IMG_CLEAR_ENABLED));
       clearTextAction.setDisabledImageDescriptor(MdeCommonUiActivator.getDefault().getImageDescriptor(IImageKeys.IMG_CLEAR_DISABLED));
@@ -367,8 +373,7 @@ public class FilteredTree extends Composite {
   protected void createFilterText(Composite parent_p) {
     filterText = doCreateFilterText(parent_p);
     filterText.getAccessible().addAccessibleListener(new AccessibleAdapter() {
-      /*
-       * (non-Javadoc)
+      /**
        * @see org.eclipse.swt.accessibility.AccessibleListener#getName(org.eclipse.swt.accessibility.AccessibleEvent)
        */
       @Override
@@ -383,13 +388,12 @@ public class FilteredTree extends Composite {
     });
 
     filterText.addFocusListener(new FocusAdapter() {
-      /*
-       * (non-Javadoc)
+      /**
        * @see org.eclipse.swt.events.FocusListener#focusLost(org.eclipse.swt.events.FocusEvent)
        */
       @Override
       public void focusGained(FocusEvent e) {
-        /*
+        /**
          * Running in an asyncExec because the selectAll() does not appear to work when using mouse to give focus to text.
          */
         Display display = filterText.getDisplay();
@@ -498,8 +502,7 @@ public class FilteredTree extends Composite {
             return canceled;
           }
 
-          /*
-           * (non-Javadoc)
+          /**
            * @see org.eclipse.ui.progress.UIJob#runInUIThread(org.eclipse.core.runtime.IProgressMonitor)
            */
           @SuppressWarnings("synthetic-access")
@@ -596,8 +599,7 @@ public class FilteredTree extends Composite {
     GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
     treeViewer.getControl().setLayoutData(data);
     treeViewer.getControl().addDisposeListener(new DisposeListener() {
-      /*
-       * (non-Javadoc)
+      /**
        * @see org.eclipse.swt.events.DisposeListener#widgetDisposed(org.eclipse.swt.events.DisposeEvent)
        */
       @SuppressWarnings("synthetic-access")
@@ -621,7 +623,7 @@ public class FilteredTree extends Composite {
    * @since 3.3
    */
   protected Text doCreateFilterText(Composite parent_p) {
-    return new Text(parent_p, SWT.SINGLE | SWT.BORDER | SWT.SEARCH | SWT.CANCEL);
+    return new Text(parent_p, SWT.SINGLE | SWT.BORDER | SWT.SEARCH);
   }
 
   /**
