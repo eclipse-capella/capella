@@ -4,13 +4,13 @@
     <properties xmi:id="_VPrWUFZGEeGR2_cB4MDfaQ" key="VERSION" value="0.8.0"/>
     <properties xmi:id="_L7cW0Ev-EeG48a7kaF1Bnw" key="buildVersion" value="${VERSION}.${timestamp}"/>
     <properties xmi:id="_JAvf4G3iEeGehoHCqtPcvA" key="qualifier.replacement.*" value="${timestamp}"/>
-    <properties xmi:id="_475cAHlDEeOTFv-zjnXYvg" key="capellaGitRepo" value="//home/hudson/genie.polarsys.polarsys.capella/.hudson/jobs/capella-v0.8.x/workspace/sources"/>
+    <properties xmi:id="_475cAHlDEeOTFv-zjnXYvg" key="capellaGitRepo" value="(to be provided)"/>
   </propertyPackages>
   <propertyPackages xmi:id="_K0cHAGOuEeGSqYRIJfl_UQ" name="Update Sites">
     <properties xmi:id="_xJ7uoPCvEeOiS52wF1-fPg" key="site_QueryLegacy" value="${eclipse.download.prefix}/sirius/updates/legacy"/>
     <properties xmi:id="_K2caEAyPEeKIGKNriwuyOw" key="site_DiffMerge" value="${eclipse.download.prefix}/diffmerge/releases/0.4.0/emf-diffmerge-site"/>
     <properties xmi:id="_Y092gC0WEeSpNZCH09tG3Q" key="site_Patterns" value="${eclipse.download.prefix}/diffmerge/releases/0.4.0/edm-patterns-site"/>
-    <properties xmi:id="_wKYdYHKOEeGk8-zOAaqAYg" key="site_Kitalpha" value="https://polarsys.org/kitalpha/hudson/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2"/>
+    <properties xmi:id="_wKYdYHKOEeGk8-zOAaqAYg" key="site_Kitalpha" value="https://hudson.polarsys.org/kitalpha/job/Kitalpha_Nightly/380/artifact/result/publish/kitalpha/site.p2"/>
   </propertyPackages>
   <jobs href="Job_Capella.egfbuild#_P5DYAF4qEeGjYKPu-vkVIA"/>
   <jobs href="Job_CapellaUpdateSite.egfbuild#_DrDLoKYNEeOAGYjKNc8g9w"/>
