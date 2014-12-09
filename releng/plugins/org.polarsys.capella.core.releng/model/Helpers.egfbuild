@@ -7,12 +7,12 @@
     <steps xsi:type="buildfile:DeleteStep" xmi:id="_RKR90E2sEeGhsO9pPJ3cDA" name="Delete product">
       <additionalParameters xmi:id="_QGpZYFcqEeGBLcoFwPOnVA" key="dir" value="${product}"/>
     </steps>
-    <steps xsi:type="buildstep:InstallStep" xmi:id="_3T7uYJPLEeOsBuJqo0_MQw" name="Install Eclipse SDK" description="" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_3T7uYJPLEeOsBuJqo0_MQw" name="Install Eclipse SDK" description="" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
       <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
       <featureNames>org.eclipse.sdk</featureNames>
       <productNames>org.eclipse.platform.ide</productNames>
     </steps>
-    <steps xsi:type="buildstep:InstallStep" xmi:id="_M-34IKBpEeKMQb8Rddw1Vg" name="Install Eclipse Basics" description="" id="product/capella/eclipse" profile="SDKProfile" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+    <steps xsi:type="buildstep:InstallStep" xmi:id="_M-34IKBpEeKMQb8Rddw1Vg" name="Install Eclipse Basics" description="" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
       <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
       <updateSiteUrls>${secondary_eclipseUpdateSite}</updateSiteUrls>
       <featureNames>org.eclipse.emf.sdk</featureNames>
