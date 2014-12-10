@@ -11,11 +11,15 @@
 package org.polarsys.capella.core.dashboard.hyperlinkadapter;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.ui.forms.events.HyperlinkAdapter;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-
-import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.libraries.ILibraryManager;
+import org.polarsys.capella.common.libraries.IModel;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.libraries.model.ICapellaModel;
 
 /**
  * Base class to implement an {@link HyperlinkAdapter} in Capella context.
@@ -33,9 +37,19 @@ public abstract class AbstractHyperlinkAdapter extends HyperlinkAdapter {
   /**
    * Constructor.
    * @param capellaProject_p
+   * @param session_p
    */
+  @Deprecated
   public AbstractHyperlinkAdapter(Project capellaProject_p, Session session_p) {
     _project = capellaProject_p;
+    _session = session_p;
+  }
+
+  /**
+   * Constructor.
+   * @param session_p
+   */
+  public AbstractHyperlinkAdapter(Session session_p) {
     _session = session_p;
   }
 
@@ -51,7 +65,15 @@ public abstract class AbstractHyperlinkAdapter extends HyperlinkAdapter {
    */
   @Override
   public void linkActivated(HyperlinkEvent event_p) {
-    linkPressed(event_p, _project, _session);
+
+    RefreshEditorsPrecommitListener repl = _session.getRefreshEditorsListener();
+    repl.notify(SessionListener.REPRESENTATION_CHANGE);
+    repl.notify(SessionListener.SEMANTIC_CHANGE);
+
+    IModel model = ILibraryManager.INSTANCE.getModel(_session.getTransactionalEditingDomain());
+    Project project = ((ICapellaModel) model).getProject(_session.getTransactionalEditingDomain());
+    linkPressed(event_p, project, _session);
+
   }
 
   /**

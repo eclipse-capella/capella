@@ -28,8 +28,8 @@ public class PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter extends Abstr
    * @param capellaProject_p
    * @param session_p
    */
-  public PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**

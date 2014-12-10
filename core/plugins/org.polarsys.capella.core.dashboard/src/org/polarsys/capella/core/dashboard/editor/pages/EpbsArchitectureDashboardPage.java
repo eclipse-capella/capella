@@ -21,13 +21,12 @@ import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
-
-import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.CapellaDashboardActivator;
+import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.epbs.DefineCiComponentsSectionDescriptionAction;
 import org.polarsys.capella.core.dashboard.actions.epbs.DefineCiComponentsSectionFilteringAction;
 import org.polarsys.capella.core.dashboard.actions.epbs.PhysicalComponentEpbsComponentAction;
@@ -40,8 +39,8 @@ import org.polarsys.capella.core.dashboard.editor.pages.preferences.IEpbsArchite
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.epbs.ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.epbs.NewComponentBreakdownDiagramAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.epbs.NewEpbsArchitectureBlankAdapter;
-import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.epbs.EpbsPackage;
 import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 /**
@@ -99,12 +98,10 @@ public class EpbsArchitectureDashboardPage extends AbstractCapellaArchitectureDa
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create an EPBS breakdown (i.e Configuration Items breakdown).
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_EPBS_BREAKDOWN_DIAGRAM),
-        Messages.EpbsArchitectureDashboardPage_NewConfigurationItemsBreakdownAction_Title, null, null, new NewComponentBreakdownDiagramAdapter(
-            getCapellaProject(), getSession()));
+        Messages.EpbsArchitectureDashboardPage_NewConfigurationItemsBreakdownAction_Title, null, null, new NewComponentBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create an EPBS Architecture Blank.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_EPBS_ARCHITECTURE_BLANK_DIAGRAM),
-        Messages.EpbsArchitectureDashboardPage_NewEpbsArchitectureBlankAction_Title, null, null, new NewEpbsArchitectureBlankAdapter(getCapellaProject(),
-            getSession()));
+        Messages.EpbsArchitectureDashboardPage_NewEpbsArchitectureBlankAction_Title, null, null, new NewEpbsArchitectureBlankAdapter(getSession()));
     // Create an hyper link for Create Traceability Matrix.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX),
         Messages.EpbsArchitectureDashboardPage_CreateTraceabilityMatrixAction_Title, null, null, new PopupMenuLinkAdapter() {
@@ -141,7 +138,7 @@ public class EpbsArchitectureDashboardPage extends AbstractCapellaArchitectureDa
     // Create an hyper link for Execute the Logical Scenario Refinement on the Scenarios of the Capability.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.EpbsArchitectureDashboardPage_ExecuteLogicalScenarioRefinementToCapabilityScenarioAction_Title, null, null,
-        new ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter(getCapellaProject(), getSession()));
+        new ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter(getSession()));
     return section.getKey();
   }
 

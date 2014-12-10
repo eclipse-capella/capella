@@ -12,7 +12,6 @@ package org.polarsys.capella.core.dashboard.actions.sa;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-
 import org.polarsys.capella.core.dashboard.actions.AbstractCapellaAction;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.sa.PerformOpCapabilityToSystemCapabilityTransitionAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
@@ -38,6 +37,6 @@ public class PerformOpCapabilityToSystemCapabilityAction extends AbstractCapella
    */
   @Override
   protected void doRun(Project capellaProject_p, Session session_p) {
-    new PerformOpCapabilityToSystemCapabilityTransitionAdapter(capellaProject_p, session_p).linkActivated(null);
+    new PerformOpCapabilityToSystemCapabilityTransitionAdapter(session_p).linkActivated(null);
   }
 }

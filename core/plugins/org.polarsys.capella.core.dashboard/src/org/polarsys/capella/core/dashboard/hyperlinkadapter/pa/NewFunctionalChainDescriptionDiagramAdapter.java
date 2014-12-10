@@ -11,11 +11,10 @@
 package org.polarsys.capella.core.dashboard.hyperlinkadapter.pa;
 
 import org.eclipse.sirius.business.api.session.Session;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Create a new Functional Chain Description diagram.
@@ -26,8 +25,8 @@ public class NewFunctionalChainDescriptionDiagramAdapter extends AbstractNewDiag
    * @param capellaProject_p
    * @param session_p
    */
-  public NewFunctionalChainDescriptionDiagramAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public NewFunctionalChainDescriptionDiagramAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**
@@ -42,7 +41,7 @@ public class NewFunctionalChainDescriptionDiagramAdapter extends AbstractNewDiag
    * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#getModelElement(org.polarsys.capella.core.data.capellamodeller.Project)
    */
   @Override
-  protected ModelElement getModelElement(Project project_p) {    
+  protected ModelElement getModelElement(Project project_p) {
     return null;
   }
 }

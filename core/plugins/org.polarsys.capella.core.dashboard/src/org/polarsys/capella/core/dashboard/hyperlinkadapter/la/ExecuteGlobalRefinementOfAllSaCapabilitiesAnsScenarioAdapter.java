@@ -13,13 +13,12 @@ package org.polarsys.capella.core.dashboard.hyperlinkadapter.la;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.refinement.commands.ScenarioRefinementCommand;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.TransactionHelper;
 
 /**
  * Execute a global refinement of all System Analysis Capabilities and Scenarios.
@@ -30,17 +29,17 @@ public class ExecuteGlobalRefinementOfAllSaCapabilitiesAnsScenarioAdapter extend
    * @param capellaProject_p
    * @param session_p
    */
-  public ExecuteGlobalRefinementOfAllSaCapabilitiesAnsScenarioAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public ExecuteGlobalRefinementOfAllSaCapabilitiesAnsScenarioAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**
-   * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#linkPressed(org.eclipse.ui.forms.events.HyperlinkEvent, org.polarsys.capella.core.data.capellamodeller.Project, org.eclipse.sirius.business.api.session.Session)
+   * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#linkPressed(org.eclipse.ui.forms.events.HyperlinkEvent,
+   *      org.polarsys.capella.core.data.capellamodeller.Project, org.eclipse.sirius.business.api.session.Session)
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
-    TransactionHelper.getExecutionManager(capellaProject_p).execute(
-      new ScenarioRefinementCommand(getModelElement(_project), new NullProgressMonitor()));
+    TransactionHelper.getExecutionManager(capellaProject_p).execute(new ScenarioRefinementCommand(getModelElement(_project), new NullProgressMonitor()));
   }
 
   /**

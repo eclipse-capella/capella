@@ -19,7 +19,8 @@ Require-Bundle: org.eclipse.ui.forms;visibility:=reexport,
  org.polarsys.capella.core.projection.commands,
  org.polarsys.capella.core.ui.properties,
  org.polarsys.capella.core.transition.system.topdown.ui,
- org.polarsys.capella.core.preferences
+ org.polarsys.capella.core.preferences,
+ org.polarsys.capella.core.libraries
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.dashboard,
