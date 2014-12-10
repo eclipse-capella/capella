@@ -93,8 +93,8 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
     }
   }
 
-  public static String getDefaultText(Constraint contraint) {
-    String result = contraint.getName();
+  public static String getDefaultText(Constraint contraint, String defaultName) {
+    String result = defaultName;
 
     if ((result == null) || result.isEmpty()) {
       ValueSpecification vspec = contraint.getOwnedSpecification();
