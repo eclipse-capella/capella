@@ -29,10 +29,10 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.emf" version="2.3.2.v200802051830" match="compatible"/>
-      <import feature="org.eclipse.jdt" version="3.3.2.r33x_r20080129-7o7jE7_EDhYDiyVEnjb1pFd7ZGD7" match="compatible"/>
-      <import feature="org.eclipse.pde" version="3.3.3.r33x_r20080129-7N7M5DQVIA_6oJsEFkEL" match="compatible"/>
-      <import feature="org.eclipse.platform" version="3.3.3.r33x_r20080129-_19UEl7Ezk_gXF1kouft" match="compatible"/>
+      <import feature="org.eclipse.emf" />
+      <import feature="org.eclipse.jdt" />
+      <import feature="org.eclipse.pde" />
+      <import feature="org.eclipse.platform" />
    </requires>
 
    <plugin
