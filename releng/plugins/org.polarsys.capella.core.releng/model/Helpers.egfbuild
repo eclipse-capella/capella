@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<buildcore:StepContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_jLXOkE21EeGhsO9pPJ3cDA" name="Helpers">
+<buildcore:StepContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_jLXOkE21EeGhsO9pPJ3cDA" name="Helpers">
   <steps xsi:type="buildcore:StepContainer" xmi:id="_hLxsgGEpEeGOvKnARBvzFg" name="ArchiveArtifact">
     <steps xsi:type="buildfile:ZipStep" xmi:id="_TdR2UV1yEeGnJaeCI-TkHw" name="ArchiveArtifact" description="" baseDir="${product}" destinationFilePath="${publish}/${archiveName}-${buildVersion}${archiveSuffix}-${eclipseCodeName}-incubation.zip"/>
   </steps>
@@ -54,9 +54,15 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_ZHUroJMLEeKKWIqJCUuOog" name="TestSuites">
     <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJtJMLEeKKWIqJCUuOog" name="Import Test Plugins" noBuildersInvocation="true">
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_fdrJtZMLEeKKWIqJCUuOog" path="${capellaGitRepo}/releng/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_fdrJtpMLEeKKWIqJCUuOog" path="${capellaGitRepo}/test/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_fdrJt5MLEeKKWIqJCUuOog" path="${capellaGitRepo}/test/features"/>
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_2MNh8IIIEeSlQoYFN3Mlmg" folderName="releng/plugins">
+        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+      </buildLocations>
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_39468IIIEeSlQoYFN3Mlmg" folderName="test/features">
+        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+      </buildLocations>
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_31soQIIIEeSlQoYFN3Mlmg" folderName="test/plugins">
+        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+      </buildLocations>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJuZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
       <components xsi:type="buildstep:Feature" xmi:id="_fdrJupMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.bq.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_fdrJu5MLEeKKWIqJCUuOog" id="org.polarsys.capella.test.diagram.feature"/>

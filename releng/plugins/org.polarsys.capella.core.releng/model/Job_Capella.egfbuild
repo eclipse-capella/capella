@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmi:id="_P5DYAF4qEeGjYKPu-vkVIA" name="Capella">
+<buildcore:Job xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmi:id="_P5DYAF4qEeGjYKPu-vkVIA" name="Capella">
   <properties xmi:id="_P5DYAV4qEeGjYKPu-vkVIA" key="product" value="${publish}/product" type="INLINED"/>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_6PJ4wHn1EeOTFv-zjnXYvg" name="build4Helios" enabled="false">
     <properties xmi:id="_86zmsHn1EeOTFv-zjnXYvg" key="eclipseCodeName" value="helios" type="INLINED"/>
@@ -47,4 +47,7 @@
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
     </steps>
   </steps>
+  <scms xsi:type="buildscm:GIT" xmi:id="_3X68kIIHEeSlQoYFN3Mlmg">
+    <locations xmi:id="_3007AIIHEeSlQoYFN3Mlmg" protocol="https://" url="www.polarsys.org/r/capella/capella"/>
+  </scms>
 </buildcore:Job>

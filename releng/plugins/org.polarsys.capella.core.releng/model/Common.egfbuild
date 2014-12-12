@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="ASCII"?>
-<buildcore:StepContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_APlD4D0cEeGbsMS9ntA4kQ" name="Common">
+<buildcore:StepContainer xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:buildcore="http://www.eclipse.org/egf/1.0.1/buildcore" xmlns:buildfile="http://www.eclipse.org/egf/1.0.0/buildfile" xmlns:buildscm="http://www.eclipse.org/egf/1.0.0/buildscm" xmlns:buildstep="http://www.eclipse.org/egf/1.0.2/buildstep" xmi:id="_APlD4D0cEeGbsMS9ntA4kQ" name="Common">
   <steps xsi:type="buildcore:StepContainer" xmi:id="_snXYMFnzEeSlpue7JHXw9A" name="Build EGF update Site">
     <steps xsi:type="buildstep:BuildStep" xmi:id="_EWts8Fn1EeSlpue7JHXw9A" name="Build EGF Platform">
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_1sBUsFqlEeSQoMAm1P90CA" pattern="" path="${capellaGitRepo}/common/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_1sBUsVqlEeSQoMAm1P90CA" pattern="" path="${capellaGitRepo}/legacy/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_iHEXUFn1EeSlpue7JHXw9A" path="${capellaGitRepo}/releng/features"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_sc3GcFn1EeSlpue7JHXw9A" path="${capellaGitRepo}/releng/plugins"/>
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_gKunwIIIEeSlQoYFN3Mlmg" folderName="common/plugins">
+        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+      </buildLocations>
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_h3ymgIIIEeSlQoYFN3Mlmg" folderName="legacy/plugins">
+        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+      </buildLocations>
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_iA4REIIIEeSlQoYFN3Mlmg" folderName="releng/features">
+        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+      </buildLocations>
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_iIet4IIIEeSlQoYFN3Mlmg" folderName="releng/plugins">
+        <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+      </buildLocations>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_THW2wFn1EeSlpue7JHXw9A" url="${eclipse.download.prefix}/releases/juno"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_hldPEFqlEeSQoMAm1P90CA" url="${site_Kitalpha}"/>
       <components xsi:type="buildstep:Feature" xmi:id="_QvPv4Fn1EeSlpue7JHXw9A" id="org.polarsys.capella.core.egf.feature"/>
@@ -37,26 +45,54 @@
     <steps xsi:type="buildstep:CleanStep" xmi:id="_skcEgAleEeGYwPEIVo63QA" name="Clean Result" type="Result"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_xZx-UFnzEeSlpue7JHXw9A" name="Build EFG Update Site" reusedStep="_snXYMFnzEeSlpue7JHXw9A"/>
     <steps xsi:type="buildstep:BuildStep" xmi:id="_4o96YO9UEeCKw7_91ITV8w" name="Import All Capella Plugins" noBuildersInvocation="true" skipComponentsRegex="(.*\.source)|(org\.polarsys\.capella\.common\.mdsofa\.emf.*)|(org\.polarsys\.capella\.common\.mdsofa\.dsl.*)">
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_lW_rcO_5EeCIP56Yzwc9FQ" pattern="" path="${capellaGitRepo}/core/features"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_jwbWQO_5EeCIP56Yzwc9FQ" pattern="" path="${capellaGitRepo}/core/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_ktljwH-SEeOBR7qVkI2I0w" pattern="" path="${capellaGitRepo}/common/features"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_ktljwX-SEeOBR7qVkI2I0w" pattern="" path="${capellaGitRepo}/common/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_PoU64H-KEeOBR7qVkI2I0w" pattern="" path="${capellaGitRepo}/doc/features"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_PoU64X-KEeOBR7qVkI2I0w" pattern="" path="${capellaGitRepo}/doc/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_iqPNkOpFEeKwWpSeYKrUug" pattern="" path="${capellaGitRepo}/legacy/features"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_iqPNkepFEeKwWpSeYKrUug" pattern="" path="${capellaGitRepo}/legacy/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_e7-bsHlWEeOTFv-zjnXYvg" pattern="" path="${capellaGitRepo}/m2/features"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_e7-bsXlWEeOTFv-zjnXYvg" pattern="" path="${capellaGitRepo}/m2/plugins"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_nzVoYC0YEeSpNZCH09tG3Q" pattern="" path="${capellaGitRepo}/patterns/features"/>
-      <buildLocations xsi:type="buildstep:LocalBuildLocation" xmi:id="_nzVoYS0YEeSpNZCH09tG3Q" pattern="" path="${capellaGitRepo}/patterns/plugins"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_QueryLegacy}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_4o96b-9UEeCKw7_91ITV8w" url="${orbit.download.url}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_f-HXYAyPEeKIGKNriwuyOw" url="${site_DiffMerge}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ypzboC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_Sirius}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_P2rDEAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_XCyCgKBoEeKMQb8Rddw1Vg" suffix="" url="${primary_eclipseUpdateSite}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_SVCF0JMfEeO7u6f29_-yFQ" suffix="" url="${secondary_eclipseUpdateSite}"/>
+      <buildLocations xsi:type="buildstep:BuildLocationContainer" xmi:id="_Ee5Z4IIIEeSlQoYFN3Mlmg" name="GIT">
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_87RQYIIHEeSlQoYFN3Mlmg" folderName="core/features">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_9p54AIIHEeSlQoYFN3Mlmg" folderName="core/plugins">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_Cwy5UIIIEeSlQoYFN3Mlmg" folderName="common/features">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_Cwy5UYIIEeSlQoYFN3Mlmg" folderName="common/plugins">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_DFW0EIIIEeSlQoYFN3Mlmg" folderName="doc/features">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_DFW0EYIIEeSlQoYFN3Mlmg" folderName="doc/plugins">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_DQOnUIIIEeSlQoYFN3Mlmg" folderName="legacy/features">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_DQOnUYIIEeSlQoYFN3Mlmg" folderName="legacy/plugins">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_DjwAQIIIEeSlQoYFN3Mlmg" folderName="m2/features">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_DjwAQYIIEeSlQoYFN3Mlmg" folderName="m2/plugins">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_D2OQUIIIEeSlQoYFN3Mlmg" folderName="patterns/features">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+        <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_D2OQUYIIEeSlQoYFN3Mlmg" folderName="patterns/plugins">
+          <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
+        </buildLocations>
+      </buildLocations>
+      <buildLocations xsi:type="buildstep:BuildLocationContainer" xmi:id="_VP88QIIIEeSlQoYFN3Mlmg" name="Update Sites">
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_QueryLegacy}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_4o96b-9UEeCKw7_91ITV8w" url="${orbit.download.url}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_f-HXYAyPEeKIGKNriwuyOw" url="${site_DiffMerge}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ypzboC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_Sirius}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_P2rDEAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_XCyCgKBoEeKMQb8Rddw1Vg" suffix="" url="${primary_eclipseUpdateSite}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_SVCF0JMfEeO7u6f29_-yFQ" suffix="" url="${secondary_eclipseUpdateSite}"/>
+      </buildLocations>
       <components xsi:type="buildstep:Feature" xmi:id="_dAeIsOpFEeKwWpSeYKrUug" id="org.polarsys.capella.common.mdsofa.common.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_0_CCgO6UEeCOPs2PMWw0Bg" id="org.polarsys.capella.core.model.definition.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_0sC48O_wEeC6vvY4iAtS4w" id="org.polarsys.capella.common.feature"/>
