@@ -21,13 +21,12 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
-import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.CapellaDashboardActivator;
+import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.pa.AllocatePhysicalFunctionToPhysicalComponentsSectionDescriptionAction;
 import org.polarsys.capella.core.dashboard.actions.pa.AllocatePhysicalFunctionToPhysicalComponentsSectionFilteringAction;
 import org.polarsys.capella.core.dashboard.actions.pa.DefinePhysicalComponentsActorsDescriptionAction;
@@ -67,8 +66,8 @@ import org.polarsys.capella.core.dashboard.hyperlinkadapter.pa.PerformAutomatedT
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.pa.PerformAutomatedTransitionOfLogicalComponentsAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.pa.PaPackage;
-import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
+import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 /**
  * Base class to implement the Physical Architecture dashboard page.
@@ -150,16 +149,15 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
     FormToolkit toolkit = managedForm_p.getToolkit();
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create a new Physical Architecture diagram.
-    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator
-        .getImage(IImageKeys.IMG_NEW_PHYSICAL_ARCHITECTURE_FUNCTIONS_DIAGRAM), Messages.PhysicalArchitectureDashboardPage_NewPhysicalArchitectureDiagram_Title,
-        null, null, new NewPhysicalArchitectureDiagramAdapter(getCapellaProject(), getSession()));
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite,
+        capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_PHYSICAL_ARCHITECTURE_FUNCTIONS_DIAGRAM),
+        Messages.PhysicalArchitectureDashboardPage_NewPhysicalArchitectureDiagram_Title, null, null, new NewPhysicalArchitectureDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Exchange Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_EXCHANGE_SCENARIO),
-        Messages.PhysicalArchitectureDashboardPage_NewExchangeScenario_Title, null, null, new NewExchangeScenarioAdapter(getCapellaProject(), getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewExchangeScenario_Title, null, null, new NewExchangeScenarioAdapter(getSession()));
     // Create an hyper link for Create an new allocation Physical Component / Physical Function matrix.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_ALLOCATIONS_MATRIX),
-        Messages.PhysicalArchitectureDashboardPage_NewAllocationPcPfMatrix_Title, null, null, new NewAllocationPcPfMatrixAdapter(getCapellaProject(),
-            getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewAllocationPcPfMatrix_Title, null, null, new NewAllocationPcPfMatrixAdapter(getSession()));
     return section.getKey();
   }
 
@@ -187,7 +185,7 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.PhysicalArchitectureDashboardPage_PerformAutomatedTransitionOfLogicalActors_Title, null,
         Messages.PhysicalArchitectureDashboardPage_PerformAutomatedTransitionOfLogicalActors_Description, new PerformAutomatedTransitionOfLogicalActorsAdapter(
-            getCapellaProject(), getSession()));
+            getSession()));
     // Create an hyper link for Perform an automated transition of Logical Components.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.PhysicalArchitectureDashboardPage_PerformAutomatedTransitionOfLogicalComponents_Title, null,
@@ -195,16 +193,14 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
         new PerformAutomatedTransitionOfLogicalComponentsAdapter(getCapellaProject(), getSession()));
     // Create an hyper link for Create a new Component Breakdown diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_PHYSICAL_BREAKDOWN_DIAGRAM),
-        Messages.PhysicalArchitectureDashboardPage_NewComponentBreakdownDiagram_Title, null, null, new NewComponentBreakdownDiagramAdapter(getCapellaProject(),
-            getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewComponentBreakdownDiagram_Title, null, null, new NewComponentBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Physical Architecture diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_PHYSICAL_ARCHITECTURE_DIAGRAM),
-        Messages.PhysicalArchitectureDashboardPage_NewPhysicalArchitectureDiagram_Title, null, null, new NewPhysicalArchitectureDiagramAdapter(
-            getCapellaProject(), getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewPhysicalArchitectureDiagram_Title, null, null, new NewPhysicalArchitectureDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Physical Component / Logical Component Matrix.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX),
         Messages.PhysicalArchitectureDashboardPage_NewPhysicalComponentLogicalComponentMatrix_Title, null, null,
-        new NewPhysicalComponentLogicalComponentMatrixAdapter(getCapellaProject(), getSession()));
+        new NewPhysicalComponentLogicalComponentMatrixAdapter(getSession()));
     return section.getKey();
   }
 
@@ -230,8 +226,7 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create a new internal interface diagram on the Physical System.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_INTERNAL_INTERFACE_DIAGRAM),
-        Messages.PhysicalArchitectureDashboardPage_NewInternalInterfaceDiagramOnPS_Title, null, null, new NewInternalInterfaceDiagramOnPSAdapter(
-            getCapellaProject(), getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewInternalInterfaceDiagramOnPS_Title, null, null, new NewInternalInterfaceDiagramOnPSAdapter(getSession()));
     return section.getKey();
   }
 
@@ -259,16 +254,16 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.PhysicalArchitectureDashboardPage_PerformTransitionOfCapabilities_Title, null,
         Messages.PhysicalArchitectureDashboardPage_PerformTransitionOfCapabilities_Description, new PerformAutomatedCapabilitiesTransitionAdapter(
-            getCapellaProject(), ModelQueryHelper.getLogicalArchitecture(getCapellaProject()), getSession()));
+            ModelQueryHelper.getLogicalArchitecture(getCapellaProject()), getSession()));
 
     // Create an hyper link for Execute a global refinement of all System Analysis Capabilities and Scenarios.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.PhysicalArchitectureDashboardPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Title, null,
         Messages.PhysicalArchitectureDashboardPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Description,
-        new ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter(getCapellaProject(), getSession()));
+        new ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter(getSession()));
     // Create an hyper link for Create a new Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_INTERFACE_SCENARIO),
-        Messages.PhysicalArchitectureDashboardPage_NewScenario_Title, null, null, new NewScenarioDiagramAdapter(getCapellaProject(), getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewScenario_Title, null, null, new NewScenarioDiagramAdapter(getSession()));
     return section.getKey();
   }
 
@@ -294,16 +289,14 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create a new Functional Breakdown diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_FUNCTIONAL_BREAKDOWN_DIAGRAM),
-        Messages.PhysicalArchitectureDashboardPage_NewFunctionalBreakdownDiagram_Title, null, null, new NewFunctionalBreakdownDiagramAdapter(
-            getCapellaProject(), getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewFunctionalBreakdownDiagram_Title, null, null, new NewFunctionalBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Blank Functional Dataflow diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_BLANK_FUNCTIONAL_DATAFLOW_DIAGRAM),
         Messages.PhysicalArchitectureDashboardPage_NewBlankFunctionalDataflowDiagram_Title, null, null, new NewBlankFunctionalDataflowDiagramAdapter(
-            getCapellaProject(), getSession()));
+            getSession()));
     // Create an hyper link for Create a new Functional Scenario diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_FUNCTIONAL_SCENARIO_DIAGRAM),
-        Messages.PhysicalArchitectureDashboardPage_NewFunctionalScenarioAction_Title, null, null, new NewFunctionalScenarioAdapter(getCapellaProject(),
-            getSession()));
+        Messages.PhysicalArchitectureDashboardPage_NewFunctionalScenarioAction_Title, null, null, new NewFunctionalScenarioAdapter(getSession()));
     return section.getKey();
   }
 
@@ -345,8 +338,8 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
     if (AbstractPreferencesInitializer.getBoolean(IPhysicalArchitecturePreferences.PREFERENCE_SECTION_TRANSVERSE_MODELING, true)) {
       _sectionTransverseModeling =
           createTransverseModeling(sectionContainer_p, managedForm_p, new TransverseModelingFilteringAction(this), new TransverseModelingDescriptionAction(
-              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(
-              getCapellaProject(), getSession()), new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()), null);
+              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getSession()), new NewStateMachineDiagramAdapter(getSession()),
+              new NewStateModeFunctionsMatrixAdapter(getSession()), null);
     }
   }
 
@@ -370,8 +363,7 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
     // Create an hyper link for Perform an automated transition of Logical Functions.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.PhysicalArchitectureDashboardPage_PerformAutomatedTransition_Title, null,
-        Messages.PhysicalArchitectureDashboardPage_PerformAutomatedTransition_Description, new PerformAutomatedTransitionAdapter(getCapellaProject(),
-            getSession()));
+        Messages.PhysicalArchitectureDashboardPage_PerformAutomatedTransition_Description, new PerformAutomatedTransitionAdapter(getSession()));
     // Create an hyper link for Create Traceability Matrix.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX),
         Messages.PhysicalArchitectureDashboardPage_CreateTraceabilityMatrix, null, null, new PopupMenuLinkAdapter() {
@@ -445,9 +437,8 @@ public class PhysicalArchitectureDashboardPage extends AbstractCapellaArchitectu
       if (value_p) {
         _sectionTransverseModeling =
             createTransverseModeling(getSectionContainer(), getManagedForm(), new TransverseModelingFilteringAction(this),
-                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(
-                    getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()),
-                new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()), null);
+                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(getSession()),
+                new NewStateMachineDiagramAdapter(getSession()), new NewStateModeFunctionsMatrixAdapter(getSession()), null);
         _sectionTransverseModeling.layout();// Force to have the toolbar correctly displayed.
       } else {
         _sectionTransverseModeling.dispose();

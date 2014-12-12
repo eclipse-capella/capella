@@ -11,15 +11,14 @@
 package org.polarsys.capella.core.dashboard.hyperlinkadapter.sa;
 
 import org.eclipse.sirius.business.api.session.Session;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.ModelCreationHelper;
+import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
-import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
  * New Interface scenario for SA.
@@ -30,8 +29,8 @@ public class NewScenarioDiagramAdapter extends AbstractNewDiagramHyperlinkAdapte
    * @param capellaProject_p
    * @param session_p
    */
-  public NewScenarioDiagramAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public NewScenarioDiagramAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**

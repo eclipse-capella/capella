@@ -21,13 +21,12 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
-import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.CapellaDashboardActivator;
+import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.la.AllocateLogicalFunctionToLogicalComponentsSectionDescriptionAction;
 import org.polarsys.capella.core.dashboard.actions.la.AllocateLogicalFunctionToLogicalComponentsSectionFilteringAction;
 import org.polarsys.capella.core.dashboard.actions.la.DefineLogicalComponentsActorsDescriptionAction;
@@ -64,10 +63,10 @@ import org.polarsys.capella.core.dashboard.hyperlinkadapter.la.PerformAutomatedC
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.la.PerformAutomatedTransitionAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.la.PerformAutomatedTransitionOfSystemActorsAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.la.PerformAutomatedTransitionOfSystemAdapter;
-import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
+import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
+import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 /**
  * Base class to implement the Logical Architecture dashboard page.
@@ -146,15 +145,14 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create a new Logical Architecture diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_AF_LOGICAL_ARCHITECTURE_DIAGRAM),
-        Messages.LogicalArchitectureDashboardPage_NewLogicalArchitectureDiagram_Title, null, null, new NewLogicalArchitectureDiagramAdapter(getCapellaProject(),
-            getSession()));
+        Messages.LogicalArchitectureDashboardPage_NewLogicalArchitectureDiagram_Title, null, null, new NewLogicalArchitectureDiagramAdapter(
+            getCapellaProject(), getSession()));
     // Create an hyper link for Create a new Exchange Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_EXCHANGE_SCENARIO),
         Messages.LogicalArchitectureDashboardPage_NewExchangeScenario_Title, null, null, new NewExchangeScenarioAdapter(getCapellaProject(), getSession()));
     // Create an hyper link for Create an new allocation Logical Component / Logical Function matrix.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_ALLOCATIONS_MATRIX),
-        Messages.LogicalArchitectureDashboardPage_NewAllocationLcLfMatrix_Title, null, null, new NewAllocationLcLfMatrixAdapter(getCapellaProject(),
-            getSession()));
+        Messages.LogicalArchitectureDashboardPage_NewAllocationLcLfMatrix_Title, null, null, new NewAllocationLcLfMatrixAdapter(getSession()));
     return section.getKey();
   }
 
@@ -182,15 +180,14 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransitionOfSystemActors_Title, null,
         Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransitionOfSystemActors_Description, new PerformAutomatedTransitionOfSystemActorsAdapter(
-            getCapellaProject(), getSession()));
+            getSession()));
     // Create an hyper link for Create a new Component Breakdown diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_LOGICAL_BREAKDOWN_DIAGRAM),
-        Messages.LogicalArchitectureDashboardPage_NewComponentBreakdownDiagram_Title, null, null, new NewComponentBreakdownDiagramAdapter(getCapellaProject(),
-            getSession()));
+        Messages.LogicalArchitectureDashboardPage_NewComponentBreakdownDiagram_Title, null, null, new NewComponentBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Logical Architecture diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_LOGICAL_ARCHITECTURE_DIAGRAM),
-        Messages.LogicalArchitectureDashboardPage_NewLogicalArchitectureDiagram_Title, null, null, new NewLogicalArchitectureDiagramAdapter(getCapellaProject(),
-            getSession()));
+        Messages.LogicalArchitectureDashboardPage_NewLogicalArchitectureDiagram_Title, null, null, new NewLogicalArchitectureDiagramAdapter(
+            getCapellaProject(), getSession()));
     return section.getKey();
   }
 
@@ -217,8 +214,7 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
     // Create an hyper link for Perform an automated transition of System Interfaces and Ports.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransitionOfSystem_Title, null,
-        Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransitionOfSystem_Description, new PerformAutomatedTransitionOfSystemAdapter(
-            getCapellaProject(), getSession()));
+        Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransitionOfSystem_Description, new PerformAutomatedTransitionOfSystemAdapter(getSession()));
     // Create an hyper link for Create a new internal interface diagram on the Logical System.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_INTERNAL_INTERFACE_DIAGRAM),
         Messages.LogicalArchitectureDashboardPage_NewInternalInterfaceDiagramOnLS_Title, null, null, new NewInternalInterfaceDiagramOnLSAdapter(
@@ -249,13 +245,13 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.LogicalArchitectureDashboardPage_PerformTransitionOfCapabilities_Title, null,
         Messages.LogicalArchitectureDashboardPage_PerformTransitionOfCapabilities_Description, new PerformAutomatedCapabilitiesTransitionAdapter(
-            getCapellaProject(), ModelQueryHelper.getSystemAnalysis(getCapellaProject()), getSession()));
+            ModelQueryHelper.getSystemAnalysis(getCapellaProject()), getSession()));
 
     // Create an hyper link for Execute a global refinement of all System Analysis Capabilities and Scenarios.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.LogicalArchitectureDashboardPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Title, null,
         Messages.LogicalArchitectureDashboardPage_ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenario_Description,
-        new ExecuteGlobalRefinementOfAllSaCapabilitiesAnsScenarioAdapter(getCapellaProject(), getSession()));
+        new ExecuteGlobalRefinementOfAllSaCapabilitiesAnsScenarioAdapter(getSession()));
     // Create an hyper link for Create a new Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_INTERFACE_SCENARIO),
         Messages.LogicalArchitectureDashboardPage_NewScenario_Title, null, null, new NewScenarioDiagramAdapter(getCapellaProject(), getSession()));
@@ -285,16 +281,14 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create a new Functional Breakdown diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_FUNCTIONAL_BREAKDOWN_DIAGRAM),
-        Messages.LogicalArchitectureDashboardPage_NewFunctionalBreakdownDiagram_Title, null, null, new NewFunctionalBreakdownDiagramAdapter(getCapellaProject(),
-            getSession()));
+        Messages.LogicalArchitectureDashboardPage_NewFunctionalBreakdownDiagram_Title, null, null, new NewFunctionalBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Blank Functional Dataflow diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_BLANK_FUNCTIONAL_DATAFLOW_DIAGRAM),
         Messages.LogicalArchitectureDashboardPage_NewBlankFunctionalDataflowDiagram_Title, null, null, new NewBlankFunctionalDataflowDiagramAdapter(
-            getCapellaProject(), getSession()));
+            getSession()));
     // Create an hyper link for Create a new Functional Scenario diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_FUNCTIONAL_SCENARIO_DIAGRAM),
-        Messages.LogicalArchitectureDashboardPage_NewFunctionalScenarioAction_Title, null, null, new NewFunctionalScenarioAdapter(getCapellaProject(),
-            getSession()));
+        Messages.LogicalArchitectureDashboardPage_NewFunctionalScenarioAction_Title, null, null, new NewFunctionalScenarioAdapter(getSession()));
     return section.getKey();
   }
 
@@ -336,8 +330,8 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
     if (AbstractPreferencesInitializer.getBoolean(ILogicalArchitecturePreferences.PREFERENCE_SECTION_TRANSVERSE_MODELING, true)) {
       _sectionTransverseModeling =
           createTransverseModeling(sectionContainer_p, managedForm_p, new TransverseModelingFilteringAction(this), new TransverseModelingDescriptionAction(
-              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(
-              getCapellaProject(), getSession()), new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()), null);
+              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getSession()), new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()),
+              new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()), null);
     }
   }
 
@@ -361,8 +355,7 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
     // Create an hyper link for Perform an automated transition of System Functions.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransition_Title, null,
-        Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransition_Description, new PerformAutomatedTransitionAdapter(getCapellaProject(),
-            getSession()));
+        Messages.LogicalArchitectureDashboardPage_PerformAutomatedTransition_Description, new PerformAutomatedTransitionAdapter(getSession()));
     // Create an hyper link for Create Traceability Matrix.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX),
         Messages.LogicalArchitectureDashboardPage_CreateTraceabilityMatrix_Title, null, null, new PopupMenuLinkAdapter() {
@@ -440,8 +433,8 @@ public class LogicalArchitectureDashboardPage extends AbstractCapellaArchitectur
       if (value_p) {
         _sectionTransverseModeling =
             createTransverseModeling(getSectionContainer(), getManagedForm(), new TransverseModelingFilteringAction(this),
-                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(
-                    getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()),
+                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(getSession()),
+                new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()),
                 new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()), null);
         _sectionTransverseModeling.layout();// Force to have the toolbar correctly displayed.
       } else if (_sectionTransverseModeling != null) {

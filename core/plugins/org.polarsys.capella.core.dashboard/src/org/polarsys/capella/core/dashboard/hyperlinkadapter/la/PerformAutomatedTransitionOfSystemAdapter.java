@@ -28,17 +28,17 @@ public class PerformAutomatedTransitionOfSystemAdapter extends AbstractHyperlink
    * @param capellaProject_p
    * @param session_p
    */
-  public PerformAutomatedTransitionOfSystemAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public PerformAutomatedTransitionOfSystemAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**
-   * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#linkPressed(org.eclipse.ui.forms.events.HyperlinkEvent, org.polarsys.capella.core.data.capellamodeller.Project, org.eclipse.sirius.business.api.session.Session)
+   * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#linkPressed(org.eclipse.ui.forms.events.HyperlinkEvent,
+   *      org.polarsys.capella.core.data.capellamodeller.Project, org.eclipse.sirius.business.api.session.Session)
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
-    TransactionHelper.getExecutionManager(capellaProject_p).execute(
-      new GenerateInterfaceDelegationsCommand(getModelElement(_project)));
+    TransactionHelper.getExecutionManager(capellaProject_p).execute(new GenerateInterfaceDelegationsCommand(getModelElement(_project)));
   }
 
   /**

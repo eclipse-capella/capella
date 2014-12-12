@@ -21,13 +21,12 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
-import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.CapellaDashboardActivator;
+import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.oa.AllocateOperationalActivitiesToActorsEntitiesRolesSectionDescriptionAction;
 import org.polarsys.capella.core.dashboard.actions.oa.AllocateOperationalActivitiesToActorsEntitiesRolesSectionFilteringAction;
 import org.polarsys.capella.core.dashboard.actions.oa.DefineActorsOperationalEntitiesCapabilitiesSectionDescriptionAction;
@@ -119,16 +118,13 @@ public class OperationalAnalysisDashboardPage extends AbstractCapellaArchitectur
     // Create an hyper link for Create a new Operational Entity Blank diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_ENTITY_BLANK_DIAGRAM),
         Messages.OperationalAnalysisDashboardPage_NewOperationalEntityBlankDiagramAction_Title, null, null, new NewOperationalEntityBlankDiagramAdapter(
-            getCapellaProject(), getSession()));
+            getSession()));
     // Create an hyper link for Create a new Role Blank diagram.
-    FormHelper
-        .createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_ROLE_BLANK_DIAGRAM),
-            Messages.OperationalAnalysisDashboardPage_NewRoleBlankDiagramAction_Title, null, null, new NewRoleBlankDiagramAdapter(getCapellaProject(),
-                getSession()));
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_ROLE_BLANK_DIAGRAM),
+        Messages.OperationalAnalysisDashboardPage_NewRoleBlankDiagramAction_Title, null, null, new NewRoleBlankDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Entity Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OA_DATAFLOW_SCENARIO),
-        Messages.OperationalAnalysisDashboardPage_NewInteractionScenarioAction_Title, null, null, new NewInteractionScenarioAdapter(getCapellaProject(),
-            getSession()));
+        Messages.OperationalAnalysisDashboardPage_NewInteractionScenarioAction_Title, null, null, new NewInteractionScenarioAdapter(getSession()));
     return section.getKey();
   }
 
@@ -153,14 +149,16 @@ public class OperationalAnalysisDashboardPage extends AbstractCapellaArchitectur
     FormToolkit toolkit = managedForm_p.getToolkit();
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create a new Operational Entity Breakdown diagram.
-    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM),
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite,
+        capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_ENTITY_BREAKDOWN_DIAGRAM),
         Messages.OperationalAnalysisDashboardPage_NewOperationalEntityBreakdownDiagramAction_Title, null, null,
-        new NewOperationalEntityBreakdownDiagramAdapter(getCapellaProject(), getSession()));
+        new NewOperationalEntityBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Operational Capabilities diagram.
-    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_CAPABILITY_BLANK_DIAGRAM),
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite,
+        capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_CAPABILITY_BLANK_DIAGRAM),
         Messages.OperationalAnalysisDashboardPage_NewOperationalCapabilitiesDiagramAction_Title, null, null, new NewOperationalCapabilityBlankDiagramAdapter(
-            getCapellaProject(), getSession()));
-   
+            getSession()));
+
     return section.getKey();
   }
 
@@ -188,16 +186,15 @@ public class OperationalAnalysisDashboardPage extends AbstractCapellaArchitectur
     FormHelper.createLinkWithDescription(toolkit, sectionComposite,
         capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_ACTIVITY_BREAKDOWN_DIAGRAM),
         Messages.OperationalAnalysisDashboardPage_NewOperationalActivityBreakdownDiagramAction_Title, null, null,
-        new NewOperationalActivityBreakdownDiagramAdapter(getCapellaProject(), getSession()));
+        new NewOperationalActivityBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Operational Interaction Blank diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite,
         capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OPERATIONAL_INTERACTION_BLANK_DIAGRAM),
         Messages.OperationalAnalysisDashboardPage_NewOperationalInteractionBlankDiagramAction_Title, null, null,
-        new NewOperationalInteractionBlankDiagramAdapter(getCapellaProject(), getSession()));
+        new NewOperationalInteractionBlankDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Activity Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_OA_ACTIVITY_SCENARIO),
-        Messages.OperationalAnalysisDashboardPage_NewActivityInteractionScenarioAction_Title, null, null, new NewActivityScenarioAdapter(getCapellaProject(),
-            getSession()));
+        Messages.OperationalAnalysisDashboardPage_NewActivityInteractionScenarioAction_Title, null, null, new NewActivityScenarioAdapter(getSession()));
     return section.getKey();
   }
 
@@ -230,9 +227,8 @@ public class OperationalAnalysisDashboardPage extends AbstractCapellaArchitectur
     if (AbstractPreferencesInitializer.getBoolean(IOperationalAnalysisPreferences.PREFERENCE_SECTION_TRANSVERSE_MODELING, true)) {
       _sectionTransverseModeling =
           createTransverseModeling(sectionContainer_p, managedForm_p, new TransverseModelingFilteringAction(this), new TransverseModelingDescriptionAction(
-              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(
-              getCapellaProject(), getSession()), new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()),
-              Messages.OperationalAnalysisDashboardPage_NewStateModeOperationalActivitiesMatrix_Title);
+              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getSession()), new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()),
+              new NewStateModeFunctionsMatrixAdapter(getSession()), Messages.OperationalAnalysisDashboardPage_NewStateModeOperationalActivitiesMatrix_Title);
     }
   }
 
@@ -272,9 +268,8 @@ public class OperationalAnalysisDashboardPage extends AbstractCapellaArchitectur
       if (value_p) {
         _sectionTransverseModeling =
             createTransverseModeling(getSectionContainer(), getManagedForm(), new TransverseModelingFilteringAction(this),
-                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(
-                    getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()),
-                new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()),
+                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(getSession()),
+                new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()), new NewStateModeFunctionsMatrixAdapter(getSession()),
                 Messages.OperationalAnalysisDashboardPage_NewStateModeOperationalActivitiesMatrix_Title);
         _sectionTransverseModeling.layout();// Force to have the toolbar correctly displayed.
       } else {

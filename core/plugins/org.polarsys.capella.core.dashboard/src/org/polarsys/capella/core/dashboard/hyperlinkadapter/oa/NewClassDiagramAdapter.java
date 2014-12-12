@@ -11,12 +11,11 @@
 package org.polarsys.capella.core.dashboard.hyperlinkadapter.oa;
 
 import org.eclipse.sirius.business.api.session.Session;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Describe the information exchanged between Functions and / or between Components with a New Class diagram
@@ -27,8 +26,8 @@ public class NewClassDiagramAdapter extends AbstractNewDiagramHyperlinkAdapter {
    * @param capellaProject_p
    * @param session_p
    */
-  public NewClassDiagramAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public NewClassDiagramAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**
@@ -36,7 +35,7 @@ public class NewClassDiagramAdapter extends AbstractNewDiagramHyperlinkAdapter {
    */
   @Override
   protected String getDiagramName() {
-    return IDiagramNameConstants.CLASS_BLANK_DIAGRAM_NAME;
+    return DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME;
   }
 
   /**

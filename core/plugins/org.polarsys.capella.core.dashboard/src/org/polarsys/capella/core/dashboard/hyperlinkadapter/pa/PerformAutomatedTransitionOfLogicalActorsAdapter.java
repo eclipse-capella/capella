@@ -13,13 +13,12 @@ package org.polarsys.capella.core.dashboard.hyperlinkadapter.pa;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
 import org.polarsys.capella.core.transition.system.topdown.ui.actions.ActorTransitionAction;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Perform an automated transition of Logical Actors.
@@ -30,12 +29,13 @@ public class PerformAutomatedTransitionOfLogicalActorsAdapter extends AbstractHy
    * @param capellaProject_p
    * @param session_p
    */
-  public PerformAutomatedTransitionOfLogicalActorsAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public PerformAutomatedTransitionOfLogicalActorsAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**
-   * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#linkPressed(org.eclipse.ui.forms.events.HyperlinkEvent, org.polarsys.capella.core.data.capellamodeller.Project, org.eclipse.sirius.business.api.session.Session)
+   * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#linkPressed(org.eclipse.ui.forms.events.HyperlinkEvent,
+   *      org.polarsys.capella.core.data.capellamodeller.Project, org.eclipse.sirius.business.api.session.Session)
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {

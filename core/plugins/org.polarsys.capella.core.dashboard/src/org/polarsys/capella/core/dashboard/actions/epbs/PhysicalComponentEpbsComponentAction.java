@@ -11,14 +11,13 @@
 package org.polarsys.capella.core.dashboard.actions.epbs;
 
 import org.eclipse.sirius.business.api.session.Session;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.AbstractCapellaAction;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
  * Physical Component / EPBS component
@@ -34,11 +33,12 @@ public class PhysicalComponentEpbsComponentAction extends AbstractCapellaAction 
   }
 
   /**
-   * @see org.polarsys.capella.core.dashboard.actions.AbstractCapellaAction#doRun(org.polarsys.capella.core.data.capellamodeller.Project, org.eclipse.sirius.business.api.session.Session)
+   * @see org.polarsys.capella.core.dashboard.actions.AbstractCapellaAction#doRun(org.polarsys.capella.core.data.capellamodeller.Project,
+   *      org.eclipse.sirius.business.api.session.Session)
    */
   @Override
   protected void doRun(Project capellaProject_p, Session session_p) {
-    new AbstractNewDiagramHyperlinkAdapter(capellaProject_p, session_p) {
+    new AbstractNewDiagramHyperlinkAdapter(session_p) {
       /**
        * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter#getDiagramName()
        */
@@ -46,6 +46,7 @@ public class PhysicalComponentEpbsComponentAction extends AbstractCapellaAction 
       protected String getDiagramName() {
         return IDiagramNameConstants.CONFIGURATION_ITEMS_PHYSICAL_COMPONENTS_DIAGRAM_NAME;
       }
+
       /**
        * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#getModelElement(org.polarsys.capella.core.data.capellamodeller.Project)
        */

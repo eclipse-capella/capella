@@ -11,12 +11,11 @@
 package org.polarsys.capella.core.dashboard.hyperlinkadapter.sa;
 
 import org.eclipse.sirius.business.api.session.Session;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
 
 /**
  * Create a new detailed interface diagram on the System.
@@ -27,8 +26,8 @@ public class NewDetailedInterfaceDiagramOnSystemAdapter extends AbstractNewDiagr
    * @param capellaProject_p
    * @param session_p
    */
-  public NewDetailedInterfaceDiagramOnSystemAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public NewDetailedInterfaceDiagramOnSystemAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**
