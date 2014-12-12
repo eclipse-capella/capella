@@ -184,7 +184,7 @@ public class CapellaServices {
     Session session = SessionManager.INSTANCE.getSession(context);
     IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(session));
     IModel currentElementModel = ILibraryManager.INSTANCE.getModel(context);
-    return sessionModel.equals(currentElementModel); //on interdit si le IModel de l'élément est pas celui de la session (ie donc est une librarie)
+    return sessionModel.equals(currentElementModel); // forbidden if the element's IModel is not the session's one (ie is a Library)
   }
 
   public List<EObject> ancestor(EObject object) {
@@ -1577,13 +1577,13 @@ public class CapellaServices {
    * Returns the logger services.
    * @return the logger services.
    */
-  //  public LoggerServices getLoggerServices() {
-  //    if (this.loggerServices == null) {
-  //      this.loggerServices = new LoggerActivationDeactivationAspect(new BasicLoggerServices());
-  //      ((LoggerActivationDeactivationAspect) this.loggerServices).setActive(LOGGER_ACTIVE);
-  //    }
-  //    return loggerServices;
-  //  }
+  // public LoggerServices getLoggerServices() {
+  // if (this.loggerServices == null) {
+  // this.loggerServices = new LoggerActivationDeactivationAspect(new BasicLoggerServices());
+  // ((LoggerActivationDeactivationAspect) this.loggerServices).setActive(LOGGER_ACTIVE);
+  // }
+  // return loggerServices;
+  // }
 
   public List<Component> getLogicalParent(EObject context, Component aComponent) {
     return ComponentExt.getDirectParents(aComponent);
@@ -2330,7 +2330,7 @@ public class CapellaServices {
    * @return a non-null constraint label
    */
   public String getConstraintLabel(Constraint constraint_p) {
-    return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint_p);
+    return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint_p, constraint_p.getName());
   }
 
   public String getFCInvolvmentLabel(FunctionalChainInvolvement fci_p, DDiagram diagram_p) {

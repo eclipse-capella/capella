@@ -13,13 +13,12 @@ package org.polarsys.capella.core.dashboard.hyperlinkadapter.la;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
 import org.polarsys.capella.core.transition.system.topdown.ui.actions.FunctionalTransitionAction;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Perform an automated transition of System Functions
@@ -30,8 +29,8 @@ public class PerformAutomatedTransitionAdapter extends AbstractHyperlinkAdapter 
    * @param capellaProject_p
    * @param session_p
    */
-  public PerformAutomatedTransitionAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+  public PerformAutomatedTransitionAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**

@@ -11,12 +11,11 @@
 package org.polarsys.capella.core.dashboard.hyperlinkadapter.la;
 
 import org.eclipse.sirius.business.api.session.Session;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.ModelCreationHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Create a new Exchange Scenario
@@ -28,7 +27,7 @@ public class NewExchangeScenarioAdapter extends AbstractNewDiagramHyperlinkAdapt
    * @param session_p
    */
   public NewExchangeScenarioAdapter(Project capellaProject_p, Session session_p) {
-    super(capellaProject_p, session_p);
+    super(session_p);
   }
 
   /**

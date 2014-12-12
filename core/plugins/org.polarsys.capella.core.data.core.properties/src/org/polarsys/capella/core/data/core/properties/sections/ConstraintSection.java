@@ -137,7 +137,7 @@ public class ConstraintSection extends NamedElementSection {
       }
 
       public void widgetDefaultSelected(SelectionEvent e_p) {
-        /*nop*/
+        /* nop */
       }
     });
 
@@ -157,7 +157,7 @@ public class ConstraintSection extends NamedElementSection {
       }
 
       public void widgetDefaultSelected(SelectionEvent e_p) {
-        /*nop*/
+        /* nop */
       }
     });
 
@@ -171,7 +171,7 @@ public class ConstraintSection extends NamedElementSection {
     super.loadData(capellaElement_p);
     _constraint = (Constraint) capellaElement_p;
     _constrainedElementsField.loadData(_constraint, ModellingcorePackage.eINSTANCE.getAbstractConstraint_ConstrainedElements());
-    _specificationText.setText(CapellaEmbeddedLinkedTextEditorInput.getDefaultText(_constraint));
+    _specificationText.setText(CapellaEmbeddedLinkedTextEditorInput.getDefaultText(_constraint, null));
   }
 
   /**

@@ -277,6 +277,6 @@ public class StateTransitionTriggerField extends ContainmentTableField {
   }
 
   private static String getConstraintLabel(Constraint constraint_p) {
-    return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint_p);
+    return CapellaEmbeddedLinkedTextEditorInput.getDefaultText(constraint_p, constraint_p.getName());
   }
 }

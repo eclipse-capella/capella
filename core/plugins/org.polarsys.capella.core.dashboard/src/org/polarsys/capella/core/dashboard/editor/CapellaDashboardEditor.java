@@ -55,6 +55,7 @@ import org.polarsys.capella.core.dashboard.editor.pages.PhysicalArchitectureDash
 import org.polarsys.capella.core.dashboard.editor.pages.SystemAnalysisDashboardPage;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
 import org.polarsys.capella.core.sirius.ui.editor.CapellaDashboardEditorInput;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
@@ -110,10 +111,12 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
     }
     // Add a control listener to force reflow
     getContainer().addControlListener(new ControlListener() {
+      @Override
       public void controlMoved(ControlEvent e_p) {
         // Do nothing.
       }
 
+      @Override
       public void controlResized(ControlEvent e_p) {
         IFormPage activePageInstance = CapellaDashboardEditor.this.getActivePageInstance();
         IManagedForm managedForm = activePageInstance.getManagedForm();
@@ -129,7 +132,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
    * @return a not <code>null</code> instance.
    */
   protected IFormPage createDocumentationPage() {
-    //return new CapellaDocumentationDashboardPage(this);
+    // return new CapellaDocumentationDashboardPage(this);
     List<IConfigurationElement> providers =
         Arrays.asList(ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.dashboard", "documentationDashboardPageProvider"));
     for (IConfigurationElement configurationElement : providers) {
@@ -243,6 +246,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
   /**
    * {@inheritDoc}
    */
+  @Override
   public String getContributorId() {
     return CapellaUIPropertiesPlugin.PROPERTIES_CONTRIBUTOR;
   }
@@ -320,6 +324,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
       /**
        * {@inheritDoc}
        */
+      @Override
       public void partActivated(IWorkbenchPart part_p) {
         if (CapellaDashboardEditor.this == part_p) {
           IFormPage activePageInstance = CapellaDashboardEditor.this.getActivePageInstance();
@@ -334,6 +339,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
        * {@inheritDoc}
        */
 
+      @Override
       public void partBroughtToTop(IWorkbenchPart part_p) {
         // Do nothing.
       }
@@ -342,6 +348,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
        * {@inheritDoc}
        */
 
+      @Override
       public void partClosed(IWorkbenchPart part_p) {
         // Do nothing.
       }
@@ -350,6 +357,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
        * {@inheritDoc}
        */
 
+      @Override
       public void partDeactivated(IWorkbenchPart part_p) {
         // Do nothing.
       }
@@ -357,6 +365,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
       /**
        * {@inheritDoc}
        */
+      @Override
       public void partOpened(IWorkbenchPart part_p) {
         // Do nothing.
       }
@@ -407,6 +416,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session, int)
    */
+  @Override
   public void notify(Session session_p, int notification_p) {
     // Filter on event for other sessions.
     if (!session_p.equals(getEditorInput().getSession())) {
@@ -419,6 +429,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
           /**
            * @see java.lang.Runnable#run()
            */
+          @Override
           public void run() {
             // Close this editor.
             close(false);
@@ -430,6 +441,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
           /**
            * @see java.lang.Runnable#run()
            */
+          @Override
           @SuppressWarnings("synthetic-access")
           public void run() {
             // Handle pages to mark them as dirty.
@@ -452,6 +464,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
           /**
            * {@inheritDoc}
            */
+          @Override
           public void run() {
             IManagedForm headerForm = getHeaderForm();
             if (null != headerForm) {
@@ -460,6 +473,9 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
           }
         };
       break;
+      case SessionListener.REPLACED:
+        this.setInput(new CapellaDashboardEditorInput(session_p, SessionHelper.getCapellaProject(session_p)));
+        notifyUpdatedSession(session_p);
     }
     if (null != runnable) {
       getEditorSite().getShell().getDisplay().asyncExec(runnable);
@@ -469,6 +485,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyAddSession(org.eclipse.sirius.business.api.session.Session)
    */
+  @Override
   public void notifyAddSession(Session newSession_p) {
     // Do nothing.
   }
@@ -476,6 +493,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyRemoveSession(org.eclipse.sirius.business.api.session.Session)
    */
+  @Override
   public void notifyRemoveSession(Session removedSession_p) {
     // Do nothing.
   }
@@ -506,6 +524,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.description.Viewpoint)
    */
+  @Override
   public void viewpointDeselected(Viewpoint deselectedViewpoint_p) {
     // Do nothing.
   }
@@ -513,6 +532,7 @@ public class CapellaDashboardEditor extends SharedHeaderFormEditor implements Se
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.description.Viewpoint)
    */
+  @Override
   public void viewpointSelected(Viewpoint selectedViewpoint_p) {
     // Do nothing.
   }

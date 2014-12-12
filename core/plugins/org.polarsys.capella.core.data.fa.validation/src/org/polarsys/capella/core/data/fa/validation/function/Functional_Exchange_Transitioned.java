@@ -15,14 +15,15 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionPort;
-import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionPort;
+import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class Functional_Exchange_Transitioned extends AbstractValidationRule {
 
@@ -35,8 +36,13 @@ public class Functional_Exchange_Transitioned extends AbstractValidationRule {
     // Test values initialization
     boolean targetTest = false;
     boolean sourceTest = false;
-
     EObject eObj = ctx_p.getTarget();
+
+    // Don't check the rule in the Operational Analysis level because there is no transition available above this level.
+    if (SystemEngineeringExt.findArchitecture(eObj) instanceof OperationalAnalysis) {
+      return ctx_p.createSuccessStatus();
+    }
+
     if (eObj instanceof FunctionalExchange) {
       // Typing the object
       FunctionalExchange functionalExchange = (FunctionalExchange) eObj;

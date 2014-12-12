@@ -53,8 +53,17 @@ public abstract class AbstractNewDiagramHyperlinkAdapter extends AbstractHyperli
    * @param capellaProject_p
    * @param session_p
    */
+  @Deprecated
   public AbstractNewDiagramHyperlinkAdapter(Project capellaProject_p, Session session_p) {
     super(capellaProject_p, session_p);
+  }
+
+  /**
+   * Constructor.
+   * @param session_p
+   */
+  public AbstractNewDiagramHyperlinkAdapter(Session session_p) {
+    super(session_p);
   }
 
   /**
@@ -64,6 +73,7 @@ public abstract class AbstractNewDiagramHyperlinkAdapter extends AbstractHyperli
   protected boolean createDiagram(final Project capellaProject_p, final Session session_p) {
     final boolean flag[] = { true };
     AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         //
         ModelElement modelElement = getModelElement(capellaProject_p);
@@ -78,26 +88,24 @@ public abstract class AbstractNewDiagramHyperlinkAdapter extends AbstractHyperli
           } else {
             NewRepresentationAction newDiagramAction = new NewRepresentationAction(diagramRepresentation, modelElement, session_p);
             newDiagramAction.run();
-           	if (newDiagramAction.isCanceled())
-           		throw new OperationCanceledException(); // rollback
-           	
-           	
+            if (newDiagramAction.isCanceled()) {
+              throw new OperationCanceledException(); // rollback
+            }
+
           }
         }
       }
-      
-      
+
     };
 
     try {
-    	TransactionHelper.getExecutionManager(session_p).execute(cmd);
-	} catch (OperationCanceledException e) {
-		return true;
-	} 
+      TransactionHelper.getExecutionManager(session_p).execute(cmd);
+    } catch (OperationCanceledException e) {
+      return true;
+    }
     return true;
   }
-  
-  
+
   // Gets the default representation name.
   protected String computeDefaultName(EObject eObject_p, RepresentationDescription repDescription_p) {
     // Gets the interpreter.
@@ -122,54 +130,53 @@ public abstract class AbstractNewDiagramHyperlinkAdapter extends AbstractHyperli
 
     return newName;
   }
+
   /**
    * Create a diagram based on {@link #getDiagramRepresentation()}, {@link #getModelElement(Project))} and the current session.<br>
    * Must be in the UI thread.
    */
   protected boolean createNEWDiagram(final Project capellaProject_p, final Session session_p) {
-    final boolean isAutorized[] = {false} ;
+    final boolean isAutorized[] = { false };
     //
     final ModelElement modelElement = getModelElement(capellaProject_p);
     final RepresentationDescription diagramRepresentation = getDiagramRepresentation(session_p, modelElement);
- 
-    // 1 - Computes the default representation name.
-    String defaultName = modelElement!=null ? computeDefaultName(modelElement, diagramRepresentation): null;
-    AbstractReadWriteCommand cmd = null; 
-    if (defaultName!=null) {
-    	String dialogTitle = "Type representation name"; //$NON-NLS-1$
-        Shell activeShell = Display.getDefault().getActiveShell();
-        InputDialog representationNameDlg = new InputDialog(activeShell, dialogTitle, dialogTitle, defaultName, null);
-        
-        if (Window.CANCEL == representationNameDlg.open() ) {
-        	
-        	 isAutorized[0] = false  ;
-        	 
-    	}else{
-    		defaultName = representationNameDlg.getValue();
-   	          // Preconditions
-   	          if ((null == diagramRepresentation) || !DialectManager.INSTANCE.canCreate(modelElement, diagramRepresentation)) {
-    	        	  isAutorized[0] = false;
-   	          } else {
-   	        	   cmd = new AbstractReadWriteCommand() {
- 	        	      public void run() {
- 	        	    	  isAutorized[0]= true ;
-    	        	    	NewRepresentationAction newDiagramAction = new NewRepresentationAction(diagramRepresentation, modelElement, session_p);
-    	      	            newDiagramAction.run();
 
-    	        	       
-    	        	      }
-   	        	    };
-    	            
-   	          }
-    	}
-		
-	}
-    
-    if (isAutorized[0]&& cmd!=null) {
-        TransactionHelper.getExecutionManager(session_p).execute(cmd);
-	}
-    
-   
+    // 1 - Computes the default representation name.
+    String defaultName = modelElement != null ? computeDefaultName(modelElement, diagramRepresentation) : null;
+    AbstractReadWriteCommand cmd = null;
+    if (defaultName != null) {
+      String dialogTitle = "Type representation name"; //$NON-NLS-1$
+      Shell activeShell = Display.getDefault().getActiveShell();
+      InputDialog representationNameDlg = new InputDialog(activeShell, dialogTitle, dialogTitle, defaultName, null);
+
+      if (Window.CANCEL == representationNameDlg.open()) {
+
+        isAutorized[0] = false;
+
+      } else {
+        defaultName = representationNameDlg.getValue();
+        // Preconditions
+        if ((null == diagramRepresentation) || !DialectManager.INSTANCE.canCreate(modelElement, diagramRepresentation)) {
+          isAutorized[0] = false;
+        } else {
+          cmd = new AbstractReadWriteCommand() {
+            @Override
+            public void run() {
+              isAutorized[0] = true;
+              NewRepresentationAction newDiagramAction = new NewRepresentationAction(diagramRepresentation, modelElement, session_p);
+              newDiagramAction.run();
+
+            }
+          };
+
+        }
+      }
+
+    }
+
+    if (isAutorized[0] && (cmd != null)) {
+      TransactionHelper.getExecutionManager(session_p).execute(cmd);
+    }
 
     return isAutorized[0];
   }

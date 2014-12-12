@@ -21,13 +21,12 @@ import org.eclipse.ui.forms.editor.FormEditor;
 import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-
-import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
 import org.polarsys.capella.common.mdsofa.common.misc.Couple;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
-import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.CapellaDashboardActivator;
+import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.sa.AllocateSystemFunctionToSystemAndActorsSectionDescriptionAction;
 import org.polarsys.capella.core.dashboard.actions.sa.AllocateSystemFunctionToSystemAndActorsSectionFilteringAction;
 import org.polarsys.capella.core.dashboard.actions.sa.DefineActorsMissionsCapabilitiesSectionDescriptionAction;
@@ -66,10 +65,10 @@ import org.polarsys.capella.core.dashboard.hyperlinkadapter.sa.NewSystemFunction
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.sa.PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.sa.PerformAutomatedTransitionAdapter;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.sa.PerformOpEntitiesAndActorsTransitionAdapter;
-import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.capellamodeller.Project;
-import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
+import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
+import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 /**
  * Base class to implement the System Analysis dashboard page.
@@ -148,10 +147,10 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
     // Create an hyper link for Create Actors and manage allocations with a new System Architecture diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_AF_SYSTEM_ARCHITECTURE_DIAGRAM),
         Messages.SystemAnalysisDashboardPage_NewActorsAllocationsDiagram_Title, Messages.SystemAnalysisDashboardPage_NewActorsAllocationsDiagram_Description,
-        null, new NewActorsAllocationsDiagramAdapter(getCapellaProject(), getSession()));
+        null, new NewActorsAllocationsDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Exchange Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_EXCHANGE_SCENARIO),
-        Messages.SystemAnalysisDashboardPage_NewExchangeScenario_Title, null, null, new NewExchangeScenarioAdapter(getCapellaProject(), getSession()));
+        Messages.SystemAnalysisDashboardPage_NewExchangeScenario_Title, null, null, new NewExchangeScenarioAdapter(getSession()));
     return section.getKey();
   }
 
@@ -179,14 +178,14 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
     // Create an hyper link for Execute a transition of all System Analisys Capabilities to a Logical Architecture.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.SystemAnalysisDashboardPage_PerformTransitionOfCapabilities_Title, null,
-        Messages.SystemAnalysisDashboardPage_PerformTransitionOfCapabilities_Description, new PerformAutomatedCapabilitiesTransitionAdapter(getCapellaProject(),
-            ModelQueryHelper.getOperationalAnalysis(getCapellaProject()), getSession()));
+        Messages.SystemAnalysisDashboardPage_PerformTransitionOfCapabilities_Description,
+        new PerformAutomatedCapabilitiesTransitionAdapter(ModelQueryHelper.getOperationalAnalysis(getCapellaProject()), getSession()));
 
     // Create an hyper link for Contextually create new System Actors from Operational Entities / Actors.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.SystemAnalysisDashboardPage_SystemAnalysisDashboardPage_NewSystemActorsFromOperationalEntitiesActors_Title, null,
         Messages.SystemAnalysisDashboardPage_SystemAnalysisDashboardPage_NewSystemActorsFromOperationalEntitiesActors_Description,
-        new PerformOpEntitiesAndActorsTransitionAdapter(getCapellaProject(), getSession()));
+        new PerformOpEntitiesAndActorsTransitionAdapter(getSession()));
 
     // Create an hyper link for Contextually create new System Actors from Operational Entities / Actors.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
@@ -205,8 +204,7 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
 
     // Create an hyper link for Create a new Contextual System Actors diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_CONTEXTUAL_SYSTEM_ACTORS_DIAGRAM),
-        Messages.SystemAnalysisDashboardPage_NewContextualSystemActorsDiagram_Title, null, null, new NewContextualSystemActorsDiagramAdapter(
-            getCapellaProject(), getSession()));
+        Messages.SystemAnalysisDashboardPage_NewContextualSystemActorsDiagram_Title, null, null, new NewContextualSystemActorsDiagramAdapter(getSession()));
     // Create an hyper link for Create a new mission and / or capability diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_MISSION_AND_OR_CAPABILITY_DIAGRAM),
         Messages.SystemAnalysisDashboardPage_NewMissionCapabilityDiagram_Title, null, null, new PopupMenuLinkAdapter() {
@@ -222,7 +220,7 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
     // Create a System Actors / Operational Entities Traceability Matrix
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX),
         Messages.SystemAnalysisDashboardPage_NewSystemActorsOperationalEntitiesAction_Title, null, null, new NewSystemActorsOperationalEntitiesMatrixAdapter(
-            getCapellaProject(), getSession()));
+            getSession()));
     return section.getKey();
   }
 
@@ -250,18 +248,20 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.SystemAnalysisDashboardPage_PerformAutomatedTransitionOfSystem_Title, null,
         Messages.SystemAnalysisDashboardPage_PerformAutomatedTransitionOfSystem_Description, new PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter(
-            getCapellaProject(), getSession()));
+            getSession()));
     // Create an hyper link for Create a new detailed interface diagram on the System.
-    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_DETAILED_INTERFACE_DIAGRAM_ON_SYSTEM),
-        Messages.SystemAnalysisDashboardPage_NewDetailedInterfaceDiagramOnSystem_Title, null, null, new NewDetailedInterfaceDiagramOnSystemAdapter(
-            getCapellaProject(), getSession()));
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite,
+        capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_DETAILED_INTERFACE_DIAGRAM_ON_SYSTEM),
+        Messages.SystemAnalysisDashboardPage_NewDetailedInterfaceDiagramOnSystem_Title, null, null,
+        new NewDetailedInterfaceDiagramOnSystemAdapter(getSession()));
     // Create an hyper link for Create a new external interface diagram on the System.
-    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_EXTERNAL_INTERFACE_DIAGRAM_ON_SYSTEM),
-        Messages.SystemAnalysisDashboardPage_NewExternalInterfaceDiagramOnSystem_Title, null, null, new NewExternalInterfaceDiagramOnSystemAdapter(
-            getCapellaProject(), getSession()));
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite,
+        capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_EXTERNAL_INTERFACE_DIAGRAM_ON_SYSTEM),
+        Messages.SystemAnalysisDashboardPage_NewExternalInterfaceDiagramOnSystem_Title, null, null,
+        new NewExternalInterfaceDiagramOnSystemAdapter(getSession()));
     // Create an hyper link for Create a new Scenario.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_INTERFACE_SCENARIO),
-        Messages.SystemAnalysisDashboardPage_NewScenario_Title, null, null, new NewScenarioDiagramAdapter(getCapellaProject(), getSession()));
+        Messages.SystemAnalysisDashboardPage_NewScenario_Title, null, null, new NewScenarioDiagramAdapter(getSession()));
     return section.getKey();
   }
 
@@ -286,15 +286,13 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
     // Create an hyper link for Create a new Functional Breakdown diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_FUNCTIONAL_BREAKDOWN_DIAGRAM),
-        Messages.SystemAnalysisDashboardPage_NewFunctionalBreakdownDiagram_Title, null, null, new NewFunctionalBreakdownDiagramAdapter(getCapellaProject(),
-            getSession()));
+        Messages.SystemAnalysisDashboardPage_NewFunctionalBreakdownDiagram_Title, null, null, new NewFunctionalBreakdownDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Blank Functional Dataflow diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_BLANK_FUNCTIONAL_DATAFLOW_DIAGRAM),
-        Messages.SystemAnalysisDashboardPage_NewBlankDataflowDiagram_Title, null, null, new NewBlankFunctionalDataflowDiagramAdapter(getCapellaProject(),
-            getSession()));
+        Messages.SystemAnalysisDashboardPage_NewBlankDataflowDiagram_Title, null, null, new NewBlankFunctionalDataflowDiagramAdapter(getSession()));
     // Create an hyper link for Create a new Functional Scenario diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_FUNCTIONAL_SCENARIO_DIAGRAM),
-        Messages.SystemAnalysisDashboardPage_NewFunctionalScenarioAction_Title, null, null, new NewFunctionalScenarioAdapter(getCapellaProject(), getSession()));
+        Messages.SystemAnalysisDashboardPage_NewFunctionalScenarioAction_Title, null, null, new NewFunctionalScenarioAdapter(getSession()));
     return section.getKey();
   }
 
@@ -331,8 +329,8 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
     if (AbstractPreferencesInitializer.getBoolean(ISystemAnalysisPreferences.PREFERENCE_SECTION_TRANSVERSE_MODELING, true)) {
       _sectionTransverseModeling =
           createTransverseModeling(sectionContainer_p, managedForm_p, new TransverseModelingFilteringAction(this), new TransverseModelingDescriptionAction(
-              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(
-              getCapellaProject(), getSession()), new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()), null);
+              sectionContainer_p.getShell()), new NewClassDiagramAdapter(getSession()), new NewStateMachineDiagramAdapter(getSession()),
+              new NewStateModeFunctionsMatrixAdapter(getSession()), null);
     }
   }
 
@@ -358,11 +356,11 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
     // Perform Activity to System Function Transition.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_PERFORM_AUTOMATED_TRANSITION),
         Messages.SystemAnalysisDashboardPage_PerformAutomatedTransition_Title, null,
-        Messages.SystemAnalysisDashboardPage_PerformAutomatedTransition_Description, new PerformAutomatedTransitionAdapter(getCapellaProject(), getSession()));
+        Messages.SystemAnalysisDashboardPage_PerformAutomatedTransition_Description, new PerformAutomatedTransitionAdapter(getSession()));
     // Create a System Functions / Operational Activities Traceability Matrix
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX),
         Messages.SystemAnalysisDashboardPage_NewSystemFunctionsOperationalActivitiesTraceabilityMatrix_Title, null, null,
-        new NewSystemFunctionsOperationalActivitiesMatrixAdapter(getCapellaProject(), getSession()));
+        new NewSystemFunctionsOperationalActivitiesMatrixAdapter(getSession()));
     return section.getKey();
   }
 
@@ -417,9 +415,8 @@ public class SystemAnalysisDashboardPage extends AbstractCapellaArchitectureDash
       if (value_p) {
         _sectionTransverseModeling =
             createTransverseModeling(getSectionContainer(), getManagedForm(), new TransverseModelingFilteringAction(this),
-                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(
-                    getCapellaProject(), getSession()), new NewStateMachineDiagramAdapter(getCapellaProject(), getSession()),
-                new NewStateModeFunctionsMatrixAdapter(getCapellaProject(), getSession()), null);
+                new TransverseModelingDescriptionAction(PlatformUI.getWorkbench().getDisplay().getActiveShell()), new NewClassDiagramAdapter(getSession()),
+                new NewStateMachineDiagramAdapter(getSession()), new NewStateModeFunctionsMatrixAdapter(getSession()), null);
         _sectionTransverseModeling.layout();// Force to have the toolbar correctly displayed.
       } else {
         _sectionTransverseModeling.dispose();

@@ -13,34 +13,32 @@ package org.polarsys.capella.core.dashboard.hyperlinkadapter.la;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
-
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
 import org.polarsys.capella.core.transition.system.topdown.ui.actions.CapabilityTransitionAction;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * Perform an automated transition of Capabilities from source architecture to target architecture
  */
 public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyperlinkAdapter {
-	
-	/*
+
+  /*
 	 * 
 	 */
-	private ModelElement transitionSourceModel ;
-	
-	
+  private ModelElement transitionSourceModel;
+
   /**
    * Constructor.
    * @param capellaProject_p
    * @param sourceArchitecture
    * @param session_p
    */
-  public PerformAutomatedCapabilitiesTransitionAdapter(Project capellaProject_p, BlockArchitecture sourceArchitecture ,Session session_p) {
-    super(capellaProject_p, session_p);
-    this.transitionSourceModel = sourceArchitecture ;
+  public PerformAutomatedCapabilitiesTransitionAdapter(BlockArchitecture sourceArchitecture, Session session_p) {
+    super(session_p);
+    this.transitionSourceModel = sourceArchitecture;
   }
 
   /**
@@ -49,7 +47,7 @@ public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyper
    */
   @Override
   protected void linkPressed(HyperlinkEvent event, Project capellaProject_p, Session session_p) {
-	CapabilityTransitionAction action = new CapabilityTransitionAction();
+    CapabilityTransitionAction action = new CapabilityTransitionAction();
     action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(_project)));
     action.run(TransitionAction.DEFAULT_ACTION);
   }
