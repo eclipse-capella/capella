@@ -20,11 +20,13 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
@@ -2463,7 +2465,8 @@ public class ComponentExt {
   }
 
   /**
-   * From a component, returns its entire hierarchy as displayed in a blank architecture, with sub-component, as well as deployed them for the components of the physical level
+   * From a component, returns its entire hierarchy as displayed in a blank architecture, with sub-component, as well as deployed them for the components of the
+   * physical level
    * @param component_p the root component
    * @return
    */
@@ -2484,6 +2487,78 @@ public class ComponentExt {
       }
     }
     return result;
+  }
+
+  /**
+   * Removes duplicate in an EList of interfaces.
+   * @param list
+   * @return
+   */
+  public static Collection<Interface> removeDuplicate(EList<Interface> list) {
+    Collection<Interface> newList = new ArrayList<Interface>();
+    for (Interface itf : list) {
+      if (!newList.contains(itf)) {
+        newList.add(itf);
+      }
+    }
+    return newList;
+  }
+
+  public static IStatus isRequiredorUsedItfDelegated(IValidationContext ctx, LogicalComponent lcomp, Interface itf) {
+    boolean found = false;
+
+    if (!ComponentExt.isComposite(lcomp)) {
+      return ctx.createSuccessStatus();
+    }
+
+    EList<Partition> ownedPartitions = lcomp.getOwnedPartitions();
+    Iterator<Partition> iterator = ownedPartitions.iterator();
+    while (iterator.hasNext()) {
+      Partition next = iterator.next();
+      if (next instanceof Part) {
+        Part part = (Part) next;
+        AbstractType abstractType = part.getAbstractType();
+        if (abstractType instanceof LogicalComponent) {
+          LogicalComponent lson = (LogicalComponent) abstractType;
+          if (lson.getRequiredInterfaces().contains(itf) || lson.getUsedInterfaces().contains(itf)) {
+            found = true;
+          }
+        }
+      }
+    }
+    if (!found) {
+      return ctx.createFailureStatus(new Object[] { lcomp.getName(), itf.getName() });
+    }
+    return ctx.createSuccessStatus();
+
+  }
+
+  public static IStatus isProvidedorImplementedItfDelegated(IValidationContext ctx, Component lcomp, Interface itf) {
+    boolean found = false;
+
+    if (!ComponentExt.isComposite(lcomp)) {
+      return ctx.createSuccessStatus();
+    }
+
+    EList<Partition> ownedPartitions = lcomp.getOwnedPartitions();
+    Iterator<Partition> iterator = ownedPartitions.iterator();
+    while (iterator.hasNext()) {
+      Partition next = iterator.next();
+      if (next instanceof Part) {
+        Part part = (Part) next;
+        AbstractType abstractType = part.getAbstractType();
+        if (abstractType instanceof Component) {
+          Component lson = (Component) abstractType;
+          if (lson.getProvidedInterfaces().contains(itf) || lson.getImplementedInterfaces().contains(itf)) {
+            found = true;
+          }
+        }
+      }
+    }
+    if (!found) {
+      return ctx.createFailureStatus(new Object[] { lcomp.getName(), itf.getName() });
+    }
+    return ctx.createSuccessStatus();
   }
 
 }
