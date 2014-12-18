@@ -10793,7 +10793,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Description Summary" headerLabelExpression="Summary" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="descriptionSummary" labelExpression="feature:summary">
+      <ownedColumnMappings name="Summary" headerLabelExpression="Summary" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="summary" labelExpression="feature:summary">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
