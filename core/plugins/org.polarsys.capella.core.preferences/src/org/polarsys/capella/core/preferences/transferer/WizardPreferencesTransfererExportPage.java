@@ -208,7 +208,7 @@ public class WizardPreferencesTransfererExportPage extends WizardPreferencesPage
   @Override
   public void createControl(Composite parent) {
     super.createControl(parent);
-    PlatformUI.getWorkbench().getHelpSystem().setHelp(getControl(), IWorkbenchHelpContextIds.PREFERENCES_EXPORT_WIZARD_PAGE);
+    PlatformUI.getWorkbench().getHelpSystem().setHelp(getControl(), IWorkbenchHelpContextIds.EXPORT_WIZARD_SELECTION_WIZARD_PAGE);
 
   }
 

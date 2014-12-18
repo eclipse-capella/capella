@@ -17,7 +17,6 @@
     </steps>
     <steps xsi:type="buildstep:InstallStep" xmi:id="_M-34IKBpEeKMQb8Rddw1Vg" name="Install Eclipse Basics" description="" id="product/capella/eclipse" profile="SDKProfile" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
       <updateSiteUrls>${primary_eclipseUpdateSite}</updateSiteUrls>
-      <updateSiteUrls>${secondary_eclipseUpdateSite}</updateSiteUrls>
       <featureNames>org.eclipse.emf.sdk</featureNames>
       <featureNames>org.eclipse.emf.query.sdk</featureNames>
       <featureNames>org.eclipse.emf.transaction.sdk</featureNames>
@@ -29,7 +28,7 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_xh-N4KG3EeKjzsUfibKjCg" name="FinalizeTP">
     <properties xmi:id="_P5DYAl4qEeGjYKPu-vkVIA" key="resourcesDir" value="${relengDir}/../../../resources/${eclipseCodeName}" type="INLINED"/>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="__Fm_AKEoEeKMQb8Rddw1Vg" name="UpdateEclipseINI">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="__Fm_AKEoEeKMQb8Rddw1Vg" name="UpdateEclipseINI" enabled="false">
       <steps xsi:type="buildfile:DeleteStep" xmi:id="_R8q_4E2zEeGhsO9pPJ3cDA" name="Remove eclipse.exe and eclipse.ini">
         <filePaths>${product}/capella/eclipse/eclipse.exe</filePaths>
         <filePaths>${product}/capella/eclipse/eclipse.ini</filePaths>
@@ -39,7 +38,7 @@
         <filePaths>${resourcesDir}/${os}-${arch}/eclipse.ini</filePaths>
       </steps>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_8DmKEKEpEeKMQb8Rddw1Vg" name="UpdateConfigINI">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_8DmKEKEpEeKMQb8Rddw1Vg" name="UpdateConfigINI" enabled="false">
       <steps xsi:type="buildfile:DeleteStep" xmi:id="_8DmKEaEpEeKMQb8Rddw1Vg" name="Remove config.ini">
         <filePaths>${product}/capella/eclipse/configuration/config.ini</filePaths>
       </steps>

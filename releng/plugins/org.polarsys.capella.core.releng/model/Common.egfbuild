@@ -14,7 +14,7 @@
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_iIet4IIIEeSlQoYFN3Mlmg" folderName="releng/plugins">
         <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
       </buildLocations>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_THW2wFn1EeSlpue7JHXw9A" url="${eclipse.download.prefix}/releases/juno"/>
+      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_THW2wFn1EeSlpue7JHXw9A" url="${eclipse.download.prefix}/releases/mars"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_hldPEFqlEeSQoMAm1P90CA" url="${site_Kitalpha}"/>
       <components xsi:type="buildstep:Feature" xmi:id="_QvPv4Fn1EeSlpue7JHXw9A" id="org.polarsys.capella.core.egf.feature"/>
     </steps>
@@ -97,7 +97,6 @@
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_Sirius}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_P2rDEAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_XCyCgKBoEeKMQb8Rddw1Vg" suffix="" url="${primary_eclipseUpdateSite}"/>
-        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_SVCF0JMfEeO7u6f29_-yFQ" suffix="" url="${secondary_eclipseUpdateSite}"/>
       </buildLocations>
       <components xsi:type="buildstep:Feature" xmi:id="_dAeIsOpFEeKwWpSeYKrUug" id="org.polarsys.capella.common.mdsofa.common.feature"/>
       <components xsi:type="buildstep:Feature" xmi:id="_0_CCgO6UEeCOPs2PMWw0Bg" id="org.polarsys.capella.core.model.definition.feature"/>
@@ -145,7 +144,6 @@
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa36QlbEeGRT7uzWt0LYA" url="${site_Sirius}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_Re-doAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_VgIv4JMfEeO7u6f29_-yFQ" suffix="" url="${primary_eclipseUpdateSite}"/>
-      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_VgIv4ZMfEeO7u6f29_-yFQ" suffix="" url="${secondary_eclipseUpdateSite}"/>
     </steps>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_Xl-doB0rEeK5Ro3AkjuwxQ" name="Publish Update Site">

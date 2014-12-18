@@ -12,22 +12,18 @@ package org.polarsys.capella.common.flexibility.wizards.ui.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.expressions.EvaluationContext;
-import org.eclipse.core.expressions.Expression;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.jface.action.ContributionManager;
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.ISourceProvider;
 import org.eclipse.ui.ISources;
-import org.eclipse.ui.internal.menus.InternalMenuService;
-import org.eclipse.ui.internal.menus.MenuLocationURI;
 import org.eclipse.ui.menus.AbstractContributionFactory;
+import org.eclipse.ui.menus.IMenuService;
 import org.eclipse.ui.services.IServiceLocator;
 
 /**
@@ -42,7 +38,7 @@ import org.eclipse.ui.services.IServiceLocator;
  * 
  * @since 3.2
  */
-public class SlavePopulatorMenuService extends InternalMenuService {
+public class SlavePopulatorMenuService implements IMenuService {
 
   private Collection providers = new ArrayList();
   private Collection factories = new ArrayList();
@@ -51,7 +47,7 @@ public class SlavePopulatorMenuService extends InternalMenuService {
    * The parent menu service for this window. This parent must track menu
    * definitions and the registry. Must not be <code>null</code>
    */
-  private final InternalMenuService parent;
+  private final IMenuService parent;
   private IServiceLocator serviceLocator;
   private Set restrictionExpression;
 
@@ -63,29 +59,18 @@ public class SlavePopulatorMenuService extends InternalMenuService {
    *    The parent menu service for this window. This parent must track menu
    *    definitions and the regsitry. Must not be <code>null</code>
    */
-  public SlavePopulatorMenuService(InternalMenuService parent, final IServiceLocator serviceLocator, Set restrictions) {
+  public SlavePopulatorMenuService(IMenuService parent, final IServiceLocator serviceLocator, Set restrictions) {
     restrictionExpression = restrictions;
 
     this.parent = parent;
     this.serviceLocator = serviceLocator;
   }
 
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * org.eclipse.ui.internal.menus.IMenuService#populateMenu(org.eclipse.jface
-   * .action.MenuManager, org.eclipse.ui.internal.menus.MenuLocationURI)
-   */
-  public void populateContributionManager(ContributionManager mgr, String uri) {
-    parent.populateContributionManager(serviceLocator, restrictionExpression, mgr, uri, true);
-  }
-
   @Override
-  public void populateContributionManager(ContributionManager mgr, String uri, boolean recurse) {
-    parent.populateContributionManager(serviceLocator, restrictionExpression, mgr, uri, recurse);
+  public void populateContributionManager(ContributionManager mgr, String uri) {
+	parent.populateContributionManager(mgr, uri);
   }
-
+  
   /*
    * (non-Javadoc)
    * 
@@ -190,23 +175,4 @@ public class SlavePopulatorMenuService extends InternalMenuService {
     parent.removeSourceProvider(provider);
   }
 
-  @Override
-  public List getAdditionsForURI(MenuLocationURI uri) {
-    return parent.getAdditionsForURI(uri);
-  }
-
-  @Override
-  public void registerVisibleWhen(final IContributionItem item, final Expression visibleWhen, final Set restriction, String identifierID) {
-    parent.registerVisibleWhen(item, visibleWhen, restriction, identifierID);
-  }
-
-  @Override
-  public void unregisterVisibleWhen(IContributionItem item, final Set restriction) {
-    parent.unregisterVisibleWhen(item, restriction);
-  }
-
-  @Override
-  public void populateContributionManager(IServiceLocator serviceLocatorToUse, Set restriction, ContributionManager mgr, String uri, boolean recurse) {
-    parent.populateContributionManager(serviceLocatorToUse, restriction, mgr, uri, recurse);
-  }
 }

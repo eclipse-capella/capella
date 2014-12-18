@@ -1,0 +1,7 @@
+<project>
+	<import file="${buckminster.pdetasks}"/>
+
+	<target name="convertSiteToRuntime">
+		<buckminster.convertSiteToRuntime siteDir="${siteDir}" />
+	</target>
+</project>

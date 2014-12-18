@@ -19,6 +19,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -59,7 +60,7 @@ public abstract class TransitionAction extends AbstractHandler implements IActio
   }
 
   public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    EvaluationContext c = (EvaluationContext) event_p.getApplicationContext();
+	IEvaluationContext c = (IEvaluationContext) event_p.getApplicationContext();
     ISelection s = (ISelection) c.getVariable("selection");
     selectionChanged(null, s);
     run(DEFAULT_ACTION);

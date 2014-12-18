@@ -45,18 +45,15 @@ public class PerspectiveOverrides implements IContributionManagerOverrides {
   }
 
   public static void registerHiddenMenu(String commandId_p) {
-    Perspective desc = (((WorkbenchPage) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage())).getActivePerspective();
-    desc.getHiddenMenuItems().add(commandId_p);
+    (((WorkbenchPage) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage())).addHiddenItems(commandId_p);
   }
 
   public static void unregisterHiddenMenu(String commandId_p) {
-    Perspective desc = (((WorkbenchPage) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage())).getActivePerspective();
-    desc.getHiddenMenuItems().remove(commandId_p);
+    (((WorkbenchPage) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage())).removeHiddenItems(commandId_p);
   }
 
   public static boolean isHiddenMenu(String commandId_p) {
-    Perspective desc = (((WorkbenchPage) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage())).getActivePerspective();
-    return desc.getHiddenMenuItems().contains(commandId_p);
+    return (((WorkbenchPage) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage())).getHiddenItems().contains(commandId_p);
   }
 
   public Integer getAccelerator(IContributionItem item) {

@@ -204,7 +204,14 @@ public class CapellaWorkbenchAdvisor extends IDEWorkbenchAdvisor {
   public void postStartup() {
     DelegateWorkbenchAdvisor.INSTANCE.callPostStartup();
     super.postStartup();
-    PreferencesHelper.removeEclipseProjectReferences(CapellaPerspective.PERSPECTIVE_ID);
+    
+    try {
+      //FIXME E4 : PreferencesHelper.getActivePerpectiveId() will throw an NPE
+      PreferencesHelper.removeEclipseProjectReferences(CapellaPerspective.PERSPECTIVE_ID);
+	} catch (Exception e) {
+	  e.printStackTrace();
+	}
+    
     try {
    	 //force start of EMF Validation plugin before initializing the default preferences scope
        ModelValidationService.getInstance().loadXmlConstraintDeclarations();

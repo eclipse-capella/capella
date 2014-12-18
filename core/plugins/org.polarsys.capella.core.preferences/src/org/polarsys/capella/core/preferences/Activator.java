@@ -141,9 +141,12 @@ public class Activator extends AbstractUIPlugin {
 
     initializeExtensionsPointProvider();
 
-    initializeUserProfilePreferences();
+    //FIXME E4 : the two following methods seems to cause others bundles to load and will cause troubles with E4
+    //we should defer these operation after workbench loading
+    
+    //initializeUserProfilePreferences();
 
-    initializePreferenceCommands();
+    //initializePreferenceCommands();
 
   }
 
