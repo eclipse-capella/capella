@@ -55,44 +55,6 @@
                                This rule generates a warning if the Function Exchange conveys some Exchange Items which are not allocated to its source ({1}) and/or its target port ({2}).
                             </description>
                          </constraint>
-                         <constraint
-                               class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_providedItf_1"
-                               id="DCOM_18"
-                               isEnabledByDefault="true"
-                               lang="Java"
-                               mode="Batch"
-                               name="DCOM_18 - Component port provided interface delegation check"
-                               severity="WARNING"
-                               statusCode="1">
-                            <message>
-                               {0} (Component port) of {1} (Logical Component) does not delegate its provided {2} (Interface).
-                            </message>
-                            <description>
-                               This rule checks that provided interfaces are delegated to one or many subcomponents (if they exist).
-                            </description>
-                            <target
-                                  class="ComponentPort">
-                            </target>
-                         </constraint>
-                         <constraint
-                               class="org.polarsys.capella.core.data.fa.validation.componentPort.MDCHK_ComponentPort_requiredItf_2"
-                               id="DCOM_19"
-                               isEnabledByDefault="true"
-                               lang="Java"
-                               mode="Batch"
-                               name="DCOM_19 - Component port required interface delegation check"
-                               severity="WARNING"
-                               statusCode="1">
-                            <message>
-                               {0} (Component port) of {1} (Logical Component) does not delegate its required {2} (Interface).
-                            </message>
-                            <description>
-                               This rule checks that required interfaces are delegated to one or many  subcomponents (if they exist).
-                            </description>
-                            <target
-                                  class="ComponentPort">
-                            </target>
-                         </constraint>
          </constraints> 
          
          

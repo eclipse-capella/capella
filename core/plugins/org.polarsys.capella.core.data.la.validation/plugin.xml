@@ -199,6 +199,44 @@
                      class="LogicalComponent">
                </target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.MDCHK_Component_providedItf_1"
+                  id="DCOM_18"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_18 - Component provided interface delegation check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Component) does not delegate its provided {1} (Interface).
+               </message>
+               <description>
+                  This rule checks that provided interfaces are delegated to one or many subcomponents (if they exist).
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.la.validation.logicalComponent.MDCHK_Component_requiredItf_2"
+                  id="DCOM_19"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DCOM_19 - Component required interface delegation check"
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} (Logical Component) does not delegate its required {1} (Interface).
+               </message>
+               <description>
+                  This rule checks that required interfaces are delegated to one or many  subcomponents (if they exist).
+               </description>
+               <target
+                     class="LogicalComponent">
+               </target>
+            </constraint>
          </constraints>
          <constraints
                categories="capella.category/design/well-formedness/scenarios">
