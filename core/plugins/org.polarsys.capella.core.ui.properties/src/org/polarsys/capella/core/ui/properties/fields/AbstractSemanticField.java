@@ -158,6 +158,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       /**
        * @see java.lang.Runnable#run()
        */
+      @Override
       public void run() {
         command_p.run();
       }
@@ -205,6 +206,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
       /**
        * @see java.lang.Runnable#run()
        */
+      @Override
       public void run() {
         command_p.run();
       }
@@ -247,6 +249,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * @see org.eclipse.swt.events.FocusListener#focusGained(org.eclipse.swt.events.FocusEvent)
    */
+  @Override
   public void focusGained(final FocusEvent event_p) {
     // Do nothing.
   }
@@ -254,6 +257,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * @see org.eclipse.swt.events.FocusListener#focusLost(org.eclipse.swt.events.FocusEvent)
    */
+  @Override
   public void focusLost(FocusEvent event_p) {
     if (event_p != null) {
       Object source = event_p.getSource();
@@ -266,6 +270,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * @see org.eclipse.swt.events.KeyListener#keyPressed(org.eclipse.swt.events.KeyEvent)
    */
+  @Override
   public void keyPressed(KeyEvent event_p) {
     if ((event_p != null) && (event_p.character == SWT.CR)) {
       Object source = event_p.getSource();
@@ -278,6 +283,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * @see org.eclipse.swt.events.KeyListener#keyReleased(org.eclipse.swt.events.KeyEvent)
    */
+  @Override
   public void keyReleased(KeyEvent event_p) {
     // Do nothing.
   }
@@ -285,6 +291,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
    */
+  @Override
   public void widgetSelected(SelectionEvent event_p) {
     if (event_p != null) {
       Object source = event_p.getSource();
@@ -297,6 +304,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   /**
    * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
    */
+  @Override
   public void widgetDefaultSelected(SelectionEvent event_p) {
     // Do nothing.
   }
@@ -347,6 +355,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   protected void setDataValue(final EObject object_p, final EStructuralFeature feature_p, final Object value_p) {
     if (NotificationHelper.isNotificationRequired(object_p, feature_p, value_p)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           if (feature_p instanceof EAttribute) {
             EDataType type = ((EAttribute) feature_p).getEAttributeType();
@@ -393,6 +402,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   protected void addDataValue(final EObject object_p, final EStructuralFeature feature_p, final Object value_p) {
     if (NotificationHelper.isNotificationRequired(object_p, feature_p, value_p)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
         @SuppressWarnings({ "unchecked", "rawtypes" })
         public void run() {
           ((List) object_p.eGet(feature_p)).add(value_p);
@@ -411,6 +421,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   @SuppressWarnings("unchecked")
   protected void moveDataValue(final EObject object_p, final EObject owner_p, final EStructuralFeature feature_p) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         if (feature_p.isMany()) {
           ((List<EObject>) owner_p.eGet(feature_p)).add(object_p);
@@ -431,6 +442,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   protected void removeDataValue(final EObject object_p, final EStructuralFeature feature_p, final Object value_p) {
     if (NotificationHelper.isNotificationRequired(object_p, feature_p, value_p)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           if ((feature_p instanceof EReference) && ((EReference) feature_p).isContainment()) {
             deleteContainmentValue((EObject) value_p);
@@ -451,6 +463,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
   @SuppressWarnings("unchecked")
   protected void removeAllDataValue(final EObject object_p, final EStructuralFeature feature_p) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+      @Override
       public void run() {
         if ((feature_p instanceof EReference) && ((EReference) feature_p).isContainment()) {
           List<EObject> containmentList = new ArrayList<EObject>((List<EObject>) object_p.eGet(feature_p));
@@ -486,6 +499,7 @@ public abstract class AbstractSemanticField implements SelectionListener, FocusL
     final Boolean value = Boolean.valueOf(value_p);
     if (NotificationHelper.isNotificationRequired(object_p, feature_p, value)) {
       AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
+        @Override
         public void run() {
           object_p.eSet(feature_p, value);
         }
