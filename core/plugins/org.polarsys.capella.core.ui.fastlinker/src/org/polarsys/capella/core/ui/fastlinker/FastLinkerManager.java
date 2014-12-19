@@ -16,20 +16,17 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.views.markers.MarkerViewUtil;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
-import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry.IMarkerModification;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -37,7 +34,6 @@ import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.model.links.helpers.LinksCommandRegistry;
 import org.polarsys.capella.core.model.links.helpers.commands.AbstractCreateLinksCommand;
 import org.polarsys.capella.core.ui.fastlinker.view.FastLinkerView;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * FastLinker main class.
@@ -393,52 +389,25 @@ public class FastLinkerManager {
 	public void showCommandExecutedMessage(
 			final AbstractCreateLinksCommand executedCommand_p) {
 		EObject createdLinkObject = executedCommand_p.getCreatedLinkObject();
-		final String[] informationMessage = new String[1];
-		final EObject[] affectedObject = new EObject[1];
+		final String informationMessage;
+		final EObject affectedObject;
 		String sourceName = executedCommand_p.getSource().getLabel();
 		String targetName = executedCommand_p.getTarget().getLabel();
+		
 		if (null != createdLinkObject) {
-			informationMessage[0] = MessageFormat.format(
+			informationMessage = MessageFormat.format(
 					Messages.FastLinkerManager_QualifiedLinkCommandReport,
 					createdLinkObject.eClass().getName(), sourceName,
 					targetName);
-			affectedObject[0] = createdLinkObject;
+			affectedObject = createdLinkObject;
 		} else {
-			informationMessage[0] = MessageFormat.format(
+			informationMessage = MessageFormat.format(
 					Messages.FastLinkerManager_UnQualifiedLinkCommandReport,
 					executedCommand_p.getLabel(), sourceName, targetName);
-			affectedObject[0] = executedCommand_p.getSource();
+			affectedObject = executedCommand_p.getSource();
 		}
-
-		IMarkerModification markerModification = new IMarkerModification() {
-			@Override
-			public void modify(IMarker marker_p) {
-				try {
-					marker_p.setAttribute(IMarker.SEVERITY,
-							IMarker.SEVERITY_INFO);
-					marker_p.setAttribute(IMarker.MESSAGE,
-							informationMessage[0]);
-					String resourceURI = affectedObject[0].eResource().getURI()
-							.toString();
-					String objUri = affectedObject[0].eResource()
-							.getURIFragment(affectedObject[0]).toString();
-					marker_p.setAttribute(EmbeddedMessage.AFFECTED_OBJECTS_URI,
-							resourceURI + "#" + objUri); //$NON-NLS-1$
-					marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE,
-							resourceURI);
-				} catch (CoreException e) {
-					MarkerViewPlugin
-							.getDefault()
-							.getLog()
-							.log(new Status(IStatus.ERROR,
-									MarkerViewPlugin.PLUGIN_ID, e
-											.getLocalizedMessage(), e));
-				}
-			}
-		};
 		LightMarkerRegistry.getInstance().createMarker(
-				ResourcesPlugin.getWorkspace().getRoot(), MarkerView.MARKER_ID,
-				markerModification);
+				ResourcesPlugin.getWorkspace().getRoot(), new BasicDiagnostic(Messages.FastLinker, 0, informationMessage, new Object[] { affectedObject }));
 		try {
 			// Show the Information view (if not already shown).
 			PlatformUI

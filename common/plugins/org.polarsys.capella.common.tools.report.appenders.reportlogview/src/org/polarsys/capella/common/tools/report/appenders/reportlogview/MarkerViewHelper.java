@@ -25,20 +25,12 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.validation.model.Category;
 import org.eclipse.emf.validation.service.IConstraintDescriptor;
-import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.extpoint.ReportLogViewExtPointUtil;
-import org.polarsys.capella.shared.id.handler.IdManager;
-import org.polarsys.capella.shared.id.handler.ResourceSetScope;
 
 /**
  * Helpers previously contained in MarkerContentProvider.java
@@ -130,18 +122,53 @@ public class MarkerViewHelper {
   }
 
   /**
-   * Get the TAG_RULE_ID Attribute from a marker.
+   * Adapt the marker into a Diagnostic and return the diagnostic's source attribute.
+   * @see org.eclipse.emf.common.util.Diagnostic
    * @param marker
-   * @return the value stored in the TAG_RULE_ID attribute of the argument. May be null.
+   * @return the diagnostic source if the marker can be adapted to a Diagnostic
    */
-  public static String getRuleId(IMarker marker) {
-    return marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
+  public static String getSource(IMarker marker) {
+    String result = null;
+    Diagnostic d = (Diagnostic) marker.getAdapter(Diagnostic.class);
+    if (d != null){
+      result = d.getSource();
+    }
+    return result;
+  }
+  
+  /**
+   * Returns the validation rule id for the given marker or null if the argument is not a validation marker
+   * @param marker_p the marker
+   * @param qualified_p whether the rule should be qualified or not
+   * @return
+   */
+  public static String getRuleID(IMarker marker_p, boolean qualified_p){
+    
+    String result = null;
+
+    // the deprecated attribute has preference for backwards compatibility
+    result = marker_p.getAttribute(IValidationConstants.TAG_RULE_ID, null);
+    
+    if (result == null){
+      Diagnostic diag = (Diagnostic) marker_p.getAdapter(Diagnostic.class);
+      if (diag instanceof ConstraintStatusDiagnostic) {
+        result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
+        if (!qualified_p){
+        
+          int lastDot = result.lastIndexOf('.');
+          if ((lastDot >= 0) && (lastDot < (result.length() - 1))) {
+            result = result.substring(lastDot + 1);
+          }
+        }
+      }
+    }
+    return result;
   }
 
   /**
-   * Get the TAG_RULE_ID Attribute from a marker.
+   * Get the TAG_PREFERENCE_EPF_FILE Attribute from a marker.
    * @param marker
-   * @return the value stored in the TAG_RULE_ID attribute of the argument. May be null.
+   * @return the value stored in the TAG_PREFERENCE_EPF_FILE attribute of the argument. May be null.
    */
   public static String getPreferenceFileName(IMarker marker) {
     return marker.getAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, null);
@@ -151,7 +178,9 @@ public class MarkerViewHelper {
    * Get an unqualified ID from a qualified one. It just strips averything from ruleId_p up to the last '.'
    * @param ruleId_p
    * @return the unqualified rule id
+   * @deprecated this method will be removed soon
    */
+  @Deprecated
   public String getUnqualifiedRuleId(String ruleId_p) {
     // show the unqualified name
     String result = ruleId_p;
@@ -161,20 +190,16 @@ public class MarkerViewHelper {
     }
     return result;
   }
-
+  
   /**
    * @param marker_p
    * @return
    */
   public static IConstraintDescriptor getConstraintDescriptor(IMarker marker_p) {
     IConstraintDescriptor descriptor = null;
-    try {
-      Diagnostic d = (Diagnostic) marker_p.getAttribute(IValidationConstants.TAG_DIAGNOSTIC);
-      if (d instanceof ConstraintStatusDiagnostic) {
-        descriptor = ((ConstraintStatusDiagnostic) d).getConstraintStatus().getConstraint().getDescriptor();
-      }
-    } catch (CoreException e) {
-      MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+    Diagnostic d = (Diagnostic) marker_p.getAdapter(Diagnostic.class);
+    if (d instanceof ConstraintStatusDiagnostic) {
+      descriptor = ((ConstraintStatusDiagnostic) d).getConstraintStatus().getConstraint().getDescriptor();
     }
     return descriptor;
   }
@@ -184,12 +209,7 @@ public class MarkerViewHelper {
    * @return the marker's diagnostic, if it has one. null otherwise.
    */
   public static Diagnostic getDiagnostic(IMarker marker_p) {
-    try {
-      return (Diagnostic) marker_p.getAttribute(IValidationConstants.TAG_DIAGNOSTIC);
-    } catch (CoreException e) {
-      MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
-    }
-    return null;
+    return (Diagnostic) marker_p.getAdapter(Diagnostic.class);
   }
 
   public static Category getCategory(IMarker marker_p) {
@@ -204,53 +224,6 @@ public class MarkerViewHelper {
     return result;
   }
 
-  private static EObject find(IMarker marker_p, URI uri_p) {
-    EObject eobject = null;
-    if (uri_p == null) {
-      return eobject;
-    }
-
-    String fragment = uri_p.fragment();
-    try {
-      //If there is a resource in the marker (validation marker), try to retrieve the object
-      Resource resource = (Resource) marker_p.getAttribute(IValidationConstants.EMF_RESOURCE);
-      if ((fragment != null) && (resource != null)) {
-        eobject = resource.getEObject(fragment);
-      }
-
-      if (eobject == null) {
-        //try to retrieve the object from the given resourceSet
-        eobject = resource.getResourceSet().getEObject(uri_p, false);
-      }
-
-    } catch (Exception e) {
-      //Nothing here
-    }
-
-    if (eobject == null) {
-      //otherwise, we try to retrieve it from editing domains
-      for (TransactionalEditingDomain domain : ExecutionManagerRegistry.getInstance().getAllEditingDomains()) {
-        try {
-          eobject = domain.getResourceSet().getEObject(uri_p, false);
-        } catch (Exception e) {
-          //Nothing here
-        }
-
-        if ((eobject == null) && (fragment != null)) {
-          try {
-            eobject = IdManager.getInstance().getEObject(fragment, new ResourceSetScope(domain.getResourceSet()));
-          } catch (Exception e) {
-            //Nothing here
-          }
-        }
-
-        if (eobject != null) {
-          break;
-        }
-      }
-    }
-    return eobject;
-  }
 
   /**
    * Finds EObjects that are attached to this marker. The resulting list will not contain duplicates.
@@ -259,23 +232,20 @@ public class MarkerViewHelper {
    */
   public static List<EObject> getModelElementsFromMarker(IMarker marker_p) {
     Set<EObject> result = new LinkedHashSet<EObject>(); // preserve order
-    String uris = marker_p.getAttribute(EmbeddedMessage.AFFECTED_OBJECTS_URI, null);
-    if (uris != null) {
-      for (String uriValue : uris.split(ICommonConstants.LINE_SEPARATOR)) {
-        if (uriValue.length() > 0) {
-          EObject obj = find(marker_p, URI.createURI(uriValue));
-          if (obj != null) {
-            result.add(obj);
-          }
+    Diagnostic diag = getDiagnostic(marker_p);
+    if (diag != null){
+      for (Object o : diag.getData()){
+        if (o instanceof EObject){
+          result.add((EObject) o);
         }
       }
     }
-    // API specified a list..
     return new ArrayList<EObject>(result);
   }
 
   /**
-   * Checks whether a marker is associated to an ecore diagnostic
+   * Checks whether the given marker violates any of the basic EObject constraints
+   * defined in {@link org.eclipse.emf.ecore.util.EObjectValidator}
    * @param marker_p
    * @return
    */

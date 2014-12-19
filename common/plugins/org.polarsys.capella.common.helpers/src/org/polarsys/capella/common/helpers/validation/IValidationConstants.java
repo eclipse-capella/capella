@@ -18,7 +18,9 @@ public interface IValidationConstants {
   /**
    * Alternative tag to set an arbitraty validation rule id. Markers that result from constraint validation should always use the diagnostic tag below for rich
    * semantics.
+   * @deprecated use MarkerViewUtil.getRuleId instead
    */
+  @Deprecated
   public static final String TAG_RULE_ID = "ruleId"; //$NON-NLS-1$
 
   public static final String TAG_PREFERENCE_EPF_FILE = "preferenceFile"; //$NON-NLS-1$
@@ -26,8 +28,9 @@ public interface IValidationConstants {
   /**
    * Marker attribute to retrieve an EMF diagnostic from a marker. Capella attaches a special Diagnostic, ConstraintStatusDiagnostic, which clients can use to
    * get back to the corresponding Constraint descriptor.
+   * @deprecated use marker.getAdapter(Diagnostic.class) instead
    */
+  @Deprecated
   public static final String TAG_DIAGNOSTIC = "diagnostic"; //$NON-NLS-1$
 
-  public static final String EMF_RESOURCE = "emfResource"; //$NON-NLS-1$
 }

@@ -16,8 +16,6 @@ import java.util.List;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.diffmerge.api.Role;
@@ -28,8 +26,6 @@ import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
 import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -57,32 +53,19 @@ public class DefaultLogHandler implements ILogHandler {
   protected class TransitionMessage extends EmbeddedMessage {
 
     String priority;
-    String info;
 
     public TransitionMessage(String message_p, String priority_p, String info_p) {
       super(message_p, info_p);
       priority = priority_p;
-      info = info_p;
+      setSource(info_p);
     }
 
     public TransitionMessage(String message_p, String priority_p, Object affectedObjects_p, String info_p) {
       super(message_p, info_p, affectedObjects_p);
       priority = priority_p;
-      info = info_p;
+      setSource(info_p);
     }
 
-    @Override
-    public void adapt(Object target) {
-      super.adapt(target);
-      if (target instanceof IMarker) {
-        IMarker marker = (IMarker) target;
-        try {
-          marker.setAttribute(IValidationConstants.TAG_RULE_ID, info);
-        } catch (CoreException exception_p) {
-          // Catch exception silently
-        }
-      }
-    }
   }
 
   /**

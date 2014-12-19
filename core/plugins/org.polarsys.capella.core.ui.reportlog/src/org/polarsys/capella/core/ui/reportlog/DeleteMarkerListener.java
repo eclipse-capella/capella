@@ -20,25 +20,20 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.model.handler.post.commit.listener.DeleteElementListener;
 
+/**
+ * Upon deletion of a model element, this listener deletes all markers 
+ * that reference the deleted model element.
+ */
 public class DeleteMarkerListener extends DeleteElementListener {
 
-    // a workaround to match eobjects by their id, even if we only have the uri in the marker
     private void findAndAppend(Collection<IMarker> haystack, List<IMarker> result, EObject deleted) {
-      String id = EcoreUtil.getID(deleted);
-      if (id != null) {
-        for (IMarker marker : haystack) {
-          String[] uris = marker.getAttribute(EmbeddedMessage.AFFECTED_OBJECTS_URI, "").split(ICommonConstants.LINE_SEPARATOR); //$NON-NLS-1$
-          for (String u : uris) {
-            if (u.endsWith(id)) {
-              result.add(marker);
-            }
-          }
+      for (IMarker marker : haystack) {  
+        if (MarkerViewHelper.getModelElementsFromMarker(marker).contains(deleted)){
+          result.add(marker);
         }
       }
     }

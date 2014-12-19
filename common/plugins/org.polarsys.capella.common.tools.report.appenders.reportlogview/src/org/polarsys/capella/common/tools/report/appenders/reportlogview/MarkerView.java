@@ -117,7 +117,7 @@ public class MarkerView extends ViewPart {
     lightMarkers = LightMarkerRegistry.getInstance();
     helper = new MarkerViewHelper(lightMarkers, VIEW_ID);
     
-    columns = new MarkerViewColumns(viewer, helper);
+    columns = new MarkerViewColumns(viewer);
     filter = createFilter(viewer);
     viewer.setFilters( new ViewerFilter[] { filter });
     

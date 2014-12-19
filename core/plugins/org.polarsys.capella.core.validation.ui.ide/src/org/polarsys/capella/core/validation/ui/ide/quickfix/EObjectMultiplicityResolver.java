@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.validation.ui.ide.quickfix;
 
+import org.eclipse.core.resources.IMarker;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+
 /**
  * A resolver for org.eclipse.emf.ecore.1 style markers
  * (Current multiplicity of a feature does not match the declared multiplicity).
@@ -20,6 +23,9 @@ package org.polarsys.capella.core.validation.ui.ide.quickfix;
  */
 public class EObjectMultiplicityResolver extends AbstractDeleteCommandResolver {
 
+  protected boolean canResolve(IMarker marker) {
+    return MarkerViewHelper.isEcore(marker);
+  }
 
   @Override
   public Object getElementToDelete(Object obj_p) {

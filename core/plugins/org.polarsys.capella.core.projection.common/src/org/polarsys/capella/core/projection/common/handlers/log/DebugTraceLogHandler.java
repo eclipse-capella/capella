@@ -56,7 +56,7 @@ public class DebugTraceLogHandler implements ILogHandler {
   public void log(String message_p, String priority_p, Object relatedObjects_p, String source_p) {
     if (_logger.isEnabledFor(Level.toLevel(priority_p))){
       EmbeddedMessage mess = new EmbeddedMessage(message_p, _logger.getName(), relatedObjects_p);
-      mess.setInfo(source_p);
+      mess.setSource(source_p);
       _logger.log(Level.toLevel(priority_p), mess);
     }
   }

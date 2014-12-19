@@ -14,14 +14,6 @@ package org.polarsys.capella.common.tools.report;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-
 /**
  * A log message that is associated to one or more model elements.
  * 
@@ -30,14 +22,7 @@ public class EmbeddedMessage {
   private String _label;
   private String _componentName;
   private List<Object> _capellaElements = new ArrayList<Object>();
-  private String _info; // additional info FIXME this is just a workaround for the information view to display the message source
-  
-  
-  /**
-   * IMarker attribute that will contain related object URIs,
-   * separated by ICommonConstants.LINE_SEPARATOR
-   */
-  public static final String AFFECTED_OBJECTS_URI = "affectedUri"; //$NON-NLS-1$
+  private String _source;
   
   /**
    * Constructor without object list
@@ -146,8 +131,19 @@ public class EmbeddedMessage {
     _capellaElements = capellaElements_p;
   }
   
+  /**
+   * @deprecated use {@link EmbeddedMessage#setSource(String)}
+   */
+  @Deprecated
   public void setInfo(String info_p){
-    _info = info_p;
+    setSource(info_p);
+  }
+
+  public void setSource(String source_p){
+    _source = source_p;
+  }
+  public String getSource(){
+    return _source;
   }
 
   @Override
@@ -174,31 +170,9 @@ public class EmbeddedMessage {
   
   /**
    * Adapt the message and its specific features into the target element
+   * @deprecated this method will be removed in a future version
    */
+  @Deprecated
   public void adapt(Object target) {
-    if (target!=null && target instanceof IMarker) {
-      String uris = ICommonConstants.EMPTY_STRING;
-      IMarker marker = (IMarker) target;
-      for(Object object : getCapellaElements()) {
-        if (object instanceof EObject) {
-          EObject obj = (EObject) object;
-          uris += EcoreUtil.getURI(obj) + ICommonConstants.LINE_SEPARATOR;
-        }
-      }
-     
-      try {
-        if (uris.length() > 0){
-          marker.setAttribute(AFFECTED_OBJECTS_URI, uris);
-        }
-        
-        // FIXME this is a workaround to display some arbitrary info on the marker view..
-        if (_info != null){
-          marker.setAttribute(IValidationConstants.TAG_RULE_ID, _info);
-        }
-        
-      } catch (CoreException exception_p) {
-        //FIXME //Nothing to do
-      }
-    }
   }
 }

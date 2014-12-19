@@ -22,7 +22,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
 import org.polarsys.capella.core.validation.ui.ide.internal.quickfix.MarkerResolutionCache;
 
@@ -121,21 +120,17 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
   }
 
   /**
-   * Check if this resolution can resolve the given marker. Used to compute the resolvable markers during findOtherMarkers. This implementation checks if the
-   * ruleId stored in the marker is one of the ids that's returned by getResolvableRuleIds.
+   * Check if this resolution can resolve the given marker. Used to compute the resolvable markers during findOtherMarkers. 
+   * This implementation checks if the unqualified ruleId stored in the marker is one of the ids that's returned by getResolvableRuleIds.
    * @param marker
    * @return
    */
   protected boolean canResolve(IMarker marker) {
-    String ruleId = marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
-    if (isEMFRule(ruleId)) {
-      return true;
-    }
-    String fqnRule[] = ruleId.split("\\.");
-    String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
-    if (shortRuleId != null) {
+
+    String unqualifiedRuleId = MarkerViewHelper.getRuleID(marker, false);
+    if (unqualifiedRuleId != null) {
       for (String id : getResolvableRuleIds()) {
-        if (shortRuleId.equals(id)) {
+        if (unqualifiedRuleId.equals(id)) {
           return true;
         }
       }
@@ -143,14 +138,10 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
     return false;
   }
 
-  private boolean isEMFRule(String ruleId) {
-    return ruleId.startsWith("org.eclipse.emf.ecore.");
-  }
-
   /**
-   * Used to compute resolvable markers. Override this method to enable quickfix resolution if multiple markers are selected. The default implementation returns
-   * null which effectively disables multi-selection quick fix resolution, unless 'canResolve' or 'findOtherMarkers' is overridden.
-   * @return an array of _fully qualified_ validation rule id's that this resolver can fix
+   * Returns an array of unqualified validation rule IDs that this resolution can resolve.
+   * 
+   * @return an array of validation rule id's that this resolver can fix
    */
   protected String[] getResolvableRuleIds() {
 
@@ -160,11 +151,6 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
       return noRuleIds;
     }
     return ruleIds.toArray(new String[0]);
-  }
-
-  public boolean isMultipleMarkersResolver() {
-    return !(getResolvableRuleIds().length == noRuleIds.length);
-
   }
 
 }

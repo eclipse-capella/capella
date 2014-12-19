@@ -13,7 +13,6 @@ package org.polarsys.capella.common.tools.report.appenders.reportlogview;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -62,7 +61,6 @@ class MarkerViewColumns {
 
   private Class<?> providerClass;
   private Map<Class<?>, Runnable> columnFactories;
-  private MarkerViewHelper helper;
 
   // stores per column comparator direction state. either SWT.UP or SWT.DOWN
   private Map<ColumnLabelProvider, Integer> comparatorDirections;
@@ -79,9 +77,8 @@ class MarkerViewColumns {
   private ColumnLabelProvider resourceLabelProvider;
   private ColumnLabelProvider severityLabelProvider;
 
-  public MarkerViewColumns(TreeViewer viewer_p, MarkerViewHelper helper_p) {
+  public MarkerViewColumns(TreeViewer viewer_p) {
     viewer = viewer_p;
-    helper = helper_p;
     listener = createSelectionListener();
 
     comparatorDirections = new HashMap<ColumnLabelProvider, Integer>();
@@ -461,12 +458,25 @@ class MarkerViewColumns {
         public String getText(Object element) {
           String result = ICommonConstants.EMPTY_STRING;
           if (element instanceof IMarker) {
-            result = MarkerViewHelper.getRuleId((IMarker) element);
-            if (result != null) {
-              if (result.startsWith(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
-                result = Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel;
-              } else {
-                result = helper.getUnqualifiedRuleId(result);
+
+            /*
+             * If it's a validation rule id, we print that 
+             */
+            result = MarkerViewHelper.getRuleID((IMarker) element, false);
+
+            /*
+             * Otherwise we use the marker diagnostic source as the label ...
+             */
+            if (result == null) {
+              result = MarkerViewHelper.getSource((IMarker) element);
+              if (result != null) {
+                
+                /*
+                 * ... with a special label for basic emf validation results (e.g. unresolved proxies)
+                 */
+                if (result.equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
+                  result = Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel;
+                }
               }
             }
           }
@@ -591,16 +601,12 @@ class MarkerViewColumns {
         public String getText(Object element) {
           String result = ICommonConstants.EMPTY_STRING;
           if (element instanceof IMarker) {
-            try {
-              Diagnostic diagnostic = (Diagnostic) ((IMarker) element).getAttribute(IValidationConstants.TAG_DIAGNOSTIC);
-              if (diagnostic instanceof ConstraintStatusDiagnostic) {
-                Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint().getDescriptor().getCategories();
-                if (!cats.isEmpty()) {
-                  result = cats.iterator().next().getQualifiedName();
-                }
+            Diagnostic diagnostic = MarkerViewHelper.getDiagnostic((IMarker) element);
+            if (diagnostic instanceof ConstraintStatusDiagnostic) {
+              Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint().getDescriptor().getCategories();
+              if (!cats.isEmpty()) {
+                result = cats.iterator().next().getQualifiedName();
               }
-            } catch (CoreException e) {
-              MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
             }
           }
           return result;
@@ -708,32 +714,6 @@ class MarkerViewColumns {
       return o1_p.toString().compareTo(o2_p.toString());
 
     }
-  }
-
-  /**
-   * Compares IMarkers and makes sure to return an order unless the two markers are identical in the sense of ==.
-   */
-  abstract class MarkerComparator implements Comparator<IMarker> {
-    public final int compare(IMarker marker1, IMarker marker2) {
-      int result = 0;
-      if (marker1 != marker2) {
-        result = doCompare(marker1, marker2);
-        if (result == 0) {
-          int nbMarker0 = marker1.getAttribute(MarkerView.MARKER_NUMBER, 0);
-          int nbMarker1 = marker2.getAttribute(MarkerView.MARKER_NUMBER, 0);
-          result = nbMarker0 - nbMarker1;
-        }
-
-        if (result == 0) {
-          // make sure to return an order if two markers are not the
-          // exact same object
-          return marker1.hashCode() - marker2.hashCode();
-        }
-      }
-      return result;
-    }
-
-    protected abstract int doCompare(IMarker marker1_p, IMarker marker2_p);
   }
 
   /**
