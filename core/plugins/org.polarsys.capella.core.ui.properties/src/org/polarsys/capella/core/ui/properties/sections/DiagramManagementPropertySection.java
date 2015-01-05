@@ -132,7 +132,9 @@ public class DiagramManagementPropertySection extends AbstractSection {
       @Override
       protected List<CapellaElement> getAvailableValues() {
         List<CapellaElement> result = new ArrayList<CapellaElement>(0);
-        IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT, CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
+        IBusinessQuery query =
+            BusinessQueriesProvider.getInstance().getContribution(CapellacorePackage.Literals.CAPELLA_ELEMENT,
+                CapellacorePackage.Literals.CAPELLA_ELEMENT__STATUS);
         if (null != query) {
           result.addAll(query.getAvailableElements((CapellaElement) CapellaAdapterHelper.resolveSemanticObject(_representation.get(), true)));
         }
@@ -224,6 +226,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
       /**
        * {@inheritDoc}
        */
+      @Override
       @SuppressWarnings("synthetic-access")
       public void run() {
         RepresentationAnnotationHelper.setAnnotation(_representation.get(), source, value);
@@ -257,6 +260,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
       /**
        * {@inheritDoc}
        */
+      @Override
       @SuppressWarnings("synthetic-access")
       public void run() {
         RepresentationAnnotationHelper.setAnnotation(_representation.get(), source, key, value);
@@ -269,6 +273,7 @@ public class DiagramManagementPropertySection extends AbstractSection {
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
   protected void loadData() {
+    super.loadData(_representation.get());
     _visibleInDocGroup.loadComboValue();
     _visibleInLMGroup.loadComboValue();
     _status.loadComboValue();

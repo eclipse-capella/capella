@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -106,6 +107,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
         /**
          * {@inheritDoc}
          */
+        @Override
         public void widgetDisposed(DisposeEvent e_p) {
           dispose();
         }
@@ -215,6 +217,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * @see org.eclipse.core.commands.operations.IOperationHistoryListener#historyNotification(org.eclipse.core.commands.operations.OperationHistoryEvent)
    */
+  @Override
   public void historyNotification(OperationHistoryEvent event_p) {
     // We only handle undo & redo operations to force a refresh.
     int eventType = event_p.getEventType();
@@ -268,9 +271,13 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * load the form data from given capella element.<br>
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
+  @Override
   public void loadData(EObject object_p) {
     if (object_p instanceof CapellaElement) {
       loadData((CapellaElement) object_p);
+    } else if (object_p instanceof DSemanticDecorator) {
+      DSemanticDecorator dsem = (DSemanticDecorator) object_p;
+      loadData((CapellaElement) dsem.getTarget());
     }
   }
 
@@ -288,6 +295,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
+  @Override
   public abstract boolean select(Object toTest_p);
 
   protected EObject selection(Object toTest) {
@@ -298,10 +306,10 @@ public abstract class AbstractSection extends AbstractPropertySection implements
     super.setInput(part_p, selection_p);
 
     // FIXME MA01 - CapellaCommonNavigator is not IEditingDomainProvider anymore ... check this commented code has no other side-effect
-    //    if (!(selection_p instanceof IStructuredSelection)
-    //        || !((part_p instanceof IEditingDomainProvider) || (((IAdaptable) part_p).getAdapter(IEditingDomainProvider.class) != null))) {
-    //      return null;
-    //    }
+    // if (!(selection_p instanceof IStructuredSelection)
+    // || !((part_p instanceof IEditingDomainProvider) || (((IAdaptable) part_p).getAdapter(IEditingDomainProvider.class) != null))) {
+    // return null;
+    // }
     return CapellaAdapterHelper.resolveSemanticObject(((IStructuredSelection) selection_p).getFirstElement());
   }
 
@@ -309,6 +317,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * Set parent background color.
    * @param color_p
    */
+  @Override
   public void setParentBackgroundColor(Color color_p) {
     _parentBackgroundColor = color_p;
   }
@@ -318,6 +327,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
    * Enabled means all internal widgets are set to specified <code>enabled_p</code> value.
    * @param enabled_p
    */
+  @Override
   public void setEnabled(final boolean enabled_p) {
     // Forward enablement to internal semantic fields.
     for (AbstractSemanticField semanticField : getSemanticFields()) {
@@ -331,6 +341,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   /**
    * {@inheritDoc}
    */
+  @Override
   public void refreshTitleBar() {
     if (null != _propertySheetPage) {
       try {
