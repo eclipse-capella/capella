@@ -7000,7 +7000,7 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_CommunicationLink']" viewConditionExpression="&lt;% doesCommunicationLinkEdgeIsNotRepresentedInComponentChildren %>"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide Delegated Use/Implementation/Require/Provide Links">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_ImplementInterface']" viewConditionExpression="&lt;% doesUseOrImplementOrRequireOrProvideLinkEdgeIsNotRepresentedInComponentChildren %>"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_UseInterface'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_ImplementInterface'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinProvidedInterface'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_PinRequiredInterface']" viewConditionExpression="&lt;% doesUseOrImplementOrRequireOrProvideLinkEdgeIsNotRepresentedInComponentChildren %>"/>
       </filters>
       <concerns>
         <ownedConcernDescriptions name="default" filters="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@filters[name='Hide%20Simplified%20Component%20Interactions'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@filters[name='Hide%20Technical%20Interfaces']"/>
@@ -10793,7 +10793,7 @@
           <mask mask="{0}"/>
         </directEdit>
       </ownedColumnMappings>
-      <ownedColumnMappings name="Description Summary" headerLabelExpression="Summary" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="descriptionSummary" labelExpression="feature:summary">
+      <ownedColumnMappings name="Summary" headerLabelExpression="Summary" canEdit="&lt;%current.filter(&quot;Requirement&quot;).nSize() > 0%>" featureName="summary" labelExpression="feature:summary">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
@@ -16635,7 +16635,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;% representedInstance.componentFunctionalAllocations.block .filter(&quot;AbstractActor&quot;).nSize != 0 %>">
-            <style xsi:type="style:SquareDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']">
+            <style xsi:type="style:SquareDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>

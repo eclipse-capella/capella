@@ -1635,13 +1635,13 @@ public class CsServices {
     EObject target = targetObject_p;
 
     if (!isGeneralizableForReConnect(generalization_p, source, target)) {
-    	return false;
+      return false;
     }
 
-    if (source instanceof FinalizableElement && target instanceof FinalizableElement) {
-    	return !((FinalizableElement)target).isFinal();
+    if ((source instanceof FinalizableElement) && (target instanceof FinalizableElement)) {
+      return !((FinalizableElement) target).isFinal();
     }
-    
+
     if (!((source instanceof Component) && (target instanceof Component))) {
 
       source = getParentContainer(source);
@@ -1655,24 +1655,24 @@ public class CsServices {
             (AbstractDependenciesPkg) CapellaServices.getService().getParent(targetObject_p, CapellacorePackage.Literals.ABSTRACT_DEPENDENCIES_PKG);
 
         if (AbstractDependenciesPkgExt.isADependencyAvailable(sourcePkg, targetPkg)) {
-        	return true;
+          return true;
         }
 
       } else if ((source instanceof ModellingArchitecture) || (target instanceof ModellingArchitecture)) {
-      	return true;
+        return true;
       }
     }
 
     if ((source instanceof Component) && (target instanceof Component)) {
 
       if (((Component) source).getTypedElements().size() == 0) {
-      	return false;
+        return false;
       }
 
       for (TypedElement element : ((Component) source).getTypedElements()) {
         if (element instanceof Part) {
           if (ComponentExt.getAvailableComponentsByNamespaceOfParts((Part) element).contains(target)) {
-          	return true;
+            return true;
           }
         }
       }
@@ -2979,7 +2979,7 @@ public class CsServices {
       } else {
         Component cps = ComponentExchangeExt.getSourceComponent((ComponentExchange) semantic);
         EObject type = viewPart.getAbstractType();
-        if (cps != null && !cps.equals(type)) {
+        if ((cps != null) && !cps.equals(type)) {
           return false;
         }
       }
@@ -3222,6 +3222,7 @@ public class CsServices {
       super();
     }
 
+    @Override
     public EObject getSource() {
       if (link.getLinkEnds().size() > 0) {
         return link.getLinkEnds().get(0);
@@ -3229,6 +3230,7 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public EObject getTarget() {
       if (link.getLinkEnds().size() > 1) {
         return link.getLinkEnds().get(1);
@@ -3236,38 +3238,47 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public Port getSourcePort() {
       return PhysicalLinkExt.getSourcePort(link);
     }
 
+    @Override
     public Port getTargetPort() {
       return PhysicalLinkExt.getTargetPort(link);
     }
 
+    @Override
     public Collection<? extends Port> getSourcePorts() {
       return Collections.singletonList(getSourcePort());
     }
 
+    @Override
     public Collection<? extends Port> getTargetPorts() {
       return Collections.singletonList(getTargetPort());
     }
 
+    @Override
     public Part getSourcePart() {
       return PhysicalLinkExt.getSourcePart(link);
     }
 
+    @Override
     public Part getTargetPart() {
       return PhysicalLinkExt.getTargetPart(link);
     }
 
+    @Override
     public ComponentExchangeKind getKind() {
       return null;
     }
 
+    @Override
     public ModelElement getData() {
       return link;
     }
 
+    @Override
     public void setData(EObject obj_p) {
       if (obj_p instanceof PhysicalLink) {
         link = (PhysicalLink) obj_p;
@@ -3286,22 +3297,27 @@ public class CsServices {
       super();
     }
 
+    @Override
     public EObject getSource() {
       return componentExchange.getSource();
     }
 
+    @Override
     public EObject getTarget() {
       return componentExchange.getTarget();
     }
 
+    @Override
     public Port getSourcePort() {
       return ComponentExchangeExt.getSourcePort(componentExchange);
     }
 
+    @Override
     public Port getTargetPort() {
       return ComponentExchangeExt.getTargetPort(componentExchange);
     }
 
+    @Override
     public Collection<? extends Port> getSourcePorts() {
       Port source = getSourcePort();
       if ((source != null) && (source instanceof ComponentPort)) {
@@ -3310,6 +3326,7 @@ public class CsServices {
       return Collections.singletonList(getSourcePort());
     }
 
+    @Override
     public Collection<? extends Port> getTargetPorts() {
       Port source = getTargetPort();
       if ((source != null) && (source instanceof ComponentPort)) {
@@ -3318,22 +3335,27 @@ public class CsServices {
       return Collections.singletonList(getTargetPort());
     }
 
+    @Override
     public Part getSourcePart() {
       return ComponentExchangeExt.getSourcePart(componentExchange);
     }
 
+    @Override
     public Part getTargetPart() {
       return ComponentExchangeExt.getTargetPart(componentExchange);
     }
 
+    @Override
     public ComponentExchangeKind getKind() {
       return componentExchange.getKind();
     }
 
+    @Override
     public ModelElement getData() {
       return componentExchange;
     }
 
+    @Override
     public void setData(EObject obj_p) {
       if (obj_p instanceof ComponentExchange) {
         componentExchange = (ComponentExchange) obj_p;
@@ -3353,14 +3375,17 @@ public class CsServices {
       super();
     }
 
+    @Override
     public EObject getSource() {
       return exchange.getSourceElement();
     }
 
+    @Override
     public EObject getTarget() {
       return exchange.getTargetElement();
     }
 
+    @Override
     public Port getSourcePort() {
       if (exchange.getSourceElement() instanceof Port) {
         return (Port) exchange.getSourceElement();
@@ -3368,6 +3393,7 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public Port getTargetPort() {
       if (exchange.getTargetElement() instanceof Port) {
         return (Port) exchange.getTargetElement();
@@ -3375,26 +3401,32 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public Collection<? extends Port> getSourcePorts() {
       return Collections.singletonList(getSourcePort());
     }
 
+    @Override
     public Collection<? extends Port> getTargetPorts() {
       return Collections.singletonList(getTargetPort());
     }
 
+    @Override
     public Part getSourcePart() {
       return null;
     }
 
+    @Override
     public Part getTargetPart() {
       return null;
     }
 
+    @Override
     public ModelElement getData() {
       return exchange;
     }
 
+    @Override
     public void setData(EObject obj_p) {
       if (obj_p instanceof Allocation) {
         exchange = (Allocation) obj_p;
@@ -3404,6 +3436,7 @@ public class CsServices {
     /**
      * @see org.polarsys.capella.core.sirius.analysis.CsServices.AbstractLink#getKind()
      */
+    @Override
     public ComponentExchangeKind getKind() {
       return null;
     }
@@ -3421,14 +3454,17 @@ public class CsServices {
       super();
     }
 
+    @Override
     public EObject getSource() {
       return exchange.getSourceElement();
     }
 
+    @Override
     public EObject getTarget() {
       return exchange.getTargetElement();
     }
 
+    @Override
     public Port getSourcePort() {
       if (exchange.getSourceElement() instanceof Port) {
         return (Port) exchange.getSourceElement();
@@ -3439,6 +3475,7 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public Port getTargetPort() {
       if (exchange.getTargetElement() instanceof Port) {
         return (Port) exchange.getTargetElement();
@@ -3449,26 +3486,32 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public Collection<? extends Port> getSourcePorts() {
       return Collections.singletonList(getSourcePort());
     }
 
+    @Override
     public Collection<? extends Port> getTargetPorts() {
       return Collections.singletonList(getTargetPort());
     }
 
+    @Override
     public Part getSourcePart() {
       return null;
     }
 
+    @Override
     public Part getTargetPart() {
       return null;
     }
 
+    @Override
     public ModelElement getData() {
       return exchange;
     }
 
+    @Override
     public void setData(EObject obj_p) {
       if (obj_p instanceof Allocation) {
         exchange = (Allocation) obj_p;
@@ -3478,6 +3521,7 @@ public class CsServices {
     /**
      * @see org.polarsys.capella.core.sirius.analysis.CsServices.AbstractLink#getKind()
      */
+    @Override
     public ComponentExchangeKind getKind() {
       return null;
     }
@@ -3495,14 +3539,17 @@ public class CsServices {
       super();
     }
 
+    @Override
     public EObject getSource() {
       return exchange.getSource();
     }
 
+    @Override
     public EObject getTarget() {
       return exchange.getTarget();
     }
 
+    @Override
     public Port getSourcePort() {
       if (exchange.getSource() instanceof Port) {
         return (Port) exchange.getSource();
@@ -3510,6 +3557,7 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public Port getTargetPort() {
       if (exchange.getTarget() instanceof Port) {
         return (Port) exchange.getTarget();
@@ -3517,26 +3565,32 @@ public class CsServices {
       return null;
     }
 
+    @Override
     public Collection<Port> getSourcePorts() {
       return Collections.singletonList(getSourcePort());
     }
 
+    @Override
     public Collection<Port> getTargetPorts() {
       return Collections.singletonList(getTargetPort());
     }
 
+    @Override
     public Part getSourcePart() {
       return null;
     }
 
+    @Override
     public Part getTargetPart() {
       return null;
     }
 
+    @Override
     public ModelElement getData() {
       return exchange;
     }
 
+    @Override
     public void setData(EObject obj_p) {
       if (obj_p instanceof FunctionalExchange) {
         exchange = (FunctionalExchange) obj_p;
@@ -3546,6 +3600,7 @@ public class CsServices {
     /**
      * @see org.polarsys.capella.core.sirius.analysis.CsServices.AbstractLink#getKind()
      */
+    @Override
     public ComponentExchangeKind getKind() {
       return null;
     }
@@ -4242,6 +4297,7 @@ public class CsServices {
 
   public Comparator<CapellaElement> getComparator() {
     return new Comparator<CapellaElement>() {
+      @Override
       public int compare(CapellaElement o1_p, CapellaElement o2_p) {
         if ((o1_p == null) && (o2_p == null)) {
           return 0;
@@ -4426,17 +4482,16 @@ public class CsServices {
   }
 
   Couple<DNode, Boolean> createViewOrGetPhysicalPort(DNodeContainer parent_p, Port target_p) {
-	    for (DNode node : parent_p.getOwnedBorderedNodes()) {
-	      if ((node.getTarget() != null) && node.getTarget().equals(target_p)) {
-	        return new Couple<DNode, Boolean>(node, Boolean.FALSE);
-	      }
-	    }
+    for (DNode node : parent_p.getOwnedBorderedNodes()) {
+      if ((node.getTarget() != null) && node.getTarget().equals(target_p)) {
+        return new Couple<DNode, Boolean>(node, Boolean.FALSE);
+      }
+    }
 
-	    DNode created = FaServices.getFaServices().createViewPhysicalPort(target_p, parent_p, parent_p.getParentDiagram());
-	    return new Couple<DNode, Boolean>(created, Boolean.TRUE);
-	  }
+    DNode created = FaServices.getFaServices().createViewPhysicalPort(target_p, parent_p, parent_p.getParentDiagram());
+    return new Couple<DNode, Boolean>(created, Boolean.TRUE);
+  }
 
-  
   /**
    * @param aNode_p
    * @param component_p
@@ -4656,6 +4711,7 @@ public class CsServices {
         /**
          * A set ordered by breakdown position. Top level elements first, others on the next
          */
+        @Override
         public int compare(Integer arg0_p, Integer arg1_p) {
           return arg1_p.intValue() - arg0_p.intValue();
         }
@@ -6029,10 +6085,10 @@ public class CsServices {
    */
   public String getStateTransitionLabel(EObject context_p) {
     String result = ICommonConstants.EMPTY_STRING;
-    
+
     if ((null != context_p) && (context_p instanceof StateTransition)) {
       StateTransition transition = (StateTransition) context_p;
-      
+
       // Trigger
       EList<AbstractEvent> triggers = transition.getTriggers();
       for (AbstractEvent trigger : triggers) {
@@ -6048,13 +6104,12 @@ public class CsServices {
           }
           result += name;
           if (trigger instanceof StateEvent) {
-        	Constraint triggerCondition = ((StateEvent) trigger).getCondition();
-	        if (triggerCondition != null){
-	          result += CapellaServices.getService().getConstraintLabel(triggerCondition);
-	        }
-	        else {
-	        	result += trigger.getName();
-	        }
+            Constraint triggerCondition = ((StateEvent) trigger).getCondition();
+            if (triggerCondition != null) {
+              result += CapellaServices.getService().getConstraintLabel(triggerCondition);
+            } else {
+              result += trigger.getName();
+            }
           }
           if (trigger != triggers.get(triggers.size() - 1)) {
             result += ","; //$NON-NLS-1$
@@ -6070,13 +6125,13 @@ public class CsServices {
           result += triggerDescription;
         }
       }
-      
-      if (transition.getGuard() != null){
-          String constraintLabel = CapellaServices.getService().getConstraintLabel(transition.getGuard());
-          if (constraintLabel != null && !constraintLabel.isEmpty()){
-            result += " [" + constraintLabel + "] ";
-          }
+
+      if (transition.getGuard() != null) {
+        String constraintLabel = CapellaServices.getService().getConstraintLabel(transition.getGuard());
+        if ((constraintLabel != null) && !constraintLabel.isEmpty()) {
+          result += " [" + constraintLabel + "] ";
         }
+      }
 
       AbstractEvent effect = transition.getEffect();
       // Effect
@@ -6777,125 +6832,238 @@ public class CsServices {
     }
     return false;
   }
-  
-	/** Check if a CommunicationLink (graphically represented by the given object) between a component c1 and an interface is not defined in the children of c1.
-	 *  Return true if the edge does not represents a CommunicationLink as previously defined or if the link is not graphically represented in one of the component children. */
-	public boolean doesCommunicationLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
-	  if (object instanceof DEdge) {
-	  	DEdge currentEdge = (DEdge) object;
-	  	EObject target = currentEdge.getTarget();
-	  	if (target instanceof CommunicationLink) {
-	  		CommunicationLink link = (CommunicationLink) target;
-	  		EdgeTarget sourceNode = currentEdge.getSourceNode();
-	  		if (sourceNode instanceof DNodeContainer) {
-	  			for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
-	  	  		if (child.getTarget() instanceof Component && child instanceof DNodeContainer) {
-  	  				for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
-  	  					target = ((DEdge) edge).getTarget();
-  	  					if (target instanceof CommunicationLink) {
-  	  						CommunicationLink childLink = (CommunicationLink) target;
-  	  						if (CommunicationLinkExt.isSameCommunication(childLink, link)) {
-  	  							return false;
-  	  						}
-  	  					}
-  	  				}	  	  				
-	  	  		}						
-					}
-	  		}	  		
-	  	}
-	  }
-  	return true;
-  }
-  
-  public boolean doesUseOrImplementOrRequireOrProvideLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
-  	if (object instanceof DEdge) {
-	  	DEdge currentEdge = (DEdge) object;
-	  	EObject target = currentEdge.getTarget();
-	  	if (target instanceof InterfaceUse || target instanceof InterfaceImplementation) {
-	  		return doesUseOrImplementLinkEdgeIsNotRepresentedInComponentChildren(object);
-	  	} else {
-	  		return doesRequireOrProvideEdgeIsNotRepresentedInComponentChildren(object);
-	  	}
-	  }
-  	return true;
-  }
-	
-	/** Check if a use/implements link (graphically represented by the given object) between a component c1 and an interface is not defined in the children of c1.
-	 *  Return true if the edge does not represents a use/implements link as previously defined or if the link is not graphically represented in one of the component children. */
-  public boolean doesUseOrImplementLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
-  	if (object instanceof DEdge) {
-	  	DEdge currentEdge = (DEdge) object;
-	  	EObject target = currentEdge.getTarget();
-	  	if (target instanceof InterfaceUse || target instanceof InterfaceImplementation) {
-	  		Relationship link = (Relationship) target;
-	  		EdgeTarget sourceNode = currentEdge.getSourceNode();
-	  		if (sourceNode instanceof DNodeContainer) {
-	  			for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
-	  				if (child.getTarget() instanceof Component && child instanceof DNodeContainer) {
-	  					for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
-	  						target = ((DEdge) edge).getTarget();
-	  						if (target instanceof InterfaceUse || target instanceof InterfaceImplementation) {
-	  							Relationship childLink = (Relationship) target;
-	  							if (link instanceof InterfaceUse && childLink instanceof InterfaceUse
-	  									&& ((InterfaceUse) link).getUsedInterface() == ((InterfaceUse) childLink).getUsedInterface()
-	  									|| link instanceof InterfaceImplementation && childLink instanceof InterfaceImplementation
-	  									&& ((InterfaceImplementation) link).getImplementedInterface() == ((InterfaceImplementation) childLink).getImplementedInterface()) {
-	  								return false;
-	  							}
-	  						}
-	  					}	  					
-	  				}
-	  			}
-	  		}
-	  	}
-	  }
-  	return true;
+
+  /**
+   * Check if a CommunicationLink (graphically represented by the given object) between a component c1 and an interface is not defined in the children of c1.
+   * Return true if the edge does not represents a CommunicationLink as previously defined or if the link is not graphically represented in one of the component
+   * children.
+   */
+  public boolean doesCommunicationLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
+    if (object instanceof DEdge) {
+      DEdge currentEdge = (DEdge) object;
+      EObject target = currentEdge.getTarget();
+      if (target instanceof CommunicationLink) {
+        CommunicationLink link = (CommunicationLink) target;
+        EdgeTarget sourceNode = currentEdge.getSourceNode();
+        if (sourceNode instanceof DNodeContainer) {
+          for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+            if ((child.getTarget() instanceof Component) && (child instanceof DNodeContainer)) {
+              for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
+                target = edge.getTarget();
+                if (target instanceof CommunicationLink) {
+                  CommunicationLink childLink = (CommunicationLink) target;
+                  if (CommunicationLinkExt.isSameCommunication(childLink, link)) {
+                    return false;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return true;
   }
 
-	/** Check if a require/provide link (graphically represented by the given object) between a component c1 and an interface is not defined in the children of c1.
-	 *  Return true if the edge does not represents a require/provide link as previously defined or if the link is not graphically represented in one of the component children.
-	 *  
-	 *  Be careful (for developers only), this code uses the targetFinderExpression of mappings of type EdgeMappingSpec to check if edges represent require/provide link. Since the targetFinderExpression property
-	 *  is a string build with class property name of the metamodel, we use literals of the CsPackage for features 'requiredInterfaces' and 'providedInterfaces' so that a change concerning them in the
-	 *  metamodel will make this code not compiling as a side effect.
-	 *  */
-	@SuppressWarnings("restriction")
-	public boolean doesRequireOrProvideEdgeIsNotRepresentedInComponentChildren(EObject object) {
-  	if (object instanceof DEdge) {
-	  	DEdge currentEdge = (DEdge) object;
-  		EObject target = currentEdge.getTarget();
-  		if (target instanceof ComponentPort) {
-  			IEdgeMapping mapping = currentEdge.getActualMapping();
-  	  	if (mapping instanceof EdgeMappingSpec) {
-  	  		String featureDef = ((EdgeMappingSpec) mapping).getTargetFinderExpression();
-  	  		if (featureDef.equals("feature:"+CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES.getName())  //$NON-NLS-1$
-  	  				|| featureDef.equals("feature:"+CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES.getName())) { //$NON-NLS-1$
-  	  			EObject sourceNode = currentEdge.getSourceNode().eContainer();
-  	  			if (sourceNode instanceof DNodeContainer) {
-  	  				for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
-  	  					if (child.getTarget() instanceof Component && child instanceof DNodeContainer) {
-  	  						for (DNode borderedNode : ((DNodeContainer) child).getOwnedBorderedNodes()) {
-  	  							if (borderedNode.getTarget() instanceof ComponentPort) {
-  	  								for (DEdge outgoingEdge : borderedNode.getOutgoingEdges()) {
-  	  									mapping = outgoingEdge.getActualMapping();
-  	  									if (mapping instanceof EdgeMappingSpec) {
-  	  										if (featureDef.equals(((EdgeMappingSpec) mapping).getTargetFinderExpression())) {
-  	  											if (currentEdge.getTargetNode() == outgoingEdge.getTargetNode()) {
-  	  												return false;
-  	  											}
-  	  										}
-  	  									}
-  	  								}  	  							
-  	  							}
-  	  						}
-  	  					}
-  	  				}	  		
-  	  			}  	  			
-  	  		}
-  	  	}	  			
-	  	}	  	
-	  }
-  	return true;
+  public boolean doesUseOrImplementOrRequireOrProvideLinkEdgeIsNotRepresentedInComponentChildren(EObject object) {
+    if (object instanceof DEdge) {
+      DEdge currentEdge = (DEdge) object;
+      EObject target = currentEdge.getTarget();
+
+      if (((target instanceof ComponentPort) && isProvidedEdge(object)) || (target instanceof InterfaceImplementation)) {
+        return isImplementedOrProvidedLinkEdgeNotRepresentedInChildrenComponent(object);
+      }
+      if (((target instanceof ComponentPort) && (isRequiredEdge(object))) || (target instanceof InterfaceUse)) {
+        return isUsedOrRequiredLinkEdgeNotRepresentedInChildrenComponent(object);
+      }
+    }
+    return true;
   }
-  
+
+  /**
+   * Check if a provides/implements link (graphically represented by the given object) between a component c1 and an interface is not defined in the children of
+   * c1. Return true if the edge does not represents a use/implements link as previously defined or if the link is not graphically represented in one of the
+   * component children.
+   */
+  public boolean isImplementedOrProvidedLinkEdgeNotRepresentedInChildrenComponent(EObject object) {
+    if (object instanceof DEdge) {
+      DEdge currentEdge = (DEdge) object;
+      EObject target = currentEdge.getTarget();
+      if (target instanceof InterfaceImplementation) {
+        Relationship link = (Relationship) target;
+        EdgeTarget sourceNode = currentEdge.getSourceNode();
+        if (sourceNode instanceof DNodeContainer) {
+          for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+            if ((child.getTarget() instanceof Component) && (child instanceof DNodeContainer)) {
+              for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
+                target = edge.getTarget();
+                if (target instanceof InterfaceImplementation) {
+                  Relationship childLink = (Relationship) target;
+                  if (((link instanceof InterfaceImplementation) && (childLink instanceof InterfaceImplementation) && (((InterfaceImplementation) link)
+                      .getImplementedInterface() == ((InterfaceImplementation) childLink).getImplementedInterface()))) {
+                    return false;
+                  }
+                }
+              }
+              for (DNode borderedNode : ((DNodeContainer) child).getOwnedBorderedNodes()) {
+                if (borderedNode.getTarget() instanceof ComponentPort) {
+                  for (DEdge outgoingEdge : borderedNode.getOutgoingEdges()) {
+                    if (isProvidedEdge(outgoingEdge) && (currentEdge.getTargetNode() == outgoingEdge.getTargetNode())) {
+                      return false;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      } else if ((target instanceof ComponentPort) && isProvidedEdge(currentEdge)) {
+        EObject sourceNode = currentEdge.getSourceNode().eContainer();
+        if (sourceNode instanceof DNodeContainer) {
+          for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+            if ((child.getTarget() instanceof Component) && (child instanceof DNodeContainer)) {
+              for (DNode borderedNode : ((DNodeContainer) child).getOwnedBorderedNodes()) {
+                if (borderedNode.getTarget() instanceof ComponentPort) {
+                  for (DEdge outgoingEdge : borderedNode.getOutgoingEdges()) {
+                    if (isProvidedEdge(outgoingEdge) && (currentEdge.getTargetNode() == outgoingEdge.getTargetNode())) {
+                      return false;
+                    }
+                  }
+                }
+              }
+              if (!((DNodeContainer) child).getOutgoingEdges().isEmpty()) {
+                for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
+                  target = edge.getTarget();
+                  if ((target instanceof InterfaceImplementation) && (currentEdge.getTargetNode() == edge.getTargetNode())) {
+                    return false;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Check if a provides/implements link (graphically represented by the given object) between a component c1 and an interface is not defined in the children of
+   * c1. Return true if the edge does not represents a use/implements link as previously defined or if the link is not graphically represented in one of the
+   * component children.
+   */
+  public boolean isUsedOrRequiredLinkEdgeNotRepresentedInChildrenComponent(EObject object) {
+    if (object instanceof DEdge) {
+      DEdge currentEdge = (DEdge) object;
+      EObject target = currentEdge.getTarget();
+      if (target instanceof InterfaceUse) {
+        Relationship link = (Relationship) target;
+        EdgeTarget sourceNode = currentEdge.getSourceNode();
+        if (sourceNode instanceof DNodeContainer) {
+          for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+            if ((child.getTarget() instanceof Component) && (child instanceof DNodeContainer)) {
+              for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
+                target = edge.getTarget();
+                if (target instanceof InterfaceUse) {
+                  Relationship childLink = (Relationship) target;
+                  if (((link instanceof InterfaceUse) && (childLink instanceof InterfaceUse) && (((InterfaceUse) link).getUsedInterface() == ((InterfaceUse) childLink)
+                      .getUsedInterface()))) {
+                    return false;
+                  }
+                }
+              }
+              for (DNode borderedNode : ((DNodeContainer) child).getOwnedBorderedNodes()) {
+                if (borderedNode.getTarget() instanceof ComponentPort) {
+                  for (DEdge outgoingEdge : borderedNode.getOutgoingEdges()) {
+                    if (isRequiredEdge(outgoingEdge) && (currentEdge.getTargetNode() == outgoingEdge.getTargetNode())) {
+                      return false;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      } else if ((target instanceof ComponentPort) && isRequiredEdge(currentEdge)) {
+        EObject sourceNode = currentEdge.getSourceNode().eContainer();
+        if (sourceNode instanceof DNodeContainer) {
+          for (DDiagramElement child : ((DNodeContainer) sourceNode).getElements()) {
+            if ((child.getTarget() instanceof Component) && (child instanceof DNodeContainer)) {
+              for (DNode borderedNode : ((DNodeContainer) child).getOwnedBorderedNodes()) {
+                if (borderedNode.getTarget() instanceof ComponentPort) {
+                  for (DEdge outgoingEdge : borderedNode.getOutgoingEdges()) {
+                    if (isRequiredEdge(outgoingEdge) && (currentEdge.getTargetNode() == outgoingEdge.getTargetNode())) {
+                      return false;
+                    }
+                  }
+                }
+              }
+              if (!((DNodeContainer) child).getOutgoingEdges().isEmpty()) {
+                for (DEdge edge : ((DNodeContainer) child).getOutgoingEdges()) {
+                  target = edge.getTarget();
+                  if ((target instanceof InterfaceUse) && (currentEdge.getTargetNode() == edge.getTargetNode())) {
+                    return false;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Check if an edge represents a provides link. Be careful (for developers only), this code uses the targetFinderExpression of mappings of type
+   * EdgeMappingSpec to check if edges represent provides link. Since the targetFinderExpression property is a string built with class property name of the
+   * metamodel, we use literals of the CsPackage for features 'requiredInterfaces' and 'providedInterfaces' so that a change concerning them in the metamodel
+   * will make this code not compiling as a side effect.
+   * @param object
+   * @return
+   */
+  @SuppressWarnings("restriction")
+  public boolean isProvidedEdge(EObject object) {
+    if (object instanceof DEdge) {
+      DEdge currentEdge = (DEdge) object;
+      EObject target = currentEdge.getTarget();
+      if (target instanceof ComponentPort) {
+        IEdgeMapping mapping = currentEdge.getActualMapping();
+        if (mapping instanceof EdgeMappingSpec) {
+          String featureDef = ((EdgeMappingSpec) mapping).getTargetFinderExpression();
+          if (featureDef.equals("feature:" + CsPackage.Literals.COMPONENT__PROVIDED_INTERFACES.getName())) { //$NON-NLS-1$
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Check if an edge represents a requires link. Be careful (for developers only), this code uses the targetFinderExpression of mappings of type
+   * EdgeMappingSpec to check if edges represent requires link. Since the targetFinderExpression property is a string build with class property name of the
+   * metamodel, we use literals of the CsPackage for features 'requiredInterfaces' and 'providedInterfaces' so that a change concerning them in the metamodel
+   * will make this code not compiling as a side effect.
+   * @param object
+   * @return
+   */
+  @SuppressWarnings("restriction")
+  public boolean isRequiredEdge(EObject object) {
+    if (object instanceof DEdge) {
+      DEdge currentEdge = (DEdge) object;
+      EObject target = currentEdge.getTarget();
+      if (target instanceof ComponentPort) {
+        IEdgeMapping mapping = currentEdge.getActualMapping();
+        if (mapping instanceof EdgeMappingSpec) {
+          String featureDef = ((EdgeMappingSpec) mapping).getTargetFinderExpression();
+          if (featureDef.equals("feature:" + CsPackage.Literals.COMPONENT__REQUIRED_INTERFACES.getName())) { //$NON-NLS-1$
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
+
 }

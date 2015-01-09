@@ -2403,161 +2403,160 @@ public class InformationServices {
     return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ASSOCIATION_LABELS);
   }
 
+  /**
+   * @used in common.odesign Return true if "Hide Role Label is true"
+   * @param assocation_p
+   * @param view_p
+   * @return
+   */
+  public boolean isHideRoleLabelEnable(EObject assocation_p, EObject view_p) {
+    return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ROLE_LABELS);
+  }
 
   /**
-    * @used in common.odesign Return true if "Hide Role Label is true"
-    * @param assocation_p
-    * @param view_p
-    * @return
-    */
-   public boolean isHideRoleLabelEnable(EObject assocation_p, EObject view_p) {
-     return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ROLE_LABELS);
-   }
-   
-   /**
-    * @used in common.odesign Return true if "Hide Role Label is true"
-    * @param assocation_p
-    * @param view_p
-    * @return
-    */
-   public boolean isHideRoleNameEnable(EObject assocation_p, EObject view_p) {
-     return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ROLE_NAMES);
-   }
+   * @used in common.odesign Return true if "Hide Role Label is true"
+   * @param assocation_p
+   * @param view_p
+   * @return
+   */
+  public boolean isHideRoleNameEnable(EObject assocation_p, EObject view_p) {
+    return isDiagramFilterEnable(assocation_p, view_p, IMappingNameConstants.HIDE_ROLE_NAMES);
+  }
 
-   /**
-    * @used in common.odesign Return true if given filter is true
-    * @param assocation_p
-    * @param view_p
-    * @return
-    */
-   private boolean isDiagramFilterEnable(EObject assocation_p, EObject view_p, String filterName_p) {
-     if (null != view_p) {
-       // get Diagram
-       DDiagram diagram = CapellaServices.getService().getDiagramContainer(view_p);
-       if (diagram == null) {
-         Object oDiagram = CsServices.getService().getInterpreterVariable(assocation_p, IInterpreterSiriusVariables.DIAGRAM);
-         if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
-           diagram = (DDiagram) oDiagram;
-         }
-       }
+  /**
+   * @used in common.odesign Return true if given filter is true
+   * @param assocation_p
+   * @param view_p
+   * @return
+   */
+  private boolean isDiagramFilterEnable(EObject assocation_p, EObject view_p, String filterName_p) {
+    if (null != view_p) {
+      // get Diagram
+      DDiagram diagram = CapellaServices.getService().getDiagramContainer(view_p);
+      if (diagram == null) {
+        Object oDiagram = CsServices.getService().getInterpreterVariable(assocation_p, IInterpreterSiriusVariables.DIAGRAM);
+        if ((oDiagram != null) && (oDiagram instanceof DDiagram)) {
+          diagram = (DDiagram) oDiagram;
+        }
+      }
 
-       if (diagram != null) {
-         EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
-         for (FilterDescription filterDescription : activatedFilters) {
-           // if given filter is enable return true
-           if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName_p)) {
-             return true;
-           }
-         }
-       }
-     }
+      if (diagram != null) {
+        EList<FilterDescription> activatedFilters = diagram.getActivatedFilters();
+        for (FilterDescription filterDescription : activatedFilters) {
+          // if given filter is enable return true
+          if ((null != filterDescription) && filterDescription.getName().equalsIgnoreCase(filterName_p)) {
+            return true;
+          }
+        }
+      }
+    }
 
-     return false;
-   }
+    return false;
+  }
 
-   /**
-    * Return association begin label
-    * @param context_p : context
-    * @param property_p : Property
-    * @param view_p : current diagram element view
-    * @param showRoleName : decide weather to display the role name
-    * @return
-    */
-   public String getAssociationBeginRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
-     StringBuffer beginLabel = new StringBuffer();
-     if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
-       Association association = (Association) association_p;
-       Property pro = (Property) property_p;
-       if (association.getNavigableMembers().contains(property_p) || (association.getNavigableMembers().size() == 0))
-       	{
-     	  boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
-     	  boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
+  /**
+   * Return association begin label
+   * @param context_p : context
+   * @param property_p : Property
+   * @param view_p : current diagram element view
+   * @param showRoleName : decide weather to display the role name
+   * @return
+   */
+  public String getAssociationBeginRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
+    StringBuffer beginLabel = new StringBuffer();
+    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
+      Property pro = (Property) property_p;
 
-       // prefix
-       if (!hideRoleLabelEnable) {
-         beginLabel.append(prefixPropertyLabel(pro));
-      
-         // multiplicity
-         String multiplicityToString = multiplicityToString(pro);
-         beginLabel.append(multiplicityToString);
-         if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
-         	beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-         }
-         // isDerived
-         if (pro.isIsDerived()) {
-         	beginLabel.append(ICommonConstants.SLASH_CHARACTER);
-         }
-         // role name (consider only if filter is disable)
-         if (!hideRoleNameEnable) {
-         		beginLabel.append(pro.getName());
-         	}
-         }
-       }
-       }
-     return beginLabel.toString();
-   }
+      // Display Role label if multiplicity is different from [1,1]
+      if (!multiplicityToStringDisplay(pro).equals(ICommonConstants.EMPTY_STRING)) {
+        boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
+        boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
 
-   /**
-    * Return Association Center label
-    * @param association_p : an Association
-    * @param view_p : an Association view
-    * @return : association center label
-    */
-   public String getAssociationCenterLabel(EObject association_p, EObject view_p) {
-     // why white space char
-     // The manual refresh of the diagram does not take into account the EmptySting
-     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
-     if ((null != association_p) && (association_p instanceof Association)) {
-       Association association = (Association) association_p;
-       if (!isHideAssociationLabelEnable(association_p, view_p)) {
-           System.out.println(association.getName());
-         return association.getName();
-       }
-     }
-     return centerLabel;
-   }
+        // prefix
+        if (!hideRoleLabelEnable) {
+          beginLabel.append(prefixPropertyLabel(pro));
 
-   /**
-    * Return association end label
-    * @param context_p : context
-    * @param property_p : Property
-    * @param view_p : current diagram element view
-    * @return
-    */
-   public String getAssociationEndRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
- 	    StringBuffer endLabel = new StringBuffer();
- 	    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
- 	      Association association = (Association) association_p;
- 	      Property pro = (Property) property_p;
- 	      if (association.getNavigableMembers().contains(property_p) || (association.getNavigableMembers().size() == 0))
- 	      	{
- 	    	  boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
- 	    	  boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
+          // multiplicity
+          String multiplicityToString = multiplicityToString(pro);
+          beginLabel.append(multiplicityToString);
+          if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+            beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+          }
 
- 	      // prefix
- 	      if (!hideRoleLabelEnable) {
- 	        endLabel.append(prefixPropertyLabel(pro));
- 	     
- 	        // multiplicity
- 	        String multiplicityToString = multiplicityToString(pro);
- 	        endLabel.append(multiplicityToString);
- 	        if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
- 	        	endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
- 	        }
- 	        // isDerived
- 	        if (pro.isIsDerived()) {
- 	        	endLabel.append(ICommonConstants.SLASH_CHARACTER);
- 	        }
- 	        // role name (consider only if filter is disable)
- 	        if (!hideRoleNameEnable) {
- 	        		endLabel.append(pro.getName());
- 	        	}
- 	        }
- 	      }
- 	      }
-     return endLabel.toString();
-   }
+          // isDerived
+          if (pro.isIsDerived()) {
+            beginLabel.append(ICommonConstants.SLASH_CHARACTER);
+          }
+          // role name (consider only if filter is disable)
+          if (!hideRoleNameEnable) {
+            beginLabel.append(pro.getName());
+          }
+        }
+      }
+    }
+    return beginLabel.toString();
+  }
 
+  /**
+   * Return Association Center label
+   * @param association_p : an Association
+   * @param view_p : an Association view
+   * @return : association center label
+   */
+  public String getAssociationCenterLabel(EObject association_p, EObject view_p) {
+    // why white space char
+    // The manual refresh of the diagram does not take into account the EmptySting
+    String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
+    if ((null != association_p) && (association_p instanceof Association)) {
+      Association association = (Association) association_p;
+      if (!isHideAssociationLabelEnable(association_p, view_p)) {
+        System.out.println(association.getName());
+        return association.getName();
+      }
+    }
+    return centerLabel;
+  }
+
+  /**
+   * Return association end label
+   * @param context_p : context
+   * @param property_p : Property
+   * @param view_p : current diagram element view
+   * @return
+   */
+  public String getAssociationEndRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
+    StringBuffer endLabel = new StringBuffer();
+    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
+      Property pro = (Property) property_p;
+
+      // Display Role label if multiplicity is different from [1,1]
+      if (!multiplicityToStringDisplay(pro).equals(ICommonConstants.EMPTY_STRING)) {
+        boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
+        boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
+
+        // prefix
+        if (!hideRoleLabelEnable) {
+          endLabel.append(prefixPropertyLabel(pro));
+
+          // multiplicity
+          String multiplicityToString = multiplicityToString(pro);
+          endLabel.append(multiplicityToString);
+          if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+            endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+          }
+          // isDerived
+          if (pro.isIsDerived()) {
+            endLabel.append(ICommonConstants.SLASH_CHARACTER);
+          }
+          // role name (consider only if filter is disable)
+          if (!hideRoleNameEnable) {
+            endLabel.append(pro.getName());
+          }
+        }
+      }
+    }
+    return endLabel.toString();
+  }
 
   /**
    * Return project explorer label of given element (if element is type NumericType, take into consideration the unit name)
