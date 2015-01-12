@@ -16639,8 +16639,13 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;% !(representedInstance.isControlNode) %>">
+          <conditionnalStyles predicateExpression="&lt;% !(representedInstance.isControlNode) &amp;&amp; !(representedInstance.isAllLeavesFunctionActorALlocated)%>">
             <style xsi:type="style:SquareDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%representedInstance.isAllLeavesFunctionActorALlocated%>">
+            <style xsi:type="style:SquareDescription" borderColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5" color="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </conditionnalStyles>

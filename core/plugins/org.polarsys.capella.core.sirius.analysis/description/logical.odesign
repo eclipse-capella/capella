@@ -674,6 +674,13 @@
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
             </style>
           </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!isLeaf &amp;&amp; isAllLeavesFunctionActorALlocated%>">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            </style>
+          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="LFB_ControlNode" preconditionExpression="false" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20LF']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20Logical%20Function']" semanticCandidatesExpression="&lt;%getFBDSemanticControlNodes()%>" domainClass="AbstractFunction">
           <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
@@ -1109,6 +1116,14 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%hasAllocationBlocks%>">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!isLeaf &amp;&amp; isAllLeavesFunctionActorALlocated%>">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
