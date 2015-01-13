@@ -222,7 +222,7 @@
             </constraint>
             <constraint class="org.polarsys.capella.core.data.fa.validation.functionalChain.FunctionalChainFunctionActiveInState" id="DWF_DF_05" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DF_05 - Functional chain involved functions active in state" severity="WARNING" statusCode="1">
                <message>
-                  Function {3} {1} involved in {0}({4}) {2} not active in relevant State/Mode.
+                  Function{3} {1} involved in {0}({4}) {2} not active in relevant State/Mode.
                </message>
                <description>
                   This check ensures that all the functions involved in FunctionalChain are also active in modes and states as FunctionChain.
