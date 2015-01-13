@@ -12,9 +12,8 @@ package org.polarsys.capella.core.transition.system.handlers.filter;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.transition.common.handlers.filter.AttributeStringValueFromSource;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.transition.common.handlers.filter.AttributeStringValueFromSource;
 
 /**
  *
@@ -42,7 +41,10 @@ public class AttributeNameValueFromSource extends AttributeStringValueFromSource
   public boolean isMergeableAttributeValue(EAttribute attribute_p, EObject source_p, EObject target_p, Object oldValue_p, Object newValue_p) {
     // Merge name of element if name is same as EClass of the element
     if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(attribute_p)) {
-      if (oldValue_p.equals(target_p.eClass().getName())) {
+      if ((oldValue_p == null) || ((oldValue_p instanceof String) && (((String) oldValue_p).length() == 0))) {
+        return true;
+
+      } else if (oldValue_p.equals(target_p.eClass().getName())) {
         return true;
       }
       if (oldValue_p.equals("System State Machine")) {
