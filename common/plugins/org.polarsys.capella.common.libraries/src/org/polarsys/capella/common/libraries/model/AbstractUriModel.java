@@ -25,7 +25,7 @@ public abstract class AbstractUriModel implements IModel {
 
   @Override
   public AccessPolicy getDefaultAccess(IModel referencedLibrary_p) {
-    return AccessPolicy.READ_ONLY;
+    return AccessPolicy.READ_AND_WRITE;
   }
 
   @Override
