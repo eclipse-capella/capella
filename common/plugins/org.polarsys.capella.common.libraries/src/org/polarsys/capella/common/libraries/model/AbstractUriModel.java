@@ -35,13 +35,12 @@ public abstract class AbstractUriModel implements IModel {
 
   @Override
   public String toString() {
-    String s = uriSemanticFile.toString();
-    return s;
+    return uriSemanticFile.toString();
   }
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return uriSemanticFile.hashCode();
   }
 
   @Override
