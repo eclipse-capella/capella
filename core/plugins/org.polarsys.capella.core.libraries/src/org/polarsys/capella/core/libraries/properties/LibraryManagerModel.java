@@ -62,11 +62,11 @@ public class LibraryManagerModel {
       }
     }
 
-    //prevent basic-loop
+    // prevent basic-loop
     allLibraries.remove(rootModel);
     Collections.sort(allLibraries, new AbstractModelComparator());
 
-    //compute referenced libraries
+    // compute referenced libraries
     initialReferencedLibrariesByRootModel = rootModel.getAvailableReferences();
     model2currentReferencedLibraries = new HashMap<IModel, Collection<IModel>>();
     model2currentReferencedLibraries.put(rootModel, new ArrayList<IModel>(initialReferencedLibrariesByRootModel));
@@ -141,7 +141,7 @@ public class LibraryManagerModel {
   public AccessPolicy getAccessPolicy(IModel library_p) {
     AccessPolicy accessPolicy = currentAccessPolicies.get(library_p);
     if (accessPolicy == null) {
-      accessPolicy = rootModel.getDefaultAccess(library_p);
+      accessPolicy = rootModel.getDefaultNewAccess(library_p);
       currentAccessPolicies.put(library_p, accessPolicy);
     }
     return accessPolicy;
@@ -168,7 +168,7 @@ public class LibraryManagerModel {
   }
 
   public void addReferencedLibrary(IModel library_p) {
-    //update referenced libraries
+    // update referenced libraries
     model2currentReferencedLibraries.get(rootModel).add(library_p);
     // update active states
     if (!library2CurrentActiveState.containsKey(library_p)) {
@@ -178,18 +178,18 @@ public class LibraryManagerModel {
     computeAllReferencedLibraries();
     // update access policy
     if (!currentAccessPolicies.containsKey(library_p)) {
-      currentAccessPolicies.put(library_p, rootModel.getDefaultAccess(library_p));
+      currentAccessPolicies.put(library_p, rootModel.getDefaultNewAccess(library_p));
     }
   }
 
   public void removeReferencedLibrary(IModel library_p) {
-    //update referenced libraries
+    // update referenced libraries
     model2currentReferencedLibraries.get(rootModel).remove(library_p);
     // update allReferencedLibraries
     computeAllReferencedLibraries();
     // update the access policy of the removed library if this library is referenced by transitivity
     if (allReferencedLibraries.contains(library_p)) {
-      currentAccessPolicies.put(library_p, rootModel.getAccess(library_p));
+      currentAccessPolicies.put(library_p, rootModel.getDefaultNewAccess(library_p));
     }
   }
 
