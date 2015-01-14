@@ -15,6 +15,7 @@
       <propertySections contributorId="org.polarsys.capella.core.data.capellamodeller.properties">
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
+               filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemSection"
                tab="Base">
             <input
@@ -23,6 +24,7 @@
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
+               filter="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.ConfigurationItemPkgSection"
                tab="Base">
             <input
@@ -31,6 +33,7 @@
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
+               filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitecturePkgSection"
                tab="Base">
             <input
@@ -39,6 +42,7 @@
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
+               filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSArchitectureSection"
                tab="Base">
             <input
@@ -47,6 +51,7 @@
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
+               filter="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.EPBSContextSection"
                tab="Base">
             <input
@@ -55,6 +60,7 @@
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
+               filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArchitectureRealizationSection"
                tab="Base">
             <input
@@ -63,6 +69,7 @@
          </propertySection>
          <propertySection
                class="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
+               filter="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                id="org.polarsys.capella.core.data.epbs.properties.sections.PhysicalArtifactRealizationSection"
                tab="Base">
             <input
