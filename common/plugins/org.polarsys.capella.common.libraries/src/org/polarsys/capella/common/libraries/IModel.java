@@ -23,7 +23,7 @@ public interface IModel {
   public IModelIdentifier getIdentifier();
 
   /**
-   * Returns model referenced by the current model
+   * Returns model directly referenced by the current model (including references towards not available libraries)
    */
   public Collection<IModelIdentifier> getReferences();
 
@@ -82,6 +82,10 @@ public interface IModel {
      */
     public abstract void setActive(IModel library, boolean activeState);
 
+    /**
+     * Returns the default access that will be given on an unreferenced library that will be added as reference
+     */
+    public AccessPolicy getDefaultNewAccess(IModel referencedLibrary_p);
   }
 
 }

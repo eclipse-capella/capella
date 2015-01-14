@@ -10,6 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.libraries.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -18,6 +23,7 @@ import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.IModelIdentifier;
 import org.polarsys.capella.common.libraries.LibraryReference;
 import org.polarsys.capella.common.libraries.ModelInformation;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.libraries.model.AbstractUriModel;
 import org.polarsys.capella.core.data.capellamodeller.Library;
 import org.polarsys.capella.core.data.capellamodeller.Project;
@@ -63,11 +69,11 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
   }
 
   protected Resource getResource(TransactionalEditingDomain domain, URI uri, boolean resolve) {
-    //this is fine, this will load the resource in the current editing domain
+    // this is fine, this will load the resource in the current editing domain
     try {
       return domain.getResourceSet().getResource(uri, resolve());
     } catch (Exception e) {
-      //errors at loading can happen. we check the resource in other methods
+      // errors at loading can happen. we check the resource in other methods
     }
     return null;
   }
@@ -87,19 +93,68 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
     if (this.equals(library_p)) {
       return AccessPolicy.READ_AND_WRITE;
     }
-    ModelInformation source = getModelInformation(this, false);
+
+    List<AccessInfo> accessInfos = new ArrayList<AccessInfo>();
+    calculateAccessPolicy(this, library_p, accessInfos, 0);
+    if (!accessInfos.isEmpty()) {
+      Iterator<AccessInfo> itInfo = accessInfos.iterator();
+      AccessInfo accessInfo = itInfo.next();
+      int currentLevel = accessInfo.level;
+      AccessPolicy result = accessInfo.accessPolicy;
+      while (itInfo.hasNext()) {
+        AccessInfo elt = itInfo.next();
+        if (elt.level != currentLevel) {
+          break;
+        }
+        result = resolveAccessPolicy(result, elt.accessPolicy);
+      }
+      return result;
+    }
+
+    return getDefaultAccess(library_p);
+  }
+
+  /**
+   * Returns the heaviest access policy.
+   */
+  public AccessPolicy resolveAccessPolicy(AccessPolicy policy1, AccessPolicy policy2) {
+    if ((policy1 == AccessPolicy.READ_AND_WRITE) || (policy2 == AccessPolicy.READ_AND_WRITE)) {
+      return AccessPolicy.READ_AND_WRITE;
+    }
+    return AccessPolicy.READ_ONLY;
+  }
+
+  protected void calculateAccessPolicy(IModel model_p, IModel library_p, List<AccessInfo> policies, int level) {
+    IModel model = model_p;
+    IModel library = library_p;
+
+    ModelInformation source = getModelInformation(model_p, false);
     ModelInformation target = getModelInformation(library_p, false);
 
     if ((source != null) && (target != null)) {
-      //null can occurs when no modelInformation is created in the source or the target. in that case, we don't have to remove reference since there is none
       for (LibraryReference reference : source.getOwnedReferences()) {
         if ((reference.getLibrary() != null) && reference.getLibrary().equals(target)) {
-          return reference.getAccessPolicy();
+          policies.add(new AccessInfo(level, reference.getAccessPolicy()));
+          return;
         }
       }
     }
 
-    return getDefaultAccess(library_p);
+    Collection<IModel> referencedLibraries = LibraryManagerExt.getReferences(model);
+    for (IModel referencedLibrary : referencedLibraries) {
+      calculateAccessPolicy(referencedLibrary, library, policies, level + 1);
+    }
+  }
+
+  protected class AccessInfo {
+
+    public int level;
+    public AccessPolicy accessPolicy;
+
+    public AccessInfo(int level_p, AccessPolicy accessPolicy_p) {
+      level = level_p;
+      accessPolicy = accessPolicy_p;
+    }
   }
 
   protected ModelInformation getModelInformation(IModel model_p, boolean create_p) {
