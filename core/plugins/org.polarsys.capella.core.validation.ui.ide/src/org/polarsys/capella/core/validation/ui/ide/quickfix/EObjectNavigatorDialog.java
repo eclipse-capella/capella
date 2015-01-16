@@ -51,12 +51,12 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
   /**
    * Label for our combo box
    */
-  private String _comboLabel;
+  protected String _comboLabel;
 
   /**
    * Prefix for each element
    */
-  private String _elementPrefix;
+  protected String _elementPrefix;
 
   /**
    * @see Impact analysis label provider.
@@ -170,19 +170,19 @@ public class EObjectNavigatorDialog extends AbstractMessageDialogWithViewer {
   /**
    * Foreground color for referencing elements.
    */
-  private int _foregroundColorForRelevantElements;
+  protected int _foregroundColorForRelevantElements;
 
   /**
    * Elements that reference the selected one.
    */
-  private List<? extends EObject> _revelantElements;
+  protected List<? extends EObject> _revelantElements;
 
   /**
    * Cycles
    */
-  private Collection<List<EObject>> _cycles;
+  protected Collection<List<EObject>> _cycles;
 
-  private Combo _combo;
+  protected Combo _combo;
 
   public void setCycles(Collection<List<EObject>> cycles_p) {
     _cycles = cycles_p;
