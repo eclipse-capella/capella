@@ -364,6 +364,25 @@ This rule checks that an capella element doesn&apos;t contain any naming conflic
                      class="SystemEngineering">
                </target>
             </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.capellamodeller.validation.SystemEngineering_InterModelInconsistencyDetection"
+                  id="DWF_D_27"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_D_27 - Inter-model inconsistency Detection"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0} inter-model inconsistency(ies) has(ve) been detected between models
+               </message>
+               <description>
+                  This rule detects inconsistencies between models.
+               </description>
+               <target
+                     class="SystemEngineering">
+               </target>
+            </constraint>
   
         	<constraint
                   class="org.polarsys.capella.core.data.capellamodeller.validation.MDCHKPackageVisibility"
