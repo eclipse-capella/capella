@@ -14,7 +14,6 @@ import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-
 import org.polarsys.capella.common.ui.toolkit.fields.SpacerFieldEditor;
 import org.polarsys.capella.core.commands.preferences.service.AbstractDefaultPreferencePage;
 import org.polarsys.capella.core.commands.preferences.service.PreferenceField;
@@ -22,6 +21,7 @@ import org.polarsys.capella.core.commands.preferences.service.UserProfileModeEnu
 import org.polarsys.capella.core.model.preferences.IDataPreferences;
 import org.polarsys.capella.core.model.preferences.IDeploymentPreferences;
 import org.polarsys.capella.core.model.preferences.IInheritancePreferences;
+import org.polarsys.capella.core.model.preferences.IInterModelIntegrityPreferences;
 import org.polarsys.capella.core.model.preferences.IReuseComponentsPreferences;
 import org.polarsys.capella.core.model.preferences.ISynchronizationPreferences;
 import org.polarsys.capella.core.preferences.Activator;
@@ -74,6 +74,7 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
     addField(new PreferenceField(IReuseComponentsPreferences.PREFS_ALLOW_REUSE_COMPONENTS, Messages.ReuseOfComponentsPreferencePage_Allowed_Title, group0),
         UserProfileModeEnum.Expert, group0, ProjectScope.class);
 
+    addField(new SpacerFieldEditor(fieldEditorParent));
     Group group1 = createGroup(Messages.InheritancePreferencePage_Group_Title, Messages.InheritancePreferencePage_Group_Title, fieldEditorParent);
     addField(new PreferenceField(IInheritancePreferences.PREFS_ALLOW_MULTIPLE_INHERITANCE, Messages.InheritancePreferencePage_Allowed_Title, group1),
         UserProfileModeEnum.Expert, group1, ProjectScope.class);
@@ -96,5 +97,10 @@ public class ModelPreferencePage extends AbstractDefaultPreferencePage {
         Messages.SyncPreferencePage_SyncPhysicalPort2FunctionPortOnPhysicalLinkAllowed_Title, group4), UserProfileModeEnum.Expert, group4, ProjectScope.class);
     addField(new PreferenceField(ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH,
         Messages.SyncPreferencePage_SyncPhysicalPort2FunctionPortOnPhysicalPathAllowed_Title, group4), UserProfileModeEnum.Expert, group4, ProjectScope.class);
+    
+    addField(new SpacerFieldEditor(fieldEditorParent));
+    Group group5 = createGroup(Messages.interModelIntegrity_Group_Title, Messages.interModelIntegrity_Group_Title, fieldEditorParent);
+    addField(new PreferenceField(IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION,
+        Messages.interModelIntegrity_PreventInterModelDependencyViolation_Title, group5), UserProfileModeEnum.Expert, group5, ProjectScope.class);
   }
 }
