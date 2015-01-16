@@ -20,10 +20,12 @@ Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.common.ui.services,
  com.google.guava,
  org.eclipse.sirius.ext.base,
- org.polarsys.capella.core.platform.sirius.ui.actions
+ org.polarsys.capella.core.platform.sirius.ui.actions,
+ org.polarsys.capella.core.model.preferences
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.core.libraries,
+ org.polarsys.capella.core.libraries.interModelInconsistencyDetection,
  org.polarsys.capella.core.libraries.model,
  org.polarsys.capella.core.libraries.nature,
  org.polarsys.capella.core.libraries.properties,

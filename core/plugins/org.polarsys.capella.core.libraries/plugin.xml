@@ -91,4 +91,11 @@
       </derivedSemanticResourceProvider>
    </extension>
 
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.polarsys.capella.core.libraries.interModelInconsistencyDetection.CapellaSessionListenerForInterModelInconsistencyDetection">
+      </listener>
+   </extension>
+
 </plugin>

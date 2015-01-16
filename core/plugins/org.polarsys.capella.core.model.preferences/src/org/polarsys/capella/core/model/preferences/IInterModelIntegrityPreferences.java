@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,17 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.platform.sirius.ui.preferences;
+package org.polarsys.capella.core.model.preferences;
 
 /**
- * Constant definitions for valication preferences
  */
-public class ICapellaValidationPreferences {
+public interface IInterModelIntegrityPreferences {
 
-  public static final String P_CLEAN_PREVIOUS_VALIDATION_RESULTS = "cleanPreviousValidationResults"; //$NON-NLS-1$
+	
+	public static final String PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION = "intermodel.preventDependencyViolation.allowed"; //$NON-NLS-1$
+
+  /**
+   * Default value for prevent on the fly inter-model dependency violation
+   */
+  public static final Boolean PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION_DEFAULT = Boolean.FALSE;
 }

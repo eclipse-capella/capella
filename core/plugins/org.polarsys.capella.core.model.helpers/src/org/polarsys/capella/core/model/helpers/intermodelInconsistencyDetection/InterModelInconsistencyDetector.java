@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +23,10 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 
 /** 
+ * Algorithm based on Tarjan algorithm that detect:
+ * <ul><li>inter-model dependency violations</li>
+ * <li>inter-model cycles</li></ul>
+ * 
  * @author Erwan Brottier
  */
 public class InterModelInconsistencyDetector {
@@ -36,16 +39,15 @@ public class InterModelInconsistencyDetector {
 
 	@SuppressWarnings("unchecked")
 	public List<InterModelInconsistency> getInterModelInconsistencies(SystemEngineering systemEngineering) {
-		long startTime = System.currentTimeMillis();
 		linkChecker = new DependencyChecker((SemanticEditingDomain) TransactionHelper.getEditingDomain(systemEngineering));
 		
-		/** get all objects in the graph **/
+		// get all objects in the graph
 		TreeIterator<EObject> treeIterator = systemEngineering.eAllContents();
 		HashSet<EObject> allObjects = new HashSet<EObject>();
 		while (treeIterator.hasNext())
 			allObjects.add(treeIterator.next());
 		
-		/** create graph representation **/
+		// create graph representation
 		HashMap<Integer, HashSet<Integer>> g = new HashMap<Integer, HashSet<Integer>>();		
 		HashSet<EObject> objectsToTreat = allObjects;
 		while ((objectsToTreat = treatObjects(objectsToTreat, allObjects, g)).size() > 0)
@@ -53,7 +55,6 @@ public class InterModelInconsistencyDetector {
 
 		HashSet<Integer>[] graph = new HashSet[identifierCounter];		
 		for (int i = 0; i < identifierCounter; i++) {
-//			System.out.println("put "+i+" "+g.get(i)); //$NON-NLS-1$ //$NON-NLS-2$
 			HashSet<Integer> x = g.get(i);
 			if (x == null) {
 				x = new HashSet<Integer>();
@@ -61,7 +62,7 @@ public class InterModelInconsistencyDetector {
 			graph[i] = x;			
 		}		
 		
-		/** compute cfc **/
+		// compute CFC
 		TarjanAlgorithm t = new TarjanAlgorithm();
 		List<List<Integer>> scComponents = t.getSCComponents(graph);
 		List<List<EObject>> cfcs = new ArrayList<List<EObject>>();
@@ -73,9 +74,8 @@ public class InterModelInconsistencyDetector {
 				}
 				cfcs.add(cfc);
 			}
-		}
-		
-		/** analyse cfc **/ 
+		}		
+		// Analyse CFC 
 		for (List<EObject> cfc : cfcs) {
 			HashSet<Resource> res = new HashSet<Resource>();
 			for (EObject object : cfc)
@@ -84,17 +84,6 @@ public class InterModelInconsistencyDetector {
 				errors.add(new InterModelCycle(cfc));
 		}
 		errors.addAll(linkChecker.getDependencyViolations());
-
-		long endTime = System.currentTimeMillis();
-		long millis = (endTime - startTime);  //milliseconds.
-		String duration = String.format("%02d:%02d:%02d",  //$NON-NLS-1$
-				TimeUnit.MILLISECONDS.toHours(millis),
-				TimeUnit.MILLISECONDS.toMinutes(millis) -  
-				TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)), // The change is in this line
-				TimeUnit.MILLISECONDS.toSeconds(millis) - 
-				TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));   		
-		System.out.println("nb element "+identifierCounter); //$NON-NLS-1$
-		System.out.println(">> VALIDATION DURATION ("+millis+") : "+duration); //$NON-NLS-1$ //$NON-NLS-2$
 		return errors;
 	}
 	
@@ -109,16 +98,6 @@ public class InterModelInconsistencyDetector {
 		return res;
 	}
 		
-//	protected void addDependencyViolation(EObject source, EObject target) {
-//		System.out.println("INCONSISTENT LINK DETECTED :"); //$NON-NLS-1$
-//		System.out.println("- "+source); //$NON-NLS-1$
-//		System.out.println("- "+target); //$NON-NLS-1$
-//		List<EObject> involvedElements = new ArrayList<EObject>();
-//		involvedElements.add(source);
-//		involvedElements.add(target);
-//		errors.add(new InterModelInconsistency(involvedElements, InterModelInconsistency.DEPENDENCY_VIOLATION));
-//	}
-	
 	protected HashSet<EObject> treatObjects(HashSet<EObject> objects, HashSet<EObject> allObjects, HashMap<Integer, HashSet<Integer>> g) {
 		HashSet<EObject> newObjects = new HashSet<EObject>();
 		for (EObject currentNode : objects) {

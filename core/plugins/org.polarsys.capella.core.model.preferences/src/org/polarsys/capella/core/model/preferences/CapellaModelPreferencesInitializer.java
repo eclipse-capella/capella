@@ -46,6 +46,10 @@ public class CapellaModelPreferencesInitializer extends AbstractPreferencesIniti
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALLINK_DEFAULT.booleanValue(), ProjectScope.class);
     putBoolean(ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH,
         ISynchronizationPreferences.PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH_DEFAULT.booleanValue(), ProjectScope.class);
+    
+    // Set inter-model integrity preferences
+    putBoolean(IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION,
+    		IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION_DEFAULT.booleanValue(), ProjectScope.class);    
   }
 
 }

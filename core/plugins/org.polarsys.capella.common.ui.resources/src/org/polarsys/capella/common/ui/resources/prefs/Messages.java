@@ -38,6 +38,10 @@ public class Messages extends NLS {
   public static String SyncPreferencePage_SyncPhysicalPort2FunctionPortOnPhysicalLinkAllowed_Title;
   public static String SyncPreferencePage_SyncPhysicalPort2FunctionPortOnPhysicalPathAllowed_Title;
 
+	public static String interModelIntegrity_Group_Title;
+
+	public static String interModelIntegrity_PreventInterModelDependencyViolation_Title;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);
