@@ -23,8 +23,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.polarsys.capella.common.ef.ExecutionManager;
-import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.properties.schema.IPropertyContext;
@@ -36,6 +34,7 @@ import org.polarsys.capella.common.flexibility.wizards.policy.IPolicifiedRendere
 import org.polarsys.capella.common.flexibility.wizards.schema.IGroupRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 
 public class PropertiesSection extends AbstractPropertySection {
   IPropertyContext _propertyContext;
@@ -71,7 +70,7 @@ public class PropertiesSection extends AbstractPropertySection {
 
         @Override
         public IGroupRenderer createRenderer(IPropertyGroup group_p) {
-          //Sub groups should not use this renderer !
+          // Sub groups should not use this renderer !
           for (IPropertyGroup group : rendererContext_p.getPropertyContext().getProperties().getGroups(IPropertyGroup.EMPTY)) {
             if (group.getId().equals(group_p.getParentId())) {
               return new SectionGroupRenderer();
@@ -106,9 +105,7 @@ public class PropertiesSection extends AbstractPropertySection {
           context_p.writeAll();
         }
       };
-      ExecutionManager em = ExecutionManagerRegistry.getInstance().addNewManager();
-      em.execute(cmd);
-      ExecutionManagerRegistry.getInstance().removeManager(em);
+      TransactionHelper.getExecutionManager((Collection) context_p.getSourceAsList()).execute(cmd);
     }
   }
 
@@ -118,7 +115,7 @@ public class PropertiesSection extends AbstractPropertySection {
   @SuppressWarnings("unchecked")
   protected Object getSource(ISelection selection_p) {
     Collection<Object> objects = new ArrayList<Object>();
-	Iterator<Object> e = ((IStructuredSelection) selection_p).iterator();
+    Iterator<Object> e = ((IStructuredSelection) selection_p).iterator();
     while (e.hasNext()) {
       objects.add(e.next());
     }
