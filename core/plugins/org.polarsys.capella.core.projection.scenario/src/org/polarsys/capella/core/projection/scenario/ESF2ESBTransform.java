@@ -11,11 +11,13 @@
 package org.polarsys.capella.core.projection.scenario;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.projection.common.context.IContext;
+import org.polarsys.capella.core.projection.scenario.esf2esb.handlers.ScenarioESF2ESBHandler;
+import org.polarsys.capella.core.projection.scenario.handlers.IScenarioHandler;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
 import org.polarsys.capella.core.transfo.misc.CapellaEngine;
@@ -32,6 +34,11 @@ public class ESF2ESBTransform extends ScenarioTransform {
   @Override
   protected String getRules() {
     return CAPELLA_SCENARIO_RULES;
+  }
+
+  @Override
+  protected IScenarioHandler createScenarioHandler(IContext context_p) {
+    return new ScenarioESF2ESBHandler();
   }
 
   /**
@@ -54,7 +61,8 @@ public class ESF2ESBTransform extends ScenarioTransform {
   }
 
   /**
-   * @see org.polarsys.capella.core.projection.scenario.ScenarioTransform#isValidTransitionedScenario(org.polarsys.capella.common.data.modellingcore.ModelElement, org.polarsys.capella.core.data.interaction.Scenario)
+   * @see org.polarsys.capella.core.projection.scenario.ScenarioTransform#isValidTransitionedScenario(org.polarsys.capella.common.data.modellingcore.ModelElement,
+   *      org.polarsys.capella.core.data.interaction.Scenario)
    */
   @Override
   protected boolean isValidTransitionedScenario(Scenario contextElement_p, Scenario scenario_p) {

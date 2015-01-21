@@ -13,13 +13,14 @@ package org.polarsys.capella.core.projection.scenario.es2es.rules;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.projection.common.ProjectionMessages;
 import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.Messages;
 
 /**
+ * Not used
  */
+@Deprecated
 public class Rule_InteractionState extends org.polarsys.capella.core.projection.scenario.uml2.rules.Rule_InteractionState {
 
   @Override

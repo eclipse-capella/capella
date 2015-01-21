@@ -17,7 +17,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Stack;
 
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -33,25 +32,18 @@ import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
-import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Constraint;
-import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
-import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
-import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.ComponentExchangeFunctionalExchangeAllocation;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.information.AbstractEventOperation;
 import org.polarsys.capella.core.data.information.AbstractInstance;
 import org.polarsys.capella.core.data.information.ElementKind;
@@ -81,7 +73,6 @@ import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.interaction.properties.controllers.InterfaceHelper;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
-import org.polarsys.capella.core.data.oa.ActivityAllocation;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
@@ -313,19 +304,19 @@ public class ScenarioService {
         showExchangeContext = true;
         showFEExchangeContext = true;
       }
-      if (filter.getName().equals(IMappingNameConstants.SHOW_EI_EXCHANGE_CONTEXT)){
-        showExchangeContext = true; 
+      if (filter.getName().equals(IMappingNameConstants.SHOW_EI_EXCHANGE_CONTEXT)) {
+        showExchangeContext = true;
       }
-      if (filter.getName().equals(IMappingNameConstants.IS_HIDE_CALL_ARGUMENTS)){
+      if (filter.getName().equals(IMappingNameConstants.IS_HIDE_CALL_ARGUMENTS)) {
         hideCallArguments = true;
       }
     }
 
     StringBuilder result = new StringBuilder();
 
-    if (DiagramDescriptionConstants.INTERFACE_SCENARIO.equals(diagram_p.getDescription().getName())){
+    if (DiagramDescriptionConstants.INTERFACE_SCENARIO.equals(diagram_p.getDescription().getName())) {
       result.append(getMessageName(message, hideCallArguments));
-      if (showExchangeContext){
+      if (showExchangeContext) {
         result.append(" "); //$NON-NLS-1$
         appendExchangeContext(message, result);
       }
@@ -435,7 +426,8 @@ public class ScenarioService {
   }
 
   private static void appendExchangeContext(SequenceMessage message, StringBuilder builder_p) {
-    builder_p.append(String.format("{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
+    builder_p.append(String.format(
+        "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private static String getSafeName(AbstractNamedElement fe) {
@@ -993,116 +985,15 @@ public class ScenarioService {
    * Returns available state modes which can be added into an IS IS-Insert-StateMode
    */
   public Collection<AbstractState> getISStateModes(AbstractInstance instance_p) {
-    Collection<AbstractState> result = new java.util.HashSet<AbstractState>();
-    Collection<StateMachine> stateMachinas = new java.util.HashSet<StateMachine>();
-
-    if (instance_p instanceof Part) {
-      Collection<Part> parts = ComponentExt.getPartAncestors((Part) instance_p, true);
-      parts.add((Part) instance_p);
-
-      for (Part part : parts) {
-        if (part.getAbstractType() != null) {
-          Component component_p = (Component) part.getAbstractType();
-          List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component_p);
-          elements.add(component_p);
-          for (GeneralizableElement element : elements) {
-            if (element instanceof Block) {
-              stateMachinas.addAll(((Block) element).getOwnedStateMachines());
-            }
-          }
-        }
-      }
-
-      for (StateMachine machina : stateMachinas) {
-        // Retrieve all AbstractState from the StateMachine
-        TreeIterator<EObject> childs = machina.eAllContents();
-        while (childs.hasNext()) {
-          EObject child = childs.next();
-          if (child instanceof AbstractState) {
-            result.add((AbstractState) child);
-          }
-        }
-      }
-
-    } else if (instance_p instanceof AbstractFunction) {
-      // functional scenario can use states by relationship
-      // function:availableInStateModes
-      AbstractFunction af = (AbstractFunction) instance_p;
-      for (State asm : af.getAvailableInStates()) {
-        result.add(asm);
-      }
-    }
-
-    return result;
+    return ScenarioExt.getAvailableStateModeStateFragment(instance_p);
   }
 
   public Collection<AbstractFunction> getFunctionsForStateAtOA(EObject context_p, AbstractInstance instance_p) {
-    if (instance_p instanceof Role) {
-      Role role = (Role) instance_p;
-      List<AbstractFunction> result = new ArrayList<AbstractFunction>();
-      for (ActivityAllocation alloc : role.getActivityAllocations()) {
-        result.add(alloc.getActivity());
-      }
-      return result;
-    }
-    return getFunctionsForState(context_p, (Component) instance_p.getAbstractType());
+    return ScenarioExt.getAvailableFunctionsStateFragment(instance_p);
   }
 
   public Collection<AbstractFunction> getFunctionsForState(EObject context_p, Component component_p) {
-    List<AbstractFunction> result = new ArrayList<AbstractFunction>();
-    Collection<AbstractFunction> functions = new java.util.HashSet<AbstractFunction>();
-
-    List<Component> baseComponents = new ArrayList<Component>();
-    baseComponents.add(component_p);
-    // adding all sub Components
-    baseComponents.addAll(ComponentExt.getAllSubUsedAndDeployedComponents(component_p));
-
-    for (Component component : baseComponents) {
-      List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
-      elements.add(component);
-      for (GeneralizableElement element : elements) {
-        if (element instanceof AbstractFunctionalBlock) {
-          functions.addAll(((AbstractFunctionalBlock) element).getAllocatedFunctions());
-        }
-      }
-    }
-    //
-
-    for (AbstractFunction function : functions) {
-      result.add(function);
-    }
-
-    ArrayList<AbstractFunction> newElements = new ArrayList<AbstractFunction>();
-
-    // Allow whole function for which all sub decompositions are already in result, recursively.
-    do {
-      newElements.clear();
-
-      for (AbstractFunction abstractFunction : result) {
-        EObject container = abstractFunction.eContainer();
-        if (container instanceof AbstractFunction) {
-          AbstractFunction af = (AbstractFunction) container;
-          if (!result.contains(af)) {
-            boolean allInnerAreInResult = true;
-            for (EObject inner : af.eContents()) {
-              if (inner instanceof AbstractFunction) {
-                AbstractFunction innerAf = (AbstractFunction) inner;
-                if (!result.contains(innerAf)) {
-                  allInnerAreInResult = false;
-                }
-              }
-            }
-            if (allInnerAreInResult) {
-              newElements.add(af);
-            }
-          }
-        }
-      }
-
-      result.addAll(newElements);
-    } while (newElements.size() > 0);
-
-    return result;
+    return ScenarioExt.getAvailableFunctionsStateFragment(component_p);
   }
 
   @SuppressWarnings("nls")
@@ -1196,13 +1087,10 @@ public class ScenarioService {
     return false;
   }
 
-
   /**
-   * Returns a list of exchange context constraints. If the argument is a diagram that
-   * targets a Scenario, the result contains the set of all exchange contexts of
-   * all sequence messages in the scenario. If the argument is a diagram element that
-   * targets a sequence message and that sequence message has an exchange context,
-   * the result will contain exactly that exchange context. Otherwise the result is empty.
+   * Returns a list of exchange context constraints. If the argument is a diagram that targets a Scenario, the result contains the set of all exchange contexts
+   * of all sequence messages in the scenario. If the argument is a diagram element that targets a sequence message and that sequence message has an exchange
+   * context, the result will contain exactly that exchange context. Otherwise the result is empty.
    * @param context_p The sirius invocation context
    * @return A possibly empty list of constraints
    **/
@@ -1212,8 +1100,8 @@ public class ScenarioService {
       DSemanticDecorator diagram = (DSemanticDecorator) context_p;
       EObject target = diagram.getTarget();
       if ((null != target) && (target instanceof Scenario)) {
-        for (SequenceMessage msg : ((Scenario) target).getOwnedMessages()){
-          if (msg.getExchangeContext() != null && !result.contains(msg.getExchangeContext())){
+        for (SequenceMessage msg : ((Scenario) target).getOwnedMessages()) {
+          if ((msg.getExchangeContext() != null) && !result.contains(msg.getExchangeContext())) {
             result.add(msg.getExchangeContext());
           }
         }
@@ -1221,31 +1109,28 @@ public class ScenarioService {
     } else if (context_p instanceof DDiagramElement) {
       DDiagramElement element = (DDiagramElement) context_p;
       EObject target = element.getTarget();
-      if ((null != target) && (target instanceof SequenceMessage) && ((SequenceMessage) target).getExchangeContext() != null) {
+      if ((null != target) && (target instanceof SequenceMessage) && (((SequenceMessage) target).getExchangeContext() != null)) {
         result.add(((SequenceMessage) target).getExchangeContext());
       }
     }
     return result;
   }
-  
-  
+
   /**
    * Gets the exchange context constraints currently visible in a given context.
-   * 
-   * 
    * @param context_p : a diagram element, or a diagram
    * @return list of visible exchange contexts
    */
   public List<EObject> getVisibleExchangeContexts(DSemanticDecorator context_p, DDiagram diagram_p) {
-    
+
     Collection<Constraint> allPresentConstraints = new HashSet<Constraint>();
     Collection<Constraint> allAvailableExchangeContexts = new HashSet<Constraint>();
-    
-    for (DDiagramElement elem : diagram_p.getDiagramElements()){
-      if (elem.getTarget() instanceof Constraint){
-        allPresentConstraints.add((Constraint)elem.getTarget());
-      } else if (elem.getTarget() instanceof SequenceMessage && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)){
-        if (context_p == diagram_p || context_p == elem){
+
+    for (DDiagramElement elem : diagram_p.getDiagramElements()) {
+      if (elem.getTarget() instanceof Constraint) {
+        allPresentConstraints.add((Constraint) elem.getTarget());
+      } else if ((elem.getTarget() instanceof SequenceMessage) && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)) {
+        if ((context_p == diagram_p) || (context_p == elem)) {
           allAvailableExchangeContexts.add(((SequenceMessage) elem.getTarget()).getExchangeContext());
         }
       }
@@ -1253,16 +1138,15 @@ public class ScenarioService {
     }
     return new ArrayList<EObject>(allPresentConstraints);
   }
-  
-  public String getOperatorLabel (EObject context_p) {
-	  String operatorkind = null;
 
-	  if (context_p instanceof CombinedFragment) {
-		  CombinedFragment combfragment=(CombinedFragment) context_p;
-		  operatorkind= " "+ combfragment.getOperator().getLiteral();
-	  }
-	  return operatorkind;
+  public String getOperatorLabel(EObject context_p) {
+    String operatorkind = null;
+
+    if (context_p instanceof CombinedFragment) {
+      CombinedFragment combfragment = (CombinedFragment) context_p;
+      operatorkind = " " + combfragment.getOperator().getLiteral();
+    }
+    return operatorkind;
   }
-  
 
 }

@@ -10,18 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.projection.scenario.esf2esb.rules;
 
-import org.polarsys.capella.core.tiger.IFinalizer;
-import org.polarsys.capella.core.tiger.ITransfo;
+import org.polarsys.capella.core.projection.scenario.fs2es.rules.FS2CESFinalizer;
 
 /**
  */
-public class CESF2CESBFinalizer implements IFinalizer {
-
-  /**
-   * @see org.polarsys.capella.core.tiger.IFinalizer#finalize(org.polarsys.capella.core.tiger.ITransfo)
-   */
-  public void finalize(ITransfo transfo_p) {
-    //Nothing yet
-  }
-
+public class CESF2CESBFinalizer extends FS2CESFinalizer {
+  // Nothing more
 }

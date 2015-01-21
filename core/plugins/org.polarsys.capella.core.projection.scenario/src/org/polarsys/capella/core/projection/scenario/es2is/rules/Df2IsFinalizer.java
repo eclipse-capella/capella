@@ -21,14 +21,14 @@ import org.polarsys.capella.core.data.interaction.Event;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.tiger.IFinalizer;
+import org.polarsys.capella.core.projection.scenario.fs2es.rules.FS2CESFinalizer;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 
 /**
  *
  */
-public class Df2IsFinalizer implements IFinalizer {
+public class Df2IsFinalizer extends FS2CESFinalizer {
 
   /** List of AbstractEnd to be moved in correct position */
   private static List<AbstractEnd> _ends = new ArrayList<AbstractEnd>();
@@ -40,12 +40,13 @@ public class Df2IsFinalizer implements IFinalizer {
   /**
    * @see org.polarsys.capella.core.tiger.IFinalizer#finalize(org.polarsys.capella.core.tiger.ITransfo)
    */
+  @Override
   public void finalize(ITransfo transfo_p) {
 
     try {
       Set<AbstractEnd> dones = new HashSet<AbstractEnd>();
 
-      //Move messages of transitioned functional exchanges which conveys some exchange item
+      // Move messages of transitioned functional exchanges which conveys some exchange item
       for (AbstractEnd end : _ends) {
         if (!dones.contains(end)) {
           if (end instanceof MessageEnd) {
@@ -66,7 +67,9 @@ public class Df2IsFinalizer implements IFinalizer {
   /**
    * Cleanup the finalizer
    */
-  private void clean() {
+  @Override
+  protected void clean() {
+    super.clean();
     if (_ends != null) {
       _ends.clear();
     }
@@ -85,7 +88,7 @@ public class Df2IsFinalizer implements IFinalizer {
 
     Collection<AbstractEnd> sourceEnds = new ArrayList<AbstractEnd>(ends_p);
 
-    //Retrieve positions of ends
+    // Retrieve positions of ends
     List<AbstractEnd> ends = (List<AbstractEnd>) Query.retrieveTransformedElements(eend_p, transfo_p, InteractionPackage.Literals.ABSTRACT_END);
     if (ends.size() > 0) {
       sourceEnds.remove(eend_p);
@@ -109,8 +112,8 @@ public class Df2IsFinalizer implements IFinalizer {
 
       }
 
-      //For each abstractEnds to be moved, move transitioned element at the position of 
-      //the position of the transitioned end.
+      // For each abstractEnds to be moved, move transitioned element at the position of
+      // the position of the transitioned end.
 
     }
   }

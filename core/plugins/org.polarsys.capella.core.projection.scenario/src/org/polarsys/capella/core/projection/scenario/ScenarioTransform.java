@@ -11,15 +11,17 @@
 package org.polarsys.capella.core.projection.scenario;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.interaction.Scenario;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.projection.common.AbstractTransform;
+import org.polarsys.capella.core.projection.common.context.IContext;
+import org.polarsys.capella.core.projection.scenario.handlers.IScenarioHandler;
+import org.polarsys.capella.core.projection.scenario.handlers.ScenarioHandlerHelper;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.ITransfoRuleBase;
 import org.polarsys.capella.core.tiger.impl.Transfo;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 /**
  */
@@ -46,8 +48,13 @@ public abstract class ScenarioTransform extends AbstractTransform {
   protected ITransfo createTransfo(ITransfoRuleBase ruleBase_p) throws ClassNotFoundException {
     Transfo transfo = new ScenarioTransfo(ruleBase_p, CapellacommonPackage.Literals.TRANSFO_LINK, getRules());
     transfo.put(TransfoEngine.TRANSFO_SOURCE, _context);
+
+    IContext context = IContext.getContext(transfo);
+    ScenarioHandlerHelper.setInstance(context, createScenarioHandler(context));
     return transfo;
   }
+
+  protected abstract IScenarioHandler createScenarioHandler(IContext context_p);
 
   /**
    * @param contextElement_p

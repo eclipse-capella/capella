@@ -80,7 +80,7 @@ public class ScenarioFinalizer implements IFinalizer {
     getOperations().add(ir_p);
   }
 
-  static InstanceRole getInstanceRole(AbstractInstance ir_p) {
+  public static InstanceRole getInstanceRole(AbstractInstance ir_p) {
     return getInstanceRoles().get(ir_p);
   }
 

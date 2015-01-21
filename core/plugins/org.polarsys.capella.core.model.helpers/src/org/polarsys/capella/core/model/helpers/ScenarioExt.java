@@ -17,18 +17,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.AbstractActor;
+import org.polarsys.capella.core.data.cs.Block;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -40,8 +46,10 @@ import org.polarsys.capella.core.data.ctx.System;
 import org.polarsys.capella.core.data.epbs.ConfigurationItem;
 import org.polarsys.capella.core.data.epbs.EPBSArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.AbstractFunctionalBlock;
 import org.polarsys.capella.core.data.fa.ComponentExchange;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.helpers.information.services.ExchangeItemExt;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -59,14 +67,18 @@ import org.polarsys.capella.core.data.interaction.Execution;
 import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
+import org.polarsys.capella.core.data.interaction.InteractionState;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
+import org.polarsys.capella.core.data.interaction.StateFragment;
 import org.polarsys.capella.core.data.interaction.TimeLapse;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
+import org.polarsys.capella.core.data.oa.ActivityAllocation;
+import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
@@ -75,6 +87,125 @@ import org.polarsys.capella.core.model.helpers.queries.QueryIdentifierConstants;
  * Scenario helpers
  */
 public class ScenarioExt {
+
+  /**
+   * Return functions that can be used as StateFragment for a given instanceRole
+   */
+  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(AbstractInstance instance_p) {
+    if (instance_p instanceof Role) {
+      Role role = (Role) instance_p;
+      List<AbstractFunction> result = new ArrayList<AbstractFunction>();
+      for (ActivityAllocation alloc : role.getActivityAllocations()) {
+        result.add(alloc.getActivity());
+      }
+      return result;
+    }
+    return getAvailableFunctionsStateFragment((Component) instance_p.getAbstractType());
+  }
+
+  /**
+   * Return functions that can be used as StateFragment for a given component
+   */
+  public static Collection<AbstractFunction> getAvailableFunctionsStateFragment(Component component_p) {
+    List<AbstractFunction> result = new ArrayList<AbstractFunction>();
+    Collection<AbstractFunction> functions = new java.util.HashSet<AbstractFunction>();
+
+    List<Component> baseComponents = new ArrayList<Component>();
+    baseComponents.add(component_p);
+    // adding all sub Components
+    baseComponents.addAll(ComponentExt.getAllSubUsedAndDeployedComponents(component_p));
+
+    for (Component component : baseComponents) {
+      List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component);
+      elements.add(component);
+      for (GeneralizableElement element : elements) {
+        if (element instanceof AbstractFunctionalBlock) {
+          functions.addAll(((AbstractFunctionalBlock) element).getAllocatedFunctions());
+        }
+      }
+    }
+    //
+
+    for (AbstractFunction function : functions) {
+      result.add(function);
+    }
+
+    ArrayList<AbstractFunction> newElements = new ArrayList<AbstractFunction>();
+
+    // Allow whole function for which all sub decompositions are already in result, recursively.
+    do {
+      newElements.clear();
+
+      for (AbstractFunction abstractFunction : result) {
+        EObject container = abstractFunction.eContainer();
+        if (container instanceof AbstractFunction) {
+          AbstractFunction af = (AbstractFunction) container;
+          if (!result.contains(af)) {
+            boolean allInnerAreInResult = true;
+            for (EObject inner : af.eContents()) {
+              if (inner instanceof AbstractFunction) {
+                AbstractFunction innerAf = (AbstractFunction) inner;
+                if (!result.contains(innerAf)) {
+                  allInnerAreInResult = false;
+                }
+              }
+            }
+            if (allInnerAreInResult) {
+              newElements.add(af);
+            }
+          }
+        }
+      }
+
+      result.addAll(newElements);
+    } while (newElements.size() > 0);
+
+    return result;
+  }
+
+  public static Collection<AbstractState> getAvailableStateModeStateFragment(AbstractInstance instance_p) {
+    Collection<AbstractState> result = new java.util.HashSet<AbstractState>();
+    Collection<StateMachine> stateMachinas = new java.util.HashSet<StateMachine>();
+
+    if (instance_p instanceof Part) {
+      Collection<Part> parts = ComponentExt.getPartAncestors((Part) instance_p, true);
+      parts.add((Part) instance_p);
+
+      for (Part part : parts) {
+        if (part.getAbstractType() != null) {
+          Component component_p = (Component) part.getAbstractType();
+          List<GeneralizableElement> elements = GeneralizableElementExt.getAllSuperGeneralizableElements(component_p);
+          elements.add(component_p);
+          for (GeneralizableElement element : elements) {
+            if (element instanceof Block) {
+              stateMachinas.addAll(((Block) element).getOwnedStateMachines());
+            }
+          }
+        }
+      }
+
+      for (StateMachine machina : stateMachinas) {
+        // Retrieve all AbstractState from the StateMachine
+        TreeIterator<EObject> childs = machina.eAllContents();
+        while (childs.hasNext()) {
+          EObject child = childs.next();
+          if (child instanceof AbstractState) {
+            result.add((AbstractState) child);
+          }
+        }
+      }
+
+    } else if (instance_p instanceof AbstractFunction) {
+      // functional scenario can use states by relationship
+      // function:availableInStateModes
+      AbstractFunction af = (AbstractFunction) instance_p;
+      for (State asm : af.getAvailableInStates()) {
+        result.add(asm);
+      }
+    }
+
+    return result;
+  }
 
   /**
    * Retrieve scenarios in which the Event given in parameter is manipulated
@@ -872,6 +1003,33 @@ public class ScenarioExt {
    */
   public static boolean isInterfaceScenario(Scenario scenario_p) {
     return scenario_p.getKind() == ScenarioKind.INTERFACE;
+  }
+
+  public static StateFragment getFragment(InteractionState state) {
+    List<TimeLapse> allocations = (List) EObjectExt.getReferencers(state, InteractionPackage.Literals.TIME_LAPSE__START);
+    if ((allocations.size() == 1) && (allocations.get(0) instanceof StateFragment)) {
+      return (StateFragment) allocations.get(0);
+    }
+    allocations = (List) EObjectExt.getReferencers(state, InteractionPackage.Literals.TIME_LAPSE__FINISH);
+    if ((allocations.size() == 1) && (allocations.get(0) instanceof StateFragment)) {
+      return (StateFragment) allocations.get(0);
+    }
+    return null;
+  }
+
+  public static Collection<InstanceRole> getCoveredInstanceRoles(StateFragment state) {
+    Collection<InstanceRole> roles = new ArrayList<InstanceRole>();
+    for (InstanceRole role : state.getStart().getCoveredInstanceRoles()) {
+      if (!roles.contains(role)) {
+        roles.add(role);
+      }
+    }
+    for (InstanceRole role : state.getFinish().getCoveredInstanceRoles()) {
+      if (!roles.contains(role)) {
+        roles.add(role);
+      }
+    }
+    return roles;
   }
 
   public static void reorderScenario(Scenario scenario) {
