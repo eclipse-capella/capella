@@ -18,6 +18,7 @@ import org.polarsys.capella.common.re.launcher.ReLauncher;
 import org.polarsys.capella.common.re.launcher.UpdateCurLauncher;
 
 /**
+ *
  */
 public class UpdateCurCommand extends ReCommand {
 
@@ -30,13 +31,7 @@ public class UpdateCurCommand extends ReCommand {
   }
 
   @Override
-  public String getName() {
-    return getClass().getName();
-  }
-
-  @Override
   protected ReLauncher createLauncher() {
     return new UpdateCurLauncher();
   }
-
 }

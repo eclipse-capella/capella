@@ -18,6 +18,7 @@ import org.polarsys.capella.common.re.launcher.CreateReplicaLauncher;
 import org.polarsys.capella.common.re.launcher.ReLauncher;
 
 /**
+ *
  */
 public class CreateReplicaCommand extends ReCommand {
 
@@ -27,11 +28,6 @@ public class CreateReplicaCommand extends ReCommand {
    */
   public CreateReplicaCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
     super(selection_p, progressMonitor_p);
-  }
-
-  @Override
-  public String getName() {
-    return getClass().getName();
   }
 
   @Override

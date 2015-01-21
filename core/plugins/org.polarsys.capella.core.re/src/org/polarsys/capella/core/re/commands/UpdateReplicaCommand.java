@@ -18,6 +18,7 @@ import org.polarsys.capella.core.re.launcher.UpdateReplicaLauncher;
 import org.polarsys.capella.common.re.launcher.ReLauncher;
 
 /**
+ *
  */
 public class UpdateReplicaCommand extends org.polarsys.capella.common.re.commands.UpdateReplicaCommand {
 
@@ -27,11 +28,6 @@ public class UpdateReplicaCommand extends org.polarsys.capella.common.re.command
    */
   public UpdateReplicaCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
     super(selection_p, progressMonitor_p);
-  }
-
-  @Override
-  public String getName() {
-    return getClass().getName();
   }
 
   @Override

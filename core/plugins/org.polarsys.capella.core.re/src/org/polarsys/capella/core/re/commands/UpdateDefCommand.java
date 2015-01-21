@@ -18,6 +18,7 @@ import org.polarsys.capella.core.re.launcher.UpdateDefLauncher;
 import org.polarsys.capella.common.re.launcher.ReLauncher;
 
 /**
+ *
  */
 public class UpdateDefCommand extends org.polarsys.capella.common.re.commands.UpdateDefCommand {
 
@@ -30,13 +31,7 @@ public class UpdateDefCommand extends org.polarsys.capella.common.re.commands.Up
   }
 
   @Override
-  public String getName() {
-    return getClass().getName();
-  }
-
-  @Override
   protected ReLauncher createLauncher() {
     return new UpdateDefLauncher();
   }
-
 }
