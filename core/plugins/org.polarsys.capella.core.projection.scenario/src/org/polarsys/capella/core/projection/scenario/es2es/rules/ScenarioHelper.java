@@ -17,7 +17,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.activity.ActivityNode;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
@@ -63,7 +63,6 @@ import org.polarsys.capella.core.tiger.IResolver;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.impl.TransfoEngine;
-import org.polarsys.capella.common.data.activity.ActivityNode;
 
 /**
  */
@@ -109,11 +108,11 @@ public class ScenarioHelper {
       }
     }
 
-    if (partBounds.size() == 0 && role.getRepresentedInstance() != null) {
+    if ((partBounds.size() == 0) && (role.getRepresentedInstance() != null)) {
       String messageTxxt = Messages.Scenario_MultipleTransitionedElements;
       List<? extends EObject> availables =
           Query.retrieveTransformedElements(role.getRepresentedInstance(), transfo_p, InformationPackage.Literals.ABSTRACT_INSTANCE);
-      if (availables.size() == 0 && role.getRepresentedInstance() instanceof Part) {
+      if ((availables.size() == 0) && (role.getRepresentedInstance() instanceof Part)) {
         for (PartitionableElement element : (List<PartitionableElement>) Query.retrieveTransformedElements(role.getRepresentedInstance().getAbstractType(),
             transfo_p, InformationPackage.Literals.PARTITIONABLE_ELEMENT)) {
           availables.addAll((List) element.getRepresentingPartitions());
@@ -128,7 +127,7 @@ public class ScenarioHelper {
           List<EObject> res =
               resolver.resolve(role.getRepresentedInstance(), (List) availables, CommonScenarioHelper.getTitle(transfo_p), messageTxxt, false, transfo_p,
                   new EObject[] { role.getRepresentedInstance() });
-          if (res != null && res.size() > 0) {
+          if ((res != null) && (res.size() > 0)) {
             partBounds.add((AbstractInstance) res.get(0));
           }
         }
@@ -184,12 +183,9 @@ public class ScenarioHelper {
     boolean isSource = isEndRelatedToSendingRole(end);
 
     String messageTxt =
-        NLS.bind((isSource ? Messages.Scenario_SourceMessage : Messages.Scenario_TargetMessage), new Object[] {
-                                                                                                               getPosition(message),
-                                                                                                               EObjectLabelProviderHelper.getText(message),
-                                                                                                               EObjectLabelProviderHelper.getText(operation_p),
-                                                                                                               EObjectLabelProviderHelper.getMetaclassLabel(
-                                                                                                                   operation_p, true) });
+        NLS.bind((isSource ? Messages.Scenario_SourceMessage : Messages.Scenario_TargetMessage),
+            new Object[] { getPosition(message), EObjectLabelProviderHelper.getText(message), EObjectLabelProviderHelper.getText(operation_p),
+                          EObjectLabelProviderHelper.getMetaclassLabel(operation_p, true) });
 
     EObject context = (isSource ? message.getSendingEnd() : message.getReceivingEnd());
     return (Partition) resolver.resolve(operation_p, (List) partBounds, CommonScenarioHelper.getTitle(transfo_p), messageTxt, false, transfo_p,
@@ -220,7 +216,7 @@ public class ScenarioHelper {
     Object value = null;
     int position = 1;
 
-    if (container != null && reference != null && reference.isMany()) {
+    if ((container != null) && (reference != null) && reference.isMany()) {
       value = container.eGet(reference);
       if (value instanceof List<?>) {
         position = ((List<?>) value).indexOf(message_p) + 1;
@@ -319,7 +315,7 @@ public class ScenarioHelper {
         if (function != null) {
           if (shouldRetrieveAllocating) {
             for (ComponentFunctionalAllocation allocation : function.getComponentFunctionalAllocations()) {
-              if (allocation.getBlock() != null && allocation.getBlock() instanceof PartitionableElement) {
+              if ((allocation.getBlock() != null) && (allocation.getBlock() instanceof PartitionableElement)) {
                 partBounds.addAll(((PartitionableElement) allocation.getBlock()).getRepresentingPartitions());
               }
             }
@@ -382,7 +378,7 @@ public class ScenarioHelper {
       List<EObject> res =
           resolver.resolve(operation, (List) availables, CommonScenarioHelper.getTitle(transfo_p), messageTxxt, false, transfo_p, new EObject[] { operation,
                                                                                                                                                  message });
-      if (res != null && res.size() > 0) {
+      if ((res != null) && (res.size() > 0)) {
         return (AbstractEventOperation) res.get(0);
       }
 
@@ -418,11 +414,12 @@ public class ScenarioHelper {
 
     if (end instanceof ExecutionEnd) {
       ExecutionEnd eend = (ExecutionEnd) end;
-      if (eend.getExecution() != null)
+      if (eend.getExecution() != null) {
         end = (AbstractEnd) eend.getExecution().getStart();
+      }
     }
 
-    if (end != null && end instanceof MessageEnd) {
+    if ((end != null) && (end instanceof MessageEnd)) {
       MessageEnd mend = (MessageEnd) end;
       SequenceMessage message = mend.getMessage();
       if (message.getKind() == MessageKind.REPLY) {
@@ -442,11 +439,12 @@ public class ScenarioHelper {
 
     if (end instanceof ExecutionEnd) {
       ExecutionEnd eend = (ExecutionEnd) end;
-      if (eend.getExecution() != null)
+      if (eend.getExecution() != null) {
         end = (AbstractEnd) eend.getExecution().getStart();
+      }
     }
 
-    if (end != null && end instanceof MessageEnd) {
+    if ((end != null) && (end instanceof MessageEnd)) {
       MessageEnd mend = (MessageEnd) end;
       SequenceMessage message = mend.getMessage();
       if (message.getKind() == MessageKind.REPLY) {

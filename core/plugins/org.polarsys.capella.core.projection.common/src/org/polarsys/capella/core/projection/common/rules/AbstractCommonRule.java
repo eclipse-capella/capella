@@ -288,7 +288,7 @@ public abstract class AbstractCommonRule extends TransfoRule implements IRuleTra
    * @see org.polarsys.capella.core.tiger.impl.TransfoRule#attach(java.lang.Object)
    */
   @Override
-  public final void attach_(EObject element_p, ITransfo transfo_p) throws TransfoException {
+  public void attach_(EObject element_p, ITransfo transfo_p) throws TransfoException {
     IContext context_p = IContext.getContext(transfo_p);
 
     if (Query.isElementTransformed(element_p, transfo_p, getTargetType())) {

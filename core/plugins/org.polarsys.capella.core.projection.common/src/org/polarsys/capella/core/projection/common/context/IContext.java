@@ -16,6 +16,8 @@ import org.polarsys.capella.core.tiger.ITransfo;
 
 public class IContext extends HashMap<String, Object> {
 
+  private static final String CONTEXT = "CONTEXT";
+
   ITransfo _transfo = null;
 
   public IContext(ITransfo transfo) {
@@ -23,11 +25,16 @@ public class IContext extends HashMap<String, Object> {
   }
 
   public IContext() {
-    //Nothing here
+    // Nothing here
   }
 
   public ITransfo getTransfo() {
     return _transfo;
+  }
+
+  @Override
+  public boolean containsKey(Object key_p) {
+    return getTransfo().containsKey(key_p);
   }
 
   public Object get(String key) {
@@ -48,6 +55,9 @@ public class IContext extends HashMap<String, Object> {
   }
 
   public static IContext getContext(ITransfo transfo) {
-    return new IContext(transfo);
+    if (!transfo.containsKey(CONTEXT)) {
+      transfo.put(CONTEXT, new IContext(transfo));
+    }
+    return (IContext) transfo.get(CONTEXT);
   }
 }

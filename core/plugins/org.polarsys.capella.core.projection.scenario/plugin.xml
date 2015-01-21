@@ -39,6 +39,7 @@
           
        </sharedRuleset>
        
+      <sharedContext context="capella.statemachine.rules"/>
       <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
       
       <sharedRuleset bundle="org.polarsys.capella.core.projection.common"
