@@ -64,8 +64,6 @@
             <rule rulename="Rule_OperationalActor" />
        </sharedRuleset>
         
-       <rule rulename="Rule_InteractionState"/>
-         <rule rulename="Rule_StateFragment"/>
         
          <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
          <finalizer class="org.polarsys.capella.core.projection.scenario.es2es.rules.ScenarioFinalizer"/>
@@ -91,8 +89,6 @@
          <rule rulename="Rule_Message"/>
          <rule rulename="Rule_AbstractEnd"/>
          
-         <rule rulename="Rule_InteractionState"/>
-         <rule rulename="Rule_StateFragment"/>
        
          <finalizer class="org.polarsys.capella.core.projection.scenario.ScenarioFinalizer"/>
          <finalizer class="org.polarsys.capella.core.projection.scenario.es2is.rules.Df2IsFinalizer"/>
