@@ -18,6 +18,7 @@ import org.polarsys.capella.core.transition.common.commands.TransitionCommand;
 import org.polarsys.capella.common.re.launcher.ReLauncher;
 
 /**
+ *
  */
 public abstract class ReCommand extends TransitionCommand {
 
@@ -29,11 +30,6 @@ public abstract class ReCommand extends TransitionCommand {
     super(selection_p, progressMonitor_p);
   }
 
-  @Override
-  public String getName() {
-    return getClass().getName();
-  }
-
   protected abstract ReLauncher createLauncher();
 
   @Override
@@ -42,5 +38,4 @@ public abstract class ReCommand extends TransitionCommand {
     ReLauncher launcher = createLauncher();
     launcher.run(sources, true, getProgressMonitor());
   }
-
 }
