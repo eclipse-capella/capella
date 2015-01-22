@@ -18,19 +18,39 @@ import java.util.Map;
  * Base class to implement {@link ICommand}.
  */
 public abstract class AbstractCommand implements ICommand {
-  /**
-   * @see org.polarsys.capella.common.ef.command.ICommand#commandInterrupted()
-   */
+
+	/**
+	 * true if command has been interrupted
+	 */
+	protected boolean isInterrupted = false;
+	/**
+	 * true if command has been rolled back
+	 */	
+  protected boolean isRolledBack = false;
+	
+  @Override
   public void commandInterrupted() {
-    // Default implementation does nothing.
+    isInterrupted = true;
   }
 
-  /**
-   * @see org.polarsys.capella.common.ef.command.ICommand#commandRolledBack()
-   */
+  @Override
   public void commandRolledBack() {
-    // Default implementation does nothing.
+    isRolledBack = true;
   }
+  
+  /**
+   * @return true if command has been interrupted
+   */
+  public boolean isInterrupted() {
+  	return isInterrupted;
+  }
+  
+  /**
+   * @return true if command has been rolled back
+   */
+  public boolean isRolledBack() {
+  	return isRolledBack;
+  }  
 
   /**
    * @see org.polarsys.capella.common.ef.command.ICommand#getExecutionOptions()
