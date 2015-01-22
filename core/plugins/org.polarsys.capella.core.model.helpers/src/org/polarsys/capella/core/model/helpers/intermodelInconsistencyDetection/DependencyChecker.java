@@ -21,6 +21,7 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.libraries.IModel;
 import org.polarsys.capella.common.libraries.IModelIdentifier;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
@@ -34,6 +35,7 @@ public class DependencyChecker {
 
 	protected SemanticEditingDomain domain;
 	protected HashMap<EObject, HashSet<EObject>> correctLinks = new HashMap<EObject, HashSet<EObject>>();
+	protected HashMap<IModelIdentifier, HashSet<IModelIdentifier>> modelIndentifier2AllReferencedModelIdentifiers = new HashMap<IModelIdentifier, HashSet<IModelIdentifier>>();
 	protected HashSet<DependencyViolation> dependencyViolations = new HashSet<DependencyViolation>();
 	
 	public DependencyChecker(SemanticEditingDomain domain) {
@@ -42,6 +44,17 @@ public class DependencyChecker {
 	
 	public HashSet<DependencyViolation> getDependencyViolations() {
 		return dependencyViolations;
+	}
+	
+	public HashSet<IModelIdentifier> getAllReferencedLibraryIdentifiers(IModel model) {
+		HashSet<IModelIdentifier> res = modelIndentifier2AllReferencedModelIdentifiers.get(model.getIdentifier());
+		if (res == null) {
+			res = new HashSet<IModelIdentifier>();
+			for (IModel referencedModel : LibraryManagerExt.getAllReferences(model))
+				res.add(referencedModel.getIdentifier());
+			modelIndentifier2AllReferencedModelIdentifiers.put(model.getIdentifier(), res);
+		}
+		return res;
 	}
 
 	/** Return true if a link between @param source and @param target conforms to library dependency graph.
@@ -60,9 +73,10 @@ public class DependencyChecker {
 			IModel sourceModel = ILibraryManager.INSTANCE.getModel(source);
 			IModel targetModel = ILibraryManager.INSTANCE.getModel(target);
 			if (sourceModel != null && targetModel != null && !sourceModel.equals(targetModel)) {
-				Collection<IModelIdentifier> refs = sourceModel.getReferences();
-				IModelIdentifier identifier = targetModel.getIdentifier();
-				boolean res = refs.contains(identifier);
+//				Collection<IModelIdentifier> refs = sourceModel.getReferences();
+//				IModelIdentifier identifier = targetModel.getIdentifier();
+//				boolean res = refs.contains(identifier);
+				boolean res = getAllReferencedLibraryIdentifiers(sourceModel).contains(targetModel.getIdentifier());				
 				if (res)
 					declareLinkAsCorrect(source, target);
 				else
