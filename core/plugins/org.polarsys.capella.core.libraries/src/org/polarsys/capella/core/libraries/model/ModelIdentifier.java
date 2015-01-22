@@ -26,6 +26,11 @@ public class ModelIdentifier implements IModelIdentifier {
   }
 
   @Override
+  public int hashCode() {
+    return uri.hashCode();
+  }
+  
+  @Override
   public boolean equals(Object object_p) {
     if (object_p instanceof ModelIdentifier) {
       return uri.equals(((ModelIdentifier) object_p).uri);

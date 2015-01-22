@@ -50,7 +50,7 @@ public class DWF_D27_Resolver extends AbstractCapellaMarkerResolution {
 
 		// show the dialog
 		if (inconsistencies.size() > 0) {
-			InterModelErrorNavigatorDialog dialog = new InterModelErrorNavigatorDialog(inconsistencies.get(0).getInvolvedObjects(), "Inter-model inconsistency details", "Capella Element(s) involved in detected cycle(s)Capella Element(s) involved in detected inconsistency(ies)", "Select inconsistency:"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			InterModelErrorNavigatorDialog dialog = new InterModelErrorNavigatorDialog(inconsistencies.get(0).getInvolvedObjects(), "Inter-model inconsistency details", "Capella Element(s) involved in detected inter-model inconsistencies (inter-model cycles and dependency violations).", "Select inter-model inconsistency:"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			dialog.setCycles(inconsistencies);
 			dialog.setContextMenuManagerFiller(new AbstractContextMenuFiller() {
 				/**
