@@ -24,11 +24,11 @@
       </resolver>
       <resolver
             class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.DWF_D27_Resolver"
-            desc="%quickFix.CO21.desc"
+            desc="%quickFix.DWF_D27.desc"
             icon="icons/search16.gif"
-            label="%quickFix.CO21.label">
+            label="%quickFix.DWF_D27.label">
          <rules
-               ruleId="DWF_D_27">
+               ruleId="I_34">
          </rules>
       </resolver>      
       <resolver
