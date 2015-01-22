@@ -14,10 +14,12 @@ package org.polarsys.capella.common.ef.command;
  * A command that accesses model objects in read-write mode.
  */
 public abstract class AbstractReadWriteCommand extends AbstractCommand {
-  /**
+  	
+	/**
    * @see org.polarsys.capella.common.ef.command.ICommand#isReadOnly()
    */
   public boolean isReadOnly() {
     return false;
   }
+  
 }
