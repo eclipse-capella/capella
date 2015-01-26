@@ -216,7 +216,7 @@
       <steps xsi:type="buildcore:ReuseStep" xmi:id="_SQQb0F1tEeGnJaeCI-TkHw" name="PrepareCleanTP">
         <reusedStep xsi:type="buildcore:StepContainer" href="Helpers.egfbuild#_NGDOgF1yEeGnJaeCI-TkHw"/>
       </steps>
-      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella Src" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _5ozugD27EeG0_cmFvR9Vkw _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
+      <steps xsi:type="buildstep:InstallStep" xmi:id="_Qe9VADz6EeGdSIj2ulwf2Q" name="Install Capella" description="" id="product/capella/eclipse" profile="SDKProfile" resultSteps="_BAOtwO_5EeCIP56Yzwc9FQ _HxX5IH_-EeGTdLgtIFdaLw _O3IjoPAvEeCsV7GIvIT8ig _5ozugD27EeG0_cmFvR9Vkw _DvQaED28EeG0_cmFvR9Vkw _Rbzf0PAvEeCsV7GIvIT8ig _UMYxEPAvEeCsV7GIvIT8ig _aq_KsC0bEeSpNZCH09tG3Q _RrqacJZyEeS4v-7NYpWHgw _jkp5IJo_EeSestiG7b7wRQ" installResultStepsSourceFeatures="true" p2_os="${os}" p2_ws="${ws}" p2_arch="${arch}">
         <updateSiteUrls>${site_Kitalpha}</updateSiteUrls>
         <updateSiteUrls>${orbit.download.url}</updateSiteUrls>
         <updateSiteUrls>${site_QueryLegacy}</updateSiteUrls>
