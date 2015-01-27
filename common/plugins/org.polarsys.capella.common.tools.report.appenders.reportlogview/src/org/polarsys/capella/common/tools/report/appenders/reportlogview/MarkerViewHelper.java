@@ -147,9 +147,9 @@ public class MarkerViewHelper {
     String result = null;
 
     // the deprecated attribute has preference for backwards compatibility
-    result = marker_p.getAttribute(IValidationConstants.TAG_RULE_ID, null);
+//    result = marker_p.getAttribute(IValidationConstants.TAG_RULE_ID, null);
     
-    if (result == null){
+//    if (result == null){
       Diagnostic diag = (Diagnostic) marker_p.getAdapter(Diagnostic.class);
       if (diag instanceof ConstraintStatusDiagnostic) {
         result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
@@ -161,7 +161,7 @@ public class MarkerViewHelper {
           }
         }
       }
-    }
+//    }
     return result;
   }
 
@@ -223,7 +223,6 @@ public class MarkerViewHelper {
     }
     return result;
   }
-
 
   /**
    * Finds EObjects that are attached to this marker. The resulting list will not contain duplicates.

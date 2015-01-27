@@ -30,30 +30,41 @@ import org.polarsys.capella.core.model.handler.post.commit.listener.DeleteElemen
  */
 public class DeleteMarkerListener extends DeleteElementListener {
 
-    private void findAndAppend(Collection<IMarker> haystack, List<IMarker> result, EObject deleted) {
-      for (IMarker marker : haystack) {  
-        if (MarkerViewHelper.getModelElementsFromMarker(marker).contains(deleted)){
-          result.add(marker);
-        }
+  @Override
+  protected void handleDelete(Set<? extends EObject> deleted_p) {
+    Set<EObject> deleteObjects = (Set) deleted_p;
+    Iterator<EObject> itDelete = (Iterator<EObject>) deleted_p.iterator();
+    while (itDelete.hasNext()) {
+      for (Iterator<EObject> it = itDelete.next().eAllContents(); it.hasNext();) {
+        deleteObjects.add(it.next());
       }
     }
 
-    @Override
-    protected void handleDelete(Set<? extends EObject> deleted_p) {
-      Collection<IMarker> allMarkers = LightMarkerRegistry.getInstance().getMarkers();
-      List<IMarker> toDelete = new ArrayList<IMarker>();
-      for (EObject deleted : deleted_p) {
-        findAndAppend(allMarkers, toDelete, deleted);
-        for (Iterator<EObject> it = deleted.eAllContents(); it.hasNext();) {
-          findAndAppend(allMarkers, toDelete, it.next());
+    Collection<IMarker> markers = LightMarkerRegistry.getInstance().getMarkers();
+    List<IMarker> toDelete = new ArrayList<IMarker>();
+
+    for (IMarker deleted : markers) {
+      boolean isDeletable = false;
+      Collection<EObject> referencedElements = MarkerViewHelper.getModelElementsFromMarker(deleted);
+
+      // if marker references one of deleted element, we remove it
+      for (EObject deleteObject : deleteObjects) {
+        if (referencedElements.contains(deleteObject)) {
+          isDeletable = true;
+          break;
         }
       }
-      for (IMarker marker : toDelete) {
-        try {
-          marker.delete();
-        } catch (CoreException exception) {
-          ReportLogActivator.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
-        }
+      if (isDeletable) {
+        toDelete.add(deleted);
       }
     }
+
+    for (IMarker marker : toDelete) {
+      try {
+        marker.delete();
+      } catch (CoreException exception) {
+        ReportLogActivator.getDefault().log(IStatus.ERROR, exception.getMessage(), exception);
+      }
+    }
+  }
 }
