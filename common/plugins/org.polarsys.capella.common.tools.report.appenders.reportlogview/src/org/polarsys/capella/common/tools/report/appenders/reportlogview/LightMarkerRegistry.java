@@ -32,8 +32,7 @@ import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 
 /**
  * A lot of default-marker cause bad performances.<br>
- * This class provides a roll-our-own implementation of the Eclipse IMarker API,
- * lacking support for a few essential features of the original API:<br>
+ * This class provides a roll-our-own implementation of the Eclipse IMarker API, lacking support for a few essential features of the original API:<br>
  * - Once a marker has been created, clients won't be notified about subsequent changes to the marker.<br>
  * - All marker attributes have to be set upon creation with the help of a callback argument (see createMarker() below).<br>
  * This class is thread safe.<br>
@@ -109,15 +108,27 @@ public class LightMarkerRegistry implements IMarkerSource {
     }
   }
 
+  @Deprecated
+  /**
+   * Use createMarker(resource_p, emfResource_p, diagnostic_p) instead
+   */
   public void createMarker(IResource resource_p, Diagnostic diagnostic_p, Resource emfResource_p) {
     createMarker(resource_p, emfResource_p, diagnostic_p);
   }
 
   /**
-   * Create a light marker. The returned marker should not be changed. See also the comments on the class definition above.
+   * Create a marker for the validation
    */
   public IMarker createMarker(IResource fileResource_p, Resource emfResource_p, Diagnostic diagnostic_p) {
-    LightMarker marker = new LightMarker(fileResource_p, diagnostic_p);
+    return createMarker(fileResource_p, VALIDATION_TYPE, emfResource_p, diagnostic_p, null);
+  }
+
+  /**
+   * Create a marker of the given type
+   */
+  public IMarker createMarker(IResource fileResource_p, String type_p, Resource emfResource_p, Diagnostic diagnostic_p, IMarkerModification modification) {
+
+    LightMarker marker = new LightMarker(fileResource_p, type_p, diagnostic_p);
 
     int severity = diagnostic_p.getSeverity();
     try {
@@ -138,11 +149,13 @@ public class LightMarkerRegistry implements IMarkerSource {
       String pathAttributes = ICommonConstants.EMPTY_STRING;
       for (Object data : diagnostic_p.getData()) {
         if (data instanceof EObject) {
-          String resourceURI = ((EObject) data).eResource().getURI().toString();
-          String objUri = ((EObject) data).eResource().getURIFragment((EObject) data).toString();
+          if (((EObject) data).eResource() != null) {
+            String resourceURI = ((EObject) data).eResource().getURI().toString();
+            String objUri = ((EObject) data).eResource().getURIFragment((EObject) data).toString();
 
-          affectedObjectsURIs += resourceURI + "#" + objUri + ICommonConstants.LINE_SEPARATOR; //$NON-NLS-1$
-          pathAttributes += resourceURI + ICommonConstants.LINE_SEPARATOR;
+            affectedObjectsURIs += resourceURI + "#" + objUri + ICommonConstants.LINE_SEPARATOR; //$NON-NLS-1$
+            pathAttributes += resourceURI + ICommonConstants.LINE_SEPARATOR;
+          }
         }
       }
 
@@ -158,19 +171,28 @@ public class LightMarkerRegistry implements IMarkerSource {
       e.printStackTrace();
     }
 
+    if (modification != null) {
+      modification.modify(marker);
+    }
+
     _registry.add(marker);
     notifyRegistryChanged(null, marker);
     return marker;
   }
 
-  public void createMarker(IResource fileResource_p, Diagnostic diagnostic_p, Resource emfResource_p, String preferenceFile) {
-    IMarker marker = createMarker(fileResource_p, emfResource_p, diagnostic_p);
-    // also store the rule id directly on the marker
-    try {
-      marker.setAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, preferenceFile);
-    } catch (CoreException exception_p) {
-      exception_p.printStackTrace();
-    }
+  public void createMarker(IResource fileResource_p, Diagnostic diagnostic_p, Resource emfResource_p, final String preferenceFile) {
+    createMarker(fileResource_p, VALIDATION_TYPE, emfResource_p, diagnostic_p, new IMarkerModification() {
+
+      @Override
+      public void modify(IMarker marker_p) {
+        // also store the rule id directly on the marker
+        try {
+          marker_p.setAttribute(IValidationConstants.TAG_PREFERENCE_EPF_FILE, preferenceFile);
+        } catch (CoreException exception_p) {
+          exception_p.printStackTrace();
+        }
+      }
+    });
   }
 
   /**
@@ -180,10 +202,11 @@ public class LightMarkerRegistry implements IMarkerSource {
    * @param modification
    */
   public void createMarker(IResource resource_p, String type_p, IMarkerModification modification) {
-    LightMarker marker = new LightMarker(resource_p, type_p);
-    modification.modify(marker);
-    _registry.add(marker);
-    notifyRegistryChanged(null, marker);
+    createMarker(resource_p, type_p, null, modification);
+  }
+
+  public void createMarker(IResource resource_p, String type_p, Diagnostic diagnostic, IMarkerModification modification) {
+    createMarker(resource_p, type_p, null, diagnostic, modification);
   }
 
   /**
@@ -210,8 +233,8 @@ public class LightMarkerRegistry implements IMarkerSource {
   }
 
   /**
-   * A light version of IMarker - non persistent - avoid any resourceChangeEvents about markers (which cause performance decreased since Sirius made a ui-refresh
-   * for each notification)
+   * A light version of IMarker - non persistent - avoid any resourceChangeEvents about markers (which cause performance decreased since Sirius made a
+   * ui-refresh for each notification)
    * @see org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend
    */
   @SuppressWarnings("restriction")
@@ -224,25 +247,24 @@ public class LightMarkerRegistry implements IMarkerSource {
     long id;
     long creationTime;
     IResource resource;
-
-    @SuppressWarnings("unused")
     private Diagnostic diagnostic;
 
-    LightMarker(IResource resource_p, String type_p) {
+    LightMarker(IResource resource_p, String type_p, Diagnostic diagnostic_p) {
       attributes = new HashMap<String, Object>();
       resource = resource_p;
       type = type_p;
       id = System.nanoTime();
       creationTime = System.currentTimeMillis();
+      diagnostic = diagnostic_p;
     }
 
+    LightMarker(IResource resource_p, String type_p) {
+      this(resource_p, type_p, null);
+    }
+
+    @Deprecated
     public LightMarker(IResource resource_p, Diagnostic diagnostic_p) {
-      attributes = new HashMap<String, Object>();
-      resource = resource_p;
-      diagnostic = diagnostic_p;
-      id = System.nanoTime();
-      type = VALIDATION_TYPE;
-      creationTime = System.currentTimeMillis();
+      this(resource_p, VALIDATION_TYPE, diagnostic_p);
     }
 
     /**
