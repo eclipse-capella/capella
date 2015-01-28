@@ -18,7 +18,6 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.commands.common.NotDefinedException;
-import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -92,7 +91,7 @@ public abstract class AbstractReHandler extends AbstractHandler {
   }
 
   protected Collection<Object> getSelection(ExecutionEvent event_p) {
-    EvaluationContext context = (EvaluationContext) event_p.getApplicationContext();
+    IEvaluationContext context = (IEvaluationContext) event_p.getApplicationContext();
     Object ae = context.getDefaultVariable();
     if (ae instanceof Collection) {
       return (Collection) ae;

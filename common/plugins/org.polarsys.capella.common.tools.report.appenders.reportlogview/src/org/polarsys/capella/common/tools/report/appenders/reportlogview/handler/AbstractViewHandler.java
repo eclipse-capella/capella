@@ -15,10 +15,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPart;
-
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerView;
 import org.polarsys.capella.common.ui.services.commands.AbstractUiHandler;
 
@@ -35,7 +34,7 @@ abstract class AbstractViewHandler extends AbstractUiHandler {
   }
 
   protected Collection<?> getSelection(ExecutionEvent event_p) {
-    EvaluationContext context = (EvaluationContext) event_p.getApplicationContext();
+    IEvaluationContext context = (IEvaluationContext) event_p.getApplicationContext();
     Object value = context.getDefaultVariable();
 
     if (value == null) {
