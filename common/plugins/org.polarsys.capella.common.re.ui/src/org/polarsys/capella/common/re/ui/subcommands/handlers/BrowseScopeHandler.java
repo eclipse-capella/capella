@@ -12,7 +12,7 @@ package org.polarsys.capella.common.re.ui.subcommands.handlers;
 
 import java.util.Collection;
 
-import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 
 /**
  *
@@ -29,7 +29,7 @@ public class BrowseScopeHandler extends SelectionCommandHandler {
    */
   @Override
   public void setEnabled(Object evaluationContext_p) {
-    Object variable = ((EvaluationContext) evaluationContext_p).getDefaultVariable();
+    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
     setBaseEnabled(((variable instanceof Collection) && (!((Collection) variable).isEmpty())));
     super.setEnabled(evaluationContext_p);
   }

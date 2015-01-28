@@ -15,12 +15,10 @@ import java.util.HashSet;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
-
 import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.ui.util.ExecutionEventUtil;
@@ -53,7 +51,7 @@ public class AddElementsScopeHandler extends SubCommandHandler {
   @Override
   public void setEnabled(Object evaluationContext_p) {
 
-    Object variable = ((EvaluationContext) evaluationContext_p).getDefaultVariable();
+    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
 
     if (!(variable instanceof Collection)) {
       setBaseEnabled(false);

@@ -15,7 +15,7 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.swt.widgets.Shell;
@@ -50,7 +50,7 @@ public abstract class AbstractTigAction extends AbstractHandler implements IObje
    * {@inheritDoc}
    */
   public Object execute(ExecutionEvent event_p) throws ExecutionException {
-    EvaluationContext c = (EvaluationContext) event_p.getApplicationContext();
+    IEvaluationContext c = (IEvaluationContext) event_p.getApplicationContext();
     ISelection s = (ISelection) c.getVariable("selection");
     selectionChanged(null, s);
     setActivePart(null, PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart());
