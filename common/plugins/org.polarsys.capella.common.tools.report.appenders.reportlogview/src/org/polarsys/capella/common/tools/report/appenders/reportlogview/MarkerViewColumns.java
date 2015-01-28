@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
@@ -49,11 +50,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
-
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 
 class MarkerViewColumns {
 
@@ -361,6 +361,8 @@ class MarkerViewColumns {
     if (messageLabelProvider == null) {
       messageLabelProvider = new MarkerViewColumnLabelProvider() {
 
+        Pattern pattern = Pattern.compile("(\\r|\\n)"); //$NON-NLS-1$
+
         // Straightforward but uncached and slow implementation
         // to support annotation of labels with # of child elements.
         @SuppressWarnings("synthetic-access")
@@ -400,8 +402,7 @@ class MarkerViewColumns {
 
           if (element instanceof IMarker) {
             result = ((IMarker) element).getAttribute(IMarker.MESSAGE, ICommonConstants.EMPTY_STRING).toString();
-
-            result = result.replaceAll("(\\r|\\n)", " "); //$NON-NLS-1$ //$NON-NLS-2$
+            result = pattern.matcher(result).replaceAll(" "); //$NON-NLS-1$ 
 
           } else if (element instanceof IConstraintDescriptor) {
             result = ((IConstraintDescriptor) element).getName();

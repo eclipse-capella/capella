@@ -212,35 +212,35 @@ public class MarkerViewHelper {
 
     String fragment = uri_p.fragment();
     try {
-      //If there is a resource in the marker (validation marker), try to retrieve the object
+      // If there is a resource in the marker (validation marker), try to retrieve the object
       Resource resource = (Resource) marker_p.getAttribute(IValidationConstants.EMF_RESOURCE);
       if ((fragment != null) && (resource != null)) {
         eobject = resource.getEObject(fragment);
       }
 
       if (eobject == null) {
-        //try to retrieve the object from the given resourceSet
+        // try to retrieve the object from the given resourceSet
         eobject = resource.getResourceSet().getEObject(uri_p, false);
       }
 
     } catch (Exception e) {
-      //Nothing here
+      // Nothing here
     }
 
     if (eobject == null) {
-      //otherwise, we try to retrieve it from editing domains
+      // otherwise, we try to retrieve it from editing domains
       for (TransactionalEditingDomain domain : ExecutionManagerRegistry.getInstance().getAllEditingDomains()) {
         try {
           eobject = domain.getResourceSet().getEObject(uri_p, false);
         } catch (Exception e) {
-          //Nothing here
+          // Nothing here
         }
 
         if ((eobject == null) && (fragment != null)) {
           try {
             eobject = IdManager.getInstance().getEObject(fragment, new ResourceSetScope(domain.getResourceSet()));
           } catch (Exception e) {
-            //Nothing here
+            // Nothing here
           }
         }
 
@@ -259,6 +259,19 @@ public class MarkerViewHelper {
    */
   public static List<EObject> getModelElementsFromMarker(IMarker marker_p) {
     Set<EObject> result = new LinkedHashSet<EObject>(); // preserve order
+
+    Diagnostic diag = getDiagnostic(marker_p);
+    if (diag != null) {
+      for (Object o : diag.getData()) {
+        if (o instanceof EObject) {
+          result.add((EObject) o);
+        }
+      }
+    }
+    if (!result.isEmpty()) {
+      return new ArrayList<EObject>(result);
+    }
+
     String uris = marker_p.getAttribute(EmbeddedMessage.AFFECTED_OBJECTS_URI, null);
     if (uris != null) {
       for (String uriValue : uris.split(ICommonConstants.LINE_SEPARATOR)) {
