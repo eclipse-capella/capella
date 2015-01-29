@@ -155,7 +155,7 @@ public class ArgumentAnalyzer {
   }
   
   /**
-   * Check is a given fag has been found during parse ops.
+   * Check is a given flag has been found during the parsing.
    * @param flagId_p the target flag Id.
    * @return
    */
