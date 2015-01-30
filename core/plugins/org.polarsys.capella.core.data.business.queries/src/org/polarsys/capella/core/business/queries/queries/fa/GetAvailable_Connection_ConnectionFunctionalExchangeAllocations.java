@@ -80,6 +80,7 @@ public class GetAvailable_Connection_ConnectionFunctionalExchangeAllocations ext
 				}
 			}
 		}
+		availableElements.removeAll(allReadyAllocatedExchanges);
 		return availableElements;
 	}
 

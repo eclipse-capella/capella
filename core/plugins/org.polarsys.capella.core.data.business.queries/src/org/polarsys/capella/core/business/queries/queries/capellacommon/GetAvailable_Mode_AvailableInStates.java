@@ -11,20 +11,19 @@
 package org.polarsys.capella.core.business.queries.queries.capellacommon;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.FaPackage;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
+import org.polarsys.capella.core.data.information.Class;
+import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
 
@@ -42,8 +41,16 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
 	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 		if (element_p instanceof State) {
-			availableElements.addAll(getRule_MQRY_State_AvailableFunctions_11((State) element_p));
-		}
+		      EObject eContainer = element_p.eContainer();
+		      if (eContainer != null) {
+		        while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
+		          eContainer = eContainer.eContainer();
+		        }
+		        if ((eContainer instanceof Component)){
+		        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
+		        }
+		      }
+		    }
 		return availableElements;
 	}
 
@@ -51,36 +58,16 @@ public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
 	 * same level Visibility Layer
 	 * @param state_p
 	 */
-	protected List<CapellaElement> getRule_MQRY_State_AvailableFunctions_11(State state_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(state_p);
-		if (null != arch) {
-			availableElements.addAll(getElementsFromBlockArchitecture(arch, state_p));
-		}
-		return availableElements;
-	}
+	protected List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
+	      List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+	      Collection<Component> subComponents = ComponentExt.getSubDefinedComponents(component_p);
+	      subComponents.add(component_p);
 
-	/** 
-	 * @param arch_p
-	 * @param state_p
-	 * @return
-	 */
-	protected List<CapellaElement> getElementsFromBlockArchitecture(BlockArchitecture arch_p, State state_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		if (arch_p != null) {
-			TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch_p, false);
-			while (allContents.hasNext()) {
-				Object object = allContents.next();
-				if (object instanceof AbstractFunction) {
-					availableElements.add((CapellaElement) object);
-				}
-			}
-		}
-		for (CapellaElement elt : getCurrentElements(state_p, false)) {
-			availableElements.remove(elt);
-		}
-		return availableElements;
-	}
+	      for (Component component : subComponents) {
+	        availableElements.addAll(component.getAllocatedFunctions());
+	       	}
+	      return availableElements;
+	    }
 
 	/** 
 	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
