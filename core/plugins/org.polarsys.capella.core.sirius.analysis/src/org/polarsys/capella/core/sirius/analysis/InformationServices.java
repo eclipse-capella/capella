@@ -2463,39 +2463,34 @@ public class InformationServices {
    * @return
    */
   public String getAssociationBeginRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
-    StringBuffer beginLabel = new StringBuffer();
-    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
-      Property pro = (Property) property_p;
-
-      // Display Role label if multiplicity is different from [1,1]
-      if (!multiplicityToStringDisplay(pro).equals(ICommonConstants.EMPTY_STRING)) {
-        boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
-        boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
-
-        // prefix
-        if (!hideRoleLabelEnable) {
-          beginLabel.append(prefixPropertyLabel(pro));
-
-          // multiplicity
-          String multiplicityToString = multiplicityToString(pro);
-          beginLabel.append(multiplicityToString);
-          if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
-            beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-          }
-
-          // isDerived
-          if (pro.isIsDerived()) {
-            beginLabel.append(ICommonConstants.SLASH_CHARACTER);
-          }
-          // role name (consider only if filter is disable)
-          if (!hideRoleNameEnable) {
-            beginLabel.append(pro.getName());
-          }
-        }
-      }
-    }
-    return beginLabel.toString();
-  }
+	     StringBuffer beginLabel = new StringBuffer();
+	     if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
+	       Property pro = (Property) property_p;
+	       
+	       boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
+	       boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
+	     	  
+	         // multiplicity
+	         String multiplicityToString = multiplicityToString(pro);
+	         beginLabel.append(multiplicityToString);
+	         if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+	         	beginLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+	         }
+	         // prefix
+	         if (!hideRoleLabelEnable) {
+	           beginLabel.append(prefixPropertyLabel(pro));
+	         // isDerived
+	         if (pro.isIsDerived()) {
+	         	beginLabel.append(ICommonConstants.SLASH_CHARACTER);
+	         }
+	         // role name (consider only if filter is disable)
+	         if (!hideRoleNameEnable) {
+	         		beginLabel.append(pro.getName());
+	         	}
+	         }
+	       }
+	     return beginLabel.toString();
+	   }
 
   /**
    * Return Association Center label
@@ -2525,38 +2520,33 @@ public class InformationServices {
    * @return
    */
   public String getAssociationEndRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
-    StringBuffer endLabel = new StringBuffer();
-    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
-      Property pro = (Property) property_p;
+	    StringBuffer endLabel = new StringBuffer();
+	    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
+	      Property pro = (Property) property_p;
 
-      // Display Role label if multiplicity is different from [1,1]
-      if (!multiplicityToStringDisplay(pro).equals(ICommonConstants.EMPTY_STRING)) {
-        boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
-        boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
-
-        // prefix
-        if (!hideRoleLabelEnable) {
-          endLabel.append(prefixPropertyLabel(pro));
-
-          // multiplicity
-          String multiplicityToString = multiplicityToString(pro);
-          endLabel.append(multiplicityToString);
-          if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
-            endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
-          }
-          // isDerived
-          if (pro.isIsDerived()) {
-            endLabel.append(ICommonConstants.SLASH_CHARACTER);
-          }
-          // role name (consider only if filter is disable)
-          if (!hideRoleNameEnable) {
-            endLabel.append(pro.getName());
-          }
-        }
-      }
-    }
-    return endLabel.toString();
-  }
+	      boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
+	      boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p); 	     
+	        // multiplicity
+	        String multiplicityToString = multiplicityToString(pro);
+	        endLabel.append(multiplicityToString);
+	        if (!multiplicityToString.equals(ICommonConstants.EMPTY_STRING)) {
+	        	endLabel.append(ICommonConstants.WHITE_SPACE_CHARACTER);
+	        }
+	 	    // prefix
+	 	    if (!hideRoleLabelEnable) {
+	 	      endLabel.append(prefixPropertyLabel(pro));
+	        // isDerived
+	        if (pro.isIsDerived()) {
+	        	endLabel.append(ICommonConstants.SLASH_CHARACTER);
+	        }
+	        // role name (consider only if filter is disable)
+	        if (!hideRoleNameEnable) {
+	        		endLabel.append(pro.getName());
+	        	}
+	        }
+	      }
+   return endLabel.toString();
+ }
 
   /**
    * Return project explorer label of given element (if element is type NumericType, take into consideration the unit name)
