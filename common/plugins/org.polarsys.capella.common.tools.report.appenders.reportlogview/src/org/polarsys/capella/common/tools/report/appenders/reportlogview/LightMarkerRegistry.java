@@ -20,6 +20,7 @@ import java.util.Map;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -130,45 +131,50 @@ public class LightMarkerRegistry implements IMarkerSource {
 
     LightMarker marker = new LightMarker(fileResource_p, type_p, diagnostic_p);
 
-    int severity = diagnostic_p.getSeverity();
-    try {
-      if (severity < Diagnostic.WARNING) {
-        marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO);
-      } else if (severity < Diagnostic.ERROR) {
-        marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
-      } else {
-        marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
-      }
+    if (diagnostic_p != null) {
+      int severity = diagnostic_p.getSeverity();
+      try {
+        if (severity < Diagnostic.WARNING) {
+          marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO);
+        } else if (severity < Diagnostic.ERROR) {
+          marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
+        } else {
+          marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+        }
 
-      String message = diagnostic_p.getMessage();
-      if (message != null) {
-        marker.setAttribute(IMarker.MESSAGE, message);
-      }
+        String message = diagnostic_p.getMessage();
+        if (message != null) {
+          marker.setAttribute(IMarker.MESSAGE, message);
+        }
 
-      String affectedObjectsURIs = ICommonConstants.EMPTY_STRING;
-      String pathAttributes = ICommonConstants.EMPTY_STRING;
-      for (Object data : diagnostic_p.getData()) {
-        if (data instanceof EObject) {
-          if (((EObject) data).eResource() != null) {
-            String resourceURI = ((EObject) data).eResource().getURI().toString();
-            String objUri = ((EObject) data).eResource().getURIFragment((EObject) data).toString();
+        String affectedObjectsURIs = ICommonConstants.EMPTY_STRING;
+        String pathAttributes = ICommonConstants.EMPTY_STRING;
+        if (diagnostic_p.getData() != null) {
+          for (Object data : diagnostic_p.getData()) {
+            if (data instanceof EObject) {
+              if (((EObject) data).eResource() != null) {
+                String resourceURI = ((EObject) data).eResource().getURI().toString();
+                String objUri = ((EObject) data).eResource().getURIFragment((EObject) data).toString();
 
-            affectedObjectsURIs += resourceURI + "#" + objUri + ICommonConstants.LINE_SEPARATOR; //$NON-NLS-1$
-            pathAttributes += resourceURI + ICommonConstants.LINE_SEPARATOR;
+                affectedObjectsURIs += resourceURI + "#" + objUri + ICommonConstants.LINE_SEPARATOR; //$NON-NLS-1$
+                pathAttributes += resourceURI + ICommonConstants.LINE_SEPARATOR;
+              }
+            }
           }
         }
+
+        marker.setAttribute(EmbeddedMessage.AFFECTED_OBJECTS_URI, affectedObjectsURIs);
+        marker.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, pathAttributes);
+        // expose the diagnostic itself
+        marker.setAttribute(IValidationConstants.TAG_DIAGNOSTIC, diagnostic_p);
+        // also store the rule id directly on the marker
+        marker.setAttribute(IValidationConstants.TAG_RULE_ID, getRuleId(diagnostic_p));
+        // also store the emf resource directly on the marker
+        marker.setAttribute(IValidationConstants.EMF_RESOURCE, emfResource_p);
+      } catch (CoreException e) {
+        e.printStackTrace();
       }
 
-      marker.setAttribute(EmbeddedMessage.AFFECTED_OBJECTS_URI, affectedObjectsURIs);
-      marker.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, pathAttributes);
-      // expose the diagnostic itself
-      marker.setAttribute(IValidationConstants.TAG_DIAGNOSTIC, diagnostic_p);
-      // also store the rule id directly on the marker
-      marker.setAttribute(IValidationConstants.TAG_RULE_ID, getRuleId(diagnostic_p));
-      // also store the emf resource directly on the marker
-      marker.setAttribute(IValidationConstants.EMF_RESOURCE, emfResource_p);
-    } catch (CoreException e) {
-      e.printStackTrace();
     }
 
     if (modification != null) {
@@ -202,7 +208,7 @@ public class LightMarkerRegistry implements IMarkerSource {
    * @param modification
    */
   public void createMarker(IResource resource_p, String type_p, IMarkerModification modification) {
-    createMarker(resource_p, type_p, null, modification);
+    createMarker(resource_p, type_p, new BasicDiagnostic(), modification);
   }
 
   public void createMarker(IResource resource_p, String type_p, Diagnostic diagnostic, IMarkerModification modification) {
@@ -475,7 +481,7 @@ public class LightMarkerRegistry implements IMarkerSource {
     String result = null;
     if (diag instanceof ConstraintStatusDiagnostic) {
       result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
-    } else {
+    } else if (diag != null && diag.getSource() != null) {
       result = diag.getSource() + "." + diag.getCode(); //$NON-NLS-1$
     }
     return result;
