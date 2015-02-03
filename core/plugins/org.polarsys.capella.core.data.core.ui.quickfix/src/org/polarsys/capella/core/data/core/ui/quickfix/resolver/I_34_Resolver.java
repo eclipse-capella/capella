@@ -36,9 +36,9 @@ import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarke
 import org.polarsys.capella.core.validation.ui.ide.quickfix.InterModelErrorNavigatorDialog;
 
 /**
- * Show details for package dependency cycles.
+ * Show details for inter-model inconsistencies.
  */
-public class DWF_D27_Resolver extends AbstractCapellaMarkerResolution {
+public class I_34_Resolver extends AbstractCapellaMarkerResolution {
 
 	/**
 	 * {@inheritDoc}
