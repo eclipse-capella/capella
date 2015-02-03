@@ -12,6 +12,7 @@ package org.polarsys.capella.core.ui.reportlog;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class DeleteMarkerListener extends DeleteElementListener {
 
   @Override
   protected void handleDelete(Set<? extends EObject> deleted_p) {
-    Set<EObject> deleteObjects = (Set) deleted_p;
+    Set<EObject> deleteObjects = new HashSet<EObject>(deleted_p);
     Iterator<EObject> itDelete = (Iterator<EObject>) deleted_p.iterator();
     while (itDelete.hasNext()) {
       for (Iterator<EObject> it = itDelete.next().eAllContents(); it.hasNext();) {
