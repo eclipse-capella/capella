@@ -261,7 +261,7 @@ public class MarkerViewHelper {
     Set<EObject> result = new LinkedHashSet<EObject>(); // preserve order
 
     Diagnostic diag = getDiagnostic(marker_p);
-    if (diag != null) {
+    if ((diag != null) && (diag.getData() != null)) {
       for (Object o : diag.getData()) {
         if (o instanceof EObject) {
           result.add((EObject) o);
@@ -295,7 +295,7 @@ public class MarkerViewHelper {
   public static boolean isEcore(IMarker marker_p) {
     boolean result = false;
     Diagnostic diag = getDiagnostic(marker_p);
-    if ((diag != null) && diag.getSource().equals(ECORE_DIAGNOSTIC_SOURCE)) {
+    if ((diag != null) && (diag.getSource() != null) && diag.getSource().equals(ECORE_DIAGNOSTIC_SOURCE)) {
       result = true;
     }
     return result;
