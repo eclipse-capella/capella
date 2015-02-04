@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session>
+  <diagram name="[PAB] Physical System with Categories - Physical Architecture Blank">
+    <edge name="" id="8f44caf2-b8e2-4c4a-9289-9bbba5d01d91" source="CP 1" target="CP 1">
+      <nodePoint x="238" y="165" />
+      <nodePoint x="223" y="165" />
+      <nodePoint x="223" y="223" />
+    </edge>
+    <edge name="" id="47b87c8b-9d4f-4531-83a0-33605b32894a" source="CP 1" target="CP 1">
+      <nodePoint x="293" y="169" />
+      <nodePoint x="293" y="181" />
+      <nodePoint x="340" y="181" />
+      <nodePoint x="340" y="197" />
+    </edge>
+    <edge name="C 11" id="e5274eb2-84e4-4c2a-8818-9dad8ee095ca" source="CP 1" target="CP 1">
+      <nodePoint x="245" y="160" />
+      <nodePoint x="265" y="115" />
+      <nodePoint x="285" y="164" />
+    </edge>
+    <edge name="" id="2089fff5-b658-46fc-8388-382511f1b187" source="CP 1" target="CP 2">
+      <nodePoint x="293" y="169" />
+      <nodePoint x="293" y="181" />
+      <nodePoint x="450" y="181" />
+      <nodePoint x="450" y="197" />
+    </edge>
+    <edge name="PLD" id="7d4f981f-04d6-4be2-8692-cbfdcd582908" source="PP 2" target="PP 1">
+      <nodePoint x="573" y="113" />
+      <nodePoint x="500" y="25" />
+      <nodePoint x="526" y="112" />
+    </edge>
+    <edge name="PLB" id="699f5bc4-10c1-4935-8d83-2d4244f1fe06" source="PP 2" target="PP 1">
+      <nodePoint x="658" y="115" />
+      <nodePoint x="760" y="50" />
+      <nodePoint x="694" y="168" />
+    </edge>
+    <edge name="PLA1" id="94b078f3-74dc-4b83-adba-c7e47969d6f9" source="PP 2" target="PP 2">
+      <nodePoint x="580" y="105" />
+      <nodePoint x="638" y="-30" />
+      <nodePoint x="652" y="115" />
+    </edge>
+    <edge name="PLC1" id="c75a2468-516a-4f4f-a217-e4b479da293c" source="PP 1" target="PP 1">
+      <nodePoint x="703" y="171" />
+      <nodePoint x="802" y="140" />
+      <nodePoint x="751" y="218" />
+    </edge>
+    <edge name="PLA2" id="2d0e7310-fc30-4b00-8272-07bc0f17e3b1" source="PP 2" target="PP 2">
+      <nodePoint x="583" y="110" />
+      <nodePoint x="648" y="119" />
+    </edge>
+    <edge name="PLC2" id="a78b514c-91b4-4e2d-b640-2113b6490def" source="PP 1" target="PP 1">
+      <nodePoint x="749" y="224" />
+      <nodePoint x="645" y="265" />
+      <nodePoint x="695" y="178" />
+    </edge>
+    <edge name="PFE1" id="c3e6da97-98a2-4a16-982d-7deb0d564918" source="FOP 1" target="FIP 1">
+      <nodePoint x="211" y="259" />
+      <nodePoint x="275" y="335" />
+      <nodePoint x="348" y="253" />
+    </edge>
+    <edge name="PFE2" id="7ead29f6-2bd6-4598-a1cd-364ec3cea476" source="FOP 2" target="FIP 2">
+      <nodePoint x="211" y="280" />
+      <nodePoint x="275" y="355" />
+      <nodePoint x="347" y="280" />
+    </edge>
+    <node name="PP 2" id="be06501a-0321-4f6c-9a01-29a8cc5c1c37">
+      <nodePoint x="628" y="240" width="10" height="10" />
+    </node>
+    <node name="PP 1" id="78dadbdf-4a15-4f74-ad7c-ad5c54777707">
+      <nodePoint x="518" y="140" width="10" height="10" />
+    </node>
+    <node name="CP 1" id="f9313e24-b0d1-4c00-94c2-c16d028ae183">
+      <nodePoint x="233" y="228" width="10" height="10" />
+    </node>
+    <node name="CP 1" id="c204ce7c-db6e-4bba-999a-ab0fef6c7263">
+      <nodePoint x="208" y="273" width="10" height="10" />
+    </node>
+    <node name="FOP 1" id="9945e99b-bb16-43a1-a501-cf94eea2fa0a">
+      <nodePoint x="224" y="259" width="10" height="10" />
+    </node>
+    <node name="FOP 2" id="68bfe70d-1065-4141-a6ed-093c07269365">
+      <nodePoint x="224" y="280" width="10" height="10" />
+    </node>
+    <node name="CP 1" id="a9d6303f-0e2b-43b6-a5a9-85b36525ac96">
+      <nodePoint x="543" y="236" width="10" height="10" />
+    </node>
+    <node name="CP 2" id="9db8729d-325a-4714-8317-a6fc0f5333e5">
+      <nodePoint x="453" y="242" width="10" height="10" />
+    </node>
+    <node name="CP 1" id="f7b011f5-965e-4d06-b46f-f725834d7563">
+      <nodePoint x="343" y="242" width="10" height="10" />
+    </node>
+    <node name="FIP 1" id="32c4a90c-f272-49be-b72a-59b1008d22a7">
+      <nodePoint x="360" y="261" width="10" height="10" />
+    </node>
+    <node name="FIP 2" id="f2483287-f1ad-433b-b408-1bcb761d741a">
+      <nodePoint x="360" y="281" width="10" height="10" />
+    </node>
+    <node name="PP 2" id="16b82dd4-635e-4339-bdf1-27349745cdef">
+      <nodePoint x="1353" y="345" width="10" height="10" />
+    </node>
+    <node name="PP 1" id="4f43fa7c-8e71-4dd3-8058-a687caf513a0">
+      <nodePoint x="708" y="231" width="10" height="10" />
+    </node>
+    <node name="PP 1" id="27b7ccea-f846-40b5-b8f0-7d92e950da1e">
+      <nodePoint x="784" y="250" width="10" height="10" />
+    </node>
+  </diagram>
+</session>
+
