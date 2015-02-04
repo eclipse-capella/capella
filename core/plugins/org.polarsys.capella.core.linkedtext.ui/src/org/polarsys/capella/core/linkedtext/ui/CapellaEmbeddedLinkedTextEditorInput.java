@@ -93,6 +93,10 @@ public abstract class CapellaEmbeddedLinkedTextEditorInput implements LinkedText
     }
   }
 
+  public static String getDefaultText(Constraint constraint_p) {
+    return getDefaultText(constraint_p, constraint_p.getName());
+  }
+
   public static String getDefaultText(Constraint contraint, String defaultName) {
     String result = defaultName;
 
