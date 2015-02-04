@@ -17,6 +17,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
+import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.ui.actions.TransitionAction;
 import org.polarsys.capella.core.transition.system.topdown.ui.actions.CapabilityTransitionAction;
 
@@ -25,11 +26,8 @@ import org.polarsys.capella.core.transition.system.topdown.ui.actions.Capability
  */
 public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyperlinkAdapter {
 
-  /*
-	 * 
-	 */
-  private ModelElement transitionSourceModel;
-
+  protected BlockArchitectureExt.Type blockType;
+	
   /**
    * Constructor.
    * @param capellaProject_p
@@ -37,8 +35,8 @@ public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyper
    * @param session_p
    */
   public PerformAutomatedCapabilitiesTransitionAdapter(BlockArchitecture sourceArchitecture, Session session_p) {
-    super(session_p);
-    this.transitionSourceModel = sourceArchitecture;
+    super(session_p);    
+    blockType = BlockArchitectureExt.getBlockArchitectureType(sourceArchitecture);
   }
 
   /**
@@ -48,15 +46,15 @@ public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyper
   @Override
   protected void linkPressed(HyperlinkEvent event, Project capellaProject_p, Session session_p) {
     CapabilityTransitionAction action = new CapabilityTransitionAction();
-    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(_project)));
+    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(capellaProject_p)));
     action.run(TransitionAction.DEFAULT_ACTION);
   }
-
+  
   /**
    * @see org.polarsys.capella.core.dashboard.hyperlinkadapter.AbstractHyperlinkAdapter#getModelElement(org.polarsys.capella.core.data.capellamodeller.Project)
    */
   @Override
   protected ModelElement getModelElement(Project project) {
-    return this.transitionSourceModel;
+  	return BlockArchitectureExt.getBlockArchitecture(blockType, project);
   }
 }

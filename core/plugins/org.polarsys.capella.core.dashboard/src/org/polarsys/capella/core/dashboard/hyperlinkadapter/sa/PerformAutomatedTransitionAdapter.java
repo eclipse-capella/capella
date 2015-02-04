@@ -40,7 +40,7 @@ public class PerformAutomatedTransitionAdapter extends AbstractHyperlinkAdapter 
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
     FunctionalTransitionAction action = new FunctionalTransitionAction();
-    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(_project)));
+    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(capellaProject_p)));
     action.run(TransitionAction.DEFAULT_ACTION);
   }
 

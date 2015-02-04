@@ -19,9 +19,19 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecturePkg;
+import org.polarsys.capella.core.data.capellacore.ReuseLink;
+import org.polarsys.capella.core.data.capellacore.ReuseableStructure;
+import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentAllocation;
@@ -45,13 +55,6 @@ import org.polarsys.capella.core.data.la.LaPackage;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalArchitecturePkg;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecturePkg;
-import org.polarsys.capella.core.data.capellacore.ReuseLink;
-import org.polarsys.capella.core.data.capellacore.ReuseableStructure;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
 import org.polarsys.capella.core.data.pa.PaPackage;
@@ -66,8 +69,6 @@ import org.polarsys.capella.core.data.pa.deployment.DeploymentPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
 import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 import org.polarsys.capella.core.model.utils.CollectionExt;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModelElement;
 
 /**
  * SystemEngineering helpers
@@ -488,6 +489,50 @@ public class SystemEngineeringExt {
     return null;
   }
 
+  public static PhysicalArchitecture getPhysicalArchitecture(SystemEngineering currentElement_p) {
+    if (currentElement_p != null) {
+      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+        if (block instanceof PhysicalArchitecture) {
+          return (PhysicalArchitecture) block;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static LogicalArchitecture getLogicalArchitecture(SystemEngineering currentElement_p) {
+    if (currentElement_p != null) {
+      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+        if (block instanceof LogicalArchitecture) {
+          return (LogicalArchitecture) block;
+        }
+      }
+    }
+    return null;
+  }
+
+  public static SystemAnalysis getSystemAnalysis(SystemEngineering currentElement_p) {
+    if (currentElement_p != null) {
+      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+        if (block instanceof SystemAnalysis) {
+          return (SystemAnalysis) block;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static OperationalAnalysis getOperationalAnalysis(SystemEngineering currentElement_p) {
+    if (currentElement_p != null) {
+      for (ModellingArchitecture block : currentElement_p.getOwnedArchitectures()) {
+        if (block instanceof OperationalAnalysis) {
+          return (OperationalAnalysis) block;
+        }
+      }
+    }
+    return null;
+  }  
+  
   public static EPBSArchitecturePkg getEPBSArchitecturePkg(SystemEngineering currentElement_p) {
     if (currentElement_p != null) {
       for (ModellingArchitecturePkg block : currentElement_p.getOwnedArchitecturePkgs()) {
@@ -834,10 +879,16 @@ public class SystemEngineeringExt {
 
   public static SystemEngineering getSystemEngineering(CapellaElement currentElement_p) {
     SystemEngineering sysEng = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(currentElement_p);
-
     return sysEng;
   }
 
+  public static SystemEngineering getSystemEngineering(Project project) {
+    for (ModelRoot root : project.getOwnedModelRoots())
+			if (root instanceof SystemEngineering)
+				return (SystemEngineering) root;
+    return null;
+  }
+  
   public static void setEPBSArchitecturePkg(SystemEngineering currentElement_p, EPBSArchitecturePkg epbsArchitecturePkg) {
     currentElement_p.getOwnedArchitecturePkgs().add(epbsArchitecturePkg);
 

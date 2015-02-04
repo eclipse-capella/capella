@@ -40,7 +40,7 @@ public class PerformAutomatedTransitionOfLogicalComponentsAdapter extends Abstra
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
     LC2PCTransitionAction action = new LC2PCTransitionAction();
-    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(_project)));
+    action.selectionChanged(TransitionAction.DEFAULT_ACTION, new StructuredSelection(getModelElement(capellaProject_p)));
     action.run(TransitionAction.DEFAULT_ACTION);
   }
 
