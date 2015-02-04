@@ -113,7 +113,7 @@ public class ReportManagerLogViewAppender extends WriterAppender {
       }
     }
 
-    LightMarkerRegistry.getInstance().createMarker(resource, null,
+    LightMarkerRegistry.getInstance().createMarker(resource, MarkerView.MARKER_ID,
         new BasicDiagnostic(severity, em.getComponentName(), 0, em.getLabel(), em.getCapellaElements().toArray()), new IMarkerModification() {
           public void modify(IMarker marker_p) {
             em.adapt(marker_p);

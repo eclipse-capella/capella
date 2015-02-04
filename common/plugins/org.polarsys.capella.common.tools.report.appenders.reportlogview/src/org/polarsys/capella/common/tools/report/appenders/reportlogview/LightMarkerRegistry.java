@@ -20,7 +20,6 @@ import java.util.Map;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -208,11 +207,17 @@ public class LightMarkerRegistry implements IMarkerSource {
    * @param modification
    */
   public void createMarker(IResource resource_p, String type_p, IMarkerModification modification) {
-    createMarker(resource_p, type_p, new BasicDiagnostic(), modification);
+    LightMarker marker = new LightMarker(resource_p, type_p);
+    modification.modify(marker);
+    _registry.add(marker);
+    notifyRegistryChanged(null, marker);
   }
 
   public void createMarker(IResource resource_p, String type_p, Diagnostic diagnostic, IMarkerModification modification) {
-    createMarker(resource_p, type_p, null, diagnostic, modification);
+    LightMarker marker = new LightMarker(resource_p, type_p, diagnostic);
+    modification.modify(marker);
+    _registry.add(marker);
+    notifyRegistryChanged(null, marker);
   }
 
   /**
@@ -481,7 +486,7 @@ public class LightMarkerRegistry implements IMarkerSource {
     String result = null;
     if (diag instanceof ConstraintStatusDiagnostic) {
       result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
-    } else if (diag != null && diag.getSource() != null) {
+    } else if ((diag != null) && (diag.getSource() != null)) {
       result = diag.getSource() + "." + diag.getCode(); //$NON-NLS-1$
     }
     return result;
