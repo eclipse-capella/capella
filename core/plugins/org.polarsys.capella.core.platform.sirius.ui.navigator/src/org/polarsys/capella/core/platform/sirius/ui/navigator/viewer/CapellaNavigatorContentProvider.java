@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -277,7 +278,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           LinkedList<Object> others = new LinkedList<Object>();
           HashSet<Resource> resourcesDone = new HashSet<Resource>();
 
-          //Add the main model to the top
+          // Add the main model to the top
           if (referencingModel instanceof CapellaModel) {
             Project object = ((CapellaModel) referencingModel).getProject(domain);
             if (object != null) {
@@ -286,7 +287,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
             resourcesDone.add(object.eResource());
           }
 
-          //Add referenced libraries
+          // Add referenced libraries
           Collection<IModel> allReferenced = LibraryManagerExt.getAllReferences(referencingModel);
           for (IModel referenced : allReferenced) {
             if (referenced instanceof CapellaModel) {
@@ -309,7 +310,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
               if (CapellaResourceHelper.isCapellaResource(child)) {
 
                 if (!CapellaResourceHelper.isCapellaFragment(((Resource) child).getURI())) {
-                  //add any referenced resources which is not a compatible library (it may happen)
+                  // add any referenced resources which is not a compatible library (it may happen)
                   for (EObject object : ((Resource) child).getContents()) {
                     IModel referencedLibrary = ILibraryManager.INSTANCE.getModel(object);
                     if ((referencedLibrary == null)) {
@@ -322,7 +323,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
               }
 
             } else {
-              //we want to add others elements at the end (viewpoint package for instance)
+              // we want to add others elements at the end (viewpoint package for instance)
               others.addLast(child);
             }
           }
@@ -586,5 +587,12 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
   public void enableContentNotifications() {
     _allowContentNotifications = true;
+  }
+
+  /**
+   * Returns whether notifications are enabled for the given domain
+   */
+  public boolean isEnabledContentNotifications(TransactionalEditingDomain editingDomain) {
+    return _allowContentNotifications;
   }
 }
