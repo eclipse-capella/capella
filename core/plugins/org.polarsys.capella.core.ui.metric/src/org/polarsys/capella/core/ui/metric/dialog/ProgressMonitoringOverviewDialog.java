@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -28,6 +29,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeColumn;
 
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
+import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractExportDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
@@ -37,7 +40,10 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.helpers.ProjectExt;
+import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
 
 /**
@@ -166,8 +172,8 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
    * {@inheritDoc}
    */
   @Override
-  protected List<String[]> getExportableData() {
-    List<String[]> result = super.getExportableData(EcoreUtil2.getProject(_root).getName());
+  protected List<String[]> getExportableData() {  	
+    List<String[]> result = super.getExportableData(ProjectExt.getProject(_root).getName());
 
     @SuppressWarnings("unchecked")
     List<? extends EObject> allTaggedElements = (List<? extends EObject>) ((TreeData) getData()).getValidElements();
