@@ -1,0 +1,218 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.test.framework.helpers;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourceAttributes;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.internal.core.JavaElement;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.handlers.HandlerUtil;
+
+/**
+ * @author Erwan Brottier
+ */
+public class IResourceHelpers {
+	
+	public static List<IResource> getIResourceFromSelection(ExecutionEvent event) {
+    ISelection selection = HandlerUtil.getCurrentSelection(event);
+    List<IResource> resources = new ArrayList<IResource>();
+    if (selection instanceof IStructuredSelection) {
+      for (Object select : ((IStructuredSelection) selection).toList()) {
+        IResource resource = null;
+        if (select instanceof IResource)
+          resource = (IResource) select;
+        else if (select instanceof JavaElement)
+          resource = ((JavaElement) select).getResource();
+        resources.add(resource);
+      }
+    }
+    return resources;
+  }
+	
+	public static List<IFile> getIFilesFromSelection(ExecutionEvent event) {
+		List<IFile> result = new ArrayList<IFile>();
+		for (IResource resource : getIResourceFromSelection(event))
+			if (resource instanceof IFile)
+				result.add((IFile) resource);			
+		return result;
+  }
+
+	public static List<IProject> getIProjectFromSelection(ExecutionEvent event) {
+		List<IProject> result = new ArrayList<IProject>();
+		for (IResource resource : getIResourceFromSelection(event))
+			if (resource instanceof IProject)
+				result.add((IProject) resource);			
+		return result;
+  }	
+	
+  public static String readFileAsString(File file) {
+    StringBuffer fileData = new StringBuffer();
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(file));
+      char[] buf = new char[1024];
+      int numRead = 0;
+      while ((numRead = reader.read(buf)) != -1) {
+        String readData = String.valueOf(buf, 0, numRead);
+        fileData.append(readData);
+      }
+      reader.close();
+    } catch (Exception exception) {
+      exception.printStackTrace();
+    }
+    return fileData.toString();
+  }
+
+  public static String readFileAsString(URL fileUrl) {
+    try {
+      File file = new File(fileUrl.toURI());
+      return readFileAsString(file);
+    } catch (URISyntaxException exception) {
+      exception.printStackTrace();
+    }
+    return null;
+  }
+
+  
+  public static void writeStringInFile(File file, String data) {
+  	File folder = file.getParentFile();
+  	if (!folder.exists())
+  		folder.mkdirs();
+  	try {
+      FileWriter fileWriter = new FileWriter(file.getAbsolutePath());
+      fileWriter.write(data);
+      fileWriter.close();
+    } catch (IOException exception) {
+      exception.printStackTrace();
+    }
+  }
+
+
+  
+  public static String readFileAsString(IFile file) {
+  	return readFileAsString(convertToFile(file));
+  }
+  
+  public static void writeStringInFile(IFile file, String data) {
+  	writeStringInFile(convertToFile(file), data);
+  }
+
+  
+  
+  /**
+   * Creates a file in the given parent with the given relative path. Adds the given content in the new file. Be careful, the file is overwritten if it already
+   * exist.
+   */
+  public static IFile createFile(IContainer parent, String relativeFilePath, String content) {
+    IFile file = null;
+    if (parent instanceof IProject) {
+      file = ((IProject) parent).getFile("/" + relativeFilePath); //$NON-NLS-1$
+    } else {
+      file = ((IFolder) parent).getFile("/" + relativeFilePath); //$NON-NLS-1$
+    }
+    InputStream source = new ByteArrayInputStream(content.getBytes());
+    try {
+      if (file.exists()) {
+        file.delete(true, null);
+      }
+      file.create(source, true, null);
+    } catch (CoreException exception) {
+      exception.printStackTrace();
+    }
+    return file;
+  }
+
+  public static IFile createFile(IContainer parent, String relativeFilePath) {
+    return createFile(parent, relativeFilePath, ""); //$NON-NLS-1$
+  }
+
+  public static List<IFile> getIFilesIn(IContainer container) {
+    return new IFileRequestor().search(container);
+  }
+
+  public static List<IFile> getIFilesIn(IContainer container, String fileExtension) {
+    return new IFileRequestor().search(container, fileExtension);
+  }
+
+  public static IProject getProjectFromIContainer(IContainer container) {
+    IContainer newContainer = container;
+    while (!(newContainer instanceof IProject)) {
+      newContainer = newContainer.getParent();
+    }
+    return (IProject) newContainer;
+  }
+
+  public static IProject getProjectFromIFile(IFile file) {
+    return getProjectFromIContainer(file.getParent());
+  }
+
+  public static IProject getProjectFromIFile(IFolder folder) {
+    return getProjectFromIContainer(folder);
+  }
+
+  public static IFolder createFolder(IFolder folder) {
+    if (!folder.exists()) {
+      try {
+        folder.create(true, false, null);
+      } catch (CoreException exception) {
+        exception.printStackTrace();
+      }
+    }
+    return folder;
+  }
+
+  public static File convertToFile(IResource file) {
+    return file.getRawLocation().makeAbsolute().toFile();
+  }
+
+  public static void refresh(IResource resource) {
+    try {
+      resource.refreshLocal(IResource.DEPTH_INFINITE, null);
+    } catch (CoreException exception) {
+      exception.printStackTrace();
+    }
+  }
+
+  public static void setFileAsWritable(IFile file) {
+    ResourceAttributes attributes = file.getResourceAttributes();
+    attributes.setReadOnly(false);
+    try {
+      file.setResourceAttributes(attributes);
+    } catch (CoreException exception_p) {
+      exception_p.printStackTrace();
+    }
+  }
+  
+  public static IProject getEclipseProjectInWorkspace(String projectName) {
+    return ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+  }
+
+
+}
