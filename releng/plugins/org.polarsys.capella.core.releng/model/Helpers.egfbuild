@@ -56,48 +56,19 @@
     <steps xsi:type="buildstep:AntStep" xmi:id="_34NbY5MKEeKKWIqJCUuOog" name="Unzip TP" targetName="unzipTP" xml="&lt;target name=&quot;unzipTP&quot;>&#xD;&#xA;&#x9;&lt;unzip dest=&quot;${usedTP}&quot; >&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${fileLocation}&quot;>&#xD;&#xA;&#x9;&#x9;&#x9;&lt;include name=&quot;${filePattern}&quot;/>&#xD;&#xA;&#x9;&#x9;&lt;/fileset>&#xD;&#xA;&#x9;&lt;/unzip>&#xD;&#xA;&lt;/target>"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_ZHUroJMLEeKKWIqJCUuOog" name="TestSuites">
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJtJMLEeKKWIqJCUuOog" name="Import Test Plugins" noBuildersInvocation="true">
+    <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJtJMLEeKKWIqJCUuOog" name="Import Test Plugins">
       <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_2MNh8IIIEeSlQoYFN3Mlmg" folderName="releng/plugins">
         <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
       </buildLocations>
-      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_39468IIIEeSlQoYFN3Mlmg" folderName="test/features">
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_39468IIIEeSlQoYFN3Mlmg" folderName="tests/features">
         <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
       </buildLocations>
-      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_31soQIIIEeSlQoYFN3Mlmg" folderName="test/plugins">
+      <buildLocations xsi:type="buildscm:GITBuildLocation" xmi:id="_31soQIIIEeSlQoYFN3Mlmg" folderName="tests/plugins">
         <gitLocation href="Job_Capella.egfbuild#_3007AIIHEeSlQoYFN3Mlmg"/>
       </buildLocations>
       <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJuZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_fdrJupMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.bq.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_fdrJu5MLEeKKWIqJCUuOog" id="org.polarsys.capella.test.diagram.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_fdrJvZMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.other.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_fdrJvpMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.table.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_fdrJv5MLEeKKWIqJCUuOog" id="org.polarsys.capella.test.transfo.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_fdrJwJMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.utils.feature"/>
-      <components xsi:type="buildstep:Feature" xmi:id="_fdrJwZMLEeKKWIqJCUuOog" id="org.polarsys.capella.test.feature"/>
-      <components xsi:type="buildstep:Plugin" xmi:id="_fdrJwpMLEeKKWIqJCUuOog" id="org.polarsys.capella.core.releng.junit"/>
+      <components xsi:type="buildstep:Feature" xmi:id="_axls8K4HEeS3GsUDrEkAJA" id="org.polarsys.capella.test"/>
     </steps>
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJw5MLEeKKWIqJCUuOog" name="Reset TP" noBuildersInvocation="true">
-      <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJxJMLEeKKWIqJCUuOog" path="${tools}/egf"/>
-      <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJxZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
-    </steps>
-    <steps xsi:type="buildstep:EgfStep" xmi:id="_fdrJxpMLEeKKWIqJCUuOog" name="Generate Tests" enabled="false">
-      <egfActivities xmi:id="_fdrJx5MLEeKKWIqJCUuOog" uri="platform:/plugin/org.polarsys.capella.core.egf/egf/capella.fcore#_3DU-UG9xEeGKseYOgPRMNw"/>
-    </steps>
-    <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJyJMLEeKKWIqJCUuOog" name="Build Test Plugins">
-      <buildLocations xsi:type="buildstep:TargetPlatformBuildLocation" xmi:id="_fdrJyZMLEeKKWIqJCUuOog" path="${usedTP}/capella/eclipse"/>
-    </steps>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_ZtECQEsJEeSA7dw-k3cZCg" name="Fragmentation1TestSuite" launchConfigurationPath="${launch_configs}/Fragmentation1TestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_8In3gEsJEeSA7dw-k3cZCg" name="Fragmentation2TestSuite" launchConfigurationPath="${launch_configs}/Fragmentation2TestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_8dCBQEsJEeSA7dw-k3cZCg" name="Fragmentation3TestSuite" launchConfigurationPath="${launch_configs}/Fragmentation3TestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJz5MLEeKKWIqJCUuOog" name="TransfoTestSuite" launchConfigurationPath="${launch_configs}/TransfoTestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJy5MLEeKKWIqJCUuOog" name="BQTestSuite" launchConfigurationPath="${launch_configs}/BQTestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_WhISYJh7EeOGSJ9psnDt6w" name="DiagramOnFullModelFiltersTestSuite" launchConfigurationPath="${launch_configs}/DiagramOnFullModelFiltersTestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_BapnQEsJEeSA7dw-k3cZCg" name="DiagramOnFullModelDnDTestSuite" launchConfigurationPath="${launch_configs}/DiagramOnFullModelDnDTestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_BwsvwEsJEeSA7dw-k3cZCg" name="DiagramOnFullModelIVVQTestSuite" launchConfigurationPath="${launch_configs}/DiagramOnFullModelIVVQTestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJzJMLEeKKWIqJCUuOog" name="DiagramOnBlankModel1TestSuite" launchConfigurationPath="${launch_configs}/DiagramOnBlankModel1TestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_ZcX64EsJEeSA7dw-k3cZCg" name="DiagramOnBlankModel2TestSuite" launchConfigurationPath="${launch_configs}/DiagramOnBlankModel2TestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_w3SOgGNlEeSraoyyxgfPoQ" name="DiagramOnBlankModel3TestSuite" launchConfigurationPath="${launch_configs}/DiagramOnBlankModel3TestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJzpMLEeKKWIqJCUuOog" name="OtherTestSuite" launchConfigurationPath="${launch_configs}/OtherTestSuite.launch"/>
-    <steps xsi:type="buildstep:TestStep" xmi:id="_fdrJ0JMLEeKKWIqJCUuOog" name="TableTestSuite" launchConfigurationPath="${launch_configs}/TableTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_wf8aUK4IEeS3GsUDrEkAJA" name="BusinessQueryTestSuite" launchConfigurationPath="${launch_configs}/BusinessQueryTestSuite.launch"/>
   </steps>
 </buildcore:StepContainer>
