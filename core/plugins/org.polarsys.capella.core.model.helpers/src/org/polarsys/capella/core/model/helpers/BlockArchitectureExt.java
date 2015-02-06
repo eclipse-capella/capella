@@ -20,8 +20,14 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
+import org.polarsys.capella.core.data.capellacore.Structure;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.ArchitectureAllocation;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -60,12 +66,6 @@ import org.polarsys.capella.core.data.la.LogicalContext;
 import org.polarsys.capella.core.data.la.LogicalFunction;
 import org.polarsys.capella.core.data.la.LogicalFunctionPkg;
 import org.polarsys.capella.core.data.la.SystemAnalysisRealization;
-import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
-import org.polarsys.capella.core.data.capellacore.Structure;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.EntityPkg;
 import org.polarsys.capella.core.data.oa.OaFactory;
@@ -91,6 +91,40 @@ import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
  */
 public class BlockArchitectureExt {
 
+	public static enum Type {OA, SA, LA, PA, EPBS};
+	
+	public static Type getBlockArchitectureType(BlockArchitecture block) {
+		if (block instanceof OperationalAnalysis)
+			return Type.OA;
+		else if (block instanceof SystemAnalysis)
+			return Type.SA;
+		else if (block instanceof LogicalArchitecture)
+			return Type.LA;
+		else if (block instanceof PhysicalArchitecture)
+			return Type.PA;
+		else if (block instanceof EPBSArchitecture)
+			return Type.EPBS;
+		return null;
+	}
+	
+	public static BlockArchitecture getBlockArchitecture(Type type, Project project) {		
+		SystemEngineering system = SystemEngineeringExt.getSystemEngineering(project);
+		switch (type) {
+			case OA:
+				return SystemEngineeringExt.getOperationalAnalysis(system);
+			case SA:
+				return SystemEngineeringExt.getSystemAnalysis(system);
+			case LA:
+				return SystemEngineeringExt.getLogicalArchitecture(system);
+			case PA:
+				return SystemEngineeringExt.getPhysicalArchitecture(system);
+			case EPBS:
+				return SystemEngineeringExt.getEPBSArchitecture(system);				
+			default:
+				return null;
+		}
+	}
+	
   /**
    * Returns all architectures allocated by the architecture and also the given architecture
    */
