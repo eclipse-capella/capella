@@ -122,22 +122,22 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
         ModelInformation source = getModelInformation(CapellaModel.this, true);
         ModelInformation target = getModelInformation(referencedLibrary_p, true);
 
-        //if reference is already made, we don't add another reference
+        // if reference is already made, we don't add another reference
         for (LibraryReference reference : source.getOwnedReferences()) {
           if ((reference.getLibrary() != null) && reference.getLibrary().equals(target)) {
             return;
           }
         }
 
-        //otherwise, we add a reference
+        // otherwise, we add a reference
         LibraryReference result = LibrariesFactory.eINSTANCE.createLibraryReference();
         result.setLibrary(target);
         source.getOwnedReferences().add(result);
-        result.setAccessPolicy(getDefaultAccess(referencedLibrary_p));
+        result.setAccessPolicy(getDefaultNewAccess(referencedLibrary_p));
 
-        //Sirius session requires the semantic target resource to be added to the <models> reference
-        //we can't use session.addSemanticResources unload the resource if already loaded.......
-        //new AddSemanticResourceCommand(session, ((CapellaModel) referencedLibrary_p).uriSemanticFile, new NullProgressMonitor()).execute();
+        // Sirius session requires the semantic target resource to be added to the <models> reference
+        // we can't use session.addSemanticResources unload the resource if already loaded.......
+        // new AddSemanticResourceCommand(session, ((CapellaModel) referencedLibrary_p).uriSemanticFile, new NullProgressMonitor()).execute();
 
         Resource toAdd = target.eResource();
         Session session = SessionManager.INSTANCE.getSession(source);
@@ -146,7 +146,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
             analysis.getModels().add(toAdd.getContents().get(0));
           }
         }
-        //we ensure that sirius crossreferencer is correctly registered on it (just in case, like the AddSemanticResourceCommand did)
+        // we ensure that sirius crossreferencer is correctly registered on it (just in case, like the AddSemanticResourceCommand did)
         if (!toAdd.eAdapters().contains(session.getSemanticCrossReferencer())) {
           toAdd.eAdapters().add(session.getSemanticCrossReferencer());
         }
@@ -166,7 +166,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
         LibraryReference toDelete = null;
 
-        //if reference is made, we remove the reference
+        // if reference is made, we remove the reference
         for (LibraryReference reference : source.getOwnedReferences()) {
           if (reference.getLibrary() != null) {
             if (reference.getLibrary().equals(target)) {
@@ -182,7 +182,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
         if (toDelete != null) {
 
-          //session.removeSemanticResources unload the resource and depending ones (so the root model resource too)
+          // session.removeSemanticResources unload the resource and depending ones (so the root model resource too)
           Resource toRemove = toDelete.getLibrary().eResource();
           Session session = SessionManager.INSTANCE.getSession(source);
           if (session instanceof DAnalysisSessionEObject) {
@@ -212,26 +212,27 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
    */
   protected void notifyLibraryChange(ModelInformation source_p) {
 
-    //TODO a workaround to update the views of the ModelInformation, even if we don't really touch it.
+    // TODO a workaround to update the views of the ModelInformation, even if we don't really touch it.
 
     // we should add an event based mechanism on library state changes, instead of being based on EMF underlayer, but still better than :
 
     // ResourceSetSync sync = ResourceSetSync.getOrInstallResourceSetSync(domain_p);
-    //Session session = SessionManager.INSTANCE.getSession(source);
-    //sync.statusChanged(session.getSessionResource(), ResourceSetSync.ResourceStatus.SYNC, ResourceSetSync.ResourceStatus.UNKNOWN); // (UNKNOWN leads to inconsistencies)
+    // Session session = SessionManager.INSTANCE.getSession(source);
+    // sync.statusChanged(session.getSessionResource(), ResourceSetSync.ResourceStatus.SYNC, ResourceSetSync.ResourceStatus.UNKNOWN); // (UNKNOWN leads to
+    // inconsistencies)
 
-    //Notification notification = new NotificationImpl(Notification.SET, null, null) {
+    // Notification notification = new NotificationImpl(Notification.SET, null, null) {
     // @Override
     // public Object getNotifier() {
-    //  return source;
+    // return source;
     // }
     //
     // @Override
     // public int getFeatureID(Class<?> expectedClass_p) {
-    //  return LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES;
+    // return LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES;
     // }
-    //};
-    //source.eNotify(notification); //this doesn't update the view since no transaction change is triggered.
+    // };
+    // source.eNotify(notification); //this doesn't update the view since no transaction change is triggered.
 
     LibraryReference reference = LibrariesFactory.eINSTANCE.createLibraryReference();
     source_p.getOwnedReferences().add(reference);
@@ -249,7 +250,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
         LibraryReference result = null;
 
-        //if reference is already made, we don't add another reference
+        // if reference is already made, we don't add another reference
         for (LibraryReference reference : source.getOwnedReferences()) {
           if ((reference.getLibrary() != null) && reference.getLibrary().equals(target)) {
             result = reference;
@@ -300,6 +301,12 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
       }
     });
 
+  }
+
+  @Override
+  public AccessPolicy getDefaultNewAccess(IModel referencedLibrary_p) {
+    //when a library can be added as a reference, it will have a readonly access policy
+    return AccessPolicy.READ_ONLY;
   }
 
 }
