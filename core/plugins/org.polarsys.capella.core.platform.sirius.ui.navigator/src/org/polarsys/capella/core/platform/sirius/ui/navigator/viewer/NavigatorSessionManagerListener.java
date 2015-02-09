@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -108,11 +109,11 @@ public class NavigatorSessionManagerListener extends SessionManagerListener.Stub
    */
   protected void refreshViewer(Session updatedSession_p) {
     CommonViewer viewer = _capellaCommonNavigator.getCommonViewer();
+
     if ((null != viewer) && (!viewer.getControl().isDisposed())) {
-      final IFile parent = SessionHelper.getFirstAnalysisFile((DAnalysisSession) updatedSession_p);
-      // Avoid reentrant refresh. No reproduction use case.
-      if (!viewer.isBusy() && !viewer.getControl().isDisposed()) {
-        ViewerHelper.refresh(viewer, parent);
+      if (!viewer.isBusy() && _capellaCommonNavigator.getContentProvider().isEnabledContentNotifications(updatedSession_p.getTransactionalEditingDomain())) {
+        // Avoid reentrant refresh. No reproduction use case.
+        refreshItem(updatedSession_p, true);
       }
     }
   }
@@ -122,7 +123,24 @@ public class NavigatorSessionManagerListener extends SessionManagerListener.Stub
    * Must be called within UI thread.
    * @param updatedSession_p
    */
+  @Deprecated
   protected void refreshItem(final Session updatedSession_p) {
+    refreshItem(updatedSession_p, false);
+  }
+
+  protected void refreshItem(final Session updatedSession_p, boolean contentRefresh_p) {
+    // we manually trigger a refresh if we are not inside a transaction.
+    // (ContentProvider is a ResourceSetListenerImpl and is automatically triggered at postCommit)
+    boolean triggerRefresh = (((TransactionalEditingDomainImpl) updatedSession_p.getTransactionalEditingDomain()).getActiveTransaction() == null);
+    refreshItem(updatedSession_p, contentRefresh_p, triggerRefresh);
+  }
+
+  /**
+   * Refresh the viewer for alive sessions.<br>
+   * Must be called within UI thread.
+   * @param updatedSession_p
+   */
+  protected void refreshItem(final Session updatedSession_p, boolean contentRefresh_p, boolean triggerRefresh_p) {
 
     final IFile file = EcoreUtil2.getFile(updatedSession_p.getSessionResource());
 
@@ -137,8 +155,10 @@ public class NavigatorSessionManagerListener extends SessionManagerListener.Stub
     };
 
     if (_capellaCommonNavigator != null) {
-      _capellaCommonNavigator.getContentProvider().notifyChanged(new ViewerNotification(notification, file, false, true));
-      _capellaCommonNavigator.getContentProvider().runRefresh();
+      _capellaCommonNavigator.getContentProvider().notifyChanged(new ViewerNotification(notification, file, contentRefresh_p, true));
+      if (triggerRefresh_p) {
+        _capellaCommonNavigator.getContentProvider().runRefresh();
+      }
     }
   }
 
@@ -205,7 +225,7 @@ public class NavigatorSessionManagerListener extends SessionManagerListener.Stub
    */
   @Override
   public void notify(final Session updatedSession_p, final int notification_p) {
-    SemanticEditingDomain domain = (SemanticEditingDomain) updatedSession_p.getTransactionalEditingDomain();
+    final SemanticEditingDomain domain = (SemanticEditingDomain) updatedSession_p.getTransactionalEditingDomain();
 
     switch (notification_p) {
       case SessionListener.OPENING:
@@ -214,10 +234,10 @@ public class NavigatorSessionManagerListener extends SessionManagerListener.Stub
       break;
 
       case SessionListener.OPENED:
-        _capellaCommonNavigator.enableContentNotifications(domain);
         // Update the common viewer to force it to get session children.
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
           public void run() {
+            _capellaCommonNavigator.enableContentNotifications(domain);
             handleOpened(updatedSession_p);
           }
         });
@@ -225,21 +245,26 @@ public class NavigatorSessionManagerListener extends SessionManagerListener.Stub
       case SessionListener.SYNC:
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
           public void run() {
-            refreshItem(updatedSession_p);
+            refreshViewer(updatedSession_p);
           }
         });
       break;
       case SessionListener.DIRTY:
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
           public void run() {
-            refreshItem(updatedSession_p);
+            refreshItem(updatedSession_p, false);
           }
         });
+      break;
+
+      case SessionListener.ABOUT_TO_BE_REPLACED:
+        _capellaCommonNavigator.disableContentNotifications(domain);
       break;
 
       case SessionListener.REPLACED:
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
           public void run() {
+            _capellaCommonNavigator.enableContentNotifications(domain);
             refreshViewer(updatedSession_p);
           }
         });
@@ -260,9 +285,9 @@ public class NavigatorSessionManagerListener extends SessionManagerListener.Stub
       break;
 
       case SessionListener.CLOSED:
-        _capellaCommonNavigator.enableContentNotifications(domain);
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
           public void run() {
+            _capellaCommonNavigator.enableContentNotifications(domain);
             handleClosed(updatedSession_p);
           }
         });
