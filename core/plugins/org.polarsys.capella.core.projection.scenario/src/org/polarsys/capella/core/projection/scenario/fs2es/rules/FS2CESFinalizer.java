@@ -36,7 +36,7 @@ public class FS2CESFinalizer implements IFinalizer {
   /**
    * Cleanup the finalizer
    */
-  private void clean() {
+  protected void clean() {
 
     if (_instanceRoles != null) {
       _instanceRoles.clear();
@@ -52,11 +52,11 @@ public class FS2CESFinalizer implements IFinalizer {
     return _instanceRoles;
   }
 
-  static InstanceRole getInstanceRole(AbstractInstance ir_p) {
+  public static InstanceRole getInstanceRole(AbstractInstance ir_p) {
     return getInstanceRoles().get(ir_p);
   }
 
-  static void registerInstanceRole(AbstractInstance instance, InstanceRole role) {
+  public static void registerInstanceRole(AbstractInstance instance, InstanceRole role) {
     getInstanceRoles().put(instance, role);
   }
 

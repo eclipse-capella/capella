@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -36,7 +35,6 @@ import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
 import org.polarsys.capella.core.tiger.helpers.TigerRelationshipHelper;
-import org.polarsys.capella.core.tiger.impl.TransfoRule;
 
 /**
  */
@@ -46,7 +44,7 @@ public class Rule_Event extends CommonRule {
   protected boolean transformIsRequired(EObject element_p, ITransfo transfo_p) {
     Event event = (Event) element_p;
 
-    if (DF2ISHelper.getOperation(event) != null && DF2ISHelper.getExchangeItems(event).size() == 0) {
+    if ((DF2ISHelper.getOperation(event) != null) && (DF2ISHelper.getExchangeItems(event).size() == 0)) {
       return false;
     }
     if (ScenarioFinalizer.isUnwantedObject(element_p, transfo_p)) {
@@ -85,24 +83,26 @@ public class Rule_Event extends CommonRule {
   public void firstAttach(EObject element_p, ITransfo transfo_p) throws TransfoException {
     int i = 0;
 
+    List<ExchangeItem> items = DF2ISHelper.getExchangeItems((Event) element_p);
     for (EObject obj : Query.retrieveTransformedElements(element_p, transfo_p, getTargetType())) {
       if (obj instanceof EventSentOperation) {
         EventSentOperation src = (EventSentOperation) element_p;
         EventSentOperation tgt = (EventSentOperation) obj;
-
-        AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), DF2ISHelper.getExchangeItems(src).get(i), i);
-        if (operation != null) {
-
-          TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
+        if (!items.isEmpty() && (src.getOperation() != null)) {
+          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i);
+          if (operation != null) {
+            TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_SENT_OPERATION__OPERATION);
+          }
         }
       }
       if (obj instanceof EventReceiptOperation) {
         EventReceiptOperation src = (EventReceiptOperation) element_p;
         EventReceiptOperation tgt = (EventReceiptOperation) obj;
-        AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), DF2ISHelper.getExchangeItems(src).get(i), i);
-        if (operation != null) {
-
-          TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
+        if (!items.isEmpty() && (src.getOperation() != null)) {
+          AbstractEventOperation operation = getRelatedExchangeItemAllocation(src.getOperation(), items.get(i), i);
+          if (operation != null) {
+            TigerRelationshipHelper.attachElementByRel(tgt, operation, InteractionPackage.Literals.EVENT_RECEIPT_OPERATION__OPERATION);
+          }
         }
       }
       i++;
@@ -148,7 +148,6 @@ public class Rule_Event extends CommonRule {
     }
     return result;
   }
-
 
   @Override
   protected void doGoDeep(EObject element_p, List<EObject> result_p) {

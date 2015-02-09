@@ -13,7 +13,6 @@ package org.polarsys.capella.core.projection.scenario.esf2esb.rules;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.information.AbstractInstance;
@@ -22,6 +21,7 @@ import org.polarsys.capella.core.data.interaction.InteractionFactory;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.projection.common.CommonRule;
 import org.polarsys.capella.core.projection.exchanges.ConnectionCreatorFactory;
+import org.polarsys.capella.core.projection.scenario.fs2es.rules.FS2CESFinalizer;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.helpers.Query;
@@ -46,46 +46,49 @@ public class Rule_InstanceRole extends CommonRule {
   @Override
   public void firstAttach(EObject element_p, ITransfo transfo_p) throws TransfoException {
     // The instance role represents the same instance than the source.
-    InstanceRole src = (InstanceRole)element_p;
-    
+    InstanceRole src = (InstanceRole) element_p;
+
     for (EObject eTgt : Query.retrieveUnattachedTransformedElements(src, transfo_p, getTargetType())) {
-      InstanceRole role = (InstanceRole)eTgt;
+      InstanceRole role = (InstanceRole) eTgt;
       TigerRelationshipHelper.attachElementByRel(role, src.getRepresentedInstance(), InteractionPackage.Literals.INSTANCE_ROLE__REPRESENTED_INSTANCE);
     }
-    
-    TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES, transfo_p);
-    
-  }
 
+    TigerRelationshipHelper.attachUnattachedIntoTransformedContainer(element_p, getTargetType(), InteractionPackage.Literals.SCENARIO__OWNED_INSTANCE_ROLES,
+        transfo_p);
+
+  }
 
   /**
    * @see org.polarsys.capella.core.tiger.impl.TransfoRule#transform_(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
    */
   @Override
   public EObject transformElement(EObject element_p, ITransfo transfo_p) {
-    return InteractionFactory.eINSTANCE.createInstanceRole();
+    InstanceRole role = InteractionFactory.eINSTANCE.createInstanceRole();
+    FS2CESFinalizer.registerInstanceRole(((InstanceRole) element_p).getRepresentedInstance(), role);
+    return role;
   }
 
   /**
-    * @see org.polarsys.capella.core.projection.common.CommonRule#doGoDeep(org.eclipse.emf.ecore.EObject, java.util.List)
+   * @see org.polarsys.capella.core.projection.common.CommonRule#doGoDeep(org.eclipse.emf.ecore.EObject, java.util.List)
    */
   @Override
   protected void doGoDeep(EObject element_p, List<EObject> result_p) {
-    //Nothing here
+    // Nothing here
   }
-  
+
   /**
    * Performs component exchange creation
-   * @see org.polarsys.capella.core.projection.common.CommonRule#runSubTransitionBeforeTransform(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.tiger.ITransfo)
+   * @see org.polarsys.capella.core.projection.common.CommonRule#runSubTransitionBeforeTransform(org.eclipse.emf.ecore.EObject,
+   *      org.polarsys.capella.core.tiger.ITransfo)
    */
   @Override
   protected void runSubTransitionBeforeTransform(EObject element_p, ITransfo transfo_p) {
     if (element_p instanceof InstanceRole) {
-      InstanceRole role = (InstanceRole)element_p;
+      InstanceRole role = (InstanceRole) element_p;
       if (role.getRepresentedInstance() != null) {
-        AbstractInstance instance =  role.getRepresentedInstance();
-        if (instance != null && instance instanceof Part && instance.getAbstractType() != null && instance.getAbstractType() instanceof Component) {
-          ConnectionCreatorFactory.createConnectionCreator((Component)instance.getAbstractType(), (Part)instance).createExchanges();
+        AbstractInstance instance = role.getRepresentedInstance();
+        if ((instance != null) && (instance instanceof Part) && (instance.getAbstractType() != null) && (instance.getAbstractType() instanceof Component)) {
+          ConnectionCreatorFactory.createConnectionCreator((Component) instance.getAbstractType(), (Part) instance).createExchanges();
         }
       }
     }

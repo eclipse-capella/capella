@@ -15,7 +15,6 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.InteractionState;
@@ -26,7 +25,9 @@ import org.polarsys.capella.core.projection.common.context.IContext;
 import org.polarsys.capella.core.projection.scenario.Messages;
 
 /**
+ * Not used
  */
+@Deprecated
 public class Rule_InteractionState extends org.polarsys.capella.core.projection.scenario.uml2.rules.Rule_InteractionState {
 
   /**
@@ -35,7 +36,7 @@ public class Rule_InteractionState extends org.polarsys.capella.core.projection.
   @Override
   public IStatus transformRequired(EObject element_p, IContext context_p) {
     InteractionState state = (InteractionState) element_p;
-    if (state.getRelatedAbstractState() == null && state.getRelatedAbstractFunction() != null) {
+    if ((state.getRelatedAbstractState() == null) && (state.getRelatedAbstractFunction() != null)) {
       return new Status(IStatus.WARNING, ProjectionMessages.Activity_Transformation, Messages.Rule_InteractionFunctionState_FailMsg);
     }
 
@@ -43,7 +44,7 @@ public class Rule_InteractionState extends org.polarsys.capella.core.projection.
     for (TimeLapse lapse : lapses) {
       if (lapse instanceof StateFragment) {
         StateFragment fragment = (StateFragment) lapse;
-        if (fragment.getRelatedAbstractState() == null && fragment.getRelatedAbstractFunction() != null) {
+        if ((fragment.getRelatedAbstractState() == null) && (fragment.getRelatedAbstractFunction() != null)) {
           return new Status(IStatus.WARNING, ProjectionMessages.Activity_Transformation, Messages.Rule_InteractionFunctionState_FailMsg);
         }
       }
@@ -53,7 +54,7 @@ public class Rule_InteractionState extends org.polarsys.capella.core.projection.
     for (TimeLapse lapse : lapses) {
       if (lapse instanceof StateFragment) {
         StateFragment fragment = (StateFragment) lapse;
-        if (fragment.getRelatedAbstractState() == null && fragment.getRelatedAbstractFunction() != null) {
+        if ((fragment.getRelatedAbstractState() == null) && (fragment.getRelatedAbstractFunction() != null)) {
           return new Status(IStatus.WARNING, ProjectionMessages.Activity_Transformation, Messages.Rule_InteractionFunctionState_FailMsg);
         }
       }

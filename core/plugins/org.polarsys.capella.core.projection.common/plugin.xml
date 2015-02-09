@@ -46,7 +46,7 @@
       
       <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
       <sharedContext context="org.polarsys.capella.core.projection.interfaces.definition"/>
-      <sharedContext context="org.polarsys.capella.core.transfo.statemachine.rules"/>
+      <sharedContext context="capella.statemachine.rules"/>
       <sharedContext context="org.polarsys.capella.core.projection.data.rules"/>
       
       </ruleset>
@@ -78,7 +78,7 @@
       
    	<sharedContext context="org.polarsys.capella.core.projection.data"/>
    	<sharedContext context="org.polarsys.capella.core.projection.scenario.es2es"/>
-   	<sharedContext context="org.polarsys.capella.core.transfo.statemachine.rules"/>
+   	<sharedContext context="capella.statemachine.rules"/>
    	<sharedContext context="org.polarsys.capella.core.projection.capability"/>
       <sharedContext context="org.polarsys.capella.core.projection.functional.realization"/>
       <sharedContext context="org.polarsys.capella.core.projection.interfaces.definition"/>
