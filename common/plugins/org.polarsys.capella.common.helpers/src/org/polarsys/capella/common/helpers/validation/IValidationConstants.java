@@ -30,7 +30,7 @@ public interface IValidationConstants {
    * get back to the corresponding Constraint descriptor.
    * @deprecated use marker.getAdapter(Diagnostic.class) instead
    */
-  @Deprecated
-  public static final String TAG_DIAGNOSTIC = "diagnostic"; //$NON-NLS-1$
+  //@Deprecated
+  //public static final String TAG_DIAGNOSTIC = "diagnostic"; //$NON-NLS-1$
 
 }

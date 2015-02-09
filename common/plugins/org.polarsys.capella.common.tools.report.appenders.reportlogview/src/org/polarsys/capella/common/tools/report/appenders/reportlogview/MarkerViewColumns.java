@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
@@ -48,11 +49,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
-
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 
 class MarkerViewColumns {
 
@@ -295,7 +294,7 @@ class MarkerViewColumns {
     preferenceRuleSetName.getColumn().setWidth(120);
     preferenceRuleSetName.getColumn().setMoveable(true);
     preferenceRuleSetName.getColumn().setText(Messages.MarkerView_Column_Title_RuleSetId);
-    ColumnLabelProvider provider = getPreferenceReulSetLabelProvider();
+    ColumnLabelProvider provider = getPreferenceRuleSetLabelProvider();
     preferenceRuleSetName.setLabelProvider(provider);
     preferenceRuleSetName.getColumn().setData(key, provider);
     preferenceRuleSetName.getColumn().addSelectionListener(listener);
@@ -358,6 +357,8 @@ class MarkerViewColumns {
     if (messageLabelProvider == null) {
       messageLabelProvider = new MarkerViewColumnLabelProvider() {
 
+        Pattern pattern = Pattern.compile("(\\r|\\n)"); //$NON-NLS-1$
+
         // Straightforward but uncached and slow implementation
         // to support annotation of labels with # of child elements.
         @SuppressWarnings("synthetic-access")
@@ -397,8 +398,7 @@ class MarkerViewColumns {
 
           if (element instanceof IMarker) {
             result = ((IMarker) element).getAttribute(IMarker.MESSAGE, ICommonConstants.EMPTY_STRING).toString();
-
-            result = result.replaceAll("(\\r|\\n)", " "); //$NON-NLS-1$ //$NON-NLS-2$
+            result = pattern.matcher(result).replaceAll(" "); //$NON-NLS-1$ 
 
           } else if (element instanceof IConstraintDescriptor) {
             result = ((IConstraintDescriptor) element).getName();
@@ -453,24 +453,18 @@ class MarkerViewColumns {
   private ColumnLabelProvider getRuleIDLabelProvider() {
     if (ruleIDLabelProvider == null) {
       ruleIDLabelProvider = new MarkerViewColumnLabelProvider() {
-        @SuppressWarnings("synthetic-access")
         @Override
         public String getText(Object element) {
           String result = ICommonConstants.EMPTY_STRING;
           if (element instanceof IMarker) {
-
-            /*
-             * If it's a validation rule id, we print that 
-             */
+            // If it's a validation rule id, we print that 
             result = MarkerViewHelper.getRuleID((IMarker) element, false);
-
-            /*
-             * Otherwise we use the marker diagnostic source as the label ...
-             */
             if (result == null) {
+              /*
+               * Otherwise we use the marker diagnostic source as the label ...
+               */
               result = MarkerViewHelper.getSource((IMarker) element);
               if (result != null) {
-                
                 /*
                  * ... with a special label for basic emf validation results (e.g. unresolved proxies)
                  */
@@ -535,7 +529,7 @@ class MarkerViewColumns {
     return ruleIDLabelProvider;
   }
 
-  public ColumnLabelProvider getPreferenceReulSetLabelProvider() {
+  public ColumnLabelProvider getPreferenceRuleSetLabelProvider() {
     if (preferenceReulSetLabelProvider == null) {
       preferenceReulSetLabelProvider = new MarkerViewColumnLabelProvider() {
         @Override
@@ -555,7 +549,7 @@ class MarkerViewColumns {
         @Override
         public Image getImage(Object element) {
           Image result = null;
-          // XXX : choose the image for the preferences
+          // FIXME choose the image for the preferences
           return result;
         }
       };
@@ -606,6 +600,16 @@ class MarkerViewColumns {
               Set<Category> cats = ((ConstraintStatusDiagnostic) diagnostic).getConstraintStatus().getConstraint().getDescriptor().getCategories();
               if (!cats.isEmpty()) {
                 result = cats.iterator().next().getQualifiedName();
+              }
+            } else {
+              result = MarkerViewHelper.getSource((IMarker) element);
+              if (result != null) {
+                /*
+                 * ... with a special label for basic emf validation results (e.g. unresolved proxies)
+                 */
+                if (result.equals(MarkerViewHelper.ECORE_DIAGNOSTIC_SOURCE)) {
+                  result = Messages.MarkerLabelProvider_EcoreDiagnosticSourceLabel;
+                }
               }
             }
           }

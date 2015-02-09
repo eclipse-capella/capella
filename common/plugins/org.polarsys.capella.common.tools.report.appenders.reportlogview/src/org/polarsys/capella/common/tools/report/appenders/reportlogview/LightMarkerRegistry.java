@@ -21,29 +21,21 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
-import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
 /**
- * This class provides a roll-our-own implementation of the Eclipse IMarker API,
- * lacking support for a few essential features of the original API:<br>
+ * A lot of default-marker cause bad performances.<br>
+ * This class provides a roll-our-own implementation of the Eclipse IMarker API, lacking support for a few essential features of the original API:<br>
  * - Once a marker has been created, clients won't be notified about subsequent changes to the marker.<br>
  * - All marker attributes have to be set upon creation with the help of a callback argument (see createMarker() below).<br>
  * This class is thread safe.<br>
  * Listeners are notified on the thread that created/deleted a marker.
  */
 public class LightMarkerRegistry implements IMarkerSource {
-
-  /**
-   * The capella validation marker type. This constant is deprecated and will soon be removed.
-   * @deprecated use {@link org.polarsys.capella.core.model.handler.markers.ICapellaValidationConstants#CAPELLA_MARKER_ID} instead
-   */
-  public static final String VALIDATION_TYPE = "org.polarsys.capella.core.validation.markers"; //$NON-NLS-1$
 
   private static final LightMarkerRegistry _instance = new LightMarkerRegistry();
 
@@ -135,28 +127,20 @@ public class LightMarkerRegistry implements IMarkerSource {
   public IMarker createMarker(IResource fileResource_p, Diagnostic diagnostic_p, String markerType_p, IMarkerModification modification_p) {
     LightMarker marker = new LightMarker(fileResource_p, markerType_p, diagnostic_p);
 
-    if (modification_p != null){
+//    try {
+//      // also store the rule id directly on the marker
+//      marker.setAttribute(IValidationConstants.TAG_RULE_ID, getRuleId(diagnostic_p));
+//    } catch (CoreException e) {
+//      e.printStackTrace();
+//    }
+
+    if (modification_p != null) {
       modification_p.modify(marker);
     }
 
     _registry.add(marker);
     notifyRegistryChanged(null, marker);
     return marker;
-  }
-
-
-  /**
-   * This method is deprecated and will be removed soon.
-   * 
-   * Create a new marker and apply the given modification to it.
-   * @param resource_p
-   * @param type_p
-   * @param modification
-   * @deprecated use any of the other createMarker methods
-   */
-  @Deprecated
-  public void createMarker(IResource resource_p, String type_p, IMarkerModification modification_p) {
-    createMarker(resource_p, new BasicDiagnostic(), type_p, modification_p);
   }
 
   /**
@@ -168,8 +152,8 @@ public class LightMarkerRegistry implements IMarkerSource {
   }
 
   /**
-   * A light version of IMarker - non persistent - avoid any resourceChangeEvents about markers (which cause performance decreased since Sirius made a ui-refresh
-   * for each notification)
+   * A light version of IMarker - non persistent - avoid any resourceChangeEvents about markers (which cause performance decreased since Sirius made a
+   * ui-refresh for each notification)
    * @see org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend
    */
   @SuppressWarnings("restriction")
@@ -182,10 +166,8 @@ public class LightMarkerRegistry implements IMarkerSource {
     long id;
     long creationTime;
     IResource resource;
-
     private Diagnostic diagnostic;
 
-    @SuppressWarnings("deprecation")
     LightMarker(IResource resource_p, String markerType_p, Diagnostic diagnostic_p) {
       attributes = new HashMap<String, Object>();
       resource = resource_p;
@@ -195,8 +177,12 @@ public class LightMarkerRegistry implements IMarkerSource {
       creationTime = System.currentTimeMillis();
       
       // for backwards compatibility
-      attributes.put(IValidationConstants.TAG_DIAGNOSTIC, diagnostic_p);
+//      attributes.put(IValidationConstants.TAG_DIAGNOSTIC, diagnostic_p);
     }
+    
+//    LightMarker(IResource resource_p, String type_p) {
+//      this(resource_p, type_p, null);
+//    }
 
     /**
      * @see org.eclipse.core.resources.IMarker#delete()
@@ -305,7 +291,6 @@ public class LightMarkerRegistry implements IMarkerSource {
     /**
      * @see org.eclipse.core.resources.IMarker#getAttributes()
      */
-    
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public Map getAttributes() throws CoreException {
       Map result = new HashMap(attributes);
@@ -457,4 +442,13 @@ public class LightMarkerRegistry implements IMarkerSource {
     listeners.remove(listener_p);
   }
 
+//  private String getRuleId(Diagnostic diag) {
+//    String result = null;
+//    if (diag instanceof ConstraintStatusDiagnostic) {
+//      result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
+//    } else {
+//      result = diag.getSource() + "." + diag.getCode(); //$NON-NLS-1$
+//    }
+//    return result;
+//  }
 }
