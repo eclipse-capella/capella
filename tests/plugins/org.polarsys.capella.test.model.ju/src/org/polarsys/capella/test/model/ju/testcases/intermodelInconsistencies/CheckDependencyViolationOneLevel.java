@@ -22,7 +22,6 @@ import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
-import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.test.model.ju.CheckInterModelInconsistencyDetectionTestCase;
 

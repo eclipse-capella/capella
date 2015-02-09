@@ -23,18 +23,12 @@ import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.test.model.ju.Activator;
 import org.polarsys.capella.test.model.ju.CheckInterModelInconsistencyDetectionTestCase;
 
 /**
  * @author Erwan Brottier
  */
 public class CheckDependencyViolationTwoLevel extends CheckInterModelInconsistencyDetectionTestCase {
-
-	@Override
-	protected String getPluginId() {
-		return Activator.PLUGIN_ID;
-	}
 
 	@Override
 	protected List<String> getProjectNamesToLoad() {		

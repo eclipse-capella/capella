@@ -29,9 +29,8 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
 import org.polarsys.capella.core.validation.CapellaValidationActivator;
-import org.polarsys.capella.test.framework.api.BasicTestCaseWithModelPreLoading;
+import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
-import org.polarsys.capella.test.validation.rules.ju.TestValidationRulesPlugin;
 
 /**
  * This class is a generic test case for validation rule test.<br>
@@ -45,7 +44,7 @@ import org.polarsys.capella.test.validation.rules.ju.TestValidationRulesPlugin;
  * 
  * @author Erwan Brottier
  */
-public abstract class ValidationRuleTestCase extends BasicTestCaseWithModelPreLoading {
+public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   // these values are obtained by using methods defined in concrete test cases
   protected String ruleID = getRuleID();
@@ -71,11 +70,6 @@ public abstract class ValidationRuleTestCase extends BasicTestCaseWithModelPreLo
 
   /** returns the oracle definition to be checked */
   protected abstract List<OracleDefinition> getOracleDefinitions();
-
-  @Override
-  protected String getPluginId() {
-    return TestValidationRulesPlugin.PLUGIN_ID;
-  }
 
   @Override
   protected void setUp() throws Exception {

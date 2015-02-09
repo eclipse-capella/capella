@@ -10,25 +10,32 @@
  *******************************************************************************/
 package org.polarsys.capella.test.business.queries.ju.testSuites;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.Test;
 
-import org.polarsys.capella.test.framework.api.AutoLoadTestSuite;
+import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.Component_ImplementedInterfaces;
+import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 /**
  * @author Erwan Brottier
  */
-public class BQAutoLoadTestSuite extends AutoLoadTestSuite {
+public class BusinessQueryTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new BQAutoLoadTestSuite();
+    return new BusinessQueryTestSuite();
   }
+
+	@Override
+	protected List<? extends Test> getTests() {
+		List<Test> tests = new ArrayList<Test>();
+		tests.add(new Component_ImplementedInterfaces());
+		return tests;
+	}
 	
-  @Override
-  protected String getTestCasesRootPackage() {
-    return "org.polarsys.capella.test.business.queries.ju.testcases"; //$NON-NLS-1$
-  }
 
 }

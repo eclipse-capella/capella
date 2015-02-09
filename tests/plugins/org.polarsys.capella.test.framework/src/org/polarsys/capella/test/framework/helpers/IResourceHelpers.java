@@ -31,15 +31,24 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.jdt.internal.core.JavaElement;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 /**
  * @author Erwan Brottier
  */
 public class IResourceHelpers {
+	
+  public static File getFileInPlugin(Class<?> oneClassInThePlugin, String relativeFilePath) throws URISyntaxException, IOException {
+		Bundle bundle = FrameworkUtil.getBundle(oneClassInThePlugin);
+		URL fileURL = bundle.getEntry(relativeFilePath);
+		return new File(FileLocator.resolve(fileURL).toURI());
+  }
 	
 	public static List<IResource> getIResourceFromSelection(ExecutionEvent event) {
     ISelection selection = HandlerUtil.getCurrentSelection(event);
