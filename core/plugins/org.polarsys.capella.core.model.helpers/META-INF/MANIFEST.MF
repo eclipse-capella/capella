@@ -14,6 +14,7 @@ Require-Bundle: org.apache.commons.lang,
  org.polarsys.capella.shared.id.handler,
  org.polarsys.capella.core.model.handler;visibility:=reexport
 Export-Package: org.polarsys.capella.core.model.helpers,
+ org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection,
  org.polarsys.capella.core.model.helpers.listeners,
  org.polarsys.capella.core.model.helpers.move,
  org.polarsys.capella.core.model.helpers.naming,

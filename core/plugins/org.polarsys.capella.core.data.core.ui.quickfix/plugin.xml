@@ -23,6 +23,15 @@
          </rules>
       </resolver>
       <resolver
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.DWF_D27_Resolver"
+            desc="%quickFix.CO21.desc"
+            icon="icons/search16.gif"
+            label="%quickFix.CO21.label">
+         <rules
+               ruleId="DWF_D_27">
+         </rules>
+      </resolver>      
+      <resolver
             class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.TJ_G_05_SourceNameEqualsTargetName"
             desc="%quickFix.TJ_G_05_a.desc"
             icon="icons/search16.gif"
