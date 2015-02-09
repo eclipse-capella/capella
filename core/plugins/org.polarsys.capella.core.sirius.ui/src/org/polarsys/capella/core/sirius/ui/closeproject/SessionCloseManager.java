@@ -30,6 +30,7 @@ import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
+import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -224,10 +225,8 @@ public class SessionCloseManager {
         disableCrossReferenceAdaptersResolution(Iterables.filter(session.getAllSessionResources(), AirdResource.class));
 
     if (session instanceof DAnalysisSessionImpl) {
-      ECrossReferenceAdapter cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
-      if (cross instanceof LazyCrossReferencer) {
-        ((LazyCrossReferencer) cross).disableResolve();
-      }
+      ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
+      cross.disableResolve();
     }
 
     try {
@@ -244,10 +243,8 @@ public class SessionCloseManager {
       CrossReferencerHelper.enableResolution(value);
 
       if (session instanceof DAnalysisSessionImpl) {
-        ECrossReferenceAdapter cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
-        if (cross instanceof LazyCrossReferencer) {
-          ((LazyCrossReferencer) cross).enableResolve();
-        }
+        ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
+        cross.enableResolve();
       }
 
       // Enable resolution for all airdCrossReferenceAdapter of session
