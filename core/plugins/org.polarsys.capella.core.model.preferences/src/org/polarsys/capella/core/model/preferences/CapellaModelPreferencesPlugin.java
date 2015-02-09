@@ -155,6 +155,20 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   }
 
   /**
+   * Return true if the inter-model dependency violation detection is activated in the preferences. <br>
+   * <br>
+   * @link {@link IInterModelIntegrityPreferences#PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION} value <code>true or false</code>
+   * @return boolean value
+   */
+  public boolean isInterModelDependencyViolationDetectionActivated() {
+    return AbstractPreferencesInitializer.getBoolean(
+    		IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION, true);
+  }
+
+  
+  
+
+  /**
    * Get the Allow Synchronization of PhysicalPort to ComponentPort on Physical Link current preference value. <br>
    * <br>
    * @link {@link ISynchronizationPreferences#PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALLINK} value <code>true or false</code>

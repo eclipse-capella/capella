@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.core.model.helpers.intermodelInconsistencyDetection;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,8 +24,8 @@ import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
 import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
 
 /**
- * Contains method used to check if a link conforms to the library dependency graph.
- * Warning : this class maintains some cache for the sake of performance. 
+ * This class contains methods used to check if a link conforms to the library dependency graph.
+ * <br/>Warning : this class maintains some cache for the sake of performance (one on links and one on library dependencies). 
  * You should use a new instance each time the model is modified.
  * 
  * @author Erwan Brottier
@@ -57,36 +56,29 @@ public class DependencyChecker {
 		return res;
 	}
 
-	/** Return true if a link between @param source and @param target conforms to library dependency graph.
-	 *  If false, create and store an instance of @see DependencyViolation that describe the error.
-	 *  The @param reference is optional (can be null) and is only used to describe the error.  */
+	/**
+	 * @param source the source node of the link
+	 * @param target the target node of the link
+	 * @param reference the property that implements the link
+	 * @return true if the link between source and target (and implemented by the reference) conforms to the library dependency graph.
+	 *  If false, create and store an instance of {@link DependencyViolation} that describes the error.
+	 *  Reference is optional (can be null) and is only used to describe the error (user feedback).  */
 	public boolean checkLink(EObject source, EObject target, EReference reference) {
-//		System.out.println("CHECK link {"); //$NON-NLS-1$
-//		System.out.println("	source:"+source); //$NON-NLS-1$
-//		System.out.println("	target:"+target); //$NON-NLS-1$
-//		System.out.println("}"); //$NON-NLS-1$
 		if (source.eResource() != target.eResource()) {
 			if (doesLinkHasBeenDeclaredAsCorrect(source, target)) {
-//				System.out.println("!! CACHED RESULT !!");
 				return true;
 			}
 			IModel sourceModel = ILibraryManager.INSTANCE.getModel(source);
 			IModel targetModel = ILibraryManager.INSTANCE.getModel(target);
 			if (sourceModel != null && targetModel != null && !sourceModel.equals(targetModel)) {
-//				Collection<IModelIdentifier> refs = sourceModel.getReferences();
-//				IModelIdentifier identifier = targetModel.getIdentifier();
-//				boolean res = refs.contains(identifier);
 				boolean res = getAllReferencedLibraryIdentifiers(sourceModel).contains(targetModel.getIdentifier());				
 				if (res)
 					declareLinkAsCorrect(source, target);
 				else
 					dependencyViolations.add(new DependencyViolation(source, target, reference));
-//				System.out.println("!! REAL TEST !!");
 				return res;
 			}
 		}
-//		else
-//			System.out.println("!! SAME RESOURCE !!");
 		return true;
 	}
 	
