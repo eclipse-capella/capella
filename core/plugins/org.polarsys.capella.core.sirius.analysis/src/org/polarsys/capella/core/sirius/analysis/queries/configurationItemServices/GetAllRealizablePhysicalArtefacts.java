@@ -50,10 +50,6 @@ public class GetAllRealizablePhysicalArtefacts extends AbstractQuery {
           result.addAll(allPhysicalComponents);
 
           for (PhysicalComponent physicalComponent : allPhysicalComponents) {
-            // retrieve all PhysicalLinks
-            EList<PhysicalLink> ownedPhysicalLinks = physicalComponent.getOwnedPhysicalLinks();
-            // add all PhysicalLinks to result
-            result.addAll(ownedPhysicalLinks);
             // retrieve all PhysicalPorts
             EList<Feature> ownedFeatures = physicalComponent.getOwnedFeatures();
             for (Feature feature : ownedFeatures) {
@@ -63,6 +59,11 @@ public class GetAllRealizablePhysicalArtefacts extends AbstractQuery {
               }
             }
           }
+          // retrieve all PhysicalLinks
+          List<PhysicalLink> allPhysicalLinks = PhysicalArchitectureExt.getAllPhysicalLinks((PhysicalArchitecture) allocatedArchitecture);
+          // add all PhysicalLinks to result
+          result.addAll(allPhysicalLinks);
+
         }
       }
     }
