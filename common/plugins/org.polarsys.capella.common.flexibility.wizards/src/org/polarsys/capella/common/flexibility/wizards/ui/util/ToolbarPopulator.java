@@ -22,13 +22,11 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.ISourceProvider;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.IHandlerService;
-import org.eclipse.ui.internal.menus.InternalMenuService;
 import org.eclipse.ui.internal.services.ServiceLocator;
 import org.eclipse.ui.menus.IMenuService;
 import org.eclipse.ui.services.IDisposable;
 import org.eclipse.ui.services.IEvaluationService;
 import org.eclipse.ui.services.IServiceLocator;
-
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderer;
@@ -91,7 +89,7 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
     locator.registerService(IHandlerService.class, handlerService);
 
     IMenuService menuService = (IMenuService) parentLocator.getService(IMenuService.class);
-    menuService = new SlavePopulatorMenuService((InternalMenuService) menuService, locator, null);
+    menuService = new SlavePopulatorMenuService((IMenuService) menuService, locator, null);
     locator.registerService(IMenuService.class, menuService);
     menuService.populateContributionManager(_contributionManager, _location);
     selectionChanged(null, StructuredSelection.EMPTY);

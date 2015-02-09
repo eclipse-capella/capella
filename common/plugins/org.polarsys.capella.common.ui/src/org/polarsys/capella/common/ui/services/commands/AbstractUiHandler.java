@@ -18,6 +18,7 @@ import java.util.Map;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.expressions.EvaluationContext;
+import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.menus.UIElement;
@@ -78,7 +79,7 @@ public abstract class AbstractUiHandler extends AbstractHandler implements IElem
       return result;
     }
 
-    EvaluationContext evaluationContext = (EvaluationContext) event_p.getApplicationContext();
+    IEvaluationContext evaluationContext = (IEvaluationContext) event_p.getApplicationContext();
 
     // Get default variable as context.
     Object defaultVariable = evaluationContext.getDefaultVariable();
@@ -112,7 +113,13 @@ public abstract class AbstractUiHandler extends AbstractHandler implements IElem
     if (null == event_p) {
       return result;
     }
-    EvaluationContext applicationContext = (EvaluationContext) event_p.getApplicationContext();
+
+    if (!(event_p.getApplicationContext() instanceof EvaluationContext)) {
+      return result;
+    }
+
+    IEvaluationContext applicationContext = (IEvaluationContext) event_p.getApplicationContext();
+
     // Pre-condition.
     if (null == applicationContext) {
       return result;

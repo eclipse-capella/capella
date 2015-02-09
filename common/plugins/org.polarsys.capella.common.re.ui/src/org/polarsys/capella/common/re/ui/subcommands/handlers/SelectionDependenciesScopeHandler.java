@@ -13,10 +13,8 @@ package org.polarsys.capella.common.re.ui.subcommands.handlers;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.expressions.IEvaluationContext;
 import org.eclipse.jface.viewers.StructuredSelection;
-
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
@@ -42,7 +40,7 @@ public class SelectionDependenciesScopeHandler extends SelectionCommandHandler {
   public void setEnabled(Object evaluationContext_p) {
     IEvaluationContext evaluationContext = (IEvaluationContext) evaluationContext_p;
     IRendererContext rendererContext = ExecutionEventUtil.getRendererContext(evaluationContext);
-    Object variable = ((EvaluationContext) evaluationContext_p).getDefaultVariable();
+    Object variable = ((IEvaluationContext) evaluationContext_p).getDefaultVariable();
 
     if (!(variable instanceof List)) {
       setBaseEnabled(false);
