@@ -17,8 +17,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.polarsys.capella.common.ef.ExecutionManager;
-import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangeListener;
 import org.polarsys.capella.common.flexibility.properties.PropertyChangedEvent;
@@ -91,11 +89,11 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
     if (source != selection) {
       source = selection;
 
-      //Compute a propertiesId for the selection
+      // Compute a propertiesId for the selection
       String identifier = _propertiesLoader.getIdentifier(source);
 
       if (_identifier != identifier) {
-        //If different from previously stored identifier, we recompute an properties (already stored in cache of PropertiesLoader) and renderers (recomputed)
+        // If different from previously stored identifier, we recompute an properties (already stored in cache of PropertiesLoader) and renderers (recomputed)
         _properties = _propertiesLoader.getProperties(identifier);
         _renderers = null;
       }
@@ -135,8 +133,8 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
             if ((feature != null) && (feature.getName() != null)) {
               if ((property != null) && (property instanceof EStructuralFeatureProperty)) {
                 EStructuralFeatureProperty featureProperty = (EStructuralFeatureProperty) property;
-                //we update property modifying the related feature
-                //we may check the eClass too.
+                // we update property modifying the related feature
+                // we may check the eClass too.
                 if (feature.getName().equals(featureProperty.getRelatedEReference())) {
                   ((PropertyContext) context).notifyListeners(property);
                 }
@@ -160,7 +158,7 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
         return;
       }
       if ((context != null) && (event_p.getProperty() != null) && context.isModified(event_p.getProperty())) {
-    	AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
+        AbstractReadWriteCommand cmd = new AbstractReadWriteCommand() {
           /**
            * {@inheritDoc}
            */
@@ -173,9 +171,7 @@ public class ObjectPropertiesTabDescriptorProvider extends PropertiesTabDescript
             context.write(event_p.getProperty());
           }
         };
-        ExecutionManager em = ExecutionManagerRegistry.getInstance().addNewManager();
-        em.execute(cmd);
-        ExecutionManagerRegistry.getInstance().removeManager(em);
+        TransactionHelper.getExecutionManager((Collection) context.getSourceAsList()).execute(cmd);
       }
     }
   }
