@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 
 /**
+ *
  */
 public abstract class TransitionCommand extends AbstractReadWriteCommand {
 
@@ -29,6 +30,9 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
 
   /** a progress monitor */
   private IProgressMonitor _progressMonitor = null;
+
+  /** the name of the command */
+  protected String _name;
 
   /**
    * @param modelElement_p
@@ -44,6 +48,23 @@ public abstract class TransitionCommand extends AbstractReadWriteCommand {
   public TransitionCommand(Collection<Object> selection_p, IProgressMonitor progressMonitor_p) {
     _selection = selection_p;
     _progressMonitor = progressMonitor_p;
+    setName(getClass().getSimpleName());
+  }
+
+  /**
+   * Sets the name of the command
+   * @param the command's name
+   */
+  public void setName(String name) {
+    _name = name;
+  }
+
+  /**
+   * @return the name of the command
+   */
+  @Override
+  public String getName() {
+    return _name;
   }
 
   /**

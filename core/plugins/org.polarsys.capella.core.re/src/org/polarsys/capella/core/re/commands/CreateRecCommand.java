@@ -18,6 +18,7 @@ import org.polarsys.capella.core.re.launcher.CreateRecLauncher;
 import org.polarsys.capella.common.re.launcher.ReLauncher;
 
 /**
+ *
  */
 public class CreateRecCommand extends org.polarsys.capella.common.re.commands.CreateRecCommand {
 
@@ -30,13 +31,7 @@ public class CreateRecCommand extends org.polarsys.capella.common.re.commands.Cr
   }
 
   @Override
-  public String getName() {
-    return getClass().getName();
-  }
-
-  @Override
   protected ReLauncher createLauncher() {
     return new CreateRecLauncher();
   }
-
 }
