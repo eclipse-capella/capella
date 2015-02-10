@@ -13,3 +13,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Export-Package: org.polarsys.capella.test.model.ju,
+ org.polarsys.capella.test.model.ju.testcases.intermodelInconsistencies

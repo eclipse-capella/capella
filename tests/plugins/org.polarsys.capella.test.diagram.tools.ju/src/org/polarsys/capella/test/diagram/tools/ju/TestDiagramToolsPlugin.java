@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.business.queries.ju;
+package org.polarsys.capella.test.diagram.tools.ju;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
@@ -16,18 +16,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class TestBusinessQueriesPlugin extends Plugin {
+public class TestDiagramToolsPlugin extends Plugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.polarsys.capella.test.business.queries.ju"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "org.polarsys.capella.test.diagram.tools.ju"; //$NON-NLS-1$
 
 	// The shared instance
-	private static TestBusinessQueriesPlugin plugin;
+	private static TestDiagramToolsPlugin plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public TestBusinessQueriesPlugin() {
+	public TestDiagramToolsPlugin() {
 	  // Do Nothing
 	}
 
@@ -54,7 +54,7 @@ public class TestBusinessQueriesPlugin extends Plugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static TestBusinessQueriesPlugin getDefault() {
+	public static TestDiagramToolsPlugin getDefault() {
 		return plugin;
 	}
 

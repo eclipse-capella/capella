@@ -11,5 +11,7 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.business.queries.ju,
- org.polarsys.capella.test.business.queries.ju.errors
+ org.polarsys.capella.test.business.queries.ju.errors,
+ org.polarsys.capella.test.business.queries.ju.testSuites,
+ org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs
 Bundle-Localization: plugin
