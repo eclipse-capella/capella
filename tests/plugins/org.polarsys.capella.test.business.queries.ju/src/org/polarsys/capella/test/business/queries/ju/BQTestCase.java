@@ -16,7 +16,7 @@ import java.util.List;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.test.framework.api.BasicTestCaseWithModelPreLoading;
+import org.polarsys.capella.test.framework.api.BasicTestCase;
 import org.polarsys.capella.test.framework.helpers.log.FormatedLogger;
 import org.polarsys.capella.test.framework.helpers.log.FormatedSysoutLogger;
 import org.polarsys.capella.test.framework.helpers.log.SilentLogger;
@@ -26,7 +26,7 @@ import org.polarsys.capella.test.framework.helpers.log.SilentLogger;
  * 
  * @author Erwan Brottier
  */
-public abstract class BQTestCase extends BasicTestCaseWithModelPreLoading {
+public abstract class BQTestCase extends BasicTestCase {
 	
 	protected FormatedLogger logger = new FormatedSysoutLogger();
 
@@ -42,11 +42,6 @@ public abstract class BQTestCase extends BasicTestCaseWithModelPreLoading {
 		return BQTestHelpers.getTestSuiteFile(getPluginFolder(), getBQFullQualifiedName(), getProjectForTest());
 	}
 	
-	@Override
-	protected String getPluginId() {
-		return TestBusinessQueriesPlugin.PLUGIN_ID;
-	}
-
 	@Override
 	public void test() throws Exception {
 		// Get and check parameters

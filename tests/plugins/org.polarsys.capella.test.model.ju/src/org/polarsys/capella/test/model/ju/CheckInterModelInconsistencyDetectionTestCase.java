@@ -19,17 +19,12 @@ import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.DataPkg;
 import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesInitializer;
 import org.polarsys.capella.core.model.preferences.IInterModelIntegrityPreferences;
-import org.polarsys.capella.test.framework.api.BasicTestCaseWithModelPreLoading;
+import org.polarsys.capella.test.framework.api.BasicTestCase;
 
 /**
  * @author Erwan Brottier
  */
-public abstract class CheckInterModelInconsistencyDetectionTestCase extends BasicTestCaseWithModelPreLoading {
-
-	@Override
-	protected String getPluginId() {
-		return Activator.PLUGIN_ID;
-	}
+public abstract class CheckInterModelInconsistencyDetectionTestCase extends BasicTestCase {
 	
 	protected void setDetectorActive(boolean state) {
 		CapellaModelPreferencesInitializer preferencesInitializer = new CapellaModelPreferencesInitializer();

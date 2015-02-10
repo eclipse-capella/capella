@@ -11,16 +11,16 @@
 package org.polarsys.capella.test.framework.api;
 
 import java.io.File;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.apache.commons.lang.StringUtils;
-import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
+import org.eclipse.core.runtime.FileLocator;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 /** 
  * Generic implementation of a test suite. This implementation supports libraries as test models.
@@ -42,8 +42,8 @@ public abstract class AutoLoadTestSuite extends BasicTestSuite {
    * load all the test cases in test cases root package and sub ones. 
    */
   @Override
-  protected List<? extends Test> getTests() {
-    List<Test> list = new ArrayList<Test>();
+  protected List<BasicTestCase> getTests() {
+    List<BasicTestCase> list = new ArrayList<BasicTestCase>();
     File testCasefolder = getTestCasefolder();
     List<File> testCaseFiles = getRecursivelyFilesInFolder(testCasefolder);
     for (File file : testCaseFiles) {
@@ -57,19 +57,29 @@ public abstract class AutoLoadTestSuite extends BasicTestSuite {
 
   protected File getTestCasefolder() {
     if (testCaseFolder == null) {
-      URL fileURL = FileHelper.getFileFullUrl(getPluginId() + "/src/" + getTestRelativePath()); //$NON-NLS-1$
-      String path = fileURL.getFile();
-      try {
-        path = URLDecoder.decode(path, "utf-8"); //$NON-NLS-1$
-        testCaseFolder = new File(path);
-      } catch (UnsupportedEncodingException exception) {
-        exception.printStackTrace();
-      }
+    	testCaseFolder = new File(getPluginFolder().toString() + "/src/" + getTestRelativePath()); //$NON-NLS-1$
     }
     return testCaseFolder;
   }
+  
+  private File pluginFolder;
+  
+  /** Return the root folder of the current test plugin */
+  protected File getPluginFolder() {
+    if (pluginFolder == null) {
+  		Bundle bundle = FrameworkUtil.getBundle(getClass());
+  		URL fileURL = bundle.getEntry("/");    	 //$NON-NLS-1$
+  		try {
+  			pluginFolder = new File(FileLocator.resolve(fileURL).toURI());
+			} catch (URISyntaxException e1) {
+			    e1.printStackTrace();
+			} catch (IOException e1) {
+			    e1.printStackTrace();
+			}      
+    }
+    return pluginFolder;
+  }
 
-  @SuppressWarnings("nls")
   protected String getTestRelativePath() {
     if (testCaseRelativeFolder == null) {
       testCaseRelativeFolder = StringUtils.replace(getTestCasesRootPackage(), ".", "/") + "/";
@@ -77,7 +87,6 @@ public abstract class AutoLoadTestSuite extends BasicTestSuite {
     return testCaseRelativeFolder;
   }
   
-  @SuppressWarnings("nls")
   protected BasicTestCase instanciateTest(File file) {
     try {
       String[] tab = StringUtils.split(file.getName(), '.');

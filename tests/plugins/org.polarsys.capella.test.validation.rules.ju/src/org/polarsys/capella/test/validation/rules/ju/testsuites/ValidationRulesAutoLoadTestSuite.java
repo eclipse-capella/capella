@@ -8,27 +8,24 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.business.queries.ju.testSuites;
+package org.polarsys.capella.test.validation.rules.ju.testsuites;
 
 import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.AutoLoadTestSuite;
 
-/**
- * @author Erwan Brottier
- */
-public class BQAutoLoadTestSuite extends AutoLoadTestSuite {
+public class ValidationRulesAutoLoadTestSuite extends AutoLoadTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new BQAutoLoadTestSuite();
+    return new ValidationRulesAutoLoadTestSuite();
   }
-	
+
   @Override
   protected String getTestCasesRootPackage() {
-    return "org.polarsys.capella.test.business.queries.ju.testcases"; //$NON-NLS-1$
+    return "org.polarsys.capella.test.validation.rules.ju.testcases"; //$NON-NLS-1$
   }
 
 }
