@@ -25,7 +25,8 @@ Export-Package: org.polarsys.capella.test.framework,
  org.polarsys.capella.test.framework.actions.headless,
  org.polarsys.capella.test.framework.api,
  org.polarsys.capella.test.framework.helpers,
- org.polarsys.capella.test.framework.helpers.log
+ org.polarsys.capella.test.framework.helpers.log,
+ org.polarsys.capella.test.framework.internal.helpers
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Activator: org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin
 Bundle-ClassPath: .
