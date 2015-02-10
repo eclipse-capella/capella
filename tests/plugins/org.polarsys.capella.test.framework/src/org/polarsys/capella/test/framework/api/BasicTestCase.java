@@ -25,8 +25,10 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
@@ -103,11 +105,6 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
    * Notice it is public because JUnit expect it. */
   public abstract void test() throws Exception;
   
-  @Override
-  protected void tearDown() throws Exception {
-    super.tearDown();
-  }
-
   // ///////////////////////////////////
   // Helpers to enable test context //
   // /////////////////////////////////
@@ -158,6 +155,28 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
 	    for (String modelName : projectNamesToLoad)
 	    	loadTestProjectInWorkspace(relativeModelsFolder + modelName + "/", modelName); //$NON-NLS-1$
   }
+  
+  @Override
+  protected void tearDown() throws Exception {
+    super.tearDown();
+    List<String> projectNamesToLoad = getProjectNamesToLoad();
+    if (projectNamesToLoad != null) {
+    	for (String modelName : projectNamesToLoad) {
+    		Session session = getSessionForLoadedCapellaModel(modelName);
+    		if (session.isOpen()) {
+    			session.save(new NullProgressMonitor());
+    			session.close(new NullProgressMonitor());    			
+    		}
+    		IProject eclipseProject = ResourcesPlugin.getWorkspace().getRoot().getProject(modelName);
+    		try {
+	  			eclipseProject.delete(true, new NullProgressMonitor());    			
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+    }
+  }
+
   
   /**
    * Copy an eclipse project from the test data to the workspace.

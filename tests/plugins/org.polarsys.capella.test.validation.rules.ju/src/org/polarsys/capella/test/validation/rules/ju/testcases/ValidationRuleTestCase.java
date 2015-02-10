@@ -50,7 +50,6 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   protected String ruleID = getRuleID();
   protected EClass targetedEClass = getTargetedEClass();
   protected List<OracleDefinition> oracleDefinitions = getOracleDefinitions();
-  protected String projectTestName = getTestProjectName();
 
   // internal variables
   protected IConstraintDescriptor ruleDescriptor;
@@ -97,14 +96,14 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   @Override
   protected List<String> getProjectNamesToLoad() {
-    return Arrays.asList(projectTestName);
+    return Arrays.asList(getTestProjectName());
   }
 
   public void test() throws Exception {
     // get the objects to validate (only CapellaElement because the oracle is based on object ID)
-    ICapellaModel model = getLoadedCapellaModel(projectTestName);
+    ICapellaModel model = getLoadedCapellaModel(getTestProjectName());
     List<CapellaElement> objectsToValidate = new ArrayList<CapellaElement>();
-    Project project = model.getProject(getSessionForLoadedCapellaModel(projectTestName).getTransactionalEditingDomain());
+    Project project = model.getProject(getSessionForLoadedCapellaModel(getTestProjectName()).getTransactionalEditingDomain());
     if (project != null) {
       for (EObject object : EObjectExt.getAll(project, targetedEClass)) {
         if (object instanceof CapellaElement) {
@@ -150,9 +149,15 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   @Override
   protected void tearDown() throws Exception {
-    super.tearDown();
-    // remove the filter from the validator
-    validator.removeConstraintFilter(filter);
+    super.tearDown();    
+    validator.removeConstraintFilter(filter);// remove the filter from the validator
+    ruleID = null;
+    targetedEClass = null;
+    oracleDefinitions = null;
+    ruleDescriptor = null;
+    filter = null;
+    validator = null;
+    objectID2OracleDefinition = null;    
   }
 
 }
