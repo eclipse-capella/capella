@@ -53,9 +53,7 @@
     <steps xsi:type="buildfile:DeleteStep" xmi:id="_34NbYZMKEeKKWIqJCUuOog" name="delete TP" description="">
       <additionalParameters xmi:id="_34NbYpMKEeKKWIqJCUuOog" key="dir" value="${usedTP}"/>
     </steps>
-    <steps xsi:type="buildstep:AntStep" xmi:id="_34NbY5MKEeKKWIqJCUuOog" name="Unzip TP" enabled="false" targetName="unzipTP" xml="&lt;target name=&quot;unzipTP&quot;>&#xD;&#xA;&#x9;&lt;mkdir dir=&quot;${usedTP}&quot;/>&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&lt;get  src=&quot;${hudson.job.uri}/lastSuccessfulBuild/buildTimestamp?format=yyyy-MM-dd_HH-mm-ss&quot; dest=&quot;${usedTP}.timestamp&quot; />&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&lt;load srcFile=&quot;${usedTP}.timestamp&quot; property=&quot;timestamp&quot; />&#xD;&#xA;&#x9;&lt;echo>timestamp extracted: ${timestamp}&lt;/echo>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${hudson.job.uri}/lastSuccessfulBuild/artifact/result/publish/capella-${capella.version}.${timestamp}-win32-win32-x86-juno-incubation.zip&quot; &#xD;&#xA;&#x9;&#x9;dest=&quot;${usedTP}.zip&quot;/>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;unzip dest=&quot;${usedTP}&quot; >&#xD;&#xA;&#x9;&#x9;&lt;fileset dir=&quot;${usedTP}.zip&quot; />&#xD;&#xA;&#x9;&lt;/unzip>&#xD;&#xA;&lt;/target>"/>
     <steps xsi:type="buildstep:AntStep" xmi:id="_vi-ucLELEeSLhv0uZvTdTQ" name="Download CapellaTP" targetName="DownloadCapellaTP" xml="&lt;target name=&quot;DownloadCapellaTP&quot;>&#xD;&#xA;&#x9; &lt;dirname property=&quot;dir&quot; file=&quot;${usedTP}.ts&quot;/>&#xD;&#xA;&#x9; &lt;mkdir dir=&quot;${dir}&quot; />&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${hudson.job.url}/buildTimestamp?format=yyyy-MM-dd_HH-mm-ss&quot; &#xD;&#xA;&#x9;&#x9;dest=&quot;${usedTP}.ts&quot;/>&#xD;&#xA;&#x9;&#xD;&#xA;&#x9;&lt;loadfile srcfile=&quot;${usedTP}.ts&quot; property=&quot;ts&quot;/>&#xD;&#xA;&#x9;&lt;echo>${usedTP} timestamp: ${ts}&lt;/echo>&#xD;&#xA;&#xD;&#xA;&#x9;&lt;get &#xD;&#xA;&#x9;&#x9;src=&quot;${hudson.job.url}/artifact/result/publish/capella-${capella.version}.${ts}-linux-gtk-x86_64-juno-incubation.tar.gz&quot;&#xD;&#xA;&#x9;&#x9;dest=&quot;${usedTP}.tar.gz&quot;/>&#xD;&#xA;&#xD;&#xA;&lt;gunzip src=&quot;${usedTP}.tar.gz&quot;/>&#xD;&#xA;&lt;untar src=&quot;${usedTP}.tar&quot; dest=&quot;${usedTP}&quot;/>&#xD;&#xA;&#xD;&#xA;&lt;/target> &#xD;&#xA;"/>
-    <steps xsi:type="buildfile:UnzipStep" xmi:id="_pu-oILEOEeSLhv0uZvTdTQ" name="Unzip CapellaTP" enabled="false" sourceFilePath="${usedTP}.zip" destinationFolderPath="${usedTP}"/>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_ZHUroJMLEeKKWIqJCUuOog" name="TestSuites">
     <steps xsi:type="buildstep:BuildStep" xmi:id="_fdrJtJMLEeKKWIqJCUuOog" name="Import Test Plugins">
@@ -73,5 +71,6 @@
       <components xsi:type="buildstep:Plugin" xmi:id="_ZphH0LELEeSLhv0uZvTdTQ" id="org.polarsys.capella.core.releng.junit"/>
     </steps>
     <steps xsi:type="buildstep:TestStep" xmi:id="_wf8aUK4IEeS3GsUDrEkAJA" name="BusinessQueryTestSuite" launchConfigurationPath="${launch_configs}/BusinessQueryTestSuite.launch"/>
+    <steps xsi:type="buildstep:TestStep" xmi:id="_cZC20LHUEeS88vlh9a6VNQ" name="ValidationRulesTestSuite" launchConfigurationPath="${launch_configs}/ValidationRulesTestSuite.launch"/>
   </steps>
 </buildcore:StepContainer>
