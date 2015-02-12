@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.ui.ISources;
 import org.eclipse.ui.IWorkbenchPart;
@@ -79,7 +81,7 @@ public class SendToFastLinkerCommandHandler extends AbstractHandler {
 		Collection<EObject> ret = new ArrayList<EObject>();
 		List selectedElements = ((IStructuredSelection) selection_p).toList();
 		for (Object selectedElement : selectedElements)
-			if ((selectedElement instanceof IDiagramElementEditPart)) {
+			if ((selectedElement instanceof IAbstractDiagramNodeEditPart) || (selectedElement instanceof IDiagramEdgeEditPart)) {
 				IDiagramElementEditPart diagramElement = (IDiagramElementEditPart) selectedElement;
 				ret.add(diagramElement.resolveTargetSemanticElement());
 			} else if (selectedElement instanceof EObject) {
