@@ -14,11 +14,15 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.PropertyPropagator;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
+import org.polarsys.capella.core.ui.properties.annotations.IRepresentationAnnotationConstants;
 
 /**
  * Utility class for Progress Monitoring
@@ -104,5 +108,16 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
   @Override
   protected boolean isTagged(EObject eObject_p) {
     return ((eObject_p instanceof CapellaElement) && (null != ((CapellaElement) eObject_p).getStatus()));
+  }
+  
+  /**
+   * @param eObject_p
+   * @return
+   */
+  @Override
+  protected boolean isTaggedDiagram(EObject eObject_p) {
+	String eAnnot= IRepresentationAnnotationConstants.ProgressStatus;
+	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eObject_p);
+    return ((eObject_p instanceof DDiagram) && (null != dAnnotation.getDetails().get("value")));
   }
 }

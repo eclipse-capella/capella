@@ -13,11 +13,15 @@ package org.polarsys.capella.core.model.handler.helpers;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
@@ -108,6 +112,7 @@ public abstract class PropertyPropagator {
    */
   protected Collection<EClass> getWithSpecializationType() {
     Collection<EClass> withSpecializationTypes = new HashSet<EClass>();
+    withSpecializationTypes.add(CapellacorePackage.Literals.CONSTRAINT);
     withSpecializationTypes.add(CapellacommonPackage.Literals.STATE_MACHINE);
     withSpecializationTypes.add(CapellacorePackage.Literals.STRUCTURE);
     withSpecializationTypes.add(FaPackage.Literals.ABSTRACT_FUNCTION);
@@ -136,7 +141,13 @@ public abstract class PropertyPropagator {
    * @return
    */
   protected abstract boolean isTagged(EObject eObject_p);
-
+  
+  /**
+   * @param eObject_p
+   * @return
+   */
+  protected abstract boolean isTaggedDiagram(EObject eObject_p);
+  
   /**
    * @param literal_p
    * @param eObject_p
@@ -195,21 +206,31 @@ public abstract class PropertyPropagator {
    */
   public List<EObject> getTaggedObjects(EObject root_p) {
     List<EObject> result = new ArrayList<EObject>();
+    Session session = SessionManager.INSTANCE.getSession(root_p);
 
     if (null != root_p) {
       if (isTagged(root_p)) {
         result.add(root_p);
       }
+      
       TreeIterator<EObject> it = root_p.eAllContents();
       EObject current = null;
+      EObject currentDiagram = null ;
       while (it.hasNext()) {
         current = it.next();
         if (isTagged(current)) {
           result.add(current);
+        	for (Iterator iter = DialectManager.INSTANCE.getRepresentations(current, session ).iterator(); iter.hasNext();) {
+        		currentDiagram=(EObject) iter.next();
+        		if (isTaggedDiagram(currentDiagram)) {
+        			result.add(currentDiagram);
+        		}
+            }
         }
       }
-    }
 
+    }
     return result;
   }
+
 }
