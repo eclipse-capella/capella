@@ -3408,4 +3408,174 @@ public class InformationServices {
   public static Object getEILabel(AbstractExchangeItem ei_p, boolean showExchangeItemsParameters) {
     return ExchangeItemExt.getEILabel(ei_p, showExchangeItemsParameters);
   }
+  
+  class DependencyPair {
+		final AbstractDependenciesPkg src;
+		final AbstractDependenciesPkg tar;
+
+		public DependencyPair(AbstractDependenciesPkg src_p,
+				AbstractDependenciesPkg tar_p) {
+			this.src = src_p;
+			this.tar = tar_p;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			return (obj instanceof DependencyPair)
+					&& (src == ((DependencyPair) obj).src && (tar == ((DependencyPair) obj).tar));
+		}
+
+		@Override
+		public int hashCode() {
+			int result = 17;
+			result = (src.hashCode() * result) + tar.hashCode();
+			return result;
+		}
+	}
+
+	/**
+	 * Check if the dependency between two packages is a primitive one (cannot
+	 * be deduced from sub-packages' dependencies)
+	 * 
+	 * @param src_p
+	 *            The depending package
+	 * @param tar_p
+	 *            The dependent package
+	 * @return
+	 */
+	boolean isPrimitiveDependency(AbstractDependenciesPkg src_p,
+			AbstractDependenciesPkg tar_p) {
+		if (src_p instanceof DataPkg)
+			return DataPkgExt.isPrimitiveDependency((DataPkg) src_p,
+					(AbstractDependenciesPkg) tar_p);
+		else
+			// InterfacePkg
+			return InterfacePkgExt.isPrimitiveDependency((InterfacePkg) src_p,
+					(AbstractDependenciesPkg) tar_p);
+	}
+
+	/**
+	 * Get the dependent packages of a package with the condition that if all child dependencies are displayed already, there's no need to display the parent dependency
+	 * @param pkg_p
+	 * @param diagram_p
+	 * @return
+	 */
+	public Collection<AbstractDependenciesPkg> getDependentPackages2(
+			final AbstractDependenciesPkg pkg_p, final DDiagram diagram_p) {
+		Collection<AbstractDependenciesPkg> depPkgs = new HashSet<AbstractDependenciesPkg>(); 
+		for (AbstractDependenciesPkg depPkg : AbstractDependenciesPkgExt.getDependencies2(pkg_p))
+		{
+			if (shouldDisplayed(pkg_p, depPkg, diagram_p))
+				depPkgs.add(depPkg);
+		}
+		
+		return depPkgs;
+	}
+
+	/**
+	 * Check if a dependency between two packages should be displayed
+	 * @param src_p
+	 * @param tar_p
+	 * @param diagram_p
+	 * @return
+	 */
+	public boolean shouldDisplayed(AbstractDependenciesPkg src_p,
+			AbstractDependenciesPkg tar_p, DDiagram diagram_p) {
+		// If the dependency between two packages is primitive then it should be displayed
+		if (isPrimitiveDependency(src_p, tar_p))
+			return true;
+
+		List<AbstractDependenciesPkg> src_subPkgs = new ArrayList<AbstractDependenciesPkg>();
+		List<AbstractDependenciesPkg> tar_subPkgs = new ArrayList<AbstractDependenciesPkg>();
+		if (src_p instanceof DataPkg) {
+			src_subPkgs.addAll(((DataPkg) src_p).getOwnedDataPkgs());
+		}
+		// InterfacePkg
+		else {
+			src_subPkgs.addAll(((InterfacePkg) src_p).getOwnedInterfacePkgs());
+		}
+
+		if (tar_p instanceof DataPkg) {
+			tar_subPkgs.addAll(((DataPkg) tar_p).getOwnedDataPkgs());
+		}
+		// InterfacePkg
+		else {
+			tar_subPkgs.addAll(((InterfacePkg) tar_p).getOwnedInterfacePkgs());
+		}
+
+		//If the source package of the dependency is a leaf package (no child) 
+		if (src_subPkgs.size() == 0) {
+			List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
+			Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt
+					.getDependencies2(src_p);
+			for (AbstractDependenciesPkg depPkg : depPkgs)
+				if (tar_subPkgs.contains(depPkg))
+					depPairs.add(new DependencyPair(src_p, depPkg));
+			
+			for (DependencyPair dep : depPairs) {
+				//For each dependency, if there's a child dependency that should be displayed but not, display the dependency in question
+				if (shouldDisplayed(dep.src, dep.tar, diagram_p)
+						&& !isDisplayed(dep.src, dep.tar, diagram_p))
+					return true;
+			}
+		}
+		//If the target package of the dependency is a leaf package (no child) 
+		else if (tar_subPkgs.size() == 0) {
+			List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
+
+			for (AbstractDependenciesPkg pkg : src_subPkgs) {
+				Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt
+						.getDependencies2(pkg);
+				for (AbstractDependenciesPkg depPkg : depPkgs)
+					if (depPkg == tar_p)
+						depPairs.add(new DependencyPair(pkg, tar_p));
+			}
+
+			for (DependencyPair dep : depPairs) {
+				//For each dependency, if there's a child dependency that should be displayed but not, display the dependency in question
+				if (shouldDisplayed(dep.src, dep.tar, diagram_p)
+						&& !isDisplayed(dep.src, dep.tar, diagram_p))
+					return true;
+			}
+		}
+		//Dependency between parent packages
+		else {
+			List<DependencyPair> depPairs = new ArrayList<InformationServices.DependencyPair>();
+			for (AbstractDependenciesPkg pkg : src_subPkgs) {
+				Collection<AbstractDependenciesPkg> depPkgs = AbstractDependenciesPkgExt
+						.getDependencies2(pkg);
+				for (AbstractDependenciesPkg depPkg : depPkgs)
+					if (tar_subPkgs.contains(depPkg))
+						depPairs.add(new DependencyPair(pkg, depPkg));
+			}
+
+			for (DependencyPair dep : depPairs) {
+				//For each dependency, if there's a child dependency that should be displayed but not, display the dependency in question
+				if (shouldDisplayed(dep.src, tar_p,
+						diagram_p) && !isDisplayed(dep.src, tar_p,
+						diagram_p) && shouldDisplayed(src_p, dep.tar,
+								diagram_p) && !isDisplayed(src_p, dep.tar,
+										diagram_p))
+					return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check if the dependency between two packages is displayed. If one of the package is invisible, the dependency is not displayed
+	 * @param src_p the source package
+	 * @param tar_p the target package
+	 * @param diagram_p
+	 * @return
+	 */
+	public boolean isDisplayed(AbstractDependenciesPkg src_p,
+			AbstractDependenciesPkg tar_p, DDiagram diagram_p) {
+		DDiagramElement srcPkg = (DDiagramElement) DiagramServices
+				.getDiagramServices().getDiagramElement(diagram_p, src_p);
+		DDiagramElement tarPkg = (DDiagramElement) DiagramServices
+				.getDiagramServices().getDiagramElement(diagram_p, tar_p);
+		return (srcPkg != null && tarPkg != null);
+	}
+  
 }

@@ -1524,4 +1524,102 @@ public static List<DataValue> getDataValues(EObject semanticsObject) {
     }
     return false;
   }
+  
+  /**
+   * Check if the dependency between a data package and a package is primitive
+   * @param src_p
+   * @param tar_p
+   * @return
+   */
+	public static boolean isPrimitiveDependency(DataPkg src_p, AbstractDependenciesPkg tar_p) {
+		// classes
+		for (Class aClass : src_p.getOwnedClasses()) {
+			if (ClassExt.getClassDependencies(aClass).contains(tar_p))
+				return true;
+		}
+		// signals
+		for (Signal aSignal : src_p.getOwnedSignals()) {
+			if (SignalExt.getSignalDependencies(aSignal).contains(tar_p))
+				return true;
+		}
+		// Datatypes
+		for (DataType aDataType : src_p.getOwnedDataTypes()) {
+			if (DataTypeExt.getDataTypeDependencies(aDataType).contains(tar_p))
+				return true;
+		}
+		// ExchangeItem
+		for (ExchangeItem anExchangeItem : src_p.getOwnedExchangeItems()) {
+			if (ExchangeItemExt.getExchangeItemDependencies(anExchangeItem)
+					.contains(tar_p))
+				return true;
+		}
+		// Collection
+		for (org.polarsys.capella.core.data.information.Collection aCollection : src_p
+				.getOwnedCollections()) {
+			if (CollectionExt.getCollectionDependencies(aCollection).contains(
+					tar_p))
+				return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get all the dependencies of a package, including ancestor's dependencies
+	 * @param dataPkg_p
+	 * @return
+	 */
+	public static Collection<AbstractDependenciesPkg> getDataPkgDependenciesHierarchy(
+			DataPkg dataPkg_p) {
+		Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>(); // dependencies
+
+		// classes
+		for (Class aClass : dataPkg_p.getOwnedClasses()) {
+			dependencies.addAll(ClassExt.getClassDependencies(aClass));
+		}
+		// signals
+		for (Signal aSignal : dataPkg_p.getOwnedSignals()) {
+			dependencies.addAll(SignalExt.getSignalDependencies(aSignal));
+		}
+		// Datatypes
+		for (DataType aDataType : dataPkg_p.getOwnedDataTypes()) {
+			dependencies.addAll(DataTypeExt.getDataTypeDependencies(aDataType));
+		}
+		// ExchangeItem
+		for (ExchangeItem anExchangeItem : dataPkg_p.getOwnedExchangeItems()) {
+			dependencies.addAll(ExchangeItemExt
+					.getExchangeItemDependencies(anExchangeItem));
+		}
+		// Collection
+		for (org.polarsys.capella.core.data.information.Collection aCollection : dataPkg_p
+				.getOwnedCollections()) {
+			dependencies.addAll(CollectionExt
+					.getCollectionDependencies(aCollection));
+		}
+
+		// Retrieving the dependencies for the ancestors.
+		for (AbstractDependenciesPkg aPackage : dependencies) {
+			AbstractDependenciesPkg dependentPackage = aPackage;
+			AbstractDependenciesPkg currentPackage = dataPkg_p;
+			while ((dependentPackage instanceof AbstractDependenciesPkg)
+					&& (!(EcoreUtil.isAncestor(dependentPackage,
+							currentPackage) || EcoreUtil.isAncestor(
+							currentPackage, dependentPackage)))) {
+				if (dependentPackage.eContainer() instanceof AbstractDependenciesPkg)
+				{
+					dependencies.add((AbstractDependenciesPkg) dependentPackage);
+					dependentPackage = (AbstractDependenciesPkg) dependentPackage
+							.eContainer();
+				}
+				else
+					break;
+			}
+		}
+		// Retrieving the dependencies of the sub-packages.
+		for (DataPkg aSubPkg : dataPkg_p.getOwnedDataPkgs()) {
+			dependencies.addAll(getDataPkgDependenciesHierarchy(aSubPkg));
+		}
+		return dependencies;
+	}
+  
 }

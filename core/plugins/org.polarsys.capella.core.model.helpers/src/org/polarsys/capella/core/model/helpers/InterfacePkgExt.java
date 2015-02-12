@@ -492,5 +492,72 @@ public class InterfacePkgExt {
     }
     return false;
   }
+  
+  /**
+	 * Check if the dependency between an interface package and a package is primitive
+	 * @param src_p
+	 * @param tar_p
+	 * @return
+	 */
+	public static boolean isPrimitiveDependency(InterfacePkg src_p,
+			AbstractDependenciesPkg tar_p) {
+		for (Interface anInterface : src_p.getOwnedInterfaces()) {
+			if (InterfaceExt.getInterfaceDependencies(anInterface).contains(
+					tar_p))
+				return true;
+		}
+		// ExchangeItem
+		for (ExchangeItem anExchangeItem : src_p.getOwnedExchangeItems()) {
+			if (ExchangeItemExt.getExchangeItemDependencies(anExchangeItem)
+					.contains(tar_p))
+				return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get all the dependencies of a package, including ancestor's dependencies
+	 * @param interfacePkg_p
+	 * @return
+	 */
+	public static Collection<AbstractDependenciesPkg> getInterfacePkgDependenciesHierarchy(
+			InterfacePkg interfacePkg_p) {
+		Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>(); // dependencies
+
+		for (Interface anInterface : interfacePkg_p.getOwnedInterfaces()) {
+			dependencies.addAll(InterfaceExt
+					.getInterfaceDependencies(anInterface));
+		}
+		// ExchangeItem
+		for (ExchangeItem anExchangeItem : interfacePkg_p
+				.getOwnedExchangeItems()) {
+			dependencies.addAll(ExchangeItemExt
+					.getExchangeItemDependencies(anExchangeItem));
+		}
+		// Retrieving the dependencies for the ancestors.
+		for (AbstractDependenciesPkg aPackage : dependencies) {
+			AbstractDependenciesPkg dependentPackage = aPackage;
+			AbstractDependenciesPkg currentPackage = interfacePkg_p;
+			while ((dependentPackage instanceof AbstractDependenciesPkg)
+					&& (!(EcoreUtil
+							.isAncestor(dependentPackage, currentPackage) || EcoreUtil
+							.isAncestor(currentPackage, dependentPackage)))) {
+				if (dependentPackage.eContainer() instanceof AbstractDependenciesPkg)
+				{
+					dependencies.add((AbstractDependenciesPkg) dependentPackage);
+					dependentPackage = (AbstractDependenciesPkg) dependentPackage
+							.eContainer();
+				}
+				else
+					break;
+			}
+		}
+		// Retrieving the dependencies of sub-packages.
+		for (InterfacePkg aSubPkg : interfacePkg_p.getOwnedInterfacePkgs()) {
+			dependencies.addAll(getInterfacePkgDependenciesHierarchy(aSubPkg));
+		}
+		return dependencies;
+	}
 
 }
