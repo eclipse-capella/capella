@@ -287,7 +287,7 @@ public abstract class AbstractSection extends AbstractPropertySection implements
   @Override
   public void refresh() {
     // Make sure object is still available.
-    if (null != _capellaElement) {
+    if (null != _capellaElement && null != _capellaElement.eResource()) {
       loadData(_capellaElement);
     }
   }
