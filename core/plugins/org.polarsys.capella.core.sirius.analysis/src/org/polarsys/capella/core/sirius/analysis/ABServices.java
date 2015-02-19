@@ -1134,7 +1134,7 @@ public class ABServices {
   }
 
   public boolean isValidABFunctionalExchangeEdge(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
-    if (!(context_p instanceof FunctionalExchange)) {
+    if (!(context_p instanceof FunctionalExchange) || (sourceView_p == targetView_p)) {
       return false;
     }
     return true;
