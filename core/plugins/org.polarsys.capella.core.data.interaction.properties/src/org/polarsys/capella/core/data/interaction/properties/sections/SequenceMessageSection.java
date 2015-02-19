@@ -11,6 +11,7 @@
 package org.polarsys.capella.core.data.interaction.properties.sections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -41,12 +42,11 @@ import org.polarsys.capella.core.data.interaction.properties.dialogs.DialogProvi
 import org.polarsys.capella.core.data.interaction.properties.fields.MessageKindGroup;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
-import org.polarsys.capella.core.ui.properties.controllers.SimpleSemanticFieldController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
+import org.polarsys.capella.core.ui.properties.fields.ConstraintReferenceGroup;
 import org.polarsys.capella.core.ui.properties.fields.EditableSemanticFieldException;
 import org.polarsys.capella.core.ui.properties.fields.MultipleSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleEditableSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
 
 /**
  * The SequenceMessage section.
@@ -56,7 +56,7 @@ public class SequenceMessageSection extends NamedElementSection {
   private SimpleEditableSemanticField invokedOperationField;
   private MultipleSemanticField exchangedItemsField;
   private MessageKindGroup messageKindGroup;
-  private SimpleSemanticField exchangeContextField;
+  private ConstraintReferenceGroup exchangeContextField;
 
   @Override
   public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
@@ -154,8 +154,11 @@ public class SequenceMessageSection extends NamedElementSection {
     messageKindGroup = new MessageKindGroup(_rootParentComposite, getWidgetFactory(), false);
     messageKindGroup.setDisplayedInWizard(displayedInWizard);
 
-    exchangeContextField = new SimpleSemanticField(main, Messages.getString("SequenceMessage.ExchangeContextLabel"), getWidgetFactory(), new SimpleSemanticFieldController()); //$NON-NLS-1$
-    exchangeContextField.setDisplayedInWizard(displayedInWizard);
+    exchangeContextField =
+        new ConstraintReferenceGroup(Collections.singletonMap(
+            Messages.getString("SequenceMessage.ExchangeContextLabel"), InteractionPackage.Literals.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT)); //$NON-NLS-1$
+    exchangeContextField.createControls(_rootParentComposite, getWidgetFactory(), displayedInWizard);
+
   }
 
   /**
@@ -201,7 +204,7 @@ public class SequenceMessageSection extends NamedElementSection {
     messageKindGroup.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getSequenceMessage_Kind());
     invokedOperationField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getEventReceiptOperation_Operation());
     exchangedItemsField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getSequenceMessage_ExchangedItems());
-    exchangeContextField.loadData(capellaElement_p, InteractionPackage.eINSTANCE.getSequenceMessage_ExchangeContext());
+    exchangeContextField.loadData(capellaElement_p);
   }
 
   /**
@@ -224,7 +227,7 @@ public class SequenceMessageSection extends NamedElementSection {
     fields.add(exchangedItemsField);
     fields.add(invokedOperationField);
     fields.add(messageKindGroup);
-    fields.add(exchangeContextField);
+    fields.addAll(exchangeContextField.getFields());
 
     return fields;
   }
