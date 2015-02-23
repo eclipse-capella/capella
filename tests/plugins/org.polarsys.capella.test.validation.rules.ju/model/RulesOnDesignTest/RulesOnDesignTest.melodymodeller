@@ -847,9 +847,9 @@
           <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
               id="90e6c34f-87be-460d-9e0f-91ac04b671f1" name="OK_LC1_1">
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-                id="58db33e0-59f2-48b5-88d8-cc563d65b8bb" name="CP 1"/>
+                id="58db33e0-59f2-48b5-88d8-cc563d65b8bb" name="CP 1" providedInterfaces="#1201fa51-c813-4f78-868c-db892b072596"/>
             <ownedFeatures xsi:type="org.polarsys.capella.core.data.fa:ComponentPort"
-                id="9c43569b-c03e-4df0-a2b4-43a251cfff0a" name="CP 2"/>
+                id="9c43569b-c03e-4df0-a2b4-43a251cfff0a" name="CP 2" requiredInterfaces="#11139873-8171-4244-a5a3-7d6456db7aed"/>
           </ownedLogicalComponents>
         </ownedLogicalComponents>
         <ownedLogicalComponents xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"

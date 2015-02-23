@@ -29,6 +29,7 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_DWF_I_20;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_TC_I_11;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_TC_I_12;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_TC_I_13;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dcom.DCOMRulesTestSuite;
 
 public class ValidationRulesTestSuite extends BasicTestSuite {
 
@@ -55,6 +56,7 @@ public class ValidationRulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_TC_I_11());
 		tests.add(new Rule_TC_I_12());
 		tests.add(new Rule_TC_I_13());
+    tests.add(new DCOMRulesTestSuite());
 		return tests;
 	}
 

@@ -43,6 +43,7 @@ import org.polarsys.capella.test.framework.api.OracleDefinition;
  * - getOracleDefinitions()<br>
  * 
  * @author Erwan Brottier
+ * @contributor Joao Barata
  */
 public abstract class ValidationRuleTestCase extends BasicTestCase {
 
@@ -99,23 +100,29 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     return Arrays.asList(getTestProjectName());
   }
 
-  public void test() throws Exception {
-    // get the objects to validate (only CapellaElement because the oracle is based on object ID)
-    ICapellaModel model = getLoadedCapellaModel(getTestProjectName());
-    List<CapellaElement> objectsToValidate = new ArrayList<CapellaElement>();
+  protected List<CapellaElement> getTestScope(ICapellaModel model) {
+    List<CapellaElement> scope = new ArrayList<CapellaElement>();
     Project project = model.getProject(getSessionForLoadedCapellaModel(getTestProjectName()).getTransactionalEditingDomain());
     if (project != null) {
       for (EObject object : EObjectExt.getAll(project, targetedEClass)) {
         if (object instanceof CapellaElement) {
-          objectsToValidate.add((CapellaElement) object);
+          scope.add((CapellaElement) object);
         }
       }
     }
+    return scope;
+  }
+  
+  public void test() throws Exception {
+    // get the objects to validate (only CapellaElement because the oracle is based on object ID)
+    ICapellaModel model = getLoadedCapellaModel(getTestProjectName());
+    List<CapellaElement> objectsToValidate = getTestScope(model);
     // prepare oracle table
     for (OracleDefinition definition : oracleDefinitions) {
       objectID2OracleDefinition.put(definition.getObjectID(), definition);
     }
     // check the validation result for each objects
+    List<CapellaElement> failedObjects = new ArrayList<CapellaElement>();
     Diagnostician diagnostician = new Diagnostician();
     for (CapellaElement object : objectsToValidate) {
       String objectID = object.getId();
@@ -128,10 +135,19 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
           if (oracleDef != null) {
             oracleDef.countOneError();
           } else {
-            assertTrue("Validation rule " + ruleID + " has detected an error on object " + objectID + " while it must not be the case", false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$    				
+            failedObjects.add(object);
           }
         }
       }
+    }
+    // check all objects to be validated before throwing a message
+    if (!failedObjects.isEmpty()) {
+      String message = "Validation rule " + ruleID + " has detected an error on object(s): \n"; //$NON-NLS-1$ //$NON-NLS-2$
+      for (CapellaElement elt : failedObjects) {
+        message += " - " + elt.getId() + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
+      }
+      message += "while it must not be the case.";
+      assertTrue(message, false);
     }
     // check that some errors has not been detected according to the number of error occurences for each object in error
     for (OracleDefinition oracleDef : oracleDefinitions) {
