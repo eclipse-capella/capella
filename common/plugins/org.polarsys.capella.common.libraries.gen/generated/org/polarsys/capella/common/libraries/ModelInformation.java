@@ -76,7 +76,7 @@ public interface ModelInformation extends LibraryAbstractElement, ElementExtensi
 	 * @return the value of the '<em>Version</em>' reference.
 	 * @see #setVersion(ModelVersion)
 	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_Version()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 
