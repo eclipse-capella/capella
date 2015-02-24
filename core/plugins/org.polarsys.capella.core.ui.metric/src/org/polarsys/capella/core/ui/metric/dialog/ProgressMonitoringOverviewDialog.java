@@ -18,6 +18,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
@@ -128,7 +129,7 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
           for (EObject eobj: allTaggedElements) {
             if ( (eobj instanceof CapellaElement) && ((CapellaElement)eobj).getStatus().equals(lit) ) {
               list.add(eobj);
-            } else if (eobj instanceof DDiagram) {
+            } else if (eobj instanceof DRepresentation) {
             	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eobj);
             	if (dAnnotation.getDetails().get("value").equals(lit.getName())) {
             	list.add(eobj);
@@ -183,28 +184,30 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
 
     for (EObject current: allTaggedElements) {
       if (current instanceof CapellaElement) {
-    	CapellaElement me = (CapellaElement) current;
+    	CapellaElement ce = (CapellaElement) current;
     	result.add(
     		new String[] {
-    			current.eClass().getName(),
-    			me.getFullLabel(),
-    			me.getLabel(),
-    			me.getStatus().getLabel()
+    			ce.eClass().getName(),
+    			ce.getFullLabel(),
+    			ce.getLabel(),
+    			ce.getStatus().getLabel()
     			}
     		);
-      } else if (current instanceof DDiagram) {
-    	  DDiagram dDiagram= (DDiagram) current;
+      } else if (current instanceof DRepresentation) {
+    	  DRepresentation dRepresentation= (DRepresentation) current;
 
     	String eAnnotStatus= IRepresentationAnnotationConstants.ProgressStatus;
     	DAnnotation dAnnotationStatus= RepresentationHelper.getAnnotation(eAnnotStatus, (DRepresentation) current);
-    	result.add(
+    	if (dRepresentation instanceof DSemanticDecorator) {
+    		result.add(
     		new String[] {
-    			dDiagram.getName(),
-    			//
-    			//
-    			dAnnotationStatus.getDetails().get("value")
-    			  }
-    	  );
+    				dRepresentation.getName(),
+           		((CapellaElement)((DSemanticDecorator)dRepresentation).getTarget()).getFullLabel()+"/"+dRepresentation.getName(),
+           		dRepresentation.getName(),
+       			dAnnotationStatus.getDetails().get("value")
+    		}
+    	 );
+    	}
       }
     }
     return result;

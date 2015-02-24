@@ -115,9 +115,12 @@ public class ProgressMonitoringPropagator extends PropertyPropagator {
    * @return
    */
   @Override
-  protected boolean isTaggedDiagram(EObject eObject_p) {
+  protected boolean isTaggedRepresentation(EObject eObject_p) {
 	String eAnnot= IRepresentationAnnotationConstants.ProgressStatus;
 	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eObject_p);
-    return ((eObject_p instanceof DDiagram) && (null != dAnnotation.getDetails().get("value")));
+	if (eObject_p instanceof DRepresentation && dAnnotation!=null) {
+    return (null != dAnnotation.getDetails().get("value"));
+	}
+	return false;
   }
 }
