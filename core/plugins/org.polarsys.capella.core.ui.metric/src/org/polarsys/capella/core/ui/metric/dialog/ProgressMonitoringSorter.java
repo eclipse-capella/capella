@@ -43,9 +43,6 @@ public class ProgressMonitoringSorter extends ViewerSorter {
   @Override
   public int compare(Viewer viewer_p, Object object1_p, Object object2_p) {
     // Sorter Capella resource before capella fragment.
-      System.out.println("Resource 1: "+object1_p);
-      System.out.println("Resource 2: "+object2_p);
-
     if ((object1_p instanceof Resource) && (object2_p instanceof Resource)) {
       Resource resource1 = (Resource) object1_p;
       Resource resource2 = (Resource) object2_p;
@@ -54,9 +51,7 @@ public class ProgressMonitoringSorter extends ViewerSorter {
       if (CapellaResourceHelper.isCapellaResource(resource1) && CapellaResourceHelper.isCapellaResource(resource2)) {
         int result = 0;
         boolean fragment1 = CapellaResourceHelper.isCapellaFragment(resource1.getURI());
-        System.out.println(fragment1);
         boolean fragment2 = CapellaResourceHelper.isCapellaFragment(resource2.getURI());
-        System.out.println(fragment2);
 
         if (fragment1 && !fragment2) {
           result = 1;

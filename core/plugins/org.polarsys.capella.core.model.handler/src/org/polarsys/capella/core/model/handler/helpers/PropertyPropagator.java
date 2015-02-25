@@ -146,7 +146,7 @@ public abstract class PropertyPropagator {
    * @param eObject_p
    * @return
    */
-  protected abstract boolean isTaggedDiagram(EObject eObject_p);
+  protected abstract boolean isTaggedRepresentation(EObject eObject_p);
   
   /**
    * @param literal_p
@@ -222,7 +222,7 @@ public abstract class PropertyPropagator {
           result.add(current);
         	for (Iterator iter = DialectManager.INSTANCE.getRepresentations(current, session ).iterator(); iter.hasNext();) {
         		currentDiagram=(EObject) iter.next();
-        		if (isTaggedDiagram(currentDiagram)) {
+        		if (isTaggedRepresentation(currentDiagram)) {
         			result.add(currentDiagram);
         		}
             }
