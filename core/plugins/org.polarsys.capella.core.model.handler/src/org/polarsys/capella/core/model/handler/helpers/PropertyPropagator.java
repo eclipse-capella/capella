@@ -220,15 +220,14 @@ public abstract class PropertyPropagator {
         current = it.next();
         if (isTagged(current)) {
           result.add(current);
-        	for (Iterator iter = DialectManager.INSTANCE.getRepresentations(current, session ).iterator(); iter.hasNext();) {
-        		currentDiagram=(EObject) iter.next();
-        		if (isTaggedRepresentation(currentDiagram)) {
-        			result.add(currentDiagram);
-        		}
             }
+        for (Iterator iter = DialectManager.INSTANCE.getRepresentations(current, session ).iterator(); iter.hasNext();) {
+    		currentDiagram=(EObject) iter.next();
+    		if (isTaggedRepresentation(currentDiagram)) {
+    			result.add(currentDiagram);
+    		}
         }
       }
-
     }
     return result;
   }
