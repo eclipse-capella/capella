@@ -11,10 +11,6 @@
 package org.polarsys.capella.core.transition.system.topdown.ui.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-
-import org.polarsys.capella.core.flexibility.wizards.ui.CapellaPropertyPreferencePage;
-import org.polarsys.capella.core.preferences.Activator;
-import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
@@ -23,6 +19,9 @@ import org.polarsys.capella.common.flexibility.wizards.loader.RenderersLoader;
 import org.polarsys.capella.common.flexibility.wizards.renderer.RendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderers;
+import org.polarsys.capella.core.flexibility.wizards.ui.CapellaPropertyPreferencePage;
+import org.polarsys.capella.core.preferences.Activator;
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 
 /**
  */
@@ -52,9 +51,17 @@ public class TopDownPreferencePage extends CapellaPropertyPreferencePage {
   @Override
   public IPropertyContext getContext() {
     if (_context == null) {
-      _context = new PropertyContext(getProperties());
+      _context = new PropertyContext(getProperties()); 
     }
-
+//		{
+//		@Override
+//		public void writeAll() {
+//			super.writeAll();
+//			ScopedCapellaPreferencesStore.getInstance(Activator.PLUGIN_ID).save();
+//		}
+//    	  
+//      };
+//    }
     return _context;
   }
 

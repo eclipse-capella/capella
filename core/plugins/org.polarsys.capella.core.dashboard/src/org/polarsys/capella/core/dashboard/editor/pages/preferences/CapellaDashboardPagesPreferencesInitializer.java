@@ -34,7 +34,7 @@ public class CapellaDashboardPagesPreferencesInitializer extends AbstractPrefere
   /**
    * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
    */
-  // @Override
+  @Deprecated
   public void initializeDefaultScopePreferences() {
 
     IPreferenceStore preferenceStore = new ScopedPreferenceStore(new DefaultScope(), CapellaDashboardActivator.getDefault().getBundle().getSymbolicName()); // CapellaDashboardActivator.getDefault().getPreferenceStore();

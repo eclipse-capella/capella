@@ -43,7 +43,7 @@
          
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="log"
                id="log.enabled"
@@ -57,7 +57,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="scope"
                id="interface.mode"
@@ -71,7 +71,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="scope"
                id="projection.exchangeItems"
@@ -85,7 +85,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="scope"
                id="projection.dataType"
@@ -99,7 +99,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="scope"
                id="projection.component.stateMachine"
@@ -113,7 +113,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="scope"
                id="projection.functional"
@@ -135,7 +135,7 @@
          
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="scope.propertyValue"
                id="transition.system.scope.appliedPropertyValues"
@@ -146,7 +146,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="scope.propertyValue"
                id="transition.system.scope.ownedPropertyValues"
@@ -158,7 +158,7 @@
          
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="transition.propertyValue"
                id="projection.propertyValue.appliedPropertyValues"
@@ -172,7 +172,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="transition.propertyValue"
                id="projection.propertyValue.involvedElements"
@@ -291,7 +291,7 @@
          </group>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="transition.generation.ports"
                id="projection.useStandardPortInsteadFlowPort"
@@ -305,7 +305,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.flexibility.properties.property.BooleanPropertyPreference"
+               class="org.polarsys.capella.core.transition.system.topdown.preferences.BooleanPropertyPreference"
                enabled="true"
                group="transition.generation.ports"
                id="projection.interfaces.linkToComponentPort"

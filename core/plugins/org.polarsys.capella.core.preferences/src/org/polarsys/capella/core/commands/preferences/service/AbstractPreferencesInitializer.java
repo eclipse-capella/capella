@@ -45,7 +45,7 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
     preferencesManager = ScopedCapellaPreferencesStore.getInstance(pluginID);
     initializeDefaultPreferences();
     try {
-      //force satrt of EMF Validation plugin before initializing ther default preferences scope
+      //force start of EMF Validation plugin before initializing their default preferences scope
       ModelValidationService.getInstance().loadXmlConstraintDeclarations();
       PreferencesHelper.initializeCapellaPreferencesFromEPFFile();
     } catch (Exception e) {
@@ -65,17 +65,18 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
    * @param value
    */
   public void putBoolean(String key, boolean value, Class scopeClass) {
-    project = PreferencesHelper.getSelectedCapellaProject();
-    ScopedCapellaPreferencesStore.getOptions().put(key, String.valueOf(value));
-    if (project != null) {
-      ScopedCapellaPreferencesStore.putBoolean(project, key, value);
-    } else {
-      ScopedCapellaPreferencesStore.putBoolean(null, key, value);
-    }
-
+	  if (scopeClass.equals(ProjectScope.class)) {
+		  project = PreferencesHelper.getSelectedCapellaProject();
+		  ScopedCapellaPreferencesStore.getOptions().put(key, String.valueOf(value));
+		  if (project != null) {
+			  ScopedCapellaPreferencesStore.putBoolean(project, key, value);
+		  } else {
+			  ScopedCapellaPreferencesStore.putBoolean(null, key, value);
+		  }
+	  }
     initializeAllOpenedProjects(key, value);
-    new InstanceScope().getNode(Activator.PLUGIN_ID).putBoolean(key, value);
-    new DefaultScope().getNode(Activator.PLUGIN_ID).putBoolean(key, value);
+//    new InstanceScope().getNode(Activator.PLUGIN_ID).putBoolean(key, value);
+//    new DefaultScope().getNode(Activator.PLUGIN_ID).putBoolean(key, value);
   }
 
   /**
@@ -92,11 +93,11 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
     } else {
       ScopedCapellaPreferencesStore.putString(null, key, String.valueOf(value));
     }
-
+    
     initializeAllOpenedProjects(key, value);
 
-    new InstanceScope().getNode(Activator.PLUGIN_ID).put(key, String.valueOf(value));
-    new DefaultScope().getNode(Activator.PLUGIN_ID).put(key, String.valueOf(value));
+//    new InstanceScope().getNode(Activator.PLUGIN_ID).put(key, String.valueOf(value));
+//    new DefaultScope().getNode(Activator.PLUGIN_ID).put(key, String.valueOf(value));
   }
 
   /**
@@ -115,8 +116,8 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
     }
 
     initializeAllOpenedProjects(key, value);
-    new InstanceScope().getNode(Activator.PLUGIN_ID).putInt(key, value);
-    new DefaultScope().getNode(Activator.PLUGIN_ID).putInt(key, value);
+//    new InstanceScope().getNode(Activator.PLUGIN_ID).putInt(key, value);
+//    new DefaultScope().getNode(Activator.PLUGIN_ID).putInt(key, value);
   }
 
   /**
@@ -133,7 +134,7 @@ public abstract class AbstractPreferencesInitializer extends AbstractPreferenceI
       ScopedCapellaPreferencesStore.putString(null, key, ((String) value));
     }
 
-    // inistilize project scopes
+    // initialize project scopes
     for (IProject iProject : iProjects) {
       if (iProject.isOpen() && iProject.isAccessible() && (CapellaResourceHelper.isCapellaProject(iProject))) {
         if (value instanceof Boolean) {

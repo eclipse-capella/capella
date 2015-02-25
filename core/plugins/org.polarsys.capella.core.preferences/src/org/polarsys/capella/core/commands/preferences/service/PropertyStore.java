@@ -117,7 +117,7 @@ public class PropertyStore extends PreferenceStore implements IPropertyPersisten
 
     try {
 
-      // to bypass oth capella modller preference page
+      // to bypass other capella modeller preference page
       if ((resource instanceof IProject) && !isCanceled) {
         final ProjectScope project = new ProjectScope((IProject) resource);
         writeProperties(project);
