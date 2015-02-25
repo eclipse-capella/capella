@@ -16,7 +16,9 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerColumn;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -27,24 +29,20 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeColumn;
-
-import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.libraries.manager.LibraryManagerExt;
-import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
 import org.polarsys.capella.common.ui.toolkit.dialogs.AbstractExportDialog;
 import org.polarsys.capella.common.ui.toolkit.viewers.AbstractRegExpViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.IViewerStyle;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.helpers.ProjectExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
 import org.polarsys.capella.core.ui.metric.MetricMessages;
+import org.polarsys.capella.core.ui.properties.annotations.IRepresentationAnnotationConstants;
 
 /**
  */
@@ -120,6 +118,7 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
         int idx = _combo.getSelectionIndex();
         List<? extends EObject> allTaggedElements = (List<? extends EObject>) ((TreeData) getData()).getValidElements();
         List<EObject> list = null;
+        String eAnnot= IRepresentationAnnotationConstants.ProgressStatus;
         
         if ( 0 == idx ) {
           list = (List<EObject>) allTaggedElements;
@@ -127,12 +126,16 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
           EnumerationPropertyLiteral lit = (EnumerationPropertyLiteral) _combo.getData(String.valueOf(idx));
           list = new ArrayList<EObject>();
           for (EObject eobj: allTaggedElements) {
-            if ( ((CapellaElement)eobj).getStatus().equals(lit) ) {
+            if ( (eobj instanceof CapellaElement) && ((CapellaElement)eobj).getStatus().equals(lit) ) {
               list.add(eobj);
+            } else if (eobj instanceof DDiagram) {
+            	DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) eobj);
+            	if (dAnnotation.getDetails().get("value").equals(lit.getName())) {
+            	list.add(eobj);
+            	}
             }
           }
         }
-
         getViewer().setInput( new TreeData(list, null) );
       }
     });
@@ -179,17 +182,31 @@ public class ProgressMonitoringOverviewDialog extends AbstractExportDialog {
     List<? extends EObject> allTaggedElements = (List<? extends EObject>) ((TreeData) getData()).getValidElements();
 
     for (EObject current: allTaggedElements) {
-      CapellaElement me = (CapellaElement) current;
-      result.add(
-        new String[] {
-           current.eClass().getName(),
-           me.getFullLabel(),
-           me.getLabel(),
-           me.getStatus().getLabel()
-        }
-      );
-    }
+      if (current instanceof CapellaElement) {
+    	CapellaElement me = (CapellaElement) current;
+    	result.add(
+    		new String[] {
+    			current.eClass().getName(),
+    			me.getFullLabel(),
+    			me.getLabel(),
+    			me.getStatus().getLabel()
+    			}
+    		);
+      } else if (current instanceof DDiagram) {
+    	  DDiagram dDiagram= (DDiagram) current;
 
+    	String eAnnotStatus= IRepresentationAnnotationConstants.ProgressStatus;
+    	DAnnotation dAnnotationStatus= RepresentationHelper.getAnnotation(eAnnotStatus, (DRepresentation) current);
+    	result.add(
+    		new String[] {
+    			dDiagram.getName(),
+    			//
+    			//
+    			dAnnotationStatus.getDetails().get("value")
+    			  }
+    	  );
+      }
+    }
     return result;
   }
 }
