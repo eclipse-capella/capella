@@ -42,7 +42,13 @@ import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.PlatformUI;
-
+import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
+import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
+import org.polarsys.capella.common.flexibility.wizards.Activator;
+import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
+import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
+import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
+import org.polarsys.capella.common.flexibility.wizards.ui.util.ToolbarPopulator;
 import org.polarsys.capella.common.ui.toolkit.viewers.TreeAndListViewer;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.AbstractData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.DataContentProvider;
@@ -51,13 +57,6 @@ import org.polarsys.capella.common.ui.toolkit.viewers.data.ListData;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
-import org.polarsys.capella.common.flexibility.properties.schema.IProperty;
-import org.polarsys.capella.common.flexibility.properties.schema.IRestraintProperty;
-import org.polarsys.capella.common.flexibility.wizards.Activator;
-import org.polarsys.capella.common.flexibility.wizards.constants.ICommonConstants;
-import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
-import org.polarsys.capella.common.flexibility.wizards.ui.DefaultLabelProvider;
-import org.polarsys.capella.common.flexibility.wizards.ui.util.ToolbarPopulator;
 
 /**
  * A renderer for an elements list which content according to filter
@@ -107,14 +106,14 @@ public class SelectListRenderer extends AbstractRenderer {
       _toolbarPopulator.populate();
     }
 
-    //Populate contextMenu and set selection to getViewer()
+    // Populate contextMenu and set selection to getViewer()
     if (!getPopupLocation().isEmpty()) {
       _popupPopulator =
           new ToolbarPopulator(_popupManager, getPopupLocation(), rendererContext_p, this, getViewer().getClientViewer(), PlatformUI.getWorkbench()
               .getActiveWorkbenchWindow());
       _popupPopulator.populate();
 
-      //Register the contextMenu on the view
+      // Register the contextMenu on the view
       Menu menu = _popupManager.createContextMenu(getViewer().getClientViewer().getControl());
       getViewer().getClientViewer().getControl().setMenu(menu);
     }
@@ -498,6 +497,10 @@ public class SelectListRenderer extends AbstractRenderer {
    */
   private void setInput(Object input_p, IRendererContext propertyContext_p) {
     _viewer.setInput(input_p);
+    IContentProvider provider = _viewer.getClientViewer().getContentProvider();
+    if (provider != null) {
+      provider.inputChanged(_viewer.getClientViewer(), null, input_p);
+    }
   }
 
   /**
