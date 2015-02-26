@@ -227,6 +227,12 @@ public abstract class PropertyPropagator {
     			result.add(currentDiagram);
     		}
         }
+        for (Iterator iter = DialectManager.INSTANCE.getRepresentations(root_p, session ).iterator(); iter.hasNext();) {
+    		currentDiagram=(EObject) iter.next();
+    		if (isTaggedRepresentation(currentDiagram)) {
+    			result.add(currentDiagram);
+    		}
+        }
       }
     }
     return result;
