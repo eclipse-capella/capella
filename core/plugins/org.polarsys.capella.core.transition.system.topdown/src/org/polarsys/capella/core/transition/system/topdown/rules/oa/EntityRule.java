@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
 import org.polarsys.capella.core.data.ctx.CtxPackage;
+import org.polarsys.capella.core.data.oa.Entity;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
@@ -31,6 +32,10 @@ public class EntityRule extends org.polarsys.capella.core.transition.system.topd
   @Override
   protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
     EObject currentContainer = element_p.eContainer();
+    if ((currentContainer instanceof Entity) && (element_p instanceof Entity))
+    {
+    	return null;
+    }
     EObject bestContainer = null;
     while ((currentContainer != null)) {
       bestContainer =
