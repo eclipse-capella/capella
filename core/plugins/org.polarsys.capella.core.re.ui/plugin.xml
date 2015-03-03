@@ -64,6 +64,15 @@
         
       </bindings>
             
+      <bindings properties="org.polarsys.capella.common.re.updateReplica">
+      
+        <propertyBinding 
+            property="targetContentLocation"
+            renderer="capellaReplicaContentLocationRenderer">
+        </propertyBinding>
+        
+      </bindings>
+      
    </extension>
    
    
