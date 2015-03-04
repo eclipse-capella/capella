@@ -65,13 +65,13 @@
                                severity="WARNING"
                                statusCode="1">
                             <message>
-                               {0} (Functional Exchange) must be delegated to at least one functional exchange of the leaf functions.
+                               {0}
                             </message>
                             <target
                                   class="FunctionalExchange">
                             </target>
                             <description>
-                               This rule generates a warning if the Function Exchange is not delegated to at least one functional exchange of the leaf functions
+                               This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function.
                             </description>
                          </constraint>
          </constraints> 

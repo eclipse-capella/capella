@@ -11,50 +11,47 @@
 
 package org.polarsys.capella.core.data.fa.ui.quickfix.resolver;
 
+import java.util.Collection;
+
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
-import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
+import org.polarsys.capella.core.data.fa.ui.quicfix.helpers.QuickFixNavigationHelper;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.NavigateAction;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
 public class DCOM_20_Resolver_Source extends AbstractCapellaMarkerResolution {
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void run(IMarker marker) {
-		final EObject modelElement = getModelElements(marker).get(0);
-		if ((null != modelElement)
-				&& (modelElement instanceof FunctionalExchange)) {
-			AbstractFunction srcFunc = FunctionalExchangeExt
-					.getSourceFunction((FunctionalExchange) modelElement);
-			if (null != srcFunc) {
-				showCapellaElement(srcFunc);
-			}
-		}
-	}
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void run(IMarker marker) {
+    final EObject modelElement = getModelElements(marker).get(0);
+    if ((null != modelElement) && (modelElement instanceof FunctionalExchange)) {
+      AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) modelElement);
+      if (null != srcFunc) {
+        QuickFixNavigationHelper.showCapellaElement(srcFunc);
+      }
+    }
+  }
 
-	private void showCapellaElement(CapellaElement abstractExchangeItemToAdd) {
-		IWorkbenchPage activePage = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
-		CapellaCommonNavigator capellaCommonNavigator = (CapellaCommonNavigator) activePage
-				.findView(CapellaCommonNavigator.ID);
-		// Create a navigate action that enables this navigation.
-		NavigateAction action = new NavigateAction(abstractExchangeItemToAdd,
-				capellaCommonNavigator.getCommonViewer());
-		action.setText(EObjectLabelProviderHelper
-				.getText(abstractExchangeItemToAdd));
-		action.setImageDescriptor(ImageDescriptor
-				.createFromImage(EObjectLabelProviderHelper
-						.getImage(abstractExchangeItemToAdd)));
-		action.run();
-	}
+  @Override
+  protected boolean enabled(Collection<IMarker> markers) {
+    for (IMarker marker : markers) {
+      EObject modelElement = getModelElements(marker).get(0);
+      if ((null != modelElement) && (modelElement instanceof FunctionalExchange)) {
+        AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) modelElement);
+        if (srcFunc instanceof OperationalActivity && srcFunc.getOwnedFunctions().size() > 0)
+          return true;
+      }
+    }
+    return false;
+  }
+
+  @Override
+  protected boolean quickFixAllSimilarEnabled(Collection<IMarker> markers) {
+    return false;
+  }
 }

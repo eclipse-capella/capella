@@ -8,7 +8,6 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-
 package org.polarsys.capella.core.data.fa.ui.quickfix.resolver;
 
 import java.util.Collection;
@@ -16,13 +15,15 @@ import java.util.Collection;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
+import org.polarsys.capella.core.data.fa.FunctionOutputPort;
+import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.ui.quicfix.helpers.QuickFixNavigationHelper;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.validation.ui.ide.quickfix.AbstractCapellaMarkerResolution;
 
-public class DCOM_20_Resolver_Target extends AbstractCapellaMarkerResolution {
+public class DCOM_20_PortResolver_Source extends AbstractCapellaMarkerResolution {
   /**
    * {@inheritDoc}
    */
@@ -30,9 +31,9 @@ public class DCOM_20_Resolver_Target extends AbstractCapellaMarkerResolution {
   public void run(IMarker marker) {
     final EObject modelElement = getModelElements(marker).get(0);
     if ((null != modelElement) && (modelElement instanceof FunctionalExchange)) {
-      AbstractFunction tarFunc = FunctionalExchangeExt.getTargetFunction((FunctionalExchange) modelElement);
-      if (null != tarFunc) {
-        QuickFixNavigationHelper.showCapellaElement(tarFunc);
+      FunctionPort srcPort = ((FunctionalExchange) modelElement).getSourceFunctionOutputPort();
+      if (null != srcPort && srcPort instanceof FunctionOutputPort) {
+        QuickFixNavigationHelper.showCapellaElement(srcPort);
       }
     }
   }
@@ -42,9 +43,11 @@ public class DCOM_20_Resolver_Target extends AbstractCapellaMarkerResolution {
     for (IMarker marker : markers) {
       EObject modelElement = getModelElements(marker).get(0);
       if ((null != modelElement) && (modelElement instanceof FunctionalExchange)) {
-        AbstractFunction tarFunc = FunctionalExchangeExt.getTargetFunction((FunctionalExchange) modelElement);
-        if (tarFunc instanceof OperationalActivity && tarFunc.getOwnedFunctions().size() > 0)
-          return true;
+        AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) modelElement);
+        if (!(srcFunc instanceof OperationalActivity)) {
+          if (srcFunc.getOwnedFunctions().size() > 0)
+            return true;
+        }
       }
     }
     return false;
