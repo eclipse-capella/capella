@@ -11,70 +11,78 @@
 
 package org.polarsys.capella.core.data.fa.validation.functionalExchange;
 
-import java.util.List;
-
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-import org.polarsys.capella.common.data.activity.ActivityNode;
-import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
-import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.core.data.ctx.SystemFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.fa.FunctionInputPort;
-import org.polarsys.capella.core.data.fa.FunctionOutputPort;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
-import org.polarsys.capella.core.data.information.ExchangeItem;
+import org.polarsys.capella.core.data.la.LogicalFunction;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
+import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 public class FunctionalExchange_Delegation extends AbstractValidationRule {
-	/**
-	 * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
-	 */
-	@Override
-	public IStatus validate(IValidationContext ctx_p) {
-		EObject eObj = ctx_p.getTarget();
-		EMFEventType eType = ctx_p.getEventType();
+  /**
+   * @see org.eclipse.emf.validation.AbstractModelConstraint#validate(org.eclipse.emf.validation.IValidationContext)
+   */
+  @Override
+  public IStatus validate(IValidationContext ctx_p) {
+    EObject eObj = ctx_p.getTarget();
+    EMFEventType eType = ctx_p.getEventType();
 
-		if (eType == EMFEventType.NULL) {
-			if (eObj instanceof FunctionalExchange) {
-				FunctionalExchange fe = (FunctionalExchange) eObj;
-				AbstractFunction parentSource = FunctionalExchangeExt
-						.getSourceFunction(fe);
-				AbstractFunction parentTarget = FunctionalExchangeExt
-						.getTargetFunction(fe);
+    if (eType == EMFEventType.NULL) {
+      if (eObj instanceof FunctionalExchange) {
+        FunctionalExchange fe = (FunctionalExchange) eObj;
+        AbstractFunction parentSource = FunctionalExchangeExt.getSourceFunction(fe);
+        AbstractFunction parentTarget = FunctionalExchangeExt.getTargetFunction(fe);
 
-				AbstractFunction commonAncestorFunction = FunctionalExchangeExt
-						.getDefaultContainer(fe);
-				EList<FunctionalExchange> lstFE = commonAncestorFunction
-						.getOwnedFunctionalExchanges();
-				boolean bDelegatedFE = false;
-				if (parentSource.getOwnedFunctions().size() == 0 && parentTarget
-						.getOwnedFunctions().size() == 0)
-				{
-					bDelegatedFE = true;
-				}
-				for (FunctionalExchange aFE : lstFE) {
-					AbstractFunction aSource = FunctionalExchangeExt
-							.getSourceFunction(aFE);
-					AbstractFunction aTarget = FunctionalExchangeExt
-							.getTargetFunction(aFE);
-					if ((parentSource.getOwnedFunctions().contains(aSource) && parentTarget == aTarget)
-							|| (parentSource == aSource && parentTarget
-									.getOwnedFunctions().contains(aTarget))
-							|| (parentSource.getOwnedFunctions().contains(
-									aSource) && parentTarget
-									.getOwnedFunctions().contains(aTarget)))
-						bDelegatedFE = true;
-				}
-				if (!bDelegatedFE)
-					return createFailureStatus(ctx_p, new Object[] { fe });
-			}
-		}
-		return ctx_p.createSuccessStatus();
-	}
+        boolean bDelegatedFE = false;
+        if (parentSource.getOwnedFunctions().size() == 0 && parentTarget.getOwnedFunctions().size() == 0) {
+          bDelegatedFE = true;
+        }
+        if (!bDelegatedFE)
+          return createFailureStatus(ctx_p, new Object[] { getSourceTargetMessage(fe) });
+      }
+    }
+    return ctx_p.createSuccessStatus();
+  }
 
+  private String getMessaeNameFor(AbstractFunction af_p) {
+    if (af_p instanceof OperationalActivity) {
+      return "Operational Activity";
+    } else if (af_p instanceof SystemFunction) {
+      return "System Function";
+    } else if (af_p instanceof LogicalFunction) {
+      return "Logical Function";
+    } else if (af_p instanceof PhysicalFunction) {
+      return "Physical Function";
+    }
+    return "";
+  }
+
+  private String getMessaeNameFor(FunctionalExchange fe_p) {
+    AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) fe_p);
+    if (srcFunc instanceof OperationalActivity) {
+      return "Interaction";
+    }
+    return "Functional Exchange";
+  }
+
+  private String getSourceTargetMessage(FunctionalExchange fe_p) {
+    String msg = "";
+    AbstractFunction srcFunc = FunctionalExchangeExt.getSourceFunction((FunctionalExchange) fe_p);
+    AbstractFunction tarFunc = FunctionalExchangeExt.getTargetFunction((FunctionalExchange) fe_p);
+
+    if (srcFunc.getOwnedFunctions().size() > 0 && tarFunc.getOwnedFunctions().size() > 0)
+      msg += ("Both source and target of \"" + fe_p.getName() + "\" (" + getMessaeNameFor(fe_p)
+          + ") are not delegated to leaf " + getMessaeNameFor(srcFunc));
+    else if (srcFunc.getOwnedFunctions().size() > 0)
+      msg += ("The source of \"" + fe_p.getName() + "\" (" + getMessaeNameFor(fe_p) + ") is not delegated to a leaf " + getMessaeNameFor(srcFunc));
+    else
+      msg += ("The target of \"" + fe_p.getName() + "\" (" + getMessaeNameFor(fe_p) + ") is not delegated to a leaf " + getMessaeNameFor(srcFunc));
+    return msg;
+  }
 }

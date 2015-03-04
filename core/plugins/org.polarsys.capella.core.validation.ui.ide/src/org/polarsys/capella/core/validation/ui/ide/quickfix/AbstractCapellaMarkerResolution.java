@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
 import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
 import org.polarsys.capella.core.validation.ui.ide.internal.quickfix.MarkerResolutionCache;
 
-abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerResolution {
+abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolution {
 
   protected String _label = null;
   protected String _desc = null;
@@ -108,7 +108,8 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
 
     // this is for backwards compatibility
     if (markers.length == 1) {
-      return new IMarker[] { markers[0] };
+      if (canResolve(markers[0]))
+        return new IMarker[] { markers[0] };
     }
 
     Collection<IMarker> otherMarkers = new ArrayList<IMarker>();
@@ -121,8 +122,10 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
   }
 
   /**
-   * Check if this resolution can resolve the given marker. Used to compute the resolvable markers during findOtherMarkers. This implementation checks if the
-   * ruleId stored in the marker is one of the ids that's returned by getResolvableRuleIds.
+   * Check if this resolution can resolve the given marker. Used to compute the resolvable markers during
+   * findOtherMarkers. This implementation checks if the ruleId stored in the marker is one of the ids that's returned
+   * by getResolvableRuleIds.
+   * 
    * @param marker
    * @return
    */
@@ -148,13 +151,16 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
   }
 
   /**
-   * Used to compute resolvable markers. Override this method to enable quickfix resolution if multiple markers are selected. The default implementation returns
-   * null which effectively disables multi-selection quick fix resolution, unless 'canResolve' or 'findOtherMarkers' is overridden.
+   * Used to compute resolvable markers. Override this method to enable quickfix resolution if multiple markers are
+   * selected. The default implementation returns null which effectively disables multi-selection quick fix resolution,
+   * unless 'canResolve' or 'findOtherMarkers' is overridden.
+   * 
    * @return an array of _fully qualified_ validation rule id's that this resolver can fix
    */
   protected String[] getResolvableRuleIds() {
 
-    Map<AbstractCapellaMarkerResolution, Set<String>> resolverRuleMap = MarkerResolutionCache.INSTANCE.getResolverRuleMap();
+    Map<AbstractCapellaMarkerResolution, Set<String>> resolverRuleMap = MarkerResolutionCache.INSTANCE
+        .getResolverRuleMap();
     Set<String> ruleIds = resolverRuleMap.get(this);
     if (null == ruleIds) {
       return noRuleIds;
