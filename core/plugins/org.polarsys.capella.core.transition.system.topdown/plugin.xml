@@ -786,6 +786,18 @@
          
         <mappingPackage name="core">
             <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.capellacore.Generalization"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.core.GeneralizationRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.core.GeneralizationRule"
+                     enabled="true"
+                     name="Generalization">
+               </defaultMappingPossibility>
+            </mappingElement>
+            
+            <mappingElement
                   domainMetaClass="org.polarsys.capella.core.data.capellacore.AbstractPropertyValue"
                   reuseExtendedElementDefaultPossibility="true"
                   reuseExtendedElementPossibilities="true">
