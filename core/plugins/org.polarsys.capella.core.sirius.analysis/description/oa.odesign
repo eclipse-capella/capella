@@ -1064,11 +1064,14 @@
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide Communication Means and Categories">
             <tools xsi:type="tool:ToolDescription" documentation="Insert/Remove Communication Means. Create or delete graphical objects corresponding to already existing Communication Means and the corresponding source/target Operational Entity if they are not present on the diagram yet. Removing a Communication Mean graphical object from the diagram does not delete the Communication Mean from the model. This tool does not modify the semantic model." name="Show/Hide Communication Mean" label="Communication Means" precondition="&lt;%($elementView.target.filter(&quot;Component&quot;).nSize() > 0) &amp;&amp; ($elementView.filter(&quot;DDiagram&quot;).nSize() == 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="displayedExchanges" computationExpression="&lt;%$elementView.getDisplayedConnections%>"/>
-              </elementView>
+              <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $displayedExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                    <parameters name="context" value="&lt;% $elementView%>"/>
+                    <parameters name="variable" value="displayedExchanges"/>
+                    <parameters name="value" value="&lt;%$elementView.getDisplayedConnections%>"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="&lt;% $element%>"/>
                     <parameters name="scope" value="&lt;%getAvailableConnectionsToInsert()%>"/>

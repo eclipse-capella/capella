@@ -2686,11 +2686,14 @@
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide ComponentExchanges and Categories">
             <tools xsi:type="tool:ToolDescription" documentation="Create or delete graphical objects corresponding to existing Component Exchanges.&#xD;&#xA;The proposed Component Exchanges are the one incoming and outgoing from the Component target of the click.&#xD;&#xA;Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented.&#xD;&#xA;This tool does not modify the semantic model." name="Show/Hide Connections" label="Component Exchanges" precondition="&lt;%($elementView.target.isA(&quot;Part&quot;) &amp;&amp; $elementView.target.getComponentType().isA(&quot;Component&quot;)) &amp;&amp; ($elementView.filter(&quot;DDiagram&quot;).nSize() == 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="displayedExchanges" computationExpression="&lt;%$elementView.getDisplayedConnections%>"/>
-              </elementView>
+              <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $displayedExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                    <parameters name="context" value="&lt;% $elementView%>"/>
+                    <parameters name="variable" value="displayedExchanges"/>
+                    <parameters name="value" value="&lt;%$elementView.getDisplayedConnections%>"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="&lt;% $element%>"/>
                     <parameters name="scope" value="&lt;%getAvailableConnectionsToInsert()%>"/>
@@ -2796,11 +2799,14 @@
           <ownedTools xsi:type="tool_1:ToolGroup" name="Show/Hide PhysicalLinks and Categories">
             <tools xsi:type="tool:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model." name="Show/Hide Physical Links" label="Physical Links" precondition="&lt;%($elementView.target.isA(&quot;Part&quot;) &amp;&amp; $elementView.target.getComponentType().isA(&quot;Component&quot;)) &amp;&amp; ($elementView.filter(&quot;DDiagram&quot;).nSize() == 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool:AcceleoVariable" name="displayedLinks" computationExpression="&lt;%$elementView.getDisplayedPhysicalLinks%>"/>
-              </elementView>
+              <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $displayedLinks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                    <parameters name="context" value="&lt;%$elementView%>"/>
+                    <parameters name="variable" value="displayedLinks"/>
+                    <parameters name="value" value="&lt;%$elementView.getDisplayedPhysicalLinks%>"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="&lt;% $element%>"/>
                     <parameters name="scope" value="&lt;%getAvailablePhysicalLinksToInsert($diagram)%>"/>
