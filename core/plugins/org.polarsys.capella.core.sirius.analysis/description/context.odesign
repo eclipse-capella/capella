@@ -92,7 +92,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization4" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization4" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -288,19 +288,6 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -412,6 +399,33 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -503,7 +517,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -734,19 +748,6 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -857,6 +858,33 @@
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -975,7 +1003,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization1" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization1" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -1242,19 +1270,6 @@
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -1384,6 +1399,33 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -1508,7 +1550,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -1762,19 +1804,6 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -1939,6 +1968,33 @@
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -4922,7 +4978,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization5" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedActorPkg.eAllContents.filter(&quot;Generalization&quot;)%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization5" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedActorPkg.eAllContents.filter(&quot;Generalization&quot;)%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4990,7 +5046,20 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -4998,7 +5067,8 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>

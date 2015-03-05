@@ -11187,14 +11187,13 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CRB Actor Generalization" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" targetFinderExpression="feature:super" sourceFinderExpression="&lt;%parent%>" domainClass="Generalization" useDomainElement="true">
+        <edgeMappings name="CRB Actor Generalization" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']" targetFinderExpression="feature:super" sourceFinderExpression="&lt;%parent%>" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <reconnections href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']"/>
         </edgeMappings>
         <containerMappings name="CRB Component" preconditionExpression="&lt;%!isARootComponent() &amp;&amp; isDiagramAndElementFromSameLayer($diagram)%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Capability%20Realization%20Involvement']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="Component" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20from%20Diagram']" reusedContainerMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capability%20Realization%20Blank']/@defaultLayer/@containerMappings[name='CRB%20Component']">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Component%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='Logical%20Component%20Breakdown']"/>
@@ -11958,6 +11957,33 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.dndIDComponentFromDiagram($newViewContainer, $oldContainer)%>"/>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
