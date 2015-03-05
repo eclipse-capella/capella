@@ -47,6 +47,9 @@
         <filePaths>${resourcesDir}/${os}-${arch}/config.ini</filePaths>
       </steps>
     </steps>
+    <steps xsi:type="buildfile:CopyStep" xmi:id="_bpZAEMMuEeS9g6_PNdDnMQ" name="Copy samples" destinationFolderPath="${product}/capella/samples">
+      <dirPaths>${build.root}/git/samples</dirPaths>
+    </steps>
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_NB1YMNRAEeK9L_VQW76S8A" name="InitializeEnv">
     <steps xsi:type="buildstep:CleanStep" xmi:id="_34NbYJMKEeKKWIqJCUuOog" name="Clean Result" type="Result"/>
