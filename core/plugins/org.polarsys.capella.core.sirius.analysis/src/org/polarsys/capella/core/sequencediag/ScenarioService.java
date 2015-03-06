@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -98,9 +98,13 @@ public class ScenarioService {
   private static final String EMPTY_STRING = ICommonConstants.EMPTY_STRING;
 
   /**
-   * Moves the end <code>toMove</code> just after the end <code>previousEnd</code>. used in common.odesign, oa.odesign, sequences.odesign
-   * @param toMove the end to move
-   * @param previousEnd the previous end.
+   * Moves the end <code>toMove</code> just after the end <code>previousEnd</code>. used in common.odesign, oa.odesign,
+   * sequences.odesign
+   * 
+   * @param toMove
+   *          the end to move
+   * @param previousEnd
+   *          the previous end.
    * @return the moved end.
    */
   public EObject moveEndOnScenario(final InteractionFragment toMove, final InteractionFragment previousEnd) {
@@ -110,53 +114,61 @@ public class ScenarioService {
   @SuppressWarnings({ "unchecked", "rawtypes" })
   public List<ExchangeItem> getSharedDataEventForSD(DSemanticDecorator elementView) {
     IQueryFilter filter = new OnlySharedDataOrEventOrUnsetFilter();
-    return (List) QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB, elementView.getTarget(), new QueryContext(), filter);
+    return (List) QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_EXCHANGE_ITEMS_FOR_LIB,
+        elementView.getTarget(), new QueryContext(), filter);
   }
 
   // END CODE REFACTOR
 
   /**
-   * Move the end <code>toMove</code> just after the end <code>previousEnd</code> on the instance role of <code>toMove</code>. used in common.odesign,
-   * oa.odesign, sequences.odesign
-   * @param toMove the end to move.
-   * @param previousEnd the previous end (it doesn't need to be on the same instance role of <code>toMove</code>).
+   * Move the end <code>toMove</code> just after the end <code>previousEnd</code> on the instance role of
+   * <code>toMove</code>. used in common.odesign, oa.odesign, sequences.odesign
+   * 
+   * @param toMove
+   *          the end to move.
+   * @param previousEnd
+   *          the previous end (it doesn't need to be on the same instance role of <code>toMove</code>).
    * @return the moved end.
    */
   public EObject moveEndOnInstanceRole(final InteractionFragment toMove, final InteractionFragment previousEnd) {
     final Scenario scenario = (Scenario) previousEnd.eContainer();
     final InstanceRole covered = toMove.getCoveredInstanceRoles().get(0);
+
     /*
      * First of all: move the messageEnd to the end of the list
      */
-    covered.getAbstractEnds().move(covered.getAbstractEnds().size() - 1, (AbstractEnd) toMove);
+    // covered.getAbstractEnds().move(covered.getAbstractEnds().size() - 1, (AbstractEnd) toMove);
 
     /*
      * Compute the new index and move !
      */
-    final int previousEndIndex = scenario.getOwnedInteractionFragments().indexOf(previousEnd);
-
-    AbstractEnd previousOnIR = null;
-    for (final AbstractEnd end : covered.getAbstractEnds()) {
-      if (end == previousEnd) {
-        previousOnIR = end;
-        break;
-      } else if (scenario.getOwnedInteractionFragments().indexOf(end) > previousEndIndex) {
-        break;
-      } else {
-        previousOnIR = end;
-      }
-    }
-    int newIndex = previousOnIR == null ? 0 : covered.getAbstractEnds().indexOf(previousOnIR) + 1;
-    if (newIndex >= covered.getAbstractEnds().size()) {
-      newIndex = covered.getAbstractEnds().size() - 1;
-    }
-    covered.getAbstractEnds().move(newIndex, (AbstractEnd) toMove);
+    // final int previousEndIndex = scenario.getOwnedInteractionFragments().indexOf(previousEnd);
+    //
+    // AbstractEnd previousOnIR = null;
+    // for (final AbstractEnd end : covered.getAbstractEnds()) {
+    // if (end == previousEnd) {
+    // previousOnIR = end;
+    // break;
+    // } else if (scenario.getOwnedInteractionFragments().indexOf(end) > previousEndIndex) {
+    // break;
+    // } else {
+    // previousOnIR = end;
+    // }
+    // }
+    // int newIndex = previousOnIR == null ? 0 : covered.getAbstractEnds().indexOf(previousOnIR) + 1;
+    // if (newIndex >= covered.getAbstractEnds().size()) {
+    // newIndex = covered.getAbstractEnds().size() - 1;
+    // }
+    // covered.getAbstractEnds().move(newIndex, (AbstractEnd) toMove);
     return toMove;
   }
 
   /**
-   * Moves the end <code>toMove</code> on the beginning of the scenario. used in common.odesign, oa.odesign, sequences.odesign
-   * @param toMove the end to move
+   * Moves the end <code>toMove</code> on the beginning of the scenario. used in common.odesign, oa.odesign,
+   * sequences.odesign
+   * 
+   * @param toMove
+   *          the end to move
    * @return the moved end.
    */
   public EObject moveEndOnBeginingOfScenario(final InteractionFragment toMove) {
@@ -164,8 +176,11 @@ public class ScenarioService {
   }
 
   /**
-   * Move the end <code>toMove</code> on the begining of the instance role. used in common.odesign, oa.odesign, sequences.odesign
-   * @param toMove the end to move.
+   * Move the end <code>toMove</code> on the begining of the instance role. used in common.odesign, oa.odesign,
+   * sequences.odesign
+   * 
+   * @param toMove
+   *          the end to move.
    * @return the moved end.
    */
   public EObject moveEndOnBeginingOfInstanceRole(final InteractionFragment toMove) {
@@ -176,9 +191,13 @@ public class ScenarioService {
   }
 
   /**
-   * Moves the message <code>toMove</code> just after the message <code>previousMessage</code>. used in common.odesign, oa.odesign, sequences.odesign
-   * @param toMove the message to move.
-   * @param previousMessage the previous message.
+   * Moves the message <code>toMove</code> just after the message <code>previousMessage</code>. used in common.odesign,
+   * oa.odesign, sequences.odesign
+   * 
+   * @param toMove
+   *          the message to move.
+   * @param previousMessage
+   *          the previous message.
    * @return the moved message.
    */
   public EObject moveMessage(final SequenceMessage toMove, final SequenceMessage previousMessage) {
@@ -200,8 +219,11 @@ public class ScenarioService {
   }
 
   /**
-   * Moves the message <code>toMove</code> on the beginning of the scenario. used in common.odesign, oa.odesign, sequences.odesign
-   * @param toMove the message to move.
+   * Moves the message <code>toMove</code> on the beginning of the scenario. used in common.odesign, oa.odesign,
+   * sequences.odesign
+   * 
+   * @param toMove
+   *          the message to move.
    * @return the moved message.
    */
   public EObject moveMessageOnBegining(final SequenceMessage toMove) {
@@ -228,7 +250,9 @@ public class ScenarioService {
 
   /**
    * returns display name of sequence message used in common.odesign
-   * @param message the message
+   * 
+   * @param message
+   *          the message
    * @return display name of the message
    */
   public String getMessageName(SequenceMessage message) {
@@ -237,7 +261,9 @@ public class ScenarioService {
 
   /**
    * returns display name of sequence message
-   * @param message the message
+   * 
+   * @param message
+   *          the message
    * @return display name of the message
    */
   public String getDFMessageName(SequenceMessage message, DDiagram diagram_p) {
@@ -391,7 +417,8 @@ public class ScenarioService {
       ComponentExchange ce = (ComponentExchange) op_p;
       int size = ce.getOwnedComponentExchangeFunctionalExchangeAllocations().size();
       int index = 0;
-      for (ComponentExchangeFunctionalExchangeAllocation fea : ce.getOwnedComponentExchangeFunctionalExchangeAllocations()) {
+      for (ComponentExchangeFunctionalExchangeAllocation fea : ce
+          .getOwnedComponentExchangeFunctionalExchangeAllocations()) {
         builder_p.append(getSafeName(fea.getAllocatedFunctionalExchange()));
         if (++index < size) {
           builder_p.append(", "); //$NON-NLS-1$
@@ -401,8 +428,8 @@ public class ScenarioService {
     return builder_p;
   }
 
-  private static void appendExchangeItems(List<? extends AbstractExchangeItem> eiOnMessage_p, AbstractEventOperation op_p,
-      boolean showExchangeItemParameters_p, StringBuilder builder_p) {
+  private static void appendExchangeItems(List<? extends AbstractExchangeItem> eiOnMessage_p,
+      AbstractEventOperation op_p, boolean showExchangeItemParameters_p, StringBuilder builder_p) {
     List<? extends AbstractExchangeItem> eiOnOperation = Collections.emptyList();
     if (op_p instanceof ComponentExchange) {
       eiOnOperation = ((ComponentExchange) op_p).getConvoyedInformations();
@@ -426,8 +453,10 @@ public class ScenarioService {
   }
 
   private static void appendExchangeContext(SequenceMessage message, StringBuilder builder_p) {
-    builder_p.append(String.format(
-        "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
+    builder_p
+        .append(String
+            .format(
+                "{%s}", message.getExchangeContext() == null ? "" : CapellaServices.getService().getConstraintLabel(message.getExchangeContext()))); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private static String getSafeName(AbstractNamedElement fe) {
@@ -501,10 +530,12 @@ public class ScenarioService {
 
   }
 
-  public static String showFeEiParams(AbstractEventOperation op, boolean showEIName, List<? extends AbstractExchangeItem> eiOnMessage) {
+  public static String showFeEiParams(AbstractEventOperation op, boolean showEIName,
+      List<? extends AbstractExchangeItem> eiOnMessage) {
     FunctionalExchange fe = null;
     if (op instanceof ComponentExchange) {
-      for (ComponentExchangeFunctionalExchangeAllocation fea : ((ComponentExchange) op).getOwnedComponentExchangeFunctionalExchangeAllocations()) {
+      for (ComponentExchangeFunctionalExchangeAllocation fea : ((ComponentExchange) op)
+          .getOwnedComponentExchangeFunctionalExchangeAllocations()) {
         fe = fea.getAllocatedFunctionalExchange();
       }
     } else {
@@ -569,7 +600,8 @@ public class ScenarioService {
       ComponentExchange ce = (ComponentExchange) op;
       List<ExchangeItem> itemsOfFe = new ArrayList<ExchangeItem>();
       int indice = 0;
-      for (ComponentExchangeFunctionalExchangeAllocation fea : ce.getOwnedComponentExchangeFunctionalExchangeAllocations()) {
+      for (ComponentExchangeFunctionalExchangeAllocation fea : ce
+          .getOwnedComponentExchangeFunctionalExchangeAllocations()) {
         FunctionalExchange fe = fea.getAllocatedFunctionalExchange();
         result.append(getSafeName(fe));
         itemsOfFe.addAll(fe.getExchangedItems());
@@ -621,13 +653,16 @@ public class ScenarioService {
     return result.toString();
   }
 
-  private static List<? extends AbstractExchangeItem> firstNonEmpty(List<? extends AbstractExchangeItem> first_p, List<? extends AbstractExchangeItem> second_p) {
+  private static List<? extends AbstractExchangeItem> firstNonEmpty(List<? extends AbstractExchangeItem> first_p,
+      List<? extends AbstractExchangeItem> second_p) {
     return first_p.size() > 0 ? first_p : second_p;
   }
 
   /**
    * returns display name of sequence message
-   * @param message the message
+   * 
+   * @param message
+   *          the message
    * @return display name of the message
    */
   public String getMessageName(SequenceMessage message, boolean hideParameters) {
@@ -685,7 +720,8 @@ public class ScenarioService {
       for (ExchangeItemElement element : item.getOwnedElements()) {
         if (element.getKind() == ElementKind.MEMBER) {
           nbParameters++;
-          if ((element.getDirection() == ParameterDirection.OUT) || (element.getDirection() == ParameterDirection.INOUT)
+          if ((element.getDirection() == ParameterDirection.OUT)
+              || (element.getDirection() == ParameterDirection.INOUT)
               || (element.getDirection() == ParameterDirection.RETURN)) {
             nbOutParameters++;
           }
@@ -748,9 +784,11 @@ public class ScenarioService {
     return sb.toString();
   }
 
-  private String getNameParameter(NamedElement parameter_p, AbstractType type, ParameterDirection direction, SequenceMessage message) {
+  private String getNameParameter(NamedElement parameter_p, AbstractType type, ParameterDirection direction,
+      SequenceMessage message) {
     String name = null;
-    if ((message.getKind() == MessageKind.REPLY) && ((direction == ParameterDirection.OUT) || (direction == ParameterDirection.INOUT))) {
+    if ((message.getKind() == MessageKind.REPLY)
+        && ((direction == ParameterDirection.OUT) || (direction == ParameterDirection.INOUT))) {
       name = parameter_p.getName();
     } else if ((message.getKind() == MessageKind.REPLY) && (direction == ParameterDirection.RETURN)) {
       if (type == null) {
@@ -759,7 +797,7 @@ public class ScenarioService {
         name = type.getName();
       }
     } else if (((message.getKind() == MessageKind.SYNCHRONOUS_CALL) || (message.getKind() == MessageKind.ASYNCHRONOUS_CALL))
-               && ((direction == ParameterDirection.IN) || (direction == ParameterDirection.INOUT))) {
+        && ((direction == ParameterDirection.IN) || (direction == ParameterDirection.INOUT))) {
       name = parameter_p.getName();
     }
 
@@ -796,6 +834,7 @@ public class ScenarioService {
 
   /**
    * used in common.odesign, oa.odesign, sequences.odesign
+   * 
    * @param end
    * @return
    */
@@ -812,6 +851,7 @@ public class ScenarioService {
 
   /**
    * used in common.odesign, oa.odesign, sequences.odesign
+   * 
    * @param message_p
    * @return
    */
@@ -819,9 +859,16 @@ public class ScenarioService {
     return "Message Call"; //$NON-NLS-1$
   }
 
+  /**
+   * return the
+   * 
+   * @param ir_p
+   * @return
+   */
   public List<StateFragment> getInteractionStatesOnExecution(InstanceRole ir_p) {
     List<StateFragment> result = new ArrayList<StateFragment>(1);
-    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) ir_p.eContainer());
+    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) ir_p
+        .eContainer());
     Stack<TimeLapse> execStack = new Stack<TimeLapse>();
 
     for (InteractionFragment ifg : fragments) {
@@ -836,7 +883,7 @@ public class ScenarioService {
         }
 
         TimeLapse endingExec = getEndingExecution(ifg);
-        if ((endingExec != null) && (endingExec instanceof Execution)) {
+        if ((endingExec != null) && (endingExec instanceof Execution) && !(execStack.isEmpty())) {
           execStack.pop();
         }
       }
@@ -848,7 +895,8 @@ public class ScenarioService {
     List<StateFragment> result = new ArrayList<StateFragment>(1);
     InstanceRole ir = exec.getCovered();
 
-    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) exec.eContainer());
+    List<InteractionFragment> fragments = SequenceDiagramServices.getOrderedInteractionFragments((Scenario) exec
+        .eContainer());
     Stack<TimeLapse> execStack = new Stack<TimeLapse>();
     boolean inCurrentExec = false;
     for (InteractionFragment ifg : fragments) {
@@ -857,7 +905,7 @@ public class ScenarioService {
           inCurrentExec = true;
         }
 
-        if (inCurrentExec && (ifg instanceof InteractionState) && (execStack.peek() == exec)) {
+        if (inCurrentExec && (ifg instanceof InteractionState) && !(execStack.isEmpty()) && (execStack.peek() == exec)) {
           result.add((StateFragment) getStartingExecution(ifg));
         }
 
@@ -867,7 +915,7 @@ public class ScenarioService {
         }
 
         TimeLapse endingExec = getEndingExecution(ifg);
-        if ((endingExec != null) && !(endingExec instanceof CombinedFragment)) {
+        if ((endingExec != null) && !(endingExec instanceof CombinedFragment) && !(execStack.isEmpty())) {
           execStack.pop();
         }
 
@@ -970,9 +1018,8 @@ public class ScenarioService {
   public List<CapellaElement> getReferenceScope(Scenario scenario_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(InteractionPackage.Literals.INTERACTION_USE,
-            InteractionPackage.Literals.INTERACTION_USE__REFERENCED_SCENARIO);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(
+        InteractionPackage.Literals.INTERACTION_USE, InteractionPackage.Literals.INTERACTION_USE__REFERENCED_SCENARIO);
 
     if (query != null) {
       availableElements.addAll(query.getAvailableElements(scenario_p));
@@ -1030,7 +1077,8 @@ public class ScenarioService {
     }
     // compatibility :
     if ((scenario_p.getKind() == ScenarioKind.DATA_FLOW) || (scenario_p.getKind() == ScenarioKind.INTERFACE)) {
-      return ((element_p instanceof SystemComponent) || (element_p instanceof AbstractActor)) && isCorrectComponentLevel(context_p, element_p);
+      return ((element_p instanceof SystemComponent) || (element_p instanceof AbstractActor))
+          && isCorrectComponentLevel(context_p, element_p);
     } else if (scenario_p.getKind() == ScenarioKind.FUNCTIONAL) {
       return (element_p instanceof AbstractFunction);
     } else if (scenario_p.getKind() == ScenarioKind.INTERACTION) {
@@ -1048,10 +1096,13 @@ public class ScenarioService {
   }
 
   /**
-   * in a DnD of SystemComponent, check that this drop is legal : the dropped Element must be inside the context if it is a component. If it's an actor, all
-   * cases are legal.
-   * @param context_p contextual component
-   * @param element_p dropped component
+   * in a DnD of SystemComponent, check that this drop is legal : the dropped Element must be inside the context if it
+   * is a component. If it's an actor, all cases are legal.
+   * 
+   * @param context_p
+   *          contextual component
+   * @param element_p
+   *          dropped component
    * @return
    */
   private boolean isCorrectComponentLevel(EObject context_p, EObject element_p) {
@@ -1088,10 +1139,13 @@ public class ScenarioService {
   }
 
   /**
-   * Returns a list of exchange context constraints. If the argument is a diagram that targets a Scenario, the result contains the set of all exchange contexts
-   * of all sequence messages in the scenario. If the argument is a diagram element that targets a sequence message and that sequence message has an exchange
-   * context, the result will contain exactly that exchange context. Otherwise the result is empty.
-   * @param context_p The sirius invocation context
+   * Returns a list of exchange context constraints. If the argument is a diagram that targets a Scenario, the result
+   * contains the set of all exchange contexts of all sequence messages in the scenario. If the argument is a diagram
+   * element that targets a sequence message and that sequence message has an exchange context, the result will contain
+   * exactly that exchange context. Otherwise the result is empty.
+   * 
+   * @param context_p
+   *          The sirius invocation context
    * @return A possibly empty list of constraints
    **/
   public List<EObject> getExchangeContextsToInsertInDiagram(EObject context_p) {
@@ -1109,7 +1163,8 @@ public class ScenarioService {
     } else if (context_p instanceof DDiagramElement) {
       DDiagramElement element = (DDiagramElement) context_p;
       EObject target = element.getTarget();
-      if ((null != target) && (target instanceof SequenceMessage) && (((SequenceMessage) target).getExchangeContext() != null)) {
+      if ((null != target) && (target instanceof SequenceMessage)
+          && (((SequenceMessage) target).getExchangeContext() != null)) {
         result.add(((SequenceMessage) target).getExchangeContext());
       }
     }
@@ -1118,7 +1173,9 @@ public class ScenarioService {
 
   /**
    * Gets the exchange context constraints currently visible in a given context.
-   * @param context_p : a diagram element, or a diagram
+   * 
+   * @param context_p
+   *          : a diagram element, or a diagram
    * @return list of visible exchange contexts
    */
   public List<EObject> getVisibleExchangeContexts(DSemanticDecorator context_p, DDiagram diagram_p) {
@@ -1129,7 +1186,8 @@ public class ScenarioService {
     for (DDiagramElement elem : diagram_p.getDiagramElements()) {
       if (elem.getTarget() instanceof Constraint) {
         allPresentConstraints.add((Constraint) elem.getTarget());
-      } else if ((elem.getTarget() instanceof SequenceMessage) && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)) {
+      } else if ((elem.getTarget() instanceof SequenceMessage)
+          && (((SequenceMessage) elem.getTarget()).getExchangeContext() != null)) {
         if ((context_p == diagram_p) || (context_p == elem)) {
           allAvailableExchangeContexts.add(((SequenceMessage) elem.getTarget()).getExchangeContext());
         }
