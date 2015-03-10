@@ -194,23 +194,23 @@
                   This rule ensure that Join/Fork states are used in concurrent region context.
                </description>
             </constraint>
-            <constraint
+           <constraint
                   class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_StateMachine_Function"
                   id="DWF_SM_08"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_08 -  State must reference a function with doActivity/entry/exit related with its own component"
+                  name="DWF_SM_08 - State must reference a function with doActivity/entry/exit related with its owning component"
                   severity="WARNING"
                   statusCode="1">
                <message>
-                  {0} of {1} reference a function associated to the component don&apos;t owning the state Machine or allocated to one of the ancestors.
+                  {0} of {2} shall not reference functions ({1}) which are not allocated on the component owning the state Machine ({3}) or one of its subcomponents.
                </message>
                <target
                      class="State">
                </target>
                <description>
-                  This rule check if doActivity/Entry/Exit reference only functions associated to the component owning the state Machine or allocated to one of the ancestors.
+                  This rule check if doActivity/Entry/Exit reference only functions associated to the component owning the state Machine or allocated to one of its subcomponents.
                </description>
             </constraint>
             <constraint
@@ -219,17 +219,17 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_09 -  StateTransition trigger must not reference a Function"
-                  severity="ERROR"
+                  name="DWF_SM_09 - StateTransitions trigger shall not reference unallocated Functions or Functional Exchanges  and be consistent with business query."
+                  severity="WARNING"
                   statusCode="1">
                <message>
-                  [StateTransiton] to {0} has a trigger that is a function.
-               </message>
+                  StateTransiton to {0} is triggered by an element which is not referencable ({1}).
+                  </message>
                <target
                      class="StateTransition">
                </target>
                <description>
-                  This rule check that a trigger of StateTransition don't reference a Function.
+                  This rule check that Functions or Functional Exchanges which triggers the StateTransition are allocated on the Component or one of its subcomponents.
                </description>
             </constraint>
             <constraint
@@ -238,7 +238,7 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_10 -  StateTransition source and target shouldn&apos;t be stored in concurrent region"
+                  name="DWF_SM_10 - StateTransition source and target shouldn&apos;t be stored in concurrent region"
                   severity="WARNING"
                   statusCode="1">
                <message>
@@ -276,7 +276,7 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_12 -  ExitPoint must have only one incoming transition and one or more outgoing transition"
+                  name="DWF_SM_12 - ExitPoint must have only one incoming transition and one or more outgoing transition"
                   severity="ERROR"
                   statusCode="1">
                <message>
@@ -295,7 +295,7 @@
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
-                  name="DWF_SM_13 -  Shallow/Deep History shall have only incoming transitions"
+                  name="DWF_SM_13 - Shallow/Deep History shall have only incoming transitions"
                   severity="ERROR"
                   statusCode="1">
                <message>
@@ -306,6 +306,25 @@
                </target>
                <description>
                   This rule check that Shallow/Deep History state has only incoming transitions.
+               </description>
+            </constraint>
+            <constraint
+                  class="org.polarsys.capella.core.data.common.validation.statetransition.MDCHK_StateMachine_AvailableFunctions"
+                  id="DWF_SM_14"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="DWF_SM_14 - Functions referenced in a State must be referened as available in this State."
+                  severity="WARNING"
+                  statusCode="1">
+               <message>
+                  {0} reference ({1}) that must be referenced as Operational Activities/Functions in {2}.
+               </message>
+               <target
+                     class="State">
+               </target>
+               <description>
+                  This rule check that Functions referenced as DoActivity, Entry or Exit of a Mode/State are available via the Operational Activities/Functions reference of this State.
                </description>
             </constraint>
          </constraints>
