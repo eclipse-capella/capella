@@ -8,6 +8,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.model.helpers,
- com.google.guava;bundle-version="11.0.2"
+ com.google.guava;bundle-version="11.0.2",
+ org.polarsys.capella.core.data.business.queries,
+ org.polarsys.capella.common.queries,
+ org.polarsys.capella.core.libraries.extendedQueries
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

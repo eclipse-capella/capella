@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
-import org.polarsys.capella.common.queries.queryContext.QueryContext;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -38,35 +37,40 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
 
   @Override
   public List<Object> execute(Object input, IQueryContext context) {
+    List<Object> availableElements = getAvailableElements(input, context);
+    CapellaElement inputElement = (CapellaElement) input;
+    List<CapellaElement> currentElements = QueryInterpretor.executeQuery(
+        "GetCurrent_StateTransitionTrigger", input, context);//$NON-NLS-1$
+    availableElements.removeAll(currentElements);
+    return availableElements;
+  }
+
+  public static List<Object> getAvailableElements(Object input, IQueryContext context) {
     CapellaElement inputElement = (CapellaElement) input;
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
     BlockArchitecture arch = SystemEngineeringExt.getRootBlockArchitecture(inputElement);
     if (arch != null) {
-        for (BlockArchitecture block : BlockArchitectureExt.getAllAllocatedArchitectures(arch)) {
-          TreeIterator<Object> allContents = EcoreUtil.getAllContents(block, false);
-          while (allContents.hasNext()) {
-            Object object = allContents.next();
-            if ((object instanceof ExchangeItem) || (object instanceof Operation)) {
-              availableElements.add((CapellaElement) object);
-            }
+      for (BlockArchitecture block : BlockArchitectureExt.getAllAllocatedArchitectures(arch)) {
+        TreeIterator<Object> allContents = EcoreUtil.getAllContents(block, false);
+        while (allContents.hasNext()) {
+          Object object = allContents.next();
+          if ((object instanceof ExchangeItem) || (object instanceof Operation)) {
+            availableElements.add((CapellaElement) object);
           }
         }
       }
+    }
     EObject eContainer = inputElement.eContainer();
     if (eContainer != null) {
       while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
         eContainer = eContainer.eContainer();
       }
-      
-    if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)){
-      availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
+
+      if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)) {
+        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
       }
     }
 
-    if (inputElement instanceof StateTransition) {
-      List<CapellaElement> currentElements = QueryInterpretor.executeQuery("GetCurrent_StateTransitionTrigger", inputElement, new QueryContext());//$NON-NLS-1$
-      availableElements.removeAll(currentElements);
-    }
     return (List) availableElements;
   }
 
@@ -75,19 +79,19 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
    * @param component_p
    * @return
    */
-  private List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
+  private static List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     Collection<Component> subComponents = ComponentExt.getSubDefinedComponents(component_p);
     subComponents.add(component_p);
 
     for (Component component : subComponents) {
       availableElements.addAll(component.getAllocatedFunctions());
-      for (AbstractFunction function: component.getAllocatedFunctions()){
-          availableElements.addAll(FunctionExt.getOutGoingExchange(function));
-          availableElements.addAll(FunctionExt.getIncomingExchange(function));
+      for (AbstractFunction function : component.getAllocatedFunctions()) {
+        availableElements.addAll(FunctionExt.getOutGoingExchange(function));
+        availableElements.addAll(FunctionExt.getIncomingExchange(function));
       }
     }
     return availableElements;
   }
-  
+
 }

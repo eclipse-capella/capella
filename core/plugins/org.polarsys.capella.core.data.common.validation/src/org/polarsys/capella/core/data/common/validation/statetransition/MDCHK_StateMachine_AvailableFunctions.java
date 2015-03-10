@@ -16,21 +16,22 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
+import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
+import org.polarsys.capella.common.queries.queryContext.QueryContext;
+import org.polarsys.capella.core.business.queries.QueryConstants;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
-import org.polarsys.capella.core.data.information.Class;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 import com.google.common.base.Joiner;
 
-public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
+public class MDCHK_StateMachine_AvailableFunctions extends AbstractModelConstraint {
 
   private static final String DO_ACTIVITY = "doActivity"; //$NON-NLS-1$
   private static final String ENTRY = "entry"; //$NON-NLS-1$
   private static final String EXIT = "exit"; //$NON-NLS-1$
 
-  public MDCHK_StateMachine_Function() {
+  public MDCHK_StateMachine_AvailableFunctions() {
     // TODO Auto-generated constructor stub
   }
 
@@ -48,38 +49,30 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
     elements[1] = state.getEntry() == null ? null : state.getEntry().getName();
     elements[2] = state.getExit() == null ? null : state.getExit().getName();
 
-    while (!(eContainer instanceof Component) && (!(eContainer instanceof Class))) {
-      eContainer = eContainer.eContainer();
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.GET_CURRENT__MODE__AVAILABLE_IN_STATES,
+        CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS);
+
+    Collection<AbstractFunction> availableFunctions = QueryInterpretor.executeQuery(
+        "GetCurrent_Mode_AvailableInStates", state, context);//$NON-NLS-1$
+
+    if ((state.getDoActivity() instanceof AbstractFunction) && (availableFunctions.contains(state.getDoActivity()))) {
+      res[0] = null;
+      elements[0] = null;
     }
-    if (eContainer instanceof Component) {
-      Component container = (Component) eContainer;
-      Collection<Component> subComponents = ComponentExt.getAllSubUsedComponents(container);
-      subComponents.add(container);
-      for (Component component : subComponents) {
-        if (((state.getDoActivity() instanceof AbstractFunction))
-            && component.getAllocatedFunctions().contains(state.getDoActivity())) {
-          res[0] = null;
-          elements[0] = null;
-        }
-        if (((state.getEntry() instanceof AbstractFunction))
-            && component.getAllocatedFunctions().contains(state.getEntry())) {
-          res[1] = null;
-          elements[1] = null;
-        }
-        if (((state.getExit() instanceof AbstractFunction))
-            && component.getAllocatedFunctions().contains(state.getExit())) {
-          res[2] = null;
-          elements[2] = null;
-        }
-      }
-      if ((res[0] == res[1]) && (res[1] == res[2]) && (res[2] == null)) {
-        return ctx_p.createSuccessStatus();
-      } else {
-        return ctx_p
-            .createFailureStatus(new Object[] {
-                Joiner.on("/").skipNulls().join(res), Joiner.on("/").skipNulls().join(elements), state.getName(), eContainer }); //$NON-NLS-1$
-      }
+    if ((state.getEntry() instanceof AbstractFunction) && (availableFunctions.contains(state.getEntry()))) {
+      res[1] = null;
+      elements[1] = null;
     }
-    return ctx_p.createSuccessStatus();
+    if ((state.getExit() instanceof AbstractFunction) && (availableFunctions.contains(state.getExit()))) {
+      res[2] = null;
+      elements[2] = null;
+    }
+    if ((res[0] == res[1]) && (res[1] == res[2]) && (res[2] == null)) {
+      return ctx_p.createSuccessStatus();
+    } else {
+      return ctx_p.createFailureStatus(new Object[] {
+          Joiner.on("/").skipNulls().join(res), Joiner.on("/").skipNulls().join(elements), state.getName() }); //$NON-NLS-1$
+    }
   }
 }
