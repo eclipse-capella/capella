@@ -21,9 +21,9 @@ import org.polarsys.capella.core.commands.preferences.service.ScopedCapellaPrefe
 
 /**
  */
-public class BooleanPropertyPreference extends AbstractProperty implements IEditableProperty, IDefaultValueProperty {
+public class StringPropertyPreference extends AbstractProperty implements IEditableProperty, IDefaultValueProperty {
 
-  public BooleanPropertyPreference() {
+  public StringPropertyPreference() {
     super();
   }
 
@@ -31,7 +31,7 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
    * {@inheritDoc}
    */
   public Object getType() {
-    return Boolean.class;
+    return String.class;
   }
 
   /**
@@ -45,7 +45,7 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
       preferenceId = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__PREFERENCE_ID);
     }
 
-    return ScopedCapellaPreferencesStore.getInstance(scope).getBoolean(preferenceId);
+    return ScopedCapellaPreferencesStore.getInstance(scope).getString(preferenceId);
   }
 
   /**
@@ -60,35 +60,29 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
       preferenceId = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__PREFERENCE_ID);
     }
 
-    ScopedCapellaPreferencesStore.getInstance(scope).setValue(preferenceId, ((Boolean) toType(value, context_p)).booleanValue());
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  public Object toType(Object value_p, IPropertyContext context_p) {
-    Boolean value = Boolean.TRUE;
-    try {
-      if (value_p instanceof Boolean) {
-        value = (Boolean) value_p;
-      } else if (value_p instanceof String) {
-        value = Boolean.valueOf((String) value_p);
-      }
-    } catch (Exception e) {
-      // Nothing here
-    }
-    return value;
+    ScopedCapellaPreferencesStore.getInstance(scope).setValue(preferenceId, ((String) toType(value, context_p)));
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public IStatus validate(Object newValue_p, IPropertyContext context_p) {
-    if (newValue_p == null) {
-      return Status.CANCEL_STATUS;
+  public IStatus validate(Object newValue, IPropertyContext context_p) {
+    try {
+      if (newValue != null) {
+        String value = String.valueOf(newValue);
+
+        String validOnEmpty = getParameter(PropertiesSchemaConstants.PropertiesSchema_STRING_PROPERTY__EMPTY_IS_VALID);
+        if ((validOnEmpty != null) && "false".equals(validOnEmpty) && (value.length() == 0)) {
+          return new Status(IStatus.ERROR, getId(), "Empty value isn't valid");
+        }
+      }
+
+      return Status.OK_STATUS;
+
+    } catch (Exception e) {
+      return new Status(IStatus.ERROR, getId(), e.getMessage());
     }
-    return Status.OK_STATUS;
   }
 
   /**
@@ -96,7 +90,12 @@ public class BooleanPropertyPreference extends AbstractProperty implements IEdit
    */
   public Object getDefaultValue(IPropertyContext context_p) {
     String argument = getParameter(PropertiesSchemaConstants.PropertiesSchema_PROPERTY_PREFERENCE__DEFAULT);
-    return ((Boolean) toType(argument, context_p)).booleanValue();
+    return toType(argument, context_p);
+  }
+
+  @Override
+  public Object toType(Object value_p, IPropertyContext context_p) {
+    return value_p;
   }
 
 }
