@@ -100,6 +100,7 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Add elements to delete for {@link Association}.
+   * 
    * @param elementsToDelete_p
    */
   protected void addElementsForAssociation(Set<? super EObject> elementsToDelete_p) {
@@ -116,6 +117,7 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Add elements to delete for {@link FunctionalChainInvolvement}.
+   * 
    * @param elementsToDelete_p
    */
   protected void addElementsForFunctionalChainInvolvement(Set<? super EObject> elementsToDelete_p) {
@@ -141,6 +143,7 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Add elements to delete for {@link PhysicalPathInvolvement}.
+   * 
    * @param elementsToDelete_p
    */
   protected void addElementsForPhysicalPathInvolvement(Set<? super EObject> elementsToDelete_p) {
@@ -168,7 +171,8 @@ public class DeleteHelper implements IDeleteHelper {
     List<EObject> elementsToAdd = new ArrayList<EObject>();
     for (Object elementToDelete : elementsToDelete_p) {
       if (elementToDelete instanceof AbstractFunction) {
-        elementsToAdd.addAll(EObjectExt.getReferencers((EObject) elementToDelete, InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION));
+        elementsToAdd.addAll(EObjectExt.getReferencers((EObject) elementToDelete,
+            InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_FUNCTION));
       }
     }
     elementsToDelete_p.addAll(elementsToAdd);
@@ -178,7 +182,8 @@ public class DeleteHelper implements IDeleteHelper {
     List<EObject> elementsToAdd = new ArrayList<EObject>();
     for (Object elementToDelete : elementsToDelete_p) {
       if (elementToDelete instanceof AbstractState) {
-        elementsToAdd.addAll(EObjectExt.getReferencers((EObject) elementToDelete, InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE));
+        elementsToAdd.addAll(EObjectExt.getReferencers((EObject) elementToDelete,
+            InteractionPackage.Literals.STATE_FRAGMENT__RELATED_ABSTRACT_STATE));
       }
     }
     elementsToDelete_p.addAll(elementsToAdd);
@@ -186,6 +191,7 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Add pending property values in addition to their elements if necessary.
+   * 
    * @param elementsToDelete_p
    */
   protected void addPendingPropertyValues(Set<? super EObject> elementsToDelete_p) {
@@ -196,15 +202,19 @@ public class DeleteHelper implements IDeleteHelper {
       if (object instanceof CapellaElement) {
         // Get applied property values.
         List<AbstractPropertyValue> appliedPropertyValues = ((CapellaElement) object).getAppliedPropertyValues();
-        // Loop over property values to collect only the ones which have only current capella element as involvedElements.
+        // Loop over property values to collect only the ones which have only current capella element as
+        // involvedElements.
         for (AbstractPropertyValue propertyValue : appliedPropertyValues) {
-          // Is it a pending property value ? i.e valueElements must contain only current object and involvedElements must be empty.
+          // Is it a pending property value ? i.e valueElements must contain only current object and involvedElements
+          // must be empty.
           List<CapellaElement> valuedElements = propertyValue.getValuedElements();
-          if ((propertyValue != object) && propertyValue.getInvolvedElements().isEmpty() && ((valuedElements.size() == 1) && valuedElements.contains(object))) {
+          if ((propertyValue != object) && propertyValue.getInvolvedElements().isEmpty()
+              && ((valuedElements.size() == 1) && valuedElements.contains(object))) {
             // That's it !
             Set<EObject> propertyValues = new HashSet<EObject>();
             propertyValues.add(propertyValue);
-            // Recurse algorithm on this pending property value to remove other pending property values linked to this one.
+            // Recurse algorithm on this pending property value to remove other pending property values linked to this
+            // one.
             addPendingPropertyValues(propertyValues);
             propertyValuesToAddToDeletedElements.addAll(propertyValues);
           }
@@ -218,6 +228,7 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Add pending property value groups in addition to their elements if necessary.
+   * 
    * @param elementsToDelete_p
    */
   protected void addPendingPropertyValueGroups(Set<? super EObject> elementsToDelete_p) {
@@ -228,17 +239,20 @@ public class DeleteHelper implements IDeleteHelper {
       if (object instanceof CapellaElement) {
         // Get applied property values.
         List<PropertyValueGroup> appliedPropertyValueGroups = ((CapellaElement) object).getAppliedPropertyValueGroups();
-        // Loop over property value groups to collect only the ones which have only current capella element as involvedElements.
+        // Loop over property value groups to collect only the ones which have only current capella element as
+        // involvedElements.
         for (PropertyValueGroup propertyValueGroup : appliedPropertyValueGroups) {
           // StackOverflow deleting property value applied on itself
           if (!elementsToDelete_p.contains(propertyValueGroup)) {
-            // Is it a pending property value group ? i.e valueElements must contain only current object and involvedElements must be empty.
+            // Is it a pending property value group ? i.e valueElements must contain only current object and
+            // involvedElements must be empty.
             List<CapellaElement> valuedElements = propertyValueGroup.getValuedElements();
             if ((valuedElements.size() == 1) && valuedElements.contains(object)) {
               // That's it !
               Set<EObject> propertyValueGroups = new HashSet<EObject>();
               propertyValueGroups.add(propertyValueGroup);
-              // Recurse algorithm on this pending property value to remove other pending property values linked to this one.
+              // Recurse algorithm on this pending property value to remove other pending property values linked to this
+              // one.
               addPendingPropertyValueGroups(propertyValueGroups);
               propertyValueGroupsToAddToDeletedElements.addAll(propertyValueGroups);
             }
@@ -269,6 +283,7 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * return the other side of the sequence message, the message and the related event
+   * 
    * @param interactionFragment_p
    * @return
    */
@@ -352,7 +367,8 @@ public class DeleteHelper implements IDeleteHelper {
         }
         // create and delete message are not connected to execution.
         // so we must manage them manually
-        if ((sm.getKind() == MessageKind.CREATE) || (sm.getKind() == MessageKind.DELETE) || (sm.getSendingEnd() == null) || (sm.getReceivingEnd() == null)) {
+        if ((sm.getKind() == MessageKind.CREATE) || (sm.getKind() == MessageKind.DELETE)
+            || (sm.getSendingEnd() == null) || (sm.getReceivingEnd() == null)) {
           result.add(sm);
         }
       }
@@ -370,7 +386,8 @@ public class DeleteHelper implements IDeleteHelper {
           if ((exec2 instanceof Execution) && (((Execution) exec2).getCovered() == ir)) {
             result.add(exec2);
           }
-          if ((exec2 instanceof StateFragment) && (((StateFragment) exec2).getStart().getCoveredInstanceRoles().contains(ir))) {
+          if ((exec2 instanceof StateFragment)
+              && (((StateFragment) exec2).getStart().getCoveredInstanceRoles().contains(ir))) {
             result.add(exec2);
           }
         }
@@ -453,7 +470,8 @@ public class DeleteHelper implements IDeleteHelper {
         if (if_.eContainer() instanceof Scenario) {
           Scenario scenario = (Scenario) if_.eContainer();
           for (ConstraintDuration duration : scenario.getOwnedConstraintDurations()) {
-            if (duration.getStart().equals(if_) || duration.getFinish().equals(if_)) {
+            if ((duration.getStart() != null && duration.getStart().equals(if_))
+                || (duration.getFinish() != null && duration.getFinish().equals(if_))) {
               durationsToDelete.add(duration);
             }
           }
@@ -516,28 +534,33 @@ public class DeleteHelper implements IDeleteHelper {
    * Should we delete the type of the argument Part if that Part is deleted. {@inheritDoc}
    */
   protected boolean shouldDeleteTypeOf(Part deletedPart_p) {
-    boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(deletedPart_p));
+    boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper
+        .isReusableComponentsDriven(deletedPart_p));
     return (!allowMultiplePart || IDeletePreferences.INSTANCE.isDeletingPartType());
   }
 
   /**
    * {@inheritDoc}
    */
+  @Override
   public Set<?> getExpandedSelection(Collection<?> selection_p) {
 
     Set<Object> expandedSelection = new HashSet<Object>(selection_p);
     getAdditionalElementsForParts(expandedSelection);
 
-    // Special case for Physical Path Involvements (we add previous and next involvements if the involved element is a Part).
+    // Special case for Physical Path Involvements (we add previous and next involvements if the involved element is a
+    // Part).
     addElementsForPhysicalPathInvolvement(expandedSelection);
 
     // special case for state and modes and abstractFunction: sequence diagram deletion
     addElementsForAbstractState(expandedSelection);
     addElementsForAbstractFunction(expandedSelection);
 
-    // Special case for functional chain involvements (we add previous and next involvements if the involved element is an AbstractFunction).
+    // Special case for functional chain involvements (we add previous and next involvements if the involved element is
+    // an AbstractFunction).
     addElementsForFunctionalChainInvolvement(expandedSelection);
-    // Special case for association, we add navigable members i.e properties that are not owned by the association but targeted elements.
+    // Special case for association, we add navigable members i.e properties that are not owned by the association but
+    // targeted elements.
     addElementsForAssociation(expandedSelection);
     // Get all elements for a scenario.
     globalizeElementsForScenario(expandedSelection);
@@ -549,10 +572,12 @@ public class DeleteHelper implements IDeleteHelper {
     if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfComponentPortToFunctionPortAllowed()) {
       addElementsForComponentExchangeFunctionalExchangeAllocation(expandedSelection);
     }
-    if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed()) {
+    if (CapellaModelPreferencesPlugin.getDefault()
+        .isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed()) {
       addElementsForComponentExchangeAllocationFromPL(expandedSelection);
     }
-    if (CapellaModelPreferencesPlugin.getDefault().isSynchronizationOfPhysicalPortToComponentPortOnPhysicalPathAllowed()) {
+    if (CapellaModelPreferencesPlugin.getDefault()
+        .isSynchronizationOfPhysicalPortToComponentPortOnPhysicalPathAllowed()) {
       addElementsForComponentExchangeAllocationFromPP(expandedSelection);
     }
 
@@ -568,9 +593,11 @@ public class DeleteHelper implements IDeleteHelper {
     for (Object elementToDelete : elementsToDelete_p) {
       if (elementToDelete instanceof ComponentExchangeAllocation) {
         ComponentExchange exchange = ((ComponentExchangeAllocation) elementToDelete).getComponentExchangeAllocated();
-        ComponentExchangeAllocator allocator = ((ComponentExchangeAllocation) elementToDelete).getComponentExchangeAllocator();
+        ComponentExchangeAllocator allocator = ((ComponentExchangeAllocation) elementToDelete)
+            .getComponentExchangeAllocator();
         if (allocator instanceof PhysicalLink) {
-          elementsToAddToDeletion.addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations((PhysicalLink) allocator, exchange, true));
+          elementsToAddToDeletion.addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(
+              (PhysicalLink) allocator, exchange, true));
         }
       } else if (elementToDelete instanceof PhysicalLink) {
         elementsToAddToDeletion.addAll(getRelatedElements((PhysicalLink) elementToDelete));
@@ -595,9 +622,11 @@ public class DeleteHelper implements IDeleteHelper {
     for (Object elementToDelete : elementsToDelete_p) {
       if (elementToDelete instanceof ComponentExchangeAllocation) {
         ComponentExchange exchange = ((ComponentExchangeAllocation) elementToDelete).getComponentExchangeAllocated();
-        ComponentExchangeAllocator allocator = ((ComponentExchangeAllocation) elementToDelete).getComponentExchangeAllocator();
+        ComponentExchangeAllocator allocator = ((ComponentExchangeAllocation) elementToDelete)
+            .getComponentExchangeAllocator();
         if (allocator instanceof PhysicalPath) {
-          elementsToAddToDeletion.addAll(PhysicalPathExt.evaluateImpactsOfUnsynchronizeAllocations((PhysicalPath) allocator, exchange, true));
+          elementsToAddToDeletion.addAll(PhysicalPathExt.evaluateImpactsOfUnsynchronizeAllocations(
+              (PhysicalPath) allocator, exchange, true));
         }
       } else if (elementToDelete instanceof PhysicalPath) {
         elementsToAddToDeletion.addAll(getRelatedElements((PhysicalPath) elementToDelete));
@@ -617,9 +646,12 @@ public class DeleteHelper implements IDeleteHelper {
 
     for (Object elementToDelete : elementsToDelete_p) {
       if (elementToDelete instanceof ComponentExchangeFunctionalExchangeAllocation) {
-        ComponentExchange cptExchange = ((ComponentExchangeFunctionalExchangeAllocation) elementToDelete).getAllocatingComponentExchange();
-        FunctionalExchange fctExchange = ((ComponentExchangeFunctionalExchangeAllocation) elementToDelete).getAllocatedFunctionalExchange();
-        elementsToAddToDeletion.addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(cptExchange, fctExchange, true));
+        ComponentExchange cptExchange = ((ComponentExchangeFunctionalExchangeAllocation) elementToDelete)
+            .getAllocatingComponentExchange();
+        FunctionalExchange fctExchange = ((ComponentExchangeFunctionalExchangeAllocation) elementToDelete)
+            .getAllocatedFunctionalExchange();
+        elementsToAddToDeletion.addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(cptExchange,
+            fctExchange, true));
       } else if (elementToDelete instanceof ComponentExchange) {
         elementsToAddToDeletion.addAll(getRelatedElements((ComponentExchange) elementToDelete));
       } else if (elementToDelete instanceof ComponentPort) {
@@ -663,12 +695,15 @@ public class DeleteHelper implements IDeleteHelper {
    */
   private Set<EObject> getRelatedElements(ComponentExchange exchange_p) {
     Set<EObject> elementsToAddToDeletion = new HashSet<EObject>();
-    for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange_p.getOwnedComponentExchangeFunctionalExchangeAllocations()) {
+    for (ComponentExchangeFunctionalExchangeAllocation allocation : exchange_p
+        .getOwnedComponentExchangeFunctionalExchangeAllocations()) {
       FunctionalExchange fctExchange = allocation.getAllocatedFunctionalExchange();
-      elementsToAddToDeletion.addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(exchange_p, fctExchange, true));
+      elementsToAddToDeletion.addAll(ComponentExchangeExt.evaluateImpactsOfUnsynchronizeAllocations(exchange_p,
+          fctExchange, true));
 
       for (PhysicalLink link : exchange_p.getAllocatorPhysicalLinks()) {
-        elementsToAddToDeletion.addAll(PhysicalLinkExt.evaluateImpactsOfUnsynchronizeAllocations(link, exchange_p, true));
+        elementsToAddToDeletion.addAll(PhysicalLinkExt
+            .evaluateImpactsOfUnsynchronizeAllocations(link, exchange_p, true));
       }
     }
     return elementsToAddToDeletion;
@@ -714,6 +749,7 @@ public class DeleteHelper implements IDeleteHelper {
   /**
    * Should this association be deleted ?<br>
    * An association is a pending link if it is attached to one side at most.
+   * 
    * @param association_p
    * @return
    */
@@ -726,13 +762,16 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Is specified relation standing for a link that is to be deleted ?
+   * 
    * @param linkedObject_p
    * @param link_p
    * @param feature_p
-   * @return <code>true</code> if relation is a link that should be deleted, <code>false</code> if it is not a link, or should be kept untouched.
+   * @return <code>true</code> if relation is a link that should be deleted, <code>false</code> if it is not a link, or
+   *         should be kept untouched.
    */
   protected boolean isDeletableLink(AbstractRelationship link_p, EObject linkedObject_p, EStructuralFeature feature_p) {
-    // In most cases, an abstract relationship is a link that is to be destroyed, along with its attached semantic structure.
+    // In most cases, an abstract relationship is a link that is to be destroyed, along with its attached semantic
+    // structure.
     boolean result = true;
     boolean testTraceFeature = false;
     if (linkedObject_p instanceof PropertyValueGroup) {
@@ -740,12 +779,13 @@ public class DeleteHelper implements IDeleteHelper {
       result = false;
     } else if (link_p instanceof FunctionalExchange) {
       if ((linkedObject_p instanceof AbstractEventOperation) || (linkedObject_p instanceof ExchangeItem)
-          || (linkedObject_p instanceof FunctionalChainInvolvement) || (linkedObject_p instanceof ExchangeCategory) || (linkedObject_p instanceof PhysicalLink)) {
+          || (linkedObject_p instanceof FunctionalChainInvolvement) || (linkedObject_p instanceof ExchangeCategory)
+          || (linkedObject_p instanceof PhysicalLink)) {
         result = false;
       } else {
         // Test for exchange realizations, that are referencing links that should not be destroyed.
-        testTraceFeature =
-            (linkedObject_p instanceof FunctionalExchangeRealization) || (linkedObject_p instanceof ComponentExchangeFunctionalExchangeAllocation);
+        testTraceFeature = (linkedObject_p instanceof FunctionalExchangeRealization)
+            || (linkedObject_p instanceof ComponentExchangeFunctionalExchangeAllocation);
       }
     } else if ((linkedObject_p instanceof AbstractFunction) || (linkedObject_p instanceof StateEvent)) {
       // [DELETE] Deleting referenced trigger or effect (e.g. a function) deletes the related state transition
@@ -761,9 +801,9 @@ public class DeleteHelper implements IDeleteHelper {
         result = false;
       } else {
         // Test for exchange realizations, that are referencing links that should not be destroyed.
-        testTraceFeature =
-            (linkedObject_p instanceof ComponentExchangeRealization) || (linkedObject_p instanceof ComponentExchangeFunctionalExchangeAllocation)
-                || (linkedObject_p instanceof ComponentExchangeAllocation);
+        testTraceFeature = (linkedObject_p instanceof ComponentExchangeRealization)
+            || (linkedObject_p instanceof ComponentExchangeFunctionalExchangeAllocation)
+            || (linkedObject_p instanceof ComponentExchangeAllocation);
       }
     } else if (link_p instanceof FunctionalChainInvolvement) {
       if (FaPackage.Literals.FUNCTIONAL_CHAIN_INVOLVEMENT__EXCHANGED_ITEMS.equals(feature_p)) {
@@ -784,21 +824,22 @@ public class DeleteHelper implements IDeleteHelper {
 
     // Test feature against traceable element incoming or outgoing traces.
     if (testTraceFeature) {
-      result =
-          !(ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(feature_p) || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES
-              .equals(feature_p));
+      result = !(ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.equals(feature_p) || ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES
+          .equals(feature_p));
     }
     return result;
   }
 
   /**
    * Should specified trace be spared by deletion ?
+   * 
    * @param trace_p
    * @param referencingElement_p
    * @param referencingFeature_p
    * @return <code>true</code> if so, <code>false</code> otherwise.
    */
-  protected boolean isDeletableTrace(AbstractTrace trace_p, EObject referencingElement_p, EStructuralFeature referencingFeature_p) {
+  protected boolean isDeletableTrace(AbstractTrace trace_p, EObject referencingElement_p,
+      EStructuralFeature referencingFeature_p) {
     // In most cases, traces are to be removed.
     boolean result = true;
     // Deal transformation link with care.
@@ -814,6 +855,7 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Is specified element a pending one, that should be removed too ?
+   * 
    * @param sourceObject_p
    * @param linkedObject_p
    * @param feature_p
@@ -824,9 +866,10 @@ public class DeleteHelper implements IDeleteHelper {
     boolean result = false;
     if (sourceObject_p instanceof Part) {
       // Remove type if we are singleton driven or if preference is enabled
-      boolean shouldDelete =
-          (!TriStateBoolean.False.equals(CapellaProjectHelper.isSingletonComponentsDriven(sourceObject_p))) || IDeletePreferences.INSTANCE.isDeletingPartType();
-      result = shouldDelete && (linkedObject_p instanceof Component) && ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE.equals(feature_p);
+      boolean shouldDelete = (!TriStateBoolean.False.equals(CapellaProjectHelper
+          .isSingletonComponentsDriven(sourceObject_p))) || IDeletePreferences.INSTANCE.isDeletingPartType();
+      result = shouldDelete && (linkedObject_p instanceof Component)
+          && ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE.equals(feature_p);
 
     } else if (sourceObject_p instanceof PropertyValueGroup) {
       // Is property value group pending ?
@@ -851,12 +894,14 @@ public class DeleteHelper implements IDeleteHelper {
 
   /**
    * Is specified {@link PropertyValueGroup} a pending one ?
+   * 
    * @param group_p
    * @param referencingElement_p
    * @param feature_p
    * @return
    */
-  protected boolean isPendingPropertyValueGroup(PropertyValueGroup group_p, EObject referencingElement_p, EStructuralFeature feature_p) {
+  protected boolean isPendingPropertyValueGroup(PropertyValueGroup group_p, EObject referencingElement_p,
+      EStructuralFeature feature_p) {
     HashSet<EObject> storedValuedElements = new HashSet<EObject>(group_p.getValuedElements());
     storedValuedElements.addAll(group_p.getAppliedPropertyValueGroups());
     storedValuedElements.remove(referencingElement_p);
@@ -867,7 +912,8 @@ public class DeleteHelper implements IDeleteHelper {
    * {@inheritDoc}
    */
   @Override
-  public Collection<EObject> getAdditionalElements(EObject sourceObject_p, EObject linkObject_p, EStructuralFeature feature_p) {
+  public Collection<EObject> getAdditionalElements(EObject sourceObject_p, EObject linkObject_p,
+      EStructuralFeature feature_p) {
     if (sourceObject_p instanceof Property) {
       // Do not remove the property directly, instead, remove its parent, if applicable.
       EObject container = sourceObject_p.eContainer();
@@ -884,7 +930,8 @@ public class DeleteHelper implements IDeleteHelper {
    * {@inheritDoc}
    */
   @Override
-  public Collection<Command> getAdditionalCommands(EObject sourceObject_p, EObject linkObject_p, EStructuralFeature feature_p) {
+  public Collection<Command> getAdditionalCommands(EObject sourceObject_p, EObject linkObject_p,
+      EStructuralFeature feature_p) {
     // Nothing here
     return null;
   }
