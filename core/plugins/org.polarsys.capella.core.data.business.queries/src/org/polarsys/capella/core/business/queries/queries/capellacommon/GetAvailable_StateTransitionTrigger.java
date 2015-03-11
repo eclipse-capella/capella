@@ -81,7 +81,7 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
    */
   private static List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    Collection<Component> subComponents = ComponentExt.getSubDefinedComponents(component_p);
+    Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component_p);
     subComponents.add(component_p);
 
     for (Component component : subComponents) {

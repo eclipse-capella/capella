@@ -53,7 +53,7 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
     }
     if (eContainer instanceof Component) {
       Component container = (Component) eContainer;
-      Collection<Component> subComponents = ComponentExt.getAllSubUsedComponents(container);
+      Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(container);
       subComponents.add(container);
       for (Component component : subComponents) {
         if (((state.getDoActivity() instanceof AbstractFunction))
