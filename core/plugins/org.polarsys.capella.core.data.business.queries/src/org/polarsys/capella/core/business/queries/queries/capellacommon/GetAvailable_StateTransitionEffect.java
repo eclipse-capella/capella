@@ -54,18 +54,19 @@ public class GetAvailable_StateTransitionEffect extends AbstractQuery {
         while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
           eContainer = eContainer.eContainer();
         }
-        if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)){
-        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
+        if ((eContainer instanceof Component) && (inputElement instanceof StateTransition)) {
+          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
         }
       }
     }
     if (inputElement instanceof StateTransition) {
-      List<CapellaElement> currentElements = QueryInterpretor.executeQuery("GetCurrent_StateTransitionEffect", inputElement, new QueryContext());//$NON-NLS-1$
+      List<CapellaElement> currentElements = QueryInterpretor.executeQuery(
+          "GetCurrent_StateTransitionEffect", inputElement, new QueryContext());//$NON-NLS-1$
       availableElements.removeAll(currentElements);
     }
     return (List) availableElements;
   }
-  
+
   /**
    * @param state_p
    * @param component_p
@@ -73,7 +74,7 @@ public class GetAvailable_StateTransitionEffect extends AbstractQuery {
    */
   private List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    Collection<Component> subComponents = ComponentExt.getSubDefinedComponents(component_p);
+    Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component_p);
     subComponents.add(component_p);
 
     for (Component component : subComponents) {

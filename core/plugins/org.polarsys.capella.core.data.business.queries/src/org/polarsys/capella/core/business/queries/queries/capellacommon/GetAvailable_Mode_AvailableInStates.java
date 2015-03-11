@@ -27,59 +27,61 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 
 public class GetAvailable_Mode_AvailableInStates extends AbstractQuery {
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public List<Object> execute(Object input, IQueryContext context) {
-		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> availableElements = getAvailableElements(capellaElement);
-		return (List) availableElements;
-	}
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  @Override
+  public List<Object> execute(Object input, IQueryContext context) {
+    CapellaElement capellaElement = (CapellaElement) input;
+    List<CapellaElement> availableElements = getAvailableElements(capellaElement);
+    return (List) availableElements;
+  }
 
-	/** 
-	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
-	 */
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof State) {
-		      EObject eContainer = element_p.eContainer();
-		      if (eContainer != null) {
-		        while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
-		          eContainer = eContainer.eContainer();
-		        }
-		        if ((eContainer instanceof Component)){
-		        availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
-		        }
-		      }
-		    }
-		return availableElements;
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
+   */
+  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+    List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+    if (element_p instanceof State) {
+      EObject eContainer = element_p.eContainer();
+      if (eContainer != null) {
+        while (!(eContainer instanceof Component) && !(eContainer instanceof Class)) {
+          eContainer = eContainer.eContainer();
+        }
+        if ((eContainer instanceof Component)) {
+          availableElements.addAll(getElementsFromComponentAndSubComponents((Component) eContainer));
+        }
+      }
+    }
+    return availableElements;
+  }
 
-	/** 
-	 * same level Visibility Layer
-	 * @param state_p
-	 */
-	protected List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
-	      List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-	      Collection<Component> subComponents = ComponentExt.getSubDefinedComponents(component_p);
-	      subComponents.add(component_p);
+  /**
+   * same level Visibility Layer
+   * 
+   * @param state_p
+   */
+  protected List<CapellaElement> getElementsFromComponentAndSubComponents(Component component_p) {
+    List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+    Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(component_p);
+    subComponents.add(component_p);
 
-	      for (Component component : subComponents) {
-	        availableElements.addAll(component.getAllocatedFunctions());
-	       	}
-	      return availableElements;
-	    }
+    for (Component component : subComponents) {
+      availableElements.addAll(component.getAllocatedFunctions());
+    }
+    return availableElements;
+  }
 
-	/** 
-	 * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
-	 */
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof State) {
-			for (EObject referencer : EObjectExt.getReferencers(element_p, FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES)) {
-				currentElements.add((CapellaElement) referencer);
-			}
-		}
-		return currentElements;
-	}
+  /**
+   * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement,boolean)
+   */
+  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+    if (element_p instanceof State) {
+      for (EObject referencer : EObjectExt.getReferencers(element_p,
+          FaPackage.Literals.ABSTRACT_FUNCTION__AVAILABLE_IN_STATES)) {
+        currentElements.add((CapellaElement) referencer);
+      }
+    }
+    return currentElements;
+  }
 
 }
