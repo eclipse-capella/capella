@@ -1276,6 +1276,19 @@
                      name="EntityOperationalCapabilityInvolvement">
                </defaultMappingPossibility>
             </mappingElement>
+            
+            <mappingElement
+                  domainMetaClass="org.polarsys.capella.core.data.oa.Entity"
+                  reuseExtendedElementDefaultPossibility="true"
+                  reuseExtendedElementPossibilities="true">
+               <defaultMappingPossibility
+                     completeRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.EntityRule"
+                     incompleteRule="org.polarsys.capella.core.transition.system.topdown.rules.oa.EntityRule"
+                     enabled="true"
+                     name="Entity">
+               </defaultMappingPossibility>
+            </mappingElement>
+         
          </mappingPackage>
          
          

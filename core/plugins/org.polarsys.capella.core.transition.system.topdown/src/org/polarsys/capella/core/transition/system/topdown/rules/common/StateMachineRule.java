@@ -13,11 +13,8 @@ package org.polarsys.capella.core.transition.system.topdown.rules.common;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.information.Class;
-import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.transition.system.topdown.handlers.transformation.TopDownTransformationHelper;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -38,13 +35,4 @@ public class StateMachineRule extends org.polarsys.capella.core.transition.syste
     }
   }
 
-  @Override
-  protected EStructuralFeature getTargetContainementFeature(EObject element_p, EObject result_p, EObject container_p, IContext context_p) {
-    if (container_p instanceof Component) {
-      return CsPackage.Literals.BLOCK__OWNED_STATE_MACHINES;
-    } else if (container_p instanceof Class) {
-      return InformationPackage.Literals.CLASS__OWNED_STATE_MACHINES;
-    }
-    return element_p.eContainingFeature();
-  }
 }

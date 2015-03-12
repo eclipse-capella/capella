@@ -10,17 +10,18 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.handlers.transformation;
 
+import java.util.Collection;
+import java.util.Collections;
+
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
-
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
 import org.polarsys.capella.core.transition.common.constants.Messages;
 import org.polarsys.capella.core.transition.common.handlers.IHandler;
 import org.polarsys.capella.core.transition.common.handlers.log.LogHelper;
 import org.polarsys.capella.core.transition.common.handlers.scope.ScopeHandlerHelper;
-import org.polarsys.capella.core.transition.common.handlers.selection.ISelectionContext;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.ITraceabilityTraceHandler;
 import org.polarsys.capella.core.transition.common.handlers.traceability.TraceabilityHandlerHelper;
@@ -80,8 +81,8 @@ public class TopDownTransformationHelper extends CapellaTransformationHandler {
 
   public boolean isTracedInTarget(EObject element_p, IContext context_p) {
 
-    //To know if an element already exist into target, we use the TraceabilityHandler of target scope while transformation.
-    //We need to replace the current handler to avoid transformation in target model instead of transformation in transformation model.
+    // To know if an element already exist into target, we use the TraceabilityHandler of target scope while transformation.
+    // We need to replace the current handler to avoid transformation in target model instead of transformation in transformation model.
     IHandler handler = TraceabilityHandlerHelper.getInstance(context_p);
     boolean result = false;
     try {
@@ -94,6 +95,21 @@ public class TopDownTransformationHelper extends CapellaTransformationHandler {
 
     }
     return result;
+  }
+
+  public Collection<EObject> retrieveTargetTracedElements(EObject element_p, IContext context_p) {
+
+    Collection<EObject> objects = Collections.emptyList();
+    IHandler handler = TraceabilityHandlerHelper.getInstance(context_p);
+    try {
+      ITraceabilityHandler targetHandler = (ITraceabilityHandler) context_p.get(ITransitionConstants.TRACEABILITY_TARGET_HANDLER);
+      objects = targetHandler.retrieveTracedElements(element_p, context_p);
+
+    } finally {
+      context_p.put(ITransitionConstants.TRACEABILITY_HANDLER, handler);
+
+    }
+    return objects;
   }
 
   public boolean isTrace(EObject element_p, IContext context_p) {
