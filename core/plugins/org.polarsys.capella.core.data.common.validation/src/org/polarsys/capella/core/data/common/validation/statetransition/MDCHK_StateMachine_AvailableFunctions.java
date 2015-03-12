@@ -56,15 +56,15 @@ public class MDCHK_StateMachine_AvailableFunctions extends AbstractModelConstrai
     Collection<AbstractFunction> availableFunctions = QueryInterpretor.executeQuery(
         "GetCurrent_Mode_AvailableInStates", state, context);//$NON-NLS-1$
 
-    if ((state.getDoActivity() instanceof AbstractFunction) && (availableFunctions.contains(state.getDoActivity()))) {
+    if (!(state.getDoActivity() instanceof AbstractFunction) || (availableFunctions.contains(state.getDoActivity()))) {
       res[0] = null;
       elements[0] = null;
     }
-    if ((state.getEntry() instanceof AbstractFunction) && (availableFunctions.contains(state.getEntry()))) {
+    if (!(state.getEntry() instanceof AbstractFunction) || (availableFunctions.contains(state.getEntry()))) {
       res[1] = null;
       elements[1] = null;
     }
-    if ((state.getExit() instanceof AbstractFunction) && (availableFunctions.contains(state.getExit()))) {
+    if (!(state.getExit() instanceof AbstractFunction) || (availableFunctions.contains(state.getExit()))) {
       res[2] = null;
       elements[2] = null;
     }

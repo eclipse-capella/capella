@@ -56,18 +56,18 @@ public class MDCHK_StateMachine_Function extends AbstractModelConstraint {
       Collection<Component> subComponents = ComponentExt.getAllSubUsedAndDeployedComponents(container);
       subComponents.add(container);
       for (Component component : subComponents) {
-        if (((state.getDoActivity() instanceof AbstractFunction))
-            && component.getAllocatedFunctions().contains(state.getDoActivity())) {
+        if ((!(state.getDoActivity() instanceof AbstractFunction))
+            || component.getAllocatedFunctions().contains(state.getDoActivity())) {
           res[0] = null;
           elements[0] = null;
         }
-        if (((state.getEntry() instanceof AbstractFunction))
-            && component.getAllocatedFunctions().contains(state.getEntry())) {
+        if ((!(state.getEntry() instanceof AbstractFunction))
+            || component.getAllocatedFunctions().contains(state.getEntry())) {
           res[1] = null;
           elements[1] = null;
         }
-        if (((state.getExit() instanceof AbstractFunction))
-            && component.getAllocatedFunctions().contains(state.getExit())) {
+        if ((!(state.getExit() instanceof AbstractFunction))
+            || component.getAllocatedFunctions().contains(state.getExit())) {
           res[2] = null;
           elements[2] = null;
         }

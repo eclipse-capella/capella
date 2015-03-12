@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
+import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
@@ -54,7 +55,7 @@ public class GetAvailable_StateTransitionTrigger extends AbstractQuery {
         TreeIterator<Object> allContents = EcoreUtil.getAllContents(block, false);
         while (allContents.hasNext()) {
           Object object = allContents.next();
-          if ((object instanceof ExchangeItem) || (object instanceof Operation)) {
+          if ((object instanceof ExchangeItem) || (object instanceof Operation) || (object instanceof StateEvent)) {
             availableElements.add((CapellaElement) object);
           }
         }
