@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,9 @@ public class SequenceDiagramServices {
 
   /**
    * Return executions which are just under an other execution.
-   * @param objP the execution
+   * 
+   * @param objP
+   *          the execution
    * @return the list of result executions
    */
   private static List<Execution> getExecutionFromExecution(Execution execution) {
@@ -127,7 +129,7 @@ public class SequenceDiagramServices {
   public static EObject getSendingEndEvent(SequenceMessage message_p) {
     MessageEnd end = message_p.getSendingEnd();
     if (end == null) {
-      return message_p.getReceivingEnd();
+      return getReceivingEndEvent(message_p);
     }
     return end;
   }
@@ -135,7 +137,7 @@ public class SequenceDiagramServices {
   public static EObject getReceivingEndEvent(SequenceMessage message_p) {
     MessageEnd end = message_p.getReceivingEnd();
     if (end == null) {
-      return message_p.getSendingEnd();
+      return getSendingEndEvent(message_p);
     }
     return end;
   }
@@ -143,7 +145,7 @@ public class SequenceDiagramServices {
   public static EObject getSendingEnd(SequenceMessage message_p) {
     MessageEnd end = message_p.getSendingEnd();
     if (end == null) {
-      return message_p; // lost message case
+      return message_p; // found message case
     }
 
     Scenario sc = (Scenario) message_p.eContainer();
@@ -157,8 +159,25 @@ public class SequenceDiagramServices {
     return execution == null ? end.getCovered() : execution;
   }
 
+  public static EObject getReceivingEnd(SequenceMessage message_p) {
+    MessageEnd end = message_p.getReceivingEnd();
+    if (end == null) {
+      return message_p; // lost message case
+    }
+    Scenario sc = (Scenario) message_p.eContainer();
+    for (TimeLapse exec : sc.getOwnedTimeLapses()) {
+      if (exec.getStart() == end) {
+        return exec;
+      }
+    }
+    Execution execution = getExecutionOfMessageEnd(end);
+
+    return execution == null ? end.getCovered() : execution;
+  }
+
   /**
    * return the execution which start the messageEnd taken in parameter.
+   * 
    * @param end
    * @return
    */
@@ -194,24 +213,9 @@ public class SequenceDiagramServices {
     return null;
   }
 
-  public static EObject getReceivingEnd(SequenceMessage message_p) {
-    MessageEnd end = message_p.getReceivingEnd();
-    if (end == null) {
-      return message_p; // found message case
-    }
-    Scenario sc = (Scenario) message_p.eContainer();
-    for (TimeLapse exec : sc.getOwnedTimeLapses()) {
-      if (exec.getStart() == end) {
-        return exec;
-      }
-    }
-    Execution execution = getExecutionOfMessageEnd(end);
-
-    return execution == null ? end.getCovered() : execution;
-  }
-
   /**
    * used in common.odesign oa.odesign, context.odesign, sequences.odesign
+   * 
    * @param object_p
    * @return
    */
@@ -235,12 +239,14 @@ public class SequenceDiagramServices {
 
   /**
    * Validate a reorder with the new API of sequence diagrams
+   * 
    * @param object_p
    * @param startingEndPredecessorAfter
    * @param finishingEndPredecessorAfter
    * @return
    */
-  public static EObject doReorder(EObject object_p, EObject startingEndPredecessorAfter, EObject finishingEndPredecessorAfter) {
+  public static EObject doReorder(EObject object_p, EObject startingEndPredecessorAfter,
+      EObject finishingEndPredecessorAfter) {
     InteractionFragment newPredecessor = (InteractionFragment) startingEndPredecessorAfter;
     InteractionFragment newPredecessorOfEnd = (InteractionFragment) finishingEndPredecessorAfter;
 
@@ -273,8 +279,8 @@ public class SequenceDiagramServices {
    * @param newPredecessorOfEnd_p
    * @param interactionState_p
    */
-  private static void reorderInteractionState(InteractionFragment newPredecessor_p, InteractionFragment newPredecessorOfEnd_p,
-      InteractionState interactionState_p) {
+  private static void reorderInteractionState(InteractionFragment newPredecessor_p,
+      InteractionFragment newPredecessorOfEnd_p, InteractionState interactionState_p) {
     Scenario scenario = (Scenario) interactionState_p.eContainer();
     scenario.getOwnedInteractionFragments().remove(interactionState_p);
     if (newPredecessorOfEnd_p == null) {
@@ -285,8 +291,8 @@ public class SequenceDiagramServices {
     }
   }
 
-  private static void reorderInteractionOperand(InteractionFragment newPredecessor_p, InteractionFragment newPredecessorOfEnd_p,
-      InteractionOperand interactionOperand_p) {
+  private static void reorderInteractionOperand(InteractionFragment newPredecessor_p,
+      InteractionFragment newPredecessorOfEnd_p, InteractionOperand interactionOperand_p) {
     Scenario scenario = (Scenario) interactionOperand_p.eContainer();
     scenario.getOwnedInteractionFragments().remove(interactionOperand_p);
     if (newPredecessorOfEnd_p == null) {
@@ -302,7 +308,8 @@ public class SequenceDiagramServices {
    * @param newPredecessorOfEnd
    * @param execution
    */
-  private static void reorderTimeLapse(InteractionFragment newPredecessor, InteractionFragment newPredecessorOfEnd, TimeLapse execution) {
+  private static void reorderTimeLapse(InteractionFragment newPredecessor, InteractionFragment newPredecessorOfEnd,
+      TimeLapse execution) {
     EList<InteractionFragment> fragments = null;
 
     EObject container = execution.getStart().eContainer();
@@ -332,7 +339,8 @@ public class SequenceDiagramServices {
    * @param reorderedMessage
    * @param scenario
    */
-  private static void reorderSequenceMessage(InteractionFragment newPredecessor, InteractionFragment newPredecessorOfEnd, SequenceMessage reorderedMessage) {
+  private static void reorderSequenceMessage(InteractionFragment newPredecessor,
+      InteractionFragment newPredecessorOfEnd, SequenceMessage reorderedMessage) {
     AbstractEnd debut = reorderedMessage.getSendingEnd();
     AbstractEnd fin = reorderedMessage.getReceivingEnd();
     EList<InteractionFragment> fragments = null;
@@ -353,7 +361,7 @@ public class SequenceDiagramServices {
         fragments.add(0, debut);
       }
 
-      // The message is pushed up to the top of the message list 
+      // The message is pushed up to the top of the message list
       messages.remove(reorderedMessage);
       messages.add(0, reorderedMessage);
     } else {
@@ -375,7 +383,7 @@ public class SequenceDiagramServices {
         int positionMessage = messages.indexOf(previousMessage);
         messages.add(positionMessage + 1, reorderedMessage);
       } else {
-        // The message is pushed up to the top of the message list 
+        // The message is pushed up to the top of the message list
         messages.remove(reorderedMessage);
         messages.add(0, reorderedMessage);
       }
@@ -383,13 +391,16 @@ public class SequenceDiagramServices {
   }
 
   /**
-   * Search the closest message corresponding to the predecessor passed in parameter. If the message can be deduced directly, go backward in the list of fragments to find the previous message.
-   * Otherwise return null.
-   * @param fragments_p List of fragments of the diagram
+   * Search the closest message corresponding to the predecessor passed in parameter. If the message can be deduced
+   * directly, go backward in the list of fragments to find the previous message. Otherwise return null.
+   * 
+   * @param fragments_p
+   *          List of fragments of the diagram
    * @param predecessor_p
    * @return
    */
-  private static SequenceMessage findCorrespondingPreviousMessage(EList<InteractionFragment> fragments_p, InteractionFragment predecessor_p) {
+  private static SequenceMessage findCorrespondingPreviousMessage(EList<InteractionFragment> fragments_p,
+      InteractionFragment predecessor_p) {
     if (predecessor_p instanceof MessageEnd) {
       return ((MessageEnd) predecessor_p).getMessage();
     }
@@ -401,8 +412,8 @@ public class SequenceDiagramServices {
     return null;
   }
 
-  public static boolean allowCreateMessageCreation(EObject current, EObject preTarget, EObject preSource, EObject preMessageEndBefore,
-      EObject preMessageEndAfter) {
+  public static boolean allowCreateMessageCreation(EObject current, EObject preTarget, EObject preSource,
+      EObject preMessageEndBefore, EObject preMessageEndAfter) {
 
     if (preSource.equals(preTarget)) {
       return false;
@@ -434,8 +445,8 @@ public class SequenceDiagramServices {
     return true;
   }
 
-  public static boolean allowDeleteMessageCreation(EObject current, EObject preTarget, EObject preSource, EObject preMessageEndBefore,
-      EObject preMessageEndAfter) {
+  public static boolean allowDeleteMessageCreation(EObject current, EObject preTarget, EObject preSource,
+      EObject preMessageEndBefore, EObject preMessageEndAfter) {
     if (preSource.equals(preTarget)) {
       return false;
     }
@@ -449,7 +460,8 @@ public class SequenceDiagramServices {
       }
     }
     // create message must not have a fragment after for the targetIR
-    List<InteractionFragment> fragments = new ArrayList<InteractionFragment>(scenario.getOwnedInteractionFragments().size());
+    List<InteractionFragment> fragments = new ArrayList<InteractionFragment>(scenario.getOwnedInteractionFragments()
+        .size());
     for (InteractionFragment fragment : scenario.getOwnedInteractionFragments()) {
       fragments.add(0, fragment);
     }
@@ -467,8 +479,8 @@ public class SequenceDiagramServices {
     return true;
   }
 
-  public static boolean allowMessageCreation(EObject current_p, EObject preSource_p, EObject preTarget_p, boolean withReturn_p, EObject endBefore,
-      EObject endAfter) {
+  public static boolean allowMessageCreation(EObject current_p, EObject preSource_p, EObject preTarget_p,
+      boolean withReturn_p, EObject endBefore, EObject endAfter) {
     InstanceRole sourceInstance;
     InstanceRole targetInstance;
 
@@ -530,10 +542,12 @@ public class SequenceDiagramServices {
     ExchangeItem exchangeItem = (ExchangeItem) exchangeItemLifeLine.getRepresentedInstance().getAbstractType();
 
     if (exchangeItem.getExchangeMechanism() == ExchangeMechanism.SHARED_DATA) {
-      return allowMessageCreationOnSharedData(preSource_p, preTarget_p, withReturn_p, sourceInstance, targetInstance, exchangeItemLifeLine);
+      return allowMessageCreationOnSharedData(preSource_p, preTarget_p, withReturn_p, sourceInstance, targetInstance,
+          exchangeItemLifeLine);
     }
     // event case
-    return allowMessageCreationOnEvent(preSource_p, preTarget_p, withReturn_p, sourceInstance, targetInstance, exchangeItemLifeLine);
+    return allowMessageCreationOnEvent(preSource_p, preTarget_p, withReturn_p, sourceInstance, targetInstance,
+        exchangeItemLifeLine);
   }
 
   /**
@@ -545,8 +559,8 @@ public class SequenceDiagramServices {
    * @param exchangeItemLifeLine_p
    * @return
    */
-  private static boolean allowMessageCreationOnEvent(EObject preSource_p, EObject preTarget_p, boolean withReturn_p, InstanceRole sourceInstance_p,
-      InstanceRole targetInstance_p, InstanceRole exchangeItemLifeLine_p) {
+  private static boolean allowMessageCreationOnEvent(EObject preSource_p, EObject preTarget_p, boolean withReturn_p,
+      InstanceRole sourceInstance_p, InstanceRole targetInstance_p, InstanceRole exchangeItemLifeLine_p) {
     // in the event case, only ONE cases are allowed.
     // (1) asynch, EI->COMP source is IR
     if (!withReturn_p && (targetInstance_p.getRepresentedInstance() instanceof Part)) {
@@ -565,15 +579,17 @@ public class SequenceDiagramServices {
    * @param exchangeItemLifeLine
    * @return
    */
-  private static boolean allowMessageCreationOnSharedData(EObject preSource_p, EObject preTarget_p, boolean withReturn_p, InstanceRole sourceInstance,
-      InstanceRole targetInstance, InstanceRole exchangeItemLifeLine) {
+  private static boolean allowMessageCreationOnSharedData(EObject preSource_p, EObject preTarget_p,
+      boolean withReturn_p, InstanceRole sourceInstance, InstanceRole targetInstance, InstanceRole exchangeItemLifeLine) {
     boolean case2found = false; // <=> existing ACCEPT message found.
     boolean case3found = false; // <=> existing READ message found.
     // Go through existing SequenceMessages of the Scenario connecting sourceInstance and targetInstance.
     Scenario s = (Scenario) sourceInstance.eContainer();
     for (SequenceMessage existingSequenceMessage : s.getOwnedMessages()) {
-      if (((existingSequenceMessage.getSendingEnd().getCovered() == sourceInstance) && (existingSequenceMessage.getReceivingEnd().getCovered() == targetInstance))
-          || ((existingSequenceMessage.getSendingEnd().getCovered() == targetInstance) && (existingSequenceMessage.getReceivingEnd().getCovered() == sourceInstance))) {
+      if (((existingSequenceMessage.getSendingEnd().getCovered() == sourceInstance) && (existingSequenceMessage
+          .getReceivingEnd().getCovered() == targetInstance))
+          || ((existingSequenceMessage.getSendingEnd().getCovered() == targetInstance) && (existingSequenceMessage
+              .getReceivingEnd().getCovered() == sourceInstance))) {
         if (existingSequenceMessage.getReceivingEnd().getCovered() == exchangeItemLifeLine) {
           // SequenceMessage pointing to the ExchangeItem -> can be case 1 (WRITE message) or case 3 (READ message).
           if (SequenceMessageExt.getOppositeSequenceMessage(existingSequenceMessage) != null) {
@@ -581,7 +597,8 @@ public class SequenceDiagramServices {
             case3found = true;
           }
         }
-        if ((existingSequenceMessage.getSendingEnd().getCovered() == exchangeItemLifeLine) && (existingSequenceMessage.getKind() != MessageKind.REPLY)) {
+        if ((existingSequenceMessage.getSendingEnd().getCovered() == exchangeItemLifeLine)
+            && (existingSequenceMessage.getKind() != MessageKind.REPLY)) {
           // SequenceMessage starting from the ExchangeItem (and which is not a REPLY) -> it's an ACCEPT message.
           case2found = true;
         }
@@ -596,7 +613,8 @@ public class SequenceDiagramServices {
 
     // If the case (2) occurred it will be not possible to done the case (3) and vice versa.
 
-    if (!withReturn_p && (sourceInstance.getRepresentedInstance() instanceof Part) && (preTarget_p instanceof InstanceRole)) {
+    if (!withReturn_p && (sourceInstance.getRepresentedInstance() instanceof Part)
+        && (preTarget_p instanceof InstanceRole)) {
       // case 1
       return true;
     }
@@ -676,7 +694,8 @@ public class SequenceDiagramServices {
         }
       }
     }
-    CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(context_p), irToRemove, false, false, true);
+    CapellaDeleteCommand mdc = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(context_p), irToRemove,
+        false, false, true);
     if (mdc.canExecute()) {
       // Do execute the command !
       mdc.execute();
@@ -689,9 +708,10 @@ public class SequenceDiagramServices {
    */
   public static void orderingError(Scenario scenario_p) {
     OperationCanceledException exception = new OperationCanceledException(Messages.SequenceDiagramServices_3);
-    IStatus errorStatus = new Status(IStatus.ERROR, SiriusViewActivator.ID, 0, Messages.SequenceDiagramServices_0, exception);
-    ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.SequenceDiagramServices_1, Messages.SequenceDiagramServices_2,
-        errorStatus);
+    IStatus errorStatus = new Status(IStatus.ERROR, SiriusViewActivator.ID, 0, Messages.SequenceDiagramServices_0,
+        exception);
+    ErrorDialog.openError(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.SequenceDiagramServices_1,
+        Messages.SequenceDiagramServices_2, errorStatus);
     throw exception;
   }
 
@@ -707,7 +727,8 @@ public class SequenceDiagramServices {
   public static boolean isValidEntityScenario(EObject ctx_p) {
     if (ctx_p instanceof Scenario) {
       Scenario s = (Scenario) ctx_p;
-      if (CapellaServices.getService().isOperationalContext(s) && (s.getKind().equals(ScenarioKind.INTERACTION) || s.getKind().equals(ScenarioKind.UNSET))) {
+      if (CapellaServices.getService().isOperationalContext(s)
+          && (s.getKind().equals(ScenarioKind.INTERACTION) || s.getKind().equals(ScenarioKind.UNSET))) {
         return (s.getOwnedInstanceRoles().size() == 0) || !containsOaActivity(s);
       }
       return false;
@@ -721,7 +742,8 @@ public class SequenceDiagramServices {
   public static boolean isValidActivityScenario(EObject ctx_p) {
     if (ctx_p instanceof Scenario) {
       Scenario s = (Scenario) ctx_p;
-      if (CapellaServices.getService().isOperationalContext(s) && (s.getKind().equals(ScenarioKind.INTERACTION) || s.getKind().equals(ScenarioKind.UNSET))) {
+      if (CapellaServices.getService().isOperationalContext(s)
+          && (s.getKind().equals(ScenarioKind.INTERACTION) || s.getKind().equals(ScenarioKind.UNSET))) {
         return (s.getOwnedInstanceRoles().size() == 0) || containsOaActivity(s);
       }
       return false;
@@ -734,7 +756,8 @@ public class SequenceDiagramServices {
   public static boolean isValidIS(EObject ctx_p) {
     if (ctx_p instanceof Scenario) {
       Scenario s = (Scenario) ctx_p;
-      return (!CapellaServices.getService().isOperationalContext(s)) && (s.getKind().equals(ScenarioKind.INTERFACE) || s.getKind().equals(ScenarioKind.UNSET));
+      return (!CapellaServices.getService().isOperationalContext(s))
+          && (s.getKind().equals(ScenarioKind.INTERFACE) || s.getKind().equals(ScenarioKind.UNSET));
     } else {
       AbstractCapability capa = (AbstractCapability) ctx_p;
       return !(capa instanceof OperationalCapability);
@@ -744,8 +767,9 @@ public class SequenceDiagramServices {
   public static boolean isValidES(EObject ctx_p) {
     if (ctx_p instanceof Scenario) {
       Scenario s = (Scenario) ctx_p;
-      return (!CapellaServices.getService().isOperationalContext(s)) && (!CapellaServices.getService().isEPBSContext(s))
-             && (s.getKind().equals(ScenarioKind.DATA_FLOW) || s.getKind().equals(ScenarioKind.UNSET));
+      return (!CapellaServices.getService().isOperationalContext(s))
+          && (!CapellaServices.getService().isEPBSContext(s))
+          && (s.getKind().equals(ScenarioKind.DATA_FLOW) || s.getKind().equals(ScenarioKind.UNSET));
     } else {
       AbstractCapability capa = (AbstractCapability) ctx_p;
       return !(capa instanceof OperationalCapability) && (!CapellaServices.getService().isEPBSContext(capa));
@@ -755,8 +779,9 @@ public class SequenceDiagramServices {
   public static boolean isValidFS(EObject ctx_p) {
     if (ctx_p instanceof Scenario) {
       Scenario s = (Scenario) ctx_p;
-      return (!CapellaServices.getService().isOperationalContext(s)) && (!CapellaServices.getService().isEPBSContext(s))
-             && (s.getKind().equals(ScenarioKind.FUNCTIONAL) || s.getKind().equals(ScenarioKind.UNSET));
+      return (!CapellaServices.getService().isOperationalContext(s))
+          && (!CapellaServices.getService().isEPBSContext(s))
+          && (s.getKind().equals(ScenarioKind.FUNCTIONAL) || s.getKind().equals(ScenarioKind.UNSET));
     } else {
       AbstractCapability capa = (AbstractCapability) ctx_p;
       return !(capa instanceof OperationalCapability) && (!CapellaServices.getService().isEPBSContext(capa));
@@ -771,11 +796,12 @@ public class SequenceDiagramServices {
   }
 
   /*
-   * exec message --------------------------------------------------- | CASE A | CASE D | exec | begin | mess.IR | | end | end |
-   * --------------------------------------------------- | CASE B | CASE C | message | begin | sending | | mess.IR | receiving |
-   * ---------------------------------------------------
+   * exec message --------------------------------------------------- | CASE A | CASE D | exec | begin | mess.IR | | end
+   * | end | --------------------------------------------------- | CASE B | CASE C | message | begin | sending | |
+   * mess.IR | receiving | ---------------------------------------------------
    */
-  public static InteractionFragment getCorrespondingIFStart(EObject context_p, EObject obj_p, EObject correspondingFinish_p) {
+  public static InteractionFragment getCorrespondingIFStart(EObject context_p, EObject obj_p,
+      EObject correspondingFinish_p) {
     if (obj_p instanceof InteractionFragment) {
       InteractionFragment if_ = (InteractionFragment) obj_p;
       return if_;
@@ -794,16 +820,20 @@ public class SequenceDiagramServices {
       if (correspondingFinish_p instanceof TimeLapse) {
         // case D
         return getMessageEndOnSameInstanceRole(sm, ((TimeLapse) correspondingFinish_p).getStart());
-      } else if (correspondingFinish_p instanceof SequenceMessage) {
+      } else if (correspondingFinish_p instanceof SequenceMessage && sm.getSendingEnd() != null) {
         // case C
         return sm.getSendingEnd();
+      } else if (correspondingFinish_p instanceof SequenceMessage && sm.getSendingEnd() == null) {
+        // case E
+        return sm.getReceivingEnd();
       }
 
     }
     return null;
   }
 
-  public static InteractionFragment getCorrespondingIFFinish(EObject context_p, EObject obj_p, EObject correspondingStart_p) {
+  public static InteractionFragment getCorrespondingIFFinish(EObject context_p, EObject obj_p,
+      EObject correspondingStart_p) {
     if (obj_p instanceof InteractionFragment) {
       InteractionFragment if_ = (InteractionFragment) obj_p;
       return if_;
@@ -814,6 +844,7 @@ public class SequenceDiagramServices {
         return tl.getFinish();
       } else if (correspondingStart_p instanceof SequenceMessage) {
         // case B
+
         return tl.getFinish();
       }
     } else if (obj_p instanceof SequenceMessage) {
@@ -821,9 +852,12 @@ public class SequenceDiagramServices {
       if (correspondingStart_p instanceof TimeLapse) {
         // case D
         return getMessageEndOnSameInstanceRole(sm, ((TimeLapse) correspondingStart_p).getStart());
-      } else if (correspondingStart_p instanceof SequenceMessage) {
+      } else if (correspondingStart_p instanceof SequenceMessage && !(sm.getReceivingEnd() == null)) {
         // case C
         return sm.getReceivingEnd();
+      } else if (correspondingStart_p instanceof SequenceMessage && (sm.getReceivingEnd() == null)) {
+        // case E
+        return sm.getSendingEnd();
       } else if (correspondingStart_p instanceof InteractionFragment) {
         return getMessageEndOnSameInstanceRole(sm, ((InteractionFragment) correspondingStart_p));
       }
@@ -831,7 +865,8 @@ public class SequenceDiagramServices {
     return null;
   }
 
-  private static InteractionFragment getMessageEndOnSameInstanceRole(SequenceMessage sm, InteractionFragment startFragment) {
+  private static InteractionFragment getMessageEndOnSameInstanceRole(SequenceMessage sm,
+      InteractionFragment startFragment) {
     InstanceRole ir1 = startFragment.getCoveredInstanceRoles().get(0);
     if ((sm.getSendingEnd() != null) && sm.getSendingEnd().getCovered().equals(ir1)) {
       return sm.getSendingEnd();
@@ -853,9 +888,13 @@ public class SequenceDiagramServices {
 
     if (sm.getReceivingEnd() != null) {
       posReceive = s.getOwnedInstanceRoles().indexOf(sm.getReceivingEnd().getCovered());
+    } else {
+      posReceive = s.getOwnedInstanceRoles().indexOf(sm.getSendingEnd().getCovered());
     }
     if (sm.getSendingEnd() != null) {
       posSend = s.getOwnedInstanceRoles().indexOf(sm.getSendingEnd().getCovered());
+    } else {
+      posSend = s.getOwnedInstanceRoles().indexOf(sm.getReceivingEnd().getCovered());
     }
 
     // For not using an absolute value.
@@ -869,13 +908,15 @@ public class SequenceDiagramServices {
   }
 
   /**
-   * Return available ExchangeItem for Scenario Diagmra(SD): we do this because the representation in the diagram is the owned "ExchangeItemInstance" not the
-   * ExchageItem
+   * Return available ExchangeItem for Scenario Diagmra(SD): we do this because the representation in the diagram is the
+   * owned "ExchangeItemInstance" not the ExchageItem
+   * 
    * @param context_p
    * @param allExchangeItemsFromModel
    * @return list of ExchangeItem Elements
    */
-  public List<ExchangeItem> getAvailableExchangeItemForSD(EObject context_p, List<ExchangeItem> allExchangeItemsFromModel) {
+  public List<ExchangeItem> getAvailableExchangeItemForSD(EObject context_p,
+      List<ExchangeItem> allExchangeItemsFromModel) {
     List<ExchangeItem> elmentAlReadyInDiagram = new ArrayList<ExchangeItem>();
 
     // Retrieve all the existing AbstractType element(i.e is "ExchangeItem") of ExchangeItemInstance in diagram
@@ -898,7 +939,8 @@ public class SequenceDiagramServices {
       }
     }
 
-    // remove the existing ExchangeItem elements in diagram from allExchangeItems(kind: Shared, Event and Unset from model)
+    // remove the existing ExchangeItem elements in diagram from allExchangeItems(kind: Shared, Event and Unset from
+    // model)
     if (!allExchangeItemsFromModel.isEmpty()) {
       if (!elmentAlReadyInDiagram.isEmpty()) {
         allExchangeItemsFromModel.removeAll(elmentAlReadyInDiagram);
@@ -908,7 +950,4 @@ public class SequenceDiagramServices {
     return allExchangeItemsFromModel;
   }
 
-  public void reconnectDuration(EObject element, EObject source, EObject target) {
-    System.out.println("element=" + element);
-  }
 }

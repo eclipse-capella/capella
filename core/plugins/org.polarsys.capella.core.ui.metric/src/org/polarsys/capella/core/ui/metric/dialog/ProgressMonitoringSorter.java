@@ -52,6 +52,7 @@ public class ProgressMonitoringSorter extends ViewerSorter {
         int result = 0;
         boolean fragment1 = CapellaResourceHelper.isCapellaFragment(resource1.getURI());
         boolean fragment2 = CapellaResourceHelper.isCapellaFragment(resource2.getURI());
+
         if (fragment1 && !fragment2) {
           result = 1;
         } else if (!fragment1 && fragment2) {

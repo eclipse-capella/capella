@@ -14,11 +14,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
-import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.transition.common.handlers.selection.EClassSelectionContext;
 import org.polarsys.capella.core.transition.common.handlers.transformation.TransformationHandlerHelper;
@@ -45,28 +43,8 @@ public class EntityRule extends org.polarsys.capella.core.transition.system.topd
   }
 
   @Override
-  protected EObject transformDirectElement(EObject element_p, IContext context_p) {
-    EClass targetType = getTargetType(element_p, context_p);
-    if (CtxPackage.Literals.SYSTEM.isSuperTypeOf(targetType)) {
-      // Retrieve the existing architecture if any
-      EObject root = TransformationHandlerHelper.getInstance(context_p).getLevelElement(element_p, context_p);
-
-      BlockArchitecture target =
-          (BlockArchitecture) TransformationHandlerHelper.getInstance(context_p).getBestTracedElement(root, context_p, CsPackage.Literals.BLOCK_ARCHITECTURE);
-      if (target instanceof SystemAnalysis) {
-        SystemAnalysis analysis = (SystemAnalysis) target;
-        if (analysis.getOwnedSystem() != null) {
-          return analysis.getOwnedSystem();
-        }
-      }
-    }
-    EObject res = super.transformDirectElement(element_p, context_p);
-    return res;
-  }
-
-  @Override
   protected EObject getBestContainer(EObject element_p, EObject result_p, IContext context_p) {
-    //We don't care traceability, we return default container
+    // We don't care traceability, we return default container
     return null;
   }
 

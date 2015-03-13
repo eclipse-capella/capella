@@ -39,7 +39,7 @@ public class ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter extend
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
-    TransactionHelper.getExecutionManager(capellaProject_p).execute(new ScenarioRefinementCommand(getModelElement(_project), new NullProgressMonitor()));
+    TransactionHelper.getExecutionManager(capellaProject_p).execute(new ScenarioRefinementCommand(getModelElement(capellaProject_p), new NullProgressMonitor()));
   }
 
   /**

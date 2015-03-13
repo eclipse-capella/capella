@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,6 +57,8 @@ public class PreferenceConstants {
 
   public static final String P_PropertyValues = "PropertyValues_Preference";
 
+  public static final String P_Generalization = "Generalization_Preference";
+
   public static final String P_Other = "Other_Preference";
 
   public static final String P_F_TEXT = "Function";
@@ -100,6 +102,8 @@ public class PreferenceConstants {
   public static final String P_MS_TEXT = "Modes / States";
 
   public static final String P_PropertyValues_TEXT = "Property Values";
+
+  public static final String P_Generalization_TEXT = "Generalization";
 
   public static final String P_Other_TEXT = "Other";
 

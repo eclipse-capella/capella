@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,20 @@ import org.eclipse.emf.diffmerge.api.diff.IDifference;
 import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
 import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.core.commands.preferences.service.AbstractPreferencesInitializer;
+import org.polarsys.capella.core.data.capellacommon.Mode;
+import org.polarsys.capella.core.data.capellacommon.Region;
+import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellacommon.StateTransition;
+import org.polarsys.capella.core.data.capellacommon.TransfoLink;
+import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
+import org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue;
+import org.polarsys.capella.core.data.capellacore.Generalization;
+import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
+import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.cs.Part;
@@ -36,18 +48,6 @@ import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
-import org.polarsys.capella.core.data.capellacommon.Mode;
-import org.polarsys.capella.core.data.capellacommon.Region;
-import org.polarsys.capella.core.data.capellacommon.State;
-import org.polarsys.capella.core.data.capellacommon.StateMachine;
-import org.polarsys.capella.core.data.capellacommon.StateTransition;
-import org.polarsys.capella.core.data.capellacommon.TransfoLink;
-import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyType;
-import org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue;
-import org.polarsys.capella.core.data.capellacore.PropertyValueGroup;
-import org.polarsys.capella.core.data.capellacore.PropertyValuePkg;
 import org.polarsys.capella.core.data.pa.LogicalArchitectureRealization;
 import org.polarsys.capella.core.data.pa.LogicalComponentRealization;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
@@ -143,13 +143,17 @@ public class PreferenceFilterItem extends AbstractFilterItem {
       _isToDisplay = getDisplayPref(PreferenceConstants.P_EI);
     } else if (me instanceof Interface) {
       _isToDisplay = getDisplayPref(PreferenceConstants.P_Iface);
-    } else if ((me instanceof Region) || (me instanceof Mode) || (me instanceof StateMachine) || (me instanceof State) || (me instanceof StateTransition)) {
+    } else if ((me instanceof Region) || (me instanceof Mode) || (me instanceof StateMachine) || (me instanceof State)
+        || (me instanceof StateTransition)) {
       _isToDisplay = getDisplayPref(PreferenceConstants.P_MS);
     } else if (me instanceof TransfoLink) {
       _isToDisplay = getDisplayPref(PreferenceConstants.P_Other);
-    } else if ((me instanceof PropertyValuePkg) || (me instanceof AbstractPropertyValue) || (me instanceof PropertyValueGroup)
-               || (me instanceof EnumerationPropertyLiteral) || (me instanceof EnumerationPropertyType) || (me instanceof EnumerationPropertyValue)) {
+    } else if ((me instanceof PropertyValuePkg) || (me instanceof AbstractPropertyValue)
+        || (me instanceof PropertyValueGroup) || (me instanceof EnumerationPropertyLiteral)
+        || (me instanceof EnumerationPropertyType) || (me instanceof EnumerationPropertyValue)) {
       _isToDisplay = getDisplayPref(PreferenceConstants.P_PropertyValues);
+    } else if (me instanceof Generalization) {
+      _isToDisplay = getDisplayPref(PreferenceConstants.P_Generalization);
     } else {
       _isToDisplay = getDisplayPref(PreferenceConstants.P_Other);
     }

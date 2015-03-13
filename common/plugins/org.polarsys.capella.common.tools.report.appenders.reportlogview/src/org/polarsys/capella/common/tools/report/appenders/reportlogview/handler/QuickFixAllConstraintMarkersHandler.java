@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,6 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
 
   private final String menuId = "org.polarsys.capella.core.validation.quickfixAllSimilar"; //$NON-NLS-1$
   private final String menuImage = "quickfixAll-repository.png"; //$NON-NLS-1$
-
 
   public static IMarkerHelpRegistry getMarkerRegistry() {
     return IDE.getMarkerHelpRegistry();
@@ -85,7 +84,8 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
         Set<IMarker> markersToFix = new HashSet<IMarker>();
         if (res instanceof WorkbenchMarkerResolution) {
 
-          IMarker[] otherMarkers = ((WorkbenchMarkerResolution) res).findOtherMarkers(sameConstraintMarkers.toArray(new IMarker[0]));
+          IMarker[] otherMarkers = ((WorkbenchMarkerResolution) res).findOtherMarkers(sameConstraintMarkers
+              .toArray(new IMarker[0]));
           for (IMarker otherMarker : otherMarkers) {
             markersToFix.add(otherMarker);
           }
@@ -94,7 +94,7 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
         // only create a menu item for the resolution that can handle
         // all the similar markers (i.e. having the same
         // constraintDescriptor)
-        if (markersToFix.containsAll(sameConstraintMarkers)) {
+        if (markersToFix.containsAll(sameConstraintMarkers) && isInQuickFixAllSimilar(res, markersToFix)) {
           items.add(createContributionItem(markersToFix, res));
         }
       }
@@ -113,18 +113,18 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
     return NO_CONTRIBUTION_ITEM;
   }
 
-//  @Deprecated
-//  private ISelection getSelection() {
-//    ISelection selection = null;
-//
-//    IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-//    IWorkbenchPart activePart = activePage.getActivePart();
-//    if (activePart instanceof MarkerView) {
-//      MarkerView view = (MarkerView) activePart;
-//      selection = view.getViewer().getSelection();
-//    }
-//    return selection;
-//  }
+  // @Deprecated
+  // private ISelection getSelection() {
+  // ISelection selection = null;
+  //
+  // IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+  // IWorkbenchPart activePart = activePage.getActivePart();
+  // if (activePart instanceof MarkerView) {
+  // MarkerView view = (MarkerView) activePart;
+  // selection = view.getViewer().getSelection();
+  // }
+  // return selection;
+  // }
 
   @Override
   protected List<IMarker> getSelectedMarkers() {
@@ -154,17 +154,17 @@ public class QuickFixAllConstraintMarkersHandler extends QuickfixHandler {
     return true;
   }
 
-//  private IConstraintDescriptor getConstraintDescriptor(ISelection selection) {
-//    IConstraintDescriptor descriptor = null;
-//    if (selection instanceof IStructuredSelection) {
-//      IStructuredSelection ssel = (IStructuredSelection) selection;
-//      Object first = ssel.getFirstElement();
-//      if ((first != null) && (first instanceof IMarker)) {
-//        IMarker marker = (IMarker) first;
-//        descriptor = MarkerViewHelper.getConstraintDescriptor(marker);
-//      }
-//    }
-//    return descriptor;
-//  }
+  // private IConstraintDescriptor getConstraintDescriptor(ISelection selection) {
+  // IConstraintDescriptor descriptor = null;
+  // if (selection instanceof IStructuredSelection) {
+  // IStructuredSelection ssel = (IStructuredSelection) selection;
+  // Object first = ssel.getFirstElement();
+  // if ((first != null) && (first instanceof IMarker)) {
+  // IMarker marker = (IMarker) first;
+  // descriptor = MarkerViewHelper.getConstraintDescriptor(marker);
+  // }
+  // }
+  // return descriptor;
+  // }
 
 }

@@ -16,5 +16,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.diagram
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: org.polarsys.capella.core.libraries.extendedqueries
+Export-Package: org.polarsys.capella.core.libraries.extendedqueries,
+ org.polarsys.capella.core.libraries.extendedqueries.capellacommon
 Bundle-Localization: plugin

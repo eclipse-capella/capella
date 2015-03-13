@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.statushandlers.StatusManager;
 import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
-
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewPlugin;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.Messages;
 
@@ -58,6 +57,11 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
     return getContributionItems().length > 0;
   }
 
+  @Override
+  public boolean isEnabled() {
+    return super.isEnabled();
+  }
+
   /**
    * @see org.eclipse.ui.actions.CompoundContributionItem#getContributionItems()
    */
@@ -65,49 +69,77 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
   protected IContributionItem[] getContributionItems() {
 
     List<IMarker> selection = getSelectedMarkers();
-     
-    if (selection.isEmpty()){
+
+    if (selection.isEmpty()) {
       return NO_CONTRIBUTION_ITEM;
     }
-   
+
     Collection<IContributionItem> items = new ArrayList<IContributionItem>();
-    
-    for (IMarkerResolution res : getMarkerRegistry().getResolutions(selection.get(0))){
+
+    for (IMarkerResolution res : getMarkerRegistry().getResolutions(selection.get(0))) {
       Collection<IMarker> markers = new HashSet<IMarker>();
       markers.add(selection.get(0));
-      
-      if (res instanceof WorkbenchMarkerResolution){
-    	  
+
+      if (res instanceof WorkbenchMarkerResolution) {
+
         IMarker[] otherMarkers = ((WorkbenchMarkerResolution) res).findOtherMarkers(selection.toArray(new IMarker[0]));
-		for (IMarker otherMarker : otherMarkers){
+        for (IMarker otherMarker : otherMarkers) {
           markers.add(otherMarker);
         }
       }
-      
-      // only create a menu item if the resolution can handle all markers in the selection
-      if (markers.containsAll(selection)){
+
+      // only create a menu item if the resolution can handle all markers
+      // in the selection
+      if (markers.containsAll(selection) && isCompatible(res, markers)) {
         items.add(createContributionItem(markers, res));
       }
     }
 
-    if (items.size() > 0){
+    if (items.size() > 0) {
       ImageDescriptor image = MarkerViewPlugin.getDefault().getImageDescriptor(menuImage);
       String text = Messages.MarkerView_Quickfix_Command_Name;
       MenuManager manager = new MenuManager(text, image, menuId);
-      for (IContributionItem item : items){
+      for (IContributionItem item : items) {
         manager.add(item);
       }
       return new IContributionItem[] { manager };
     }
-    
+
     return NO_CONTRIBUTION_ITEM;
+  }
+
+  /**
+   * 
+   * @param res
+   * @param markers
+   * @return true if a resolution should be displayed for a set of markers
+   */
+  protected boolean isCompatible(IMarkerResolution res, Collection<IMarker> markers) {
+    if (res instanceof ReportMarkerResolution) {
+      return ((ReportMarkerResolution) res).enabled(markers);
+    }
+    return false;
+  }
+
+  /**
+   * 
+   * @param res
+   * @param markers
+   * @return true if a resolution should be displayed in Quickfix All Similar
+   */
+  protected boolean isInQuickFixAllSimilar(IMarkerResolution res, Collection<IMarker> markers) {
+    if (res instanceof ReportMarkerResolution) {
+      return ((ReportMarkerResolution) res).quickFixAllSimilarEnabled(markers);
+    }
+    return false;
   }
 
   /**
    * @param iMarkerResolution_p
    * @return
    */
-  protected IContributionItem createContributionItem(final Collection<IMarker> markers_p, final IMarkerResolution resolution_p) {
+  protected IContributionItem createContributionItem(final Collection<IMarker> markers_p,
+      final IMarkerResolution resolution_p) {
     return new ActionContributionItem(new Action() {
 
       /**
@@ -156,26 +188,29 @@ public class QuickfixHandler extends AbstractDynamicContributionItem {
        */
       @Override
       public void run() {
-        
+
         IRunnableWithProgress resolutionsRunnable = new IRunnableWithProgress() {
           @Override
           public void run(IProgressMonitor monitor) {
-            if (resolution_p instanceof WorkbenchMarkerResolution){
-               ((WorkbenchMarkerResolution) resolution_p).run(markers_p.toArray(new IMarker[0]), monitor);
+            if (resolution_p instanceof WorkbenchMarkerResolution) {
+              ((WorkbenchMarkerResolution) resolution_p).run(markers_p.toArray(new IMarker[0]), monitor);
             } else {
-              for (IMarker marker : markers_p){
+              for (IMarker marker : markers_p) {
                 resolution_p.run(marker);
               }
             }
           }
         };
-        IRunnableContext context = new ProgressMonitorDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell());
+        IRunnableContext context = new ProgressMonitorDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow()
+            .getShell());
         try {
           PlatformUI.getWorkbench().getProgressService().runInUI(context, resolutionsRunnable, null);
         } catch (InvocationTargetException exception_p) {
-          StatusManager.getManager().handle(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
+          StatusManager.getManager().handle(
+              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
         } catch (InterruptedException exception_p) {
-          StatusManager.getManager().handle(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
+          StatusManager.getManager().handle(
+              new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, exception_p.getMessage(), exception_p));
         }
       }
     });

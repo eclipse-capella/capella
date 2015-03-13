@@ -38,7 +38,7 @@ public class PerformAutomatedTransitionOfSystemAdapter extends AbstractHyperlink
    */
   @Override
   protected void linkPressed(HyperlinkEvent event_p, Project capellaProject_p, Session session_p) {
-    TransactionHelper.getExecutionManager(capellaProject_p).execute(new GenerateInterfaceDelegationsCommand(getModelElement(_project)));
+    TransactionHelper.getExecutionManager(capellaProject_p).execute(new GenerateInterfaceDelegationsCommand(getModelElement(capellaProject_p)));
   }
 
   /**

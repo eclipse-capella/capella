@@ -12,7 +12,7 @@ package org.polarsys.capella.core.transition.system.topdown.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
+import org.polarsys.capella.core.transition.system.topdown.ui.preferences.TopDownPreferenceInitializer;
 import org.polarsys.capella.core.transition.system.ui.preferences.TransitionsPreferencesInitializer;
 
 /**
@@ -41,7 +41,8 @@ public class Activator extends AbstractUIPlugin {
     super.start(context);
     plugin = this;
     new TransitionsPreferencesInitializer();
-
+    new TopDownPreferenceInitializer();
+    
   }
 
   /*

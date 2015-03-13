@@ -23,10 +23,10 @@
          </rules>
       </resolver>
       <resolver
-            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.DWF_D27_Resolver"
-            desc="%quickFix.DWF_D27.desc"
+            class="org.polarsys.capella.core.data.core.ui.quickfix.resolver.I_34_Resolver"
+            desc="%quickFix.I_34.desc"
             icon="icons/search16.gif"
-            label="%quickFix.DWF_D27.label">
+            label="%quickFix.I_34.label">
          <rules
                ruleId="I_34">
          </rules>

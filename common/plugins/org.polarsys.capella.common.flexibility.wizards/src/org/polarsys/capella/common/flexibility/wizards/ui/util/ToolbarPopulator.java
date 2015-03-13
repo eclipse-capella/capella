@@ -22,6 +22,7 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.ISourceProvider;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.IHandlerService;
+import org.eclipse.ui.internal.menus.InternalMenuService;
 import org.eclipse.ui.internal.services.ServiceLocator;
 import org.eclipse.ui.menus.IMenuService;
 import org.eclipse.ui.services.IDisposable;
@@ -34,7 +35,6 @@ import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 
 /**
  * This class is intended to be used to populate a ContributionManager for the given ISelectionProvider instead of global selection.
- *
  */
 public class ToolbarPopulator implements ISelectionListener, PropertyChangeListener, IDisposable {
 
@@ -49,8 +49,8 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
 
   /**
    * @param contributionManager_p
-   * @param selectListRenderer_p 
-   * @param rendererContext_p 
+   * @param selectListRenderer_p
+   * @param rendererContext_p
    * @param viewer_p
    * @param activeWorkbenchWindow_p
    */
@@ -70,7 +70,7 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
       return;
     }
 
-    //We can avoid internal uses by providing ours implementations, but its convenient for now.
+    // We can avoid internal uses by providing ours implementations, but its convenient for now.
 
     IServiceLocator parentLocator = _parent;
     ServiceLocator locator = new ServiceLocator(parentLocator, null, this);
@@ -89,7 +89,7 @@ public class ToolbarPopulator implements ISelectionListener, PropertyChangeListe
     locator.registerService(IHandlerService.class, handlerService);
 
     IMenuService menuService = (IMenuService) parentLocator.getService(IMenuService.class);
-    menuService = new SlavePopulatorMenuService((IMenuService) menuService, locator, null);
+    menuService = new SlavePopulatorMenuService((InternalMenuService) menuService, locator, null);
     locator.registerService(IMenuService.class, menuService);
     menuService.populateContributionManager(_contributionManager, _location);
     selectionChanged(null, StructuredSelection.EMPTY);

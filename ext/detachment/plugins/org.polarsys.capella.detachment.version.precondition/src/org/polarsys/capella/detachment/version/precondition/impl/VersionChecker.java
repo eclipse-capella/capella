@@ -19,6 +19,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -58,6 +59,7 @@ public class VersionChecker implements IPrecondition<IFile> {
 			Collection<String> capellaModellers = modelsEltParser.getCapellaModellers();
 			Collection<URI> capellaModellersURIs = new HashSet<URI>();
 
+			String projectName = param.getProject().getName();
 			//Create uris
 			for (String refrencedModel : capellaModellers) {
 				//workspace resources
@@ -68,7 +70,7 @@ public class VersionChecker implements IPrecondition<IFile> {
 				
 				//the current model
 				if (!refrencedModel.isEmpty() && !refrencedModel.startsWith("platform:/resource/")){ //$NON-NLS-1$
-					URI plateformResourceURI = URI.createPlatformResourceURI(param.getFullPath().toString(), true);
+					URI plateformResourceURI = URI.createPlatformResourceURI(projectName + "/" + refrencedModel, true);
 					capellaModellersURIs.add(plateformResourceURI);
 				}
 			}
@@ -86,7 +88,14 @@ public class VersionChecker implements IPrecondition<IFile> {
 				
 				if (uri.isPlatformResource()){
 					IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectId);
-					IFile file = project.getFile(modelName);
+					IFile file = null;
+					if (uri.toString().endsWith("melodyfragment")){
+						IFolder folderFragments = project.getFolder("fragments");
+						file = folderFragments.getFile(modelName);
+					} else {
+						file =	project.getFile(modelName);
+					}
+					
 					String modelVersion = CapellaFeatureHelper.getDetectedVersion(file);
 					if (capellaVersion != null && modelVersion != null && !capellaVersion.isEmpty() && !modelVersion.isEmpty()){
 						if (!modelVersion.equals(capellaVersion)){
@@ -97,7 +106,7 @@ public class VersionChecker implements IPrecondition<IFile> {
 				}
 			}
 			
-			//FIXME use precondition exception
+			//FIXME use precondition exception, and catch it in the run method
 			if (launchException){
 				Display.getDefault().syncExec(new Runnable() {
 					@Override

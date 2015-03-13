@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
 import org.polarsys.capella.common.platform.sirius.ted.SiriusSessionListener;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
@@ -30,7 +31,7 @@ import org.polarsys.capella.core.model.handler.helpers.CrossReferencerHelper;
 /**
   * An {@link ECrossReferenceAdapter} that only takes capella resources into account.
   */
-public class CapellaECrossReferenceAdapter extends ECrossReferenceAdapter {
+public class CapellaECrossReferenceAdapter extends SiriusCrossReferenceAdapterImpl {
 
   class CapellaInverseCrossReferencer extends InverseCrossReferencer {
     /**

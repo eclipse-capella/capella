@@ -12,6 +12,8 @@ package org.polarsys.capella.core.ui.metric.dialog;
 
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
@@ -22,7 +24,9 @@ import org.polarsys.capella.common.ui.providers.MDEAdapterFactoryLabelProvider;
 import org.polarsys.capella.common.ui.toolkit.viewers.data.TreeData;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.EnumerationPropertyLiteral;
+import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
+import org.polarsys.capella.core.ui.properties.annotations.IRepresentationAnnotationConstants;
 
 /**
  * @see Progress Monitoring label provider.
@@ -93,10 +97,17 @@ public class ProgressMonitoringLabelProvider extends MDEAdapterFactoryLabelProvi
           text = status.getLabel();
         }
       }
+      if (element_p instanceof DRepresentation) {
+            String eAnnot= IRepresentationAnnotationConstants.ProgressStatus;
+    		DAnnotation dAnnotation= RepresentationHelper.getAnnotation(eAnnot, (DRepresentation) element_p);
+    		 if (dAnnotation!=null) {
+    	    text= dAnnotation.getDetails().get("value");
+    		 }
+      }
     }
-
     return text;
   }
+
 
   @Override
   public Image getColumnImage(Object element_p, int columnIndex_p) {

@@ -22,10 +22,10 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
   /*
    * (non-Javadoc)
-   * 
    * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
    */
   @Override
+  @Deprecated
   public void initializeDefaultPreferences() {
     IPreferenceStore store = Activator.getDefault().getPreferenceStore();
     store.setDefault(PreferenceConstants.P_F, true);

@@ -55,10 +55,14 @@ public class ResourceSetListenerForInterModelInconsistencyDetection extends Reso
 		if (CapellaModelPreferencesPlugin.getDefault().isInterModelDependencyViolationDetectionActivated()) {
 			boolean noViolations = true;
 			linkChecker = new DependencyChecker((SemanticEditingDomain) event_p.getEditingDomain());
-			for (Notification notification : event_p.getNotifications())
-				noViolations = noViolations && checkNotification(notification);			
-			if (!noViolations) {
-				rollBackAndLogError();
+			try {
+				for (Notification notification : event_p.getNotifications())
+					noViolations = noViolations && checkNotification(notification);			
+				if (!noViolations) {
+					rollBackAndLogError();
+				}				
+			} finally {
+				linkChecker = null;
 			}			
 		}
 		return null;

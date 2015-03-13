@@ -286,18 +286,23 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
       if (PreferencesHelper.hasConfigurationProject(project)) {
         IProject configProject = PreferencesHelper.getReferencedProjectConfiguration(project);
         if (getDefaultBoolean(name) == value) {
-          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).remove(name);
+        	IEclipsePreferences pref = 
+        	          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID);
+        	pref.remove(name);
         } else {
-          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID).putBoolean(name, value);
-        }
-      }
+        	IEclipsePreferences pref = 
+      	          new ProjectScope(configProject).getNode(Activator.PLUGIN_ID);
+        	pref.putBoolean(name, value);
+        	}
+      	}
     }
-
-    if (getDefaultBoolean(name) == value) {
-      new InstanceScope().getNode(Activator.PLUGIN_ID).remove(name);
-    } else {
-      new InstanceScope().getNode(Activator.PLUGIN_ID).putBoolean(name, value);
-    }
+    	if (getDefaultBoolean(name) == value) {
+    		IEclipsePreferences pref = new InstanceScope().getNode(Activator.PLUGIN_ID);
+    		pref.remove(name);
+    	} else {
+    		IEclipsePreferences pref = new InstanceScope().getNode(Activator.PLUGIN_ID);
+    		pref.putBoolean(name, value);
+    	}
   }
 
   /**
@@ -319,7 +324,7 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
         }
       }
     } catch (CoreException exception_p1) {
-      StringBuilder loggerMessage = new StringBuilder("Activator.initilizePropertyStore(..) _ "); //$NON-NLS-1$
+      StringBuilder loggerMessage = new StringBuilder("Activator.initializePropertyStore(..) _ "); //$NON-NLS-1$
       __logger.warn(loggerMessage.toString(), exception_p1);
     }
 

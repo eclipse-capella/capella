@@ -25,11 +25,8 @@ import org.polarsys.capella.core.libraries.model.ICapellaModel;
  * Base class to implement an {@link HyperlinkAdapter} in Capella context.
  */
 public abstract class AbstractHyperlinkAdapter extends HyperlinkAdapter {
-  /**
-   * Capella project.
-   */
-  protected Project _project;
-  /**
+
+	/**
    * Sirius session.
    */
   private Session _session;
@@ -41,7 +38,6 @@ public abstract class AbstractHyperlinkAdapter extends HyperlinkAdapter {
    */
   @Deprecated
   public AbstractHyperlinkAdapter(Project capellaProject_p, Session session_p) {
-    _project = capellaProject_p;
     _session = session_p;
   }
 

@@ -433,8 +433,6 @@ public class SemanticEditingDomainFactory extends WorkspaceEditingDomainFactory 
       for (IEditingDomainListener listener : getEditingDomainListeners()) {
         listener.disposedEditingDomain(this);
       }
-
-      super.dispose();
     }
 
     private List<IEditingDomainListener> getEditingDomainListeners() {

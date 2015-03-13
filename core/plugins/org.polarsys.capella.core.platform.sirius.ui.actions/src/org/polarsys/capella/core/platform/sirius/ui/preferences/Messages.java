@@ -32,8 +32,7 @@ public class Messages extends NLS {
   public static String WizardPreferencePage_Description;
   public static String WizardPreferencePage_Title;
   public static String ModelValidationPreferencePage_Description;
-  public static String ModelValidationPreferencePage_DeletePreviousResults_Title;
-  public static String ModelValidationPreferencePage_PreventInterModelDependencyViolation_Title;  
+  public static String ModelValidationPreferencePage_DeletePreviousResults_Title;  
 
   static {
     // initialize resource bundle

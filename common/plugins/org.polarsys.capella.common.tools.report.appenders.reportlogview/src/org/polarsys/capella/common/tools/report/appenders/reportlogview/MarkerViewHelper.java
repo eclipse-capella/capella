@@ -251,7 +251,7 @@ public class MarkerViewHelper {
   public static boolean isEcore(IMarker marker_p) {
     boolean result = false;
     Diagnostic diag = getDiagnostic(marker_p);
-    if ((diag != null) && diag.getSource().equals(ECORE_DIAGNOSTIC_SOURCE)) {
+    if ((diag != null) && (diag.getSource() != null) && diag.getSource().equals(ECORE_DIAGNOSTIC_SOURCE)) {
       result = true;
     }
     return result;

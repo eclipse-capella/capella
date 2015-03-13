@@ -47,6 +47,26 @@ public class AbstractDependenciesPkgExt {
     return getDependencies(pkg_p);
   }
 
+	/**
+	* Get all the dependencies of a package, including ancestor's dependencies
+	* @param pkg_p
+	* @return
+	*/
+	public static Collection<AbstractDependenciesPkg> getDependencies2(
+			AbstractDependenciesPkg pkg_p) {
+		Collection<AbstractDependenciesPkg> dependencies = new HashSet<AbstractDependenciesPkg>();
+		if (pkg_p instanceof DataPkg) {
+			dependencies.addAll(DataPkgExt
+				.getDataPkgDependenciesHierarchy((DataPkg) pkg_p));
+		}
+		if (pkg_p instanceof InterfacePkg) {
+			dependencies.addAll(InterfacePkgExt
+				.getInterfacePkgDependenciesHierarchy((InterfacePkg) pkg_p));
+		}
+		return dependencies;
+	}
+	
+
   /**
    * Search direct dependencies of a package.
    * @param pkg_p an AbstractDependenciesPkg

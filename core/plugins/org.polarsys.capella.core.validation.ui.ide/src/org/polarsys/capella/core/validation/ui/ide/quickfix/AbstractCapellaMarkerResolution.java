@@ -21,11 +21,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.ui.views.markers.WorkbenchMarkerResolution;
+import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.MarkerViewHelper;
+import org.polarsys.capella.common.tools.report.appenders.reportlogview.handler.ReportMarkerResolution;
 import org.polarsys.capella.core.validation.ui.ide.internal.quickfix.MarkerResolutionCache;
 
-abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerResolution {
+abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolution {
 
   protected String _label = null;
   protected String _desc = null;
@@ -107,7 +108,8 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
 
     // this is for backwards compatibility
     if (markers.length == 1) {
-      return new IMarker[] { markers[0] };
+      if (canResolve(markers[0]))
+        return new IMarker[] { markers[0] };
     }
 
     Collection<IMarker> otherMarkers = new ArrayList<IMarker>();
@@ -126,11 +128,15 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
    * @return
    */
   protected boolean canResolve(IMarker marker) {
-
-    String unqualifiedRuleId = MarkerViewHelper.getRuleID(marker, false);
-    if (unqualifiedRuleId != null) {
+    String ruleId = marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
+    if (isEMFRule(ruleId)) {
+      return true;
+    }
+    String fqnRule[] = ruleId.split("\\.");
+    String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
+    if (shortRuleId != null) {
       for (String id : getResolvableRuleIds()) {
-        if (unqualifiedRuleId.equals(id)) {
+        if (shortRuleId.equals(id)) {
           return true;
         }
       }
@@ -138,19 +144,31 @@ abstract public class AbstractCapellaMarkerResolution extends WorkbenchMarkerRes
     return false;
   }
 
+  private boolean isEMFRule(String ruleId) {
+    return ruleId.startsWith("org.eclipse.emf.ecore.");
+  }
+
   /**
-   * Returns an array of unqualified validation rule IDs that this resolution can resolve.
+   * Used to compute resolvable markers. Override this method to enable quickfix resolution if multiple markers are
+   * selected. The default implementation returns null which effectively disables multi-selection quick fix resolution,
+   * unless 'canResolve' or 'findOtherMarkers' is overridden.
    * 
-   * @return an array of validation rule id's that this resolver can fix
+   * @return an array of _fully qualified_ validation rule id's that this resolver can fix
    */
   protected String[] getResolvableRuleIds() {
 
-    Map<AbstractCapellaMarkerResolution, Set<String>> resolverRuleMap = MarkerResolutionCache.INSTANCE.getResolverRuleMap();
+    Map<AbstractCapellaMarkerResolution, Set<String>> resolverRuleMap = MarkerResolutionCache.INSTANCE
+        .getResolverRuleMap();
     Set<String> ruleIds = resolverRuleMap.get(this);
     if (null == ruleIds) {
       return noRuleIds;
     }
     return ruleIds.toArray(new String[0]);
+  }
+
+  public boolean isMultipleMarkersResolver() {
+    return !(getResolvableRuleIds().length == noRuleIds.length);
+
   }
 
 }

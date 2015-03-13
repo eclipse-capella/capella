@@ -55,6 +55,25 @@
                                This rule generates a warning if the Function Exchange conveys some Exchange Items which are not allocated to its source ({1}) and/or its target port ({2}).
                             </description>
                          </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.fa.validation.functionalExchange.FunctionalExchange_Delegation"
+                               id="DCOM_20"
+                               isEnabledByDefault="true"
+                               lang="java"
+                               mode="Batch"
+                               name="DCOM_20 - Functional Exchange delegation check"
+                               severity="WARNING"
+                               statusCode="1">
+                            <message>
+                               {0}
+                            </message>
+                            <target
+                                  class="FunctionalExchange">
+                            </target>
+                            <description>
+                               This rule generates a warning if the the source or target of an Interaction/Functional Exchange is not allocated on a leaf function.
+                            </description>
+                         </constraint>
          </constraints> 
          
          

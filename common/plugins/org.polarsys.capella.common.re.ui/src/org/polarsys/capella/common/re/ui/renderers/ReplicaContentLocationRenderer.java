@@ -11,14 +11,17 @@
 package org.polarsys.capella.common.re.ui.renderers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
@@ -29,13 +32,11 @@ import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
@@ -77,14 +78,14 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
   protected void createTreeViewer(Composite parent_p, IRendererContext context_p) {
     super.createTreeViewer(parent_p, context_p);
 
-    //We allow renaming of elements in this dialog
+    // We allow renaming of elements in this dialog
     final TreeViewer viewer = getViewer().getClientViewer();
 
     viewer.setColumnProperties(new String[] { "name" });
     viewer.setCellModifier(new NameCellModifier(viewer, context_p));
     viewer.setCellEditors(new CellEditor[] { new TextCellEditor(viewer.getTree()) });
 
-    //Weird code used for TreeViewer
+    // Weird code used for TreeViewer
     TreeViewerFocusCellManager manager = new TreeViewerFocusCellManager(viewer, new FocusCellHighlighter(viewer) {});
     TreeViewerEditor.create(viewer, manager, new ColumnViewerEditorActivationStrategy(viewer) {
       @Override
@@ -108,8 +109,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
    */
   @Override
   protected IContentProvider createContentProvider(final IRendererContext context_p) {
-    return new ITreeContentProvider() {
-
+    return new AdapterFactoryContentProvider(getAdapterFactory(context_p)) {
       /**
        * {@inheritDoc}
        */
@@ -128,7 +128,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
         ArrayList<Object> childs = new ArrayList<Object>();
 
         if (object_p instanceof CatalogElement) {
-          //For a CatalogElement, we remove CatalogElementLinks
+          // For a CatalogElement, we remove CatalogElementLinks
           IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
           Object replica = context_p.getPropertyContext().getCurrentValue(property);
 
@@ -139,14 +139,11 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
             }
           }
 
-        } else if (object_p instanceof EObject) {
-          childs.addAll(((EObject) object_p).eContents());
-
-        } else if (object_p instanceof Resource) {
-          childs.addAll(((Resource) object_p).getContents());
+        } else {
+          childs.addAll(Arrays.asList(super.getChildren(object_p)));
         }
 
-        //We add also catalog element links which will be under the element (automatically or by a drag/drop)
+        // We add also catalog element links which will be under the element (automatically or by a drag/drop)
         Object value = context_p.getPropertyContext().getCurrentValue(context_p.getProperty(ReplicaContentLocationRenderer.this));
         if ((value != null) && (value instanceof Collection)) {
           Collection<EObject> scopeElements = (Collection) value;
@@ -162,7 +159,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
           }
         }
 
-        //We also add the 'to be created' replica if not yet added
+        // We also add the 'to be created' replica if not yet added
         IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__LOCATION_TARGET);
         Object replica = context_p.getPropertyContext().getCurrentValue(property);
         if (object_p.equals(replica)) {
@@ -213,7 +210,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
             return null;
           }
 
-          //For all links referencing a catalogElement, we put it in the link instead of the element
+          // For all links referencing a catalogElement, we put it in the link instead of the element
           if (location instanceof CatalogElement) {
             IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
             Object replica = context_p.getPropertyContext().getCurrentValue(property);
@@ -243,7 +240,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
       public Object getParent(Object object_p) {
 
         if (object_p instanceof CatalogElement) {
-          //display all catalog elements as a root item
+          // display all catalog elements as a root item
           IProperty property = context_p.getPropertyContext().getProperties().getProperty(IReConstants.PROPERTY__REPLICABLE_ELEMENT__INITIAL_TARGET);
           Object replica = context_p.getPropertyContext().getCurrentValue(property);
           if (object_p.equals(replica)) {
@@ -260,24 +257,18 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
 
           return parent;
         }
-        if (object_p instanceof EObject) {
-          return ((EObject) object_p).eContainer();
-        }
 
-        return null;
-      }
-
-      @Override
-      public void dispose() {
-
-      }
-
-      @Override
-      public void inputChanged(Viewer viewer_p, Object oldInput_p, Object newInput_p) {
-
+        return super.getParent(object_p);
       }
 
     };
+  }
+
+  /**
+   * @return
+   */
+  protected AdapterFactory getAdapterFactory(IRendererContext context_p) {
+    return null;
   }
 
   /**
@@ -346,7 +337,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
     }
 
     for (Object item : ((IStructuredSelection) selection).toList()) {
-      //We should also allow to move the Target Replica, but user can move it with the LocationTargetProperty.
+      // We should also allow to move the Target Replica, but user can move it with the LocationTargetProperty.
       if (!((item instanceof CatalogElementLink))) {
         return Status.CANCEL_STATUS;
       }
@@ -375,8 +366,8 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
     IPropertyContext pContext = contextOnDrop.getPropertyContext();
     IProperty targetContent = pContext.getProperties().getProperty("targetContent");
 
-    //Since we change location of selection from the backside, we need to change the property. 
-    //(little workaround since we can't change the property's value for the selection)
+    // Since we change location of selection from the backside, we need to change the property.
+    // (little workaround since we can't change the property's value for the selection)
     pContext.setCurrentValue(targetContent, pContext.getCurrentValue(targetContent));
 
     getViewer().getClientViewer().refresh();
@@ -418,7 +409,7 @@ public class ReplicaContentLocationRenderer extends EditListRenderer implements 
     Object replica = rendererContext_p.getPropertyContext().getCurrentValue(property);
     IContext context = (IContext) rendererContext_p.getPropertyContext().getSource();
 
-    //For an EObject, if it is used in the current target replica, it is valid!
+    // For an EObject, if it is used in the current target replica, it is valid!
     for (CatalogElementLink link : ReplicableElementExt.getReferencingLinks((EObject) element_p)) {
       if (ReplicableElementHandlerHelper.getInstance(context).getElementsLinks((CatalogElement) replica).contains(link)) {
         if (!ContextScopeHandlerHelper.getInstance(context).contains(IReConstants.CREATED_LINKS, link, context)) {

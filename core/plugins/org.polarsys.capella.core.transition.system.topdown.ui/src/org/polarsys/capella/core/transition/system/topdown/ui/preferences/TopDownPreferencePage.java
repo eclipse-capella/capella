@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,10 +11,6 @@
 package org.polarsys.capella.core.transition.system.topdown.ui.preferences;
 
 import org.eclipse.jface.preference.IPreferenceStore;
-
-import org.polarsys.capella.core.flexibility.wizards.ui.CapellaPropertyPreferencePage;
-import org.polarsys.capella.core.preferences.Activator;
-import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 import org.polarsys.capella.common.flexibility.properties.loader.PropertiesLoader;
 import org.polarsys.capella.common.flexibility.properties.property.PropertyContext;
 import org.polarsys.capella.common.flexibility.properties.schema.IProperties;
@@ -23,6 +19,9 @@ import org.polarsys.capella.common.flexibility.wizards.loader.RenderersLoader;
 import org.polarsys.capella.common.flexibility.wizards.renderer.RendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRendererContext;
 import org.polarsys.capella.common.flexibility.wizards.schema.IRenderers;
+import org.polarsys.capella.core.flexibility.wizards.ui.CapellaPropertyPreferencePage;
+import org.polarsys.capella.core.preferences.Activator;
+import org.polarsys.capella.core.transition.system.topdown.constants.ITopDownConstants;
 
 /**
  */
@@ -54,7 +53,6 @@ public class TopDownPreferencePage extends CapellaPropertyPreferencePage {
     if (_context == null) {
       _context = new PropertyContext(getProperties());
     }
-
     return _context;
   }
 

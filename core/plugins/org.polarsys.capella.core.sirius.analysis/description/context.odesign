@@ -92,7 +92,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization4" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization4" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@nodeMappings[name='ActorNode']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Mission']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -288,19 +288,6 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -412,6 +399,33 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -503,7 +517,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization3" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode2']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -734,19 +748,6 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -857,6 +858,33 @@
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -975,7 +1003,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization1" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization1" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@nodeMappings[name='ActorNode3']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20Capability']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -1242,19 +1270,6 @@
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -1384,6 +1399,33 @@
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
@@ -1508,7 +1550,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization2" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@nodeMappings[name='ActorNode4']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Missions%20Capabilities%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -1762,19 +1804,6 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Constraints">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
               <nodeMappings href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
@@ -1939,6 +1968,33 @@
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
             <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
@@ -2105,6 +2161,13 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%hasAllocationBlocks%>">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!isLeaf &amp;&amp; isAllLeavesFunctionActorALlocated%>">
             <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2447,14 +2510,14 @@
         </nodeMappings>
         <nodeMappings name="SDFB_Dummy" semanticCandidatesExpression="ocl:Set {}" domainClass="EObject"/>
         <edgeMappings name="SDFB_Exchange" preconditionExpression="&lt;%isValidDFFunctionalExchangeEdge($sourceView, $targetView)%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticElements="&lt;% self %>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@nodeMappings[name='SDFB_Node']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='SDFB%20Reconnect%20Exchanges']">
-          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="1" endsCentering="Both">
+          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
             <centerLabelStyleDescription labelExpression="&lt;%getFunctionalExchangeLabel($diagram)%>">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%$diagram.activatedFilters[name==&quot;Collapse Ports&quot;].nSize()==0%>">
-            <style targetArrow="NoDecoration" sizeComputationExpression="1" endsCentering="Both">
+            <style targetArrow="NoDecoration" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Data%20Flow%20Blank']/@defaultLayer/@containerMappings[name='SDFB_Function']/@borderedNodeMappings[name='SDFB_Pin']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <centerLabelStyleDescription labelExpression="&lt;%getFunctionalExchangeLabel($diagram)%>">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
@@ -2548,6 +2611,14 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%hasAllocationBlocks%>">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Actor_Blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!isLeaf &amp;&amp; isAllLeavesFunctionActorALlocated%>">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="18" arcHeight="18" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3279,7 +3350,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="SAB_PhysicalCategory" preconditionExpression="&lt;%isValidABPhysicalCategoryEdge($sourceView,$targetView)%>" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" createElements="false" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin']" targetFinderExpression="&lt;%getPhysicalCategoryTargets()%>" sourceFinderExpression="&lt;%getPhysicalCategorySources()%>" domainClass="PhysicalLinkCategory" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="2" endsCentering="Both">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_PhysicalPort']">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription labelExpression="&lt;%computePhysicalCategoryLabel()%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3295,14 +3366,14 @@
           </style>
         </edgeMappings>
         <edgeMappings name="CA Data Flow Between Actors and System" preconditionExpression="&lt;%isValidComponentExchangeEdge($sourceView,$targetView)%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']" targetFinderExpression="&lt;%getComponentExchangeTarget()%>" sourceFinderExpression="&lt;%getComponentExchangeSource()%>" domainClass="ComponentExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CA%20Reconnect%20Exchanges%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='CA%20Reconnect%20Exchanges%20Source']">
-          <style targetArrow="NoDecoration" sizeComputationExpression="1" endsCentering="Both">
+          <style targetArrow="NoDecoration" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
             <centerLabelStyleDescription labelExpression="&lt;%getComponentExchangeLabel($diagram)%>">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current.isOriented() &amp;&amp; current.kind != &quot;DELEGATION&quot; &amp;&amp; isOrientationAllowed()%>">
-            <style targetArrow="NoDecoration" sizeComputationExpression="1" endsCentering="Both">
+            <style targetArrow="NoDecoration" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <centerLabelStyleDescription showIcon="false">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
@@ -3310,7 +3381,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%current.isOriented()  &amp;&amp; current.kind != &quot;DELEGATION&quot;%>">
-            <style sizeComputationExpression="1" endsCentering="Both">
+            <style sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <centerLabelStyleDescription labelExpression="&lt;%getComponentExchangeLabel($diagram)%>">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
@@ -3318,7 +3389,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%current.isOriented() &amp;&amp; current.kind == &quot;DELEGATION&quot;%>">
-            <style targetArrow="NoDecoration" sizeComputationExpression="1" endsCentering="Both">
+            <style targetArrow="NoDecoration" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <centerLabelStyleDescription showIcon="false">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
@@ -3326,7 +3397,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%! current.isOriented()  &amp;&amp; current.kind != &quot;DELEGATION&quot;%>">
-            <style targetArrow="NoDecoration" sizeComputationExpression="1" endsCentering="Both">
+            <style targetArrow="NoDecoration" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <centerLabelStyleDescription labelExpression="&lt;%getComponentExchangeLabel($diagram)%>">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
@@ -3334,7 +3405,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%!current.isOriented() &amp;&amp; current.kind == &quot;DELEGATION&quot;%>">
-            <style targetArrow="NoDecoration" sizeComputationExpression="1" endsCentering="Both">
+            <style targetArrow="NoDecoration" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <centerLabelStyleDescription showIcon="false">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
@@ -3343,14 +3414,14 @@
           </conditionnalStyles>
         </edgeMappings>
         <edgeMappings name="CA DataFlow between Function" preconditionExpression="&lt;% isValidABFunctionalExchangeEdge($sourceView, $targetView)%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" semanticElements="&lt;%current%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="FunctionalExchange" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='SAB%20Reconnect%20Function%20Exchanges']">
-          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="1" endsCentering="Both">
+          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
             <centerLabelStyleDescription labelExpression="&lt;%getFunctionalExchangeLabel($diagram)%>">
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%$diagram.activatedFilters[name==&quot;Collapse Function Ports&quot;].nSize()==0%>">
-            <style targetArrow="NoDecoration" sizeComputationExpression="1" endsCentering="Both">
+            <style targetArrow="NoDecoration" sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <centerLabelStyleDescription labelExpression="&lt;%getFunctionalExchangeLabel($diagram)%>">
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
@@ -3375,14 +3446,14 @@
           </conditionnalStyles>
         </edgeMappings>
         <edgeMappings name="CA PortRealization FunctionPort to ComponentPort" preconditionExpression="&lt;%isValidPortAllocationEdge($sourceView,$targetView)%>" semanticElements="&lt;%current%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Node']" targetFinderExpression="feature:targetElement" sourceFinderExpression="feature:sourceElement" domainClass="PortAllocation" useDomainElement="true">
-          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2" endsCentering="Both">
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2" endsCentering="Source" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <centerLabelStyleDescription showIcon="false">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;% allocatedPort.isA(&quot;OutputPin&quot;) %>">
-            <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2" endsCentering="Both">
+            <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="2" endsCentering="Source" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@subNodeMappings[name='CA%20System%20Function']/@borderedNodeMappings[name='CA%20Flow%20Port%20on%20System%20Function']">
               <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <centerLabelStyleDescription showIcon="false">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3399,14 +3470,14 @@
           </style>
         </edgeMappings>
         <edgeMappings name="SAB_ComponentCategory" preconditionExpression="&lt;%isValidABComponentCategoryEdge($sourceView,$targetView)%>" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" labelDirectEdit="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20name']" createElements="false" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20System']" targetFinderExpression="&lt;%getComponentCategoryTargets()%>" sourceFinderExpression="&lt;%getComponentCategorySources()%>" domainClass="ComponentExchangeCategory" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="2" endsCentering="Both">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin']">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="&lt;%computeComponentCategoryLabel()%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%$view.isABComponentCategorySourceOriented() &amp;&amp; !$view.isABComponentCategoryTargetOriented() %>">
-            <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2" endsCentering="Both">
+            <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin']">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription labelExpression="&lt;%computeComponentCategoryLabel()%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3414,7 +3485,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%!$view.isABComponentCategorySourceOriented() &amp;&amp; $view.isABComponentCategoryTargetOriented() %>">
-            <style sizeComputationExpression="2" endsCentering="Both">
+            <style sizeComputationExpression="2" centeredSourceMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin']" centeredTargetMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='CA%20Component%20Port'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='System%20Actors']/@borderedNodeMappings[name='SAB_ComponentCategory_Pin']">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription labelExpression="&lt;%computeComponentCategoryLabel()%>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3542,7 +3613,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
@@ -3878,11 +3949,14 @@
           <ownedTools xsi:type="tool:ToolGroup" name="Show/Hide ComponentExchanges and Categories">
             <tools xsi:type="tool_1:ToolDescription" documentation="Insert/Remove Connections" name="Show/Hide Connections" label="Component Exchanges" precondition="&lt;%($elementView.target.isA(&quot;Part&quot;) &amp;&amp; $elementView.target.getComponentType().isA(&quot;Component&quot;)) &amp;&amp; ($elementView.filter(&quot;DDiagram&quot;).nSize() == 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedExchanges" computationExpression="&lt;%$elementView.getDisplayedConnections%>"/>
-              </elementView>
+              <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $displayedExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                    <parameters name="context" value="&lt;% $elementView%>"/>
+                    <parameters name="variable" value="displayedExchanges"/>
+                    <parameters name="value" value="&lt;%$elementView.getDisplayedConnections%>"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="&lt;% $element%>"/>
                     <parameters name="scope" value="&lt;%getAvailableConnectionsToInsert()%>"/>
@@ -3988,11 +4062,14 @@
           <ownedTools xsi:type="tool:ToolGroup" name="Show/Hide PhysicalLinks and Categories">
             <tools xsi:type="tool_1:ToolDescription" documentation="Creates or deletes graphical objects corresponding to existing Physical Links. The proposed Physical Links are the one incoming and outgoing from the Component target of the click. Opposite Components / Actors might be displayed on the diagram as well if they are not yet represented. This tool does not modify the semantic model." name="Show/Hide Physical Links" label="Physical Links" precondition="&lt;%($elementView.target.isA(&quot;Part&quot;) &amp;&amp; $elementView.target.getComponentType().isA(&quot;Component&quot;)) &amp;&amp; ($elementView.filter(&quot;DDiagram&quot;).nSize() == 0)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
-              <elementView name="elementView">
-                <subVariables xsi:type="tool_1:AcceleoVariable" name="displayedLinks" computationExpression="&lt;%$elementView.getDisplayedPhysicalLinks%>"/>
-              </elementView>
+              <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="SetVariable $displayedLinks" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                    <parameters name="context" value="&lt;%$elementView%>"/>
+                    <parameters name="variable" value="displayedLinks"/>
+                    <parameters name="value" value="&lt;%$elementView.getDisplayedPhysicalLinks%>"/>
+                  </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="selectExchanges" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
                     <parameters name="context" value="&lt;% $element%>"/>
                     <parameters name="scope" value="&lt;%getAvailablePhysicalLinksToInsert($diagram)%>"/>
@@ -4922,7 +4999,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="actorGeneralization5" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedActorPkg.eAllContents.filter(&quot;Generalization&quot;)%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target%20Actor']">
+        <edgeMappings name="actorGeneralization5" deletionDescription="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" semanticCandidatesExpression="&lt;%eContainer(&quot;SystemAnalysis&quot;).ownedActorPkg.eAllContents.filter(&quot;Generalization&quot;)%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetMapping="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']" targetFinderExpression="feature:super" sourceFinderExpression="feature:eContainer" domainClass="Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Target'] //@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@toolSections.0/@ownedTools[name='CB%20Reconnect%20Generalization%20Source']">
           <style lineStyle="dot" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -4990,7 +5067,20 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target Actor" precondition="&lt;%( !($element.super.subGeneralizableElements.nContains($target)) &amp;&amp; !($target.getSuperClassifiers.nContains($element.super)) )%>">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Target" precondition="&lt;% canReconnectGeneralization($element.sub,$target)%>">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="CB Reconnect Generalization Source" precondition="&lt;% canReconnectGeneralization($target,$element.super) %>" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -4998,7 +5088,8 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $element%>">
-                <subModelOperations xsi:type="tool_1:SetValue" featureName="super" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="sub" valueExpression="&lt;% $target %>"/>
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;% $target %>" featureName="ownedGeneralizations"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>

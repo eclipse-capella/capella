@@ -36,6 +36,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
@@ -444,10 +445,27 @@ public class PartItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
+		String label = ((Part) object).getName();
+		if (label == null || label.length() == 0)
+			label = "[" + getString("_UI_Part_type") + "]";
+		Type type = ((Part)object).getType();
+		if (type != null)
+			label += " : " + type.getName();		
+		return label;
+	}
+	
+	/**
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getTextGen(Object object) {
 	 String[] result = new String[] { null };
 
     	//begin-capella-code
@@ -462,7 +480,7 @@ public class PartItemProvider
 
 		return result[0];
 
-	}
+	}	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

@@ -25,7 +25,8 @@ Export-Package: org.polarsys.capella.core.business.abstractqueries,
  org.polarsys.capella.core.business.queries.la,
  org.polarsys.capella.core.business.queries.oa,
  org.polarsys.capella.core.business.queries.pa,
- org.polarsys.capella.core.business.queries.preferences
+ org.polarsys.capella.core.business.queries.preferences,
+ org.polarsys.capella.core.business.queries.queries.capellacommon
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Activator: org.polarsys.capella.core.business.queries.BusinessQueriesPlugin
 Bundle-Localization: plugin
