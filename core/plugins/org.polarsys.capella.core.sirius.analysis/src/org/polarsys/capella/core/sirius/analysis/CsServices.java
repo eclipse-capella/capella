@@ -6544,12 +6544,10 @@ public class CsServices {
    * Returns available Capability Realization which are accessible by brothers-part CRA-Show-Hide-Component.
    */
   public Collection<CapabilityRealization> getCRBShowHideCapabilityRealizations(EObject context_p) {
-
     Collection<CapabilityRealization> elements = new ArrayList<CapabilityRealization>();
-    if ((null == context_p) && !(context_p instanceof CapellaElement)) {
-      return elements;
+    if (context_p instanceof CapellaElement) {
+      elements.addAll(CapabilityRealizationExt.getAllCapabilityRealizationOfOneLayer((CapellaElement) context_p));
     }
-    elements.addAll(CapabilityRealizationExt.getAllCapabilityRealizationOfOneLayer((CapellaElement) context_p));
     return elements;
   }
 
