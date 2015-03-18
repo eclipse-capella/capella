@@ -17,7 +17,7 @@
     xmlns:org.polarsys.capella.core.data.oa="http://www.polarsys.org/capella/core/oa/0.8.0"
     xmlns:org.polarsys.capella.core.data.pa="http://www.polarsys.org/capella/core/pa/0.8.0"
     id="8426e149-bee0-42f2-afdd-349764fccf1b"
-    name="MaLibrairie3">
+    name="MyLibrary3">
   <ownedExtensions xsi:type="libraries:ModelInformation" id="57b2c586-9135-40d0-af7d-64d0aafdfc0b"/>
   <ownedEnumerationPropertyTypes xsi:type="org.polarsys.capella.core.data.capellacore:EnumerationPropertyType"
       id="177262ef-d23e-4334-afd7-e91d35e71741" name="ProgressStatus">
@@ -37,7 +37,7 @@
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="5bbd6c91-7771-4b63-a0b0-a7d13d154bd2"
       key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="8971fd78-d8ee-43d9-876f-25bf57451a48" name="MaLibrairie3">
+      id="8971fd78-d8ee-43d9-876f-25bf57451a48" name="MyLibrary3">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="3e9ee4af-91b9-4e8c-9700-81e74729c0fb" name="Operational Analysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"

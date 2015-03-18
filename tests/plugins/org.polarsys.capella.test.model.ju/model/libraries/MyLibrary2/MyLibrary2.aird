@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:org.polarsys.capella.core.data.capellamodeller="http://www.polarsys.org/capella/core/modeller/0.8.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="__OPFUMy1EeSCYKN5-HcxVQ" selectedViews="__lVWsMy1EeSCYKN5-HcxVQ __lVWscy1EeSCYKN5-HcxVQ __loRoMy1EeSCYKN5-HcxVQ __lxbkMy1EeSCYKN5-HcxVQ __mE9kMy1EeSCYKN5-HcxVQ __mOHgMy1EeSCYKN5-HcxVQ __m0kcMy1EeSCYKN5-HcxVQ" version="8.1.1">
-  <models xmi:type="org.polarsys.capella.core.data.capellamodeller:Library" href="MaLibrairie2.melodymodeller#1810f8a1-a163-46f3-a4a0-38aa9d92ada6"/>
+  <models xmi:type="org.polarsys.capella.core.data.capellamodeller:Library" href="MyLibrary2.melodymodeller#1810f8a1-a163-46f3-a4a0-38aa9d92ada6"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="__lVWsMy1EeSCYKN5-HcxVQ" initialized="true">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.capella.core.sirius.analysis/description/logical.odesign#//@ownedViewpoints[name='Logical%20Architecture']"/>
   </ownedViews>

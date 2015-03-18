@@ -27,16 +27,16 @@ public class LibraryManager_getAllReferencedLibraries extends BasicTestCase {
   @SuppressWarnings("nls")
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("libraries/MonProjet1", "libraries/MaLibrairie1", "libraries/MaLibrairie2");
+    return Arrays.asList("libraries/MyProject1", "libraries/MyLibrary1", "libraries/MyLibrary2");
   }
 
   @SuppressWarnings("nls")
   @Override
   public void test() {
     // -- SCENARIO -- //
-    CapellaModel monProjet1 = getTestModel("libraries/MonProjet1");
-    CapellaModel maLibrairie1 = (CapellaModel) getTestModel("libraries/MaLibrairie1");
-    CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MaLibrairie2");
+    CapellaModel monProjet1 = getTestModel("libraries/MyProject1");
+    CapellaModel maLibrairie1 = (CapellaModel) getTestModel("libraries/MyLibrary1");
+    CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MyLibrary2");
 
     monProjet1.addReference(maLibrairie1);
     maLibrairie1.addReference(maLibrairie2);

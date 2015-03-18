@@ -26,16 +26,16 @@ public class CapellaModel_unicity extends BasicTestCase {
   @SuppressWarnings("nls")
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("libraries/MonProjet1", "libraries/MaLibrairie1", "libraries/MaLibrairie2");
+    return Arrays.asList("libraries/MyProject1", "libraries/MyLibrary1", "libraries/MyLibrary2");
   }
 
   @SuppressWarnings("nls")
   @Override
   public void test() {
     // -- SCENARIO -- //
-    CapellaModel monProjet1 = getTestModel("libraries/MonProjet1");
-    CapellaModel maLibrairie1 = getTestModel("libraries/MaLibrairie1");
-    CapellaModel maLibrairie2 = getTestModel("libraries/MaLibrairie2");
+    CapellaModel monProjet1 = getTestModel("libraries/MyProject1");
+    CapellaModel maLibrairie1 = getTestModel("libraries/MyLibrary1");
+    CapellaModel maLibrairie2 = getTestModel("libraries/MyLibrary2");
     // -- ORACLE -- //
     testIModelEquivalence(monProjet1);
     testIModelEquivalence(maLibrairie1);

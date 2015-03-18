@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>MonProjet2</name>
+	<name>MyLibrary3</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
 	</buildSpec>
 	<natures>
-		<nature>org.polarsys.capella.project.nature</nature>
+		<nature>org.polarsys.capella.library.nature</nature>
 	</natures>
 </projectDescription>

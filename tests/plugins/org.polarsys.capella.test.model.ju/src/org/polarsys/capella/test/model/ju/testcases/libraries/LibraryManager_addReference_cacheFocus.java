@@ -27,17 +27,17 @@ public class LibraryManager_addReference_cacheFocus extends BasicTestCase {
   @SuppressWarnings("nls")
   @Override
   public List<String> getRequiredTestModels() {
-    return Arrays.asList("libraries/MonProjet1", "libraries/MaLibrairie1", "libraries/MaLibrairie2", "libraries/MaLibrairie3");
+    return Arrays.asList("libraries/MyProject1", "libraries/MyLibrary1", "libraries/MyLibrary2", "libraries/MyLibrary3");
   }
 
   @SuppressWarnings("nls")
   @Override
   public void test() {
     // -- SCENARIO -- //
-    CapellaModel monProjet1 = getTestModel("libraries/MonProjet1");
-    CapellaModel maLibrairie1 = (CapellaModel) getTestModel("libraries/MaLibrairie1");
-    CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MaLibrairie2");
-    CapellaModel maLibrairie3 = (CapellaModel) getTestModel("libraries/MaLibrairie3");
+    CapellaModel monProjet1 = getTestModel("libraries/MyProject1");
+    CapellaModel maLibrairie1 = (CapellaModel) getTestModel("libraries/MyLibrary1");
+    CapellaModel maLibrairie2 = (CapellaModel) getTestModel("libraries/MyLibrary2");
+    CapellaModel maLibrairie3 = (CapellaModel) getTestModel("libraries/MyLibrary3");
     // -- ORACLE -- //
     monProjet1.addReference(maLibrairie1);
     maLibrairie2.addReference(maLibrairie3);
