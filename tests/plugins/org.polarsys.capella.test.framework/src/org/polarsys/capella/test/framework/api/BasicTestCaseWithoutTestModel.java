@@ -15,7 +15,7 @@ import java.util.List;
 public abstract class BasicTestCaseWithoutTestModel extends BasicTestCase {
 
 	@Override
-	protected List<String> getProjectNamesToLoad() {
+	public List<String> getRequiredTestModels() {
 		return null;
 	}
 

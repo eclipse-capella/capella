@@ -31,14 +31,14 @@ import org.polarsys.capella.test.model.ju.CheckInterModelInconsistencyDetectionT
 public class CheckDependencyViolationTwoLevel extends CheckInterModelInconsistencyDetectionTestCase {
 
 	@Override
-	protected List<String> getProjectNamesToLoad() {		
-		return Arrays.asList(new String [] {"P", "L1", "L2"});  //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
+	public List<String> getRequiredTestModels() {		
+		return Arrays.asList(new String [] {"intermodelInconsistencies/P", "intermodelInconsistencies/L1", "intermodelInconsistencies/L2"});  //$NON-NLS-1$//$NON-NLS-2$//$NON-NLS-3$
 	}
 	
 	public void test() throws Exception {
 		setDetectorActive(true);
 		
-		CapellaModel modelA = (CapellaModel) getLoadedCapellaModel("P"); //$NON-NLS-1$
+		CapellaModel modelA = (CapellaModel) getTestModel("intermodelInconsistencies/P"); //$NON-NLS-1$
 		Project projectA = modelA.getProject(modelA.getEditingDomain());
 		SystemEngineering systemA = getSystemEngineering(projectA);		
 		BlockArchitecture logArchA = SystemEngineeringExt.getOwnedLogicalArchitecture(systemA);		
@@ -46,7 +46,7 @@ public class CheckDependencyViolationTwoLevel extends CheckInterModelInconsisten
 		final Class class1 = getClassNamed("Class 1", dataPckA); //$NON-NLS-1$
 		final Class class2 = getClassNamed("Class 2", dataPckA); //$NON-NLS-1$
 		
-		CapellaModel modelB = (CapellaModel) getLoadedCapellaModel("L2"); //$NON-NLS-1$
+		CapellaModel modelB = (CapellaModel) getTestModel("intermodelInconsistencies/L2"); //$NON-NLS-1$
 		Project projectB = modelB.getProject(modelA.getEditingDomain());
 		SystemEngineering systemB = getSystemEngineering(projectB);		
 		BlockArchitecture logArchB = SystemEngineeringExt.getOwnedLogicalArchitecture(systemB);		

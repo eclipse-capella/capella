@@ -11,6 +11,7 @@
 package org.polarsys.capella.test.business.queries.ju.testSuites;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Test;
@@ -34,6 +35,7 @@ import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.Physi
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalPort_AllocatedComponentPorts;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalPort_AllocatedFunctionPorts;
 import org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.cs.PhysicalPort_RealizedPhysicalPorts;
+import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 /**
@@ -49,8 +51,8 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
   }
 
   @Override
-  protected List<? extends Test> getTests() {
-    List<Test> tests = new ArrayList<Test>();
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Component_ImplementedInterfaces());
     tests.add(new ExchangeItemAllocation_AllocatedItem());
     tests.add(new InterfaceImpl_ImplementedInterface());
@@ -71,6 +73,11 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
     tests.add(new PhysicalPort_AllocatedFunctionPorts());
     tests.add(new PhysicalPort_RealizedPhysicalPorts());
     return tests;
+  }
+
+  @Override
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList("sysmodel");
   }
 
 }

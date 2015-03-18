@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.polarsys.capella.test.validation.rules.ju.testsuites;
 
+import java.util.List;
+
 import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.AutoLoadTestSuite;
@@ -27,5 +29,10 @@ public class ValidationRulesAutoLoadTestSuite extends AutoLoadTestSuite {
   protected String getTestCasesRootPackage() {
     return "org.polarsys.capella.test.validation.rules.ju.testcases"; //$NON-NLS-1$
   }
+  
+	@Override
+	public List<String> getRequiredTestModels() {
+		return null;
+	}
 
 }

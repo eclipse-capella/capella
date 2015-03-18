@@ -11,10 +11,12 @@
 package org.polarsys.capella.test.validation.rules.ju.testcases.dcom;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Test;
 
+import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
 public class DCOMRulesTestSuite extends BasicTestSuite {
@@ -27,8 +29,8 @@ public class DCOMRulesTestSuite extends BasicTestSuite {
   }
 
 	@Override
-	protected List<? extends Test> getTests() {
-		List<Test> tests = new ArrayList<Test>();
+	protected List<BasicTestArtefact> getTests() {
+		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_DCOM_01());
     tests.add(new Rule_DCOM_02());
 		tests.add(new Rule_DCOM_03());
@@ -49,4 +51,10 @@ public class DCOMRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DCOM_19());
 		return tests;
 	}
+
+	@Override
+	public List<String> getRequiredTestModels() {		
+		return Arrays.asList(new String [] {"RulesOnDesignTest"});  //$NON-NLS-1$
+	}
+	
 }

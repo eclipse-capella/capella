@@ -18,23 +18,16 @@ import java.lang.reflect.Modifier;
 import java.net.URISyntaxException;
 import java.util.List;
 
+import junit.framework.TestCase;
+
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
-import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.common.libraries.ILibraryManager;
-import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
-import org.polarsys.capella.core.libraries.model.ICapellaModel;
+import org.polarsys.capella.core.libraries.model.CapellaModel;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
+import org.polarsys.capella.test.framework.helpers.PerformanceHelper;
 import org.polarsys.capella.test.framework.helpers.TestHelper;
 
 /**
@@ -46,12 +39,20 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
  * 
  * @author Erwan Brottier
  */
-public abstract class BasicTestCase extends AbstractExtendedTest {
+public abstract class BasicTestCase extends TestCase implements BasicTestArtefact {
 
 	private static final String TEST_METHOD_NAME = "test"; //$NON-NLS-1$
 	private static final String INPUT_MODEL_FOLDER_NAME = "model"; //$NON-NLS-1$
 	
-  private File pluginFolder;
+  private File pluginFolder;  
+  private long executionDurationInMillis;
+	protected BasicTestSuite parentTestSuite;
+	
+	@Override
+	public void setParentTestSuite(BasicTestSuite parentTestSuite) {
+		this.parentTestSuite = parentTestSuite;
+	}
+  
   
   /* For presentation purpose in the JUnit view and because we freeze the test method name,
    * we return the class name */
@@ -66,7 +67,7 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
 		assertNotNull("test method must be defined", TEST_METHOD_NAME); // Some VMs crash when calling getMethod(null,null); //$NON-NLS-1$
 		Method runMethod= null;
 		try {
-			runMethod= getClass().getMethod(TEST_METHOD_NAME, (Class[])null);
+			runMethod = getClass().getMethod(TEST_METHOD_NAME, (Class[])null);
 		} catch (NoSuchMethodException e) {
 			fail("Method \""+TEST_METHOD_NAME+"\" not found");  //$NON-NLS-1$//$NON-NLS-2$
 		}
@@ -74,7 +75,9 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
 			fail("Method \""+TEST_METHOD_NAME+"\" should be public"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 		try {
+			executionDurationInMillis = PerformanceHelper.getTimeInMillis();
 			runMethod.invoke(this);
+			executionDurationInMillis = PerformanceHelper.getTimeInMillis() - executionDurationInMillis;
 		}
 		catch (InvocationTargetException e) {
 			e.fillInStackTrace();
@@ -85,6 +88,11 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
 			throw e;
 		}
 	}
+  
+  @Override
+  public long getExcutionDuration() {
+  	return executionDurationInMillis;
+  }
   
   /** The default value is defined by constant INPUT_MODEL_FOLDER_NAME */
   protected String getTestCasesRootFolderName() {
@@ -104,42 +112,36 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
   /** The implementation of this test case. Must be overridden.<br>
    * Notice it is public because JUnit expect it. */
   public abstract void test() throws Exception;
-  
-  // ///////////////////////////////////
-  // Helpers to enable test context //
-  // /////////////////////////////////
 
-  /**
-   * Must be overriden to define melody projects that must be loaded in the
-   * workspace for this test. Use method getLoadedMelodyModel to get one of
-   * these models in the test implementation.<br>
-   * Return null or void list if this test case does not require any models to perform the test.
-   */
-  protected abstract List<String> getProjectNamesToLoad();
-
-  protected ICapellaModel getLoadedCapellaModel(String modelName) {
-    IProject project = IResourceHelpers.getEclipseProjectInWorkspace(modelName);
-    if (!project.isOpen()) {
-      try {
-        project.open(new NullProgressMonitor());
-      } catch (CoreException exception_p) {
-        exception_p.printStackTrace();
-      }
-    }
-    Session session = getSessionForLoadedCapellaModel(modelName);
-    return (ICapellaModel) ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
+  protected CapellaModel getTestModel(String relativeModelPath) {
+//    IProject project = IResourceHelpers.getEclipseProjectInWorkspace(modelName);
+//    if (!project.isOpen()) {
+//      try {
+//        project.open(new NullProgressMonitor());
+//      } catch (CoreException exception_p) {
+//        exception_p.printStackTrace();
+//      }
+//    }
+//    Session session = getSessionForLoadedCapellaModel(modelName);
+//    return (CapellaModel) ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
+  	return ModelProvider.getTestModel(relativeModelPath, this);
   }
 
-  protected Session getSessionForLoadedCapellaModel(String modelName) {
-  	IProject project = IResourceHelpers.getEclipseProjectInWorkspace(modelName);
-  	Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(project.getFile(modelName + ".aird")), new NullProgressMonitor()); //$NON-NLS-1$
-    if (!session.isOpen())
-      session.open(new NullProgressMonitor());
-    return session;
+  protected Session getSessionForTestModel(String relativeModelPath) {
+//  	IProject project = IResourceHelpers.getEclipseProjectInWorkspace(modelName);
+//  	Session session = SessionManager.INSTANCE.getSession(EcoreUtil2.getURI(project.getFile(modelName + ".aird")), new NullProgressMonitor()); //$NON-NLS-1$
+//    if (!session.isOpen())
+//      session.open(new NullProgressMonitor());
+//    return session;
+  	return ModelProvider.getSessionForTestModel(relativeModelPath, this);
+  }
+  
+  protected IProject getEclipseProjectForTestModel(String relativeModelPath) {
+  	return ModelProvider.getEclipseProjectForTestModel(relativeModelPath, this);
   }
 
   protected String getRelativeModelsFolderName() {
-  	return "model/"; //$NON-NLS-1$
+  	return INPUT_MODEL_FOLDER_NAME; //$NON-NLS-1$
   }
   
   /** Set context before the test case begins:
@@ -148,51 +150,23 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
   @Override
   protected void setUp() throws Exception {
     super.setUp();
-    // projects loading ...
-    String relativeModelsFolder = getRelativeModelsFolderName();
-    List<String> projectNamesToLoad = getProjectNamesToLoad();
+    // require test models
+    List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null)
 	    for (String modelName : projectNamesToLoad)
-	    	loadTestProjectInWorkspace(relativeModelsFolder + modelName + "/", modelName); //$NON-NLS-1$
+	    	ModelProvider.requireTestModel(modelName, this); //$NON-NLS-1$
   }
   
   @Override
   protected void tearDown() throws Exception {
     super.tearDown();
-    List<String> projectNamesToLoad = getProjectNamesToLoad();
+    // release test models
+    List<String> projectNamesToLoad = getRequiredTestModels();
     if (projectNamesToLoad != null) {
     	for (String modelName : projectNamesToLoad) {
-    		Session session = getSessionForLoadedCapellaModel(modelName);
-    		if (session.isOpen()) {
-    			session.save(new NullProgressMonitor());
-    			session.close(new NullProgressMonitor());    			
-    		}
-    		IProject eclipseProject = ResourcesPlugin.getWorkspace().getRoot().getProject(modelName);
-    		try {
-	  			eclipseProject.delete(true, new NullProgressMonitor());    			
-    		} catch (Exception e) {
-    			e.printStackTrace();
-    		}
+    		ModelProvider.releaseTestModel(modelName, this);
     	}
     }
-  }
-
-  
-  /**
-   * Copy an eclipse project from the test data to the workspace.
-   * @return the new eclipse project in the workspace.
-   * @param testProjectsRelativeFolder : folder that contains all Capella projects for test (relative to the test plugin project).
-   * @param projectName : the project name to load (must correspond to the folder in testProjectsRelativeFolder).
-   * @throws IOException 
-   */
-  protected IProject loadTestProjectInWorkspace(String projectFolderInTestPlugin, String projectName) throws IOException {
-  	File sourceFolder = getFileOrFolderInTestPlugin(projectFolderInTestPlugin);
-    IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();    
-    File targetFolder = new File(root.getRawLocation().toString()+"/"+projectName+"/"); //$NON-NLS-1$ //$NON-NLS-2$
-    TestHelper.copy(sourceFolder, targetFolder);
-    IProject project = TestHelper.createCapellaProject(projectName);
-    ProjectHelper.refreshProject(project, new NullProgressMonitor());
-    return project;
   }
   
   protected void copyTestDataFolderInWorkspace(String relativeFolderInTestPluginToCopy, IContainer target)
@@ -240,5 +214,9 @@ public abstract class BasicTestCase extends AbstractExtendedTest {
   protected File getFileOrFolderInTestPlugin(String relativePath) {
     return new File(getPluginFolder().toString() + "/" + relativePath); //$NON-NLS-1$
   }
-
+  
+  public File getFileOrFolderInTestModelRepository(String relativePath) {
+    return getFileOrFolderInTestPlugin(getRelativeModelsFolderName()+ "/" + relativePath);//$NON-NLS-1$
+  }
+  
 }

@@ -23,7 +23,7 @@ import org.polarsys.capella.test.framework.api.OracleDefinition;
 public class Rule_TC_I_12 extends ValidationRuleTestCase {
 
 	@Override
-	protected String getTestProjectName() {
+	protected String getRequiredTestModel() {
 		return "Project_validation9"; //$NON-NLS-1$
 	}
 

@@ -15,6 +15,7 @@ import java.util.List;
 
 import junit.framework.Test;
 
+import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_DC_CL_01;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_DC_CL_02;
@@ -29,7 +30,6 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_DWF_I_20;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_TC_I_11;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_TC_I_12;
 import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_TC_I_13;
-import org.polarsys.capella.test.validation.rules.ju.testcases.dcom.DCOMRulesTestSuite;
 
 public class ValidationRulesTestSuite extends BasicTestSuite {
 
@@ -41,8 +41,8 @@ public class ValidationRulesTestSuite extends BasicTestSuite {
   }
 
 	@Override
-	protected List<? extends Test> getTests() {
-		List<Test> tests = new ArrayList<Test>();
+	protected List<BasicTestArtefact> getTests() {
+		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
 		tests.add(new Rule_DC_CL_01());
 		tests.add(new Rule_DC_CL_02());
 		tests.add(new Rule_DWF_I_05());
@@ -56,8 +56,13 @@ public class ValidationRulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_TC_I_11());
 		tests.add(new Rule_TC_I_12());
 		tests.add(new Rule_TC_I_13());
-    tests.add(new DCOMRulesTestSuite());
+    //tests.add(new DCOMRulesTestSuite());
 		return tests;
+	}
+
+	@Override
+	public List<String> getRequiredTestModels() {
+		return null;
 	}
 
 }

@@ -21,12 +21,12 @@ Require-Bundle: com.google.guava;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.project;visibility:=reexport,
  org.polarsys.capella.core.sirius.analysis;visibility:=reexport
 Export-Package: org.polarsys.capella.test.framework,
- org.polarsys.capella.test.framework.actions.gui,
  org.polarsys.capella.test.framework.actions.headless,
  org.polarsys.capella.test.framework.api,
  org.polarsys.capella.test.framework.helpers,
- org.polarsys.capella.test.framework.helpers.log,
- org.polarsys.capella.test.framework.internal.helpers
+ org.polarsys.capella.test.framework.helpers.diffFile,
+ org.polarsys.capella.test.framework.helpers.diffModel,
+ org.polarsys.capella.test.framework.helpers.log
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Activator: org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin
 Bundle-ClassPath: .

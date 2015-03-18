@@ -60,7 +60,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   // these methods must be overridden by concrete test cases
   /** returns the name of the test project folder (by default in the folder "model") */
-  protected abstract String getTestProjectName();
+  protected abstract String getRequiredTestModel();
 
   /** returns the class targeted by the tested rule (should be automatically found from the rule but not accessible) */
   protected abstract EClass getTargetedEClass();
@@ -96,13 +96,13 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   }
 
   @Override
-  protected List<String> getProjectNamesToLoad() {
-    return Arrays.asList(getTestProjectName());
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(getRequiredTestModel());
   }
 
   protected List<CapellaElement> getTestScope(ICapellaModel model) {
     List<CapellaElement> scope = new ArrayList<CapellaElement>();
-    Project project = model.getProject(getSessionForLoadedCapellaModel(getTestProjectName()).getTransactionalEditingDomain());
+    Project project = model.getProject(getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain());
     if (project != null) {
       for (EObject object : EObjectExt.getAll(project, targetedEClass)) {
         if (object instanceof CapellaElement) {
@@ -115,7 +115,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   
   public void test() throws Exception {
     // get the objects to validate (only CapellaElement because the oracle is based on object ID)
-    ICapellaModel model = getLoadedCapellaModel(getTestProjectName());
+    ICapellaModel model = getTestModel(getRequiredTestModel());
     List<CapellaElement> objectsToValidate = getTestScope(model);
     // prepare oracle table
     for (OracleDefinition definition : oracleDefinitions) {
