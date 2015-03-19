@@ -12985,7 +12985,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="ConstraintDuration" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20Duration']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Interfaces%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint']" targetFinderExpression="feature:finish" sourceFinderExpression="feature:start" domainClass="interaction.ConstraintDuration" useDomainElement="true">
-          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow">
+          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:duration">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -14948,7 +14948,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="ConstraintDuration DF" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20Duration']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint%20DF']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Component%20Exchanges%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint%20DF']" targetFinderExpression="feature:finish" sourceFinderExpression="feature:start" domainClass="interaction.ConstraintDuration" useDomainElement="true">
-          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow">
+          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:duration">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -16730,7 +16730,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="ConstraintDuration FS" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20Duration']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint%20FS']" targetMapping="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Functional%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint%20FS']" targetFinderExpression="feature:finish" sourceFinderExpression="feature:start" domainClass="interaction.ConstraintDuration" useDomainElement="true">
-          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow">
+          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:duration">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

@@ -2681,7 +2681,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="ConstraintDurationOA" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20Duration']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPointOA']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPointOA']" targetFinderExpression="&lt;% finish %>" sourceFinderExpression="&lt;% start %>" domainClass="interaction.ConstraintDuration" useDomainElement="true">
-          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow">
+          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;% duration %>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4195,7 +4195,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="ConstraintDuration AIS" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='Set%20Duration']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint%20AIS']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='ObservationPoint%20AIS']" targetFinderExpression="&lt;% finish %>" sourceFinderExpression="&lt;% start %>" domainClass="interaction.ConstraintDuration" useDomainElement="true">
-          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow">
+          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;% duration %>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
