@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -184,7 +184,8 @@ public class CapellaServices {
     Session session = SessionManager.INSTANCE.getSession(context);
     IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(session));
     IModel currentElementModel = ILibraryManager.INSTANCE.getModel(context);
-    return sessionModel.equals(currentElementModel); // forbidden if the element's IModel is not the session's one (ie is a Library)
+    return sessionModel.equals(currentElementModel); // forbidden if the element's IModel is not the session's one (ie
+                                                     // is a Library)
   }
 
   public List<EObject> ancestor(EObject object) {
@@ -201,8 +202,10 @@ public class CapellaServices {
   /** A shared instance. */
   private static CapellaServices service;
 
-  protected void addInAvailableFunctionList(AbstractFunction function_p, AbstractFunction functionToAdd_p, List<AbstractFunction> functionInDiagram_p) {
-    if (EcoreUtil.isAncestor(functionToAdd_p, function_p) || EcoreUtil.isAncestor(function_p, functionToAdd_p) || functionInDiagram_p.contains(functionToAdd_p)) {
+  protected void addInAvailableFunctionList(AbstractFunction function_p, AbstractFunction functionToAdd_p,
+      List<AbstractFunction> functionInDiagram_p) {
+    if (EcoreUtil.isAncestor(functionToAdd_p, function_p) || EcoreUtil.isAncestor(function_p, functionToAdd_p)
+        || functionInDiagram_p.contains(functionToAdd_p)) {
       return;
     }
     AbstractFunction toRemove = null;
@@ -242,7 +245,8 @@ public class CapellaServices {
    * @param edge_p
    */
   public void deleteView(DDiagramElement element_p) {
-    DeleteEObjectTask task = new DeleteEObjectTask(element_p, SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element_p));
+    DeleteEObjectTask task = new DeleteEObjectTask(element_p, SiriusPlugin.getDefault().getModelAccessorRegistry()
+        .getModelAccessor(element_p));
 
     try {
       task.execute();
@@ -274,12 +278,14 @@ public class CapellaServices {
 
   /**
    * Retrieve name of navigation menu from the given containerView_p to the named diagramName_p
+   * 
    * @param containerView_p
    * @param diagramName_p
    * @return
    */
   public String getNavigationName(DSemanticDecorator containerView_p, String diagramName_p) {
-    // low-reference to private method org.eclipse.sirius.diagram.tools.internal.menu.NavigateToMenuContribution.buildOpenRepresentationAction
+    // low-reference to private method
+    // org.eclipse.sirius.diagram.tools.internal.menu.NavigateToMenuContribution.buildOpenRepresentationAction
     String result = diagramName_p;
     if (StringUtil.isEmpty(result)) {
       result = Messages.CapellaServices_NavigateUnnamed;
@@ -289,6 +295,7 @@ public class CapellaServices {
 
   /**
    * Get scope for others navigable elements
+   * 
    * @param current_p
    * @return
    */
@@ -310,6 +317,7 @@ public class CapellaServices {
 
   /**
    * TODO check duplicate used everywhere
+   * 
    * @param eObject
    * @return
    */
@@ -329,6 +337,7 @@ public class CapellaServices {
 
   /**
    * used
+   * 
    * @param current
    * @return
    */
@@ -355,6 +364,7 @@ public class CapellaServices {
 
   /**
    * used in context
+   * 
    * @param context
    * @return
    */
@@ -408,6 +418,7 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param container_p
    * @return container_p + recursively all the containers of container_p
    */
@@ -425,6 +436,7 @@ public class CapellaServices {
 
   /**
    * used everywhere
+   * 
    * @param current
    * @return
    */
@@ -450,6 +462,7 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param context
    * @return
    */
@@ -466,7 +479,8 @@ public class CapellaServices {
     // OLD CODE
     List<BlockArchitecture> blocks = getAvailableArchitectures(context);
     // NEW CODE
-    blocks = (List) QueryDebugger.executeQueryWithInclusionDebug(QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES_FOR_LIB, context, blocks);
+    blocks = (List) QueryDebugger.executeQueryWithInclusionDebug(
+        QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES_FOR_LIB, context, blocks);
     // END CODE REFACTOR
     for (BlockArchitecture aBlockArchitecture : blocks) {
       TreeIterator<EObject> it = aBlockArchitecture.eAllContents();
@@ -486,6 +500,7 @@ public class CapellaServices {
 
   /**
    * used partout
+   * 
    * @param context
    * @return
    */
@@ -528,13 +543,15 @@ public class CapellaServices {
 
   /**
    * used in common logical physical
+   * 
    * @param context
    * @return
    */
   @Deprecated
   public EList<PortAllocation> getAllPortAllocation(final EObject context) {
     EList<PortAllocation> result = new BasicEList<PortAllocation>();
-    Collection<Component> subLCsFromRoot = BlockArchitectureExt.getAllComponents(BlockArchitectureExt.getRootBlockArchitecture(context));
+    Collection<Component> subLCsFromRoot = BlockArchitectureExt.getAllComponents(BlockArchitectureExt
+        .getRootBlockArchitecture(context));
     for (PartitionableElement partitionableElement : subLCsFromRoot) {
       EList<Feature> ownedFeatures = partitionableElement.getOwnedFeatures();
       for (Feature feature : ownedFeatures) {
@@ -550,6 +567,7 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param context
    * @return
    */
@@ -559,7 +577,8 @@ public class CapellaServices {
     // Standard Port + CA PortRealization FlowPort to FlowPort
     EList<PortRealization> result = new BasicEList<PortRealization>();
 
-    Collection<Component> enclosedComponents = BlockArchitectureExt.getAllComponents(BlockArchitectureExt.getRootBlockArchitecture(context));
+    Collection<Component> enclosedComponents = BlockArchitectureExt.getAllComponents(BlockArchitectureExt
+        .getRootBlockArchitecture(context));
     for (PartitionableElement partitionableElement : enclosedComponents) {
       EList<Feature> ownedFeatures = partitionableElement.getOwnedFeatures();
       for (Feature feature : ownedFeatures) {
@@ -575,6 +594,7 @@ public class CapellaServices {
 
   /**
    * used by refreshExtension
+   * 
    * @param context
    * @return
    */
@@ -584,8 +604,8 @@ public class CapellaServices {
     list.addAll(context.getPurposeMissions());
 
     /*
-     * EList<CapabilityExploitation> purposes = context.getPurposes(); for (CapabilityExploitation capabilityExploitation : purposes) { Mission mission =
-     * capabilityExploitation.getMission(); list.add(mission); }
+     * EList<CapabilityExploitation> purposes = context.getPurposes(); for (CapabilityExploitation
+     * capabilityExploitation : purposes) { Mission mission = capabilityExploitation.getMission(); list.add(mission); }
      */
 
     SystemAnalysis ca = (SystemAnalysis) getAncestor(context, CtxPackage.Literals.SYSTEM_ANALYSIS.getName());
@@ -634,6 +654,7 @@ public class CapellaServices {
 
   /**
    * used in context.odesign
+   * 
    * @param context
    * @param target
    * @return
@@ -651,21 +672,28 @@ public class CapellaServices {
   }
 
   /**
-   * Finds an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an unique name for the namespace of
-   * <code>namedElement</code>.
-   * @param namedElement the named element.
-   * @param prefix the prefix of the name.
-   * @return an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an unique name for the namespace of
-   *         <code>namedElement</code>.
+   * Finds an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an
+   * unique name for the namespace of <code>namedElement</code>.
+   * 
+   * @param namedElement
+   *          the named element.
+   * @param prefix
+   *          the prefix of the name.
+   * @return an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get
+   *         an unique name for the namespace of <code>namedElement</code>.
    */
   public String getAllUniqueName(AbstractNamedElement namedElement, String prefix) {
-    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, prefix, false, true);
+    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, prefix,
+        false, true);
   }
 
   /**
    * Gets the first ancestor of the given type.
-   * @param context the context.
-   * @param type the type.
+   * 
+   * @param context
+   *          the context.
+   * @param type
+   *          the type.
    * @return the first ancestor of the given type.
    */
   public EObject getAncestor(final EObject context, EClass eclass) {
@@ -678,8 +706,11 @@ public class CapellaServices {
 
   /**
    * Gets the first ancestor of the given type.
-   * @param context the context.
-   * @param type the type.
+   * 
+   * @param context
+   *          the context.
+   * @param type
+   *          the type.
    * @return the first ancestor of the given type.
    */
   public EObject getAncestor(final EObject context, final String type) {
@@ -694,8 +725,10 @@ public class CapellaServices {
   public List<BlockArchitecture> getAvailableArchitectures(final EObject context) {
     // OLD CODE
     List<BlockArchitecture> returnedArchitectures = new ArrayList<BlockArchitecture>();
-    SystemEngineering rootSystemEngineering = (SystemEngineering) getAncestor(context, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING.getName());
-    BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(context, CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
+    SystemEngineering rootSystemEngineering = (SystemEngineering) getAncestor(context,
+        CapellamodellerPackage.Literals.SYSTEM_ENGINEERING.getName());
+    BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(context,
+        CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
     EList<ModellingArchitecture> ownedArchitectures = rootSystemEngineering.getOwnedArchitectures();
     for (ModellingArchitecture modellingArchitecture : ownedArchitectures) {
       if (modellingArchitecture instanceof OperationalAnalysis) {
@@ -712,7 +745,8 @@ public class CapellaServices {
         }
       }
       if (modellingArchitecture instanceof PhysicalArchitecture) {
-        if (!((ownerBlockArchitecture instanceof OperationalAnalysis) || (ownerBlockArchitecture instanceof SystemAnalysis) || (ownerBlockArchitecture instanceof LogicalArchitecture))) {
+        if (!((ownerBlockArchitecture instanceof OperationalAnalysis)
+            || (ownerBlockArchitecture instanceof SystemAnalysis) || (ownerBlockArchitecture instanceof LogicalArchitecture))) {
           returnedArchitectures.add((PhysicalArchitecture) modellingArchitecture);
         }
       }
@@ -723,9 +757,9 @@ public class CapellaServices {
       }
     }
     // NEW CODE
-    returnedArchitectures =
-        (List) QueryDebugger.executeQueryWithEqualityDebug(
-            org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES, context, returnedArchitectures);
+    returnedArchitectures = (List) QueryDebugger.executeQueryWithEqualityDebug(
+        org.polarsys.capella.core.sirius.analysis.queries.QueryIdentifierConstants.GET_AVAILABLE_ARCHITECTURES,
+        context, returnedArchitectures);
     // END CODE REFACTOR
     return returnedArchitectures;
   }
@@ -735,7 +769,8 @@ public class CapellaServices {
     // retrieve all the association of the target
     for (TypedElement typedElement : clazz_p.getTypedElements()) {
 
-      if ((typedElement instanceof Property) && (((Property) typedElement).getAggregationKind() != AggregationKind.UNSET)) {
+      if ((typedElement instanceof Property)
+          && (((Property) typedElement).getAggregationKind() != AggregationKind.UNSET)) {
         Property property = (Property) typedElement;
 
         SemanticEditingDomain semEditDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain(property);
@@ -757,7 +792,9 @@ public class CapellaServices {
 
   /**
    * used in common.odesign
-   * @param context_p : '$containerView' - veiw of Element in Diagram
+   * 
+   * @param context_p
+   *          : '$containerView' - veiw of Element in Diagram
    * @return return the all the association not in Diagram of the target value of '$containerVeiw'.
    */
   public List<EObject> getAvailableAssociationToInsert(EObject context_p) {
@@ -791,8 +828,8 @@ public class CapellaServices {
   }
 
   /**
-   * Returns the semantic context for the given context. If the given context_p is a DSemanticDecorator, retrieve the target of this DSemanticDecorator. (it is
-   * used if sirius change its default variables from semantic to view)
+   * Returns the semantic context for the given context. If the given context_p is a DSemanticDecorator, retrieve the
+   * target of this DSemanticDecorator. (it is used if sirius change its default variables from semantic to view)
    */
   public EObject getSemanticContext(EObject context_p) {
     EObject semanticContext = context_p;
@@ -830,7 +867,8 @@ public class CapellaServices {
     if (node.getOutgoing() != null) {
       for (ActivityEdge anActivityEdge : node.getOutgoing()) {
         if (anActivityEdge instanceof FunctionalExchange) {
-          AbstractFunction linkedFunction = FunctionExt.getOutGoingAbstractFunction((FunctionalExchange) anActivityEdge);
+          AbstractFunction linkedFunction = FunctionExt
+              .getOutGoingAbstractFunction((FunctionalExchange) anActivityEdge);
           addInAvailableFunctionList(function_p, linkedFunction, returnedFunctions);
         }
       }
@@ -838,7 +876,8 @@ public class CapellaServices {
     if (node.getIncoming() != null) {
       for (ActivityEdge anActivityEdge : node.getIncoming()) {
         if (anActivityEdge instanceof FunctionalExchange) {
-          AbstractFunction linkedFunction = FunctionExt.getIncomingAbstractFunction((FunctionalExchange) anActivityEdge);
+          AbstractFunction linkedFunction = FunctionExt
+              .getIncomingAbstractFunction((FunctionalExchange) anActivityEdge);
           addInAvailableFunctionList(function_p, linkedFunction, returnedFunctions);
         }
       }
@@ -848,7 +887,8 @@ public class CapellaServices {
       if (aPin.getIncoming() != null) {
         for (ActivityEdge anActivityEdge : aPin.getIncoming()) {
           if (anActivityEdge instanceof FunctionalExchange) {
-            AbstractFunction linkedFunction = FunctionExt.getIncomingAbstractFunction((FunctionalExchange) anActivityEdge);
+            AbstractFunction linkedFunction = FunctionExt
+                .getIncomingAbstractFunction((FunctionalExchange) anActivityEdge);
             addInAvailableFunctionList(function_p, linkedFunction, returnedFunctions);
           }
         }
@@ -856,7 +896,8 @@ public class CapellaServices {
       if (aPin.getOutgoing() != null) {
         for (ActivityEdge anActivityEdge : aPin.getOutgoing()) {
           if (anActivityEdge instanceof FunctionalExchange) {
-            AbstractFunction linkedFunction = FunctionExt.getOutGoingAbstractFunction((FunctionalExchange) anActivityEdge);
+            AbstractFunction linkedFunction = FunctionExt
+                .getOutGoingAbstractFunction((FunctionalExchange) anActivityEdge);
             addInAvailableFunctionList(function_p, linkedFunction, returnedFunctions);
           }
         }
@@ -868,8 +909,11 @@ public class CapellaServices {
 
   /**
    * used in common.odesign
-   * @param context_p : '$containerView' - view of Element in Diagram
-   * @return return the all the incoming and outgoing Generalization not in Diagram of the target value of '$containerVeiw'.
+   * 
+   * @param context_p
+   *          : '$containerView' - view of Element in Diagram
+   * @return return the all the incoming and outgoing Generalization not in Diagram of the target value of
+   *         '$containerVeiw'.
    */
   public List<EObject> getAvailableExchangeItemElementToInsert(EObject context_p) {
     // collect all super and sub Generalization of the context_p taget not in Diagram
@@ -910,9 +954,8 @@ public class CapellaServices {
 
   public List<CapellaElement> getAvailableFunctionalAllocation(CapellaElement capellaElement_p) {
     List<CapellaElement> returnedList = new ArrayList<CapellaElement>();
-    IBusinessQuery query =
-        BusinessQueriesProvider.getInstance().getContribution(capellaElement_p.eClass(),
-            FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
+    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(capellaElement_p.eClass(),
+        FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_FUNCTIONAL_ALLOCATION);
     if (query != null) {
       returnedList.addAll(query.getAvailableElements(capellaElement_p));
     }
@@ -980,8 +1023,11 @@ public class CapellaServices {
 
   /**
    * used in common.odesign
-   * @param context_p : '$containerView' - veiw of Element in Diagram
-   * @return return the all the incoming and outgoing Generalization not in Diagram of the target value of '$containerVeiw'.
+   * 
+   * @param context_p
+   *          : '$containerView' - veiw of Element in Diagram
+   * @return return the all the incoming and outgoing Generalization not in Diagram of the target value of
+   *         '$containerVeiw'.
    */
   public List<EObject> getAvailableGeneralizationToInsert(EObject context_p) {
     // collect all super and sub Generalization of the context_p taget not in Diagram
@@ -1039,7 +1085,8 @@ public class CapellaServices {
 
     // Remove all pins already displayed in inner function
     if (containerView instanceof DNodeContainer) {
-      for (DNodeContainer aContainer : FaServices.getFaServices().getOwnedVisibleFunctionContainersInDataFlowBlank((DNodeContainer) containerView, viewPoint)) {
+      for (DNodeContainer aContainer : FaServices.getFaServices().getOwnedVisibleFunctionContainersInDataFlowBlank(
+          (DNodeContainer) containerView, viewPoint)) {
         Iterator<ActivityNode> returnedIterator = returnedList.iterator();
         if (aContainer.getTarget() != null) {
           while (returnedIterator.hasNext()) {
@@ -1065,7 +1112,8 @@ public class CapellaServices {
             toRemove = false;
           }
           for (ActivityEdge anActivityEdge : incoming) {
-            if ((anActivityEdge instanceof FunctionalExchange) && (anActivityEdge.getSource() instanceof FunctionOutputPort)
+            if ((anActivityEdge instanceof FunctionalExchange)
+                && (anActivityEdge.getSource() instanceof FunctionOutputPort)
                 && (!EcoreUtil.isAncestor(context, anActivityEdge.getSource().eContainer()))) {
               // remove internal exchanges
               toRemove = false;
@@ -1081,7 +1129,8 @@ public class CapellaServices {
             toRemove = false;
           }
           for (ActivityEdge anActivityEdge : outgoing) {
-            if ((anActivityEdge instanceof FunctionalExchange) && (anActivityEdge.getTarget() instanceof FunctionInputPort)
+            if ((anActivityEdge instanceof FunctionalExchange)
+                && (anActivityEdge.getTarget() instanceof FunctionInputPort)
                 && (!EcoreUtil.isAncestor(context, anActivityEdge.getTarget().eContainer()))) {
               // remove internal exchanges
               toRemove = false;
@@ -1101,6 +1150,7 @@ public class CapellaServices {
 
   /**
    * used in oa.odesign
+   * 
    * @param eObject
    * @param first
    * @param second
@@ -1116,10 +1166,13 @@ public class CapellaServices {
   }
 
   /**
-   * Returns the best container for given eObject which semantic element is of the given eclass type. used in common.odesign
+   * Returns the best container for given eObject which semantic element is of the given eclass type. used in
+   * common.odesign
    */
   public EObject getBestGraphicalContainer(EObject eObject, DDiagram diagram, EClass eclass) {
-    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<EObject, DDiagramElement>(); // all displayed elements in the diagram
+    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<EObject, DDiagramElement>(); // all displayed
+                                                                                                       // elements in
+                                                                                                       // the diagram
 
     // get all displayed functions in the diagram
     for (DDiagramElement aContainer : diagram.getContainers()) {
@@ -1141,8 +1194,11 @@ public class CapellaServices {
 
   /**
    * Returns the first ancestor of <code>e1</code> AND <code>e2</code>.
-   * @param e1 the first object.
-   * @param e2 the second object.
+   * 
+   * @param e1
+   *          the first object.
+   * @param e2
+   *          the second object.
    * @return the first ancestor of <code>e1</code> AND <code>e2</code>.
    */
   public EObject getCommonAncestor(EObject e1, EObject e2) {
@@ -1173,7 +1229,9 @@ public class CapellaServices {
 
   /**
    * Used to find the container of a newly created Logical/Physical component in a scenario
-   * @param object_p the context scenario
+   * 
+   * @param object_p
+   *          the context scenario
    * @return the parent logical component
    */
   public EObject getComponentContainer(EObject object_p) {
@@ -1208,7 +1266,8 @@ public class CapellaServices {
     return result;
   }
 
-  public EList<EObject> getDepleyedElements(final PhysicalComponent context, final DDiagram viewPoint, final DNodeContainer containerView) {
+  public EList<EObject> getDepleyedElements(final PhysicalComponent context, final DDiagram viewPoint,
+      final DNodeContainer containerView) {
     EList<Layer> activatedLayers = viewPoint.getActivatedLayers();
     boolean hasActivatedLayer = false;
     for (Layer layer : activatedLayers) {
@@ -1248,6 +1307,7 @@ public class CapellaServices {
 
   /**
    * used everywhere
+   * 
    * @param current_p
    * @return current_p if it is a diagram or the diagram that contains current_p if it is a DDiagramElement
    */
@@ -1270,6 +1330,7 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param context_p
    * @param view_p
    * @return
@@ -1321,7 +1382,9 @@ public class CapellaServices {
 
   /**
    * used in common.odesign
-   * @param context_p : '$containerView' - veiw of Element in Diagram
+   * 
+   * @param context_p
+   *          : '$containerView' - veiw of Element in Diagram
    * @return return the all the association existing in Diagram of the target value of '$containerVeiw'.
    */
   public List<EObject> getExistingAssociationFromDiagram(EObject context_p) {
@@ -1334,7 +1397,8 @@ public class CapellaServices {
       DDiagram currentDiagram = getDiagramContainer(currentContainer);
       // add existing association in Diagram to the result list.
       for (DEdge anEdge : currentDiagram.getEdges()) {
-        if ((anEdge.getTarget() instanceof Association) && (anEdge.getSourceNode().equals(context_p) || anEdge.getTargetNode().equals(context_p))) {
+        if ((anEdge.getTarget() instanceof Association)
+            && (anEdge.getSourceNode().equals(context_p) || anEdge.getTargetNode().equals(context_p))) {
           result.add(anEdge.getTarget());
         }
       }
@@ -1344,7 +1408,9 @@ public class CapellaServices {
 
   /**
    * used everywhere
-   * @param context_p : '$container' - view of Element in Diagram
+   * 
+   * @param context_p
+   *          : '$container' - view of Element in Diagram
    * @return return the all the association existing in Diagram of the target value of '$container'.
    */
   public List<EObject> getExistingConstraintsFromDiagram(EObject context_p, DDiagram diagram_p) {
@@ -1374,7 +1440,9 @@ public class CapellaServices {
 
   /**
    * Returns the existing cross referencer adapter or <code>null</code> if no adapter is installed.
-   * @param notifier a notifier.
+   * 
+   * @param notifier
+   *          a notifier.
    * @return the existing cross referencer adapter or <code>null</code> if no adapter is installed.
    */
   public ECrossReferenceAdapter getExistingCrossReferenceAdapter(final Notifier notifier) {
@@ -1383,8 +1451,11 @@ public class CapellaServices {
 
   /**
    * used in common.odesign
-   * @param context_p : '$containerView' - view of Element in Diagram
-   * @return return the all the incoming and outgoing Generalization existing in Diagram of the target value of '$containerVeiw'.
+   * 
+   * @param context_p
+   *          : '$containerView' - view of Element in Diagram
+   * @return return the all the incoming and outgoing Generalization existing in Diagram of the target value of
+   *         '$containerVeiw'.
    */
   public List<EObject> getExistingExchangeItemElementFromDiagram(EObject context_p) {
     // collect all super and sub Generalization of the context_p target existing in Diagram
@@ -1396,7 +1467,8 @@ public class CapellaServices {
       DDiagram currentDiagram = getDiagramContainer(currentContainer);
       // add existing Generalization in Diagram to the result list.
       for (DEdge anEdge : currentDiagram.getEdges()) {
-        if ((anEdge.getTarget() instanceof ExchangeItemElement) && (anEdge.getSourceNode().equals(context_p) || anEdge.getTargetNode().equals(context_p))) {
+        if ((anEdge.getTarget() instanceof ExchangeItemElement)
+            && (anEdge.getSourceNode().equals(context_p) || anEdge.getTargetNode().equals(context_p))) {
           result.add(anEdge.getTarget());
         }
       }
@@ -1406,8 +1478,11 @@ public class CapellaServices {
 
   /**
    * used in common.odesign
-   * @param context_p : '$containerView' - view of Element in Diagram
-   * @return return the all the incoming and outgoing Generalization existing in Diagram of the target value of '$containerVeiw'.
+   * 
+   * @param context_p
+   *          : '$containerView' - view of Element in Diagram
+   * @return return the all the incoming and outgoing Generalization existing in Diagram of the target value of
+   *         '$containerVeiw'.
    */
   public List<EObject> getExistingGeneralizationFromDiagram(EObject context_p) {
     // collect all super and sub Generalization of the context_p target existing in Diagram
@@ -1419,7 +1494,8 @@ public class CapellaServices {
       DDiagram currentDiagram = getDiagramContainer(currentContainer);
       // add existing Generalization in Diagram to the result list.
       for (DEdge anEdge : currentDiagram.getEdges()) {
-        if ((anEdge.getTarget() instanceof Generalization) && (anEdge.getSourceNode().equals(context_p) || anEdge.getTargetNode().equals(context_p))) {
+        if ((anEdge.getTarget() instanceof Generalization)
+            && (anEdge.getSourceNode().equals(context_p) || anEdge.getTargetNode().equals(context_p))) {
           result.add(anEdge.getTarget());
         }
       }
@@ -1464,7 +1540,8 @@ public class CapellaServices {
     List<PartitionableElement> allDescendants = getAllDescendants(context);
     for (PartitionableElement partitionableElement : allDescendants) {
       if (partitionableElement instanceof PhysicalComponent) {
-        for (AbstractDeploymentLink abstractDeployment : ((PhysicalComponent) partitionableElement).getOwnedDeploymentLinks()) {
+        for (AbstractDeploymentLink abstractDeployment : ((PhysicalComponent) partitionableElement)
+            .getOwnedDeploymentLinks()) {
           DeployableElement deployedElement = abstractDeployment.getDeployedElement();
           if (null != deployedElement) {
             deployedElements.add(deployedElement);
@@ -1486,7 +1563,8 @@ public class CapellaServices {
     List<PartitionableElement> allDescendants = getAllDescendants(context);
     for (PartitionableElement partitionableElement : allDescendants) {
       if (partitionableElement instanceof PhysicalComponent) {
-        for (ComponentFunctionalAllocation abstractDeployment : ((PhysicalComponent) partitionableElement).getOwnedFunctionalAllocation()) {
+        for (ComponentFunctionalAllocation abstractDeployment : ((PhysicalComponent) partitionableElement)
+            .getOwnedFunctionalAllocation()) {
           TraceableElement traceableElement = abstractDeployment.getTargetElement();
           if (null != traceableElement) {
             functionalAllocations.add(traceableElement);
@@ -1498,6 +1576,7 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param context_p
    * @param view_p
    * @return
@@ -1528,6 +1607,7 @@ public class CapellaServices {
 
   /**
    * used in common and physical
+   * 
    * @param eObject
    * @param first
    * @param second
@@ -1541,14 +1621,18 @@ public class CapellaServices {
 
   /**
    * Returns the objects that reference the given object by the given reference.
-   * @param object the referenced object.
-   * @param reference the reference.
+   * 
+   * @param object
+   *          the referenced object.
+   * @param reference
+   *          the reference.
    * @return the objects that reference the given object by the given reference.
    */
   public Collection<EObject> getInverseReferences(EObject object, EReference reference) {
     final ECrossReferenceAdapter crossReferenceAdapter = getExistingCrossReferenceAdapter(object);
     if (crossReferenceAdapter != null) {
-      Collection<EStructuralFeature.Setting> allInverseReferences = crossReferenceAdapter.getInverseReferences(object, true);
+      Collection<EStructuralFeature.Setting> allInverseReferences = crossReferenceAdapter.getInverseReferences(object,
+          true);
       Collection<EObject> inverseReferences = new HashSet<EObject>();
       for (EStructuralFeature.Setting setting : allInverseReferences) {
         if (setting.getEStructuralFeature() == reference) {
@@ -1561,7 +1645,7 @@ public class CapellaServices {
 
   }
 
-  LinkedList<AbstractFunction> getLeaves(AbstractFunction function) {
+  static LinkedList<AbstractFunction> getLeaves(AbstractFunction function) {
     LinkedList<AbstractFunction> subFunctions = new LinkedList<AbstractFunction>();
     for (AbstractFunction func : function.getSubFunctions()) {
       if (AbstractFunctionExt.isLeaf(func)) {
@@ -1575,6 +1659,7 @@ public class CapellaServices {
 
   /**
    * Returns the logger services.
+   * 
    * @return the logger services.
    */
   // public LoggerServices getLoggerServices() {
@@ -1607,6 +1692,7 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param context_p
    * @param view_p
    * @return
@@ -1657,12 +1743,17 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param eObject
-   * @param categories : list of existing categories.
-   * @param exchangesView : list of DEdge represented.
-   * @return every displayable categories : a category is displayable if one of its exchanges are represented in the diagram
+   * @param categories
+   *          : list of existing categories.
+   * @param exchangesView
+   *          : list of DEdge represented.
+   * @return every displayable categories : a category is displayable if one of its exchanges are represented in the
+   *         diagram
    */
-  public Set<ExchangeCategory> getShowableCategories(EObject eObject, final List<ExchangeCategory> categories, final List<DEdge> exchangesView) {
+  public Set<ExchangeCategory> getShowableCategories(EObject eObject, final List<ExchangeCategory> categories,
+      final List<DEdge> exchangesView) {
 
     Set<ExchangeCategory> showableCategory = new HashSet<ExchangeCategory>();
 
@@ -1682,6 +1773,7 @@ public class CapellaServices {
 
   /**
    * used in common context
+   * 
    * @param aClassifier
    * @return
    */
@@ -1696,10 +1788,12 @@ public class CapellaServices {
 
   /**
    * used in common context
+   * 
    * @param aClassifier
    * @return
    */
-  public Collection<GeneralizableElement> getSuperClassifiers(GeneralizableElement aClassifier, Generalization generalization_p) {
+  public Collection<GeneralizableElement> getSuperClassifiers(GeneralizableElement aClassifier,
+      Generalization generalization_p) {
     Collection<GeneralizableElement> superClassifiers = new ArrayList<GeneralizableElement>();
     superClassifiers.add(aClassifier);
     for (Generalization aGeneralization : aClassifier.getSuperGeneralizations()) {
@@ -1713,6 +1807,7 @@ public class CapellaServices {
 
   /**
    * used in common context
+   * 
    * @param aClassifier
    * @return
    */
@@ -1727,10 +1822,12 @@ public class CapellaServices {
 
   /**
    * used in common context
+   * 
    * @param aClassifier
    * @return
    */
-  public Collection<GeneralizableElement> getSubClassifiers(GeneralizableElement aClassifier, Generalization generalization_p) {
+  public Collection<GeneralizableElement> getSubClassifiers(GeneralizableElement aClassifier,
+      Generalization generalization_p) {
     Collection<GeneralizableElement> superClassifiers = new ArrayList<GeneralizableElement>();
     superClassifiers.add(aClassifier);
     for (Generalization aGeneralization : aClassifier.getSubGeneralizations()) {
@@ -1742,7 +1839,8 @@ public class CapellaServices {
     return superClassifiers;
   }
 
-  public EList<EObject> getTargetElements(final PhysicalComponent context, final DDiagram viewPoint, final DNodeContainer containerView) {
+  public EList<EObject> getTargetElements(final PhysicalComponent context, final DDiagram viewPoint,
+      final DNodeContainer containerView) {
     EList<Layer> activatedLayers = viewPoint.getActivatedLayers();
     boolean hasActivatedLayer = false;
     for (Layer layer : activatedLayers) {
@@ -1782,35 +1880,47 @@ public class CapellaServices {
 
   /**
    * Finds an unique name for the given capella element. used everywhere
-   * @param namedElement the element.
+   * 
+   * @param namedElement
+   *          the element.
    * @return an unique name for the given capella element.
    */
   public String getUniqueName(AbstractNamedElement namedElement) {
-    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, namedElement.eClass().getName(), false, false);
+    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+        namedElement.eClass().getName(), false, false);
   }
 
   /**
-   * Finds an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an unique name for the namespace of
-   * <code>namedElement</code>.
-   * @param namedElement the named element.
-   * @param space {value can be either 'true' or 'false'} if true : leave space between namedElement EClass and Integer Index
-   * @return an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an unique name for the namespace of
-   *         <code>namedElement</code>.
+   * Finds an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an
+   * unique name for the namespace of <code>namedElement</code>.
+   * 
+   * @param namedElement
+   *          the named element.
+   * @param space
+   *          {value can be either 'true' or 'false'} if true : leave space between namedElement EClass and Integer
+   *          Index
+   * @return an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get
+   *         an unique name for the namespace of <code>namedElement</code>.
    */
   public String getUniqueName(AbstractNamedElement namedElement, boolean space) {
-    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, namedElement.eClass().getName(), space, false);
+    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+        namedElement.eClass().getName(), space, false);
   }
 
   /**
-   * Finds an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an unique name for the namespace of
-   * <code>namedElement</code>.
-   * @param namedElement the named element.
-   * @param prefix the prefix of the name.
-   * @return an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an unique name for the namespace of
-   *         <code>namedElement</code>.
+   * Finds an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get an
+   * unique name for the namespace of <code>namedElement</code>.
+   * 
+   * @param namedElement
+   *          the named element.
+   * @param prefix
+   *          the prefix of the name.
+   * @return an unique name for the given capella element. Suffixes the <code>prefix</code> string with a number to get
+   *         an unique name for the namespace of <code>namedElement</code>.
    */
   public String getUniqueName(AbstractNamedElement namedElement, String prefix) {
-    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, prefix, false, false);
+    return EcoreUtil2.getUniqueName(namedElement, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME, prefix,
+        false, false);
   }
 
   /**
@@ -1830,6 +1940,7 @@ public class CapellaServices {
 
   /**
    * used in oa
+   * 
    * @param decorators
    * @return
    */
@@ -1877,7 +1988,9 @@ public class CapellaServices {
 
   /**
    * used everywhere
-   * @param node_p : a DNode in a diagram
+   * 
+   * @param node_p
+   *          : a DNode in a diagram
    * @return if the current node is a borderedNode or not
    */
   public boolean isABorderedNode(AbstractDNode node_p) {
@@ -1885,14 +1998,16 @@ public class CapellaServices {
   }
 
   /**
-   * a function is allocated to a component/role if it is effectively allocated or if all its leaves are allocated to considered component/role. used in
-   * Architecture Blank Diagrams
+   * a function is allocated to a component/role if it is effectively allocated or if all its leaves are allocated to
+   * considered component/role. used in Architecture Blank Diagrams
+   * 
    * @param eObject
    * @param function
-   * @param component or role
+   * @param component
+   *          or role
    * @return is function allocated to component/role
    */
-  public boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
+  public static boolean isAllocatedFunction(EObject eObject, AbstractFunction function, EObject container) {
     boolean result = false;
     LinkedList<AbstractFunction> allocatedFunctions = new LinkedList<AbstractFunction>();
     if (container instanceof Component) {
@@ -1928,6 +2043,7 @@ public class CapellaServices {
 
   /**
    * used in physical
+   * 
    * @param context
    * @return
    */
@@ -1984,8 +2100,11 @@ public class CapellaServices {
 
   /**
    * Return <code>true</code> if <code>mayBeChild</code> is a child of <code>current</code>. used everywhere
-   * @param current the current object.
-   * @param mayBeChild the object that may be the child.
+   * 
+   * @param current
+   *          the current object.
+   * @param mayBeChild
+   *          the object that may be the child.
    * @return <code>true</code> if <code>mayBeChild</code> is a child of <code>current</code>.
    */
   public boolean isChild(EObject current, EObject mayBeChild_p) {
@@ -2003,7 +2122,8 @@ public class CapellaServices {
   }
 
   public boolean isEPBSContext(ModelElement scenario_p) {
-    ModellingArchitecture archi = (ModellingArchitecture) getAncestor(scenario_p, CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
+    ModellingArchitecture archi = (ModellingArchitecture) getAncestor(scenario_p,
+        CapellacorePackage.Literals.MODELLING_ARCHITECTURE);
     if (archi instanceof EPBSArchitecture) {
       return true;
     }
@@ -2031,8 +2151,10 @@ public class CapellaServices {
       return true;
     }
 
-    if (((source instanceof PhysicalQuantity) && (target instanceof NumericType)) || ((source instanceof Component) && (target instanceof Component))
-        || ((source instanceof GeneralizableElement) && (target instanceof GeneralizableElement) && source.eClass().equals(target.eClass()))) {
+    if (((source instanceof PhysicalQuantity) && (target instanceof NumericType))
+        || ((source instanceof Component) && (target instanceof Component))
+        || ((source instanceof GeneralizableElement) && (target instanceof GeneralizableElement) && source.eClass()
+            .equals(target.eClass()))) {
 
       GeneralizableElement targetClass = (GeneralizableElement) target;
       GeneralizableElement sourceClass = (GeneralizableElement) source;
@@ -2041,7 +2163,8 @@ public class CapellaServices {
       // check if target is not already inherited
       // check to avoid inheritance cycle
       if (!isMultipleInheritanceAllowed()) {
-        if (!getSuperClassifiers(sourceClass).contains(targetClass) && !getSuperClassifiers(targetClass).contains(sourceClass)) {
+        if (!getSuperClassifiers(sourceClass).contains(targetClass)
+            && !getSuperClassifiers(targetClass).contains(sourceClass)) {
           if (getSuperClassifiers(sourceClass).size() == 1) {
             return true;
           }
@@ -2053,7 +2176,8 @@ public class CapellaServices {
 
         }
       } else {
-        return (!getSuperClassifiers(sourceClass).contains(targetClass) && !getSuperClassifiers(targetClass).contains(sourceClass));
+        return (!getSuperClassifiers(sourceClass).contains(targetClass) && !getSuperClassifiers(targetClass).contains(
+            sourceClass));
       }
     }
 
@@ -2062,6 +2186,7 @@ public class CapellaServices {
 
   /**
    * used in common oa
+   * 
    * @param execution_p
    * @return
    */
@@ -2071,7 +2196,9 @@ public class CapellaServices {
   }
 
   /**
-   * return true if the instanceRole correspond to a part which is inside the logical component containing the scenario, false otherwise used in common oa
+   * return true if the instanceRole correspond to a part which is inside the logical component containing the scenario,
+   * false otherwise used in common oa
+   * 
    * @param instanceRole_p
    * @return
    */
@@ -2093,9 +2220,11 @@ public class CapellaServices {
    * used in common.odesign
    */
   public boolean isNodeComponent(final InstanceRole instanceRole) {
-    BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(instanceRole, CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
+    BlockArchitecture ownerBlockArchitecture = (BlockArchitecture) getAncestor(instanceRole,
+        CsPackage.Literals.BLOCK_ARCHITECTURE.getName());
     boolean isNodeComponent = (ownerBlockArchitecture instanceof PhysicalArchitecture);
-    Component instanceRoleComponent = instanceRole == null ? null : (Component) instanceRole.getRepresentedInstance().getAbstractType();
+    Component instanceRoleComponent = instanceRole == null ? null : (Component) instanceRole.getRepresentedInstance()
+        .getAbstractType();
     if (instanceRoleComponent instanceof AbstractPhysicalComponent) {
       AbstractPhysicalComponent sourcePhysicalComponent = (AbstractPhysicalComponent) instanceRoleComponent;
       isNodeComponent = isNodeComponent && sourcePhysicalComponent.getNature().equals(PhysicalComponentNature.NODE);
@@ -2106,6 +2235,7 @@ public class CapellaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param pin_p
    * @return if a pin is linked to an Internal ControlNode by a functional exchange
    */
@@ -2187,6 +2317,7 @@ public class CapellaServices {
 
   /**
    * return true if the message is a source of a RefinementLink, false otherwise used in common and oa
+   * 
    * @param message_p
    * @return
    */
@@ -2201,6 +2332,7 @@ public class CapellaServices {
 
   /**
    * used in context
+   * 
    * @param context
    * @param preSource
    * @param preTarget
@@ -2234,6 +2366,7 @@ public class CapellaServices {
 
   /**
    * used by refresh extensions
+   * 
    * @param diagram_p
    * @param anElement
    * @return true if the element is visible in the diagram
@@ -2257,7 +2390,8 @@ public class CapellaServices {
   public void refreshElement(DRepresentationElement element) {
     if (element != null) {
       DDiagram diagram = getDiagramContainer(element);
-      ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element.getTarget());
+      ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry()
+          .getModelAccessor(element.getTarget());
       IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element.getTarget());
       DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
       diagramSync.setDiagram((DSemanticDiagram) diagram);
@@ -2272,6 +2406,7 @@ public class CapellaServices {
 
   /**
    * Get all the ancestor elements of DNodeContainer from Diagram.
+   * 
    * @param current_p
    * @return List of DiagramElements
    */
@@ -2285,7 +2420,8 @@ public class CapellaServices {
 
   public void removeElements(Collection<? extends EObject> elements) {
     if ((elements != null) && (elements.size() > 0)) {
-      CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elements), elements, false, false, true);
+      CapellaDeleteCommand command = new CapellaDeleteCommand(TransactionHelper.getExecutionManager(elements),
+          elements, false, false, true);
       if (command.canExecute()) {
         command.execute();
       }
@@ -2315,6 +2451,7 @@ public class CapellaServices {
 
   /**
    * returns a shared instance of this services.
+   * 
    * @return a shared instance of this services.
    */
   public static CapellaServices getService() {
@@ -2326,6 +2463,7 @@ public class CapellaServices {
 
   /**
    * Display the contents of a constraint. common.odesing : CDB (referenced everywhere)
+   * 
    * @param constraint_p
    * @return a non-null constraint label
    */
