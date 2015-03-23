@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Capella_Version_0.8.0-->
+<org.polarsys.capella.core.data.ctx:Capability xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.polarsys.capella.core.data.ctx="http://www.polarsys.org/capella/core/ctx/0.8.0"
+    xmlns:org.polarsys.capella.core.data.interaction="http://www.polarsys.org/capella/core/interaction/0.8.0"
+    id="c4f350d3-4e63-4599-ac6d-56f293c55e99"
+    name="Capability_Fragmented" extending="org.polarsys.capella.core.data.interaction:AbstractCapabilityExtend ../I_34_Test_OK.melodymodeller#95be85bf-6665-4f86-be07-a26e56c1a7bc">
+  <ownedActorCapabilityInvolvements xsi:type="org.polarsys.capella.core.data.ctx:ActorCapabilityInvolvement"
+      id="c1c4a78f-5960-4520-95e2-191a7baa2792" involver="#c4f350d3-4e63-4599-ac6d-56f293c55e99"
+      involved="org.polarsys.capella.core.data.ctx:Actor ../I_34_Test_OK.melodymodeller#2a7cb7b0-3776-4262-b603-dda0348f634d"/>
+  <ownedSystemCapabilityInvolvement xsi:type="org.polarsys.capella.core.data.ctx:SystemCapabilityInvolvement"
+      id="9dfb6175-19de-442e-a6c2-3affa4c14705" involver="#c4f350d3-4e63-4599-ac6d-56f293c55e99"
+      involved="org.polarsys.capella.core.data.ctx:System ../I_34_Test_OK.melodymodeller#2f7797b9-5529-4df4-b3c9-2496d9a07d51"/>
+</org.polarsys.capella.core.data.ctx:Capability>

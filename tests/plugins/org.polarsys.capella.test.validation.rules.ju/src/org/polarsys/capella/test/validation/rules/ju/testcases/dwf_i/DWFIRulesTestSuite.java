@@ -37,6 +37,7 @@ public class DWFIRulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_DWF_I_03());
 		tests.add(new Rule_DWF_I_04());
 		tests.add(new Rule_DWF_I_05());
+		tests.add(new Rule_DWF_I_05bis());
 		tests.add(new Rule_DWF_I_06());
 		tests.add(new Rule_DWF_I_07());
 		tests.add(new Rule_DWF_I_08());
@@ -45,11 +46,18 @@ public class DWFIRulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_DWF_I_11());
 		tests.add(new Rule_DWF_I_12());
 		tests.add(new Rule_DWF_I_13());
+    tests.add(new Rule_DWF_I_14());
+    tests.add(new Rule_DWF_I_15());
+    tests.add(new Rule_DWF_I_16());
+    tests.add(new Rule_DWF_I_17());
+    tests.add(new Rule_DWF_I_18());
+    tests.add(new Rule_DWF_I_19());
+    tests.add(new Rule_DWF_I_20());
 		return tests;
 	}
 
   @Override
   public List<String> getRequiredTestModels() {   
-    return Arrays.asList(new String [] {"RulesOnDesignTest"});  //$NON-NLS-1$
+    return Arrays.asList(new String [] {"RulesOnDesignTest","Project_validation8"});  //$NON-NLS-1$
   }
 }

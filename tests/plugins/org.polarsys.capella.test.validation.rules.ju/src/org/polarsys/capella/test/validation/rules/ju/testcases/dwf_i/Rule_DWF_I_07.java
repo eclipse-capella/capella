@@ -47,7 +47,7 @@ public class Rule_DWF_I_07 extends AbstractRulesOnDesignTest {
 		return Arrays.asList(new String[] {
 				"77ec3463-bde6-4129-92a0-8b1c634306d1",
 				"ea385b0d-9215-450f-b7e1-460ee433f209",
-				"56cdd2f4-3681-42d3-83d6-9371e71480f6 " });
+				"56cdd2f4-3681-42d3-83d6-9371e71480f6" });
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class Rule_DWF_I_07 extends AbstractRulesOnDesignTest {
 	 */
 	protected List<OracleDefinition> getOracleDefinitions() {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
-				"56cdd2f4-3681-42d3-83d6-9371e71480f6 ", 1) });
+				"56cdd2f4-3681-42d3-83d6-9371e71480f6", 1) });
 	}
 
 	/**

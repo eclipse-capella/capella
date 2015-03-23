@@ -84,24 +84,26 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     // get the descriptor of the rule to test
     ConstraintRegistry registry = ConstraintRegistry.getInstance();
 
-    ruleDescriptor = registry.getDescriptor(ruleID);
-    if (ruleDescriptor == null) {
-      throw new InternalError("rule for ID " + ruleID + " does not exist. Test can not be performed"); //$NON-NLS-1$//$NON-NLS-2$
-    }
-
-    if (!ruleDescriptor.isEnabled()) {
-      ruleDescriptor.setEnabled(true);
-      _ruleWasDisabled = true;
-    }
-
-    // create the filter and add it to the validator
-    filter = new IConstraintFilter() {
-      @SuppressWarnings("synthetic-access")
-      public boolean accept(IConstraintDescriptor constraint_p, EObject target_p) {
-        return ruleDescriptor == constraint_p;
+    if (ruleID != null) {
+      ruleDescriptor = registry.getDescriptor(ruleID);
+      if (ruleDescriptor == null) {
+        throw new InternalError("rule for ID " + ruleID + " does not exist. Test can not be performed"); //$NON-NLS-1$//$NON-NLS-2$
       }
-    };
-    validator.addConstraintFilter(filter);
+      
+      if (!ruleDescriptor.isEnabled()) {
+        ruleDescriptor.setEnabled(true);
+        _ruleWasDisabled = true;
+      }
+      
+      // create the filter and add it to the validator
+      filter = new IConstraintFilter() {
+        @SuppressWarnings("synthetic-access")
+        public boolean accept(IConstraintDescriptor constraint_p, EObject target_p) {
+          return ruleDescriptor == constraint_p;
+        }
+      };
+      validator.addConstraintFilter(filter);
+    }
   }
 
   @Override
@@ -126,48 +128,50 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     // get the objects to validate (only CapellaElement because the oracle is based on object ID)
     ICapellaModel model = getTestModel(getRequiredTestModel());
     List<CapellaElement> objectsToValidate = getTestScope(model);
-    // prepare oracle table
-    for (OracleDefinition definition : oracleDefinitions) {
-      objectID2OracleDefinition.put(definition.getObjectID(), definition);
-    }
-    // check the validation result for each objects
-    List<CapellaElement> failedObjects = new ArrayList<CapellaElement>();
-    Diagnostician diagnostician = new Diagnostician();
-    for (CapellaElement object : objectsToValidate) {
-      String objectID = object.getId();
-      OracleDefinition oracleDef = objectID2OracleDefinition.get(objectID);
-      Diagnostic diagnostic = diagnostician.validate(object);
-      if ((diagnostic.getSeverity() == Diagnostic.OK) && (oracleDef != null)) {
-        assertTrue("Validation rule " + ruleID + " has not detected an error on object " + objectID + " while it must be the case", false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-      } else {
-        if (diagnostic.getSeverity() != Diagnostic.OK) {
-          if (oracleDef != null) {
-            oracleDef.countOneError();
-          } else {
-            failedObjects.add(object);
+    if (oracleDefinitions != null) {
+      // prepare oracle table
+      for (OracleDefinition definition : oracleDefinitions) {
+        objectID2OracleDefinition.put(definition.getObjectID(), definition);
+      }
+      // check the validation result for each objects
+      List<CapellaElement> failedObjects = new ArrayList<CapellaElement>();
+      Diagnostician diagnostician = new Diagnostician();
+      for (CapellaElement object : objectsToValidate) {
+        String objectID = object.getId();
+        OracleDefinition oracleDef = objectID2OracleDefinition.get(objectID);
+        Diagnostic diagnostic = diagnostician.validate(object);
+        if ((diagnostic.getSeverity() == Diagnostic.OK) && (oracleDef != null)) {
+          assertTrue("Validation rule " + ruleID + " has not detected an error on object " + objectID + " while it must be the case", false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        } else {
+          if (diagnostic.getSeverity() != Diagnostic.OK) {
+            if (oracleDef != null) {
+              oracleDef.countOneError();
+            } else {
+              failedObjects.add(object);
+            }
           }
         }
       }
-    }
-    // check all objects to be validated before throwing a message
-    if (!failedObjects.isEmpty()) {
-      String message = "Validation rule " + ruleID + " has detected an error on object(s): \n"; //$NON-NLS-1$ //$NON-NLS-2$
-      for (CapellaElement elt : failedObjects) {
-        message += " - " + elt.getId() + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
+      // check all objects to be validated before throwing a message
+      if (!failedObjects.isEmpty()) {
+        String message = "Validation rule " + ruleID + " has detected an error on object(s): \n"; //$NON-NLS-1$ //$NON-NLS-2$
+        for (CapellaElement elt : failedObjects) {
+          message += " - " + elt.getId() + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
+        }
+        message += "while it must not be the case.";
+        assertTrue(message, false);
       }
-      message += "while it must not be the case.";
-      assertTrue(message, false);
-    }
-    // check that some errors has not been detected according to the number of error occurences for each object in error
-    for (OracleDefinition oracleDef : oracleDefinitions) {
-      int nbExpectedErrors = oracleDef.getNbExpectedErrors();
-      int nbFoundErrors = oracleDef.getNbFoundErrors();
-      if (nbFoundErrors < nbExpectedErrors) {
-        assertTrue(
-            "Validation rule " + ruleID + " has only detected " + nbFoundErrors + " of " + nbExpectedErrors + " expected error(s) on object " + oracleDef.getObjectID(), false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-      } else if (nbFoundErrors > nbExpectedErrors) {
-        assertTrue(
-            "Validation rule " + ruleID + " has detected " + nbFoundErrors + " error(s) instead of " + nbExpectedErrors + " error(s) on object " + oracleDef.getObjectID(), false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+      // check that some errors has not been detected according to the number of error occurences for each object in error
+      for (OracleDefinition oracleDef : oracleDefinitions) {
+        int nbExpectedErrors = oracleDef.getNbExpectedErrors();
+        int nbFoundErrors = oracleDef.getNbFoundErrors();
+        if (nbFoundErrors < nbExpectedErrors) {
+          assertTrue(
+              "Validation rule " + ruleID + " has only detected " + nbFoundErrors + " of " + nbExpectedErrors + " expected error(s) on object " + oracleDef.getObjectID(), false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+        } else if (nbFoundErrors > nbExpectedErrors) {
+          assertTrue(
+              "Validation rule " + ruleID + " has detected " + nbFoundErrors + " error(s) instead of " + nbExpectedErrors + " error(s) on object " + oracleDef.getObjectID(), false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+        }
       }
     }
   }
