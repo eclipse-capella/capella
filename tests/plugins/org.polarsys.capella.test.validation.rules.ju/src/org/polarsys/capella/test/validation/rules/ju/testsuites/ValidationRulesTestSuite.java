@@ -33,12 +33,12 @@ import org.polarsys.capella.test.validation.rules.ju.testcases.Rule_TC_I_13;
 
 public class ValidationRulesTestSuite extends BasicTestSuite {
 
-  /**
-   * Returns the suite. This is required to unary launch this test.
-   */
-  public static Test suite() {
-    return new ValidationRulesTestSuite();
-  }
+	/**
+	 * Returns the suite. This is required to unary launch this test.
+	 */
+	public static Test suite() {
+		return new ValidationRulesTestSuite();
+	}
 
 	@Override
 	protected List<BasicTestArtefact> getTests() {
@@ -56,7 +56,10 @@ public class ValidationRulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_TC_I_11());
 		tests.add(new Rule_TC_I_12());
 		tests.add(new Rule_TC_I_13());
-    //tests.add(new DCOMRulesTestSuite());
+    tests.add(new RulesOnDesignTestSuite());
+    tests.add(new RulesOnIntegrityTestSuite());
+    tests.add(new RulesOnQualityTestSuite());
+    tests.add(new RulesOnTransitionTestSuite());
 		return tests;
 	}
 
@@ -64,5 +67,4 @@ public class ValidationRulesTestSuite extends BasicTestSuite {
 	public List<String> getRequiredTestModels() {
 		return null;
 	}
-
 }

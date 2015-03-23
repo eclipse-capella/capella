@@ -12,47 +12,56 @@ package org.polarsys.capella.test.validation.rules.ju.testcases.dcom;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
 import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnDesignTest;
 
 /**
- *
+ * test on DCOM_06: This rule checks that an Interface is implemented by at least one Component.
+ * @generated
  */
 public class Rule_DCOM_06 extends AbstractRulesOnDesignTest {
 
-  /**
-   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
-   */
+	/**
+	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
+	 * @generated
+	 */
 	protected EClass getTargetedEClass() {
 		return CsPackage.Literals.INTERFACE;
 	}
 
-  /**
-   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getRuleID()
-   */
+	/**
+	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getRuleID()
+	 * @generated
+	 */
 	protected String getRuleID() {
-		return "org.polarsys.capella.core.data.cs.validation.DCOM_06"; //$NON-NLS-1$
+		return "org.polarsys.capella.core.data.cs.validation.DCOM_06";
 	}
 
-  /**
-   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRulePartialTestCase#getScopeDefinition()
-   */
-  protected List<String> getScopeDefinition() {
-    return Arrays.asList(new String[] {
-        "d234ae5a-4173-4ebd-9906-4ec29af8a502", //$NON-NLS-1$
-        "47c126f9-9398-468f-8755-6811b152cbc1" //$NON-NLS-1$
-    });
-  }
+	/**
+	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRulePartialTestCase#getScopeDefinition()
+	 * @generated
+	 */
+	protected List<String> getScopeDefinition() {
+		return Arrays.asList(new String[] {
+				"d234ae5a-4173-4ebd-9906-4ec29af8a502",
+				"47c126f9-9398-468f-8755-6811b152cbc1" });
+	}
 
-  /**
-   * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getOracleDefinitions()
-   */
+	/**
+	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getOracleDefinitions()
+	 * @generated
+	 */
 	protected List<OracleDefinition> getOracleDefinitions() {
-		return Arrays.asList(new OracleDefinition[] {
-		    new OracleDefinition("47c126f9-9398-468f-8755-6811b152cbc1", 1) //$NON-NLS-1$
-			});
+		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
+				"47c126f9-9398-468f-8755-6811b152cbc1", 1) });
+	}
+
+	/**
+	 * @generated
+	 */
+	public void testRule_DCOM_06() throws Exception {
+		test();
 	}
 }

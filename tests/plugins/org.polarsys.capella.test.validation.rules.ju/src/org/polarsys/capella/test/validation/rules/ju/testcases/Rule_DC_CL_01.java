@@ -45,4 +45,8 @@ public class Rule_DC_CL_01 extends ValidationRuleTestCase {
 				new OracleDefinition("b019eaa8-ea54-4a3d-87d4-e6c668f138fb", 1), //$NON-NLS-1$
 			});
 	}
+
+	public void testRule_DC_CL_01() throws Exception {
+	  test();
+	}
 }

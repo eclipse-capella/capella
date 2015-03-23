@@ -28,6 +28,9 @@ public class DCOMRulesTestSuite extends BasicTestSuite {
     return new DCOMRulesTestSuite();
   }
 
+  /**
+   * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
+   */
 	@Override
 	protected List<BasicTestArtefact> getTests() {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
@@ -49,6 +52,7 @@ public class DCOMRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DCOM_17());
     tests.add(new Rule_DCOM_18());
     tests.add(new Rule_DCOM_19());
+    tests.add(new Rule_DCOM_20());
 		return tests;
 	}
 
@@ -56,5 +60,4 @@ public class DCOMRulesTestSuite extends BasicTestSuite {
 	public List<String> getRequiredTestModels() {		
 		return Arrays.asList(new String [] {"RulesOnDesignTest"});  //$NON-NLS-1$
 	}
-	
 }
