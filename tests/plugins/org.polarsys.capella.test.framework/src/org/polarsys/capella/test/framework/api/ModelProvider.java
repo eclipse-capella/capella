@@ -20,9 +20,12 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.swt.widgets.Display;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.libraries.ILibraryManager;
 import org.polarsys.capella.common.mdsofa.common.helper.ProjectHelper;
 import org.polarsys.capella.core.libraries.model.CapellaModel;
@@ -41,6 +44,7 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
 public class ModelProvider {
 
 	protected static HashMap<String, BasicTestArtefact> modelIdentifier2Owner = new HashMap<String, BasicTestArtefact>();
+	protected static HashMap<String, ChangeLocker> modelIdentifier2ChangeLocker = new HashMap<String, ChangeLocker>();
 	protected static HashMap<String, String> modelIdentifier2ProjectNameInWorkspace = new HashMap<String, String>();
 	
   /**
@@ -54,6 +58,7 @@ public class ModelProvider {
 		File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);  	
   	String modelIdentifier = sourceFolder.toString();
   	System.out.println(">> require "+modelIdentifier);
+  	// load the model if it is not already the case
   	if (!modelIdentifier2Owner.containsKey(modelIdentifier)) {
   		if (!sourceFolder.exists() || !sourceFolder.isDirectory())
   			throw new IllegalArgumentException("test model '"+relativeModelPath+"' does not exist");
@@ -68,6 +73,14 @@ public class ModelProvider {
   		modelIdentifier2Owner.put(modelIdentifier, artefact);
   		modelIdentifier2ProjectNameInWorkspace.put(modelIdentifier, projectName);
   	}
+  	// add a change lock on the test model if the artefact is not the owner of the test model
+  	if (modelIdentifier2Owner.get(modelIdentifier) != artefact) {
+  		Session session = getSessionForTestModel(relativeModelPath, artefact);
+  		TransactionalEditingDomain ted = TransactionHelper.getEditingDomain(session);
+  		ChangeLocker changeLocker = new ChangeLocker();
+  		modelIdentifier2ChangeLocker.put(modelIdentifier, changeLocker);
+  		ted.addResourceSetListener(changeLocker);
+  	}
 	}
 	
 	public static void releaseTestModel(String relativeModelPath, BasicTestArtefact artefact) {
@@ -76,7 +89,8 @@ public class ModelProvider {
   	System.out.println(">> release "+modelIdentifier);
   	if (!modelIdentifier2Owner.containsKey(modelIdentifier))
 			throw new IllegalArgumentException("test model '"+relativeModelPath+"' has not been loaded");
-		if (modelIdentifier2Owner.get(modelIdentifier) == artefact) {
+		// if the test artefact is the owner of the test model, do actually the unload
+  	if (modelIdentifier2Owner.get(modelIdentifier) == artefact) {
 			System.out.println(">> unload "+modelIdentifier);
 			Session session = getSessionForTestModel(relativeModelPath, artefact);
 			if (session.isOpen()) {
@@ -91,9 +105,41 @@ public class ModelProvider {
 			}
 			modelIdentifier2Owner.remove(modelIdentifier);
 			modelIdentifier2ProjectNameInWorkspace.remove(modelIdentifier);
+		} 
+		// remove the change locker if any
+		else if (modelIdentifier2ChangeLocker.containsKey(modelIdentifier)) {  		
+			ChangeLocker changeLocker = modelIdentifier2ChangeLocker.get(modelIdentifier);
+			modelIdentifier2ChangeLocker.remove(modelIdentifier);
+			Session session = getSessionForTestModel(relativeModelPath, artefact);
+  		TransactionalEditingDomain ted = TransactionHelper.getEditingDomain(session);
+  		ted.removeResourceSetListener(changeLocker);
 		}
+		// BEGIN To be delete when the following bug will be solved :
+		// Bug 261 - Testability issue due to creation of async GUI jobs during session state changes
+		flushASyncGuiThread();
+		// END
 	}
 	
+	/** 
+	 * Aims at forcing execution of remaining GUI thread in the pool.
+	 * Result not guaranted ...
+	 */
+	// Should be not use anymore when bug 261 will be solved
+  public static void flushASyncGuiThread() {
+    try {
+      Display.getCurrent().update();
+      while (Display.getCurrent().readAndDispatch()) {
+        // do nothing
+      }
+    } catch (Exception e) {
+      // do nothing
+    }
+  }
+	
+  /**
+   * @return the eclipse project in the workspace that corresponds to the given identifiers.<br>
+   * Notice that the test model should have been required previously (@see method requireTestModel)
+   */
 	public static IProject getEclipseProjectForTestModel(String relativeModelPath, BasicTestArtefact artefact) {
   	File sourceFolder = artefact.getFileOrFolderInTestModelRepository(relativeModelPath);
   	String modelIdentifier = sourceFolder.toString();
@@ -104,13 +150,21 @@ public class ModelProvider {
   	normalizeEclipseProjectForTest(project);
   	return project;
 	}
-	
+
+  /**
+   * @return the test model that corresponds to the given identifiers.<br>
+   * Notice that the test model should have been required previously (@see method requireTestModel)
+   */
   public static CapellaModel getTestModel(String relativeModelPath, BasicTestCase artefact) {
     Session session = getSessionForTestModel(relativeModelPath, artefact);
     CapellaModel model = (CapellaModel) ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
     return model;
   }
-  
+
+  /**
+   * @return the session of the test model that corresponds to the given identifiers.<br>
+   * Notice that the test model should have been required previously (@see method requireTestModel)
+   */
   public static Session getSessionForTestModel(String relativeModelPath, BasicTestArtefact artefact) {  	
   	IProject project = getEclipseProjectForTestModel(relativeModelPath, artefact);
   	IFile airdFile = new IFileRequestor().search(project, CapellaResourceHelper.AIRD_FILE_EXTENSION).get(0);

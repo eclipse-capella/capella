@@ -1,0 +1,51 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
+inputId = 4b46f4a1-5bdf-4df4-8394-e3f4fb99a829
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements
+inputId = 4b46f4a1-5bdf-4df4-8394-e3f4fb99a829
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
+inputId = aa6965b0-9e92-489c-80c2-03edd5e51cc5
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements
+inputId = aa6965b0-9e92-489c-80c2-03edd5e51cc5
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
+inputId = 21f77d8e-53ae-4fb7-af7a-fa0842dc3471
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements
+inputId = 21f77d8e-53ae-4fb7-af7a-fa0842dc3471
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getAvailableElements
+inputId = 31530839-ef92-4e5c-a203-303c6842d5ff
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.OperationalCapability_AvailableInStates-getCurrentElements
+inputId = 31530839-ef92-4e5c-a203-303c6842d5ff
+resultIds = {
+}
+

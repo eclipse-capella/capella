@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.framework.helpers.log;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,6 +37,7 @@ public class ConsoleLogger extends FormatedLogger {
   	super();
   	console = findConsole(CONSOLE_NAME);
   	out = console.newMessageStream();
+  	out.setActivateOnWrite(true);
   }
 
 	private MessageConsole findConsole(String name) {
@@ -70,6 +72,11 @@ public class ConsoleLogger extends FormatedLogger {
     	}
     } else {
     	out.print(object.toString());
+    	try {
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
     }    
   }
 

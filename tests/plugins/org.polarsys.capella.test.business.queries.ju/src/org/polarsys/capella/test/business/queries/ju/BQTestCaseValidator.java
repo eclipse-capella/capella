@@ -24,6 +24,7 @@ import org.polarsys.capella.test.business.queries.ju.errors.InvalidIdentifierInT
 import org.polarsys.capella.test.business.queries.ju.errors.MissingTestCaseError;
 import org.polarsys.capella.test.business.queries.ju.errors.TestCaseFailsError;
 import org.polarsys.capella.test.business.queries.ju.errors.TestCaseRaiseExceptionError;
+import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.log.FormatedLogger;
 
 /**
@@ -52,7 +53,8 @@ public class BQTestCaseValidator {
 		List<String> testedInputIdsForAvailable = new ArrayList<String>();
 		List<String> testedInputIdsForCurrent = new ArrayList<String>();
 		Hashtable<String, CapellaElement> id2ObjectTable = BQTestHelpers.getId2ObjectTableInSessionForTest(testSession, businessQuery.getEClass());
-		List<QueryResult> testCases = QueryResult.deserialize(testSuiteFile);
+		String serializedData = IResourceHelpers.readFileAsString(testSuiteFile);
+		List<QueryResult> testCases = QueryResult.deserialize(serializedData);
 		nbTestCases = testCases.size();
 		for (QueryResult oracleResult : testCases) {
 			String ident = oracleResult.getQueryIdentifier();
@@ -60,31 +62,33 @@ public class BQTestCaseValidator {
 			if (input == null)
 				declareInputNotFound(oracleResult.getInputId());
 			else {
+				Throwable exceptionRaised = null;
 				List<CapellaElement> res = null;
 				if (ident.endsWith("-"+BQTestConstants.GET_AVAILABLE_METHOD_NAME)) { //$NON-NLS-1$
+					testedInputIdsForAvailable.add(oracleResult.getInputId());
 					try {
 						res = businessQuery.getAvailableElements(input);
-						testedInputIdsForAvailable.add(oracleResult.getInputId());
 					} catch (Throwable exception) {
-						declareExceptionRaised(exception);
+						exceptionRaised = exception;
 					}
 				} else if (ident.endsWith("-"+BQTestConstants.GET_CURRENT_METHOD_NAME)) { //$NON-NLS-1$
+					testedInputIdsForCurrent.add(oracleResult.getInputId());
 					try {
 						res = businessQuery.getCurrentElements(input, false);
-						testedInputIdsForCurrent.add(oracleResult.getInputId());
 					} catch (Throwable exception) {
-						declareExceptionRaised(exception);
+						exceptionRaised = exception;
 					}
 				} else {
 					declareInvalidIdentifierInTestCase(ident);
 				}
-				if (res != null) {						
-					QueryResult currentResult = QueryResult.createQueryResult(ident, input, res);
-					if (!oracleResult.equals(currentResult)) {
+				QueryResult currentResult = QueryResult.createQueryResult(ident, input, res);
+				if (!oracleResult.equals(currentResult)) {
+					if (exceptionRaised != null)
+						declareExceptionRaised(exceptionRaised);
+					else
 						declareTestCaseFails(currentResult, oracleResult);
-					} else {
-						declareTestOk();
-					}
+				} else {
+					declareTestOk();
 				}
 			}
 		}

@@ -26,6 +26,11 @@ import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
  */
 public class QueryResult {
 
+	private static final String EXCEPTION_KEYWORD = "EXCEPTION";
+	private static final String MULTIPLE_COMMENTS_BEGIN_KEYWORD = "/*";
+	private static final String MULTIPLE_COMMENTS_END_KEYWORD = "*/";
+	private static final String SINGLE_COMMENTS_KEYWORD = "//";
+  
   protected String queryIdentifier;
   protected String inputId;
   protected List<String> resultIds;
@@ -52,20 +57,27 @@ public class QueryResult {
   	return resultIds;
   }
 
+  /** 
+   * @return a query result with the given parameters.<br>
+   * Notice that parameter elements equals null means that the query raises an exception when called when the gievn input. 
+   */
   public static QueryResult createQueryResult(String queryIdentifier_p, EObject input, List<? extends EObject> elements) {
   	String inputId = getObjectId(input);
     if (inputId == null) {
       return null;
     }
-    List<String> ids = new ArrayList<String>();
-    for (EObject object : elements) {
-      String id = getObjectId(object);
-      if (id == null) {
-        ids = null;
-        // TODO log something
-        return null;
-      }
-      ids.add(id);
+    List<String> ids = null;
+    if (elements != null) {
+    	ids = new ArrayList<String>();
+    	for (EObject object : elements) {
+    		String id = getObjectId(object);
+    		if (id == null) {
+    			ids = null;
+    			// TODO log something
+    			return null;
+    		}
+    		ids.add(id);
+    	}    	
     }
     QueryResult queryResult = new QueryResult(queryIdentifier_p, inputId, ids);
     return queryResult;
@@ -73,19 +85,21 @@ public class QueryResult {
   
   public static String getObjectId(EObject object) {
     return IdManager.getInstance().getId(object);
-  }
-
+  }   
 
   @Override
   public String toString() {
     StringBuffer b = new StringBuffer();
     b.append("queryIdentifier = " + queryIdentifier + '\n'); //$NON-NLS-1$
     b.append("inputId = " + inputId + '\n'); //$NON-NLS-1$
-    b.append("resultIds = {" + '\n'); //$NON-NLS-1$
-    for (int i = 0; i < resultIds.size(); i++) {
-      b.append("    " + resultIds.get(i) + '\n'); //$NON-NLS-1$
+    if (resultIds != null) {
+    	b.append("resultIds = {" + '\n'); //$NON-NLS-1$
+    	for (int i = 0; i < resultIds.size(); i++)
+    		b.append("    " + resultIds.get(i) + '\n'); //$NON-NLS-1$    	
+    	b.append("}" + '\n'); //$NON-NLS-1$
+    } else {
+    	b.append(EXCEPTION_KEYWORD + '\n'); //$NON-NLS-1$
     }
-    b.append("}" + '\n'); //$NON-NLS-1$
     return b.toString();
   }
 
@@ -93,8 +107,7 @@ public class QueryResult {
     IDLE, RESULT_ID, CLEAN, END
   }
 
-  public static List<QueryResult> deserialize(File testSuiteFile) {
-		String serializedData = IResourceHelpers.readFileAsString(testSuiteFile);
+  public static List<QueryResult> deserialize(String serializedData) {
 		List<String> lines = Arrays.asList(serializedData.split("\r\n|\r|\n")); //$NON-NLS-1$
   	lines = new ArrayList<String>(lines);
   	List<QueryResult> queryResults = new ArrayList<QueryResult>();
@@ -107,11 +120,11 @@ public class QueryResult {
   	return queryResults;  	
   }
   
-  public static void serialize(List<QueryResult> queryResults, File file) {
+  public static String serialize(List<QueryResult> queryResults) {
 		StringBuilder buffer = new StringBuilder();
 		for (QueryResult queryResult : queryResults)
 			buffer.append(queryResult.toString()+'\n');
-		IResourceHelpers.writeStringInFile(file, buffer.toString());  	
+		return buffer.toString();
   }
  
   private static void cleanStringList(List<String> lines) {
@@ -137,6 +150,9 @@ public class QueryResult {
   					current.inputId = StringUtils.trim(StringUtils.split(line, "=")[1]); //$NON-NLS-1$
   				} else if (line.startsWith("resultIds")) { //$NON-NLS-1$
   					state = State.RESULT_ID;
+  				} else if (line.startsWith(EXCEPTION_KEYWORD)) { //$NON-NLS-1$
+  					current.resultIds = null;
+  					state = State.CLEAN;
   				}
   				lines.remove(0);
   				break;
@@ -171,6 +187,9 @@ public class QueryResult {
   public boolean equals(QueryResult queryResult) {
   	return queryResult.queryIdentifier.equals(queryIdentifier) 
   			&& queryResult.inputId.equals(inputId) 
-  			&& new LinkedHashSet<String>(queryResult.resultIds).equals(new LinkedHashSet<String>(resultIds));
+  			&&	(
+  					queryResult.resultIds == null && resultIds == null
+  					|| queryResult.resultIds != null && resultIds != null && new LinkedHashSet<String>(queryResult.resultIds).equals(new LinkedHashSet<String>(resultIds))
+  			);
   }
 }

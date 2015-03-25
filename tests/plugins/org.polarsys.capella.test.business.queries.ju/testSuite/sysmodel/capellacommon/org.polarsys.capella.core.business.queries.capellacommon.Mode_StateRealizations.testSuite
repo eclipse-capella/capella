@@ -1,0 +1,20 @@
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_StateRealizations-getAvailableElements
+inputId = 7e970ef4-dec9-4629-8204-7c481ed99ddd
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_StateRealizations-getCurrentElements
+inputId = 7e970ef4-dec9-4629-8204-7c481ed99ddd
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_StateRealizations-getAvailableElements
+inputId = b6c6b1c7-371c-4f81-aae2-4abd14deafe3
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_StateRealizations-getCurrentElements
+inputId = b6c6b1c7-371c-4f81-aae2-4abd14deafe3
+resultIds = {
+}
+

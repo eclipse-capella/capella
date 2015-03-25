@@ -1,0 +1,149 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = 13ce6dbf-29e4-48a7-8ff6-9857d570a4c7
+resultIds = {
+    9b502c4a-07d3-4c31-af9b-6da062f76c51
+    ccb184f7-d99d-4bb7-9695-b07e987a447c
+    45e78cb8-231c-4116-bb16-a3f05a9fff5b
+    2994d398-3894-4782-bccc-fa1b6f0287b6
+    f60be132-9fdc-4161-9d25-009d31f07d0b
+    a3852611-f18f-40b8-a1ff-1384c4bbb428
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = 13ce6dbf-29e4-48a7-8ff6-9857d570a4c7
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = dea98834-b408-4175-b93b-1139b1bf55b0
+resultIds = {
+    9b502c4a-07d3-4c31-af9b-6da062f76c51
+    ccb184f7-d99d-4bb7-9695-b07e987a447c
+    45e78cb8-231c-4116-bb16-a3f05a9fff5b
+    2994d398-3894-4782-bccc-fa1b6f0287b6
+    f60be132-9fdc-4161-9d25-009d31f07d0b
+    a3852611-f18f-40b8-a1ff-1384c4bbb428
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = dea98834-b408-4175-b93b-1139b1bf55b0
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = a7696e8d-410d-4b58-94b9-fb306af2000b
+resultIds = {
+    9b502c4a-07d3-4c31-af9b-6da062f76c51
+    ccb184f7-d99d-4bb7-9695-b07e987a447c
+    45e78cb8-231c-4116-bb16-a3f05a9fff5b
+    2994d398-3894-4782-bccc-fa1b6f0287b6
+    f60be132-9fdc-4161-9d25-009d31f07d0b
+    a3852611-f18f-40b8-a1ff-1384c4bbb428
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = a7696e8d-410d-4b58-94b9-fb306af2000b
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = 9c749b58-6a1a-465c-9e94-e184229355f2
+resultIds = {
+    9b502c4a-07d3-4c31-af9b-6da062f76c51
+    ccb184f7-d99d-4bb7-9695-b07e987a447c
+    45e78cb8-231c-4116-bb16-a3f05a9fff5b
+    2994d398-3894-4782-bccc-fa1b6f0287b6
+    f60be132-9fdc-4161-9d25-009d31f07d0b
+    a3852611-f18f-40b8-a1ff-1384c4bbb428
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = 9c749b58-6a1a-465c-9e94-e184229355f2
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = 1e8b6132-a356-45d8-97cd-9a6bdcd5d768
+resultIds = {
+    9b502c4a-07d3-4c31-af9b-6da062f76c51
+    ccb184f7-d99d-4bb7-9695-b07e987a447c
+    45e78cb8-231c-4116-bb16-a3f05a9fff5b
+    2994d398-3894-4782-bccc-fa1b6f0287b6
+    f60be132-9fdc-4161-9d25-009d31f07d0b
+    a3852611-f18f-40b8-a1ff-1384c4bbb428
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = 1e8b6132-a356-45d8-97cd-9a6bdcd5d768
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = 33c70287-af33-40f6-aa33-7f767c5e9044
+resultIds = {
+    38f0a0c5-d68b-4891-b1a1-cdcb4b31b8a4
+    b068b7c2-a8b0-4308-b9c0-2893d7496aa3
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = 33c70287-af33-40f6-aa33-7f767c5e9044
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = e397787c-a096-4ba1-86e0-9f7098d5aaa3
+resultIds = {
+    38f0a0c5-d68b-4891-b1a1-cdcb4b31b8a4
+    b068b7c2-a8b0-4308-b9c0-2893d7496aa3
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = e397787c-a096-4ba1-86e0-9f7098d5aaa3
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = e0bb1110-1200-4b2c-b988-3930bbaa3e87
+resultIds = {
+    38f0a0c5-d68b-4891-b1a1-cdcb4b31b8a4
+    b068b7c2-a8b0-4308-b9c0-2893d7496aa3
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = e0bb1110-1200-4b2c-b988-3930bbaa3e87
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = 9e19794e-8832-4894-87b9-0e826ddb78ee
+resultIds = {
+    38f0a0c5-d68b-4891-b1a1-cdcb4b31b8a4
+    b068b7c2-a8b0-4308-b9c0-2893d7496aa3
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = 9e19794e-8832-4894-87b9-0e826ddb78ee
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getAvailableElements
+inputId = c00e1e14-08a1-4251-81b1-2d1081df3172
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedFunctionalChains-getCurrentElements
+inputId = c00e1e14-08a1-4251-81b1-2d1081df3172
+resultIds = {
+}
+
