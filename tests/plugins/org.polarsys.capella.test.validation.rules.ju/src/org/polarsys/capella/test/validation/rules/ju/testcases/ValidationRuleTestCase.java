@@ -57,6 +57,9 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   protected IConstraintFilter filter;
   protected IBatchValidator validator;
   protected Hashtable<String, OracleDefinition> objectID2OracleDefinition = new Hashtable<String, OracleDefinition>();
+  
+  // stores the status of the rule before to launch the test
+  private boolean _ruleWasDisabled;
 
   // these methods must be overridden by concrete test cases
   /** returns the name of the test project folder (by default in the folder "model") */
@@ -78,13 +81,19 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     // init validator
     validator = CapellaValidationActivator.getDefault().getCapellaValidatorAdapter().getValidator();
     ModelValidationService.getInstance().loadXmlConstraintDeclarations();// load the xml definition of constraints
-    // get the dexcriptor of the rule to test
+    // get the descriptor of the rule to test
     ConstraintRegistry registry = ConstraintRegistry.getInstance();
 
     ruleDescriptor = registry.getDescriptor(ruleID);
     if (ruleDescriptor == null) {
       throw new InternalError("rule for ID " + ruleID + " does not exist. Test can not be performed"); //$NON-NLS-1$//$NON-NLS-2$
     }
+
+    if (!ruleDescriptor.isEnabled()) {
+      ruleDescriptor.setEnabled(true);
+      _ruleWasDisabled = true;
+    }
+
     // create the filter and add it to the validator
     filter = new IConstraintFilter() {
       @SuppressWarnings("synthetic-access")
@@ -165,8 +174,13 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
 
   @Override
   protected void tearDown() throws Exception {
-    super.tearDown();    
-    validator.removeConstraintFilter(filter);// remove the filter from the validator
+    super.tearDown();
+
+    if (_ruleWasDisabled) {
+      ruleDescriptor.setEnabled(false);
+    }
+
+    validator.removeConstraintFilter(filter); // remove the filter from the validator
     ruleID = null;
     targetedEClass = null;
     oracleDefinitions = null;
