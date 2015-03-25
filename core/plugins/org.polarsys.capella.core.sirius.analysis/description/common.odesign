@@ -1627,7 +1627,7 @@
           </style>
         </edgeMappings>
         <containerMappings name="DT_Class" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="Class" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataValue%20From%20Project%20Explorer'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DataValue%20Into%20Class']" childrenPresentation="List">
-          <subNodeMappings name="DT_Property" preconditionExpression="&lt;%association==null%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="&lt;%ownedFeatures[isPrimitiveTypeForAttribute()]%>" domainClass="Property">
+          <subNodeMappings name="DT_Property" preconditionExpression="&lt;%association==null%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="&lt;%ownedFeatures[isPrimitiveTypeForAttribute()]%>" domainClass="Property">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%prefixPropertyLabel()%>&lt;%computeLabel%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1641,7 +1641,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="DT_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="feature:ownedFeatures" semanticElements="&lt;%current + ownedParameters%>" domainClass="Operation">
+          <subNodeMappings name="DT_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:ownedFeatures" semanticElements="&lt;%current + ownedParameters%>" domainClass="Operation">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeLabel%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1754,7 +1754,7 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="DT_BooleanType" preconditionExpression="&lt;%(filter(&quot;BooleanType&quot;)).nSize() > 0%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" domainClass="BooleanType" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20DataValue%20From%20Project%20Explorer']" childrenPresentation="List">
-          <subNodeMappings name="DT_BooleanLiteral" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='literal%20name%20']" semanticCandidatesExpression="feature:ownedLiterals" domainClass="LiteralBooleanValue">
+          <subNodeMappings name="DT_BooleanLiteral" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="feature:ownedLiterals" domainClass="LiteralBooleanValue">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1799,7 +1799,7 @@
           </style>
         </containerMappings>
         <containerMappings name="DT_DataType" preconditionExpression="&lt;%( filter(&quot;StringType&quot;) + filter(&quot;NumericType&quot;) + filter(&quot;PhysicalQuantity&quot;)).nSize() > 0%>" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" createElements="false" domainClass="DataType" childrenPresentation="List">
-          <subNodeMappings name="Contents" semanticCandidatesExpression="&lt;%eContents()[filter(&quot;DataValue&quot;)]%>" domainClass="DataValue">
+          <subNodeMappings name="Contents" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="&lt;%eContents()[filter(&quot;DataValue&quot;)]%>" domainClass="DataValue">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%getDatavalueLabel()%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2600,7 +2600,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="name" forceRefresh="true">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="name" forceRefresh="true" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
@@ -2845,12 +2845,6 @@
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="literal name " label="name" forceRefresh="true" inputLabelExpression="feature:name">
-            <mask mask="{0}"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
-            </initialOperation>
           </ownedTools>
         </toolSections>
         <customization>
@@ -3931,7 +3925,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="DT_Operation1" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram']">
+          <subNodeMappings name="DT_Operation1" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete_DataType']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram']">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%getOperationLabel($view)%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4149,7 +4143,7 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="CCDI_ExchangeItem" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" domainClass="ExchangeItem" childrenPresentation="List">
-          <subNodeMappings name="CCDI_ExchangeItemElement" semanticCandidatesExpression="feature:ownedElements" semanticElements="&lt;%current+ownedMinCard+ownedMaxCard%>" domainClass="ExchangeItemElement">
+          <subNodeMappings name="CCDI_ExchangeItemElement" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedElements" semanticElements="&lt;%current+ownedMinCard+ownedMaxCard%>" domainClass="ExchangeItemElement">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeLabel()%>" labelAlignment="LEFT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -4958,10 +4952,18 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Allocation DirectEdit" inputLabelExpression="&lt;%allocatedItem.name%>">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocatedItem%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="implements target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; !(current.eContainer().implementedInterfaces.nContains($target)) %>">
@@ -8724,7 +8726,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="IDB_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']">
+          <subNodeMappings name="IDB_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement" dropDescriptions="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Diagram'] //@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20ExchangeItem%20from%20Model']">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%getOperationLabel($view)%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -8947,7 +8949,7 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="IDB_ExchangeItem" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" createElements="false" documentation="domainClass is AbstractNamedElement since Dnd check if domainClass is compatible" domainClass="ExchangeItem" childrenPresentation="List">
-          <subNodeMappings name="IDB_ExchangeItemElement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="feature:ownedElements" semanticElements="&lt;%current+ownedMinCard+ownedMaxCard%>" domainClass="ExchangeItemElement">
+          <subNodeMappings name="IDB_ExchangeItemElement" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedElements" semanticElements="&lt;%current+ownedMinCard+ownedMaxCard%>" domainClass="ExchangeItemElement">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeLabel()%>" labelAlignment="LEFT">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -10276,10 +10278,18 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Allocation DirectEdit" inputLabelExpression="&lt;%allocatedItem.name%>">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocatedItem%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="implements target" precondition="&lt;% !(current.eContainer().isA(&quot;ConfigurationItem&quot;)) &amp;&amp; $target.isA(&quot;Interface&quot;) &amp;&amp; current.eContainer().isAvailableInterface($target) &amp;&amp; !(current.eContainer().implementedInterfaces.nContains($target)) %>">
@@ -12184,7 +12194,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="ID_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='NamedElement%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement">
+          <subNodeMappings name="ID_Operation" deletionDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" labelDirectEdit="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Allocation%20DirectEdit']" semanticCandidatesExpression="feature:ownedExchangeItemAllocations" semanticElements="&lt;%current+allocatedItem+allocatedItem.ownedElements%>" domainClass="CapellaElement">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%getOperationLabel($diagram)%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -12561,10 +12571,18 @@
             </initialOperation>
             <hook id="org.polarsys.capella.core.sirius.analysis.delete.CapellaDeleteActionHook"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="NamedElement DirectEdit" inputLabelExpression="feature:name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Allocation DirectEdit" inputLabelExpression="&lt;%allocatedItem.name%>">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%allocatedItem%>">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$0%>"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DiagramCreationDescription" name="Interface Diagram" precondition="&lt;%isInLib()%>" titleExpression="[ID] &lt;%current.name%> - Interface Diagram" diagramDescription="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Diagram']">
