@@ -8,38 +8,27 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.i;
+package org.polarsys.capella.test.validation.rules.ju.testcases.tc_ds;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.test.framework.api.OracleDefinition;
-import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnIntegrityTest;
+import org.polarsys.capella.test.validation.rules.ju.testcases.AbstractRulesOnMergerTest;
 
 /**
- * test on I_07: This rule checks that a diagram doesn't contain a naming conflict.
+ * test 1
  * @generated
  */
-public class Rule_I_07 extends AbstractRulesOnIntegrityTest {
-
-	/**
-	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#setUp()
-	 * @generated
-	 */
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
-		//new GuiActions().openSession(_airdFile);
-	}
+public class Rule_TC_DS_01 extends AbstractRulesOnMergerTest {
 
 	/**
 	 * @see org.polarsys.capella.test.validation.rules.ju.testcases.ValidationRuleTestCase#getTargetedEClass()
 	 * @generated
 	 */
 	protected EClass getTargetedEClass() {
-		return CapellacorePackage.Literals.CAPELLA_ELEMENT;
+		return InteractionPackage.Literals.SCENARIO;
 	}
 
 	/**
@@ -47,7 +36,7 @@ public class Rule_I_07 extends AbstractRulesOnIntegrityTest {
 	 * @generated
 	 */
 	protected String getRuleID() {
-		return "org.polarsys.capella.core.platform.sirius.sirius.validation.I_07";
+		return "org.polarsys.capella.core.data.interaction.validation.TC_DS_01";
 	}
 
 	/**
@@ -56,8 +45,8 @@ public class Rule_I_07 extends AbstractRulesOnIntegrityTest {
 	 */
 	protected List<String> getScopeDefinition() {
 		return Arrays.asList(new String[] {
-				"05ba5151-e5f4-4eac-b874-c4d0c9a72e3e",
-				"eaca9cfa-ce88-4c8e-9a7b-740d3624a615" });
+				"ad1eac52-aaee-4a99-bcfd-0b10502dcb22",
+				"02bcfe34-407f-44ab-9aab-38f407fd01c3" });
 	}
 
 	/**
@@ -66,13 +55,13 @@ public class Rule_I_07 extends AbstractRulesOnIntegrityTest {
 	 */
 	protected List<OracleDefinition> getOracleDefinitions() {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
-				"eaca9cfa-ce88-4c8e-9a7b-740d3624a615", 1) });
+				"02bcfe34-407f-44ab-9aab-38f407fd01c3", 1) });
 	}
 
 	/**
 	 * @generated
 	 */
-	public void testRule_I_07() throws Exception {
+	public void testRule_TC_DS_01() throws Exception {
 		test();
 	}
 }

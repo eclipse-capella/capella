@@ -41,16 +41,19 @@ public class DWFSMRulesTestSuite extends BasicTestSuite {
 		tests.add(new Rule_DWF_SM_06());
 		tests.add(new Rule_DWF_SM_07());
 		tests.add(new Rule_DWF_SM_08());
+		tests.add(new Rule_DWF_SM_08bis());
 		tests.add(new Rule_DWF_SM_09());
+		tests.add(new Rule_DWF_SM_09bis());
 		tests.add(new Rule_DWF_SM_10());
 		tests.add(new Rule_DWF_SM_11());
 		tests.add(new Rule_DWF_SM_12());
 		tests.add(new Rule_DWF_SM_13());
+    tests.add(new Rule_DWF_SM_14());
 		return tests;
 	}
 
   @Override
   public List<String> getRequiredTestModels() {   
-    return Arrays.asList(new String [] {"RulesOnDesignTest"});  //$NON-NLS-1$
+    return Arrays.asList(new String [] {"RulesOnDesignTest","Project_validation_12"});  //$NON-NLS-1$
   }
 }

@@ -8,10 +8,9 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.tc_i;
+package org.polarsys.capella.test.validation.rules.ju.testcases.dc_cl;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Test;
@@ -19,38 +18,28 @@ import junit.framework.Test;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class TCIRulesTestSuite extends BasicTestSuite {
+public class DCCLRulesTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new TCIRulesTestSuite();
+    return new DCCLRulesTestSuite();
   }
 
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
-  protected List<BasicTestArtefact> getTests() {
-    List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new Rule_TC_I_01());
-    tests.add(new Rule_TC_I_02());
-    tests.add(new Rule_TC_I_03());
-    tests.add(new Rule_TC_I_04());
-    tests.add(new Rule_TC_I_05());
-    tests.add(new Rule_TC_I_06());
-    tests.add(new Rule_TC_I_07());
-    tests.add(new Rule_TC_I_08());
-    tests.add(new Rule_TC_I_09());
-    tests.add(new Rule_TC_I_10());
-    tests.add(new Rule_TC_I_11());
-    tests.add(new Rule_TC_I_12());
-    tests.add(new Rule_TC_I_13());
-    return tests;
-  }
+	@Override
+	protected List<BasicTestArtefact> getTests() {
+		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new Rule_DC_CL_01());
+    tests.add(new Rule_DC_CL_02());
+		return tests;
+	}
 
-  @Override
-  public List<String> getRequiredTestModels() {   
-    return Arrays.asList(new String [] {"RulesOnTransitionTest"});  //$NON-NLS-1$
-  }
+	@Override
+	public List<String> getRequiredTestModels() {		
+		return null;
+	}
 }

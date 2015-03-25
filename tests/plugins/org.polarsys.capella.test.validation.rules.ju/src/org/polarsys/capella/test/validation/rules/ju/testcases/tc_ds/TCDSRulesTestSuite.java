@@ -33,6 +33,8 @@ public class TCDSRulesTestSuite extends BasicTestSuite {
    */
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new Rule_TC_DS_01());
+    tests.add(new Rule_TC_DS_02());
     tests.add(new Rule_TC_DS_03());
     return tests;
   }
