@@ -1,0 +1,55 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
+queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty-getAvailableElements
+inputId = 393f49a3-7c35-46a9-91aa-032661a0ae4b
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty-getCurrentElements
+inputId = 393f49a3-7c35-46a9-91aa-032661a0ae4b
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty-getAvailableElements
+inputId = 6c02542e-e9cb-4de4-888e-b66ae8cdc509
+resultIds = {
+    40993f3b-8979-47eb-9428-f1a91ed94477
+    e7a452ae-c288-4375-a4b3-a9dc4fc9eb26
+    3989f655-4869-4f5c-9400-f3db45024646
+    398bc2ae-791c-43c6-9265-9ac7d7f789c3
+    2b2bcaf2-0e2f-4a6c-8c91-01747a2e2153
+    12a83b0b-ef58-4dc6-b1bb-1c4e6cb569ba
+    7208f1f6-5ebf-47a5-aec8-e0e514da9fcd
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty-getCurrentElements
+inputId = 6c02542e-e9cb-4de4-888e-b66ae8cdc509
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty-getAvailableElements
+inputId = 47d57dff-18d9-40a8-9490-4761b87bd691
+resultIds = {
+    40993f3b-8979-47eb-9428-f1a91ed94477
+    e7a452ae-c288-4375-a4b3-a9dc4fc9eb26
+    3989f655-4869-4f5c-9400-f3db45024646
+    398bc2ae-791c-43c6-9265-9ac7d7f789c3
+    2b2bcaf2-0e2f-4a6c-8c91-01747a2e2153
+    12a83b0b-ef58-4dc6-b1bb-1c4e6cb569ba
+    7208f1f6-5ebf-47a5-aec8-e0e514da9fcd
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.NumericReference_ReferencedProperty-getCurrentElements
+inputId = 47d57dff-18d9-40a8-9490-4761b87bd691
+resultIds = {
+}
+

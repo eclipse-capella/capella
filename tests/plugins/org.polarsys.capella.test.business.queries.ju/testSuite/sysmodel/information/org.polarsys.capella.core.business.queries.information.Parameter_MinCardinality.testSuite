@@ -1,0 +1,33 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Parameter_MinCardinality-getAvailableElements
+inputId = a27a0cd0-2642-4f92-8aa6-d5e0404d86e6
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Parameter_MinCardinality-getCurrentElements
+inputId = a27a0cd0-2642-4f92-8aa6-d5e0404d86e6
+resultIds = {
+    921e9260-c91e-47a4-a053-914f9e34be5d
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Parameter_MinCardinality-getAvailableElements
+inputId = df4ad43e-668e-4e36-bbb6-965d83b9bd43
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.Parameter_MinCardinality-getCurrentElements
+inputId = df4ad43e-668e-4e36-bbb6-965d83b9bd43
+resultIds = {
+    013b1947-6fd5-44d6-a093-2da3f84cba99
+}
+

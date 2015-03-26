@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.test.meta.ju.testSuites;
 
+import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Test;
@@ -35,7 +36,7 @@ public class MetaAutoLoadTestSuite extends AutoLoadTestSuite {
   
 	@Override
 	public List<String> getRequiredTestModels() {
-		return null;
+		return Arrays.asList(new String [] {"EmptyProject"});
 	}
 
 }

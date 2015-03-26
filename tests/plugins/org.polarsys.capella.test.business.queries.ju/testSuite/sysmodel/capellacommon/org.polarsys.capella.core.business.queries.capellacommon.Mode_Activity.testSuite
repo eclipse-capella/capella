@@ -1,0 +1,58 @@
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_Activity-getAvailableElements
+inputId = 7e970ef4-dec9-4629-8204-7c481ed99ddd
+resultIds = {
+    151aad4d-910a-479b-b375-66c94b9f2e33
+    857c688f-5c57-4e2c-ab3e-d8d6ad4bb1a7
+    25d37d2d-bb81-4019-9140-7dc456fdd52c
+    c92021c4-c79f-4e81-98a7-f2ab1df8a1a8
+    29e2852c-ba1d-4bc5-9f90-a55b6c80f44e
+    ad1a0d46-d68d-4311-965f-a85c6f860fea
+    2827aadd-5234-4363-a64c-36271d1d7646
+    cf34ab02-e54a-41fc-8e29-c6ca9d17b550
+    defb208d-b5be-4627-ae2f-602478a809ce
+    2aba8b7f-af58-43ed-80a8-6e1172ebe861
+    433a5e3c-c3fa-4fbc-8e11-da1caef15a22
+    fc11f2f3-e505-4626-9d8e-1720d1f0b677
+    e2f84dc4-a5b7-4a6a-b0b1-8f682ecd82e6
+    1cb43832-b71e-4d96-a9ad-d24afa135080
+    b6cdbfad-f2b9-4b1a-a613-aeb57c5a0694
+    07f91493-2841-4444-8045-22a86d7643fa
+    c7a3b9d9-fb00-41cf-84d9-0fa3e69cb2ee
+    1bb3b800-830b-4db9-ba2a-fe1756cceca1
+    7f7dceb3-065c-45e0-a54f-e4d0eb2a504d
+    e9c3deee-02f5-4620-9066-f6de2c4e7c16
+    b3a853e5-9355-4cd3-b8d1-8cf13d5b3a0c
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_Activity-getCurrentElements
+inputId = 7e970ef4-dec9-4629-8204-7c481ed99ddd
+resultIds = {
+    1e4876cd-8cc0-4a97-a2fd-8d32f0c65848
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.Mode_Activity-getAvailableElements
+inputId = b6c6b1c7-371c-4f81-aae2-4abd14deafe3
+resultIds = {
+    151aad4d-910a-479b-b375-66c94b9f2e33
+    857c688f-5c57-4e2c-ab3e-d8d6ad4bb1a7
+    25d37d2d-bb81-4019-9140-7dc456fdd52c
+    c92021c4-c79f-4e81-98a7-f2ab1df8a1a8
+    29e2852c-ba1d-4bc5-9f90-a55b6c80f44e
+    ad1a0d46-d68d-4311-965f-a85c6f860fea
+    2827aadd-5234-4363-a64c-36271d1d7646
+    cf34ab02-e54a-41fc-8e29-c6ca9d17b550
+    defb208d-b5be-4627-ae2f-602478a809ce
+    2aba8b7f-af58-43ed-80a8-6e1172ebe861
+    433a5e3c-c3fa-4fbc-8e11-da1caef15a22
+    fc11f2f3-e505-4626-9d8e-1720d1f0b677
+    e2f84dc4-a5b7-4a6a-b0b1-8f682ecd82e6
+    1cb43832-b71e-4d96-a9ad-d24afa135080
+    b6cdbfad-f2b9-4b1a-a613-aeb57c5a0694
+    07f91493-2841-4444-8045-22a86d7643fa
+    c7a3b9d9-fb00-41cf-84d9-0fa3e69cb2ee
+    1bb3b800-830b-4db9-ba2a-fe1756cceca1
+    7f7dceb3-065c-45e0-a54f-e4d0eb2a504d
+    e9c3deee-02f5-4620-9066-f6de2c4e7c16
+    b3a853e5-9355-4cd3-b8d1-8cf13d5b3a0c
+}
+

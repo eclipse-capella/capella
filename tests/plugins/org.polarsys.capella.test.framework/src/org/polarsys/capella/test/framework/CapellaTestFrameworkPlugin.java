@@ -20,6 +20,10 @@ public class CapellaTestFrameworkPlugin extends AbstractActivator {
 
   private static CapellaTestFrameworkPlugin __instance;
 
+  // The plug-in ID
+  public static final String PLUGIN_ID = "org.polarsys.capella.test.framework"; //$NON-NLS-1$
+
+  
   /**
    * Get the singleton instance.
    * 

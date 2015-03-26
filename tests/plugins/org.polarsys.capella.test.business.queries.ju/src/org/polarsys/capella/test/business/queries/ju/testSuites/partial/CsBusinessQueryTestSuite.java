@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.business.queries.ju.testSuites;
+package org.polarsys.capella.test.business.queries.ju.testSuites.partial;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,13 +41,13 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 /**
  * @author Erwan Brottier
  */
-public class BusinessQueryTestSuite extends BasicTestSuite {
+public class CsBusinessQueryTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new BusinessQueryTestSuite();
+    return new CsBusinessQueryTestSuite();
   }
 
   @Override
@@ -55,18 +55,18 @@ public class BusinessQueryTestSuite extends BasicTestSuite {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Component_ImplementedInterfaces());
     tests.add(new ExchangeItemAllocation_AllocatedItem());
-    tests.add(new InterfaceImpl_ImplementedInterface());
-    tests.add(new InterfaceUse_UsedInterface());
     tests.add(new Interface_ExchangeItems());
     tests.add(new Interface_InheritedInterfaces());
+    tests.add(new InterfaceImpl_ImplementedInterface());
+    tests.add(new InterfaceUse_UsedInterface());
     tests.add(new Part_DeployedElements());
     tests.add(new Part_MaxCardinality());
     tests.add(new Part_MinCardinality());
     tests.add(new Part_Type());
-    tests.add(new PhysicalLinkCategory_Links());
     tests.add(new PhysicalLink_AllocatedComponentExchanges());
     tests.add(new PhysicalLink_Categories());
     tests.add(new PhysicalLink_RealizedPhysicalLinks());
+    tests.add(new PhysicalLinkCategory_Links());
     tests.add(new PhysicalPath_AllocatedComponentExchanges());
     tests.add(new PhysicalPath_RealizedPhysicalPaths());
     tests.add(new PhysicalPort_AllocatedComponentPorts());

@@ -1,0 +1,10 @@
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.FinalState_StateRealizations-getAvailableElements
+inputId = 40a24867-02cc-4407-b89e-6607c409c8cc
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.FinalState_StateRealizations-getCurrentElements
+inputId = 40a24867-02cc-4407-b89e-6607c409c8cc
+resultIds = {
+}
+
