@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,14 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.testcases.filters;
+package org.polarsys.capella.test.diagram.filters.ju.testcases;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.polarsys.capella.test.diagram.tools.ju.DiagramObjectFilterTestCase;
+import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 
-public class HideDelegatedCommunicationLinksForIDB extends DiagramObjectFilterTestCase {
+public class HideDelegatedCommunicationLinksForCII extends DiagramObjectFilterTestCase {
 
 	@Override
 	protected String getTestProjectName() {
@@ -24,7 +24,7 @@ public class HideDelegatedCommunicationLinksForIDB extends DiagramObjectFilterTe
 
 	@Override
 	protected String getDiagramName() {
-		return "[IDB] TEST"; //$NON-NLS-1$
+		return "[CII] TEST"; //$NON-NLS-1$
 	}
 
 	@Override
