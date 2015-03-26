@@ -184,7 +184,10 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
       ruleDescriptor.setEnabled(false);
     }
 
-    validator.removeConstraintFilter(filter); // remove the filter from the validator
+    if (validator != null) {
+      // remove the filter from the validator
+      validator.removeConstraintFilter(filter);
+    }
     ruleID = null;
     targetedEClass = null;
     oracleDefinitions = null;

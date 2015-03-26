@@ -8,7 +8,8 @@ Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.polarsys.capella.core.validation,
  org.polarsys.capella.test.framework;visibility:=reexport,
- org.polarsys.capella.core.data.core.ui.quickfix
+ org.polarsys.capella.core.data.core.ui.quickfix,
+ org.polarsys.capella.core.data.core.validation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: org.polarsys.capella.test.validation.rules.ju,

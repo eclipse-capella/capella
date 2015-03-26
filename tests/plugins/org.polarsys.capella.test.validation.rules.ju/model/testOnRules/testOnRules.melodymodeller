@@ -20,11 +20,11 @@
     xmlns:org.polarsys.capella.core.data.pa.deployment="http://www.polarsys.org/capella/core/pa/deployment/0.8.0"
     xmlns:org.polarsys.capella.core.data.requirement="http://www.polarsys.org/capella/core/requirement/0.8.0"
     id="7350744c-5196-4b14-bfad-50a9e840be18"
-    name="EOLE_AF_UC">
+    name="testOnRules">
   <keyValuePairs xsi:type="org.polarsys.capella.core.data.capellacore:KeyValue" id="5f092e02-b663-41f4-a89c-9f5acd818430"
       key="projectApproach" value="SingletonComponents"/>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="a5933fca-a099-4742-9247-c5ba146ff199" name="EOLE_AF">
+      id="a5933fca-a099-4742-9247-c5ba146ff199" name="testOnRules">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="d488cf27-6ba1-4f6e-b32c-2303d5f356bb" name="Operational Analysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
@@ -698,7 +698,7 @@
               id="ce5f1962-6daf-4b12-bab9-089e0cc9ef4e" name="MeasurementCampaign"
               kind="DATA_FLOW">
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="86419fba-c54d-48fb-9b28-ae7a8bd3b9ff" name="EOLE System" representedInstance="#75e17135-2599-4f82-a460-b588faa5e148"/>
+                id="86419fba-c54d-48fb-9b28-ae7a8bd3b9ff" name="testOnRules System" representedInstance="#75e17135-2599-4f82-a460-b588faa5e148"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="c5ff70d1-6568-4621-b6e7-0cd61a2b9f7b" name="mco" representedInstance="#37c04aee-9096-411e-837f-68af55b4d4c0"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
@@ -901,7 +901,7 @@
             id="ef251240-db6c-40bd-9f94-301893a06cf4" name="Campaign Request" source="#0a99f5e0-0a67-4298-89a0-f2803de569c9"
             target="#cef4898c-a01e-4c6f-a308-71742c2eea58" kind="FLOW"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="75e17135-2599-4f82-a460-b588faa5e148"
-            name="EOLE System" abstractType="#9df31ee0-0d2a-4797-a3f8-2b826d7dc4a9"/>
+            name="testOnRules System" abstractType="#9df31ee0-0d2a-4797-a3f8-2b826d7dc4a9"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="3e02e735-5a1f-4c1a-896d-15c38e0ca306"
             name="Scientific User" abstractType="#135d189f-d848-4a9d-ad32-45286b16ef3d">
           <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
@@ -925,7 +925,7 @@
         </ownedFeatures>
       </ownedSystemContext>
       <ownedSystem xsi:type="org.polarsys.capella.core.data.ctx:System" id="9df31ee0-0d2a-4797-a3f8-2b826d7dc4a9"
-          name="EOLE System">
+          name="testOnRules System">
         <ownedFunctionalAllocation xsi:type="org.polarsys.capella.core.data.fa:ComponentFunctionalAllocation"
             id="b28957cb-8afb-409a-bda8-b637d3492321" targetElement="#45024adb-baf5-493c-adac-96964d95b770"
             sourceElement="#9df31ee0-0d2a-4797-a3f8-2b826d7dc4a9"/>
@@ -1594,7 +1594,7 @@
             </ownedFunctionalExchanges>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
-              id="ec3d8b0d-535e-4ed5-9fbf-9479b3b95715" name="Access Securely to EOLE"/>
+              id="ec3d8b0d-535e-4ed5-9fbf-9479b3b95715" name="Access Securely to testOnRules"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
               id="cec886f7-e1cc-4c53-9a8f-ab0dd0fdcdfa" name="Provide Data Subscription Mechanisms"/>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.la:LogicalFunction"
@@ -1740,7 +1740,7 @@
               sourceElement="#aeebfd72-83d7-4685-8321-d8a6ef4afcd7"/>
         </ownedComponentExchanges>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="63810b7e-84ed-4cb5-a2c5-725729e47843"
-            name="EOLE Logical System" abstractType="#f311cc54-1b0a-4950-bc23-e88ec1ca74c2"/>
+            name="testOnRules Logical System" abstractType="#f311cc54-1b0a-4950-bc23-e88ec1ca74c2"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="13ae4822-dcbf-4b4d-8f8a-99e3339e3a14"
             name="Scientific User" abstractType="#dda4c475-2608-4e67-bee2-adc55bc21a2e"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="05aa9b13-7d0e-4231-bb2b-77b086de4eeb"
@@ -1753,7 +1753,7 @@
             name="LogicalActor 2" abstractType="#bebc6753-3a8e-4ff0-9f62-58df9431f213"/>
       </ownedLogicalContext>
       <ownedLogicalComponent xsi:type="org.polarsys.capella.core.data.la:LogicalComponent"
-          id="f311cc54-1b0a-4950-bc23-e88ec1ca74c2" name="EOLE Logical System">
+          id="f311cc54-1b0a-4950-bc23-e88ec1ca74c2" name="testOnRules Logical System">
         <ownedInterfacePkg xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
             id="87d20ef5-d866-4cd4-84fa-fc3d4e421b32" name="InterfacePkg">
           <ownedExchangeItems xsi:type="org.polarsys.capella.core.data.information:ExchangeItem"
@@ -2106,7 +2106,7 @@
                 sourceElement="#fe23cb9d-6681-4b62-9d51-9c3a2905ff1c"/>
           </ownedFunctions>
           <ownedFunctions xsi:type="org.polarsys.capella.core.data.pa:PhysicalFunction"
-              id="ecc08933-ebca-4f06-8f20-d2367b1c5422" name="Access Securely to EOLE">
+              id="ecc08933-ebca-4f06-8f20-d2367b1c5422" name="Access Securely to testOnRules">
             <ownedFunctionRealizations xsi:type="org.polarsys.capella.core.data.fa:FunctionRealization"
                 id="d8065f11-a168-4064-9a58-ab42d1f1ef36" targetElement="#ec3d8b0d-535e-4ed5-9fbf-9479b3b95715"
                 sourceElement="#ecc08933-ebca-4f06-8f20-d2367b1c5422"/>
@@ -3378,7 +3378,7 @@
     </ownedArchitectures>
   </ownedModelRoots>
   <ownedModelRoots xsi:type="org.polarsys.capella.core.data.capellamodeller:SystemEngineering"
-      id="fc58c81d-4fda-42dc-be44-86c987494b63" name="EOLE_UC">
+      id="fc58c81d-4fda-42dc-be44-86c987494b63" name="testOnRules_UC">
     <ownedArchitectures xsi:type="org.polarsys.capella.core.data.oa:OperationalAnalysis"
         id="dda7c0fe-8550-4718-93af-06eda81f5fea" name="OperationalAnalysis">
       <ownedFunctionPkg xsi:type="org.polarsys.capella.core.data.oa:OperationalActivityPkg"
@@ -3456,7 +3456,7 @@
               id="5f1ffc18-4d27-49e8-ac72-69cfc2866490" name="Manual Campaign Execution"
               kind="INTERFACE">
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="60956c42-a69a-437c-9e97-64f77ec8aaf5" name="EOLE System" representedInstance="#53e8f672-29b9-4bbf-9616-a98128f193f9"/>
+                id="60956c42-a69a-437c-9e97-64f77ec8aaf5" name="testOnRules System" representedInstance="#53e8f672-29b9-4bbf-9616-a98128f193f9"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="a37dc550-7d8f-4a03-9faa-1ac0577b3113" name="mco" representedInstance="#1d11904a-96d5-4b49-bdbb-89459d876c9f"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
@@ -3634,7 +3634,7 @@
               id="372ae31f-330a-48c9-970a-a9debdbbc09e" name="Automatic Execution Failure"
               kind="INTERFACE">
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
-                id="22bbc9cd-ec04-46d8-a5fb-6c4f8db6fd31" name="EOLE System" representedInstance="#53e8f672-29b9-4bbf-9616-a98128f193f9"/>
+                id="22bbc9cd-ec04-46d8-a5fb-6c4f8db6fd31" name="testOnRules System" representedInstance="#53e8f672-29b9-4bbf-9616-a98128f193f9"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
                 id="dd0ff434-d662-4d6c-9501-0ecd67bab25d" name="mco" representedInstance="#1d11904a-96d5-4b49-bdbb-89459d876c9f"/>
             <ownedInstanceRoles xsi:type="org.polarsys.capella.core.data.interaction:InstanceRole"
@@ -4190,7 +4190,7 @@
       <ownedSystemContext xsi:type="org.polarsys.capella.core.data.ctx:SystemContext"
           id="ff568ad1-5361-482f-8d8f-0bb8105b2889" name="System Context">
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="53e8f672-29b9-4bbf-9616-a98128f193f9"
-            name="EOLE System" abstractType="#3da514de-8223-471b-873f-95a13551567f"/>
+            name="testOnRules System" abstractType="#3da514de-8223-471b-873f-95a13551567f"/>
         <ownedFeatures xsi:type="org.polarsys.capella.core.data.cs:Part" id="8d288a84-7b12-4393-8dcb-4dd9cef24b36"
             name="Scientific User" abstractType="#a4c78b77-3bf6-4a13-a94b-a26e7ae59cde">
           <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
@@ -4224,7 +4224,7 @@
             name="Actor 2" abstractType="#badef4a3-c403-47bd-8b63-a88635c3d3ec"/>
       </ownedSystemContext>
       <ownedSystem xsi:type="org.polarsys.capella.core.data.ctx:System" id="3da514de-8223-471b-873f-95a13551567f"
-          name="EOLE System">
+          name="testOnRules System">
         <ownedStateMachines xsi:type="org.polarsys.capella.core.data.capellacommon:StateMachine"
             id="659af6d9-7fe1-4832-8af9-9321c8decf30" name="System state Machine">
           <ownedRegions xsi:type="org.polarsys.capella.core.data.capellacommon:Region"
@@ -4311,7 +4311,7 @@
       <ownedActorPkg xsi:type="org.polarsys.capella.core.data.ctx:ActorPkg" id="708133ab-48b1-4f39-8bdd-bc3c4a2337d6"
           name="Actors">
         <ownedActors xsi:type="org.polarsys.capella.core.data.ctx:Actor" id="a4c78b77-3bf6-4a13-a94b-a26e7ae59cde"
-            name="Scientific User" summary="End-user of the EOLE System" description="Also called Scientist or Meteorological User">
+            name="Scientific User" summary="End-user of the testOnRules System" description="Also called Scientist or Meteorological User">
           <ownedInterfaceImplementations xsi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation"
               id="940ae934-d784-46a0-b166-79c06759eedd" implementedInterface="#42774871-9a37-40f9-90f2-37168f8fb427"/>
         </ownedActors>
@@ -6736,7 +6736,7 @@
       <ownedLogicalActorPkg xsi:type="org.polarsys.capella.core.data.la:LogicalActorPkg"
           id="5a300dbd-3e50-4377-9b6e-9e9ec143d400" name="Actors">
         <ownedLogicalActors xsi:type="org.polarsys.capella.core.data.la:LogicalActor"
-            id="0737c3a6-9e25-4ac6-862c-f6fea7ee289b" name="Scientific User" summary="End-user of the EOLE System"
+            id="0737c3a6-9e25-4ac6-862c-f6fea7ee289b" name="Scientific User" summary="End-user of the testOnRules System"
             description="Also called Scientist or Meteorological User">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
               id="8ff778d5-f08c-4557-b4a6-1f2d031a6e37" targetElement="#940ae934-d784-46a0-b166-79c06759eedd"
@@ -8714,7 +8714,7 @@
       <ownedPhysicalActorPkg xsi:type="org.polarsys.capella.core.data.pa:PhysicalActorPkg"
           id="8dc2c54f-a32f-4c3d-9551-3dea9c531dc4" name="Actors">
         <ownedPhysicalActors xsi:type="org.polarsys.capella.core.data.pa:PhysicalActor"
-            id="adceb38d-4598-4392-9fa0-87e320834111" name="Scientific User" summary="End-user of the EOLE System"
+            id="adceb38d-4598-4392-9fa0-87e320834111" name="Scientific User" summary="End-user of the testOnRules System"
             description="Also called Scientist or Meteorological User">
           <ownedTraces xsi:type="org.polarsys.capella.core.data.capellacommon:TransfoLink"
               id="b87d471d-c2d0-4b8e-be64-998b3c426efb" targetElement="#4ac3f28a-1021-47ea-b46d-27225acd0ca5"

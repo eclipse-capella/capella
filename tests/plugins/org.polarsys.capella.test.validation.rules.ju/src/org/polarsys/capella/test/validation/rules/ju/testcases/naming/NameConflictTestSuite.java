@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testcases.misc;
+package org.polarsys.capella.test.validation.rules.ju.testcases.naming;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +18,13 @@ import junit.framework.Test;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 
-public class MiscTestSuite extends BasicTestSuite {
+public class NameConflictTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new MiscTestSuite();
+    return new NameConflictTestSuite();
   }
 
   /**
@@ -32,17 +32,12 @@ public class MiscTestSuite extends BasicTestSuite {
    */
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new CheckAllRulesCodeTest());
-    tests.add(new ComponentPortOrientationConsistencyTest());
-    tests.add(new I25_MoreDescriptionValidationTests());
-    tests.add(new NoDuplicateRuleIdsTest());
-    tests.add(new NoStackoverflowErrorOnValidation());
-    tests.add(new PackageCycle1Test());
-    tests.add(new PackageCycle2Test());
-    tests.add(new PackageCycle3Test());
-    tests.add(new PackageCycle4Test());
-    tests.add(new PackageCycle5Test());
-    //tests.add(new RulesCoverageTest());
+    tests.add(new AssociationTests());
+    tests.add(new DataTypeTests());
+    tests.add(new DataValueTests());
+    tests.add(new ExchangeItemTests());
+    tests.add(new OtherTests());
+    tests.add(new ScenarioTests());
     return tests;
   }
 

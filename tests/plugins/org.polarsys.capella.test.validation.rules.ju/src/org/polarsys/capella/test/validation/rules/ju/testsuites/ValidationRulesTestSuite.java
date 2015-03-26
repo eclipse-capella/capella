@@ -19,6 +19,7 @@ import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dc_cl.DCCLRulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.MiscTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.naming.NameConflictTestSuite;
 
 public class ValidationRulesTestSuite extends BasicTestSuite {
 
@@ -34,6 +35,7 @@ public class ValidationRulesTestSuite extends BasicTestSuite {
 		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new DCCLRulesTestSuite());
     tests.add(new MiscTestSuite());
+    tests.add(new NameConflictTestSuite());
     tests.add(new RulesOnDesignTestSuite());
     tests.add(new RulesOnIntegrityTestSuite());
     tests.add(new RulesOnQualityTestSuite());
