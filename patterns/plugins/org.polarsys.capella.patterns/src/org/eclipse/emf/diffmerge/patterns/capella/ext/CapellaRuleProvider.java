@@ -182,7 +182,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
 
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider#deriveOwnership(org.eclipse.emf.ecore.EObject, java.lang.Object)
    */
   @Override
@@ -272,7 +271,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
 
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#enforceOwnership(java.util.Collection, java.lang.Object)
    */
   public Boolean enforceOwnership(Collection<? extends EObject> roots_p, Object context_p) {
@@ -521,7 +519,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
   
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#getElementsToRename(java.util.Collection)
    */
   public Collection<EObject> getElementsToRename(Collection<? extends EObject> elements_p) {
@@ -568,7 +565,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
   
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider#getNameAttribute(org.eclipse.emf.ecore.EObject)
    */
   @Override
@@ -582,7 +578,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
   
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#getOptionalMergeFeatures()
    */
   public List<EStructuralFeature> getOptionalMergeFeatures() {
@@ -810,7 +805,7 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#canBeAutomaticallyMerged(org.eclipse.emf.ecore.EObject)
    */
   public boolean canBeAutomaticallyMerged(EObject element_p) {
-    return element_p instanceof DataType;
+    return false;
   }
   
   /**
