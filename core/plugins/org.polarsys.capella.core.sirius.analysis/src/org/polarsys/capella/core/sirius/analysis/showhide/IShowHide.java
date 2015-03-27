@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 
 /**

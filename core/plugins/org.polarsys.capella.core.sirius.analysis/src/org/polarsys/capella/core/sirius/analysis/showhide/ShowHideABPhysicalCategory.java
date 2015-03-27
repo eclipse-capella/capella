@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,8 @@ import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
- * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts variables
+ * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts
+ * variables
  */
 public class ShowHideABPhysicalCategory extends ShowHideABComponentPortAllocation {
 
@@ -46,21 +47,6 @@ public class ShowHideABPhysicalCategory extends ShowHideABComponentPortAllocatio
    */
   public ShowHideABPhysicalCategory(DDiagramContents content_p) {
     super(content_p);
-  }
-
-  @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    if ((originCouple_p.getValue() instanceof Part)) {
-      // We don't reveal a part, if it is already displayed somewhere
-      for (ContextItemView view : originCouple_p.getViews()) {
-        if (view.getViews().get(VIEWS).size() > 0) {
-          return false;
-        }
-      }
-      // We never display a new part
-      return false;
-    }
-    return super.mustShow(originCouple_p, context_p, relatedViews_p);
   }
 
   /**
@@ -173,18 +159,41 @@ public class ShowHideABPhysicalCategory extends ShowHideABComponentPortAllocatio
   }
 
   @Override
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    // We display all available category, even if there is another view displayed
-    if (semantic_p instanceof PhysicalLinkCategory) {
-      return true;
+  protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, EdgeMapping edgeMapping_p) {
+    if (exchange_p instanceof PhysicalLinkCategory) {
+      return ABServices.getService().isValidABPhysicalCategoryEdge((PhysicalLinkCategory) exchange_p, source_p, target_p);
     }
-    return super.mustShow(semantic_p, context_p, relatedViews_p);
+    return super.mustShow(source_p, target_p, exchange_p, edgeMapping_p);
   }
 
   @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
+  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+    EObject semantic = originCouple_p.getValue();
+
+    if ((semantic instanceof Part)) {
+      // We don't reveal a part, if it is already displayed somewhere
+      for (ContextItemView view : originCouple_p.getViews()) {
+        if (view.getViews().get(VIEWS).size() > 0) {
+          return false;
+        }
+      }
+      // We never display a new part
+      return false;
+    }
+
+    // We display all available category, even if there is another view displayed
+    if (semantic instanceof PhysicalLinkCategory) {
+      return true;
+    }
+    return super.mustShow(originCouple_p, context_p, relatedViews_p);
+  }
+
+  @Override
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
+
     // An hide should hide all category mappings
-    return super.mustHide(semantic_p, context_p) || (semantic_p instanceof PhysicalLinkCategory);
+    return super.mustHide(originCouple_p, context_p) || (semantic instanceof PhysicalLinkCategory);
   }
 
   @Override
@@ -291,16 +300,7 @@ public class ShowHideABPhysicalCategory extends ShowHideABComponentPortAllocatio
   }
 
   @Override
-  protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, EdgeMapping edgeMapping_p) {
-    if (exchange_p instanceof PhysicalLinkCategory) {
-      return ABServices.getService().isValidABPhysicalCategoryEdge((PhysicalLinkCategory) exchange_p, source_p, target_p);
-    }
-    return super.mustShow(source_p, target_p, exchange_p, edgeMapping_p);
-  }
-
-  @Override
-  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p,
-      AbstractNodeMapping mapping_p) {
+  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p, AbstractNodeMapping mapping_p) {
     Collection<DDiagramElement> nodes = super.showNodes(containerView_p, semantic_p, content_p, mapping_p);
     // Reveal all hidden nodes for component ports
     if (semantic_p instanceof PhysicalPort) {

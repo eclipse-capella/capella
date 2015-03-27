@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -30,12 +31,11 @@ import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
- * A handler to content of a diagram.
- * This class is made to avoid multiple/low performance accesses to views from their semantic target.
+ * A handler to content of a diagram. This class is made to avoid multiple/low performance accesses to views from their
+ * semantic target.
  * 
- * A browse of diagram contents is performed only on access. 
- * This handler is not synchronized with added/removed views, so methods addView/removeView has to be called
- * to access to views.
+ * A browse of diagram contents is performed only on access. This handler is not synchronized with added/removed views,
+ * so methods addView/removeView has to be called to access to views.
  * 
  */
 public class DDiagramContents {
@@ -87,8 +87,9 @@ public class DDiagramContents {
   }
 
   /**
-   * Create a new diagram contents from an existing diagram contents.
-   * (both diagram contents are linked by attributes, don't perform a clone)
+   * Create a new diagram contents from an existing diagram contents. (both diagram contents are linked by attributes,
+   * don't perform a clone)
+   * 
    * @param diagramContent_p
    */
   public DDiagramContents(DDiagramContents diagramContent_p) {
@@ -119,8 +120,8 @@ public class DDiagramContents {
   }
 
   /**
-   * Allows adding a view in the diagram content information
-   * (do not add the given view in the diagram)
+   * Allows adding a view in the diagram content information (do not add the given view in the diagram)
+   * 
    * @param diagramElement_p
    */
   public void addView(DDiagramElement diagramElement_p) {
@@ -128,8 +129,8 @@ public class DDiagramContents {
   }
 
   /**
-   * Allows adding a view in the diagram content information
-   * (do not add the given view in the diagram)
+   * Allows adding a view in the diagram content information (do not add the given view in the diagram)
+   * 
    * @param diagramElement_p
    */
   public void removeView(DDiagramElement diagramElement_p) {
@@ -138,6 +139,7 @@ public class DDiagramContents {
 
   /**
    * Returns an iterable with all diagram elements
+   * 
    * @return
    */
   public Iterable<DDiagramElement> getDiagramElements() {
@@ -146,14 +148,25 @@ public class DDiagramContents {
 
   /**
    * Returns an iterable with all diagram elements
+   * 
    * @return
    */
   public Iterable<DDiagramElement> getDiagramElements(DiagramElementMapping mapping_p) {
     return DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping_p);
   }
 
+  public List<DDiagramElement> getVisibleDiagramElements(DiagramElementMapping mapping_p) {
+    List<DDiagramElement> lstVisibleElements = new ArrayList<DDiagramElement>();
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(_currentDiagram, mapping_p)) {
+      if (element.isVisible())
+        lstVisibleElements.add(element);
+    }
+    return lstVisibleElements;
+  }
+
   /**
    * returns a collection of diagram elements with the given target
+   * 
    * @param target_p
    * @return
    */
@@ -170,6 +183,7 @@ public class DDiagramContents {
 
   /**
    * returns a collection of diagram elements with the given target
+   * 
    * @param target_p
    * @return
    */
@@ -179,6 +193,7 @@ public class DDiagramContents {
 
   /**
    * returns a collection of diagram elements with the given target
+   * 
    * @param target_p
    * @return
    */
@@ -196,6 +211,7 @@ public class DDiagramContents {
 
   /**
    * Returns whether the given target has a view in the diagram
+   * 
    * @param target
    * @return
    */
@@ -205,6 +221,7 @@ public class DDiagramContents {
 
   /**
    * Returns whether the given target has a view form the given mapping
+   * 
    * @param target
    * @param mapping
    * @return
@@ -227,6 +244,7 @@ public class DDiagramContents {
 
   /**
    * returns a collection of diagram elements with the given target
+   * 
    * @param target_p
    * @return
    */
@@ -251,6 +269,7 @@ public class DDiagramContents {
    * returns a collection of diagram elements with the given target
    * 
    * for a bordered node, we returns if strict containment
+   * 
    * @param target_p
    * @return
    */
@@ -272,6 +291,7 @@ public class DDiagramContents {
 
   /**
    * Returns all nodes targeting the given target_p
+   * 
    * @param target
    * @return
    */
@@ -281,6 +301,7 @@ public class DDiagramContents {
 
   /**
    * Returns all node containers targeting the given target_p
+   * 
    * @param target
    * @return
    */
@@ -290,6 +311,7 @@ public class DDiagramContents {
 
   /**
    * Returns all node containers targeting the given target_p
+   * 
    * @param target
    * @return
    */
@@ -299,6 +321,7 @@ public class DDiagramContents {
 
   /**
    * Returns the first node targeting the given target_p
+   * 
    * @param target
    * @return
    */
@@ -313,6 +336,7 @@ public class DDiagramContents {
 
   /**
    * Returns the first edge targeting the given target_p
+   * 
    * @param target
    * @return
    */
@@ -327,6 +351,7 @@ public class DDiagramContents {
 
   /**
    * Returns the container which should containing the given anElement_p
+   * 
    * @param anElement_p
    * @param diagram_p
    * @param diagramContent_p
@@ -342,8 +367,9 @@ public class DDiagramContents {
   }
 
   /**
-   * Returns the best container of the given semantic element.
-   * (sometimes, we need to retrieve the best container for a new element)
+   * Returns the best container of the given semantic element. (sometimes, we need to retrieve the best container for a
+   * new element)
+   * 
    * @param anElement_p
    * @param diagram_p
    * @param diagramContent_p
@@ -360,7 +386,8 @@ public class DDiagramContents {
         if (element != null) {
           if (this.containsView(element)) {
             for (DDiagramElement view : this.getNodeContainers(element)) {
-              return (DragAndDropTarget) view;
+              if (view.isVisible())
+                return (DragAndDropTarget) view;
             }
           }
           toVisit.addAll(getParents(element, semantic_p));
@@ -378,6 +405,7 @@ public class DDiagramContents {
 
   /**
    * Returns possible parents of the given semantic element
+   * 
    * @param object_p
    * @return
    */
@@ -387,6 +415,7 @@ public class DDiagramContents {
 
   /**
    * Returns possible parents of the given semantic element
+   * 
    * @param object_p
    * @return
    */

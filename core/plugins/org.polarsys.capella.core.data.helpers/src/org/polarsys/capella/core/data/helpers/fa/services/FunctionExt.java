@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,13 @@ import java.util.List;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.activity.ActivityEdge;
+import org.polarsys.capella.common.data.activity.ActivityNode;
+import org.polarsys.capella.common.data.activity.InputPin;
+import org.polarsys.capella.common.data.activity.OutputPin;
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.ctx.SystemFunction;
@@ -34,14 +39,8 @@ import org.polarsys.capella.core.data.fa.FunctionRealization;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.information.Port;
 import org.polarsys.capella.core.data.la.LogicalFunction;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
-import org.polarsys.capella.common.data.activity.ActivityEdge;
-import org.polarsys.capella.common.data.activity.ActivityNode;
-import org.polarsys.capella.common.data.activity.InputPin;
-import org.polarsys.capella.common.data.activity.OutputPin;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 
 /**
  * Helper for functions.
@@ -78,7 +77,9 @@ public class FunctionExt {
 
   /**
    * Checks if is leaf.
-   * @param function_p the given function
+   * 
+   * @param function_p
+   *          the given function
    * @return true, if is leaf
    */
   public static final boolean isLeaf(AbstractFunction function_p) {
@@ -120,8 +121,11 @@ public class FunctionExt {
   // used only for OperationalAnalysis Layer Elements
   /**
    * Gets the allocated functional exchange filtered.
-   * @param sourceEntity the given abstractFunctionalBlock
-   * @param targetEntity the given abstractFunctionalBlock
+   * 
+   * @param sourceEntity
+   *          the given abstractFunctionalBlock
+   * @param targetEntity
+   *          the given abstractFunctionalBlock
    * @return the allocated functional exchange filtered
    */
   public static List<CapellaElement> getAllocatedFunctionalExchangeFiltered(AbstractFunctionalBlock sourceEntity, AbstractFunctionalBlock targetEntity) {
@@ -148,8 +152,11 @@ public class FunctionExt {
 
   /**
    * Gets the allocated functional exchange filtered with port.
-   * @param sourceEntity the given abstractFunctionalBlock
-   * @param targetEntity the given abstractFunctionalBlock
+   * 
+   * @param sourceEntity
+   *          the given abstractFunctionalBlock
+   * @param targetEntity
+   *          the given abstractFunctionalBlock
    * @return the allocated functional exchange filtered with port
    */
   public static List<CapellaElement> getAllocatedFunctionalExchangeFilteredWithPort(AbstractFunctionalBlock sourceEntity, AbstractFunctionalBlock targetEntity) {
@@ -176,7 +183,9 @@ public class FunctionExt {
 
   /**
    * Returns all outgoing exchanges of the function.
-   * @param function_p the function
+   * 
+   * @param function_p
+   *          the function
    * @return all outgoing exchanges
    */
   public static List<FunctionalExchange> getOutGoingExchange(AbstractFunction function_p) {
@@ -190,8 +199,78 @@ public class FunctionExt {
   }
 
   /**
+   * Returns all outgoing exchanges of the function including those of its sub-functions.
+   * 
+   * @param function_p
+   *          the function
+   * @return all outgoing exchanges
+   */
+  public static List<FunctionalExchange> getAllOutgoingExchanges(AbstractFunction function_p) {
+    if (function_p.getOwnedFunctions().isEmpty())
+      return getOutGoingExchange(function_p);
+
+    List<FunctionalExchange> result = getOutGoingExchange(function_p);
+
+    for (AbstractFunction abstractFunction : function_p.getOwnedFunctions()) {
+      List<FunctionalExchange> outgoings = getAllOutgoingExchanges(abstractFunction);
+      for (FunctionalExchange activityEdge : outgoings) {
+        // If the functional exchange of the sub-function goes out of the scope of the function
+        if (!EcoreUtil2.isContainedBy(activityEdge.getTarget(), function_p))
+          result.add((FunctionalExchange) activityEdge);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Returns all incoming exchanges of the function including those of its sub-functions.
+   * 
+   * @param function_p
+   *          the function
+   * @return all incoming exchanges
+   */
+  public static List<FunctionalExchange> getAllIncomingExchanges(AbstractFunction function_p) {
+    if (function_p.getOwnedFunctions().isEmpty())
+      return getIncomingExchange(function_p);
+
+    List<FunctionalExchange> result = getIncomingExchange(function_p);
+
+    for (AbstractFunction abstractFunction : function_p.getOwnedFunctions()) {
+      List<FunctionalExchange> incomings = getAllIncomingExchanges(abstractFunction);
+      for (FunctionalExchange activityEdge : incomings) {
+        // If the functional exchange of the sub-function goes out of the scope of the function
+        if (!EcoreUtil2.isContainedBy(activityEdge.getSource(), function_p))
+          result.add((FunctionalExchange) activityEdge);
+      }
+    }
+    return result;
+  }
+
+  /**
+   * Returns all incoming and outgoing exchanges of the function including those of its sub-functions.
+   * 
+   * @param function_p
+   *          the function
+   * @return all incoming and outgoing exchanges
+   */
+  public static List<FunctionalExchange> getAllExchanges(AbstractFunction function_p) {
+    List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
+    List<FunctionalExchange> ingoing = getAllIncomingExchanges(function_p);
+    for (FunctionalExchange activityEdge : ingoing) {
+      result.add((FunctionalExchange) activityEdge);
+    }
+    List<FunctionalExchange> outgoing = getAllOutgoingExchanges(function_p);
+    for (FunctionalExchange activityEdge : outgoing) {
+      result.add((FunctionalExchange) activityEdge);
+    }
+    return result;
+  }
+
+  /**
    * Returns all incoming exchanges of the function.
-   * @param function_p the function
+   * 
+   * @param function_p
+   *          the function
    * @return all incoming exchanges
    */
   public static List<FunctionalExchange> getIncomingExchange(AbstractFunction function_p) {
@@ -205,8 +284,30 @@ public class FunctionExt {
   }
 
   /**
+   * Returns all incoming and outgoing exchanges of the function.
+   * 
+   * @param function_p
+   *          the function
+   * @return all incoming and outgoing exchanges
+   */
+  public static List<FunctionalExchange> getExchanges(AbstractFunction function_p) {
+    List<FunctionalExchange> result = new BasicEList<FunctionalExchange>();
+    List<ActivityEdge> ingoing = function_p.getIncoming();
+    for (ActivityEdge activityEdge : ingoing) {
+      result.add((FunctionalExchange) activityEdge);
+    }
+    EList<ActivityEdge> outgoing = function_p.getOutgoing();
+    for (ActivityEdge activityEdge : outgoing) {
+      result.add((FunctionalExchange) activityEdge);
+    }
+    return result;
+  }
+
+  /**
    * Gets the owned function ports.
-   * @param function_p the given abstractFunction
+   * 
+   * @param function_p
+   *          the given abstractFunction
    * @return the owned function ports
    */
   public static List<Port> getOwnedFunctionPorts(AbstractFunction function_p) {
@@ -226,7 +327,9 @@ public class FunctionExt {
 
   /**
    * Returns the outgoing abstract function of the exchange.
-   * @param exchange_p the exchange
+   * 
+   * @param exchange_p
+   *          the exchange
    * @return function
    */
   public static AbstractFunction getOutGoingAbstractFunction(FunctionalExchange exchange_p) {
@@ -245,7 +348,9 @@ public class FunctionExt {
 
   /**
    * Returns the incoming abstract function of the exchange.
-   * @param exchange_p the exchange
+   * 
+   * @param exchange_p
+   *          the exchange
    * @return function
    */
   public static AbstractFunction getIncomingAbstractFunction(FunctionalExchange exchange_p) {
@@ -264,6 +369,7 @@ public class FunctionExt {
 
   /**
    * Returns owned function pkgs
+   * 
    * @param function_p
    * @return
    */
@@ -305,7 +411,9 @@ public class FunctionExt {
 
   /**
    * Gets the all abstract functions.
-   * @param function_p the given abstractFunction
+   * 
+   * @param function_p
+   *          the given abstractFunction
    * @return function_p and all abstractFunctions contained recursively in function_p
    */
   public static List<AbstractFunction> getAllAbstractFunctions(AbstractFunction function_p) {
@@ -327,7 +435,9 @@ public class FunctionExt {
 
   /**
    * Gets the all leaf abstract functions.
-   * @param arch_p the given blockArchitecture
+   * 
+   * @param arch_p
+   *          the given blockArchitecture
    * @return all function in arch_p that do not contain any subFunctions
    */
   public static List<AbstractFunction> getAllLeafAbstractFunctions(AbstractFunction function_p) {
@@ -342,7 +452,9 @@ public class FunctionExt {
 
   /**
    * Gets the all leaf abstract functions.
-   * @param arch_p the given blockArchitecture
+   * 
+   * @param arch_p
+   *          the given blockArchitecture
    * @return all function in arch_p that do not contain any subFunctions
    */
   public static List<AbstractFunction> getAllLeafAbstractFunctions(BlockArchitecture arch_p) {
@@ -357,7 +469,9 @@ public class FunctionExt {
 
   /**
    * Gets the all abstract functions.
-   * @param blockArchitecture_p the given blockArchitecture
+   * 
+   * @param blockArchitecture_p
+   *          the given blockArchitecture
    * @return all abstractFunctions in blockArchitecture_p
    */
   public static List<AbstractFunction> getAllAbstractFunctions(BlockArchitecture blockArchitecture_p) {
@@ -366,6 +480,7 @@ public class FunctionExt {
 
   /**
    * return the root function of the breakdown where is located function_p
+   * 
    * @param function_p
    * @return
    */
@@ -382,6 +497,7 @@ public class FunctionExt {
 
   /**
    * Returns functions owned by the function or owned function pkg
+   * 
    * @return
    */
   public static Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function_p) {
@@ -397,7 +513,9 @@ public class FunctionExt {
 
   /**
    * Returns the first parent function (a function can be contained into an internal package)
-   * @param function_p a function
+   * 
+   * @param function_p
+   *          a function
    * @return the list of parent functions
    */
   public static AbstractFunction getParentFunction(AbstractFunction function_p) {
@@ -409,8 +527,9 @@ public class FunctionExt {
   }
 
   /**
-   * Returns the first abstract function related to the given activityNode. FunctionalExchange is an ActivityEdge which can be connected to a Port or an
-   * OperationalActivity
+   * Returns the first abstract function related to the given activityNode. FunctionalExchange is an ActivityEdge which
+   * can be connected to a Port or an OperationalActivity
+   * 
    * @param node_p
    * @return
    */
@@ -422,7 +541,8 @@ public class FunctionExt {
   }
 
   /**
-   * @param function_p a function
+   * @param function_p
+   *          a function
    * @return the list of parent functions
    */
   public static List<AbstractFunction> getParentFunctions(AbstractFunction function_p) {
@@ -437,6 +557,7 @@ public class FunctionExt {
 
   /**
    * Retrieve all functional exchanges owned by the given function_p
+   * 
    * @param function_p
    * @return
    */
@@ -460,6 +581,7 @@ public class FunctionExt {
 
   /**
    * is [FUNCTIONKIND = FUNCTION] and not AcotorFunction or ControlNode
+   * 
    * @param element_p
    * @return
    */
@@ -479,6 +601,7 @@ public class FunctionExt {
 
   /**
    * is [FUNCTIONKIND = FUNCTION] with few Actor allocation and not of kind ControlNode
+   * 
    * @param element_p
    * @return
    */
@@ -498,6 +621,7 @@ public class FunctionExt {
 
   /**
    * Return true if it is root function
+   * 
    * @param element_p
    * @return boolean
    */
@@ -512,4 +636,5 @@ public class FunctionExt {
 
     return false;
   }
+
 }

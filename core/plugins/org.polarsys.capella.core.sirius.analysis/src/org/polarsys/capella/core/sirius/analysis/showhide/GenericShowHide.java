@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,9 +91,10 @@ public class GenericShowHide extends AbstractShowHide {
   }
 
   @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
     // We want to hide actors
-    if (_eClass.isInstance(semantic_p)) {
+    if (_eClass.isInstance(semantic)) {
       return true;
     }
     // And only these elements

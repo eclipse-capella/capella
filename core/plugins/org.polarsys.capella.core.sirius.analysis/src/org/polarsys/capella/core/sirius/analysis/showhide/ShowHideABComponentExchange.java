@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,10 +32,8 @@ import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
- * A ShowHide definition for ABCategory
- * 
- * containers of category pins must be set with sourceParts and targetParts variables
- *
+ * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts
+ * variables
  */
 public class ShowHideABComponentExchange extends ShowHideABComponent {
 
@@ -52,7 +50,7 @@ public class ShowHideABComponentExchange extends ShowHideABComponent {
   @Override
   protected boolean isValidSemanticView(EObject semantic_p, DSemanticDecorator semanticView_p, DiagramContext context_p) {
     if ((semantic_p instanceof Part) || (semantic_p instanceof Entity)) {
-      //Filter source part view to source part views
+      // Filter source part view to source part views
       ContextItemVariable variable = context_p.getLastVariable(SOURCE_PART_VIEWS);
       if (variable != null) {
         Collection<DDiagramElement> views = ((Collection) variable.getValue());
@@ -63,7 +61,7 @@ public class ShowHideABComponentExchange extends ShowHideABComponent {
         }
       }
 
-      //Filter target part view to source part views
+      // Filter target part view to source part views
       variable = context_p.getLastVariable(TARGET_PART_VIEWS);
       if (variable != null) {
         Collection<DDiagramElement> views = ((Collection) variable.getValue());
@@ -135,38 +133,29 @@ public class ShowHideABComponentExchange extends ShowHideABComponent {
     return super.retrieveDefaultContainer(semantic_p, context_p, targetViews_p);
   }
 
-  @Override
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(semantic_p, context_p, relatedViews_p);
-  }
-
   /**
    * {@inheritDoc}
    */
   @Override
   protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, EdgeMapping edgeMapping_p) {
     if (exchange_p instanceof ComponentExchange) {
-      return CsServices.getService().isValidComponentExchangeEdge((ComponentExchange) exchange_p, source_p, target_p);
+      return CsServices.getService().isValidComponentExchangeEdge(exchange_p, source_p, target_p);
     }
     return super.mustShow(source_p, target_p, exchange_p, edgeMapping_p);
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(originCouple_p, context_p, relatedViews_p);
-  }
-
-  @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
-    //We want to hide component port
-    if (semantic_p instanceof ComponentPort) {
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
+    // We want to hide component port
+    if (semantic instanceof ComponentPort) {
       return true;
     }
-    //We want to hide component exchange
-    if (semantic_p instanceof ComponentExchange) {
+    // We want to hide component exchange
+    if (semantic instanceof ComponentExchange) {
       return true;
     }
-    //And only these elements
+    // And only these elements
     return false;
   }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  * A ShowHide definition for ABCategory
  * 
  * containers of category pins must be set with sourceParts and targetParts variables
- *
+ * 
  */
 public class ShowHideABRole extends ShowHideABComponent {
 
@@ -48,7 +48,7 @@ public class ShowHideABRole extends ShowHideABComponent {
     HashMapSet<String, EObject> value = super.getRelatedObjects(semantic_p, context_p);
 
     if (lastContext.getValue() instanceof Role) {
-      //Retrieve all parts containing the given part
+      // Retrieve all parts containing the given part
       Collection<EObject> result = new HashSet<EObject>();
       Role role = (Role) lastContext.getValue();
       for (RoleAllocation allocation : role.getRoleAllocations()) {
@@ -85,18 +85,9 @@ public class ShowHideABRole extends ShowHideABComponent {
   }
 
   @Override
-  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p, Collection<DSemanticDecorator> targetViews_p) {
-    return super.retrieveDefaultContainer(semantic_p, context_p, targetViews_p);
-  }
-
-  @Override
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(semantic_p, context_p, relatedViews_p);
-  }
-
-  @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
-    return semantic_p instanceof Role;
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
+    return semantic instanceof Role;
   }
 
 }

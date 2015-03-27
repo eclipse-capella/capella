@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,8 @@ import org.polarsys.capella.core.sirius.analysis.DiagramServices;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
- * A service to perform show/hide on diagrams An element requires some relatedObject to be shown before being itself shown.<br>
+ * A service to perform show/hide on diagrams An element requires some relatedObject to be shown before being itself
+ * shown.<br>
  * With this principle, this service tries to help writing complex showHide. For instance: <br>
  * - a FunctionalExchange to be shown requires that its FunctionPort must be shown <br>
  * - a FunctionPort to be shown requires that its containing Function must be shown <br>
@@ -46,18 +47,19 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  * All you need to do is to implement: <br>
  * - getMapping <br>
  * - retrieveDefaultContainer <br>
- * - getRelatedObjects: to show/hide a DNode put the container object (often the diagram) using the key 'CONTAINER' in the returned HashMapSet<String, EObject>.
- * To show/hide a DEdge, put the source and/or target objects using the keys 'SOURCE' and 'TARGET'<br>
+ * - getRelatedObjects: to show/hide a DNode put the container object (often the diagram) using the key 'CONTAINER' in
+ * the returned HashMapSet<String, EObject>. To show/hide a DEdge, put the source and/or target objects using the keys
+ * 'SOURCE' and 'TARGET'<br>
  */
 public class AbstractShowHide implements IShowHide {
 
-  public static final String SOURCE = "s"; //$NON-NLS-1$
-  public static final String TARGET = "t"; //$NON-NLS-1$
+  public static final String SOURCE = "source"; //$NON-NLS-1$
+  public static final String TARGET = "target"; //$NON-NLS-1$
 
-  public static final String CONTAINER = "c"; //$NON-NLS-1$
-  public static final String ROOT = "r"; //$NON-NLS-1$
-  public static final String VIEWS = "v"; //$NON-NLS-1$
-  public static final String INITIAL_VIEWS = "iv"; //$NON-NLS-1$
+  public static final String CONTAINER = "container"; //$NON-NLS-1$
+  public static final String ROOT = "root"; //$NON-NLS-1$
+  public static final String VIEWS = "views"; //$NON-NLS-1$
+  public static final String INITIAL_VIEWS = "initial"; //$NON-NLS-1$
 
   protected DDiagramContents _content;
 
@@ -80,7 +82,8 @@ public class AbstractShowHide implements IShowHide {
     }
 
     /**
-     * @param value_p the value to set
+     * @param value_p
+     *          the value to set
      */
     public void setValue(Object value_p) {
       value = value_p;
@@ -119,7 +122,7 @@ public class AbstractShowHide implements IShowHide {
     private ArrayList<ContextItemView> views = null;
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-	ContextItemElement(String key_p, EObject value_p) {
+    ContextItemElement(String key_p, EObject value_p) {
       this.key = key_p;
       this.value = value_p;
 
@@ -136,7 +139,8 @@ public class AbstractShowHide implements IShowHide {
     }
 
     /**
-     * @param value_p the value to set
+     * @param value_p
+     *          the value to set
      */
     public void setValue(EObject value_p) {
       value = value_p;
@@ -334,7 +338,8 @@ public class AbstractShowHide implements IShowHide {
   }
 
   /**
-   * For an element, retrieve all related objects with access to all views of related objects Returns an ordered list of ContextItemView
+   * For an element, retrieve all related objects with access to all views of related objects Returns an ordered list of
+   * ContextItemView
    */
   protected DiagramContext getComputedDiagramContext(EObject semantic_p, DiagramContext context_p, boolean readOnly_p) {
     DiagramContext contextToVisit = new DiagramContext();
@@ -369,9 +374,13 @@ public class AbstractShowHide implements IShowHide {
         Collection<DSemanticDecorator> v = null;
         if (readOnly_p) {
           v = itemView.getViews().get(VIEWS);
-        } else if (((!mustShow(element.getValue(), context_p, itemView.getViews())) && (bypassRelatedElements(element, context_p) || !mustShow(element,
-            context_p, itemView.getViews())))) {
+
+        } else if (!mustShow(element, context_p, itemView.getViews())) {
           v = itemView.getViews().get(VIEWS);
+
+        } else if (bypassRelatedElements(element, context_p)) {
+          v = itemView.getViews().get(VIEWS);
+
         } else {
           v = show(element.getValue(), context_p, null, itemView.getViews());
           itemView.getViews().putAll(VIEWS, v);
@@ -380,7 +389,7 @@ public class AbstractShowHide implements IShowHide {
         if (nextCouple != null) {
           nextCouple.getViews().putAll(element.getKey(), v);
         }
-        if (mustHide(element.getValue(), context_p)) {
+        if (mustHide(element, context_p)) {
           contextToHide.addFirst(couple);
         }
 
@@ -447,17 +456,9 @@ public class AbstractShowHide implements IShowHide {
   }
 
   /**
-   * @param originCouple_p
-   * @return
-   */
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-
-    return true;
-  }
-
-  /**
-   * Bypass related elements can be useful to avoid to create views of related elements for any reason (for instance, if the semantic element is already
-   * displayed, we don't want to create views of related elements )
+   * Bypass related elements can be useful to avoid to create views of related elements for any reason (for instance, if
+   * the semantic element is already displayed, we don't want to create views of related elements )
+   * 
    * @param context_p
    * @param semantic_p
    * @return
@@ -475,6 +476,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Hide the given semantic element
+   * 
    * @param semantic_p
    * @param context_p
    */
@@ -498,6 +500,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Hide the given semantic element
+   * 
    * @param semantic_p
    * @param context_p
    */
@@ -523,6 +526,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Show the given semantic element
+   * 
    * @param semantic_p
    * @param context_p
    */
@@ -577,39 +581,45 @@ public class AbstractShowHide implements IShowHide {
   }
 
   /**
-   * Returns whether the semantic element must be displayed context can be used to retrieve why this semantic element must be shown
-   * @param semantic_p
-   * @param context_p
+   * Returns whether the semantic element must be displayed context can be used to retrieve why this semantic element
+   * must be shown
+   * 
+   * @param originCouple_p
    * @return
    */
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return false;
-  }
-
-  /**
-   * Returns whether the semantic element must be hidden context can be used to retrieve why this semantic element must be hidden
-   * @param semantic_p
-   * @param context_p
-   * @return
-   */
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
+  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
     return true;
   }
 
   /**
-   * Returns whether the view must be hidden context can be used to retrieve why this semantic element must be hidden By default, doesn't hide node with
-   * incoming or outgoing edge
+   * Returns whether the semantic element must be hidden context can be used to retrieve why this semantic element must
+   * be hidden
+   * 
+   * @param semantic_p
+   * @param context_p
+   * @return
+   */
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    return true;
+  }
+
+  /**
+   * Returns whether the view must be hidden context can be used to retrieve why this semantic element must be hidden By
+   * default, doesn't hide node with incoming or outgoing edge
+   * 
    * @param semantic_p
    * @param context_p
    * @return
    */
   protected boolean mustHide(DDiagramElement view_p, DiagramContext context_p) {
+
     if (view_p.getDiagramElementMapping() instanceof AbstractNodeMapping) {
-      if (((EdgeTarget) view_p).getIncomingEdges().size() == 0) {
-        if (((EdgeTarget) view_p).getOutgoingEdges().size() == 0) {
+      if (((EdgeTarget) view_p).getIncomingEdges().isEmpty()) {
+        if (((EdgeTarget) view_p).getOutgoingEdges().isEmpty()) {
           return true;
         }
       }
+
       return false;
     }
     return true;
@@ -617,6 +627,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Retrieve views of the given semantic element according to views of related objects.
+   * 
    * @param semantic_p
    * @param context_p
    * @param relatedViews_p
@@ -658,6 +669,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Returns whether the semanticView is valid according to its container view
+   * 
    * @param semantic_p
    * @param semanticView_p
    * @param targetView_p
@@ -678,6 +690,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Returns whether the edge is a valid edge view according to both source/target views
+   * 
    * @param edge_p
    * @param sourceView_p
    * @param targetView_p
@@ -692,6 +705,11 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Returns whether the given view is a valid view for the show/hide or must be ignored
+   * 
+   * When a Function is displayed two times in a diagram, tool Show/Hide Functional Exchange on such function will
+   * display two exchanges starting from both view of the Function. This method is used to filter views of the Function
+   * to display only one exchange starting from selected view
+   * 
    * @param semantic_p
    * @param semanticView_p
    * @return
@@ -702,6 +720,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Show the given semantic element according to views of related objects.
+   * 
    * @param semantic_p
    * @param context_p
    * @param relatedViews_p
@@ -723,7 +742,7 @@ public class AbstractShowHide implements IShowHide {
         }
       } else if (mapping instanceof AbstractNodeMapping) {
         Collection<DSemanticDecorator> targetViews = relatedViews_p.get(CONTAINER);
-        if (targetViews.size() == 0) {
+        if (targetViews.isEmpty()) {
           targetViews.addAll(retrieveDefaultContainer(semantic_p, context_p, targetViews));
         }
         for (DSemanticDecorator targetView : targetViews) {
@@ -738,7 +757,9 @@ public class AbstractShowHide implements IShowHide {
   }
 
   /**
-   * For a semantic element, if no "container" has been found in relatedObjects, returns the defaults containerViews used to create view of semantic elements
+   * For a semantic element, if no "container" has been found in relatedObjects, returns the defaults containerViews
+   * used to create view of semantic elements
+   * 
    * @param semantic_p
    * @param context_p
    * @param targetViews_p
@@ -750,14 +771,14 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Retrieve existing nodes of the given semantic element, contained in the given containerView
+   * 
    * @param targetView_p
    * @param semantic_p
    * @param content_p
    * @param mapping_p
    * @return
    */
-  protected Collection<DDiagramElement> getNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p,
-      AbstractNodeMapping mapping_p) {
+  protected Collection<DDiagramElement> getNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p, AbstractNodeMapping mapping_p) {
     Collection<DDiagramElement> edges = new LinkedList<DDiagramElement>();
     for (DDiagramElement view : content_p.getDiagramElements(semantic_p, mapping_p, containerView_p)) {
       if (isValidNodeView(view, containerView_p)) {
@@ -769,6 +790,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Retrieve existing edges of the given semantic element, between both source/target views
+   * 
    * @param sourceView_p
    * @param targetView_p
    * @param semantic_p
@@ -776,8 +798,8 @@ public class AbstractShowHide implements IShowHide {
    * @param mapping_p
    * @return
    */
-  protected Collection<DDiagramElement> getEdges(DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p, EObject semantic_p,
-      DDiagramContents content_p, EdgeMapping mapping_p) {
+  protected Collection<DDiagramElement> getEdges(DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p, EObject semantic_p, DDiagramContents content_p,
+      EdgeMapping mapping_p) {
     Collection<DDiagramElement> edges = new LinkedList<DDiagramElement>();
     for (DDiagramElement elementView : content_p.getDiagramElements(semantic_p, mapping_p)) {
       if (elementView instanceof DEdge) {
@@ -793,15 +815,16 @@ public class AbstractShowHide implements IShowHide {
   }
 
   /**
-   * Retrieve existing nodes of the given semantic element, contained in the given containerView and create a node if not yet existing
+   * Retrieve existing nodes of the given semantic element, contained in the given containerView and create a node if
+   * not yet existing
+   * 
    * @param targetView_p
    * @param semantic_p
    * @param content_p
    * @param mapping_p
    * @return
    */
-  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p,
-      AbstractNodeMapping mapping_p) {
+  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p, AbstractNodeMapping mapping_p) {
     Collection<DDiagramElement> nodes = getNodes(containerView_p, semantic_p, content_p, mapping_p);
     if (nodes.isEmpty()) {
       nodes = new ArrayList<DDiagramElement>();
@@ -819,6 +842,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Returns whether a view of given semantic element must be created in the given containerView
+   * 
    * @param containerView_p
    * @param semantic_p
    * @param mapping_p
@@ -837,6 +861,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Returns whether a view of given semantic element must be created between both source/target views
+   * 
    * @param source_p
    * @param target_p
    * @param exchange_p
@@ -849,6 +874,7 @@ public class AbstractShowHide implements IShowHide {
 
   /**
    * Retrieve existing edges of the given semantic element, between both source/target views Create a view if not exists
+   * 
    * @param source_p
    * @param target_p
    * @param exchange_p

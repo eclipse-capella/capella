@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacommon.StateTransition;
@@ -92,21 +91,12 @@ public class ShowHideSMTransitions extends ShowHideSMStateMode {
   }
 
   @Override
-  protected boolean mustShow(DSemanticDecorator containerView_p, EObject semantic_p, AbstractNodeMapping mapping_p) {
-    return super.mustShow(containerView_p, semantic_p, mapping_p);
-  }
-
-  @Override
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(semantic_p, context_p, relatedViews_p);
-  }
-
-  @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
-    if (semantic_p instanceof StateTransition) {
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
+    if (semantic instanceof StateTransition) {
       return true;
     }
-    return super.mustHide(semantic_p, context_p);
+    return super.mustHide(originCouple_p, context_p);
 
   }
 }

@@ -842,30 +842,6 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="OAB_ComponentCategory" preconditionExpression="&lt;%isValidABComponentCategoryEdge($sourceView,$targetView)%>" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']" createElements="false" sourceMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" targetMapping="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']" targetFinderExpression="&lt;%getComponentCategoryTargets()%>" sourceFinderExpression="&lt;%getComponentCategorySources()%>" domainClass="ComponentExchangeCategory" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="2">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%computeComponentCategoryLabel()%>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-          <conditionnalStyles predicateExpression="&lt;%$view.isABComponentCategorySourceOriented() &amp;&amp; !$view.isABComponentCategoryTargetOriented() %>">
-            <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription labelExpression="&lt;%computeComponentCategoryLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!$view.isABComponentCategorySourceOriented() &amp;&amp; $view.isABComponentCategoryTargetOriented() %>">
-            <style sizeComputationExpression="2">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <centerLabelStyleDescription labelExpression="&lt;%computeComponentCategoryLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-        </edgeMappings>
         <containerMappings name="OAB_Entity1" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="Entity" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20role%20allocation'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Entities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20OperationalActivities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20Roles%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20Entitiy'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation']" reusedContainerMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']">
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Entity%20Breakdown']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Entity%20Blank']"/>
@@ -1086,51 +1062,6 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="[Available only when the diagram is unsynchronized] Insert/Remove Categorized Communication Means. Create or delete graphical objects corresponding to already existing Categorized Communication Means and the corresponding source/target Entities if they are not present on the diagram yet. Removing a Categorized Communication Mean graphical object from the diagram does not delete the Communication Mean from the model. This tool does not modify the semantic model." name="Show/Hide Component Categories" label="Categories" precondition="&lt;%isValidShowHideABComponentCategory($elementView)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-              <filters precondition="feature:synchronized" elementsToListen="&lt;%current%>">
-                <listeners domainClass="DDiagram" featureName="synchronized"/>
-              </filters>
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $elementView %>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchangeCategories" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromCheckBoxWizard">
-                    <parameters name="context" value="&lt;% $elementView %>"/>
-                    <parameters name="type" value="COMPONENT_CATEGORY"/>
-                    <parameters name="resultVariable" value="selectedElements"/>
-                    <parameters name="wizardMessage" value="Select Categories and targeted elements"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Communication Means and their representation as Category-based Communication Means." name="Switch Component Categories" label="Communication Means / Categories" precondition="&lt;%isValidSwitchABComponentCategory($elementView)%>" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                  <parameters name="context" value="&lt;% $element%>"/>
-                  <parameters name="variable" value="scope"/>
-                  <parameters name="value" value="&lt;% $elementView.getABSwitchComponentCategoriesScope() %>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
-                  <parameters name="context" value="&lt;% $element%>"/>
-                  <parameters name="variable" value="initialSelection"/>
-                  <parameters name="value" value="&lt;% $elementView.getABSwitchComponentCategoriesInitialSelection()%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
-                  <parameters name="context" value="&lt;% $element%>"/>
-                  <parameters name="scope" value="&lt;%$scope%>"/>
-                  <parameters name="initialSelection" value="&lt;%$initialSelection%>"/>
-                  <parameters name="resultVariable" value="selectedElements"/>
-                  <parameters name="wizardMessage" value="Select Categories to reveal"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedElements != &quot;WIZARD_CANCELED&quot;)%>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.switchABComponentCategories($scope, $initialSelection, $selectedElements )%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Constraints">
             <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Constraint." name="Constraint" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Constraint.gif">
