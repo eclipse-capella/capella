@@ -498,19 +498,19 @@
             </and>
          </with>
       </definition>
-   </extension>
+   </extension-->
    <extension
          point="org.eclipse.emf.diffmerge.patterns.ui.modelenvironmentui">
       <client
-            class="org.eclipse.emf.diffmerge.patterns.ui.capella.providers.capellaAdvanceModelEnvironmentUI">
+            class="org.eclipse.emf.diffmerge.patterns.ui.capella.providers.CapellaModelEnvironmentUI">
       </client>
    </extension>
    <extension
-         point="org.eclipse.emf.diffmerge.patterns.ui.uiExtender">
+         point="org.eclipse.emf.diffmerge.patterns.ui.uiextender">
       <client
-            class="org.eclipse.emf.diffmerge.patterns.ui.capella.util.capellaAdvanceUIExtender">
+            class="org.eclipse.emf.diffmerge.patterns.ui.capella.util.CapellaUIExtender">
       </client>
-   </extension-->
+   </extension>
    
 
 </plugin>
