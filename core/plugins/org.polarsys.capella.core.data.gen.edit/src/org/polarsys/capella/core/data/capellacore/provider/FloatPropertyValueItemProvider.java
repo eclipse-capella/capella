@@ -117,10 +117,24 @@ public class FloatPropertyValueItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
+		String[] result = new String[] { null };
+		result[0] = getTextGen(object);		
+		float value = ((FloatPropertyValue) object).getValue();
+		result[0] = result[0] + " = " + value; //$NON-NLS-1$
+		return result[0];
+	}
+	
+	/**
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTextGen(Object object) {
 	 String[] result = new String[] { null };
 
     	//begin-capella-code

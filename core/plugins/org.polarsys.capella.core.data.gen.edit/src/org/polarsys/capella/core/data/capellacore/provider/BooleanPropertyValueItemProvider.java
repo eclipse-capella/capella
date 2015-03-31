@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.BooleanPropertyValue;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellacore.StringPropertyValue;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.capellacore.BooleanPropertyValue} object.
@@ -117,10 +118,24 @@ public class BooleanPropertyValueItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
+		String[] result = new String[] { null };
+		result[0] = getTextGen(object);		
+		boolean value = ((BooleanPropertyValue) object).isValue();
+		result[0] = result[0] + " = " + Boolean.toString(value).toUpperCase(); //$NON-NLS-1$
+		return result[0];
+	}
+
+	/**
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTextGen(Object object) {
 	 String[] result = new String[] { null };
 
     	//begin-capella-code
@@ -136,7 +151,7 @@ public class BooleanPropertyValueItemProvider
 		return result[0];
 
 	}
-
+	
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
