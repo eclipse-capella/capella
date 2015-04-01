@@ -1,0 +1,308 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.test.diagram.common.ju.wrapper;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.InvalidArgumentException;
+
+/**
+ * Abstract class for wrapper on {@link AbstractToolDescription} kind of objects. Such wrapper aims to simplify the creation of command from Tools, command
+ * context setting as well as pre-control operations.
+ */
+public abstract class AbstractToolWrapper {
+
+  /** Internal class in order to describe generic arguments given to the wrapper */
+  public class ArgumentData {
+    public ArgumentData(ArgumentType_Enum type) {
+      _type = type;
+    }
+
+    public ArgumentData(ArgumentType_Enum type, EClass eClass) {
+      _type = type;
+      _eClass = eClass;
+    }
+
+    public ArgumentType_Enum getType() {
+      return _type;
+    }
+
+    public EClass getEClass() {
+      return _eClass;
+    }
+
+    protected ArgumentType_Enum _type;
+    protected EClass _eClass = null;
+  }
+
+  /** the target tool */
+  protected final AbstractToolDescription _tool;
+
+  /** The argument list in order to create the command */
+  protected Map<ArgumentType_Enum, Object> _arguments;
+
+  /** List with the needed type of arguments in order to create command */
+  protected final List<ArgumentData> _argumentTypes;
+
+  /**
+   * constructor
+   * @param tool
+   */
+  public AbstractToolWrapper(AbstractToolDescription tool) {
+
+    _tool = tool;
+    _arguments = new HashMap<ArgumentType_Enum, Object>();
+    _argumentTypes = getArgumentTypes();
+  }
+
+  /**
+   * return the list of need argument.
+   * @return
+   */
+  public abstract List<ArgumentData> getArgumentTypes();
+
+  /**
+   * check is the context defined by the arguments allows to create the corresponding command for this tool
+   * @return
+   */
+  public abstract boolean isContextOk();
+
+  /**
+   * Create the command corresponding to the wrapped tool.
+   * @return
+   * @throws InvalidArgumentException
+   */
+  abstract public Command createCommand();
+
+  /**
+   * check is all needed arguments to the command have been set with a compliant object type.
+   * @return
+   * @see {@link ArgumentType_Enum}
+   */
+  final public boolean isArgumentsAreSet() {
+
+    boolean ret = true;
+
+    Iterator<ArgumentData> it = getArgumentTypes().iterator();
+
+    while (it.hasNext() && ret) {
+
+      ArgumentData currentArgumentData = it.next();
+      ArgumentType_Enum currentType = currentArgumentData.getType();
+      if ((currentType.equals(ArgumentType_Enum.PREDECESSOR) && (null == _arguments.get(currentType)))
+          || (currentType.equals(ArgumentType_Enum.STARTINGENDPREDECESSOR) && (null == _arguments.get(currentType)))
+          || (currentType.equals(ArgumentType_Enum.FINISHINGENDPREDECESSOR) && (null == _arguments.get(currentType)))
+
+      ) {
+        return true;
+      }
+      if (!_arguments.containsKey(currentType) || (null == _arguments.get(currentType))) {
+        // the argument is not set or null
+        ret = false;
+      } else {
+        ret = checkValue(currentType);
+      }
+    }
+
+    return ret;
+  }
+
+  /**
+   * Write accessor on argument values.
+   * @param argumentType_p the target argument
+   * @param value_p its value
+   * @throws InvalidArgumentException
+   */
+  final public void setArgumentValue(ArgumentType_Enum argumentType_p, Object value_p) throws InvalidArgumentException {
+
+    if (!isArgumentTypeRequired(argumentType_p)) {
+      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType_p.getLiteral(), _tool.getName() }));
+    }
+
+    _arguments.put(argumentType_p, value_p);
+
+    return;
+  }
+
+  /**
+   * Accessor on the argument values.
+   * @param argumentType_p the target argument type
+   * @return the corresponding value, if sets
+   * @throws InvalidArgumentException
+   */
+  final public Object getArgumentValue(ArgumentType_Enum argumentType_p) throws InvalidArgumentException {
+
+    if (!isArgumentTypeRequired(argumentType_p)) {
+      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType_p.getLiteral(), _tool.getName() }));
+    }
+
+    return _arguments.get(argumentType_p);
+  }
+
+  /**
+   * Check is the argument ArgumentType is well initialized
+   * @param argumentType_p the target ArgumentType
+   * @return
+   * @throws InvalidArgumentException
+   */
+  final public boolean checkValue(ArgumentType_Enum argumentType_p) throws InvalidArgumentException {
+
+    boolean ret = true;
+
+    if (!isArgumentTypeRequired(argumentType_p)) {
+      throw new InvalidArgumentException(NLS.bind(Messages.argumentNotInTheScopeOfWrapper, new Object[] { argumentType_p.getLiteral(), _tool.getName() }));
+    }
+
+    if (argumentType_p == ArgumentType_Enum.COLLECTION) {
+      return checkValueForCollectionType(argumentType_p);
+    }
+
+    Object matchingArgument = _arguments.get(argumentType_p);
+
+    // FIXME DDiagram case should be to incorporate with a cleaner approach, even if
+    // it seems to be "as" the Sirius approach
+    if (matchingArgument instanceof DDiagram) {
+      return true;
+    }
+
+    if (!argumentType_p.getClassType().isAssignableFrom(matchingArgument.getClass())) {
+      // the argument is not the good type of object
+      ret = false;
+    }
+    // Let's check additional data for EObject
+    if (argumentType_p.getClassType().equals(EObject.class)) {
+      EObject eObject = (EObject) matchingArgument;
+      EClass eClass = eObject.eClass();
+
+      ArgumentData argData = getArgumentData(argumentType_p);
+      EClass tgtEclass = argData.getEClass();
+
+      if ((null != tgtEclass) && !tgtEclass.isSuperTypeOf(eClass)) {
+        ret = false;
+      }
+    }
+
+    return ret;
+  }
+
+  /**
+   * @param argumentType_p
+   * @return
+   * @see #checkValue
+   */
+  @SuppressWarnings("unchecked")
+  final protected boolean checkValueForCollectionType(ArgumentType_Enum argumentType_p) {
+
+    boolean ret = true;
+
+    Object matchingArgument = _arguments.get(argumentType_p);
+
+    if (!argumentType_p.getClassType().isAssignableFrom(matchingArgument.getClass())) {
+      // the argument is not the good type of object
+      ret = false;
+    }
+
+    Collection<? extends EObject> col = (Collection<? extends EObject>) matchingArgument;
+
+    if (!col.isEmpty()) {
+
+      ArgumentData argData = getArgumentData(argumentType_p);
+      EClass tgtEclass = argData.getEClass();
+
+      // Let's test all element
+      Iterator<? extends EObject> it = col.iterator();
+      EObject eObject = null;
+      EClass eClass = null;
+      while (it.hasNext()) {
+        eObject = it.next();
+        eClass = eObject.eClass();
+
+        if ((null != tgtEclass) && !tgtEclass.isSuperTypeOf(eClass)) {
+          ret = false;
+        }
+      }
+    } else {
+      // Let's consider that an empty list does not fit
+      ret = false;
+    }
+
+    // Let's check additional data for EObject
+    if (argumentType_p.getClassType().equals(EObject.class)) {
+      EObject eObject = (EObject) matchingArgument;
+      EClass eClass = eObject.eClass();
+
+      ArgumentData argData = getArgumentData(argumentType_p);
+      EClass tgtEclass = argData.getEClass();
+
+      if ((null != tgtEclass) && !tgtEclass.isSuperTypeOf(eClass)) {
+        ret = false;
+      }
+    }
+
+    return ret;
+  }
+
+  /** reset the argument values list */
+  final public void clearArgumentValues() {
+    _arguments.clear();
+
+    return;
+  }
+
+  /**
+   * Check if the {@link ArgumentType_Enum} argumentType_p is required
+   * @param argumentType_p the {@link ArgumentType_Enum} to check
+   * @return true whether required
+   */
+  protected boolean isArgumentTypeRequired(ArgumentType_Enum argumentType_p) {
+
+    boolean ret = false;
+
+    for (ArgumentData current : getArgumentTypes()) {
+      if (current.getType().equals(argumentType_p)) {
+        ret = true;
+        break;
+      }
+    }
+
+    return ret;
+  }
+
+  /**
+   * return the {@link ArgumentData} corresponding to the {@link ArgumentType_Enum} argumentType_p
+   * @param argumentType_p the target ArgumentType_Enum
+   * @return null whether not found
+   */
+  protected ArgumentData getArgumentData(ArgumentType_Enum argumentType_p) {
+    ArgumentData ret = null;
+
+    for (ArgumentData current : getArgumentTypes()) {
+      if (current.getType().equals(argumentType_p)) {
+        ret = current;
+        break;
+      }
+    }
+
+    return ret;
+  }
+
+}

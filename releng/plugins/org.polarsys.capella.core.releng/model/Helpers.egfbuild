@@ -73,6 +73,7 @@
       <components xsi:type="buildstep:Feature" xmi:id="_axls8K4HEeS3GsUDrEkAJA" id="org.polarsys.capella.test.feature"/>
       <components xsi:type="buildstep:Plugin" xmi:id="_ZphH0LELEeSLhv0uZvTdTQ" id="org.polarsys.capella.core.releng.junit"/>
     </steps>
+    <steps xsi:type="buildstep:PublishStep" xmi:id="_N2E1sNhtEeS6DsvU5Dy2HA" name="" description="" component="_axls8K4HEeS3GsUDrEkAJA"/>
     <steps xsi:type="buildstep:TestStep" xmi:id="_wf8aUK4IEeS3GsUDrEkAJA" name="BusinessQueryTestSuite" launchConfigurationPath="${launch_configs}/BusinessQueryTestSuite.launch"/>
     <steps xsi:type="buildstep:TestStep" xmi:id="_cZC20LHUEeS88vlh9a6VNQ" name="ValidationRulesTestSuite" launchConfigurationPath="${launch_configs}/ValidationRulesTestSuite.launch"/>
   </steps>

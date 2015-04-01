@@ -12,6 +12,7 @@ package org.polarsys.capella.test.framework.helpers;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import junit.framework.Assert;
 
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -97,6 +99,16 @@ public class TestHelper {
    */
   public static ExecutionManager getExecutionManager(EObject eObject) {
     return TransactionHelper.getExecutionManager(eObject);
+  }
+
+  /**
+   * Get the Capella Editing Domain.
+   * @return a not <code>null</code> editing domain.
+   * @deprecated shall not be used anymore, might not have the expected behavior
+   */
+  @Deprecated
+  public static TransactionalEditingDomain getEditingDomain() {
+    return new ArrayList<TransactionalEditingDomain>(ExecutionManagerRegistry.getInstance().getAllEditingDomains()).get(0);
   }
 
   public static void copy(File sourceLocation, File targetLocation) throws IOException {

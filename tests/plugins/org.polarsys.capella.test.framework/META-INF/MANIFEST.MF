@@ -8,6 +8,7 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: com.google.guava;visibility:=reexport,
  org.apache.commons.lang;visibility:=reexport,
  org.eclipse.sirius.diagram.ui;visibility:=reexport,
+ org.eclipse.sirius.ext.base;visibility:=reexport,
  org.eclipse.sirius.table;visibility:=reexport,
  org.eclipse.sirius.ui;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport,
