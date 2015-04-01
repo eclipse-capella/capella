@@ -71,11 +71,4 @@ public class Rule_DWF_DS_18 extends AbstractRulesOnDesignTest {
 						new OracleDefinition(
 								"30004fd2-52dd-4599-81c7-234209fe83b0", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_DWF_DS_18() throws Exception {
-		test();
-	}
 }

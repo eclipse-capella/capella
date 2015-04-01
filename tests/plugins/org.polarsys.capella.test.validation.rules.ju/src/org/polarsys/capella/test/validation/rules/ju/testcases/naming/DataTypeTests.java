@@ -146,8 +146,5 @@ public class DataTypeTests extends AbstractSimpleValidationTest {
     simpleDatatypes7();
     simpleDatatypes8();
   }
-
-  public void testDataTypeTest() throws Exception {
-    test();
-  }
+  
 }

@@ -58,10 +58,4 @@ public class Rule_DCOV_05 extends AbstractRulesOnDesignTest {
 				"98bbfece-1c2c-4c30-b656-78ae01d53901", 1) });
 	}
 
-	/**
-	 * @generated
-	 */
-	public void testRule_DCOV_05() throws Exception {
-		test();
-	}
 }

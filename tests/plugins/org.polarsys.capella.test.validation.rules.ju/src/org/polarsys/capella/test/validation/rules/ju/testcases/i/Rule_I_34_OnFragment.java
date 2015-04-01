@@ -37,12 +37,7 @@ public class Rule_I_34_OnFragment extends ValidationRuleTestCase {
 
 	@Override
 	protected List<OracleDefinition> getOracleDefinitions() {
-		return Arrays.asList(new OracleDefinition [] {
-				new OracleDefinition("3ed8964f-3930-4d18-8d3d-dd81f55a964e", 0) //$NON-NLS-1$
-			});
+		return Arrays.asList(new OracleDefinition [] {});
 	}
 
-  public void testRule_I_34_OnFragment() throws Exception {
-    test();
-  }
 }

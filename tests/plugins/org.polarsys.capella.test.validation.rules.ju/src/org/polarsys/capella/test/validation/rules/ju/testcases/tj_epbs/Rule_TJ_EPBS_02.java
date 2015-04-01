@@ -57,11 +57,4 @@ public class Rule_TJ_EPBS_02 extends AbstractRulesOnTransitionTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"dc176b69-8bec-4f8e-923e-cc170fb980b6", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_TJ_EPBS_02() throws Exception {
-		test();
-	}
 }

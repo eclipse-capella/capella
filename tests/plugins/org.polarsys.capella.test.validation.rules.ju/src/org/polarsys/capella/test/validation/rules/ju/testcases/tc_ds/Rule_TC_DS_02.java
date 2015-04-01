@@ -57,11 +57,4 @@ public class Rule_TC_DS_02 extends AbstractRulesOnMergerTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"b431ea2c-a656-4267-82cf-490bb42f737a", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_TC_DS_02() throws Exception {
-		test();
-	}
 }

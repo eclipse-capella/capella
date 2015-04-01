@@ -103,7 +103,4 @@ public class OtherTests extends AbstractSimpleValidationTest {
     unnamedElements3();
   }
 
-  public void testOtherTests() throws Exception {
-    test();
-  }
 }

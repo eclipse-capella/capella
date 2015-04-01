@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testsuites;
+package org.polarsys.capella.test.validation.rules.ju.testsuites.partial;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,15 +18,15 @@ import junit.framework.Test;
 
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
-import org.polarsys.capella.test.validation.rules.ju.testcases.q.QRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.i.IRulesTestSuite;
 
-public class RulesOnQualityTestSuite extends BasicTestSuite {
+public class RulesOnIntegrityTestSuite extends BasicTestSuite {
 
   /**
    * Returns the suite. This is required to unary launch this test.
    */
   public static Test suite() {
-    return new RulesOnQualityTestSuite();
+    return new RulesOnIntegrityTestSuite();
   }
 
   /**
@@ -34,12 +34,12 @@ public class RulesOnQualityTestSuite extends BasicTestSuite {
    */
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
-    tests.add(new QRulesTestSuite());
+    tests.add(new IRulesTestSuite());
     return tests;
   }
 
   @Override
   public List<String> getRequiredTestModels() {   
-    return Arrays.asList(new String [] {"RulesOnQualityTest"});  //$NON-NLS-1$
+    return Arrays.asList(new String [] {"RulesOnIntegrityTest"});  //$NON-NLS-1$
   }
 }

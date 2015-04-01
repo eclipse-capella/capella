@@ -58,10 +58,4 @@ public class Rule_DCOM_04 extends AbstractRulesOnDesignTest {
 				"98b2ec9f-33ed-4486-8897-0a468a82ff7c", 1) });
 	}
 
-	/**
-	 * @generated
-	 */
-	public void testRule_DCOM_04() throws Exception {
-		test();
-	}
 }

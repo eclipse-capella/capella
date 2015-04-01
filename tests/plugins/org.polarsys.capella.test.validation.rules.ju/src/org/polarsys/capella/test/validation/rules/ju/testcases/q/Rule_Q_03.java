@@ -57,11 +57,4 @@ public class Rule_Q_03 extends AbstractRulesOnQualityTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"2f1020d1-29c8-4107-b801-213624495634", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_Q_03() throws Exception {
-		test();
-	}
 }

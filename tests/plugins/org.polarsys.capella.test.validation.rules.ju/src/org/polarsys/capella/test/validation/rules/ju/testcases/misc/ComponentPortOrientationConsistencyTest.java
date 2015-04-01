@@ -184,8 +184,4 @@ public class ComponentPortOrientationConsistencyTest extends AbstractSimpleValid
     componentExchangePortOrientation_UNSET_OUT();
     componentExchangePortOrientation_UNSET_UNSET();
   }
-
-  public void testComponentPortOrientationConsistencyTest() throws Exception {
-    test();
-  }
 }

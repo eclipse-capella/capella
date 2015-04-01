@@ -45,8 +45,4 @@ public class Rule_DWF_I_05bis extends ValidationRuleTestCase {
 				new OracleDefinition("52def116-b2b8-408e-8b45-d0e52a519e7f", 1), //$NON-NLS-1$
 			});
 	}
-
-  public void testRule_DWF_I_05() throws Exception {
-    test();
-  }
 }

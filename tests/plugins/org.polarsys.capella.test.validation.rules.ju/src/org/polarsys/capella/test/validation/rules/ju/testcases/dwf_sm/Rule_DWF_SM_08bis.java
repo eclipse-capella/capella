@@ -44,8 +44,4 @@ public class Rule_DWF_SM_08bis extends ValidationRuleTestCase {
         new OracleDefinition("dfb4bf08-470c-45eb-9528-791c6c5a6c6c", 1), // Mode
         new OracleDefinition("cebfe58e-8049-4dbc-85e2-dff31605c929", 1) }); // Mode 1
   }
-
-  public void testRule_DWF_SM_08bis() throws Exception {
-    test();
-  }
 }

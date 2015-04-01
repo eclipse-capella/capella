@@ -56,7 +56,4 @@ public class NoStackoverflowErrorOnValidation extends ValidationRuleTestCase {
     }
   }
 
-  public void testNoStackoverflowErrorOnValidation() throws Exception {
-    test();
-  }
 }

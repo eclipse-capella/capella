@@ -97,10 +97,4 @@ public class Rule_DWF_D_44 extends AbstractRulesOnDesignTest {
 								"5db5c625-a718-4582-9048-5d9b66484434", 1) });
 	}
 
-	/**
-	 * @generated
-	 */
-	public void testRule_DWF_D_44() throws Exception {
-		test();
-	}
 }

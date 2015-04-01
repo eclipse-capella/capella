@@ -41,8 +41,4 @@ public class Rule_I_34 extends ValidationRuleTestCase {
 				new OracleDefinition("7e398665-01f6-47a6-a38d-4f971f4a60ed", 1) //$NON-NLS-1$
 			});
 	}
-
-  public void testRule_I_34() throws Exception {
-    test();
-  }
 }

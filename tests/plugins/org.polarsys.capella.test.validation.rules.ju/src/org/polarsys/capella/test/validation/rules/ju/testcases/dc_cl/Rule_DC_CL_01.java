@@ -47,7 +47,4 @@ public class Rule_DC_CL_01 extends ValidationRuleTestCase {
 			});
 	}
 
-	public void testRule_DC_CL_01() throws Exception {
-	  test();
-	}
 }

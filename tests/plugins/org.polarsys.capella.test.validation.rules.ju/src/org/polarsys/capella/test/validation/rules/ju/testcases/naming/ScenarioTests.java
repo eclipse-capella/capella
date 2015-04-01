@@ -61,7 +61,4 @@ public class ScenarioTests extends AbstractSimpleValidationTest {
     scenario2();
   }
 
-  public void testScenarioTests() throws Exception {
-    test();
-  }
 }

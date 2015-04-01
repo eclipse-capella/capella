@@ -67,11 +67,4 @@ public class Rule_DWF_I_10 extends AbstractRulesOnDesignTest {
 						new OracleDefinition(
 								"bd00fb5c-1978-429f-b1bb-99a5c62c169e", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_DWF_I_10() throws Exception {
-		test();
-	}
 }

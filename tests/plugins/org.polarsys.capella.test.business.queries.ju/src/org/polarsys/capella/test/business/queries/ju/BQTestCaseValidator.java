@@ -62,52 +62,35 @@ public class BQTestCaseValidator {
 			if (input == null)
 				declareInputNotFound(oracleResult.getInputId());
 			else {
-				Throwable exceptionRaised = null;
 				List<CapellaElement> res = null;
 				if (ident.endsWith("-"+BQTestConstants.GET_AVAILABLE_METHOD_NAME)) { //$NON-NLS-1$
 					testedInputIdsForAvailable.add(oracleResult.getInputId());
 					try {
 						res = businessQuery.getAvailableElements(input);
 					} catch (Throwable exception) {
-						exceptionRaised = exception;
+						declareExceptionRaised(exception);
 					}
 				} else if (ident.endsWith("-"+BQTestConstants.GET_CURRENT_METHOD_NAME)) { //$NON-NLS-1$
 					testedInputIdsForCurrent.add(oracleResult.getInputId());
 					try {
 						res = businessQuery.getCurrentElements(input, false);
 					} catch (Throwable exception) {
-						exceptionRaised = exception;
+						declareExceptionRaised(exception);
 					}
 				} else {
 					declareInvalidIdentifierInTestCase(ident);
 				}
 				QueryResult currentResult = QueryResult.createQueryResult(ident, input, res);
 				if (!oracleResult.equals(currentResult)) {
-					if (exceptionRaised != null)
-						declareExceptionRaised(exceptionRaised);
-					else
-						declareTestCaseFails(currentResult, oracleResult);
+					declareTestCaseFails(currentResult, oracleResult);
 				} else {
 					declareTestOk();
 				}
 			}
 		}
-		for (String id : id2ObjectTable.keySet()) {
-			if (!testedInputIdsForAvailable.contains(id)) {
-//					CapellaElement input = id2ObjectTable.get(id);
-//					List<CapellaElement> res = null;
+		for (String id : id2ObjectTable.keySet())
+			if (!testedInputIdsForAvailable.contains(id))
 				declareMissingTestCase(id);
-//					try {
-//						res = businessQuery.getAvailableElements(input);
-//					} catch (Throwable exception) {
-//					}
-//					if (res != null && res.size() > 0) {
-//						nbTestFail++;
-//						logger.addText("-"); //$NON-NLS-1$
-//
-//					}
-			}
-		}
 		logger.carriageReturn();
 		return errors.size() == 0;
 	}
@@ -119,7 +102,6 @@ public class BQTestCaseValidator {
 	}
 	protected void declareExceptionRaised(Throwable exception) {
 		nbRaisedExceptions++;
-		addTestCaseFeedBack('!');
 		errors.add(new TestCaseRaiseExceptionError(exception));
 	}
 	protected void declareTestCaseFails(QueryResult currentResult, QueryResult oracleResult) {
@@ -173,7 +155,6 @@ public class BQTestCaseValidator {
 	public int getNbTestCases() {
 		return nbTestCases;
 	}
-	
 	
 	public String getResultDescription() {
 		StringBuilder message = new StringBuilder();

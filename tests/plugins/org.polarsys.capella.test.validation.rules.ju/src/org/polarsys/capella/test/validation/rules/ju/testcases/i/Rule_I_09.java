@@ -67,11 +67,4 @@ public class Rule_I_09 extends AbstractRulesOnIntegrityTest {
 						new OracleDefinition(
 								"4925eca1-181e-4987-a535-6a8c86e5597d", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_I_09() throws Exception {
-		test();
-	}
 }

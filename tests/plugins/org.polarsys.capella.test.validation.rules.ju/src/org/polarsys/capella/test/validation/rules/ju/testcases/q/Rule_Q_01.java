@@ -75,11 +75,4 @@ public class Rule_Q_01 extends AbstractRulesOnQualityTest {
 						new OracleDefinition(
 								"d559c246-8315-41a1-9011-86abc30f4849", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_Q_01() throws Exception {
-		test();
-	}
 }

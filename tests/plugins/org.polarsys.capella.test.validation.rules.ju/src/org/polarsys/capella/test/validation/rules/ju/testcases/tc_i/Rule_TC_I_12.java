@@ -46,8 +46,4 @@ public class Rule_TC_I_12 extends ValidationRuleTestCase {
 				new OracleDefinition("e9cbd882-ee70-42be-b096-e4419bbff3fe", 1), //$NON-NLS-1$
 		});
 	}
-
-  public void testRule_TC_I_12() throws Exception {
-    test();
-  }
 }

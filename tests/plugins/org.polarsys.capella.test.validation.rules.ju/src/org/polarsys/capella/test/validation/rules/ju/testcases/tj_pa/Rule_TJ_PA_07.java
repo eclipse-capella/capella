@@ -88,11 +88,4 @@ public class Rule_TJ_PA_07 extends AbstractRulesOnTransitionTest {
 						new OracleDefinition(
 								"884fdecb-d118-4f59-8619-38b7bc7c983a", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_TJ_PA_07() throws Exception {
-		test();
-	}
 }

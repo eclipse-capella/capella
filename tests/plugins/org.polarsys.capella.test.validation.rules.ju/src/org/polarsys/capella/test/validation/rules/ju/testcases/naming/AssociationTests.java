@@ -42,7 +42,4 @@ public class AssociationTests extends AbstractSimpleValidationTest {
     ok(pkg);
   }
 
-  public void testAssociationTests() throws Exception {
-    test();
-  }
 }

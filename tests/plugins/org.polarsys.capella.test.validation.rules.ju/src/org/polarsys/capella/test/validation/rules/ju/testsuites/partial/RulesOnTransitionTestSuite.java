@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testsuites;
+package org.polarsys.capella.test.validation.rules.ju.testsuites.partial;
 
 import java.util.ArrayList;
 import java.util.Arrays;

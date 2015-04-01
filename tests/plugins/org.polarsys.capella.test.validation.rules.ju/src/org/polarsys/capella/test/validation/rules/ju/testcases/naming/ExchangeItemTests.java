@@ -200,7 +200,4 @@ public class ExchangeItemTests extends AbstractSimpleValidationTest {
     exchangeItem7();
   }
 
-  public void testExchangeItemTests() throws Exception {
-    test();
-  }
 }

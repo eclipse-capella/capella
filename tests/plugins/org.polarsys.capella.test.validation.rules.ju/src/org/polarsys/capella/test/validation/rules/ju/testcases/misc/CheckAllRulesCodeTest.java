@@ -89,8 +89,4 @@ public class CheckAllRulesCodeTest extends ValidationRuleTestCase {
       }
     }
   }
-
-  public void testCheckAllRulesCodeTest() throws Exception {
-    test();
-  }
 }

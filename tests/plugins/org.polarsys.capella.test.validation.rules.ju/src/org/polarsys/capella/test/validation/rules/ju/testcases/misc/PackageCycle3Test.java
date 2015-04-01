@@ -20,8 +20,4 @@ public class PackageCycle3Test extends AbstractPackageCycleTest {
   protected String getRequiredTestModel() {
     return "PackageCycle3";
   }
-
-  public void testPackageCycle3Test() throws Exception {
-    test();
-  }
 }

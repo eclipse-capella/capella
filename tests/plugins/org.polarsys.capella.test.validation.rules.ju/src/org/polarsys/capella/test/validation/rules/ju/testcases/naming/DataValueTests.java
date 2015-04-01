@@ -78,7 +78,4 @@ public class DataValueTests extends AbstractSimpleValidationTest {
     literalBooleanValue1();
   }
 
-  public void testDataValueTest() throws Exception {
-    test();
-  }
 }

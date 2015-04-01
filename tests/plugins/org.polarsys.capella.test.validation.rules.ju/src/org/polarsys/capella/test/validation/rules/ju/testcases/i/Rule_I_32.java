@@ -69,11 +69,4 @@ public class Rule_I_32 extends AbstractRulesOnIntegrityTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"a384c9ea-6801-4bd6-b42a-b219a20cdd6c", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_I_32() throws Exception {
-		test();
-	}
 }

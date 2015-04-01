@@ -67,11 +67,4 @@ public class Rule_I_12 extends AbstractRulesOnIntegrityTest {
 						new OracleDefinition(
 								"49abf6aa-fad7-4d0d-aab0-686d902c59b6", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_I_12() throws Exception {
-		test();
-	}
 }

@@ -57,11 +57,4 @@ public class Rule_TC_I_05 extends AbstractRulesOnTransitionTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"dbdf0e7f-029d-4a13-aac8-83db1b8bad47", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_TC_I_05() throws Exception {
-		test();
-	}
 }

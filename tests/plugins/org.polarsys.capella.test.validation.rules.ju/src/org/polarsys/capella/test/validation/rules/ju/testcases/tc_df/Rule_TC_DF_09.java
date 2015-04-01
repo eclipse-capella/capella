@@ -69,11 +69,4 @@ public class Rule_TC_DF_09 extends AbstractRulesOnTransitionTest {
 						new OracleDefinition(
 								"79fb5e9a-71c4-4835-b24e-58dd91c7cad8", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_TC_DF_09() throws Exception {
-		test();
-	}
 }

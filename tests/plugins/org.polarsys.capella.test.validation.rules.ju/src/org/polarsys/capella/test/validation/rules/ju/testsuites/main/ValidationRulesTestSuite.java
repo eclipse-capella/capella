@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.validation.rules.ju.testsuites;
+package org.polarsys.capella.test.validation.rules.ju.testsuites.main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,10 @@ import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dc_cl.DCCLRulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.misc.MiscTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.naming.NameConflictTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnDesignTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnIntegrityTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnQualityTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testsuites.partial.RulesOnTransitionTestSuite;
 
 public class ValidationRulesTestSuite extends BasicTestSuite {
 

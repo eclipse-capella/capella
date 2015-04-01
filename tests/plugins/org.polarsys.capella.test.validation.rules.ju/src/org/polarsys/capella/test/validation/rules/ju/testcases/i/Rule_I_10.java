@@ -57,11 +57,4 @@ public class Rule_I_10 extends AbstractRulesOnIntegrityTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"219f0ad7-66f5-49a4-a27c-a4419b3d8940", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_I_10() throws Exception {
-		test();
-	}
 }

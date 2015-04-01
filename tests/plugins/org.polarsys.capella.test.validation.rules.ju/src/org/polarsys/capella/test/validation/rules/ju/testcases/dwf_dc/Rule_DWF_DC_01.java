@@ -57,11 +57,4 @@ public class Rule_DWF_DC_01 extends AbstractRulesOnDesignTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"9d8ae323-b318-4490-a0df-dd11edcb1e2c", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_DWF_DC_01() throws Exception {
-		test();
-	}
 }

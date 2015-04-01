@@ -57,11 +57,4 @@ public class Rule_DWF_DS_05 extends AbstractRulesOnMergerTest {
 		return Arrays.asList(new OracleDefinition[] { new OracleDefinition(
 				"cad8170c-ebec-413a-ac6b-cb9344fc7cf3", 1) });
 	}
-
-	/**
-	 * @generated
-	 */
-	public void testRule_DWF_DS_05() throws Exception {
-		test();
-	}
 }
