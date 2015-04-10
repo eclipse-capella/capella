@@ -21,6 +21,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.fa.AbstractFunctionalArchitecture;
+import org.polarsys.capella.core.data.fa.FunctionPkg;
 import org.polarsys.capella.core.data.interaction.AbstractCapability;
 import org.polarsys.capella.core.data.interaction.AbstractFunctionAbstractCapabilityInvolvement;
 import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
@@ -67,11 +68,14 @@ public class GetAvailable_CapabilityRealization_InvolvedAbstractFunctions extend
 	 */
 	protected List<CapellaElement> getElementsFromBlockArchitecture(AbstractFunctionalArchitecture arch_p) {
 		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		TreeIterator<Object> allContents = EcoreUtil.getAllContents(arch_p.getOwnedFunctionPkg(), true);
-		while (allContents.hasNext()) {
-			Object object = allContents.next();
-			if (object instanceof AbstractFunction) {
-				availableElements.add((CapellaElement) object);
+		FunctionPkg functionPkg = arch_p.getOwnedFunctionPkg();
+		if (functionPkg != null) {
+			TreeIterator<Object> allContents = EcoreUtil.getAllContents(functionPkg, true);
+			while (allContents.hasNext()) {
+				Object object = allContents.next();
+				if (object instanceof AbstractFunction) {
+					availableElements.add((CapellaElement) object);
+				}
 			}
 		}
 		return availableElements;

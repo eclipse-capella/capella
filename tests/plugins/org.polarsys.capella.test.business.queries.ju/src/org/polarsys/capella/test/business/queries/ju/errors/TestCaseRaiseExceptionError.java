@@ -10,19 +10,25 @@
  *******************************************************************************/
 package org.polarsys.capella.test.business.queries.ju.errors;
 
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+
 /**
  * @author Erwan Brottier
  */
 public class TestCaseRaiseExceptionError implements BQValidationError {
 
 	protected Throwable exception;
+	protected CapellaElement input;
+	protected String methodName;
 	
-	public TestCaseRaiseExceptionError(Throwable exception) {
+	public TestCaseRaiseExceptionError(Throwable exception, CapellaElement input, String methodName) {
 		this.exception = exception;
+		this.input = input;
+		this.methodName = methodName;
 	}
 	
 	public String toString() {
-		return "Test case raises an exception ("+exception.getMessage()+")";  //$NON-NLS-1$//$NON-NLS-2$
+		return "Test case raises an exception (input id : "+input.getId()+", method : "+methodName+", exception : "+exception.toString()+")";  //$NON-NLS-1$//$NON-NLS-2$
 	}
 
 }

@@ -634,19 +634,23 @@ resultIds = {
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation-getAvailableElements
 inputId = c89ac498-4636-4939-a837-72cd9c64281f
-EXCEPTION
+resultIds = {
+}
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation-getCurrentElements
 inputId = c89ac498-4636-4939-a837-72cd9c64281f
-EXCEPTION
+resultIds = {
+}
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation-getAvailableElements
 inputId = 61235d01-4228-4f17-b1dd-1ce242a0186d
-EXCEPTION
+resultIds = {
+}
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation-getCurrentElements
 inputId = 61235d01-4228-4f17-b1dd-1ce242a0186d
-EXCEPTION
+resultIds = {
+}
 
 queryIdentifier = org.polarsys.capella.core.business.queries.interaction.SequenceMessage_InvokedOperation-getAvailableElements
 inputId = 2ea59a1c-bdfd-4d33-9243-b06922dd2506

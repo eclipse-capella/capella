@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.cs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.queries.AbstractQuery;
@@ -30,7 +31,7 @@ public class GetCurrent_Interface_ExchangeItems extends AbstractQuery {
 	 * {@inheritDoc}
 	 */
 	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		return null;
+		return new ArrayList<CapellaElement>();
 	}
 
 }
