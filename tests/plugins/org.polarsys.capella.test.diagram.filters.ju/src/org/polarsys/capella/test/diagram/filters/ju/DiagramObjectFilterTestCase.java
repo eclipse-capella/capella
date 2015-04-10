@@ -25,8 +25,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 import org.polarsys.capella.test.framework.api.BasicTestCase;
-import org.polarsys.capella.test.framework.helpers.DiagramHelper;
 import org.polarsys.capella.test.framework.helpers.GuiActions;
 import org.polarsys.capella.test.framework.helpers.HelperMessages;
 

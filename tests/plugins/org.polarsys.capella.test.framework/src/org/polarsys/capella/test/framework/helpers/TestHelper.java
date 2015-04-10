@@ -13,6 +13,7 @@ package org.polarsys.capella.test.framework.helpers;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import junit.framework.Assert;
 
@@ -29,6 +30,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.TransactionHelper;
@@ -55,7 +58,7 @@ public class TestHelper {
     EcoreUtil.resolveAll(rMelody);
     return CapellaLibraryExt.getProject(rMelody);
   }  
-//
+
   /**
    * Create an empty capella project with given name.
    * 
@@ -102,6 +105,14 @@ public class TestHelper {
   }
 
   /**
+   * Get the Capella Execution manager.
+   * @return a not <code>null</code> execution manager.
+   */
+  public static ExecutionManager getExecutionManager(Session session) {
+    return TransactionHelper.getExecutionManager(session);
+  }
+
+  /**
    * Get the Capella Editing Domain.
    * @return a not <code>null</code> editing domain.
    * @deprecated shall not be used anymore, might not have the expected behavior
@@ -109,6 +120,31 @@ public class TestHelper {
   @Deprecated
   public static TransactionalEditingDomain getEditingDomain() {
     return new ArrayList<TransactionalEditingDomain>(ExecutionManagerRegistry.getInstance().getAllEditingDomains()).get(0);
+  }
+
+  /**
+   * Get the semantic resource linked to given diagram resource (AIRD one).
+   * @param diagramResource_p
+   * @return <code>null</code> if not found.
+   */
+  public static Resource getSemanticResource(Session session_p) {
+    Resource semanticResource = null;
+    DAnalysis root = null;
+    try {
+      Resource diagramResource = session_p.getSessionResource();
+      root = (DAnalysis) diagramResource.getContents().get(0);
+    } catch (Exception exception_p) {
+      exception_p.printStackTrace();
+      Assert.fail(exception_p.getMessage());
+      return semanticResource;
+    }
+
+    List<EObject> models = root.getModels();
+    if (!models.isEmpty()) {
+      EObject semanticElementRoot = models.get(0);
+      semanticResource = semanticElementRoot.eResource();
+    }
+    return semanticResource;
   }
 
   public static void copy(File sourceLocation, File targetLocation) throws IOException {
@@ -131,5 +167,4 @@ public class TestHelper {
       copy(new File(source, f), new File(target, f));
     }
   }
-
 }

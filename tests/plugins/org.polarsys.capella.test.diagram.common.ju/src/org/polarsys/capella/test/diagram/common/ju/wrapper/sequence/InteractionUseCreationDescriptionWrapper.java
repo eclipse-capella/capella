@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.NodeCreationDescriptionWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
-import org.polarsys.capella.test.framework.helpers.DiagramHelper;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 /**
  * Wrapper for Interaction Use<br>
