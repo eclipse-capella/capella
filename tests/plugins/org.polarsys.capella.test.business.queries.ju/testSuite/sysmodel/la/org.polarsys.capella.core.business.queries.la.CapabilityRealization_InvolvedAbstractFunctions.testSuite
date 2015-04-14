@@ -527,7 +527,8 @@ resultIds = {
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getAvailableElements
 inputId = c00e1e14-08a1-4251-81b1-2d1081df3172
-EXCEPTION
+resultIds = {
+}
 
 queryIdentifier = org.polarsys.capella.core.business.queries.la.CapabilityRealization_InvolvedAbstractFunctions-getCurrentElements
 inputId = c00e1e14-08a1-4251-81b1-2d1081df3172

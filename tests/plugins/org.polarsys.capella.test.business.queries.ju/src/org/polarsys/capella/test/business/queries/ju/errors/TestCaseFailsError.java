@@ -27,9 +27,9 @@ public class TestCaseFailsError implements BQValidationError {
 	
 	public String toString() {
 		StringBuilder b = new StringBuilder();
-		b.append("Test case fails for input "+currentResult.getInputId()+" {\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		b.append("  current result : "+currentResult.getResultIds()+"\n"); //$NON-NLS-1$ //$NON-NLS-2$
-		b.append("  expected result : "+expectedResult.getResultIds()+"\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		b.append("Test case fails for input "+currentResult.getInputId() + " {\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		b.append("  current result : " + (currentResult.getResultIds() != null ? currentResult.getResultIds() : "EXCEPTION") + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
+		b.append("  expected result : " + (expectedResult.getResultIds() != null ? expectedResult.getResultIds() : "EXCEPTION") + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		b.append("}"); //$NON-NLS-1$
 		return b.toString();
 	}

@@ -8,28 +8,21 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.business.queries.ju.testcases.sysmodel.fa;
-
-import org.polarsys.capella.test.business.queries.ju.BQTestCase;
+package org.polarsys.capella.test.business.queries.ju.errors;
 
 /**
- * @generated
+ * @author Erwan Brottier
  */
-public class ComponentPort_MinCardinality extends BQTestCase {
-	
-	/**
-	 * @generated
-	 */
-	public String getProjectForTest() {
-		return "sysmodel"; //$NON-NLS-1$
-	}
+public class InvalidMethodToCallTestCaseError implements BQValidationError {
 
-	/**
-	 * @generated
-	 */
-	@Override
-	public String getBQFullQualifiedName() {
-		return "org.polarsys.capella.core.business.queries.fa.ComponentPort_MinCardinality"; //$NON-NLS-1$
+	protected String identifier;
+	
+	public InvalidMethodToCallTestCaseError(String methodName) {
+		this.identifier = methodName;
+	}
+	
+	public String toString() {
+		return identifier+" is not a valid method name to call";  //$NON-NLS-1$//$NON-NLS-2$
 	}
 
 }

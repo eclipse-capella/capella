@@ -16,10 +16,10 @@ import java.util.List;
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.cs.AbstractActor;
 import org.polarsys.capella.core.data.cs.ActorCapabilityRealizationInvolvement;
 import org.polarsys.capella.core.data.cs.SystemComponent;
 import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement;
-import org.polarsys.capella.core.data.ctx.Actor;
 import org.polarsys.capella.core.data.la.CapabilityRealization;
 
 public class GetCurrent_CapabilityRealization_InteractingComponents extends AbstractQuery {
@@ -47,7 +47,7 @@ public class GetCurrent_CapabilityRealization_InteractingComponents extends Abst
 		if (element_p instanceof CapabilityRealization) {
 			CapabilityRealization currentCapabilityUseCase = (CapabilityRealization) element_p;
 			for (ActorCapabilityRealizationInvolvement inv : currentCapabilityUseCase.getInvolvedActors()) {
-				Actor actor = (Actor) inv.getInvolved();
+				AbstractActor actor = (AbstractActor) inv.getInvolved();
 				if (actor != null) {
 					currentElements.add(actor);
 				}

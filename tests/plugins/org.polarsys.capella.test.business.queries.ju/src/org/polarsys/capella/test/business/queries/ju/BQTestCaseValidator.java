@@ -20,7 +20,7 @@ import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.business.queries.ju.errors.BQValidationError;
 import org.polarsys.capella.test.business.queries.ju.errors.InputNotFoundError;
-import org.polarsys.capella.test.business.queries.ju.errors.InvalidIdentifierInTestCaseError;
+import org.polarsys.capella.test.business.queries.ju.errors.InvalidMethodToCallTestCaseError;
 import org.polarsys.capella.test.business.queries.ju.errors.MissingTestCaseError;
 import org.polarsys.capella.test.business.queries.ju.errors.TestCaseFailsError;
 import org.polarsys.capella.test.business.queries.ju.errors.TestCaseRaiseExceptionError;
@@ -68,17 +68,17 @@ public class BQTestCaseValidator {
 					try {
 						res = businessQuery.getAvailableElements(input);
 					} catch (Throwable exception) {
-						declareExceptionRaised(exception);
+						declareExceptionRaised(exception, input, BQTestConstants.GET_AVAILABLE_METHOD_NAME);
 					}
 				} else if (ident.endsWith("-"+BQTestConstants.GET_CURRENT_METHOD_NAME)) { //$NON-NLS-1$
 					testedInputIdsForCurrent.add(oracleResult.getInputId());
 					try {
 						res = businessQuery.getCurrentElements(input, false);
 					} catch (Throwable exception) {
-						declareExceptionRaised(exception);
+						declareExceptionRaised(exception, input, BQTestConstants.GET_CURRENT_METHOD_NAME);
 					}
 				} else {
-					declareInvalidIdentifierInTestCase(ident);
+					declareInvalidMethodToCallInTestCase(ident);
 				}
 				QueryResult currentResult = QueryResult.createQueryResult(ident, input, res);
 				if (!oracleResult.equals(currentResult)) {
@@ -100,9 +100,9 @@ public class BQTestCaseValidator {
 		addTestCaseFeedBack('?');
 		errors.add(new InputNotFoundError(inputId));
 	}
-	protected void declareExceptionRaised(Throwable exception) {
+	protected void declareExceptionRaised(Throwable exception, CapellaElement input, String methodName) {
 		nbRaisedExceptions++;
-		errors.add(new TestCaseRaiseExceptionError(exception));
+		errors.add(new TestCaseRaiseExceptionError(exception, input, methodName));
 	}
 	protected void declareTestCaseFails(QueryResult currentResult, QueryResult oracleResult) {
 		nbTestCaseFailed++;
@@ -114,10 +114,10 @@ public class BQTestCaseValidator {
 		addTestCaseFeedBack('0');
 		errors.add(new MissingTestCaseError(objectId));
 	}
-	protected void declareInvalidIdentifierInTestCase(String methodName) {
+	protected void declareInvalidMethodToCallInTestCase(String methodName) {
 		nbInvalidIdentifiers++;
 		addTestCaseFeedBack('#');
-		errors.add(new InvalidIdentifierInTestCaseError(methodName));
+		errors.add(new InvalidMethodToCallTestCaseError(methodName));
 	}	
 	protected void declareTestOk() {
 		nbTestCaseSucceed++;

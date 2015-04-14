@@ -55,10 +55,14 @@ public class GetCurrent_SequenceMessage_InvokedOperation extends AbstractQuery {
 		}
 		if (element_p instanceof SequenceMessage) {
 			SequenceMessage currentMessage = (SequenceMessage) element_p;
+			AbstractEventOperation receivedOperation = null;
 			MessageEnd receivingEnd = currentMessage.getReceivingEnd();
-			AbstractEventOperation receivedOperation = MessageEndExt.getOperation(receivingEnd);
+			if (receivingEnd != null)
+				receivedOperation = MessageEndExt.getOperation(receivingEnd);
+			AbstractEventOperation sentOperation = null;
 			MessageEnd sendingEnd = currentMessage.getSendingEnd();
-			AbstractEventOperation sentOperation = MessageEndExt.getOperation(sendingEnd);
+			if (sendingEnd != null)
+				sentOperation = MessageEndExt.getOperation(sendingEnd);
 			if ((receivedOperation != null) && (sentOperation != null) && (receivedOperation.equals(sentOperation))) {
 				currentElements.add(receivedOperation);
 			}

@@ -10,12 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.interaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.AbstractInstance;
+import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.SequenceMessage;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
@@ -35,10 +37,20 @@ public class GetAvailable_SequenceMessage_InvokedOperation extends AbstractQuery
 	 */
 	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
 		SequenceMessage message = (SequenceMessage) element_p;
-		AbstractInstance sendingInstance = message.getSendingEnd().getCovered().getRepresentedInstance();
-		AbstractInstance receivingInstance = message.getReceivingEnd().getCovered().getRepresentedInstance();
-		MessageKind messageKind = message.getKind();
-		return ScenarioExt.getAvailableExchangeItemsBetweenInstances(sendingInstance, receivingInstance, messageKind);
+		
+		AbstractInstance sendingInstance = null;
+		MessageEnd sendingEnd = message.getSendingEnd();
+		if (sendingEnd != null)
+			sendingInstance = sendingEnd.getCovered().getRepresentedInstance();
+
+		AbstractInstance receivingInstance = null;
+		MessageEnd receivingEnd = message.getReceivingEnd();
+		if (receivingEnd != null)
+			receivingInstance = receivingEnd.getCovered().getRepresentedInstance();		
+				
+		if (sendingInstance != null && receivingInstance != null)
+			return ScenarioExt.getAvailableExchangeItemsBetweenInstances(sendingInstance, receivingInstance, message.getKind());
+		return new ArrayList<CapellaElement>(); 
 	}
 
 }

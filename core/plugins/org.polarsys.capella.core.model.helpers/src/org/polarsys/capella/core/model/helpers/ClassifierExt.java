@@ -86,19 +86,19 @@ public class ClassifierExt {
     return list;
   }
 
-  /**
-   * @param classifier_p
-   * @return
-   */
-  public static ComponentArchitecture getRootComponentArchitecture(GeneralizableElement classifier_p) {
-    ComponentArchitecture arch = null;
-    if (null != classifier_p) {
-      Structure structure = (Structure) classifier_p.eContainer();
-      if (null != structure)
-        arch = StructureExt.getRootComponentArchitecture(structure);
-    }
-    return arch;
-  }
+//  /**
+//   * @param classifier_p
+//   * @return
+//   */
+//  public static ComponentArchitecture getRootComponentArchitecture(GeneralizableElement classifier_p) {
+//    ComponentArchitecture arch = null;
+//    if (null != classifier_p) {
+//      Structure structure = (Structure) classifier_p.eContainer();
+//      if (null != structure)
+//        arch = StructureExt.getRootComponentArchitecture(structure);
+//    }
+//    return arch;
+//  }
 
   /**
    * @param modelElement_p : any 'ModelElement'
