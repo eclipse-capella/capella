@@ -29,6 +29,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.helpers.validation.IValidationConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry.IMarkerModification;
 import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
@@ -113,8 +114,8 @@ public class ReportManagerLogViewAppender extends WriterAppender {
       }
     }
 
-    LightMarkerRegistry.getInstance().createMarker(resource, MarkerView.MARKER_ID,
-        new BasicDiagnostic(severity, em.getComponentName(), 0, em.getLabel(), em.getCapellaElements().toArray()), new IMarkerModification() {
+    Diagnostic diag = new BasicDiagnostic(severity, em.getComponentName(), 0, em.getLabel(), em.getCapellaElements().toArray());        
+    IMarker marker = LightMarkerRegistry.getInstance().createMarker(resource, MarkerView.MARKER_ID, diag, new IMarkerModification() {
           public void modify(IMarker marker_p) {
             em.adapt(marker_p);
             try {
@@ -140,6 +141,11 @@ public class ReportManagerLogViewAppender extends WriterAppender {
             }
           }
         });
+    try {
+			marker.setAttribute(IValidationConstants.TAG_DIAGNOSTIC, diag);
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
   }
 
   public void report(final String message, final Level level_p, final IMarkerModification additions) {
