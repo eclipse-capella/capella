@@ -10,19 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.fa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.ReuseLink;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
 
+@Deprecated
 public class GetCurrent_ComponentPort_MaxCardinality extends AbstractQuery {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -37,26 +31,27 @@ public class GetCurrent_ComponentPort_MaxCardinality extends AbstractQuery {
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement,boolean)
 	 */
 	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
-			for (ReuseLink link : sharedPkg.getReuseLinks()) {
-				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
-					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
-					break;
-				}
-			}
-			if (systemEngineering == null)
-				return currentElements;
-		}
-		if (element_p instanceof ComponentPort) {
-			ComponentPort property = (ComponentPort) element_p;
-			if (property.getOwnedMaxCard() != null) {
-				currentElements.add(property.getOwnedMaxCard());
-			}
-		}
-		return currentElements;
+//		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+//		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+//		if (null == systemEngineering) {
+//			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+//			for (ReuseLink link : sharedPkg.getReuseLinks()) {
+//				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
+//					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
+//					break;
+//				}
+//			}
+//			if (systemEngineering == null)
+//				return currentElements;		
+//		}
+//		if (element_p instanceof ComponentPort) {
+//			ComponentPort property = (ComponentPort) element_p;
+//			if (property.getOwnedMaxCard() != null) {
+//				currentElements.add(property.getOwnedMaxCard());
+//			}
+//		}
+//		return currentElements;
+		throw new UnsupportedOperationException();
 	}
 
 }

@@ -10,30 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.fa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.Classifier;
-import org.polarsys.capella.core.data.capellacore.ReuseLink;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.Component;
-import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.information.datavalue.DataValue;
-import org.polarsys.capella.core.data.information.datavalue.NumericValue;
-import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.ClassifierExt;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.core.model.utils.ListExt;
 
-/** @deprecated */
+@Deprecated
 public class GetAvailable_ComponentPort_MaxCardinality extends AbstractQuery {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -48,8 +31,9 @@ public class GetAvailable_ComponentPort_MaxCardinality extends AbstractQuery {
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
 	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+		throw new UnsupportedOperationException();
 //		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+//		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 //		boolean isPropertyFromSharedPkg = false;
 //		if (null == systemEngineering) {
 //			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
@@ -72,7 +56,7 @@ public class GetAvailable_ComponentPort_MaxCardinality extends AbstractQuery {
 //			availableElements.addAll(getRule_MQRY_StandardPort_MaxCard_13(property, systemEngineering));
 //		}
 //		availableElements = ListExt.removeDuplicates(availableElements);
-		return availableElements;
+//		return availableElements;
 	}
 
 //	/** 
