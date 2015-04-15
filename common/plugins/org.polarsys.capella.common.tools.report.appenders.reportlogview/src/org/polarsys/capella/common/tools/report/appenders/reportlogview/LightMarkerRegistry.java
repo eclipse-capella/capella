@@ -213,11 +213,12 @@ public class LightMarkerRegistry implements IMarkerSource {
     notifyRegistryChanged(null, marker);
   }
 
-  public void createMarker(IResource resource_p, String type_p, Diagnostic diagnostic, IMarkerModification modification) {
+  public IMarker createMarker(IResource resource_p, String type_p, Diagnostic diagnostic, IMarkerModification modification) {
     LightMarker marker = new LightMarker(resource_p, type_p, diagnostic);
     modification.modify(marker);
     _registry.add(marker);
     notifyRegistryChanged(null, marker);
+    return marker;
   }
 
   /**
