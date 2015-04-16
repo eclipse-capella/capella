@@ -16,7 +16,7 @@ import org.eclipse.osgi.util.NLS;
  * Basic Test class messages. 
  */
 public class Messages extends NLS {
-  private static final String BUNDLE_NAME = "org.polarsys.capella.test.diagram.common.ju.steps.messages"; //$NON-NLS-1$
+  private static final String BUNDLE_NAME = "org.polarsys.capella.test.diagram.common.ju.step.messages"; //$NON-NLS-1$
   
   public static String nullSession;
   public static String nullSemanticObject;
