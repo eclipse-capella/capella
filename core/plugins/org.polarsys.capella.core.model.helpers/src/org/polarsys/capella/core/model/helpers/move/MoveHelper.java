@@ -17,9 +17,11 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
@@ -102,7 +104,7 @@ public class MoveHelper {
       if ((selectedElement instanceof ModelElement) && (targetElement_p instanceof ModelElement)) {
         ModelElement elt = (ModelElement) selectedElement;
         ModelElement targetElement = (ModelElement) targetElement_p;
-
+        
         if ((elt instanceof FunctionPkg) && (targetElement instanceof FunctionPkg)) {
           result = areInSameLayer(elt, targetElement) && !(targetElement.eContainer() instanceof BlockArchitecture);
         } else if ((elt instanceof AbstractFunction) && (targetElement instanceof FunctionPkg)) {
@@ -271,7 +273,7 @@ public class MoveHelper {
    */
   public IStatus checkEMFRules(List<EObject> selectedModelElements_p, EObject targetElement_p) {
     EList<EReference> allReferences = targetElement_p.eClass().getEAllContainments();
-    boolean result = checkCompatibility(selectedModelElements_p, allReferences);
+    boolean result = checkCompatibility(selectedModelElements_p, allReferences, targetElement_p);
 
     if (!result) {
       //We should explain why !
@@ -283,7 +285,7 @@ public class MoveHelper {
   /**
    * Checks the compatibility between all specified references and all specified model elements.
    */
-  protected boolean checkCompatibility(List<EObject> modelElements_p, EList<EReference> references_p) {
+  protected boolean checkCompatibility(List<EObject> modelElements_p, EList<EReference> references_p, EObject target_p) {
     boolean areCompatible = true;
 
     Iterator<EObject> elementsIterator = modelElements_p.iterator();
@@ -294,8 +296,17 @@ public class MoveHelper {
       Iterator<EReference> referencesIterator = references_p.iterator();
       while (referencesIterator.hasNext() && !isElementCompatible) {
         EReference reference = referencesIterator.next();
-        if (reference.getEType().isInstance(modelElement) && (reference != modelElement)) {
-          isElementCompatible = true;
+        if (reference.getEType().isInstance(modelElement) && (reference != modelElement) ) {
+        	Integer upperBound=reference.getUpperBound();
+          if (upperBound==-1 || (upperBound == 1 && target_p.eGet(reference)== null) && modelElements_p.size()<=upperBound){
+              isElementCompatible = true;
+			}
+          else if (upperBound > 1){
+			EObjectContainmentEList<EObject> contList= (EObjectContainmentEList<EObject>) target_p.eGet(reference);
+        	  if (contList.size() < upperBound) {
+              isElementCompatible = true;
+        	  }
+          }
         }
       }
       areCompatible &= isElementCompatible;
