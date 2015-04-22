@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,8 @@ import org.polarsys.capella.core.sirius.analysis.FaServices;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
- * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts variables
+ * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts
+ * variables
  */
 public class ShowHideABPhysicalLink extends ShowHideABComponentExchange {
 
@@ -85,16 +86,6 @@ public class ShowHideABPhysicalLink extends ShowHideABComponentExchange {
     return mapping;
   }
 
-  @Override
-  protected Collection<DSemanticDecorator> retrieveDefaultContainer(EObject semantic_p, DiagramContext context_p, Collection<DSemanticDecorator> targetViews_p) {
-    return super.retrieveDefaultContainer(semantic_p, context_p, targetViews_p);
-  }
-
-  @Override
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(semantic_p, context_p, relatedViews_p);
-  }
-
   /**
    * {@inheritDoc}
    */
@@ -107,22 +98,19 @@ public class ShowHideABPhysicalLink extends ShowHideABComponentExchange {
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(originCouple_p, context_p, relatedViews_p);
-  }
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
 
-  @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
     // We want to hide physical port
-    if (semantic_p instanceof PhysicalPort) {
+    if (semantic instanceof PhysicalPort) {
       return true;
     }
     // We want to hide physical link
-    if (semantic_p instanceof PhysicalLink) {
+    if (semantic instanceof PhysicalLink) {
       return true;
     }
     // And only these elements
-    return super.mustHide(semantic_p, context_p);
+    return super.mustHide(originCouple_p, context_p);
   }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,12 +62,14 @@ import org.polarsys.capella.core.data.fa.ComponentPort;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocation;
 import org.polarsys.capella.core.data.fa.ComponentPortAllocationEnd;
 import org.polarsys.capella.core.data.fa.ComponentPortKind;
+import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.fa.FaFactory;
 import org.polarsys.capella.core.data.fa.FunctionPort;
 import org.polarsys.capella.core.data.fa.FunctionalChain;
 import org.polarsys.capella.core.data.fa.FunctionalExchange;
 import org.polarsys.capella.core.data.fa.OrientationPortKind;
 import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
+import org.polarsys.capella.core.data.helpers.fa.services.FunctionExt;
 import org.polarsys.capella.core.data.helpers.fa.services.FunctionPkgExt;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.information.Port;
@@ -90,13 +92,13 @@ import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
-import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABAbstractFunction;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponent;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentCategory;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentExchange;
-import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABFunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABPhysicalCategory;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABRole;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunction;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExchange;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -191,9 +193,13 @@ public class ABServices {
 
   /**
    * Perform a dnd of a component.
-   * @param pcMoved the given namedElement
-   * @param oldContainer the given namedElement
-   * @param newContainer the given namedElement
+   * 
+   * @param pcMoved
+   *          the given namedElement
+   * @param oldContainer
+   *          the given namedElement
+   * @param newContainer
+   *          the given namedElement
    * @return pcMoved
    */
   public EObject dndABComponent(NamedElement pcMoved, NamedElement oldContainer_p, NamedElement newContainer_p) {
@@ -262,17 +268,16 @@ public class ABServices {
 
   /**
    * Performs semantic operation for a reconnect of source from a component exchange edge
+   * 
    * @param componentExchange_p
    * @param edge_p
    * @param oldNode_p
    * @param newNode_p
    */
-  public EObject reconnectABComponentExchangeSource(EObject componentExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p,
-      DSemanticDecorator newNode_p) {
+  public EObject reconnectABComponentExchangeSource(EObject componentExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p, DSemanticDecorator newNode_p) {
     if (edge_p instanceof DEdge) {
       if (componentExchange_p instanceof ComponentExchange) {
-        reconnectABComponentExchange((ComponentExchange) componentExchange_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, (DEdge) edge_p,
-            oldNode_p, newNode_p);
+        reconnectABComponentExchange((ComponentExchange) componentExchange_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__SOURCE, (DEdge) edge_p, oldNode_p, newNode_p);
       }
     }
     return componentExchange_p;
@@ -280,17 +285,16 @@ public class ABServices {
 
   /**
    * Performs semantic operation for a reconnect of target from a component exchange edge
+   * 
    * @param componentExchange_p
    * @param edge_p
    * @param oldNode_p
    * @param newNode_p
    */
-  public EObject reconnectABComponentExchangeTarget(EObject componentExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p,
-      DSemanticDecorator newNode_p) {
+  public EObject reconnectABComponentExchangeTarget(EObject componentExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p, DSemanticDecorator newNode_p) {
     if (edge_p instanceof DEdge) {
       if (componentExchange_p instanceof ComponentExchange) {
-        reconnectABComponentExchange((ComponentExchange) componentExchange_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, (DEdge) edge_p,
-            oldNode_p, newNode_p);
+        reconnectABComponentExchange((ComponentExchange) componentExchange_p, ModellingcorePackage.Literals.ABSTRACT_INFORMATION_FLOW__TARGET, (DEdge) edge_p, oldNode_p, newNode_p);
       }
     }
     return componentExchange_p;
@@ -298,17 +302,17 @@ public class ABServices {
 
   /**
    * Performs semantic operation for a reconnect of a component exchange edge
+   * 
    * @param componentExchange_p
    * @param edge_p
    * @param oldNode_p
    * @param newNode_p
    */
-  public void reconnectABComponentExchange(ComponentExchange componentExchange_p, EReference bound, DEdge edge, DSemanticDecorator oldNode,
-      DSemanticDecorator newNode) {
+  public void reconnectABComponentExchange(ComponentExchange componentExchange_p, EReference bound, DEdge edge, DSemanticDecorator oldNode, DSemanticDecorator newNode) {
     EObject relatedPart = CsServices.getService().getRelatedPart(newNode);
 
-    if (!(componentExchange_p instanceof CommunicationMean) && CsServices.getService().isMultipartMode(componentExchange_p)
-        && (newNode.getTarget() instanceof Port) && (relatedPart instanceof Part)) {
+    if (!(componentExchange_p instanceof CommunicationMean) && CsServices.getService().isMultipartMode(componentExchange_p) && (newNode.getTarget() instanceof Port)
+        && (relatedPart instanceof Part)) {
       ComponentExchangeEnd end = null;
       Object boundValue = componentExchange_p.eGet(bound);
       if (boundValue instanceof ComponentExchangeEnd) {
@@ -337,6 +341,7 @@ public class ABServices {
 
   /**
    * Returns whether the source of componentExchange can be replaced from given source_p to given target_p
+   * 
    * @param exchange_p
    * @param source_p
    * @param target_p
@@ -365,6 +370,7 @@ public class ABServices {
 
   /**
    * Returns whether the target of componentExchange can be replaced from given source_p to given target_p
+   * 
    * @param exchange_p
    * @param source_p
    * @param target_p
@@ -376,6 +382,7 @@ public class ABServices {
 
   /**
    * Performs semantic operation for a reconnect of source from a physical link edge
+   * 
    * @param physicalLink_p
    * @param edge_p
    * @param oldNode_p
@@ -392,6 +399,7 @@ public class ABServices {
 
   /**
    * Performs semantic operation for a reconnect of target from a physical link edge
+   * 
    * @param physicalLink_p
    * @param edge_p
    * @param oldNode_p
@@ -408,6 +416,7 @@ public class ABServices {
 
   /**
    * Performs semantic operation for a reconnect of a physical link edge
+   * 
    * @param physicalLink_p
    * @param edge_p
    * @param oldNode_p
@@ -455,6 +464,7 @@ public class ABServices {
 
   /**
    * Returns whether the source of physicalLink can be replaced from given source_p to given target_p
+   * 
    * @param exchange_p
    * @param source_p
    * @param target_p
@@ -478,6 +488,7 @@ public class ABServices {
 
   /**
    * Returns whether the target of physicalLink can be replaced from given source_p to given target_p
+   * 
    * @param exchange_p
    * @param source_p
    * @param target_p
@@ -489,6 +500,7 @@ public class ABServices {
 
   /**
    * Returns whether part source_p can be moved into target_p
+   * 
    * @param source_p
    * @param target_p
    * @return
@@ -509,6 +521,7 @@ public class ABServices {
 
   /**
    * Returns whether part source_p can be moved into target_p part
+   * 
    * @param source_p
    * @param target_p
    * @return
@@ -527,6 +540,7 @@ public class ABServices {
 
   /**
    * Returns whether component source_p can be moved into target_p component
+   * 
    * @param source_p
    * @param target_p
    * @return
@@ -577,6 +591,7 @@ public class ABServices {
 
   /**
    * Returns whether physical port can be D&D
+   * 
    * @param source_p
    * @param target_p
    * @return
@@ -587,6 +602,7 @@ public class ABServices {
 
   /**
    * Create a functional exchange between both views
+   * 
    * @param context_p
    * @param sourceView_p
    * @param targetView_p
@@ -603,6 +619,7 @@ public class ABServices {
 
   /**
    * Returns available states/modes to insert in given diagram
+   * 
    * @param containerView_p
    * @return
    */
@@ -642,6 +659,7 @@ public class ABServices {
 
   /**
    * Display related elements of given states modes in the current diagram
+   * 
    * @param containerView_p
    * @param elements_p
    */
@@ -667,6 +685,7 @@ public class ABServices {
 
   /**
    * Retrieve related elements for a mode and a given architecture (functions)
+   * 
    * @param mode_p
    * @param sourceArchitecture_p
    * @return
@@ -685,6 +704,7 @@ public class ABServices {
 
   /**
    * Returns whether the tool insert states/modes is available in the given context
+   * 
    * @param containerView_p
    * @return
    */
@@ -758,6 +778,7 @@ public class ABServices {
 
   /**
    * Display related elements of given states modes in the current diagram
+   * 
    * @param containerView_p
    * @param elements_p
    */
@@ -843,8 +864,8 @@ public class ABServices {
           if (unallocatedRoles.size() > 0) {
             unallocatedRoles.addFirst(scenario);
             Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.MODEL);
-            logger.info(new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectLabelProviderHelper.getText(scenario)),
-                IReportManagerDefaultComponents.MODEL, unallocatedRoles));
+            logger.info(new EmbeddedMessage(NLS.bind(Messages.ABServices_UnallocatedRoles, EObjectLabelProviderHelper.getText(scenario)), IReportManagerDefaultComponents.MODEL,
+                unallocatedRoles));
           }
         }
       }
@@ -875,6 +896,7 @@ public class ABServices {
 
   /**
    * Returns whether the tool insert scenario is available in the given context
+   * 
    * @param containerView_p
    * @return
    */
@@ -887,7 +909,7 @@ public class ABServices {
    */
   public EObject showABAbstractFunction(Collection<EObject> elements_p, DDiagramContents content_p) {
 
-    AbstractShowHide shService = new ShowHideABAbstractFunction(content_p);
+    AbstractShowHide shService = new ShowHideFunction(content_p);
 
     for (EObject element : elements_p) {
       DiagramContext context = shService.new DiagramContext();
@@ -934,7 +956,7 @@ public class ABServices {
    * Display given functional exchanges
    */
   public EObject showABFunctionalExchange(Collection<EObject> elements_p, DDiagramContents content_p) {
-    AbstractShowHide shService = new ShowHideABFunctionalExchange(content_p);
+    AbstractShowHide shService = new ShowHideFunctionalExchange(content_p);
 
     for (EObject element : elements_p) {
       DiagramContext context = shService.new DiagramContext();
@@ -989,8 +1011,7 @@ public class ABServices {
     EObject sourceTarget = source_p.getTarget();
     EObject targetTarget = target_p.getTarget();
 
-    if (((sourceTarget instanceof Port) && (targetTarget instanceof PhysicalLinkCategory))
-        || ((targetTarget instanceof Port) && (sourceTarget instanceof PhysicalLinkCategory))) {
+    if (((sourceTarget instanceof Port) && (targetTarget instanceof PhysicalLinkCategory)) || ((targetTarget instanceof Port) && (sourceTarget instanceof PhysicalLinkCategory))) {
 
       // Retrieve both category ports on parts
       for (AbstractDNode node : sourceView.getOwnedBorderedNodes()) {
@@ -1273,6 +1294,70 @@ public class ABServices {
     return true;
   }
 
+  public boolean isValidFunctionalExchangeCategoryEdge(ExchangeCategory category_p, DSemanticDecorator source_p, DSemanticDecorator target_p) {
+
+    if ((category_p == null) || (source_p == null) || (target_p == null)) {
+      return false;
+    }
+
+    DSemanticDecorator sourcePartView = CsServices.getService().getRelatedFunctionView(source_p);
+    DSemanticDecorator targetPartView = CsServices.getService().getRelatedFunctionView(target_p);
+
+    AbstractFunction sourceTarget = (AbstractFunction) sourcePartView.getTarget();
+    AbstractFunction targetTarget = (AbstractFunction) targetPartView.getTarget();
+
+    return isSourceTargetCategoryFunction(sourceTarget, targetTarget, category_p);
+
+  }
+
+  public boolean isSourceTargetCategoryFunction(AbstractFunction source, AbstractFunction target, ExchangeCategory category_p) {
+    Collection<EObject> cSource = new ArrayList<EObject>(category_p.getExchanges());
+
+    List<FunctionalExchange> allSourceExchanges = new ArrayList<FunctionalExchange>();
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(source)) {
+      allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
+      allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
+    }
+
+    List<FunctionalExchange> allTargetExchanges = new ArrayList<FunctionalExchange>();
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(target)) {
+      allTargetExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
+      allTargetExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
+    }
+
+    allSourceExchanges.retainAll(allTargetExchanges);
+    cSource.retainAll(allSourceExchanges);
+    return !cSource.isEmpty();
+
+  }
+
+  public boolean isSourceCategoryFunction(AbstractFunction source, ExchangeCategory category_p) {
+    Collection<EObject> cSource = new ArrayList<EObject>(category_p.getExchanges());
+
+    List<FunctionalExchange> allSourceExchanges = new ArrayList<FunctionalExchange>();
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(source)) {
+      allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
+      allSourceExchanges.addAll(FunctionExt.getOutGoingExchange(currentFunction));
+    }
+
+    cSource.retainAll(allSourceExchanges);
+    return !cSource.isEmpty();
+  }
+
+  public boolean isTargetCategoryFunction(AbstractFunction target, ExchangeCategory category_p) {
+    Collection<EObject> cSource = new ArrayList<EObject>(category_p.getExchanges());
+
+    List<FunctionalExchange> allSourceExchanges = new ArrayList<FunctionalExchange>();
+    for (AbstractFunction currentFunction : FunctionExt.getAllAbstractFunctions(target)) {
+      allSourceExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
+      allSourceExchanges.addAll(FunctionExt.getIncomingExchange(currentFunction));
+    }
+
+    cSource.retainAll(allSourceExchanges);
+    return !cSource.isEmpty();
+
+  }
+
   public boolean isValidABComponentCategoryEdge(ComponentExchangeCategory category_p, DSemanticDecorator source_p, DSemanticDecorator target_p) {
 
     if ((category_p == null) || (source_p == null) || (target_p == null)) {
@@ -1495,6 +1580,7 @@ public class ABServices {
 
   /**
    * Show selected categories and hide unselected categories from the given source
+   * 
    * @param context_p
    * @param scope
    * @param initialSelection
@@ -1523,10 +1609,8 @@ public class ABServices {
 
             for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false,
-                    shService);
-                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false,
-                    shService);
+                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false, shService);
+                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false, shService);
               }
             }
 
@@ -1555,15 +1639,13 @@ public class ABServices {
     return context_p;
   }
 
-  public EObject switchABPhysicalCategories(DSemanticDecorator context_p, Collection<EObject> scope, Collection<EObject> initialSelection,
-      Collection<EObject> selectedElements) {
+  public EObject switchABPhysicalCategories(DSemanticDecorator context_p, Collection<EObject> scope, Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context_p);
     DDiagramContents content = new DDiagramContents(currentDiagram);
     return switchABPhysicalCategories(content, context_p, selectedElements, true);
   }
 
-  public EObject switchABPhysicalCategories(DDiagramContents content_p, DSemanticDecorator context_p, Collection<EObject> selectedElements,
-      boolean showPhysicalExchanges) {
+  public EObject switchABPhysicalCategories(DDiagramContents content_p, DSemanticDecorator context_p, Collection<EObject> selectedElements, boolean showPhysicalExchanges) {
     ABServices.getService().updateABPhysicalCategories(content_p);
 
     DDiagram currentDiagram = content_p.getDDiagram();
@@ -1574,12 +1656,10 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context_p);
     }
     if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR,
-          currentDiagram))) {
+      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
         sourceViews.add(element);
       }
-      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices()
-          .getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
+      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
         sourceViews.add(element);
       }
       if (currentDiagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
@@ -1653,8 +1733,7 @@ public class ABServices {
     return context_p;
   }
 
-  public EObject switchABComponentCategories(DSemanticDecorator context_p, Collection<EObject> scope, Collection<EObject> initialSelection,
-      Collection<EObject> selectedElements) {
+  public EObject switchABComponentCategories(DSemanticDecorator context_p, Collection<EObject> scope, Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context_p);
     DDiagramContents content = new DDiagramContents(currentDiagram);
     return switchABComponentCategories(content, context_p, selectedElements);
@@ -1662,6 +1741,7 @@ public class ABServices {
 
   /**
    * Show selected categories and hide unselected categories from the given source
+   * 
    * @param context_p
    * @param scope
    * @param initialSelection
@@ -1678,12 +1758,10 @@ public class ABServices {
       sourceViews.add((DDiagramElement) context_p);
     }
     if (sourceViews.isEmpty()) {
-      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR,
-          currentDiagram))) {
+      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.ABSTRACT_ACTOR, currentDiagram))) {
         sourceViews.add(element);
       }
-      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices()
-          .getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
+      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABComponent(CsPackage.Literals.COMPONENT, currentDiagram))) {
         sourceViews.add(element);
       }
       if (currentDiagram.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
@@ -1730,20 +1808,16 @@ public class ABServices {
           if (selectedElements.contains(key)) {
             for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), true,
-                    categories);
-                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), true,
-                    categories);
+                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), true, categories);
+                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), true, categories);
                 categories.hide(exchange, context);
               }
             }
           } else {
             for (ComponentExchange exchange : getRelatedComponentExchanges(source)) {
               if (exchange.getCategories().contains(key)) {
-                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false,
-                    categories);
-                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false,
-                    categories);
+                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getSourcePort(exchange), false, categories);
+                displayABComponentCategoryPortDelegation(context, category, exchange, (ComponentPort) ComponentExchangeExt.getTargetPort(exchange), false, categories);
                 categories.show(exchange, context);
               }
             }
@@ -1764,10 +1838,10 @@ public class ABServices {
    * @param key_p
    * @param source_p
    * @param target_p
-   * @param b_p show or hide according to this parameter
+   * @param b_p
+   *          show or hide according to this parameter
    */
-  private void showABPhysicalCategory(AbstractShowHide categories_p, DiagramContext context_p, PhysicalLinkCategory key_p, EObject source_p, EObject target_p,
-      boolean b_p) {
+  private void showABPhysicalCategory(AbstractShowHide categories_p, DiagramContext context_p, PhysicalLinkCategory key_p, EObject source_p, EObject target_p, boolean b_p) {
 
     context_p.setVariable(ShowHideABComponent.SOURCE_PARTS, Collections.singletonList(source_p));
     context_p.setVariable(ShowHideABComponent.TARGET_PARTS, Collections.singletonList(target_p));
@@ -1813,8 +1887,7 @@ public class ABServices {
    * @param source_p
    * @param target_p
    */
-  private void showABComponentCategory(AbstractShowHide categories_p, DiagramContext context_p, ComponentExchangeCategory key_p, EObject source_p,
-      EObject target_p, boolean b_p) {
+  private void showABComponentCategory(AbstractShowHide categories_p, DiagramContext context_p, ComponentExchangeCategory key_p, EObject source_p, EObject target_p, boolean b_p) {
 
     context_p.setVariable(ShowHideABComponent.SOURCE_PARTS, Collections.singletonList(source_p));
     context_p.setVariable(ShowHideABComponent.TARGET_PARTS, Collections.singletonList(target_p));
@@ -1860,8 +1933,8 @@ public class ABServices {
    * @param b_p
    * @param categories_p
    */
-  protected void displayABPhysicalCategoryPortDelegation(DiagramContext context_p, PhysicalLinkCategory category_p, PhysicalLink exchange_p,
-      PhysicalPort sourcePort_p, boolean b_p, AbstractShowHide service_p) {
+  protected void displayABPhysicalCategoryPortDelegation(DiagramContext context_p, PhysicalLinkCategory category_p, PhysicalLink exchange_p, PhysicalPort sourcePort_p,
+      boolean b_p, AbstractShowHide service_p) {
 
     if (sourcePort_p == null) {
       return;
@@ -1929,8 +2002,8 @@ public class ABServices {
    * @param b_p
    * @param categories_p
    */
-  protected void displayABComponentCategoryPortDelegation(DiagramContext context_p, ComponentExchangeCategory category_p, ComponentExchange exchange_p,
-      ComponentPort sourcePort_p, boolean b_p, AbstractShowHide service_p) {
+  protected void displayABComponentCategoryPortDelegation(DiagramContext context_p, ComponentExchangeCategory category_p, ComponentExchange exchange_p, ComponentPort sourcePort_p,
+      boolean b_p, AbstractShowHide service_p) {
 
     if (sourcePort_p == null) {
       return;
@@ -2052,7 +2125,9 @@ public class ABServices {
 
   /**
    * Returns related component exchanges linked to the given element
-   * @param element_p a part or a component
+   * 
+   * @param element_p
+   *          a part or a component
    * @return
    */
   public Collection<ComponentExchange> getRelatedComponentExchanges(EObject element_p) {
@@ -2091,6 +2166,7 @@ public class ABServices {
 
   /**
    * Retrieve a map<ExchangeCategory, Collection<Part>> of available category to display from the given source view
+   * 
    * @param context_p
    * @return
    */
@@ -2160,6 +2236,7 @@ public class ABServices {
 
   /**
    * Retrive the initial selection of displayed category for the given source view
+   * 
    * @param context_p
    * @return
    */
@@ -2221,6 +2298,7 @@ public class ABServices {
 
   /**
    * Retrieve a map<ExchangeCategory, Collection<Part>> of available category to display from the given source view
+   * 
    * @param context_p
    * @return
    */
@@ -2257,6 +2335,7 @@ public class ABServices {
 
   /**
    * Retrive the initial selection of displayed category for the given source view
+   * 
    * @param context_p
    * @return
    */
@@ -2277,6 +2356,7 @@ public class ABServices {
 
   /**
    * Retrieve available sources for the given category (since we display ports of category, we return itself)
+   * 
    * @param context_p
    * @return
    */
@@ -2286,6 +2366,7 @@ public class ABServices {
 
   /**
    * Retrieve available targets for the given category (since we display ports of category, we return itself)
+   * 
    * @param context_p
    * @return
    */
@@ -2295,6 +2376,7 @@ public class ABServices {
 
   /**
    * Retrieve available sources for the given category (since we display ports of category, we return itself)
+   * 
    * @param context_p
    * @return
    */
@@ -2304,6 +2386,7 @@ public class ABServices {
 
   /**
    * Retrieve available targets for the given category (since we display ports of category, we return itself)
+   * 
    * @param context_p
    * @return
    */
@@ -2355,6 +2438,7 @@ public class ABServices {
 
   /**
    * Returns true if an arrow should be displayed onto source of category link
+   * 
    * @param context_p
    * @return
    */
@@ -2402,6 +2486,7 @@ public class ABServices {
 
   /**
    * Returns true if an arrow should be displayed onto target of category link
+   * 
    * @param context_p
    * @return
    */
@@ -2466,9 +2551,8 @@ public class ABServices {
         }
         DEdge edge = (DEdge) element;
 
-        boolean isValidEdge =
-            isValidABComponentCategoryEdge((ComponentExchangeCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(),
-                (DSemanticDecorator) edge.getTargetNode());
+        boolean isValidEdge = isValidABComponentCategoryEdge((ComponentExchangeCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(),
+            (DSemanticDecorator) edge.getTargetNode());
         if (!isValidEdge) {
           toRemoveEdges.add(edge);
         }
@@ -2557,6 +2641,7 @@ public class ABServices {
 
   /**
    * Remove invalid links and physical categories
+   * 
    * @param context_p
    */
   public void updateABPhysicalCategories(DDiagramContents context_p) {
@@ -2574,9 +2659,8 @@ public class ABServices {
         }
         DEdge edge = (DEdge) element;
 
-        boolean isValidEdge =
-            isValidABPhysicalCategoryEdge((PhysicalLinkCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(),
-                (DSemanticDecorator) edge.getTargetNode());
+        boolean isValidEdge = isValidABPhysicalCategoryEdge((PhysicalLinkCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(),
+            (DSemanticDecorator) edge.getTargetNode());
         if (!isValidEdge) {
           toRemoveEdges.add(edge);
         }
@@ -2660,6 +2744,7 @@ public class ABServices {
 
   /**
    * Retrieve a displayable text for the given category
+   * 
    * @param property
    * @return
    */
@@ -2669,6 +2754,7 @@ public class ABServices {
 
   /**
    * Retrieve a displayable text for the given category
+   * 
    * @param property
    * @return
    */
@@ -2678,6 +2764,7 @@ public class ABServices {
 
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
+   * 
    * @param context_p
    * @param sourceViewk
    * @param targetView_p
@@ -2757,6 +2844,7 @@ public class ABServices {
 
   /**
    * Retrieve the edge mapping name for the given diagram
+   * 
    * @param diagram_p
    * @return
    */
@@ -2780,6 +2868,7 @@ public class ABServices {
 
   /**
    * Retrieve the edge mapping name for the given diagram
+   * 
    * @param diagram_p
    * @return
    */
@@ -2799,6 +2888,7 @@ public class ABServices {
 
   /**
    * Retrieve the pin view mapping name for the given diagram
+   * 
    * @param diagram_p
    * @return
    */
@@ -2818,6 +2908,7 @@ public class ABServices {
 
   /**
    * Retrieve the pin view mapping names for the given diagram
+   * 
    * @param diagram_p
    * @return
    */
@@ -2837,6 +2928,7 @@ public class ABServices {
 
   /**
    * Retrieve the pin view mapping name for the given diagram and the semantic element
+   * 
    * @param diagram_p
    * @return
    */

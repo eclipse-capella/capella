@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,10 +31,8 @@ import org.polarsys.capella.core.sirius.analysis.DDiagramContents;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
- * A ShowHide definition for ABCategory
- * 
- * containers of category pins must be set with sourceParts and targetParts variables
- *
+ * A ShowHide definition for ABCategory containers of category pins must be set with sourceParts and targetParts
+ * variables
  */
 public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
 
@@ -50,21 +48,6 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
     super(content_p);
   }
 
-  @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    if (((originCouple_p.getValue() instanceof Part) || (originCouple_p.getValue() instanceof Entity))) {
-      //We don't reveal a part, if it is already displayed somewhere
-      for (ContextItemView view : originCouple_p.getViews()) {
-        if (view.getViews().get(VIEWS).size() > 0) {
-          return false;
-        }
-      }
-      //We never display a new part
-      return false;
-    }
-    return super.mustShow(originCouple_p, context_p, relatedViews_p);
-  }
-
   /**
    * {@inheritDoc}
    */
@@ -74,18 +57,18 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
     HashMapSet<String, EObject> value = super.getRelatedObjects(semantic_p, context_p);
     ContextItemElement lastContext = context_p.getLast();
 
-    //For a category, related elements are pin for this category. so same semantic with both source/target.
+    // For a category, related elements are pin for this category. so same semantic with both source/target.
     if (lastContext.getValue() instanceof ComponentExchangeCategory) {
 
       if (SOURCE.equals(lastContext.getKey())) {
-        //If a sourcePin, available containers are sourceParts
+        // If a sourcePin, available containers are sourceParts
         ContextItemVariable variable = context_p.getLastVariable(SOURCE_PARTS);
         if ((variable != null) && (variable.getValue() instanceof Collection)) {
           value.putAll(CONTAINER, (Collection<EObject>) variable.getValue());
         }
 
       } else if (TARGET.equals(lastContext.getKey())) {
-        //If a targetPin, available containers are targetParts
+        // If a targetPin, available containers are targetParts
         ContextItemVariable variable = context_p.getLastVariable(TARGET_PARTS);
         if ((variable != null) && (variable.getValue() instanceof Collection)) {
           value.putAll(CONTAINER, (Collection<EObject>) variable.getValue());
@@ -95,7 +78,7 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
         ContextItemVariable noSourcePort = context_p.getLastVariable(NO_SOURCE_PORT);
         ContextItemVariable noTargetPort = context_p.getLastVariable(NO_TARGET_PORT);
 
-        //If a edge category, same semantic as source/target
+        // If a edge category, same semantic as source/target
         ContextItemVariable variable = context_p.getLastVariable(SOURCE_PORTS);
         if ((variable != null) && (variable.getValue() instanceof Collection)) {
           value.putAll(SOURCE, (Collection<EObject>) variable.getValue());
@@ -104,7 +87,7 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
           if ((noSourcePort == null) || Boolean.FALSE.equals(noSourcePort.getValue())) {
             value.put(SOURCE, semantic_p);
           } else {
-            //If a sourcePin, available containers are sourceParts
+            // If a sourcePin, available containers are sourceParts
             variable = context_p.getLastVariable(SOURCE_PARTS);
             if ((variable != null) && (variable.getValue() instanceof Collection)) {
               value.putAll(SOURCE, (Collection<EObject>) variable.getValue());
@@ -119,7 +102,7 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
           if ((noTargetPort == null) || Boolean.FALSE.equals(noTargetPort.getValue())) {
             value.put(TARGET, semantic_p);
           } else {
-            //If a sourcePin, available containers are sourceParts
+            // If a sourcePin, available containers are sourceParts
             variable = context_p.getLastVariable(TARGET_PARTS);
             if ((variable != null) && (variable.getValue() instanceof Collection)) {
               value.putAll(TARGET, (Collection<EObject>) variable.getValue());
@@ -139,15 +122,15 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
     ContextItemElement lastContext = context_p.getLast();
     if (lastContext.getValue() instanceof ComponentExchangeCategory) {
       if (SOURCE.equals(lastContext.getKey())) {
-        //If sourcePin, use ABCategoryPin
+        // If sourcePin, use ABCategoryPin
         mapping = ABServices.getService().getMappingABComponentCategoryPin(getContent().getDDiagram());
 
       } else if (TARGET.equals(lastContext.getKey())) {
-        //If targetPin, use ABCategoryPin
+        // If targetPin, use ABCategoryPin
         mapping = ABServices.getService().getMappingABComponentCategoryPin(getContent().getDDiagram());
 
       } else {
-        //Otherwise, use ABCategoryEdge
+        // Otherwise, use ABCategoryEdge
         mapping = ABServices.getService().getMappingABComponentCategory(getContent().getDDiagram());
       }
     }
@@ -158,7 +141,7 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
   protected boolean isValidEdgeView(DEdge edge_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p) {
     DiagramElementMapping categoryMapping = ABServices.getService().getMappingABComponentCategory(getContent().getDDiagram());
 
-    //Category edge is not oriented, so if we have an inverse edge, we return it, instead of creating another edge
+    // Category edge is not oriented, so if we have an inverse edge, we return it, instead of creating another edge
     if (categoryMapping.equals(edge_p.getActualMapping())) {
       if (sourceView_p.equals(edge_p.getTargetNode()) && targetView_p.equals(edge_p.getSourceNode())) {
         return true;
@@ -173,24 +156,51 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
   }
 
   @Override
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    //We display all available category, even if there is another view displayed
-    if (semantic_p instanceof ComponentExchangeCategory) {
+  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
+    EObject semantic = originCouple_p.getValue();
+    if (((semantic instanceof Part) || (semantic instanceof Entity))) {
+      // We don't reveal a part, if it is already displayed somewhere
+      for (ContextItemView view : originCouple_p.getViews()) {
+        if (view.getViews().get(VIEWS).size() > 0) {
+          return false;
+        }
+      }
+      // We never display a new part
+      return false;
+    }
+    // We display all available category, even if there is another view displayed
+    if (semantic instanceof ComponentExchangeCategory) {
       return true;
     }
-    return super.mustShow(semantic_p, context_p, relatedViews_p);
+
+    return super.mustShow(originCouple_p, context_p, relatedViews_p);
   }
 
   @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
-    //An hide should hide all category mappings
-    return super.mustHide(semantic_p, context_p) || (semantic_p instanceof ComponentExchangeCategory);
+  protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, EdgeMapping edgeMapping_p) {
+    if (exchange_p instanceof ComponentExchangeCategory) {
+      return ABServices.getService().isValidABComponentCategoryEdge((ComponentExchangeCategory) exchange_p, source_p, target_p);
+    }
+    return super.mustShow(source_p, target_p, exchange_p, edgeMapping_p);
+  }
+
+  @Override
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
+
+    // We want to hide component exchange
+    if (semantic instanceof ComponentExchangeCategory) {
+      return true;
+    }
+
+    // An hide should hide all category mappings
+    return super.mustHide(originCouple_p, context_p);
   }
 
   @Override
   protected boolean hideInsteadOfRemoveView(DDiagramElement element_p, DiagramContext context_p) {
     EObject target = element_p.getTarget();
-    //We want to hide (not remove views) of CE and CP if diagram is synchronized
+    // We want to hide (not remove views) of CE and CP if diagram is synchronized
     if ((target != null) && ((target instanceof ComponentExchange) || (target instanceof ComponentPort))) {
       return getContent().getDDiagram().isSynchronized();
     }
@@ -200,7 +210,7 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
   @Override
   protected boolean mustHide(DDiagramElement view_p, DiagramContext context_p) {
 
-    //A component port must be hide if no edges or hidden edges
+    // A component port must be hide if no edges or hidden edges
     if (view_p.getDiagramElementMapping() instanceof AbstractNodeMapping) {
       EObject target = view_p.getTarget();
       if ((target != null) && ((target instanceof ComponentPort))) {
@@ -282,18 +292,9 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
   }
 
   @Override
-  protected boolean mustShow(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, EdgeMapping edgeMapping_p) {
-    if (exchange_p instanceof ComponentExchangeCategory) {
-      return ABServices.getService().isValidABComponentCategoryEdge((ComponentExchangeCategory) exchange_p, source_p, target_p);
-    }
-    return super.mustShow(source_p, target_p, exchange_p, edgeMapping_p);
-  }
-
-  @Override
-  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p,
-      AbstractNodeMapping mapping_p) {
+  protected Collection<DDiagramElement> showNodes(DSemanticDecorator containerView_p, EObject semantic_p, DDiagramContents content_p, AbstractNodeMapping mapping_p) {
     Collection<DDiagramElement> nodes = super.showNodes(containerView_p, semantic_p, content_p, mapping_p);
-    //Reveal all hidden nodes for component ports
+    // Reveal all hidden nodes for component ports
     if (semantic_p instanceof ComponentPort) {
       for (DDiagramElement element : nodes) {
         getContent().deferredShow(element);
@@ -306,7 +307,7 @@ public class ShowHideABComponentCategory extends ShowHideABComponentExchange {
   protected Collection<DDiagramElement> showEdges(DSemanticDecorator source_p, DSemanticDecorator target_p, EObject exchange_p, DDiagramContents content_p,
       EdgeMapping edgeMapping_p) {
     Collection<DDiagramElement> nodes = super.showEdges(source_p, target_p, exchange_p, content_p, edgeMapping_p);
-    //Reveal all hidden nodes for component exchanges
+    // Reveal all hidden nodes for component exchanges
     if (exchange_p instanceof ComponentExchange) {
       for (DDiagramElement element : nodes) {
         getContent().deferredShow(element);

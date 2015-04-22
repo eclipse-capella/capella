@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.sirius.analysis;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -40,6 +41,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -129,6 +131,7 @@ import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
+import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
@@ -140,6 +143,14 @@ import org.polarsys.capella.core.model.helpers.FunctionalExchangeExt;
 import org.polarsys.capella.core.model.helpers.PhysicalArchitectureExt;
 import org.polarsys.capella.core.model.helpers.PortExt;
 import org.polarsys.capella.core.model.utils.CapellaLayerCheckingExt;
+import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide;
+import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponent;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideABComponentExchange;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideExchangeCategory;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunction;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideFunctionalExchange;
+import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideInvisibleExchangeCategory;
 import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 
 /**
@@ -165,8 +176,10 @@ public class FaServices {
   }
 
   /**
-   * @param context_p current context
-   * @param source_p selected source of the edge
+   * @param context_p
+   *          current context
+   * @param source_p
+   *          selected source of the edge
    * @return if a FunctionalExchange can be created from source_p
    */
   public boolean isValidCreationFunctionalExchange(EObject context_p, EObject source_p) {
@@ -190,9 +203,12 @@ public class FaServices {
   }
 
   /**
-   * @param context_p current context
-   * @param source_p selected source of the edge
-   * @param target_p selected target of the edge
+   * @param context_p
+   *          current context
+   * @param source_p
+   *          selected source of the edge
+   * @param target_p
+   *          selected target of the edge
    * @return if a FunctionalExchange can be created between source_p and target_p
    */
   public boolean isValidCreationFunctionalExchange(EObject context_p, EObject source_p, EObject target_p) {
@@ -227,7 +243,8 @@ public class FaServices {
 
   /**
    * @param context_p
-   * @return used in logical.odesign oa.odesign, physical.odesign called by show/hide FunctionalExchanges tools (DataFlow Blank Diagrams)
+   * @return used in logical.odesign oa.odesign, physical.odesign called by show/hide FunctionalExchanges tools
+   *         (DataFlow Blank Diagrams)
    */
   public List<FunctionalExchange> getAvailableFunctionalExchangesToInsert(DSemanticDecorator context_p) {
     List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
@@ -252,12 +269,11 @@ public class FaServices {
       }
     }
 
-    // if the following part is not commented => you must modify the beforeRefresh for the dataFlow
+    // if the following part is not commented => you must modify the
+    // beforeRefresh for the dataFlow
     for (FunctionalExchange aFunctionalExchange : allFunctionalExchanges) {
-      if ((aFunctionalExchange.getTarget() == null)
-          || (aFunctionalExchange.getSource() == null)
-          || (EcoreUtil.isAncestor(selectedFunction, aFunctionalExchange.getSource()) && EcoreUtil
-              .isAncestor(selectedFunction, aFunctionalExchange.getTarget()))) {
+      if ((aFunctionalExchange.getTarget() == null) || (aFunctionalExchange.getSource() == null)
+          || (EcoreUtil.isAncestor(selectedFunction, aFunctionalExchange.getSource()) && EcoreUtil.isAncestor(selectedFunction, aFunctionalExchange.getTarget()))) {
         continue;
       }
       returnedList.add(aFunctionalExchange);
@@ -267,8 +283,8 @@ public class FaServices {
 
   /**
    * @param selectedElement_p
-   * @return displayed incoming and outgoing functional Exchanges called by show/hide FunctionalExchanges tools (DataFlow Blank Diagrams) used in oa, logical,
-   *         context, physical
+   * @return displayed incoming and outgoing functional Exchanges called by show/hide FunctionalExchanges tools
+   *         (DataFlow Blank Diagrams) used in oa, logical, context, physical
    */
   public List<FunctionalExchange> getDisplayedFunctionalExchanges(DSemanticDecorator selectedElement_p) {
     List<FunctionalExchange> result = new ArrayList<FunctionalExchange>();
@@ -300,6 +316,7 @@ public class FaServices {
 
   /**
    * get Functional Exchange edges from current AbstractNode
+   * 
    * @param selectedElement_p
    * @return
    */
@@ -348,6 +365,7 @@ public class FaServices {
 
   /**
    * used in oa, logical, context, physical
+   * 
    * @param selectedElement_p
    * @return called by show/hide ComponentExchanges tools (Architecture Blank Diagrams)
    */
@@ -378,6 +396,7 @@ public class FaServices {
 
   /**
    * used in oa, logical, context, physical
+   * 
    * @param context_p
    * @return called by show/hide ComponentExchanges tools (Architecture Blank Diagrams)
    */
@@ -425,6 +444,7 @@ public class FaServices {
 
   /**
    * used in oa, logical, context, physical
+   * 
    * @param context_p
    * @return called by show/hide FunctionalExchanges tools (Architecture Blank Diagrams)
    */
@@ -527,6 +547,36 @@ public class FaServices {
       }
     }
     return DiagramServices.getDiagramServices().getContainerMapping(diagram_p, mappingName);
+
+  }
+
+  public AbstractNodeMapping getMappingFunction(AbstractFunction function_p, DDiagram diagram_p) {
+
+    if (DiagramHelper.getService().isArchitectureBlank(diagram_p)) {
+      return FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) function_p, diagram_p);
+    }
+
+    return FaServices.getFaServices().getMappingDFFunction((AbstractFunction) function_p, diagram_p);
+
+  }
+
+  public AbstractNodeMapping getMappingFunctionPort(FunctionPort port_p, DDiagram diagram_p) {
+
+    if (DiagramHelper.getService().isArchitectureBlank(diagram_p)) {
+      return FaServices.getFaServices().getMappingABFunctionPort(diagram_p);
+    }
+
+    return FaServices.getFaServices().getMappingDFFunctionPort(diagram_p);
+
+  }
+
+  public EdgeMapping getMappingFunctionalExchange(DDiagram diagram_p) {
+
+    if (DiagramHelper.getService().isArchitectureBlank(diagram_p)) {
+      return FaServices.getFaServices().getMappingABFunctionalExchange(diagram_p);
+    }
+
+    return FaServices.getFaServices().getMappingDFFunctionalExchange(diagram_p);
 
   }
 
@@ -637,12 +687,14 @@ public class FaServices {
 
   /**
    * used in an extension ...
+   * 
    * @param chains
    * @param view
    */
   public void showInvolvedElementsInDataFlowBlank(List<FunctionalChain> chains, DSemanticDecorator view) {
 
-    // A chain have some involved elements. Try to find them or there containers in the shortest delay
+    // A chain have some involved elements. Try to find them or there
+    // containers in the shortest delay
 
     HashMap<EObject, DDiagramElement> elements = new HashMap<EObject, DDiagramElement>();
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(view);
@@ -673,7 +725,8 @@ public class FaServices {
           ActivityNode nodeSource = exchange.getSource();
           involveds.add(nodeSource);
           if ((nodeSource instanceof Port) && (nodeSource.eContainer() instanceof AbstractFunction)) {
-            // in case where functional chain is not valid, add function related to the port
+            // in case where functional chain is not valid, add
+            // function related to the port
             involveds.add(nodeSource.eContainer());
             involvedFunctions.add((AbstractFunction) nodeSource.eContainer());
           }
@@ -681,7 +734,8 @@ public class FaServices {
           ActivityNode nodeTarget = exchange.getTarget();
           involveds.add(nodeTarget);
           if ((nodeTarget instanceof Port) && (nodeTarget.eContainer() instanceof AbstractFunction)) {
-            // in case where functional chain is not valid, add function related to the port
+            // in case where functional chain is not valid, add
+            // function related to the port
             involveds.add(nodeTarget.eContainer());
             involvedFunctions.add((AbstractFunction) nodeTarget.eContainer());
           }
@@ -707,7 +761,8 @@ public class FaServices {
       }
     }
 
-    // Create functions and nodes (on the diagram root, since refresh replace correctly theses elements
+    // Create functions and nodes (on the diagram root, since refresh
+    // replace correctly theses elements
     for (AbstractFunction function : involvedFunctions) {
       if (!elements.containsKey(function)) {
         ContainerMapping mapping = getMappingDFFunction(function, diagram);
@@ -808,6 +863,7 @@ public class FaServices {
 
   /**
    * Returns mapping on data flow diagrams for the given abstract function
+   * 
    * @param function_p
    * @param diagram_p
    * @return
@@ -872,6 +928,7 @@ public class FaServices {
 
   /**
    * used in context, oa, logical, physical
+   * 
    * @param current_p
    * @return
    */
@@ -911,19 +968,40 @@ public class FaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param context_p
    * @param diagram_p
-   * @param selectExchangeCategories_p exchanges categories to show (from wizard selection)
+   * @param selectExchangeCategories_p
+   *          exchanges categories to show (from wizard selection)
    * @return the context
    */
   public EObject switchFunctionalExchangesCategories(EObject context_p, List<ExchangeCategory> selectedExchangeCategories_p, DDiagram diagram_p) {
-    Set<DEdge> exchangeCategoryEdgesToRemove = new HashSet<DEdge>(); // exchange category edges to remove
-    Set<DEdge> functionalExchangeEdgesToRemove = new HashSet<DEdge>(); // functional exchange edges to remove
-    Set<EdgeTarget> borderedNodesToCheck = new HashSet<EdgeTarget>(); // borderedNodes of edges to remove
-    Set<ExchangeCategory> categoryToDisplay = new HashSet<ExchangeCategory>(); // categories to display
-    Set<ExchangeCategory> categoryToHide = new HashSet<ExchangeCategory>(); // categories to hide
+    Set<DEdge> exchangeCategoryEdgesToRemove = new HashSet<DEdge>(); // exchange
+    // category
+    // edges
+    // to
+    // remove
+    Set<DEdge> functionalExchangeEdgesToRemove = new HashSet<DEdge>(); // functional
+    // exchange
+    // edges
+    // to
+    // remove
+    Set<EdgeTarget> borderedNodesToCheck = new HashSet<EdgeTarget>(); // borderedNodes
+    // of
+    // edges
+    // to
+    // remove
+    Set<ExchangeCategory> categoryToDisplay = new HashSet<ExchangeCategory>(); // categories
+    // to
+    // display
+    Set<ExchangeCategory> categoryToHide = new HashSet<ExchangeCategory>(); // categories
+    // to
+    // hide
     Set<ExchangeCategory> displayedCategories = getDisplayedExchangeCategoriesInDiagram(diagram_p);
-    Map<FunctionalExchange, DEdge> functionalExchangesInDiagram = new HashMap<FunctionalExchange, DEdge>(); // functional exchanges in diagram
+    Map<FunctionalExchange, DEdge> functionalExchangesInDiagram = new HashMap<FunctionalExchange, DEdge>(); // functional
+    // exchanges
+    // in
+    // diagram
 
     // init categoryToDisplay
     for (ExchangeCategory aCategory : selectedExchangeCategories_p) {
@@ -947,7 +1025,8 @@ public class FaServices {
         FunctionalExchange currentFunctionalExchange = (FunctionalExchange) anEdge.getTarget();
         functionalExchangesInDiagram.put(currentFunctionalExchange, anEdge);
 
-        // we can not display categories for functional Exchanges that do not rely bordered nodes
+        // we can not display categories for functional Exchanges that
+        // do not rely bordered nodes
         if ((anEdge.getSourceNode() instanceof DNode) && (anEdge.getTargetNode() instanceof DNode)
             && DiagramServices.getDiagramServices().isABorderedNode((DNode) anEdge.getSourceNode())
             && DiagramServices.getDiagramServices().isABorderedNode((DNode) anEdge.getTargetNode())) {
@@ -966,15 +1045,15 @@ public class FaServices {
     // avoid double creation of functional exchanges
     Set<FunctionalExchange> alreadyCreated = new HashSet<FunctionalExchange>();
 
-    // create or show functional exchange views and remove exchange category views
+    // create or show functional exchange views and remove exchange category
+    // views
     for (DEdge anEdge : exchangeCategoryEdgesToRemove) {
       AbstractDNode sourceFunctionView = (AbstractDNode) anEdge.getSourceNode().eContainer();
       AbstractDNode targetFunctionView = (AbstractDNode) anEdge.getTargetNode().eContainer();
       AbstractFunction sourceFunction = (AbstractFunction) sourceFunctionView.getTarget();
       AbstractFunction targetFunction = (AbstractFunction) targetFunctionView.getTarget();
       List<FunctionalExchange> functionalExchangesOfCategory = ((ExchangeCategory) anEdge.getTarget()).getExchanges();
-      Set<FunctionalExchange> exchangesToDisplay =
-          getAvailableFunctionalExchangesBetweeen2Functions(functionalExchangesOfCategory, sourceFunction, targetFunction);
+      Set<FunctionalExchange> exchangesToDisplay = getAvailableFunctionalExchangesBetweeen2Functions(functionalExchangesOfCategory, sourceFunction, targetFunction);
       for (FunctionalExchange anExchange : exchangesToDisplay) {
 
         boolean toRemove = false;
@@ -1086,6 +1165,7 @@ public class FaServices {
 
   /**
    * Returns whether an exchange category can be displayed between both views
+   * 
    * @param sourceFunctionView_p
    * @param targetFunctionView_p
    * @return
@@ -1094,7 +1174,8 @@ public class FaServices {
     if ((sourceFunctionView_p != null) && (targetFunctionView_p != null)) {
       if ((sourceFunctionView_p.getTarget() != null) && (targetFunctionView_p.getTarget() != null)) {
         if (sourceFunctionView_p != targetFunctionView_p) {
-          // remove displaying categories from a function to one of its parents
+          // remove displaying categories from a function to one of
+          // its parents
           if (!EcoreUtil2.isContainedBy(sourceFunctionView_p.getTarget(), targetFunctionView_p.getTarget())) {
             if (!EcoreUtil2.isContainedBy(targetFunctionView_p.getTarget(), sourceFunctionView_p.getTarget())) {
               return true;
@@ -1111,8 +1192,7 @@ public class FaServices {
    * @param sourceFunctionView_p
    * @param targetFunctionView_p
    */
-  private void createViewExchangeCategory(ExchangeCategory aCategory_p, AbstractDNode sourceFunctionView_p, AbstractDNode targetFunctionView_p,
-      DDiagram diagram_p) {
+  private void createViewExchangeCategory(ExchangeCategory aCategory_p, AbstractDNode sourceFunctionView_p, AbstractDNode targetFunctionView_p, DDiagram diagram_p) {
     DNode sourceView = null;
     DNode targetView = null;
 
@@ -1130,7 +1210,8 @@ public class FaServices {
       }
     }
 
-    // test if an edge representing the category already exists between the 2 functions
+    // test if an edge representing the category already exists between the
+    // 2 functions
     if ((null != sourceView) && (null != targetView)) {
       for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceView, diagram_p)) {
         if (anEdge.getTargetNode().equals(targetView)) {
@@ -1162,8 +1243,7 @@ public class FaServices {
    * @param sourceFunctionView_p
    * @param targetFunctionView_p
    */
-  public DEdge createViewFunctionalExchange(FunctionalExchange anExchange_p, AbstractDNode sourceFunctionView_p, AbstractDNode targetFunctionView_p,
-      DDiagram diagram_p) {
+  public DEdge createViewFunctionalExchange(FunctionalExchange anExchange_p, AbstractDNode sourceFunctionView_p, AbstractDNode targetFunctionView_p, DDiagram diagram_p) {
     ActivityNode source = anExchange_p.getSource();
     ActivityNode target = anExchange_p.getTarget();
     EdgeTarget sourceView = null;
@@ -1397,6 +1477,7 @@ public class FaServices {
 
   /**
    * Returns functions owned by the function or owned function pkg
+   * 
    * @return
    */
   public Collection<AbstractFunction> getFirstLevelAbstractFunctions(AbstractFunction function_p) {
@@ -1405,6 +1486,7 @@ public class FaServices {
 
   /**
    * Returns functions owned by the function or owned function pkg
+   * 
    * @return
    */
   public Collection<AbstractFunction> getFirstLevelAbstractFunctions(FunctionPkg container_p) {
@@ -1590,6 +1672,7 @@ public class FaServices {
 
   /**
    * used in context, logical, physical
+   * 
    * @param o
    * @param source
    * @param target
@@ -1673,13 +1756,15 @@ public class FaServices {
 
   boolean isAbstractFunctionVisibleInDFB(AbstractDNode abstractFunction_p, DDiagram diagram_p) {
     // special case for sub functions in contextual data flow blank
-    // we can not call the display service manager to know if sub functions are visible
+    // we can not call the display service manager to know if sub functions
+    // are visible
     // if we activate/deactivate a layer
     if (abstractFunction_p.getMapping().getName().contains(IMappingNameConstants.SUB_CONTROL_NODE_MAPPING_NAME)
         || abstractFunction_p.getMapping().getName().contains(IMappingNameConstants.SUB_FUNCTION_MAPPING_NAME)) {
       for (Layer activatedLayer : diagram_p.getActivatedLayers()) {
         if (activatedLayer.getName().contains(IMappingNameConstants.INTERNAL_DATA_FLOW_LAYER_NAME)) {
-          // if the internal layer is active, the sub function is visible
+          // if the internal layer is active, the sub function is
+          // visible
           return true;
         }
       }
@@ -1690,7 +1775,9 @@ public class FaServices {
 
   /**
    * used in context, logical, oa, physical
-   * @param view_p a nodeContainer or a diagram
+   * 
+   * @param view_p
+   *          a nodeContainer or a diagram
    * @return the list of containers/nodes (whose target is a Function/ControlNode) displayed in the current view
    */
   public List<AbstractDNode> getDisplayedAbstractFunctionViews(DSemanticDecorator view_p) {
@@ -1716,7 +1803,9 @@ public class FaServices {
 
   /**
    * used in context, logical, oa physical
-   * @param view_p a nodeContainer or a diagram
+   * 
+   * @param view_p
+   *          a nodeContainer or a diagram
    * @return the list of Functions/ControlNodes displayed in the current view
    */
   public List<AbstractFunction> getDisplayedAbstractFunctions(DSemanticDecorator view_p) {
@@ -1729,6 +1818,7 @@ public class FaServices {
 
   /**
    * used by external action
+   * 
    * @param view_p
    * @param selectedFunctions
    * @param visibleFunctions
@@ -1748,9 +1838,10 @@ public class FaServices {
         toBeRemoved.add(aView);
       }
     }
+
+    // move visible functions if the container has to be removed
     for (AbstractDNode aView : visibleFunctionViews) {
       if (toBeRemoved.contains(aView.eContainer())) {
-        // move visible functions if the container has to be removed
         diagram.getOwnedDiagramElements().add(aView);
       }
     }
@@ -1760,65 +1851,68 @@ public class FaServices {
       HashSet<DNode> borderedNodes = new HashSet<DNode>();
       borderedNodes.addAll(aView.getOwnedBorderedNodes());
       for (DNode aBorderedNode : borderedNodes) {
-        if ((aBorderedNode.getTarget() != null)
-            && ((aBorderedNode.getTarget() instanceof FunctionPort) || (aBorderedNode.getTarget() instanceof ExchangeCategory))) {
+        if ((aBorderedNode.getTarget() != null) && ((aBorderedNode.getTarget() instanceof FunctionPort) || (aBorderedNode.getTarget() instanceof ExchangeCategory))) {
           moveBorderedNodeIfPossible(aBorderedNode, toBeRemoved, diagram);
         }
       }
     }
 
-    // remove views
-    for (AbstractDNode aView : toBeRemoved) {
-      if (!(diagram.getTarget() instanceof AbstractFunction)) {
-        // case if the diagram is contained in an AbstractCapability
+    // case if the diagram is contained in an AbstractCapability
+    if (!(diagram.getTarget() instanceof AbstractFunction)) {
+
+      for (AbstractDNode aView : toBeRemoved) {
         removeAbstractFunctionAbstractCapabilityInvolvement((AbstractCapability) diagram.getTarget(), aView.getTarget());
       }
-      if (aView instanceof DNode) {
-        DiagramServices.getDiagramServices().removeNodeView((DNode) aView);
-      } else if (aView instanceof DNodeContainer) {
-        DiagramServices.getDiagramServices().removeContainerView((DNodeContainer) aView);
-      }
-      content.removeView(aView);
-    }
 
-    Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<AbstractFunction, AbstractDNode>();
-
-    // get all displayed functions in the diagram
-    for (DDiagramElement aContainer : diagram.getContainers()) {
-      if ((aContainer != null) && (aContainer.getTarget() != null)
-          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram)) {
-        if (aContainer.getTarget() instanceof AbstractFunction) {
-          allFunctionsInDiagram.put((AbstractFunction) aContainer.getTarget(), (AbstractDNode) aContainer);
-        }
+      for (AbstractFunction aFunction : selectedFunctions) {
+        createAbstractFunctionAbstractCapabilityInvolvement((AbstractCapability) diagram.getTarget(), aFunction);
       }
     }
 
-    Set<ExchangeCategory> categories = getVisibleExchangeCategoriesInDiagram(diagram);
+    AbstractShowHide shService = new ShowHideFunction(content);
+
+    for (AbstractDNode element : toBeRemoved) {
+      DiagramContext context = shService.new DiagramContext();
+      shService.hide(element.getTarget(), context);
+    }
+
     HashMap<AbstractFunction, AbstractDNode> showHideCategories = new HashMap<AbstractFunction, AbstractDNode>();
 
     // add views
     for (AbstractFunction aFunction : selectedFunctions) {
       if (!visibleFunctions.contains(aFunction)) {
-        AbstractDNode node = showDFAbstractFunction(aFunction, content.getBestContainer(aFunction), content);
-        if (!(diagram.getTarget() instanceof AbstractFunction)) {
-          createAbstractFunctionAbstractCapabilityInvolvement((AbstractCapability) diagram.getTarget(), aFunction);
+
+        DiagramContext context = shService.new DiagramContext();
+        Collection<DSemanticDecorator> views = shService.showWithResult(aFunction, context);
+
+        // retrieve newly created views
+        for (DSemanticDecorator view : views) {
+          if (aFunction.equals(view.getTarget()) && view instanceof AbstractDNode) {
+            showHideCategories.put(aFunction, (AbstractDNode) view);
+          }
         }
-        showHideCategories.put(aFunction, node);
+
       }
     }
 
     // and create exchange category links for all newly created views
+    Set<ExchangeCategory> categories = getVisibleExchangeCategoriesInDiagram(diagram);
     for (AbstractFunction aFunction : selectedFunctions) {
       if (!visibleFunctions.contains(aFunction)) {
         AbstractDNode node = showHideCategories.get(aFunction);
-        if (CapellaServices.getService().isSynchronized(diagram)) {
-          HashMapSet<ExchangeCategory, AbstractFunction> map = getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(node, content);
-          for (ExchangeCategory category : new ArrayList<ExchangeCategory>(map.keySet())) {
+        if (node != null && CapellaServices.getService().isSynchronized(diagram)) {
+          HashMapSet<ExchangeCategory, EObject> scope = (HashMapSet) getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(node, content);
+          HashMapSet<EObject, EObject> selectedElements = new HashMapSet<EObject, EObject>((Map) scope);
+          HashMapSet<EObject, EObject> initialSelection = (HashMapSet) FaServices.getFaServices().getCategoriesAndFunctionsInitialSelectionInDataFlowBlank((DNodeContainer) node,
+              content);
+
+          for (ExchangeCategory category : new ArrayList<ExchangeCategory>(scope.keySet())) {
             if (!categories.contains(category)) {
-              map.remove(category);
+              selectedElements.remove(category);
             }
           }
-          showHideCategoriesInDataFlowBlank(node, map, diagram);
+
+          showFECategories(node, (HashMapSet) scope, initialSelection, selectedElements);
         }
       }
     }
@@ -1838,8 +1932,7 @@ public class FaServices {
     }
   }
 
-  public AbstractFunctionAbstractCapabilityInvolvement createAbstractFunctionAbstractCapabilityInvolvement(AbstractCapability capability,
-      AbstractFunction target) {
+  public AbstractFunctionAbstractCapabilityInvolvement createAbstractFunctionAbstractCapabilityInvolvement(AbstractCapability capability, AbstractFunction target) {
     for (AbstractFunctionAbstractCapabilityInvolvement inv : capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements()) {
       if (inv.getInvolved().equals(target)) {
         return inv;
@@ -1899,6 +1992,7 @@ public class FaServices {
 
   /**
    * used
+   * 
    * @param currentFunctionView
    * @param scope
    * @param selectedExchanges
@@ -1906,25 +2000,36 @@ public class FaServices {
    */
   public EObject showDFFunctionalExchange(AbstractDNode currentFunctionView, List<FunctionalExchange> scope, List<FunctionalExchange> selectedExchanges) {
     DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(currentFunctionView);
-    DDiagramContents context = getDDiagramContents(currentDiagram);
+    DDiagramContents content = getDDiagramContents(currentDiagram);
     Set<FunctionalExchange> scopeSet = new HashSet<FunctionalExchange>();
     scopeSet.addAll(scope);
     Set<FunctionalExchange> selectedExchangesSet = new HashSet<FunctionalExchange>();
     selectedExchangesSet.addAll(selectedExchanges);
 
+    AbstractShowHide shService = new ShowHideFunctionalExchange(content);
+    DiagramContext context = shService.new DiagramContext();
+
     List<FunctionalExchange> exchanges = getDisplayedFunctionalExchanges(currentFunctionView);
     for (FunctionalExchange exchange : exchanges) {
       if (selectedExchangesSet.contains(exchange)) {
-        showDFFunctionalExchange(currentFunctionView, exchange, context, false);
+        shService.show(exchange, context);
+
+        // showDFFunctionalExchange(shService, currentFunctionView,
+        // exchange, context, false);
         selectedExchangesSet.remove(exchange);
       } else {
-        hideDFFunctionalExchange(exchange, context);
+        shService.hide(exchange, context);
+
+        // hideDFFunctionalExchange(exchange, context);
       }
     }
 
     int i = 0;
     for (FunctionalExchange exchange : selectedExchangesSet) {
-      showDFFunctionalExchange(currentFunctionView, exchange, context, false);
+      // showDFFunctionalExchange(shService, currentFunctionView,
+      // exchange, context, false);
+      shService.show(exchange, context);
+
       i++;
     }
 
@@ -1932,6 +2037,15 @@ public class FaServices {
 
     return currentFunctionView;
   }
+
+  //
+  // public void showDFFunctionalExchange(AbstractShowHide categories_p,
+  // AbstractDNode currentFunctionView,
+  // FunctionalExchange exchange_p, DiagramContext context_p,
+  // boolean checkValid_p) {
+  // categories_p.show(exchange_p, context_p);
+  //
+  // }
 
   public void showDFFunctionalExchange(AbstractDNode currentFunctionView, FunctionalExchange exchange_p, DDiagramContents context_p, boolean checkValid_p) {
     DEdge edge = context_p.getEdge(exchange_p);
@@ -1977,7 +2091,9 @@ public class FaServices {
       DragAndDropTarget sourceContainerView = context_p.getBestContainer(sourceFunction);
       DragAndDropTarget targetContainerView = context_p.getBestContainer(targetFunction);
 
-      // If there is a hierarchy between both preferred bounds of functional exchange, we need to display both instead hierarchy link
+      // If there is a hierarchy between both preferred bounds of
+      // functional exchange, we need to display both instead
+      // hierarchy link
       if ((sourceContainerView instanceof DDiagramElement) && (targetContainerView instanceof DDiagramElement)) {
         DragAndDropTarget aView = sourceContainerView;
         DragAndDropTarget bView = targetContainerView;
@@ -2000,7 +2116,9 @@ public class FaServices {
         }
       }
 
-      // If preferred source is not a node (null, or diagram), we need to display best parent function of the source (port or OperationalActivity)
+      // If preferred source is not a node (null, or diagram), we need to
+      // display best parent function of the source
+      // (port or OperationalActivity)
       if (sourceView == null) {
         if ((sourceContainerView != null) && (sourceContainerView instanceof AbstractDNode)) {
           sourceView = (AbstractDNode) sourceContainerView;
@@ -2012,7 +2130,9 @@ public class FaServices {
         }
       }
 
-      // If preferred source is not a node (null, or diagram), we need to display best parent function of the source (port or OperationalActivity)
+      // If preferred source is not a node (null, or diagram), we need to
+      // display best parent function of the source
+      // (port or OperationalActivity)
       if (targetView == null) {
         if ((targetContainerView != null) && (targetContainerView instanceof AbstractDNode)) {
           targetView = (AbstractDNode) targetContainerView;
@@ -2039,9 +2159,8 @@ public class FaServices {
 
       // Create an edge between both source and target
       if ((sourceView != null) && (targetView != null)) {
-        edge =
-            DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingDFFunctionalExchange(context_p.getDDiagram()),
-                (EdgeTarget) sourceView, (EdgeTarget) targetView, exchange_p);
+        edge = DiagramServices.getDiagramServices().createEdge(FaServices.getFaServices().getMappingDFFunctionalExchange(context_p.getDDiagram()), (EdgeTarget) sourceView,
+            (EdgeTarget) targetView, exchange_p);
         context_p.addView(edge);
       }
     }
@@ -2277,6 +2396,7 @@ public class FaServices {
 
   /**
    * Perform a dnd of a function port.
+   * 
    * @param port_p
    * @param oldContainer_p
    * @param newContainer_p
@@ -2378,17 +2498,16 @@ public class FaServices {
 
   /**
    * Performs semantic operation for a reconnect of source from a component exchange edge
+   * 
    * @param componentExchange_p
    * @param edge_p
    * @param oldNode_p
    * @param newNode_p
    */
-  public EObject reconnectDFFunctionalExchangeSource(EObject functionalExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p,
-      DSemanticDecorator newNode_p) {
+  public EObject reconnectDFFunctionalExchangeSource(EObject functionalExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p, DSemanticDecorator newNode_p) {
     if (edge_p instanceof DEdge) {
       if (functionalExchange_p instanceof FunctionalExchange) {
-        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange_p, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge_p, oldNode_p,
-            newNode_p);
+        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange_p, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge_p, oldNode_p, newNode_p);
       }
     }
     return functionalExchange_p;
@@ -2396,17 +2515,16 @@ public class FaServices {
 
   /**
    * Performs semantic operation for a reconnect of source from a component exchange edge
+   * 
    * @param componentExchange_p
    * @param edge_p
    * @param oldNode_p
    * @param newNode_p
    */
-  public EObject reconnectDFFunctionalExchangeTarget(EObject functionalExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p,
-      DSemanticDecorator newNode_p) {
+  public EObject reconnectDFFunctionalExchangeTarget(EObject functionalExchange_p, DSemanticDecorator edge_p, DSemanticDecorator oldNode_p, DSemanticDecorator newNode_p) {
     if (edge_p instanceof DEdge) {
       if (functionalExchange_p instanceof FunctionalExchange) {
-        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange_p, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge_p, oldNode_p,
-            newNode_p);
+        reconnectDFFunctionalExchange((FunctionalExchange) functionalExchange_p, ActivityPackage.Literals.ACTIVITY_EDGE__SOURCE, (DEdge) edge_p, oldNode_p, newNode_p);
       }
     }
     return functionalExchange_p;
@@ -2419,8 +2537,8 @@ public class FaServices {
    * @param oldNode_p
    * @param newNode_p
    */
-  private void reconnectDFFunctionalExchange(FunctionalExchange functionalExchange_p, EReference activityEdgeSource_p, DEdge edge_p,
-      DSemanticDecorator oldNode_p, DSemanticDecorator newNode_p) {
+  private void reconnectDFFunctionalExchange(FunctionalExchange functionalExchange_p, EReference activityEdgeSource_p, DEdge edge_p, DSemanticDecorator oldNode_p,
+      DSemanticDecorator newNode_p) {
     //
   }
 
@@ -2484,9 +2602,13 @@ public class FaServices {
 
   /**
    * Perform model modifications on dnd of an abstract function.
-   * @param function_p the given abstractFunction
-   * @param oldContainer the given namedElement
-   * @param newContainer the given namedElement
+   * 
+   * @param function_p
+   *          the given abstractFunction
+   * @param oldContainer
+   *          the given namedElement
+   * @param newContainer
+   *          the given namedElement
    * @return the EObject
    */
   public EObject dndABAbstractFunctionAllocation(AbstractFunction function_p, NamedElement oldContainer, NamedElement newContainer) {
@@ -2544,7 +2666,8 @@ public class FaServices {
       }
       CapellaServices.getService().removeElements(removeAllocationLink);
 
-      // create new Component Functional Allocation allocation in new container(that is component)
+      // create new Component Functional Allocation allocation in new
+      // container(that is component)
       allocateToComponent(function_p, newComponent);
     }
     // old container is Component and new container is ROLE
@@ -2561,11 +2684,14 @@ public class FaServices {
       }
       CapellaServices.getService().removeElements(removeAllocationLink);
 
-      // create new Activity Allocation allocation in new container (that is role)
+      // create new Activity Allocation allocation in new container (that
+      // is role)
       allocateToRole(function_p, newRole);
     }
 
-    // remove useless portRealization of "all functions" and inComing and outGoing functiaonalExchages(component Exchange Allocation)
+    // remove useless portRealization of "all functions" and inComing and
+    // outGoing functiaonalExchages(component
+    // Exchange Allocation)
     if (!oldContainer.equals(newComponent)) {
       removeUseLessPortRealizationAndComponentExchangeAllocation(function_p, functions);
     }
@@ -2611,21 +2737,23 @@ public class FaServices {
    * @return
    */
   private boolean isValidAllocation(Allocation realization_p) {
-    return (realization_p.getSourceElement() != null)
-           && (realization_p.getTargetElement() != null)
-           && (realization_p.getSourceElement() instanceof CapellaElement)
-           && (realization_p.getTargetElement() instanceof CapellaElement)
-           && CapellaElementExt.areInSameDecompositionAlternative((CapellaElement) realization_p.getSourceElement(),
-               (CapellaElement) realization_p.getTargetElement());
+    return (realization_p.getSourceElement() != null) && (realization_p.getTargetElement() != null) && (realization_p.getSourceElement() instanceof CapellaElement)
+        && (realization_p.getTargetElement() instanceof CapellaElement)
+        && CapellaElementExt.areInSameDecompositionAlternative((CapellaElement) realization_p.getSourceElement(), (CapellaElement) realization_p.getTargetElement());
   }
 
-  public HashMapSet<ExchangeCategory, AbstractFunction> getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(AbstractDNode functionView_p,
-      DDiagramContents content_p) {
+  public HashMapSet<ExchangeCategory, AbstractFunction> getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(AbstractDNode functionView_p, DDiagramContents content_p) {
 
     HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<ExchangeCategory, AbstractFunction>();
     List<DNodeContainer> functionContainersInDiagram = new ArrayList<DNodeContainer>();
 
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content_p.getDDiagram())) { // TODO We need to update this using
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content_p.getDDiagram())) { // TODO
+      // We
+      // need
+      // to
+      // update
+      // this
+      // using
       // DDiagramContent, but it must be
       // consistent with all added views while
       // S/H
@@ -2663,12 +2791,17 @@ public class FaServices {
     return returnedMap;
   }
 
-  public HashMapSet<ExchangeCategory, AbstractFunction> getCategoriesAndFunctionsInitialSelectionInDataFlowBlank(DNodeContainer functionView_p,
-      DDiagramContents content_p) {
+  public HashMapSet<ExchangeCategory, AbstractFunction> getCategoriesAndFunctionsInitialSelectionInDataFlowBlank(DNodeContainer functionView_p, DDiagramContents content_p) {
     HashMapSet<ExchangeCategory, AbstractFunction> returnedMap = new HashMapSet<ExchangeCategory, AbstractFunction>();
     List<DNodeContainer> functionContainersInDiagram = new ArrayList<DNodeContainer>();
 
-    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content_p.getDDiagram())) { // TODO We need to update this using
+    for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(content_p.getDDiagram())) { // TODO
+      // We
+      // need
+      // to
+      // update
+      // this
+      // using
       // DDiagramContent, but it must be
       // consistent with all added views while
       // S/H
@@ -2686,7 +2819,8 @@ public class FaServices {
         for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aBorderedNode, content_p.getDDiagram())) {
           if (anEdge.isVisible()) {
             AbstractFunction sourceFunction = (AbstractFunction) ((DNodeContainer) anEdge.getSourceNode().eContainer()).getTarget();
-            // find if a function in the diagram may be a source Function of the functional Exchange
+            // find if a function in the diagram may be a source
+            // Function of the functional Exchange
             DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(sourceFunction, functionContainersInDiagram);
             if (visibleFunctionInDiagram != null) {
               sourceFunction = (AbstractFunction) visibleFunctionInDiagram.getTarget();
@@ -2697,7 +2831,8 @@ public class FaServices {
         for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aBorderedNode, content_p.getDDiagram())) {
           if (anEdge.isVisible()) {
             AbstractFunction targetFunction = (AbstractFunction) ((DNodeContainer) anEdge.getTargetNode().eContainer()).getTarget();
-            // find if a function in the diagram may be a target Function of the functional Exchange
+            // find if a function in the diagram may be a target
+            // Function of the functional Exchange
             DNodeContainer visibleFunctionInDiagram = getDisplayedFunctionContainer(targetFunction, functionContainersInDiagram);
             if (visibleFunctionInDiagram != null) {
               targetFunction = (AbstractFunction) visibleFunctionInDiagram.getTarget();
@@ -2710,251 +2845,9 @@ public class FaServices {
     return returnedMap;
   }
 
-  public EObject showHideCategoriesInDataFlowBlank(AbstractDNode context_p, HashMapSet<ExchangeCategory, AbstractFunction> selectedCategoriesAndFunctions_p,
-      DDiagram diagram_p) {
-
-    Map<AbstractFunction, DNodeContainer> functionContainers = new HashMap<AbstractFunction, DNodeContainer>();
-
-    Set<DNode> borderedNodesToCheck = new HashSet<DNode>();
-    Set<DNode> ownedBorderedNodes = new HashSet<DNode>();
-    ownedBorderedNodes.addAll(context_p.getOwnedBorderedNodes());
-
-    // init map of existing function containers
-    for (AbstractDNode aContainer : diagram_p.getContainers()) {
-      if ((aContainer.getTarget() != null) && (aContainer.getTarget() instanceof AbstractFunction)) {
-        functionContainers.put((AbstractFunction) aContainer.getTarget(), (DNodeContainer) aContainer);
-      }
-    }
-
-    // add selected functions in the diagram if not existing
-    for (ExchangeCategory anEntry : selectedCategoriesAndFunctions_p.keySet()) {
-      for (AbstractFunction aFunction : selectedCategoriesAndFunctions_p.get(anEntry)) {
-        // if the function does not exist in the diagram => createView
-        DNodeContainer currentContainer = functionContainers.get(aFunction);
-        if (currentContainer == null) {
-          currentContainer = createViewDFFunction(aFunction, diagram_p);
-          functionContainers.put(aFunction, currentContainer);
-        }
-      }
-    }
-
-    // remove exchange categories to remove
-    for (DNode aNode : ownedBorderedNodes) {
-      if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof ExchangeCategory)) {
-        Collection<AbstractFunction> selectedFunctions = new HashSet<AbstractFunction>();
-        if (selectedCategoriesAndFunctions_p.containsKey(aNode.getTarget())) {
-          selectedFunctions.addAll(selectedCategoriesAndFunctions_p.get(aNode.getTarget()));
-        }
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aNode, diagram_p)) {
-          if (!selectedFunctions.contains((((AbstractDNode) anEdge.getSourceNode().eContainer()).getTarget()))) {
-            borderedNodesToCheck.add((DNode) anEdge.getSourceNode());
-            if (!CapellaServices.getService().isSynchronized(diagram_p)) {
-              DiagramServices.getDiagramServices().removeEdgeView(anEdge);
-            } else {
-              CapellaServices.getService().hide(anEdge);
-            }
-          }
-        }
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aNode, diagram_p)) {
-          if (!selectedFunctions.contains((((AbstractDNode) anEdge.getTargetNode().eContainer()).getTarget()))) {
-            borderedNodesToCheck.add((DNode) anEdge.getTargetNode());
-            if (!CapellaServices.getService().isSynchronized(diagram_p)) {
-              DiagramServices.getDiagramServices().removeEdgeView(anEdge);
-            } else {
-              CapellaServices.getService().hide(anEdge);
-            }
-          }
-        }
-        borderedNodesToCheck.add(aNode);
-        for (DNode aNodeToCheck : borderedNodesToCheck) {
-          boolean canDelete = true;
-          for (DEdge edge : DiagramServices.getDiagramServices().getIncomingEdges(aNodeToCheck, diagram_p)) {
-            if (DiagramServices.getDiagramServices().isVisible(edge)) {
-              canDelete = false;
-              break;
-            }
-          }
-          for (DEdge edge : DiagramServices.getDiagramServices().getOutgoingEdges(aNodeToCheck, diagram_p)) {
-            if (DiagramServices.getDiagramServices().isVisible(edge)) {
-              canDelete = false;
-              break;
-            }
-          }
-          if (canDelete) {
-            if (!CapellaServices.getService().isSynchronized(diagram_p)) {
-              DiagramServices.getDiagramServices().removeNodeView(aNodeToCheck);
-            } else {
-              CapellaServices.getService().hide(aNodeToCheck);
-            }
-          }
-        }
-      }
-    }
-
-    // init map of existing categories
-    Map<ExchangeCategory, Set<DNodeContainer>> incomingExchangeCategories = new HashMap<ExchangeCategory, Set<DNodeContainer>>();
-    Map<ExchangeCategory, Set<DNodeContainer>> outgoingExchangeCategories = new HashMap<ExchangeCategory, Set<DNodeContainer>>();
-    for (DNode aNode : context_p.getOwnedBorderedNodes()) {
-      if (aNode.getActualMapping().getName().equals(getMappingNameInputPinCategory(diagram_p))) {
-        ExchangeCategory currentCategory = (ExchangeCategory) aNode.getTarget();
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getIncomingEdges(aNode, diagram_p)) {
-          if (anEdge.getSourceNode().eContainer() != null) {
-            if (incomingExchangeCategories.containsKey(currentCategory)) {
-              incomingExchangeCategories.get(currentCategory).add((DNodeContainer) anEdge.getSourceNode().eContainer());
-            } else {
-              Set<DNodeContainer> newSet = new HashSet<DNodeContainer>();
-              newSet.add((DNodeContainer) anEdge.getSourceNode().eContainer());
-              incomingExchangeCategories.put(currentCategory, newSet);
-            }
-          }
-        }
-      }
-      if (aNode.getActualMapping().getName().equals(getMappingNameOutputPinCategory(diagram_p))) {
-        ExchangeCategory currentCategory = (ExchangeCategory) aNode.getTarget();
-        for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(aNode, diagram_p)) {
-          if (anEdge.getTargetNode().eContainer() != null) {
-            if (outgoingExchangeCategories.containsKey(currentCategory)) {
-              outgoingExchangeCategories.get(currentCategory).add((DNodeContainer) anEdge.getTargetNode().eContainer());
-            } else {
-              Set<DNodeContainer> newSet = new HashSet<DNodeContainer>();
-              newSet.add((DNodeContainer) anEdge.getTargetNode().eContainer());
-              outgoingExchangeCategories.put(currentCategory, newSet);
-            }
-          }
-        }
-      }
-    }
-
-    // add exchange categories to add
-    List<FunctionalExchange> incomingOutgoingExchanges = getAvailableFunctionalExchangesToInsert(context_p);
-    for (FunctionalExchange anExchange : incomingOutgoingExchanges) {
-      DNodeContainer targetFunctionView = getDisplayedFunctionContainer(anExchange.getSource().eContainer(), functionContainers.values());
-      boolean incoming = true;
-      if ((targetFunctionView != null) && EcoreUtil.isAncestor(context_p, targetFunctionView)) {
-        targetFunctionView = getDisplayedFunctionContainer(anExchange.getTarget().eContainer(), functionContainers.values());
-        incoming = false;
-      }
-
-      if (isValidCreationCategoryBetweenViews(anExchange, context_p, targetFunctionView)) {
-        // only if the target function is in the diagram
-        for (ExchangeCategory aCategory : anExchange.getCategories()) {
-          if (selectedCategoriesAndFunctions_p.containsKey(aCategory)
-              && selectedCategoriesAndFunctions_p.get(aCategory).contains(targetFunctionView.getTarget())) {
-            if (incoming
-                && ((!incomingExchangeCategories.containsKey(aCategory)) || (incomingExchangeCategories.containsKey(aCategory) && (!incomingExchangeCategories
-                    .get(aCategory).contains(targetFunctionView))))) {
-              createViewExchangeCategory(aCategory, targetFunctionView, context_p, diagram_p);
-              if (incomingExchangeCategories.containsKey(aCategory)) {
-                incomingExchangeCategories.get(aCategory).add(targetFunctionView);
-              } else {
-                Set<DNodeContainer> newSet = new HashSet<DNodeContainer>();
-                newSet.add(targetFunctionView);
-                incomingExchangeCategories.put(aCategory, newSet);
-              }
-            } else if (incoming) {
-              // if incoming and category is hidden, reveal it
-
-              DNode sourceNode = null;
-              DNode targetNode = null;
-              for (DNode aNode : context_p.getOwnedBorderedNodes()) {
-                if (aNode.getTarget().equals(aCategory) && aNode.getActualMapping().getName().equals(getMappingNameInputPinCategory(diagram_p))) {
-                  CapellaServices.getService().show(aNode);
-                  sourceNode = aNode;
-                }
-              }
-              for (DNode aNode : targetFunctionView.getOwnedBorderedNodes()) {
-                if (aNode.getTarget().equals(aCategory) && aNode.getActualMapping().getName().equals(getMappingNameOutputPinCategory(diagram_p))) {
-                  CapellaServices.getService().show(aNode);
-                  targetNode = aNode;
-                }
-              }
-              if ((sourceNode != null) && (targetNode != null)) {
-                for (DEdge edge : sourceNode.getOutgoingEdges()) {
-                  if (edge.getTargetNode().equals(targetNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-                for (DEdge edge : sourceNode.getIncomingEdges()) {
-                  if (edge.getSourceNode().equals(targetNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-                for (DEdge edge : targetNode.getOutgoingEdges()) {
-                  if (edge.getTargetNode().equals(sourceNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-                for (DEdge edge : targetNode.getIncomingEdges()) {
-                  if (edge.getSourceNode().equals(sourceNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-              }
-            }
-            if (!incoming
-                && ((!outgoingExchangeCategories.containsKey(aCategory)) || (outgoingExchangeCategories.containsKey(aCategory) && (!outgoingExchangeCategories
-                    .get(aCategory).contains(targetFunctionView))))) {
-              createViewExchangeCategory(aCategory, context_p, targetFunctionView, diagram_p);
-              if (outgoingExchangeCategories.containsKey(aCategory)) {
-                outgoingExchangeCategories.get(aCategory).add(targetFunctionView);
-              } else {
-                Set<DNodeContainer> newSet = new HashSet<DNodeContainer>();
-                newSet.add(targetFunctionView);
-                outgoingExchangeCategories.put(aCategory, newSet);
-              }
-
-            } else if (!incoming) {
-              DNode sourceNode = null;
-              DNode targetNode = null;
-              // Show category port
-              for (DNode aNode : context_p.getOwnedBorderedNodes()) {
-                if (aNode.getTarget().equals(aCategory) && aNode.getActualMapping().getName().equals(getMappingNameOutputPinCategory(diagram_p))) {
-                  CapellaServices.getService().show(aNode);
-                  sourceNode = aNode;
-                }
-              }
-              // Show category port
-              for (DNode aNode : targetFunctionView.getOwnedBorderedNodes()) {
-                if (aNode.getTarget().equals(aCategory) && aNode.getActualMapping().getName().equals(getMappingNameInputPinCategory(diagram_p))) {
-                  CapellaServices.getService().show(aNode);
-                  targetNode = aNode;
-                }
-              }
-              if ((sourceNode != null) && (targetNode != null)) {
-                for (DEdge edge : sourceNode.getOutgoingEdges()) {
-                  if (edge.getTargetNode().equals(targetNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-                for (DEdge edge : sourceNode.getIncomingEdges()) {
-                  if (edge.getSourceNode().equals(targetNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-                for (DEdge edge : targetNode.getOutgoingEdges()) {
-                  if (edge.getTargetNode().equals(sourceNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-                for (DEdge edge : targetNode.getIncomingEdges()) {
-                  if (edge.getSourceNode().equals(sourceNode)) {
-                    CapellaServices.getService().show(edge);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    reorderFAElements(diagram_p);
-
-    return context_p;
-  }
-
   /**
    * Create a component exchange between two parts, without creating any ports
+   * 
    * @param context_p
    * @param sourceView_p
    * @param targetView_p
@@ -3003,6 +2896,7 @@ public class FaServices {
 
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
+   * 
    * @param context_p
    * @param sourceViewk
    * @param targetView_p
@@ -3014,25 +2908,25 @@ public class FaServices {
 
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
+   * 
    * @param context_p
    * @param sourceViewk
    * @param targetView_p
    * @return
    */
-  public EObject createABComponentExchange(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p,
-      boolean createComponentExchageOnType_p) {
+  public EObject createABComponentExchange(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p, boolean createComponentExchageOnType_p) {
     return createABComponentExchangeWithOption(context_p, sourceView_p, targetView_p, createComponentExchageOnType_p);
   }
 
   /**
    * Create a component exchange in an architecture blank diagram. Create port if selected views are not targeting port
+   * 
    * @param context_p
    * @param sourceViewk
    * @param targetView_p
    * @return
    */
-  public EObject createABComponentExchangeWithOption(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p,
-      boolean createComponentExchageOnType_p) {
+  public EObject createABComponentExchangeWithOption(EObject context_p, DSemanticDecorator sourceView_p, DSemanticDecorator targetView_p, boolean createComponentExchageOnType_p) {
     EObject sourceTarget = sourceView_p.getTarget();
     EObject targetTarget = targetView_p.getTarget();
 
@@ -3153,6 +3047,7 @@ public class FaServices {
 
   /**
    * Create a delegation in an interface blank diagram. Create port if selected views are not targeting port
+   * 
    * @param context_p
    * @param sourceView_p
    * @param targetView_p
@@ -3164,6 +3059,7 @@ public class FaServices {
 
   /**
    * Create a delegation in an architecture blank diagram. Create port if selected views are not targeting port
+   * 
    * @param context_p
    * @param sourceView_p
    * @param targetView_p
@@ -3190,8 +3086,7 @@ public class FaServices {
     if (sourcePart == null) {
       EObject sourceComponent = CsServices.getService().getComponentType(sourceView_p);
       if ((sourceComponent != null) && (sourceComponent instanceof Component)) {
-        if ((((Component) sourceComponent).getRepresentingPartitions().size() > 0)
-            && (((Component) sourceComponent).getRepresentingPartitions().get(0) instanceof Part)) {
+        if ((((Component) sourceComponent).getRepresentingPartitions().size() > 0) && (((Component) sourceComponent).getRepresentingPartitions().get(0) instanceof Part)) {
           sourcePart = (Part) ((Component) sourceComponent).getRepresentingPartitions().get(0);
         }
       }
@@ -3199,8 +3094,7 @@ public class FaServices {
     if (targetPart == null) {
       EObject targetComponent = CsServices.getService().getComponentType(targetView_p);
       if ((targetComponent != null) && (targetComponent instanceof Component)) {
-        if ((((Component) targetComponent).getRepresentingPartitions().size() > 0)
-            && (((Component) targetComponent).getRepresentingPartitions().get(0) instanceof Part)) {
+        if ((((Component) targetComponent).getRepresentingPartitions().size() > 0) && (((Component) targetComponent).getRepresentingPartitions().get(0) instanceof Part)) {
           targetPart = (Part) ((Component) targetComponent).getRepresentingPartitions().get(0);
         }
       }
@@ -3220,9 +3114,9 @@ public class FaServices {
 
     } else {
 
-      // Create a component port or a physical port if from physical component
-      if ((sourcePart.getAbstractType() instanceof PhysicalComponent)
-          && (((PhysicalComponent) sourcePart.getAbstractType()).getNature() == PhysicalComponentNature.NODE)) {
+      // Create a component port or a physical port if from physical
+      // component
+      if ((sourcePart.getAbstractType() instanceof PhysicalComponent) && (((PhysicalComponent) sourcePart.getAbstractType()).getNature() == PhysicalComponentNature.NODE)) {
         sourcePort = CsFactory.eINSTANCE.createPhysicalPort();
         ((Component) sourcePart.getType()).getOwnedFeatures().add((PhysicalPort) sourcePort);
 
@@ -3298,8 +3192,9 @@ public class FaServices {
   }
 
   /**
-   * Create a component exchange between parents part of sourceView and targetView considered as "brothers" and create delegations from theses parts and
-   * sourceView and targetView
+   * Create a component exchange between parents part of sourceView and targetView considered as "brothers" and create
+   * delegations from theses parts and sourceView and targetView
+   * 
    * @param context_p
    * @param sourceView_p
    * @param targetView_p
@@ -3320,8 +3215,7 @@ public class FaServices {
     }
 
     if ((sourcePart instanceof Part) && (targetPart instanceof Part)) {
-      Collection<EObject> createdElements =
-          ComponentExt.createComponentExchangeThroughDelegations((Part) sourcePart, sourcePort, (Part) targetPart, targetPort);
+      Collection<EObject> createdElements = ComponentExt.createComponentExchangeThroughDelegations((Part) sourcePart, sourcePort, (Part) targetPart, targetPort);
       DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
       CsServices.getService().showABComponentExchange(createdElements, (DSemanticDecorator) diagram);
     }
@@ -3427,10 +3321,10 @@ public class FaServices {
 
   /**
    * Perform a dnd of a port.
+   * 
    * @param port_p
    */
-  EObject removeUselessPortRealizations(Port port_p, boolean includeFunctionalRealization, boolean includeComponentRealization, boolean topDelegation,
-      boolean bottomDelegation) {
+  EObject removeUselessPortRealizations(Port port_p, boolean includeFunctionalRealization, boolean includeComponentRealization, boolean topDelegation, boolean bottomDelegation) {
     Collection<EObject> elements = new HashSet<EObject>();
 
     if (port_p instanceof ComponentPort) {
@@ -3474,8 +3368,7 @@ public class FaServices {
             elements.add(realization);
           }
 
-          if (includeComponentRealization
-              && ((realization.getTargetElement() instanceof ComponentPort) || (realization.getTargetElement() instanceof PhysicalPort))) {
+          if (includeComponentRealization && ((realization.getTargetElement() instanceof ComponentPort) || (realization.getTargetElement() instanceof PhysicalPort))) {
             elements.add(realization);
           }
         }
@@ -3488,6 +3381,7 @@ public class FaServices {
 
   /**
    * Perform a dnd of a function port.
+   * 
    * @param port_p
    * @param oldContainer_p
    * @param newContainer_p
@@ -3525,9 +3419,13 @@ public class FaServices {
 
   /**
    * Perform a dnd of a physical port
-   * @param port_p the given port
-   * @param oldContainer_p the old view container
-   * @param newContainer_p the new view container
+   * 
+   * @param port_p
+   *          the given port
+   * @param oldContainer_p
+   *          the old view container
+   * @param newContainer_p
+   *          the new view container
    * @return the EObject
    */
   public EObject dndABPhysicalPort(PhysicalPort port_p, Part oldContainer_p, Part newContainer_p) {
@@ -3545,9 +3443,13 @@ public class FaServices {
 
   /**
    * Perform a dnd of a component port (standard port or flow port)
-   * @param port_p the given port
-   * @param oldContainer_p the old view container
-   * @param newContainer_p the new view container
+   * 
+   * @param port_p
+   *          the given port
+   * @param oldContainer_p
+   *          the old view container
+   * @param newContainer_p
+   *          the new view container
    * @return the EObject
    */
   public EObject dndABComponentPort(ComponentPort port_p, Part oldContainer_p, Part newContainer_p) {
@@ -3565,8 +3467,11 @@ public class FaServices {
 
   /**
    * Move a component in the new container component
-   * @param component the given component
-   * @param container the given container component
+   * 
+   * @param component
+   *          the given component
+   * @param container
+   *          the given container component
    */
   protected void moveComponent(Component component, Component container) {
     if ((container instanceof LogicalComponent) && (component instanceof LogicalComponent)) {
@@ -3579,7 +3484,9 @@ public class FaServices {
 
   /**
    * Move an exchange in a visible place on both source/target
-   * @param exchange the given componentExchange
+   * 
+   * @param exchange
+   *          the given componentExchange
    */
   protected void moveComponentExchange(ComponentExchange exchange) {
     ComponentExchangeExt.attachToDefaultContainer(exchange);
@@ -3587,7 +3494,9 @@ public class FaServices {
 
   /**
    * Move an exchange in a visible place on both source/target
-   * @param exchange the given functionalExchange
+   * 
+   * @param exchange
+   *          the given functionalExchange
    */
   protected void moveFunctionalExchange(FunctionalExchange exchange) {
     EObject ancestor = CapellaServices.getService().getCommonAncestor(exchange.getSource(), exchange.getTarget());
@@ -3600,7 +3509,9 @@ public class FaServices {
 
   /**
    * Move an exchange in a visible place on both source/target
-   * @param exchange the given PhysicalLink
+   * 
+   * @param exchange
+   *          the given PhysicalLink
    */
   protected void movePhysicalLink(PhysicalLink exchange) {
     EObject source = PhysicalLinkExt.getSourcePart(exchange);
@@ -3626,7 +3537,9 @@ public class FaServices {
 
   /**
    * Move exchanges related to a flow port
-   * @param port the given flowPort
+   * 
+   * @param port
+   *          the given flowPort
    */
   protected void updateExchanges(PhysicalPort port, Part oldPart, Part newPart) {
     for (PhysicalLink exchange : PhysicalLinkExt.getAllRelatedPhysicalLinks(port)) {
@@ -3643,7 +3556,9 @@ public class FaServices {
 
   /**
    * Move exchanges related to a flow port
-   * @param port the given flowPort
+   * 
+   * @param port
+   *          the given flowPort
    */
   protected void moveComponentExchanges(ComponentPort port_p) {
     for (ComponentExchange exchange : port_p.getComponentExchanges()) {
@@ -3659,7 +3574,9 @@ public class FaServices {
 
   /**
    * Move exchanges related to a flow port
-   * @param port the given flowPort
+   * 
+   * @param port
+   *          the given flowPort
    */
   protected void updateComponentExchanges(ComponentPort port, Part oldPart, Part newPart) {
     for (ComponentExchange exchange : port.getComponentExchanges()) {
@@ -3682,7 +3599,9 @@ public class FaServices {
 
   /**
    * Move exchanges related to the function port
-   * @param port the given functionPort
+   * 
+   * @param port
+   *          the given functionPort
    */
   protected void moveFunctionalExchanges(FunctionPort port) {
     List<ActivityEdge> edges;
@@ -3765,7 +3684,9 @@ public class FaServices {
 
   /**
    * Gets the functional exchanges related to the port
-   * @param port the given port
+   * 
+   * @param port
+   *          the given port
    * @return the functional exchanges
    */
   protected Collection<FunctionalExchange> getFunctionalExchanges(Port port) {
@@ -3794,7 +3715,9 @@ public class FaServices {
   }
 
   /**
-   * Returns whether the context_p decorator is from the given node_p eclass and is linked to edges from given edge_p eclass
+   * Returns whether the context_p decorator is from the given node_p eclass and is linked to edges from given edge_p
+   * eclass
+   * 
    * @param context_p
    * @param diagram_p
    * @param node_p
@@ -3832,8 +3755,11 @@ public class FaServices {
 
   /**
    * Hide Component Port without Interfaces in Diagram
-   * @param context_p : Function Port
-   * @param diagram_p : DDiagram
+   * 
+   * @param context_p
+   *          : Function Port
+   * @param diagram_p
+   *          : DDiagram
    * @return true if PhysicalPort has PhysicalLink displayed in diagram.
    */
   public boolean isComponentPortWithoutInterfaces(EObject context_p, DDiagram diagram_p) {
@@ -3842,8 +3768,11 @@ public class FaServices {
 
   /**
    * Hide Physical Port without Exchanges in Diagram
-   * @param context_p : Function Port
-   * @param diagram_p : DDiagram
+   * 
+   * @param context_p
+   *          : Function Port
+   * @param diagram_p
+   *          : DDiagram
    * @return true if PhysicalPort has PhysicalLink displayed in diagram.
    */
   public boolean isPhysicalPortWithoutLinks(EObject context_p, DDiagram diagram_p) {
@@ -3852,8 +3781,11 @@ public class FaServices {
 
   /**
    * Hide Component Port without Exchanges in Diagram
-   * @param context_p : Function Port
-   * @param diagram_p : DDiagram
+   * 
+   * @param context_p
+   *          : Function Port
+   * @param diagram_p
+   *          : DDiagram
    * @return true if ComponentPort has ComponentExchange displayed in diagram.
    */
   public boolean isComponentPortWithoutExchanges(EObject context_p, DDiagram diagram_p) {
@@ -3862,8 +3794,11 @@ public class FaServices {
 
   /**
    * Hide Function Port without Exchanges in Diagram
-   * @param context_p : Function Port
-   * @param diagram_p : DDiagram
+   * 
+   * @param context_p
+   *          : Function Port
+   * @param diagram_p
+   *          : DDiagram
    * @return true if FunctionPort[input/output] has (incoming/outgoing)FunctionExchange displayed in diagram.
    */
   public boolean isFunctionPortWithoutExchanges(EObject context_p, DDiagram diagram_p) {
@@ -3878,11 +3813,26 @@ public class FaServices {
     DNodeContainer container; // node container
     FunctionContainer parent; // parent of the functionContainer
     AbstractFunction function; // target function of the container
-    Map<ExchangeCategory, DNode> incomingExchangeCategories; // incoming exchange categories bordered node on the container
-    Map<ExchangeCategory, DNode> outgoingExchangeCategories; // outgoing exchange categories bordered node on the container
-    Set<DNode> categoryNodesToRemove; // ExchangeCategory BorderedNodes to remove
+    Map<ExchangeCategory, DNode> incomingExchangeCategories; // incoming
+    // exchange
+    // categories
+    // bordered
+    // node on
+    // the
+    // container
+    Map<ExchangeCategory, DNode> outgoingExchangeCategories; // outgoing
+    // exchange
+    // categories
+    // bordered
+    // node on
+    // the
+    // container
+    Set<DNode> categoryNodesToRemove; // ExchangeCategory BorderedNodes to
+    // remove
 
-    Map<FunctionPort, DNode> functionPorts; // function ports on the container
+    Map<FunctionPort, DNode> functionPorts; // function ports on the
+
+    // container
 
     public FunctionContainer(DNodeContainer container_p, FunctionContainer parent_p, DDiagram diagram_p, Map<AbstractFunction, AbstractDNode> functions_p) {
       container = container_p;
@@ -3911,7 +3861,9 @@ public class FaServices {
       // init list of exchangeCategory Nodes to Remove
       for (Entry<ExchangeCategory, DNode> me : this.incomingExchangeCategories.entrySet()) {
         boolean toRemove = true;
-        // check for each exchange of the category if it has the current container as target function and if the source Function is in the diagram
+        // check for each exchange of the category if it has the current
+        // container as target function and if the source
+        // Function is in the diagram
         for (FunctionalExchange anExchange : me.getKey().getExchanges()) {
           AbstractDNode targetPortContainer = getBestFunctionContainer(anExchange.getTarget(), functions_p);
           AbstractDNode sourcePortContainer = getBestFunctionContainer(anExchange.getSource(), functions_p);
@@ -3926,7 +3878,9 @@ public class FaServices {
       }
       for (Entry<ExchangeCategory, DNode> me : this.outgoingExchangeCategories.entrySet()) {
         boolean toRemove = true;
-        // check for each exchange of the category if it has the current container as source function and if the target Function is in the diagram
+        // check for each exchange of the category if it has the current
+        // container as source function and if the target
+        // Function is in the diagram
         for (FunctionalExchange anExchange : me.getKey().getExchanges()) {
           AbstractDNode targetPortContainer = getBestFunctionContainer(anExchange.getTarget(), functions_p);
           AbstractDNode sourcePortContainer = getBestFunctionContainer(anExchange.getSource(), functions_p);
@@ -4017,16 +3971,24 @@ public class FaServices {
    * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
    */
   public void reorderFAElements(DDiagram diagram_p) {
-    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<EObject, DDiagramElement>(); // all displayed elements in the diagram
-    Set<DDiagramElement> toBeMoved = new HashSet<DDiagramElement>(); // diagram elements to be moved
+    Hashtable<EObject, DDiagramElement> elementsInDiagram = new Hashtable<EObject, DDiagramElement>(); // all
+    // displayed
+    // elements
+    // in
+    // the
+    // diagram
+    Set<DDiagramElement> toBeMoved = new HashSet<DDiagramElement>(); // diagram
+    // elements
+    // to
+    // be
+    // moved
     Set<FunctionPort> functionPortsInDiagram = new HashSet<FunctionPort>();
     Map<AbstractFunction, AbstractDNode> allFunctionsInDiagram = new HashMap<AbstractFunction, AbstractDNode>();
     DDiagramContents content = new DDiagramContents(diagram_p);
 
     // get all displayed functions in the diagram
     for (DDiagramElement aContainer : diagram_p.getContainers()) {
-      if ((aContainer != null) && (aContainer.getTarget() != null)
-          && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram_p)) {
+      if ((aContainer != null) && (aContainer.getTarget() != null) && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((AbstractDNode) aContainer, diagram_p)) {
         elementsInDiagram.put(aContainer.getTarget(), aContainer);
         if (aContainer.getTarget() instanceof AbstractFunction) {
           allFunctionsInDiagram.put((AbstractFunction) aContainer.getTarget(), (AbstractDNode) aContainer);
@@ -4040,7 +4002,8 @@ public class FaServices {
       }
     }
 
-    // The algorithm checks if the Control Nodes and Functions have to be moved
+    // The algorithm checks if the Control Nodes and Functions have to be
+    // moved
     // it needs two iterations
 
     // first iteration (to avoid null container)
@@ -4048,7 +4011,8 @@ public class FaServices {
     for (DDiagramElement anElement : elementsInDiagram.values()) {
       EObject parent = anElement.getTarget().eContainer();
       // case if the actual container is not available any more :
-      // test if the container (A Function) is an ancestor of the current AbstractFunction
+      // test if the container (A Function) is an ancestor of the current
+      // AbstractFunction
       if (anElement.eContainer() instanceof DNodeContainer) {
         EObject actualParentContainer = ((DNodeContainer) anElement.eContainer()).getTarget();
         if (!org.eclipse.emf.ecore.util.EcoreUtil.isAncestor(actualParentContainer, anElement.getTarget())) {
@@ -4058,20 +4022,27 @@ public class FaServices {
         }
       }
 
-      // case if the actual container is available for the current AbstractFunction
-      // but there is a better available container which is a closer parent of the Abstract Function
+      // case if the actual container is available for the current
+      // AbstractFunction
+      // but there is a better available container which is a closer
+      // parent of the Abstract Function
       // example : in the model : A contains B. B Contains C.
-      // in the diagram : A contains B and C. B contains nothing. => C must be moved in container B
+      // in the diagram : A contains B and C. B contains nothing. => C
+      // must be moved in container B
 
-      // for each parent of the current function, we tests if a diagramElement representing the parent appears in the diagram
-      // and if it contains the diagram element representing the current function
+      // for each parent of the current function, we tests if a
+      // diagramElement representing the parent appears in the
+      // diagram
+      // and if it contains the diagram element representing the current
+      // function
       while ((parent instanceof AbstractFunction) || (parent instanceof FunctionPkg)) {
         // test if a parent of the function appears in the diagram
         DDiagramElement parentGraphicalElement = elementsInDiagram.get(parent);
         if ((null != parentGraphicalElement) && (parentGraphicalElement instanceof DNodeContainer)
             && CapellaServices.getService().isVisibleInDiagram(diagram_p, parentGraphicalElement) && canContainSubContainer(parentGraphicalElement)) {
           DNodeContainer nodeContainer = (DNodeContainer) parentGraphicalElement;
-          // if the parent (diagramElement) does not contain the current function (diagramElement)
+          // if the parent (diagramElement) does not contain the
+          // current function (diagramElement)
           // the current function (diagramElement) must be moved
           if (!nodeContainer.getOwnedDiagramElements().contains(anElement)) {
             diagram_p.getOwnedDiagramElements().add(anElement);
@@ -4086,8 +4057,11 @@ public class FaServices {
     // second iteration
     // the elements are correctly moved
     for (DDiagramElement anElement : toBeMoved) {
-      // for each parent of the function to be moved, we tests if a diagramElement representing the parent appears in the diagram
-      // When a parent is found in the diagram, we moved the function and stop.
+      // for each parent of the function to be moved, we tests if a
+      // diagramElement representing the parent appears in
+      // the diagram
+      // When a parent is found in the diagram, we moved the function and
+      // stop.
       EObject parent = anElement.getTarget().eContainer();
       while ((parent instanceof AbstractFunction) || (parent instanceof FunctionPkg)) {
         DDiagramElement parentGraphicalElement = elementsInDiagram.get(parent);
@@ -4118,8 +4092,11 @@ public class FaServices {
   }
 
   /**
-   * This method is necessary because of contextual Data Flow diagrams In contextual diagrams, only the current contextual function can contain subContainers
-   * @param aContainer_p a container
+   * This method is necessary because of contextual Data Flow diagrams In contextual diagrams, only the current
+   * contextual function can contain subContainers
+   * 
+   * @param aContainer_p
+   *          a container
    * @return true if the container can contain sub containers
    */
   public boolean canContainSubContainer(DDiagramElement aContainer_p) {
@@ -4135,10 +4112,15 @@ public class FaServices {
 
   /**
    * remove/move recursively borderedNodes representing FunctionPorts or ExchangeCategories
-   * @param container_p current container
-   * @param diagram_p current diagram
-   * @param parentContainer_p parent container
-   * @param functions_p functions in diagram_p
+   * 
+   * @param container_p
+   *          current container
+   * @param diagram_p
+   *          current diagram
+   * @param parentContainer_p
+   *          parent container
+   * @param functions_p
+   *          functions in diagram_p
    * @return
    */
   protected FunctionContainer updateBorderedNodes(DNodeContainer container_p, DDiagramContents content_p, FunctionContainer parentContainer_p,
@@ -4148,15 +4130,16 @@ public class FaServices {
 
     // function ports
     if (null != currentContainer.getParent()) {
-      // for all parent port, if the port should be display in the function, move or create it
+      // for all parent port, if the port should be display in the
+      // function, move or create it
       for (Map.Entry<FunctionPort, DNode> me : currentContainer.getParent().getFunctionPorts().entrySet()) {
         if (((me.getValue().eContainer() != null) && (((DDiagramElement) me.getValue().eContainer()).getTarget() != null))) {
-          AbstractFunction best =
-              getBestPortFunctionContainer((Pin) me.getKey(), (AbstractFunction) ((DDiagramElement) me.getValue().eContainer()).getTarget(),
-                  currentContainer.getFunction());
+          AbstractFunction best = getBestPortFunctionContainer((Pin) me.getKey(), (AbstractFunction) ((DDiagramElement) me.getValue().eContainer()).getTarget(),
+              currentContainer.getFunction());
           if ((best != null) && best.equals(currentContainer.getFunction())) {
             if (currentContainer.getFunctionPorts().containsKey(me.getKey())) {
-              // delete the bordered node on parent function if it already exists on a child function
+              // delete the bordered node on parent function if it
+              // already exists on a child function
               removeNodeAndMoveEdges(me.getValue(), currentContainer.getFunctionPorts().get(me.getKey()), content_p.getDDiagram());
             } else {
               // move the bordered Node on the child function
@@ -4172,11 +4155,13 @@ public class FaServices {
     if (parentContainer_p != null) {
       parentContainer_p.setIncomingOutgoingExchangeCategories(content_p.getDDiagram());
 
-      // TODO BUG: In some tricky case where parent category is hidden, categories on children are created but shouldn't
-      HashMapSet<ExchangeCategory, AbstractFunction> availableCategories =
-          FaServices.getFaServices().getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(currentContainer.getContainer(), content_p);
+      // TODO BUG: In some tricky case where parent category is hidden,
+      // categories on children are created but shouldn't
+      HashMapSet<ExchangeCategory, AbstractFunction> availableCategories = FaServices.getFaServices().getAvailableCategoriesAndFunctionsToInsertInDataFlowBlank(
+          currentContainer.getContainer(), content_p);
       // For all categories of the parentContainer, propagate to children.
-      // If not synchronized, create category exchanges in children only if category
+      // If not synchronized, create category exchanges in children only
+      // if category
       // of parent container need to be removed.
       for (DNode aNode : parentContainer_p.getCategoryNodes()) {
         if (!CapellaServices.getService().isSynchronized(content_p.getDDiagram())) {
@@ -4225,7 +4210,8 @@ public class FaServices {
     currentContainer.initCategoryNodesToRemove(functions_p);
 
     for (DDiagramElement anElement : container_p.getOwnedDiagramElements()) {
-      // recursively update bordered nodes on contained visible NodeContainers
+      // recursively update bordered nodes on contained visible
+      // NodeContainers
       if ((anElement instanceof DNodeContainer) && (anElement.getTarget() != null) && (anElement.getTarget() instanceof AbstractFunction)
           && FaServices.getFaServices().isAbstractFunctionVisibleInDFB((DNodeContainer) anElement, diagram)) {
         updateBorderedNodes((DNodeContainer) anElement, content_p, currentContainer, functions_p);
@@ -4247,6 +4233,7 @@ public class FaServices {
 
   /**
    * move up borderedNodes of invisible functions
+   * 
    * @param anElement_p
    * @param diagram_p
    * @param currentContainer_p
@@ -4261,10 +4248,11 @@ public class FaServices {
     ownedBorderedNodes.addAll(container_p.getOwnedBorderedNodes());
     // move up controlNodes as Ports and function ports
     for (DNode aBorderedNode : ownedBorderedNodes) {
-      if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof FunctionPort)
-          && CapellaServices.getService().isVisibleInDiagram(diagram_p, aBorderedNode) && !CapellaServices.getService().isSynchronized(diagram_p)) {
+      if ((aBorderedNode.getTarget() != null) && (aBorderedNode.getTarget() instanceof FunctionPort) && CapellaServices.getService().isVisibleInDiagram(diagram_p, aBorderedNode)
+          && !CapellaServices.getService().isSynchronized(diagram_p)) {
         if (parentContainer_p.getFunctionPorts().containsKey(aBorderedNode.getTarget())) {
-          // delete the bordered node on current function if it already exists on the parent function
+          // delete the bordered node on current function if it
+          // already exists on the parent function
           removeNodeAndMoveEdges(aBorderedNode, parentContainer_p.getFunctionPorts().get(aBorderedNode.getTarget()), diagram_p);
         } else {
           // move the bordered Node on the parent function
@@ -4277,23 +4265,21 @@ public class FaServices {
         if (aBorderedNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameInputPinCategory(diagram_p))) {
           if (!parentContainer_p.getIncomingExchangeCategories().containsKey(aBorderedNode.getTarget())) {
             // create borderedNode view on parent function
-            DNode newNode =
-                FaServices.getFaServices()
-                    .createViewInputPinCategory((ExchangeCategory) aBorderedNode.getTarget(), parentContainer_p.getContainer(), diagram_p);
+            DNode newNode = FaServices.getFaServices().createViewInputPinCategory((ExchangeCategory) aBorderedNode.getTarget(), parentContainer_p.getContainer(), diagram_p);
             parentContainer_p.getIncomingExchangeCategories().put((ExchangeCategory) aBorderedNode.getTarget(), newNode);
           }
-          // delete the bordered node on current function if it already exists on the parent function and move edges
+          // delete the bordered node on current function if it
+          // already exists on the parent function and move edges
           removeNodeAndMoveEdges(aBorderedNode, parentContainer_p.getIncomingExchangeCategories().get(aBorderedNode.getTarget()), diagram_p);
         }
         if (aBorderedNode.getActualMapping().getName().equals(FaServices.getFaServices().getMappingNameOutputPinCategory(diagram_p))) {
           if (!parentContainer_p.getOutgoingExchangeCategories().containsKey(aBorderedNode.getTarget())) {
             // create borderedNode view on parent function
-            DNode newNode =
-                FaServices.getFaServices().createViewOutputPinCategory((ExchangeCategory) aBorderedNode.getTarget(), parentContainer_p.getContainer(),
-                    diagram_p);
+            DNode newNode = FaServices.getFaServices().createViewOutputPinCategory((ExchangeCategory) aBorderedNode.getTarget(), parentContainer_p.getContainer(), diagram_p);
             parentContainer_p.getOutgoingExchangeCategories().put((ExchangeCategory) aBorderedNode.getTarget(), newNode);
           }
-          // delete the bordered node on current function if it already exists on the parent function and move edges
+          // delete the bordered node on current function if it
+          // already exists on the parent function and move edges
           removeNodeAndMoveEdges(aBorderedNode, parentContainer_p.getOutgoingExchangeCategories().get(aBorderedNode.getTarget()), diagram_p);
         }
       }
@@ -4302,7 +4288,8 @@ public class FaServices {
   }
 
   /**
-   * @param port_p a FunctionPort or ControlNode
+   * @param port_p
+   *          a FunctionPort or ControlNode
    * @param function1_p
    * @param function2_p
    * @return the function that must contain graphically the functionPort or controlNode
@@ -4323,9 +4310,13 @@ public class FaServices {
 
   /**
    * remove a node and move incoming and outgoing edges on the existing child/parent node
-   * @param toBeRemoved_p the bordered node to remove
-   * @param existingChildNode_p the existing child/parent borderedNode
-   * @param diagram_p the current diagram
+   * 
+   * @param toBeRemoved_p
+   *          the bordered node to remove
+   * @param existingChildNode_p
+   *          the existing child/parent borderedNode
+   * @param diagram_p
+   *          the current diagram
    */
   protected void removeNodeAndMoveEdges(DNode toBeRemoved_p, DNode existingChildNode_p, DDiagram diagram_p) {
     Set<DEdge> incomingExchanges = new HashSet<DEdge>();
@@ -4368,7 +4359,8 @@ public class FaServices {
 
   /**
    * @param port_p
-   * @param functions_p Map of visible containers in the diagram
+   * @param functions_p
+   *          Map of visible containers in the diagram
    * @return the visible container in the diagram that must contain the port port_p
    */
   public AbstractDNode getBestFunctionContainer(ActivityNode port_p, Map<AbstractFunction, AbstractDNode> functions_p) {
@@ -4424,6 +4416,7 @@ public class FaServices {
 
   /**
    * Get all the leaf Functions
+   * 
    * @param arch_p
    * @return : List of leaf Functions
    */
@@ -4443,7 +4436,8 @@ public class FaServices {
         visibleFunctions.put((AbstractFunction) aElement.getTarget(), (DNode) aElement);
       }
     }
-    // delete not selected functions if they are displayed in the container view
+    // delete not selected functions if they are displayed in the container
+    // view
     for (Entry<AbstractFunction, DNode> me : visibleFunctions.entrySet()) {
       if (!selectedFunctions_p.contains(me.getKey())) {
         DiagramServices.getDiagramServices().removeNodeView(me.getValue());
@@ -4522,13 +4516,18 @@ public class FaServices {
 
   /**
    * Perform dnd from diagram to diagram of a physical artifacts.
-   * @param node_p the given physical artifacts
-   * @param oldContainer the given namedElement
-   * @param newContainer the given namedElement
+   * 
+   * @param node_p
+   *          the given physical artifacts
+   * @param oldContainer
+   *          the given namedElement
+   * @param newContainer
+   *          the given namedElement
    * @return the EObject
    */
   public EObject dndABPhysicalArtifacts(CapellaElement node_p, NamedElement oldContainer, NamedElement newContainer) {
-    // Physical Artifacts == Physical Component, Physical Link and Physical Port
+    // Physical Artifacts == Physical Component, Physical Link and Physical
+    // Port
 
     if (oldContainer.equals(newContainer)) {
       return node_p;
@@ -4589,9 +4588,9 @@ public class FaServices {
       while (iterator.hasNext()) {
         PhysicalArtifactRealization artifactRealization = iterator.next();
         TraceableElement targetElement = artifactRealization.getTargetElement();
-        // check if already exist in newContainer, only move which is asked to
-        if ((null != targetElement) && physicalArtifacts.contains(targetElement) && node_p.equals(targetElement)
-            && !newArtifactRealizationsTarget.contains(targetElement)) {
+        // check if already exist in newContainer, only move which is
+        // asked to
+        if ((null != targetElement) && physicalArtifacts.contains(targetElement) && node_p.equals(targetElement) && !newArtifactRealizationsTarget.contains(targetElement)) {
           artifactRealization.setSourceElement(newComponent);
           newComponent.getOwnedPhysicalArtifactRealizations().add(artifactRealization);
         }
@@ -4603,7 +4602,8 @@ public class FaServices {
 
   /**
    * @used context.odesign returns display name of functional exchange
-   * @param exchange_p the functional exchange
+   * @param exchange_p
+   *          the functional exchange
    * @return display name of the functional exchange
    */
   public String getComponentExchangeLabel(ComponentExchange exchange_p, DDiagram diagram_p) {
@@ -4647,8 +4647,8 @@ public class FaServices {
       }
       if (fes.size() == 0) {
         List<AbstractExchangeItem> exchangedItems = getRelatedExchangeItems(exchange_p, false);
-        getExchangeWithExchangeItemsLabel(exchange_p, false, (!showExchangeItems && !showExchangeItemsWithOutFE) || exchangedItems.isEmpty(),
-            showExchangeItems, showExchangeItemsWithOutFE, result, exchangedItems);
+        getExchangeWithExchangeItemsLabel(exchange_p, false, (!showExchangeItems && !showExchangeItemsWithOutFE) || exchangedItems.isEmpty(), showExchangeItems,
+            showExchangeItemsWithOutFE, result, exchangedItems);
       }
 
     } else {
@@ -4662,8 +4662,8 @@ public class FaServices {
       if (showExchangeItemsWithOutFE) {
         exchangedItems.addAll(getRelatedExchangeItems(exchange_p, false));
       }
-      getExchangeWithExchangeItemsLabel(exchange_p, false, (!showExchangeItems && !showExchangeItemsWithOutFE), showExchangeItems, showExchangeItemsWithOutFE,
-          result, exchangedItems);
+      getExchangeWithExchangeItemsLabel(exchange_p, false, (!showExchangeItems && !showExchangeItemsWithOutFE), showExchangeItems, showExchangeItemsWithOutFE, result,
+          exchangedItems);
 
     }
     return result.toString();
@@ -4671,7 +4671,8 @@ public class FaServices {
 
   /**
    * @used context.odesign returns display name of functional exchange
-   * @param exchange_p the functional exchange
+   * @param exchange_p
+   *          the functional exchange
    * @return display name of the functional exchange
    */
   public String getFunctionalExchangeLabel(FunctionalExchange exchange_p, DDiagram diagram_p) {
@@ -4868,8 +4869,8 @@ public class FaServices {
     return exchangedItems;
   }
 
-  private void getExchangeWithExchangeItemsLabel(AbstractNamedElement exchange_p, boolean showExchangeItemsParameters, boolean showName,
-      boolean showExchangeItems, boolean showExchangeItemsWithOutFE, StringBuilder result, List<AbstractExchangeItem> exchangedItems) {
+  private void getExchangeWithExchangeItemsLabel(AbstractNamedElement exchange_p, boolean showExchangeItemsParameters, boolean showName, boolean showExchangeItems,
+      boolean showExchangeItemsWithOutFE, StringBuilder result, List<AbstractExchangeItem> exchangedItems) {
     int indice = 0;
     if (showName) {
       result.append(exchange_p.getName());
@@ -5034,12 +5035,10 @@ public class FaServices {
       } else if (contextualElement instanceof FunctionalChain) {
         contextualFunctionalChains.add(contextualElement);
 
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf((FunctionalChain) contextualElement,
-            FaPackage.Literals.ABSTRACT_FUNCTION)) {
+        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.ABSTRACT_FUNCTION)) {
           contextualFunctions.add((AbstractFunction) involvement.getInvolved());
         }
-        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf((FunctionalChain) contextualElement,
-            FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+        for (FunctionalChainInvolvement involvement : FunctionalChainExt.getInvolvementsOf((FunctionalChain) contextualElement, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
           contextualFunctionalExchanges.add((FunctionalExchange) involvement.getInvolved());
         }
 
@@ -5057,7 +5056,8 @@ public class FaServices {
       showDFAbstractFunction(function, diagramContent_p.getBestContainer(function), diagramContent_p);
     }
 
-    // Create a customized diagram contents to retrieve brothers of diagram elements instead of best container
+    // Create a customized diagram contents to retrieve brothers of diagram
+    // elements instead of best container
     DDiagramContents extendedContent = new DDiagramContents(diagramContent_p) {
 
       @Override
@@ -5126,6 +5126,7 @@ public class FaServices {
 
   /**
    * is [FUNCTIONKIND = FUNCTION] and not AcotorFunction or ControlNode
+   * 
    * @param element_p
    * @return
    */
@@ -5135,6 +5136,7 @@ public class FaServices {
 
   /**
    * is [FUNCTIONKIND = FUNCTION] and not AcotorFunction or ControlNode
+   * 
    * @param element_p
    * @return
    */
@@ -5201,7 +5203,8 @@ public class FaServices {
 
   public String getExchangeCenterLabel(EObject exchange_p, DDiagram diagram_p) {
     // why white space char
-    // The manual refresh of the diagram does not take into account the EmptySting
+    // The manual refresh of the diagram does not take into account the
+    // EmptySting
     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
     if ((null != exchange_p) && (exchange_p instanceof FunctionalExchange)) {
       FunctionalExchange fe = (FunctionalExchange) exchange_p;
@@ -5214,7 +5217,8 @@ public class FaServices {
 
   public String getPhysicalLinkCenterLabel(EObject exchange_p, DDiagram diagram_p) {
     // why white space char
-    // The manual refresh of the diagram does not take into account the EmptySting
+    // The manual refresh of the diagram does not take into account the
+    // EmptySting
     String centerLabel = Character.toString(ICommonConstants.WHITE_SPACE_CHARACTER);
     if ((null != exchange_p) && (exchange_p instanceof PhysicalLink)) {
       PhysicalLink pl = (PhysicalLink) exchange_p;
@@ -5224,4 +5228,565 @@ public class FaServices {
     }
     return centerLabel;
   }
+
+  /**
+   * Get the Node mapping for Functional Exchange category pin
+   * 
+   * @param diagram_p
+   * @return
+   */
+  public NodeMapping getMappingFECategoryOutputPin(DDiagram diagram_p) {
+    String mappingName = null;
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.CSDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.SDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.CLDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.LDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.CPDF_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.PDFB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.SAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.PAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.LAB_EXCHANGE_CATEGORY_OUTPUTPORT_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+  }
+
+  public NodeMapping getMappingFECategoryInputPin(DDiagram diagram_p) {
+    String mappingName = null;
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.CSDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.SDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.CLDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.LDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.CPDF_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.PDFB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.SAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.PAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+      mappingName = IMappingNameConstants.LAB_EXCHANGE_CATEGORY_INPUTPORT_MAPPING_NAME;
+    }
+    return DiagramServices.getDiagramServices().getBorderedNodeMapping(diagram_p, mappingName);
+  }
+
+  /**
+   * Get the edge mapping for the Functional Exchange category
+   * 
+   * @param diagram_p
+   * @return
+   */
+  public EdgeMapping getMappingFECategory(DDiagram diagram_p) {
+    return getMappingExchangeCategory(diagram_p);
+  }
+
+  /**
+   * Do a switch Functional Exchange / Category
+   * 
+   * @param context_p
+   * @param scope
+   * @param initialSelection
+   * @param selectedElements
+   * @return
+   */
+  public EObject switchFECategories(DSemanticDecorator context_p, Collection<EObject> scope, Collection<EObject> initialSelection, Collection<EObject> selectedElements) {
+    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context_p);
+    DDiagramContents content = new DDiagramContents(currentDiagram);
+    return switchFECategories(content, context_p, selectedElements);
+  }
+
+  public EObject switchFECategories(DDiagramContents content_p, DSemanticDecorator context_p, Collection<EObject> selectedElements) {
+
+    FaServices.getFaServices().updateFECategories(content_p);
+
+    switchFEInvisibleCategories(content_p, context_p, selectedElements);
+
+    DDiagram currentDiagram = content_p.getDDiagram();
+    Collection<DDiagramElement> sourceViews = new HashSet<DDiagramElement>();
+    if (context_p instanceof DDiagramElement) {
+      sourceViews.add((DDiagramElement) context_p);
+    }
+    if (sourceViews.isEmpty()) {
+      for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingABAbstractFunction(null, currentDiagram))) {
+        sourceViews.add(element);
+      }
+    }
+
+    AbstractShowHide categories = new ShowHideExchangeCategory(content_p);
+    DiagramContext context = categories.new DiagramContext();
+    if (context_p instanceof DDiagramElement) {
+      context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context_p));
+    }
+
+    for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if (sourceViewTarget != null) {
+        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = getShowHideSubFECategoriesScope(sourceView);
+        for (EObject key : scopeSource.keySet()) {
+          if (selectedElements.contains(key)) {
+            for (Map.Entry<EObject, EObject> srcTarMap : scopeSource.get(key)) {
+              showFECategory(categories, context, (ExchangeCategory) key, srcTarMap.getKey(), srcTarMap.getValue(), true);
+            }
+          } else {
+            for (Map.Entry<EObject, EObject> srcTarMap : scopeSource.get(key)) {
+              showFECategory(categories, context, (ExchangeCategory) key, getBestFunctionContainer(srcTarMap.getKey(), content_p),
+                  getBestFunctionContainer(srcTarMap.getValue(), content_p), false);
+            }
+          }
+        }
+      }
+    }
+
+    context = categories.new DiagramContext();
+    for (DDiagramElement sourceView : sourceViews) {
+      EObject sourceViewTarget = sourceView.getTarget();
+      if (sourceViewTarget != null) {
+        HashMapSet<EObject, Map.Entry<EObject, EObject>> scopeSource = getShowHideSubFECategoriesScope(sourceView);
+        for (EObject key : scopeSource.keySet()) {
+          if (selectedElements.contains(key)) {
+            for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
+              if (exchange.getCategories().contains(key)) {
+                categories.hide(exchange, context);
+              }
+            }
+          } else {
+            for (FunctionalExchange exchange : FunctionExt.getAllExchanges((AbstractFunction) sourceViewTarget)) {
+              if (exchange.getCategories().contains(key)) {
+                categories.show(exchange, context);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    FaServices.getFaServices().updateFECategories(content_p);
+
+    content_p.commitDeferredActions();
+    return context_p;
+  }
+
+  /**
+   * Do a Exchange/Category switch for hidden categories
+   * 
+   * @param content_p
+   * @param context_p
+   * @param selectedElements
+   * @return
+   */
+  public EObject switchFEInvisibleCategories(DDiagramContents content_p, DSemanticDecorator context_p, Collection<EObject> selectedElements) {
+
+    DDiagram currentDiagram = content_p.getDDiagram();
+    Collection<DDiagramElement> invisibleCategoryEdges = new HashSet<DDiagramElement>();
+    for (DDiagramElement element : content_p.getDiagramElements(FaServices.getFaServices().getMappingFECategory(currentDiagram))) {
+      if (!element.isVisible())
+        invisibleCategoryEdges.add(element);
+    }
+
+    for (DDiagramElement categoryEdge : invisibleCategoryEdges) {
+      EObject categoryObj = categoryEdge.getTarget();
+      EObject srcFunc = ((DDiagramElement) ((DEdge) categoryEdge).getSourceNode().eContainer()).getTarget();
+      EObject tarFunc = ((DDiagramElement) ((DEdge) categoryEdge).getTargetNode().eContainer()).getTarget();
+
+      if (categoryObj != null && categoryObj instanceof ExchangeCategory) {
+        AbstractShowHide invCatSwitch = new ShowHideInvisibleExchangeCategory(content_p);
+        DiagramContext context = invCatSwitch.new DiagramContext();
+        if (selectedElements.contains(categoryObj)) {
+          showFECategory(invCatSwitch, context, (ExchangeCategory) categoryObj, srcFunc, tarFunc, true);
+        } else
+          showFECategory(invCatSwitch, context, (ExchangeCategory) categoryObj, srcFunc, tarFunc, false);
+      }
+    }
+
+    content_p.commitDeferredActions();
+    return context_p;
+  }
+
+  /**
+   * 
+   * @param abstractFunction
+   * @param content_p
+   * @return The best container for a function, taking into account hidden functions
+   */
+  public static EObject getBestFunctionContainer(EObject abstractFunction, DDiagramContents content_p) {
+    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
+      if (!content_p.getDiagramElements(abstractFunction).isEmpty()) {
+        boolean bVisible = false;
+        for (DDiagramElement element : content_p.getDiagramElements(abstractFunction)) {
+          if (element.isVisible())
+            bVisible = true;
+        }
+        // If there is at least one representative view for the function, return the function itself
+        if (bVisible)
+          return abstractFunction;
+      }
+      // Else, return its best container
+      DragAndDropTarget node = content_p.getBestContainer(abstractFunction);
+      if (abstractFunction instanceof AbstractFunction) {
+        if (node instanceof DDiagram) {
+          return null;
+        }
+      }
+      if (node instanceof DSemanticDecorator && (!(node instanceof DDiagram))) {
+        return ((DSemanticDecorator) node).getTarget();
+      }
+      return abstractFunction.eContainer();
+    }
+    return null;
+  }
+
+  /**
+   * Refine the state of categories (e.g. invalid category edges are removed, etc.)
+   * 
+   * @param context_p
+   */
+  public void updateFECategories(DDiagramContents context_p) {
+    Collection<DEdge> toRemoveEdges = new HashSet<DEdge>();
+    Collection<AbstractDNode> toRemoveNodes = new HashSet<AbstractDNode>();
+    Collection<AbstractDNode> toHideNodes = new HashSet<AbstractDNode>();
+
+    EdgeMapping edgeMapping = getMappingFECategory(context_p.getDDiagram());
+    NodeMapping nodeMapping = getMappingFECategoryOutputPin(context_p.getDDiagram());
+
+    // Retrieve all invalid edges to be removed
+    if (edgeMapping != null) {
+      for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
+        if (!(element instanceof DEdge)) {
+          continue;
+        }
+        DEdge edge = (DEdge) element;
+
+        boolean isValidEdge = isValidFECategoryEdge((ExchangeCategory) element.getTarget(), (DSemanticDecorator) edge.getSourceNode(), (DSemanticDecorator) edge.getTargetNode());
+        if (!isValidEdge) {
+          toRemoveEdges.add(edge);
+        }
+      }
+    }
+
+    // Retrieve all nodes without incoming/outgoing edges to be removed
+    if (nodeMapping != null) {
+      for (DDiagramElement element : context_p.getDiagramElements(nodeMapping)) {
+        if (!(element instanceof EdgeTarget)) {
+          continue;
+        }
+        Collection<DEdge> edges = new ArrayList<DEdge>();
+        edges.addAll(((EdgeTarget) element).getIncomingEdges());
+        edges.addAll(((EdgeTarget) element).getOutgoingEdges());
+
+        if (edges.size() == 0) {
+          toRemoveNodes.add((AbstractDNode) element);
+        } else {
+          int nbRemoved = 0;
+          for (DEdge edge : edges) {
+            if (toRemoveEdges.contains(edge)) {
+              nbRemoved++;
+            }
+          }
+          if (nbRemoved == edges.size()) {
+            toRemoveNodes.add((AbstractDNode) element);
+          }
+        }
+      }
+    }
+
+    // Retrieve all nodes to be hidden or removed
+    List<NodeMapping> nodeMappings = FaServices.getFaServices().getMappingABPorts(context_p.getDDiagram());
+    if (!nodeMappings.isEmpty()) {
+      Iterable<DDiagramElement> diagElements = context_p.getDiagramElements(nodeMappings);
+      for (DDiagramElement element : diagElements) {
+
+        if (!(element instanceof EdgeTarget)) {
+          continue;
+        }
+        Collection<DEdge> edges = new ArrayList<DEdge>();
+        edges.addAll(((EdgeTarget) element).getIncomingEdges());
+        edges.addAll(((EdgeTarget) element).getOutgoingEdges());
+
+        if (edges.size() != 0) {
+          int nbRemoved = 0;
+          int nbHidden = 0;
+          for (DEdge edge : edges) {
+
+            if (!context_p.isVisible(edge)) {
+              if (edge.getTarget() != null) {
+                EObject target = edge.getTarget();
+                if ((target instanceof ComponentExchange) && !(((ComponentExchange) target).getCategories().isEmpty())) {
+                  nbHidden++;
+                } else if ((target instanceof PhysicalLink) && !(((PhysicalLink) target).getCategories().isEmpty())) {
+                  nbHidden++;
+                }
+              }
+            } else if (toRemoveEdges.contains(edge)) {
+              nbRemoved++;
+            }
+          }
+          if (nbRemoved == edges.size()) {
+            toRemoveNodes.add((AbstractDNode) element);
+          } else if ((nbHidden + nbRemoved) == edges.size()) {
+            toHideNodes.add((AbstractDNode) element);
+          }
+        }
+      }
+    }
+
+    for (DEdge edge : toRemoveEdges) {
+      DiagramServices.getDiagramServices().removeEdgeView(edge);
+    }
+
+    for (AbstractDNode node : toHideNodes) {
+      context_p.deferredHide(node);
+    }
+
+    for (AbstractDNode node : toRemoveNodes) {
+      DiagramServices.getDiagramServices().removeAbstractDNodeView(node);
+    }
+
+  }
+
+  /**
+   * Retrieve a map<ExchangeCategory, FunctionalExchange> of available category to display from the given source view
+   * 
+   * @param context_p
+   * @return
+   */
+  public HashMapSet<EObject, EObject> getShowHideFECategoriesScope(DSemanticDecorator context_p) {
+    HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
+    EObject abstractFunction = context_p.getTarget();
+    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
+      for (FunctionalExchange fe : FunctionExt.getOutGoingExchange((AbstractFunction) abstractFunction))
+        for (ExchangeCategory value : fe.getCategories()) {
+          result.put(value, FunctionExt.getOutGoingAbstractFunction(fe));
+        }
+
+      for (FunctionalExchange fe : FunctionExt.getIncomingExchange((AbstractFunction) abstractFunction))
+        for (ExchangeCategory value : fe.getCategories()) {
+          result.put(value, FunctionExt.getIncomingAbstractFunction(fe));
+        }
+    }
+    return result;
+  }
+
+  /**
+   * Retrieve a map of available category to display from the given source view (including those of sub-elements of the
+   * source view)
+   * 
+   * @param context_p
+   * @return
+   */
+  public HashMapSet<EObject, Map.Entry<EObject, EObject>> getShowHideSubFECategoriesScope(DSemanticDecorator context_p) {
+    HashMapSet<EObject, Map.Entry<EObject, EObject>> result = new HashMapSet<EObject, Map.Entry<EObject, EObject>>();
+    EObject abstractFunction = context_p.getTarget();
+
+    if (abstractFunction != null && abstractFunction instanceof AbstractFunction) {
+      for (FunctionalExchange fe : FunctionExt.getAllOutgoingExchanges((AbstractFunction) abstractFunction))
+        for (ExchangeCategory value : fe.getCategories()) {
+          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(FunctionExt.getIncomingAbstractFunction(fe),
+              FunctionExt.getOutGoingAbstractFunction(fe));
+          result.put(value, srcTar);
+        }
+
+      for (FunctionalExchange fe : FunctionExt.getAllIncomingExchanges((AbstractFunction) abstractFunction))
+        for (ExchangeCategory value : fe.getCategories()) {
+          Map.Entry<EObject, EObject> srcTar = new AbstractMap.SimpleEntry<EObject, EObject>(FunctionExt.getIncomingAbstractFunction(fe),
+              FunctionExt.getOutGoingAbstractFunction(fe));
+          result.put(value, srcTar);
+        }
+    }
+    return result;
+  }
+
+  public Collection<EObject> getSwitchFECategoriesScope(DSemanticDecorator context_p) {
+    if (context_p instanceof DDiagram) {
+      HashSet<EObject> values = new HashSet<EObject>();
+      DDiagramContents context = new DDiagramContents((DDiagram) context_p);
+
+      EdgeMapping dfFEMapping = getMappingDFFunctionalExchange(context.getDDiagram());
+      EdgeMapping abFEMapping = getMappingABFunctionalExchange(context.getDDiagram());
+
+      for (DDiagramElement element : context.getDiagramElements(dfFEMapping)) {
+        if ((element.getTarget() != null) && (element.getTarget() instanceof FunctionalExchange)) {
+          values.addAll(((FunctionalExchange) element.getTarget()).getCategories());
+        }
+      }
+
+      for (DDiagramElement element : context.getDiagramElements(abFEMapping)) {
+        if ((element.getTarget() != null) && (element.getTarget() instanceof FunctionalExchange)) {
+          values.addAll(((FunctionalExchange) element.getTarget()).getCategories());
+        }
+      }
+      return values;
+    }
+    HashMapSet<EObject, EObject> scope = getShowHideFECategoriesScope(context_p);
+    return scope.keySet();
+
+  }
+
+  /**
+   * Retrieve all Functional Exchange for the related Category
+   * 
+   * @param element_p
+   * @return
+   */
+  public Collection<FunctionalExchange> getRelatedFunctionalExchanges(EObject element_p) {
+    if (element_p instanceof ExchangeCategory) {
+      return ((ExchangeCategory) element_p).getExchanges();
+
+    }
+    return Collections.emptyList();
+  }
+
+  public boolean isValidFECategoryEdge(ExchangeCategory category_p, DSemanticDecorator source_p, DSemanticDecorator target_p) {
+    return true;
+  }
+
+  /**
+   * Show/Hide a FE category from the source to the target
+   * 
+   * @param categories_p
+   * @param context_p
+   * @param key_p
+   * @param source_p
+   * @param target_p
+   * @param b_p
+   */
+  private void showFECategory(AbstractShowHide categories_p, DiagramContext context_p, ExchangeCategory key_p, EObject source_p, EObject target_p, boolean b_p) {
+
+    context_p.setVariable(ShowHideABComponent.SOURCE_PARTS, Collections.singletonList(source_p));
+    context_p.setVariable(ShowHideABComponent.TARGET_PARTS, Collections.singletonList(target_p));
+
+    if (b_p) {
+      categories_p.show(key_p, context_p);
+    } else {
+      categories_p.hide(key_p, context_p);
+    }
+  }
+
+  /**
+   * Show all FE categories in the scope
+   * 
+   * @param context_p
+   * @param scope
+   * @param initialSelection
+   * @param selectedElements
+   * @return
+   */
+  public EObject showFECategories(DSemanticDecorator context_p, HashMapSet<EObject, EObject> scope, HashMapSet<EObject, EObject> initialSelection,
+      final HashMapSet<EObject, EObject> selectedElements) {
+    DDiagram currentDiagram = CapellaServices.getService().getDiagramContainer(context_p);
+    DDiagramContents content = new DDiagramContents(currentDiagram);
+    EObject source = context_p.getTarget();
+
+    AbstractShowHide shService = new ShowHideExchangeCategory(content);
+    DiagramContext context = shService.new DiagramContext();
+    if (context_p instanceof DDiagramElement) {
+      context.setVariable(ShowHideABComponentExchange.SOURCE_PART_VIEWS, Collections.singletonList(context_p));
+    }
+
+    for (EObject key : scope.keySet()) {
+      for (EObject value : scope.get(key)) {
+        // If the category is not in the the list of selected
+        // categories, hide it
+        if (!selectedElements.containsKey(key) || !selectedElements.get(key).contains(value)) {
+          if (initialSelection.containsKey(key) && initialSelection.get(key).contains(value)) {
+            showFECategory(shService, context, (ExchangeCategory) key, source, value, false);
+            showFECategory(shService, context, (ExchangeCategory) key, value, source, false);
+          }
+        }
+      }
+    }
+
+    for (EObject key : selectedElements.keySet()) {
+      for (EObject target : selectedElements.get(key)) {
+        showFECategory(shService, context, (ExchangeCategory) key, source, target, true);
+        showFECategory(shService, context, (ExchangeCategory) key, target, source, true);
+      }
+
+    }
+
+    content.commitDeferredActions();
+
+    return context_p;
+  }
+
+  /**
+   * Retrieve the initial selection of displayed category for the given source view
+   * 
+   * @param context_p
+   * @return
+   */
+  public Collection<EObject> getSwitchFECategoriesInitialSelection(DSemanticDecorator context_p) {
+    if (context_p instanceof DDiagram) {
+      HashSet<EObject> values = new HashSet<EObject>();
+      DDiagramContents context = new DDiagramContents((DDiagram) context_p);
+      for (DDiagramElement element : context.getDiagramElements(getMappingExchangeCategory(context.getDDiagram()))) {
+        if ((element.getTarget() != null) && (element.getTarget() instanceof CapellaElement)) {
+          values.add(element.getTarget());
+        }
+      }
+      return values;
+    }
+    HashMapSet<EObject, EObject> result = getShowHideFECategoriesInitialSelection(context_p);
+    return result.keySet();
+  }
+
+  /**
+   * Retrieve the initial selection of displayed category for the given source view
+   * 
+   * @param context_p
+   * @return
+   */
+  public HashMapSet<EObject, EObject> getShowHideFECategoriesInitialSelection(DSemanticDecorator context_p) {
+    HashMapSet<EObject, EObject> scope = getShowHideFECategoriesScope(context_p);
+    HashMapSet<EObject, EObject> result = new HashMapSet<EObject, EObject>();
+
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(context_p);
+    EdgeMapping edgeMapping = getMappingExchangeCategory(diagram);
+    DDiagramContents context = new DDiagramContents(diagram);
+
+    DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(context_p);
+
+    for (EObject key : scope.keySet()) {
+      for (EObject targetPart : scope.get(key)) {
+        for (DDiagramElement elementView : context.getDiagramElements(key, edgeMapping)) {
+          if (elementView instanceof DEdge) {
+            DEdge ve = (DEdge) elementView;
+
+            result.put(key, targetPart);
+
+          }
+        }
+      }
+    }
+    return result;
+  }
+
 }

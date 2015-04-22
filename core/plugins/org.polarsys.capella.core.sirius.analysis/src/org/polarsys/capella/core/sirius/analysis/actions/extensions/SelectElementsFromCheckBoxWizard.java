@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,8 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  * PARAMETERS<br>
  * EObject context -- for getting the appropriate interpreter Map<br>
  * <ExchangeCategory,Collection<Function>> scope -- the set of selectable elements, may be null (empty collection)<br>
- * Map<ExchangeCategory,Collection<Function>> initialSelection -- the initial set of checked elements, may be null (empty collection)<br>
+ * Map<ExchangeCategory,Collection<Function>> initialSelection -- the initial set of checked elements, may be null
+ * (empty collection)<br>
  * String wizardMessage -- the message to display in the wizard, may be null (empty string)<br>
  * String resultVariable -- the Sirius variable to put the user selection into
  */
@@ -94,7 +95,7 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
       scope = (Map) new HashMapSet<ExchangeCategory, AbstractFunction>();
     }
 
-    //Initial selection
+    // Initial selection
     if (categoryType == COMPONENT_CATEGORY) {
       initialSelection = (Map) ABServices.getService().getABShowHideComponentCategoriesInitialSelection(context);
 
@@ -124,9 +125,9 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
     }
 
     // Create a checkBox dialog.
-    CheckboxTreeDialog<ExchangeCategory, AbstractFunction> dialog =
-        new CheckboxTreeDialog<ExchangeCategory, AbstractFunction>(getShell(), "Select Elements To Show", wizardMessage, //$NON-NLS-1$
-            (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(context));
+    CheckboxTreeDialog<ExchangeCategory, AbstractFunction> dialog = new CheckboxTreeDialog<ExchangeCategory, AbstractFunction>(getShell(),
+        "Select Elements To Show", wizardMessage, //$NON-NLS-1$
+        (AdapterFactoryEditingDomain) TransactionHelper.getEditingDomain(context));
     dialog.setInput((Map) scope, (Map) initialSelection);
 
     if (Window.OK == dialog.open()) {
@@ -138,15 +139,14 @@ public class SelectElementsFromCheckBoxWizard extends AbstractExternalJavaAction
         ABServices.getService().showABPhysicalCategories(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
 
       } else if (categoryType == EXCHANGES_FUNCTIONALCHAINS) {
-        FunctionalChainServices.getFunctionalChainServices().involvedFCDFunctionalExchangeFunctionalChain(context, new HashMapSet(scope),
-            new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
-
-      } else if (categoryType == PHYSICAL_LINKS__PHYSICAL_PATHS) {
-        PhysicalServices.getService().involvedPPDPhysicalLinkPhysicalPath(context, new HashMapSet(scope), new HashMapSet(initialSelection),
+        FunctionalChainServices.getFunctionalChainServices().involvedFCDFunctionalExchangeFunctionalChain(context, new HashMapSet(scope), new HashMapSet(initialSelection),
             new HashMapSet(dialog.getResult()));
 
+      } else if (categoryType == PHYSICAL_LINKS__PHYSICAL_PATHS) {
+        PhysicalServices.getService().involvedPPDPhysicalLinkPhysicalPath(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
+
       } else {
-        FaServices.getFaServices().showHideCategoriesInDataFlowBlank(context, new HashMapSet(dialog.getResult()), currentDiagram);
+        FaServices.getFaServices().showFECategories(context, new HashMapSet(scope), new HashMapSet(initialSelection), new HashMapSet(dialog.getResult()));
       }
 
       InterpreterUtil.getInterpreter(context).setVariable(resultVariable, dialog.getResult().keySet());
