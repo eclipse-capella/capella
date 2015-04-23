@@ -101,52 +101,47 @@ public class ReportManagerLogViewAppender extends WriterAppender {
   /**
    * @param event_p
    */
-  protected void report(final LoggingEvent event_p) {
-    final int number = numberMarker++;
-    final EmbeddedMessage em = (EmbeddedMessage) event_p.getMessage();
-    int severity = log4jToDiagnostics(event_p.getLevel());
+	protected void report(final LoggingEvent event_p) {
+		final int number = numberMarker++;
+		final EmbeddedMessage em = (EmbeddedMessage) event_p.getMessage();
+		int severity = log4jToDiagnostics(event_p.getLevel());
 
-    IResource resource = workspaceRoot;
-    if ((em.getCapellaElements() != null) && (em.getCapellaElements().size() > 0)) {
-      Session session = SessionManager.INSTANCE.getSession((EObject) em.getCapellaElements().iterator().next());
-      if (session != null) {
-        resource = EcoreUtil2.getFile(session.getSessionResource());
-      }
-    }
-
-    Diagnostic diag = new BasicDiagnostic(severity, em.getComponentName(), 0, em.getLabel(), em.getCapellaElements().toArray());        
-    IMarker marker = LightMarkerRegistry.getInstance().createMarker(resource, MarkerView.MARKER_ID, diag, new IMarkerModification() {
-          public void modify(IMarker marker_p) {
-            em.adapt(marker_p);
-            try {
-              marker_p.setAttribute(MarkerView.MARKER_NUMBER, number);
-              marker_p.setAttribute(IMarker.MESSAGE, em.getLabel());
-              marker_p.setAttribute(IMarker.SEVERITY, event_p.getLevel()); // violates IMarker API
-              marker_p.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
-
-              marker_p.setAttribute(IMarker.LOCATION, em.getComponentName());
-              marker_p.setAttribute(MarkerViewUtil.NAME_ATTRIBUTE, event_p.getLoggerName());
-              Object element_o = null;
-              if ((em.getCapellaElements() != null) && (em.getCapellaElements().size() > 0)) {
-                element_o = em.getCapellaElements().get(0);
-                if (element_o instanceof ModelElement) {
-                  ModelElement element = (ModelElement) element_o;
-                  marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, element.getFullLabel());
-                } else {
-                  marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, UNKNOWN);
-                }
-              }
-            } catch (CoreException e) {
-              MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
-            }
-          }
-        });
-    try {
-			marker.setAttribute(IValidationConstants.TAG_DIAGNOSTIC, diag);
-		} catch (CoreException e) {
-			e.printStackTrace();
+		IResource resource = workspaceRoot;
+		if ((em.getCapellaElements() != null) && (em.getCapellaElements().size() > 0)) {
+			Session session = SessionManager.INSTANCE.getSession((EObject) em.getCapellaElements().iterator().next());
+			if (session != null) {
+				resource = EcoreUtil2.getFile(session.getSessionResource());
+			}
 		}
-  }
+
+		final Diagnostic diag = new BasicDiagnostic(severity, em.getComponentName(), 0, em.getLabel(), em.getCapellaElements().toArray());
+		LightMarkerRegistry.getInstance().createMarker(resource, MarkerView.MARKER_ID, diag, new IMarkerModification() {
+			public void modify(IMarker marker_p) {
+				em.adapt(marker_p);
+				try {
+					marker_p.setAttribute(MarkerView.MARKER_NUMBER, number);
+					marker_p.setAttribute(IMarker.MESSAGE, em.getLabel());
+					marker_p.setAttribute(IMarker.SEVERITY, event_p.getLevel()); // violates IMarker API
+					marker_p.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
+					marker_p.setAttribute(IValidationConstants.TAG_DIAGNOSTIC, diag);
+					marker_p.setAttribute(IMarker.LOCATION, em.getComponentName());
+					marker_p.setAttribute(MarkerViewUtil.NAME_ATTRIBUTE, event_p.getLoggerName());
+					Object element_o = null;
+					if ((em.getCapellaElements() != null) && (em.getCapellaElements().size() > 0)) {
+						element_o = em.getCapellaElements().get(0);
+						if (element_o instanceof ModelElement) {
+							ModelElement element = (ModelElement) element_o;
+							marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, element.getFullLabel());
+						} else {
+							marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, UNKNOWN);
+						}
+					}
+				} catch (CoreException e) {
+					MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+				}
+			}
+		});
+	}
 
   public void report(final String message, final Level level_p, final IMarkerModification additions) {
     final int number = numberMarker++;
