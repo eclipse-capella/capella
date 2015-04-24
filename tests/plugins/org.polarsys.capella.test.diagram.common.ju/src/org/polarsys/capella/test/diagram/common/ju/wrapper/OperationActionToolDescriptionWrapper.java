@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  */
@@ -49,7 +49,7 @@ public class OperationActionToolDescriptionWrapper extends AbstractCommonToolWra
       AbstractToolDescription tool = _tool;
       OperationAction operationAction = findOperationAction(tool);
       Assert.assertNotNull("Warning ! Operation Action not found for tool " + tool.getName(), operationAction); //$NON-NLS-1$
-      Collection<DSemanticDecorator> col = (Collection<DSemanticDecorator>) _arguments.get(ArgumentType_Enum.COLLECTION);
+      Collection<DSemanticDecorator> col = (Collection<DSemanticDecorator>) _arguments.get(ArgumentType.COLLECTION);
       cmd = _diagramCommandFactory.buildOperationActionFromTool(operationAction, col);
     }
     return cmd;
@@ -83,7 +83,7 @@ public class OperationActionToolDescriptionWrapper extends AbstractCommonToolWra
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.COLLECTION, ViewpointPackage.Literals.DSEMANTIC_DECORATOR));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.COLLECTION, ViewpointPackage.Literals.DSEMANTIC_DECORATOR));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;

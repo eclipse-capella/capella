@@ -8,31 +8,23 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.common.ju.context;
+package org.polarsys.capella.test.diagram.common.ju.step;
 
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.DDiagram;
+import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 
 /**
- *
+ * Step case that create a DescriptionTool and execute it.
  */
-public class DiagramOpenExecutionContext extends BasicExecutionContext {
+public abstract class AbstractDiagramStep<A> extends AbstractTestStep<A> {
 
-  /**
-   * Diagram to test.
-   */
-  protected DDiagram _diagram;
-
-  /**
-   * @param session
-   * @param diagram
-   */
-  public DiagramOpenExecutionContext(Session session, DDiagram diagram) {
-    super(session);
-    _diagram = diagram;
+  @Override
+  protected DiagramContext getExecutionContext() {
+    return (DiagramContext) super.getExecutionContext();
   }
 
-  public DDiagram getDiagram() {
-    return _diagram;
+  public AbstractDiagramStep(DiagramContext context) {
+    super(context);
   }
+
 }

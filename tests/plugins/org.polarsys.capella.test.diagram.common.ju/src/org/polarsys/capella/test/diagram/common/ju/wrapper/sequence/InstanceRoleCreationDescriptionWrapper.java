@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.NodeCreationDescriptionWrapper;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 /**
@@ -56,8 +56,8 @@ public class InstanceRoleCreationDescriptionWrapper extends NodeCreationDescript
     if (isContextOk()) {
       InstanceRoleCreationTool tool = (InstanceRoleCreationTool) _tool;
 
-      EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
-      EObject predecessor = (EObject) _arguments.get(ArgumentType_Enum.PREDECESSOR);
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
+      EObject predecessor = (EObject) _arguments.get(ArgumentType.PREDECESSOR);
 
       Diagram Diag = DiagramHelper.getDiagram((DDiagram) container);
       TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(Diag);
@@ -81,8 +81,8 @@ public class InstanceRoleCreationDescriptionWrapper extends NodeCreationDescript
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.CONTAINER, DiagramPackage.Literals.ABSTRACT_DNODE),
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.SEMANTIC_CONTAINER, null), new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.PREDECESSOR,
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, DiagramPackage.Literals.ABSTRACT_DNODE),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER, null), new AbstractToolWrapper.ArgumentData(ArgumentType.PREDECESSOR,
               null));
       ret = Collections.unmodifiableList(list);
     } else {

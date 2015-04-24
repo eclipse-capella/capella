@@ -16,12 +16,13 @@ import junit.framework.Assert;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.polarsys.capella.test.diagram.common.ju.context.BasicExecutionContext;
+import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStepWithDelta;
 
 /**
- * An abstract test class to call on an hide/show filter in a diagram with delta support on diagram
+ * An abstract test class to call on an hide/show filter in a diagram with delta support on diagram.
  */
+@Deprecated
 public abstract class AbstractHideShowFiltersTest extends AbstractDiagramStepWithDelta {
 
   protected String _filterName;
@@ -31,7 +32,7 @@ public abstract class AbstractHideShowFiltersTest extends AbstractDiagramStepWit
    * @param filterName_p
    * @param checkDelta_p
    */
-  public AbstractHideShowFiltersTest(BasicExecutionContext context, String filterName_p, boolean checkDelta_p) {
+  public AbstractHideShowFiltersTest(SessionContext context, String filterName_p, boolean checkDelta_p) {
     super(context, checkDelta_p);
     _filterName = filterName_p;
     _numberOfElementFilter = 0;

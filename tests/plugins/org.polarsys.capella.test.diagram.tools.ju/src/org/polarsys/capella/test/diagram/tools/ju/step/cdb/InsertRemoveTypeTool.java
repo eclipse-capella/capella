@@ -8,22 +8,16 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.common.ju.api;
+package org.polarsys.capella.test.diagram.tools.ju.step.cdb;
 
-import java.util.Arrays;
-import java.util.List;
+import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+public class InsertRemoveTypeTool extends InsertRemoveTool {
 
-/**
- *
- */
-public abstract class AbstractDiagramTestCase extends BasicTestCase {
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(getRequiredTestModel());
+  public InsertRemoveTypeTool(DiagramContext context) {
+    super(context, IToolNameConstants.TOOL_CDB_INSERT_REMOVE_TYPE);
   }
 
-  protected abstract String getRequiredTestModel();
 }

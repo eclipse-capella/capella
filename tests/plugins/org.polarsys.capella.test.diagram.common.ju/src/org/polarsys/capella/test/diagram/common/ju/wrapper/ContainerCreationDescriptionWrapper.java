@@ -22,7 +22,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 public class ContainerCreationDescriptionWrapper extends AbstractSingleSelectionWrapper {
 
@@ -41,7 +41,7 @@ public class ContainerCreationDescriptionWrapper extends AbstractSingleSelection
 		if ( isContextOk() ) {
 			ContainerCreationDescription tool = (ContainerCreationDescription) _tool;
 			
-			EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
+			EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
 			
 			if (container instanceof DNodeContainer) {
 				cmd = _diagramCommandFactory.buildCreateContainerCommandFromTool(
@@ -77,7 +77,7 @@ public class ContainerCreationDescriptionWrapper extends AbstractSingleSelection
 		if (ret) {
 			
 			EObject container = (EObject) 
-				_arguments.get(ArgumentType_Enum.CONTAINER)
+				_arguments.get(ArgumentType.CONTAINER_VIEW)
 			;
 			
 			boolean shouldCreate = false;

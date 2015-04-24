@@ -22,7 +22,7 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 public class ContainerDropDescriptionWrapper extends AbstractSingleSelectionWrapper {
 
@@ -41,9 +41,9 @@ public class ContainerDropDescriptionWrapper extends AbstractSingleSelectionWrap
     if (isContextOk()) {
       ContainerDropDescription tool = (ContainerDropDescription) _tool;
 
-      DragAndDropTarget container = (DragAndDropTarget) _arguments.get(ArgumentType_Enum.CONTAINER);
+      DragAndDropTarget container = (DragAndDropTarget) _arguments.get(ArgumentType.CONTAINER_VIEW);
       // 2 versions of buildDropInContainerCommandFromTool
-      Object droppedElt = _arguments.get(ArgumentType_Enum.DROPPEDELEMENT);
+      Object droppedElt = _arguments.get(ArgumentType.DROPPEDELEMENT);
 
       // if the dropped element is given as a diagram element
       if (droppedElt instanceof DDiagramElement) {
@@ -70,8 +70,8 @@ public class ContainerDropDescriptionWrapper extends AbstractSingleSelectionWrap
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.CONTAINER, null), new AbstractToolWrapper.ArgumentData(
-          ArgumentType_Enum.DROPPEDELEMENT, null));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, null), new AbstractToolWrapper.ArgumentData(
+          ArgumentType.DROPPEDELEMENT, null));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;

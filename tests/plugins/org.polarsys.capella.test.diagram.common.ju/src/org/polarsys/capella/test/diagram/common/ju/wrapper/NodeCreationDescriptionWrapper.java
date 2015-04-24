@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.core.data.oa.Entity;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 public class NodeCreationDescriptionWrapper extends AbstractSingleSelectionWrapper {
 
@@ -45,7 +45,7 @@ public class NodeCreationDescriptionWrapper extends AbstractSingleSelectionWrapp
     if (isContextOk()) {
       NodeCreationDescription tool = (NodeCreationDescription) _tool;
 
-      EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
 
       if (container instanceof DNodeContainer) {
         cmd = _diagramCommandFactory.buildCreateNodeCommandFromTool((DNodeContainer) container, tool);
@@ -78,7 +78,7 @@ public class NodeCreationDescriptionWrapper extends AbstractSingleSelectionWrapp
     // Now, let's perform job
     if (ret) {
 
-      EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
 
       boolean shouldCreate = false;
       NodeCreationDescription tool = (NodeCreationDescription) _tool;

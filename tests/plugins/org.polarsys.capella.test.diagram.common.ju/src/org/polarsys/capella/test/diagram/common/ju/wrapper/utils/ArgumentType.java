@@ -18,12 +18,12 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 /**
  * Enum type defined in order to define the available arguments for ToolWrapper
  */
-public enum ArgumentType_Enum {
+public enum ArgumentType {
 
   SOURCE("SOURCE", EObject.class, 0), //$NON-NLS-1$
   TARGET("TARGET", EObject.class, 1), //$NON-NLS-1$
-  CONTAINER("CONTAINER", EObject.class, 2), //$NON-NLS-1$
-  SEMANTIC_CONTAINER("SEMANTIC_CONTAINER", EObject.class, 3), //$NON-NLS-1$
+  CONTAINER_VIEW("CONTAINER_VIEW", EObject.class, 2), //$NON-NLS-1$
+  CONTAINER("CONTAINER", EObject.class, 3), //$NON-NLS-1$
   EDGE("EDGE", EObject.class, 4), //$NON-NLS-1$
   ON_DIAGRAM_ONLY("ON_DIAGRAM_ONLY", Boolean.class, 5), //$NON-NLS-1$
   // Table cell mask - can be "X" or ""
@@ -35,7 +35,7 @@ public enum ArgumentType_Enum {
   DROPPEDELEMENT("DROPPEDELEMENT", EObject.class, 11); //$NON-NLS-1$
 
   /** Constructor */
-  ArgumentType_Enum(String literal, Class<?> clazz, int value) {
+  ArgumentType(String literal, Class<?> clazz, int value) {
     _literal = literal;
     _value = value;
     _clazz = clazz;

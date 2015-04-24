@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  */
@@ -47,8 +47,8 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
     if (isContextOk()) {
       EdgeCreationDescription tool = (EdgeCreationDescription) _tool;
 
-      EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType_Enum.SOURCE);
-      EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType_Enum.TARGET);
+      EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType.SOURCE);
+      EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType.TARGET);
 
       cmd = _diagramCommandFactory.buildCreateEdgeCommandFromTool(source, target, tool);
     }
@@ -66,8 +66,8 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.TARGET, DiagramPackage.Literals.EDGE_TARGET));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.TARGET, DiagramPackage.Literals.EDGE_TARGET));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;
@@ -85,8 +85,8 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
     boolean ret = true;
 
     // First of all Let's check is argument types are ok.
-    if (!isArgumentsAreSet() && (_arguments.get(ArgumentType_Enum.SOURCE) instanceof DMappingBased)
-        && (_arguments.get(ArgumentType_Enum.TARGET) instanceof DMappingBased)
+    if (!isArgumentsAreSet() && (_arguments.get(ArgumentType.SOURCE) instanceof DMappingBased)
+        && (_arguments.get(ArgumentType.TARGET) instanceof DMappingBased)
 
     ) {
       ret = false;
@@ -96,8 +96,8 @@ public class EdgeCreationDescriptionWrapper extends AbstractCommonToolWrapper {
     if (ret) {
 
       EdgeCreationDescription tool = (EdgeCreationDescription) _tool;
-      DMappingBased source = (DMappingBased) _arguments.get(ArgumentType_Enum.SOURCE);
-      DMappingBased target = (DMappingBased) _arguments.get(ArgumentType_Enum.TARGET);
+      DMappingBased source = (DMappingBased) _arguments.get(ArgumentType.SOURCE);
+      DMappingBased target = (DMappingBased) _arguments.get(ArgumentType.TARGET);
 
       DMappingBasedQuery sourceQuery = new DMappingBasedQuery(source);
       DMappingBasedQuery targetQuery = new DMappingBasedQuery(target);

@@ -8,22 +8,18 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.common.ju.api;
+package org.polarsys.capella.test.diagram.tools.ju.model;
 
-import java.util.Arrays;
-import java.util.List;
+import org.polarsys.capella.test.diagram.common.ju.api.AbstractDiagramTestCase;
 
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+public abstract class CDBCommunication extends AbstractDiagramTestCase {
 
-/**
- *
- */
-public abstract class AbstractDiagramTestCase extends BasicTestCase {
+  public static String SA__DATAPKG = "fdcf745f-cad8-49d5-b65f-6591dafd95fb";
+  public static String SA__DATAPKG__CLASS1 = "8b8cd52d-8605-4013-9077-219d2949a035";
+  public static String SA__DATAPKG__CLASS2 = "7c6c5883-5f15-4890-a693-bb5818adce81";
 
   @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(getRequiredTestModel());
+  public String getRequiredTestModel() {
+    return CDBCommunication.class.getSimpleName();
   }
-
-  protected abstract String getRequiredTestModel();
 }

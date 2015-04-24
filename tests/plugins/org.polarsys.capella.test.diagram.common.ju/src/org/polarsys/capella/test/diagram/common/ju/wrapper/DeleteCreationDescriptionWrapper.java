@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  *
@@ -42,10 +42,10 @@ public class DeleteCreationDescriptionWrapper extends AbstractCommonToolWrapper 
 		
 		if ( isContextOk() ) {
 		
-			DDiagramElement element = (DDiagramElement) _arguments.get(ArgumentType_Enum.TARGET);
+			DDiagramElement element = (DDiagramElement) _arguments.get(ArgumentType.TARGET);
 			
 			boolean isDeletedOnDiagramOnly = 
-				((Boolean) _arguments.get(ArgumentType_Enum.ON_DIAGRAM_ONLY)).booleanValue()
+				((Boolean) _arguments.get(ArgumentType.ON_DIAGRAM_ONLY)).booleanValue()
 			;
 			
 			cmd = isDeletedOnDiagramOnly ?
@@ -69,8 +69,8 @@ public class DeleteCreationDescriptionWrapper extends AbstractCommonToolWrapper 
 			List<ArgumentData> list = new ArrayList<ArgumentData>();
 			Collections.addAll(
 				list,
-				new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.TARGET, DiagramPackage.Literals.DDIAGRAM_ELEMENT),
-				new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.ON_DIAGRAM_ONLY)
+				new AbstractToolWrapper.ArgumentData(ArgumentType.TARGET, DiagramPackage.Literals.DDIAGRAM_ELEMENT),
+				new AbstractToolWrapper.ArgumentData(ArgumentType.ON_DIAGRAM_ONLY)
 			);
 			ret = Collections.unmodifiableList(list);
 		} else {
