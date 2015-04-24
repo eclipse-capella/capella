@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.polarsys.capella.core.sirius.analysis.CapellaServices;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 public abstract class AbstractSingleSelectionWrapper extends AbstractCommonToolWrapper {
 
@@ -55,8 +55,8 @@ public abstract class AbstractSingleSelectionWrapper extends AbstractCommonToolW
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.CONTAINER, DiagramPackage.Literals.ABSTRACT_DNODE),
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.SEMANTIC_CONTAINER, null));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, DiagramPackage.Literals.ABSTRACT_DNODE),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER, null));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;
@@ -68,8 +68,8 @@ public abstract class AbstractSingleSelectionWrapper extends AbstractCommonToolW
   protected void changeCmdContext(Command cmd_p) {
     Assert.isNotNull(cmd_p);
 
-    EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
-    EObject semanticContainer = (EObject) _arguments.get(ArgumentType_Enum.SEMANTIC_CONTAINER);
+    EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
+    EObject semanticContainer = (EObject) _arguments.get(ArgumentType.CONTAINER);
 
     SiriusCommand vpc = (SiriusCommand) cmd_p;
 

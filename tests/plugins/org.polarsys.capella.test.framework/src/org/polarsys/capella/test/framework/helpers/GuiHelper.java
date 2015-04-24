@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 
@@ -26,18 +27,36 @@ public class GuiHelper {
 
   /** Get all selected resources in the package explorer view */
   public static List<IResource> getCurrentSelectionInNavigator(String navigatorId) {
-  	List<IResource> resources = new ArrayList<IResource>();
-  	IWorkbenchWindow window =
-  	    PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-  	IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection(navigatorId);
-		if (selection != null) {
-			for (Object elt : selection.toList()) {
-				IResource resource = (IResource)Platform.getAdapterManager().getAdapter(elt, IResource.class);
-				if (resource != null) {
-					resources.add(resource);				
-				}
-			}			
-		}
+    List<IResource> resources = new ArrayList<IResource>();
+    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+
+    IStructuredSelection selection = (IStructuredSelection) window.getSelectionService().getSelection();
+    if (selection != null) {
+      for (Object elt : selection.toList()) {
+        IResource resource = (IResource) Platform.getAdapterManager().getAdapter(elt, IResource.class);
+        if (resource != null) {
+          resources.add(resource);
+        }
+      }
+    }
+    return resources;
+  }
+
+  public static List<IResource> getCurrentSelection() {
+    List<IResource> resources = new ArrayList<IResource>();
+    IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+
+    IWorkbenchPart part = window.getActivePage().getActivePart();
+
+    IStructuredSelection selection = (IStructuredSelection) part.getSite().getSelectionProvider().getSelection();
+    if (selection != null) {
+      for (Object elt : selection.toList()) {
+        IResource resource = (IResource) Platform.getAdapterManager().getAdapter(elt, IResource.class);
+        if (resource != null) {
+          resources.add(resource);
+        }
+      }
+    }
     return resources;
   }
 

@@ -13,6 +13,8 @@ package org.polarsys.capella.test.diagram.filters.ju.testcases;
 import java.util.Arrays;
 import java.util.List;
 
+import org.polarsys.capella.core.sirius.analysis.IDiagramNameConstants;
+import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
 import org.polarsys.capella.test.diagram.filters.ju.DiagramObjectFilterTestCase;
 
 public class HideDelegatedCommunicationLinksForCII extends DiagramObjectFilterTestCase {
@@ -28,7 +30,7 @@ public class HideDelegatedCommunicationLinksForCII extends DiagramObjectFilterTe
 	}
 
 	@Override
-	protected String getFilterName() {		
+	protected String getFilterName() {
 		return "Hide Delegated Communication Links"; //$NON-NLS-1$
 	}
 

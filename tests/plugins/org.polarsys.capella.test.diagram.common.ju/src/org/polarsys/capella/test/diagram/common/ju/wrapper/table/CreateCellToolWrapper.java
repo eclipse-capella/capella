@@ -25,7 +25,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  * Wrapper for Create Cell Tool
@@ -53,11 +53,11 @@ public class CreateCellToolWrapper extends AbstractTableToolWrapper {
 
     if (isContextOk()) {
 
-      EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
 
       EClass toolEClass = _tool.eClass();
       if (toolEClass == DescriptionPackage.Literals.CREATE_CELL_TOOL) {
-        Object cellValue = _arguments.get(ArgumentType_Enum.TABLE_CELL_MASK);
+        Object cellValue = _arguments.get(ArgumentType.TABLE_CELL_MASK);
         cmd = _tableCommandFactory.buildSetCellValueFromTool((DCell) container, cellValue);
       }
     }
@@ -74,8 +74,8 @@ public class CreateCellToolWrapper extends AbstractTableToolWrapper {
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.CONTAINER, TablePackage.Literals.DCELL),
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.TABLE_CELL_MASK));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, TablePackage.Literals.DCELL),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.TABLE_CELL_MASK));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;
@@ -99,7 +99,7 @@ public class CreateCellToolWrapper extends AbstractTableToolWrapper {
     // Now, let's perform job
     if (ret) {
 
-      EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
 
       boolean shouldCreate = false;
       if (container instanceof DCell) {

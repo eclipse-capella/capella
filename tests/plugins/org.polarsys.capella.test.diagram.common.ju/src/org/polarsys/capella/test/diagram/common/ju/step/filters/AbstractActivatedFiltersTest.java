@@ -18,18 +18,19 @@ import junit.framework.Assert;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.polarsys.capella.test.diagram.common.ju.context.DiagramOpenExecutionContext;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.step.AbstractDiagramStepWithDelta;
 
 /**
  * Check the list of activated filters to check if they are still activated addition, deletion
  */
+@Deprecated
 public abstract class AbstractActivatedFiltersTest extends AbstractDiagramStepWithDelta {
 
   /**
    * @param checkDelta_p
    */
-  public AbstractActivatedFiltersTest(DiagramOpenExecutionContext context, boolean checkDelta_p) {
+  public AbstractActivatedFiltersTest(DiagramContext context, boolean checkDelta_p) {
     super(context, checkDelta_p);
   }
 
@@ -52,7 +53,7 @@ public abstract class AbstractActivatedFiltersTest extends AbstractDiagramStepWi
   protected void postRunTest() {
     List<String> expectedActivatedFilters = expectedActivatedFiltersList();
     expectedActivatedFilters.add("ModelExtensionFilter"); //$NON-NLS-1$ Filter activated for every diagram
-    EList<FilterDescription> activatedFilters = ((DiagramOpenExecutionContext) getExecutionContext()).getDiagram().getActivatedFilters();
+    EList<FilterDescription> activatedFilters = ((DiagramContext) getExecutionContext()).getDiagram().getActivatedFilters();
 
     List<String> activatedFiltersNamesList = new ArrayList<String>();
 

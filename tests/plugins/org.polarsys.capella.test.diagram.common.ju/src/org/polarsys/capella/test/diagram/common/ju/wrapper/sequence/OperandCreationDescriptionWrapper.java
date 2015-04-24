@@ -28,7 +28,7 @@ import org.polarsys.capella.core.data.interaction.CombinedFragment;
 import org.polarsys.capella.core.data.interaction.InteractionOperatorKind;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.NodeCreationDescriptionWrapper;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  * Wrapper for Operand<br>
@@ -52,10 +52,10 @@ public class OperandCreationDescriptionWrapper extends NodeCreationDescriptionWr
     if (isContextOk()) {
       OperandCreationTool tool = (OperandCreationTool) _tool;
 
-      DDiagramElementContainer container = (DDiagramElementContainer) _arguments.get(ArgumentType_Enum.CONTAINER);
+      DDiagramElementContainer container = (DDiagramElementContainer) _arguments.get(ArgumentType.CONTAINER_VIEW);
 
-      EventEnd startingEndPredecessor = (EventEnd) _arguments.get(ArgumentType_Enum.STARTINGENDPREDECESSOR);
-      EventEnd finishingEndPredecessor = (EventEnd) _arguments.get(ArgumentType_Enum.FINISHINGENDPREDECESSOR);
+      EventEnd startingEndPredecessor = (EventEnd) _arguments.get(ArgumentType.STARTINGENDPREDECESSOR);
+      EventEnd finishingEndPredecessor = (EventEnd) _arguments.get(ArgumentType.FINISHINGENDPREDECESSOR);
       cmd = ToolCommandBuilder.buildCreateOperantCommandFromTool(container, tool, startingEndPredecessor, finishingEndPredecessor);
 
     }
@@ -73,9 +73,9 @@ public class OperandCreationDescriptionWrapper extends NodeCreationDescriptionWr
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.CONTAINER, DiagramPackage.Literals.ABSTRACT_DNODE),
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.STARTINGENDPREDECESSOR, null), new AbstractToolWrapper.ArgumentData(
-              ArgumentType_Enum.FINISHINGENDPREDECESSOR, null));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, DiagramPackage.Literals.ABSTRACT_DNODE),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.STARTINGENDPREDECESSOR, null), new AbstractToolWrapper.ArgumentData(
+              ArgumentType.FINISHINGENDPREDECESSOR, null));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;
@@ -87,7 +87,7 @@ public class OperandCreationDescriptionWrapper extends NodeCreationDescriptionWr
   @Override
   public boolean isContextOk() {
 
-    CombinedFragment currentCF = (CombinedFragment) ((DSemanticDecorator) _arguments.get(ArgumentType_Enum.CONTAINER)).getTarget();
+    CombinedFragment currentCF = (CombinedFragment) ((DSemanticDecorator) _arguments.get(ArgumentType.CONTAINER_VIEW)).getTarget();
 
     if (currentCF.getOperator().equals(InteractionOperatorKind.LOOP)) {
       return false;

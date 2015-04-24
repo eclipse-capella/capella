@@ -8,38 +8,38 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.tools.ju.sdfb;
+package org.polarsys.capella.test.diagram.tools.ju.cdb;
 
 import junit.framework.Test;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
+import org.polarsys.capella.test.diagram.common.ju.step.crud.CreateDiagramStep;
 import org.polarsys.capella.test.diagram.common.ju.step.crud.OpenDiagramStep;
-import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
-import org.polarsys.capella.test.diagram.tools.ju.model.SwitchCategory;
+import org.polarsys.capella.test.diagram.tools.ju.model.CDBCommunication;
+import org.polarsys.capella.test.diagram.tools.ju.step.cdb.InsertRemoveTypeTool;
 
 /**
- * Test the case when a category is displayed at the parent function level. Then The switch category/functional exchange tool should display the functional
- * exchange of the children functions at the parent function.
+ *
  */
-public class SwitchCategoryTestSuite extends SwitchCategory {
+public class InsertRemoveClass extends CDBCommunication {
 
   @Override
   public void test() throws Exception {
-    Session session = getSessionForTestModel(getRequiredTestModel());
+    Session session = getSession(getRequiredTestModel());
     SessionContext context = new SessionContext(session);
 
-    DiagramContext diagramContext = new OpenDiagramStep(context, SDFB_ROOT_SYSTEM_FUNCTION).run();
+    DiagramContext diagramContext = new CreateDiagramStep(context, SA__DATAPKG, DiagramDescriptionConstants.CLASS_BLANK_DIAGRAM_NAME).run();
 
-    new InsertRemoveTool(diagramContext, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES).insert(SA__FUNCTIONPKG__CATEGORY1);
+    new OpenDiagramStep(diagramContext).run();
 
-    diagramContext.hasHiddenView(SA__FUNCTIONPKG__SF__FUNTIONALEXCHANGE1);
-
+    new InsertRemoveTypeTool(diagramContext).insert(SA__DATAPKG__CLASS1, SA__DATAPKG__CLASS2);
+    new InsertRemoveTypeTool(diagramContext).remove(SA__DATAPKG__CLASS1, SA__DATAPKG__CLASS2);
   }
 
   public static Test suite() {
-    return new SwitchCategoryTestSuite();
+    return new InsertRemoveClass();
   }
 }

@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  *
@@ -42,7 +42,7 @@ public class ToolDescriptionWrapper extends AbstractCommonToolWrapper {
 
     if (isContextOk()) {
 
-      EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
 
       ToolDescription tool = (ToolDescription) _tool;
 
@@ -62,7 +62,7 @@ public class ToolDescriptionWrapper extends AbstractCommonToolWrapper {
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.CONTAINER, ViewpointPackage.Literals.DSEMANTIC_DECORATOR));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, ViewpointPackage.Literals.DSEMANTIC_DECORATOR));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;

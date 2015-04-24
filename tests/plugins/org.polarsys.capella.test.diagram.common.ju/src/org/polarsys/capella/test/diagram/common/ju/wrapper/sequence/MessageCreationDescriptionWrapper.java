@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.EdgeCreationDescriptionWrapper;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  */
@@ -51,10 +51,10 @@ public class MessageCreationDescriptionWrapper extends EdgeCreationDescriptionWr
   @Override
   public Command createCommand() {
     Command cmd = UnexecutableCommand.INSTANCE;
-    EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType_Enum.SOURCE);
-    EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType_Enum.TARGET);
-    EventEnd startingEndPredecessor = (EventEnd) _arguments.get(ArgumentType_Enum.STARTINGENDPREDECESSOR);
-    EventEnd finishingEndPredecessor = (EventEnd) _arguments.get(ArgumentType_Enum.FINISHINGENDPREDECESSOR);
+    EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType.SOURCE);
+    EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType.TARGET);
+    EventEnd startingEndPredecessor = (EventEnd) _arguments.get(ArgumentType.STARTINGENDPREDECESSOR);
+    EventEnd finishingEndPredecessor = (EventEnd) _arguments.get(ArgumentType.FINISHINGENDPREDECESSOR);
 
     MessageCreationTool tool = (MessageCreationTool) _tool;
 
@@ -72,8 +72,8 @@ public class MessageCreationDescriptionWrapper extends EdgeCreationDescriptionWr
     boolean ret = super.isContextOk();
     if (!ret) {
       EdgeCreationDescription tool = (EdgeCreationDescription) _tool;
-      DMappingBased source = (DMappingBased) _arguments.get(ArgumentType_Enum.SOURCE);
-      DMappingBased target = (DMappingBased) _arguments.get(ArgumentType_Enum.TARGET);
+      DMappingBased source = (DMappingBased) _arguments.get(ArgumentType.SOURCE);
+      DMappingBased target = (DMappingBased) _arguments.get(ArgumentType.TARGET);
 
       boolean sourceOk = false;
       boolean targetOk = false;
@@ -135,9 +135,9 @@ public class MessageCreationDescriptionWrapper extends EdgeCreationDescriptionWr
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.TARGET, DiagramPackage.Literals.EDGE_TARGET), new AbstractToolWrapper.ArgumentData(
-              ArgumentType_Enum.STARTINGENDPREDECESSOR, null), new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.FINISHINGENDPREDECESSOR, null));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.SOURCE, DiagramPackage.Literals.EDGE_TARGET),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.TARGET, DiagramPackage.Literals.EDGE_TARGET), new AbstractToolWrapper.ArgumentData(
+              ArgumentType.STARTINGENDPREDECESSOR, null), new AbstractToolWrapper.ArgumentData(ArgumentType.FINISHINGENDPREDECESSOR, null));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;

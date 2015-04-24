@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
@@ -59,6 +60,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -80,7 +82,7 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
  * Useful tools for diagram
  */
 public class DiagramHelper {
-	
+
   /**
    * Change the synchronize state on a diagram
    * @param diagram a given DDiagram
@@ -117,7 +119,6 @@ public class DiagramHelper {
 
   /**
    * Return the DRepresention with the given name, null otherwise
-   * 
    * @param session_p the current Session.
    * @param name_p
    * @return <code>null</code> if an error occurred.
@@ -173,9 +174,7 @@ public class DiagramHelper {
     URI representationURI = representation_p.eResource().getURI();
     boolean containsRepresentation = representationURI.equals(FileHelper.getFileFullUri(filepath_p));
 
-    Assert.assertTrue(
-        MessageFormat.format("The representation {0}  is not in  the resource {1}", representation_p, filepath_p),
-        containsRepresentation);
+    Assert.assertTrue(MessageFormat.format("The representation {0}  is not in  the resource {1}", representation_p, filepath_p), containsRepresentation);
     // Assert.assertTrue(MessageFormat.format(HelperMessages.diagramNotContainedInSession, representation_p.getName(), file.getName()), containsRepresentation);
   }
 
@@ -353,8 +352,7 @@ public class DiagramHelper {
    * @param repDescName_p
    * @return null whether no matching {@link RepresentationDescription} are found
    */
-  public static RepresentationDescription getMatchingRepresentationDescription(final Session session_p, final EObject semanticElement_p,
-      final String repDescName_p) {
+  public static RepresentationDescription getRepresentationDescription(final Session session_p, final EObject semanticElement_p, final String repDescName_p) {
 
     RepresentationDescription result = null;
 
@@ -459,7 +457,7 @@ public class DiagramHelper {
    * @return contributed layers
    */
   public static List<Layer> getContributedLayers(DiagramDescription diagramDescription_p, Collection<Viewpoint> viewpoints_p) {
-	  return new DiagramComponentizationManager().getAllLayers(viewpoints_p, diagramDescription_p);
+    return new DiagramComponentizationManager().getAllLayers(viewpoints_p, diagramDescription_p);
   }
 
   /**
@@ -673,9 +671,9 @@ public class DiagramHelper {
     List<EObject> contextualElements = ContextualDiagramHelper.getService().getContextualElements(diagram_p);
     int expectedNumberOfContextualElements = expectedContextualElementsList_p.size();
     boolean sameSize = contextualElements.size() == expectedNumberOfContextualElements;
-    Assert
-        .assertTrue(MessageFormat.format(Messages.wrongNumberOfContextualElement, diagram_p.getName(), contextualElements.size(),
-            expectedNumberOfContextualElements), sameSize);
+    Assert.assertTrue(
+        MessageFormat.format(Messages.wrongNumberOfContextualElement, diagram_p.getName(), contextualElements.size(), expectedNumberOfContextualElements),
+        sameSize);
     boolean sameElements = contextualElements.containsAll(expectedContextualElementsList_p) && expectedContextualElementsList_p.containsAll(contextualElements);
     Assert.assertTrue(Messages.wrongContextualElement, sameElements);
   }
@@ -692,7 +690,7 @@ public class DiagramHelper {
     final Diagram diagram = (Diagram) data;
     return diagram;
   }
-  
+
   public static boolean isDiagramElementFiltered(DDiagramElement element) {
     return new DDiagramElementQuery(element).isFiltered();
   }
@@ -721,7 +719,7 @@ public class DiagramHelper {
       }
     };
     TestHelper.getExecutionManager(diagram).execute(cmd);
-  }  
+  }
 
   /**
    * Utility method that checks whether some semantics objects should have a representation (or not) onto a diagram.
@@ -729,6 +727,7 @@ public class DiagramHelper {
    * @param list_p the list of semantic Object
    * @param shouldBeAvailable_p defines whether the objects contained into the list should have a representation or not on the target diagram
    */
+  @Deprecated
   public static void assertCheckObjectOnDiagram(DDiagram diagram_p, List<EObject> list_p, boolean shouldBeAvailable_p) {
 
     String errMsg;
@@ -744,4 +743,35 @@ public class DiagramHelper {
                                          diagram_p.getName() }), shouldBeAvailable_p ? eObject != null : eObject == null);
     }
   }
+
+  public static void isOnDiagram(DDiagram diagram_p, List<EObject> list_p, boolean shouldBeAvailable_p) {
+
+    String errMsg;
+    EObject eObject = null;
+
+    errMsg =
+        shouldBeAvailable_p ? CommonTestMessages.objectRepresentationNotAvailableOnDiagram : CommonTestMessages.objectRepresentationStillAvailableOnDiagram;
+
+    for (EObject current : list_p) {
+      eObject = DiagramHelper.getOnDiagram(diagram_p, current);
+      Assert.assertTrue(
+          NLS.bind(errMsg, new Object[] { current instanceof AbstractNamedElement ? ((AbstractNamedElement) current).getName() : current.eClass().getName(),
+                                         diagram_p.getName() }), shouldBeAvailable_p ? eObject != null : eObject == null);
+    }
+  }
+
+  /**
+   * @param element
+   * @return
+   */
+  public static Collection<DDiagramElement> getOwnedElements(DSemanticDecorator element) {
+    if (element instanceof DDiagram) {
+      return new ArrayList<DDiagramElement>(((DDiagram) element).getOwnedDiagramElements());
+    }
+    if (element instanceof DNodeContainer) {
+      return new ArrayList<DDiagramElement>(((DNodeContainer) element).getOwnedDiagramElements());
+    }
+    return null;
+  }
+
 }

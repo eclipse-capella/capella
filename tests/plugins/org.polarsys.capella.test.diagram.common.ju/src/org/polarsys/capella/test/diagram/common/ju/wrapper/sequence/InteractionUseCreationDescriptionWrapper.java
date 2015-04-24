@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.AbstractToolWrapper;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.NodeCreationDescriptionWrapper;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
 /**
@@ -54,14 +54,14 @@ public class InteractionUseCreationDescriptionWrapper extends NodeCreationDescri
     if (isContextOk()) {
       InteractionUseCreationTool tool = (InteractionUseCreationTool) _tool;
 
-      EObject container = (EObject) _arguments.get(ArgumentType_Enum.CONTAINER);
-      List<EObject> coverage = (List<EObject>) _arguments.get(ArgumentType_Enum.COLLECTION);
+      EObject container = (EObject) _arguments.get(ArgumentType.CONTAINER_VIEW);
+      List<EObject> coverage = (List<EObject>) _arguments.get(ArgumentType.COLLECTION);
 
       Diagram Diag = DiagramHelper.getDiagram((DDiagram) container);
       TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(Diag);
 
-      EventEnd startingEndPredecessor = (EventEnd) _arguments.get(ArgumentType_Enum.STARTINGENDPREDECESSOR);
-      EventEnd finishingEndPredecessor = (EventEnd) _arguments.get(ArgumentType_Enum.FINISHINGENDPREDECESSOR);
+      EventEnd startingEndPredecessor = (EventEnd) _arguments.get(ArgumentType.STARTINGENDPREDECESSOR);
+      EventEnd finishingEndPredecessor = (EventEnd) _arguments.get(ArgumentType.FINISHINGENDPREDECESSOR);
 
       cmd = ToolCommandBuilder.buildCreateInteractionUseCommandFromTool((DDiagram) container, tool, startingEndPredecessor, finishingEndPredecessor, coverage);
     }
@@ -79,10 +79,10 @@ public class InteractionUseCreationDescriptionWrapper extends NodeCreationDescri
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.CONTAINER, DiagramPackage.Literals.ABSTRACT_DNODE),
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.SEMANTIC_CONTAINER, null), new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.COLLECTION,
-              null), new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.STARTINGENDPREDECESSOR, null), new AbstractToolWrapper.ArgumentData(
-              ArgumentType_Enum.FINISHINGENDPREDECESSOR, null));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER_VIEW, DiagramPackage.Literals.ABSTRACT_DNODE),
+          new AbstractToolWrapper.ArgumentData(ArgumentType.CONTAINER, null), new AbstractToolWrapper.ArgumentData(ArgumentType.COLLECTION,
+              null), new AbstractToolWrapper.ArgumentData(ArgumentType.STARTINGENDPREDECESSOR, null), new AbstractToolWrapper.ArgumentData(
+              ArgumentType.FINISHINGENDPREDECESSOR, null));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;

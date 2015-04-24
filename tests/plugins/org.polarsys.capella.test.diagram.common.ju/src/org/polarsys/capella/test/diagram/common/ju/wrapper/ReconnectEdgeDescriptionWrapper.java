@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
-import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType_Enum;
+import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 
 /**
  */
@@ -55,10 +55,10 @@ public class ReconnectEdgeDescriptionWrapper extends AbstractCommonToolWrapper {
 
       ReconnectEdgeDescription tool = (ReconnectEdgeDescription) _tool;
 
-      DEdge edge = (DEdge) _arguments.get(ArgumentType_Enum.EDGE);
+      DEdge edge = (DEdge) _arguments.get(ArgumentType.EDGE);
 
-      EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType_Enum.SOURCE);
-      EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType_Enum.TARGET);
+      EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType.SOURCE);
+      EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType.TARGET);
 
       cmd = _diagramCommandFactory.buildReconnectEdgeCommandFromTool(tool, edge, source, target);
     }
@@ -76,9 +76,9 @@ public class ReconnectEdgeDescriptionWrapper extends AbstractCommonToolWrapper {
 
     if (null == _argumentTypes) {
       List<ArgumentData> list = new ArrayList<ArgumentData>();
-      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.SOURCE, DiagramPackage.Literals.EDGE_TARGET), // The old EdgeTarget
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.TARGET, DiagramPackage.Literals.EDGE_TARGET), // The new EdgeTarget
-          new AbstractToolWrapper.ArgumentData(ArgumentType_Enum.EDGE, DiagramPackage.Literals.DEDGE));
+      Collections.addAll(list, new AbstractToolWrapper.ArgumentData(ArgumentType.SOURCE, DiagramPackage.Literals.EDGE_TARGET), // The old EdgeTarget
+          new AbstractToolWrapper.ArgumentData(ArgumentType.TARGET, DiagramPackage.Literals.EDGE_TARGET), // The new EdgeTarget
+          new AbstractToolWrapper.ArgumentData(ArgumentType.EDGE, DiagramPackage.Literals.DEDGE));
       ret = Collections.unmodifiableList(list);
     } else {
       ret = _argumentTypes;
@@ -104,9 +104,9 @@ public class ReconnectEdgeDescriptionWrapper extends AbstractCommonToolWrapper {
     if (ret) {
 
       ReconnectEdgeDescription tool = (ReconnectEdgeDescription) _tool;
-      EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType_Enum.SOURCE);
-      EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType_Enum.TARGET);
-      DEdge edge = (DEdge) _arguments.get(ArgumentType_Enum.EDGE);
+      EdgeTarget source = (EdgeTarget) _arguments.get(ArgumentType.SOURCE);
+      EdgeTarget target = (EdgeTarget) _arguments.get(ArgumentType.TARGET);
+      DEdge edge = (DEdge) _arguments.get(ArgumentType.EDGE);
 
       EObject semanticSource = ((DSemanticDecorator) source).getTarget();
       EObject semanticTarget = ((DSemanticDecorator) target).getTarget();

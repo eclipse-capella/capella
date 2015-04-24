@@ -15,7 +15,7 @@ import junit.framework.Assert;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.polarsys.capella.test.diagram.common.ju.api.AbstractTestStep;
-import org.polarsys.capella.test.diagram.common.ju.context.BasicExecutionContext;
+import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.step.Messages;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
@@ -27,7 +27,7 @@ public class RefreshDiagramStep extends AbstractTestStep {
   /** The target diagram */
   protected DDiagram _diagram;
   
-  public RefreshDiagramStep(BasicExecutionContext executionContext) {
+  public RefreshDiagramStep(SessionContext executionContext) {
     super(executionContext);
   }
 

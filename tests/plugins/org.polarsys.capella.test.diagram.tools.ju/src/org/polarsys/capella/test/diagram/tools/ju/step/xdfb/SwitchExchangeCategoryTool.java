@@ -8,22 +8,16 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.test.diagram.common.ju.api;
+package org.polarsys.capella.test.diagram.tools.ju.step.xdfb;
 
-import java.util.Arrays;
-import java.util.List;
+import org.polarsys.capella.core.sirius.analysis.constants.IToolNameConstants;
+import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
+import org.polarsys.capella.test.diagram.common.ju.step.tools.InsertRemoveTool;
 
-import org.polarsys.capella.test.framework.api.BasicTestCase;
+public class SwitchExchangeCategoryTool extends InsertRemoveTool {
 
-/**
- *
- */
-public abstract class AbstractDiagramTestCase extends BasicTestCase {
-
-  @Override
-  public List<String> getRequiredTestModels() {
-    return Arrays.asList(getRequiredTestModel());
+  public SwitchExchangeCategoryTool(DiagramContext context) {
+    super(context, IToolNameConstants.TOOL_SDFB_SHOW_HIDE_FUNCTIONAL_EXCH_CATEGORIES);
   }
 
-  protected abstract String getRequiredTestModel();
 }

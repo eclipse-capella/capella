@@ -19,13 +19,14 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.polarsys.capella.test.diagram.common.ju.context.BasicExecutionContext;
+import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.FilterOnDiagramHelper;
 import org.polarsys.capella.test.framework.helpers.HelperMessages;
 
 /**
  * Abstract class for Hide Filters Test
  */
+@Deprecated
 public abstract class AbstractHideFiltersTest extends AbstractHideShowFiltersTest {
 
   // define whether checkFilteredElementsInDiagram is applied or not
@@ -35,11 +36,11 @@ public abstract class AbstractHideFiltersTest extends AbstractHideShowFiltersTes
   /**
    * @param filterName_p
    */
-  public AbstractHideFiltersTest(BasicExecutionContext context, String filterName_p, boolean checkDelta_p) {
+  public AbstractHideFiltersTest(SessionContext context, String filterName_p, boolean checkDelta_p) {
     super(context, filterName_p, checkDelta_p);
   }
 
-  public AbstractHideFiltersTest(BasicExecutionContext context, String filterName_p, boolean checkDelta_p, boolean FilteredElementsInDiagram_p) {
+  public AbstractHideFiltersTest(SessionContext context, String filterName_p, boolean checkDelta_p, boolean FilteredElementsInDiagram_p) {
     super(context, filterName_p, checkDelta_p);
     _checkFilteredElementsInDiagram = FilteredElementsInDiagram_p;
   }

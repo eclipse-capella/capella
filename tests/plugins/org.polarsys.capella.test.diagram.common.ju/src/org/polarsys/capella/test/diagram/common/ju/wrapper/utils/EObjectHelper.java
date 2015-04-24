@@ -11,7 +11,7 @@
 package org.polarsys.capella.test.diagram.common.ju.wrapper.utils;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,32 +27,14 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  */
 public class EObjectHelper {
 
-  public static EObject getMatchingEObject(final EObject root_p, final EClass elementType_p, final EStructuralFeature featureType_p, final String value_p) {
-    Assert.isNotNull(root_p);
-    EObject result = null;
-
-    TreeIterator<EObject> allContents = root_p.eAllContents();
-    while (allContents.hasNext()) {
-      EObject current = allContents.next();
-      EClass currentEClass = current.eClass();
-      if (elementType_p.isSuperTypeOf(currentEClass) && current.eClass().getEAllStructuralFeatures().contains(featureType_p)) {
-        String key = (String) current.eGet(featureType_p);
-        if (value_p.equals(key)) {
-          result = current;
-        }
-      }
-    }
-    return result;
-  }
-
-  public static Map<String, EObject> getMatchingEObject(final EObject root_p, final EClass elementType_p, final EStructuralFeature featureType_p,
-      final Collection<String> values_p) {
+  public static Map<String, EObject> getMatchingEObjects(final EObject root_p, final EClass elementType_p, final EStructuralFeature featureType_p,
+      String... values_p) {
     Assert.isNotNull(root_p);
 
     Map<String, EObject> results = new HashMap<String, EObject>();
 
     List<String> values = new ArrayList<String>();
-    values.addAll(values_p);
+    values.addAll(Arrays.asList(values_p));
 
     TreeIterator<EObject> allContents = root_p.eAllContents();
     while (allContents.hasNext()) {

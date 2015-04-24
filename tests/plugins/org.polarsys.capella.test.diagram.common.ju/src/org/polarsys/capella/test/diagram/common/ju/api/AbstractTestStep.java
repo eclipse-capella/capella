@@ -10,20 +10,20 @@
  *******************************************************************************/
 package org.polarsys.capella.test.diagram.common.ju.api;
 
-import org.polarsys.capella.test.diagram.common.ju.context.BasicExecutionContext;
+import org.polarsys.capella.test.diagram.common.ju.context.SessionContext;
 
 /**
  *
  */
-public abstract class AbstractTestStep implements Runnable {
+public abstract class AbstractTestStep<A> implements IStep<A> {
 
-  private BasicExecutionContext _executionContext;
-  
-  public AbstractTestStep(BasicExecutionContext executionContext) {
+  private SessionContext _executionContext;
+
+  public AbstractTestStep(SessionContext executionContext) {
     _executionContext = executionContext;
   }
-  
-  public abstract Object getResult();
+
+  public abstract A getResult();
 
   protected abstract void runTest();
 
@@ -38,16 +38,27 @@ public abstract class AbstractTestStep implements Runnable {
   /**
    * 
    */
-  public void run() {
-    preRunTest();
-    runTest();
-    postRunTest();
+  public A run() {
+    try {
+      preRunTest();
+      runTest();
+      postRunTest();
+      return getResult();
+
+    } finally {
+      dispose();
+    }
+
   }
-  
+
+  protected void dispose() {
+    // basic implementation does nothing, shall be overridden
+  }
+
   /**
    * 
    */
-  protected BasicExecutionContext getExecutionContext() {
+  protected SessionContext getExecutionContext() {
     return _executionContext;
   }
 }
