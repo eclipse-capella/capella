@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,15 +42,19 @@ public class CapellaCopyAction extends AbstractCommandActionHandler {
   @Override
   public Command createCommand(Collection<Object> selection_p) {
     filterSelectedElements(selection_p);
-    return new CapellaCopyToClipboardCommand(TransactionHelper.getEditingDomain(filterSelection(selection_p)), selection_p, _viewer);
+    if (TransactionHelper.getEditingDomain(filterSelection(selection_p)) != null)
+      return new CapellaCopyToClipboardCommand(TransactionHelper.getEditingDomain(filterSelection(selection_p)), selection_p, _viewer);
+    return null;
   }
 
   /**
    * Filter out elements that are already included in selection because their container is also included.
+   * 
    * @param selection_p
    */
   static void filterSelectedElements(Collection<?> selection_p) {
-    // Filter out on specified selection all elements that are de facto included because their container is also included.
+    // Filter out on specified selection all elements that are de facto included because their container is also
+    // included.
     ArrayList<Object> temporarySelection = new ArrayList<Object>(selection_p);
     Iterator<?> iterator = selection_p.iterator();
     while (iterator.hasNext()) {
