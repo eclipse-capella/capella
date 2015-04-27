@@ -30,7 +30,6 @@ import org.eclipse.emf.diffmerge.patterns.core.api.IPatternApplication;
 import org.eclipse.emf.diffmerge.patterns.core.api.locations.IReferenceLocation;
 import org.eclipse.emf.diffmerge.patterns.core.util.LocationsUtil;
 import org.eclipse.emf.diffmerge.patterns.core.util.locations.BasicReferenceLocation;
-import org.eclipse.emf.diffmerge.patterns.support.gen.commonpatternsupport.CommonPatternInstance;
 import org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider;
 import org.eclipse.emf.diffmerge.patterns.ui.dialogs.MultiStorageChoiceDialog;
 import org.eclipse.emf.diffmerge.patterns.ui.dialogs.MultiStorageChoiceDialog.MultiStorageKind;
@@ -99,7 +98,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
-import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 
 
 /**
@@ -795,10 +793,7 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    */
   @Override
   public boolean isApplicableTo(EObject obj_p){
-    if (obj_p instanceof CommonPatternInstance ||
-        obj_p instanceof ExtensibleElement)
-      return true;
-    return false;
+    return true;
   }
   
   /**

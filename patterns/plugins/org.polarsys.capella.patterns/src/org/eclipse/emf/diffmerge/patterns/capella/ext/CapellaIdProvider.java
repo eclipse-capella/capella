@@ -13,21 +13,17 @@ package org.eclipse.emf.diffmerge.patterns.capella.ext;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider;
+import org.eclipse.emf.diffmerge.patterns.core.util.ModelsUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.diffmerge.patterns.support.gen.commonpatternsupport.CommonPatternInstance;
-
-import org.polarsys.kitalpha.emde.model.ExtensibleElement;
-
-import org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider;
-import org.eclipse.emf.diffmerge.patterns.core.util.ModelsUtil;
 import org.polarsys.capella.common.lib.IdGenerator;
 
 
 /**
- * An implementation of an ID provider for Capella models
+ * An implementation of an ID provider for Capella models.
  */
 public class CapellaIdProvider implements IIdProvider {
 
@@ -39,7 +35,6 @@ public class CapellaIdProvider implements IIdProvider {
   }
 
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#getId(org.eclipse.emf.ecore.EObject)
    */
   public String getId(EObject element_p, EditingDomain editingDomain_p) {
@@ -50,7 +45,6 @@ public class CapellaIdProvider implements IIdProvider {
   }
 
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#getById(java.lang.String, java.util.Collection)
    */
   public EObject getById(String id_p, Collection<? extends Resource> scope_p) {
@@ -64,10 +58,7 @@ public class CapellaIdProvider implements IIdProvider {
     return null;
   }
 
-
-
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#getByIdInContext(java.lang.String, java.lang.Object)
    */
   public EObject getByIdInContext(String id_p, Object context_p) {
@@ -91,15 +82,11 @@ public class CapellaIdProvider implements IIdProvider {
     return result;
   }
 
-
   /**
    * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IIdProvider#isApplicableTo(org.eclipse.emf.ecore.EObject)
    */
   public boolean isApplicableTo(EObject element_p) {
-    if (element_p instanceof CommonPatternInstance ||
-        element_p instanceof ExtensibleElement)
-      return true;
-    return false;
+    return true;
   }
 
   /**
