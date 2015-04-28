@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
@@ -32,7 +34,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
-
 import org.polarsys.capella.common.mdsofa.common.activator.SolFaCommonActivator;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 
@@ -46,12 +47,15 @@ public class FileHelper {
 
   /**
    * Get file full url from relative one.
-   * @param fileRelativePath_p File path relative to workspace.<br>
-   *          It <b>must</b> start with <i>pluginId</i> or <i>project name</i>. It is also recommended that both plug-in id and plug-in project names are the
-   *          same.<br>
+   * 
+   * @param fileRelativePath_p
+   *          File path relative to workspace.<br>
+   *          It <b>must</b> start with <i>pluginId</i> or <i>project name</i>. It is also recommended that both plug-in
+   *          id and plug-in project names are the same.<br>
    *          As a convenience, the full path will refer to the plug-in id.<br>
-   *          <b>Example</b> : <i>org.polarsys.capella.common.mdsofa/model/example.ecore</i> is a path relative to the workspace that refers to the
-   *          <i>org.polarsys.capella.common.mdsofa plug-in</i>, having a <i>model/example.ecore</i> file in its project.<br>
+   *          <b>Example</b> : <i>org.polarsys.capella.common.mdsofa/model/example.ecore</i> is a path relative to the
+   *          workspace that refers to the <i>org.polarsys.capella.common.mdsofa plug-in</i>, having a
+   *          <i>model/example.ecore</i> file in its project.<br>
    *          In Eclipse resource system, such a path is considered as an absolute one against the workspace root.<br>
    *          It's still referred to as a relative path, since the returned URL is absolute in the file system.
    * @return
@@ -64,6 +68,7 @@ public class FileHelper {
   /**
    * Get file full url from its full uri.<br>
    * See {@link #getFileFullUri(String)} method.
+   * 
    * @param fileFullUri_p
    * @return
    */
@@ -83,12 +88,15 @@ public class FileHelper {
   /**
    * Get a file uri from relative one which is not resolved against the eclipse platform.<br>
    * The returned uri starts with either 'platform:/plug-in/' or 'platform:/resource/'.
-   * @param fileRelativePath_p File path relative to workspace.<br>
-   *          It <b>must</b> start with <code>project name</code> or <i>pluginId</i>. It is also recommended that both plug-in id and plug-in project names are
-   *          the same.<br>
+   * 
+   * @param fileRelativePath_p
+   *          File path relative to workspace.<br>
+   *          It <b>must</b> start with <code>project name</code> or <i>pluginId</i>. It is also recommended that both
+   *          plug-in id and plug-in project names are the same.<br>
    *          As a convenience, the full path will refer to the plug-in id.<br>
-   *          <b>Example</b> : <i>org.polarsys.capella.common.mdsofa/model/example.ecore</i> is a path relative to the workspace that refers to the
-   *          <i>org.polarsys.capella.common.mdsofa plug-in</i>, having a <i>model/example.ecore</i> file in its project.
+   *          <b>Example</b> : <i>org.polarsys.capella.common.mdsofa/model/example.ecore</i> is a path relative to the
+   *          workspace that refers to the <i>org.polarsys.capella.common.mdsofa plug-in</i>, having a
+   *          <i>model/example.ecore</i> file in its project.
    * @return an {@link URI} not resolved against the eclipse platform.<br>
    */
   public static URI getFileFullUri(String fileRelativePath_p) {
@@ -110,6 +118,7 @@ public class FileHelper {
 
   /**
    * Convert package name to a correct java folder path.
+   * 
    * @param packageName_p
    * @return
    */
@@ -123,6 +132,7 @@ public class FileHelper {
 
   /**
    * Read given input stream as an array of bytes.
+   * 
    * @param inputStream_p
    * @return a not null array.
    */
@@ -166,19 +176,25 @@ public class FileHelper {
 
   /**
    * Read file as a string.
-   * @param filePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param filePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return If an error occurred {@link ICommonConstants#EMPTY_STRING} is returned.
+   * @throws UnsupportedEncodingException
    */
-  public static String readFile(String filePath_p) {
+  public static String readFile(String filePath_p) throws UnsupportedEncodingException {
     byte[] rawContent = readRawFile(filePath_p);
-    String result = (0 == rawContent.length) ? ICommonConstants.EMPTY_STRING : new String(rawContent);
+    String result;
+    result = (0 == rawContent.length) ? ICommonConstants.EMPTY_STRING : new String(rawContent, "UTF-8");
     return result;
   }
 
   /**
    * Get file as a stream.
-   * @param filePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param filePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return If an error occurred null is returned.
    */
@@ -198,7 +214,9 @@ public class FileHelper {
 
   /**
    * Read file as an array of bytes.
-   * @param filePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param filePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return a not null array.
    */
@@ -215,9 +233,12 @@ public class FileHelper {
 
   /**
    * Copy given source file content in given target file.
-   * @param sourceFileRelativePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param sourceFileRelativePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param targetFileRelativePath_p File path relative to the plug-in, plug-in id included.<br>
+   * @param targetFileRelativePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    */
   public static void copyFile(String sourceFileRelativePath_p, String targetFileRelativePath_p) {
@@ -227,22 +248,30 @@ public class FileHelper {
 
   /**
    * Write given string contents at specified path.
-   * @param filePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param filePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param ensureFolders_p Make sure all parent folders exist by creating all necessary ones.
-   * @param contents_p Contents that should be written to pointed file.
+   * @param ensureFolders_p
+   *          Make sure all parent folders exist by creating all necessary ones.
+   * @param contents_p
+   *          Contents that should be written to pointed file.
    * @return
    */
   public static boolean writeFile(String filePath_p, boolean ensureFolders_p, String contents_p) {
-    return writeFile(filePath_p, ensureFolders_p, contents_p.getBytes());
+    return writeFile(filePath_p, ensureFolders_p, contents_p.getBytes(Charset.forName("UTF-8")));
   }
 
   /**
    * Write given contents of bytes at specified path.
-   * @param filePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param filePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param ensureFolders_p Make sure all parent folders exist by creating all necessary ones.
-   * @param contents_p Contents that should be written to pointed file.
+   * @param ensureFolders_p
+   *          Make sure all parent folders exist by creating all necessary ones.
+   * @param contents_p
+   *          Contents that should be written to pointed file.
    * @return
    */
   public static boolean writeFile(String filePath_p, boolean ensureFolders_p, byte[] contents_p) {
@@ -290,9 +319,12 @@ public class FileHelper {
 
   /**
    * Rename file from source file relative path to destination relative path.
-   * @param sourceFileRelativePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param sourceFileRelativePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param destinationFileRelativePath_p File path relative to the plug-in, plug-in id included.<br>
+   * @param destinationFileRelativePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
@@ -308,9 +340,12 @@ public class FileHelper {
 
   /**
    * Rename folder from source folder relative path to destination relative path.
-   * @param sourceFolderRelativePath_p Folder path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param sourceFolderRelativePath_p
+   *          Folder path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
-   * @param destinationFolderRelativePath_p Folder path relative to the plug-in, plug-in id included.<br>
+   * @param destinationFolderRelativePath_p
+   *          Folder path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
@@ -326,6 +361,7 @@ public class FileHelper {
 
   /**
    * Move resource to given destination path.
+   * 
    * @param resource_p
    * @param destinationPath_p
    * @return true if move occurred with no exception, false otherwise.
@@ -346,7 +382,9 @@ public class FileHelper {
 
   /**
    * Is given file relative path pointing to an existing file ?
-   * @param fileRelativePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param fileRelativePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
@@ -357,6 +395,7 @@ public class FileHelper {
 
   /**
    * Make sure that given path is safe to use, ie ensure that all parent folders exist.
+   * 
    * @param fileFullPath_p
    */
   public static void ensurePathAvailability(String fileFullPath_p) {
@@ -372,6 +411,7 @@ public class FileHelper {
 
   /**
    * Delete given relative file in the workspace.
+   * 
    * @param workspaceRelativeFile_p
    */
   public static boolean deleteFile(String workspaceRelativeFile_p) {
@@ -393,6 +433,7 @@ public class FileHelper {
 
   /**
    * Delete given relative folder in the workspace.
+   * 
    * @param workspaceRelativePath_p
    * @return true if successfully deleted, false otherwise.
    */
@@ -414,7 +455,9 @@ public class FileHelper {
 
   /**
    * Get platform file as an {@link IResource} from its relative path.
-   * @param fileRelativePath_p File path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param fileRelativePath_p
+   *          File path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
@@ -431,7 +474,9 @@ public class FileHelper {
 
   /**
    * Get platform folder as an {@link IResource} from its relative path.
-   * @param folderRelativePath_p Folder path relative to the plug-in, plug-in id included.<br>
+   * 
+   * @param folderRelativePath_p
+   *          Folder path relative to the plug-in, plug-in id included.<br>
    *          See {@link #getFileFullUrl(String)} documentation.
    * @return
    */
@@ -450,6 +495,7 @@ public class FileHelper {
    * file extension portion. If the last segment ends in a period,<br>
    * the file extension portion is the empty string.<br>
    * </p>
+   * 
    * @param filePath_p
    * @return the file extension or <code>null</code>
    */
@@ -462,9 +508,12 @@ public class FileHelper {
    * That is, make sure file is modifiable after this call.<br>
    * The user may be asked to take a decision if the file is held by the configuration management system.<br>
    * Nevertheless, if no UI is reachable, then the system is urged into making the file writable.
-   * @param filePath_p File path relative to the plug-in, plug-in id included. See {@link #getFileFullUrl(String)} documentation.
-   * @return false if file could not be made writable or user denied rights to (in case of a configuration management). true if it does not exist (then it is
-   *         writable) or permission was granted (either by the system or by the user).
+   * 
+   * @param filePath_p
+   *          File path relative to the plug-in, plug-in id included. See {@link #getFileFullUrl(String)} documentation.
+   * @return false if file could not be made writable or user denied rights to (in case of a configuration management).
+   *         true if it does not exist (then it is writable) or permission was granted (either by the system or by the
+   *         user).
    */
   public static boolean makeFileWritable(String filePath_p) {
     // Get user helper.

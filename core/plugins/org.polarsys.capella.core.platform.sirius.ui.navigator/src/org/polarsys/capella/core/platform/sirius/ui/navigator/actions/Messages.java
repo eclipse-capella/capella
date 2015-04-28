@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,9 @@ public class Messages extends NLS {
   public static String ShowInDiagramAction_CollapseElement_Message;
   public static String ShowInDiagramAction_FoldedElement_Message;
   public static String ShowInDiagramAction_FilteredElement_Message;
+
+  public static String RenameResourceAction_Session_Warning_Dialog_Title;
+  public static String RenameResourceAction_Session_Warning_Dialog_Message;
 
   static {
     // initialize resource bundle

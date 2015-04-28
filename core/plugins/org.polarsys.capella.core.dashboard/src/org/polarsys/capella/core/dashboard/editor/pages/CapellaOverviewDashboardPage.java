@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.polarsys.capella.core.dashboard.editor.pages;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.editor.FormEditor;
@@ -21,10 +23,10 @@ import org.eclipse.ui.forms.widgets.FormText;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.TableWrapData;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
-import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
-import org.polarsys.capella.core.dashboard.IImageKeys;
+import org.polarsys.capella.common.ui.services.helper.FormHelper;
 import org.polarsys.capella.core.dashboard.CapellaDashboardActivator;
+import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.util.FormTextPageLinkAdapter;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.model.helpers.ModelQueryHelper;
@@ -100,6 +102,7 @@ public class CapellaOverviewDashboardPage extends AbstractCapellaDashboardPage {
 
   /**
    * Constructor.
+   * 
    * @param editor_p
    * @param id_p
    * @param title_p
@@ -130,47 +133,55 @@ public class CapellaOverviewDashboardPage extends AbstractCapellaDashboardPage {
     body.setLayout(layout);
     CapellaDashboardActivator activator = CapellaDashboardActivator.getDefault();
     // Create the overview content.
-    StringBuilder overviewContent = new StringBuilder(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewHeader.overview")); //$NON-NLS-1$
-    Project capellaProject = editorInput.getCapellaProject();
-    // Check if Operational Analysis content is needed.
-    if (null != ModelQueryHelper.getOperationalAnalysis(capellaProject)) {
-      overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewOperationalAnalysis.overview")); //$NON-NLS-1$
-    }
-    // Add common content.
-    overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewCommonArchitectures.overview")); //$NON-NLS-1$
-    // Check if EPBS Architecture content is needed.
-    if (null != ModelQueryHelper.getEPBSArchitecture(capellaProject)) {
-      overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewEpbsArchitecture.overview")); //$NON-NLS-1$
-    }
-    // Add footer.
-    overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewFooter.overview")); //$NON-NLS-1$
+    StringBuilder overviewContent;
+    try {
+      overviewContent = new StringBuilder(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewHeader.overview"));
 
-    // Create the rich text that host the Capella overview.
-    FormText richText = FormHelper.createRichText(managedForm_p.getToolkit(), body, overviewContent.toString(), new OverviewPageLinkAdapter(getEditor()));
-    richText.setHyperlinkSettings(managedForm_p.getToolkit().getHyperlinkGroup());
+      Project capellaProject = editorInput.getCapellaProject();
+      // Check if Operational Analysis content is needed.
+      if (null != ModelQueryHelper.getOperationalAnalysis(capellaProject)) {
+        overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewOperationalAnalysis.overview")); //$NON-NLS-1$
+      }
+      // Add common content.
+      overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewCommonArchitectures.overview")); //$NON-NLS-1$
+      // Check if EPBS Architecture content is needed.
+      if (null != ModelQueryHelper.getEPBSArchitecture(capellaProject)) {
+        overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewEpbsArchitecture.overview")); //$NON-NLS-1$
+      }
+      // Add footer.
+      overviewContent.append(FileHelper.readFile(activator.getPluginId() + "/xml/introduction/overviewFooter.overview")); //$NON-NLS-1$
 
-    // Set image HREF.
-    richText.setImage(OperationalAnalysisDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(OperationalAnalysisDashboardPage.PAGE_ID)));
-    richText.setImage("oa_text", activator.getImage(IImageKeys.IMG_OPERATIONAL_ANALYSIS_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
+      // Create the rich text that host the Capella overview.
+      FormText richText = FormHelper.createRichText(managedForm_p.getToolkit(), body, overviewContent.toString(), new OverviewPageLinkAdapter(getEditor()));
+      richText.setHyperlinkSettings(managedForm_p.getToolkit().getHyperlinkGroup());
 
-    richText.setImage(SystemAnalysisDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(SystemAnalysisDashboardPage.PAGE_ID)));
-    richText.setImage("sa_text", activator.getImage(IImageKeys.IMG_SYSTEM_ANALYSIS_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
+      // Set image HREF.
+      richText.setImage(OperationalAnalysisDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(OperationalAnalysisDashboardPage.PAGE_ID)));
+      richText.setImage("oa_text", activator.getImage(IImageKeys.IMG_OPERATIONAL_ANALYSIS_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
 
-    richText.setImage(LogicalArchitectureDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(LogicalArchitectureDashboardPage.PAGE_ID)));
-    richText.setImage("la_text", activator.getImage(IImageKeys.IMG_LOGICAL_ARCHITECTURE_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
+      richText.setImage(SystemAnalysisDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(SystemAnalysisDashboardPage.PAGE_ID)));
+      richText.setImage("sa_text", activator.getImage(IImageKeys.IMG_SYSTEM_ANALYSIS_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
 
-    richText.setImage(PhysicalArchitectureDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(PhysicalArchitectureDashboardPage.PAGE_ID)));
-    richText.setImage("pa_text", activator.getImage(IImageKeys.IMG_PHYSICAL_ARCHITECTURE_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
+      richText.setImage(LogicalArchitectureDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(LogicalArchitectureDashboardPage.PAGE_ID)));
+      richText.setImage("la_text", activator.getImage(IImageKeys.IMG_LOGICAL_ARCHITECTURE_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
 
-    richText.setImage(EpbsArchitectureDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(EpbsArchitectureDashboardPage.PAGE_ID)));
-    richText.setImage("epbs_text", activator.getImage(IImageKeys.IMG_EPBS_ARCHITECTURE_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
+      richText.setImage(PhysicalArchitectureDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(PhysicalArchitectureDashboardPage.PAGE_ID)));
+      richText.setImage("pa_text", activator.getImage(IImageKeys.IMG_PHYSICAL_ARCHITECTURE_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
 
-    // Set Layout data.
-    richText.marginHeight = 0;
-    richText.marginWidth = 0;
-    TableWrapData layoutData = new TableWrapData();
-    layoutData.align = TableWrapData.CENTER;
-    layoutData.valign = TableWrapData.MIDDLE;
-    richText.setLayoutData(layoutData);
+      richText.setImage(EpbsArchitectureDashboardPage.PAGE_ID, activator.getImage(__hrefImageMappings.get(EpbsArchitectureDashboardPage.PAGE_ID)));
+      richText.setImage("epbs_text", activator.getImage(IImageKeys.IMG_EPBS_ARCHITECTURE_OVERVIEW_TEXT_PAGE)); //$NON-NLS-1$
+
+      // Set Layout data.
+      richText.marginHeight = 0;
+      richText.marginWidth = 0;
+      TableWrapData layoutData = new TableWrapData();
+      layoutData.align = TableWrapData.CENTER;
+      layoutData.valign = TableWrapData.MIDDLE;
+      richText.setLayoutData(layoutData);
+    } catch (UnsupportedEncodingException e) {
+      Logger logger = Logger.getLogger(CapellaOverviewDashboardPage.class.getPackage().getName());
+      logger.warn("Dashboard overviews failed to load because UTF-8 encoding is not supported ", e);
+    } //$NON-NLS-1$
+
   }
 }

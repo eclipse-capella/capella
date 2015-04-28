@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.core.dashboard.editor.pages;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -61,6 +62,11 @@ import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.forms.widgets.TableWrapLayout;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
+import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
+import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
+import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
+import org.polarsys.capella.common.mdsofa.common.misc.Couple;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -70,13 +76,8 @@ import org.polarsys.capella.common.ui.services.helper.ViewerHelper;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.FilteredTree;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.PatternFilter;
 import org.polarsys.capella.common.ui.toolkit.widgets.filter.TreePatternFilter;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
-import org.polarsys.capella.common.mdsofa.common.helper.FileHelper;
-import org.polarsys.capella.common.mdsofa.common.helper.MiscHelper;
-import org.polarsys.capella.common.mdsofa.common.misc.Couple;
-import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.CapellaDashboardActivator;
+import org.polarsys.capella.core.dashboard.IImageKeys;
 import org.polarsys.capella.core.dashboard.actions.AbstractDescriptionAction;
 import org.polarsys.capella.core.dashboard.actions.AbstractViewerFilteringAction;
 import org.polarsys.capella.core.dashboard.actions.util.FormTextPageLinkAdapter;
@@ -167,6 +168,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Constructor.
+   * 
    * @param editor_p
    * @param id_p
    * @param title_p
@@ -181,13 +183,16 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Adjust image href.
+   * 
    * @param richText_p
-   * @param used to collect image.
+   * @param used
+   *          to collect image.
    */
   protected abstract void adjustImageHRef(FormText richText_p, CapellaDashboardActivator activator_p);
 
   /**
    * Returns <code>true</code> if specified selection contains only {@link DRepresentation}.
+   * 
    * @param selection_p
    * @return
    */
@@ -210,6 +215,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Create contributed sections
+   * 
    * @param sectionContainer_p
    * @param managedForm_p
    */
@@ -266,22 +272,31 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Create the overview section.
+   * 
    * @param sectionContainer_p
    * @param managedForm_p
    * @return
    */
   protected void createOverviewSection(Composite sectionContainer_p, IManagedForm managedForm_p) {
     CapellaDashboardActivator activator = CapellaDashboardActivator.getDefault();
-    String overviewContent = FileHelper.readFile(activator.getPluginId() + "/xml/overview/" + getOverviewFileName()); //$NON-NLS-1$
-    FormText richText = FormHelper.createRichText(managedForm_p.getToolkit(), sectionContainer_p, overviewContent, new FormTextPageLinkAdapter(getEditor()));
-    adjustImageHRef(richText, activator);
-    richText.marginHeight = 0;
-    richText.marginWidth = 0;
+    String overviewContent;
+    try {
+      overviewContent = FileHelper.readFile(activator.getPluginId() + "/xml/overview/" + getOverviewFileName());
+      FormText richText = FormHelper.createRichText(managedForm_p.getToolkit(), sectionContainer_p, overviewContent, new FormTextPageLinkAdapter(getEditor()));
+      adjustImageHRef(richText, activator);
+      richText.marginHeight = 0;
+      richText.marginWidth = 0;
+    } catch (UnsupportedEncodingException e) {
+      Logger logger = Logger.getLogger(AbstractCapellaArchitectureDashboardPage.class.getPackage().getName());
+      logger.warn("Overview section failed to load because UTF-8 encoding is not supported ", e);
+    } //$NON-NLS-1$
+
   }
 
   /**
    * Create the container that hosts sections.<br>
    * This one layouts its content using a {@link TableWrapLayout} to allow sections to have wrapped hyper controls.
+   * 
    * @param parent_p
    * @param managedForm_p
    */
@@ -294,6 +309,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
   /**
    * Create section displayed in this page.<br>
    * Default implementation return <code>null</code>.
+   * 
    * @param sectionContainer_p
    * @return First created section. This one is used to enable UI alignment with Diagram viewer section.
    */
@@ -316,6 +332,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Create Transverse Modeling Section.
+   * 
    * @param sectionContainer_p
    * @param managedForm_p
    * @param filteringAction_p
@@ -327,47 +344,46 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
    * @return
    */
   protected Section createTransverseModeling(Composite sectionContainer_p, IManagedForm managedForm_p, AbstractViewerFilteringAction filteringAction_p,
-      AbstractDescriptionAction descriptionAction_p, AbstractHyperlinkAdapter newClassDiagramAdapter_p,
-      AbstractHyperlinkAdapter newStateMachineDiagramAdapter_p, AbstractHyperlinkAdapter newStateModeFunctionsMatrixAdapter_p,
-      String newStateModeFunctionsMatrixLabel_p) {
+      AbstractDescriptionAction descriptionAction_p, AbstractHyperlinkAdapter newClassDiagramAdapter_p, AbstractHyperlinkAdapter newStateMachineDiagramAdapter_p,
+      AbstractHyperlinkAdapter newStateModeFunctionsMatrixAdapter_p, String newStateModeFunctionsMatrixLabel_p) {
     IAction[] toolbarActions = new IAction[] { descriptionAction_p, filteringAction_p };
     // Create the section.
-    Couple<Section, Composite> section =
-        FormHelper.createTwistieSectionWithToolbar(sectionContainer_p, managedForm_p,
-            Messages.AbstractCapellaArchitectureDashboardPage_TransverseModelingSection_Title, null, false, MiscHelper.asList(toolbarActions));
+    Couple<Section, Composite> section = FormHelper.createTwistieSectionWithToolbar(sectionContainer_p, managedForm_p,
+        Messages.AbstractCapellaArchitectureDashboardPage_TransverseModelingSection_Title, null, false, MiscHelper.asList(toolbarActions));
     // Get the section composite.
     Composite sectionComposite = section.getValue();
     // Get the form toolkit.
     FormToolkit toolkit = managedForm_p.getToolkit();
     CapellaDashboardActivator capellaDashboardActivator = CapellaDashboardActivator.getDefault();
-    // Create an hyper link for Describe the information exchanged between Functions and / or between Components with a New Class diagram.
+    // Create an hyper link for Describe the information exchanged between Functions and / or between Components with a
+    // New Class diagram.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_CLASS_DIAGRAM),
-        Messages.AbstractCapellaArchitectureDashboardPage_NewClassDiagram_Title, null,
-        Messages.AbstractCapellaArchitectureDashboardPage_NewClassDiagram_Description, newClassDiagramAdapter_p);
+        Messages.AbstractCapellaArchitectureDashboardPage_NewClassDiagram_Title, null, Messages.AbstractCapellaArchitectureDashboardPage_NewClassDiagram_Description,
+        newClassDiagramAdapter_p);
     // Create an hyper link for Describe the States and Modes of the system with a new State Machine.
     FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_NEW_MODE_STATE_DIAGRAM),
-        Messages.AbstractCapellaArchitectureDashboardPage_NewStateMachinDiagram_Title, null,
-        Messages.AbstractCapellaArchitectureDashboardPage_NewStateMachinDiagram_Description, newStateMachineDiagramAdapter_p);
+        Messages.AbstractCapellaArchitectureDashboardPage_NewStateMachinDiagram_Title, null, Messages.AbstractCapellaArchitectureDashboardPage_NewStateMachinDiagram_Description,
+        newStateMachineDiagramAdapter_p);
     // Create an hyper link for Create a new State & Mode / Functions matrix.
     String newStateModeFunctionsMatrixLabel = newStateModeFunctionsMatrixLabel_p;
     if (null == newStateModeFunctionsMatrixLabel) {
       newStateModeFunctionsMatrixLabel = Messages.AbstractCapellaArchitectureDashboardPage_NewStateModeFunctionsMatrix_Title;
     }
-    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX),
-        newStateModeFunctionsMatrixLabel, null, null, newStateModeFunctionsMatrixAdapter_p);
+    FormHelper.createLinkWithDescription(toolkit, sectionComposite, capellaDashboardActivator.getImage(IImageKeys.IMG_TRACEABILITY_MATRIX), newStateModeFunctionsMatrixLabel, null,
+        null, newStateModeFunctionsMatrixAdapter_p);
     return section.getKey();
   }
 
   /**
    * Create the viewer that displays diagrams.
+   * 
    * @param viewerContainer_p
    * @param managedForm_p
    */
   protected Couple<TreeViewer, Section> createViewer(Composite viewerContainer_p, IManagedForm managedForm_p) {
     // Create the section.
-    Couple<Section, Composite> section =
-        FormHelper.createSectionWithDescription(managedForm_p.getToolkit(), viewerContainer_p,
-            Messages.AbstractCapellaArchitectureDashboardPage_DiagramsViewer_Title, null);
+    Couple<Section, Composite> section = FormHelper.createSectionWithDescription(managedForm_p.getToolkit(), viewerContainer_p,
+        Messages.AbstractCapellaArchitectureDashboardPage_DiagramsViewer_Title, null);
     FormHelper.createSectionToolbar(section.getKey(), Collections.singletonList(getResetSectionFilter()));
     section.getKey().setLayoutData(new GridData(GridData.FILL_BOTH));
     // Create a tree viewer with a regular expression filter.
@@ -429,6 +445,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
   /**
    * Create viewer container that hosts the viewer.<br>
    * This one layouts its content using a {@link GridLayout}.
+   * 
    * @param parent_p
    * @param managedForm_p
    * @return
@@ -440,6 +457,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
   /**
    * Declare viewer actions.<br>
    * This methods is called eache time the menu is pop-up.
+   * 
    * @param contextMenuManager_p
    * @param treeViewer_p
    */
@@ -568,6 +586,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
   /**
    * Handle property change.<br>
    * Default implementation does nothing.
+   * 
    * @param event_p
    * @param value_p
    * @param property_p
@@ -595,12 +614,14 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
    * Get the EClass this architecture page is handling.<br>
    * This EClass is used to filter out UI from other levels in Common viewpoint part.<br>
    * Example: in SA page we only display Common representations hold by CtxPackage.Literals.SYSTEM_ANALYSIS.
+   * 
    * @return
    */
   public abstract EClass getFilteringMetaClassForCommonViewpoint();
 
   /**
    * Get the viewpoint handled by this page.
+   * 
    * @return an empty string.
    */
   protected String getHandledViewpoint() {
@@ -609,6 +630,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Get the header page title.
+   * 
    * @return
    */
   protected String getHeaderTitle() {
@@ -617,6 +639,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Get the underlying Capella project, {@link CapellaSessionEditorInput#getCapellaProject()}.
+   * 
    * @return
    */
   public Project getCapellaProject() {
@@ -627,6 +650,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
    * Get the XML overview file that defines the form text content for the overview section.<br>
    * {@link #createOverviewSection(Composite, IManagedForm, String)}.<br>
    * Returned path must be relative to <code>org.polarsys.capella.core.dashboard/xml/overview</code> folder.<br>
+   * 
    * @return
    */
   protected abstract String getOverviewFileName();
@@ -634,18 +658,21 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
   /**
    * Get the XML file that defines the form text content for the description of the page.<br>
    * Returned path must be relative to <code>org.polarsys.capella.core.dashboard/xml</code> folder.<br>
+   * 
    * @return
    */
   protected abstract String getPageDescriptionFileName();
 
   /**
    * Get the page title (used to render tab text).
+   * 
    * @return a not <code> null</code> string.
    */
   protected abstract String getPageTitle();
 
   /**
    * Create an action to remove the section filter.
+   * 
    * @return
    */
   private Action getResetSectionFilter() {
@@ -668,6 +695,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Get the section container.
+   * 
    * @return the sectionContainer
    */
   protected Composite getSectionContainer() {
@@ -676,6 +704,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Get the underlying Sirius session, {@link CapellaSessionEditorInput#getSession()}.
+   * 
    * @return
    */
   public Session getSession() {
@@ -684,6 +713,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Get the tree viewer that displays diagrams.
+   * 
    * @return a not <code>null</code> instance.
    */
   public TreeViewer getViewer() {
@@ -692,6 +722,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Handle contributed sections for specified {@link ICapellaDashboardPagesProvider}.
+   * 
    * @param contributor_p
    * @param sectionContainer_p
    * @param managedForm_p
@@ -719,17 +750,16 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
   private void loadPagesContributors() {
     if (null == __capellaPagesProviders) {
       // Load providers i.e contributors.
-      IConfigurationElement[] configurationElements =
-          ExtensionPointHelper.getConfigurationElements(CapellaDashboardActivator.getDefault().getPluginId(),
-              CAPELLA_ARCHITECTURE_PAGES_PROVIDER_EXTENSION_POINT_ID);
+      IConfigurationElement[] configurationElements = ExtensionPointHelper.getConfigurationElements(CapellaDashboardActivator.getDefault().getPluginId(),
+          CAPELLA_ARCHITECTURE_PAGES_PROVIDER_EXTENSION_POINT_ID);
       // Create the list that stores the contributors.
       __capellaPagesProviders = new ArrayList<ICapellaDashboardPagesProvider>(configurationElements.length);
       // Loop over contributions to fill in the list.
       for (IConfigurationElement configurationElement : configurationElements) {
         try {
           // Get the contribution.
-          ICapellaDashboardPagesProvider contributedProvider =
-              (ICapellaDashboardPagesProvider) ExtensionPointHelper.createInstance(configurationElement, ExtensionPointHelper.ATT_CLASS);
+          ICapellaDashboardPagesProvider contributedProvider = (ICapellaDashboardPagesProvider) ExtensionPointHelper.createInstance(configurationElement,
+              ExtensionPointHelper.ATT_CLASS);
           // Add it into the list.
           __capellaPagesProviders.add(contributedProvider);
         } catch (Exception exception_p) {
@@ -743,6 +773,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Make a contextual menu for specified viewer.
+   * 
    * @param treeViewer_p
    */
   private void makeViewerActions(final TreeViewer treeViewer_p) {
@@ -856,7 +887,9 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Set a viewer filter on the diagram viewer.
-   * @param filter_p <code>null</code> means reset the filter.
+   * 
+   * @param filter_p
+   *          <code>null</code> means reset the filter.
    * @param action_p
    */
   public void setViewerFilter(ViewerFilter filter_p, AbstractViewerFilteringAction action_p) {
@@ -869,7 +902,8 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
     TreeViewer treeViewer = getViewer();
     _diagramViewerFilter.setDelegatedFilter(filter_p);
     // Indeed, when the tree viewer is expanded, depending on the applied filter, SWTException are thrown.
-    // It seems linked to Europa release. The only way to override that is to first collapse the tree viewer before refreshing it.
+    // It seems linked to Europa release. The only way to override that is to first collapse the tree viewer before
+    // refreshing it.
     Control control = treeViewer.getControl();
     try {
       // Switch off redraw
@@ -899,6 +933,7 @@ public abstract class AbstractCapellaArchitectureDashboardPage extends AbstractC
 
   /**
    * Update action bars (handlers).
+   * 
    * @param editorActionBars
    */
   public void updateActionBars() {

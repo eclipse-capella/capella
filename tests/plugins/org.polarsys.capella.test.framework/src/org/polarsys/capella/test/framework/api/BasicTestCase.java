@@ -33,10 +33,12 @@ import org.polarsys.capella.test.framework.helpers.TestHelper;
 /**
  * Generic implementation of a test case.<br>
  * <ul>
- * <li>before each test case execution, load in the workspace capella models declared by overriding method getProjectNamesToLoad</li>
+ * <li>before each test case execution, load in the workspace capella models declared by overriding method
+ * getProjectNamesToLoad</li>
  * <li>loaded models are firstly searched in the ones defined by the test suite, then by the test case</li>
  * </ul>
  * - before each test case execution, load
+ * 
  * @author Erwan Brottier
  */
 public abstract class BasicTestCase extends TestCase implements BasicTestArtefact {
@@ -61,7 +63,10 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
     return getClass().getSimpleName();
   }
 
-  /* copy of default implementation where variable fName (value returned by method getName()) is replaced by TEST_METHOD_NAME */
+  /*
+   * copy of default implementation where variable fName (value returned by method getName()) is replaced by
+   * TEST_METHOD_NAME
+   */
   @Override
   protected void runTest() throws Throwable {
     assertNotNull("test method must be defined", TEST_METHOD_NAME); // Some VMs crash when calling getMethod(null,null); //$NON-NLS-1$
@@ -99,6 +104,10 @@ public abstract class BasicTestCase extends TestCase implements BasicTestArtefac
 
   protected IFile getAirdFileForLoadedModel(String modelName) {
     return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(modelName + "." + CapellaResourceHelper.AIRD_FILE_EXTENSION); //$NON-NLS-1$
+  }
+
+  protected IFile getCapellaFileForLoadedModel(String modelName) {
+    return IResourceHelpers.getEclipseProjectInWorkspace(modelName).getFile(modelName + "." + CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION); //$NON-NLS-1$
   }
 
   // /**
