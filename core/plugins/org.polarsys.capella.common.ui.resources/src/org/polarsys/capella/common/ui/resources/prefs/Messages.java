@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,8 @@ public class Messages extends NLS {
   public static String ReuseOfComponentsPreferencePage_Allowed_Title;
 
   public static String InheritancePreferencePage_Group_Title;
-  public static String InheritancePreferencePage_Allowed_Title;
+  public static String MultipleInheritancePreferencePage_Allowed_Title;
+  public static String ComponentInheritancePreferencePage_Allowed_Title;
 
   public static String DeploymentPreferencePage_Group_Title;
   public static String DeploymentPreferencePage_Allowed_Title;
@@ -38,9 +39,9 @@ public class Messages extends NLS {
   public static String SyncPreferencePage_SyncPhysicalPort2FunctionPortOnPhysicalLinkAllowed_Title;
   public static String SyncPreferencePage_SyncPhysicalPort2FunctionPortOnPhysicalPathAllowed_Title;
 
-	public static String interModelIntegrity_Group_Title;
+  public static String interModelIntegrity_Group_Title;
 
-	public static String interModelIntegrity_PreventInterModelDependencyViolation_Title;
+  public static String interModelIntegrity_PreventInterModelDependencyViolation_Title;
 
   static {
     // initialize resource bundle
