@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,17 +45,16 @@ public class CreateFECategoriesController extends CreateCategoriesController {
     FunctionPkg pkgContainer = (FunctionPkg) categoryContainer;
 
     ExchangeCategory exchangeCategory = createCategory(pkgContainer);
+    pkgContainer.getOwnedCategories().add(exchangeCategory);
 
     // get user input: category name
-    InputDialog inputDialog =
-        new InputDialog(Display.getDefault().getActiveShell(), Messages.CreateCategoriesController_create_cat, Messages.CreateCategoriesController_cat_name,
-            exchangeCategory.getName(), null);
+    InputDialog inputDialog = new InputDialog(Display.getDefault().getActiveShell(), Messages.CreateCategoriesController_create_cat, Messages.CreateCategoriesController_cat_name,
+        exchangeCategory.getName(), null);
 
     if (Window.OK == inputDialog.open()) {
 
       String categoryName = inputDialog.getValue();
       exchangeCategory.setName(categoryName);
-      pkgContainer.getOwnedCategories().add(exchangeCategory);
 
       for (EObject fe : selection_p) {
         if (fe instanceof FunctionalExchange) {
@@ -72,9 +71,8 @@ public class CreateFECategoriesController extends CreateCategoriesController {
   protected ExchangeCategory createCategory(EObject container_p) {
     ExchangeCategory exchangeCategory = FaFactory.eINSTANCE.createExchangeCategory();
     EReference feature = FaPackage.eINSTANCE.getFunctionPkg_OwnedCategories();
-    String defaultName =
-        EcoreUtil2.getUniqueName(exchangeCategory, container_p, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
-            Messages.CreateFECategoriesController_prefix);
+    String defaultName = EcoreUtil2.getUniqueName(exchangeCategory, container_p, feature, ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME,
+        Messages.CreateFECategoriesController_prefix);
     exchangeCategory.setName(defaultName);
     return exchangeCategory;
   }
