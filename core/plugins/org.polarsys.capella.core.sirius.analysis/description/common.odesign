@@ -4304,7 +4304,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;%  canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_Generalization']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;%  canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@edgeMappings[name='CCDI_Generalization']" connectionStartPrecondition="&lt;%preGeneralization($preSource)%>">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -5978,7 +5978,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;%  canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_Generalization']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;%canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@edgeMappings[name='CCEI_Generalization']" connectionStartPrecondition="&lt;%preGeneralization($preSource)%>">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -7620,7 +7620,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.createIBDelegation($sourceView, $targetView)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;%  canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_Generalization']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;%canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Internal%20Interfaces']/@defaultLayer/@edgeMappings[name='CCII_Generalization']" connectionStartPrecondition="&lt;%preGeneralization($preSource)%>">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

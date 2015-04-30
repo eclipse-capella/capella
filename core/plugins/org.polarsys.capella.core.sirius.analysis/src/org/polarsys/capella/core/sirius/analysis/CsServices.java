@@ -1774,12 +1774,17 @@ public class CsServices {
       }
     }
 
-    if ((source instanceof Component) && (target instanceof Component)) {
-      if (((source instanceof AbstractActor) && (target instanceof AbstractActor))
-          || (!(source instanceof AbstractActor) && !(target instanceof AbstractActor))) {
+    if (CapellaModelPreferencesPlugin.getDefault().isComponentInheritanceAllowed() && (source instanceof Component)
+        && (target instanceof Component)) {
+      if ((source instanceof AbstractActor) && (target instanceof AbstractActor)) {
+        return source.getClass().equals(target.getClass());
+      } else if (!(source instanceof AbstractActor) && !(target instanceof AbstractActor)) {
         if (!ComponentExt.getAllSubUsedAndDeployedComponents((Component) source).contains(target)
             && !ComponentExt.getAllSubUsedAndDeployedComponents((Component) target).contains(source)) {
-          return true;
+          if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {
+            return ((PhysicalComponent) source).getNature().equals(((PhysicalComponent) target).getNature());
+          }
+          return (source.getClass().equals(target.getClass()));
         }
       }
     }
