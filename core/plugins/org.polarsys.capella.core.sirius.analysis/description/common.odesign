@@ -9275,7 +9275,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.createIBDelegation($sourceView, $targetView)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;% canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_Generalization']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Creates a Generalization relationship (inheritance) between two Components or between two Interfaces" name="Generalization" precondition="&lt;% canReconnectGeneralization($preSource,$preTarget) %>" edgeMappings="//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='IDB_Generalization']" connectionStartPrecondition="&lt;%preGeneralization($preSource)%>">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,7 @@ public class CapellaModelPreferencesPlugin extends Plugin {
 
   /**
    * Returns the shared instance
+   * 
    * @return the shared instance
    */
   public static CapellaModelPreferencesPlugin getDefault() {
@@ -65,6 +66,7 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the Confirm Delete current preference value. <br>
    * <br>
+   * 
    * @deprecated use IDeletePreferences.INSTANCE.isConfirmationRequired()
    * @link {@link IDeletePreferences#PREFERENCE_CONFIRM_DELETE} value <code>true or false</code>
    * @return boolean value
@@ -78,6 +80,7 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the Delete Parts current preference value. <br>
    * <br>
+   * 
    * @deprecated use IDeletePreferences.INSTANCE.isDeletePartsAllowed()
    * @link {@link IDeletePreferences#PREFERENCE_DELETE_PARTS} value <code>true or false</code>
    * @return boolean value
@@ -91,6 +94,7 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the Allow Primitive Synchronization Strategy current preference value. <br>
    * <br>
+   * 
    * @link {@link IDataPreferences#PREFS_ALLOW_PRIMITIVE_SYNCHRONIZATION} value <code>true or false</code>
    * @return boolean value
    */
@@ -102,6 +106,7 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the interface projection mode. <br>
    * <br>
+   * 
    * @link {@link IProjectionPreferences#PREFS_INTERFACE_PROJECTION} value <code>true or false</code>
    * @return boolean value
    */
@@ -114,6 +119,7 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the Allow Reuse of components Strategy current preference value. <br>
    * <br>
+   * 
    * @link {@link IReuseComponentsPreferences#PREFS_ALLOW_REUSE_COMPONENTS} value <code>true or false</code>
    * @return boolean value
    */
@@ -125,6 +131,7 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the Allow Multiple Inheritance Strategy current preference value. <br>
    * <br>
+   * 
    * @link {@link IInheritancePreferences#PREFS_ALLOW_MULTIPLE_INHERITANCE} value <code>true or false</code>
    * @return boolean value
    */
@@ -134,8 +141,21 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   }
 
   /**
+   * Get the Allowed Component Inheritance Strategy current preference value. <br>
+   * <br>
+   * 
+   * @link {@link IInheritancePreferences#PREFS_ALLOW_COMPONENT_INHERITANCE} value <code>true or false</code>
+   * @return boolean value
+   */
+  public boolean isComponentInheritanceAllowed() {
+    return AbstractPreferencesInitializer.getBoolean(IInheritancePreferences.PREFS_ALLOW_COMPONENT_INHERITANCE, true);
+
+  }
+
+  /**
    * Get the Allow Multiple Deployment Strategy current preference value. <br>
    * <br>
+   * 
    * @link {@link IDeploymentPreferences#PREFS_ALLOW_MULTIPLE_DEPLOYMENT} value <code>true or false</code>
    * @return boolean value
    */
@@ -146,7 +166,9 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the Allow Synchronization of ComponentPort to FunctionPort current preference value. <br>
    * <br>
-   * @link {@link ISynchronizationPreferences#PREFS_ALLOW_SYNC_COMPONENTPORT_TO_FUNCTIONPORT} value <code>true or false</code>
+   * 
+   * @link {@link ISynchronizationPreferences#PREFS_ALLOW_SYNC_COMPONENTPORT_TO_FUNCTIONPORT} value
+   *       <code>true or false</code>
    * @return boolean value
    */
   public boolean isSynchronizationOfComponentPortToFunctionPortAllowed() {
@@ -157,21 +179,22 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Return true if the inter-model dependency violation detection is activated in the preferences. <br>
    * <br>
-   * @link {@link IInterModelIntegrityPreferences#PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION} value <code>true or false</code>
+   * 
+   * @link {@link IInterModelIntegrityPreferences#PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION} value
+   *       <code>true or false</code>
    * @return boolean value
    */
   public boolean isInterModelDependencyViolationDetectionActivated() {
     return AbstractPreferencesInitializer.getBoolean(
-    		IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION, true);
+        IInterModelIntegrityPreferences.PREFS_PREVENT_ON_THE_FLY_DEPENDENCY_VIOLATION, true);
   }
-
-  
-  
 
   /**
    * Get the Allow Synchronization of PhysicalPort to ComponentPort on Physical Link current preference value. <br>
    * <br>
-   * @link {@link ISynchronizationPreferences#PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALLINK} value <code>true or false</code>
+   * 
+   * @link {@link ISynchronizationPreferences#PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALLINK} value
+   *       <code>true or false</code>
    * @return boolean value
    */
   public boolean isSynchronizationOfPhysicalPortToComponentPortOnPhysicalLinkAllowed() {
@@ -182,7 +205,9 @@ public class CapellaModelPreferencesPlugin extends Plugin {
   /**
    * Get the Allow Synchronization of PhysicalPort to ComponentPort on Physical Path current preference value. <br>
    * <br>
-   * @link {@link ISynchronizationPreferences#PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH} value <code>true or false</code>
+   * 
+   * @link {@link ISynchronizationPreferences#PREFS_ALLOW_SYNC_PHYSICALPORT_TO_COMPONENTPORT_ON_PHYSICALPATH} value
+   *       <code>true or false</code>
    * @return boolean value
    */
   public boolean isSynchronizationOfPhysicalPortToComponentPortOnPhysicalPathAllowed() {
