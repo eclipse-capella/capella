@@ -15,28 +15,23 @@ import static org.junit.Assert.assertFalse;
 import java.util.Collection;
 
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.test.diagram.common.ju.context.DiagramContext;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.ArgumentType;
 import org.polarsys.capella.test.diagram.common.ju.wrapper.utils.DiagramHelper;
 
-public class CreateContainerTool extends AbstractToolStep<DDiagramElementContainer> {
+public class DragAndDropTool extends AbstractToolStep<DDiagramElement> {
 
   String containerView;
-  String newIdentifier;
+  String elementView;
 
   Collection<DDiagramElement> _elements;
   Collection<DDiagramElement> _newElements;
 
-  public CreateContainerTool(DiagramContext context, String toolName, String containerView_p) {
+  public DragAndDropTool(DiagramContext context, String toolName, String elementView_p, String containerView_p) {
     super(context, toolName);
     containerView = containerView_p;
-  }
-
-  public CreateContainerTool(DiagramContext context, String toolName, String newIdentifier_p, String containerView_p) {
-    this(context, toolName, containerView_p);
-    newIdentifier = newIdentifier_p;
+    elementView = elementView_p;
   }
 
   @Override
@@ -63,26 +58,22 @@ public class CreateContainerTool extends AbstractToolStep<DDiagramElementContain
     if (_newElements.size() != 1) {
       assertFalse(true);
     }
-    if (!(_newElements.iterator().next() instanceof DDiagramElementContainer)) {
-      assertFalse(true);
-    }
 
   }
 
   @Override
-  public DDiagramElementContainer getResult() {
-    DDiagramElementContainer view = (DDiagramElementContainer) _newElements.iterator().next();
-    if (newIdentifier != null) {
-      getExecutionContext().putSemanticElement(newIdentifier, view.getTarget());
-      getExecutionContext().putView(newIdentifier, view);
-    }
+  public DDiagramElement getResult() {
+    DDiagramElement view = _newElements.iterator().next();
     return view;
   }
 
   @Override
   protected void initToolArguments() {
+    DSemanticDecorator droppedElement = getExecutionContext().getView(elementView);
     DSemanticDecorator element = getExecutionContext().getView(containerView);
-    _toolWrapper.setArgumentValue(ArgumentType.CONTAINER, element.getTarget());
+
     _toolWrapper.setArgumentValue(ArgumentType.CONTAINER_VIEW, element);
+    _toolWrapper.setArgumentValue(ArgumentType.DROPPEDELEMENT, droppedElement);
+
   }
 }

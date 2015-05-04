@@ -39,17 +39,17 @@ public class SessionContext {
   /** Map with needed semantic Object, useful */
   private Map<String, EObject> _semanticObjectMap;
 
-  public Map<String, EObject> getSemanticObjectMap() {
+  protected Map<String, EObject> getSemanticObjectMap() {
     if (null == _semanticObjectMap) {
       _semanticObjectMap = new HashMap<String, EObject>();
     }
     return _semanticObjectMap;
   }
 
-  public Collection<EObject> getSemanticElements(String... objectIdentifiers_p) {
-    Collection<EObject> result = new ArrayList<EObject>();
+  public <T extends EObject> Collection<T> getSemanticElements(String... objectIdentifiers_p) {
+    Collection<T> result = new ArrayList<T>();
     for (String value : objectIdentifiers_p) {
-      result.add(getSemanticElement(value));
+      result.add((T) getSemanticElement(value));
     }
     return result;
   }
@@ -58,9 +58,8 @@ public class SessionContext {
     getSemanticObjectMap().put(objectIdentifier_p, object_p);
   }
 
-  public EObject getSemanticElement(String objectIdentifier_p) {
+  public <T extends EObject> T getSemanticElement(String objectIdentifier_p) {
     Map<String, EObject> map = getSemanticObjectMap();
-
     if (!map.containsKey(objectIdentifier_p)) {
       EObject object = IdManager.getInstance().getEObject(objectIdentifier_p, new IScope() {
 
@@ -72,8 +71,7 @@ public class SessionContext {
       });
       map.put(objectIdentifier_p, object);
     }
-
-    return map.get(objectIdentifier_p);
+    return (T) map.get(objectIdentifier_p);
   }
 
   /**
