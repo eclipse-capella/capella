@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
@@ -48,7 +44,9 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.BusyIndicator;
@@ -89,7 +87,6 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
 import org.polarsys.capella.common.helpers.TransactionHelper;
-import org.polarsys.capella.common.platform.sirius.session.ClosedSessionListener;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
@@ -108,9 +105,9 @@ import org.polarsys.capella.common.ui.toolkit.browser.model.ISemanticBrowserMode
 import org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart;
 import org.polarsys.capella.common.ui.toolkit.viewers.DelegateSelectionProvider;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
+import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.model.handler.provider.CapellaReadOnlyHelper;
 import org.polarsys.capella.core.model.handler.provider.IReadOnlyListener;
-import org.polarsys.capella.core.model.handler.provider.CapellaAdapterFactoryProvider;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.view.CapellaCommonNavigator;
 import org.polarsys.capella.core.ui.properties.CapellaTabbedPropertySheetPage;
 import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
@@ -124,40 +121,28 @@ import org.polarsys.capella.core.ui.semantic.browser.model.SemanticBrowserModel;
  */
 public abstract class SemanticBrowserView extends ViewPart implements ISemanticBrowserViewPart, ITabbedPropertySheetPageContributor, IEditingDomainProvider,
     IReadOnlyListener {
+
   /**
-   * Listener that listens to closed session.
+   * Listener that listens to closing and closed session events.
    */
-  protected class SemClosedSessionListener extends ClosedSessionListener {
-    /**
-     * Constructor.
-     * @param session_p
-     */
-    public SemClosedSessionListener(Session session_p) {
-      super(session_p);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
+  protected class SemCloseSessionListener extends SessionManagerListener.Stub {
     @Override
-    protected void handleClosedSession(Session monitoredSession_p) {
-      super.handleClosedSession(monitoredSession_p);
-      // Update history to clean dead entries.
-      getHistory().update(null);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void handleClosingSession(Session monitoredSession_p) {
-      Object currentInput = getCurrentViewer().getInput();
-      if (currentInput instanceof EObject) {
-        // Get the session of current displayed object.
-        Session session = SessionManager.INSTANCE.getSession((EObject) currentInput);
-        if (monitoredSession_p.equals(session)) {
-          clean();
-        }
+    public void notify(final Session updated_p, final int notification_p) {
+      switch (notification_p) {
+        case SessionListener.CLOSING:
+          Object currentInput = getCurrentViewer().getInput();
+          if (currentInput instanceof EObject) {
+            // Get the session of current displayed object.
+            Session session = SessionManager.INSTANCE.getSession((EObject) currentInput);
+            if (updated_p.equals(session)) {
+              clean();
+            }
+          }
+        break;
+        case SessionListener.CLOSED:
+          // Update history to clean dead entries.
+          getHistory().update(null);
+        break;
       }
     }
   }
@@ -207,7 +192,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Forward navigation action.
    */
   private IWorkbenchAction _forwardAction;
-  
+
   /**
    * Navigation history.
    */
@@ -221,7 +206,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * Memento used to persist view states between sessions.
    */
   private IMemento _memento;
-  private Map<Session, SemClosedSessionListener> _monitoredSessions;
+  private SessionManagerListener _semCloseSessionListener;
   private TabbedPropertySheetPage _propertySheetPage;
   private TreeViewer _referencedViewer;
   /**
@@ -245,22 +230,21 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   private IDialogSettings _viewSettings;
 
   protected ISemanticBrowserModel model;
-  
+
   /**
    * Constructor.
    */
   public SemanticBrowserView() {
     // Get the dialog settings section for this view.
     _viewSettings = getDialogSettingsSection();
-    _monitoredSessions = new HashMap<Session, SemanticBrowserView.SemClosedSessionListener>(1);
     model = new SemanticBrowserModel();
   }
 
   @Override
   public ISemanticBrowserModel getModel() {
-  	return model;
+    return model;
   }
-  
+
   /**
    * Activate the listening to page selection events.
    */
@@ -284,7 +268,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       /**
        * {@inheritDoc}
        */
-    	@Override
+      @Override
       public void dragSetData(DragSourceEvent event_p) {
         event_p.data = LocalSelectionTransfer.getTransfer().getSelection();
       }
@@ -292,7 +276,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       /**
        * {@inheritDoc}
        */
-    	@Override
+      @Override
       public void dragStart(DragSourceEvent event_p) {
         // Check selection to drag is a CapellaElement.
         ISelection selection = viewer_p.getSelection();
@@ -312,7 +296,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       /**
        * {@inheritDoc}
        */
-    	@Override
+      @Override
       public void dragFinished(DragSourceEvent event_p) {
         // Clean LocalSelectionTranfer.
         LocalSelectionTransfer.getTransfer().setSelection(null);
@@ -331,8 +315,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     // Lazy creation pattern.
     if (null == _viewerSelectionListener) {
       _viewerSelectionListener = new ISelectionChangedListener() {
-      	@Override
-      	public void selectionChanged(SelectionChangedEvent event) {
+        @Override
+        public void selectionChanged(SelectionChangedEvent event) {
           ISelectionProvider provider = event.getSelectionProvider();
           refreshPropertyPage(provider);
         }
@@ -466,15 +450,11 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
        */
       @Override
       public int compare(Viewer viewer_p, Object e1_p, Object e2_p) {
-        if (e1_p instanceof CategoryWrapper) {
-          if (isRepresentationCategory((CategoryWrapper) e1_p)) {
-            return 1;
-          }
+        if ((e1_p instanceof CategoryWrapper) && isRepresentationCategory((CategoryWrapper) e1_p)) {
+          return 1;
         }
-        if (e2_p instanceof CategoryWrapper) {
-          if (isRepresentationCategory((CategoryWrapper) e2_p)) {
-            return -1;
-          }
+        if ((e2_p instanceof CategoryWrapper) && isRepresentationCategory((CategoryWrapper) e2_p)) {
+          return -1;
         }
         return super.compare(viewer_p, e1_p, e2_p);
       }
@@ -503,6 +483,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     _delegateSelectionProvider = new DelegateSelectionProvider(_currentViewer);
     getViewSite().setSelectionProvider(_delegateSelectionProvider);
     makeActions();
+    // Listen to Closing/Close session events.
+    _semCloseSessionListener = new SemCloseSessionListener();
+    SessionManager.INSTANCE.addSessionsListener(_semCloseSessionListener);
   }
 
   /**
@@ -572,14 +555,9 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       _history.dispose();
       _history = null;
     }
-    // Unregister from monitored sessions.
-    Iterator<Entry<Session, SemClosedSessionListener>> iterator = _monitoredSessions.entrySet().iterator();
-    while (iterator.hasNext()) {
-      Map.Entry<Session, SemClosedSessionListener> entry = iterator.next();
-      entry.getKey().removeListener(entry.getValue());
-    }
-    _monitoredSessions.clear();
-    _monitoredSessions = null;
+    // Remove Closing/Close session listener.
+    SessionManager.INSTANCE.removeSessionsListener(_semCloseSessionListener);
+    _semCloseSessionListener = null;
 
     model = null;
     super.dispose();
@@ -635,13 +613,13 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    */
   @Override
   public EditingDomain getEditingDomain() {
-	ISelection selection = getCurrentViewer().getSelection();
-	if (selection instanceof IStructuredSelection) {
-	  Object elt = ((IStructuredSelection) selection).getFirstElement();
-	  if (elt instanceof EObject) {
-		return TransactionHelper.getEditingDomain((EObject) elt);
-	  }
-	}
+    ISelection selection = getCurrentViewer().getSelection();
+    if (selection instanceof IStructuredSelection) {
+      Object elt = ((IStructuredSelection) selection).getFirstElement();
+      if (elt instanceof EObject) {
+        return TransactionHelper.getEditingDomain((EObject) elt);
+      }
+    }
     return null;
   }
 
@@ -875,7 +853,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     URL imageUrl = (URL) l.getImage(object);
     return ImageDescriptor.createFromURL(imageUrl);
   }
-  
+
   /**
    * Make actions.
    */
@@ -890,7 +868,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     _forwardAction = BrowserActionFactory.FORWARD_HISTORY.create(getViewSite().getWorkbenchWindow(), this);
     _forwardAction.setActionDefinitionId("org.polarsys.capella.core.ui.semantic.browser.forwardNavigation"); //$NON-NLS-1$
     toolBarManager.add(_forwardAction);
-        
+
     // Add hide diagrams action.
     showDiagramsAction = new Action(null, IAction.AS_CHECK_BOX) {
       @Override
@@ -917,17 +895,17 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     limitateTreeExpansionAction.setChecked(model.doesLimitateTreeExpansion());
     limitateTreeExpansionAction.setToolTipText(Messages.SemanticBrowserView_LimitateTreeExpansionAction_Tooltip);
     limitateTreeExpansionAction.setImageDescriptor(CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_COLLAPSE_CATEGORIES));
-    toolBarManager.add(limitateTreeExpansionAction);    
-    
+    toolBarManager.add(limitateTreeExpansionAction);
+
     // Add refresh action.
     IAction refreshAction = new Action(null, CapellaBrowserActivator.getDefault().getImageDescriptor(IImageKeys.IMG_REFRESH)) {
-    	@Override
-    	public void run() {
-    		refreshTitleBar();
-    	};
+      @Override
+      public void run() {
+        refreshTitleBar();
+      }
     };
     toolBarManager.add(refreshAction);
-    
+
     // Add the listening action (i.e button synch checked button).
     IAction listeningToPageSelectionEventsAction = new Action(null, IAction.AS_CHECK_BOX) {
       private ISelection getSelection(IWorkbenchPart part_p) {
@@ -1006,19 +984,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
   }
 
   /**
-   * Monitor the session that loads specified element.
-   * @param element_p
-   */
-  protected void monitorSessionClosingEvent(EObject element_p) {
-    Session session = SessionManager.INSTANCE.getSession(element_p);
-    if ((null != session) && !_monitoredSessions.containsKey(session)) {
-      SemClosedSessionListener listener = new SemClosedSessionListener(session);
-      session.addListener(listener);
-      _monitoredSessions.put(session, listener);
-    }
-  }
-
-  /**
    * @see org.polarsys.capella.common.ui.toolkit.browser.view.ISemanticBrowserViewPart#refresh()
    */
   @Override
@@ -1064,6 +1029,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @param input_p
    */
   @SuppressWarnings("synthetic-access")
+  @Override
   public void setInputOnViewers(final Object input_p) {
     TreeViewer currentViewer = getCurrentViewer();
 
@@ -1071,29 +1037,29 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       Display display = currentViewer.getControl().getDisplay();
 
       BusyIndicator.showWhile(display, new Runnable() {
-      	@Override
-      	public void run() {
+        @Override
+        public void run() {
 
           // Broadcast "set input" signal to all viewers.
           ViewerHelper.run(_referencingViewer, new Runnable() {
-          	@Override
-          	public void run() {
+            @Override
+            public void run() {
               if ((_referencingViewer.getControl() != null) && !_referencingViewer.getControl().isDisposed()) {
                 _referencingViewer.setInput(input_p);
               }
             }
           });
           ViewerHelper.run(_referencedViewer, new Runnable() {
-          	@Override
-          	public void run() {
+            @Override
+            public void run() {
               if ((_referencedViewer.getControl() != null) && !_referencedViewer.getControl().isDisposed()) {
                 _referencedViewer.setInput(input_p);
               }
             }
           });
           ViewerHelper.run(_currentViewer, new Runnable() {
-          	@Override
-          	public void run() {
+            @Override
+            public void run() {
               if ((_currentViewer.getControl() != null) && !_currentViewer.getControl().isDisposed()) {
                 _currentViewer.setInput(input_p);
               }
@@ -1115,10 +1081,8 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
       title = AbstractLabelProviderFactory.getInstance().getCurrentLabelProvider().getText(selectedElement_p);
       // Get the metaclass label.
       String metaclassLabel = EObjectLabelProviderHelper.getMetaclassLabel(((EObject) selectedElement_p), true);
-      if (null != metaclassLabel) {
-        if (!title.startsWith(metaclassLabel)) {
-          title = metaclassLabel + title;
-        }
+      if ((null != metaclassLabel) && !title.startsWith(metaclassLabel)) {
+        title = metaclassLabel + title;
       }
 
       // The image to display
@@ -1236,10 +1200,6 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
     if (_shouldSetFocus) {
       // Set focus in another thread UI processing.
       setFocus();
-    }
-    // Monitor session closing event to clean the semantic browser.
-    if (input_p instanceof EObject) {
-      monitorSessionClosingEvent((EObject) input_p);
     }
   }
 
