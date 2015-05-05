@@ -35,6 +35,8 @@ public class DiagramContext extends SessionContext {
    * Diagram to test.
    */
   protected DDiagram _diagram;
+  
+  protected SessionContext _sessionContext;
 
   protected String diagramIdentifier;
 
@@ -48,13 +50,19 @@ public class DiagramContext extends SessionContext {
   }
 
   /**
-   * @param session
+   * @param context
    * @param diagram
    */
-  public DiagramContext(DDiagram diagram) {
+  public DiagramContext(SessionContext context, DDiagram diagram) {
     super(DiagramHelper.getService().getSession(diagram));
     diagramIdentifier = diagram.getName();
     _diagram = diagram;
+    _sessionContext = context;
+  }
+
+  @Override
+  protected Map<String, EObject> getSemanticObjectMap() {
+    return _sessionContext.getSemanticObjectMap();
   }
 
   public DDiagram getDiagram() {
@@ -70,7 +78,13 @@ public class DiagramContext extends SessionContext {
       return (DSemanticDiagram) _diagram;
     }
     if (getViewObjectMap().containsKey(semanticIdentifier_p)) {
-      return getViewObjectMap().get(semanticIdentifier_p);
+      DSemanticDecorator view = getViewObjectMap().get(semanticIdentifier_p);
+      // view can be stored in the map but not present anymore on the diagram
+      if (view.eContainer() == null) {
+        getViewObjectMap().remove(semanticIdentifier_p);
+        view = null;
+      }
+      return view;
     }
     return getView(getSemanticElement(semanticIdentifier_p));
   }

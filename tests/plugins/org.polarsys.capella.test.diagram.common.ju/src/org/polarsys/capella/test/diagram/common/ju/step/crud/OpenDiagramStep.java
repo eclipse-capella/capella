@@ -70,7 +70,7 @@ public class OpenDiagramStep extends AbstractTestStep<DiagramContext> {
     if (getExecutionContext() instanceof DiagramContext) {
       return (DiagramContext) getExecutionContext();
     }
-    return new DiagramContext(diagram);
+    return new DiagramContext(getExecutionContext(), diagram);
   }
 
   /**

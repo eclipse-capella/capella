@@ -827,6 +827,8 @@ public interface IToolNameConstants {
   public final static String TOOL_MS_SHOW_HIDE_TRANSITION = "ShowHide Transition"; //$NON-NLS-1$
   public final static String TOOL_MS_RECONNECT_TARGET_TRANSISTION = "Reconnect target transition"; //$NON-NLS-1$
   public final static String TOOL_MS_RECONNECT_SOURCE_TRANSISTION = "Reconnect source transition"; //$NON-NLS-1$
+  public final static String TOOL_MS_DND_STATES_DROM_DIAGRAM = "D&D ModeState from Diagram"; //$NON-NLS-1$
+  public final static String TOOL_MS_DND_PSEUDOSTATES_DROM_DIAGRAM = "D&D PseudoState from Diagram"; //$NON-NLS-1$
 
   // OAB tools - Operational Architecture Blank
   // Entities

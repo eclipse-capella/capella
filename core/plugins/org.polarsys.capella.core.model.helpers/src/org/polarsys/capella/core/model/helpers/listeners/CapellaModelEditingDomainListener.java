@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,26 +21,27 @@ import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFact
  */
 public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl implements IEditingDomainListener {
 
-	  // The data listeners
-//	  private CapellaModelDataListenerForDatas _dataListenerForDatas;
-	  private CapellaModelDataListenerForSequenceMessages _dataListenerForSequenceMessages;
-	  private CapellaModelDataListenerForPartsAndComponents _dataListenerForPartsAndComponents;
-	  private CapellaModelDataListenerForExchangeItemsAndCommunicationLinks _dataListenerForExchangeItemsAndCommunicationLinks;
+  // The data listeners
+  // private CapellaModelDataListenerForDatas _dataListenerForDatas;
+  private CapellaModelDataListenerForAbstractStates _dataListenerForAbstractStates;
+  private CapellaModelDataListenerForSequenceMessages _dataListenerForSequenceMessages;
+  private CapellaModelDataListenerForPartsAndComponents _dataListenerForPartsAndComponents;
+  private CapellaModelDataListenerForExchangeItemsAndCommunicationLinks _dataListenerForExchangeItemsAndCommunicationLinks;
 
   /**
    * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
    */
   @Override
   public void createdEditingDomain(EditingDomain editingDomain) {
-	loadDataListeners((SemanticEditingDomain) editingDomain);
+    loadDataListeners((SemanticEditingDomain) editingDomain);
   }
-	
+
   /**
    * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#disposedEditingDomain(EditingDomain)
    */
   @Override
   public void disposedEditingDomain(EditingDomain editingDomain) {
-	//
+    //
   }
 
   /**
@@ -51,6 +52,7 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
     loadDataListenerForSequenceMessages(editingDomain);
     loadDataListenerForExchangeItemsAndCommunicationLinks(editingDomain);
     loadDataListenerForPartsAndComponents(editingDomain);
+    loadDataListenerForAbstractStates(editingDomain);
 
   }
 
@@ -58,11 +60,21 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
    * loads the data listener
    */
   private void loadDataListenerForDatas(SemanticEditingDomain editingDomain) {
-// FIXME OCD_MA_O1 to be reactivated
-//    if (_dataListenerForDatas == null) {
-//      _dataListenerForDatas = new CapellaModelDataListenerForDatas();
-//      MDEAdapterFactory.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForDatas);
-//    }
+    // FIXME OCD_MA_O1 to be reactivated
+    // if (_dataListenerForDatas == null) {
+    // _dataListenerForDatas = new CapellaModelDataListenerForDatas();
+    // MDEAdapterFactory.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForDatas);
+    // }
+  }
+
+  /**
+   * loads the data listener
+   */
+  private void loadDataListenerForAbstractStates(SemanticEditingDomain editingDomain) {
+    if (_dataListenerForAbstractStates == null) {
+      _dataListenerForAbstractStates = new CapellaModelDataListenerForAbstractStates();
+      editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, _dataListenerForAbstractStates);
+    }
   }
 
   /**
