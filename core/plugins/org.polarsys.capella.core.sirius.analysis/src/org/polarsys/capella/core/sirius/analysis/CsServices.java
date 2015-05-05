@@ -1781,9 +1781,9 @@ public class CsServices {
       } else if (!(source instanceof AbstractActor) && !(target instanceof AbstractActor)) {
         if (!ComponentExt.getAllSubUsedAndDeployedComponents((Component) source).contains(target)
             && !ComponentExt.getAllSubUsedAndDeployedComponents((Component) target).contains(source)) {
-          if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {
+          /*if (source instanceof PhysicalComponent && target instanceof PhysicalComponent) {
             return ((PhysicalComponent) source).getNature().equals(((PhysicalComponent) target).getNature());
-          }
+          }*/
           return (source.getClass().equals(target.getClass()));
         }
       }
