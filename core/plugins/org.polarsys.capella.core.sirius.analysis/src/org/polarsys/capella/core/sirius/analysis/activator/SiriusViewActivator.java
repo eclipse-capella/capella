@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,10 @@ public class SiriusViewActivator extends AbstractUIPlugin {
         viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/logical.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
         viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/physical.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
         viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin("/" + ID + "/description/EPBS.odesign")); //$NON-NLS-1$ //$NON-NLS-2$
+        
+        //use java services before specific acceleo files
+        //IEclipsePreferences preferences = DefaultScope.INSTANCE.getNode(AcceleoInterpreterPlugin.PLUGIN_ID);
+        //preferences.putBoolean(AcceleoPreferenceConstants.PREF_USE_SPECIFIC_SCRIPTS_FIRST, false);
     }
 
     /**

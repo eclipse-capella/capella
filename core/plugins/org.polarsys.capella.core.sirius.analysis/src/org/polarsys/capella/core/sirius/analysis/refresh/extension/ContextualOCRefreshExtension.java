@@ -45,63 +45,60 @@ public class ContextualOCRefreshExtension extends AbstractRefreshExtension imple
    */
   public void beforeRefresh(DDiagram diagram) {
     EObject diagramTarget = ((DSemanticDecorator) diagram).getTarget();
-    if ((diagramTarget == null) && !(diagramTarget instanceof OperationalCapability)) {
-      // avoid refresh on dirty diagram
-      return;
-    }
-
-    // current OC
-    OperationalCapability capa = (OperationalCapability) diagramTarget;
-
-    // store list of entities to create in diagram
-    List<Entity> entities = new LinkedList<Entity>();
-    // store list of oc to create in diagram
-    Set<AbstractCapability> ocs = new HashSet<AbstractCapability>();
-
-    // Entity mapping
-    AbstractNodeMapping entityMapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram, IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
-    // OC mapping
-    AbstractNodeMapping oCMapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram, IMappingNameConstants.COC_OC_MAPPING_NAME);
-
-    // involved Entity (that include OPERATIONAL ACTOR)
-    EList<EntityOperationalCapabilityInvolvement> ownedEntityOperationalCapabilityInvolvements = capa.getOwnedEntityOperationalCapabilityInvolvements();
-    for (EntityOperationalCapabilityInvolvement capInvolvement : ownedEntityOperationalCapabilityInvolvements) {
-      Entity entity = capInvolvement.getEntity();
-      if (null != entity) {
-        entities.add(entity);
+    if (diagramTarget instanceof OperationalCapability) {
+      // current OC
+      OperationalCapability capa = (OperationalCapability) diagramTarget;
+      
+      // store list of entities to create in diagram
+      List<Entity> entities = new LinkedList<Entity>();
+      // store list of oc to create in diagram
+      Set<AbstractCapability> ocs = new HashSet<AbstractCapability>();
+      
+      // Entity mapping
+      AbstractNodeMapping entityMapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram, IMappingNameConstants.COC_ENTITY_MAPPING_NAME);
+      // OC mapping
+      AbstractNodeMapping oCMapping = DiagramServices.getDiagramServices().getAbstractNodeMapping(diagram, IMappingNameConstants.COC_OC_MAPPING_NAME);
+      
+      // involved Entity (that include OPERATIONAL ACTOR)
+      EList<EntityOperationalCapabilityInvolvement> ownedEntityOperationalCapabilityInvolvements = capa.getOwnedEntityOperationalCapabilityInvolvements();
+      for (EntityOperationalCapabilityInvolvement capInvolvement : ownedEntityOperationalCapabilityInvolvements) {
+        Entity entity = capInvolvement.getEntity();
+        if (null != entity) {
+          entities.add(entity);
+        }
       }
-    }
-    // current oc
-    ocs.add(capa);
-    // all super oc
-    ocs.addAll(capa.getSuper());
-    // all sub oc
-    ocs.addAll(capa.getSub());
-    // extended oc
-    ocs.addAll(capa.getExtendedAbstractCapabilities());
-    // included oc
-    ocs.addAll(capa.getIncludedAbstractCapabilities());
-
-    // Entity Container creation
-    for (Entity entityToCreate : entities) {
-      if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, entityToCreate)) {
-        DiagramServices.getDiagramServices().createAbstractDNode(entityMapping, entityToCreate, diagram, diagram);
+      // current oc
+      ocs.add(capa);
+      // all super oc
+      ocs.addAll(capa.getSuper());
+      // all sub oc
+      ocs.addAll(capa.getSub());
+      // extended oc
+      ocs.addAll(capa.getExtendedAbstractCapabilities());
+      // included oc
+      ocs.addAll(capa.getIncludedAbstractCapabilities());
+      
+      // Entity Container creation
+      for (Entity entityToCreate : entities) {
+        if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, entityToCreate)) {
+          DiagramServices.getDiagramServices().createAbstractDNode(entityMapping, entityToCreate, diagram, diagram);
+        }
       }
-    }
-
-    // OC Node Creation
-    for (AbstractCapability cap : ocs) {
-      if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, cap)) {
-        DiagramServices.getDiagramServices().createAbstractDNode(oCMapping, cap, diagram, diagram);
+      
+      // OC Node Creation
+      for (AbstractCapability cap : ocs) {
+        if (!DiagramServices.getDiagramServices().isOnDiagram(diagram, cap)) {
+          DiagramServices.getDiagramServices().createAbstractDNode(oCMapping, cap, diagram, diagram);
+        }
       }
+      // sum two lists
+      List<CapellaElement> validElements = new ArrayList<CapellaElement>(0);
+      validElements.addAll(ocs);
+      validElements.addAll(entities);
+      
+      // it will call "getListOfMappingsToMove" service : which will look for best container
+      reorderElements(diagram);
     }
-    // sum two lists
-    List<CapellaElement> validElements = new ArrayList<CapellaElement>(0);
-    validElements.addAll(ocs);
-    validElements.addAll(entities);
-
-    // it will call "getListOfMappingsToMove" service : which will look for best container
-    reorderElements(diagram);
   }
 
   public void postRefresh(DDiagram diagram) {

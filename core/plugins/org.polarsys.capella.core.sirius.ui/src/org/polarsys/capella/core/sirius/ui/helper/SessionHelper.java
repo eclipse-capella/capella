@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -27,14 +28,21 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.IReusableEditor;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.command.AbstractNonDirtyingCommand;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
@@ -350,5 +358,35 @@ public class SessionHelper {
         }
       }
     });
+  }
+
+  /**
+   * Update editors for the given representations
+   */
+  public static void reloadEditors(Session session, Set<DRepresentation> representations) {
+    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+    for (DRepresentation dRepresentation : representations) {
+      DialectEditor editor = uiSession.getEditor(dRepresentation);
+      if (editor instanceof IReusableEditor) {
+        IReusableEditor iReusableEditor = (IReusableEditor) editor;
+        SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(dRepresentation), dRepresentation.getName(), session);
+        iReusableEditor.setInput(updatedEditorInput);
+      }
+    }
+  }
+
+  /**
+   * Update all opened editors
+   */
+  public static void reloadEditors(Session session) {
+    IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+    for (DialectEditor dialectEditor : uiSession.getEditors()) {
+      if (dialectEditor instanceof IReusableEditor) {
+        IReusableEditor iReusableEditor = (IReusableEditor) dialectEditor;
+        DRepresentation representation = dialectEditor.getRepresentation();
+        SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(representation), representation.getName(), session);
+        iReusableEditor.setInput(updatedEditorInput);
+      }
+    }
   }
 }

@@ -42,8 +42,8 @@ public abstract class AutoLoadTestSuite extends BasicTestSuite {
    * load all the test cases in test cases root package and sub ones. 
    */
   @Override
-  protected List<BasicTestCase> getTests() {
-    List<BasicTestCase> list = new ArrayList<BasicTestCase>();
+  protected List<BasicTestArtefact> getTests() {
+    List<BasicTestArtefact> list = new ArrayList<BasicTestArtefact>();
     File testCasefolder = getTestCasefolder();
     List<File> testCaseFiles = getRecursivelyFilesInFolder(testCasefolder);
     for (File file : testCaseFiles) {

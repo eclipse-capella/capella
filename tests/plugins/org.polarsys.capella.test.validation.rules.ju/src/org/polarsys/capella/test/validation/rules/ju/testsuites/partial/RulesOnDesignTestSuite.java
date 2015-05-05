@@ -1,0 +1,64 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.test.validation.rules.ju.testsuites.partial;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import junit.framework.Test;
+
+import org.polarsys.capella.test.framework.api.BasicTestArtefact;
+import org.polarsys.capella.test.framework.api.BasicTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dcom.DCOMRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dcov.DCOVRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_ca.DWFCARulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_d.DWFDRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_dc.DWFDCRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_df.DWFDFRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_ds.DWFDSRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_i.DWFIRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_sm.DWFSMRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_uc.DWFUCRulesTestSuite;
+
+public class RulesOnDesignTestSuite extends BasicTestSuite {
+
+  /**
+   * Returns the suite. This is required to unary launch this test.
+   */
+  public static Test suite() {
+    return new RulesOnDesignTestSuite();
+  }
+
+  /**
+   * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
+   */
+	@Override
+	protected List<BasicTestArtefact> getTests() {
+		List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
+    tests.add(new DCOMRulesTestSuite());
+    tests.add(new DCOVRulesTestSuite());
+		tests.add(new DWFCARulesTestSuite());
+    tests.add(new DWFDRulesTestSuite());
+    tests.add(new DWFDCRulesTestSuite());
+    tests.add(new DWFDFRulesTestSuite());
+    tests.add(new DWFDSRulesTestSuite());
+    tests.add(new DWFIRulesTestSuite());
+    tests.add(new DWFSMRulesTestSuite());
+    tests.add(new DWFUCRulesTestSuite());
+		return tests;
+	}
+
+	@Override
+	public List<String> getRequiredTestModels() {		
+		return Arrays.asList(new String [] {"RulesOnDesignTest"});  //$NON-NLS-1$
+	}
+}

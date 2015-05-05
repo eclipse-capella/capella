@@ -2,14 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.test.framework;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.2.qualifier
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.google.guava;visibility:=reexport,
  org.apache.commons.lang;visibility:=reexport,
- org.eclipse.sirius.diagram.ui;visibility:=reexport,
- org.eclipse.sirius.table;visibility:=reexport,
- org.eclipse.sirius.ui;visibility:=reexport,
  org.eclipse.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
  org.junit;visibility:=reexport,
@@ -19,14 +16,15 @@ Require-Bundle: com.google.guava;visibility:=reexport,
  org.polarsys.capella.core.model.handler;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.actions;visibility:=reexport,
  org.polarsys.capella.core.platform.sirius.ui.project;visibility:=reexport,
- org.polarsys.capella.core.sirius.analysis;visibility:=reexport
+ org.polarsys.capella.core.sirius.analysis;visibility:=reexport,
+ org.polarsys.capella.core.platform.sirius.ui.navigator
 Export-Package: org.polarsys.capella.test.framework,
- org.polarsys.capella.test.framework.actions.gui,
  org.polarsys.capella.test.framework.actions.headless,
  org.polarsys.capella.test.framework.api,
  org.polarsys.capella.test.framework.helpers,
- org.polarsys.capella.test.framework.helpers.log,
- org.polarsys.capella.test.framework.internal.helpers
+ org.polarsys.capella.test.framework.helpers.diffFile,
+ org.polarsys.capella.test.framework.helpers.diffModel,
+ org.polarsys.capella.test.framework.helpers.log
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Activator: org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin
 Bundle-ClassPath: .

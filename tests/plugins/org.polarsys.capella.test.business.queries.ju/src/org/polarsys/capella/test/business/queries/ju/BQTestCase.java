@@ -31,7 +31,7 @@ public abstract class BQTestCase extends BasicTestCase {
 	protected FormatedLogger logger = new FormatedSysoutLogger();
 
 	@Override
-	protected List<String> getProjectNamesToLoad() {
+	public List<String> getRequiredTestModels() {
 		return Arrays.asList(new String[] { getProjectForTest() });
 	}
 
@@ -52,7 +52,7 @@ public abstract class BQTestCase extends BasicTestCase {
 		File testSuiteFile = getTestSuiteFile();
 		if (testSuiteFile == null || !testSuiteFile.exists())
 			assertTrue("test suite file does not exist (" + testSuiteFile + ")", false); //$NON-NLS-1$ //$NON-NLS-2$
-		Session sessionForTest = getSessionForLoadedCapellaModel(getProjectForTest());
+		Session sessionForTest = getSessionForTestModel(getProjectForTest());
 		
 		// Begin test
 		logger.addTextLn(BQTestConstants.PROMPT_STRING+" Test validation for query " + queryIdentifier); //$NON-NLS-1$

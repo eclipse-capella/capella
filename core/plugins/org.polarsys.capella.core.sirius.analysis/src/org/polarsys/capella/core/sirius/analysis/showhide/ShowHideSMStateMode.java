@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.IState;
@@ -76,17 +75,13 @@ public class ShowHideSMStateMode extends AbstractShowHide {
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(originCouple_p, context_p, relatedViews_p);
-  }
-
-  @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
     ContextItemElement item = context_p.getLast(ROOT);
-    if (semantic_p != item.getValue()) {
+    if (semantic != item.getValue()) {
       return false;
     }
-    return semantic_p instanceof IState;
+    return semantic instanceof IState;
   }
 
   @Override
@@ -103,7 +98,7 @@ public class ShowHideSMStateMode extends AbstractShowHide {
     if ((semantic_p != element.getValue()) && (semanticView_p instanceof DDiagramElement)) {
       ContextItemVariable clickedStateVar = context_p.getLastVariable(CONTEXTUAL_CONTAINER_VIEW);
       return (semanticView_p == clickedStateVar.getValue()) || EcoreUtil.isAncestor((EObject) clickedStateVar.getValue(), semanticView_p)
-             || EcoreUtil.isAncestor(semanticView_p, (EObject) clickedStateVar.getValue());
+          || EcoreUtil.isAncestor(semanticView_p, (EObject) clickedStateVar.getValue());
     }
     return true;
   }
@@ -148,13 +143,4 @@ public class ShowHideSMStateMode extends AbstractShowHide {
     return super.retrieveDefaultContainer(semantic_p, context_p, targetViews_p);
   }
 
-  @Override
-  protected boolean mustShow(DSemanticDecorator containerView_p, EObject semantic_p, AbstractNodeMapping mapping_p) {
-    return super.mustShow(containerView_p, semantic_p, mapping_p);
-  }
-
-  @Override
-  protected boolean mustShow(EObject semantic_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(semantic_p, context_p, relatedViews_p);
-  }
 }

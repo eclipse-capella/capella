@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.IntegerPropertyValue;
+import org.polarsys.capella.core.data.capellacore.StringPropertyValue;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.capellacore.IntegerPropertyValue} object.
@@ -117,10 +118,24 @@ public class IntegerPropertyValueItemProvider
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
+		String[] result = new String[] { null };
+		result[0] = getTextGen(object);		
+		int value = ((IntegerPropertyValue) object).getValue();
+		result[0] = result[0] + " = " + value; //$NON-NLS-1$
+		return result[0];
+	}
+	
+	/**
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getTextGen(Object object) {
 	 String[] result = new String[] { null };
 
     	//begin-capella-code
@@ -135,7 +150,7 @@ public class IntegerPropertyValueItemProvider
 
 		return result[0];
 
-	}
+	}	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

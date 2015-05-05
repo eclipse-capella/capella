@@ -30,7 +30,6 @@ import org.eclipse.emf.diffmerge.patterns.core.api.IPatternApplication;
 import org.eclipse.emf.diffmerge.patterns.core.api.locations.IReferenceLocation;
 import org.eclipse.emf.diffmerge.patterns.core.util.LocationsUtil;
 import org.eclipse.emf.diffmerge.patterns.core.util.locations.BasicReferenceLocation;
-import org.eclipse.emf.diffmerge.patterns.support.gen.commonpatternsupport.CommonPatternInstance;
 import org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider;
 import org.eclipse.emf.diffmerge.patterns.ui.dialogs.MultiStorageChoiceDialog;
 import org.eclipse.emf.diffmerge.patterns.ui.dialogs.MultiStorageChoiceDialog.MultiStorageKind;
@@ -99,7 +98,6 @@ import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.handler.helpers.HoldingResourceHelper;
-import org.polarsys.kitalpha.emde.model.ExtensibleElement;
 
 
 /**
@@ -182,7 +180,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
 
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider#deriveOwnership(org.eclipse.emf.ecore.EObject, java.lang.Object)
    */
   @Override
@@ -272,7 +269,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
 
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#enforceOwnership(java.util.Collection, java.lang.Object)
    */
   public Boolean enforceOwnership(Collection<? extends EObject> roots_p, Object context_p) {
@@ -521,7 +517,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
   
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#getElementsToRename(java.util.Collection)
    */
   public Collection<EObject> getElementsToRename(Collection<? extends EObject> elements_p) {
@@ -568,7 +563,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
   
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ModellerSemanticRuleProvider#getNameAttribute(org.eclipse.emf.ecore.EObject)
    */
   @Override
@@ -582,7 +576,6 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
   }
   
   /**
-   * 
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#getOptionalMergeFeatures()
    */
   public List<EStructuralFeature> getOptionalMergeFeatures() {
@@ -800,17 +793,14 @@ public class CapellaRuleProvider extends ModellerSemanticRuleProvider {
    */
   @Override
   public boolean isApplicableTo(EObject obj_p){
-    if (obj_p instanceof CommonPatternInstance ||
-        obj_p instanceof ExtensibleElement)
-      return true;
-    return false;
+    return true;
   }
   
   /**
    * @see org.eclipse.emf.diffmerge.patterns.templates.engine.ext.ISemanticRuleProvider#canBeAutomaticallyMerged(org.eclipse.emf.ecore.EObject)
    */
   public boolean canBeAutomaticallyMerged(EObject element_p) {
-    return element_p instanceof DataType;
+    return false;
   }
   
   /**

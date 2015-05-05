@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.Part;
 import org.polarsys.capella.core.data.cs.PhysicalLinkCategory;
 import org.polarsys.capella.core.data.fa.ComponentExchangeCategory;
+import org.polarsys.capella.core.data.fa.ExchangeCategory;
 import org.polarsys.capella.core.data.information.Partition;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.diagram.helpers.ContextualDiagramHelper;
@@ -107,6 +108,11 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalCategories, e);
     }
 
+    try {
+      updateFunctionalExchangeCategories(context);
+    } catch (Exception e) {
+      Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdateFECategories, e);
+    }
     // -------------------------------------
     // Commit elements
     // -------------------------------------
@@ -161,7 +167,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
           DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram_p, diagram_p);
 
         } else if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)
-                   && !DiagramServices.getDiagramServices().isOnDiagram(diagram_p, root)) {
+            && !DiagramServices.getDiagramServices().isOnDiagram(diagram_p, root)) {
           // Instantiate the container in the diagram for the component
           ContainerMapping componentMapping = FaServices.getFaServices().getMappingABComponent(root, diagram_p);
           DiagramServices.getDiagramServices().createContainer(componentMapping, root, diagram_p, diagram_p);
@@ -196,6 +202,32 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
 
     } else {
       ABServices.getService().updateABComponentCategories(context_p);
+    }
+
+  }
+
+  protected void updateFunctionalExchangeCategories(DDiagramContents context_p) {
+
+    DDiagram diagram = context_p.getDDiagram();
+
+    if (diagram.isSynchronized()) {
+      FaServices service = FaServices.getFaServices();
+      Collection<EObject> categories = new HashSet<EObject>();
+
+      // Switch to FE categories
+      EdgeMapping edgeMapping = service.getMappingFECategory(diagram);
+      if (edgeMapping != null) {
+        for (DDiagramElement element : context_p.getDiagramElements(edgeMapping)) {
+          if ((element.getTarget() != null) && (element.getTarget() instanceof ExchangeCategory)) {
+            categories.add(element.getTarget());
+          }
+        }
+
+        FaServices.getFaServices().switchFECategories(context_p, (DSemanticDecorator) context_p.getDDiagram(), categories);
+      }
+
+    } else {
+      FaServices.getFaServices().updateFECategories(context_p);
     }
 
   }
@@ -247,8 +279,13 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
 
     };
 
-    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<AbstractType, DNodeContainer>(); // all displayed elements in the diagram
-    HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<Partition, DNodeContainer>(); // all displayed elements in the diagram
+    HashMapSet<AbstractType, DNodeContainer> typeViews = new HashMapSet<AbstractType, DNodeContainer>(); // all
+                                                                                                         // displayed
+                                                                                                         // elements in
+                                                                                                         // the diagram
+    HashMapSet<Partition, DNodeContainer> partViews = new HashMapSet<Partition, DNodeContainer>(); // all displayed
+                                                                                                   // elements in the
+                                                                                                   // diagram
     Set<DNodeContainer> toBeMoved = new HashSet<DNodeContainer>(); // diagram elements to be moved
 
     // Retrieve all mappings to be moved
@@ -289,7 +326,7 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
 
             // If element is owned by diagram and there is a view of the container in the diagram
           } else if ((containerView instanceof DDiagram) && (actualComponentContainer != null) && (actualComponentContainer instanceof Component)
-                     && (typeViews.get(actualComponentContainer).size() > 0)) {
+              && (typeViews.get(actualComponentContainer).size() > 0)) {
             willBeMoved = true;
 
           } else {
@@ -432,12 +469,11 @@ public class ComponentArchitectureBlankRefreshExtension extends AbstractRefreshE
     }
 
     try {
-    List<String> physicalPathSupportingDiagrams =
-        Arrays.asList(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME, IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME,
-            IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
-    if (physicalPathSupportingDiagrams.contains(diagram_p.getDescription().getName())) {
-      PhysicalServices.getService().updatePhysicalPathStyles(diagram_p);
-    }
+      List<String> physicalPathSupportingDiagrams = Arrays.asList(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME,
+          IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME, IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME);
+      if (physicalPathSupportingDiagrams.contains(diagram_p.getDescription().getName())) {
+        PhysicalServices.getService().updatePhysicalPathStyles(diagram_p);
+      }
     } catch (Exception e) {
       Logger.getLogger(IReportManagerDefaultComponents.DIAGRAM).error(Messages.RefreshExtension_ErrorOnUpdatePhysicalPathStyle, e);
     }

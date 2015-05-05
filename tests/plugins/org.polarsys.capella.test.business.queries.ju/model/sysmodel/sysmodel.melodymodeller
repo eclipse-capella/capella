@@ -6699,6 +6699,8 @@ Stop the event</bodies>
               id="4a4626f6-c29f-4974-9b76-cedc8c41c801" name="ExchangeItemAllocation 3"
               sendProtocol="ASYNCHRONOUS" allocatedItem="org.polarsys.capella.core.data.information:ExchangeItem fragments/SA-Data.melodyfragment#1cb43832-b71e-4d96-a9ad-d24afa135080"/>
         </ownedInterfaces>
+        <ownedInterfaces xsi:type="org.polarsys.capella.core.data.cs:Interface" id="719d4014-ecb3-446f-9737-23ec2a3339d9"
+            name="Interface 11"/>
         <ownedInterfacePkgs xsi:type="org.polarsys.capella.core.data.cs:InterfacePkg"
             id="1ddf5efb-8cb3-4b57-90b3-836677a9b3f3" name="IPkg1">
           <ownedInterfaces xsi:type="org.polarsys.capella.core.data.cs:Interface"
@@ -6941,6 +6943,8 @@ Stop the event</bodies>
             id="4123c31d-0acf-4b31-9f44-6f0a25ae7ae9" usedInterface="#ae866af2-8602-4f28-9503-707c4f2b1e18"/>
         <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
             id="d3566b34-4537-4df5-a192-81f3a83f1f46" usedInterface="#2d3d4c28-3dfe-4ef3-a681-160cd8844772"/>
+        <ownedInterfaceUses xsi:type="org.polarsys.capella.core.data.cs:InterfaceUse"
+            id="65a4c01a-c70a-4fb2-be58-44db205ec4b2" usedInterface="#a6012ae5-af0c-4828-a7bb-f7b5e9fd9323"/>
         <ownedInterfaceImplementations xsi:type="org.polarsys.capella.core.data.cs:InterfaceImplementation"
             id="5a5b511f-5fed-417b-bc85-527e4b84b46e" implementedInterface="#8610b70f-8e72-467b-9f48-67e63cba21a3"/>
         <ownedPhysicalPath xsi:type="org.polarsys.capella.core.data.cs:PhysicalPath"

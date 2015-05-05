@@ -1,0 +1,68 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getAvailableElements
+inputId = d2362e05-0c2c-4055-8ff4-f8aa59203a2f
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getCurrentElements
+inputId = d2362e05-0c2c-4055-8ff4-f8aa59203a2f
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getAvailableElements
+inputId = 32a91bc7-3ed4-4dc5-8611-d2662e68249c
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getCurrentElements
+inputId = 32a91bc7-3ed4-4dc5-8611-d2662e68249c
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getAvailableElements
+inputId = 9689c187-38f6-44af-bd70-b6c0c9613e65
+resultIds = {
+    69908101-c367-4bd9-ae92-0c7c94fa1738
+    16ee0e61-1925-46d8-b53d-9c1a58492f95
+    546512c3-34cf-4d43-98a0-01ec52f8cd41
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getCurrentElements
+inputId = 9689c187-38f6-44af-bd70-b6c0c9613e65
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getAvailableElements
+inputId = afde6871-dd8c-4621-beca-082f9ea30c12
+resultIds = {
+    42904720-e13d-4971-b1dc-8039c9a6a8c4
+    d845a7ac-7f33-404c-85ef-276fac6e9f13
+    6e674eb4-1cac-4278-aed5-681f95a8e2e6
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getCurrentElements
+inputId = afde6871-dd8c-4621-beca-082f9ea30c12
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getAvailableElements
+inputId = 78c08e0a-df66-493b-8a1f-cc162dbbe196
+resultIds = {
+    d845a7ac-7f33-404c-85ef-276fac6e9f13
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.StringType_NullValue-getCurrentElements
+inputId = 78c08e0a-df66-493b-8a1f-cc162dbbe196
+resultIds = {
+}
+

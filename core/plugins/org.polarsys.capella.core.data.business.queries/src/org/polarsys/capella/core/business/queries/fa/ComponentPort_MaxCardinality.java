@@ -24,7 +24,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 import org.polarsys.capella.core.data.information.InformationPackage;
 
 /**
- * 
+ * @deprecated
  */
 public class ComponentPort_MaxCardinality implements IBusinessQuery {
 

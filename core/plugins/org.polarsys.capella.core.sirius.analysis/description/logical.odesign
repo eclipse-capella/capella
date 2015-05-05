@@ -1472,21 +1472,31 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" documentation="Switch between the representation of individual Functional Exchanges and their representation as Category-based Exchanges." name="Switch Functional Exchanges / Categories" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges. " name="Switch Functional Exchanges / Categories" precondition="&lt;%($elementView.filter(&quot;DDiagram&quot;).nSize() > 0)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current %>">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchangeCategories" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                  <parameters name="context" value="&lt;% $element %>"/>
-                  <parameters name="scope" value="&lt;%getShowableCategories(getAllExchangeCategory(), $elementView.edges)%>"/>
-                  <parameters name="initialSelection" value="&lt;%$elementView.edges[visible &amp;&amp; target.eClass.name == &quot;ExchangeCategory&quot;].target%>"/>
-                  <parameters name="resultVariable" value="selectedExchangeCategories"/>
-                  <parameters name="wizardMessage" value="Select a Category to group Functional Exchanges in &lt;%$element.name%>."/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                  <parameters name="context" value="&lt;% $element%>"/>
+                  <parameters name="variable" value="scope"/>
+                  <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesScope() %>"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedExchangeCategories == &quot;WIZARD_CANCELED&quot;) %>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% switchFunctionalExchangesCategories($selectedExchangeCategories,$elementView) %>"/>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().reorderFAElements%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                  <parameters name="context" value="&lt;% $element%>"/>
+                  <parameters name="variable" value="initialSelection"/>
+                  <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesInitialSelection()%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                  <parameters name="context" value="&lt;% $element%>"/>
+                  <parameters name="scope" value="&lt;%$scope%>"/>
+                  <parameters name="initialSelection" value="&lt;%$initialSelection%>"/>
+                  <parameters name="resultVariable" value="selectedElements"/>
+                  <parameters name="wizardMessage" value="Select Categories to reveal"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedElements != &quot;WIZARD_CANCELED&quot;)%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.switchFECategories($scope, $initialSelection, $selectedElements )%>"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1889,7 +1899,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="LAB DataFlow by Categorie" label="LAB_ExchangeCategory" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='no%20delete%20LAB']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" semanticElements="&lt;% self + self.exchanges[(target.ancestor.nContains($view.targetNode.eContainer.target)) &amp;&amp; (source.ancestor.nContains($view.sourceNode.eContainer.target))]%>" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20OutputPin%20by%20Categorie']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20InputPin%20by%20Categorie']" targetFinderExpression="&lt;%current%>" sourceFinderExpression="&lt;%current%>" targetExpression="&lt;%self%>" domainClass="ExchangeCategory" useDomainElement="true">
+        <edgeMappings name="LAB DataFlow by Categorie" label="LAB_ExchangeCategory" preconditionExpression="&lt;%isValidFunctionalExchangeCategoryEdge($sourceView,$targetView)%>" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='no%20delete%20LAB']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" semanticElements="&lt;% self + self.exchanges[(target.ancestor.nContains($view.targetNode.eContainer.target)) &amp;&amp; (source.ancestor.nContains($view.sourceNode.eContainer.target))]%>" sourceMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20OutputPin%20by%20Categorie']" targetMapping="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@containerMappings[name='LAB%20Logical%20Component']/@subNodeMappings[name='LAB%20Logical%20Function']/@borderedNodeMappings[name='LAB%20InputPin%20by%20Categorie']" targetFinderExpression="&lt;%current%>" sourceFinderExpression="&lt;%current%>" targetExpression="&lt;%self%>" domainClass="ExchangeCategory" useDomainElement="true">
           <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2" endsCentering="Both">
             <strokeColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -3543,20 +3553,31 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" documentation="Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges. " name="Show/Hide Exchange Categories" label="Exchange Categories" precondition="&lt;%($elementView.filter(&quot;DDiagram&quot;).nSize() > 0)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Regroup all displayed Functional Exchanges matching the selected Category (ies) by simplified Category-based Exchanges. " name="Switch Functional Exchanges / Categories" precondition="&lt;%($elementView.filter(&quot;DDiagram&quot;).nSize() > 0)%>" forceRefresh="true" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/ShowHide.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% current %>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectExchangeCategories" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementsFromTransferWizard">
-                    <parameters name="context" value="&lt;% $element %>"/>
-                    <parameters name="scope" value="&lt;%getShowableCategories(getAllExchangeCategory(), $elementView.edges)%>"/>
-                    <parameters name="initialSelection" value="&lt;%$elementView.edges[visible &amp;&amp; target.eClass.name == &quot;ExchangeCategory&quot;].target%>"/>
-                    <parameters name="resultVariable" value="selectedExchangeCategories"/>
-                    <parameters name="wizardMessage" value="Select a Category to group Functional Exchanges in &lt;%$element.name%>."/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $scope" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                    <parameters name="context" value="&lt;% $element%>"/>
+                    <parameters name="variable" value="scope"/>
+                    <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesScope() %>"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% ! ($selectedExchangeCategories == &quot;WIZARD_CANCELED&quot;) %>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% switchFunctionalExchangesCategories($selectedExchangeCategories,$elementView) %>"/>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="SetVariable $initialSelection" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SetVariable">
+                    <parameters name="context" value="&lt;% $element%>"/>
+                    <parameters name="variable" value="initialSelection"/>
+                    <parameters name="value" value="&lt;% $elementView.getSwitchFECategoriesInitialSelection()%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="selectElements" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectLinksFromTransferWizard">
+                    <parameters name="context" value="&lt;% $element%>"/>
+                    <parameters name="scope" value="&lt;%$scope%>"/>
+                    <parameters name="initialSelection" value="&lt;%$initialSelection%>"/>
+                    <parameters name="resultVariable" value="selectedElements"/>
+                    <parameters name="wizardMessage" value="Select Categories to reveal"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%($selectedElements != &quot;WIZARD_CANCELED&quot;)%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.switchFECategories($scope, $initialSelection, $selectedElements )%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.getDiagramContainer().forceRefresh%>"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>

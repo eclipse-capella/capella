@@ -114,13 +114,27 @@ public class StringPropertyValueItemProvider
 	}
 
 	/**
+	 * This returns the label text for the adapted class. <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	@Override
+	public String getText(Object object) {
+		String[] result = new String[] { null };
+		result[0] = getTextGen(object);
+		String value = ((StringPropertyValue) object).getValue();
+		result[0] = result[0] + " = " + ((value != null && value.length() > 0) ? value : "<undefined>"); //$NON-NLS-1$ //$NON-NLS-2$
+		return result[0];
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
-	 */
-	@Override
-	public String getText(Object object) {
+	 */	
+	public String getTextGen(Object object) {
 	 String[] result = new String[] { null };
 
     	//begin-capella-code
@@ -136,6 +150,8 @@ public class StringPropertyValueItemProvider
 		return result[0];
 
 	}
+
+	
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

@@ -881,10 +881,22 @@
       <definition
             id="org.polarsys.capella.core.platform.sirius.ui.menu.categories.visibilityInDiagramExpr">
                 <iterate ifEmpty="false">
-                <or>
-                    <instanceof value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart"/>
-                    <instanceof value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"/>
-                </or>
+                <and>
+                   <or>
+                      <instanceof
+                            value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+                      </instanceof>
+                      <instanceof
+                            value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
+                      </instanceof>
+                   </or>
+                   <not>
+                      <test
+                            property="org.polarsys.capella.core.platform.sirius.ui.graphicalLayerOf"
+                            value="OperationalAnalysis">
+                      </test>
+                   </not>
+                </and>
                 </iterate>
       </definition>
    </extension>

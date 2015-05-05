@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
  * A ShowHide definition for ABCategory
  * 
  * containers of category pins must be set with sourceParts and targetParts variables
- *
+ * 
  */
 public class ShowHideABComponentPortAllocation extends ShowHideABPhysicalLink {
 
@@ -87,18 +87,15 @@ public class ShowHideABComponentPortAllocation extends ShowHideABPhysicalLink {
   }
 
   @Override
-  protected boolean mustShow(ContextItemElement originCouple_p, DiagramContext context_p, HashMapSet<String, DSemanticDecorator> relatedViews_p) {
-    return super.mustShow(originCouple_p, context_p, relatedViews_p);
-  }
+  protected boolean mustHide(ContextItemElement originCouple_p, DiagramContext context_p) {
+    EObject semantic = originCouple_p.getValue();
 
-  @Override
-  protected boolean mustHide(EObject semantic_p, DiagramContext context_p) {
-    //We want to hide physical link
-    if (semantic_p instanceof ComponentPortAllocation) {
+    // We want to hide physical link
+    if (semantic instanceof ComponentPortAllocation) {
       return true;
     }
-    //And only these elements
-    return super.mustHide(semantic_p, context_p);
+    // And only these elements
+    return super.mustHide(originCouple_p, context_p);
   }
 
 }

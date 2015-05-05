@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.interaction.validation.stateFragment;
 
-import java.util.List;
-
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
@@ -26,10 +23,10 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
 import org.polarsys.capella.core.data.interaction.StateFragment;
-import org.polarsys.capella.core.data.interaction.properties.controllers.DataFlowHelper;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ScenarioExt;
+import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
 /**
@@ -57,7 +54,8 @@ public class MDCHK_StateFragment_ES_OES_AllocatedFunction extends AbstractValida
     if (null == stateFragment.getRelatedAbstractFunction()) {
       return ctx_p.createSuccessStatus();
     }
-    // This rule is only valid for Exchange Scenarios (DATA_FLOW) or Operational Entity Scenarios (INTERACTION without instance role of functions).
+    // This rule is only valid for Exchange Scenarios (DATA_FLOW) or Operational Entity Scenarios (INTERACTION without
+    // instance role of functions).
     Scenario containingScenario = (Scenario) stateFragment.eContainer();
     if (!((containingScenario.getKind() == ScenarioKind.DATA_FLOW) || ((containingScenario.getKind() == ScenarioKind.INTERACTION) && !ScenarioExt
         .isFunctionalScenario(containingScenario)))) {
@@ -68,8 +66,8 @@ public class MDCHK_StateFragment_ES_OES_AllocatedFunction extends AbstractValida
 
     // Is the StateFragment related AbstractFunction allocated by instance role's Component ?
     InstanceRole instanceRole = StateFragmentExt.getCoveredInstanceRole(stateFragment);
-    List<AbstractFunction> allocatedFunctions = DataFlowHelper.findFunctionRealizedByInstanceRole(instanceRole);
-    if (!allocatedFunctions.contains(relatedFunction)) {
+    if (!CapellaServices.isAllocatedFunction(instanceRole.getRepresentedInstance(), relatedFunction, instanceRole
+        .getRepresentedInstance().getAbstractType())) {
       Component component = InstanceRoleExt.getComponent(instanceRole);
       String relatedFunctionMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(relatedFunction, false);
       String scenarioMetaClassLabel = EObjectLabelProviderHelper.getMetaclassLabel(containingScenario, false);
@@ -80,8 +78,8 @@ public class MDCHK_StateFragment_ES_OES_AllocatedFunction extends AbstractValida
       if (null != component) {
         componentName = component.getName();
       }
-      return ctx_p.createFailureStatus(relatedFunction.getName(), relatedFunctionMetaClassLabel, containingScenario.getName(), scenarioMetaClassLabel,
-          componentName, componentMetaClassLabel, deployed);
+      return ctx_p.createFailureStatus(relatedFunction.getName(), relatedFunctionMetaClassLabel,
+          containingScenario.getName(), scenarioMetaClassLabel, componentName, componentMetaClassLabel, deployed);
     }
 
     return ctx_p.createSuccessStatus();

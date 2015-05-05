@@ -18,7 +18,7 @@ package org.polarsys.capella.test.validation.rules.ju.testcases;
 public abstract class AbstractRulesOnDesignTest extends ValidationRulePartialTestCase {
 
 	@Override
-	protected String getTestProjectName() {
+	protected String getRequiredTestModel() {
 		return "RulesOnDesignTest"; //$NON-NLS-1$
 	}
 }

@@ -10,28 +10,13 @@
  *******************************************************************************/
 package org.polarsys.capella.core.business.queries.queries.fa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.polarsys.capella.common.queries.AbstractQuery;
 import org.polarsys.capella.common.queries.queryContext.IQueryContext;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.ReuseLink;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
-import org.polarsys.capella.core.data.cs.ComponentArchitecture;
-import org.polarsys.capella.core.data.fa.ComponentPort;
-import org.polarsys.capella.core.data.information.DataPkg;
-import org.polarsys.capella.core.data.information.datavalue.DataValue;
-import org.polarsys.capella.core.data.information.datavalue.NumericValue;
-import org.polarsys.capella.core.data.pa.PhysicalComponent;
-import org.polarsys.capella.core.data.sharedmodel.SharedPkg;
-import org.polarsys.capella.core.model.helpers.ClassifierExt;
-import org.polarsys.capella.core.model.helpers.DataPkgExt;
-import org.polarsys.capella.core.model.helpers.PhysicalComponentExt;
-import org.polarsys.capella.core.model.helpers.SystemEngineeringExt;
-import org.polarsys.capella.core.model.helpers.query.CapellaQueries;
-import org.polarsys.capella.core.model.utils.ListExt;
 
+@Deprecated
 public class GetAvailable_ComponentPort_MinCardinality extends AbstractQuery {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -46,103 +31,104 @@ public class GetAvailable_ComponentPort_MinCardinality extends AbstractQuery {
 	 * @see org.polarsys.capella.core.business.queries.capellacore.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
 	 */
 	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
-		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-		boolean isPropertyFromSharedPkg = false;
-		if (null == systemEngineering) {
-			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
-			for (ReuseLink link : sharedPkg.getReuseLinks()) {
-				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
-					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
-					isPropertyFromSharedPkg = true;
-					break;
-				}
-			}
-			if (systemEngineering == null)
-				return availableElements;
-		}
-		if (element_p instanceof ComponentPort) {
-			ComponentPort property = (ComponentPort) element_p;
-			if (!isPropertyFromSharedPkg) {
-				availableElements.addAll(getRule_MQRY_StandardPort_MinCard_11(property));
-				availableElements.addAll(getRule_MQRY_StandardPort_MinCard_12(property));
-			}
-			availableElements.addAll(getRule_MQRY_StandardPort_MinCard_13(property, systemEngineering));
-		}
-		availableElements = ListExt.removeDuplicates(availableElements);
-		return availableElements;
+//		SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element_p);
+//		List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
+//		boolean isPropertyFromSharedPkg = false;
+//		if (null == systemEngineering) {
+//			SharedPkg sharedPkg = SystemEngineeringExt.getSharedPkg(element_p);
+//			for (ReuseLink link : sharedPkg.getReuseLinks()) {
+//				if (SystemEngineeringExt.getSystemEngineering(link) != null) {
+//					systemEngineering = SystemEngineeringExt.getSystemEngineering(link);
+//					isPropertyFromSharedPkg = true;
+//					break;
+//				}
+//			}
+//			if (systemEngineering == null)
+//				return availableElements;
+//		}
+//		if (element_p instanceof ComponentPort) {
+//			ComponentPort property = (ComponentPort) element_p;
+//			if (!isPropertyFromSharedPkg) {
+//				availableElements.addAll(getRule_MQRY_StandardPort_MinCard_11(property));
+//				availableElements.addAll(getRule_MQRY_StandardPort_MinCard_12(property));
+//			}
+//			availableElements.addAll(getRule_MQRY_StandardPort_MinCard_13(property, systemEngineering));
+//		}
+//		availableElements = ListExt.removeDuplicates(availableElements);
+//		return availableElements;
+		throw new UnsupportedOperationException();
 	}
 
-	/** 
-	 * All the NumericValues contained by the Data Package (and all of its
-	 * subpackages) of the current Element's parent (can be a Component, a
-	 * Component Architecture Decomposition package, or a Component Architecture
-	 * root package).
-	 */
-	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_11(ComponentPort currentProperty_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		PhysicalComponent classifier = (PhysicalComponent) currentProperty_p.eContainer();
-		NumericValue minCard = currentProperty_p.getOwnedMinCard();
-		ComponentArchitecture arch = PhysicalComponentExt.getOwningPhysicalArchitecture(classifier);
-		if (null != arch) {
-			DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
-			if (null != dataPkg) {
-				for (DataValue value : DataPkgExt.getAllDataValues(dataPkg)) {
-					if (value instanceof NumericValue) {
-						if (value.equals(minCard))
-							continue;
-						availableElements.add(value);
-					}
-				}
-			}
-		}
-		return availableElements;
-	}
-
-	/** 
-	 * All the NumericValues contained by the Data Packages (and all of its
-	 * subpackages) of the current Element's parents hierarchy according to
-	 * layer visibility and multiple decomposition rules.
-	 */
-	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_12(ComponentPort currentProperty_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		PhysicalComponent classifier = (PhysicalComponent) currentProperty_p.eContainer();
-		NumericValue minCard = currentProperty_p.getOwnedMinCard();
-		List<DataPkg> dataPkgList = ClassifierExt.getDataPkgsFromParentHierarchy(classifier);
-		for (DataPkg dataPkg : dataPkgList) {
-			if (null != dataPkg) {
-				for (DataValue value : DataPkgExt.getAllDataValues(dataPkg)) {
-					if (value instanceof NumericValue) {
-						if (value.equals(minCard))
-							continue;
-						availableElements.add(value);
-					}
-				}
-			}
-		}
-		return availableElements;
-	}
-
-	/** 
-	 * All the NumericValues contained by the Data Package (and all of its
-	 * subpackages) of the Shared Assets Package.
-	 */
-	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_13(ComponentPort currentProperty_p, SystemEngineering systemEngineering_p) {
-		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-		NumericValue minCard = currentProperty_p.getOwnedMinCard();
-		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
-			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
-			if (null != dataPkg) {
-				for (DataValue value : DataPkgExt.getAllDataValues(dataPkg)) {
-					if (value instanceof NumericValue) {
-						if (value.equals(minCard))
-							continue;
-						availableElements.add(value);
-					}
-				}
-			}
-		}
-		return availableElements;
-	}
+//	/** 
+//	 * All the NumericValues contained by the Data Package (and all of its
+//	 * subpackages) of the current Element's parent (can be a Component, a
+//	 * Component Architecture Decomposition package, or a Component Architecture
+//	 * root package).
+//	 */
+//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_11(ComponentPort currentProperty_p) {
+//		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+//		PhysicalComponent classifier = (PhysicalComponent) currentProperty_p.eContainer();
+//		NumericValue minCard = currentProperty_p.getOwnedMinCard();
+//		ComponentArchitecture arch = PhysicalComponentExt.getOwningPhysicalArchitecture(classifier);
+//		if (null != arch) {
+//			DataPkg dataPkg = DataPkgExt.getDataPkgOfComponentArchitecture(arch);
+//			if (null != dataPkg) {
+//				for (DataValue value : DataPkgExt.getAllDataValues(dataPkg)) {
+//					if (value instanceof NumericValue) {
+//						if (value.equals(minCard))
+//							continue;
+//						availableElements.add(value);
+//					}
+//				}
+//			}
+//		}
+//		return availableElements;
+//	}
+//
+//	/** 
+//	 * All the NumericValues contained by the Data Packages (and all of its
+//	 * subpackages) of the current Element's parents hierarchy according to
+//	 * layer visibility and multiple decomposition rules.
+//	 */
+//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_12(ComponentPort currentProperty_p) {
+//		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+//		PhysicalComponent classifier = (PhysicalComponent) currentProperty_p.eContainer();
+//		NumericValue minCard = currentProperty_p.getOwnedMinCard();
+//		List<DataPkg> dataPkgList = ClassifierExt.getDataPkgsFromParentHierarchy(classifier);
+//		for (DataPkg dataPkg : dataPkgList) {
+//			if (null != dataPkg) {
+//				for (DataValue value : DataPkgExt.getAllDataValues(dataPkg)) {
+//					if (value instanceof NumericValue) {
+//						if (value.equals(minCard))
+//							continue;
+//						availableElements.add(value);
+//					}
+//				}
+//			}
+//		}
+//		return availableElements;
+//	}
+//
+//	/** 
+//	 * All the NumericValues contained by the Data Package (and all of its
+//	 * subpackages) of the Shared Assets Package.
+//	 */
+//	private List<CapellaElement> getRule_MQRY_StandardPort_MinCard_13(ComponentPort currentProperty_p, SystemEngineering systemEngineering_p) {
+//		List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
+//		NumericValue minCard = currentProperty_p.getOwnedMinCard();
+//		for (SharedPkg sharedPkg : SystemEngineeringExt.getSharedPkgs(systemEngineering_p)) {
+//			DataPkg dataPkg = sharedPkg.getOwnedDataPkg();
+//			if (null != dataPkg) {
+//				for (DataValue value : DataPkgExt.getAllDataValues(dataPkg)) {
+//					if (value instanceof NumericValue) {
+//						if (value.equals(minCard))
+//							continue;
+//						availableElements.add(value);
+//					}
+//				}
+//			}
+//		}
+//		return availableElements;
+//	}
 
 }

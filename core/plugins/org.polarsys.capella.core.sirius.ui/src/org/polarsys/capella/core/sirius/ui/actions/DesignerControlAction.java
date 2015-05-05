@@ -64,6 +64,7 @@ import org.polarsys.capella.core.model.handler.AbortedTransactionException;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.model.handler.pre.commit.listener.FileModificationPreCommitListener;
 import org.polarsys.capella.core.platform.sirius.ui.preferences.ICapellaPreferences;
+import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
 import org.polarsys.capella.core.sirius.ui.internal.UncontrolMessageDialog;
 
 /**
@@ -213,7 +214,7 @@ public class DesignerControlAction extends ControlAction {
       if (session != null) {
         final URI semanticDest = getControledResourceURI(_shell, semanticRoot_p);
         if (semanticDest != null) {
-          Set<DRepresentation> representations = new HashSet<DRepresentation>(0);
+          final Set<DRepresentation> representations = new HashSet<DRepresentation>(0);
           try {
             representations.addAll(getRepresentationsToMove(_shell, session, semanticRoot_p));
           } catch (InterruptedException exception_p) {
@@ -238,6 +239,7 @@ public class DesignerControlAction extends ControlAction {
                 // Re-enable the notification.
                 setResourceSetSyncNotificationEnabled(session, true);
                 saveSession(semanticRoot_p);
+                SessionHelper.reloadEditors(session, representations);
               }
             });
           }
@@ -326,6 +328,7 @@ public class DesignerControlAction extends ControlAction {
             // Re-enable the notification.
             setResourceSetSyncNotificationEnabled(session, true);
             saveSession(semanticRoot_p);
+            SessionHelper.reloadEditors(session);
           }
         });
 

@@ -20,10 +20,11 @@ import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.test.business.queries.ju.errors.BQValidationError;
 import org.polarsys.capella.test.business.queries.ju.errors.InputNotFoundError;
-import org.polarsys.capella.test.business.queries.ju.errors.InvalidIdentifierInTestCaseError;
+import org.polarsys.capella.test.business.queries.ju.errors.InvalidMethodToCallTestCaseError;
 import org.polarsys.capella.test.business.queries.ju.errors.MissingTestCaseError;
 import org.polarsys.capella.test.business.queries.ju.errors.TestCaseFailsError;
 import org.polarsys.capella.test.business.queries.ju.errors.TestCaseRaiseExceptionError;
+import org.polarsys.capella.test.framework.helpers.IResourceHelpers;
 import org.polarsys.capella.test.framework.helpers.log.FormatedLogger;
 
 /**
@@ -52,7 +53,8 @@ public class BQTestCaseValidator {
 		List<String> testedInputIdsForAvailable = new ArrayList<String>();
 		List<String> testedInputIdsForCurrent = new ArrayList<String>();
 		Hashtable<String, CapellaElement> id2ObjectTable = BQTestHelpers.getId2ObjectTableInSessionForTest(testSession, businessQuery.getEClass());
-		List<QueryResult> testCases = QueryResult.deserialize(testSuiteFile);
+		String serializedData = IResourceHelpers.readFileAsString(testSuiteFile);
+		List<QueryResult> testCases = QueryResult.deserialize(serializedData);
 		nbTestCases = testCases.size();
 		for (QueryResult oracleResult : testCases) {
 			String ident = oracleResult.getQueryIdentifier();
@@ -62,48 +64,33 @@ public class BQTestCaseValidator {
 			else {
 				List<CapellaElement> res = null;
 				if (ident.endsWith("-"+BQTestConstants.GET_AVAILABLE_METHOD_NAME)) { //$NON-NLS-1$
+					testedInputIdsForAvailable.add(oracleResult.getInputId());
 					try {
 						res = businessQuery.getAvailableElements(input);
-						testedInputIdsForAvailable.add(oracleResult.getInputId());
 					} catch (Throwable exception) {
-						declareExceptionRaised(exception);
+						declareExceptionRaised(exception, input, BQTestConstants.GET_AVAILABLE_METHOD_NAME);
 					}
 				} else if (ident.endsWith("-"+BQTestConstants.GET_CURRENT_METHOD_NAME)) { //$NON-NLS-1$
+					testedInputIdsForCurrent.add(oracleResult.getInputId());
 					try {
 						res = businessQuery.getCurrentElements(input, false);
-						testedInputIdsForCurrent.add(oracleResult.getInputId());
 					} catch (Throwable exception) {
-						declareExceptionRaised(exception);
+						declareExceptionRaised(exception, input, BQTestConstants.GET_CURRENT_METHOD_NAME);
 					}
 				} else {
-					declareInvalidIdentifierInTestCase(ident);
+					declareInvalidMethodToCallInTestCase(ident);
 				}
-				if (res != null) {						
-					QueryResult currentResult = QueryResult.createQueryResult(ident, input, res);
-					if (!oracleResult.equals(currentResult)) {
-						declareTestCaseFails(currentResult, oracleResult);
-					} else {
-						declareTestOk();
-					}
+				QueryResult currentResult = QueryResult.createQueryResult(ident, input, res);
+				if (!oracleResult.equals(currentResult)) {
+					declareTestCaseFails(currentResult, oracleResult);
+				} else {
+					declareTestOk();
 				}
 			}
 		}
-		for (String id : id2ObjectTable.keySet()) {
-			if (!testedInputIdsForAvailable.contains(id)) {
-//					CapellaElement input = id2ObjectTable.get(id);
-//					List<CapellaElement> res = null;
+		for (String id : id2ObjectTable.keySet())
+			if (!testedInputIdsForAvailable.contains(id))
 				declareMissingTestCase(id);
-//					try {
-//						res = businessQuery.getAvailableElements(input);
-//					} catch (Throwable exception) {
-//					}
-//					if (res != null && res.size() > 0) {
-//						nbTestFail++;
-//						logger.addText("-"); //$NON-NLS-1$
-//
-//					}
-			}
-		}
 		logger.carriageReturn();
 		return errors.size() == 0;
 	}
@@ -113,10 +100,9 @@ public class BQTestCaseValidator {
 		addTestCaseFeedBack('?');
 		errors.add(new InputNotFoundError(inputId));
 	}
-	protected void declareExceptionRaised(Throwable exception) {
+	protected void declareExceptionRaised(Throwable exception, CapellaElement input, String methodName) {
 		nbRaisedExceptions++;
-		addTestCaseFeedBack('!');
-		errors.add(new TestCaseRaiseExceptionError(exception));
+		errors.add(new TestCaseRaiseExceptionError(exception, input, methodName));
 	}
 	protected void declareTestCaseFails(QueryResult currentResult, QueryResult oracleResult) {
 		nbTestCaseFailed++;
@@ -128,10 +114,10 @@ public class BQTestCaseValidator {
 		addTestCaseFeedBack('0');
 		errors.add(new MissingTestCaseError(objectId));
 	}
-	protected void declareInvalidIdentifierInTestCase(String methodName) {
+	protected void declareInvalidMethodToCallInTestCase(String methodName) {
 		nbInvalidIdentifiers++;
 		addTestCaseFeedBack('#');
-		errors.add(new InvalidIdentifierInTestCaseError(methodName));
+		errors.add(new InvalidMethodToCallTestCaseError(methodName));
 	}	
 	protected void declareTestOk() {
 		nbTestCaseSucceed++;
@@ -169,7 +155,6 @@ public class BQTestCaseValidator {
 	public int getNbTestCases() {
 		return nbTestCases;
 	}
-	
 	
 	public String getResultDescription() {
 		StringBuilder message = new StringBuilder();

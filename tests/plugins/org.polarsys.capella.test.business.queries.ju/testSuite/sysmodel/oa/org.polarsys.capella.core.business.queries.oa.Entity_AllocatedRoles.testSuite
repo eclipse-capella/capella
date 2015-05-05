@@ -1,0 +1,133 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = 45b6fb17-4f46-449d-ab5b-3e28ac8738f4
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = 45b6fb17-4f46-449d-ab5b-3e28ac8738f4
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = 6cd9a511-876c-48d9-abb2-4a93e2913111
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = 6cd9a511-876c-48d9-abb2-4a93e2913111
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = 3bed494a-3ac6-419b-9ee2-a244905e73b7
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = 3bed494a-3ac6-419b-9ee2-a244905e73b7
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = fd2748c4-e347-46bc-a7fc-8f6c43daee57
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = fd2748c4-e347-46bc-a7fc-8f6c43daee57
+resultIds = {
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = e3255712-67cc-4c89-a6d8-c1172e67d16a
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = e3255712-67cc-4c89-a6d8-c1172e67d16a
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = f8f60a20-5c2f-4738-8b42-b172caaeb23e
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = f8f60a20-5c2f-4738-8b42-b172caaeb23e
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = e161fd22-b2f4-4246-8c49-c2277b5e60e6
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = e161fd22-b2f4-4246-8c49-c2277b5e60e6
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = 190927b8-3056-41fc-a272-b48dc16fe56d
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = 190927b8-3056-41fc-a272-b48dc16fe56d
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = 1037719d-0b67-414d-9e26-f00246e29a95
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = 1037719d-0b67-414d-9e26-f00246e29a95
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getAvailableElements
+inputId = b1dc369a-9e97-44bc-a5ee-cbbe02a7a569
+resultIds = {
+    11a00d99-a384-4a97-a149-50c64491b3e3
+    c928d3b3-db75-4b39-8adb-6b29a4334ac5
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.oa.Entity_AllocatedRoles-getCurrentElements
+inputId = b1dc369a-9e97-44bc-a5ee-cbbe02a7a569
+resultIds = {
+}
+

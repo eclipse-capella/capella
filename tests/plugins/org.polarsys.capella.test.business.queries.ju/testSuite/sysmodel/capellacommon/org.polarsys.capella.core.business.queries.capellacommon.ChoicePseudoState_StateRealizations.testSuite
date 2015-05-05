@@ -1,0 +1,10 @@
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.ChoicePseudoState_StateRealizations-getAvailableElements
+inputId = 902bfa99-870b-4423-ad60-32619ac03aea
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.capellacommon.ChoicePseudoState_StateRealizations-getCurrentElements
+inputId = 902bfa99-870b-4423-ad60-32619ac03aea
+resultIds = {
+}
+

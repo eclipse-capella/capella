@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.ui.views.markers.MarkerViewUtil;
+import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.appenders.reportlogview.LightMarkerRegistry.IMarkerModification;
@@ -38,6 +39,8 @@ import org.polarsys.capella.common.tools.report.config.ReportManagerConstants;
  * A Log4J Appender that creates Eclipse IMarkers.
  */
 public final class ReportManagerLogViewAppender extends WriterAppender {
+
+  private static final String UNKNOWN = "Unknown"; //$NON-NLS-1$
 
   private IResource workspaceRoot;
 
@@ -91,28 +94,40 @@ public final class ReportManagerLogViewAppender extends WriterAppender {
     final EmbeddedMessage em = (EmbeddedMessage) event_p.getMessage();
     int severity = log4jToDiagnostics(event_p.getLevel());
 
-    IResource resource = workspaceRoot;
-    if ((em.getCapellaElements() != null) && (em.getCapellaElements().size() > 0)) {
-      Session session = SessionManager.INSTANCE.getSession((EObject) em.getCapellaElements().iterator().next());
-      if (session != null) {
-        resource = EcoreUtil2.getFile(session.getSessionResource());
-      }
-    }
+		IResource resource = workspaceRoot;
+		if ((em.getCapellaElements() != null) && (em.getCapellaElements().size() > 0)) {
+			Session session = SessionManager.INSTANCE.getSession((EObject) em.getCapellaElements().iterator().next());
+			if (session != null) {
+				resource = EcoreUtil2.getFile(session.getSessionResource());
+			}
+		}
 
-    LightMarkerRegistry.getInstance().createMarker(resource,
-        new BasicDiagnostic(severity, em.getComponentName(), 0, em.getLabel(), em.getCapellaElements().toArray()), MarkerView.MARKER_ID, new IMarkerModification() {
-          public void modify(IMarker marker_p) {
-            try {
-              marker_p.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
-              marker_p.setAttribute(IMarker.LOCATION, em.getComponentName());
-              marker_p.setAttribute(MarkerViewUtil.NAME_ATTRIBUTE, event_p.getLoggerName());
-              
-            } catch (CoreException e) {
-              MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
-            }
-          }
-        });
-  }
+		final Diagnostic diag = new BasicDiagnostic(severity, em.getComponentName(), 0, em.getLabel(), em.getCapellaElements().toArray());
+		LightMarkerRegistry.getInstance().createMarker(resource, diag, MarkerView.MARKER_ID, new IMarkerModification() {
+			public void modify(IMarker marker_p) {
+//				em.adapt(marker_p);
+				try {
+					marker_p.setAttribute(IMarker.MESSAGE, em.getLabel());
+					marker_p.setAttribute(IMarker.SEVERITY, event_p.getLevel()); // violates IMarker API
+					marker_p.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_HIGH);
+					marker_p.setAttribute(IMarker.LOCATION, em.getComponentName());
+					marker_p.setAttribute(MarkerViewUtil.NAME_ATTRIBUTE, event_p.getLoggerName());
+					Object element_o = null;
+					if ((em.getCapellaElements() != null) && (em.getCapellaElements().size() > 0)) {
+						element_o = em.getCapellaElements().get(0);
+						if (element_o instanceof ModelElement) {
+							ModelElement element = (ModelElement) element_o;
+							marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, element.getFullLabel());
+						} else {
+							marker_p.setAttribute(MarkerViewUtil.PATH_ATTRIBUTE, UNKNOWN);
+						}
+					}
+				} catch (CoreException e) {
+					MarkerViewPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, MarkerViewPlugin.PLUGIN_ID, e.getLocalizedMessage(), e));
+				}
+			}
+		});
+	}
 
   public void report(final String message, final Level level_p, final IMarkerModification additions) {
     int severity = log4jToDiagnostics(level_p);

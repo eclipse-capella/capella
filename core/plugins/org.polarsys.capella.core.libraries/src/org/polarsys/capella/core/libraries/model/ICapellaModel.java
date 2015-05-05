@@ -25,4 +25,9 @@ public interface ICapellaModel extends IModel {
    */
   public Project getProject(TransactionalEditingDomain domain_p);
 
+  /** 
+   * @return true if this model is a library.
+   */
+  public boolean isLibrary();
+  
 }

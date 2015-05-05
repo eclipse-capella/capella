@@ -1,0 +1,32 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.test.framework.api;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+import org.eclipse.emf.transaction.RollbackException;
+import org.polarsys.capella.test.framework.CapellaTestFrameworkPlugin;
+
+/**
+ * Used to make test model read-only when a test case works on this model and is not the owner.<br>
+ * @see ModelProvider
+ * 
+ * @author Erwan Brottier
+ */
+public class ChangeLocker extends ResourceSetListenerImpl {
+
+	public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+			throw new RollbackException(new Status(IStatus.CANCEL, CapellaTestFrameworkPlugin.PLUGIN_ID, "Test model can not be modified by a test artefact which is not its owner."));
+		}
+}

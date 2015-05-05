@@ -1,0 +1,100 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+ 
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = dfc609a2-8d9a-487e-8531-148246a3c65f
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = dfc609a2-8d9a-487e-8531-148246a3c65f
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = c665b196-ddd5-4362-9f13-035aca2c132a
+resultIds = {
+    7208f1f6-5ebf-47a5-aec8-e0e514da9fcd
+    12a83b0b-ef58-4dc6-b1bb-1c4e6cb569ba
+    2b2bcaf2-0e2f-4a6c-8c91-01747a2e2153
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = c665b196-ddd5-4362-9f13-035aca2c132a
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = f8b6ca26-e432-4c89-8e00-c5c7b1c1b9f4
+resultIds = {
+    7208f1f6-5ebf-47a5-aec8-e0e514da9fcd
+    12a83b0b-ef58-4dc6-b1bb-1c4e6cb569ba
+    2b2bcaf2-0e2f-4a6c-8c91-01747a2e2153
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = f8b6ca26-e432-4c89-8e00-c5c7b1c1b9f4
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = b0a850e4-a8ac-407d-9b32-adb6ed8688d2
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = b0a850e4-a8ac-407d-9b32-adb6ed8688d2
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = 51bd3041-85b5-4fe0-9792-e9394ecd7fec
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = 51bd3041-85b5-4fe0-9792-e9394ecd7fec
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = 211bd243-b23b-4e54-a7c5-77de64781c79
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = 211bd243-b23b-4e54-a7c5-77de64781c79
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = 6b3f6f66-e17a-481f-8bf9-7936068bb0c2
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = 6b3f6f66-e17a-481f-8bf9-7936068bb0c2
+resultIds = {
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getAvailableElements
+inputId = e12acf6f-6e61-47db-85ec-c05db92696bb
+resultIds = {
+    7208f1f6-5ebf-47a5-aec8-e0e514da9fcd
+    12a83b0b-ef58-4dc6-b1bb-1c4e6cb569ba
+    2b2bcaf2-0e2f-4a6c-8c91-01747a2e2153
+}
+
+queryIdentifier = org.polarsys.capella.core.business.queries.information.ExchangeItemElement_ReferencedProperties-getCurrentElements
+inputId = e12acf6f-6e61-47db-85ec-c05db92696bb
+resultIds = {
+}
+

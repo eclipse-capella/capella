@@ -25,31 +25,32 @@ public abstract class FormatedLogger implements IFormatedLogger {
   protected List<ObjectPrinter> printers = new ArrayList<ObjectPrinter>();
 
   public FormatedLogger(List<ObjectPrinter> printers) {
-  	this.printers.addAll(printers);
+    this.printers.addAll(printers);
   }
-  
+
   public FormatedLogger(String indentString) {
-  	this.indentString = indentString;
+    this.indentString = indentString;
   }
-  
-  public FormatedLogger() {}
-    
+
+  public FormatedLogger() {
+  }
+
   protected void print(Object object) {
-  	if (object instanceof String)
-  		basicPrint(object);
-  	else if (object instanceof ILoggable) {
-  		((ILoggable) object).printInLogger(this);
-  	} else {  		
-  		for (ObjectPrinter printer : printers) {
-				if (printer.appliesOn(object)) {
-					printer.print(object, this);
-					return;
-				}
-			}
-  		basicPrint(object);
-  	}
+    if (object instanceof String) {
+      basicPrint(object);
+    } else if (object instanceof ILoggable) {
+      ((ILoggable) object).printInLogger(this);
+    } else {
+      for (ObjectPrinter printer : printers) {
+        if (printer.appliesOn(object)) {
+          printer.print(object, this);
+          return;
+        }
+      }
+      basicPrint(object);
+    }
   }
-  
+
   protected abstract void basicPrint(Object object);
 
   public void printException(String message, Exception exception) {
@@ -59,6 +60,10 @@ public abstract class FormatedLogger implements IFormatedLogger {
 
   public void printException(Exception exception) {
     print(exception);
+  }
+
+  public void line(Object text) {
+    addTextLn(text);
   }
 
   public void addTextLn(Object text) {
@@ -104,8 +109,8 @@ public abstract class FormatedLogger implements IFormatedLogger {
     carriageReturn();
   }
 
-	public void resetIndentation() {
-		indentStep = 0;		
-	}
-  
+  public void resetIndentation() {
+    indentStep = 0;
+  }
+
 }

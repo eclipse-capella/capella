@@ -43,7 +43,7 @@ public abstract class ValidationRulePartialTestCase extends ValidationRuleTestCa
     List<CapellaElement> scope = new ArrayList<CapellaElement>();
     IScope resourceScope = new IScope() {
       public List<Resource> getResources() {
-        return getSessionForLoadedCapellaModel(getTestProjectName()).getTransactionalEditingDomain().getResourceSet().getResources();
+        return getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain().getResourceSet().getResources();
       }
     };
     for (String id : getScopeDefinition()) {

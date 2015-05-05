@@ -48,8 +48,8 @@ public abstract class CheckInterModelInconsistencyDetectionTestCase extends Basi
 
   @Override
   protected void tearDown() throws Exception {
-  	for (String modelName : getProjectNamesToLoad())
-  		getSessionForLoadedCapellaModel(modelName).save(new NullProgressMonitor());
+  	for (String modelName : getRequiredTestModels())
+  		getSessionForTestModel(modelName).save(new NullProgressMonitor());
   	super.tearDown();
   }
 	

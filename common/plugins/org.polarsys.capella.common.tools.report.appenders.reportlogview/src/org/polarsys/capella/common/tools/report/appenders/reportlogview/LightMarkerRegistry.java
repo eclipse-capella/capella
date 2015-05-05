@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -175,14 +175,7 @@ public class LightMarkerRegistry implements IMarkerSource {
       id = System.nanoTime();
       type = markerType_p;
       creationTime = System.currentTimeMillis();
-      
-      // for backwards compatibility
-//      attributes.put(IValidationConstants.TAG_DIAGNOSTIC, diagnostic_p);
     }
-    
-//    LightMarker(IResource resource_p, String type_p) {
-//      this(resource_p, type_p, null);
-//    }
 
     /**
      * @see org.eclipse.core.resources.IMarker#delete()
@@ -441,14 +434,4 @@ public class LightMarkerRegistry implements IMarkerSource {
   public void removeListener(IMarkerSourceListener listener_p) {
     listeners.remove(listener_p);
   }
-
-//  private String getRuleId(Diagnostic diag) {
-//    String result = null;
-//    if (diag instanceof ConstraintStatusDiagnostic) {
-//      result = ((ConstraintStatusDiagnostic) diag).getConstraintStatus().getConstraint().getDescriptor().getId();
-//    } else {
-//      result = diag.getSource() + "." + diag.getCode(); //$NON-NLS-1$
-//    }
-//    return result;
-//  }
 }

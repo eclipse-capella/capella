@@ -143,8 +143,7 @@ public class CapellaModelEnvironment extends AbstractSiriusModelEnvironment {
    * @see org.eclipse.emf.diffmerge.patterns.core.api.ext.IModelEnvironment#isModelResource(org.eclipse.emf.ecore.resource.Resource)
    */
   public boolean isModelResource(Resource resource_p) {
-    return CapellaResourceHelper.isCapellaResource(resource_p) ||
-        PatternCatalogResourceHelper.isPatternCatalogResource(resource_p);
+    return CapellaResourceHelper.isCapellaResource(resource_p);
   }
   
   /**

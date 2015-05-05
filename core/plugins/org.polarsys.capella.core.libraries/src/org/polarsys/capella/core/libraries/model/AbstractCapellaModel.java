@@ -53,7 +53,7 @@ public abstract class AbstractCapellaModel extends AbstractUriModel implements I
     return _identifier;
   }
 
-  protected boolean isLibrary() {
+  public boolean isLibrary() {
     if (!_initializedAttributes) {
       initializeAttributes();
     }

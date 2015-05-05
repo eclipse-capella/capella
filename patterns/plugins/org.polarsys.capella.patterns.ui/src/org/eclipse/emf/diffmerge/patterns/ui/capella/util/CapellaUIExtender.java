@@ -11,11 +11,13 @@
 package org.eclipse.emf.diffmerge.patterns.ui.capella.util;
 
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.diffmerge.patterns.templates.engine.specifications.AbstractTemplatePatternSelection;
 import org.eclipse.emf.diffmerge.patterns.ui.capella.Messages;
-import org.eclipse.emf.diffmerge.patterns.ui.sirius.views.SiriusInstanceExplorerView;
+import org.eclipse.emf.diffmerge.patterns.ui.sirius.util.SiriusUIExtender;
 import org.eclipse.emf.diffmerge.patterns.ui.util.IUIExtender;
 import org.eclipse.emf.diffmerge.patterns.ui.viewers.ModelSubsetViewer;
 import org.eclipse.emf.ecore.EObject;
@@ -41,9 +43,8 @@ import org.polarsys.capella.core.ui.semantic.browser.view.SemanticBrowserView;
  * An implementation of IUIExtender for Capella.
  * This implementation relies on the diagram specifications of Capella.
  */
-public class CapellaUIExtender implements IUIExtender  {
+public class CapellaUIExtender extends SiriusUIExtender {
 
- 
   /**
    * Default constructor
    */
@@ -51,10 +52,10 @@ public class CapellaUIExtender implements IUIExtender  {
     // Nothing needed
   }
 
-/**
- * 
- * @see org.eclipse.emf.diffmerge.patterns.ui.sirius.util.DefaultUIExtender#createNavigationItems(org.eclipse.swt.widgets.Menu, org.eclipse.emf.diffmerge.patterns.ui.viewers.ModelSubsetViewer)
- */
+  /**
+   * @see org.eclipse.emf.diffmerge.patterns.ui.sirius.util.DefaultUIExtender#createNavigationItems(org.eclipse.swt.widgets.Menu, org.eclipse.emf.diffmerge.patterns.ui.viewers.ModelSubsetViewer)
+   */
+  @Override
   public boolean createNavigationItems(final Menu menu_p, final ModelSubsetViewer viewer_p) {
     createShowInSemanticBrowserItem(menu_p, viewer_p);
     createShowInExplorerItem(menu_p, viewer_p);
@@ -150,8 +151,7 @@ public class CapellaUIExtender implements IUIExtender  {
       }
     });
   }
-  
-  
+
   /**
    * Return the Capella Project Explorer view if possible
    * @param forceShow_p whether the view must be shown if it is hidden
@@ -177,6 +177,14 @@ public class CapellaUIExtender implements IUIExtender  {
   }
 
   /**
+   * @see org.eclipse.emf.diffmerge.patterns.ui.sirius.util.SiriusUIExtender#getOverridenClasses()
+   */
+  @Override
+  public Collection<? extends Class<? extends IUIExtender>> getOverridenClasses() {
+    return Collections.singleton(SiriusUIExtender.class);
+  }
+
+  /**
    * Return the Semantic Browser view if possible
    * @param forceShow_p whether the view must be shown if it is hidden
    * @return a potentially null object
@@ -199,13 +207,5 @@ public class CapellaUIExtender implements IUIExtender  {
       result = (ISemanticBrowserViewPart)view;
     return result;
   }
-  
-  /**
-   * @see org.eclipse.emf.diffmerge.patterns.ui.util.IUIExtender#getInstanceExplorerViewID()
-   */
-    public String getInstanceExplorerViewID() {
-      return SiriusInstanceExplorerView.getID();
-    }
- 
 
 }
