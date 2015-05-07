@@ -357,15 +357,15 @@ public class DefaultLocationHandler implements ILocationHandler {
   }
 
   /**
+   * @param target_p
    * @param source_p
-   * @param origin_p
    * @param context_p
    * @return
    */
-  protected Collection<EObject> retrieveDefaultContainers(CatalogElementLink source_p, CatalogElementLink origin_p, IContext context_p) {
+  protected Collection<EObject> retrieveDefaultContainers(CatalogElementLink target_p, CatalogElementLink source_p, IContext context_p) {
 
     CatalogElement element = ReplicableElementHandlerHelper.getInstance(context_p).getInitialTarget(context_p);
-    CatalogElementLink linkSource = source_p;
+    CatalogElementLink linkSource = target_p;
 
     Collection<EObject> elementsContainers = new LinkedHashSet<EObject>(); // order is important!
 
@@ -409,12 +409,17 @@ public class DefaultLocationHandler implements ILocationHandler {
           if (isInvalidResourceLocation(linkSource, item, context_p)) {
             continue;
           }
+          // if the selection is a REC, we add the container of the type (thus in the REC) of the RPL element as a possible location
           if (item instanceof CatalogElement) {
-            // to allow creation of a card into a rack.
-            // if user select "update rpl from rec" selecting target rpl, we should not add elements to elements of rpl !
-            if (!(item.equals(element))) {
-              elementsContainers.addAll(ReplicableElementHandlerHelper.getInstance(context_p).getAllElements((CatalogElement) item));
-            }
+              String value = (String) context_p.get(IReConstants.COMMAND__CURRENT_VALUE);
+              // specific case when parameters are reversed
+              if (IReConstants.COMMAND__UPDATE_DEFINITION_REPLICA_FROM_REPLICA.equals(value)) {
+              	elementsContainers.add(source_p.getTarget().eContainer());                            	
+              }
+              // nominal case
+              else {
+              	elementsContainers.add(target_p.getOrigin().getTarget().eContainer());              
+              }
           } else {
             if (isInitialSelectionValidContainer(item, linkSource, context_p)) {
               elementsContainers.add(item);

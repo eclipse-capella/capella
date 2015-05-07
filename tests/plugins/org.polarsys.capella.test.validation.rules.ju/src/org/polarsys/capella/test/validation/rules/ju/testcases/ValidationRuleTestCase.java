@@ -180,7 +180,7 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   protected void tearDown() throws Exception {
     super.tearDown();
 
-    if (_ruleWasDisabled) {
+    if (_ruleWasDisabled && ruleDescriptor != null) {
       ruleDescriptor.setEnabled(false);
     }
 

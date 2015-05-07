@@ -27,6 +27,7 @@ Export-Package: org.polarsys.capella.test.validation.rules.ju,
  org.polarsys.capella.test.validation.rules.ju.testcases.dwf_uc,
  org.polarsys.capella.test.validation.rules.ju.testcases.i,
  org.polarsys.capella.test.validation.rules.ju.testcases.misc,
+ org.polarsys.capella.test.validation.rules.ju.testcases.naming,
  org.polarsys.capella.test.validation.rules.ju.testcases.q,
  org.polarsys.capella.test.validation.rules.ju.testcases.tc_dc,
  org.polarsys.capella.test.validation.rules.ju.testcases.tc_df,
@@ -38,5 +39,7 @@ Export-Package: org.polarsys.capella.test.validation.rules.ju,
  org.polarsys.capella.test.validation.rules.ju.testcases.tj_la,
  org.polarsys.capella.test.validation.rules.ju.testcases.tj_pa,
  org.polarsys.capella.test.validation.rules.ju.testcases.tj_sa,
- org.polarsys.capella.test.validation.rules.ju.testsuites
+ org.polarsys.capella.test.validation.rules.ju.testsuites,
+ org.polarsys.capella.test.validation.rules.ju.testsuites.main,
+ org.polarsys.capella.test.validation.rules.ju.testsuites.partial
 Bundle-Localization: plugin

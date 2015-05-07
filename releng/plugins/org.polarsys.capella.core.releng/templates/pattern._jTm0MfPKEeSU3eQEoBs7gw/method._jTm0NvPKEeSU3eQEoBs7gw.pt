@@ -1,0 +1,40 @@
+<%@ egf:patternCall
+	patternId="platform:/plugin/org.eclipse.egf.portfolio.eclipse.build/egf/Build.fcore#LogicalName=org.eclipse.egf.portfolio.eclipse.build.TextHeader"
+%>
+
+#site servers
+eclipse.download.prefix=http://download.eclipse.org
+cloudsmith.download.prefix=http://download.cloudsmith.com
+polarion.download.prefix=http://community.polarion.com
+
+#director
+director.url=${eclipse.download.prefix}/tools/buckminster/products/director_latest.zip
+
+#buckminster installation
+buckminster.release=4.2
+bm.headless.site=${eclipse.download.prefix}/tools/buckminster/headless-${buckminster.release}
+bm.external.site=${cloudsmith.download.prefix}/buckminster/external-${buckminster.release}
+polarion.site=${polarion.download.prefix}/projects/subversive/download/eclipse/2.0/update-site/
+
+#egf installation
+egf.release=helios
+egf.site=${eclipse.download.prefix}/egf/updates/${egf.release}/official/
+egf.eclipse.site=${eclipse.download.prefix}/releases/${egf.release}
+
+#buckminster build
+buckminster.loglevel=INFO
+buckminster.output.root=${result}/output
+buckminster.temp.root=${result}/temp
+
+#buckminster qualifier
+qualifier.replacement.*=generator:buildTimestamp
+generator.buildTimestamp.format='v'yyyyMMdd-HHmm
+
+#buckminster signing
+signing.type=eclipse.local
+eclipse.staging.area=${result}/signing
+site.pack200=true
+site.retain.unpacked=true
+
+#buckminster : do not generate version range in manifest.mf and content.jar
+pde.bundle.range.generation=false

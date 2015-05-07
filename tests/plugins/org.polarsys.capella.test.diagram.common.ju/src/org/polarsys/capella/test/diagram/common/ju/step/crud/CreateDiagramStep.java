@@ -103,6 +103,6 @@ public class CreateDiagramStep extends AbstractTestStep<DiagramContext> {
     if (getExecutionContext() instanceof DiagramContext) {
       return (DiagramContext) getExecutionContext();
     }
-    return new DiagramContext(_diagram);
+    return new DiagramContext(getExecutionContext(), _diagram);
   }
 }
