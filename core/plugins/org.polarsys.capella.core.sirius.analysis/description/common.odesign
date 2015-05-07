@@ -316,17 +316,6 @@
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Mode" referenceName="ownedStates">
                     <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance%>">
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Region" referenceName="ownedRegions" variableName="instanceRegion">
-                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container %>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
-                      </subModelOperations>
-                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -473,13 +462,7 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% ownedRegions.nGet(0) %>">
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InitialPseudoState" referenceName="ownedStates">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%getUniqueName(&quot;Initial &quot;)%>"/>
-                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance.eContainer (&quot;Region&quot;) %>">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="involvedStates" valueExpression="&lt;% $instance %>"/>
-                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% eContainer (&quot;IState&quot;) %>">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="referencedStates" valueExpression="&lt;% $instance %>"/>
-                      </subModelOperations>
-                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
