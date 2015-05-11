@@ -15,6 +15,7 @@ import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -155,7 +156,18 @@ public class ShowHideFunctionalExchange extends ShowHideFunction {
       return true;
     }
 
+    // We don't want to hide Operational Activities
+    if (semantic instanceof OperationalActivity) {
+      return false;
+    }
+
     return super.mustHide(originCouple_p, context_p);
   }
 
+  @Override
+  protected boolean mustHide(DDiagramElement view_p, DiagramContext context_p) {
+    if (view_p.getTarget() instanceof FunctionalExchange)
+      return true;
+    return super.mustHide(view_p, context_p);
+  }
 }
