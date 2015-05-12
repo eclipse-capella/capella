@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
@@ -27,6 +29,7 @@ import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.ShallowHistoryPseudoState;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
 
 public class ShallowHistoryPseudoStateItemContribution implements IMDEMenuItemContribution {
 
@@ -43,10 +46,12 @@ public class ShallowHistoryPseudoStateItemContribution implements IMDEMenuItemCo
       EStructuralFeature feature_p) {
     if (createdElement_p instanceof ShallowHistoryPseudoState) {
       CompoundCommand cmd = new CompoundCommand();
-      if (containerElement_p instanceof Region) {
-        // Sets the container region involved states.
-
-        cmd.append(new AddCommand(editingDomain_p, containerElement_p, CapellacommonPackage.Literals.REGION__INVOLVED_STATES, createdElement_p));
+      if (createdElement_p instanceof AbstractNamedElement) {
+	      String name = ((AbstractNamedElement) createdElement_p).getName();
+	      if ((name == null) || name.startsWith(createdElement_p.eClass().getName())) {
+	        return CreationHelper.getNamingCommand(editingDomain_p, (AbstractNamedElement) createdElement_p, containerElement_p, feature_p,
+	            NamingConstants.ShallowHistoryPseudoState_Name);
+	      }
       }
       EObject superContainer = containerElement_p.eContainer();
       if (superContainer instanceof State) {

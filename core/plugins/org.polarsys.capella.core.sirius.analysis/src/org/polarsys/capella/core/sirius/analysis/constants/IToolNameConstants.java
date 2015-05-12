@@ -549,7 +549,7 @@ public interface IToolNameConstants {
   public final static String TOOL_LAB_INSERT_REMOVE_ALL_ALLOCATED_FUNCTIONS = "All Allocated Functions"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "Functional Exchanges"; //$NON-NLS-1$
-  public final static String TOOL_LAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Exchange Categories"; //$NON-NLS-1$
+  public final static String TOOL_LAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_SCENARIO_ELEMENTS = "Scenario Elements"; //$NON-NLS-1$
   public final static String TOOL_LAB_INSERT_STATEMODE_ELEMENTS = "State-Mode Elements"; //$NON-NLS-1$
 
@@ -685,7 +685,6 @@ public interface IToolNameConstants {
   public final static String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "Functional Exchanges"; //$NON-NLS-1$
   public final static String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   public final static String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_CHAIN_ELEMENTS = "Functional Chain Elements"; //$NON-NLS-1$
-  public final static String TOOL_LDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   public final static String TOOL_LDFB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   public final static String TOOL_LDFB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   public final static String TOOL_LDFB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
@@ -863,8 +862,6 @@ public interface IToolNameConstants {
   public final static String TOOL_OAB_INSERT_ELEMENTS_FROM_SCENARIO = "Elements from Scenario"; //$NON-NLS-1$
   public final static String TOOL_OAB_STATE_MODE_ELEMENTS_ID = "State-Mode Elements"; //$NON-NLS-1$
   public final static String TOOL_OAB_SCENARIO_ELEMENTS_ID = "Scenario Elements"; //$NON-NLS-1$
-  public final static String TOOL_OAB_INSERT_REMOVE_CATEGORIES = "Categories"; //$NON-NLS-1$
-  public final static String TOOL_OAB_INSERT_REMOVE_COMMUNICATION_MEANS_CATEGORIES = "Communication Means / Categories"; //$NON-NLS-1$
   // tools id
   public final static String TOOL_OAB_RECONNECT_COMMUNICATION_MEAN_TARGET = "Target Communication Mean"; //$NON-NLS-1$
   public final static String TOOL_OAB_RECONNECT_COMMUNICATION_MEAN_SOURCE = "Source Communication Mean"; //$NON-NLS-1$
@@ -1113,7 +1110,7 @@ public interface IToolNameConstants {
   public final static String TOOL_PAB_INSERT_REMOVE_ALL_ALLOCATED_FUNCTIONS = "All Allocated Functions"; //$NON-NLS-1$
   public final static String TOOL_PAB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   public final static String TOOL_PAB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "Functional Exchanges"; //$NON-NLS-1$
-  public final static String TOOL_PAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Exchange Categories"; //$NON-NLS-1$
+  public final static String TOOL_PAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   public final static String TOOL_PAB_INSERT_SCENARIO_ELEMENTS = TOOL_LAB_INSERT_SCENARIO_ELEMENTS;
   public final static String TOOL_PAB_INSERT_STATEMODE_ELEMENTS = TOOL_LAB_INSERT_STATEMODE_ELEMENTS;
 
@@ -1200,7 +1197,6 @@ public interface IToolNameConstants {
   public final static String TOOL_PDFB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Exchange Categories"; //$NON-NLS-1$
   public final static String TOOL_PDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   public final static String TOOL_PDFB_CREATE_FUNCTIONAL_CHAIN_ELEMENTS = "Functional Chain Elements"; //$NON-NLS-1$
-  public final static String TOOL_PDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   public final static String TOOL_PDFB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   public final static String TOOL_PDFB_CREATE_CONSTRAINT_ELEMENT = "ConstraintElement"; //$NON-NLS-1$
   public final static String TOOL_PDFB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$
@@ -1286,7 +1282,7 @@ public interface IToolNameConstants {
   public final static String TOOL_SAB_INSERT_REMOVE_ALL_ALLOCATED_FUNCTIONS = "All Allocated Functions"; //$NON-NLS-1$
   public final static String TOOL_SAB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   public final static String TOOL_SAB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "Functional Exchanges"; //$NON-NLS-1$
-  public final static String TOOL_SAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Exchange Categories"; //$NON-NLS-1$
+  public final static String TOOL_SAB_INSERT_REMOVE_EXCHANGE_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   public final static String TOOL_SAB_INSERT_SCENARIO_ELEMENTS = TOOL_LAB_INSERT_SCENARIO_ELEMENTS;
   public final static String TOOL_SAB_INSERT_STATEMODE_ELEMENTS = TOOL_LAB_INSERT_STATEMODE_ELEMENTS;
 
@@ -1357,7 +1353,6 @@ public interface IToolNameConstants {
   public final static String TOOL_SDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES = "Functional Exchanges"; //$NON-NLS-1$
   public final static String TOOL_SDFB_INSERT_REMOVE_FUNCTIONAL_CHAINS = "Functional Chains"; //$NON-NLS-1$
   public final static String TOOL_SDFB_CREATE_FUNCTIONAL_CHAIN_ELEMENTS = "Functional Chain Elements"; //$NON-NLS-1$
-  public final static String TOOL_SDFB_INSERT_REMOVE_FUNCTIONAL_EXCHANGES_CATEGORIES = "Switch Functional Exchanges / Categories"; //$NON-NLS-1$
   public final static String TOOL_SDFB_CREATE_CONSTRAINT = "Constraint"; //$NON-NLS-1$
   public final static String TOOL_SDFB_CREATE_CONSTRAINTELEMENT = "ConstraintElement"; //$NON-NLS-1$
   public final static String TOOL_SDFB_INSERT_REMOVE_CONSTRAINTS = "Constraints"; //$NON-NLS-1$

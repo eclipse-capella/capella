@@ -16,6 +16,7 @@ import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.fa.AbstractFunction;
 import org.polarsys.capella.core.data.oa.Entity;
+import org.polarsys.capella.core.data.oa.OperationalActivity;
 import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
@@ -137,6 +139,13 @@ public class ShowHideFunction extends ShowHideABRole {
       }
     }
     return super.mustShow(containerView_p, semantic_p, mapping_p);
+  }
+
+  @Override
+  protected boolean mustHide(DDiagramElement view_p, DiagramContext context_p) {
+    if (view_p.getTarget() instanceof OperationalActivity)
+      return true;
+    return super.mustHide(view_p, context_p);
   }
 
   @Override

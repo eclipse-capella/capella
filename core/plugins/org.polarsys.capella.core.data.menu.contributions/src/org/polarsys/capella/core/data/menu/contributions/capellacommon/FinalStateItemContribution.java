@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,11 @@ import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
+import org.polarsys.capella.core.model.helpers.naming.NamingConstants;
+import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 
 public class FinalStateItemContribution implements IMDEMenuItemContribution {
@@ -53,9 +56,12 @@ public class FinalStateItemContribution implements IMDEMenuItemContribution {
         CapellacommonPackage.Literals.STATE__OWNED_REGIONS, CapellacommonFactory.eINSTANCE.createRegion("region")), Collections.EMPTY_LIST); //$NON-NLS-1$
       cmd.append(createRegionCmd);
 
-      if (containerElement_p instanceof Region) {
-        // Sets the container region involved states.
-        cmd.append(new AddCommand(editingDomain_p, containerElement_p, CapellacommonPackage.Literals.REGION__INVOLVED_STATES, createdElement_p));
+      if (createdElement_p instanceof AbstractNamedElement) {
+	      String name = ((AbstractNamedElement) createdElement_p).getName();
+	      if ((name == null) || name.startsWith(createdElement_p.eClass().getName())) {
+	        return CreationHelper.getNamingCommand(editingDomain_p, (AbstractNamedElement) createdElement_p, containerElement_p, feature_p,
+	            NamingConstants.FinalState_Name);
+	      }
       }
       
       EObject superContainer = containerElement_p.eContainer();
