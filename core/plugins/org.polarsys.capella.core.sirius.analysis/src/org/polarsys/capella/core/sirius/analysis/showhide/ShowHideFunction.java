@@ -143,7 +143,9 @@ public class ShowHideFunction extends ShowHideABRole {
 
   @Override
   protected boolean mustHide(DDiagramElement view_p, DiagramContext context_p) {
-    return view_p.getTarget() instanceof OperationalActivity;
+    if (view_p.getTarget() instanceof OperationalActivity)
+      return true;
+    return super.mustHide(view_p, context_p);
   }
 
   @Override
