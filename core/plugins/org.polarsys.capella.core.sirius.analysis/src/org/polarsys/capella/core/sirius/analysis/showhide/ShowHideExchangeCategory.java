@@ -95,6 +95,12 @@ public class ShowHideExchangeCategory extends ShowHideFunctionalExchange {
     EObject semantic = originCouple_p.getValue();
 
     ContextItemElement lastContext = context_p.getLast();
+
+    if (semantic instanceof AbstractFunction) {
+      // Never reveal a new Function
+      return false;
+    }
+
     // We display all available category, even if there is another view displayed
     if (semantic instanceof ExchangeCategory) {
       AbstractFunction source = (AbstractFunction) (((Collection) (context_p.getLastVariable(SOURCE_PARTS).getValue()))).iterator().next();
