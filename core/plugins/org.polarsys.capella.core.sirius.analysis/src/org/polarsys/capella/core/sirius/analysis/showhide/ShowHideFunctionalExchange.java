@@ -127,7 +127,11 @@ public class ShowHideFunctionalExchange extends ShowHideFunction {
     } else if (semantic_p instanceof FunctionOutputPort) {
       mapping = FaServices.getFaServices().getMappingFunctionPort((FunctionPort) semantic_p, getContent().getDDiagram());
 
+    } else if (semantic_p instanceof OperationalActivity) {
+      // In case of an Interaction between two Operational Activities
+      mapping = FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) semantic_p, getContent().getDDiagram());
     }
+
     return mapping;
   }
 
