@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -2467,6 +2467,7 @@ public class InformationServices {
 	     if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
 	       Property pro = (Property) property_p;
 	       
+	       Association asso = (Association) association_p;
 	       boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
 	       boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p);
 	     	  
@@ -2484,7 +2485,7 @@ public class InformationServices {
 	         	beginLabel.append(ICommonConstants.SLASH_CHARACTER);
 	         }
 	         // role name (consider only if filter is disable)
-	         if (!hideRoleNameEnable) {
+	         if (!hideRoleNameEnable && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size()==1))) {
 	         		beginLabel.append(pro.getName());
 	         	}
 	         }
@@ -2522,8 +2523,9 @@ public class InformationServices {
   public String getAssociationEndRoleLabel(EObject association_p, EObject context_p, EObject property_p, EObject view_p) {
 	    StringBuffer endLabel = new StringBuffer();
 	    if ((null != association_p) && (association_p instanceof Association) && (null != property_p) && (property_p instanceof Property)) {
-	      Property pro = (Property) property_p;
 
+	      Property pro = (Property) property_p;
+	      Association asso = (Association) association_p;
 	      boolean hideRoleLabelEnable = isHideRoleLabelEnable(context_p, view_p);
 	      boolean hideRoleNameEnable = isHideRoleNameEnable(context_p, view_p); 	     
 	        // multiplicity
@@ -2540,7 +2542,7 @@ public class InformationServices {
 	        	endLabel.append(ICommonConstants.SLASH_CHARACTER);
 	        }
 	        // role name (consider only if filter is disable)
-	        if (!hideRoleNameEnable) {
+	         if (!hideRoleNameEnable && (asso.getNavigableMembers().contains(pro) || !(asso.getNavigableMembers().size()==1))) {
 	        		endLabel.append(pro.getName());
 	        	}
 	        }

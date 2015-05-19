@@ -1,5 +1,3 @@
-package org.polarsys.capella.test.framework;
-
 /*******************************************************************************
  * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
@@ -10,6 +8,8 @@ package org.polarsys.capella.test.framework;
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
+package org.polarsys.capella.test.framework;
+
 public class TestConstants {
 
 	public static final boolean DEBUG = true;
