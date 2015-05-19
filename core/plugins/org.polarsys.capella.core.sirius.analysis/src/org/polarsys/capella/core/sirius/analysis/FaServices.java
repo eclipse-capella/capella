@@ -132,6 +132,7 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 import org.polarsys.capella.core.data.pa.PhysicalComponentNature;
 import org.polarsys.capella.core.data.pa.PhysicalFunction;
 import org.polarsys.capella.core.diagram.helpers.DiagramHelper;
+import org.polarsys.capella.core.diagram.helpers.naming.DiagramDescriptionConstants;
 import org.polarsys.capella.core.model.helpers.AbstractFunctionExt;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
@@ -552,7 +553,7 @@ public class FaServices {
 
   public AbstractNodeMapping getMappingFunction(AbstractFunction function_p, DDiagram diagram_p) {
 
-    if (DiagramHelper.getService().isArchitectureBlank(diagram_p)) {
+    if (DiagramHelper.getService().isArchitectureBlank(diagram_p) || DiagramHelper.getService().hasKind(diagram_p, DiagramDescriptionConstants.ROLE_BLANK_DIAGRAM_NAME)) {
       return FaServices.getFaServices().getMappingABAbstractFunction((AbstractFunction) function_p, diagram_p);
     }
 
@@ -597,6 +598,7 @@ public class FaServices {
     if (diagram_p.getDescription().getName().equalsIgnoreCase(IDiagramNameConstants.OPERATIONAL_ROLE_BLANK_DIAGRAM_NAME)) {
       mappingName = IMappingNameConstants.ORB_OPERATIONAL_ACTIVITY_MAPPING_NAME;
     }
+
     return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
   }
 
