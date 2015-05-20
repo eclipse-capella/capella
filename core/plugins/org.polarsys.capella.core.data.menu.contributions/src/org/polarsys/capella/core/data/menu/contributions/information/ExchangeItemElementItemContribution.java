@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,8 +42,6 @@ public class ExchangeItemElementItemContribution extends MultiplicityElementItem
       CompoundCommand cmd = new CompoundCommand();
 
       cmd.append(getCardinalitiesCommand(editingDomain_p, createdElement_p, _ONE_CARDINALITY, _ONE_CARDINALITY));
-
-      cmd.append(getUniqueCommand(editingDomain_p, createdElement_p));
 
       // Set the kind of exchange item element according container
       Command setKindCmd = new CommandWrapper() {

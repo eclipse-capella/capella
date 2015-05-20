@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.information.InformationPackage;
-import org.polarsys.capella.core.data.information.MultiplicityElement;
 import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 
@@ -32,22 +31,6 @@ public abstract class MultiplicityElementItemContribution implements IMDEMenuIte
   protected static final String _ONE_CARDINALITY = "1"; //$NON-NLS-1$
 
   protected static final String _MANY_CARDINALITY = "*"; //$NON-NLS-1$
-
-  protected Command getUniqueCommand(final EditingDomain domain_p, final EObject createdElement_p) {
-
-    if (createdElement_p instanceof MultiplicityElement) {
-      // Sets the unique value to true.
-      Command result = new CommandWrapper() {
-        @Override
-        public Command createCommand() {
-          return new SetCommand(domain_p, createdElement_p, InformationPackage.Literals.MULTIPLICITY_ELEMENT__UNIQUE, Boolean.TRUE);
-        }
-      };
-      return result;
-    }
-
-    return null;
-  }
 
   protected Command getCardinalitiesCommand(final EditingDomain editingDomain_p, final EObject createdElement_p, final String defaultMinCardinality_p,
       final String defaultMaxCardinality_p) {
