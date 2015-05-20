@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,6 @@ public class CollectionItemContribution extends MultiplicityElementItemContribut
       CompoundCommand cmd = new CompoundCommand();
 
       cmd.append(getCardinalitiesCommand(editingDomain_p, createdElement_p, _ONE_CARDINALITY, _MANY_CARDINALITY));
-      cmd.append(getUniqueCommand(editingDomain_p, createdElement_p));
 
       cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE, Boolean.TRUE));
       cmd.append(new SetCommand(editingDomain_p, createdElement_p, InformationPackage.Literals.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE, Boolean.TRUE));
