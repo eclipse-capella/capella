@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ public class DiagramHelper {
   public static DiagramHelper _instance;
 
   protected DiagramHelper() {
-    //Nothing here
+    // Nothing here
   }
 
   public static DiagramHelper getService() {
@@ -51,8 +51,11 @@ public class DiagramHelper {
 
   /**
    * Returns whether the given diagram use the given description
-   * @param diagram_p current diagram
-   * @param diagramDescriptionId_p a DiagramDescriptionConstants
+   * 
+   * @param diagram_p
+   *          current diagram
+   * @param diagramDescriptionId_p
+   *          a DiagramDescriptionConstants
    */
   public boolean isA(DRepresentation diagram_p, String descriptionId_p) {
     if (diagram_p != null) {
@@ -64,8 +67,11 @@ public class DiagramHelper {
 
   /**
    * Returns whether the given diagram description is the given description
-   * @param diagram_p current diagram
-   * @param diagramDescriptionId_p a DiagramDescriptionConstants
+   * 
+   * @param diagram_p
+   *          current diagram
+   * @param diagramDescriptionId_p
+   *          a DiagramDescriptionConstants
    */
   public boolean isA(RepresentationDescription description_p, String diagramDescriptionId_p) {
     if (description_p != null) {
@@ -78,15 +84,14 @@ public class DiagramHelper {
   }
 
   public boolean isArchitectureBlank(DRepresentation diagram_p) {
-    return hasKind(diagram_p, DiagramDescriptionConstants.ARCHITECTURE_BLANK_DIAGRAM_NAME)
-           || hasKind(diagram_p, DiagramDescriptionConstants.ENTITY_BLANK_DIAGRAM_NAME);
+    return hasKind(diagram_p, DiagramDescriptionConstants.ARCHITECTURE_BLANK_DIAGRAM_NAME) || hasKind(diagram_p, DiagramDescriptionConstants.ENTITY_BLANK_DIAGRAM_NAME);
   }
 
   public boolean isBreakdown(DRepresentation diagram_p) {
     return hasKind(diagram_p, DiagramDescriptionConstants.BREAKDOWN_DIAGRAM_NAME);
   }
 
-  private boolean hasKind(DRepresentation diagram_p, String diagramDescriptionId_p) {
+  public boolean hasKind(DRepresentation diagram_p, String diagramDescriptionId_p) {
     if (diagram_p != null) {
       RepresentationDescription description = getDescription(diagram_p);
       return hasKind(description, diagramDescriptionId_p);
@@ -106,6 +111,7 @@ public class DiagramHelper {
 
   /**
    * Returns the DDiagram owning the given element
+   * 
    * @param current_p
    * @return
    */
@@ -130,6 +136,7 @@ public class DiagramHelper {
 
   /**
    * Returns the current session for the given diagram_p
+   * 
    * @param diagram_p
    * @return
    */
@@ -144,8 +151,7 @@ public class DiagramHelper {
     return null;
   }
 
-  public DRepresentation createDRepresentation(String name, EObject semantic_p, RepresentationDescription description_p, Session session_p,
-      IProgressMonitor monitor_p) {
+  public DRepresentation createDRepresentation(String name, EObject semantic_p, RepresentationDescription description_p, Session session_p, IProgressMonitor monitor_p) {
     DRepresentation diagram = DialectManager.INSTANCE.createRepresentation(name, semantic_p, description_p, session_p, monitor_p);
     return diagram;
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,8 @@
 package org.polarsys.capella.core.diagram.helpers.naming;
 
 /**
- * Diagrams constants (no I18n support, hard coded named used in diagram descriptions)
- * Used most often with XXX.equals(diagram.getDescription().getName())
+ * Diagrams constants (no I18n support, hard coded named used in diagram descriptions) Used most often with
+ * XXX.equals(diagram.getDescription().getName())
  * 
  * THESES CONSTANTS SHOULD NOT BE USED FOR NAMING A USER DIAGRAM, JUST TO IDENTITY THEM ACCORDING TO DESCRIPTION.NAME
  * PLEASE USE DiagramNamingConstants FOR I18N NAMING.
@@ -32,4 +32,5 @@ public class DiagramDescriptionConstants {
 
   public static final String BREAKDOWN_DIAGRAM_NAME = "Breakdown";
   public static final String INTERFACE_SCENARIO = "Component Interfaces Scenario";
+  public static final String ROLE_BLANK_DIAGRAM_NAME = "Role Blank";
 }
