@@ -18,19 +18,18 @@ package org.polarsys.capella.core.diagram.helpers.naming;
  * THESES CONSTANTS SHOULD NOT BE USED FOR NAMING A USER DIAGRAM, JUST TO IDENTITY THEM ACCORDING TO DESCRIPTION.NAME
  * PLEASE USE DiagramNamingConstants FOR I18N NAMING.
  */
-@SuppressWarnings("nls")
-public class DiagramDescriptionConstants {
+public interface DiagramDescriptionConstants {
 
   /**
    * Global names
    */
-  public static final String CLASS_BLANK_DIAGRAM_NAME = "Class Diagram Blank";
-  public static final String ARCHITECTURE_BLANK_DIAGRAM_NAME = "Architecture Blank";
-  public static final String INTERACTION_BLANK_DIAGRAM_NAME = "Interaction Blank";
-  public static final String DATA_FLOW_BLANK_DIAGRAM_NAME = "Data Flow Blank";
-  public static final String ENTITY_BLANK_DIAGRAM_NAME = "Entity Blank";
+  public static final String CLASS_BLANK_DIAGRAM_NAME = "Class Diagram Blank"; //$NON-NLS-1$
+  public static final String ARCHITECTURE_BLANK_DIAGRAM_NAME = "Architecture Blank"; //$NON-NLS-1$
+  public static final String INTERACTION_BLANK_DIAGRAM_NAME = "Interaction Blank"; //$NON-NLS-1$
+  public static final String DATA_FLOW_BLANK_DIAGRAM_NAME = "Data Flow Blank"; //$NON-NLS-1$
+  public static final String ENTITY_BLANK_DIAGRAM_NAME = "Entity Blank"; //$NON-NLS-1$
 
-  public static final String BREAKDOWN_DIAGRAM_NAME = "Breakdown";
-  public static final String INTERFACE_SCENARIO = "Component Interfaces Scenario";
-  public static final String ROLE_BLANK_DIAGRAM_NAME = "Role Blank";
+  public static final String BREAKDOWN_DIAGRAM_NAME = "Breakdown"; //$NON-NLS-1$
+  public static final String INTERFACE_SCENARIO = "Component Interfaces Scenario"; //$NON-NLS-1$
+  public static final String ROLE_BLANK_DIAGRAM_NAME = "Role Blank"; //$NON-NLS-1$
 }

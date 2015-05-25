@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,8 @@ public class IBServices {
     return service;
   }
 
-  public Interface createCCDIInterface(DSemanticDecorator containerView_p) {
-    EObject container = containerView_p.getTarget();
+  public Interface createCCDIInterface(DSemanticDecorator containerView) {
+    EObject container = containerView.getTarget();
     if (container != null) {
       EObject target = CsServices.getService().getParentContainer(container);
       InterfacePkg pkg = null;
@@ -54,7 +54,7 @@ public class IBServices {
         Interface itf = CsFactory.eINSTANCE.createInterface();
         pkg.getOwnedInterfaces().add(itf);
         CapellaElementExt.creationService(itf);
-        CsServices.getService().createInterfaceView(containerView_p, itf, CapellaServices.getService().getDiagramContainer(containerView_p));
+        CsServices.getService().createInterfaceView(containerView, itf, CapellaServices.getService().getDiagramContainer(containerView));
         return itf;
       }
     }
@@ -64,9 +64,9 @@ public class IBServices {
   /**
    * Returns whether the edge between preSourceView and preTargetView is valid to create a Delegation
    */
-  public boolean isValidCreationCCDIInterface(DSemanticDecorator containerView_p) {
-    if (!((!(containerView_p instanceof DDiagram)) && (containerView_p.getTarget() instanceof AbstractActor))
-        && !(((DSemanticDecorator) CapellaServices.getService().getDiagramContainer(containerView_p)).getTarget() instanceof ConfigurationItem)) {
+  public boolean isValidCreationCCDIInterface(DSemanticDecorator containerView) {
+    if (!((!(containerView instanceof DDiagram)) && (containerView.getTarget() instanceof AbstractActor))
+        && !(((DSemanticDecorator) CapellaServices.getService().getDiagramContainer(containerView)).getTarget() instanceof ConfigurationItem)) {
       return true;
     }
     return false;
@@ -75,8 +75,8 @@ public class IBServices {
   /**
    * Returns whether the edge between preSourceView and preTargetView is valid to create a Delegation
    */
-  public boolean isValidCreationIBDelegationExchange(EObject root_p, DSemanticDecorator preSourceView_p, DSemanticDecorator preTargetView_p) {
-    return CsServices.getService().isValidCreationABDelegationExchange(root_p, preSourceView_p, preTargetView_p);
+  public boolean isValidCreationIBDelegationExchange(EObject root, DSemanticDecorator preSourceView, DSemanticDecorator preTargetView) {
+    return CsServices.getService().isValidCreationABDelegationExchange(root, preSourceView, preTargetView);
   }
 
 }

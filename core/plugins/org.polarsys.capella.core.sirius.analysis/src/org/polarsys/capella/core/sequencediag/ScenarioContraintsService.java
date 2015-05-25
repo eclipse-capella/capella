@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,37 +45,36 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
 /**
  * This class checks that the creation of a message doesn't violate one or more constraints.
  */
-@SuppressWarnings("nls")
 public class ScenarioContraintsService {
 
-  public static EObject traceScenario(EObject object_p, EObject o1) {
-    return object_p;
+  public static EObject traceScenario(EObject object, EObject o1) {
+    return object;
   }
 
-  public static EObject traceScenario2(EObject object_p, EObject o1, EObject o2) {
+  public static EObject traceScenario2(EObject object, EObject o1, EObject o2) {
     EventEnd e1 = (EventEnd) o1;
     EventEnd e2 = (EventEnd) o2;
-    if (object_p instanceof Execution) {
-      Execution e = (Execution) object_p;
-      System.out.print("moving execution " + e.getName());
-    } else if (object_p instanceof SequenceMessage) {
-        SequenceMessage msg = (SequenceMessage) object_p;
-        System.out.print("moving message " + msg.getName());
-    } else if (object_p instanceof InteractionState) {
-      InteractionState is = (InteractionState) object_p;
-      System.out.print("moving interaction state " + is.getName());
+    if (object instanceof Execution) {
+      Execution e = (Execution) object;
+      System.out.print("moving execution " + e.getName()); //$NON-NLS-1$
+    } else if (object instanceof SequenceMessage) {
+        SequenceMessage msg = (SequenceMessage) object;
+        System.out.print("moving message " + msg.getName()); //$NON-NLS-1$
+    } else if (object instanceof InteractionState) {
+      InteractionState is = (InteractionState) object;
+      System.out.print("moving interaction state " + is.getName()); //$NON-NLS-1$
     }
-    System.out.print(" after ");
+    System.out.print(" after "); //$NON-NLS-1$
     display(e1);
-    System.out.print(" and ");
+    System.out.print(" and "); //$NON-NLS-1$
     display(e2);
     System.out.println();
-    return object_p;
+    return object;
   }
 
   
   private static void display(EventEnd e) {
-    if (e == null) System.out.print("*NULL*");
+    if (e == null) System.out.print("*NULL*"); //$NON-NLS-1$
     if (e instanceof SingleEventEnd) {
       displaySingle((SingleEventEnd) e);
     }
@@ -85,64 +84,64 @@ public class ScenarioContraintsService {
   }
 
   private static void displaySingle(SingleEventEnd see) {
-    System.out.print(" (" +see.eClass().getName() + ") " + ((InteractionFragment) see.getSemanticEnd()).getName());
+    System.out.print(" (" +see.eClass().getName() + ") " + ((InteractionFragment) see.getSemanticEnd()).getName()); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   private static void displayCompound(CompoundEventEnd cee) {
-    System.out.print(" (" +cee.eClass().getName() + ") " + ((InteractionFragment) cee.getSemanticEnd()).getName());
-    System.out.print(" [ ");
+    System.out.print(" (" +cee.eClass().getName() + ") " + ((InteractionFragment) cee.getSemanticEnd()).getName()); //$NON-NLS-1$ //$NON-NLS-2$
+    System.out.print(" [ "); //$NON-NLS-1$
     for (EventEnd ee : cee.getEventEnds()) {
       display(ee);
     }
-    System.out.print(" ] ");
+    System.out.print(" ] "); //$NON-NLS-1$
   }
 
   /**
    * CHeck if the component (actor, system, logical or physicalComponent) is involved into the capability containing the scenario taken into parameters used in
    * common.odesign
    */
-  public static Scenario ensureCapabilityInvolvment(Scenario scenario_p, InvolvedElement component_p) {
-    AbstractCapability capability = (AbstractCapability) scenario_p.eContainer();
+  public static Scenario ensureCapabilityInvolvment(Scenario scenario, InvolvedElement component) {
+    AbstractCapability capability = (AbstractCapability) scenario.eContainer();
     for (Involvement involv : capability.getInvolvedInvolvements()) {
-      if (involv.getInvolved() == component_p)
-        return scenario_p;
+      if (involv.getInvolved() == component)
+        return scenario;
     }
 
     // if we are here, the involvement wasn't found, so we will have to create it.
     Involvement result = null;
-    if (component_p instanceof org.polarsys.capella.core.data.ctx.System) {
+    if (component instanceof org.polarsys.capella.core.data.ctx.System) {
       result = CtxFactory.eINSTANCE.createSystemCapabilityInvolvement();
       ((Capability) capability).setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement) result);
-    } else if (component_p instanceof Actor) {
+    } else if (component instanceof Actor) {
       result = CtxFactory.eINSTANCE.createActorCapabilityInvolvement();
       ((Capability) capability).getOwnedActorCapabilityInvolvements().add((ActorCapabilityInvolvement) result);
-    } else if (component_p instanceof SystemComponent) {
+    } else if (component instanceof SystemComponent) {
       result = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
       ((CapabilityRealization) capability).getOwnedSystemComponentCapabilityRealizations().add((SystemComponentCapabilityRealizationInvolvement) result);
-    } else if (component_p instanceof AbstractActor) {
+    } else if (component instanceof AbstractActor) {
       result = CsFactory.eINSTANCE.createActorCapabilityRealizationInvolvement();
       ((CapabilityRealization) capability).getOwnedActorCapabilityRealizations().add((ActorCapabilityRealizationInvolvement) result);
-    } else if (component_p instanceof Entity) {
+    } else if (component instanceof Entity) {
     	result = OaFactory.eINSTANCE.createEntityOperationalCapabilityInvolvement();
     	((OperationalCapability) capability).getOwnedEntityOperationalCapabilityInvolvements().add((EntityOperationalCapabilityInvolvement) result);
-    } else if (component_p instanceof AbstractFunction) {
+    } else if (component instanceof AbstractFunction) {
     	result = InteractionFactory.eINSTANCE.createAbstractFunctionAbstractCapabilityInvolvement();
     	capability.getOwnedAbstractFunctionAbstractCapabilityInvolvements().add ((AbstractFunctionAbstractCapabilityInvolvement) result);
     }
 
     result.setInvolver(capability);
-    result.setInvolved(component_p);
+    result.setInvolved(component);
 
-    return scenario_p;
+    return scenario;
   }
 
-  public void reorderInstanceRole(EObject context_p, EObject irToMove_p, EObject predecessor_p) {
-	  InstanceRole ir = (InstanceRole) irToMove_p;
-	  InstanceRole pred = (InstanceRole) predecessor_p;
+  public void reorderInstanceRole(EObject context, EObject irToMove, EObject predecessor) {
+	  InstanceRole ir = (InstanceRole) irToMove;
+	  InstanceRole pred = (InstanceRole) predecessor;
 	  Scenario scenario = (Scenario) ir.eContainer();
 	  
 	  scenario.getOwnedInstanceRoles().remove(ir);
-	  if (predecessor_p == null) {
+	  if (predecessor == null) {
 		  scenario.getOwnedInstanceRoles().add(0, ir);
 	  } else {
 		  int pos =  scenario.getOwnedInstanceRoles().indexOf(pred);

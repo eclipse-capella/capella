@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -288,17 +288,17 @@ public class InteractionAspectService {
   /**
    * used in logical.odesign
    */
-  public List<AbstractActor> getAllRefinedActors(final CapabilityRealization context_p) {
+  public List<AbstractActor> getAllRefinedActors(final CapabilityRealization context) {
     List<AbstractActor> result = new ArrayList<AbstractActor>();
 
-    List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context_p);
+    List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context);
     if(capabilities != null){
         for (CapabilityRealization capabilityRealization : capabilities) {
         	      result.addAll(capabilityRealization.getParticipatingActors());
         }    	
     }
 
-    Capability capa = (Capability) getRefinedCapabality(context_p);
+    Capability capa = (Capability) getRefinedCapabality(context);
     if(capa != null){
         result.addAll(capa.getParticipatingActors());
     }
@@ -354,10 +354,10 @@ public class InteractionAspectService {
   /**
    * Used in logical.odesign
    */
-  public List<ActorCapabilityRealizationInvolvement> getInvolvedActorsForCapabilityRealizations(CapabilityRealization context_p) {
+  public List<ActorCapabilityRealizationInvolvement> getInvolvedActorsForCapabilityRealizations(CapabilityRealization context) {
     List<ActorCapabilityRealizationInvolvement> result = new ArrayList<ActorCapabilityRealizationInvolvement>();
 
-    List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context_p);
+    List<CapabilityRealization> capabilities = getRefinedCapabilityRealizations(context);
     if(capabilities != null){
         for (CapabilityRealization capabilityRealization : capabilities) {
             result.addAll(capabilityRealization.getOwnedActorCapabilityRealizations());
@@ -371,10 +371,10 @@ public class InteractionAspectService {
   /**
    * used in logical.odesign
    */
-  public List<RefinementLink> getRefinementLinksChain(final CapabilityRealization context_p) {
+  public List<RefinementLink> getRefinementLinksChain(final CapabilityRealization context) {
     List<RefinementLink> result = new ArrayList<RefinementLink>(4);
 
-    AbstractCapability current = context_p;
+    AbstractCapability current = context;
     while (current instanceof CapabilityRealization) {
       EList<AbstractTrace> outgoingTraces = current.getOutgoingTraces();
       if (outgoingTraces.isEmpty()) {
@@ -390,7 +390,7 @@ public class InteractionAspectService {
           }
         }
       }
-      if (current.equals(context_p)) {
+      if (current.equals(context)) {
         return result;
       }
     }
@@ -399,12 +399,12 @@ public class InteractionAspectService {
 
   /**
    * Used in logical.odesign
-   * @param context_p
+   * @param context
    * @return
    */
-  public List<ComponentAllocation> getActorsAllocationLinks(final CapabilityRealization context_p) {
+  public List<ComponentAllocation> getActorsAllocationLinks(final CapabilityRealization context) {
     List<ComponentAllocation> result = new ArrayList<ComponentAllocation>();
-    List<AbstractActor> actors = getAllRefinedActors(context_p);
+    List<AbstractActor> actors = getAllRefinedActors(context);
     for (AbstractActor abstractActor : actors) {
       if (abstractActor instanceof PhysicalActor) {
         PhysicalActor pa = (PhysicalActor) abstractActor;
