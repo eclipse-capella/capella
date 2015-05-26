@@ -3827,8 +3827,8 @@ public class FaServices {
     // container
 
     public FunctionContainer(DNodeContainer container, FunctionContainer parent, DDiagram diagram, Map<AbstractFunction, AbstractDNode> functions) {
-      container = container;
-      parent = parent;
+      this.container = container;
+      this.parent = parent;
       function = (AbstractFunction) container.getTarget();
       incomingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
       outgoingExchangeCategories = new HashMap<ExchangeCategory, DNode>();
