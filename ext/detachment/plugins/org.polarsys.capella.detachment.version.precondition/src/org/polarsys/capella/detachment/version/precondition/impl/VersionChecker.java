@@ -98,7 +98,8 @@ public class VersionChecker implements IPrecondition<IFile> {
 					
 					String modelVersion = CapellaFeatureHelper.getDetectedVersion(file);
 					if (capellaVersion != null && modelVersion != null && !capellaVersion.isEmpty() && !modelVersion.isEmpty()){
-						if (!modelVersion.equals(capellaVersion)){
+					  // check only major and minor version, micro (patch) is ignored
+						if (!modelVersion.startsWith(capellaVersion.substring(0, 3))){
 							exceptionMsg.append("\t").append(uri.toString()).append(" - version: ").append(modelVersion).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 							launchException = true;
 						}
