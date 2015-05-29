@@ -20,7 +20,6 @@ import junit.framework.Assert;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -31,18 +30,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
 import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.CapellaLibraryExt;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.RenameResourceAction;
 
 import com.google.common.io.Files;
 
@@ -127,7 +121,8 @@ public class TestHelper {
    */
   @Deprecated
   public static TransactionalEditingDomain getEditingDomain() {
-    return new ArrayList<TransactionalEditingDomain>(ExecutionManagerRegistry.getInstance().getAllEditingDomains()).get(0);
+    return new ArrayList<TransactionalEditingDomain>(ExecutionManagerRegistry.getInstance().getAllEditingDomains())
+        .get(0);
   }
 
   /**
@@ -175,18 +170,5 @@ public class TestHelper {
     for (String f : source.list()) {
       copy(new File(source, f), new File(target, f));
     }
-  }
-
-  public static void renameModelFile(IFile modelFile_p, final String newName_p) {
-    Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-    RenameResourceAction renameAction = new RenameResourceAction(activeShell) {
-      @Override
-      protected String queryNewResourceName(final IResource resource) {
-        return newName_p;
-      }
-    };
-    IStructuredSelection selection = new StructuredSelection(modelFile_p);
-    renameAction.selectionChanged(selection);
-    renameAction.run();
   }
 }
