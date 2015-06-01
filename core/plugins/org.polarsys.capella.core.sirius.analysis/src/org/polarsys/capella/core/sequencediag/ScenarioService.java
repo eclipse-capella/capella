@@ -972,6 +972,7 @@ public class ScenarioService {
   public InteractionFragment getOperandEnd(InteractionOperand operand) {
     CombinedFragment cf = null;
     Scenario s = (Scenario) operand.eContainer();
+    // Find the CombinedFragment containing the given operand.
     for (TimeLapse tl : s.getOwnedTimeLapses()) {
       if (tl instanceof CombinedFragment) {
         CombinedFragment cftmp = (CombinedFragment) tl;
@@ -981,7 +982,11 @@ public class ScenarioService {
         }
       }
     }
-
+    // Can not find a CombinedFragment containing the operand -> Stop here.
+    // FIXME this null value can not be returned in our context, but if it was returned, the diagram would be corrupted...
+    if (null == cf) {
+      return null;
+    }
     // we can't use referencedOperand to check order, we must look
     // in ownedInteractionFragment
     boolean nextWillBeGood = false;
@@ -1198,7 +1203,7 @@ public class ScenarioService {
 
     if (context instanceof CombinedFragment) {
       CombinedFragment combfragment = (CombinedFragment) context;
-      operatorkind = " " + combfragment.getOperator().getLiteral();
+      operatorkind = " " + combfragment.getOperator().getLiteral(); //$NON-NLS-1$
     }
     return operatorkind;
   }

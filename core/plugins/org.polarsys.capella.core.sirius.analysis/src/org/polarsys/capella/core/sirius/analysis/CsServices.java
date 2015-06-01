@@ -1337,13 +1337,12 @@ public class CsServices {
    * Returns available components which are accessible CCII-Show-Hide-Component.
    */
   public Collection<Component> getCCIIShowHideComponent(DSemanticDecorator decorator) {
-    Collection<Component> components = new ArrayList<Component>();
     if (!(decorator.getTarget() instanceof Component)) {
-      return new ArrayList<Component>();
+      return Collections.emptyList();
     }
     EObject target = getCCIITarget(decorator);
     // OLD CODE
-    components = getSubComponents(target);
+    Collection<Component> components = getSubComponents(target);
     // NEW CODE
     components = (List) QueryDebugger.executeQueryWithInclusionDebug(
         "GetCCIIShowHideComponent__Lib", target, components);//$NON-NLS-1$
@@ -2058,12 +2057,11 @@ public class CsServices {
   public List<Component> getAllSubDefinedComponents(Component component) {
     List<Component> comps = new ArrayList<Component>();
     LinkedList<Component> subs = new LinkedList<Component>();
-    List<Component> internal = new ArrayList<Component>();
 
     subs.add(component);
     while (subs.size() > 0) {
       Component sub = subs.removeFirst();
-      internal = ComponentExt.getSubDefinedComponents(sub);
+      List<Component> internal = ComponentExt.getSubDefinedComponents(sub);
       comps.addAll(internal);
       subs.addAll(internal);
     }
@@ -2076,13 +2074,12 @@ public class CsServices {
   public List<Component> getAllSubDefinedComponents(BlockArchitecture architecture) {
     List<Component> comps = new ArrayList<Component>();
     LinkedList<Component> subs = new LinkedList<Component>();
-    List<Component> internal = new ArrayList<Component>();
 
     subs.addAll(ComponentExt.getSubDefinedComponents(architecture));
     while (subs.size() > 0) {
       Component sub = subs.removeFirst();
       comps.add(sub);
-      internal = ComponentExt.getSubDefinedComponents(sub);
+      List<Component> internal = ComponentExt.getSubDefinedComponents(sub);
       comps.addAll(internal);
       subs.addAll(internal);
     }
@@ -2443,9 +2440,6 @@ public class CsServices {
     } else if (preTarget instanceof Component) {
       targetValid = true;
     }
-
-    sourceElement = (DSemanticDecorator) sourceElement.eContainer();
-    targetElement = (DSemanticDecorator) targetElement.eContainer();
 
     if (!(sourceValid && targetValid)) {
       return false;
@@ -2854,12 +2848,9 @@ public class CsServices {
         pkg = OaFactory.eINSTANCE.createEntityPkg();
         ((OperationalAnalysis) container).setOwnedEntityPkg(pkg);
       }
-      Entity root = null;
       if (pkg.getOwnedEntities().isEmpty()) {
-        root = OaFactory.eINSTANCE.createEntity();
+        Entity root = OaFactory.eINSTANCE.createEntity();
         pkg.getOwnedEntities().add(root);
-      } else {
-        root = pkg.getOwnedEntities().get(0);
       }
       containerFeature = OaPackage.Literals.ENTITY_PKG__OWNED_ENTITIES;
       containerObject = pkg;
