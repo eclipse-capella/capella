@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -104,37 +104,37 @@ public abstract class ScenarioRefinement implements IProcessor {
   /**
    * Constructor
    * 
-   * @param srcDiagram_p
-   * @param target_p
+   * @param srcDiagram
+   * @param target
    */
-  public ScenarioRefinement(Scenario srcDiagram_p, NamedElement target_p) {
-    this(srcDiagram_p, target_p, false);
+  public ScenarioRefinement(Scenario srcDiagram, NamedElement target) {
+    this(srcDiagram, target, false);
   }
 
   /**
    * Constructor
    * 
-   * @param srcDiagram_p
-   * @param target_p
-   * @param isIntraLayer_p
+   * @param srcDiagram
+   * @param target
+   * @param isIntraLayer
    */
-  public ScenarioRefinement(Scenario srcDiagram_p, NamedElement target_p, boolean isIntraLayer_p) {
-    this(srcDiagram_p, target_p, isIntraLayer_p, true);
+  public ScenarioRefinement(Scenario srcDiagram, NamedElement target, boolean isIntraLayer) {
+    this(srcDiagram, target, isIntraLayer, true);
   }
 
   /**
    * Constructor
    * 
-   * @param srcDiagram_p
-   * @param target_p
-   * @param isIntraLayer_p
-   * @param loadAdditionalProcessors_p
+   * @param srcDiagram
+   * @param target
+   * @param isIntraLayer
+   * @param loadAdditionalProcessors
    */
-  public ScenarioRefinement(Scenario srcDiagram_p, NamedElement target_p, boolean isIntraLayer_p, boolean loadAdditionalProcessors_p) {
-    _srcDiagram = srcDiagram_p;
-    _tgtElement = target_p;
-    _isIntraLayerRefinement = isIntraLayer_p;
-    _loadAdditionalProcessors = loadAdditionalProcessors_p;
+  public ScenarioRefinement(Scenario srcDiagram, NamedElement target, boolean isIntraLayer, boolean loadAdditionalProcessors) {
+    _srcDiagram = srcDiagram;
+    _tgtElement = target;
+    _isIntraLayerRefinement = isIntraLayer;
+    _loadAdditionalProcessors = loadAdditionalProcessors;
 
     /** */
     addPluggedModules();
@@ -163,39 +163,39 @@ public abstract class ScenarioRefinement implements IProcessor {
 
   /**
    * 
-   * @param tgtDiagram_p
+   * @param tgtDiagram
    */
-  protected void forceTargetScenario(Scenario tgtDiagram_p) {
-    _tgtDiagram = tgtDiagram_p;
+  protected void forceTargetScenario(Scenario tgtDiagram) {
+    _tgtDiagram = tgtDiagram;
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(java.util.List)
    * 
-   * @param context_p
+   * @param context
    */
-  public void setContext(List<ModelElement> context_p) {
-    if ((context_p != null) && (context_p.size()>0)) {
-      setContext(context_p.get(0));
+  public void setContext(List<ModelElement> context) {
+    if ((context != null) && (context.size()>0)) {
+      setContext(context.get(0));
     }
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(org.polarsys.capella.core.common.model.CapellaElement)
    * 
-   * @param context_p
+   * @param context
    */
-  public void setContext(ModelElement context_p) {
-    if (context_p instanceof Scenario) {
-      _srcDiagram = (Scenario) context_p;
+  public void setContext(ModelElement context) {
+    if (context instanceof Scenario) {
+      _srcDiagram = (Scenario) context;
 
       /** update preprocessors */
       for (IProcessor processor : _pluggedPreprocessors) {
-        processor.setContext(context_p);
+        processor.setContext(context);
       }
       /** update post-processors */
       for (IProcessor processor : _pluggedPostprocessors) {
-        processor.setContext(context_p);
+        processor.setContext(context);
       }
     }
   }
@@ -210,18 +210,18 @@ public abstract class ScenarioRefinement implements IProcessor {
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setTarget(org.polarsys.capella.core.common.model.NamedElement)
    * 
-   * @param target_p
+   * @param target
    */
-  public void setTarget(NamedElement target_p) {
-    _tgtElement = target_p;
+  public void setTarget(NamedElement target) {
+    _tgtElement = target;
 
     /** update preprocessors */
     for (IProcessor processor : _pluggedPreprocessors) {
-      processor.setTarget(target_p);
+      processor.setTarget(target);
     }
     /** update post-processors */
     for (IProcessor processor : _pluggedPostprocessors) {
-      processor.setTarget(target_p);
+      processor.setTarget(target);
     }
   }
 
@@ -237,35 +237,35 @@ public abstract class ScenarioRefinement implements IProcessor {
 
   /**
    * Appends a new mapper at the end of the mappers list.
-   * @param mapper_p
+   * @param mapper
    */
-  private void addPlug(IMapper mapper_p) {
-    addPlug(-1, mapper_p);
+  private void addPlug(IMapper mapper) {
+    addPlug(-1, mapper);
   }
 
   /**
    * Appends a new resolver at the end of the resolvers list.
-   * @param resolver_p
+   * @param resolver
    */
-  private void addPlug(IResolver resolver_p) {
-    addPlug(-1, resolver_p);
+  private void addPlug(IResolver resolver) {
+    addPlug(-1, resolver);
   }
 
   /**
    * Sets a new scheduler.
-   * @param scheduler_p
+   * @param scheduler
    */
-  private void addPlug(IScheduler scheduler_p) {
-    _pluggedSchedulers = scheduler_p;
+  private void addPlug(IScheduler scheduler) {
+    _pluggedSchedulers = scheduler;
   }
 
   /**
    * Appends a new processor at the end of the processors list.
-   * @param processor_p
-   * @param type_p
+   * @param processor
+   * @param type
    */
-  private void addPlug(IProcessor processor_p, IProcessor.ProcessingType type_p) {
-    addPlug(-1, processor_p, type_p);
+  private void addPlug(IProcessor processor, IProcessor.ProcessingType type) {
+    addPlug(-1, processor, type);
   }
 
   /**
@@ -285,67 +285,67 @@ public abstract class ScenarioRefinement implements IProcessor {
 
   /**
    * Adds a new resolver to the resolvers list at the 'order' position.
-   * @param order_p
-   * @param resolver_p
+   * @param order
+   * @param resolver
    */
-  private void addPlug(int order_p, IResolver resolver_p) {
+  private void addPlug(int order, IResolver resolver) {
     if (null == _pluggedResolvers) {
       _pluggedResolvers = new ArrayList<IResolver>();
     }
-    if ((order_p < 0) || (order_p > _pluggedMappers.size()))
-      _pluggedResolvers.add(resolver_p);
+    if ((order < 0) || (order > _pluggedMappers.size()))
+      _pluggedResolvers.add(resolver);
     else
-      _pluggedResolvers.add(order_p, resolver_p);
+      _pluggedResolvers.add(order, resolver);
   }
 
   /**
    * Adds a new preprocessor to the preprocessors list at the 'order' position.
-   * @param order_p
-   * @param processor_p
-   * @param type_p
+   * @param order
+   * @param processor
+   * @param type
    */
-  private void addPlug(int order_p, IProcessor processor_p, IProcessor.ProcessingType type_p) {
-    switch (type_p) {
+  private void addPlug(int order, IProcessor processor, IProcessor.ProcessingType type) {
+    switch (type) {
       case PREPROCESSING: {
         if (null == _pluggedPreprocessors) {
           _pluggedPreprocessors = new ArrayList<IProcessor>();
         }
-        if ((order_p < 0) || (order_p > _pluggedPreprocessors.size()))
-          _pluggedPreprocessors.add(processor_p);
+        if ((order < 0) || (order > _pluggedPreprocessors.size()))
+          _pluggedPreprocessors.add(processor);
         else
-          _pluggedPreprocessors.add(order_p, processor_p);
+          _pluggedPreprocessors.add(order, processor);
         break;
       }
       case POSTPROCESSING: {
         if (null == _pluggedPostprocessors) {
           _pluggedPostprocessors = new ArrayList<IProcessor>();
         }
-        if ((order_p < 0) || (order_p > _pluggedPostprocessors.size()))
-          _pluggedPostprocessors.add(processor_p);
+        if ((order < 0) || (order > _pluggedPostprocessors.size()))
+          _pluggedPostprocessors.add(processor);
         else
-          _pluggedPostprocessors.add(order_p, processor_p);
+          _pluggedPostprocessors.add(order, processor);
       }
     }
   }
 
   /**
-   * This method returns TRUE if the element {@link use_p} interacts with the element {@link elt_p}.
+   * This method returns TRUE if the element {@link use} interacts with the element {@link elt}.
    * 
-   * @param msg_p
-   * @param elt_p
+   * @param msg
+   * @param elt
    */
-  protected boolean isInteracting(InteractionUse use_p, NamedElement elt_p) {
+  protected boolean isInteracting(InteractionUse use, NamedElement elt) {
     boolean startResult = false;
     boolean finishResult = false;
 
-    if ((use_p != null) && (elt_p != null)) {
-      FragmentEnd startEnd = (FragmentEnd) use_p.getStart();
+    if ((use != null) && (elt != null)) {
+      FragmentEnd startEnd = (FragmentEnd) use.getStart();
       if (startEnd != null) {
-        startResult = isInteracting(startEnd, elt_p);
+        startResult = isInteracting(startEnd, elt);
       }
-      FragmentEnd finishEnd = (FragmentEnd) use_p.getFinish();
+      FragmentEnd finishEnd = (FragmentEnd) use.getFinish();
       if (finishEnd != null) {
-        finishResult = isInteracting(finishEnd, elt_p);
+        finishResult = isInteracting(finishEnd, elt);
       }
     }
 
@@ -353,23 +353,23 @@ public abstract class ScenarioRefinement implements IProcessor {
   }
 
   /**
-   * This method returns TRUE if the message {@link msg_p} interacts with the element {@link elt_p}.
+   * This method returns TRUE if the message {@link msg} interacts with the element {@link elt}.
    * 
-   * @param msg_p
-   * @param elt_p
+   * @param msg
+   * @param elt
    */
-  private boolean isInteracting(SequenceMessage msg_p, NamedElement elt_p) {
+  private boolean isInteracting(SequenceMessage msg, NamedElement elt) {
     boolean sndResult = false;
     boolean rcvResult = false;
 
-    if ((msg_p != null) && (elt_p != null)) {
-      MessageEnd sndMsgEnd = msg_p.getSendingEnd();
+    if ((msg != null) && (elt != null)) {
+      MessageEnd sndMsgEnd = msg.getSendingEnd();
       if (sndMsgEnd != null) {
-        sndResult = isInteracting(sndMsgEnd, elt_p);
+        sndResult = isInteracting(sndMsgEnd, elt);
       }
-      MessageEnd rcvMsgEnd = msg_p.getReceivingEnd();
+      MessageEnd rcvMsgEnd = msg.getReceivingEnd();
       if (rcvMsgEnd != null) {
-        rcvResult = isInteracting(rcvMsgEnd, elt_p);
+        rcvResult = isInteracting(rcvMsgEnd, elt);
       }
     }
 
@@ -377,26 +377,26 @@ public abstract class ScenarioRefinement implements IProcessor {
   }
 
   /**
-   * This method returns TRUE if the execution end {@link execEnd_p} interacts with the element {@link elt_p}.
+   * This method returns TRUE if the execution end {@link execEnd} interacts with the element {@link elt}.
    * 
-   * @param execEnd_p
-   * @param elt_p
+   * @param execEnd
+   * @param elt
    */
-  private boolean isInteracting(ExecutionEnd execEnd_p, NamedElement elt_p) {
+  private boolean isInteracting(ExecutionEnd execEnd, NamedElement elt) {
     boolean result = false;
 
-    if ((execEnd_p != null) && (elt_p != null)) {
-      result = isInteracting((AbstractEnd) execEnd_p, elt_p);
+    if ((execEnd != null) && (elt != null)) {
+      result = isInteracting((AbstractEnd) execEnd, elt);
 
       /**
        * The sending message is also tested
        */
       if (!result) {
-        Execution exec = execEnd_p.getExecution();
+        Execution exec = execEnd.getExecution();
         if (exec != null) {
           MessageEnd msgEnd = MessageEndExt.getOppositeMessageEnd((MessageEnd) exec.getStart());
           if (msgEnd != null) {
-            result = isInteracting(msgEnd, elt_p);
+            result = isInteracting(msgEnd, elt);
           }
         }
       }
@@ -406,30 +406,30 @@ public abstract class ScenarioRefinement implements IProcessor {
   }
 
   /**
-   * This method returns TRUE if the message end {@link absEnd_p} interacts with the element {@link elt_p}.
+   * This method returns TRUE if the message end {@link absEnd} interacts with the element {@link elt}.
    * 
-   * @param absEnd_p
-   * @param elt_p
+   * @param absEnd
+   * @param elt
    */
-  private boolean isInteracting(AbstractEnd absEnd_p, NamedElement elt_p) {
+  private boolean isInteracting(AbstractEnd absEnd, NamedElement elt) {
     boolean result = false;
 
-    if ((absEnd_p != null) && (elt_p != null)) {
-      InstanceRole instRole = absEnd_p.getCovered();
+    if ((absEnd != null) && (elt != null)) {
+      InstanceRole instRole = absEnd.getCovered();
       if (instRole != null) {
         AbstractInstance inst = instRole.getRepresentedInstance();
         if (inst != null) {
-          if (elt_p instanceof Part) {
-            result = elt_p.equals(inst);
+          if (elt instanceof Part) {
+            result = elt.equals(inst);
           } else {
             AbstractType type = inst.getType();
             if (type instanceof AbstractExchangeItem) {
               for (Object objectRef : EObjectExt.getReferencers(type, CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM)) {
                 EObject owner = ((CommunicationLink) objectRef).eContainer();
-                if (elt_p.equals(owner)) return true;
+                if (elt.equals(owner)) return true;
               }
             } else {
-              result = elt_p.equals(type);
+              result = elt.equals(type);
             }
           }
         }
@@ -440,29 +440,29 @@ public abstract class ScenarioRefinement implements IProcessor {
   }
 
   /**
-   * This method returns TRUE if the fragment end {@link absEnd_p} interacts with the element {@link elt_p}.
+   * This method returns TRUE if the fragment end {@link absEnd} interacts with the element {@link elt}.
    * 
-   * @param absEnd_p
-   * @param elt_p
+   * @param absEnd
+   * @param elt
    */
-  private boolean isInteracting(FragmentEnd absEnd_p, NamedElement elt_p) {
+  private boolean isInteracting(FragmentEnd absEnd, NamedElement elt) {
     boolean result = false;
 
-    if ((absEnd_p != null) && (elt_p != null)) {
-      for (InstanceRole instRole : absEnd_p.getCoveredInstanceRoles()) {
+    if ((absEnd != null) && (elt != null)) {
+      for (InstanceRole instRole : absEnd.getCoveredInstanceRoles()) {
         AbstractInstance inst = instRole.getRepresentedInstance();
         if (inst != null) {
-          if (elt_p instanceof Part) {
-            result |= elt_p.equals(inst);
+          if (elt instanceof Part) {
+            result |= elt.equals(inst);
           } else {
             AbstractType type = inst.getType();
             if (type instanceof AbstractExchangeItem) {
               for (Object objectRef : EObjectExt.getReferencers(type, CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM)) {
                 EObject owner = ((CommunicationLink) objectRef).eContainer();
-                if (elt_p.equals(owner)) return true;
+                if (elt.equals(owner)) return true;
               }
             } else {
-              result |= elt_p.equals(type);
+              result |= elt.equals(type);
             }
           }
         }
@@ -476,17 +476,17 @@ public abstract class ScenarioRefinement implements IProcessor {
    * 
    * @throws ProcessorException
    */
-  private void preprocessing(IProgressMonitor progressMonitor_p) throws ProcessorException {
+  private void preprocessing(IProgressMonitor progressMonitor) throws ProcessorException {
     try {
       if (_pluggedPreprocessors != null) {
         String loggedMsg;
 
         /** Refinement progress initialization */
         int totalWork = _PRE_POST_PROCESSOR_PROGRESS_STEP * _pluggedPreprocessors.size();
-        progressMonitor_p.beginTask(Messages.PreProcessing_Progress, totalWork);
+        progressMonitor.beginTask(Messages.PreProcessing_Progress, totalWork);
 
         for (IProcessor preProcessor : _pluggedPreprocessors) {
-          preProcessor.execute(progressMonitor_p);
+          preProcessor.execute(progressMonitor);
 
           /** logging */
           Object processorName = preProcessor.getName();
@@ -496,12 +496,12 @@ public abstract class ScenarioRefinement implements IProcessor {
           }
 
           /** Refinement progress increment */
-          progressMonitor_p.worked(_PRE_POST_PROCESSOR_PROGRESS_STEP);
+          progressMonitor.worked(_PRE_POST_PROCESSOR_PROGRESS_STEP);
         }
       }
     }
     finally {
-      progressMonitor_p.done();
+      progressMonitor.done();
     }
   }
  
@@ -509,17 +509,17 @@ public abstract class ScenarioRefinement implements IProcessor {
    * 
    * @throws ProcessorException
    */
-  private void postprocessing(IProgressMonitor progressMonitor_p) throws ProcessorException {
+  private void postprocessing(IProgressMonitor progressMonitor) throws ProcessorException {
     try {
       if (_pluggedPostprocessors != null) {
         String loggedMsg;
 
         /** Refinement progress initialization */
         int totalWork = _PRE_POST_PROCESSOR_PROGRESS_STEP * _pluggedPostprocessors.size();
-        progressMonitor_p.beginTask(Messages.PostProcessing_Progress, totalWork);
+        progressMonitor.beginTask(Messages.PostProcessing_Progress, totalWork);
 
         for (IProcessor postProcessor : _pluggedPostprocessors) {
-          postProcessor.execute(progressMonitor_p);
+          postProcessor.execute(progressMonitor);
 
           /** logging */
           Object processorName = postProcessor.getName();
@@ -529,16 +529,16 @@ public abstract class ScenarioRefinement implements IProcessor {
           }
 
           /** Refinement progress increment */
-          progressMonitor_p.worked(_PRE_POST_PROCESSOR_PROGRESS_STEP);
+          progressMonitor.worked(_PRE_POST_PROCESSOR_PROGRESS_STEP);
         }
       }
     }
     finally {
-      progressMonitor_p.done();
+      progressMonitor.done();
     }
   }
 
-  private void refineMsg(ScenarioRepresentation srcTree_p, ScenarioRepresentation tgtTree_p, Scenario tgtDiagram_p, List<AbstractEnd> unmappedMsg_p, Node<InteractionFragment> currentSrcNode_p, AbstractEnd absMsg_p, InstanceRole instRole_p, Component decomposedCpnt_p, AbstractEventOperation invokedOperation_p, COMPONENT_TYPE type_p) {
+  private void refineMsg(ScenarioRepresentation srcTree, ScenarioRepresentation tgtTree, Scenario tgtDiagram, List<AbstractEnd> unmappedMsg, Node<InteractionFragment> currentSrcNode, AbstractEnd absMsg, InstanceRole instRole, Component decomposedCpnt, AbstractEventOperation invokedOperation, COMPONENT_TYPE type) {
     List<AbstractInstance> candidateAbstractInstances = null;
     List<AbstractInstance> targetfinalAbstractInstances = null;
 
@@ -549,7 +549,7 @@ public abstract class ScenarioRefinement implements IProcessor {
      */
     candidateAbstractInstances = new ArrayList<AbstractInstance>();
     for (IMapper m : _pluggedMappers) {
-      for (AbstractInstance candidateCpnt : m.candidateComponents(instRole_p.getRepresentedInstance(), _isIntraLayerRefinement, decomposedCpnt_p, tgtElement, srcTree_p.getScenario(), absMsg_p)) {
+      for (AbstractInstance candidateCpnt : m.candidateComponents(instRole.getRepresentedInstance(), _isIntraLayerRefinement, decomposedCpnt, tgtElement, srcTree.getScenario(), absMsg)) {
         if (!candidateAbstractInstances.contains(candidateCpnt)) {
           candidateAbstractInstances.add(candidateCpnt);
         }
@@ -561,7 +561,7 @@ public abstract class ScenarioRefinement implements IProcessor {
      */
     targetfinalAbstractInstances = new ArrayList<AbstractInstance>();
     for (IMapper m : _pluggedMappers) {
-      for (AbstractInstance mappedCpnt : m.componentMapping(type_p, invokedOperation_p, candidateAbstractInstances, absMsg_p)) {
+      for (AbstractInstance mappedCpnt : m.componentMapping(type, invokedOperation, candidateAbstractInstances, absMsg)) {
         if (!targetfinalAbstractInstances.contains(mappedCpnt)) {
           targetfinalAbstractInstances.add(mappedCpnt);
         }
@@ -578,7 +578,7 @@ public abstract class ScenarioRefinement implements IProcessor {
       }
       else {
         for (IResolver resolver : _pluggedResolvers) {
-          targetfinalAbstractInstances = resolver.resolving(targetfinalAbstractInstances, srcTree_p, tgtTree_p, absMsg_p, type_p);
+          targetfinalAbstractInstances = resolver.resolving(targetfinalAbstractInstances, srcTree, tgtTree, absMsg, type);
           if (targetfinalAbstractInstances.size() == 1) {
             finalAbstractInstance = targetfinalAbstractInstances.get(0);
             break;
@@ -588,10 +588,10 @@ public abstract class ScenarioRefinement implements IProcessor {
     }
 
     if (finalAbstractInstance == null) {
-      unmappedMsg_p.add(absMsg_p);
+      unmappedMsg.add(absMsg);
       /** logging */
-      if (absMsg_p instanceof MessageEnd) {
-        logUnmappedMessage(((MessageEnd) absMsg_p).getMessage(), type_p);
+      if (absMsg instanceof MessageEnd) {
+        logUnmappedMessage(((MessageEnd) absMsg).getMessage(), type);
       }
     }
 
@@ -599,21 +599,21 @@ public abstract class ScenarioRefinement implements IProcessor {
      * 5th Step: The current message is re-ordered in the target tree.
      */
     if (_pluggedSchedulers != null) {
-      _pluggedSchedulers.doOrdering(srcTree_p, tgtTree_p, finalAbstractInstance, currentSrcNode_p, tgtElement);
+      _pluggedSchedulers.doOrdering(srcTree, tgtTree, finalAbstractInstance, currentSrcNode, tgtElement);
     }
   }
 
   /**
-   * @param srcTree_p
-   * @param tgtDiagram_p
-   * @param tgtTree_p
-   * @param currentSrcNode_p
-   * @param state_p
-   * @param unmappedMsg_p
-   * @param progressMonitor_p
+   * @param srcTree
+   * @param tgtDiagram
+   * @param tgtTree
+   * @param currentSrcNode
+   * @param state
+   * @param unmappedMsg
+   * @param progressMonitor
    */
-  private void refine(ScenarioRepresentation srcTree_p, Scenario tgtDiagram_p, ScenarioRepresentation tgtTree_p, Node<InteractionFragment> currentSrcNode_p, InteractionState state_p, List<AbstractEnd> unmappedMsg_p, IProgressMonitor progressMonitor_p) {
-    InstanceRole instRole = state_p.getCovered();
+  private void refine(ScenarioRepresentation srcTree, Scenario tgtDiagram, ScenarioRepresentation tgtTree, Node<InteractionFragment> currentSrcNode, InteractionState state, List<AbstractEnd> unmappedMsg, IProgressMonitor progressMonitor) {
+    InstanceRole instRole = state.getCovered();
     if (instRole != null) {
       AbstractInstance cpntInst = instRole.getRepresentedInstance();
       if (cpntInst != null) {
@@ -626,48 +626,48 @@ public abstract class ScenarioRefinement implements IProcessor {
   }
 
   /**
-   * @param srcTree_p
-   * @param tgtDiagram_p
-   * @param tgtTree_p
-   * @param currentSrcNode_p
-   * @param operand_p
-   * @param unmappedMsg_p
-   * @param progressMonitor_p
+   * @param srcTree
+   * @param tgtDiagram
+   * @param tgtTree
+   * @param currentSrcNode
+   * @param operand
+   * @param unmappedMsg
+   * @param progressMonitor
    */
-  private void refine(ScenarioRepresentation srcTree_p, Scenario tgtDiagram_p, ScenarioRepresentation tgtTree_p, Node<InteractionFragment> currentSrcNode_p, InteractionOperand operand_p, List<AbstractEnd> unmappedMsg_p, IProgressMonitor progressMonitor_p) {
+  private void refine(ScenarioRepresentation srcTree, Scenario tgtDiagram, ScenarioRepresentation tgtTree, Node<InteractionFragment> currentSrcNode, InteractionOperand operand, List<AbstractEnd> unmappedMsg, IProgressMonitor progressMonitor) {
     if (_pluggedSchedulers != null) {
-      _pluggedSchedulers.doOrdering(srcTree_p, tgtTree_p, null, currentSrcNode_p, null);
+      _pluggedSchedulers.doOrdering(srcTree, tgtTree, null, currentSrcNode, null);
     }
   }
 
   /**
-   * @param srcTree_p
-   * @param tgtDiagram_p
-   * @param tgtTree_p
-   * @param currentSrcNode_p
-   * @param fragment_p
-   * @param unmappedMsg_p
-   * @param progressMonitor_p
+   * @param srcTree
+   * @param tgtDiagram
+   * @param tgtTree
+   * @param currentSrcNode
+   * @param fragment
+   * @param unmappedMsg
+   * @param progressMonitor
    */
-  private void refine(ScenarioRepresentation srcTree_p, Scenario tgtDiagram_p, ScenarioRepresentation tgtTree_p, Node<InteractionFragment> currentSrcNode_p, FragmentEnd fragment_p, List<AbstractEnd> unmappedMsg_p, IProgressMonitor progressMonitor_p) {
-    if (!_isIntraLayerRefinement || isInteracting(fragment_p, _tgtElement)) {
+  private void refine(ScenarioRepresentation srcTree, Scenario tgtDiagram, ScenarioRepresentation tgtTree, Node<InteractionFragment> currentSrcNode, FragmentEnd fragment, List<AbstractEnd> unmappedMsg, IProgressMonitor progressMonitor) {
+    if (!_isIntraLayerRefinement || isInteracting(fragment, _tgtElement)) {
       if (_pluggedSchedulers != null) {
-        _pluggedSchedulers.doOrdering(srcTree_p, tgtTree_p, null, currentSrcNode_p, _tgtElement);
+        _pluggedSchedulers.doOrdering(srcTree, tgtTree, null, currentSrcNode, _tgtElement);
       }
     }
   }
 
   /**
-   * @param srcTree_p
-   * @param tgtDiagram_p
-   * @param tgtTree_p
-   * @param currentSrcNode_p
-   * @param absMsg_p
-   * @param unmappedMsg_p
-   * @param progressMonitor_p
+   * @param srcTree
+   * @param tgtDiagram
+   * @param tgtTree
+   * @param currentSrcNode
+   * @param absMsg
+   * @param unmappedMsg
+   * @param progressMonitor
    */
-  private void refine(ScenarioRepresentation srcTree_p, Scenario tgtDiagram_p, ScenarioRepresentation tgtTree_p, Node<InteractionFragment> currentSrcNode_p, AbstractEnd absMsg_p, List<AbstractEnd> unmappedMsg_p, IProgressMonitor progressMonitor_p) {
-    InstanceRole instRole = absMsg_p.getCovered();
+  private void refine(ScenarioRepresentation srcTree, Scenario tgtDiagram, ScenarioRepresentation tgtTree, Node<InteractionFragment> currentSrcNode, AbstractEnd absMsg, List<AbstractEnd> unmappedMsg, IProgressMonitor progressMonitor) {
+    InstanceRole instRole = absMsg.getCovered();
     if (instRole != null) {
       AbstractInstance cpntInst = instRole.getRepresentedInstance();
       if (cpntInst != null) {
@@ -676,9 +676,9 @@ public abstract class ScenarioRefinement implements IProcessor {
           boolean skipMsg = false;
           Component decomposedCpnt = _isIntraLayerRefinement ? getDecomposedComponent() : null;
           COMPONENT_TYPE type = COMPONENT_TYPE.UNDEFINED;
-          AbstractEventOperation invokedOperation = getOperation(absMsg_p);
-          if (absMsg_p instanceof MessageEnd) {
-            MessageEnd srcMsg = (MessageEnd) absMsg_p;
+          AbstractEventOperation invokedOperation = getOperation(absMsg);
+          if (absMsg instanceof MessageEnd) {
+            MessageEnd srcMsg = (MessageEnd) absMsg;
             type = MessageEndExt.getMessageEndType(srcMsg);
 
             SequenceMessage srcSeqMsg = srcMsg.getMessage();
@@ -693,7 +693,7 @@ public abstract class ScenarioRefinement implements IProcessor {
                  */
                 SequenceMessage callbranch = SequenceMessageExt.getOppositeSequenceMessage(srcSeqMsg);
                 if (callbranch != null) {
-                  if (unmappedMsg_p.contains(callbranch.getSendingEnd()) || unmappedMsg_p.contains(callbranch.getReceivingEnd())) {
+                  if (unmappedMsg.contains(callbranch.getSendingEnd()) || unmappedMsg.contains(callbranch.getReceivingEnd())) {
                     skipMsg = true;
                   }
                 }
@@ -736,7 +736,7 @@ public abstract class ScenarioRefinement implements IProcessor {
               throw new ProcessorException(Messages.ErrorMessageEndNotLinkedToSequenceMessage, this);
             }
           }
-          else if (absMsg_p instanceof ExecutionEnd) {
+          else if (absMsg instanceof ExecutionEnd) {
             type = COMPONENT_TYPE.RECEIVER;
 
             /**
@@ -744,22 +744,22 @@ public abstract class ScenarioRefinement implements IProcessor {
              * in which we are refining, we skip it.
              */
             if (_isIntraLayerRefinement) {
-              skipMsg = evaluateMessageSkip((ExecutionEnd) absMsg_p, decomposedCpnt);
+              skipMsg = evaluateMessageSkip((ExecutionEnd) absMsg, decomposedCpnt);
             }
           }
 
           if (!skipMsg) {
-            refineMsg(srcTree_p, tgtTree_p, tgtDiagram_p, unmappedMsg_p, currentSrcNode_p, absMsg_p, instRole, decomposedCpnt, invokedOperation, type);
+            refineMsg(srcTree, tgtTree, tgtDiagram, unmappedMsg, currentSrcNode, absMsg, instRole, decomposedCpnt, invokedOperation, type);
           }
         }
         else {
-          tgtTree_p.cleanClonedElements();
+          tgtTree.cleanClonedElements();
           String message = MessageFormat.format(Messages.ErrorInstanceNotTyped, cpntInst.getName());
           throw new ProcessorException(message, this);
         }
       }
       else {
-        tgtTree_p.cleanClonedElements();
+        tgtTree.cleanClonedElements();
         String message = MessageFormat.format(Messages.ErrorInstanceRoleNotLinked, instRole.getName());
         throw new ProcessorException(message, this);
       }
@@ -772,33 +772,33 @@ public abstract class ScenarioRefinement implements IProcessor {
   /**
    * 
    */
-  private void refine(ScenarioRepresentation srcTree_p, Scenario tgtDiagram_p, IProgressMonitor progressMonitor_p) {
+  private void refine(ScenarioRepresentation srcTree, Scenario tgtDiagram, IProgressMonitor progressMonitor) {
     String loggedMsg;
     List<AbstractEnd> unmappedMsg = new ArrayList<AbstractEnd>();
 
-    ScenarioRepresentation tgtTree = loadDiagram(tgtDiagram_p);
-    linkDiagrams(srcTree_p, tgtTree);
+    ScenarioRepresentation tgtTree = loadDiagram(tgtDiagram);
+    linkDiagrams(srcTree, tgtTree);
 
-    for (Node<InteractionFragment> currentSrcNode : srcTree_p.walk()) {
+    for (Node<InteractionFragment> currentSrcNode : srcTree.walk()) {
       InteractionFragment interactionFragment = currentSrcNode.getData();
       if (interactionFragment instanceof AbstractEnd) {
-        refine(srcTree_p, tgtDiagram_p, tgtTree, currentSrcNode, (AbstractEnd) interactionFragment, unmappedMsg, progressMonitor_p);
+        refine(srcTree, tgtDiagram, tgtTree, currentSrcNode, (AbstractEnd) interactionFragment, unmappedMsg, progressMonitor);
       } else if (interactionFragment instanceof FragmentEnd) {
-        refine(srcTree_p, tgtDiagram_p, tgtTree, currentSrcNode, (FragmentEnd) interactionFragment, unmappedMsg, progressMonitor_p);
+        refine(srcTree, tgtDiagram, tgtTree, currentSrcNode, (FragmentEnd) interactionFragment, unmappedMsg, progressMonitor);
       } else if (interactionFragment instanceof InteractionOperand) {
-        refine(srcTree_p, tgtDiagram_p, tgtTree, currentSrcNode, (InteractionOperand) interactionFragment, unmappedMsg, progressMonitor_p);
+        refine(srcTree, tgtDiagram, tgtTree, currentSrcNode, (InteractionOperand) interactionFragment, unmappedMsg, progressMonitor);
       } else if (interactionFragment instanceof InteractionState) {
-        refine(srcTree_p, tgtDiagram_p, tgtTree, currentSrcNode, (InteractionState) interactionFragment, unmappedMsg, progressMonitor_p);
+        refine(srcTree, tgtDiagram, tgtTree, currentSrcNode, (InteractionState) interactionFragment, unmappedMsg, progressMonitor);
       }
 
       /** Refinement progress increment */
-      progressMonitor_p.worked(_MESSAGE_PROGRESS_STEP);
+      progressMonitor.worked(_MESSAGE_PROGRESS_STEP);
     }
 
     /**
      * 5th Step: The resulting tree structure is now exported to the target scenario.
      */
-    tgtTree.export(srcTree_p);
+    tgtTree.export(srcTree);
 
     /** logging */
     loggedMsg = MessageFormat.format(Messages.Processing_Succeeded, getName());
@@ -808,8 +808,8 @@ public abstract class ScenarioRefinement implements IProcessor {
   /**
    * 
    */
-  private AbstractEventOperation getOperation(AbstractEnd absMsg_p) {
-    AbstractEventOperation invokedOp = AbstractEndExt.getOperation(absMsg_p);
+  private AbstractEventOperation getOperation(AbstractEnd absMsg) {
+    AbstractEventOperation invokedOp = AbstractEndExt.getOperation(absMsg);
     AbstractEventOperation finalOp = null;
 
 	  if (invokedOp != null)
@@ -821,12 +821,12 @@ public abstract class ScenarioRefinement implements IProcessor {
   /**
    * @throws ProcessorException
    */
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
     String loggedMsg;
 
     try {
       /** PreProcessing Step */
-      preprocessing(progressMonitor_p);
+      preprocessing(progressMonitor);
 
       /**
        * 1st Step: The source scenario is imported in an internal tree structure format.
@@ -859,15 +859,15 @@ public abstract class ScenarioRefinement implements IProcessor {
         for (Scenario tgtDiagram : existingScenarios) {
           /** */
           String message = MessageFormat.format(Messages.ScenarioRefinement_Progress, _srcDiagram.getName(), tgtDiagram.getName());
-          progressMonitor_p.beginTask(message, totalWork);
+          progressMonitor.beginTask(message, totalWork);
           /** */
-          refine(srcTree, tgtDiagram, progressMonitor_p);
+          refine(srcTree, tgtDiagram, progressMonitor);
           /** */
-          progressMonitor_p.done();
+          progressMonitor.done();
         }
 
         /** PostProcessing Step */
-        postprocessing(progressMonitor_p);
+        postprocessing(progressMonitor);
       }
 
       /** logging */
@@ -880,7 +880,7 @@ public abstract class ScenarioRefinement implements IProcessor {
       _logger.error(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, _srcDiagram));
     }
     finally {
-      progressMonitor_p.done();
+      progressMonitor.done();
     }
   }
 
@@ -983,17 +983,17 @@ public abstract class ScenarioRefinement implements IProcessor {
 
   /**
    * Retrieves the refined nodes from the target diagram tree representation and link them to the corresponding nodes of the source diagram tree representation.
-   * @param srcDiagram_p
-   * @param tgtDiagram_p
+   * @param srcDiagram
+   * @param tgtDiagram
    */
-  private void linkDiagrams(ScenarioRepresentation srcDiagram_p, ScenarioRepresentation tgtDiagram_p) {
-    srcDiagram_p.clean();
+  private void linkDiagrams(ScenarioRepresentation srcDiagram, ScenarioRepresentation tgtDiagram) {
+    srcDiagram.clean();
 
-    for (Node<InteractionFragment> tgtNode : tgtDiagram_p.walk()) {
+    for (Node<InteractionFragment> tgtNode : tgtDiagram.walk()) {
       InteractionFragment tgtMsg = tgtNode.getData();
       if (tgtMsg != null) {
         for (CapellaElement sc : RefinementLinkExt.getRefinementRelatedTargetElements(tgtMsg, InteractionPackage.Literals.ABSTRACT_END)) {
-          for (Node<InteractionFragment> srcNode : srcDiagram_p.walk()) {
+          for (Node<InteractionFragment> srcNode : srcDiagram.walk()) {
             if (srcNode.getData() == sc) {
               tgtNode.relatedNode = srcNode;
               srcNode.relatedNode = tgtNode;
@@ -1005,45 +1005,45 @@ public abstract class ScenarioRefinement implements IProcessor {
   }
 
   /**
-   * @param diagram_p
+   * @param diagram
    * @return an internal representation of the SequenceDiagram
    */
-  private ScenarioRepresentation loadDiagram(Scenario diagram_p) {
+  private ScenarioRepresentation loadDiagram(Scenario diagram) {
     ScenarioRepresentation tree = null;
 
-    if (diagram_p != null) {
-      tree = new ScenarioRepresentation(diagram_p);
+    if (diagram != null) {
+      tree = new ScenarioRepresentation(diagram);
     }
 
     return tree;
   }
 
   /**
-   * @param skipMsg_p
-   * @param srcSeqMsg_p
-   * @param type_p
+   * @param skipMsg
+   * @param srcSeqMsg
+   * @param type
    */
-  private void logMessageMapping(boolean skipMsg_p, SequenceMessage srcSeqMsg_p, COMPONENT_TYPE type_p) {
+  private void logMessageMapping(boolean skipMsg, SequenceMessage srcSeqMsg, COMPONENT_TYPE type) {
     String loggedMsg;
 
-    if (skipMsg_p) {
-      if (srcSeqMsg_p.getKind() == MessageKind.REPLY) {
-        loggedMsg = MessageFormat.format(Messages.SkeepSequenceMessageReplyMapping, srcSeqMsg_p.getName());
+    if (skipMsg) {
+      if (srcSeqMsg.getKind() == MessageKind.REPLY) {
+        loggedMsg = MessageFormat.format(Messages.SkeepSequenceMessageReplyMapping, srcSeqMsg.getName());
       } else {
-        loggedMsg = MessageFormat.format(Messages.SkeepSequenceMessageMapping, srcSeqMsg_p.getName());
+        loggedMsg = MessageFormat.format(Messages.SkeepSequenceMessageMapping, srcSeqMsg.getName());
       }
     } else {
-      if (type_p == COMPONENT_TYPE.RECEIVER) {
-        if (srcSeqMsg_p.getKind() == MessageKind.REPLY) {
-          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageReplyReceiver, srcSeqMsg_p.getName());
+      if (type == COMPONENT_TYPE.RECEIVER) {
+        if (srcSeqMsg.getKind() == MessageKind.REPLY) {
+          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageReplyReceiver, srcSeqMsg.getName());
         } else {
-          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageReceiver, srcSeqMsg_p.getName());
+          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageReceiver, srcSeqMsg.getName());
         }
       } else {
-        if (srcSeqMsg_p.getKind() == MessageKind.REPLY) {
-          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageReplySender, srcSeqMsg_p.getName());
+        if (srcSeqMsg.getKind() == MessageKind.REPLY) {
+          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageReplySender, srcSeqMsg.getName());
         } else {
-          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageSender, srcSeqMsg_p.getName());
+          loggedMsg = MessageFormat.format(Messages.TryMapSequenceMessageSender, srcSeqMsg.getName());
         }
       }
     }
@@ -1051,23 +1051,23 @@ public abstract class ScenarioRefinement implements IProcessor {
   }
 
   /**
-   * @param srcSeqMsg_p
-   * @param type_p
+   * @param srcSeqMsg
+   * @param type
    */
-  private void logUnmappedMessage(SequenceMessage srcSeqMsg_p, COMPONENT_TYPE type_p) {
+  private void logUnmappedMessage(SequenceMessage srcSeqMsg, COMPONENT_TYPE type) {
     String loggedMsg;
 
-    if (type_p == COMPONENT_TYPE.RECEIVER) {
-      if (srcSeqMsg_p.getKind() == MessageKind.REPLY) {
-        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageReplyReceiver, srcSeqMsg_p.getName());
+    if (type == COMPONENT_TYPE.RECEIVER) {
+      if (srcSeqMsg.getKind() == MessageKind.REPLY) {
+        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageReplyReceiver, srcSeqMsg.getName());
       } else {
-        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageReceiver, srcSeqMsg_p.getName());
+        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageReceiver, srcSeqMsg.getName());
       }
     } else {
-      if (srcSeqMsg_p.getKind() == MessageKind.REPLY) {
-        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageReplySender, srcSeqMsg_p.getName());
+      if (srcSeqMsg.getKind() == MessageKind.REPLY) {
+        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageReplySender, srcSeqMsg.getName());
       } else {
-        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageSender, srcSeqMsg_p.getName());
+        loggedMsg = MessageFormat.format(Messages.UnmappedSequenceMessageSender, srcSeqMsg.getName());
       }
     }
     _logger.warn(new EmbeddedMessage(loggedMsg, IReportManagerDefaultComponents.REFINEMENT, _srcDiagram));
@@ -1076,13 +1076,13 @@ public abstract class ScenarioRefinement implements IProcessor {
   /**
    * 
    */
-  private boolean evaluateMessageSkip(SequenceMessage sequenceMessage_p, Component decomposedCpnt_p) {
+  private boolean evaluateMessageSkip(SequenceMessage sequenceMessage, Component decomposedCpnt) {
     if (_tgtElement instanceof Part) {
-      return !isInteracting(sequenceMessage_p, _tgtElement);
+      return !isInteracting(sequenceMessage, _tgtElement);
     } else if (_tgtElement instanceof Component) {
-      return !isInteracting(sequenceMessage_p, decomposedCpnt_p);
+      return !isInteracting(sequenceMessage, decomposedCpnt);
     } else if (_tgtElement instanceof LogicalArchitecture) {
-      return !isInteracting(sequenceMessage_p, decomposedCpnt_p);
+      return !isInteracting(sequenceMessage, decomposedCpnt);
     }
     return false;
   }
@@ -1090,13 +1090,13 @@ public abstract class ScenarioRefinement implements IProcessor {
   /**
    * 
    */
-  private boolean evaluateMessageSkip(ExecutionEnd executionEnd_p, Component decomposedCpnt_p) {
+  private boolean evaluateMessageSkip(ExecutionEnd executionEnd, Component decomposedCpnt) {
     if (_tgtElement instanceof Part) {
-      return !isInteracting(executionEnd_p, _tgtElement);
+      return !isInteracting(executionEnd, _tgtElement);
     } else if (_tgtElement instanceof Component) {
-      return !isInteracting(executionEnd_p, decomposedCpnt_p);
+      return !isInteracting(executionEnd, decomposedCpnt);
     } else if (_tgtElement instanceof LogicalArchitecture) {
-      return !isInteracting(executionEnd_p, decomposedCpnt_p);
+      return !isInteracting(executionEnd, decomposedCpnt);
     }
     return false;
   }
@@ -1122,35 +1122,35 @@ public abstract class ScenarioRefinement implements IProcessor {
 
   /**
    * 
-   * @param scenario_p
-   * @param target_p
+   * @param scenario
+   * @param target
    */
-  protected void applyNamingRule(NamedElement scenario_p, NamedElement target_p) {
-    applyNamingRule(scenario_p, target_p, scenario_p.getName());
+  protected void applyNamingRule(NamedElement scenario, NamedElement target) {
+    applyNamingRule(scenario, target, scenario.getName());
   }
 
   /**
    * 
-   * @param scenario_p
-   * @param target_p
-   * @param name_p
+   * @param scenario
+   * @param target
+   * @param name
    */
-  protected void applyNamingRule(NamedElement scenario_p, NamedElement target_p, String name_p) {
-    String scName = evaluateNamingRule(target_p, name_p);
-    if (!scenario_p.getName().equals(scName)) {
-      scenario_p.setName(scName);
+  protected void applyNamingRule(NamedElement scenario, NamedElement target, String name) {
+    String scName = evaluateNamingRule(target, name);
+    if (!scenario.getName().equals(scName)) {
+      scenario.setName(scName);
     }
   }
 
   /**
    * 
    */
-  public static String evaluateNamingRule(NamedElement target_p, String name_p) {
-    return name_p;
+  public static String evaluateNamingRule(NamedElement target, String name) {
+    return name;
 
 // Naming Rule based on hierarchical Level is obsolete
-//    if (target_p instanceof LogicalArchitecture) {
-//      EObject container = target_p.eContainer();
+//    if (target instanceof LogicalArchitecture) {
+//      EObject container = target.eContainer();
 //      if (container instanceof System) {
 //        String prefix = MessageFormat.format(REFINED_SCENARIO_PREFIX, new Integer(0));
 //        if (!scName.startsWith(prefix)) {
@@ -1169,9 +1169,9 @@ public abstract class ScenarioRefinement implements IProcessor {
 //        }
 //      }
 //    }
-//    else if (target_p instanceof LogicalComponent) {
-//      String oldPrefix = MessageFormat.format(REFINED_SCENARIO_PREFIX, new Integer(LogicalComponentExt.getLCLevel((LogicalComponent) target_p)-1));
-//      String newPrefix = MessageFormat.format(REFINED_SCENARIO_PREFIX, new Integer(LogicalComponentExt.getLCLevel((LogicalComponent) target_p)));
+//    else if (target instanceof LogicalComponent) {
+//      String oldPrefix = MessageFormat.format(REFINED_SCENARIO_PREFIX, new Integer(LogicalComponentExt.getLCLevel((LogicalComponent) target)-1));
+//      String newPrefix = MessageFormat.format(REFINED_SCENARIO_PREFIX, new Integer(LogicalComponentExt.getLCLevel((LogicalComponent) target)));
 //
 //      if (scName.lastIndexOf(oldPrefix) != -1) {
 //        scName = scName.replace(oldPrefix, newPrefix);

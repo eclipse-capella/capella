@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,29 +93,29 @@ public class DiagramServices {
   }
 
   /**
-   * Return the EList of owned diagram elements of the given container_p
-   * @param container_p
+   * Return the EList of owned diagram elements of the given container
+   * @param container
    * @return
    */
-  public EList<DDiagramElement> getOwnedDiagramElements(DragAndDropTarget container_p) {
-    if (container_p instanceof DDiagram) {
-      return ((DDiagram) container_p).getOwnedDiagramElements();
-    } else if (container_p instanceof DNodeContainer) {
-      return ((DNodeContainer) container_p).getOwnedDiagramElements();
+  public EList<DDiagramElement> getOwnedDiagramElements(DragAndDropTarget container) {
+    if (container instanceof DDiagram) {
+      return ((DDiagram) container).getOwnedDiagramElements();
+    } else if (container instanceof DNodeContainer) {
+      return ((DNodeContainer) container).getOwnedDiagramElements();
     }
     return null;
   }
 
   /**
-   * Return the EList of owned diagram elements of the given container_p
-   * @param container_p
+   * Return the EList of owned diagram elements of the given container
+   * @param container
    * @return
    */
-  public EList<DDiagramElement> getOwnedDiagramElements(DContainer container_p) {
-    if (container_p instanceof DDiagram) {
-      return ((DDiagram) container_p).getOwnedDiagramElements();
-    } else if (container_p instanceof DNodeContainer) {
-      return ((DNodeContainer) container_p).getOwnedDiagramElements();
+  public EList<DDiagramElement> getOwnedDiagramElements(DContainer container) {
+    if (container instanceof DDiagram) {
+      return ((DDiagram) container).getOwnedDiagramElements();
+    } else if (container instanceof DNodeContainer) {
+      return ((DNodeContainer) container).getOwnedDiagramElements();
     }
     return null;
   }
@@ -123,23 +123,23 @@ public class DiagramServices {
   /**
    * Returns owned Nodes from the given element
    */
-  public Collection<DDiagramElement> getOwnedNodes(DSemanticDecorator element_p) {
+  public Collection<DDiagramElement> getOwnedNodes(DSemanticDecorator element) {
     ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
 
-    if (element_p instanceof DDiagram) {
-      for (DDiagramElement view : ((DDiagram) element_p).getOwnedDiagramElements()) {
+    if (element instanceof DDiagram) {
+      for (DDiagramElement view : ((DDiagram) element).getOwnedDiagramElements()) {
         if (view instanceof DNode) {
           views.add(view);
         }
       }
-    } else if (element_p instanceof DNodeContainer) {
-      for (DDiagramElement view : ((DNodeContainer) element_p).getOwnedDiagramElements()) {
+    } else if (element instanceof DNodeContainer) {
+      for (DDiagramElement view : ((DNodeContainer) element).getOwnedDiagramElements()) {
         if (view instanceof DNode) {
           views.add(view);
         }
       }
-    } else if (element_p instanceof AbstractDNode) {
-      views.addAll(((AbstractDNode) element_p).getOwnedBorderedNodes());
+    } else if (element instanceof AbstractDNode) {
+      views.addAll(((AbstractDNode) element).getOwnedBorderedNodes());
     }
     return views;
   }
@@ -147,17 +147,17 @@ public class DiagramServices {
   /**
    * Returns owned Nodes from the given element
    */
-  public Collection<DDiagramElement> getOwnedNodeListElements(DSemanticDecorator element_p) {
+  public Collection<DDiagramElement> getOwnedNodeListElements(DSemanticDecorator element) {
     ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
 
-    if (element_p instanceof DDiagram) {
-      for (DDiagramElement view : ((DDiagram) element_p).getOwnedDiagramElements()) {
+    if (element instanceof DDiagram) {
+      for (DDiagramElement view : ((DDiagram) element).getOwnedDiagramElements()) {
         if (view instanceof DNodeListElement) {
           views.add(view);
         }
       }
-    } else if (element_p instanceof DNodeList) {
-      views.addAll(((DNodeList) element_p).getOwnedElements());
+    } else if (element instanceof DNodeList) {
+      views.addAll(((DNodeList) element).getOwnedElements());
     }
     return views;
   }
@@ -165,17 +165,17 @@ public class DiagramServices {
   /**
    * Returns owned NodeContainers from the given element
    */
-  public Collection<DDiagramElement> getOwnedContainers(DSemanticDecorator element_p) {
+  public Collection<DDiagramElement> getOwnedContainers(DSemanticDecorator element) {
     ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
 
-    if (element_p instanceof DDiagram) {
-      for (DDiagramElement view : ((DDiagram) element_p).getOwnedDiagramElements()) {
+    if (element instanceof DDiagram) {
+      for (DDiagramElement view : ((DDiagram) element).getOwnedDiagramElements()) {
         if (view instanceof DDiagramElementContainer) {
           views.add(view);
         }
       }
-    } else if (element_p instanceof DNodeContainer) {
-      for (DDiagramElement view : ((DNodeContainer) element_p).getOwnedDiagramElements()) {
+    } else if (element instanceof DNodeContainer) {
+      for (DDiagramElement view : ((DNodeContainer) element).getOwnedDiagramElements()) {
         if (view instanceof DDiagramElementContainer) {
           views.add(view);
         }
@@ -187,17 +187,17 @@ public class DiagramServices {
   /**
    * Returns owned NodeContainers from the given element
    */
-  public Collection<DDiagramElement> getAllAbstractNodes(DSemanticDecorator element_p) {
+  public Collection<DDiagramElement> getAllAbstractNodes(DSemanticDecorator element) {
     ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
 
-    if (element_p instanceof DDiagram) {
-      for (DDiagramElement view : getDiagramElements((DDiagram) element_p)) {
+    if (element instanceof DDiagram) {
+      for (DDiagramElement view : getDiagramElements((DDiagram) element)) {
         if (view instanceof AbstractDNode) {
           views.add(view);
         }
       }
-    } else if (element_p instanceof DDiagramElement) {
-      for (DDiagramElement view : getDiagramElements((DDiagramElement) element_p)) {
+    } else if (element instanceof DDiagramElement) {
+      for (DDiagramElement view : getDiagramElements((DDiagramElement) element)) {
         if (view instanceof AbstractDNode) {
           views.add(view);
         }
@@ -209,55 +209,55 @@ public class DiagramServices {
   /**
    * Returns owned NodeContainers from the given element
    */
-  public Collection<DDiagramElement> getOwnedAbstractNodes(DSemanticDecorator element_p) {
+  public Collection<DDiagramElement> getOwnedAbstractNodes(DSemanticDecorator element) {
     ArrayList<DDiagramElement> views = new ArrayList<DDiagramElement>();
 
-    if (element_p instanceof DDiagram) {
-      for (DDiagramElement view : ((DDiagram) element_p).getOwnedDiagramElements()) {
+    if (element instanceof DDiagram) {
+      for (DDiagramElement view : ((DDiagram) element).getOwnedDiagramElements()) {
         if (view instanceof AbstractDNode) {
           views.add(view);
         }
       }
-    } else if (element_p instanceof DNodeContainer) {
-      for (DDiagramElement view : ((DNodeContainer) element_p).getOwnedDiagramElements()) {
+    } else if (element instanceof DNodeContainer) {
+      for (DDiagramElement view : ((DNodeContainer) element).getOwnedDiagramElements()) {
         if (view instanceof AbstractDNode) {
           views.add(view);
         }
       }
     }
 
-    if (element_p instanceof AbstractDNode) {
-      views.addAll(((AbstractDNode) element_p).getOwnedBorderedNodes());
+    if (element instanceof AbstractDNode) {
+      views.addAll(((AbstractDNode) element).getOwnedBorderedNodes());
     }
     return views;
   }
 
   /**
-   * @param eClass_p
-   * @param diagram_p
+   * @param eClass
+   * @param diagram
    * @return
    */
-  public DiagramElementMapping getMapping(String eClass_p, DDiagram diagram_p) {
+  public DiagramElementMapping getMapping(String eClass, DDiagram diagram) {
     String mappingName = null;
-    if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram_p.getDescription().getName())) {
-      if (eClass_p.equals(CtxPackage.Literals.ACTOR.getName())) {
+    if (IDiagramNameConstants.MISSIONS_CAPABILITIES_BLANK_DIAGRAM_NAME.equals(diagram.getDescription().getName())) {
+      if (eClass.equals(CtxPackage.Literals.ACTOR.getName())) {
         mappingName = IMappingNameConstants.MCB_COMPONENT_MAPPING_NAME;
       }
-      if (eClass_p.equals(CtxPackage.Literals.CAPABILITY.getName())) {
+      if (eClass.equals(CtxPackage.Literals.CAPABILITY.getName())) {
         mappingName = IMappingNameConstants.MCB_CAPABILITY_MAPPING_NAME;
       }
-      if (eClass_p.equals(CtxPackage.Literals.MISSION.getName())) {
+      if (eClass.equals(CtxPackage.Literals.MISSION.getName())) {
         mappingName = IMappingNameConstants.MCB_MISSION_MAPPING_NAME;
       }
     }
-    return DiagramServices.getDiagramServices().getNodeMapping(diagram_p, mappingName);
+    return DiagramServices.getDiagramServices().getNodeMapping(diagram, mappingName);
   }
 
-  public List<NodeMapping> getAllBorderedNodeMapping(AbstractNodeMapping mapping_p) {
+  public List<NodeMapping> getAllBorderedNodeMapping(AbstractNodeMapping mapping) {
     List<NodeMapping> returnedList = new ArrayList<NodeMapping>();
-    returnedList.addAll(mapping_p.getBorderedNodeMappings());
-    if (mapping_p instanceof ContainerMapping) {
-      ContainerMapping currentContainerMapping = (ContainerMapping) mapping_p;
+    returnedList.addAll(mapping.getBorderedNodeMappings());
+    if (mapping instanceof ContainerMapping) {
+      ContainerMapping currentContainerMapping = (ContainerMapping) mapping;
       for (ContainerMapping aMapping : currentContainerMapping.getSubContainerMappings()) {
         returnedList.addAll(getAllBorderedNodeMapping(aMapping));
       }
@@ -268,50 +268,50 @@ public class DiagramServices {
     return returnedList;
   }
 
-  public List<NodeMapping> getAllNodeMappings(ContainerMapping mapping_p) {
+  public List<NodeMapping> getAllNodeMappings(ContainerMapping mapping) {
     List<NodeMapping> returnedList = new ArrayList<NodeMapping>();
-    returnedList.addAll(mapping_p.getSubNodeMappings());
-    for (ContainerMapping aMapping : mapping_p.getSubContainerMappings()) {
+    returnedList.addAll(mapping.getSubNodeMappings());
+    for (ContainerMapping aMapping : mapping.getSubContainerMappings()) {
       returnedList.addAll(getAllNodeMappings(aMapping));
     }
     return returnedList;
   }
 
-  public List<ContainerMapping> getAllContainerMappings(ContainerMapping mapping_p) {
+  public List<ContainerMapping> getAllContainerMappings(ContainerMapping mapping) {
     List<ContainerMapping> returnedList = new ArrayList<ContainerMapping>();
-    returnedList.add(mapping_p);
-    for (ContainerMapping aMapping : mapping_p.getSubContainerMappings()) {
+    returnedList.add(mapping);
+    for (ContainerMapping aMapping : mapping.getSubContainerMappings()) {
       returnedList.addAll(getAllContainerMappings(aMapping));
     }
     return returnedList;
   }
 
-  public AbstractNodeMapping getAbstractNodeMapping(final DiagramDescription description_p, String mappingName_p) {
+  public AbstractNodeMapping getAbstractNodeMapping(final DiagramDescription description, String mappingName) {
 
-    for (NodeMapping nodeMapping : description_p.getAllNodeMappings()) {
-      if (nodeMapping.getName().equals(mappingName_p)) {
+    for (NodeMapping nodeMapping : description.getAllNodeMappings()) {
+      if (nodeMapping.getName().equals(mappingName)) {
         return nodeMapping;
       }
       for (NodeMapping borderedMapping : nodeMapping.getAllBorderedNodeMappings()) {
-        if (borderedMapping.getName().equals(mappingName_p)) {
+        if (borderedMapping.getName().equals(mappingName)) {
           return borderedMapping;
         }
       }
     }
 
-    for (ContainerMapping nodeMapping : description_p.getAllContainerMappings()) {
-      if (nodeMapping.getName().equals(mappingName_p)) {
+    for (ContainerMapping nodeMapping : description.getAllContainerMappings()) {
+      if (nodeMapping.getName().equals(mappingName)) {
         return nodeMapping;
       }
       for (DiagramElementMapping mapping : nodeMapping.getAllMappings()) {
         if ((mapping instanceof AbstractNodeMapping)) {
 
-          if (mapping.getName().equals(mappingName_p)) {
+          if (mapping.getName().equals(mappingName)) {
             return (AbstractNodeMapping) mapping;
 
           }
           for (NodeMapping borderedMapping : ((AbstractNodeMapping) mapping).getAllBorderedNodeMappings()) {
-            if (borderedMapping.getName().equals(mappingName_p)) {
+            if (borderedMapping.getName().equals(mappingName)) {
               return borderedMapping;
             }
           }
@@ -322,21 +322,21 @@ public class DiagramServices {
     return null;
   }
 
-  public AbstractNodeMapping getAbstractNodeMapping(final DDiagram diagram, String mappingName_p) {
+  public AbstractNodeMapping getAbstractNodeMapping(final DDiagram diagram, String mappingName) {
     final DiagramDescription description = diagram.getDescription();
-    return getAbstractNodeMapping(description, mappingName_p);
+    return getAbstractNodeMapping(description, mappingName);
   }
 
-  public NodeMapping getNodeMapping(final DDiagram diagram, String mappingName_p) {
+  public NodeMapping getNodeMapping(final DDiagram diagram, String mappingName) {
     final DiagramDescription description = diagram.getDescription();
     for (final NodeMapping nodeMapping : description.getAllNodeMappings()) {
-      if (nodeMapping.getName().equals(mappingName_p)) {
+      if (nodeMapping.getName().equals(mappingName)) {
         return nodeMapping;
       }
     }
     for (ContainerMapping aMapping : description.getAllContainerMappings()) {
       for (NodeMapping aNodeMapping : getAllNodeMappings(aMapping)) {
-        if (aNodeMapping.getName().equals(mappingName_p)) {
+        if (aNodeMapping.getName().equals(mappingName)) {
           return aNodeMapping;
         }
       }
@@ -344,27 +344,27 @@ public class DiagramServices {
     return null;
   }
 
-  public List<NodeMapping> getBorderedNodeMapping(final DDiagram diagram, List<String> mappingNames_p) {
+  public List<NodeMapping> getBorderedNodeMapping(final DDiagram diagram, List<String> mappingNames) {
     List<NodeMapping> result = new ArrayList<NodeMapping>();
 
-    for (String name : mappingNames_p) {
+    for (String name : mappingNames) {
       result.add(getBorderedNodeMapping(diagram, name));
     }
     return result;
   }
 
-  public NodeMapping getBorderedNodeMapping(final DDiagram diagram, String mappingName_p) {
+  public NodeMapping getBorderedNodeMapping(final DDiagram diagram, String mappingName) {
     final DiagramDescription description = diagram.getDescription();
     for (final NodeMapping nodeMapping : description.getAllNodeMappings()) {
       for (NodeMapping aBorderedNodeMapping : getAllBorderedNodeMapping(nodeMapping)) {
-        if (aBorderedNodeMapping.getName().equals(mappingName_p)) {
+        if (aBorderedNodeMapping.getName().equals(mappingName)) {
           return aBorderedNodeMapping;
         }
       }
     }
     for (ContainerMapping aMapping : description.getAllContainerMappings()) {
       for (NodeMapping aBorderedNodeMapping : getAllBorderedNodeMapping(aMapping)) {
-        if (aBorderedNodeMapping.getName().equals(mappingName_p)) {
+        if (aBorderedNodeMapping.getName().equals(mappingName)) {
           return aBorderedNodeMapping;
         }
       }
@@ -372,11 +372,11 @@ public class DiagramServices {
     return null;
   }
 
-  public ContainerMapping getContainerMapping(final DDiagram diagram, String mappingName_p) {
+  public ContainerMapping getContainerMapping(final DDiagram diagram, String mappingName) {
     final DiagramDescription description = diagram.getDescription();
     for (ContainerMapping aContainerMapping : description.getAllContainerMappings()) {
       for (ContainerMapping aSubContainerMapping : getAllContainerMappings(aContainerMapping)) {
-        if (aSubContainerMapping.getName().equals(mappingName_p)) {
+        if (aSubContainerMapping.getName().equals(mappingName)) {
           return aSubContainerMapping;
         }
       }
@@ -384,114 +384,114 @@ public class DiagramServices {
     return null;
   }
 
-  public EdgeMapping getEdgeMapping(final DiagramDescription description_p, String mappingName_p) {
-    for (final EdgeMapping edgeMapping : description_p.getAllEdgeMappings()) {
-      if (edgeMapping.getName().equals(mappingName_p)) {
+  public EdgeMapping getEdgeMapping(final DiagramDescription description, String mappingName) {
+    for (final EdgeMapping edgeMapping : description.getAllEdgeMappings()) {
+      if (edgeMapping.getName().equals(mappingName)) {
         return edgeMapping;
       }
     }
     return null;
   }
 
-  public EdgeMapping getEdgeMapping(final DDiagram diagram_p, String mappingName_p) {
-    final DiagramDescription description = diagram_p.getDescription();
-    return getEdgeMapping(description, mappingName_p);
+  public EdgeMapping getEdgeMapping(final DDiagram diagram, String mappingName) {
+    final DiagramDescription description = diagram.getDescription();
+    return getEdgeMapping(description, mappingName);
   }
 
-  public DNode createNode(NodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
-    final DDiagram diagram = diagram_p;
+  public DNode createNode(NodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
+    final DDiagram diag = diagram;
 
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement_p);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement_p);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram_p);
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
+    diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping_p, modelElement_p, container_p);
-    return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diagram), nodeCandidate, false);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
   }
 
-  public DNode createBorderedNode(NodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
-    final DDiagram diagram = diagram_p;
+  public DNode createBorderedNode(NodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
+    final DDiagram diag = diagram;
 
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement_p);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement_p);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram_p);
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
+    diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping_p, modelElement_p, container_p);
-    return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diagram), nodeCandidate, true);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, true);
   }
 
-  public AbstractDNode createDNodeListElement(NodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
-    final DDiagram diagram = diagram_p;
+  public AbstractDNode createDNodeListElement(NodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
+    final DDiagram diag = diagram;
 
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement_p);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement_p);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram_p);
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
+    diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping_p, modelElement_p, container_p);
-    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diagram), nodeCandidate, false, -1);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false, -1);
   }
 
-  public DNodeContainer createContainer(ContainerMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
-    final DDiagram diagram = diagram_p;
+  public DNodeContainer createContainer(ContainerMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
+    final DDiagram diag = diagram;
 
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement_p);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement_p);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram_p);
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
+    diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping_p, modelElement_p, container_p);
-    return (DNodeContainer) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diagram), nodeCandidate, false);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    return (DNodeContainer) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
   }
 
   @Deprecated
-  public AbstractDNode createAbstractDNodeContainer(AbstractNodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
-    return createAbstractDNode(mapping_p, modelElement_p, container_p, diagram_p);
+  public AbstractDNode createAbstractDNodeContainer(AbstractNodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
+    return createAbstractDNode(mapping, modelElement, container, diagram);
   }
 
-  public boolean isBorderedNodeMapping(DiagramElementMapping mapping_p) {
-    return (mapping_p != null)
-           && org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS.equals(mapping_p
+  public boolean isBorderedNodeMapping(DiagramElementMapping mapping) {
+    return (mapping != null)
+           && org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS.equals(mapping
                .eContainingFeature());
   }
 
-  public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping_p, EObject modelElement_p, DragAndDropTarget container_p, DDiagram diagram_p) {
-    final DDiagram diagram = diagram_p;
-    if (mapping_p == null) {
+  public AbstractDNode createAbstractDNode(AbstractNodeMapping mapping, EObject modelElement, DragAndDropTarget container, DDiagram diagram) {
+    final DDiagram diag = diagram;
+    if (mapping == null) {
       return null;
     }
 
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement_p);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement_p);
-    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
-    diagramSync.setDiagram((DSemanticDiagram) diagram_p);
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(modelElement);
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+    final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
+    diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping_p, modelElement_p, container_p);
-    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diagram), nodeCandidate, isBorderedNodeMapping(mapping_p));
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, isBorderedNodeMapping(mapping));
   }
 
-  public DEdge createEdge(EdgeMapping mapping_p, EdgeTarget sourceView_p, EdgeTarget targetView_p, EObject semanticObject_p) {
-    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semanticObject_p);
-    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticObject_p);
+  public DEdge createEdge(EdgeMapping mapping, EdgeTarget sourceView, EdgeTarget targetView, EObject semanticObject) {
+    ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semanticObject);
+    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticObject);
 
-    if (mapping_p == null) {
+    if (mapping == null) {
       return null;
     }
 
-    if ((sourceView_p == null) || (targetView_p == null)) {
+    if ((sourceView == null) || (targetView == null)) {
       return null;
     }
 
-    DEdgeCandidate edgeCandidate = new DEdgeCandidate(mapping_p, semanticObject_p, sourceView_p, targetView_p);
+    DEdgeCandidate edgeCandidate = new DEdgeCandidate(mapping, semanticObject, sourceView, targetView);
 
-    final DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView_p);
+    final DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
@@ -507,13 +507,13 @@ public class DiagramServices {
     DiagramElementMapping sourceMapping = null;
     DiagramElementMapping targetMapping = null;
 
-    if (sourceView_p instanceof DDiagramElement) {
-      sourceElement = (DDiagramElement) sourceView_p;
+    if (sourceView instanceof DDiagramElement) {
+      sourceElement = (DDiagramElement) sourceView;
       sourceMapping = sourceElement.getDiagramElementMapping();
     }
 
-    if (targetView_p instanceof DDiagramElement) {
-      targetElement = (DDiagramElement) targetView_p;
+    if (targetView instanceof DDiagramElement) {
+      targetElement = (DDiagramElement) targetView;
       targetMapping = targetElement.getDiagramElementMapping();
     }
 
@@ -525,10 +525,10 @@ public class DiagramServices {
     }
 
     if (sourceMapping != null) {
-      mappingsToEdgeTargets.get(sourceMapping).add(sourceView_p);
+      mappingsToEdgeTargets.get(sourceMapping).add(sourceView);
     }
-    if ((targetMapping != null) && !sourceView_p.equals(targetView_p)) {
-      mappingsToEdgeTargets.get(targetMapping).add(targetView_p);
+    if ((targetMapping != null) && !sourceView.equals(targetView)) {
+      mappingsToEdgeTargets.get(targetMapping).add(targetView);
     }
 
     diagramSync.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
@@ -536,22 +536,22 @@ public class DiagramServices {
         edgeToSemanticBasedDecoration);
   }
 
-  public boolean isHiddenLabel(DDiagramElement context_p) {
-    return new DDiagramElementQuery(context_p).isLabelHidden();
+  public boolean isHiddenLabel(DDiagramElement context) {
+    return new DDiagramElementQuery(context).isLabelHidden();
   }
 
-  public EObject hideLabel(DDiagramElement context_p) {
-    HideFilterHelper.INSTANCE.hideLabel(context_p);
-    return context_p;
+  public EObject hideLabel(DDiagramElement context) {
+    HideFilterHelper.INSTANCE.hideLabel(context);
+    return context;
   }
 
-  public boolean isHidden(DDiagramElement context_p) {
-    return new DDiagramElementQuery(context_p).isHidden();
+  public boolean isHidden(DDiagramElement context) {
+    return new DDiagramElementQuery(context).isHidden();
   }
 
-  public EObject hide(DDiagramElement context_p) {
-    HideFilterHelper.INSTANCE.hide(context_p);
-    return context_p;
+  public EObject hide(DDiagramElement context) {
+    HideFilterHelper.INSTANCE.hide(context);
+    return context;
   }
 
   /**
@@ -598,18 +598,18 @@ public class DiagramServices {
 
   /**
    * Returns a list of all diagram elements for the given view.
-   * @param diagram_p
+   * @param diagram
    * @param semantic
    * @return
    */
-  public Collection<DSemanticDecorator> getDiagramElements(DRepresentation diagram_p, EObject semantic) {
+  public Collection<DSemanticDecorator> getDiagramElements(DRepresentation diagram, EObject semantic) {
     Collection<DSemanticDecorator> views = new ArrayList<DSemanticDecorator>();
     Session session = SessionManager.INSTANCE.getSession(semantic);
     for (Setting setting : session.getSemanticCrossReferencer().getInverseReferences(semantic)) {
       if (ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET.equals(setting.getEStructuralFeature())) {
         DSemanticDecorator decorator = (DSemanticDecorator) setting.getEObject();
-        DRepresentation diagram = DiagramHelper.getService().getRepresentation(decorator);
-        if ((diagram_p == null) || diagram_p.equals(diagram)) {
+        DRepresentation diag = DiagramHelper.getService().getRepresentation(decorator);
+        if ((diagram == null) || diagram.equals(diag)) {
           views.add(decorator);
         }
       }
@@ -646,71 +646,71 @@ public class DiagramServices {
 
   /**
    * remove a Node view
-   * @param node_p a node
+   * @param node a node
    */
-  public void removeNodeView(DNode node_p) {
-    EObject container = node_p.eContainer();
+  public void removeNodeView(DNode node) {
+    EObject container = node.eContainer();
     if (container != null) {
       if (container instanceof DDiagram) {
-        ((DDiagram) container).getOwnedDiagramElements().remove(node_p);
+        ((DDiagram) container).getOwnedDiagramElements().remove(node);
       }
       if (container instanceof DNodeContainer) {
         DNodeContainer nodeContainer = (DNodeContainer) container;
-        if (nodeContainer.getOwnedDiagramElements().contains(node_p)) {
-          nodeContainer.getOwnedDiagramElements().remove(node_p);
+        if (nodeContainer.getOwnedDiagramElements().contains(node)) {
+          nodeContainer.getOwnedDiagramElements().remove(node);
         }
-        if (nodeContainer.getOwnedBorderedNodes().contains(node_p)) {
-          nodeContainer.getOwnedBorderedNodes().remove(node_p);
+        if (nodeContainer.getOwnedBorderedNodes().contains(node)) {
+          nodeContainer.getOwnedBorderedNodes().remove(node);
         }
       }
       if (container instanceof DNode) {
-        ((DNode) container).getOwnedBorderedNodes().remove(node_p);
+        ((DNode) container).getOwnedBorderedNodes().remove(node);
       }
     }
   }
 
-  public void removeNodeListElementView(AbstractDNode node_p) {
-    EObject container = node_p.eContainer();
+  public void removeNodeListElementView(AbstractDNode node) {
+    EObject container = node.eContainer();
     if ((container != null) && (container instanceof DNodeList)) {
-      ((DNodeList) container).getOwnedElements().remove(node_p);
+      ((DNodeList) container).getOwnedElements().remove(node);
     }
   }
 
-  public void removeAbstractDNodeView(AbstractDNode node_p) {
-    EObject container = node_p.eContainer();
+  public void removeAbstractDNodeView(AbstractDNode node) {
+    EObject container = node.eContainer();
     if (container != null) {
       if (container instanceof DDiagram) {
-        ((DDiagram) container).getOwnedDiagramElements().remove(node_p);
+        ((DDiagram) container).getOwnedDiagramElements().remove(node);
       } else if (container instanceof DNodeContainer) {
         DNodeContainer nodeContainer = (DNodeContainer) container;
-        if (nodeContainer.getOwnedDiagramElements().contains(node_p)) {
-          nodeContainer.getOwnedDiagramElements().remove(node_p);
+        if (nodeContainer.getOwnedDiagramElements().contains(node)) {
+          nodeContainer.getOwnedDiagramElements().remove(node);
         }
-        if (nodeContainer.getOwnedBorderedNodes().contains(node_p)) {
-          nodeContainer.getOwnedBorderedNodes().remove(node_p);
+        if (nodeContainer.getOwnedBorderedNodes().contains(node)) {
+          nodeContainer.getOwnedBorderedNodes().remove(node);
         }
       } else if (container instanceof DNode) {
-        ((DNode) container).getOwnedBorderedNodes().remove(node_p);
+        ((DNode) container).getOwnedBorderedNodes().remove(node);
       } else if (container instanceof DNodeList) {
-        ((DNodeList) container).getOwnedElements().remove(node_p);
+        ((DNodeList) container).getOwnedElements().remove(node);
       }
     }
   }
 
   /**
    * remove a container View
-   * @param container_p a container
+   * @param container a container
    */
-  public void removeContainerView(DContainer container_p) {
-    EObject container = container_p.eContainer();
-    if (container != null) {
-      if (container instanceof DDiagram) {
-        ((DDiagram) container).getOwnedDiagramElements().remove(container_p);
+  public void removeContainerView(DContainer container) {
+    EObject owner = container.eContainer();
+    if (owner != null) {
+      if (owner instanceof DDiagram) {
+        ((DDiagram) owner).getOwnedDiagramElements().remove(container);
       }
-      if (container instanceof DNodeContainer) {
-        DNodeContainer nodeContainer = (DNodeContainer) container;
-        if (nodeContainer.getOwnedDiagramElements().contains(container_p)) {
-          nodeContainer.getOwnedDiagramElements().remove(container_p);
+      if (owner instanceof DNodeContainer) {
+        DNodeContainer nodeContainer = (DNodeContainer) owner;
+        if (nodeContainer.getOwnedDiagramElements().contains(container)) {
+          nodeContainer.getOwnedDiagramElements().remove(container);
         }
       }
     }
@@ -739,24 +739,24 @@ public class DiagramServices {
   /**
    * Check if element used given mapping or use a sub mapping of the current mapping (mapping imports) We should use this method to ensure tool are working with
    * viewpoint extensions
-   * @param element_p
-   * @param mappind_p
+   * @param element
+   * @param mappind
    * @return
    */
-  public boolean isMapping(DDiagramElement element_p, DiagramElementMapping mapping_p) {
-    return (mapping_p != null) && new DiagramElementMappingQuery(mapping_p).isInstanceOf(element_p);
+  public boolean isMapping(DDiagramElement element, DiagramElementMapping mapping) {
+    return (mapping != null) && new DiagramElementMappingQuery(mapping).isInstanceOf(element);
   }
 
   /**
    * This method tests if a Node is a BorderedNode
-   * @param node_p : a DNode in a diagram
+   * @param node : a DNode in a diagram
    * @return true if the current node is a borderedNode
    */
-  public boolean isABorderedNode(AbstractDNode node_p) {
-    if (null == node_p) {
+  public boolean isABorderedNode(AbstractDNode node) {
+    if (null == node) {
       return false;
     }
-    EObject container = node_p.eContainer();
+    EObject container = node.eContainer();
     if (null == container) {
       return false;
     }
@@ -765,48 +765,48 @@ public class DiagramServices {
     }
     if (container instanceof AbstractDNode) {
       AbstractDNode nodeContainer = (AbstractDNode) container;
-      return nodeContainer.getOwnedBorderedNodes().contains(node_p);
+      return nodeContainer.getOwnedBorderedNodes().contains(node);
     }
     return false;
   }
 
-  public Set<DEdge> getIncomingEdges(EdgeTarget node_p, DDiagram diagram_p) {
+  public Set<DEdge> getIncomingEdges(EdgeTarget node, DDiagram diagram) {
     Set<DEdge> returnedSet = new HashSet<DEdge>();
-    returnedSet.addAll(node_p.getIncomingEdges());
-    returnedSet.retainAll(diagram_p.getEdges());
+    returnedSet.addAll(node.getIncomingEdges());
+    returnedSet.retainAll(diagram.getEdges());
     return returnedSet;
   }
 
-  public Set<DEdge> getIncomingEdges(EdgeTarget node_p) {
-    DDiagram diagram_p = CapellaServices.getService().getDiagramContainer(node_p);
-    return getIncomingEdges(node_p, diagram_p);
+  public Set<DEdge> getIncomingEdges(EdgeTarget node) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
+    return getIncomingEdges(node, diagram);
   }
 
-  public Set<DEdge> getOutgoingEdges(EdgeTarget node_p, DDiagram diagram_p) {
+  public Set<DEdge> getOutgoingEdges(EdgeTarget node, DDiagram diagram) {
     Set<DEdge> returnedSet = new HashSet<DEdge>();
-    returnedSet.addAll(node_p.getOutgoingEdges());
-    returnedSet.retainAll(diagram_p.getEdges());
+    returnedSet.addAll(node.getOutgoingEdges());
+    returnedSet.retainAll(diagram.getEdges());
     return returnedSet;
   }
 
   /**
    * Returns candidates for the source of the edge mapping (evaluate the source expression of the mapping)
    */
-  public EList<EObject> getEdgeSourceCandidates(EdgeMapping edgeMapping, EObject context_p, DDiagram diagram) {
-    return getEdgeMappingHelper(context_p).getEdgeSourceCandidates(edgeMapping, context_p, diagram);
+  public EList<EObject> getEdgeSourceCandidates(EdgeMapping edgeMapping, EObject context, DDiagram diagram) {
+    return getEdgeMappingHelper(context).getEdgeSourceCandidates(edgeMapping, context, diagram);
   }
 
   /**
    * Returns candidates for the target of the edge mapping (evaluate the source expression of the mapping)
    */
-  public EList<EObject> getEdgeTargetCandidates(EdgeMapping edgeMapping, EObject context_p, DDiagram diagram) {
-    return getEdgeMappingHelper(context_p).getEdgeTargetCandidates(edgeMapping, context_p, diagram);
+  public EList<EObject> getEdgeTargetCandidates(EdgeMapping edgeMapping, EObject context, DDiagram diagram) {
+    return getEdgeMappingHelper(context).getEdgeTargetCandidates(edgeMapping, context, diagram);
   }
 
-  public Set<DEdge> getOutgoingEdges(EdgeTarget node_p) {
-    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node_p);
+  public Set<DEdge> getOutgoingEdges(EdgeTarget node) {
+    DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
     Set<DEdge> returnedSet = new HashSet<DEdge>();
-    returnedSet.addAll(node_p.getOutgoingEdges());
+    returnedSet.addAll(node.getOutgoingEdges());
     returnedSet.retainAll(diagram.getEdges());
     return returnedSet;
   }
@@ -821,37 +821,37 @@ public class DiagramServices {
     DiagramElementMapping mapping;
 
     /**
-     * @param diagram_p
+     * @param diagram
      */
-    public DiagramIterator(DDiagram diagram_p) {
+    public DiagramIterator(DDiagram diagram) {
       elements = new LinkedList<DDiagramElement>();
-      if (diagram_p != null) {
-        elements.addAll(diagram_p.getOwnedDiagramElements());
+      if (diagram != null) {
+        elements.addAll(diagram.getOwnedDiagramElements());
       }
     }
 
-    public DiagramIterator(DDiagram diagram_p, DiagramElementMapping mapping_p) {
-      this(diagram_p);
-      mapping = mapping_p;
+    public DiagramIterator(DDiagram diagram, DiagramElementMapping mapping) {
+      this(diagram);
+      mapping = mapping;
     }
 
-    public DiagramIterator(DDiagramElement diagramElement_p) {
+    public DiagramIterator(DDiagramElement diagramElement) {
       elements = new LinkedList<DDiagramElement>();
 
-      if (diagramElement_p instanceof AbstractDNode) {
-        elements.addAll(((AbstractDNode) diagramElement_p).getOwnedBorderedNodes());
+      if (diagramElement instanceof AbstractDNode) {
+        elements.addAll(((AbstractDNode) diagramElement).getOwnedBorderedNodes());
       }
-      if (diagramElement_p instanceof DNodeContainer) {
-        elements.addAll(((DNodeContainer) diagramElement_p).getOwnedDiagramElements());
+      if (diagramElement instanceof DNodeContainer) {
+        elements.addAll(((DNodeContainer) diagramElement).getOwnedDiagramElements());
       }
-      if (diagramElement_p instanceof DNodeList) {
-        elements.addAll(((DNodeList) diagramElement_p).getOwnedElements());
+      if (diagramElement instanceof DNodeList) {
+        elements.addAll(((DNodeList) diagramElement).getOwnedElements());
       }
     }
 
-    public DiagramIterator(DDiagramElement diagramElement_p, DiagramElementMapping mapping_p) {
-      this(diagramElement_p);
-      mapping = mapping_p;
+    public DiagramIterator(DDiagramElement diagramElement, DiagramElementMapping mapping) {
+      this(diagramElement);
+      mapping = mapping;
     }
 
     /**
@@ -882,18 +882,18 @@ public class DiagramServices {
       return false;
     }
 
-    protected Collection<DDiagramElement> getNexts(DDiagramElement diagramElement_p) {
+    protected Collection<DDiagramElement> getNexts(DDiagramElement diagramElement) {
 
       List<DDiagramElement> element = new ArrayList<DDiagramElement>();
 
-      if (diagramElement_p instanceof AbstractDNode) {
-        element.addAll(((AbstractDNode) diagramElement_p).getOwnedBorderedNodes());
+      if (diagramElement instanceof AbstractDNode) {
+        element.addAll(((AbstractDNode) diagramElement).getOwnedBorderedNodes());
       }
-      if (diagramElement_p instanceof DNodeContainer) {
-        element.addAll(((DNodeContainer) diagramElement_p).getOwnedDiagramElements());
+      if (diagramElement instanceof DNodeContainer) {
+        element.addAll(((DNodeContainer) diagramElement).getOwnedDiagramElements());
       }
-      if (diagramElement_p instanceof DNodeList) {
-        element.addAll(((DNodeList) diagramElement_p).getOwnedElements());
+      if (diagramElement instanceof DNodeList) {
+        element.addAll(((DNodeList) diagramElement).getOwnedElements());
       }
 
       return element;
@@ -928,8 +928,8 @@ public class DiagramServices {
   /**
    * An optimized version of diagram.getDiagramElements()
    */
-  public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram_p) {
-    final DiagramIterator iterator = new DiagramIterator(diagram_p);
+  public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram) {
+    final DiagramIterator iterator = new DiagramIterator(diagram);
 
     return new Iterable<DDiagramElement>() {
 
@@ -940,8 +940,8 @@ public class DiagramServices {
     };
   }
 
-  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement_p) {
-    final DiagramIterator iterator = new DiagramIterator(diagramElement_p);
+  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement) {
+    final DiagramIterator iterator = new DiagramIterator(diagramElement);
 
     return new Iterable<DDiagramElement>() {
 
@@ -952,8 +952,8 @@ public class DiagramServices {
     };
   }
 
-  public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram_p, DiagramElementMapping mapping_p) {
-    final DiagramIterator iterator = new DiagramIterator(diagram_p, mapping_p);
+  public Iterable<DDiagramElement> getDiagramElements(DDiagram diagram, DiagramElementMapping mapping) {
+    final DiagramIterator iterator = new DiagramIterator(diagram, mapping);
 
     return new Iterable<DDiagramElement>() {
 
@@ -964,8 +964,8 @@ public class DiagramServices {
     };
   }
 
-  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement_p, DiagramElementMapping mapping_p) {
-    final DiagramIterator iterator = new DiagramIterator(diagramElement_p, mapping_p);
+  public Iterable<DDiagramElement> getDiagramElements(DDiagramElement diagramElement, DiagramElementMapping mapping) {
+    final DiagramIterator iterator = new DiagramIterator(diagramElement, mapping);
 
     return new Iterable<DDiagramElement>() {
 
@@ -979,9 +979,9 @@ public class DiagramServices {
   /**
    * An optimized version of SetOf<diagram.getDiagramElements()>
    */
-  public Set<DDiagramElement> getSetOfDiagramElements(DDiagram diagram_p) {
+  public Set<DDiagramElement> getSetOfDiagramElements(DDiagram diagram) {
     Set<DDiagramElement> set = new HashSet<DDiagramElement>();
-    for (DDiagramElement element : getDiagramElements(diagram_p)) {
+    for (DDiagramElement element : getDiagramElements(diagram)) {
       set.add(element);
     }
     return set;
@@ -1010,9 +1010,9 @@ public class DiagramServices {
   /**
    * An optimized version of SetOf<diagram.getDiagramElements().target>
    */
-  public Set<EObject> getSetOfDiagramElementsTarget(DDiagram diagram_p) {
+  public Set<EObject> getSetOfDiagramElementsTarget(DDiagram diagram) {
     Set<EObject> set = new HashSet<EObject>();
-    for (DDiagramElement element : getDiagramElements(diagram_p)) {
+    for (DDiagramElement element : getDiagramElements(diagram)) {
       set.add(element.getTarget());
     }
     set.remove(null); // avoid null target if used in a beforeRefresh method
@@ -1022,9 +1022,9 @@ public class DiagramServices {
   /**
    * An optimized version of MapOf<diagram.getDiagramElements().isA("DNodeContainer").target>
    */
-  public Map<EObject, DSemanticDecorator> getMapOfDiagramElements(DDiagram diagram_p) {
+  public Map<EObject, DSemanticDecorator> getMapOfDiagramElements(DDiagram diagram) {
     Map<EObject, DSemanticDecorator> map = new HashMap<EObject, DSemanticDecorator>();
-    for (DDiagramElement element : getDiagramElements(diagram_p)) {
+    for (DDiagramElement element : getDiagramElements(diagram)) {
       map.put(element.getTarget(), element);
     }
     map.remove(null); // avoid null target if used in a beforeRefresh method
@@ -1034,9 +1034,9 @@ public class DiagramServices {
   /**
    * An optimized version of MapOf<diagram.getDiagramElements().isA("DNodeContainer").target>
    */
-  public Map<EObject, DragAndDropTarget> getMapOfDiagramNodes(DDiagram diagram_p) {
+  public Map<EObject, DragAndDropTarget> getMapOfDiagramNodes(DDiagram diagram) {
     Map<EObject, DragAndDropTarget> map = new HashMap<EObject, DragAndDropTarget>();
-    for (DDiagramElement element : getDiagramElements(diagram_p)) {
+    for (DDiagramElement element : getDiagramElements(diagram)) {
       if (element instanceof DragAndDropTarget) {
         map.put(element.getTarget(), (DragAndDropTarget) element);
       }
@@ -1046,20 +1046,20 @@ public class DiagramServices {
   }
 
   /**
-   * @param view_p a {@link DDiagram} or a {@link DNodeContainer}
-   * @return recursively all the containers contained in view_p
+   * @param view a {@link DDiagram} or a {@link DNodeContainer}
+   * @return recursively all the containers contained in view
    */
-  public List<DNodeContainer> getAllContainers(EObject view_p) {
+  public List<DNodeContainer> getAllContainers(EObject view) {
     List<DNodeContainer> returnedList = new ArrayList<DNodeContainer>();
-    if (view_p instanceof DDiagram) {
-      for (AbstractDNode aContainer : ((DDiagram) view_p).getContainers()) {
+    if (view instanceof DDiagram) {
+      for (AbstractDNode aContainer : ((DDiagram) view).getContainers()) {
         if (aContainer instanceof DNodeContainer) {
           returnedList.add((DNodeContainer) aContainer);
         }
       }
     }
-    if (view_p instanceof DNodeContainer) {
-      for (AbstractDNode aContainer : ((DNodeContainer) view_p).getContainers()) {
+    if (view instanceof DNodeContainer) {
+      for (AbstractDNode aContainer : ((DNodeContainer) view).getContainers()) {
         if (aContainer instanceof DNodeContainer) {
           returnedList.add((DNodeContainer) aContainer);
         }
@@ -1070,44 +1070,44 @@ public class DiagramServices {
   }
 
   /**
-   * @param view_p a {@link DDiagram} or a {@link DNodeContainer}
-   * @return recursively all the containers and nodeLists contained in view_p
+   * @param view a {@link DDiagram} or a {@link DNodeContainer}
+   * @return recursively all the containers and nodeLists contained in view
    */
-  public List<DContainer> getAllContainersAndNodeLists(EObject view_p) {
+  public List<DContainer> getAllContainersAndNodeLists(EObject view) {
     List<DContainer> returnedList = new ArrayList<DContainer>();
-    if (view_p instanceof DDiagram) {
-      returnedList.addAll(((DDiagram) view_p).getContainers());
+    if (view instanceof DDiagram) {
+      returnedList.addAll(((DDiagram) view).getContainers());
     }
-    if (view_p instanceof DNodeContainer) {
-      returnedList.addAll(((DNodeContainer) view_p).getContainers());
+    if (view instanceof DNodeContainer) {
+      returnedList.addAll(((DNodeContainer) view).getContainers());
     }
     return returnedList;
   }
 
   /**
-   * @param view_p a {@link DDiagram} or a {@link DNodeContainer}
-   * @return recursively all the nodes contained in view_p
+   * @param view a {@link DDiagram} or a {@link DNodeContainer}
+   * @return recursively all the nodes contained in view
    */
-  public List<DNode> getAllNodes(EObject view_p) {
+  public List<DNode> getAllNodes(EObject view) {
     List<DNode> returnedList = new ArrayList<DNode>();
 
-    if (view_p instanceof DDiagram) {
-      returnedList.addAll(((DDiagram) view_p).getNodes());
+    if (view instanceof DDiagram) {
+      returnedList.addAll(((DDiagram) view).getNodes());
 
-    } else if (view_p instanceof DNodeContainer) {
-      returnedList.addAll(((DNodeContainer) view_p).getNodes());
-      EList<DDiagramElement> elements = ((DNodeContainer) view_p).getElements();
+    } else if (view instanceof DNodeContainer) {
+      returnedList.addAll(((DNodeContainer) view).getNodes());
+      EList<DDiagramElement> elements = ((DNodeContainer) view).getElements();
       for (DDiagramElement dDiagramElement : elements) {
         if ((dDiagramElement instanceof DNode)) {
           returnedList.add((DNode) dDiagramElement);
         }
       }
 
-    } else if (view_p instanceof DNodeList) {
-      returnedList.addAll(((DNodeList) view_p).getNodes());
+    } else if (view instanceof DNodeList) {
+      returnedList.addAll(((DNodeList) view).getNodes());
 
-    } else if (view_p instanceof DNode) {
-      returnedList.addAll(((DNode) view_p).getOwnedBorderedNodes());
+    } else if (view instanceof DNode) {
+      returnedList.addAll(((DNode) view).getOwnedBorderedNodes());
     }
     return returnedList;
   }
@@ -1116,10 +1116,10 @@ public class DiagramServices {
    * Select an element in the current diagram Element must exist before calling the tool. a newly created view will not be selected since GMF layer is not
    * created before the end of the tool.
    */
-  public void selectElementInDiagram(DSemanticDecorator newTarget_p) {
-    Object selectedElement = newTarget_p.getTarget();
+  public void selectElementInDiagram(DSemanticDecorator newTarget) {
+    Object selectedElement = newTarget.getTarget();
 
-    if ((null != selectedElement) && (newTarget_p instanceof DDiagramElement)) {
+    if ((null != selectedElement) && (newTarget instanceof DDiagramElement)) {
       IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
       IGraphicalEditPart graphicalEditPart = null;
 
@@ -1146,7 +1146,7 @@ public class DiagramServices {
             if (model instanceof View) {
               View view = (View) model;
               EObject element = view.getElement();
-              if (newTarget_p.equals(element)) {
+              if (newTarget.equals(element)) {
                 graphicalEditPart = editPart;
                 break;
               }
@@ -1165,15 +1165,15 @@ public class DiagramServices {
 
   /**
    * Returns a new list from given list with only DNodeContainers
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public Collection<DNodeContainer> filterNodeContainers(Collection<DDiagramElement> elements_p) {
+  public Collection<DNodeContainer> filterNodeContainers(Collection<DDiagramElement> elements) {
     List<DNodeContainer> edges = new ArrayList<DNodeContainer>();
-    if (elements_p == null) {
+    if (elements == null) {
       return edges;
     }
-    for (DDiagramElement element : elements_p) {
+    for (DDiagramElement element : elements) {
       if (element instanceof DNodeContainer) {
         edges.add((DNodeContainer) element);
       }
@@ -1183,15 +1183,15 @@ public class DiagramServices {
 
   /**
    * Returns a new list from given list with only AbstractDNode
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public List<AbstractDNode> filterNodes(Collection<DDiagramElement> elements_p) {
+  public List<AbstractDNode> filterNodes(Collection<DDiagramElement> elements) {
     List<AbstractDNode> edges = new ArrayList<AbstractDNode>();
-    if (elements_p == null) {
+    if (elements == null) {
       return edges;
     }
-    for (DDiagramElement element : elements_p) {
+    for (DDiagramElement element : elements) {
       if (element instanceof AbstractDNode) {
         edges.add((AbstractDNode) element);
       }
@@ -1201,15 +1201,15 @@ public class DiagramServices {
 
   /**
    * Returns a new list from given list with only DEdge
-   * @param elements_p
+   * @param elements
    * @return
    */
-  public List<DEdge> filterEdges(Collection<DDiagramElement> elements_p) {
+  public List<DEdge> filterEdges(Collection<DDiagramElement> elements) {
     List<DEdge> edges = new ArrayList<DEdge>();
-    if (elements_p == null) {
+    if (elements == null) {
       return edges;
     }
-    for (DDiagramElement element : elements_p) {
+    for (DDiagramElement element : elements) {
       if (element instanceof DEdge) {
         edges.add((DEdge) element);
       }
@@ -1219,16 +1219,16 @@ public class DiagramServices {
 
   /**
    * @param pDiagram
-   * @param sourceNode_p
-   * @param targetNode_p
-   * @param semanticObject_p
-   * @param mapping_p
+   * @param sourceNode
+   * @param targetNode
+   * @param semanticObject
+   * @param mapping
    * @return
    */
-  public DEdge findDEdgeElement(DDiagram pDiagram, EdgeTarget sourceNode_p, EdgeTarget targetNode_p, EObject semanticObject_p, EdgeMapping mapping_p) {
-    for (DEdge anEdge : pDiagram.getEdgesFromMapping(mapping_p)) {
-      if ((anEdge.getTarget() != null) && anEdge.getTarget().equals(semanticObject_p) && anEdge.getSourceNode().equals(sourceNode_p)
-          && anEdge.getTargetNode().equals(targetNode_p)) {
+  public DEdge findDEdgeElement(DDiagram pDiagram, EdgeTarget sourceNode, EdgeTarget targetNode, EObject semanticObject, EdgeMapping mapping) {
+    for (DEdge anEdge : pDiagram.getEdgesFromMapping(mapping)) {
+      if ((anEdge.getTarget() != null) && anEdge.getTarget().equals(semanticObject) && anEdge.getSourceNode().equals(sourceNode)
+          && anEdge.getTargetNode().equals(targetNode)) {
         return anEdge;
       }
     }
@@ -1237,68 +1237,68 @@ public class DiagramServices {
 
   /**
    * Return Node and NodeListElement contained in given object
-   * @param eObjecct_p
+   * @param eObjecct
    * @return
    */
   @Deprecated
-  public List<AbstractDNode> getNodesAndNodeListElements(EObject eObjecct_p) {
-    return getAllNodesAndNodeListElements(eObjecct_p);
+  public List<AbstractDNode> getNodesAndNodeListElements(EObject eObjecct) {
+    return getAllNodesAndNodeListElements(eObjecct);
   }
 
   /**
-   * @param view_p a {@link DDiagram}, a {@link DNodeContainer}, a {@link DNodeList}, a {@link DNode}
+   * @param view a {@link DDiagram}, a {@link DNodeContainer}, a {@link DNodeList}, a {@link DNode}
    * @return
    */
-  public List<AbstractDNode> getAllNodesAndNodeListElements(EObject view_p) {
+  public List<AbstractDNode> getAllNodesAndNodeListElements(EObject view) {
     List<AbstractDNode> returnedList = new ArrayList<AbstractDNode>();
 
-    if (view_p instanceof DDiagram) {
-      returnedList.addAll(((DDiagram) view_p).getNodes());
-      returnedList.addAll(((DDiagram) view_p).getNodeListElements());
+    if (view instanceof DDiagram) {
+      returnedList.addAll(((DDiagram) view).getNodes());
+      returnedList.addAll(((DDiagram) view).getNodeListElements());
 
-    } else if (view_p instanceof DNodeContainer) {
-      returnedList.addAll(((DNodeContainer) view_p).getNodes());
-      EList<DDiagramElement> elements = ((DNodeContainer) view_p).getElements();
+    } else if (view instanceof DNodeContainer) {
+      returnedList.addAll(((DNodeContainer) view).getNodes());
+      EList<DDiagramElement> elements = ((DNodeContainer) view).getElements();
       for (DDiagramElement dDiagramElement : elements) {
         if ((dDiagramElement instanceof DNode) || (dDiagramElement instanceof DNodeListElement)) {
           returnedList.add((AbstractDNode) dDiagramElement);
         }
       }
 
-    } else if (view_p instanceof DNodeList) {
-      returnedList.addAll(((DNodeList) view_p).getNodes());
-      returnedList.addAll(((DNodeList) view_p).getOwnedElements());
+    } else if (view instanceof DNodeList) {
+      returnedList.addAll(((DNodeList) view).getNodes());
+      returnedList.addAll(((DNodeList) view).getOwnedElements());
 
-    } else if (view_p instanceof DNode) {
-      returnedList.addAll(((DNode) view_p).getOwnedBorderedNodes());
+    } else if (view instanceof DNode) {
+      returnedList.addAll(((DNode) view).getOwnedBorderedNodes());
     }
     return returnedList;
   }
 
-  public String getFunctionalChainDiagramPrefix(EObject eObject_p) {
-    if (eObject_p instanceof CapellaElement) {
-      if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) eObject_p)) {
+  public String getFunctionalChainDiagramPrefix(EObject eObject) {
+    if (eObject instanceof CapellaElement) {
+      if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) eObject)) {
         return DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_SYSTEM_PREFIX;
 
-      } else if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) eObject_p)) {
+      } else if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) eObject)) {
         return DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_LOGICAL_PREFIX;
 
-      } else if (CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) eObject_p)) {
+      } else if (CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) eObject)) {
         return DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_PHYSICAL_PREFIX;
       }
     }
     return DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_PREFIX;
   }
 
-  public String getFunctionalChainDiagramSuffix(EObject eObject_p) {
-    if (eObject_p instanceof CapellaElement) {
-      if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) eObject_p)) {
+  public String getFunctionalChainDiagramSuffix(EObject eObject) {
+    if (eObject instanceof CapellaElement) {
+      if (CapellaLayerCheckingExt.isInContextLayer((CapellaElement) eObject)) {
         return DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_SYSTEM_NAME;
 
-      } else if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) eObject_p)) {
+      } else if (CapellaLayerCheckingExt.isInLogicalLayer((CapellaElement) eObject)) {
         return DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_LOGICAL_NAME;
 
-      } else if (CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) eObject_p)) {
+      } else if (CapellaLayerCheckingExt.isInPhysicalLayer((CapellaElement) eObject)) {
         return DiagramNamingConstants.FUNCTIONAL_CHAIN_DIAGRAM_PHYSICAL_NAME;
       }
     }
@@ -1307,7 +1307,7 @@ public class DiagramServices {
   }
 
   /**
-   * @param edgeMapping_p
+   * @param edgeMapping
    * @return
    */
   public EdgeMappingHelper getEdgeMappingHelper(EObject eObject) {
@@ -1316,11 +1316,11 @@ public class DiagramServices {
 
   /**
    * Returns a DiagramElementMapping from an edge (works with EdgeMappingImport)
-   * @param aEdge_p
+   * @param aEdge
    */
-  public DiagramElementMapping getEdgeMapping(DEdge aEdge_p) {
-    if ((aEdge_p != null) && (aEdge_p.getActualMapping() != null)) {
-      IEdgeMapping mapping = aEdge_p.getActualMapping();
+  public DiagramElementMapping getEdgeMapping(DEdge aEdge) {
+    if ((aEdge != null) && (aEdge.getActualMapping() != null)) {
+      IEdgeMapping mapping = aEdge.getActualMapping();
       if ((mapping != null) && (mapping instanceof EdgeMappingImport)) {
         mapping = MappingHelper.getEdgeMapping((EdgeMappingImport) mapping);
       }
@@ -1333,17 +1333,17 @@ public class DiagramServices {
   }
 
   /**
-   * @param targetDescription_p
-   * @param targetMappingName_p
+   * @param targetDescription
+   * @param targetMappingName
    * @return
    */
-  public DiagramElementMapping getMappingByName(RepresentationDescription targetDescription_p, String targetMappingName_p) {
+  public DiagramElementMapping getMappingByName(RepresentationDescription targetDescription, String targetMappingName) {
     DiagramElementMapping mapping = null;
 
-    if ((targetMappingName_p != null) && (targetDescription_p != null) && (targetDescription_p instanceof DiagramDescription)) {
-      mapping = DiagramServices.getDiagramServices().getAbstractNodeMapping((DiagramDescription) targetDescription_p, targetMappingName_p);
+    if ((targetMappingName != null) && (targetDescription != null) && (targetDescription instanceof DiagramDescription)) {
+      mapping = DiagramServices.getDiagramServices().getAbstractNodeMapping((DiagramDescription) targetDescription, targetMappingName);
       if (mapping == null) {
-        mapping = DiagramServices.getDiagramServices().getEdgeMapping((DiagramDescription) targetDescription_p, targetMappingName_p);
+        mapping = DiagramServices.getDiagramServices().getEdgeMapping((DiagramDescription) targetDescription, targetMappingName);
       }
     }
 
