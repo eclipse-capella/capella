@@ -261,7 +261,7 @@ public abstract class SemanticBrowserView extends ViewPart implements ISemanticB
    * @param viewer_p
    */
   protected void addDndDragSupport(final TreeViewer viewer_p) {
-    int operations = DND.DROP_MOVE;
+    int operations = DND.DROP_MOVE | DND.DROP_COPY;
     Transfer[] transferTypes = new Transfer[] { LocalSelectionTransfer.getTransfer() };
     // The DragSourceListener implementation is inspired by org.eclipse.debug.internal.ui.views.variables.SelectionDragAdapter.
     viewer_p.addDragSupport(operations, transferTypes, new DragSourceListener() {
