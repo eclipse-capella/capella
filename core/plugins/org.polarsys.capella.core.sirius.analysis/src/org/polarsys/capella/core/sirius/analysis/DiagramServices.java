@@ -832,7 +832,7 @@ public class DiagramServices {
 
     public DiagramIterator(DDiagram diagram, DiagramElementMapping mapping) {
       this(diagram);
-      mapping = mapping;
+      this.mapping = mapping;
     }
 
     public DiagramIterator(DDiagramElement diagramElement) {
@@ -851,7 +851,7 @@ public class DiagramServices {
 
     public DiagramIterator(DDiagramElement diagramElement, DiagramElementMapping mapping) {
       this(diagramElement);
-      mapping = mapping;
+      this.mapping = mapping;
     }
 
     /**
