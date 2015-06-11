@@ -17,25 +17,25 @@ public interface IViewpointNameConstants {
   /**
    * Common viewpoint name.
    */
-  public static final String COMMON_VIEWPOINT_NAME = "Common"; //$NON-NLS-1$
+  String COMMON_VIEWPOINT_NAME = "Common"; //$NON-NLS-1$
   /**
    * Operational Analysis viewpoint name.
    */
-  public static final String OPERATIONAL_ANALYSIS_VIEWPOINT_NAME = "Operational Analysis"; //$NON-NLS-1$
+  String OPERATIONAL_ANALYSIS_VIEWPOINT_NAME = "Operational Analysis"; //$NON-NLS-1$
   /**
    * System Analysis viewpoint name.
    */
-  public static final String SYSTEM_ANALYSIS_VIEWPOINT_NAME = "System Analysis"; //$NON-NLS-1$
+  String SYSTEM_ANALYSIS_VIEWPOINT_NAME = "System Analysis"; //$NON-NLS-1$
   /**
    * Logical Architecture viewpoint name.
    */
-  public static final String LOGICAL_ARCHITECTURE_VIEWPOINT_NAME = "Logical Architecture"; //$NON-NLS-1$
+  String LOGICAL_ARCHITECTURE_VIEWPOINT_NAME = "Logical Architecture"; //$NON-NLS-1$
   /**
    * Physical Architecture viewpoint name.
    */
-  public static final String PHYSICAL_ARCHITECTURE_VIEWPOINT_NAME = "Physical Architecture"; //$NON-NLS-1$
+  String PHYSICAL_ARCHITECTURE_VIEWPOINT_NAME = "Physical Architecture"; //$NON-NLS-1$
   /**
    * EPBS Architecture viewpoint name.
    */
-  public static final String EPBS_ARCHITECTURE_VIEWPOINT_NAME = "EPBS architecture"; //$NON-NLS-1$
+  String EPBS_ARCHITECTURE_VIEWPOINT_NAME = "EPBS architecture"; //$NON-NLS-1$
 }

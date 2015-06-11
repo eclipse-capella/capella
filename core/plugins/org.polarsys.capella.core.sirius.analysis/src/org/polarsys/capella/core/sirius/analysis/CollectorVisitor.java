@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,12 +17,12 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
 /**
  * This type defines the contract of a visitor that collect data on a model.
  * 
- * @param IT
+ * @param I
  *            the type of data that are visit by this visitor.
- * @param OT
+ * @param O
  *            the type of data to collect (output type).
  */
-public interface CollectorVisitor<IT, OT> {
+public interface CollectorVisitor<I, O> {
 
     /**
      * Visit one data.
@@ -32,12 +32,12 @@ public interface CollectorVisitor<IT, OT> {
      * @param output
      *            the output data.
      */
-    void visit(final IT input, final Collection<OT> output);
+    void visit(final I input, final Collection<O> output);
 
     /**
      * Default visitor, input == output.
      */
-    public static final CollectorVisitor<? extends CapellaElement, ? extends CapellaElement> DEFAULT_VISITOR = new CollectorVisitor<CapellaElement, CapellaElement>() {
+    CollectorVisitor<? extends CapellaElement, ? extends CapellaElement> DEFAULT_VISITOR = new CollectorVisitor<CapellaElement, CapellaElement>() {
         public void visit(CapellaElement input, Collection<CapellaElement> output) {
             output.add(input);
         }
@@ -49,7 +49,7 @@ public interface CollectorVisitor<IT, OT> {
      */
     public static class BasicCollectorVisitor implements CollectorVisitor<Object, Object> {
 
-        /** teh filter type. */
+        /** the filter type. */
         private Class<? extends Object> filterType;
 
         /**
@@ -58,24 +58,24 @@ public interface CollectorVisitor<IT, OT> {
          * @param filterType
          *            the filter type.
          */
-        private BasicCollectorVisitor(final Class<? extends Object> filterType_p) {
-            this.filterType = filterType_p;
+        private BasicCollectorVisitor(final Class<? extends Object> filterType) {
+            this.filterType = filterType;
         }
 
         /**
          * Creates a new Basic Visitor.
          * 
-         * @param <IT>
+         * @param <I>
          *            the input type.
-         * @param <OT>
+         * @param <O>
          *            the output type.
          * @param filterType
          *            the filter type.
          * @return a new Basic Visitor.
          */
         @SuppressWarnings("unchecked")
-		public static <IT, OT> CollectorVisitor<IT, OT> getVisitor(Class<?> filterType) {
-            return (CollectorVisitor<IT, OT>) new BasicCollectorVisitor(filterType);
+		public static <I, O> CollectorVisitor<I, O> getVisitor(Class<?> filterType) {
+            return (CollectorVisitor<I, O>) new BasicCollectorVisitor(filterType);
         }
 
         /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,11 +80,11 @@ public class FunctionalChainServices {
 	/**
 	 * Returns all semantics of source views for the given chain
 	 */
-	public Collection<EObject> getFunctionalChainSources(FunctionalChain chain_p) {
+	public Collection<EObject> getFunctionalChainSources(FunctionalChain chain) {
 		HashSet<EObject> result = new HashSet<EObject>();
 
 		// Source of InternalLink is targets of Functional Exchanges
-		for (FunctionalExchange exchange : FunctionalChainExt.getFlatFunctionalExchanges(chain_p)) {
+		for (FunctionalExchange exchange : FunctionalChainExt.getFlatFunctionalExchanges(chain)) {
 			result.add(exchange.getTarget());
 		}
 
@@ -94,11 +94,11 @@ public class FunctionalChainServices {
 	/**
 	 * Returns all semantics of target views for the given chain
 	 */
-	public Collection<EObject> getFunctionalChainTargets(FunctionalChain chain_p) {
+	public Collection<EObject> getFunctionalChainTargets(FunctionalChain chain) {
 		HashSet<EObject> result = new HashSet<EObject>();
 
 		// Target of InternalLink is sources of Functional Exchanges
-		for (FunctionalExchange exchange : FunctionalChainExt.getFlatFunctionalExchanges(chain_p)) {
+		for (FunctionalExchange exchange : FunctionalChainExt.getFlatFunctionalExchanges(chain)) {
 			result.add(exchange.getSource());
 		}
 
@@ -145,7 +145,7 @@ public class FunctionalChainServices {
 		return returnedList;
 	}
 
-	public void updateFunctionalChainStyles(DDiagram diagram_p) {
+	public void updateFunctionalChainStyles(DDiagram diagram) {
 		HashMap<FunctionalChain, DNode> displayedFC = new HashMap<FunctionalChain, DNode>(); // displayed Functional Chains
 		HashMap<FunctionalExchange, Set<DEdge>> displayedFE = new HashMap<FunctionalExchange, Set<DEdge>>(); // displayed Functional Exchanges
 		HashMap<FunctionalChain, Set<DEdge>> displayedIL = new HashMap<FunctionalChain, Set<DEdge>>(); // displayed Internal Links
@@ -157,13 +157,13 @@ public class FunctionalChainServices {
 		boolean hasResetNode = false;
 
 		// find displayed Functional chains and functions
-		for (DNode aNode : diagram_p.getNodes()) {
+		for (DNode aNode : diagram.getNodes()) {
 			if ((aNode.getTarget() != null) && (aNode.getTarget() instanceof FunctionalChain)) {
 				displayedFC.put((FunctionalChain) aNode.getTarget(), aNode);
 			}
 		}
 		// find displayed functions
-		for (DNode aNode : diagram_p.getNodes()) {
+		for (DNode aNode : diagram.getNodes()) {
 			EObject target = aNode.getTarget();
 			if ((target != null) && (aNode.getTarget() instanceof AbstractFunction)) {
 				Set<DDiagramElement> set = displayedFunctions.get(target);
@@ -174,7 +174,7 @@ public class FunctionalChainServices {
 				set.add(aNode);
 			}
 		}
-		for (DDiagramElement aContainer : diagram_p.getContainers()) {
+		for (DDiagramElement aContainer : diagram.getContainers()) {
 			EObject target = aContainer.getTarget();
 			if ((target != null) && (aContainer.getTarget() instanceof AbstractFunction)) {
 				Set<DDiagramElement> set = displayedFunctions.get(target);
@@ -187,7 +187,7 @@ public class FunctionalChainServices {
 		}
 
 		// find displayed Functional Exchanges and Internal Links
-		for (DEdge anEdge : diagram_p.getEdges()) {
+		for (DEdge anEdge : diagram.getEdges()) {
 			EObject edgeTarget = anEdge.getTarget();
 			if (edgeTarget != null) {
 				if (edgeTarget instanceof FunctionalExchange) {
@@ -326,7 +326,7 @@ public class FunctionalChainServices {
 			}
 
 			boolean isInOperationalAnalysis =
-					BlockArchitectureExt.getRootBlockArchitecture(((DSemanticDiagram) diagram_p).getTarget()) instanceof OperationalAnalysis;
+					BlockArchitectureExt.getRootBlockArchitecture(((DSemanticDiagram) diagram).getTarget()) instanceof OperationalAnalysis;
 			// customize internal links (except in operational analysis architecture)
 			Set<DEdge> internalLinks = new HashSet<DEdge>();
 			if (!isInOperationalAnalysis) {
@@ -373,50 +373,50 @@ public class FunctionalChainServices {
 	}
 
 	/**
-	 * @param currentSourceNode_p
+	 * @param currentSourceNode
 	 * @return
 	 */
-	private boolean isValidNodeForInternalLink(EdgeTarget currentNode_p) {
-		if (null == currentNode_p) {
+	private boolean isValidNodeForInternalLink(EdgeTarget currentNode) {
+		if (null == currentNode) {
 			return false;
 		}
-		if (!(currentNode_p instanceof DNode)) {
+		if (!(currentNode instanceof DNode)) {
 			return false;
 		}
-		if (!DiagramServices.getDiagramServices().isABorderedNode((DNode) currentNode_p)) {
+		if (!DiagramServices.getDiagramServices().isABorderedNode((DNode) currentNode)) {
 			return false;
 		}
 		return true;
 	}
 
-	protected Set<DEdge> updateInternalLinks(FunctionalChain fc_p, HashMap<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges_p,
-			HashMap<FunctionalChain, Set<DEdge>> displayedIL_p, RGBValues color_p) {
+	protected Set<DEdge> updateInternalLinks(FunctionalChain fc, HashMap<FunctionalExchange, Set<DEdge>> displayedFunctionalExchanges,
+			HashMap<FunctionalChain, Set<DEdge>> displayedIL, RGBValues color) {
 		Set<DEdge> internalLinks = new HashSet<DEdge>();
 
 		// iterate over involved functional exchange
-		for (FunctionalChainInvolvement anInvolvement : FunctionalChainExt.getFlatInvolvementsOf(fc_p, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
+		for (FunctionalChainInvolvement anInvolvement : FunctionalChainExt.getFlatInvolvementsOf(fc, FaPackage.Literals.FUNCTIONAL_EXCHANGE)) {
 			FunctionalExchange currentExchange = (FunctionalExchange) anInvolvement.getInvolved();
-			if (!displayedFunctionalExchanges_p.containsKey(currentExchange)) {
+			if (!displayedFunctionalExchanges.containsKey(currentExchange)) {
 				continue;
 			}
 
-			Set<DEdge> currentEdges = displayedFunctionalExchanges_p.get(currentExchange);
+			Set<DEdge> currentEdges = displayedFunctionalExchanges.get(currentExchange);
 			for (DEdge currentEdge : currentEdges) {
 				EdgeTarget currentSourceNode = currentEdge.getSourceNode();
 				EdgeTarget currentTargetNode = currentEdge.getTargetNode();
 				if ((currentEdge != null) && isValidNodeForInternalLink(currentSourceNode)) {
 
-					Collection<FunctionalExchange> previousExchanges = getFlatPreviousFunctionalExchanges(fc_p, anInvolvement);
-					Collection<FunctionalExchange> nextExchanges = getFlatNextFunctionalExchanges(fc_p, anInvolvement);
+					Collection<FunctionalExchange> previousExchanges = getFlatPreviousFunctionalExchanges(fc, anInvolvement);
+					Collection<FunctionalExchange> nextExchanges = getFlatNextFunctionalExchanges(fc, anInvolvement);
 
 					// Display an internal link from previousExchange.target to exchange.source
 					for (FunctionalExchange elt : previousExchanges) {
-						if (displayedFunctionalExchanges_p.containsKey(elt)) {
-							Set<DEdge> edges = displayedFunctionalExchanges_p.get(elt);
+						if (displayedFunctionalExchanges.containsKey(elt)) {
+							Set<DEdge> edges = displayedFunctionalExchanges.get(elt);
 							for (DEdge edge : edges) {
 								if ((edge != null) && isValidNodeForInternalLink(edge.getTargetNode())
-										&& isValidInternalLinkEdge(fc_p, edge.getTargetNode(), currentSourceNode)) {
-									internalLinks.add(retrieveInternalLink(edge.getTargetNode(), currentSourceNode, fc_p, color_p));
+										&& isValidInternalLinkEdge(fc, edge.getTargetNode(), currentSourceNode)) {
+									internalLinks.add(retrieveInternalLink(edge.getTargetNode(), currentSourceNode, fc, color));
 								}
 							}
 						}
@@ -424,12 +424,12 @@ public class FunctionalChainServices {
 
 					// Display an internal link from exchange.target to nextExchange.source
 					for (FunctionalExchange elt : nextExchanges) {
-						if (displayedFunctionalExchanges_p.containsKey(elt)) {
-							Set<DEdge> edges = displayedFunctionalExchanges_p.get(elt);
+						if (displayedFunctionalExchanges.containsKey(elt)) {
+							Set<DEdge> edges = displayedFunctionalExchanges.get(elt);
 							for (DEdge edge : edges) {
 								if ((edge != null) && isValidNodeForInternalLink(edge.getSourceNode())
-										&& isValidInternalLinkEdge(fc_p, currentTargetNode, edge.getSourceNode())) {
-									internalLinks.add(retrieveInternalLink(currentTargetNode, edge.getSourceNode(), fc_p, color_p));
+										&& isValidInternalLinkEdge(fc, currentTargetNode, edge.getSourceNode())) {
+									internalLinks.add(retrieveInternalLink(currentTargetNode, edge.getSourceNode(), fc, color));
 								}
 							}
 						}
@@ -446,20 +446,20 @@ public class FunctionalChainServices {
 
 	/**
 	 * returns whether an internal link can be created between given both bordered nodes
-	 * @param currentSourceNode_p
-	 * @param currentTargetNode_p
+	 * @param currentSourceNode
+	 * @param currentTargetNode
 	 * @return
 	 */
-	public boolean isValidInternalLinkEdge(FunctionalChain chain_p, EdgeTarget currentSourceNode_p, EdgeTarget currentTargetNode_p) {
-		if (currentSourceNode_p == null) {
+	public boolean isValidInternalLinkEdge(FunctionalChain chain, EdgeTarget currentSourceNode, EdgeTarget currentTargetNode) {
+		if (currentSourceNode == null) {
 			return false;
 		}
-		if (currentTargetNode_p == null) {
+		if (currentTargetNode == null) {
 			return false;
 		}
 
-		EObject sourceParent = currentSourceNode_p.eContainer();
-		EObject targetParent = currentTargetNode_p.eContainer();
+		EObject sourceParent = currentSourceNode.eContainer();
+		EObject targetParent = currentTargetNode.eContainer();
 		// Allow internal links only on same parent (it is correct?)
 		if ((sourceParent != null) && (targetParent != null)) {
 			return sourceParent.equals(targetParent);
@@ -470,34 +470,34 @@ public class FunctionalChainServices {
 	/**
 	 * Create or return an internal link between both nodes.
 	 */
-	protected DEdge retrieveInternalLink(EdgeTarget sourceNode_p, EdgeTarget targetNode_p, FunctionalChain fc_p, RGBValues color_p) {
+	protected DEdge retrieveInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc, RGBValues color) {
 		HashMap<EdgeTarget, DEdge> outgoingEdges = new HashMap<EdgeTarget, DEdge>(); // outgoing Edges with targetNode as key
 
 		// find displayed internal links
-		for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceNode_p)) {
-			if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof FunctionalChain) && (anEdge.getTarget().equals(fc_p))) {
+		for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(sourceNode)) {
+			if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof FunctionalChain) && (anEdge.getTarget().equals(fc))) {
 				outgoingEdges.put(anEdge.getTargetNode(), anEdge);
 			}
 		}
 
-		DEdge internalLink = outgoingEdges.get(targetNode_p);
+		DEdge internalLink = outgoingEdges.get(targetNode);
 		if (internalLink == null) {
-			internalLink = createInternalLink(sourceNode_p, targetNode_p, fc_p, color_p);
+			internalLink = createInternalLink(sourceNode, targetNode, fc, color);
 		}
 		if (internalLink != null) {
-			customizeInternalLinksEdgeStyle(internalLink, color_p);
+			customizeInternalLinksEdgeStyle(internalLink, color);
 		}
 		return internalLink;
 	}
 
 	/**
-	 * @param fc_p
+	 * @param fc
 	 * @return
 	 */
-	protected Collection<FunctionalExchange> getFlatPreviousFunctionalExchanges(FunctionalChain fc_p, FunctionalChainInvolvement fci_p) {
+	protected Collection<FunctionalExchange> getFlatPreviousFunctionalExchanges(FunctionalChain fc, FunctionalChainInvolvement fci) {
 		Collection<FunctionalExchange> result = new HashSet<FunctionalExchange>();
 
-		for (FunctionalChainInvolvement involvment : FunctionalChainExt.getFlatPreviousExchangeInvolvements(fci_p)) {
+		for (FunctionalChainInvolvement involvment : FunctionalChainExt.getFlatPreviousExchangeInvolvements(fci)) {
 			if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof FunctionalExchange)) {
 				result.add((FunctionalExchange) involvment.getInvolved());
 			}
@@ -507,13 +507,13 @@ public class FunctionalChainServices {
 	}
 
 	/**
-	 * @param fc_p
+	 * @param fc
 	 * @return
 	 */
-	protected Collection<FunctionalExchange> getFlatNextFunctionalExchanges(FunctionalChain fc_p, FunctionalChainInvolvement fci_p) {
+	protected Collection<FunctionalExchange> getFlatNextFunctionalExchanges(FunctionalChain fc, FunctionalChainInvolvement fci) {
 		Collection<FunctionalExchange> result = new HashSet<FunctionalExchange>();
 
-		for (FunctionalChainInvolvement involvment : FunctionalChainExt.getFlatNextExchangeInvolvements(fci_p)) {
+		for (FunctionalChainInvolvement involvment : FunctionalChainExt.getFlatNextExchangeInvolvements(fci)) {
 			if ((involvment.getInvolved() != null) && (involvment.getInvolved() instanceof FunctionalExchange)) {
 				result.add((FunctionalExchange) involvment.getInvolved());
 			}
@@ -523,73 +523,73 @@ public class FunctionalChainServices {
 	}
 
 	/**
-	 * @param sourceNode_p
-	 * @param targetNode_p
-	 * @param color_p
+	 * @param sourceNode
+	 * @param targetNode
+	 * @param color
 	 * @return
 	 */
-	public DEdge createInternalLink(EdgeTarget sourceNode_p, EdgeTarget targetNode_p, FunctionalChain fc_p, RGBValues color_p) {
-		DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode_p);
+	public DEdge createInternalLink(EdgeTarget sourceNode, EdgeTarget targetNode, FunctionalChain fc, RGBValues color) {
+		DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceNode);
 		EdgeMapping mapping = getInternLinkEdgeMapping(diagram);
-		DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode_p, targetNode_p, fc_p, mapping);
+		DEdge newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
 		if (newEdge == null) {
-			DiagramServices.getDiagramServices().createEdge(mapping, sourceNode_p, targetNode_p, fc_p);
-			newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode_p, targetNode_p, fc_p, mapping);
+			DiagramServices.getDiagramServices().createEdge(mapping, sourceNode, targetNode, fc);
+			newEdge = DiagramServices.getDiagramServices().findDEdgeElement(diagram, sourceNode, targetNode, fc, mapping);
 		}
 		return newEdge;
 	}
 
-	public EdgeMapping getInternLinkEdgeMapping(DDiagram diagram_p) {
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.LDFB_INTERNAL_LINK_MAPPING_NAME);
+	public EdgeMapping getInternLinkEdgeMapping(DDiagram diagram) {
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.LDFB_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.CLDF_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_LOGICAL_DATA_FLOW_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CLDF_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.LAB_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.LOGICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.LAB_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.PDFB_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.PDFB_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.CPDF_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_PHYSICAL_DATA_FLOW_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CPDF_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.PAB_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.PHYSICAL_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.PAB_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.SDFB_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_DATA_FLOW_BLANK_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.SDFB_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.CSDF_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.CONTEXTUAL_SYSTEM_DATA_FLOW_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.CSDF_INTERNAL_LINK_MAPPING_NAME);
 		}
-		if (diagram_p.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
-			return DiagramServices.getDiagramServices().getEdgeMapping(diagram_p, IMappingNameConstants.SAB_INTERNAL_LINK_MAPPING_NAME);
+		if (diagram.getDescription().getName().equals(IDiagramNameConstants.SYSTEM_ARCHITECTURE_BLANK_DIAGRAM_NAME)) {
+			return DiagramServices.getDiagramServices().getEdgeMapping(diagram, IMappingNameConstants.SAB_INTERNAL_LINK_MAPPING_NAME);
 		}
 		return null;
 	}
 
 	/**
-	 * @param aEdge_p
+	 * @param aEdge
 	 */
-	 public void resetFunctionalExchangeStyle(DEdge aEdge_p) {
-		 DiagramElementMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(aEdge_p);
+	 public void resetFunctionalExchangeStyle(DEdge aEdge) {
+		 DiagramElementMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(aEdge);
 		 if (mapping != null) {
 			 // get default style size of an edge
 			 EdgeStyleDescription desc =
-					 (EdgeStyleDescription) getMappingHelper(aEdge_p).getBestStyleDescription(mapping, aEdge_p.getTarget(), aEdge_p, aEdge_p.eContainer(),
-							 CapellaServices.getService().getDiagramContainer(aEdge_p));
+					 (EdgeStyleDescription) getMappingHelper(aEdge).getBestStyleDescription(mapping, aEdge.getTarget(), aEdge, aEdge.eContainer(),
+							 CapellaServices.getService().getDiagramContainer(aEdge));
 			 String defaultStyleSize = desc.getSizeComputationExpression();
 			 // get current style size of an edge
-			 EdgeStyle edgeStyle = aEdge_p.getOwnedStyle();
+			 EdgeStyle edgeStyle = aEdge.getOwnedStyle();
 			 Integer currentSize = edgeStyle.getSize();
 
 			 if ((null != currentSize) && (null != defaultStyleSize)) {
 				 // apply style & color : if currentSize is equal to default size + if current size is equal to default size of Functional Chain
 				 if (currentSize.equals(THICK_EDGE_FUNCTIONAL_CHAIN) || currentSize.equals(defaultStyleSize)) {
-					 if (ShapeUtil.resetEdgeThickStyle(aEdge_p, new Integer(defaultStyleSize))) {
-						 ShapeUtil.resetEdgeColorStyle(aEdge_p, ShapeUtil.getDefaultColor(aEdge_p, desc, desc.getStrokeColor()));
+					 if (ShapeUtil.resetEdgeThickStyle(aEdge, new Integer(defaultStyleSize))) {
+						 ShapeUtil.resetEdgeColorStyle(aEdge, ShapeUtil.getDefaultColor(aEdge, desc, desc.getStrokeColor()));
 					 }
 				 }
 			 }
@@ -597,20 +597,20 @@ public class FunctionalChainServices {
 	 }
 
 	 /**
-	  * @param value_p
-	  * @param displayedFC_p
+	  * @param value
+	  * @param displayedFC
 	  */
-	 public boolean resetFunctionStyle(DDiagramElement functionNode_p) {
+	 public boolean resetFunctionStyle(DDiagramElement functionNode) {
 		 boolean result = false;
 		 String defaultStyleSize = null;
 		 Integer currentSize = null;
 		 BorderedStyle style = null;
 
-		 if (functionNode_p instanceof AbstractDNode) {
-			 AbstractDNode node = (AbstractDNode) functionNode_p;
+		 if (functionNode instanceof AbstractDNode) {
+			 AbstractDNode node = (AbstractDNode) functionNode;
 			 BorderedStyleDescription desc =
-					 (BorderedStyleDescription) getMappingHelper(functionNode_p).getBestStyleDescription(functionNode_p.getDiagramElementMapping(),
-							 functionNode_p.getTarget(), functionNode_p, functionNode_p.eContainer(), CapellaServices.getService().getDiagramContainer(functionNode_p));
+					 (BorderedStyleDescription) getMappingHelper(functionNode).getBestStyleDescription(functionNode.getDiagramElementMapping(),
+							 functionNode.getTarget(), functionNode, functionNode.eContainer(), CapellaServices.getService().getDiagramContainer(functionNode));
 
 			 if(desc != null){
 				 defaultStyleSize = desc.getBorderSizeComputationExpression();
@@ -638,89 +638,89 @@ public class FunctionalChainServices {
 		 return result;
 	 }
 
-	 public void customizeFunctionalExchangeEdgeStyle(DEdge edge_p, RGBValues color) {
+	 public void customizeFunctionalExchangeEdgeStyle(DEdge edge, RGBValues color) {
 		 // get current style size of an edge
-		 EdgeStyle edgeStyle = edge_p.getOwnedStyle();
+		 EdgeStyle edgeStyle = edge.getOwnedStyle();
 		 Integer currentSize = edgeStyle.getSize();
 
 		 // get default style size of an edge
-		 DiagramElementMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(edge_p);
+		 DiagramElementMapping mapping = DiagramServices.getDiagramServices().getEdgeMapping(edge);
 		 if (mapping != null) {
 			 EdgeStyleDescription desc =
-					 (EdgeStyleDescription) getMappingHelper(edge_p).getBestStyleDescription(mapping, edge_p.getTarget(), edge_p, edge_p.eContainer(),
-							 CapellaServices.getService().getDiagramContainer(edge_p));
+					 (EdgeStyleDescription) getMappingHelper(edge).getBestStyleDescription(mapping, edge.getTarget(), edge, edge.eContainer(),
+							 CapellaServices.getService().getDiagramContainer(edge));
 			 if (null != desc) {
 				 // assuming it is an integer value
 				 String defaultSize = desc.getSizeComputationExpression();
 				 if ((null != defaultSize) && (null != currentSize)
 						 && (currentSize.equals(Integer.valueOf(defaultSize)) || (currentSize.equals(THICK_EDGE_FUNCTIONAL_CHAIN)))) {
 					 // apply change
-					 customizeEdgeStyle(edge_p, color);
+					 customizeEdgeStyle(edge, color);
 				 }
 			 }
 		 }
 	 }
 
-	 public void customizeInternalLinksEdgeStyle(DEdge edge_p, RGBValues color) {
-		 customizeEdgeStyle(edge_p, color);
+	 public void customizeInternalLinksEdgeStyle(DEdge edge, RGBValues color) {
+		 customizeEdgeStyle(edge, color);
 	 }
 
-	 public void customizeEdgeStyle(DEdge edge_p, RGBValues color) {
+	 public void customizeEdgeStyle(DEdge edge, RGBValues color) {
 		 RGB rgbColor = new RGB(color.getRed(), color.getGreen(), color.getBlue());
-		 ShapeUtil.setEdgeColorStyle(edge_p, rgbColor);
-		 ShapeUtil.setEdgeThickStyle(edge_p, THICK_EDGE_FUNCTIONAL_CHAIN);
+		 ShapeUtil.setEdgeColorStyle(edge, rgbColor);
+		 ShapeUtil.setEdgeThickStyle(edge, THICK_EDGE_FUNCTIONAL_CHAIN);
 	 }
 
-	 public void customizeFunctionStyle(DDiagramElement functionNode_p, RGBValues color) {
+	 public void customizeFunctionStyle(DDiagramElement functionNode, RGBValues color) {
 		 // Change color border style
 		 RGB rgbColor = new RGB(color.getRed(), color.getGreen(), color.getBlue());
-		 if (functionNode_p instanceof AbstractDNode) {
-			 ShapeUtil.setBorderColorStyle(((AbstractDNode) functionNode_p), rgbColor);
+		 if (functionNode instanceof AbstractDNode) {
+			 ShapeUtil.setBorderColorStyle(((AbstractDNode) functionNode), rgbColor);
 		 }
 	 }
 
-	 public void customizeSourceFunctionStyle(DDiagramElement functionNode_p, RGBValues color) {
-		 customizeFunctionStyle(functionNode_p, color);
-		 if (functionNode_p instanceof AbstractDNode) {
-			 ShapeUtil.setBorderStyle(((AbstractDNode) functionNode_p), THICK_BORDER_SOURCE_FUNCTION);
+	 public void customizeSourceFunctionStyle(DDiagramElement functionNode, RGBValues color) {
+		 customizeFunctionStyle(functionNode, color);
+		 if (functionNode instanceof AbstractDNode) {
+			 ShapeUtil.setBorderStyle(((AbstractDNode) functionNode), THICK_BORDER_SOURCE_FUNCTION);
 		 }
 	 }
 
-	 public void customizeTargetFunctionStyle(DDiagramElement functionNode_p, RGBValues color) {
-		 customizeFunctionStyle(functionNode_p, color);
-		 if (functionNode_p instanceof AbstractDNode) {
-			 ShapeUtil.setBorderStyle(((AbstractDNode) functionNode_p), THICK_BORDER_TARGET_FUNCTION);
+	 public void customizeTargetFunctionStyle(DDiagramElement functionNode, RGBValues color) {
+		 customizeFunctionStyle(functionNode, color);
+		 if (functionNode instanceof AbstractDNode) {
+			 ShapeUtil.setBorderStyle(((AbstractDNode) functionNode), THICK_BORDER_TARGET_FUNCTION);
 		 }
 	 }
 
 	 /**
-	  * @param function_p
-	  * @param displayedFunctions_p
+	  * @param function
+	  * @param displayedFunctions
 	  * @return the function or one of its container contained in the map keys
 	  */
-	 public Set<DDiagramElement> getBestDisplayedFunctionNode(AbstractFunction function_p, HashMap<AbstractFunction, Set<DDiagramElement>> displayedFunctions_p) {
-		 if (displayedFunctions_p.containsKey(function_p)) {
-			 return displayedFunctions_p.get(function_p);
+	 public Set<DDiagramElement> getBestDisplayedFunctionNode(AbstractFunction function, HashMap<AbstractFunction, Set<DDiagramElement>> displayedFunctions) {
+		 if (displayedFunctions.containsKey(function)) {
+			 return displayedFunctions.get(function);
 		 }
-		 EObject ancestor = function_p.eContainer();
+		 EObject ancestor = function.eContainer();
 		 while ((ancestor != null) && (ancestor instanceof AbstractFunction)) {
-			 if (displayedFunctions_p.containsKey(ancestor)) {
-				 return displayedFunctions_p.get(ancestor);
+			 if (displayedFunctions.containsKey(ancestor)) {
+				 return displayedFunctions.get(ancestor);
 			 }
 			 ancestor = ancestor.eContainer();
 		 }
 		 return null;
 	 }
 
-	 public boolean isCompleteFunctionalChain(FunctionalChain fc_p, DDiagram diagram_p) {
+	 public boolean isCompleteFunctionalChain(FunctionalChain fc, DDiagram diagram) {
 		 Set<FunctionalExchange> visibleFE = new HashSet<FunctionalExchange>();
-		 for (DEdge anEdge : diagram_p.getEdges()) {
+		 for (DEdge anEdge : diagram.getEdges()) {
 			 if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof FunctionalExchange)) {
 				 visibleFE.add((FunctionalExchange) anEdge.getTarget());
 			 }
 		 }
 
-		 for (FunctionalExchange anElement : FunctionalChainExt.getFlatFunctionalExchanges(fc_p)) {
+		 for (FunctionalExchange anElement : FunctionalChainExt.getFlatFunctionalExchanges(fc)) {
 			 if (!(visibleFE.contains(anElement))) {
 				 return false;
 			 }
@@ -728,11 +728,11 @@ public class FunctionalChainServices {
 		 return true;
 	 }
 
-	 public String getFunctionalChainLabel(FunctionalChain fc_p, DDiagram diagram_p) {
-		 String label = fc_p.getName();
+	 public String getFunctionalChainLabel(FunctionalChain fc, DDiagram diagram) {
+		 String label = fc.getName();
 
-		 boolean isComplete = isCompleteFunctionalChain(fc_p, diagram_p);
-		 boolean isValid = FunctionalChainExt.isFunctionalChainValid(fc_p);
+		 boolean isComplete = isCompleteFunctionalChain(fc, diagram);
+		 boolean isValid = FunctionalChainExt.isFunctionalChainValid(fc);
 		 if (!isComplete || !isValid) {
 			 label = label + " ("; //$NON-NLS-1$
 		 }
@@ -751,8 +751,8 @@ public class FunctionalChainServices {
 		 return label;
 	 }
 
-	 public void updateFunctionalChainNodeColor(DNode fcNode_p, Collection<DNode> visibleFunctionalChains_p) {
-		 RGBValues color = ShapeUtil.getNodeColorStyle(fcNode_p);
+	 public void updateFunctionalChainNodeColor(DNode fcNode, Collection<DNode> visibleFunctionalChains) {
+		 RGBValues color = ShapeUtil.getNodeColorStyle(fcNode);
 		 LinkedList<RGB> colorList = new LinkedList<RGB>();
 
 		 RGB blue = new RGB(24, 114, 248);
@@ -776,8 +776,8 @@ public class FunctionalChainServices {
 		 if (ShapeUtil.isSameColor(color, gray)) {
 			 changeColor = true;
 		 }
-		 for (DNode aFc : visibleFunctionalChains_p) {
-			 if (!aFc.equals(fcNode_p)) {
+		 for (DNode aFc : visibleFunctionalChains) {
+			 if (!aFc.equals(fcNode)) {
 				 RGBValues nodeColor = ShapeUtil.getNodeColorStyle(aFc);
 				 if (ShapeUtil.isSameColor(nodeColor, color)) {
 					 changeColor = true;
@@ -789,11 +789,11 @@ public class FunctionalChainServices {
 			 return;
 		 }
 		 if (!colorList.isEmpty()) {
-			 ShapeUtil.setColorStyle(fcNode_p, colorList.get(0));
+			 ShapeUtil.setColorStyle(fcNode, colorList.get(0));
 		 }
 	 }
 
-	 public List<FunctionalExchange> getAvailableExchanges(EObject context_p, AbstractFunction source, AbstractFunction target) {
+	 public List<FunctionalExchange> getAvailableExchanges(EObject context, AbstractFunction source, AbstractFunction target) {
 		 List<FunctionalExchange> returnedFunctionalExchanges = new ArrayList<FunctionalExchange>();
 		 List<FunctionalExchange> incoming = FunctionExt.getIncomingExchange(target);
 		 List<FunctionalExchange> outgoing = FunctionExt.getOutGoingExchange(source);
@@ -805,11 +805,11 @@ public class FunctionalChainServices {
 		 return returnedFunctionalExchanges;
 	 }
 
-	 public List<FunctionalChainInvolvement> getPreviousInvolvements(FunctionalChainInvolvement involvement_p) {
-		 return involvement_p.getPreviousFunctionalChainInvolvements();
+	 public List<FunctionalChainInvolvement> getPreviousInvolvements(FunctionalChainInvolvement involvement) {
+		 return involvement.getPreviousFunctionalChainInvolvements();
 	 }
 
-	 public EObject createFunctionalChain(EObject context_p, List<EObject> views) {
+	 public EObject createFunctionalChain(EObject context, List<EObject> views) {
 		 if (!views.isEmpty()) {
 			 List<EObject> newList = new ArrayList<EObject>();
 			 AbstractFunction aFunction = null;
@@ -834,7 +834,7 @@ public class FunctionalChainServices {
 				 return newFC;
 			 }
 		 }
-		 return context_p;
+		 return context;
 	 }
 
 	 public void removeFunctionalChainAbstractCapabilityInvolvement(AbstractCapability capability, EObject target) {
@@ -849,15 +849,15 @@ public class FunctionalChainServices {
 		 }
 	 }
 
-	 public FunctionalChainAbstractCapabilityInvolvement createFunctionalChainAbstractCapabilityInvolvement(AbstractCapability capability_p,
-			 FunctionalChain target_p) {
-		 return FunctionalChainExt.createFunctionalChainAbstractCapabilityInvolvement(capability_p, target_p);
+	 public FunctionalChainAbstractCapabilityInvolvement createFunctionalChainAbstractCapabilityInvolvement(AbstractCapability capability,
+			 FunctionalChain target) {
+		 return FunctionalChainExt.createFunctionalChainAbstractCapabilityInvolvement(capability, target);
 	 }
 
-	 public boolean isValidFunctionalChainSelection(EObject context_p, List<EObject> views_p) {
+	 public boolean isValidFunctionalChainSelection(EObject context, List<EObject> views) {
 		 SimpleOrientedGraph<AbstractFunction> graph = new SimpleOrientedGraph<AbstractFunction>();
-		 if (!views_p.isEmpty()) {
-			 for (EObject aSelectedElement : views_p) {
+		 if (!views.isEmpty()) {
+			 for (EObject aSelectedElement : views) {
 				 if ((aSelectedElement instanceof DEdge) && (((DEdge) aSelectedElement).getTarget() != null)
 						 && (((DEdge) aSelectedElement).getTarget() instanceof FunctionalExchange)) {
 					 FunctionalExchange aSelectedExchange = (FunctionalExchange) ((DEdge) aSelectedElement).getTarget();
@@ -874,14 +874,14 @@ public class FunctionalChainServices {
 		 return false;
 	 }
 
-	 public List<AbstractFunction> getFCDInvolveFunctionScope(EObject container_p) {
-		 BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(container_p);
+	 public List<AbstractFunction> getFCDInvolveFunctionScope(EObject container) {
+		 BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(container);
 		 return FunctionExt.getAllAbstractFunctions(architecture);
 	 }
 
-	 protected List<FunctionalExchange> getOutgoingEdgeFunctionalExchanges(DNode node_p) {
+	 protected List<FunctionalExchange> getOutgoingEdgeFunctionalExchanges(DNode node) {
 		 List<FunctionalExchange> existingInvolvedFE = new ArrayList<FunctionalExchange>();
-		 for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(node_p)) {
+		 for (DEdge anEdge : DiagramServices.getDiagramServices().getOutgoingEdges(node)) {
 
 			 if ((anEdge.getTarget() != null) && (anEdge.getTarget() instanceof FunctionalChainInvolvement)) {
 				 FunctionalChainInvolvement currentInv = (FunctionalChainInvolvement) anEdge.getTarget();
@@ -893,11 +893,11 @@ public class FunctionalChainServices {
 		 return existingInvolvedFE;
 	 }
 
-	 public List<FunctionalExchange> getFCDInvolveFunctionalExchangeAndFunctionScope(DNode node_p) {
+	 public List<FunctionalExchange> getFCDInvolveFunctionalExchangeAndFunctionScope(DNode node) {
 		 List<FunctionalExchange> returnedList = new ArrayList<FunctionalExchange>();
-		 List<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node_p);
+		 List<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node);
 
-		 FunctionalChainInvolvement selectedInvolvement = (FunctionalChainInvolvement) node_p.getTarget();
+		 FunctionalChainInvolvement selectedInvolvement = (FunctionalChainInvolvement) node.getTarget();
 		 for (FunctionalExchange aFE : FunctionalChainExt.getFlatOutgoingExchanges(selectedInvolvement)) {
 			 if (!existingInvolvedFE.contains(aFE)) {
 				 returnedList.add(aFE);
@@ -907,22 +907,22 @@ public class FunctionalChainServices {
 		 return returnedList;
 	 }
 
-	 public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainScope(DNode node_p) {
+	 public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainScope(DNode node) {
 		 HashMapSet<FunctionalExchange, FunctionalChain> set = new HashMapSet<FunctionalExchange, FunctionalChain>();
-		 if ((node_p == null) || (node_p.getTarget() == null) || node_p.getTarget().eIsProxy()) {
+		 if ((node == null) || (node.getTarget() == null) || node.getTarget().eIsProxy()) {
 			 return set;
 		 }
-		 EObject target = node_p.getTarget();
+		 EObject target = node.getTarget();
 		 if (!(target instanceof FunctionalChainInvolvement)) {
 			 return set;
 		 }
 
-		 DDiagram diagram = CapellaServices.getService().getDiagramContainer(node_p);
+		 DDiagram diagram = CapellaServices.getService().getDiagramContainer(node);
 		 if (!(diagram instanceof DSemanticDecorator)) {
 			 return set;
 		 }
 
-		 List<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node_p);
+		 List<FunctionalExchange> existingInvolvedFE = getOutgoingEdgeFunctionalExchanges(node);
 		 FunctionalChainInvolvement involvement = (FunctionalChainInvolvement) target;
 		 Collection<FunctionalExchange> outgoing = FunctionalChainExt.getFlatOutgoingExchanges(involvement);
 		 Collection<FunctionalChain> chains = getFCDInvolveFunctionalChainScope((DSemanticDecorator) diagram);
@@ -941,39 +941,39 @@ public class FunctionalChainServices {
 	 }
 
 	 /**
-	  * @param context_p
+	  * @param context
 	  * @return
 	  */
-	  public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainInitialSelection(AbstractDNode context_p) {
+	  public HashMapSet<FunctionalExchange, FunctionalChain> getFCDInvolveFunctionalExchangeAndFunctionalChainInitialSelection(AbstractDNode context) {
 		 return new HashMapSet<FunctionalExchange, FunctionalChain>();
 	  }
 
 	  /**
-	   * @param context_p
-	   * @param hashMapSet_p
-	   * @param hashMapSet2_p
-	   * @param hashMapSet3_p
+	   * @param context
+	   * @param hashMapSet
+	   * @param hashMapSet2
+	   * @param hashMapSet3
 	   */
-	  public void involvedFCDFunctionalExchangeFunctionalChain(AbstractDNode context_p, HashMapSet<FunctionalExchange, FunctionalChain> scope_p,
-			  HashMapSet<FunctionalExchange, FunctionalChain> initialSelection_p, HashMapSet<FunctionalExchange, FunctionalChain> selection_p) {
+	  public void involvedFCDFunctionalExchangeFunctionalChain(AbstractDNode context, HashMapSet<FunctionalExchange, FunctionalChain> scope,
+			  HashMapSet<FunctionalExchange, FunctionalChain> initialSelection, HashMapSet<FunctionalExchange, FunctionalChain> selection) {
 
-		  if ((context_p == null)) {
+		  if ((context == null)) {
 			  return;
 		  }
-		  DDiagram diagram = CapellaServices.getService().getDiagramContainer(context_p);
+		  DDiagram diagram = CapellaServices.getService().getDiagramContainer(context);
 		  if ((diagram == null) || !(diagram instanceof DSemanticDecorator)) {
 			  return;
 		  }
 		  FunctionalChain sourceFC = (FunctionalChain) ((DSemanticDecorator) diagram).getTarget();
-		  EObject target = context_p.getTarget();
+		  EObject target = context.getTarget();
 		  if ((target == null) || target.eIsProxy() || !(target instanceof FunctionalChainInvolvement)) {
 			  return;
 		  }
 
-		  FunctionalChainInvolvement iSource = (FunctionalChainInvolvement) ((DSemanticDecorator) context_p).getTarget();
+		  FunctionalChainInvolvement iSource = (FunctionalChainInvolvement) ((DSemanticDecorator) context).getTarget();
 
-		  for (FunctionalExchange exchange : selection_p.keySet()) {
-			  for (FunctionalChain chain : selection_p.get(exchange)) {
+		  for (FunctionalExchange exchange : selection.keySet()) {
+			  for (FunctionalChain chain : selection.get(exchange)) {
 				  FunctionalChainInvolvement iExchange = FaFactory.eINSTANCE.createFunctionalChainInvolvement();
 				  iExchange.setInvolved(exchange);
 				  iExchange.setInvolver(sourceFC);
@@ -999,66 +999,66 @@ public class FunctionalChainServices {
 				  if (edgeMapping == null) {
 					  return;
 				  }
-				  DiagramServices.getDiagramServices().createEdge(edgeMapping, (EdgeTarget) context_p, (EdgeTarget) node, iExchange);
+				  DiagramServices.getDiagramServices().createEdge(edgeMapping, (EdgeTarget) context, (EdgeTarget) node, iExchange);
 			  }
 		  }
 	  }
 
 	  @Deprecated
-	  public List<FunctionalExchange> getAvailableFunctionalExchangeToInsertInFCD(DNode node_p) {
-		  return getFCDInvolveFunctionalExchangeAndFunctionScope(node_p);
+	  public List<FunctionalExchange> getAvailableFunctionalExchangeToInsertInFCD(DNode node) {
+		  return getFCDInvolveFunctionalExchangeAndFunctionScope(node);
 	  }
 
-	  public boolean isValidFCDInvolveFunctionalExchange(EObject context_p, FunctionalChainInvolvement source_p, FunctionalChainInvolvement target_p) {
-		  Collection<FunctionalExchange> commonExchanges = getFCDCommonFunctionalExchanges(source_p, target_p);
+	  public boolean isValidFCDInvolveFunctionalExchange(EObject context, FunctionalChainInvolvement source, FunctionalChainInvolvement target) {
+		  Collection<FunctionalExchange> commonExchanges = getFCDCommonFunctionalExchanges(source, target);
 		  boolean result = !commonExchanges.isEmpty();
-		  return (result && !findInvolvementInNext(target_p, source_p, new HashSet<FunctionalChainInvolvement>()));
+		  return (result && !findInvolvementInNext(target, source, new HashSet<FunctionalChainInvolvement>()));
 	  }
 
-	  public boolean isValidFCDInvolveFunctionalChain(DSemanticDecorator context_p) {
+	  public boolean isValidFCDInvolveFunctionalChain(DSemanticDecorator context) {
 		  return true;
 	  }
 
-	  public boolean isValidFCDInvolveFunction(DSemanticDecorator context_p) {
+	  public boolean isValidFCDInvolveFunction(DSemanticDecorator context) {
 		  return true;
 	  }
 
-	  public boolean isValidFCDInvolveFunctionalExchangeAndFunctionalChain(DSemanticDecorator context_p) {
-		  if ((context_p == null) || (context_p instanceof DDiagram)) {
+	  public boolean isValidFCDInvolveFunctionalExchangeAndFunctionalChain(DSemanticDecorator context) {
+		  if ((context == null) || (context instanceof DDiagram)) {
 			  return false;
 		  }
 		  return true;
 	  }
 
-	  public boolean isValidFCDInvolveFunctionalExchangeAndFunction(DSemanticDecorator context_p) {
-		  if ((context_p == null) || (context_p instanceof DDiagram)) {
+	  public boolean isValidFCDInvolveFunctionalExchangeAndFunction(DSemanticDecorator context) {
+		  if ((context == null) || (context instanceof DDiagram)) {
 			  return false;
 		  }
 		  return true;
 	  }
 
 	  @Deprecated
-	  public boolean isAnEdgeInvolvementAvailableInFCD(final EObject context_p, final FunctionalChainInvolvement source_p, final FunctionalChainInvolvement target_p) {
-		  return isValidFCDInvolveFunctionalExchange(context_p, source_p, target_p);
+	  public boolean isAnEdgeInvolvementAvailableInFCD(final EObject context, final FunctionalChainInvolvement source, final FunctionalChainInvolvement target) {
+		  return isValidFCDInvolveFunctionalExchange(context, source, target);
 	  }
 
 	  /**
 	   * Returns common functional exchanges between both source and target involvement
-	   * @param source_p
-	   * @param target_p
+	   * @param source
+	   * @param target
 	   */
-	  private Collection<FunctionalExchange> getFCDCommonFunctionalExchanges(FunctionalChainInvolvement source_p, FunctionalChainInvolvement target_p) {
-		  return FunctionalChainExt.getFlatCommonFunctionalExchanges(source_p, target_p);
+	  private Collection<FunctionalExchange> getFCDCommonFunctionalExchanges(FunctionalChainInvolvement source, FunctionalChainInvolvement target) {
+		  return FunctionalChainExt.getFlatCommonFunctionalExchanges(source, target);
 	  }
 
-	  public Collection<FunctionalExchange> getFCDInvolveFunctionalExchangeScope(EObject context_p, EObject source_p, EObject target_p) {
+	  public Collection<FunctionalExchange> getFCDInvolveFunctionalExchangeScope(EObject context, EObject source, EObject target) {
 		  Collection<FunctionalExchange> commonExchanges =
-				  getFCDCommonFunctionalExchanges((FunctionalChainInvolvement) source_p, (FunctionalChainInvolvement) target_p);
+				  getFCDCommonFunctionalExchanges((FunctionalChainInvolvement) source, (FunctionalChainInvolvement) target);
 		  return commonExchanges;
 	  }
 
-	  public Collection<FunctionalChain> getFCDInvolveFunctionalChainScope(DSemanticDecorator diagram_p) {
-		  EObject chain = diagram_p.getTarget();
+	  public Collection<FunctionalChain> getFCDInvolveFunctionalChainScope(DSemanticDecorator diagram) {
+		  EObject chain = diagram.getTarget();
 		  if (!(chain instanceof FunctionalChain)) {
 			  return Collections.emptyList();
 		  }
@@ -1089,27 +1089,26 @@ public class FunctionalChainServices {
 		  return result;
 	  }
 
-	  public boolean findInvolvementInNext(final FunctionalChainInvolvement currentInvolvement_p, final FunctionalChainInvolvement involvementToFind_p,
-			  final Set<FunctionalChainInvolvement> visitedInvolvements_p) {
-		  if (visitedInvolvements_p.contains(currentInvolvement_p)) {
+	  public boolean findInvolvementInNext(final FunctionalChainInvolvement currentInvolvement, final FunctionalChainInvolvement involvementToFind,
+			  final Set<FunctionalChainInvolvement> visitedInvolvements) {
+		  if (visitedInvolvements.contains(currentInvolvement)) {
 			  // to avoid infinite loop (cycle)
 			  return false;
 		  }
-		  if (currentInvolvement_p.equals(involvementToFind_p)) {
+		  if (currentInvolvement.equals(involvementToFind)) {
 			  return true;
 		  }
-		  Set<FunctionalChainInvolvement> visitedInvolvements = new HashSet<FunctionalChainInvolvement>(visitedInvolvements_p);
-		  visitedInvolvements.add(currentInvolvement_p);
-		  for (FunctionalChainInvolvement aNext : currentInvolvement_p.getNextFunctionalChainInvolvements()) {
-			  if (findInvolvementInNext(aNext, involvementToFind_p, visitedInvolvements)) {
+		  Set<FunctionalChainInvolvement> involvements = new HashSet<FunctionalChainInvolvement>(visitedInvolvements);
+		  involvements.add(currentInvolvement);
+		  for (FunctionalChainInvolvement aNext : currentInvolvement.getNextFunctionalChainInvolvements()) {
+			  if (findInvolvementInNext(aNext, involvementToFind, involvements)) {
 				  return true;
 			  }
 		  }
 		  return false;
 	  }
 
-	  public MappingHelper getMappingHelper(DSemanticDecorator semanticDecorator_p) {
-		  return new MappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator_p.getTarget()));
+	  public MappingHelper getMappingHelper(DSemanticDecorator semanticDecorator) {
+		  return new MappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticDecorator.getTarget()));
 	  }
-
 }

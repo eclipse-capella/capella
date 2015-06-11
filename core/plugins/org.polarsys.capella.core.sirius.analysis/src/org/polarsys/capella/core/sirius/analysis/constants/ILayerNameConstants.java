@@ -20,11 +20,11 @@ public interface ILayerNameConstants {
   //
 
   // CDB optional layer - Class Diagram Blank
-  final String LAYER_CDB_COMMUNICATION_MODEL = "Communication Model"; //$NON-NLS-1$
+  String LAYER_CDB_COMMUNICATION_MODEL = "Communication Model"; //$NON-NLS-1$
 
   // COAI optional layer - Contextual Operational Activity Interaction
-  final String LAYER_COAI_INTERNAL_INTERACTION = "Internal Interaction"; //$NON-NLS-1$
+  String LAYER_COAI_INTERNAL_INTERACTION = "Internal Interaction"; //$NON-NLS-1$
 
   // PAB optional layer - Physical Architecture Blank
-  final String LAYER_PAB_DEPLOYMENT = "Deployment"; //$NON-NLS-1$
+  String LAYER_PAB_DEPLOYMENT = "Deployment"; //$NON-NLS-1$
 }

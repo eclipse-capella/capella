@@ -157,7 +157,6 @@ import org.polarsys.capella.core.sirius.analysis.tool.HashMapSet;
 /**
  * Services for Functional Analysis Elements
  */
-@SuppressWarnings("deprecation")
 public class FaServices {
 
   private static FaServices singleton = null;
