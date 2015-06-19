@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,12 +50,11 @@ public class NameGenerator {
   
   /**
    * Computes the name of the message end depending on some info contained into it.
-   * @param messageEnd_p The message end.
+   * @param messageEnd The message end.
    */
-  @SuppressWarnings("nls")
-  public static void computeMessageEndName(MessageEnd messageEnd_p) {
+  public static void computeMessageEndName(MessageEnd messageEnd) {
     
-    InstanceRole instanceRole = messageEnd_p.getCovered();
+    InstanceRole instanceRole = messageEnd.getCovered();
     assert instanceRole!=null;
     
     AbstractInstance instance = instanceRole.getRepresentedInstance();
@@ -72,25 +71,24 @@ public class NameGenerator {
     
     String representedInstanceName = component.getName();
     
-    SequenceMessage message = messageEnd_p.getMessage();
+    SequenceMessage message = messageEnd.getMessage();
     String messageName = message.getName();
     
-    boolean isSending = message.getSendingEnd() == messageEnd_p;
-    messageEnd_p.setName("[[ " + (isSending?"S":"R") 
-                         + " [" + representedInstanceName + "] " 
-                         + messageName + "() " 
-                         + "(Ref=" + __idAbstractEnd + ")" 
-                         + " ]] ");
+    boolean isSending = message.getSendingEnd() == messageEnd;
+    messageEnd.setName("[[ " + (isSending?"S":"R") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                         + " [" + representedInstanceName + "] " //$NON-NLS-1$ //$NON-NLS-2$
+                         + messageName + "() " //$NON-NLS-1$
+                         + "(Ref=" + __idAbstractEnd + ")" //$NON-NLS-1$ //$NON-NLS-2$
+                         + " ]] "); //$NON-NLS-1$
     __idAbstractEnd++;
   }  
   
   /**
    * Computes the name of an execution.
-   * @param executionEnd_p The execution to be named.
+   * @param executionEnd The execution to be named.
    */
-  @SuppressWarnings("nls")
-  public static void computeExecutionEndName(ExecutionEnd executionEnd_p) {
-    InstanceRole instanceRole = executionEnd_p.getCovered();
+  public static void computeExecutionEndName(ExecutionEnd executionEnd) {
+    InstanceRole instanceRole = executionEnd.getCovered();
     AbstractInstance instance = instanceRole.getRepresentedInstance();
     NamedElement component = null;
     if (instance instanceof Part) {
@@ -101,10 +99,10 @@ public class NameGenerator {
     }
     String representedInstanceName = component.getName();
     
-    executionEnd_p.setName("[[ " 
-                           + "[" + representedInstanceName + "] " 
-                           + "(Ref=" + __idAbstractEnd + ")" 
-                           + " ]] ");
+    executionEnd.setName("[[ " //$NON-NLS-1$
+                           + "[" + representedInstanceName + "] " //$NON-NLS-1$ //$NON-NLS-2$
+                           + "(Ref=" + __idAbstractEnd + ")" //$NON-NLS-1$ //$NON-NLS-2$
+                           + " ]] "); //$NON-NLS-1$
     
     __idAbstractEnd++;    
   }
@@ -116,11 +114,10 @@ public class NameGenerator {
   
   /**
    * Computes the name of an execution.
-   * @param executionEnd_p The execution to be named.
+   * @param executionEnd The execution to be named.
    */
-  @SuppressWarnings("nls")
-  public static void computeInstanceRoleName(InstanceRole instanceRole_p) {
-    AbstractInstance instance = instanceRole_p.getRepresentedInstance();
+  public static void computeInstanceRoleName(InstanceRole instanceRole) {
+    AbstractInstance instance = instanceRole.getRepresentedInstance();
     NamedElement component = null;
     if (instance instanceof Part) {
       component = (NamedElement) instance.eContainer();
@@ -130,10 +127,10 @@ public class NameGenerator {
     }
     String componentName = component.getName();
     String representedInstanceName = component.getName();  
-    instanceRole_p.setName("[[ " 
-                           + "[" + representedInstanceName + " : "+ componentName + "] " 
-                           + "(Ref=" + __idInstanceRole + ")" 
-                           + " ]] ");
+    instanceRole.setName("[[ " //$NON-NLS-1$
+                           + "[" + representedInstanceName + " : "+ componentName + "] " //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                           + "(Ref=" + __idInstanceRole + ")" //$NON-NLS-1$ //$NON-NLS-2$
+                           + " ]] "); //$NON-NLS-1$
     
     __idInstanceRole++;    
   }
@@ -145,14 +142,13 @@ public class NameGenerator {
   
   /**
    * Computes the name of an execution.
-   * @param executionEnd_p The execution to be named.
+   * @param executionEnd The execution to be named.
    */
-  @SuppressWarnings("nls")
-  public static void computeExecutionName(Execution execution_p) {
-    String roleName = ((AbstractEnd) execution_p.getStart()).getCovered().getName();
+  public static void computeExecutionName(Execution execution) {
+    String roleName = ((AbstractEnd) execution.getStart()).getCovered().getName();
  
-    execution_p.setName("Execution on " + roleName 
-                           + "(Ref=" + __idExecution + ")");
+    execution.setName("Execution on " + roleName //$NON-NLS-1$
+                           + "(Ref=" + __idExecution + ")"); //$NON-NLS-1$ //$NON-NLS-2$
     
     __idExecution++;    
   }
@@ -162,19 +158,17 @@ public class NameGenerator {
    */
   public static int __idEvent = 0;
   
-  @SuppressWarnings("nls")
-  public static void computeEventName(Event event_p) {
-    boolean receive = event_p instanceof EventReceiptOperation;
-    boolean send = event_p instanceof EventSentOperation;
-    boolean execution = event_p instanceof ExecutionEvent;
+  public static void computeEventName(Event event) {
+    boolean receive = event instanceof EventReceiptOperation;
+    boolean send = event instanceof EventSentOperation;
+    boolean execution = event instanceof ExecutionEvent;
     
-    event_p.setName("Event " 
-                    + (send?"S":"")
-                    + (receive?"R":"")
-                    + (execution?"E":"")
-                    + " (Ref=" + __idEvent + ")");
+    event.setName("Event " //$NON-NLS-1$
+                    + (send?"S":"") //$NON-NLS-1$ //$NON-NLS-2$
+                    + (receive?"R":"") //$NON-NLS-1$ //$NON-NLS-2$
+                    + (execution?"E":"") //$NON-NLS-1$ //$NON-NLS-2$
+                    + " (Ref=" + __idEvent + ")"); //$NON-NLS-1$ //$NON-NLS-2$
     
     __idEvent++;
   }
-  
 }

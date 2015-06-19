@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,22 +51,22 @@ public class Query {
 
   /**
    * Get incoming traces for specified element (whatever the source may be).
-   * @param element_p
-   * @param transfo_p
+   * @param element
+   * @param transfo
    * @return
    */
-  private static List<AbstractTrace> getIncomingTraces(CapellaElement element_p, ITransfo transfo_p) {
-    return element_p.getIncomingTraces();
+  private static List<AbstractTrace> getIncomingTraces(CapellaElement element, ITransfo transfo) {
+    return element.getIncomingTraces();
   }
 
   /**
    * Get incoming traces for specified element (whatever the source may be).
-   * @param element_p
-   * @param transfo_p
+   * @param element
+   * @param transfo
    * @return
    */
-  private static List<AbstractTrace> getOutgoingTraces(CapellaElement element_p, ITransfo transfo_p) {
-    return element_p.getOutgoingTraces();
+  private static List<AbstractTrace> getOutgoingTraces(CapellaElement element, ITransfo transfo) {
+    return element.getOutgoingTraces();
   }
 
   /**
@@ -83,37 +83,37 @@ public class Query {
 
   /**
    * Returns whether the object is transformed by the transformation
-   * @param object_p The object to be tested
-   * @param transfo_p The transformation
+   * @param object The object to be tested
+   * @param transfo The transformation
    * @return <code>true</code> if the object is transformed
    */
-  public static boolean isElementTransformed(EObject object_p, ITransfo transfo_p) {
-    return retrieveTransformedElement(object_p, transfo_p) != null;
+  public static boolean isElementTransformed(EObject object, ITransfo transfo) {
+    return retrieveTransformedElement(object, transfo) != null;
   }
 
   /**
    * Returns whether the object is transformed by the transformation
-   * @param object_p The object to be tested
-   * @param transfo_p The transformation
+   * @param object The object to be tested
+   * @param transfo The transformation
    * @return <code>true</code> if the object is transformed
    */
-  public static boolean isElementTransformed(EObject object_p, ITransfo transfo_p, EClass eTargetType) {
-    return retrieveTransformedElement(object_p, transfo_p, eTargetType) != null;
+  public static boolean isElementTransformed(EObject object, ITransfo transfo, EClass eTargetType) {
+    return retrieveTransformedElement(object, transfo, eTargetType) != null;
   }
 
   /**
    * Specifies whether the transformation link has been created by the transformation
-   * @param link_p The link to be tested
-   * @param transfo_p The transformation
+   * @param link The link to be tested
+   * @param transfo The transformation
    * @return <code>true</code> if it is the case
    */
-  public static boolean isLinkOfTransfo(AbstractTrace link_p, ITransfo transfo_p) {
-    if (transfo_p == null) {
+  public static boolean isLinkOfTransfo(AbstractTrace link, ITransfo transfo) {
+    if (transfo == null) {
       return false;
     }
 
-    if (isValidUID(link_p, transfo_p)) {
-      if ((transfo_p instanceof Transfo) && ((Transfo) transfo_p).isValidLinkKind(link_p)) {
+    if (isValidUID(link, transfo)) {
+      if ((transfo instanceof Transfo) && ((Transfo) transfo).isValidLinkKind(link)) {
         return true;
       }
     }
@@ -122,58 +122,58 @@ public class Query {
 
   /**
    * Returns whether the object is one to one transformed
-   * @param object_p The object to be tested
-   * @param transfo_p The transformation
+   * @param object The object to be tested
+   * @param transfo The transformation
    * @return <code>true</code> if the object is transformed
    */
-  public static boolean isOneToManyTransformed(EObject object_p, ITransfo transfo_p) {
-    return retrieveTransformedElements(object_p, transfo_p).size() > 1;
+  public static boolean isOneToManyTransformed(EObject object, ITransfo transfo) {
+    return retrieveTransformedElements(object, transfo).size() > 1;
   }
 
   /**
    * Returns whether the object is one to one transformed
-   * @param object_p The object to be tested
-   * @param transfo_p The transformation
+   * @param object The object to be tested
+   * @param transfo The transformation
    * @return <code>true</code> if the object is transformed
    */
-  public static boolean isOneToOneTransformed(EObject object_p, ITransfo transfo_p) {
-    return isOneToOneTransformed(object_p, transfo_p, null);
+  public static boolean isOneToOneTransformed(EObject object, ITransfo transfo) {
+    return isOneToOneTransformed(object, transfo, null);
   }
 
   /**
    * Returns whether the object is one to one transformed
-   * @param object_p The object to be tested
-   * @param transfo_p The transformation
+   * @param object The object to be tested
+   * @param transfo The transformation
    * @return <code>true</code> if the object is transformed
    */
-  public static boolean isOneToOneTransformed(EObject object_p, ITransfo transfo_p, EClass target) {
-    Object result = retrieveTransformedElement(object_p, transfo_p, target);
+  public static boolean isOneToOneTransformed(EObject object, ITransfo transfo, EClass target) {
+    Object result = retrieveTransformedElement(object, transfo, target);
     return (result != null) && !((result instanceof List<?>) && (((List<?>) result).size() > 1));
   }
 
-  public static boolean isValidUID(AbstractTrace link_p, ITransfo transfo_p) {
+  public static boolean isValidUID(AbstractTrace link, ITransfo transfo) {
     boolean isDetected = false;
 
     // Workaround for Semantic trace : 'KeyValue' not supported by this link
     // kind
-    if (!(link_p instanceof GenericTrace)) {
+    if (!(link instanceof GenericTrace)) {
       isDetected = true;
     } else {
-      GenericTrace genericTrace = (GenericTrace) link_p;
+      GenericTrace genericTrace = (GenericTrace) link;
       // Case 'GenericTrace' kind
       for (KeyValue keyValue : genericTrace.getKeyValuePairs()) {
         String key = keyValue.getKey();
         String value = keyValue.getValue();
 
         if (key.equals(TigerRelationshipHelper.PROPERTY_TRANSFO_UID)) {
-          isDetected = value.equals(transfo_p.getUid());
+          isDetected = value.equals(transfo.getUid());
 
           // DELETE 1.6
           // In 1.5, TransfoLink id have been unified. Simple algorithm to check same targetId of transfoLinks
           if (!isDetected) {
             if (!value.contains("Bridge")) { //$NON-NLS-1$
               String[] values = value.split("TargetId");//$NON-NLS-1$
-              String[] valuesTransfo = transfo_p.getUid().split("TargetId");//$NON-NLS-1$
+              String[] valuesTransfo = transfo.getUid().split("TargetId");//$NON-NLS-1$
               if ((values != null) && (valuesTransfo != null) && (values.length == 2) && (valuesTransfo.length == 2)) {
                 if ((values[1] != null) && values[1].equals(valuesTransfo[1])) {
                   isDetected = true;
@@ -208,24 +208,24 @@ public class Query {
 
   /**
    * Retrieves the transformed elements by a specified transformation.
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
-   * @param expectedTarget_p
+   * @param object The element to be queried
+   * @param transfo The transformation
+   * @param expectedTarget
    * @return The transformed element
    */
-  public static EObject retrieveFirstTransformedElement(EObject object_p, ITransfo transfo_p) {
-    return retrieveFirstTransformedElement(object_p, transfo_p, null);
+  public static EObject retrieveFirstTransformedElement(EObject object, ITransfo transfo) {
+    return retrieveFirstTransformedElement(object, transfo, null);
   }
 
   /**
    * Retrieves the transformed elements by a specified transformation.
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
-   * @param expectedTarget_p
+   * @param object The element to be queried
+   * @param transfo The transformation
+   * @param expectedTarget
    * @return The transformed element
    */
-  public static EObject retrieveFirstTransformedElement(EObject object_p, ITransfo transfo_p, EClass expectedTarget_p) {
-    Object res = retrieveTransformedElement(object_p, transfo_p, expectedTarget_p);
+  public static EObject retrieveFirstTransformedElement(EObject object, ITransfo transfo, EClass expectedTarget) {
+    Object res = retrieveTransformedElement(object, transfo, expectedTarget);
     if (res instanceof List<?>) {
       List<?> p = (List<?>) res;
       return (EObject) p.get(0);
@@ -235,11 +235,11 @@ public class Query {
 
   /**
    * Retrieves the model root of an element
-   * @param object_p The element to be queried
+   * @param object The element to be queried
    * @return The model root
    */
-  public static ModelRoot retrieveModelRoot(EObject object_p) {
-    EObject currentElement = object_p;
+  public static ModelRoot retrieveModelRoot(EObject object) {
+    EObject currentElement = object;
     while (currentElement != null) {
       if (currentElement instanceof ModelRoot) {
         return (ModelRoot) currentElement;
@@ -252,18 +252,18 @@ public class Query {
 
   /**
    * Retrieve elements linked by a relationship by passing its name
-   * @param relationshipString_p The relationship name
+   * @param relationshipString The relationship name
    * @return
    */
   @SuppressWarnings("unchecked")
-  public static List<EObject> retrieveRelatedElements(EObject element, EReference relationshipString_p) {
+  public static List<EObject> retrieveRelatedElements(EObject element, EReference relationshipString) {
 
     List<EObject> relatedElements = new ArrayList<EObject>();
 
     // Skip derived features (computed) <=> UML slashed relationships
-    if (!relationshipString_p.isDerived()) {
+    if (!relationshipString.isDerived()) {
       try {
-        Object obj = element.eGet(relationshipString_p);
+        Object obj = element.eGet(relationshipString);
         if (obj instanceof EObject) {
           EObject eObject = (EObject) obj;
           relatedElements.add(eObject);
@@ -283,15 +283,15 @@ public class Query {
 
   /**
    * Retrieves the list of related elements linked with the specified relationships in parameter
-   * @param element_p The element
-   * @param relationships_p The list of relationship (roles)
+   * @param element The element
+   * @param relationships The list of relationship (roles)
    * @return The element to be queried
    */
-  public static List<EObject> retrieveRelatedElements(EObject element_p, EReference[] relationships_p) {
+  public static List<EObject> retrieveRelatedElements(EObject element, EReference[] relationships) {
     List<EObject> relatedElements = new ArrayList<EObject>();
 
-    for (EReference relationship : relationships_p) {
-      relatedElements.addAll(retrieveRelatedElements(element_p, relationship));
+    for (EReference relationship : relationships) {
+      relatedElements.addAll(retrieveRelatedElements(element, relationship));
     }
 
     return relatedElements;
@@ -316,52 +316,52 @@ public class Query {
 
   /**
    * Retrieves the shared package of an element (a Capella Project) at the upper containment level.
-   * @param object_p The element to be tested
+   * @param object The element to be tested
    * @return The list of shared packages
    */
-  public static List<SharedPkg> retrieveSharedPkgs(EObject object_p) {
-    List<EObject> objects = object_p.eContents();
+  public static List<SharedPkg> retrieveSharedPkgs(EObject object) {
+    List<EObject> objects = object.eContents();
     List<SharedPkg> sharedPkgs = new ArrayList<SharedPkg>();
 
-    for (EObject object : objects) {
-      if (object instanceof SharedPkg) {
-        SharedPkg sharedPkg = (SharedPkg) object;
+    for (EObject obj : objects) {
+      if (obj instanceof SharedPkg) {
+        SharedPkg sharedPkg = (SharedPkg) obj;
         sharedPkgs.add(sharedPkg);
       }
     }
     return sharedPkgs;
   }
 
-  public static List<SharedPkg> retrieveSharedPkgsOfElement(EObject object_p) {
-    SystemEngineering systemEngineering = retrieveSystemEngineering(object_p);
+  public static List<SharedPkg> retrieveSharedPkgsOfElement(EObject object) {
+    SystemEngineering systemEngineering = retrieveSystemEngineering(object);
     return retrieveSharedPkgs(systemEngineering.eContainer());
   }
 
   /**
    * Retrieves the transformed elements by a specified transformation.
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
-   * @param expectedTarget_p
+   * @param object The element to be queried
+   * @param transfo The transformation
+   * @param expectedTarget
    * @return The transformed element
    */
-  public static List<? extends EObject> retrieveSourceElements(EObject targetElement_p, ITransfo transfo_p, EClass expectedTarget_p) {
+  public static List<? extends EObject> retrieveSourceElements(EObject targetElement, ITransfo transfo, EClass expectedTarget) {
     List<EObject> results = new ArrayList<EObject>();
 
-    if (targetElement_p instanceof CapellaElement) {
-      CapellaElement element = (CapellaElement) targetElement_p;
+    if (targetElement instanceof CapellaElement) {
+      CapellaElement element = (CapellaElement) targetElement;
 
       try {
         // load rules for the given element if wasn't loaded to load all related transfo link (FunctionalRealization, PortRealization etc)
-        transfo_p.findCachedMatchingRule(targetElement_p);
-      } catch (TransfoException exception_p) {
+        transfo.findCachedMatchingRule(targetElement);
+      } catch (TransfoException exception) {
         // Nothing to do
       }
 
-      List<AbstractTrace> traceList = getOutgoingTraces(element, transfo_p);
+      List<AbstractTrace> traceList = getOutgoingTraces(element, transfo);
       for (AbstractTrace trace : traceList) {
-        if (isLinkOfTransfo(trace, transfo_p)) {
+        if (isLinkOfTransfo(trace, transfo)) {
           TraceableElement srcElement = trace.getTargetElement();
-          if ((expectedTarget_p == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget_p, srcElement.eClass())) {
+          if ((expectedTarget == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget, srcElement.eClass())) {
             results.add(srcElement);
           }
         }
@@ -372,11 +372,11 @@ public class Query {
 
   /**
    * Retrieves the system engineering from a model element
-   * @param object_p The model element
+   * @param object The model element
    * @return The system engineering
    */
-  protected static SystemEngineering retrieveSystemEngineering(EObject object_p) {
-    EObject currentElement = object_p.eContainer();
+  protected static SystemEngineering retrieveSystemEngineering(EObject object) {
+    EObject currentElement = object.eContainer();
     while (currentElement != null) {
       if (currentElement instanceof SystemEngineering) {
         return (SystemEngineering) currentElement;
@@ -388,41 +388,41 @@ public class Query {
   }
 
   /**
-   * Retrieves the transformed elements by a specified transformation. USE IT CAREFULLY! (we can be sure that the given object_p is transitioned one2one only
+   * Retrieves the transformed elements by a specified transformation. USE IT CAREFULLY! (we can be sure that the given object is transitioned one2one only
    * when we have created it into the transition, otherwise, the user can have made some bad changes with transfoLinks)
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
+   * @param object The element to be queried
+   * @param transfo The transformation
    * @return The transformed element
    */
-  public static Object retrieveTransformedElement(EObject object_p, ITransfo transfo_p) {
-    return retrieveTransformedElement(object_p, transfo_p, null);
+  public static Object retrieveTransformedElement(EObject object, ITransfo transfo) {
+    return retrieveTransformedElement(object, transfo, null);
   }
 
   /**
-   * Retrieves the transformed elements by a specified transformation. USE IT CAREFULLY! (we can be sure that the given object_p is transitioned one2one only
+   * Retrieves the transformed elements by a specified transformation. USE IT CAREFULLY! (we can be sure that the given object is transitioned one2one only
    * when we have created it into the transition, otherwise, the user can have made some bad changes with transfoLinks)
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
-   * @param expectedTarget_p
+   * @param object The element to be queried
+   * @param transfo The transformation
+   * @param expectedTarget
    * @return The transformed element
    */
-  public static Object retrieveTransformedElement(EObject object_p, ITransfo transfo_p, EClass expectedTarget_p) {
+  public static Object retrieveTransformedElement(EObject object, ITransfo transfo, EClass expectedTarget) {
     List<EObject> result = new ArrayList<EObject>();
-    if (object_p instanceof CapellaElement) {
-      CapellaElement element = (CapellaElement) object_p;
+    if (object instanceof CapellaElement) {
+      CapellaElement element = (CapellaElement) object;
 
       try {
         // load rules for the given element if wasn't loaded to load all related transfo link (FunctionalRealization, PortRealization etc)
-        transfo_p.findCachedMatchingRule(object_p);
-      } catch (TransfoException exception_p) {
+        transfo.findCachedMatchingRule(object);
+      } catch (TransfoException exception) {
         // Nothing to do
       }
 
-      List<AbstractTrace> traceList = getIncomingTraces(element, transfo_p);
+      List<AbstractTrace> traceList = getIncomingTraces(element, transfo);
       for (AbstractTrace trace : traceList) {
-        if (isLinkOfTransfo(trace, transfo_p)) {
+        if (isLinkOfTransfo(trace, transfo)) {
           TraceableElement srcElement = trace.getSourceElement();
-          if ((expectedTarget_p == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget_p, srcElement.eClass())) {
+          if ((expectedTarget == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget, srcElement.eClass())) {
             result.add(srcElement);
           }
         }
@@ -439,40 +439,40 @@ public class Query {
 
   /**
    * Retrieves the transformed elements by a specified transformation.
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
-   * @param expectedTarget_p
+   * @param object The element to be queried
+   * @param transfo The transformation
+   * @param expectedTarget
    * @return The transformed element
    */
-  public static List<? extends EObject> retrieveTransformedElements(EObject object_p, ITransfo transfo_p) {
-    return retrieveTransformedElements(object_p, transfo_p, null);
+  public static List<? extends EObject> retrieveTransformedElements(EObject object, ITransfo transfo) {
+    return retrieveTransformedElements(object, transfo, null);
   }
 
   /**
    * Retrieves the transformed elements by a specified transformation.
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
-   * @param expectedTarget_p
+   * @param object The element to be queried
+   * @param transfo The transformation
+   * @param expectedTarget
    * @return The transformed element
    */
-  public static List<? extends EObject> retrieveTransformedElements(EObject object_p, ITransfo transfo_p, EClass expectedTarget_p) {
+  public static List<? extends EObject> retrieveTransformedElements(EObject object, ITransfo transfo, EClass expectedTarget) {
     List<EObject> results = new ArrayList<EObject>();
 
-    if ((object_p != null) && (object_p instanceof CapellaElement)) {
-      CapellaElement element = (CapellaElement) object_p;
+    if ((object != null) && (object instanceof CapellaElement)) {
+      CapellaElement element = (CapellaElement) object;
 
       try {
         // load rules for the given element if wasn't loaded to load all related transfo link (FunctionalRealization, PortRealization etc)
-        transfo_p.findCachedMatchingRule(object_p);
-      } catch (TransfoException exception_p) {
+        transfo.findCachedMatchingRule(object);
+      } catch (TransfoException exception) {
         // Nothing to do
       }
 
-      List<AbstractTrace> traceList = getIncomingTraces(element, transfo_p);
+      List<AbstractTrace> traceList = getIncomingTraces(element, transfo);
       for (AbstractTrace trace : traceList) {
-        if (isLinkOfTransfo(trace, transfo_p)) {
+        if (isLinkOfTransfo(trace, transfo)) {
           TraceableElement srcElement = trace.getSourceElement();
-          if ((expectedTarget_p == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget_p, srcElement.eClass())) {
+          if ((expectedTarget == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget, srcElement.eClass())) {
             results.add(srcElement);
           }
         }
@@ -483,28 +483,28 @@ public class Query {
 
   /**
    * Retrieves the transformed elements by a specified transformation.
-   * @param object_p The element to be queried
-   * @param transfo_p The transformation
-   * @param expectedTarget_p
+   * @param object The element to be queried
+   * @param transfo The transformation
+   * @param expectedTarget
    * @return The transformed element
    */
-  public static List<? extends EObject> retrieveUnattachedTransformedElements(EObject object_p, ITransfo transfo_p, EClass expectedTarget_p) {
+  public static List<? extends EObject> retrieveUnattachedTransformedElements(EObject object, ITransfo transfo, EClass expectedTarget) {
     List<EObject> result = new ArrayList<EObject>();
-    if (object_p instanceof CapellaElement) {
-      CapellaElement element = (CapellaElement) object_p;
+    if (object instanceof CapellaElement) {
+      CapellaElement element = (CapellaElement) object;
 
       try {
         // load rules for the given element if wasn't loaded to load all related transfo link (FunctionalRealization, PortRealization etc)
-        transfo_p.findCachedMatchingRule(object_p);
-      } catch (TransfoException exception_p) {
+        transfo.findCachedMatchingRule(object);
+      } catch (TransfoException exception) {
         // Nothing to do
       }
 
-      List<AbstractTrace> traceList = getIncomingTraces(element, transfo_p);
+      List<AbstractTrace> traceList = getIncomingTraces(element, transfo);
       for (AbstractTrace trace : traceList) {
-        if (isLinkOfTransfo(trace, transfo_p)) {
+        if (isLinkOfTransfo(trace, transfo)) {
           TraceableElement srcElement = trace.getSourceElement();
-          if ((expectedTarget_p == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget_p, srcElement.eClass())) {
+          if ((expectedTarget == null) || EcoreUtil2.isEqualOrSuperClass(expectedTarget, srcElement.eClass())) {
             if (srcElement.eContainer() == null) {
               result.add(srcElement);
             }
@@ -514,5 +514,4 @@ public class Query {
     }
     return result;
   }
-
 }

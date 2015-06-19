@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,6 @@ public class TransfoEngineImpl extends TransfoEngine {
   }  
   
   @Override
-  @SuppressWarnings("nls")
   protected void initialize_() {    
     EObject transfoSource 
       = (EObject) _transfo.get(TRANSFO_SOURCE);
@@ -55,7 +54,7 @@ public class TransfoEngineImpl extends TransfoEngine {
     List<GenericTrace> links = new ArrayList<GenericTrace>();
     _transfo.put(NEW_LINKS, links);
     
-    _transfo.setUid("Default");
+    _transfo.setUid("Default"); //$NON-NLS-1$
   }
   
   
@@ -63,29 +62,24 @@ public class TransfoEngineImpl extends TransfoEngine {
    * @see org.polarsys.capella.core.tiger.impl.TransfoEngine#doProcessDependingModels(org.eclipse.emf.ecore.EObject)
    */
   @Override
-  public void doProcessDependingModels(List<EObject> object_p) {
+  public void doProcessDependingModels(List<EObject> object) {
     
   }
   
   /**
    * @see org.polarsys.capella.core.tiger.impl.TransfoEngine#finalize(org.polarsys.capella.core.tiger.impl.Transfo)
    */
-  @SuppressWarnings("nls")
   @Override
   protected void finalize_() {  
     if (_logger.isDebugEnabled()){
-      _logger.debug("====================================");     
-      _logger.debug("Finalizing...");
-      _logger.debug("====================================");
+      _logger.debug("====================================");//$NON-NLS-1$
+      _logger.debug("Finalizing..."); //$NON-NLS-1$
+      _logger.debug("===================================="); //$NON-NLS-1$
     }
     
     EObject transfoSource = (EObject) _transfo.get(TRANSFO_SOURCE);
-    
     EObject transfoTarget = Query.retrieveFirstTransformedElement(transfoSource, _transfo);
     
     _transfo.put(TRANSFO_TARGET, transfoTarget);
-    
   }
-
-
 }

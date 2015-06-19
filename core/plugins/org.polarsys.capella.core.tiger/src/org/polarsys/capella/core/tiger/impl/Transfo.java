@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,17 +66,17 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
 
   }
 
-  public Transfo(EClass eGenericTrace_p) {
+  public Transfo(EClass eGenericTrace) {
     this();
-    _eDefaultTrace = eGenericTrace_p;
+    _eDefaultTrace = eGenericTrace;
   }
 
-  public Transfo(EClass eGenericTrace_p, String context_p) {
-    _eDefaultTrace = eGenericTrace_p;
+  public Transfo(EClass eGenericTrace, String context) {
+    _eDefaultTrace = eGenericTrace;
     _ruleBase = new TransfoRuleBase();
     _ruleBaseCache = new HashMap<EObject, ITransfoRule>();
     _eSpecificLinkKindMap = new HashMap<String, EClass>();
-    loadRulesFromExtensionPoint(context_p);
+    loadRulesFromExtensionPoint(context);
   }
 
   public Transfo(ITransfoRuleBase ruleBase) {
@@ -85,50 +85,50 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
     _eSpecificLinkKindMap = new HashMap<String, EClass>();
   }
 
-  public Transfo(ITransfoRuleBase ruleBase_p, EClass eGenericTrace_p) {
-    this(ruleBase_p);
-    _eDefaultTrace = eGenericTrace_p;
+  public Transfo(ITransfoRuleBase ruleBase, EClass eGenericTrace) {
+    this(ruleBase);
+    _eDefaultTrace = eGenericTrace;
   }
 
-  public Transfo(ITransfoRuleBase ruleBase_p, EClass eGenericTrace_p, String context_p) {
-    this(ruleBase_p, eGenericTrace_p);
-    loadRulesFromExtensionPoint(context_p);
+  public Transfo(ITransfoRuleBase ruleBase, EClass eGenericTrace, String context) {
+    this(ruleBase, eGenericTrace);
+    loadRulesFromExtensionPoint(context);
   }
 
-  public Transfo(String context_p) {
+  public Transfo(String context) {
     _ruleBase = new TransfoRuleBase();
     _ruleBaseCache = new HashMap<EObject, ITransfoRule>();
     _eSpecificLinkKindMap = new HashMap<String, EClass>();
-    loadRulesFromExtensionPoint(context_p);
+    loadRulesFromExtensionPoint(context);
   }
 
   /**
-   * @param resolver_p
+   * @param resolver
    */
-  public void addResolver(IResolver resolver_p) {
-    _resolvers.add(resolver_p);
+  public void addResolver(IResolver resolver) {
+    _resolvers.add(resolver);
   }
 
   /**
    * @see org.polarsys.capella.common.tiger.ITransfo#addRule(org.polarsys.capella.core.bridges.transfo.impl.TransfoRule)
    */
-  public void addRule(TransfoRule rule_p) {
-    _ruleBase.addRule(rule_p);
+  public void addRule(TransfoRule rule) {
+    _ruleBase.addRule(rule);
   }
 
   /**
    * @throws TransfoException
    * @see org.polarsys.capella.common.tiger.ITransfo#findMatchingRule(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.bridges.transfo.impl.Transfo)
    */
-  public ITransfoRule findCachedMatchingRule(EObject element_p) throws TransfoException {
-    ITransfoRule rule = _ruleBaseCache.get(element_p);
+  public ITransfoRule findCachedMatchingRule(EObject element) throws TransfoException {
+    ITransfoRule rule = _ruleBaseCache.get(element);
     if (null == rule) {
-      rule = _ruleBase.findMatchingRule(element_p, this);
-      _ruleBaseCache.put(element_p, rule);
+      rule = _ruleBase.findMatchingRule(element, this);
+      _ruleBaseCache.put(element, rule);
     }
 
     if (rule == null) {
-      throw new TransfoException("rule not found", element_p); //$NON-NLS-1$
+      throw new TransfoException("rule not found", element); //$NON-NLS-1$
     }
 
     // Store the kind of TransfoLink corresponding to the Source and Target
@@ -142,8 +142,8 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
    * @throws TransfoException
    * @see org.polarsys.capella.common.tiger.ITransfo#findMatchingRule(org.eclipse.emf.ecore.EObject, org.polarsys.capella.core.bridges.transfo.impl.Transfo)
    */
-  public ITransfoRule findMatchingRule(EObject element_p) throws TransfoException {
-    return _ruleBase.findMatchingRule(element_p, this);
+  public ITransfoRule findMatchingRule(EObject element) throws TransfoException {
+    return _ruleBase.findMatchingRule(element, this);
   }
 
   public EClass get_eDefaultTrace() {
@@ -159,8 +159,8 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
 
   // Return a key for access to the specific kind link map in according to the
   // Source and Target type Element
-  private String getKey(EClass sourceType_p, EClass targetType_p) {
-    return sourceType_p.getName() + "_" + targetType_p.getName(); //$NON-NLS-1$
+  private String getKey(EClass sourceType, EClass targetType) {
+    return sourceType.getName() + "_" + targetType.getName(); //$NON-NLS-1$
   }
 
   /**
@@ -173,17 +173,17 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
   /**
    * Return a specific kind of TransfoLink in according to the Source and Target type Element
    */
-  public EClass getSpecificLinkKindFromMap(EObject srcEltType_p, EObject tgtEltType_p) {
-    String sourceKey = getKey(srcEltType_p.eClass(), tgtEltType_p.eClass());
+  public EClass getSpecificLinkKindFromMap(EObject srcEltType, EObject tgtEltType) {
+    String sourceKey = getKey(srcEltType.eClass(), tgtEltType.eClass());
 
     EClass specific = _eSpecificLinkKindMap.get(sourceKey);
 
     // Allow sub-typing of semantic source and target
     if (specific == null) {
-      ArrayList<EClass> superSources = new ArrayList<EClass>(srcEltType_p.eClass().getEAllSuperTypes());
-      superSources.add(srcEltType_p.eClass());
-      ArrayList<EClass> superTargets = new ArrayList<EClass>(tgtEltType_p.eClass().getEAllSuperTypes());
-      superTargets.add(tgtEltType_p.eClass());
+      ArrayList<EClass> superSources = new ArrayList<EClass>(srcEltType.eClass().getEAllSuperTypes());
+      superSources.add(srcEltType.eClass());
+      ArrayList<EClass> superTargets = new ArrayList<EClass>(tgtEltType.eClass().getEAllSuperTypes());
+      superTargets.add(tgtEltType.eClass());
 
       // using descendingIterator() on a linkedList in java 1.6 should be more efficient
       for (EClass eclassSource : superSources) {
@@ -208,29 +208,29 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
 
   /**
    * Check the kind of link given in parameter
-   * @param link_p
+   * @param link
    * @return
    */
-  public boolean isValidLinkKind(AbstractTrace link_p) {
+  public boolean isValidLinkKind(AbstractTrace link) {
     EClass eGenericTraceFound = null;
-    TraceableElement sourceType_p = link_p.getTargetElement();
-    TraceableElement targetType_p = link_p.getSourceElement();
+    TraceableElement sourceType = link.getTargetElement();
+    TraceableElement targetType = link.getSourceElement();
 
-    if ((sourceType_p != null) && (targetType_p != null)) {
-      eGenericTraceFound = this.getSpecificLinkKindFromMap(sourceType_p, targetType_p);
+    if ((sourceType != null) && (targetType != null)) {
+      eGenericTraceFound = this.getSpecificLinkKindFromMap(sourceType, targetType);
 
       if ((eGenericTraceFound == null) && (this.get_eDefaultTrace() != null)) {
         eGenericTraceFound = this.get_eDefaultTrace();
       }
     }
     // Allow sub-eclass of the generic trace eclass
-    return ((eGenericTraceFound != null) && EcoreUtil2.isEqualOrSuperClass(eGenericTraceFound, link_p.eClass()));
+    return ((eGenericTraceFound != null) && EcoreUtil2.isEqualOrSuperClass(eGenericTraceFound, link.eClass()));
   }
 
   @SuppressWarnings("rawtypes")
-  void loadFinalizer(Bundle bundle_p, String finalizer) {
+  void loadFinalizer(Bundle bundle, String finalizer) {
     try {
-      Class clazz = bundle_p.loadClass(finalizer);
+      Class clazz = bundle.loadClass(finalizer);
       IFinalizer finalizerInstance = (IFinalizer) clazz.newInstance();
       _finalizers.add(finalizerInstance);
     } catch (ClassNotFoundException e) {
@@ -243,16 +243,16 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
   }
 
   @SuppressWarnings("rawtypes")
-  void loadRule(Bundle bundle_p, String packageName_p, IConfigurationElement ruleElement_p) {
-    String ruleName = ruleElement_p.getAttribute(RULE_NAME_ID);
-    String linkName = ruleElement_p.getAttribute(TRANSFO_LINK_ID);
-    String completeName = packageName_p + "." + ruleName; //$NON-NLS-1$
+  void loadRule(Bundle bundle, String packageName, IConfigurationElement ruleElement) {
+    String ruleName = ruleElement.getAttribute(RULE_NAME_ID);
+    String linkName = ruleElement.getAttribute(TRANSFO_LINK_ID);
+    String completeName = packageName + "." + ruleName; //$NON-NLS-1$
     try {
-      Class clazz = bundle_p.loadClass(completeName);
+      Class clazz = bundle.loadClass(completeName);
       TransfoRule ruleInstance = (TransfoRule) clazz.newInstance();
       addRule(ruleInstance);
       if ((linkName != null) && !linkName.equals("")) { //$NON-NLS-1$
-        setSpecificLinkKindFromMap(ruleInstance.getSourceType(), ruleInstance.getTargetType(), loadTrace(bundle_p, linkName));
+        setSpecificLinkKindFromMap(ruleInstance.getSourceType(), ruleInstance.getTargetType(), loadTrace(bundle, linkName));
       }
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
@@ -267,30 +267,30 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
   /**
    * @see org.polarsys.capella.common.tiger.ITransfo#loadRule(java.lang.Class)
    */
-  public void loadRule(Class<?> ruleClass_p) {
-    _ruleBase.loadRule(ruleClass_p);
+  public void loadRule(Class<?> ruleClass) {
+    _ruleBase.loadRule(ruleClass);
   }
 
   /**
    * @see org.polarsys.capella.common.tiger.ITransfo#loadRules(java.lang.String)
    */
-  public void loadRules(String rulePkgName_p) throws ClassNotFoundException {
-    _ruleBase.loadRules(rulePkgName_p);
+  public void loadRules(String rulePkgName) throws ClassNotFoundException {
+    _ruleBase.loadRules(rulePkgName);
   }
 
   /**
    * @see org.polarsys.capella.common.tiger.ITransfo#loadRules(java.lang.String, java.lang.String[])
    */
-  public void loadRules(String rulePkgName_p, String[] classNames_p) throws ClassNotFoundException {
-    _ruleBase.loadRules(rulePkgName_p, classNames_p);
+  public void loadRules(String rulePkgName, String[] classNames) throws ClassNotFoundException {
+    _ruleBase.loadRules(rulePkgName, classNames);
   }
 
   /**
    * load rules from extension registry
    */
-  void loadRulesFromExtensionPoint(String contextName_p) {
+  void loadRulesFromExtensionPoint(String contextName) {
     TransfoRuleLoader loader = new TransfoRuleLoader(this);
-    loader.loadContext(contextName_p);
+    loader.loadContext(contextName);
     EClass defaultTrace = loader.getDefaultTrace();
     if ((defaultTrace != null) && (_eDefaultTrace != defaultTrace)) {
       _eDefaultTrace = defaultTrace;
@@ -298,10 +298,10 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
   }
 
   @SuppressWarnings("rawtypes")
-  EClass loadTrace(Bundle bundle_p, String transfoLinkName_p) {
+  EClass loadTrace(Bundle bundle, String transfoLinkName) {
     EClass result = _eDefaultTrace;
     try {
-      Class clazz = bundle_p.loadClass(transfoLinkName_p);
+      Class clazz = bundle.loadClass(transfoLinkName);
       ITracelinkProvider ruleInstance = (ITracelinkProvider) clazz.newInstance();
       result = ruleInstance.getTraceLinkType();
     } catch (ClassNotFoundException e) {
@@ -326,21 +326,20 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
   /**
    * @see org.polarsys.capella.common.tiger.ITransfo#setUid(java.lang.String)
    */
-  public void setUid(String uid_p) {
-    _uid = uid_p;
+  public void setUid(String uid) {
+    _uid = uid;
   }
 
-  @SuppressWarnings("nls")
   public String toHtml() {
     StringBuilder htmlDoc = new StringBuilder();
-    htmlDoc.append("<html>" + __cr);
-    htmlDoc.append("<head>" + __cr);
-    htmlDoc.append("<title> Rule Base Documentation </title>" + __cr);
-    htmlDoc.append("</head>" + __cr);
-    htmlDoc.append("<body>" + __cr);
+    htmlDoc.append("<html>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<head>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<title> Rule Base Documentation </title>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</head>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<body>").append(__cr); //$NON-NLS-1$
     htmlDoc.append(_ruleBase.toHtml(false));
-    htmlDoc.append("</body>" + __cr);
-    htmlDoc.append("</html>" + __cr);
+    htmlDoc.append("</body>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("</html>").append(__cr); //$NON-NLS-1$
     return htmlDoc.toString();
   }
 
@@ -348,26 +347,24 @@ public class Transfo extends HashMap<String, Object> implements ITransfo {
    * @see org.polarsys.capella.common.tiger.ITransfo#toString()
    */
   @Override
-  @SuppressWarnings("nls")
   public String toString() {
-    String newLine = System.getProperty("line.separator");
+    String newLine = System.getProperty("line.separator"); //$NON-NLS-1$
     StringBuilder builder = new StringBuilder();
 
-    builder.append("Transformation <");
+    builder.append("Transformation <"); //$NON-NLS-1$
     builder.append(_uid);
-    builder.append(">");
+    builder.append(">"); //$NON-NLS-1$
     builder.append(newLine);
 
     builder.append(_ruleBase);
 
-    builder.append(" + Properties");
+    builder.append(" + Properties"); //$NON-NLS-1$
     builder.append(newLine);
     for (String key : keySet()) {
-      builder.append("   - " + key + "=" + get(key));
+      builder.append("   - " + key + "=" + get(key)); //$NON-NLS-1$ //$NON-NLS-2$
       builder.append(newLine);
     }
 
     return builder.toString();
   }
-
 }

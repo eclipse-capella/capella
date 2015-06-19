@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,59 +50,59 @@ public class ElementFactory {
   
   /**
    * Creates a new logical component
-   * @param componentNameString_p
+   * @param componentNameString
    * @return The new logical component
    */
-  public static LogicalComponent createComponent(String componentNameString_p) {
+  public static LogicalComponent createComponent(String componentNameString) {
     LogicalComponent logicalComponent = LaFactory.eINSTANCE
-      .createLogicalComponent(componentNameString_p);
+      .createLogicalComponent(componentNameString);
     return logicalComponent;
   }
   
   /**
    * Creates a new instance of a component
-   * @param component_p The component
-   * @param instanceNameString_p The name of the new instance
+   * @param component The component
+   * @param instanceNameString The name of the new instance
    * @return The new instance
    */
-  public static Part createInstance(LogicalComponent component_p, String instanceNameString_p) {
-    Part logicalComponentInstance = CsFactory.eINSTANCE.createPart(instanceNameString_p);
-    component_p.getOwnedLogicalComponents().add(component_p);
+  public static Part createInstance(LogicalComponent component, String instanceNameString) {
+    Part logicalComponentInstance = CsFactory.eINSTANCE.createPart(instanceNameString);
+    component.getOwnedLogicalComponents().add(component);
 
     return logicalComponentInstance;
   }
  
   
-  public static SequenceMessage createMessage(Scenario scenario_p,
-		  Part componentInstance1_p, Part componentInstance2_p,
-       String messageNameString_p) {
-     return createMessage(scenario_p, 
-                          componentInstance1_p, 
-                          componentInstance2_p, 
-                          messageNameString_p,
+  public static SequenceMessage createMessage(Scenario scenario,
+		  Part componentInstance1, Part componentInstance2,
+       String messageNameString) {
+     return createMessage(scenario, 
+                          componentInstance1, 
+                          componentInstance2, 
+                          messageNameString,
                           new ArrayList<Event>());
    }
    /**
     * Creates a new message call (send and reply) from a component instance to another one.<br>
     * The message call is <b>synchronous</b>.
     * 
-    * @param scenario_p The target scenario in which the message has to be added
-    * @param componentInstance1_p The source component instance
-    * @param componentInstance2_p The target component instance
-    * @param messageNameString_p The message name
+    * @param scenario The target scenario in which the message has to be added
+    * @param componentInstance1 The source component instance
+    * @param componentInstance2 The target component instance
+    * @param messageNameString The message name
     * @return The new message
     */
-   public static SequenceMessage createMessage(Scenario scenario_p,
-		   Part componentInstance1_p, Part componentInstance2_p,
-       String messageNameString_p,
-       List<Event> listEvents_p) {
+   public static SequenceMessage createMessage(Scenario scenario,
+		   Part componentInstance1, Part componentInstance2,
+       String messageNameString,
+       List<Event> listEvents) {
 
-     SequenceMessage message = createMessageCall(scenario_p, componentInstance1_p,
-                                                 componentInstance2_p, 
-                                                 messageNameString_p,
-                                                 listEvents_p);
+     SequenceMessage message = createMessageCall(scenario, componentInstance1,
+                                                 componentInstance2, 
+                                                 messageNameString,
+                                                 listEvents);
 
-     createReturnMessage(scenario_p, message, listEvents_p);
+     createReturnMessage(scenario, message, listEvents);
 
      return message;
    }
@@ -110,47 +110,47 @@ public class ElementFactory {
    /**
     * Creates a new message call (send only) from a component instance to another one.<br>
     * The message call is <b>synchronous</b>.
-    * @param scenario_p The target scenario in which the message has to be added
-    * @param componentInstance1_p The source component instance
-    * @param componentInstance2_p The target component instance
-    * @param messageNameString_p The message name
+    * @param scenario The target scenario in which the message has to be added
+    * @param componentInstance1 The source component instance
+    * @param componentInstance2 The target component instance
+    * @param messageNameString The message name
     * @return The new message
     */
-   public static SequenceMessage createMessageCall(Scenario scenario_p,
-		   Part componentInstance1_p, Part componentInstance2_p,
-       String messageNameString_p,
-       List<Event> listEvents_p) {
-     return createMessageCall(scenario_p, 
-                              componentInstance1_p, 
-                              componentInstance2_p, 
-                              messageNameString_p, 
+   public static SequenceMessage createMessageCall(Scenario scenario,
+		   Part componentInstance1, Part componentInstance2,
+       String messageNameString,
+       List<Event> listEvents) {
+     return createMessageCall(scenario, 
+                              componentInstance1, 
+                              componentInstance2, 
+                              messageNameString, 
                               MessageKind.SYNCHRONOUS_CALL,
-                              listEvents_p);
+                              listEvents);
    }
    
    /**
     * Creates a new message call (send only) from a component instance to another one.<br>
     * The message call is <b>asynchronous</b>.
-    * @param scenario_p The target scenario in which the message has to be added
-    * @param componentInstance1_p The source component instance
-    * @param componentInstance2_p The target component instance
-    * @param messageNameString_p The message name
+    * @param scenario The target scenario in which the message has to be added
+    * @param componentInstance1 The source component instance
+    * @param componentInstance2 The target component instance
+    * @param messageNameString The message name
     * @return The new message
     */
-   public static SequenceMessage createAsynchronousMessageCall(Scenario scenario_p,
-		   Part componentInstance1_p, 
-		   Part componentInstance2_p,
-       String messageNameString_p,
-       List<Event> listEvents_p,
-       List<AbstractEnd> listExecutionEnds_p) {
+   public static SequenceMessage createAsynchronousMessageCall(Scenario scenario,
+		   Part componentInstance1, 
+		   Part componentInstance2,
+       String messageNameString,
+       List<Event> listEvents,
+       List<AbstractEnd> listExecutionEnds) {
 
      // 1- Create the message
-     SequenceMessage message = createMessageCall(scenario_p, 
-                              componentInstance1_p, 
-                              componentInstance2_p,
-                              messageNameString_p, 
+     SequenceMessage message = createMessageCall(scenario, 
+                              componentInstance1, 
+                              componentInstance2,
+                              messageNameString, 
                               MessageKind.ASYNCHRONOUS_CALL,
-                              listEvents_p);
+                              listEvents);
      
      // 2- Create execution at the ending message end of the message call
      Execution execution = InteractionFactory.eINSTANCE.createExecution();
@@ -161,13 +161,13 @@ public class ElementFactory {
      Event event = InteractionFactory.eINSTANCE.createExecutionEvent();
      executionEnd.setEvent(event);
 
-     listEvents_p.add(event);
+     listEvents.add(event);
 
      executionEnd.getCoveredInstanceRoles().add(message.getReceivingEnd().getCovered());
 
-     scenario_p.getOwnedTimeLapses().add(execution);
+     scenario.getOwnedTimeLapses().add(execution);
 
-     listExecutionEnds_p.add(executionEnd);
+     listExecutionEnds.add(executionEnd);
 
      NameGenerator.computeExecutionEndName(executionEnd);
      
@@ -176,19 +176,19 @@ public class ElementFactory {
    
    /**
     * Creates a new message call 
-    * @param scenario_p The target scenario in which the message has to be added
-    * @param componentInstance1_p The source component instance
-    * @param componentInstance2_p The target component instance
-    * @param messageNameString_p The new message name
-    * @param messageKind_p The message kind for the call
+    * @param scenario The target scenario in which the message has to be added
+    * @param componentInstance1 The source component instance
+    * @param componentInstance2 The target component instance
+    * @param messageNameString The new message name
+    * @param messageKind The message kind for the call
     * @return The new message
     */
-   public static SequenceMessage createMessageCall(Scenario scenario_p,
-       AbstractInstance componentInstance1_p, 
-       AbstractInstance componentInstance2_p,
-       String messageNameString_p,
-       MessageKind messageKind_p,
-       List<Event> listEvents_p) {
+   public static SequenceMessage createMessageCall(Scenario scenario,
+       AbstractInstance componentInstance1, 
+       AbstractInstance componentInstance2,
+       String messageNameString,
+       MessageKind messageKind,
+       List<Event> listEvents) {
      
      // 1- Finds the 2 instance roles
        
@@ -196,16 +196,16 @@ public class ElementFactory {
      
      InstanceRole instanceRole1 = null;
      // 1.2.1- Checks whether the instance roles are not already in use in the scenario
-     for (InstanceRole instanceRole : scenario_p.getOwnedInstanceRoles()) {
-       if(instanceRole.getRepresentedInstance() == componentInstance1_p) {
+     for (InstanceRole instanceRole : scenario.getOwnedInstanceRoles()) {
+       if(instanceRole.getRepresentedInstance() == componentInstance1) {
          instanceRole1 = instanceRole;
        }
      }
      
      if(instanceRole1==null) {
-       instanceRole1 = InteractionFactory.eINSTANCE.createInstanceRole(componentInstance1_p.getName());
-       scenario_p.getOwnedInstanceRoles().add(instanceRole1);
-       instanceRole1.setRepresentedInstance(componentInstance1_p);
+       instanceRole1 = InteractionFactory.eINSTANCE.createInstanceRole(componentInstance1.getName());
+       scenario.getOwnedInstanceRoles().add(instanceRole1);
+       instanceRole1.setRepresentedInstance(componentInstance1);
        NameGenerator.computeInstanceRoleName(instanceRole1);       
      }   
      
@@ -213,16 +213,16 @@ public class ElementFactory {
      
      InstanceRole instanceRole2 = null;
      // 1.3.1- Checks whether the instance roles are not already in use in the scenario    
-     for (InstanceRole instanceRole : scenario_p.getOwnedInstanceRoles()) {
-       if(instanceRole.getRepresentedInstance() == componentInstance2_p) {
+     for (InstanceRole instanceRole : scenario.getOwnedInstanceRoles()) {
+       if(instanceRole.getRepresentedInstance() == componentInstance2) {
          instanceRole2 = instanceRole;
        }
      }
      
      if(instanceRole2==null) {
-       instanceRole2 = InteractionFactory.eINSTANCE.createInstanceRole(componentInstance2_p.getName());
-       scenario_p.getOwnedInstanceRoles().add(instanceRole2);
-       instanceRole2.setRepresentedInstance(componentInstance2_p);
+       instanceRole2 = InteractionFactory.eINSTANCE.createInstanceRole(componentInstance2.getName());
+       scenario.getOwnedInstanceRoles().add(instanceRole2);
+       instanceRole2.setRepresentedInstance(componentInstance2);
        NameGenerator.computeInstanceRoleName(instanceRole2);           
      }
      
@@ -233,10 +233,10 @@ public class ElementFactory {
      messageEnd2.getCoveredInstanceRoles().add(instanceRole2);
 
      // 3- Creates the new message
-     SequenceMessage newMessage = InteractionFactory.eINSTANCE.createSequenceMessage(messageNameString_p);
+     SequenceMessage newMessage = InteractionFactory.eINSTANCE.createSequenceMessage(messageNameString);
      newMessage.setSendingEnd(messageEnd1);
      newMessage.setReceivingEnd(messageEnd2);
-     newMessage.setKind(messageKind_p);
+     newMessage.setKind(messageKind);
 
      // 5- Create events
      Event sentOperation = InteractionFactory.eINSTANCE.createEventSentOperation();
@@ -245,13 +245,13 @@ public class ElementFactory {
      Event receiveOperation = InteractionFactory.eINSTANCE.createEventReceiptOperation();
      messageEnd2.setEvent(receiveOperation);
      
-     listEvents_p.add(sentOperation);
-     listEvents_p.add(receiveOperation);
+     listEvents.add(sentOperation);
+     listEvents.add(receiveOperation);
      
      // 6- Updates the scenario with the new message and message ends
-     scenario_p.getOwnedMessages().add(newMessage);
-     scenario_p.getOwnedInteractionFragments().add(messageEnd1);
-     scenario_p.getOwnedInteractionFragments().add(messageEnd2);
+     scenario.getOwnedMessages().add(newMessage);
+     scenario.getOwnedInteractionFragments().add(messageEnd1);
+     scenario.getOwnedInteractionFragments().add(messageEnd2);
 
      NameGenerator.computeMessageEndName(messageEnd1);
      NameGenerator.computeMessageEndName(messageEnd2);
@@ -259,39 +259,39 @@ public class ElementFactory {
      return newMessage;
    }
 
-   public static SequenceMessage createReturnMessage(Scenario scenario_p,
-       SequenceMessage message_p) {
-     return createReturnMessage(scenario_p, message_p, new ArrayList<Event>());
+   public static SequenceMessage createReturnMessage(Scenario scenario,
+       SequenceMessage message) {
+     return createReturnMessage(scenario, message, new ArrayList<Event>());
    }
    
    /**
     * Creates a return message call of a message
-    * @param scenario_p The target scenario in which the message has to be added
-    * @param message_p The original message
+    * @param scenario The target scenario in which the message has to be added
+    * @param message The original message
     * @return The return message
     */
-   public static SequenceMessage createReturnMessage(Scenario scenario_p,
-       SequenceMessage message_p,
-       List<Event> listEvents_p) {
+   public static SequenceMessage createReturnMessage(Scenario scenario,
+       SequenceMessage message,
+       List<Event> listEvents) {
 
      /*
       * 1- Create the return message by swaping the caller 
       * and the callee of the message in parameter
       */    
      SequenceMessage newMessage 
-       = createMessageCall(scenario_p, 
+       = createMessageCall(scenario, 
                            // Swaped
-                           message_p.getReceivingEnd().getCovered().getRepresentedInstance(), 
-                           message_p.getSendingEnd().getCovered().getRepresentedInstance(),
-                           message_p.getName(),
+                           message.getReceivingEnd().getCovered().getRepresentedInstance(), 
+                           message.getSendingEnd().getCovered().getRepresentedInstance(),
+                           message.getName(),
                            MessageKind.REPLY,
-                           listEvents_p);
+                           listEvents);
      /*
       * 2- Create the execution between the receiving message end of the message in parameter
       * and the new sending message end of the return message
       */
      Execution execution = InteractionFactory.eINSTANCE.createExecution();
-     execution.setStart(message_p.getReceivingEnd());
+     execution.setStart(message.getReceivingEnd());
      execution.setFinish(newMessage.getSendingEnd());
 
      /*
@@ -303,17 +303,16 @@ public class ElementFactory {
      Event receiveOperation = InteractionFactory.eINSTANCE.createEventReceiptOperation();
      newMessage.getReceivingEnd().setEvent(receiveOperation);
      
-     listEvents_p.add(sentOperation);
-     listEvents_p.add(receiveOperation);
+     listEvents.add(sentOperation);
+     listEvents.add(receiveOperation);
      
      /*
       * 4- Add the new execution to the scenario
       */    
-     scenario_p.getOwnedTimeLapses().add(execution);
+     scenario.getOwnedTimeLapses().add(execution);
      
      NameGenerator.computeExecutionName(execution);
 
      return newMessage;
    }
-   
 }

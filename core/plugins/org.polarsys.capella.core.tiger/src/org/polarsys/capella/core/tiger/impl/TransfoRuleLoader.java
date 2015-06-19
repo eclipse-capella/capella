@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,8 +44,8 @@ public class TransfoRuleLoader {
     boolean isInitialized;
     List<IRuleSet> ruleSets;
 
-    IContext(String id_p) {
-      this.id = id_p;
+    IContext(String id) {
+      this.id = id;
       isInitialized = false;
       ruleSets = new ArrayList<IRuleSet>();
       elements = new ArrayList<IConfigurationElement>();
@@ -56,9 +56,9 @@ public class TransfoRuleLoader {
    * Describes a finalizer
    */
   private class IFinalizer extends IRule {
-    IFinalizer(IConfigurationElement name_p) {
-      super(name_p);
-      name = name_p.getAttribute(FINALIZER_CLASS_ID);
+    IFinalizer(IConfigurationElement name) {
+      super(name);
+      this.name = name.getAttribute(FINALIZER_CLASS_ID);
     }
   }
 
@@ -69,9 +69,9 @@ public class TransfoRuleLoader {
     IConfigurationElement element;
     String name;
 
-    IRule(IConfigurationElement element_p) {
-      element = element_p;
-      name = element_p.getAttribute(RULE_NAME_ID);
+    IRule(IConfigurationElement element) {
+      this.element = element;
+      this.name = element.getAttribute(RULE_NAME_ID);
     }
   }
 
@@ -84,10 +84,10 @@ public class TransfoRuleLoader {
     String packageName;
     HashMap<String, IRule> rules = new HashMap<String, IRule>();
 
-    IRuleSet(Bundle bundle_p, String packageName_p) {
+    IRuleSet(Bundle bundle, String packageName) {
       rules = new HashMap<String, IRule>();
-      bundle = bundle_p;
-      packageName = packageName_p;
+      this.bundle = bundle;
+      this.packageName = packageName;
     }
 
   }
@@ -125,8 +125,8 @@ public class TransfoRuleLoader {
 
   Transfo transfo;
 
-  TransfoRuleLoader(Transfo transfo_p) {
-    transfo = transfo_p;
+  TransfoRuleLoader(Transfo transfo) {
+    this.transfo = transfo;
     initContextsFromRegistry();
     loadResolvers();
   }
@@ -141,14 +141,14 @@ public class TransfoRuleLoader {
   /**
    * Initialize a context by retrieving all ruleSets required
    */
-  protected void initContext(String contextName_p) {
+  protected void initContext(String contextName) {
 
-    if (contextName_p != null) {
+    if (contextName != null) {
       // Load specified context
-      if (!contexts.containsKey(contextName_p)) {
+      if (!contexts.containsKey(contextName)) {
         return;
       }
-      IContext context = contexts.get(contextName_p);
+      IContext context = contexts.get(contextName);
       if (context.isInitialized) {
         return;
       }
@@ -239,8 +239,8 @@ public class TransfoRuleLoader {
   /**
    * Fill a rule set with finalizers from IConfigurationElements
    */
-  protected void initFinalizersForRuleSet(IRuleSet set, IConfigurationElement[] rules_p) {
-    for (IConfigurationElement ruleElement : rules_p) {
+  protected void initFinalizersForRuleSet(IRuleSet set, IConfigurationElement[] rules) {
+    for (IConfigurationElement ruleElement : rules) {
       String ruleName = ruleElement.getAttribute(FINALIZER_CLASS_ID);
       if ((ruleName != null) && (ruleName.length() > 0) && !set.finalizers.containsKey(ruleName)) {
         IFinalizer rule = new IFinalizer(ruleElement);
@@ -252,8 +252,8 @@ public class TransfoRuleLoader {
   /**
    * Fill a rule set with rules from IConfigurationElements
    */
-  protected void initRulesForRuleSet(IRuleSet set, IConfigurationElement[] rules_p) {
-    for (IConfigurationElement ruleElement : rules_p) {
+  protected void initRulesForRuleSet(IRuleSet set, IConfigurationElement[] rules) {
+    for (IConfigurationElement ruleElement : rules) {
       String ruleName = ruleElement.getAttribute(RULE_NAME_ID);
       if ((ruleName != null) && (ruleName.length() > 0) && !set.rules.containsKey(ruleName)) {
         IRule rule = new IRule(ruleElement);
@@ -264,10 +264,10 @@ public class TransfoRuleLoader {
 
   /**
    * Allows to load rule classes of the given context name
-   * @param contextName_p
+   * @param contextName
    */
-  public void loadContext(String contextName_p) {
-    initContext(contextName_p);
+  public void loadContext(String contextName) {
+    initContext(contextName);
     loadRuleSets();
   }
 
@@ -279,18 +279,18 @@ public class TransfoRuleLoader {
     IConfigurationElement[] elementsForPlugin = extensionRegistry.getConfigurationElementsFor(Activator.PLUGIN_ID);
     TreeSet<IConfigurationElement> elements = new TreeSet<IConfigurationElement>(new Comparator<IConfigurationElement>() {
 
-      public int compare(IConfigurationElement arg0_p, IConfigurationElement arg1_p) {
-        int priority1 = getPriority(arg0_p);
-        int priority2 = getPriority(arg1_p);
+      public int compare(IConfigurationElement arg0, IConfigurationElement arg1) {
+        int priority1 = getPriority(arg0);
+        int priority2 = getPriority(arg1);
 
         if (priority1 == priority2) {
-          return arg0_p.getAttribute(RESOLVER_ID_ID).compareTo(arg1_p.getAttribute(RESOLVER_ID_ID));
+          return arg0.getAttribute(RESOLVER_ID_ID).compareTo(arg1.getAttribute(RESOLVER_ID_ID));
         }
         return priority2 - priority1;
       }
 
-      private int getPriority(IConfigurationElement configurationElement_p) {
-        String value = configurationElement_p.getAttribute(PRIORITY_ID);
+      private int getPriority(IConfigurationElement configurationElement) {
+        String value = configurationElement.getAttribute(PRIORITY_ID);
         if (value == null) {
           return 0;
         } else if (PRIORITY_LOW.equals(value)) {
@@ -302,7 +302,6 @@ public class TransfoRuleLoader {
         }
         return 0;
       }
-
     });
 
     for (IConfigurationElement configurationElement : elementsForPlugin) {
@@ -317,7 +316,6 @@ public class TransfoRuleLoader {
         transfo.addResolver(resolver);
       }
     }
-
   }
 
   /**
@@ -344,5 +342,4 @@ public class TransfoRuleLoader {
     }
     return allRuleSets.get(packageName);
   }
-
 }

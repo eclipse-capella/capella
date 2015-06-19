@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ public interface ITransfoRule {
   /**
    * @see org.polarsys.capella.common.tiger.ITransfoRule#setLongName(java.lang.String)
    */
-  public void setLongName(String name_p);
+  public void setLongName(String name);
 
   /**
    * @see org.polarsys.capella.common.tiger.ITransfoRule#getShortName()
@@ -43,7 +43,7 @@ public interface ITransfoRule {
   /**
    * @see org.polarsys.capella.common.tiger.ITransfoRule#setShortName(java.lang.String)
    */
-  public void setShortName(String shortName_p);
+  public void setShortName(String shortName);
 
   /**
    * @see org.polarsys.capella.common.tiger.ITransfoRule#getSourceType()
@@ -63,9 +63,9 @@ public interface ITransfoRule {
   public boolean isAbstract();
 
   /**
-   * @param abstract_p the abstract to set
+   * @param isAbstract the abstract to set
    */
-  public void setAbstract(boolean abstract_p);
+  public void setAbstract(boolean isAbstract);
 
   /**
    * @return the deprecated
@@ -73,36 +73,36 @@ public interface ITransfoRule {
   public boolean isDeprecated();
 
   /**
-   * @param deprecated_p the deprecated to set
+   * @param deprecated the deprecated to set
    */
-  public void setDeprecated(boolean deprecated_p);
+  public void setDeprecated(boolean deprecated);
 
   /**
-   * @param active_p the active to set
+   * @param active the active to set
    */
-  public void setActive(boolean active_p);
+  public void setActive(boolean active);
 
-  public abstract boolean when(EObject element_p, ITransfo transfo_p);
+  public abstract boolean when(EObject element, ITransfo transfo);
 
-  public abstract List<EObject> retrieveRelatedElements(EObject element_p, ITransfo transfo_p);
+  public abstract List<EObject> retrieveRelatedElements(EObject element, ITransfo transfo);
 
   /**
    * Returns whether the element should be transformed by the rule or if it has been already transformed
-   * @param element_p
-   * @param transfo_p
+   * @param element
+   * @param transfo
    * @return
    */
-  public abstract boolean requireTransformation(EObject element_p, ITransfo transfo_p);
+  public abstract boolean requireTransformation(EObject element, ITransfo transfo);
 
-  public abstract Object transform(EObject element_p, ITransfo transfo_p);
+  public abstract Object transform(EObject element, ITransfo transfo);
 
-  public abstract void update(EObject element_p, ITransfo transfo_p);
+  public abstract void update(EObject element, ITransfo transfo);
 
-  public abstract void attach(EObject element_p, ITransfo transfo_p) throws TransfoException;
+  public abstract void attach(EObject element, ITransfo transfo) throws TransfoException;
 
   public abstract String getDescription();
 
-  public abstract String toHtml(boolean standalone_p);
+  public abstract String toHtml(boolean standalone);
 
   /**
    * @see java.lang.Object#toString()
