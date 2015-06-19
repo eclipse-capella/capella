@@ -332,40 +332,40 @@ public abstract class TransfoRule implements ITransfoRule, Comparable<TransfoRul
   public String toHtml(boolean standalone) {
     StringBuilder htmlDoc = new StringBuilder();
     Class<?> class_ = getClass();
-    htmlDoc.append("<td valign='top' id='" + class_.getSimpleName() + "'><b>" + __cr); //$NON-NLS-1$ //$NON-NLS-2$
+    htmlDoc.append("<td valign='top' id='").append(class_.getSimpleName()).append("'><b>").append(__cr); //$NON-NLS-1$ //$NON-NLS-2$
     htmlDoc.append(getShortName());
-    htmlDoc.append("</b></td>" + __cr); //$NON-NLS-1$
-    htmlDoc.append("<td valign='top'>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</b></td>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<td valign='top'>").append(__cr); //$NON-NLS-1$
     Class<?> superClass = getClass().getSuperclass();
     String superclassName = TransfoRule.class != superClass ? superClass.getSimpleName() : ""; //$NON-NLS-1$
     if (!superclassName.equals("")) { //$NON-NLS-1$
-      htmlDoc.append("<a href='#" + superclassName + "'>" + __cr); //$NON-NLS-1$ //$NON-NLS-2$
+      htmlDoc.append("<a href='#").append(superclassName).append("'>").append(__cr); //$NON-NLS-1$ //$NON-NLS-2$
       htmlDoc.append(superclassName);
-      htmlDoc.append("</a>" + __cr); //$NON-NLS-1$
+      htmlDoc.append("</a>").append(__cr); //$NON-NLS-1$
     } else {
       htmlDoc.append("-"); //$NON-NLS-1$
     }
-    htmlDoc.append("</td>" + __cr); //$NON-NLS-1$
-    htmlDoc.append("<td valign='top'>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</td>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<td valign='top'>").append(__cr); //$NON-NLS-1$
     htmlDoc.append(isActive() ? "X" : "-"); //$NON-NLS-1$ //$NON-NLS-2$
-    htmlDoc.append("</td>" + __cr); //$NON-NLS-1$
-    htmlDoc.append("<td valign='top'>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</td>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<td valign='top'>").append(__cr); //$NON-NLS-1$
     htmlDoc.append(isNeedsContext() ? "C" : "-"); //$NON-NLS-1$ //$NON-NLS-2$
-    htmlDoc.append("</td>" + __cr); //$NON-NLS-1$
-    htmlDoc.append("<td valign='top'>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</td>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<td valign='top'>").append(__cr); //$NON-NLS-1$
     htmlDoc.append(isAbstract() ? "A" : "-"); //$NON-NLS-1$ //$NON-NLS-2$
-    htmlDoc.append("</td>" + __cr); //$NON-NLS-1$
-    htmlDoc.append("<td valign='top'>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</td>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<td valign='top'>").append(__cr); //$NON-NLS-1$
     htmlDoc.append(isDeprecated() ? "D" : "-"); //$NON-NLS-1$ //$NON-NLS-2$
-    htmlDoc.append("</td>" + __cr); //$NON-NLS-1$
-    htmlDoc.append("<td valign='top'>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</td>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<td valign='top'>").append(__cr); //$NON-NLS-1$
     for (String updatedAttribute : _updatedAttributes) {
-      htmlDoc.append(updatedAttribute + __br + __cr);
+      htmlDoc.append(updatedAttribute).append(__br).append(__cr);
     }
-    htmlDoc.append("</td>" + __cr); //$NON-NLS-1$
-    htmlDoc.append("<td valign='top'>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</td>").append(__cr); //$NON-NLS-1$
+    htmlDoc.append("<td valign='top'>").append(__cr); //$NON-NLS-1$
     htmlDoc.append(getDescription());
-    htmlDoc.append("</td>" + __cr); //$NON-NLS-1$
+    htmlDoc.append("</td>").append(__cr); //$NON-NLS-1$
     return htmlDoc.toString();
   }
 

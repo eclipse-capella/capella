@@ -237,7 +237,7 @@ public class TransfoRuleBase implements ITransfoRuleBase {
 
     builder.append(" + Rules Mapping").append(CR); //$NON-NLS-1$
     for (EClass eclass : _rulesMapping.keySet()) {
-      builder.append("   - " + eclass.getName()); //$NON-NLS-1$
+      builder.append("   - ").append(eclass.getName()); //$NON-NLS-1$
       builder.append(" : "); //$NON-NLS-1$
       List<TransfoRule> candidates = _rulesMapping.get(eclass);
       for (ITransfoRule candidate : candidates) {
