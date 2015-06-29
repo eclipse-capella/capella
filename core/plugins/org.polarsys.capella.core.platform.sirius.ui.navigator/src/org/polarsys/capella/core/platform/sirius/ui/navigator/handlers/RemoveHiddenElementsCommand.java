@@ -14,12 +14,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.polarsys.capella.common.ef.ExecutionManager;
@@ -122,8 +123,8 @@ public class RemoveHiddenElementsCommand extends AbstractReadWriteCommand implem
    * @param element
    */
   private void removeDiagramElt(DDiagramElement element) {
-    if (element instanceof DContainer) {
-      DiagramServices.getDiagramServices().removeContainerView((DContainer) element);
+    if ((element instanceof DDiagram) || (element instanceof DDiagramElementContainer)) {
+      DiagramServices.getDiagramServices().removeContainerView((EObject) element);
 
     } else if (element instanceof DNode) {
       DiagramServices.getDiagramServices().removeNodeView((DNode) element);

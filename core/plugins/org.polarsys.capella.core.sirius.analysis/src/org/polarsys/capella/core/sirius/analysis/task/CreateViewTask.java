@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -318,7 +319,8 @@ public class CreateViewTask extends AbstractCommandTask {
    */
   private void createNode(EObject element_p, DiagramElementMapping mapping_p, DragAndDropTarget containerView) {
     DDiagramElement newView = null;
-    AbstractDNodeCandidate candidate = new AbstractDNodeCandidate((AbstractNodeMapping) mapping_p, element_p, containerView);
+    RefreshIdsHolder refreshId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    AbstractDNodeCandidate candidate = new AbstractDNodeCandidate((AbstractNodeMapping) mapping_p, element_p, containerView, refreshId);
     final DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(diagram, InterpreterUtil.getInterpreter(element_p), null) {
       @Override
       public void refresh(final DDiagramElement newNode) {

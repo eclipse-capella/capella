@@ -44,6 +44,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -63,7 +64,6 @@ import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
 import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -337,7 +337,7 @@ public class CsServices {
     Session session = DiagramHelper.getService().getSession(diagram);
 
     for (DView view : session.getOwnedViews()) {
-      for (DRepresentation representation : view.getAllRepresentations()) {
+      for (DRepresentation representation : view.getOwnedRepresentations()) {
         if (handler.isRealizable(representation, diagram)) {
           if (!scope.contains(representation)) {
             scope.add(representation);
@@ -5539,8 +5539,8 @@ public class CsServices {
       if (!selectedInterfaces.contains(me.getKey()) && scope.contains(me.getKey())) {
         AbstractDNode node = me.getValue();
         if (node.isVisible()) {
-          if (node instanceof DContainer) {
-            DiagramServices.getDiagramServices().removeContainerView((DContainer) me.getValue());
+          if ((node instanceof DDiagramElementContainer)||(node instanceof DDiagram)) {
+            DiagramServices.getDiagramServices().removeContainerView((EObject) me.getValue());
           } else if (node instanceof DNode) {
             DiagramServices.getDiagramServices().removeNodeView((DNode) me.getValue());
           }
@@ -5651,8 +5651,8 @@ public class CsServices {
     // any new type should be taken into consideration
     for (Entry<CapellaElement, AbstractDNode> me : visibleElements.entrySet()) {
       if (!selectedOperations.contains(me.getKey())) {
-        if (me.getValue() instanceof DContainer) {
-          DiagramServices.getDiagramServices().removeContainerView((DContainer) me.getValue());
+        if ((me.getValue() instanceof DDiagramElementContainer) || (me.getValue() instanceof DDiagram)) {
+          DiagramServices.getDiagramServices().removeContainerView((EObject) me.getValue());
         } else if (me.getValue() instanceof DNode) {
           DiagramServices.getDiagramServices().removeNodeView((DNode) me.getValue());
         }

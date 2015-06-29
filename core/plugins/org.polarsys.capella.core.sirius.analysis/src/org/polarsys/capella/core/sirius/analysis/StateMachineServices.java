@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.common.data.modellingcore.IState;
 import org.polarsys.capella.common.helpers.EObjectExt;
@@ -581,12 +581,12 @@ public class StateMachineServices {
     return region;
   }
 
-  public Region getRegionForInsertion(EObject context_p, DContainer delement_p) {
+  public Region getRegionForInsertion(EObject context_p, EObject delement_p) {
     Region region = null;
 
     if (delement_p instanceof DDiagram) {
       region = (Region) ((DSemanticDiagram) delement_p).getTarget();
-    } else {
+    } else if(delement_p instanceof DDiagramElementContainer){
       EObject obj = ((DNodeContainer) delement_p).getTarget();
       State state = (State) obj;
       return state.getOwnedRegions().get(0);

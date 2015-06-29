@@ -78,11 +78,7 @@ public class ShapeUtil {
     if (color == null) {
       return null;
     }
-    RGBValues newValuesContent = ViewpointFactory.eINSTANCE.createRGBValues();
-
-    newValuesContent.setRed(color.red);
-    newValuesContent.setGreen(color.green);
-    newValuesContent.setBlue(color.blue);
+    RGBValues newValuesContent = RGBValues.create(color.red, color.green, color.blue);
 
     return newValuesContent;
   }
@@ -607,10 +603,7 @@ public class ShapeUtil {
         newValuesContent = ((Square) shape).getColor();
         ShapeUtil.addCustomisation(shape, new EStructuralFeature[] { DiagramPackage.Literals.SQUARE__COLOR });
       }
-
-      newValuesContent.setRed(color.red);
-      newValuesContent.setGreen(color.green);
-      newValuesContent.setBlue(color.blue);
+      newValuesContent = RGBValues.create(color.red, color.green, color.blue);
 
       getStyleHelper(currentNode).refreshStyle(shape);
     }

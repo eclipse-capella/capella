@@ -57,7 +57,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -422,17 +421,19 @@ public class CapellaServices {
    * @param container
    * @return container + recursively all the containers of container
    */
-  public List<DDiagramElementContainer> getAllContainers(DContainer container) {
-    if (container instanceof DDiagram) {
-      return ((DDiagram) container).getContainers();
-    }
-    List<DDiagramElementContainer> returnedList = new ArrayList<DDiagramElementContainer>();
-    returnedList.add((DDiagramElementContainer) container);
-    for (DDiagramElementContainer aContainer : ((DDiagramElementContainer) container).getContainers()) {
-      returnedList.addAll(getAllContainers(aContainer));
-    }
-    return returnedList;
-  }
+	public List<DDiagramElementContainer> getAllContainers(EObject container) {
+		List<DDiagramElementContainer> returnedList = new ArrayList<DDiagramElementContainer>();
+		if (container instanceof DDiagram) {
+			returnedList = ((DDiagram) container).getContainers();
+		} else if (container instanceof DDiagramElementContainer) {
+			returnedList.add((DDiagramElementContainer) container);
+			for (DDiagramElementContainer aContainer : ((DDiagramElementContainer) container)
+					.getContainers()) {
+				returnedList.addAll(getAllContainers(aContainer));
+			}
+		}
+		return returnedList;
+	}
 
   /**
    * used everywhere
