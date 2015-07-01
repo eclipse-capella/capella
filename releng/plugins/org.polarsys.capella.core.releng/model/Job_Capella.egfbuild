@@ -39,6 +39,6 @@
     </steps>
   </steps>
   <scms xsi:type="buildscm:GIT" xmi:id="_3X68kIIHEeSlQoYFN3Mlmg">
-    <locations xmi:id="_3007AIIHEeSlQoYFN3Mlmg" protocol="https://" url="www.polarsys.org/r/capella/capella"/>
+    <locations xmi:id="_3007AIIHEeSlQoYFN3Mlmg" protocol="https://" url="www.polarsys.org/r/capella/capella" localPath=""/>
   </scms>
 </buildcore:Job>
