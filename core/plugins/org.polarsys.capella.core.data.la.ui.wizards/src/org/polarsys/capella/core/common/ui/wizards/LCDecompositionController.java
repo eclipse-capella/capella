@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
-import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
@@ -48,36 +47,42 @@ public class LCDecompositionController {
 
   /**
    * Wraps all the interfaces wrapped into {@link DecompositionItem} in a {@link LogicalComponent}
-   * @param logicalComponent_p the logical component
+   * 
+   * @param logicalComponent_p
+   *          the logical component
    * @return list of interfaces
    */
   public List<DecompositionItem> getWrappedInterfaces(LogicalComponent logicalComponent_p, boolean alreadyDecomposed_p) {
     List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
-    List<Interface> usedInterfaces = ComponentExt.getUsedInterfaces(logicalComponent_p);
+    List<Interface> usedInterfaces = ComponentExt.getAllUsedAndRequiredInterfaces(logicalComponent_p);
     list.addAll(getDecompositionItemList(usedInterfaces, true, alreadyDecomposed_p));
-    List<Interface> implementedInterfaces = ComponentExt.getImplementedInterfaces(logicalComponent_p);
+    List<Interface> implementedInterfaces = ComponentExt.getAllImplementedAndProvidedInterfaces(logicalComponent_p);
     list.addAll(getDecompositionItemList(implementedInterfaces, false, alreadyDecomposed_p));
     return list;
   }
 
   /**
-   * Wraps all the interfaces and communication links wrapped into {@link DecompositionItem} in a {@link LogicalComponent}
-   * @param logicalComponent_p the logical component
+   * Wraps all the interfaces and communication links wrapped into {@link DecompositionItem} in a
+   * {@link LogicalComponent}
+   * 
+   * @param logicalComponent_p
+   *          the logical component
    * @return list of interfaces
    */
   public List<DecompositionItem> getWrappedCommunicationLinks(LogicalComponent logicalComponent_p, boolean alreadyDecomposed_p) {
     List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
-    List<CommunicationLink> senderCommunicationLinks = CommunicationLinkExt.getSenderCommunicationLink(logicalComponent_p);
-    list.addAll(getDecompositionItemList(senderCommunicationLinks, true, alreadyDecomposed_p));
+    List<CommunicationLink> communicationLinks = logicalComponent_p.getOwnedCommunicationLinks();
+    list.addAll(getDecompositionItemList(communicationLinks, true, alreadyDecomposed_p));
     return list;
   }
 
-  
-  
   /**
    * Gets the list of {@link DecompositionItem}. Actual wrapping happens here.
-   * @param currentList_p List of interfaces
-   * @param isUsed flag to check whether the interface is used / implemented
+   * 
+   * @param currentList_p
+   *          List of interfaces
+   * @param isUsed
+   *          flag to check whether the interface is used / implemented
    * @return list of DecompositionItem
    */
   @SuppressWarnings("rawtypes")
@@ -85,33 +90,34 @@ public class LCDecompositionController {
     List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
 
     for (Object element : currentList_p) {
-    	String path = getElementPath(element);
+      String path = getElementPath(element);
       String name = null;
       if (element instanceof Interface) {
-      	name = ((Interface) element).getName();
+        name = ((Interface) element).getName();
       } else if (element instanceof CommunicationLink) {
-      	CommunicationLink link = (CommunicationLink) element;
-      	ExchangeItem exchangeItem = link.getExchangeItem();
-      	name = "[link] to "+exchangeItem.getName()+" ("+exchangeItem.getExchangeMechanism()+")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-      	CommunicationLinkProtocol protocol = link.getProtocol();
-      	if (protocol != CommunicationLinkProtocol.UNSET) {
-      		name += " ["+protocol+"]"; //$NON-NLS-1$ //$NON-NLS-2$
-      	}
+        CommunicationLink link = (CommunicationLink) element;
+        ExchangeItem exchangeItem = link.getExchangeItem();
+        name = "[link] to " + exchangeItem.getName() + " (" + exchangeItem.getExchangeMechanism() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        CommunicationLinkProtocol protocol = link.getProtocol();
+        if (protocol != CommunicationLinkProtocol.UNSET) {
+          name += " [" + protocol + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+        }
       }
       DecompositionItem item = new DecompositionItem(name, element, DecompositionItem.UNASSIGNED, isUsed, path);
-    	if (element instanceof Interface) {
+      if (element instanceof Interface) {
         // Gets the list of DecompositionItemServices from current Interface
-      	List<DecompositionItemService> listItemSces = getDecompositionItemServiceList(((Interface) element).getOwnedExchangeItemAllocations(), item, isUsed);
-      	item.setServiceItems(listItemSces);        	
-      }      
-    	item.setAlreadyDecomposed(alreadyDecomposed_p);
-    	list.add(item);
+        List<DecompositionItemService> listItemSces = getDecompositionItemServiceList(((Interface) element).getOwnedExchangeItemAllocations(), item, isUsed);
+        item.setServiceItems(listItemSces);
+      }
+      item.setAlreadyDecomposed(alreadyDecomposed_p);
+      list.add(item);
     }
     return list;
   }
 
   /**
    * Return DecompositionItemService list from Operation list given in parameter
+   * 
    * @param item
    */
   public List<DecompositionItemService> getDecompositionItemServiceList(List<ExchangeItemAllocation> listOp_p, DecompositionItem item, boolean used_p) {
@@ -128,7 +134,9 @@ public class LCDecompositionController {
 
   /**
    * Gets the list of all decompositions in a logical component
-   * @param logicalComponent_p the logical component
+   * 
+   * @param logicalComponent_p
+   *          the logical component
    * @return list of all decompositions
    */
   public List<Decomposition> getWrappedDecompositions(LogicalComponent logicalComponent_p) {
@@ -146,7 +154,9 @@ public class LCDecompositionController {
 
   /**
    * Wraps a logical architecture into a decomposition
-   * @param logicalArchitecture_p the logical architecture
+   * 
+   * @param logicalArchitecture_p
+   *          the logical architecture
    * @return the decomposition
    */
   public Decomposition getDecomposition(LogicalArchitecture logicalArchitecture_p) {
@@ -181,7 +191,9 @@ public class LCDecompositionController {
 
   /**
    * Gets the decomposition from a logical component if it has a single decomposition
-   * @param logicalComponent_p the logical component
+   * 
+   * @param logicalComponent_p
+   *          the logical component
    * @return the decomposition
    */
   public Decomposition getDecomposition(LogicalComponent logicalComponent_p) {
@@ -208,7 +220,9 @@ public class LCDecompositionController {
 
   /**
    * Creates and gets the DecompositionModel
-   * @param sourceLC_p the source LC
+   * 
+   * @param sourceLC_p
+   *          the source LC
    * @return the decomposition model
    */
   public DecompositionModel createDecompositionModel(LogicalComponent sourceLC_p) {
@@ -241,6 +255,7 @@ public class LCDecompositionController {
 
   /**
    * Checks whether the decomposition is complete.
+   * 
    * @return true if decompostions are done
    */
   public boolean isDecompositionComplete() {
@@ -287,8 +302,11 @@ public class LCDecompositionController {
 
   /**
    * Gets the path.
-   * @param sysEng_p tghe system engineering.
-   * @param target_p The target element.
+   * 
+   * @param sysEng_p
+   *          tghe system engineering.
+   * @param target_p
+   *          The target element.
    * @return The path.
    */
   public String getPath(SystemEngineering sysEng_p, NamedElement target_p) {
@@ -318,7 +336,8 @@ public class LCDecompositionController {
   }
 
   /**
-   * @param model_p the model to set
+   * @param model_p
+   *          the model to set
    */
   public void setModel(DecompositionModel model_p) {
     _model = model_p;
@@ -326,7 +345,9 @@ public class LCDecompositionController {
 
   /**
    * Creates and shows the decomposition wizard for a logical component
-   * @param component_p the logical component to be decomposed
+   * 
+   * @param component_p
+   *          the logical component to be decomposed
    */
   public void createAndShowDecompositionWizard(LogicalComponent component_p) {
     setWizard(new LCDecompositionWizard());
@@ -353,7 +374,8 @@ public class LCDecompositionController {
   }
 
   /**
-   * @param wizard_p the wizard to set
+   * @param wizard_p
+   *          the wizard to set
    */
   public void setWizard(LCDecompositionWizard wizard_p) {
     _wizard = wizard_p;
