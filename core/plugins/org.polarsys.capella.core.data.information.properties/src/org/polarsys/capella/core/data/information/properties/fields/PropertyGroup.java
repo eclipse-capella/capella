@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetWidgetFactory;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.core.properties.controllers.TypedElementController;
 import org.polarsys.capella.core.data.core.properties.fields.FeatureBooleanPropertiesCheckbox;
 import org.polarsys.capella.core.data.core.properties.fields.VisibilityKindGroup;
@@ -28,13 +31,9 @@ import org.polarsys.capella.core.data.information.datatype.DataType;
 import org.polarsys.capella.core.data.information.properties.Messages;
 import org.polarsys.capella.core.data.information.properties.controllers.MultiplicityElementCardController;
 import org.polarsys.capella.core.data.information.properties.controllers.MultiplicityElementValueController;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleEditableSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleSemanticField;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  */
@@ -92,30 +91,19 @@ public class PropertyGroup extends AbstractSemanticField {
 
     abstractTypeField = new SimpleSemanticField(group, Messages.getString("TypedElement.TypeLabel"), _widgetFactory, new TypedElementController()); //$NON-NLS-1$
 
-    minCardField =
-        new SimpleEditableSemanticField(
-            group,
-            Messages.getString("MultiplicityElement.MinCardLabel"), _widgetFactory, "", new MultiplicityElementCardController()); //$NON-NLS-1$ //$NON-NLS-2$
-    maxCardField =
-        new SimpleEditableSemanticField(
-            group,
-            Messages.getString("MultiplicityElement.MaxCardLabel"), _widgetFactory, "", new MultiplicityElementCardController()); //$NON-NLS-1$ //$NON-NLS-2$
-    minValueField =
-        new SimpleEditableSemanticField(
-            group,
-            Messages.getString("MultiplicityElement.MinValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
-    maxValueField =
-        new SimpleEditableSemanticField(
-            group,
-            Messages.getString("MultiplicityElement.MaxValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
-    defaultValueField =
-        new SimpleEditableSemanticField(
-            group,
-            Messages.getString("MultiplicityElement.DefaultValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
-    nullValueField =
-        new SimpleEditableSemanticField(
-            group,
-            Messages.getString("MultiplicityElement.NullValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    minCardField = new SimpleEditableSemanticField(group,
+        Messages.getString("MultiplicityElement.MinCardLabel"), _widgetFactory, "", new MultiplicityElementCardController(), true, 0); //$NON-NLS-1$ //$NON-NLS-2$
+    minCardField.setDisplayedInWizard(true);
+
+    maxCardField = new SimpleEditableSemanticField(group,
+        Messages.getString("MultiplicityElement.MaxCardLabel"), _widgetFactory, "", new MultiplicityElementCardController(), true, 1); //$NON-NLS-1$ //$NON-NLS-2$
+    maxCardField.setDisplayedInWizard(true);
+
+    minValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.MinValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    maxValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.MaxValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    defaultValueField = new SimpleEditableSemanticField(group,
+        Messages.getString("MultiplicityElement.DefaultValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
+    nullValueField = new SimpleEditableSemanticField(group, Messages.getString("MultiplicityElement.NullValueLabel"), _widgetFactory, "", new MultiplicityElementValueController()); //$NON-NLS-1$ //$NON-NLS-2$
 
     visibilityKindGroup = new VisibilityKindGroup(group, _widgetFactory);
   }
@@ -217,24 +205,20 @@ public class PropertyGroup extends AbstractSemanticField {
     if (property_p != null) {
       AbstractType type = property_p.getAbstractType();
       if (type != null) {
-        if ((type instanceof DataType) ||
-            ((type instanceof Class) && ((Class) type).isIsPrimitive()) ||
-            ((type instanceof Collection) && ((Collection) type).isIsPrimitive()))
-        {
+        if ((type instanceof DataType) || ((type instanceof Class) && ((Class) type).isIsPrimitive()) || ((type instanceof Collection) && ((Collection) type).isIsPrimitive())) {
           aggregationKindGroup.setEnabled(false);
-        }
-        else {
+        } else {
           aggregationKindGroup.setEnabled(true);
         }
-      }
-      else {
+      } else {
         aggregationKindGroup.setEnabled(true);
       }
     }
   }
 
   /**
-   * @param textField_p text field to be filled
+   * @param textField_p
+   *          text field to be filled
    */
   @Override
   protected void fillTextField(Text textField_p) {

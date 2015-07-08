@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,11 +16,11 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.information.datatype.properties.Messages;
 import org.polarsys.capella.core.data.information.datatype.properties.controllers.StringTypeController;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.information.properties.controllers.MultiplicityElementLengthController;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
 import org.polarsys.capella.core.ui.properties.fields.SimpleEditableSemanticField;
 
@@ -40,21 +40,19 @@ public class StringTypeSection extends DataTypeSection {
 
     boolean displayedInWizard = isDisplayedInWizard();
 
-    minLengthWidget =
-        new SimpleEditableSemanticField(getReferencesGroup(),
-            Messages.getString("StringType.MinLengthLabel"), getWidgetFactory(), Messages.getString("StringType.MinLengthDefaultName"), new StringTypeController()); //$NON-NLS-1$ //$NON-NLS-2$
+    minLengthWidget = new SimpleEditableSemanticField(getReferencesGroup(),
+        Messages.getString("StringType.MinLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController(), true, 2); //$NON-NLS-1$ //$NON-NLS-2$
     minLengthWidget.setDisplayedInWizard(displayedInWizard);
-    maxLengthWidget =
-        new SimpleEditableSemanticField(getReferencesGroup(),
-            Messages.getString("StringType.MaxLengthLabel"), getWidgetFactory(), Messages.getString("StringType.MaxLengthDefaultName"), new StringTypeController()); //$NON-NLS-1$ //$NON-NLS-2$
+
+    maxLengthWidget = new SimpleEditableSemanticField(getReferencesGroup(),
+        Messages.getString("StringType.MaxLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController(), true, 3); //$NON-NLS-1$ //$NON-NLS-2$
     maxLengthWidget.setDisplayedInWizard(displayedInWizard);
-    defaultValueWidget =
-        new SimpleEditableSemanticField(getReferencesGroup(),
-            Messages.getString("DataType.DefaultValueLabel"), getWidgetFactory(), Messages.getString("DataType.DefaultValueDefaultName"), new StringTypeController()); //$NON-NLS-1$ //$NON-NLS-2$
+
+    defaultValueWidget = new SimpleEditableSemanticField(getReferencesGroup(),
+        Messages.getString("DataType.DefaultValueLabel"), getWidgetFactory(), Messages.getString("DataType.DefaultValueDefaultName"), new StringTypeController()); //$NON-NLS-1$ //$NON-NLS-2$
     defaultValueWidget.setDisplayedInWizard(displayedInWizard);
-    nullValueWidget =
-        new SimpleEditableSemanticField(getReferencesGroup(),
-            Messages.getString("DataType.NullValueLabel"), getWidgetFactory(), Messages.getString("DataType.NullValueDefaultName"), new StringTypeController()); //$NON-NLS-1$ //$NON-NLS-2$
+    nullValueWidget = new SimpleEditableSemanticField(getReferencesGroup(),
+        Messages.getString("DataType.NullValueLabel"), getWidgetFactory(), Messages.getString("DataType.NullValueDefaultName"), new StringTypeController()); //$NON-NLS-1$ //$NON-NLS-2$
     nullValueWidget.setDisplayedInWizard(displayedInWizard);
   }
 
