@@ -3770,7 +3770,7 @@
           <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Interfaces%20Scenario']"/>
           <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario']"/>
           <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="6" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="6" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -3782,13 +3782,13 @@
           <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Exchanges%20Scenario']"/>
           <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Component%20Interfaces%20Scenario']"/>
           <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Functional%20Scenario']"/>
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="6" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="6" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Capability.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </nodeMappings>
         <nodeMappings name="CRI_Actors" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@toolSections.0/@ownedTools[name='LA%20CRR%20Direct%20Edit%20Label']" semanticCandidatesExpression="&lt;% getAllRefinedActors () %>" domainClass="AbstractActor">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/Actor.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -3797,7 +3797,7 @@
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20Interfaces%20Scenario']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Component%20Exchanges%20Scenario']"/>
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Functional%20Scenario']"/>
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -3910,7 +3910,7 @@
           <subNodeMappings name="CRI_CapabilityRealization_int" preconditionExpression="&lt;%  eContainer(&quot;SystemComponent&quot;) == $containerView.target %>" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@toolSections.0/@ownedTools[name='LA%20CRR%20Direct%20Edit%20Label']" semanticCandidatesExpression="&lt;% $viewpoint.target.getRefinedRecursively %>" domainClass="CapabilityRealization">
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Dataflow%20Scenario']"/>
             <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -3919,7 +3919,7 @@
             <subNodeMappings name="CRI_CapabilityRealization_int_int" preconditionExpression="&lt;% eContainer(&quot;SystemComponent&quot;) == $containerView.target %>" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Capability%20Realization%20Refinement']/@defaultLayer/@toolSections.0/@ownedTools[name='LA%20CRR%20Direct%20Edit%20Label']" semanticCandidatesExpression="&lt;% $viewpoint.target.getRefinedRecursively %>" domainClass="CapabilityRealization">
               <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Dataflow%20Scenario']"/>
               <navigationDescriptions xsi:type="tool_1:DiagramNavigationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Existing%20Dataflow%20Scenario']"/>
-              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
+              <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="4" resizeKind="NSEW" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/CapabilityRealization.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
