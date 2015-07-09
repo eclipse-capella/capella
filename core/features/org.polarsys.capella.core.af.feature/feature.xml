@@ -28,9 +28,9 @@
    </license>
 
    <requires>
-      <import feature="org.polarsys.kitalpha.ad.feature" version="0.5.0.v20140520-0423"/>
-      <import feature="org.polarsys.kitalpha.ad.integration.sirius.feature" version="0.5.0.v20140520-0424"/>
-      <import feature="org.polarsys.kitalpha.emde.feature" version="0.5.1.v20150421-0857"/>
+      <import feature="org.polarsys.kitalpha.ad.feature"/>
+      <import feature="org.polarsys.kitalpha.ad.integration.sirius.feature"/>
+      <import feature="org.polarsys.kitalpha.ad.integration.emde.feature"/>
    </requires>
 
    <plugin
