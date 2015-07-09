@@ -33,8 +33,6 @@ public class CapellaSessionListener extends SessionManagerListener.Stub {
           //we don't want to defer save of the session 
           ((DAnalysisSessionImpl) updatedSession_p).setDeferSaveToPostCommit(false);
           ((DAnalysisSessionImpl) updatedSession_p).setSaveInExclusiveTransaction(false);
-          //we want to dispose the editing domain on close
-          ((DAnalysisSessionImpl) updatedSession_p).setDisposeEditingDomainOnClose(true);
         }
       break;
     }

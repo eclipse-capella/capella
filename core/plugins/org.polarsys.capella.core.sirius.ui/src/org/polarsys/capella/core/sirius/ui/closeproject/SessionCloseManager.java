@@ -27,7 +27,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
-import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
@@ -203,30 +202,15 @@ public class SessionCloseManager {
     }
   }
 
-  private static List<AirDCrossReferenceAdapter> disableCrossReferenceAdaptersResolution(Iterable<AirdResource> resources) {
-    List<AirDCrossReferenceAdapter> airdCrossReferenceAdapters = Lists.newArrayList();
-    for (AirdResource representationsFileResource : resources) {
-      Option<AirDCrossReferenceAdapter> optionalAirdCrossReferenceAdapter = new AirDResouceQuery(representationsFileResource).getAirDCrossReferenceAdapter();
-      if (optionalAirdCrossReferenceAdapter.some()) {
-        airdCrossReferenceAdapters.add(optionalAirdCrossReferenceAdapter.get());
-        optionalAirdCrossReferenceAdapter.get().disableResolve();
-      }
-    }
-    return airdCrossReferenceAdapters;
-  }
-
   // Ensure proper close of session because when a session is not opened but have been getted (by SessionManager.getSession), the close does not unload the aird
   // resource.
   // Workaround until TIG will be aligned on Sirius
   public static void cleanSession(Session session) {
     boolean value = CrossReferencerHelper.resolutionEnabled();
 
-    List<AirDCrossReferenceAdapter> airdCrossReferenceAdapters =
-        disableCrossReferenceAdaptersResolution(Iterables.filter(session.getAllSessionResources(), AirdResource.class));
-
     if (session instanceof DAnalysisSessionImpl) {
       ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
-      cross.disableResolve();
+      cross.disableResolveProxy();
     }
 
     try {
@@ -244,13 +228,7 @@ public class SessionCloseManager {
 
       if (session instanceof DAnalysisSessionImpl) {
         ECrossReferenceAdapterWithUnproxyCapability cross = (((DAnalysisSessionImpl) session).getSemanticCrossReferencer());
-        cross.enableResolve();
-      }
-
-      // Enable resolution for all airdCrossReferenceAdapter of session
-      // resources after the closing
-      for (AirDCrossReferenceAdapter airDCrossReferenceAdapter : airdCrossReferenceAdapters) {
-        airDCrossReferenceAdapter.enableResolve();
+        cross.enableResolveProxy();
       }
     }
     SessionManager.INSTANCE.remove(session);

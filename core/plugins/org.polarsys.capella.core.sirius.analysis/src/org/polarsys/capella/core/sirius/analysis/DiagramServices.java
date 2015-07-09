@@ -30,6 +30,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -65,7 +66,6 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -111,7 +111,7 @@ public class DiagramServices {
    * @param container
    * @return
    */
-  public EList<DDiagramElement> getOwnedDiagramElements(DContainer container) {
+  public EList<DDiagramElement> getOwnedDiagramElements(EObject container) {
     if (container instanceof DDiagram) {
       return ((DDiagram) container).getOwnedDiagramElements();
     } else if (container instanceof DNodeContainer) {
@@ -406,8 +406,9 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
+    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
   }
 
@@ -419,8 +420,9 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
+    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return (DNode) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, true);
   }
 
@@ -432,8 +434,9 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
+    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false, -1);
   }
 
@@ -445,8 +448,9 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
-
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return (DNodeContainer) elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, false);
   }
 
@@ -472,8 +476,9 @@ public class DiagramServices {
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diag.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
+    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
 
-    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container);
+    AbstractDNodeCandidate nodeCandidate = new AbstractDNodeCandidate(mapping, modelElement, container, rId);
     return elementSync.createNewNode(getMappingManager((DSemanticDiagram) diag), nodeCandidate, isBorderedNodeMapping(mapping));
   }
 
@@ -488,10 +493,11 @@ public class DiagramServices {
     if ((sourceView == null) || (targetView == null)) {
       return null;
     }
-
-    DEdgeCandidate edgeCandidate = new DEdgeCandidate(mapping, semanticObject, sourceView, targetView);
-
+    
     final DDiagram diagram = CapellaServices.getService().getDiagramContainer(sourceView);
+    RefreshIdsHolder rId= RefreshIdsHolder.getOrCreateHolder(diagram);
+    DEdgeCandidate edgeCandidate = new DEdgeCandidate(mapping, semanticObject, sourceView, targetView, rId);
+
     final DDiagramSynchronizer diagramSync = new DDiagramSynchronizer(interpreter, diagram.getDescription(), accessor);
     diagramSync.setDiagram((DSemanticDiagram) diagram);
     final DDiagramElementSynchronizer elementSync = diagramSync.getElementSynchronizer();
@@ -701,7 +707,7 @@ public class DiagramServices {
    * remove a container View
    * @param container a container
    */
-  public void removeContainerView(DContainer container) {
+  public void removeContainerView(EObject container) {
     EObject owner = container.eContainer();
     if (owner != null) {
       if (owner instanceof DDiagram) {
@@ -1073,8 +1079,8 @@ public class DiagramServices {
    * @param view a {@link DDiagram} or a {@link DNodeContainer}
    * @return recursively all the containers and nodeLists contained in view
    */
-  public List<DContainer> getAllContainersAndNodeLists(EObject view) {
-    List<DContainer> returnedList = new ArrayList<DContainer>();
+  public List<EObject> getAllContainersAndNodeLists(EObject view) {
+    List<EObject> returnedList = new ArrayList<EObject>();
     if (view instanceof DDiagram) {
       returnedList.addAll(((DDiagram) view).getContainers());
     }

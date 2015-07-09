@@ -48,7 +48,6 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.PlatformUI;
@@ -1979,7 +1978,7 @@ public class InformationServices {
     DDiagramContents content = new DDiagramContents(diagram);
 
     Map<EObject, AbstractDNode> existingTypes = new HashMap<EObject, AbstractDNode>();
-    for (DContainer currentContainer : DiagramServices.getDiagramServices().getAllContainersAndNodeLists(elementView)) {
+    for (EObject currentContainer : DiagramServices.getDiagramServices().getAllContainersAndNodeLists(elementView)) {
       AbstractDNode aContainer = (AbstractDNode) currentContainer;
       if ((aContainer.getTarget() instanceof Class) || (aContainer.getTarget() instanceof org.polarsys.capella.core.data.information.Collection)
           || (aContainer.getTarget() instanceof DataType)) {
@@ -1989,7 +1988,7 @@ public class InformationServices {
 
     for (Entry<EObject, AbstractDNode> me : existingTypes.entrySet()) {
       if (!selectedTypes.contains(me.getKey())) {
-        DiagramServices.getDiagramServices().removeContainerView((DContainer) me.getValue());
+        DiagramServices.getDiagramServices().removeContainerView((EObject) me.getValue());
       }
     }
     for (EObject aType : selectedTypes) {
@@ -2080,7 +2079,7 @@ public class InformationServices {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(elementView);
     DDiagramContents content = new DDiagramContents(diagram);
 
-    for (DContainer currentContainer : DiagramServices.getDiagramServices().getAllContainersAndNodeLists(elementView)) {
+    for (EObject currentContainer : DiagramServices.getDiagramServices().getAllContainersAndNodeLists(elementView)) {
       AbstractDNode aContainer = (AbstractDNode) currentContainer;
       if (aContainer.getTarget() instanceof Interface) {
         existingInterfaces.put(aContainer.getTarget(), aContainer);
@@ -2088,7 +2087,7 @@ public class InformationServices {
     }
     for (Entry<EObject, AbstractDNode> me : existingInterfaces.entrySet()) {
       if (!selectedInterfaces.contains(me.getKey())) {
-        DiagramServices.getDiagramServices().removeContainerView((DContainer) me.getValue());
+        DiagramServices.getDiagramServices().removeContainerView((EObject) me.getValue());
       }
     }
     for (EObject aType : selectedInterfaces) {

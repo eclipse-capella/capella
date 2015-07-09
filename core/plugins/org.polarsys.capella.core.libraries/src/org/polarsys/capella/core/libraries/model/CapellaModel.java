@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.osgi.service.prefs.BackingStoreException;
@@ -141,8 +141,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
 
         Resource toAdd = target.eResource();
         Session session = SessionManager.INSTANCE.getSession(source);
-        if (session instanceof DAnalysisSessionEObject) {
-          for (final DAnalysis analysis : new DAnalysisesInternalQuery(((DAnalysisSessionEObject) session).getAnalyses()).getAllAnalyses()) {
+        if (session instanceof DAnalysisSessionImpl) {
+            for (final DAnalysis analysis : ((DAnalysisSessionImpl)session).allAnalyses()) {
             analysis.getModels().add(toAdd.getContents().get(0));
           }
         }
@@ -185,8 +185,8 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
           // session.removeSemanticResources unload the resource and depending ones (so the root model resource too)
           Resource toRemove = toDelete.getLibrary().eResource();
           Session session = SessionManager.INSTANCE.getSession(source);
-          if (session instanceof DAnalysisSessionEObject) {
-            for (final DAnalysis analysis : new DAnalysisesInternalQuery(((DAnalysisSessionEObject) session).getAnalyses()).getAllAnalyses()) {
+          if (session instanceof DAnalysisSessionImpl) {
+            for (final DAnalysis analysis : ((DAnalysisSessionImpl)session).allAnalyses()) {
               analysis.getModels().remove(EcoreUtil.getRootContainer(toDelete.getLibrary()));
             }
           }

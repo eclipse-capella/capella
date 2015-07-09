@@ -23,9 +23,9 @@ import org.eclipse.emf.diffmerge.util.structures.FOrderedSet;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.capellacore.TypedElement;
@@ -84,7 +84,7 @@ public class CapellaSemanticMapping extends DefaultSemanticMapping {
       boolean considerPrecondition_p, boolean considerCandidates_p,
       Object containerView_p) {
     boolean businessOk = !isDummyMapping(mapping_p);
-    if (considerPrecondition_p && considerCandidates_p && containerView_p instanceof DContainer) {
+    if (considerPrecondition_p && considerCandidates_p && ((containerView_p instanceof DDiagram)||(containerView_p instanceof DDiagramElementContainer))) {
       // If full verification, check for business criteria
       businessOk = businessOk && (!isSubcomponentMapping(mapping_p) ||
           checkSubcomponent(getSemanticElement(containerView_p), semanticElt_p));
