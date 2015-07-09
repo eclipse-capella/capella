@@ -41,6 +41,7 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -58,7 +59,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
@@ -502,8 +502,8 @@ public class DiagramHelper {
       DiagramServices.getDiagramServices().removeAbstractDNodeView((AbstractDNode) element_p);
     } else if (element_p instanceof DEdge) {
       DiagramServices.getDiagramServices().removeEdgeView((DEdge) element_p);
-    } else if (element_p instanceof DContainer) {
-      DiagramServices.getDiagramServices().removeContainerView((DContainer) element_p);
+    } else if ((element_p instanceof DDiagram) || (element_p instanceof DDiagramElementContainer)) {
+      DiagramServices.getDiagramServices().removeContainerView((EObject) element_p);
     } else if (element_p instanceof DNodeListElement) {
       DiagramServices.getDiagramServices().removeNodeListElementView((DNodeListElement) element_p);
     } else if (element_p instanceof DNode) {
