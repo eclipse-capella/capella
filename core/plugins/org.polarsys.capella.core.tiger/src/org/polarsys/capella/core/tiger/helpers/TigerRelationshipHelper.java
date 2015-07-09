@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -721,17 +721,8 @@ public class TigerRelationshipHelper {
         // 2- Create the transformation link
         abstractTrace = createAbstractTrace(sourceElement, targetElement, transfo_p);
         if (abstractTrace != null) {
-          if (abstractTrace instanceof GenericTrace) {
-            GenericTrace genericTrace = (GenericTrace) abstractTrace;
-            // 3- The marker to specify the UID of the
-            // transformation of the link
-            KeyValue keyValue = CapellacoreFactory.eINSTANCE.createKeyValue();
-            keyValue.setKey(PROPERTY_TRANSFO_UID);
-            keyValue.setValue(transfo_p.getUid());
-            genericTrace.getKeyValuePairs().add(keyValue);
-          }
-
-          // 4- Update relationships and roles
+          
+          // 3- Update relationships and roles
           abstractTrace.setSourceElement(targetElement);
           abstractTrace.setTargetElement(sourceElement);
         }
