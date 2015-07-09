@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractTypedElement;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.TraceableElement;
+import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
 import org.polarsys.capella.common.ef.command.AbstractReadWriteCommand;
 import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
@@ -32,7 +33,6 @@ import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultCompon
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.CsFactory;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
@@ -48,12 +48,12 @@ import org.polarsys.capella.core.data.la.LaFactory;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
 import org.polarsys.capella.core.data.la.LogicalComponentPkg;
-import org.polarsys.capella.core.model.handler.command.DeleteCommand;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaProjectHelper.TriStateBoolean;
 import org.polarsys.capella.core.model.helpers.CapellaElementExt;
 import org.polarsys.capella.core.model.helpers.InterfaceExt;
 import org.polarsys.capella.core.model.helpers.RefinementLinkExt;
+import org.polarsys.capella.core.platform.sirius.ui.commands.CapellaDeleteCommand;
 import org.polarsys.capella.core.ui.toolkit.decomposition.Decomposition;
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionComponent;
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionItem;
@@ -63,8 +63,8 @@ import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelEven
 import org.polarsys.capella.core.ui.toolkit.decomposition.DecompositionModelListener;
 
 /**
- * Class <code>LCDecompositionOperations</code> listens for events on <code>DecompositionModel</code> and does all the required operations. Actual business
- * logic is performed here.
+ * Class <code>LCDecompositionOperations</code> listens for events on <code>DecompositionModel</code> and does all the
+ * required operations. Actual business logic is performed here.
  */
 public class LCDecompositionOperations implements DecompositionModelListener {
 
@@ -76,43 +76,43 @@ public class LCDecompositionOperations implements DecompositionModelListener {
    */
   public void decompositionChanged(DecompositionModelEvent event_p) {
     switch (event_p.getEventType()) {
-      case DecompositionModelEvent.DECOMPOSITION_ADDED:
-        addNewDecomposition(event_p);
+    case DecompositionModelEvent.DECOMPOSITION_ADDED:
+      addNewDecomposition(event_p);
       break;
-      case DecompositionModelEvent.DECOMPOSITION_ALL_REMOVED:
-        removeAllDecompositions(event_p);
+    case DecompositionModelEvent.DECOMPOSITION_ALL_REMOVED:
+      removeAllDecompositions(event_p);
       break;
-      case DecompositionModelEvent.DECOMPOSITION_REMOVED:
-        removeDecomposition(event_p);
+    case DecompositionModelEvent.DECOMPOSITION_REMOVED:
+      removeDecomposition(event_p);
       break;
-      case DecompositionModelEvent.DECOMPOSITION_RENAMED:
-        renameDecomposition(event_p);
+    case DecompositionModelEvent.DECOMPOSITION_RENAMED:
+      renameDecomposition(event_p);
       break;
-      case DecompositionModelEvent.TARGET_COMPONENT_ADDED:
-        addNewTargetComponent(event_p);
+    case DecompositionModelEvent.TARGET_COMPONENT_ADDED:
+      addNewTargetComponent(event_p);
       break;
-      case DecompositionModelEvent.TARGET_COMPONENT_REMOVED:
-        removeTargetComponent(event_p);
+    case DecompositionModelEvent.TARGET_COMPONENT_REMOVED:
+      removeTargetComponent(event_p);
       break;
-      case DecompositionModelEvent.TARGET_COMPONENT_ALL_REMOVED:
-        removeAllTargetComponents(event_p);
+    case DecompositionModelEvent.TARGET_COMPONENT_ALL_REMOVED:
+      removeAllTargetComponents(event_p);
       break;
-      case DecompositionModelEvent.TARGET_COMPONENT_RENAMED:
-        renameTargetComponent(event_p);
+    case DecompositionModelEvent.TARGET_COMPONENT_RENAMED:
+      renameTargetComponent(event_p);
       break;
-      case DecompositionModelEvent.TARGET_COMPONENT_REUSED:
-        wrapReusedTargetComponent(event_p);
+    case DecompositionModelEvent.TARGET_COMPONENT_REUSED:
+      wrapReusedTargetComponent(event_p);
       break;
-      case DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_ATTACHED:
-        attachInterface(event_p);
+    case DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_ATTACHED:
+      attachInterface(event_p);
       break;
-      case DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_DETACHED:
-        detachInterface(event_p);
+    case DecompositionModelEvent.TARGET_COMPONENT_INTERFACE_DETACHED:
+      detachInterface(event_p);
       break;
-      case DecompositionModelEvent.DECOMPOSITION_FINISHED:
-        finishDecomposition(event_p);
+    case DecompositionModelEvent.DECOMPOSITION_FINISHED:
+      finishDecomposition(event_p);
       break;
-      default:
+    default:
       break;
     }
   }
@@ -146,7 +146,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Detaches an interface from a sub logical component
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void detachInterface(DecompositionModelEvent event_p) {
     try {
@@ -161,7 +163,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Attaches an interface to a sub logical component
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void attachInterface(DecompositionModelEvent event_p) {
     try {
@@ -176,7 +180,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Adds a new sub logical component
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   public void addNewTargetComponent(final DecompositionModelEvent event_p) {
     try {
@@ -192,7 +198,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Renames a target sub logical component
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void renameTargetComponent(DecompositionModelEvent event_p) {
     try {
@@ -207,7 +215,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Removes all sub logical components
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void removeAllTargetComponents(DecompositionModelEvent event_p) {
     try {
@@ -222,7 +232,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Removes a sub logical component
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void removeTargetComponent(final DecompositionModelEvent event_p) {
     try {
@@ -237,7 +249,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Adds a new decomposition
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   public void addNewDecomposition(DecompositionModelEvent event_p) {
     try {
@@ -252,7 +266,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Renames a decomposition
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void renameDecomposition(DecompositionModelEvent event_p) {
     try {
@@ -267,7 +283,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Removes a decomposition
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void removeDecomposition(DecompositionModelEvent event_p) {
     try {
@@ -282,7 +300,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Removes all decompositions
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void removeAllDecompositions(DecompositionModelEvent event_p) {
     try {
@@ -297,7 +317,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Finishes the decomposition of the Logical Component
-   * @param event_p the DecompositionModelEvent
+   * 
+   * @param event_p
+   *          the DecompositionModelEvent
    */
   private void finishDecomposition(DecompositionModelEvent event_p) {
     try {
@@ -410,8 +432,7 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         // map of <Interface , Link>
         Map<EObject, EObject> usedAndImpInterfaces = new HashMap<EObject, EObject>();
         // implemented interface
-        EList<InterfaceImplementation> ownedInterfaceImplementations =
-            ((LogicalComponent) decompositionComponent.getValue()).getOwnedInterfaceImplementations();
+        EList<InterfaceImplementation> ownedInterfaceImplementations = ((LogicalComponent) decompositionComponent.getValue()).getOwnedInterfaceImplementations();
         for (InterfaceImplementation interfaceImplementation : ownedInterfaceImplementations) {
           usedAndImpInterfaces.put(interfaceImplementation, interfaceImplementation.getImplementedInterface());
         }
@@ -475,8 +496,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Adds sub lcs to the source logical component (In case of single decomposition)
-   * @param decomposition_p the Decomposition
-   * @param sourceComponent_p the source LC
+   * 
+   * @param decomposition_p
+   *          the Decomposition
+   * @param sourceComponent_p
+   *          the source LC
    */
   private void addSubLCs(final Decomposition decomposition_p, final LogicalComponent sourceComponent_p) {
     AbstractReadWriteCommand command = new AbstractReadWriteCommand() {
@@ -494,8 +518,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Adds LC Decompositions to the source logical component (In case of multiple decomposition)
-   * @param decompositions_p the list of decompositions
-   * @param sourceComponent_p the source component
+   * 
+   * @param decompositions_p
+   *          the list of decompositions
+   * @param sourceComponent_p
+   *          the source component
    */
   @SuppressWarnings("unused")
   private void addLCDcmpsToLogicalComponent(final List<Decomposition> decompositions_p, final LogicalComponent sourceComponent_p) {
@@ -542,8 +569,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Moving an AspectPkg to LogicalArchitecture
-   * @param arch_p the logical architecture
-   * @param aspectPkg_p the aspect package
+   * 
+   * @param arch_p
+   *          the logical architecture
+   * @param aspectPkg_p
+   *          the aspect package
    */
   void moveAbstractCapabilityPkg(LogicalArchitecture arch_p, AbstractCapabilityPkg aspectPkg_p) {
     if ((null == arch_p) || (null == aspectPkg_p)) {
@@ -554,8 +584,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Moving an AspectPkg to LogicalComponent
-   * @param cpnt_p the logical component
-   * @param aspectPkg_p the aspect package
+   * 
+   * @param cpnt_p
+   *          the logical component
+   * @param aspectPkg_p
+   *          the aspect package
    */
   void moveAbstractCapabilityPkg(LogicalComponent cpnt_p, AbstractCapabilityPkg aspectPkg_p) {
     if ((null == cpnt_p) || (null == aspectPkg_p)) {
@@ -566,10 +599,15 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Adds Target Components for a decomposition either subLCs or LCs to alternative decomposition.
-   * @param decomposition_p the decomposition
-   * @param sourceComponent_p the Source LogicalComponent to add subLCs (in case of single level decomposition)
-   * @param logArch_p the LogicalArchitecture (in case of multi level decomposition)
-   * @param isAlternateDecomposition_p flag to indicate whether it is single level or multi level decomposition
+   * 
+   * @param decomposition_p
+   *          the decomposition
+   * @param sourceComponent_p
+   *          the Source LogicalComponent to add subLCs (in case of single level decomposition)
+   * @param logArch_p
+   *          the LogicalArchitecture (in case of multi level decomposition)
+   * @param isAlternateDecomposition_p
+   *          flag to indicate whether it is single level or multi level decomposition
    */
   void addTargetComponents(Decomposition decomposition_p, LogicalComponent sourceComponent_p, LogicalArchitecture logArch_p, boolean isAlternateDecomposition_p) {
 
@@ -616,12 +654,12 @@ public class LCDecompositionOperations implements DecompositionModelListener {
         List<DecompositionItem> interfaceItems = new ArrayList<DecompositionItem>();
         List<DecompositionItem> communicationLinkItems = new ArrayList<DecompositionItem>();
         for (DecompositionItem item : comp.getItems()) {
-					Object value = item.getValue();
-        	if (value instanceof CommunicationLink) {
-        		communicationLinkItems.add(item);
-					} else {
-						interfaceItems.add(item);
-					}
+          Object value = item.getValue();
+          if (value instanceof CommunicationLink) {
+            communicationLinkItems.add(item);
+          } else {
+            interfaceItems.add(item);
+          }
         }
         // Add or Update Internal Interfaces
         updateInternalInterfaces(interfaceItems, lc);
@@ -633,34 +671,33 @@ public class LCDecompositionOperations implements DecompositionModelListener {
     }
   }
 
-  private void updateCommunicationLinks(List<DecompositionItem> communicationLinkItems, LogicalComponent lc) {		
-  	List<CommunicationLink> communicationLinks = new ArrayList<CommunicationLink>();
-  	for (DecompositionItem item : communicationLinkItems) {
-  		communicationLinks.add((CommunicationLink) item.getValue());
-  	}
-  	List<CommunicationLink> intersection = new ArrayList<CommunicationLink>(communicationLinks);
-  	intersection.retainAll(lc.getOwnedCommunicationLinks());
-  	List<CommunicationLink> toBeCloned = new ArrayList<CommunicationLink>(communicationLinks);
-  	toBeCloned.removeAll(intersection);
-  	List<CommunicationLink> toBeRemoved = new ArrayList<CommunicationLink>(lc.getOwnedCommunicationLinks());
-  	toBeRemoved.removeAll(intersection);
-  	
-  	for (CommunicationLink link : toBeCloned) {
-			CommunicationLink clone = CommunicationFactory.eINSTANCE.createCommunicationLink();
-			clone.setExchangeItem(link.getExchangeItem());
-			clone.setKind(link.getKind());
-			clone.setProtocol(link.getProtocol());
-			lc.getOwnedCommunicationLinks().add(clone);
-			CapellaElementExt.creationService(clone);  		
-  	}
-  	for (CommunicationLink link : toBeRemoved) {
-  		((Component) link.eContainer()).getOwnedCommunicationLinks().remove(link);
-  		new DeleteCommand(TransactionHelper.getEditingDomain(link), Collections.singletonList(link)).execute();
-  	}
-	}
+  private void updateCommunicationLinks(List<DecompositionItem> communicationLinkItems, LogicalComponent lc) {
+    List<CommunicationLink> communicationLinks = new ArrayList<CommunicationLink>();
+    for (DecompositionItem item : communicationLinkItems) {
+      communicationLinks.add((CommunicationLink) item.getValue());
+    }
+    List<CommunicationLink> intersection = new ArrayList<CommunicationLink>(communicationLinks);
+    intersection.retainAll(lc.getOwnedCommunicationLinks());
+    List<CommunicationLink> toBeCloned = new ArrayList<CommunicationLink>(communicationLinks);
+    toBeCloned.removeAll(intersection);
+    List<CommunicationLink> toBeRemoved = new ArrayList<CommunicationLink>(lc.getOwnedCommunicationLinks());
+    toBeRemoved.removeAll(intersection);
 
-  
-	/**
+    for (CommunicationLink link : toBeCloned) {
+      CommunicationLink clone = CommunicationFactory.eINSTANCE.createCommunicationLink();
+      clone.setExchangeItem(link.getExchangeItem());
+      clone.setKind(link.getKind());
+      clone.setProtocol(link.getProtocol());
+      lc.getOwnedCommunicationLinks().add(clone);
+      CapellaElementExt.creationService(clone);
+    }
+    for (CommunicationLink link : toBeRemoved) {
+      new CapellaDeleteCommand(ExecutionManagerRegistry.getInstance().getExecutionManager(TransactionHelper.getEditingDomain(link)), Collections.singleton(link), true, false,
+          false).execute();
+    }
+  }
+
+  /**
    * Create or Update Internal Interface for current sub-component
    */
   private void updateInternalInterfaces(List<DecompositionItem> ItemInterfacelist, LogicalComponent lc) {
@@ -754,6 +791,7 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Remove Operation not defined in list (given in first parameter) owned by Interface (given in second parameter)
+   * 
    * @param operationsAvailable
    * @param itf
    */
@@ -782,6 +820,7 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Update Description/Summary notes for CapellaElement 'capellaEltCopy' from CapellaElement 'capellaEltOrigin' origin
+   * 
    * @param capellaEltOrigin
    * @param capellaEltCopy
    */
@@ -794,7 +833,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Creates and adds a ComponentInstance to the AbstractLogicalComponent
-   * @param component_p the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
+   * 
+   * @param component_p
+   *          the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
    */
   void addComponentInstanceToLC(LogicalComponent component_p) {
     // Builds the component instance and attaches it to its package.
@@ -806,7 +847,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Creates and adds a ComponentInstance to the AbstractLogicalComponent
-   * @param component_p the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
+   * 
+   * @param component_p
+   *          the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
    */
   void addComponentInstanceToLC(LogicalComponent parent, LogicalComponent component_p) {
     // Builds the component instance and attaches it to its package.
@@ -817,7 +860,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Creates and adds a ComponentInstance to the AbstractLogicalComponent
-   * @param component_p the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
+   * 
+   * @param component_p
+   *          the {@link AbstractLogicalComponent} (either {@link LogicalComponent} or {@link LogicalComponentShortcut}
    */
   void addComponentInstanceToLC2(LogicalComponent parent, LogicalComponent component_p, DecompositionComponent comp, boolean compName) {
     // Builds the component instance and attaches it to its package.
@@ -847,8 +892,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Gets the list of target components removed in case of single decomposition
-   * @param sourceComp_p the source component
-   * @param decomposition_p the decomposition
+   * 
+   * @param sourceComp_p
+   *          the source component
+   * @param decomposition_p
+   *          the decomposition
    * @return list of removed target SubLCs
    */
   List<LogicalComponent> getRemovedTargetComponents(LogicalComponent sourceComp_p, Decomposition decomposition_p) {
@@ -871,8 +919,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Gets the list of LogicalArchitectures removed from the model
-   * @param sourceComp_p the source LC
-   * @param decompositions_p list of decompositions in the model
+   * 
+   * @param sourceComp_p
+   *          the source LC
+   * @param decompositions_p
+   *          list of decompositions in the model
    * @return the list of removed LogicalArchitectures
    */
   List<LogicalArchitecture> getRemovedDecompositions(LogicalComponent sourceComp_p, List<Decomposition> decompositions_p) {
@@ -894,7 +945,9 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Gets the list of LCs removed from the model (but available with the LogicalArchitecture).
-   * @param decomposition_p the decomposition
+   * 
+   * @param decomposition_p
+   *          the decomposition
    * @return list of LCs removed
    */
   List<LogicalComponent> getRemovedLCsFromDecomposition(Decomposition decomposition_p) {
@@ -916,8 +969,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Adds interfaces to an LC
-   * @param pairs the list of DecompositionItem
-   * @param lc the LogicalComponent
+   * 
+   * @param pairs
+   *          the list of DecompositionItem
+   * @param lc
+   *          the LogicalComponent
    */
   void updateInterfacesLinks(List<DecompositionItem> pairs, LogicalComponent lc) {
 
@@ -971,8 +1027,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Removes all unused Interfaces from the LogicalComponent
-   * @param lc the LogicalComponent
-   * @param pairs list of DecompositionItem
+   * 
+   * @param lc
+   *          the LogicalComponent
+   * @param pairs
+   *          list of DecompositionItem
    */
   void removeUnusedInterfaces(LogicalComponent lc, List<DecompositionItem> pairs) {
     List<InterfaceUse> unusedInterfaces = new ArrayList<InterfaceUse>();
@@ -1026,8 +1085,11 @@ public class LCDecompositionOperations implements DecompositionModelListener {
 
   /**
    * Removes all unused Interfaces from the LogicalComponent
-   * @param lc the LogicalComponent
-   * @param pairs list of DecompositionItem
+   * 
+   * @param lc
+   *          the LogicalComponent
+   * @param pairs
+   *          list of DecompositionItem
    */
   void removeUnImplementedInterfaces(LogicalComponent lc, List<DecompositionItem> pairs) {
     List<InterfaceImplementation> unimplementedInterfaces = new ArrayList<InterfaceImplementation>(1);
@@ -1060,7 +1122,8 @@ public class LCDecompositionOperations implements DecompositionModelListener {
   }
 
   /**
-   * @param controller_p the controller to set
+   * @param controller_p
+   *          the controller to set
    */
   public void setController(LCDecompositionController controller_p) {
     _controller = controller_p;
