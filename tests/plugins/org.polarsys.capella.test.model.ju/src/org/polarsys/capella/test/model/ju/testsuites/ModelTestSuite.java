@@ -18,6 +18,7 @@ import junit.framework.Test;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.model.ju.testcase.LCDecomposition.LCDecomposition;
+import org.polarsys.capella.test.model.ju.testcases.interfacescenario.message.ISMessage;
 
 public class ModelTestSuite extends BasicTestSuite {
 
@@ -32,7 +33,7 @@ public class ModelTestSuite extends BasicTestSuite {
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new LCDecomposition());
-
+    tests.add(new ISMessage());
     return tests;
   }
 

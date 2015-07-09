@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.model.preferences;bundle-version="0.8.0",
  org.polarsys.capella.core.preferences;bundle-version="0.8.0",
  org.polarsys.capella.core.data.la.ui.wizards,
- org.polarsys.capella.core.ui.toolkit
+ org.polarsys.capella.core.ui.toolkit,
+ org.polarsys.capella.core.data.interaction.properties
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName
