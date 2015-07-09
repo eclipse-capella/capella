@@ -417,6 +417,13 @@ public class EcoreUtil2 {
         if (attribute_p != null) {
           for (Object sibling : siblings) {
             EObject eSibling = (EObject) sibling;
+            
+            //eGet doesn't raise an exception if 'java assert' option is not enabled
+            //See https://polarsys.org/bugs/show_bug.cgi?id=389
+            if(!eSibling.eClass().getEAllStructuralFeatures().contains(attribute_p)){
+            	continue;
+            }
+            
             Object attributeValue = eSibling.eGet(attribute_p);
             if (attributeValue instanceof String) {
               String name = (String) attributeValue;
