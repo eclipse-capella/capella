@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.GenericTrace;
-import org.polarsys.capella.core.data.capellacore.KeyValue;
+import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
@@ -30,8 +31,6 @@ import org.polarsys.capella.core.tiger.IResolver;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.impl.Transfo;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * Utility class to provide queries for transformation based on
@@ -152,39 +151,7 @@ public class Query {
   }
 
   public static boolean isValidUID(AbstractTrace link_p, ITransfo transfo_p) {
-    boolean isDetected = false;
-
-    // Workaround for Semantic trace : 'KeyValue' not supported by this link
-    // kind
-    if (!(link_p instanceof GenericTrace)) {
-      isDetected = true;
-    } else {
-      GenericTrace genericTrace = (GenericTrace) link_p;
-      // Case 'GenericTrace' kind
-      for (KeyValue keyValue : genericTrace.getKeyValuePairs()) {
-        String key = keyValue.getKey();
-        String value = keyValue.getValue();
-
-        if (key.equals(TigerRelationshipHelper.PROPERTY_TRANSFO_UID)) {
-          isDetected = value.equals(transfo_p.getUid());
-
-          // DELETE 1.6
-          // In 1.5, TransfoLink id have been unified. Simple algorithm to check same targetId of transfoLinks
-          if (!isDetected) {
-            if (!value.contains("Bridge")) { //$NON-NLS-1$
-              String[] values = value.split("TargetId");//$NON-NLS-1$
-              String[] valuesTransfo = transfo_p.getUid().split("TargetId");//$NON-NLS-1$
-              if ((values != null) && (valuesTransfo != null) && (values.length == 2) && (valuesTransfo.length == 2)) {
-                if ((values[1] != null) && values[1].equals(valuesTransfo[1])) {
-                  isDetected = true;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return isDetected;
+    return !(link_p instanceof GenericTrace) || (link_p instanceof TransfoLink);
   }
 
   /**
