@@ -33,8 +33,8 @@ import org.polarsys.capella.core.data.information.communication.CommunicationPac
  */
 public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks extends CapellaModelDataListener {
   /**
-   * This listener will update:
-   * <li> all element
+   * This listener will update: <li>all element
+   * 
    * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
@@ -43,7 +43,7 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
     if (filterNotification(notification_p)) {
       return;
     }
-    
+
     // pre-condition: only SET notifications are wanted
     if ((notification_p.getEventType() != Notification.SET) && (notification_p.getEventType() != Notification.ADD)) {
       return;
@@ -51,11 +51,14 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
 
     EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
     if (feature != null) {
-      if ((notification_p.getEventType() == Notification.SET && feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__EXCHANGE_MECHANISM))) {
+      if (notification_p.getEventType() == Notification.SET
+          && (feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__EXCHANGE_MECHANISM) || (feature
+              .equals(InformationPackage.Literals.EXCHANGE_ITEM_ELEMENT__KIND)))) {
         Object notifier = notification_p.getNotifier();
         if (notifier instanceof ExchangeItem) {
           final ExchangeItem item = (ExchangeItem) notifier;
           executeCommand(item, new AbstractReadWriteCommand() {
+            @Override
             public void run() {
               for (CommunicationLink link : getRelatedCommunicationLinks(item)) {
                 CommunicationLinkExt.changeExchangeItem(link, item);
@@ -68,16 +71,31 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
               }
             }
           });
+        } else if (notifier instanceof ExchangeItemElement) {
+          final ExchangeItemElement eie = (ExchangeItemElement) notifier;
+          executeCommand(eie, new AbstractReadWriteCommand() {
+
+            @Override
+            public void run() {
+              ExchangeItemElementExt.changeExchangeItemElementKind(eie);
+            }
+
+          });
+
         }
-      } else if ((notification_p.getEventType() == Notification.ADD && feature.equals(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_ELEMENTS))) {
+
+      } else if ((notification_p.getEventType() == Notification.ADD && feature
+          .equals(InformationPackage.Literals.EXCHANGE_ITEM__OWNED_ELEMENTS))) {
         Object notifier = notification_p.getNotifier();
         if (notifier instanceof ExchangeItem) {
           final ExchangeItem item = (ExchangeItem) notifier;
           final Object newValue = notification_p.getNewValue();
           if (null != newValue && newValue instanceof ExchangeItemElement) {
             executeCommand(item, new AbstractReadWriteCommand() {
+              @Override
               public void run() {
-                ExchangeItemElementExt.changeExchangeItemElementKind((ExchangeItemElement) newValue, item.getExchangeMechanism());
+                ExchangeItemElementExt.changeExchangeItemElementKind((ExchangeItemElement) newValue,
+                    item.getExchangeMechanism());
               }
             });
           }
@@ -88,7 +106,8 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
 
   public static Collection<CommunicationLink> getRelatedCommunicationLinks(AbstractExchangeItem sndItem) {
     HashSet<CommunicationLink> result = new HashSet<CommunicationLink>();
-    for (Object objectRef : EObjectExt.getReferencers(sndItem, CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM)) {
+    for (Object objectRef : EObjectExt.getReferencers(sndItem,
+        CommunicationPackage.Literals.COMMUNICATION_LINK__EXCHANGE_ITEM)) {
       result.add((CommunicationLink) objectRef);
     }
     return result;
@@ -96,7 +115,8 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
 
   public static Collection<ExchangeItemAllocation> getRelatedAllocations(AbstractExchangeItem item) {
     HashSet<ExchangeItemAllocation> result = new HashSet<ExchangeItemAllocation>();
-    for (Object objectRef : EObjectExt.getReferencers(item, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM)) {
+    for (Object objectRef : EObjectExt
+        .getReferencers(item, CsPackage.Literals.EXCHANGE_ITEM_ALLOCATION__ALLOCATED_ITEM)) {
       result.add((ExchangeItemAllocation) objectRef);
     }
     return result;

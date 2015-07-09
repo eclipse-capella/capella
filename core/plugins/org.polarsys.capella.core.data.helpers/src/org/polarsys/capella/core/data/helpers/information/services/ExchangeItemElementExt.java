@@ -30,10 +30,22 @@ public class ExchangeItemElementExt {
     } else {
       if (element_p.getKind() != ElementKind.TYPE) {
         element_p.setKind(ElementKind.TYPE);
+        element_p.setDirection(ParameterDirection.UNSET);
+
       }
       if (!element_p.getDirection().equals(ParameterDirection.UNSET)) {
         element_p.setDirection(ParameterDirection.UNSET);
       }
     }
   }
+
+  /**
+   * @param element_p
+   */
+  public static void changeExchangeItemElementKind(ExchangeItemElement element_p) {
+    if (element_p.getKind() == ElementKind.TYPE) {
+      element_p.setDirection(ParameterDirection.UNSET);
+    }
+  }
+
 }
