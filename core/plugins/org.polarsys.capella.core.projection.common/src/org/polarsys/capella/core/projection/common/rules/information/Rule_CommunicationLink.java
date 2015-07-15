@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,7 @@ import org.polarsys.capella.core.projection.preferences.ProjectionPreferencesPlu
 public class Rule_CommunicationLink extends Rule_CapellaElement {
 
   public Rule_CommunicationLink() {
-    super(CommunicationPackage.Literals.COMMUNICATION_LINK, CommunicationPackage.Literals.COMMUNICATION_LINK,
-          CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION);
+    super(CommunicationPackage.Literals.COMMUNICATION_LINK, CommunicationPackage.Literals.COMMUNICATION_LINK);
     registerAttributeUpdate(CommunicationPackage.Literals.COMMUNICATION_LINK__KIND);
     registerAttributeUpdate(CommunicationPackage.Literals.COMMUNICATION_LINK__PROTOCOL);
   }
