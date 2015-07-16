@@ -57,7 +57,8 @@ import org.polarsys.capella.core.data.information.datatype.Enumeration;
 import org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral;
 
 /**
- * The Capella command allowing to paste Capella elements. It generates a new object identifier each time the command is called.
+ * The Capella command allowing to paste Capella elements. It generates a new object identifier each time the command is
+ * called.
  */
 public class CapellaPasteCommand extends PasteFromClipboardCommand {
 
@@ -67,11 +68,17 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
   private Helper _copyHelper;
 
   /**
-   * Constructs the Capella command allowing to paste Capella elements. It generates a new object identifier each time the command is called.
-   * @param domain_p The editing domain.
-   * @param owner_p The mode object owner.
-   * @param feature_p The feature.
-   * @param index_p The command index.
+   * Constructs the Capella command allowing to paste Capella elements. It generates a new object identifier each time
+   * the command is called.
+   * 
+   * @param domain_p
+   *          The editing domain.
+   * @param owner_p
+   *          The mode object owner.
+   * @param feature_p
+   *          The feature.
+   * @param index_p
+   *          The command index.
    */
   public CapellaPasteCommand(EditingDomain domain_p, Object owner_p, Object feature_p, int index_p) {
     super(domain_p, owner_p, feature_p, index_p);
@@ -130,41 +137,45 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
     // Create a command to copy the clipboard.
     //
     final Command copyCommand = createCopyCommand();
-    command.append(copyCommand);
+    if (copyCommand != UnexecutableCommand.INSTANCE) {
+      command.append(copyCommand);
+    }
 
-    command.append(new CommandWrapper() {
+    if (domain != null) {
+      command.append(new CommandWrapper() {
 
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      protected Command createCommand() {
-        // Add some commands for Association case.
-        CompoundCommand compoundCommand = new CompoundCommand();
-        // Handle specific case.
-        for (Object objectToCopy : domain.getClipboard()) {
-          if (objectToCopy instanceof Association) {
-            final Association association = (Association) objectToCopy;
-            prepareAssociationPaste(association, compoundCommand);
-          } else if (objectToCopy instanceof ComponentFunctionalAllocation) {
-            final ComponentFunctionalAllocation componentFunctionalAllocation = (ComponentFunctionalAllocation) objectToCopy;
-            prepareComponentFunctionalAllocationPaste(componentFunctionalAllocation, compoundCommand);
-          } else if (objectToCopy instanceof EnumerationLiteral) {
-            final EnumerationLiteral enumerationLiteral = (EnumerationLiteral) objectToCopy;
-            prepareEnumerationLiteralPaste(enumerationLiteral, compoundCommand);
-          } else if (objectToCopy instanceof FunctionalChainInvolvement || objectToCopy instanceof PhysicalPathInvolvement) {
+        /**
+         * {@inheritDoc}
+         */
+        @SuppressWarnings("synthetic-access")
+        @Override
+        protected Command createCommand() {
+          // Add some commands for Association case.
+          CompoundCommand compoundCommand = new CompoundCommand();
+          // Handle specific case.
+          for (Object objectToCopy : domain.getClipboard()) {
+            if (objectToCopy instanceof Association) {
+              final Association association = (Association) objectToCopy;
+              prepareAssociationPaste(association, compoundCommand);
+            } else if (objectToCopy instanceof ComponentFunctionalAllocation) {
+              final ComponentFunctionalAllocation componentFunctionalAllocation = (ComponentFunctionalAllocation) objectToCopy;
+              prepareComponentFunctionalAllocationPaste(componentFunctionalAllocation, compoundCommand);
+            } else if (objectToCopy instanceof EnumerationLiteral) {
+              final EnumerationLiteral enumerationLiteral = (EnumerationLiteral) objectToCopy;
+              prepareEnumerationLiteralPaste(enumerationLiteral, compoundCommand);
+            } else if (objectToCopy instanceof FunctionalChainInvolvement || objectToCopy instanceof PhysicalPathInvolvement) {
               final Involvement involvement = (Involvement) objectToCopy;
               prepareInvolvementPaste(involvement, compoundCommand);
+            }
           }
+          if (compoundCommand.isEmpty()) {
+            compoundCommand.appendAndExecute(new IdentityCommand());
+          }
+          return compoundCommand;
         }
-        if (compoundCommand.isEmpty()) {
-          compoundCommand.appendAndExecute(new IdentityCommand());
-        }
-        return compoundCommand;
-      }
 
-    });
+      });
+    }
 
     // Create a proxy that will create an add command.
     //
@@ -174,19 +185,18 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
       protected Command createCommand() {
         Collection<?> pasteElements = copyCommand.getResult();
         CompoundCommand addCommands = new CompoundCommand();
-        final IStatus status =
-            PasteCommandHelper.createPasteCommands(pasteElements, addCommands, (EObject) owner, (EStructuralFeature) feature, domain, index, true);
+        final IStatus status = PasteCommandHelper.createPasteCommands(pasteElements, addCommands, (EObject) owner, (EStructuralFeature) feature, domain, index, true);
 
         // Check if something went wrong
         if (!status.isOK()) {
 
           // Remove holding resources created by the command creation
-//          if (domain instanceof SemanticEditingDomain) {
-//            SemanticEditingDomain sed = ((SemanticEditingDomain) domain);
-//            if ((sed.getHoldingResource() != null) && (sed.getHoldingResource().getContents() != null)) {
-//              sed.getHoldingResource().getContents().removeAll(pasteElements);
-//            }
-//          }
+          // if (domain instanceof SemanticEditingDomain) {
+          // SemanticEditingDomain sed = ((SemanticEditingDomain) domain);
+          // if ((sed.getHoldingResource() != null) && (sed.getHoldingResource().getContents() != null)) {
+          // sed.getHoldingResource().getContents().removeAll(pasteElements);
+          // }
+          // }
 
           // Show error message
           PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
@@ -200,8 +210,8 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
       }
     });
 
-    boolean result;
-    if (optimize) {
+    boolean result = false;
+    if (optimize && domain != null) {
       // This will determine canExecute as efficiently as possible.
       result = optimizedCanExecute();
     } else {
@@ -217,15 +227,20 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
    * @return
    */
   private Command createCopyCommand() {
-    Collection<Object> collection = domain.getClipboard();
+    Collection<Object> collection = null;
+    if (domain != null) {
+      collection = domain.getClipboard();
+    }
     if ((collection == null) || collection.isEmpty()) {
       return UnexecutableCommand.INSTANCE;
     }
     _copyHelper = new Helper();
     CompoundCommand copyCommand = new CompoundCommand(CompoundCommand.MERGE_COMMAND_ALL);
 
-    // We should use CapellaCopyCommand instead of CopyCommand for not to contribute to the holding resource (See ModelElementImpl constructor) that could cause
-    // problems if the paste is not executed (for example copying between different projects). But this caused a regression because Enumeration literals
+    // We should use CapellaCopyCommand instead of CopyCommand for not to contribute to the holding resource (See
+    // ModelElementImpl constructor) that could cause
+    // problems if the paste is not executed (for example copying between different projects). But this caused a
+    // regression because Enumeration literals
     // abstract types were not updated correctly when copy/paste
     // We will use normal CopyCommand and then remove the holding resource references before showing Error message
 
@@ -237,8 +252,11 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
 
   /**
    * Return the property opposite to the given one in the given association, if any
-   * @param association_p a non-null association
-   * @param property_p a non-null property
+   * 
+   * @param association_p
+   *          a non-null association
+   * @param property_p
+   *          a non-null property
    * @return a non-null property if the association is bidirectional and property_p is one end
    */
   private Property getOppositeEnd(Association association_p, Property property_p) {
@@ -272,8 +290,7 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
       // DON'T use a StrictCompound command here, because
       // StrictCompound.prepare call execute...
       CompoundCommand addCommands = new CompoundCommand();
-      
-     
+
       PasteCommandHelper.createPasteCommands(cutElements, addCommands, (EObject) owner, (EStructuralFeature) feature, domain, index, true);
       command.append(addCommands);
       boolean result = command.canExecute();
@@ -285,36 +302,40 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
 
   /**
    * Extend the given preparation command for properly pasting the given enumeration literal
-   * @param enumerationLiteral_p a non-null enumeration literal
-   * @param compoundCommand_p a non-null command
+   * 
+   * @param enumerationLiteral_p
+   *          a non-null enumeration literal
+   * @param compoundCommand_p
+   *          a non-null command
    */
   protected void prepareEnumerationLiteralPaste(EnumerationLiteral enumerationLiteral_p, CompoundCommand compoundCommand_p) {
     EnumerationLiteral copiedEnumerationLiteral = (EnumerationLiteral) _copyHelper.getCopy(enumerationLiteral_p);
 
     if (owner instanceof Enumeration) {
-      compoundCommand_p.appendAndExecute(SetCommand.create(domain, copiedEnumerationLiteral,
-          ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, owner));
+      compoundCommand_p.appendAndExecute(SetCommand.create(domain, copiedEnumerationLiteral, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, owner));
     }
   }
 
   /**
    * Extend the given preparation command for componentFunctionalAllocation pasting to set a source element
+   * 
    * @param componentFunctionalAllocation
-   * @param compoundCommand 
+   * @param compoundCommand
    */
   private void prepareComponentFunctionalAllocationPaste(ComponentFunctionalAllocation componentFunctionalAllocation, CompoundCommand compoundCommand) {
-    if (owner!=null && componentFunctionalAllocation!=null && componentFunctionalAllocation.getTargetElement()!=null) {
-  	  if (owner instanceof TraceableElement) {
-  		  AbstractFunctionAllocation functionalAllocation = (AbstractFunctionAllocation) _copyHelper.get(componentFunctionalAllocation);
-  		  compoundCommand.appendAndExecute(SetCommand.create(domain, functionalAllocation, ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT, owner));
-  	  }
+    if (owner != null && componentFunctionalAllocation != null && componentFunctionalAllocation.getTargetElement() != null) {
+      if (owner instanceof TraceableElement) {
+        AbstractFunctionAllocation functionalAllocation = (AbstractFunctionAllocation) _copyHelper.get(componentFunctionalAllocation);
+        compoundCommand.appendAndExecute(SetCommand.create(domain, functionalAllocation, ModellingcorePackage.Literals.ABSTRACT_TRACE__SOURCE_ELEMENT, owner));
+      }
     }
   }
 
   /**
    * Extend the given preparation command for Involvement pasting to set an involver
+   * 
    * @param involvement
-   * @param compoundCommand 
+   * @param compoundCommand
    */
   private void prepareInvolvementPaste(Involvement involvement, CompoundCommand compoundCommand) {
     if (involvement != null && involvement.getInvolver() != null) {
@@ -341,8 +362,11 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
 
   /**
    * Extend the given preparation command for properly pasting the given association
-   * @param association_p a non-null association
-   * @param compoundCommand_p a non-null command
+   * 
+   * @param association_p
+   *          a non-null association
+   * @param compoundCommand_p
+   *          a non-null command
    */
   @SuppressWarnings("synthetic-access")
   protected void prepareAssociationPaste(Association association_p, CompoundCommand compoundCommand_p) {
@@ -366,20 +390,17 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
           // the new association must be unidirectional, hence the navigable
           // member on the non-copied side must belong to the association
           // -> Containment
-          compoundCommand_p.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS,
-              copiedProperty));
+          compoundCommand_p.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__OWNED_MEMBERS, copiedProperty));
           // -> Type
           Object clipboardType = SharedCopyPasteElements.getInstance().getCopyObject(property.getAbstractType());
           AbstractType copiedType = (AbstractType) _copyHelper.get(clipboardType);
-          compoundCommand_p.appendAndExecute(SetCommand.create(domain, copiedProperty, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE,
-              copiedType));
+          compoundCommand_p.appendAndExecute(SetCommand.create(domain, copiedProperty, ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE, copiedType));
         } else {
           // Don't add the copied property to association as its container is
           // the owner of the initial property.
           final EObject newPropertyOwner = property.eContainer();
           // -> Containment
-          compoundCommand_p
-              .appendAndExecute(AddCommand.create(domain, newPropertyOwner, CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, copiedProperty));
+          compoundCommand_p.appendAndExecute(AddCommand.create(domain, newPropertyOwner, CapellacorePackage.Literals.CLASSIFIER__OWNED_FEATURES, copiedProperty));
           // -> Name
           compoundCommand_p.appendAndExecute(new CommandWrapper() {
             /**
@@ -396,8 +417,7 @@ public class CapellaPasteCommand extends PasteFromClipboardCommand {
             }
           });
           // -> Navigable members
-          compoundCommand_p.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS,
-              copiedProperty));
+          compoundCommand_p.appendAndExecute(AddCommand.create(domain, copiedAssociation, InformationPackage.Literals.ASSOCIATION__NAVIGABLE_MEMBERS, copiedProperty));
         }
       }
     }

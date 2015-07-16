@@ -28,6 +28,7 @@ import org.polarsys.capella.common.menu.dynamic.CreationHelper;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.Constraint;
+import org.polarsys.capella.core.data.information.datavalue.DatavalueFactory;
 import org.polarsys.capella.core.ui.properties.controllers.AbstractSimpleEditableSemanticFieldController;
 
 /**
@@ -82,19 +83,43 @@ public class ConstraintReferenceGroup {
 
         @Override
         public EObject editValue(CapellaElement semanticElement_p, EStructuralFeature semanticFeature_p, String defaultName_p) {
-          if (semanticElement_p.eGet(semanticFeature_p) == null){
-            Constraint c = CapellacoreFactory.eINSTANCE.createConstraint();
-            semanticElement_p.getOwnedConstraints().add(c);
-            CreationHelper.performContributionCommands(c, semanticElement_p);
-            semanticElement_p.eSet(semanticFeature_p, c);
-          }
-          // directly edit the constraint specification, if one exists. Usually one exists, but 
-          // the user might have deleted it, so better check..
-          ValueSpecification spec = ((Constraint) semanticElement_p.eGet(semanticFeature_p)).getOwnedSpecification();
-          if (spec != null){
-            editValueWizard(spec);
-          }
-          return (EObject) semanticElement_p.eGet(semanticFeature_p); 
+	    	boolean wasCreatedSpec = false;
+	    	boolean wasCreatedCons = false;
+        	
+	    	// Get constraint on semantic element
+        	Constraint constraint = ((Constraint) semanticElement_p.eGet(semanticFeature_p));
+        	
+        	// If element has no constraint, create one
+	    	if (null == constraint) {
+	    		constraint = CapellacoreFactory.eINSTANCE.createConstraint();
+	    		semanticElement_p.getOwnedConstraints().add(constraint);
+	            CreationHelper.performContributionCommands(constraint, semanticElement_p);
+	            semanticElement_p.eSet(semanticFeature_p, constraint);
+	            wasCreatedCons = true;
+	    	}
+	    	
+	    	ValueSpecification specification = constraint.getOwnedSpecification();
+	    	
+	    	// In case constraint was created, need to create associated specification
+	    	if (null == specification) {
+	    		specification = DatavalueFactory.eINSTANCE.createOpaqueExpression();
+	    		constraint.setOwnedSpecification(specification);
+	    		CreationHelper.performContributionCommands(specification, constraint);
+	    		wasCreatedSpec = true;
+	    	}
+	    	
+	    	// Tell if user has clicked on finish or cancel
+	    	boolean hasPerformedFinish = editValueWizard(specification);
+	    	
+	    	// In case of cancel, must remove the constraint and specification in case it has been created
+	    	if (!hasPerformedFinish) {
+	    		if (wasCreatedCons) {
+	    			SimpleEditableSemanticField.deleteContainmentValue(constraint);
+	    		} else if (wasCreatedSpec) {
+	    			SimpleEditableSemanticField.deleteContainmentValue(specification);
+	    		}
+	    	}
+	    	return (EObject) semanticElement_p.eGet(semanticFeature_p);
         }
       });
       field.setDisplayedInWizard(isDisplayedInWizard_p);

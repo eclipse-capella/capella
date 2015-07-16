@@ -27,27 +27,23 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.osgi.util.NLS;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
+import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
+import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
-import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
-import org.polarsys.capella.core.data.cs.BlockArchitecture;
-import org.polarsys.capella.core.data.capellacommon.GenericTrace;
-import org.polarsys.capella.core.data.capellacore.KeyValue;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.CapellacoreFactory;
 import org.polarsys.capella.core.data.capellacore.Structure;
 import org.polarsys.capella.core.data.capellacore.Trace;
+import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.tiger.ITransfo;
 import org.polarsys.capella.core.tiger.Messages;
 import org.polarsys.capella.core.tiger.TransfoException;
 import org.polarsys.capella.core.tiger.impl.Transfo;
-import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
-import org.polarsys.capella.common.data.modellingcore.TraceableElement;
 
 /**
  * EMF Helper to provide transformation and update services
@@ -721,17 +717,7 @@ public class TigerRelationshipHelper {
         // 2- Create the transformation link
         abstractTrace = createAbstractTrace(sourceElement, targetElement, transfo);
         if (abstractTrace != null) {
-          if (abstractTrace instanceof GenericTrace) {
-            GenericTrace genericTrace = (GenericTrace) abstractTrace;
-            // 3- The marker to specify the UID of the
-            // transformation of the link
-            KeyValue keyValue = CapellacoreFactory.eINSTANCE.createKeyValue();
-            keyValue.setKey(PROPERTY_TRANSFO_UID);
-            keyValue.setValue(transfo.getUid());
-            genericTrace.getKeyValuePairs().add(keyValue);
-          }
-
-          // 4- Update relationships and roles
+          // 3- Update relationships and roles
           abstractTrace.setSourceElement(targetElement);
           abstractTrace.setTargetElement(sourceElement);
         }

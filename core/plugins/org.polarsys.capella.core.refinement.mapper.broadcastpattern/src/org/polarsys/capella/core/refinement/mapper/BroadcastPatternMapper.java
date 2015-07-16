@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,8 @@ package org.polarsys.capella.core.refinement.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
-
+import org.polarsys.capella.common.data.modellingcore.AbstractType;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.helpers.interaction.services.MessageEndExt.COMPONENT_TYPE;
@@ -26,11 +26,8 @@ import org.polarsys.capella.core.data.information.communication.CommunicationLin
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.interaction.AbstractEnd;
 import org.polarsys.capella.core.data.interaction.Scenario;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.refinement.scenarios.core.exceptions.MapperException;
 import org.polarsys.capella.core.refinement.scenarios.core.plugs.IMapper;
-import org.polarsys.capella.common.data.modellingcore.AbstractType;
 
 public class BroadcastPatternMapper implements IMapper {
 
@@ -76,22 +73,20 @@ public class BroadcastPatternMapper implements IMapper {
         if (type instanceof Component) {
           Component cpnt = (Component) type;
           if (componentType_p == COMPONENT_TYPE.SENDER) {
-            if (hasAccessCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p)) {
-              if (isImplementingInterface(cpnt, ((ExchangeItemAllocation) invokedOperation_p).eContainer())) {
-                abstractInstanceSet.add(abstractInstance);
-              }
-            } else if (hasWriteCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasSendCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p)) {
-              if (isUsingInterface(cpnt, ((ExchangeItemAllocation) invokedOperation_p).eContainer())) {
-                abstractInstanceSet.add(abstractInstance);
-              }
+            if (hasCallCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
+                hasSendCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
+                hasWriteCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
+                hasProduceCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p))
+            {
+              abstractInstanceSet.add(abstractInstance);
             }
           } else if (componentType_p == COMPONENT_TYPE.RECEIVER) {
             if (hasAccessCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
-                hasReceiveCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p)) {
-              if (isImplementingInterface(cpnt, ((ExchangeItemAllocation) invokedOperation_p).eContainer())) {
-                abstractInstanceSet.add(abstractInstance);
-              }
+                hasExecuteCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
+                hasReceiveCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p) ||
+                hasConsumeCommunicationLink(cpnt, (ExchangeItemAllocation) invokedOperation_p))
+            {
+              abstractInstanceSet.add(abstractInstance);
             }
           }
         } else if (type instanceof ExchangeItem) {
@@ -138,6 +133,38 @@ public class BroadcastPatternMapper implements IMapper {
   /**
    * @param cpnt_p
    * @param allocation_p
+   */
+  private boolean hasProduceCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
+    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.PRODUCE);
+  }
+
+  /**
+   * @param cpnt_p
+   * @param allocation_p
+   */
+  private boolean hasConsumeCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
+    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.CONSUME);
+  }
+
+  /**
+   * @param cpnt_p
+   * @param allocation_p
+   */
+  private boolean hasCallCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
+    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.CALL);
+  }
+
+  /**
+   * @param cpnt_p
+   * @param allocation_p
+   */
+  private boolean hasExecuteCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p) {
+    return hasCommunicationLink(cpnt_p, allocation_p, CommunicationLinkKind.EXECUTE);
+  }
+
+  /**
+   * @param cpnt_p
+   * @param allocation_p
    * @param kind_p
    */
   private boolean hasCommunicationLink(Component cpnt_p, ExchangeItemAllocation allocation_p, CommunicationLinkKind kind_p) {
@@ -149,21 +176,5 @@ public class BroadcastPatternMapper implements IMapper {
       }
     }
     return false;
-  }
-
-  /**
-   * @param cpnt_p
-   * @param interface_p
-   */
-  private boolean isUsingInterface(Component cpnt_p, EObject interface_p) {
-    return ComponentExt.getAllUsedAndRequiredInterfaces(cpnt_p).contains(interface_p);
-  }
-
-  /**
-   * @param cpnt_p
-   * @param interface_p
-   */
-  private boolean isImplementingInterface(Component cpnt_p, EObject interface_p) {
-    return ComponentExt.getAllImplementedAndProvidedInterfaces(cpnt_p).contains(interface_p);
   }
 }

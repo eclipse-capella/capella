@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,7 @@ public class StringTypeSection extends DataTypeSection {
     maxLengthWidget = new SimpleEditableSemanticField(getReferencesGroup(),
         Messages.getString("StringType.MaxLengthLabel"), getWidgetFactory(), "", new MultiplicityElementLengthController(), true, 3); //$NON-NLS-1$ //$NON-NLS-2$
     maxLengthWidget.setDisplayedInWizard(displayedInWizard);
+
     defaultValueWidget = new SimpleEditableSemanticField(getReferencesGroup(),
         Messages.getString("DataType.DefaultValueLabel"), getWidgetFactory(), Messages.getString("DataType.DefaultValueDefaultName"), new StringTypeController()); //$NON-NLS-1$ //$NON-NLS-2$
     defaultValueWidget.setDisplayedInWizard(displayedInWizard);
