@@ -684,7 +684,7 @@ public class DiagramHelper {
    */
   public static Diagram getDiagram(DDiagram seqDiagram) {
     EList<AnnotationEntry> ownedAnnotationEntries = seqDiagram.getOwnedAnnotationEntries();
-    AnnotationEntry annotationEntry = ownedAnnotationEntries.get(0);
+    AnnotationEntry annotationEntry = ownedAnnotationEntries.get(1);
     EObject data = annotationEntry.getData();
     Assert.assertTrue(data instanceof Diagram);
     final Diagram diagram = (Diagram) data;
