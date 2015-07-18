@@ -28,17 +28,23 @@
   </steps>
   <steps xsi:type="buildcore:StepContainer" xmi:id="_xh-N4KG3EeKjzsUfibKjCg" name="FinalizeTP">
     <properties xmi:id="_P5DYAl4qEeGjYKPu-vkVIA" key="resourcesDir" value="${relengDir}/../../../resources/${eclipseCodeName}" type="INLINED"/>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="__Fm_AKEoEeKMQb8Rddw1Vg" name="UpdateEclipseINI" enabled="false">
-      <steps xsi:type="buildfile:DeleteStep" xmi:id="_R8q_4E2zEeGhsO9pPJ3cDA" name="Remove eclipse.exe and eclipse.ini">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_UcaV8C0vEeW8apUR_ASZgw" name="UpdateEclipseEXE" enabled="false">
+      <steps xsi:type="buildfile:DeleteStep" xmi:id="_UcaV8S0vEeW8apUR_ASZgw" name="Remove eclipse.exe">
         <filePaths>${product}/capella/eclipse/eclipse.exe</filePaths>
+      </steps>
+      <steps xsi:type="buildfile:CopyStep" xmi:id="_UcaV8i0vEeW8apUR_ASZgw" name="Copy capella.exe" destinationFolderPath="${product}/capella/eclipse">
+        <filePaths>${resourcesDir}/${os}-${arch}/eclipse.exe</filePaths>
+      </steps>
+    </steps>
+    <steps xsi:type="buildcore:StepContainer" xmi:id="__Fm_AKEoEeKMQb8Rddw1Vg" name="UpdateEclipseINI">
+      <steps xsi:type="buildfile:DeleteStep" xmi:id="_R8q_4E2zEeGhsO9pPJ3cDA" name="Remove eclipse.ini">
         <filePaths>${product}/capella/eclipse/eclipse.ini</filePaths>
       </steps>
-      <steps xsi:type="buildfile:CopyStep" xmi:id="_j81ZsE2zEeGhsO9pPJ3cDA" name="Copy capella.exe and capella.ini" destinationFolderPath="${product}/capella/eclipse">
-        <filePaths>${resourcesDir}/${os}-${arch}/eclipse.exe</filePaths>
+      <steps xsi:type="buildfile:CopyStep" xmi:id="_j81ZsE2zEeGhsO9pPJ3cDA" name="Copy capella.ini" destinationFolderPath="${product}/capella/eclipse">
         <filePaths>${resourcesDir}/${os}-${arch}/eclipse.ini</filePaths>
       </steps>
     </steps>
-    <steps xsi:type="buildcore:StepContainer" xmi:id="_8DmKEKEpEeKMQb8Rddw1Vg" name="UpdateConfigINI" enabled="false">
+    <steps xsi:type="buildcore:StepContainer" xmi:id="_8DmKEKEpEeKMQb8Rddw1Vg" name="UpdateConfigINI">
       <steps xsi:type="buildfile:DeleteStep" xmi:id="_8DmKEaEpEeKMQb8Rddw1Vg" name="Remove config.ini">
         <filePaths>${product}/capella/eclipse/configuration/config.ini</filePaths>
       </steps>
