@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -142,8 +142,8 @@ public class DiagramActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public OpenDynamicViewer(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public OpenDynamicViewer(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -296,31 +296,31 @@ public class DiagramActionsProvider implements IActionsProvider {
             /**
              * {@inheritDoc}
              */
-            public DAnalysis selectSmartlyAnalysisForCreatedView(Viewpoint viewpoint_p, Collection<DAnalysis> allAnalysis_p) {
-              if ((analysis != null) && allAnalysis_p.contains(analysis)) {
+            public DAnalysis selectSmartlyAnalysisForCreatedView(Viewpoint viewpoint, Collection<DAnalysis> allAnalysis) {
+              if ((analysis != null) && allAnalysis.contains(analysis)) {
                 return analysis;
               }
-              return allAnalysis_p.iterator().next();
+              return allAnalysis.iterator().next();
             }
 
             /**
              * {@inheritDoc}
              */
-            public DAnalysis selectSmartlyAnalysisForAddedResource(Resource resource_p, Collection<DAnalysis> allAnalysis_p) {
-              if ((analysis != null) && allAnalysis_p.contains(analysis)) {
+            public DAnalysis selectSmartlyAnalysisForAddedResource(Resource resource, Collection<DAnalysis> allAnalysis) {
+              if ((analysis != null) && allAnalysis.contains(analysis)) {
                 return analysis;
               }
-              return allAnalysis_p.iterator().next();
+              return allAnalysis.iterator().next();
             }
 
             /**
              * {@inheritDoc}
              */
-            public DAnalysis selectSmartlyAnalysisForAddedRepresentation(DRepresentation representation_p, Collection<DAnalysis> allAnalysis_p) {
-              if ((analysis != null) && allAnalysis_p.contains(analysis)) {
+            public DAnalysis selectSmartlyAnalysisForAddedRepresentation(DRepresentation representation, Collection<DAnalysis> allAnalysis) {
+              if ((analysis != null) && allAnalysis.contains(analysis)) {
                 return analysis;
               }
-              return allAnalysis_p.iterator().next();
+              return allAnalysis.iterator().next();
             }
           });
 
@@ -333,9 +333,9 @@ public class DiagramActionsProvider implements IActionsProvider {
              * {@inheritDoc}
              */
             @Override
-            public DAnalysis selectSmartlyAnalysisForAddedRepresentation(DRepresentation representation_p, Collection<DAnalysis> allAnalysis_p) {
-              allAnalysis_p.remove(analysis);
-              return super.selectSmartlyAnalysisForAddedRepresentation(representation_p, allAnalysis_p);
+            public DAnalysis selectSmartlyAnalysisForAddedRepresentation(DRepresentation representation, Collection<DAnalysis> allAnalysis) {
+              allAnalysis.remove(analysis);
+              return super.selectSmartlyAnalysisForAddedRepresentation(representation, allAnalysis);
             }
           });
         }
@@ -346,8 +346,8 @@ public class DiagramActionsProvider implements IActionsProvider {
         ((DSemanticDecorator) representation).setTarget(root);
         if (delete) {
         }
-      } catch (Exception ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (Exception ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
 
       return representation;
@@ -393,15 +393,15 @@ public class DiagramActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-    list.add(new ReColorEdgesAction(shell_p, selectionProvider_p));
-    list.add(new DiagramProxyReparatorAccessor(shell_p, selectionProvider_p));
-    list.add(new RefreshDiagramAction(shell_p, selectionProvider_p));
-    list.add(new RepairViewpointDefinition(shell_p, selectionProvider_p));
+    list.add(new ReColorEdgesAction(shell, selectionProvider));
+    list.add(new DiagramProxyReparatorAccessor(shell, selectionProvider));
+    list.add(new RefreshDiagramAction(shell, selectionProvider));
+    list.add(new RepairViewpointDefinition(shell, selectionProvider));
 
-    list.add(new OpenDynamicViewer(shell_p, selectionProvider_p));
+    list.add(new OpenDynamicViewer(shell, selectionProvider));
 
     return list;
   }
@@ -440,8 +440,8 @@ public class DiagramActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public RepairViewpointDefinition(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RepairViewpointDefinition(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -478,7 +478,7 @@ public class DiagramActionsProvider implements IActionsProvider {
 
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-        public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           boolean hasProceed = false;
           int nbProceed = 0;
           Collection<Resource> objects = getResources();
@@ -557,40 +557,40 @@ public class DiagramActionsProvider implements IActionsProvider {
             getLogger().info(new EmbeddedMessage(nbProceed + " viewpoint have been added", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
-          monitor_p.done();
+          monitor.done();
         }
 
-        private String getKey(Viewpoint viewpoint_p) {
-          if (viewpoint_p instanceof InternalEObject) {
-            if (viewpoint_p.eIsProxy()) {
-              return ((InternalEObject) viewpoint_p).eProxyURI().lastSegment();
+        private String getKey(Viewpoint viewpoint) {
+          if (viewpoint instanceof InternalEObject) {
+            if (viewpoint.eIsProxy()) {
+              return ((InternalEObject) viewpoint).eProxyURI().lastSegment();
             }
           }
-          return viewpoint_p.getName() + viewpoint_p.eResource().getURI().lastSegment();
+          return viewpoint.getName() + viewpoint.eResource().getURI().lastSegment();
         }
 
-        private String getName(Object eResource_p) {
-          if (eResource_p instanceof InternalEObject) {
-            if (((InternalEObject) eResource_p).eIsProxy()) {
-              return ((InternalEObject) eResource_p).eProxyURI().toString();
+        private String getName(Object eResource) {
+          if (eResource instanceof InternalEObject) {
+            if (((InternalEObject) eResource).eIsProxy()) {
+              return ((InternalEObject) eResource).eProxyURI().toString();
             }
           }
-          if (eResource_p instanceof Viewpoint) {
-            return ((Viewpoint) eResource_p).getName();
+          if (eResource instanceof Viewpoint) {
+            return ((Viewpoint) eResource).getName();
 
           }
-          if (eResource_p instanceof Resource) {
-            return ((Resource) eResource_p).getURI().lastSegment();
+          if (eResource instanceof Resource) {
+            return ((Resource) eResource).getURI().lastSegment();
 
           }
 
-          return eResource_p.toString();
+          return eResource.toString();
         }
 
-        private boolean isMissing(Viewpoint viewpoint_p, DAnalysis analysis_p) {
-          String key = getKey(viewpoint_p);
+        private boolean isMissing(Viewpoint viewpoint, DAnalysis analysis) {
+          String key = getKey(viewpoint);
 
-          for (DView view : analysis_p.getOwnedViews()) {
+          for (DView view : analysis.getOwnedViews()) {
             if (view.getViewpoint() != null) {
               String definedKey = getKey(view.getViewpoint());
               if (key.equals(definedKey)) {
@@ -605,32 +605,32 @@ public class DiagramActionsProvider implements IActionsProvider {
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InvocationTargetException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InterruptedException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
 
     }
 
     /**
-     * @param object_p
+     * @param object
      */
-    private boolean process(DDiagram object_p) {
+    private boolean process(DDiagram object) {
       boolean hasProceed = true;
 
       try {
 
-        EObject semantic = ((DSemanticDecorator) object_p).getTarget();
+        EObject semantic = ((DSemanticDecorator) object).getTarget();
         Session session = SessionManager.INSTANCE.getSession(semantic);
 
         if (session != null) {
-          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object_p, new NullProgressMonitor());
+          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object, new NullProgressMonitor());
           editor.getSite().getPage().closeEditor(editor, false);
         }
 
-      } catch (Exception ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (Exception ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
 
       }
       return hasProceed;
@@ -663,8 +663,8 @@ public class DiagramActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public ReColorEdgesAction(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public ReColorEdgesAction(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -707,12 +707,12 @@ public class DiagramActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
+     * @param object
      */
-    private boolean process(DDiagram object_p) {
+    private boolean process(DDiagram object) {
       boolean hasProceed = false;
 
-      for (DEdge edge : object_p.getEdges()) {
+      for (DEdge edge : object.getEdges()) {
 
         if ((edge.getActualMapping() != null) && (edge.getActualMapping() instanceof EdgeMapping)) {
           EdgeMapping mapping = (EdgeMapping) edge.getActualMapping();
@@ -733,7 +733,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 }
 
                 hasProceed = true;
-                setColor(newRGBValues, mapping.getStyle().getStrokeColor());
+                newRGBValues = setColor(mapping.getStyle().getStrokeColor());
               }
 
               if (mapping.getStyle().getBeginLabelStyleDescription() != null) {
@@ -753,7 +753,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 }
 
                 hasProceed = true;
-                setColor(newRGBValues, colorDescription);
+                newRGBValues = setColor(colorDescription);
               }
 
               if (mapping.getStyle().getCenterLabelStyleDescription() != null) {
@@ -773,7 +773,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 }
 
                 hasProceed = true;
-                setColor(newRGBValues, colorDescription);
+                newRGBValues = setColor(colorDescription);
               }
               if (mapping.getStyle().getEndLabelStyleDescription() != null) {
                 // Set style for the begin label
@@ -792,7 +792,7 @@ public class DiagramActionsProvider implements IActionsProvider {
                 }
 
                 hasProceed = true;
-                setColor(newRGBValues, colorDescription);
+                newRGBValues = setColor(colorDescription);
               }
             }
           }
@@ -801,14 +801,14 @@ public class DiagramActionsProvider implements IActionsProvider {
 
       if (hasProceed) {
         getLogger().info(
-            new EmbeddedMessage(NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object_p.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
-                object_p));
+            new EmbeddedMessage(NLS.bind("Edges on diagram ''{0}'' have recovered default color.", object.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
+                object));
         try {
-          object_p.refresh();
+          object.refresh();
         } catch (Exception exceptionP) {
           getLogger().warn(
-              new EmbeddedMessage(NLS.bind("An error occured while refreshing diagram ''{0}''.", object_p.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
-                  object_p));
+              new EmbeddedMessage(NLS.bind("An error occured while refreshing diagram ''{0}''.", object.getName()), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
+                  object));
         }
       }
 
@@ -817,25 +817,14 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     /**
      * Set color
-     * @param strokeColor_p
-     * @param strokeColor2_p
+     * @param strokeColor
      */
-    private void setColor(RGBValues strokeColor_p, ColorDescription strokeColor2_p) {
-      if (strokeColor2_p != null) {
-        if (strokeColor2_p instanceof FixedColor) {
-          FixedColor sysColor = (FixedColor) strokeColor2_p;
-          strokeColor_p.setRed(sysColor.getRed());
-          strokeColor_p.setBlue(sysColor.getBlue());
-          strokeColor_p.setGreen(sysColor.getGreen());
-          return;
-        }
+    private RGBValues setColor(ColorDescription strokeColor) {
+      if (strokeColor instanceof FixedColor) {
+        FixedColor sysColor = (FixedColor) strokeColor;
+        return RGBValues.create(sysColor.getRed(), sysColor.getGreen(), sysColor.getBlue());
       }
-
-      if (strokeColor2_p == null) {
-        strokeColor_p.setRed(0);
-        strokeColor_p.setBlue(0);
-        strokeColor_p.setGreen(0);
-      }
+      return RGBValues.create(0, 0, 0);
     }
   }
 
@@ -870,8 +859,8 @@ public class DiagramActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public RefreshDiagramAction(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RefreshDiagramAction(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -907,20 +896,20 @@ public class DiagramActionsProvider implements IActionsProvider {
 
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-        public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<DDiagram> objects = getDiagrams();
           getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-          monitor_p.beginTask("Open diagrams", objects.size()); //$NON-NLS-1$
+          monitor.beginTask("Open diagrams", objects.size()); //$NON-NLS-1$
           for (DDiagram object : objects) {
-            monitor_p.setTaskName("Opening : " + object.getName()); //$NON-NLS-1$
+            monitor.setTaskName("Opening : " + object.getName()); //$NON-NLS-1$
             if (process(object)) {
               hasProceed = true;
               nbProceed++;
             }
-            monitor_p.worked(1);
+            monitor.worked(1);
           }
 
           if (!hasProceed) {
@@ -929,39 +918,39 @@ public class DiagramActionsProvider implements IActionsProvider {
             getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
-          monitor_p.done();
+          monitor.done();
         }
       };
 
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InvocationTargetException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InterruptedException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
 
     }
 
     /**
-     * @param object_p
+     * @param object
      */
-    private boolean process(DDiagram object_p) {
+    private boolean process(DDiagram object) {
       boolean hasProceed = true;
 
       try {
 
-        EObject semantic = ((DSemanticDecorator) object_p).getTarget();
+        EObject semantic = ((DSemanticDecorator) object).getTarget();
         Session session = SessionManager.INSTANCE.getSession(semantic);
 
         if (session != null) {
-          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object_p, new NullProgressMonitor());
+          IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, object, new NullProgressMonitor());
           editor.getSite().getPage().closeEditor(editor, false);
         }
 
-      } catch (Exception ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (Exception ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
 
       }
       return hasProceed;
@@ -986,8 +975,8 @@ public class DiagramActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public DiagramProxyReparatorAccessor(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public DiagramProxyReparatorAccessor(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -1049,8 +1038,8 @@ public class DiagramActionsProvider implements IActionsProvider {
 
     }
 
-    private void initMap(EObject obj_p) {
-      ResourceSet set = obj_p.eResource().getResourceSet();
+    private void initMap(EObject obj) {
+      ResourceSet set = obj.eResource().getResourceSet();
       for (Resource resource : set.getResources()) {
         if (resource instanceof CapellamodellerResourceImpl) {
           Iterator<EObject> res = resource.getAllContents();
@@ -1100,33 +1089,33 @@ public class DiagramActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param element_p
-     * @param proxy_p
-     * @param uri_p
-     * @param feature_p
+     * @param element
+     * @param proxy
+     * @param uri
+     * @param feature
      */
-    private void setElement(EObject element_p, EObject proxy_p, EObject uri_p, EStructuralFeature feature_p) {
-      if (feature_p.isChangeable()) {
-        if (feature_p.isMany()) {
-          EList list = ((EList) element_p.eGet(feature_p));
-          list.remove(proxy_p);
-          list.add(uri_p);
+    private void setElement(EObject element, EObject proxy, EObject uri, EStructuralFeature feature) {
+      if (feature.isChangeable()) {
+        if (feature.isMany()) {
+          EList list = ((EList) element.eGet(feature));
+          list.remove(proxy);
+          list.add(uri);
         } else {
-          element_p.eSet(feature_p, uri_p);
+          element.eSet(feature, uri);
         }
       }
     }
 
-    private boolean performDiagram(DDiagram diagram_p) {
+    private boolean performDiagram(DDiagram diagram) {
       Logger logger = getLogger();
       List<DDiagramElement> proxys = new ArrayList<DDiagramElement>();
       int nbProblem = 0;
       int nbFix = 0;
       int nbNotFix = 0;
 
-      logger.info(new EmbeddedMessage(NLS.bind("Diagram ''{0}'' checking...", diagram_p.getName()), IReportManagerDefaultComponents.UI, diagram_p)); //$NON-NLS-1$
+      logger.info(new EmbeddedMessage(NLS.bind("Diagram ''{0}'' checking...", diagram.getName()), IReportManagerDefaultComponents.UI, diagram)); //$NON-NLS-1$
 
-      for (DDiagramElement element : diagram_p.getDiagramElements()) {
+      for (DDiagramElement element : diagram.getDiagramElements()) {
         if (element.getTarget() != null) {
           int fix = fix(element, element.getTarget(), ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET);
           if (fix == 1) {
@@ -1156,11 +1145,11 @@ public class DiagramActionsProvider implements IActionsProvider {
       }
 
       logger.info(new EmbeddedMessage(NLS.bind("{0} problems potentially fixable have been found in this diagram.", nbProblem), //$NON-NLS-1$
-          IReportManagerDefaultComponents.UI, diagram_p));
+          IReportManagerDefaultComponents.UI, diagram));
       if (nbProblem > 0) {
-        logger.info(new EmbeddedMessage(NLS.bind("{0} problems in theses elements have been fixed.", nbFix), IReportManagerDefaultComponents.UI, diagram_p)); //$NON-NLS-1$
+        logger.info(new EmbeddedMessage(NLS.bind("{0} problems in theses elements have been fixed.", nbFix), IReportManagerDefaultComponents.UI, diagram)); //$NON-NLS-1$
         logger.info(new EmbeddedMessage(NLS.bind("{0} problems in theses elements could not be fixed.", nbNotFix), IReportManagerDefaultComponents.UI, //$NON-NLS-1$
-            diagram_p));
+            diagram));
       }
       return nbFix != 0;
     }

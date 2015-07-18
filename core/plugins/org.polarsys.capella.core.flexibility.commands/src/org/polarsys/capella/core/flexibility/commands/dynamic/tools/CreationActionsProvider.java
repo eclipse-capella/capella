@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,9 +41,9 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -77,10 +77,10 @@ public class CreationActionsProvider implements IActionsProvider {
   /**
    * @see org.polarsys.capella.core.flexibility.commands.dynamic.IActionsProvider#getActions()
    */
-  public Collection<DefaultAction> getActions(Shell shell_p, ISelectionProvider selectionProvider_p) {
+  public Collection<DefaultAction> getActions(Shell shell, ISelectionProvider selectionProvider) {
     List<DefaultAction> list = new ArrayList<DefaultAction>();
 
-    list.add(new CreateFunctions(shell_p, selectionProvider_p));
+    list.add(new CreateFunctions(shell, selectionProvider));
 
     return list;
   }
@@ -116,8 +116,8 @@ public class CreationActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public CreateFunctions(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public CreateFunctions(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -152,8 +152,8 @@ public class CreationActionsProvider implements IActionsProvider {
 
     String SEP = "  "; //$NON-NLS-1$
 
-    public ChangeID(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public ChangeID(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -191,13 +191,13 @@ public class CreationActionsProvider implements IActionsProvider {
 
     /**
      * Get all representations where specified semantic element is displayed.
-     * @param semanticElement_p
-     * @param filteringRepresentationDescriptionClass_p
+     * @param semanticElement
+     * @param filteringRepresentationDescriptionClass
      * @return a not <code>null</code> collection.
      */
-    public Collection<EObject> getAllRepresentationsWhereSemanticElementIsDisplayed(EObject semanticElement_p, RunnableWithBooleanResult filteringCondition_p) {
+    public Collection<EObject> getAllRepresentationsWhereSemanticElementIsDisplayed(EObject semanticElement, RunnableWithBooleanResult filteringCondition) {
       Set<EObject> result = new HashSet<EObject>(0);
-      Session session = SessionManager.INSTANCE.getSession(semanticElement_p);
+      Session session = SessionManager.INSTANCE.getSession(semanticElement);
       if (null == session) {
         return result;
       }
@@ -205,10 +205,10 @@ public class CreationActionsProvider implements IActionsProvider {
         for (RepresentationDescription representationDescription : currentSelectedViewpoint.getOwnedRepresentations()) {
           boolean search = true;
           // If a condition is given, used to filter out or not current representation description.
-          if (null != filteringCondition_p) {
-            filteringCondition_p.setObject(representationDescription);
-            filteringCondition_p.run();
-            search = filteringCondition_p.getResult().booleanValue();
+          if (null != filteringCondition) {
+            filteringCondition.setObject(representationDescription);
+            filteringCondition.run();
+            search = filteringCondition.getResult().booleanValue();
           }
           if (search) {
             // Get all representations for current representation description.
@@ -217,19 +217,19 @@ public class CreationActionsProvider implements IActionsProvider {
             for (DRepresentation representation : representations) {
               if (representation instanceof DSemanticDecorator) {
                 EObject target = ((DSemanticDecorator) representation).getTarget();
-                if (semanticElement_p.equals(target)) {
+                if (semanticElement.equals(target)) {
                   result.add(representation);
                 }
               }
               for (DRepresentationElement representationElement : representation.getRepresentationElements()) {
                 EObject target = representationElement.getTarget();
-                if (semanticElement_p.equals(target)) {
+                if (semanticElement.equals(target)) {
                   result.add(representationElement);
                   break;
                 }
 
-                for (EObject semanticElement : representationElement.getSemanticElements()) {
-                  if (semanticElement_p.equals(semanticElement)) {
+                for (EObject semanticElt : representationElement.getSemanticElements()) {
+                  if (semanticElement.equals(semanticElt)) {
                     result.add(representationElement);
                     break;
                   }
@@ -275,8 +275,8 @@ public class CreationActionsProvider implements IActionsProvider {
       return false;
     }
 
-    public Unsynchronizer(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public Unsynchronizer(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -312,20 +312,20 @@ public class CreationActionsProvider implements IActionsProvider {
 
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-        public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<DDiagram> objects = getDiagrams();
           getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-          monitor_p.beginTask("Open diagrams", objects.size()); //$NON-NLS-1$
+          monitor.beginTask("Open diagrams", objects.size()); //$NON-NLS-1$
           for (DDiagram object : objects) {
-            monitor_p.setTaskName("Opening : " + object.getName()); //$NON-NLS-1$
+            monitor.setTaskName("Opening : " + object.getName()); //$NON-NLS-1$
             if (process(object)) {
               hasProceed = true;
               nbProceed++;
             }
-            monitor_p.worked(1);
+            monitor.worked(1);
           }
 
           if (!hasProceed) {
@@ -334,37 +334,37 @@ public class CreationActionsProvider implements IActionsProvider {
             getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been opened", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
-          monitor_p.done();
+          monitor.done();
         }
       };
 
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InvocationTargetException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InterruptedException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
 
     }
 
     /**
-     * @param object_p
+     * @param object
      */
-    private boolean process(DDiagram object_p) {
+    private boolean process(DDiagram object) {
       boolean hasProceed = true;
 
       try {
 
-        if (object_p.isSynchronized()) {
-          getLogger().info(new EmbeddedMessage(NLS.bind("{0} to be unsynchronized ", object_p.getName()), IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
+        if (object.isSynchronized()) {
+          getLogger().info(new EmbeddedMessage(NLS.bind("{0} to be unsynchronized ", object.getName()), IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-          object_p.setSynchronized(false);
+          object.setSynchronized(false);
 
           ArrayList<DDiagramElement> elements = new ArrayList<DDiagramElement>();
 
-          for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(object_p)) {
+          for (DDiagramElement element : DiagramServices.getDiagramServices().getDiagramElements(object)) {
             if (!element.isVisible()) {
               elements.add(element);
 
@@ -373,8 +373,8 @@ public class CreationActionsProvider implements IActionsProvider {
 
           getLogger().info(new EmbeddedMessage(NLS.bind("{0} diagram elements removed", elements.size()), IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           for (DDiagramElement element : elements) {
-            if (element instanceof DContainer) {
-              DiagramServices.getDiagramServices().removeContainerView((DContainer) element);
+            if ((element instanceof DDiagram) || (element instanceof DDiagramElementContainer)) {
+              DiagramServices.getDiagramServices().removeContainerView(element);
 
             } else if (element instanceof DNode) {
               DiagramServices.getDiagramServices().removeNodeView((DNode) element);
@@ -388,8 +388,8 @@ public class CreationActionsProvider implements IActionsProvider {
 
         }
 
-      } catch (Exception ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (Exception ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
 
       }
       return hasProceed;
@@ -400,8 +400,8 @@ public class CreationActionsProvider implements IActionsProvider {
 
     String SEP = "  "; //$NON-NLS-1$
 
-    public CleanSID(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public CleanSID(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     /**
@@ -449,11 +449,11 @@ public class CreationActionsProvider implements IActionsProvider {
     }
 
     /**
-     * @param object_p
+     * @param object
      */
-    private void browse(EObject object_p, String sep) {
+    private void browse(EObject object, String sep) {
 
-      for (EObject content : object_p.eContents()) {
+      for (EObject content : object.eContents()) {
         browse(content, SEP + sep);
         if (content instanceof CapellaElement) {
           if (((CapellaElement) content).getSid() != null) {
@@ -492,8 +492,8 @@ public class CreationActionsProvider implements IActionsProvider {
       return (getSelection(EObject.class).size() >= 1);
     }
 
-    public RemoveUselessFragments(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RemoveUselessFragments(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -526,11 +526,11 @@ public class CreationActionsProvider implements IActionsProvider {
 
         try {
           project.accept(new IResourceVisitor() {
-            public boolean visit(IResource resource_p) throws CoreException {
-              if (!filesLoaded.contains(resource_p) && (resource_p instanceof IFile)) {
+            public boolean visit(IResource resource) throws CoreException {
+              if (!filesLoaded.contains(resource) && (resource instanceof IFile)) {
 
-                if (!".project".equals(resource_p.getName())) { //$NON-NLS-1$
-                  files.add((IFile) resource_p);
+                if (!".project".equals(resource.getName())) { //$NON-NLS-1$
+                  files.add((IFile) resource);
 
                 }
               }
@@ -538,7 +538,7 @@ public class CreationActionsProvider implements IActionsProvider {
             }
           });
 
-        } catch (CoreException exception_p) {
+        } catch (CoreException exception) {
         }
       }
 
@@ -550,12 +550,12 @@ public class CreationActionsProvider implements IActionsProvider {
 
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-        public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<IFile> objects = getFiles();
           getLogger().info(new EmbeddedMessage(objects.size() + " files to be deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
-          monitor_p.beginTask("Delete files", objects.size()); //$NON-NLS-1$
+          monitor.beginTask("Delete files", objects.size()); //$NON-NLS-1$
 
           for (IFile object : objects) {
 
@@ -564,7 +564,7 @@ public class CreationActionsProvider implements IActionsProvider {
                 object.delete(true, new NullProgressMonitor());
               }
               hasProceed = true;
-            } catch (CoreException exception_p) {
+            } catch (CoreException exception) {
             }
 
           }
@@ -575,17 +575,17 @@ public class CreationActionsProvider implements IActionsProvider {
             getLogger().info(new EmbeddedMessage(nbProceed + " files have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
-          monitor_p.done();
+          monitor.done();
         }
       };
 
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InvocationTargetException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InterruptedException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
 
     }
@@ -619,8 +619,8 @@ public class CreationActionsProvider implements IActionsProvider {
       return (getSelection(DDiagram.class).size() >= 1);
     }
 
-    public RemoveUselessSemanticForDiagrams(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RemoveUselessSemanticForDiagrams(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -707,17 +707,17 @@ public class CreationActionsProvider implements IActionsProvider {
 
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-        public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<EObject> objects = getToDeleteEObjects();
           getLogger().info(new EmbeddedMessage(objects.size() + " objects to be deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
-          monitor_p.beginTask("Delete objects", objects.size()); //$NON-NLS-1$
+          monitor.beginTask("Delete objects", objects.size()); //$NON-NLS-1$
 
           for (EObject object : objects) {
             DeleteStructureCommand comand = new DeleteStructureCommand(TransactionHelper.getEditingDomain(object), Collections.singleton(object), false);
             if (comand.canExecute()) {
-              monitor_p.setTaskName("Deleting : " + object); //$NON-NLS-1$
+              monitor.setTaskName("Deleting : " + object); //$NON-NLS-1$
               comand.execute();
               hasProceed = true;
             }
@@ -730,17 +730,17 @@ public class CreationActionsProvider implements IActionsProvider {
             getLogger().info(new EmbeddedMessage(nbProceed + " objects have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
-          monitor_p.done();
+          monitor.done();
         }
       };
 
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InvocationTargetException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InterruptedException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
 
     }
@@ -774,8 +774,8 @@ public class CreationActionsProvider implements IActionsProvider {
       return (getSelection(DDiagram.class).size() >= 1);
     }
 
-    public RemoveDiagrams(Shell shell_p, ISelectionProvider selectionProvider_p) {
-      super(shell_p, selectionProvider_p);
+    public RemoveDiagrams(Shell shell, ISelectionProvider selectionProvider) {
+      super(shell, selectionProvider);
     }
 
     @Override
@@ -810,20 +810,20 @@ public class CreationActionsProvider implements IActionsProvider {
 
       IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-        public void run(IProgressMonitor monitor_p) throws InvocationTargetException, InterruptedException {
+        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
           boolean hasProceed = false;
           int nbProceed = 0;
           List<DDiagram> objects = getDiagrams();
           getLogger().info(new EmbeddedMessage(objects.size() + " diagrams to be deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
 
-          monitor_p.beginTask("Delete diagrams", objects.size()); //$NON-NLS-1$
+          monitor.beginTask("Delete diagrams", objects.size()); //$NON-NLS-1$
           for (DDiagram object : objects) {
-            monitor_p.setTaskName("Deleting : " + object.getName()); //$NON-NLS-1$
+            monitor.setTaskName("Deleting : " + object.getName()); //$NON-NLS-1$
             if (process(object)) {
               hasProceed = true;
               nbProceed++;
             }
-            monitor_p.worked(1);
+            monitor.worked(1);
           }
 
           if (!hasProceed) {
@@ -832,31 +832,31 @@ public class CreationActionsProvider implements IActionsProvider {
             getLogger().info(new EmbeddedMessage(nbProceed + " diagrams have been deleted", IReportManagerDefaultComponents.UI)); //$NON-NLS-1$
           }
 
-          monitor_p.done();
+          monitor.done();
         }
       };
 
       ProgressMonitorDialog progressDialog = new ProgressMonitorDialog(Display.getDefault().getActiveShell());
       try {
         progressDialog.run(false, false, runnable);
-      } catch (InvocationTargetException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
-      } catch (InterruptedException ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InvocationTargetException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
+      } catch (InterruptedException ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
       }
 
     }
 
     /**
-     * @param object_p
+     * @param object
      */
-    private boolean process(DDiagram object_p) {
+    private boolean process(DDiagram object) {
       boolean hasProceed = true;
 
       try {
-        (new DeleteDRepresentationTask(object_p)).execute();
-      } catch (Exception ex_p) {
-        getLogger().warn(new EmbeddedMessage(ex_p.getMessage(), IReportManagerDefaultComponents.UI));
+        (new DeleteDRepresentationTask(object)).execute();
+      } catch (Exception ex) {
+        getLogger().warn(new EmbeddedMessage(ex.getMessage(), IReportManagerDefaultComponents.UI));
 
       }
       return hasProceed;
