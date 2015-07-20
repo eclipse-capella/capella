@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,21 +32,21 @@ import org.polarsys.capella.core.model.helpers.ComponentExt;
 public abstract class AbstractState_Activities implements IBusinessQuery {
 
   /**
-   * @param state_p
-   * @param component_p
+   * @param state
+   * @param component
    * @return
    */
-  private List<CapellaElement> getElementsFromBlockArchitecture(State state_p, Component component_p) {
+  private List<CapellaElement> getElementsFromBlockArchitecture(State state, Component component) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    Collection<Component> componentAncestors = ComponentExt.getComponentAncestors(component_p);
-    componentAncestors.add(component_p);
+    Collection<Component> componentAncestors = ComponentExt.getComponentAncestors(component);
+    componentAncestors.add(component);
 
-    for (Component component : componentAncestors) {
-      availableElements.addAll(component.getAllocatedFunctions());
+    for (Component cpnt : componentAncestors) {
+      availableElements.addAll(cpnt.getAllocatedFunctions());
     }
 
     // remove existing from the availableElements
-    for (CapellaElement elt : getCurrentElements(state_p, false)) {
+    for (CapellaElement elt : getCurrentElements(state, false)) {
       availableElements.remove(elt);
     }
 
@@ -55,18 +55,18 @@ public abstract class AbstractState_Activities implements IBusinessQuery {
 
   /**
    * same level Visibility Layer
-   * @param state_p
+   * @param state
    */
-  private List<CapellaElement> getRule_MQRY_StateTransition_AvailableEvents_11(State state_p) {
+  private List<CapellaElement> getRule_MQRY_StateTransition_AvailableEvents_11(State state) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
 
-    EObject eContainer = state_p.eContainer();
+    EObject eContainer = state.eContainer();
     if (eContainer != null) {
 
       while (!(eContainer instanceof Component)) {
         eContainer = eContainer.eContainer();
       }
-      availableElements.addAll(getElementsFromBlockArchitecture(state_p, (Component) eContainer));
+      availableElements.addAll(getElementsFromBlockArchitecture(state, (Component) eContainer));
     }
 
     return availableElements;
@@ -76,11 +76,11 @@ public abstract class AbstractState_Activities implements IBusinessQuery {
    * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.data.capellacore.CapellaElement)
    */
   @Override
-  public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 
-    if (element_p instanceof State) {
-      availableElements.addAll(getRule_MQRY_StateTransition_AvailableEvents_11((State) element_p));
+    if (element instanceof State) {
+      availableElements.addAll(getRule_MQRY_StateTransition_AvailableEvents_11((State) element));
     }
 
     return availableElements;
@@ -90,10 +90,10 @@ public abstract class AbstractState_Activities implements IBusinessQuery {
    * @see org.polarsys.capella.core.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.data.capellacore.CapellaElement, boolean)
    */
   @Override
-  public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-    if (element_p instanceof State) {
-      AbstractEvent evt = ((State) element_p).getDoActivity();
+    if (element instanceof State) {
+      AbstractEvent evt = ((State) element).getDoActivity();
       if (evt != null) {
         currentElements.add((CapellaElement) evt);
       }

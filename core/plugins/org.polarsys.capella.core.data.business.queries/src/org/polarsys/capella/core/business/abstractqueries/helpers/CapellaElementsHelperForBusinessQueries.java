@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,12 +65,12 @@ import org.polarsys.capella.core.model.utils.EClassExt;
 public class CapellaElementsHelperForBusinessQueries {
   /**
    * Filters the given capella elements list to return only the discrete datatypes
-   * @param elements_p the list
+   * @param elements the list
    * @return the filtered list
    */
-  public static List<CapellaElement> getOnlyDiscreteDatatypes(List<CapellaElement> elements_p) {
+  public static List<CapellaElement> getOnlyDiscreteDatatypes(List<CapellaElement> elements) {
     List<CapellaElement> onlyDiscreteDatatypes = new ArrayList<CapellaElement>();
-    for (CapellaElement element : elements_p) {
+    for (CapellaElement element : elements) {
       if ((element instanceof DataType) && ((DataType) element).isDiscrete()) {
         onlyDiscreteDatatypes.add(element);
       }
@@ -80,14 +80,14 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Filters the given list to avoid elements which cannot be instantiated as an instance of the given eclass
-   * @param list_p the list
-   * @param eclass_p the eclass
+   * @param list the list
+   * @param eclass the eclass
    * @return the filtered list
    */
-  public static List<CapellaElement> filterWithAvailableEClass(List<CapellaElement> list_p, EClass eclass_p) {
+  public static List<CapellaElement> filterWithAvailableEClass(List<CapellaElement> list, EClass eclass) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
-    for (CapellaElement element : list_p) {
-      if (CapellaElementsHelperForBusinessQueries.canBeInstanciatedAs(element, eclass_p)) {
+    for (CapellaElement element : list) {
+      if (CapellaElementsHelperForBusinessQueries.canBeInstanciatedAs(element, eclass)) {
         returnValue.add(element);
       }
     }
@@ -98,103 +98,103 @@ public class CapellaElementsHelperForBusinessQueries {
    * Returns from the given layer:<br>
    * <ul>
    * <li>The data values whose type is the same as the given capella element.</li>
-   * <li>The data values with no type if the argument <code>acceptNoType_p</code> is set to <code>true</code>.</li>
-   * <li>The data values whose type is one of the parent type of the given capella element if the argument <code>acceptSuperClassifiers_p</code> is set to
+   * <li>The data values with no type if the argument <code>acceptNoType</code> is set to <code>true</code>.</li>
+   * <li>The data values whose type is one of the parent type of the given capella element if the argument <code>acceptSuperClassifiers</code> is set to
    * <code>true</code>.</li>
    * </ul>
-   * @param dataPkg_p the data package
-   * @param capellaElement_p the given capella element
-   * @param acceptNoType_p <code>true</code> if you want to put in the list the elements with no type
-   * @param acceptSubClassifiers_p <code>true</code> if you want to put in the list the elements whose type is a sub classifier of the given capella element
+   * @param dataPkg the data package
+   * @param capellaElement the given capella element
+   * @param acceptNoType <code>true</code> if you want to put in the list the elements with no type
+   * @param acceptSubClassifiers <code>true</code> if you want to put in the list the elements whose type is a sub classifier of the given capella element
    * @param restrictToInstancesOf if you want to restrict the result to instances of a class (or of its subclasses), pass it here, or null otherwise
-   * @param toSkip_p the element you have to skip, typically, the element from where the query has been launched. May be <code>null</code> if you don't want to
+   * @param toSkip the element you have to skip, typically, the element from where the query has been launched. May be <code>null</code> if you don't want to
    *          skip anything
    * @return the list of the applicable data values
    */
-  public static List<CapellaElement> getValuesTypedBy(DataPkg dataPkg_p, GeneralizableElement capellaElement_p, boolean acceptNoType_p,
-      boolean acceptSubClassifiers_p, EClass restrictToInstancesOf_p, CapellaElement toSkip_p) {
+  public static List<CapellaElement> getValuesTypedBy(DataPkg dataPkg, GeneralizableElement capellaElement, boolean acceptNoType,
+      boolean acceptSubClassifiers, EClass restrictToInstancesOf, CapellaElement toSkip) {
     List<EClass> restricToInstancesOf = null;
-    if (null != restrictToInstancesOf_p) {
+    if (null != restrictToInstancesOf) {
       restricToInstancesOf = new ArrayList<EClass>();
-      restricToInstancesOf.add(restrictToInstancesOf_p);
+      restricToInstancesOf.add(restrictToInstancesOf);
     }
-    return getValuesTypedBy(dataPkg_p, capellaElement_p, acceptNoType_p, acceptSubClassifiers_p, restricToInstancesOf, toSkip_p);
+    return getValuesTypedBy(dataPkg, capellaElement, acceptNoType, acceptSubClassifiers, restricToInstancesOf, toSkip);
   }
 
   /**
    * Returns from the given layer:<br>
    * <ul>
    * <li>The data values whose type is the same as the given capella element.</li>
-   * <li>The data values with no type if the argument <code>acceptNoType_p</code> is set to <code>true</code>.</li>
-   * <li>The data values whose type is one of the parent type of the given capella element if the argument <code>acceptSuperClassifiers_p</code> is set to
+   * <li>The data values with no type if the argument <code>acceptNoType</code> is set to <code>true</code>.</li>
+   * <li>The data values whose type is one of the parent type of the given capella element if the argument <code>acceptSuperClassifiers</code> is set to
    * <code>true</code>.</li>
    * </ul>
-   * @param dataPkg_p the data package
-   * @param type_p the given capella element
-   * @param acceptNoType_p <code>true</code> if you want to put in the list the elements with no type
-   * @param acceptSubClassifiers_p <code>true</code> if you want to put in the list the elements whose type is a sub classifier of the given capella element
-   * @param toSkip_p the element you have to skip, typically, the element from where the query has been launched. May be <code>null</code> if you don't want to
+   * @param dataPkg the data package
+   * @param type the given capella element
+   * @param acceptNoType <code>true</code> if you want to put in the list the elements with no type
+   * @param acceptSubClassifiers <code>true</code> if you want to put in the list the elements whose type is a sub classifier of the given capella element
+   * @param toSkip the element you have to skip, typically, the element from where the query has been launched. May be <code>null</code> if you don't want to
    *          skip anything
    * @return the list of the applicable data values
    */
-  public static List<CapellaElement> getValuesTypedBy(DataPkg dataPkg_p, DataType type_p, boolean acceptNoType_p, boolean acceptSubClassifiers_p,
-      CapellaElement toSkip_p) {
+  public static List<CapellaElement> getValuesTypedBy(DataPkg dataPkg, DataType type, boolean acceptNoType, boolean acceptSubClassifiers,
+      CapellaElement toSkip) {
     List<EClass> restricToInstancesOf = new ArrayList<EClass>();
-    return getValuesTypedBy(dataPkg_p, type_p, acceptNoType_p, acceptSubClassifiers_p, restricToInstancesOf, toSkip_p);
+    return getValuesTypedBy(dataPkg, type, acceptNoType, acceptSubClassifiers, restricToInstancesOf, toSkip);
   }
 
   /**
    * Returns from the given layer:<br>
    * <ul>
    * <li>The data values whose type is the same as the given capella element.</li>
-   * <li>The data values with no type if the argument <code>acceptNoType_p</code> is set to <code>true</code>.</li>
-   * <li>The data values whose type is one of the parent type of the given capella element if the argument <code>acceptSuperClassifiers_p</code> is set to
+   * <li>The data values with no type if the argument <code>acceptNoType</code> is set to <code>true</code>.</li>
+   * <li>The data values whose type is one of the parent type of the given capella element if the argument <code>acceptSuperClassifiers</code> is set to
    * <code>true</code>.</li>
    * </ul>
-   * @param dataPkg_p the data package
-   * @param type_p the given capella element
-   * @param acceptNoType_p <code>true</code> if you want to put in the list the elements with no type
-   * @param acceptSubClassifiers_p <code>true</code> if you want to put in the list the elements whose type is a super classifier of the given capella element
-   * @param restrictToInstancesOf_p if you want to restrict the result to instances of some classes (or of their subclasses), pass them here, or null otherwise
-   * @param toSkip_p the element you have to skip, typically, the element from where the query has been launched. May be <code>null</code> if you don't want to
+   * @param dataPkg the data package
+   * @param type the given capella element
+   * @param acceptNoType <code>true</code> if you want to put in the list the elements with no type
+   * @param acceptSubClassifiers <code>true</code> if you want to put in the list the elements whose type is a super classifier of the given capella element
+   * @param restrictToInstancesOf if you want to restrict the result to instances of some classes (or of their subclasses), pass them here, or null otherwise
+   * @param toSkip the element you have to skip, typically, the element from where the query has been launched. May be <code>null</code> if you don't want to
    *          skip anything
    * @return the list of the applicable data values
    */
-  public static List<CapellaElement> getValuesTypedBy(DataPkg dataPkg_p, GeneralizableElement type_p, boolean acceptNoType_p, boolean acceptSubClassifiers_p,
-      List<EClass> restrictToInstancesOf_p, CapellaElement toSkip_p) {
+  public static List<CapellaElement> getValuesTypedBy(DataPkg dataPkg, GeneralizableElement type, boolean acceptNoType, boolean acceptSubClassifiers,
+      List<EClass> restrictToInstancesOf, CapellaElement toSkip) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
+    if (null != dataPkg) {
       // Gets a list of the superClassifiers of the data type
-      List<GeneralizableElement> superClassifiers = GeneralizableElementExt.getAllSubGeneralizableElements(type_p);
-      for (Object object : EObjectExt.getAll(dataPkg_p, DatavaluePackage.Literals.DATA_VALUE)) {
+      List<GeneralizableElement> superClassifiers = GeneralizableElementExt.getAllSubGeneralizableElements(type);
+      for (Object object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
         if (object instanceof DataValue) {
           DataValue dataValue = (DataValue) object;
-          if (((null != toSkip_p) && (dataValue != toSkip_p)) || (null == toSkip_p)) {
+          if (((null != toSkip) && (dataValue != toSkip)) || (null == toSkip)) {
             //
             // Tests every data value in the data package
             AbstractType dataValueType = dataValue.getAbstractType();
-            if ((acceptNoType_p && (null == dataValueType)) || ((null != dataValueType) && (dataValueType == type_p))) {
-              // If the element is not typed (if acceptNoType_p is true) or if it has the given data type
+            if ((acceptNoType && (null == dataValueType)) || ((null != dataValueType) && (dataValueType == type))) {
+              // If the element is not typed (if acceptNoType is true) or if it has the given data type
               if (
               // if there is no restriction to some classes
-              ((null == restrictToInstancesOf_p) || (0 == restrictToInstancesOf_p.size()))
+              ((null == restrictToInstancesOf) || (0 == restrictToInstancesOf.size()))
               // OR
                   ||
                   // The list is restricted to the given types
-                  canBeInstanciatedAs(dataValue, restrictToInstancesOf_p)) {
+                  canBeInstanciatedAs(dataValue, restrictToInstancesOf)) {
                 availableElements.add(dataValue);
               }
-            } else if (acceptSubClassifiers_p) {
-              // of not, tests with every one of the numeric type super classifiers if acceptSuperClassifiers_p is true
+            } else if (acceptSubClassifiers) {
+              // of not, tests with every one of the numeric type super classifiers if acceptSuperClassifiers is true
               for (CapellaElement superClassifier : superClassifiers) {
                 if (dataValueType == superClassifier) {
                   if (
                   // if there is no restriction to some classes
-                  ((null == restrictToInstancesOf_p) || (0 == restrictToInstancesOf_p.size()))
+                  ((null == restrictToInstancesOf) || (0 == restrictToInstancesOf.size()))
                   // OR
                       ||
                       // The list is restricted to the given types
-                      canBeInstanciatedAs(dataValue, restrictToInstancesOf_p)) {
+                      canBeInstanciatedAs(dataValue, restrictToInstancesOf)) {
                     availableElements.add(dataValue);
                     break;
                   }
@@ -211,48 +211,48 @@ public class CapellaElementsHelperForBusinessQueries {
   /**
    * Returns the Capella Elements instances of the given <code>EClass</code> in the given <code>DataPkg</code>, but avoiding the given <code>CapellaElement</code>
    * if it is given.
-   * @param dataPkg_p the data package
-   * @param eclass_p the EClass
-   * @param capellaElement_p the Capella element
+   * @param dataPkg the data package
+   * @param eclass the EClass
+   * @param capellaElement the Capella element
    * @return a list containing instances of <code>CapellaElement</code>
    */
-  public static List<CapellaElement> getCapellaElementsInstancesOf(DataPkg dataPkg_p, EClass eclass_p, CapellaElement capellaElement_p) {
-    return getCapellaElementsInstancesOf(dataPkg_p, (eclass_p != null) ? Collections.singletonList(eclass_p) : null, capellaElement_p);
+  public static List<CapellaElement> getCapellaElementsInstancesOf(DataPkg dataPkg, EClass eclass, CapellaElement capellaElement) {
+    return getCapellaElementsInstancesOf(dataPkg, (eclass != null) ? Collections.singletonList(eclass) : null, capellaElement);
   }
 
   /**
    * Returns the Capella Elements instances of the given <code>EClass</code> in the given <code>DataPkg</code>, but avoiding the given <code>CapellaElement</code>
    * if it is given.
-   * @param dataPkg_p the data package
-   * @param eclass_p the list of EClasses
-   * @param capellaElement_p the Capella element
+   * @param dataPkg the data package
+   * @param eclass the list of EClasses
+   * @param capellaElement the Capella element
    * @return a list containing instances of <code>CapellaElement</code>
    */
-  public static List<CapellaElement> getCapellaElementsInstancesOf(DataPkg dataPkg_p, List<EClass> eclasses_p, CapellaElement capellaElement_p) {
+  public static List<CapellaElement> getCapellaElementsInstancesOf(DataPkg dataPkg, List<EClass> eclasses, CapellaElement capellaElement) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
     // If the data package is not null
-    if (null != dataPkg_p) {
+    if (null != dataPkg) {
       // Gets a list of the Capella Elements in the data package
       Set<EObject> allElements = new HashSet<EObject>();
-      if (null != eclasses_p) {
-        for (EClass cls : eclasses_p) {
-          allElements.addAll(EObjectExt.getAll(dataPkg_p, cls));
+      if (null != eclasses) {
+        for (EClass cls : eclasses) {
+          allElements.addAll(EObjectExt.getAll(dataPkg, cls));
         }
       } else {
         // If no <code><EClass/code> has been given in parameter, then retrieves all Capella Elements
-        allElements = EObjectExt.getAll(dataPkg_p, CapellacorePackage.Literals.CAPELLA_ELEMENT);
+        allElements = EObjectExt.getAll(dataPkg, CapellacorePackage.Literals.CAPELLA_ELEMENT);
       }
       for (EObject object : allElements) {
         if (object instanceof CapellaElement) {
-          CapellaElement capellaElement = (CapellaElement) object;
+          CapellaElement elt = (CapellaElement) object;
           if ((
           // There is an element to avoid and it is not the current one OR there is no element to avoid
-              ((null != capellaElement) && (capellaElement != capellaElement_p)) || (null == capellaElement_p))
+              ((null != elt) && (elt != capellaElement)) || (null == capellaElement))
               // AND
               &&
               // The current element is an instance of the wanted <code>EClass</code>
-              canBeInstanciatedAs(capellaElement, eclasses_p)) {
-            returnValue.add(capellaElement);
+              canBeInstanciatedAs(elt, eclasses)) {
+            returnValue.add(elt);
           }
         }
       }
@@ -262,35 +262,35 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Gets the data values instances of one of the given <code>EClass</code> in the given <code>DataPkg</code>
-   * @param dataPkg_p the data package
-   * @param eClass_p the <code>EClass</code>
-   * @param nonTyped_p <code>true</code> if you want to accept the data values with no type, <code>false</code> otherwise
-   * @param typed_p <code>true</code> if you want to accept the data values with a type, <code>false</code> otherwise
+   * @param dataPkg the data package
+   * @param eClass the <code>EClass</code>
+   * @param nonTyped <code>true</code> if you want to accept the data values with no type, <code>false</code> otherwise
+   * @param typed <code>true</code> if you want to accept the data values with a type, <code>false</code> otherwise
    * @return
    */
-  public static List<CapellaElement> getDataValuesInstancesOf(DataPkg dataPkg_p, EClass eClass_p, boolean nonTyped_p, boolean typed_p) {
+  public static List<CapellaElement> getDataValuesInstancesOf(DataPkg dataPkg, EClass eClass, boolean nonTyped, boolean typed) {
     List<EClass> eClasses = new ArrayList<EClass>();
-    eClasses.add(eClass_p);
-    return getDataValuesInstancesOf(dataPkg_p, eClasses, nonTyped_p, typed_p);
+    eClasses.add(eClass);
+    return getDataValuesInstancesOf(dataPkg, eClasses, nonTyped, typed);
   }
 
   /**
    * Gets the data values instances of one of the given <code>EClass</code>'s in the given <code>DataPkg</code>
-   * @param dataPkg_p the data package
-   * @param eClasses_p the <code>EClass</code>'s
-   * @param nonTyped_p <code>true</code> if you want to accept the data values with no type, <code>false</code> otherwise
-   * @param typed_p <code>true</code> if you want to accept the data values with a type, <code>false</code> otherwise
+   * @param dataPkg the data package
+   * @param eClasses the <code>EClass</code>'s
+   * @param nonTyped <code>true</code> if you want to accept the data values with no type, <code>false</code> otherwise
+   * @param typed <code>true</code> if you want to accept the data values with a type, <code>false</code> otherwise
    * @return
    */
-  public static List<CapellaElement> getDataValuesInstancesOf(DataPkg dataPkg_p, List<EClass> eClasses_p, boolean nonTyped_p, boolean typed_p) {
+  public static List<CapellaElement> getDataValuesInstancesOf(DataPkg dataPkg, List<EClass> eClasses, boolean nonTyped, boolean typed) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
-      for (EObject object : EObjectExt.getAll(dataPkg_p, DatavaluePackage.Literals.DATA_VALUE)) {
+    if (null != dataPkg) {
+      for (EObject object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
         if (object instanceof DataValue) {
           DataValue dataValue = (DataValue) object;
 
           // Tests every data value in the data package
-          for (EClass eClass : eClasses_p) {
+          for (EClass eClass : eClasses) {
             // Check for each one of the searched EClasses
             if (
             // dataValue is not null
@@ -303,11 +303,11 @@ public class CapellaElementsHelperForBusinessQueries {
                 // AND
                 && (
                 // you want the untyped ones and the data value is untyped
-                (nonTyped_p && (null == dataValue.getAbstractType()))
+                (nonTyped && (null == dataValue.getAbstractType()))
                 // OR
                 ||
                 // you want the typed ones and the data value is typed
-                (typed_p && (null != dataValue.getAbstractType())))) {
+                (typed && (null != dataValue.getAbstractType())))) {
               availableElements.add(dataValue);
             }
           }
@@ -319,13 +319,13 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Returns all the data values of the given layer
-   * @param dataPkg_p the data package
+   * @param dataPkg the data package
    * @return the list of the data values
    */
-  public static List<CapellaElement> getDataValues(DataPkg dataPkg_p) {
+  public static List<CapellaElement> getDataValues(DataPkg dataPkg) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
-      for (Object object : EObjectExt.getAll(dataPkg_p, DatavaluePackage.Literals.DATA_VALUE)) {
+    if (null != dataPkg) {
+      for (Object object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
         if (object instanceof DataValue) {
           availableElements.add((DataValue) object);
         }
@@ -336,21 +336,21 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Returns the data values typed with root super types of the given capella element in the given layer
-   * @param blockArchitecture_p the given layer
-   * @param capellaElement_p the given capella element
-   * @param limitToInstancesOf_p pass an <code>EClass</code> here if you want to limit the results to instances of this <code>EClass</code>, pass
+   * @param blockArchitecture the given layer
+   * @param capellaElement the given capella element
+   * @param limitToInstancesOf pass an <code>EClass</code> here if you want to limit the results to instances of this <code>EClass</code>, pass
    *          <code>null</code> otherwise
    * @return the list of the applicable data values
    */
-  public static List<CapellaElement> getDataValuesTypedWithRootSuperTypesOf(BlockArchitecture blockArchitecture_p, CapellaElement capellaElement_p,
-      EClass limitToInstancesOf_p) {
+  public static List<CapellaElement> getDataValuesTypedWithRootSuperTypesOf(BlockArchitecture blockArchitecture, CapellaElement capellaElement,
+      EClass limitToInstancesOf) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (capellaElement_p instanceof DataType) {
-      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(blockArchitecture_p);
+    if (capellaElement instanceof DataType) {
+      DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(blockArchitecture);
       // If the data package is not null
       if (null != dataPkg) {
         // Gets a list of the superClassifiers of the data type
-        List<GeneralizableElement> rootSuperClassifiers = GeneralizableElementExt.getRootSupertypes((DataType) capellaElement_p);
+        List<GeneralizableElement> rootSuperClassifiers = GeneralizableElementExt.getRootSupertypes((DataType) capellaElement);
         for (EObject object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
           if (object instanceof DataValue) {
             DataValue dataValue = (DataValue) object;
@@ -364,14 +364,14 @@ public class CapellaElementsHelperForBusinessQueries {
                 //
                 (
                 // the results are limited to a given EClass
-                    (null != limitToInstancesOf_p
+                    (null != limitToInstancesOf
                     // AND
                     ) &&
                     // the current data value is an instance of this EClass
-                    canBeInstanciatedAs(dataValue, limitToInstancesOf_p))
+                    canBeInstanciatedAs(dataValue, limitToInstancesOf))
                     // OR
                     || (// the results are not limited to any given EClass
-                    null == limitToInstancesOf_p)) {
+                    null == limitToInstancesOf)) {
                   availableElements.add(dataValue);
                 }
                 break;
@@ -387,20 +387,20 @@ public class CapellaElementsHelperForBusinessQueries {
   /**
    * Returns in the given layer:<br>
    * <ul>
-   * <li>The properties with no type if <code>acceptNoType_p</code> is <code>true</code>.</li>
+   * <li>The properties with no type if <code>acceptNoType</code> is <code>true</code>.</li>
    * <li>The properties whose type is the same as the given capella element.</li>
    * <li>The properties whose type is one of the parent type of the given capella element.</li>
    * </ul>
-   * @param dataPkg_p the data package
-   * @param dataType_p the given capella element. If <code>null</code>, every property is returned
-   * @param acceptNoType_p <code>true</code> if you accept untyped elements, <code>false</code> otherwise
+   * @param dataPkg the data package
+   * @param dataType the given capella element. If <code>null</code>, every property is returned
+   * @param acceptNoType <code>true</code> if you accept untyped elements, <code>false</code> otherwise
    * @return the list of the applicable data values
    */
-  public static List<CapellaElement> getPropertiesTypedBy(DataPkg dataPkg_p, GeneralizableElement dataType_p, boolean acceptNoType_p) {
+  public static List<CapellaElement> getPropertiesTypedBy(DataPkg dataPkg, GeneralizableElement dataType, boolean acceptNoType) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
-      List<GeneralizableElement> superClassifiers = GeneralizableElementExt.getAllSubGeneralizableElements(dataType_p);
-      for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg_p)) {
+    if (null != dataPkg) {
+      List<GeneralizableElement> superClassifiers = GeneralizableElementExt.getAllSubGeneralizableElements(dataType);
+      for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
         if (capellaElement instanceof Classifier) {
           Classifier classifier = (Classifier) capellaElement;
           // Gets the features of the classifier in order to get its properties
@@ -410,7 +410,7 @@ public class CapellaElementsHelperForBusinessQueries {
               // Then tests the properties in oder to checks if it matches with the rules
               Property property = (Property) feature;
               AbstractType propertyType = property.getAbstractType();
-              if ((dataType_p == null) || (acceptNoType_p && (null == propertyType)) || ((null != propertyType) && (propertyType == dataType_p))) {
+              if ((dataType == null) || (acceptNoType && (null == propertyType)) || ((null != propertyType) && (propertyType == dataType))) {
                 availableElements.add(property);
                 continue;
               }
@@ -439,13 +439,13 @@ public class CapellaElementsHelperForBusinessQueries {
    * <li>All Expressions typed by a NumericType which Kind is INTEGER and min value is equal or greater than 0</li>
    * <li>All Properties typed by a NumericType which Kind is INTEGER and min value is equal or greater than 0</li>
    * </ul>
-   * @param dataPkg_p the data package where the search is done
+   * @param dataPkg the data package where the search is done
    * @return the list of the available elements
    */
-  public static List<CapellaElement> getApplicableValuesForCardinalitiesInLevel(DataPkg dataPkg_p) {
+  public static List<CapellaElement> getApplicableValuesForCardinalitiesInLevel(DataPkg dataPkg) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    if (null != dataPkg_p) {
-      for (Object object : EObjectExt.getAll(dataPkg_p, DatavaluePackage.Literals.DATA_VALUE)) {
+    if (null != dataPkg) {
+      for (Object object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
         if (object instanceof DataValue) {
           DataValue dataValue = (DataValue) object;
           if ((dataValue instanceof NumericValue) || (dataValue instanceof AbstractExpressionValue)) {
@@ -478,13 +478,13 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * This method allows to get all positive integer numeric values and expressions in the given level
-   * @param dataPkg_p the data package
+   * @param dataPkg the data package
    * @return the list of the corresponding values
    */
-  public static List<CapellaElement> getPositiveIntergerNumValAndExpressionsInLevel(DataPkg dataPkg_p) {
+  public static List<CapellaElement> getPositiveIntergerNumValAndExpressionsInLevel(DataPkg dataPkg) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    if (null != dataPkg_p) {
-      for (Object object : EObjectExt.getAll(dataPkg_p, DatavaluePackage.Literals.DATA_VALUE)) {
+    if (null != dataPkg) {
+      for (Object object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
         if (object instanceof DataValue) {
           DataValue dataValue = (DataValue) object;
 
@@ -512,18 +512,18 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Returns the applicable values for the given string type border values in the given level
-   * @param dataPkg_p the data package where the search is done
-   * @param capellaElement_p the string type (should be a <code>StringType</code> instance
-   * @see getApplicablePropertiesForStringBorderValuesInLevel(BlockArchitecture blockArchitecture_p)
+   * @param dataPkg the data package where the search is done
+   * @param capellaElement the string type (should be a <code>StringType</code> instance
+   * @see getApplicablePropertiesForStringBorderValuesInLevel(BlockArchitecture blockArchitecture)
    * @return the list of the available elements
    */
-  public static List<CapellaElement> getApplicablePropertiesForStringBorderValuesInLevel(DataPkg dataPkg_p, CapellaElement capellaElement_p) {
+  public static List<CapellaElement> getApplicablePropertiesForStringBorderValuesInLevel(DataPkg dataPkg, CapellaElement capellaElement) {
     List<CapellaElement> returnValue = new ArrayList<CapellaElement>();
     // First get all properties following the same rule as for cardinalities
-    List<CapellaElement> tempValues = getApplicablePropertiesForCardinalitiesInLevel(dataPkg_p);
+    List<CapellaElement> tempValues = getApplicablePropertiesForCardinalitiesInLevel(dataPkg);
     // But for the string types, the border values, if they are properties, cannot be properties typed by the current string type
     for (CapellaElement elemnt : tempValues) {
-      if ((elemnt instanceof Property) && (((Property) elemnt).getType() != capellaElement_p)) {
+      if ((elemnt instanceof Property) && (((Property) elemnt).getType() != capellaElement)) {
         returnValue.add(elemnt);
       }
     }
@@ -532,12 +532,12 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Returns the applicable literals<br>
-   * @param blockArchitecture_p
+   * @param blockArchitecture
    * @return
    */
-  public static List<CapellaElement> getApplicableLiteralsInLevel(BlockArchitecture blockArchitecture_p) {
+  public static List<CapellaElement> getApplicableLiteralsInLevel(BlockArchitecture blockArchitecture) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(blockArchitecture_p);
+    DataPkg dataPkg = DataPkgExt.getDataPkgOfBlockArchitecture(blockArchitecture);
     if (null != dataPkg) {
       for (DataType dataType : DataPkgExt.getAllDataTypes(dataPkg)) {
         if (dataType instanceof Enumeration) {
@@ -555,13 +555,13 @@ public class CapellaElementsHelperForBusinessQueries {
   /**
    * Returns the applicable properties for cardinalities using this rule:<br>
    * All Properties typed by a NumericType which Kind is INTEGER and min value is equal or greater than 0
-   * @param dataPkg_p
+   * @param dataPkg
    * @return
    */
-  public static List<CapellaElement> getApplicablePropertiesForCardinalitiesInLevel(DataPkg dataPkg_p) {
+  public static List<CapellaElement> getApplicablePropertiesForCardinalitiesInLevel(DataPkg dataPkg) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
-    if (null != dataPkg_p) {
-      for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg_p)) {
+    if (null != dataPkg) {
+      for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
         if (capellaElement instanceof Classifier) {
           Classifier classifier = (Classifier) capellaElement;
           // Gets the features of the classifier in order to get its properties
@@ -608,29 +608,29 @@ public class CapellaElementsHelperForBusinessQueries {
    * <li>All non typed ComplexValues if the type of the Property/Parameter is not a <code>Datatype</code> but a <code>Class</code></li>
    * <li>All (NumericValues OR StringValues OR BooleanValues OR EnumValues OR Expressions OR ComplexeValues) typed by the type of the Property/Parameter</li>
    * </ul>
-   * @param dataPkg_p the data package where the search is done
-   * @param mElement_p the element on which the query is applied, shall be a property
+   * @param dataPkg the data package where the search is done
+   * @param mElement the element on which the query is applied, shall be a property
    * @return the elements matching the described rules
    */
-  public static List<CapellaElement> getStandardApplicableValuesForMultiplicityElementInLevel(DataPkg dataPkg_p, MultiplicityElement mElement_p,
+  public static List<CapellaElement> getStandardApplicableValuesForMultiplicityElementInLevel(DataPkg dataPkg, MultiplicityElement mElement,
       List<EReference> eReferences) {
 
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     AbstractType mulElementType = null;
-    if ((mElement_p instanceof Property) || (mElement_p instanceof Parameter)) {
-      TypedElement typedElement = (TypedElement) mElement_p;
+    if ((mElement instanceof Property) || (mElement instanceof Parameter)) {
+      TypedElement typedElement = (TypedElement) mElement;
       // Gets the property type
       mulElementType = typedElement.getAbstractType();
-    } else if (mElement_p instanceof Collection) {
-      Collection collection = (Collection) mElement_p;
+    } else if (mElement instanceof Collection) {
+      Collection collection = (Collection) mElement;
       mulElementType = collection.getType();
     }
     if (null == mulElementType) {
       // Returns an empty list if there is no type
       return availableElements;
     }
-    if (null != dataPkg_p) {
-      for (Object object : EObjectExt.getAll(dataPkg_p, DatavaluePackage.Literals.DATA_VALUE)) {
+    if (null != dataPkg) {
+      for (Object object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
         if (object instanceof DataValue) {
           DataValue dataValue = (DataValue) object;
           // Processes all the data value
@@ -695,21 +695,21 @@ public class CapellaElementsHelperForBusinessQueries {
    * <li>All non typed ComplexValues if the type of the Property/Parameter is not a <code>Datatype</code> but a <code>Class</code></li>
    * <li>All (NumericValues OR StringValues OR BooleanValues OR EnumValues OR Expressions OR ComplexeValues) typed by the type of the Property/Parameter</li>
    * </ul>
-   * @param dataPkg_p the data package where the search is done
-   * @param mElement_p the element on which the query is applied, shall be a property
+   * @param dataPkg the data package where the search is done
+   * @param mElement the element on which the query is applied, shall be a property
    * @return the elements matching the described rules
    */
-  public static List<CapellaElement> getApplicableValuesForMultEleConsideringSuperGenElements(DataPkg dataPkg_p, MultiplicityElement mElement_p,
+  public static List<CapellaElement> getApplicableValuesForMultEleConsideringSuperGenElements(DataPkg dataPkg, MultiplicityElement mElement,
       List<EReference> eReferences) {
 
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
     AbstractType mulElementType = null;
-    if ((mElement_p instanceof Property) || (mElement_p instanceof Parameter)) {
-      TypedElement typedElement = (TypedElement) mElement_p;
+    if ((mElement instanceof Property) || (mElement instanceof Parameter)) {
+      TypedElement typedElement = (TypedElement) mElement;
       // Gets the property type
       mulElementType = typedElement.getAbstractType();
-    } else if (mElement_p instanceof Collection) {
-      Collection collection = (Collection) mElement_p;
+    } else if (mElement instanceof Collection) {
+      Collection collection = (Collection) mElement;
       mulElementType = collection.getType();
     }
     if (null == mulElementType) {
@@ -717,13 +717,13 @@ public class CapellaElementsHelperForBusinessQueries {
       return availableElements;
     }
     List<GeneralizableElement> superGenEles = new ArrayList<GeneralizableElement>();
-    if (mElement_p instanceof GeneralizableElement) {
-      superGenEles = GeneralizableElementExt.getAllSuperGeneralizableElements((GeneralizableElement) mElement_p);
+    if (mElement instanceof GeneralizableElement) {
+      superGenEles = GeneralizableElementExt.getAllSuperGeneralizableElements((GeneralizableElement) mElement);
     }
     // do not continue if not super elements
     if (!superGenEles.isEmpty()) {
-      if (null != dataPkg_p) {
-        for (Object object : EObjectExt.getAll(dataPkg_p, DatavaluePackage.Literals.DATA_VALUE)) {
+      if (null != dataPkg) {
+        for (Object object : EObjectExt.getAll(dataPkg, DatavaluePackage.Literals.DATA_VALUE)) {
           if (object instanceof DataValue) {
             DataValue dataValue = (DataValue) object;
             // Processes all the data value
@@ -783,22 +783,22 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Returns in the given layer the Properties typed with the same type as the given capella element
-   * @param dataPkg_p the data package where the search is done
-   * @param mElement_p the element on which the query is applied, shall be a <code>TypedElement</code>
+   * @param dataPkg the data package where the search is done
+   * @param mElement the element on which the query is applied, shall be a <code>TypedElement</code>
    * @return the elements matching the described rules
    */
-  public static List<CapellaElement> getPropertiesWithTypeOf(DataPkg dataPkg_p, CapellaElement mElement_p) {
+  public static List<CapellaElement> getPropertiesWithTypeOf(DataPkg dataPkg, CapellaElement mElement) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>(1);
-    if (mElement_p instanceof TypedElement) {
-      TypedElement typedElement = (TypedElement) mElement_p;
+    if (mElement instanceof TypedElement) {
+      TypedElement typedElement = (TypedElement) mElement;
       // Gets the property type
       Type propertyType = typedElement.getType();
       if (null == propertyType) {
         // Returns an empty list if there is no type
         return availableElements;
       }
-      if (null != dataPkg_p) {
-        for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg_p)) {
+      if (null != dataPkg) {
+        for (CapellaElement capellaElement : DataPkgExt.getAllClassifierFromDataPkg(dataPkg)) {
           if (capellaElement instanceof Classifier) {
             Classifier classifier = (Classifier) capellaElement;
             // Gets the features of the classifier in order to get its properties
@@ -823,23 +823,23 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Allows to know if the given <code>EObject</code> can be instantiated as a given <code>EClass</code> instance.
-   * @param object_p the object
-   * @param eClass_p the classifier
+   * @param object the object
+   * @param eClass the classifier
    * @return <code>true</code> if the instantiation is possible, <code>false</code> otherwise
    */
-  public static boolean canBeInstanciatedAs(EObject object_p, EClass eClass_p) {
-    return EClassExt.canBeInstanciatedAs(object_p, eClass_p);
+  public static boolean canBeInstanciatedAs(EObject object, EClass eClass) {
+    return EClassExt.canBeInstanciatedAs(object, eClass);
   }
 
   /**
    * Allows to know if the given <code>EObject</code> can be instantiated as a one of the given <code>EClass</code>'s instance.
-   * @param object_p the object
-   * @param eClasses_p the classifiers list
+   * @param object the object
+   * @param eClasses the classifiers list
    * @return <code>true</code> if the instantiation is possible, <code>false</code> otherwise
    */
-  public static boolean canBeInstanciatedAs(EObject object_p, List<EClass> eClasses_p) {
-    for (EClass eclass : eClasses_p) {
-      if (canBeInstanciatedAs(object_p, eclass)) {
+  public static boolean canBeInstanciatedAs(EObject object, List<EClass> eClasses) {
+    for (EClass eclass : eClasses) {
+      if (canBeInstanciatedAs(object, eclass)) {
         return true;
       }
     }
@@ -848,17 +848,17 @@ public class CapellaElementsHelperForBusinessQueries {
 
   /**
    * Returns dataValue consistency with given dataType
-   * @param dataPkg_p the data package where the search is done
-   * @param dataType_p the given capella element
+   * @param dataPkg the data package where the search is done
+   * @param dataType the given capella element
    * @return list of DataValue
    */
-  public static List<CapellaElement> getDataValuesConsistantWithDataType(DataPkg dataPkg_p, DataType dataType_p) {
+  public static List<CapellaElement> getDataValuesConsistantWithDataType(DataPkg dataPkg, DataType dataType) {
     List<CapellaElement> result = new ArrayList<CapellaElement>(1);
 
-    List<CapellaElement> dataValues = getDataValues(dataPkg_p);
+    List<CapellaElement> dataValues = getDataValues(dataPkg);
     for (CapellaElement dataValue : dataValues) {
       if (dataValue instanceof DataValue) {
-        if (DataValueExt.isDataValueConsitantWithDataType((DataValue) dataValue, dataType_p)) {
+        if (DataValueExt.isDataValueConsitantWithDataType((DataValue) dataValue, dataType)) {
           result.add(dataValue);
         }
       }

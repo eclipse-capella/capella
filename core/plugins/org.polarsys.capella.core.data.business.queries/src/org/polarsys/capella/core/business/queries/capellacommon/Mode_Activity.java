@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,20 +43,20 @@ public class Mode_Activity extends AbstractState_Properties implements IBusiness
   }
   
   @Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
 	    QueryContext context = new QueryContext();
 	    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass()); 
 	    context.putValue("theStructuralFeature", getEStructuralFeatures().get(0)); //$NON-NLS-1$
-	    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB, element_p, context);
+	    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__ABSTRACT_STATE_PROPERTIES___LIB, element, context);
   }
 
   
   @Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-    //return RefactorDebugger.callAndTestQuery("GetCurrent_AbstractStateProperties", element_p, getOldCurrentElements(element_p, false), getEClass(), getClass());//$NON-NLS-1$
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    //return RefactorDebugger.callAndTestQuery("GetCurrent_AbstractStateProperties", element, getOldCurrentElements(element, false), getEClass(), getClass());//$NON-NLS-1$
     QueryContext context = new QueryContext();
     context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass()); 
     context.putValue("theStructuralFeature", getEStructuralFeatures().get(0)); //$NON-NLS-1$
-    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ABSTRACT_STATE_PROPERTIES, element_p, context);
+    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__ABSTRACT_STATE_PROPERTIES, element, context);
   }  
 }
