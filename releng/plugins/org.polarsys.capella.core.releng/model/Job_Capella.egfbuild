@@ -41,7 +41,7 @@
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
     </steps>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_6DMekIHcEeS4z710EcxeGw" name="build4Luna">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_6DMekIHcEeS4z710EcxeGw" name="build4Luna" enabled="false">
     <properties xmi:id="_6DMekYHcEeS4z710EcxeGw" key="eclipseCodeName" value="luna" type="INLINED"/>
     <properties xmi:id="_BNrIQIHdEeS4z710EcxeGw" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
     <properties xmi:id="_BNrIQoHdEeS4z710EcxeGw" key="orbit.download.url" value="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
@@ -50,11 +50,11 @@
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
     </steps>
   </steps>
-  <steps xsi:type="buildcore:StepContainer" xmi:id="_shWXEJyfEeSdafV5Hx9whg" name="build4Mars" enabled="false">
+  <steps xsi:type="buildcore:StepContainer" xmi:id="_shWXEJyfEeSdafV5Hx9whg" name="build4Mars">
     <properties xmi:id="_shWXEZyfEeSdafV5Hx9whg" key="eclipseCodeName" value="mars" type="INLINED"/>
     <properties xmi:id="_shWXEpyfEeSdafV5Hx9whg" key="primary_eclipseUpdateSite" value="${eclipse.download.prefix}/releases/${eclipseCodeName}" type="INLINED"/>
     <properties xmi:id="_shWXE5yfEeSdafV5Hx9whg" key="orbit.download.url" value="http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository"/>
-    <properties xmi:id="_shWXFJyfEeSdafV5Hx9whg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/2.0.1-S20141106-093454/luna" type="INLINED"/>
+    <properties xmi:id="_shWXFJyfEeSdafV5Hx9whg" key="site_Sirius" value="${eclipse.download.prefix}/sirius/updates/stable/3.1.0-S20150612-070236/${eclipseCodeName}" type="INLINED"/>
     <steps xsi:type="buildcore:ReuseStep" xmi:id="_shWXFZyfEeSdafV5Hx9whg" name="Build All">
       <reusedStep xsi:type="buildcore:StepContainer" href="Common.egfbuild#__Rn-QIgFEeOdzI3OsQ-7WQ"/>
     </steps>
