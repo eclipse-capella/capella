@@ -355,12 +355,12 @@ public class FaServices {
 
   @Deprecated
   public Collection<ComponentExchange> getDisplayedComponentExchanges(DNodeContainer selectedElement) {
-    return getDisplayedComponentExchanges(selectedElement);
+    return Collections.EMPTY_SET;
   }
 
   @Deprecated
   public Collection<ComponentExchange> getAvailableComponentExchangesToInsert(DNodeContainer context) {
-    return getAvailableComponentExchangesToInsert(context);
+    return Collections.EMPTY_SET;
   }
 
   /**
@@ -2013,24 +2013,14 @@ public class FaServices {
     for (FunctionalExchange exchange : exchanges) {
       if (selectedExchangesSet.contains(exchange)) {
         shService.show(exchange, context);
-
-        // showDFFunctionalExchange(shService, currentFunctionView,
-        // exchange, context, false);
         selectedExchangesSet.remove(exchange);
       } else {
         shService.hide(exchange, context);
-
-        // hideDFFunctionalExchange(exchange, context);
       }
     }
 
-    int i = 0;
     for (FunctionalExchange exchange : selectedExchangesSet) {
-      // showDFFunctionalExchange(shService, currentFunctionView,
-      // exchange, context, false);
       shService.show(exchange, context);
-
-      i++;
     }
 
     reorderFAElements(currentDiagram);
@@ -5762,22 +5752,17 @@ public class FaServices {
     DDiagram diagram = CapellaServices.getService().getDiagramContainer(context);
     EdgeMapping edgeMapping = getMappingExchangeCategory(diagram);
     DDiagramContents content = new DDiagramContents(diagram);
-
-    DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(context);
+    //DSemanticDecorator sourcePartView = CsServices.getService().getRelatedPartView(context);
 
     for (EObject key : scope.keySet()) {
       for (EObject targetPart : scope.get(key)) {
         for (DDiagramElement elementView : content.getDiagramElements(key, edgeMapping)) {
           if (elementView instanceof DEdge) {
-            DEdge ve = (DEdge) elementView;
-
             result.put(key, targetPart);
-
           }
         }
       }
     }
     return result;
   }
-
 }
