@@ -179,6 +179,8 @@ public interface IDNDToolNameConstants {
   // M&S
   public final static String TOOL_MS_DND_CONSTRAINTS_FROM_EXPLORER = "D&D Constraint From Project Explorer"; //$NON-NLS-1$
   public final static String TOOL_MS_DND_MODESTATE_FROM_EXPLORER = "D&D ModeState From Project Explorer"; //$NON-NLS-1$
+  public final static String TOOL_MS_DND_PSEUDOSTATE_FROM_DIAGRAM = "D&D PseudoState from Diagram"; //$NON-NLS-1$
+  public final static String TOOL_MS_DND_MODESTATE_FROM_DIAGRAM = "D&D ModeState from Diagram"; //$NON-NLS-1$
 
   // OAB
   public final static String TOOL_OAB_DND_ABSTRACTFUNCTION_ALLOCATION = "DnD AB AbstractFunction Allocation"; //$NON-NLS-1$
