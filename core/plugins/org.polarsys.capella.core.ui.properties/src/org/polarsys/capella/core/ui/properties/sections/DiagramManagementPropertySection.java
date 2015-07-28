@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.polarsys.capella.core.ui.properties.fields.EnumerationValueGroup;
 import org.polarsys.capella.core.ui.properties.fields.TextAreaValueGroup;
 
 /**
+ *
  */
 public class DiagramManagementPropertySection extends AbstractSection {
 
@@ -82,15 +83,15 @@ public class DiagramManagementPropertySection extends AbstractSection {
        * {@inheritDoc}
        */
       @Override
-      protected void fillComboField(CCombo comboField_p) {
-        if (comboField_p.equals(_valueField)) {
+      protected void fillComboField(CCombo comboField) {
+        if (comboField.equals(_valueField)) {
           updateAnnotation(IRepresentationAnnotationConstants.NotVisibleInDoc, Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]));
         }
       }
     };
     _visibleInDocGroup.setDisplayedInWizard(displayedInWizard);
 
-    _visibleInLMGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleInLMGroup_Label, getWidgetFactory()) {
+    _visibleInLMGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory()) {
       /**
        * {@inheritDoc}
        */
@@ -104,8 +105,8 @@ public class DiagramManagementPropertySection extends AbstractSection {
        * {@inheritDoc}
        */
       @Override
-      protected void fillComboField(CCombo comboField_p) {
-        if (comboField_p.equals(_valueField)) {
+      protected void fillComboField(CCombo comboField) {
+        if (comboField.equals(_valueField)) {
           updateAnnotation(IRepresentationAnnotationConstants.NotVisibleInLM, Boolean.valueOf(_comboItems[_valueField.getSelectionIndex()]));
         }
       }
@@ -117,12 +118,12 @@ public class DiagramManagementPropertySection extends AbstractSection {
        * {@inheritDoc}
        */
       @Override
-      protected void setDataValue(EObject object_p, EStructuralFeature feature_p, Object value_p) {
-        String value = ICommonConstants.EMPTY_STRING;
-        if (value_p instanceof AbstractNamedElement) {
-          value = ((AbstractNamedElement) value_p).getName();
+      protected void setDataValue(EObject object, EStructuralFeature feature, Object value) {
+        String val = ICommonConstants.EMPTY_STRING;
+        if (value instanceof AbstractNamedElement) {
+          val = ((AbstractNamedElement) value).getName();
         }
-        updateAnnotation(IRepresentationAnnotationConstants.ProgressStatus, IRepresentationAnnotationConstants.PROGRESS_VALUE_KEYVALUE, value);
+        updateAnnotation(IRepresentationAnnotationConstants.ProgressStatus, IRepresentationAnnotationConstants.PROGRESS_VALUE_KEYVALUE, val);
       }
 
       /**
@@ -176,12 +177,12 @@ public class DiagramManagementPropertySection extends AbstractSection {
        * {@inheritDoc}
        */
       @Override
-      protected void setDataValue(EObject object_p, EStructuralFeature feature_p, Object value_p) {
-        String value = ICommonConstants.EMPTY_STRING;
-        if (value_p instanceof String) {
-          value = (String) value_p;
+      protected void setDataValue(EObject object, EStructuralFeature feature, Object value) {
+        String val = ICommonConstants.EMPTY_STRING;
+        if (value instanceof String) {
+          val = (String) value;
         }
-        updateAnnotation(IRepresentationAnnotationConstants.StatusReview, IRepresentationAnnotationConstants.REVIEW_VALUE_KEYVALUE, value);
+        updateAnnotation(IRepresentationAnnotationConstants.StatusReview, IRepresentationAnnotationConstants.REVIEW_VALUE_KEYVALUE, val);
       }
     };
     _review.setDisplayedInWizard(displayedInWizard);
@@ -292,18 +293,18 @@ public class DiagramManagementPropertySection extends AbstractSection {
    * {@inheritDoc}
    */
   @Override
-  public boolean select(Object toTest_p) {
-    return (toTest_p instanceof DRepresentation) || (toTest_p instanceof IDDiagramEditPart);
+  public boolean select(Object toTest) {
+    return (toTest instanceof DRepresentation) || (toTest instanceof IDDiagramEditPart);
   }
 
   /**
    * {@inheritDoc}
    */
   @Override
-  public void setInput(IWorkbenchPart part_p, ISelection selection_p) {
-    if (!selection_p.isEmpty()) {
-      if (selection_p instanceof IStructuredSelection) {
-        Object firstElement = ((IStructuredSelection) selection_p).getFirstElement();
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    if (!selection.isEmpty()) {
+      if (selection instanceof IStructuredSelection) {
+        Object firstElement = ((IStructuredSelection) selection).getFirstElement();
         if (firstElement instanceof DRepresentation) {
           _representation = new WeakReference<DRepresentation>((DRepresentation) firstElement);
         } else if (firstElement instanceof IDDiagramEditPart) {
