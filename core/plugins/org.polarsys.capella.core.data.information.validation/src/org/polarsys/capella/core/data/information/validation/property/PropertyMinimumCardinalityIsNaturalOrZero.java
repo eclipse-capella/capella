@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.NumericTypeKind;
@@ -40,6 +41,16 @@ public class PropertyMinimumCardinalityIsNaturalOrZero extends AbstractValidatio
       // if it is not abstract its min card must be a natural or zero
       if (!property.isIsAbstract() && !this.isNaturalOrZero(property.getOwnedMinCard())) {
         return ctx.createFailureStatus(container.getName(), property.getName());
+      }
+    }
+    // or an exchange item element
+    else if ((eObj instanceof ExchangeItemElement) && (eObj.eContainer() instanceof NamedElement)) {
+      NamedElement container = (NamedElement) eObj.eContainer();
+      ExchangeItemElement exchangeItemElement = (ExchangeItemElement) eObj;
+
+      // its min card must be a natural or zero
+      if (!this.isNaturalOrZero(exchangeItemElement.getOwnedMinCard())) {
+        return ctx.createFailureStatus(container.getName(), exchangeItemElement.getName());
       }
     }
 

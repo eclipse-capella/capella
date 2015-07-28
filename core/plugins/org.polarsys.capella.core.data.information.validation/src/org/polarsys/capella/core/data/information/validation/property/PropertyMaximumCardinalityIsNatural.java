@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.NumericTypeKind;
@@ -40,6 +41,16 @@ public class PropertyMaximumCardinalityIsNatural extends AbstractValidationRule 
       // if it is not abstract its max card must be a natural, except zero
       if (!property.isIsAbstract() && !this.isNatural(property.getOwnedMaxCard())) {
         return ctx.createFailureStatus(container.getName(), property.getName());
+      }
+    }
+    // or an exchange item element
+    else if ((eObj instanceof ExchangeItemElement) && (eObj.eContainer() instanceof NamedElement)) {
+      NamedElement container = (NamedElement) eObj.eContainer();
+      ExchangeItemElement exchangeItemElement = (ExchangeItemElement) eObj;
+      
+      // its max card must be a natural, except zero
+      if (!this.isNatural(exchangeItemElement.getOwnedMaxCard())) {
+        return ctx.createFailureStatus(container.getName(), exchangeItemElement.getName());
       }
     }
 

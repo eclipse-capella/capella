@@ -19,7 +19,7 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.core.business.queries.IBusinessQuery;
 import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
@@ -36,8 +36,8 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
     EObject eObj = ctx.getTarget();
 
     // if eObj is a Property in a named container
-    if ((eObj instanceof Property) && (eObj.eContainer() instanceof NamedElement)) {
-      NamedElement container = (NamedElement) eObj.eContainer();
+    if ((eObj instanceof Property) && (eObj.eContainer() instanceof Class)) {
+      Class container = (Class) eObj.eContainer();
       Property property = (Property) eObj;
 
       DataValue defaultValue = property.getOwnedDefaultValue();

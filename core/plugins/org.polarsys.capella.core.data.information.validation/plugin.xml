@@ -467,7 +467,7 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                          <constraint
                                class="org.polarsys.capella.core.data.information.validation.property.PropertyMaximumCardinalityIsNatural"
                                id="DWF_D_50"
-                               isEnabledByDefault="true"
+                               isEnabledByDefault="false"
                                lang="Java"
                                mode="Batch"
                                name="DWF_D_50 - Max Cardinality Is A Natural"
@@ -481,6 +481,9 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                             </description>
                             <target
                                   class="Property">
+                            </target>
+                            <target
+                                  class="ExchangeItemElement">
                             </target>
                          </constraint>
                          <constraint
@@ -500,6 +503,9 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                             </description>
                             <target
                                   class="Property">
+                            </target>
+                            <target
+                                  class="ExchangeItemElement">
                             </target>
                          </constraint>
                          <constraint
