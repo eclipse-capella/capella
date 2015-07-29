@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -129,9 +129,11 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
    */
   protected boolean canResolve(IMarker marker) {
     String ruleId = marker.getAttribute(IValidationConstants.TAG_RULE_ID, null);
-    if (isEMFRule(ruleId)) {
+    if (ruleId != null) {
+   if (isEMFRule(ruleId)) {
       return true;
     }
+    
     String fqnRule[] = ruleId.split("\\.");
     String shortRuleId = fqnRule.length > 0 ? fqnRule[fqnRule.length - 1] : null;
     if (shortRuleId != null) {
@@ -140,6 +142,7 @@ abstract public class AbstractCapellaMarkerResolution extends ReportMarkerResolu
           return true;
         }
       }
+    }
     }
     return false;
   }
