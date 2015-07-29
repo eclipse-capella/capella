@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,9 +42,9 @@ public class NavigatorModelDataListener extends CapellaModelDataListener {
 
   private INotifyChangedListener _callback;
 
-  public NavigatorModelDataListener(INotifyChangedListener callback_p) {
+  public NavigatorModelDataListener(INotifyChangedListener callback) {
 
-    _callback = callback_p;
+    _callback = callback;
 
     // Initialize monitored references for additional notifications.
     initializeMonitoredReferences();
@@ -56,11 +56,11 @@ public class NavigatorModelDataListener extends CapellaModelDataListener {
      */
   @SuppressWarnings("synthetic-access")
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     // Forward only notification related to following features:
-    EStructuralFeature feature = (EStructuralFeature) notification_p.getFeature();
+    EStructuralFeature feature = (EStructuralFeature) notification.getFeature();
     if (__monitoredReferencesForAdditionalNotifications.contains(feature)) {
-      _callback.notifyChanged(notification_p);
+      _callback.notifyChanged(notification);
     }
   }
 
