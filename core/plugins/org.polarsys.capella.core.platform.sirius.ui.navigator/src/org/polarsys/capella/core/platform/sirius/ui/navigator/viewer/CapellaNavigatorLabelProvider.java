@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,38 +59,38 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
     super(CapellaAdapterFactoryProvider.getInstance().getAdapterFactory());
   }
 
-  public CapellaNavigatorLabelProvider(AdapterFactory adapterFactory_p) {
-    super(adapterFactory_p);
+  public CapellaNavigatorLabelProvider(AdapterFactory adapterFact) {
+    super(adapterFact);
   }
 
-  public CapellaNavigatorLabelProvider(TransactionalEditingDomain editingDomain_p, AdapterFactory adapterFactory_p) {
-    super(editingDomain_p, adapterFactory_p);
+  public CapellaNavigatorLabelProvider(TransactionalEditingDomain editingDomain, AdapterFactory adapterFact) {
+    super(editingDomain, adapterFact);
   }
 
   /**
    * @see org.eclipse.emf.transaction.ui.provider.TransactionalAdapterFactoryLabelProvider#getImage(java.lang.Object)
    */
   @Override
-  public Image getImage(Object object_p) {
+  public Image getImage(Object object) {
     Image image = null;
-    if (object_p instanceof Session) {
-      image = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getImage(object_p);
-    } else if (object_p instanceof ItemDecorator) {
-      image = ((ItemDecorator) object_p).getImage();
-    } else if (object_p instanceof ViewpointItem) {
+    if (object instanceof Session) {
+      image = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getImage(object);
+    } else if (object instanceof ItemDecorator) {
+      image = ((ItemDecorator) object).getImage();
+    } else if (object instanceof ViewpointItem) {
       image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_VIEWPOINT);
-    } else if (object_p instanceof RepresentationDescriptionItem) {
-      RepresentationDescriptionItem descriptionItem = (RepresentationDescriptionItem) object_p;
+    } else if (object instanceof RepresentationDescriptionItem) {
+      RepresentationDescriptionItem descriptionItem = (RepresentationDescriptionItem) object;
       // Filter out scenario diagram to keep the nice image.
       if (!(descriptionItem.getWrappedObject() instanceof SequenceDiagramDescription)) {
         image = CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_DIAGRAM_TYPE);
       } else {
-        image = super.getImage(((ItemWrapper) object_p).getWrappedObject());
+        image = super.getImage(((ItemWrapper) object).getWrappedObject());
       }
-    } else if (object_p instanceof ItemWrapper) {
-      image = super.getImage(((ItemWrapper) object_p).getWrappedObject());
-    } else if (!(object_p instanceof IResource)) {
-      image = super.getImage(object_p);
+    } else if (object instanceof ItemWrapper) {
+      image = super.getImage(((ItemWrapper) object).getWrappedObject());
+    } else if (!(object instanceof IResource)) {
+      image = super.getImage(object);
     }
     return image;
   }
@@ -99,23 +99,23 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
    * @see org.eclipse.emf.transaction.ui.provider.TransactionalAdapterFactoryLabelProvider#getText(java.lang.Object)
    */
   @Override
-  public String getText(Object object_p) {
+  public String getText(Object object) {
     String text = null;
 
-    if (object_p instanceof Session) {
-      text = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getText(object_p);
-    } else if (object_p instanceof ItemDecorator) {
-      text = ((ItemDecorator) object_p).getText();
-    } else if (object_p instanceof ItemWrapper) {
-      text = super.getText(((ItemWrapper) object_p).getWrappedObject());
+    if (object instanceof Session) {
+      text = SessionLabelProviderHelper.getInstance().getSessionLabelProvider().getText(object);
+    } else if (object instanceof ItemDecorator) {
+      text = ((ItemDecorator) object).getText();
+    } else if (object instanceof ItemWrapper) {
+      text = super.getText(((ItemWrapper) object).getWrappedObject());
     } else {
       // Fix due to 3.5 & 3.6 that have changed the implementation of IResource.toString().
-      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object_p, IWorkbenchAdapter.class);
-      text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object_p) : super.getText(object_p);
+      IWorkbenchAdapter workbenchAdapter = (IWorkbenchAdapter) Platform.getAdapterManager().getAdapter(object, IWorkbenchAdapter.class);
+      text = (null != workbenchAdapter) ? workbenchAdapter.getLabel(object) : super.getText(object);
 
-      if (object_p instanceof IFile) {
-        if (CapellaResourceHelper.isAirdResource((IFile) object_p, true)) {
-          Session session = SessionHelper.getSession(((IFile) object_p));
+      if (object instanceof IFile) {
+        if (CapellaResourceHelper.isAirdResource((IFile) object, true)) {
+          Session session = SessionHelper.getSession(((IFile) object));
           if ((session != null) && (session.getStatus() == SessionStatus.DIRTY)) {
             text = "*" + text; //$NON-NLS-1$
           }
@@ -129,20 +129,21 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
   /**
    * @see org.eclipse.ui.navigator.IDescriptionProvider#getDescription(java.lang.Object)
    */
-  public String getDescription(Object element_p) {
+  @Override
+  public String getDescription(Object element) {
     String result = ICommonConstants.EMPTY_STRING;
     String slash = String.valueOf(ICommonConstants.SLASH_CHARACTER);
-    if (element_p instanceof ModelElement) {
-      ModelElement modelElement = (ModelElement) element_p;
+    if (element instanceof ModelElement) {
+      ModelElement modelElement = (ModelElement) element;
       String path = modelElement.getFullLabel();
       if (path.startsWith(slash)) {
         path = path.substring(1);
       }
       result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
-    } else if (element_p instanceof DRepresentation) {
+    } else if (element instanceof DRepresentation) {
       // Adapts the representation into a Capella element (it returns its
       // Capella container).
-      DRepresentation representation = (DRepresentation) element_p;
+      DRepresentation representation = (DRepresentation) element;
       Object modelElement = Platform.getAdapterManager().getAdapter(representation, ModelElement.class);
       if (null == modelElement) {
         modelElement = Platform.getAdapterManager().loadAdapter(representation, ModelElement.class.getName());
@@ -156,18 +157,18 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
         }
         result = path.replaceAll(slash, STATUS_LINE_PATH_SEPARATOR);
       }
-    } else if (element_p instanceof ItemWrapper) {
+    } else if (element instanceof ItemWrapper) {
       // Adapts the representation into a Capella element (it returns its
       // Capella container).
-      ItemWrapper item = (ItemWrapper) element_p;
+      ItemWrapper item = (ItemWrapper) element;
       Object wrappedObject = item.getWrappedObject();
       String description = getDescription(wrappedObject);
       result = description;
-    } else if (element_p instanceof Viewpoint) {
-      Viewpoint viewpoint = (Viewpoint) element_p;
+    } else if (element instanceof Viewpoint) {
+      Viewpoint viewpoint = (Viewpoint) element;
       result = viewpoint.getName();
-    } else if (element_p instanceof RepresentationDescription) {
-      RepresentationDescription description = (RepresentationDescription) element_p;
+    } else if (element instanceof RepresentationDescription) {
+      RepresentationDescription description = (RepresentationDescription) element;
       String representationDescPath = description.getName();
       EObject container = description.eContainer();
       while (null != container) {
@@ -198,14 +199,14 @@ public class CapellaNavigatorLabelProvider extends MDEAdapterFactoryLabelProvide
    * @see org.eclipse.jface.viewers.IFontProvider#getFont(java.lang.Object)
    */
   @Override
-  public Font getFont(Object element_p) {
+  public Font getFont(Object element) {
     Font currentFont = Display.getCurrent().getSystemFont();
     if (_italicFont == null) {
       FontData[] datas = currentFont.getFontData();
       datas[0].setStyle(SWT.ITALIC);
       _italicFont = new Font(currentFont.getDevice(), datas);
     }
-    if (SharedCutPasteClipboard.getCutClipboard().isObjectCut(element_p)) {
+    if (SharedCutPasteClipboard.getCutClipboard().isObjectCut(element)) {
       return _italicFont;
     }
     return currentFont;

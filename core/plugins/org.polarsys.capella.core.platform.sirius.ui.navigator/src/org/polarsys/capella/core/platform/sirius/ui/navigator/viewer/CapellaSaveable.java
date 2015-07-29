@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,10 +32,10 @@ public class CapellaSaveable extends SessionSaveable {
 
   /**
    * Constructor.
-   * @param session_p
+   * @param session
    */
-  public CapellaSaveable(Session session_p) {
-    super(session_p);
+  public CapellaSaveable(Session session) {
+    super(session);
   }
 
   /**
@@ -43,18 +43,18 @@ public class CapellaSaveable extends SessionSaveable {
    */
   @SuppressWarnings("rawtypes")
   @Override
-  public Object getAdapter(Class adapter_p) {
-    if (Session.class == adapter_p) {
+  public Object getAdapter(Class adapter) {
+    if (Session.class == adapter) {
       return getSession();
     }
-    return super.getAdapter(adapter_p);
+    return super.getAdapter(adapter);
   }
 
   /**
    * @see org.eclipse.ui.Saveable#doSave(org.eclipse.core.runtime.IProgressMonitor)
    */
   @Override
-  public void doSave(IProgressMonitor monitor_p) {
+  public void doSave(IProgressMonitor monitor) {
     SaveSessionAction saveSessionAction = new SaveSessionAction();
     saveSessionAction.selectionChanged(new StructuredSelection(getSession()));
     saveSessionAction.run();
@@ -64,10 +64,10 @@ public class CapellaSaveable extends SessionSaveable {
    * @see org.eclipse.ui.Saveable#equals(java.lang.Object)
    */
   @Override
-  public boolean equals(Object object_p) {
+  public boolean equals(Object object) {
     boolean result = false;
-    if (object_p instanceof SessionSaveable) {
-      SessionSaveable saveable = (SessionSaveable) object_p;
+    if (object instanceof SessionSaveable) {
+      SessionSaveable saveable = (SessionSaveable) object;
       result = (getSession() == saveable.getSession());
     }
     return result;

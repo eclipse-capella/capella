@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -81,9 +81,9 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
    * @see org.eclipse.ui.navigator.SaveablesProvider#getElements(org.eclipse.ui.Saveable)
    */
   @Override
-  public Object[] getElements(Saveable saveable_p) {
+  public Object[] getElements(Saveable saveable) {
     Object[] result = new Object[1];
-    result[0] = saveable_p.getAdapter(Session.class);
+    result[0] = saveable.getAdapter(Session.class);
     return result;
   }
 
@@ -91,12 +91,12 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
    * @see org.eclipse.ui.navigator.SaveablesProvider#getSaveable(java.lang.Object)
    */
   @Override
-  public Saveable getSaveable(Object element_p) {
+  public Saveable getSaveable(Object element) {
     Saveable result = null;
     // Since Session is not displayed, the displayed element representing the saveable is delegated to the aird file.
-    if ((element_p instanceof IFile) && ((IFile) element_p).getFileExtension().equals(CapellaResourceHelper.AIRD_FILE_EXTENSION)) {
+    if ((element instanceof IFile) && ((IFile) element).getFileExtension().equals(CapellaResourceHelper.AIRD_FILE_EXTENSION)) {
       synchronized (_saveables) {
-        result = _saveables.get(SessionHelper.getSession((IFile) element_p));
+        result = _saveables.get(SessionHelper.getSession((IFile) element));
       }
     }
     return result;
@@ -118,41 +118,45 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyAddSession(org.eclipse.sirius.business.api.session.Session)
    */
-  public void notifyAddSession(Session newSession_p) {
+  @Override
+  public void notifyAddSession(Session newSession) {
     // Create a new saveable for this new session.
-    CapellaSaveable saveable = new CapellaSaveable(newSession_p);
+    CapellaSaveable saveable = new CapellaSaveable(newSession);
     synchronized (_saveables) {
-      _saveables.put(newSession_p, saveable);
+      _saveables.put(newSession, saveable);
     }
   }
 
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyRemoveSession(org.eclipse.sirius.business.api.session.Session)
    */
-  public void notifyRemoveSession(Session removedSession_p) {
+  @Override
+  public void notifyRemoveSession(Session removedSession) {
     synchronized (_saveables) {
       // Remove the saveable for removed session.
-      _saveables.remove(removedSession_p);
+      _saveables.remove(removedSession);
     }
   }
 
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session, int)
    */
-  public void notify(Session updatedSession_p, int notification_p) {
+  @Override
+  public void notify(Session updatedSession, int notification) {
     final Saveable[] saveable = { null };
     synchronized (_saveables) {
-      saveable[0] = _saveables.get(updatedSession_p);
+      saveable[0] = _saveables.get(updatedSession);
     }
     // Ensure in multi-threading context, the saveable is correctly found.
     if (null == saveable[0]) {
       return;
     }
     Runnable runnable = null;
-    switch (notification_p) {
+    switch (notification) {
       case SessionListener.SYNC:
       case SessionListener.DIRTY:
         runnable = new Runnable() {
+          @Override
           @SuppressWarnings("synthetic-access")
           public void run() {
             if (null != saveable[0]) {
@@ -164,6 +168,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
       break;
       case SessionListener.CLOSED:
         runnable = new Runnable() {
+          @Override
           @SuppressWarnings("synthetic-access")
           public void run() {
             if (null != saveable[0]) {
@@ -175,6 +180,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
       break;
       case SessionListener.CLOSING:
         runnable = new Runnable() {
+          @Override
           @SuppressWarnings("synthetic-access")
           public void run() {
             if (null != saveable[0]) {
@@ -186,6 +192,7 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
       break;
       case SessionListener.OPENED:
         runnable = new Runnable() {
+          @Override
           @SuppressWarnings("synthetic-access")
           public void run() {
             // Fire a new dirty state.
@@ -211,21 +218,23 @@ public class CapellaSaveablesProvider extends SaveablesProvider implements Sessi
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyUpdatedSession(org.eclipse.sirius.business.api.session.Session)
    */
-  public void notifyUpdatedSession(Session updated_p) {
+  public void notifyUpdatedSession(Session updated) {
     // Do nothing.
   }
 
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.description.Viewpoint)
    */
-  public void viewpointDeselected(Viewpoint deselectedViewpoint_p) {
+  @Override
+  public void viewpointDeselected(Viewpoint deselectedViewpoint) {
     // Do nothing.
   }
 
   /**
    * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.description.Viewpoint)
    */
-  public void viewpointSelected(Viewpoint selectedViewpoint_p) {
+  @Override
+  public void viewpointSelected(Viewpoint selectedViewpoint) {
     // Do nothing.
   }
 }
