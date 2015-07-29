@@ -6,8 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.polarsys.capella.core.validation,
- org.polarsys.capella.core.model.preferences,
- org.polarsys.capella.core.data.business.queries
+ org.polarsys.capella.core.model.preferences
 Export-Package: org.polarsys.capella.core.data.information.validation.association,
  org.polarsys.capella.core.data.information.validation.class_,
  org.polarsys.capella.core.data.information.validation.classpkg,

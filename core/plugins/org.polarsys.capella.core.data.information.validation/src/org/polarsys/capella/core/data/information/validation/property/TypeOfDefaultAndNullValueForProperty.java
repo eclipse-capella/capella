@@ -15,10 +15,9 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
-import org.polarsys.capella.core.business.queries.IBusinessQuery;
-import org.polarsys.capella.core.business.queries.capellacore.BusinessQueriesProvider;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
+import org.polarsys.capella.core.data.capellacore.Type;
+import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
 import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datavalue.DataValue;
@@ -44,10 +43,10 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
       DataValue nullValue = property.getOwnedNullValue();
 
       // if it has a default value, this value must be valid
-      if (!this.hasValidValue(defaultValue)) {
+      if (!this.hasValidValue(defaultValue, property)) {
         return ctx.createFailureStatus("default", property.getName(), container.getName());
         // if it has a null value, this value must be valid
-      } else if (!this.hasValidValue(nullValue)) {
+      } else if (!this.hasValidValue(nullValue, property)) {
         return ctx.createFailureStatus("null", property.getName(), container.getName());
       }
     }
@@ -55,18 +54,26 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
     return ctx.createSuccessStatus();
   }
 
-  private boolean hasValidValue(DataValue value) {
+  private boolean hasValidValue(DataValue value, Property property) {
 
+    // the value is valid if undefined
     if (value == null) {
       return true;
     }
     
-    IBusinessQuery query = BusinessQueriesProvider.getInstance().getContribution(value.eClass(),
-        ModellingcorePackage.Literals.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE);
+    Type valueType = value.getType();
+    Type propertyType = property.getType();
 
-    if (query != null) {
-      List<CapellaElement> availableElements = query.getAvailableElements(value);
-      return availableElements.contains(value.getType());
+    // the value is valid if its type is the same of its property's datatype
+    if (valueType == propertyType) {
+      return true;
+    }
+
+    // or a super property's datatype
+    if (propertyType instanceof GeneralizableElement) {
+      GeneralizableElement genPropertyType = (GeneralizableElement) propertyType;
+      List<GeneralizableElement> superDataTypes = GeneralizableElementExt.getAllSuperGeneralizableElements(genPropertyType);
+      return superDataTypes.contains(valueType);
     }
 
     return false;
