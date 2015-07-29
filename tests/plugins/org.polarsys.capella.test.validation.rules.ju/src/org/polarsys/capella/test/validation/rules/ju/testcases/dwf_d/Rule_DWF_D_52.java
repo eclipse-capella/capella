@@ -56,7 +56,9 @@ public class Rule_DWF_D_52 extends AbstractRulesOnDesignTest {
         "c4f72f6c-e5db-4cfa-8179-61d0901e6656",
         "ba53cb67-dcae-415f-81ba-23a8a4886e3b",
         "f8ee8b34-641f-4aad-907f-1e0f68ca34df",
-        "e01bc138-bed6-41f2-ad19-d7c460358d09"});
+        "e01bc138-bed6-41f2-ad19-d7c460358d09",
+        "9b17f3c1-164b-46e2-a344-e02c0c17b7cf",
+        "a083a96e-8b8b-4b70-98bc-47d0948a052e"});
   }
 
   /**
@@ -69,7 +71,8 @@ public class Rule_DWF_D_52 extends AbstractRulesOnDesignTest {
         new OracleDefinition("b5a86f51-1c94-47c0-8d62-262d235f682d", 1),
         new OracleDefinition("52090b7a-3926-457c-bf0c-2495c1e87f0a", 1),
         new OracleDefinition("ba53cb67-dcae-415f-81ba-23a8a4886e3b", 1),
-        new OracleDefinition("e01bc138-bed6-41f2-ad19-d7c460358d09", 1)});
+        new OracleDefinition("e01bc138-bed6-41f2-ad19-d7c460358d09", 1),
+        new OracleDefinition("a083a96e-8b8b-4b70-98bc-47d0948a052e", 1)});
   }
 
 }
