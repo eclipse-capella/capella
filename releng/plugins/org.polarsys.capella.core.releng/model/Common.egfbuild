@@ -96,6 +96,7 @@
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ypzboC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_LwJ3sKBoEeKMQb8Rddw1Vg" url="${site_Sirius}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_P2rDEAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
+        <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_v9bQEDXkEeWcHcNqIIHNgA" url="${site_Amalgam}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_XCyCgKBoEeKMQb8Rddw1Vg" suffix="" url="${primary_eclipseUpdateSite}"/>
         <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_SVCF0JMfEeO7u6f29_-yFQ" suffix="" url="${secondary_eclipseUpdateSite}"/>
       </buildLocations>
@@ -144,6 +145,7 @@
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_7ZSUQC0YEeSpNZCH09tG3Q" url="${site_Patterns}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_ZWa36QlbEeGRT7uzWt0LYA" url="${site_Sirius}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_Re-doAlfEeGYwPEIVo63QA" url="${site_Kitalpha}"/>
+      <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_19SgwDXkEeWcHcNqIIHNgA" url="${site_Amalgam}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_VgIv4JMfEeO7u6f29_-yFQ" suffix="" url="${primary_eclipseUpdateSite}"/>
       <buildLocations xsi:type="buildstep:UpdateSiteBuildLocation" xmi:id="_VgIv4ZMfEeO7u6f29_-yFQ" suffix="" url="${secondary_eclipseUpdateSite}"/>
     </steps>
@@ -223,6 +225,7 @@
         <updateSiteUrls>${site_Sirius}</updateSiteUrls>
         <updateSiteUrls>${site_DiffMerge}</updateSiteUrls>
         <updateSiteUrls>${site_Patterns}</updateSiteUrls>
+        <updateSiteUrls>${site_Amalgam}</updateSiteUrls>
         <featureNames>org.eclipse.sirius.query.legacy.feature.source</featureNames>
         <featureNames>org.eclipse.sirius.runtime.source</featureNames>
         <featureNames>org.polarsys.kitalpha.emde.ui.feature</featureNames>
@@ -238,6 +241,10 @@
         <featureNames>org.eclipse.emf.diffmerge.patterns.sdk.source.feature</featureNames>
         <featureNames>org.eclipse.emf.diffmerge.patterns.sirius.sdk.feature</featureNames>
         <featureNames>org.eclipse.emf.diffmerge.patterns.sirius.sdk.source.feature</featureNames>
+        <featureNames>org.eclipse.amalgam.explorer.activity</featureNames>
+        <featureNames>org.eclipse.amalgam.explorer.contextual</featureNames>
+        <featureNames>org.eclipse.amalgam.explorer.contextual.core</featureNames>
+        <featureNames>org.eclipse.amalgam.explorer.contextual.sirius</featureNames>
       </steps>
     </steps>
     <steps xsi:type="buildcore:StepContainer" xmi:id="_4n2PAJfiEeSD685w18qp-w" name="Zip Post-Install Capella">
