@@ -26826,6 +26826,17 @@
             <ownedMaxCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
                 id="45975976-6990-423c-ad98-f682c9d713d2" value="1"/>
           </ownedFeatures>
+          <ownedFeatures xsi:type="org.polarsys.capella.core.data.information:Property"
+              id="4828fe6e-edfb-4901-906f-949e7c370e0a" name="Property 13" abstractType="#040562e6-6692-4466-960a-f7f7cad26e5f">
+            <ownedDefaultValue xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                id="40ed9b98-cd09-48e6-8146-58e58525546c" name="defaultValue13"/>
+            <ownedNullValue xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                id="1dc21bd9-56e3-43d5-b118-f877923ca7e7" name="nullValue13"/>
+            <ownedMinCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                id="85333106-883a-4cf6-98cc-22f510bf54d8" value="1"/>
+            <ownedMaxCard xsi:type="org.polarsys.capella.core.data.information.datavalue:LiteralNumericValue"
+                id="01589ab7-ddb8-400b-a153-7cadb58ba108" value="1"/>
+          </ownedFeatures>
         </ownedClasses>
         <ownedClasses xsi:type="org.polarsys.capella.core.data.information:Class"
             id="6d6d06d3-3abe-4e19-8c59-da1bf77cbcf1" name="Class 2"/>

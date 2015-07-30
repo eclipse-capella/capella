@@ -10,11 +10,14 @@
  *******************************************************************************/
 package org.polarsys.capella.core.data.information.validation.property;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.emf.validation.model.ConstraintStatus;
 import org.polarsys.capella.core.data.capellacore.GeneralizableElement;
 import org.polarsys.capella.core.data.capellacore.Type;
 import org.polarsys.capella.core.data.helpers.capellacore.services.GeneralizableElementExt;
@@ -33,25 +36,32 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
   @Override
   public IStatus validate(IValidationContext ctx) {
     EObject eObj = ctx.getTarget();
+    Collection<IStatus> statuses = new ArrayList<IStatus>();
 
     // if eObj is a Property in a named container
     if ((eObj instanceof Property) && (eObj.eContainer() instanceof Class)) {
       Class container = (Class) eObj.eContainer();
       Property property = (Property) eObj;
 
-      DataValue defaultValue = property.getOwnedDefaultValue();
-      DataValue nullValue = property.getOwnedNullValue();
-
       // if it has a default value, this value must be valid
+      DataValue defaultValue = property.getOwnedDefaultValue();
       if (!this.hasValidValue(defaultValue, property)) {
-        return ctx.createFailureStatus("default", property.getName(), container.getName());
-        // if it has a null value, this value must be valid
-      } else if (!this.hasValidValue(nullValue, property)) {
-        return ctx.createFailureStatus("null", property.getName(), container.getName());
+        IStatus status = ctx.createFailureStatus("default", property.getName(), container.getName());
+        statuses.add(status);
+      }
+
+      // if it has a null value, this value must be valid
+      DataValue nullValue = property.getOwnedNullValue();
+      if (!this.hasValidValue(nullValue, property)) {
+        IStatus status = ctx.createFailureStatus("null", property.getName(), container.getName());
+        statuses.add(status);
       }
     }
 
-    return ctx.createSuccessStatus();
+    if (statuses.isEmpty()) {
+      return ctx.createSuccessStatus();
+    }
+    return ConstraintStatus.createMultiStatus(ctx, statuses);
   }
 
   private boolean hasValidValue(DataValue value, Property property) {
@@ -60,7 +70,7 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
     if (value == null) {
       return true;
     }
-    
+
     Type valueType = value.getType();
     Type propertyType = property.getType();
 
@@ -72,7 +82,8 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
     // or a super property's datatype
     if (propertyType instanceof GeneralizableElement) {
       GeneralizableElement genPropertyType = (GeneralizableElement) propertyType;
-      List<GeneralizableElement> superDataTypes = GeneralizableElementExt.getAllSuperGeneralizableElements(genPropertyType);
+      List<GeneralizableElement> superDataTypes = GeneralizableElementExt
+          .getAllSuperGeneralizableElements(genPropertyType);
       return superDataTypes.contains(valueType);
     }
 
