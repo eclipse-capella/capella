@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -444,6 +444,127 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                <target class="Association">
                </target>
             </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.information.validation.property.PropertyKeyPartsCardinality"
+                               id="DWF_D_49"
+                               isEnabledByDefault="true"
+                               lang="Java"
+                               mode="Batch"
+                               name="DWF_D_49 - Key Parts Cardinality Rule"
+                               severity="ERROR"
+                               statusCode="1">
+                            <message>
+                               Value of maximum cardinality must be set to 1 in {0} for property/role {1} (property/role is part of key)
+                               
+                            </message>
+                            <description>
+                               In a class, when a property or an association role is part of key, value of maximum cardinality must be equal to one.
+                            </description>
+                            <target
+                                  class="Property">
+                            </target>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.information.validation.property.PropertyMaximumCardinalityIsNatural"
+                               id="DWF_D_50"
+                               isEnabledByDefault="false"
+                               lang="Java"
+                               mode="Batch"
+                               name="DWF_D_50 - Max Cardinality Is A Natural"
+                               severity="ERROR"
+                               statusCode="1">
+                            <message>
+                               Value of maximum cardinality, unless abstract, must eval to a natural number in {0} for property/role/element {1}
+                            </message>
+                            <description>
+                               In class property, association role and exchange item element, maximum cardinality value is defined and, unless abstract, evals to a value in [1, *[
+                            </description>
+                            <target
+                                  class="Property">
+                            </target>
+                            <target
+                                  class="ExchangeItemElement">
+                            </target>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.information.validation.property.PropertyMinimumCardinalityIsNaturalOrZero"
+                               id="DWF_D_51"
+                               isEnabledByDefault="true"
+                               lang="Java"
+                               mode="Batch"
+                               name="DWF_D_51 - Min Cardinality Is A Natural Or Zero"
+                               severity="ERROR"
+                               statusCode="1">
+                            <message>
+                               Value of minimum cardinality, unless abstract, must be eval 0 or a natural number in {0} for property/role/element {1}
+                            </message>
+                            <description>
+                               In class property, association role and exchange item element minimum cardinality value is defined and, unless abstract, evals to a natural or zero (i.e. integer belonging to [0, *[)
+                            </description>
+                            <target
+                                  class="Property">
+                            </target>
+                            <target
+                                  class="ExchangeItemElement">
+                            </target>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.information.validation.property.TypeOfDefaultAndNullValueForProperty"
+                               id="DWF_D_52"
+                               isEnabledByDefault="true"
+                               lang="Java"
+                               mode="Batch"
+                               name="DWF_D_52 - Type Of Default And Null Value For Property"
+                               severity="ERROR"
+                               statusCode="1">
+                            <message>
+                               Type of {0} value of property {1} in class {2} is inconsistent with its type.
+                            </message>
+                            <description>
+                               For a property, type of the default (resp. null) value shall be Undefined (implicit typing) or the property’s datatype or a super type of the property’s datatype
+                            </description>
+                            <target
+                                  class="Property">
+                            </target>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.information.validation.property.PropertyOrRoleOverridingIsNotAllowed"
+                               id="DWF_D_53"
+                               isEnabledByDefault="true"
+                               lang="Java"
+                               mode="Batch"
+                               name="DWF_D_53 - Property Or Role Overriding Is Not Allowed"
+                               severity="ERROR"
+                               statusCode="1">
+                            <message>
+                               In class {0} property {1} has a same name as a property of super class {2}.
+                            </message>
+                            <description>
+                               A property/role in a class shall not have the same name as a property/role of a super-class
+                            </description>
+                            <target
+                                  class="Property">
+                            </target>
+                         </constraint>
+                         <constraint
+                               class="org.polarsys.capella.core.data.information.validation.property.PropertyOrRoleRespectsCovariance"
+                               id="DWF_D_54"
+                               isEnabledByDefault="false"
+                               lang="Java"
+                               mode="Batch"
+                               name="DWF_D_54 - Property Or Role Respects Covariance"
+                               severity="ERROR"
+                               statusCode="1">
+                            <message>
+                               In class {0} property {1} overrides that of super class {2} with a wrong type.
+                            </message>
+                            <description>
+                               If class K inherits class C, if property or association role is owned by C with type/class A and redefined in K with type/class B, then B inherits (or is equal to) A.
+                            </description>
+                            <target
+                                  class="Property">
+                            </target>
+                         </constraint>
          </constraints>
          <constraints categories="capella.category/design/well-formedness/interfaces">
             <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemKind" id="DWF_I_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_I_01 - ExchangeItemParameter kind consistency" severity="ERROR" statusCode="1">
@@ -454,16 +575,6 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                   This rule checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism:
 - Elements of an ExchangeItem with exchange mechanism OPERATION must be of kind PARAMETER
 - For all other exchange mechanisms, elements must be of kind TYPE
-               </description>
-               <target class="ExchangeItem">
-               </target>
-            </constraint>
-            <constraint class="org.polarsys.capella.core.data.information.validation.exchangeitem.ExchangeItemDirection" id="DWF_I_03" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_I_03 - ExchangeItemElement Direction check" severity="ERROR" statusCode="1">
-               <message>
-                  {1}(ExchangeItemElement) Direction can be set only if {0}(ExchangeItem) is of kind Operation.
-               </message>
-               <description>
-                  This rule ensures that an ExchangeItemElement direction can be set only if ExchangeItem is of kind Operation.
                </description>
                <target class="ExchangeItem">
                </target>

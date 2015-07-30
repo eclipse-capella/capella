@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
+ *
  */
 public class CapellaManagementPropertySection extends AbstractSection implements IFilter {
 
@@ -64,7 +65,7 @@ public class CapellaManagementPropertySection extends AbstractSection implements
     _visibleInDocGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleInDocGroup_Label, getWidgetFactory());
     _visibleInDocGroup.setDisplayedInWizard(displayedInWizard);
 
-    _visibleInLMGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleInLMGroup_Label, getWidgetFactory());
+    _visibleInLMGroup = new BooleanValueGroup(_rootParentComposite, Messages.VisibleForTraceabilityGroup_Label, getWidgetFactory());
     _visibleInLMGroup.setDisplayedInWizard(displayedInWizard);
 
     _status = new EnumerationValueGroup(_rootParentComposite, Messages.ProgressStatus_Label, getWidgetFactory());
@@ -79,46 +80,46 @@ public class CapellaManagementPropertySection extends AbstractSection implements
    * Default implementation registers an EMF adapter to listen to model changes if displayed in a wizard.
    */
   @Override
-  public void loadData(CapellaElement capellaElement_p) {
-    super.loadData(capellaElement_p);
+  public void loadData(CapellaElement capellaElement) {
+    super.loadData(capellaElement);
 
-    _visibleInDocGroup.loadData(capellaElement_p, ModellingcorePackage.eINSTANCE.getPublishableElement_VisibleInDoc());
-    _visibleInLMGroup.loadData(capellaElement_p, ModellingcorePackage.eINSTANCE.getPublishableElement_VisibleInLM());
-    _status.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getCapellaElement_Status());
-    _review.loadData(capellaElement_p, CapellacorePackage.eINSTANCE.getCapellaElement_Review());
+    _visibleInDocGroup.loadData(capellaElement, ModellingcorePackage.eINSTANCE.getPublishableElement_VisibleInDoc());
+    _visibleInLMGroup.loadData(capellaElement, ModellingcorePackage.eINSTANCE.getPublishableElement_VisibleInLM());
+    _status.loadData(capellaElement, CapellacorePackage.eINSTANCE.getCapellaElement_Status());
+    _review.loadData(capellaElement, CapellacorePackage.eINSTANCE.getCapellaElement_Review());
   }
 
   /**
    * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#setInput(org.eclipse.ui.IWorkbenchPart, org.eclipse.jface.viewers.ISelection)
    */
   @Override
-  public void setInput(IWorkbenchPart part_p, ISelection selection_p) {
-    if (selection_p instanceof StructuredSelection) {
-      EObject selection = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection_p).getFirstElement());
-      if (selection instanceof CapellaElement) {
-        if (selection.eClass().equals(CsPackage.eINSTANCE.getPart())) {
-          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) selection));
+  public void setInput(IWorkbenchPart part, ISelection selection) {
+    if (selection instanceof StructuredSelection) {
+      EObject selectedElt = CapellaAdapterHelper.resolveSemanticObject(((StructuredSelection) selection).getFirstElement());
+      if (selectedElt instanceof CapellaElement) {
+        if (selectedElt.eClass().equals(CsPackage.eINSTANCE.getPart())) {
+          boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((Part) selectedElt));
           if (!allowMultiplePart) {
-            AbstractType type = ((Part) selection).getAbstractType();
+            AbstractType type = ((Part) selectedElt).getAbstractType();
             if ((type != null) && !(type instanceof ConfigurationItem)) {
-              super.setInput(part_p, new StructuredSelection(type));
+              super.setInput(part, new StructuredSelection(type));
               loadData((CapellaElement) type);
               return;
             }
           }
         }
-        loadData((CapellaElement) selection);
+        loadData((CapellaElement) selectedElt);
       }
     }
-    super.setInput(part_p, selection_p);
+    super.setInput(part, selection);
   }
 
   /**
    * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
    */
   @Override
-  public boolean select(Object toTest_p) {
-    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest_p);
+  public boolean select(Object toTest) {
+    EObject eObj = CapellaAdapterHelper.resolveSemanticObject(toTest);
     if (eObj instanceof CapellaElement) {
       return true;
     }

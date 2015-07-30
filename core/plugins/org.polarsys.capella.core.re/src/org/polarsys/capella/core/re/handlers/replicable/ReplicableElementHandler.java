@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,13 +37,13 @@ import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 public class ReplicableElementHandler extends org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandler {
 
   @Override
-  public CatalogElementPkg getRootPackage(EObject object_p) {
+  public CatalogElementPkg getRootPackage(EObject object) {
 
     SystemEngineering eng = null;//
-    if (object_p instanceof SystemEngineering) {
-      eng = (SystemEngineering) object_p;
+    if (object instanceof SystemEngineering) {
+      eng = (SystemEngineering) object;
     } else {
-      eng = (SystemEngineering) EcoreUtil2.getFirstContainer(object_p, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
+      eng = (SystemEngineering) EcoreUtil2.getFirstContainer(object, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING);
     }
     if (eng != null) {
       for (ElementExtension extension : eng.getOwnedExtensions()) {
@@ -61,8 +61,8 @@ public class ReplicableElementHandler extends org.polarsys.capella.common.re.han
   }
 
   @Override
-  public Collection<Object> getAllDefinedReplicableElements(IContext context_p) {
-    Collection<Object> selection = (Collection<Object>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+  public Collection<Object> getAllDefinedReplicableElements(IContext context) {
+    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CATALOG_ELEMENTS_FOR_LIB, selection.iterator().next(), new QueryContext());
   }
 
@@ -70,27 +70,27 @@ public class ReplicableElementHandler extends org.polarsys.capella.common.re.han
    * {@inheritDoc}
    */
   @Override
-  public Collection<CompliancyDefinition> getAllDefinedCompliancy(EObject location_p) {
-    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPLIANCY_DEFINITIONS_FOR_LIB, location_p, new QueryContext());
+  public Collection<CompliancyDefinition> getAllDefinedCompliancy(EObject location) {
+    return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_COMPLIANCY_DEFINITIONS_FOR_LIB, location, new QueryContext());
 
   }
 
   @Override
-  public Collection<Object> getAllDefinedRecReplicableElements(IContext context_p) {
-    Collection<Object> selection = (Collection<Object>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+  public Collection<Object> getAllDefinedRecReplicableElements(IContext context) {
+    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CATALOG_ELEMENTS_FOR_LIB, selection.iterator().next(), new QueryContext(),
         new IQueryFilter() {
 
           @Override
-          public boolean keepElement(Object element_p, IQueryContext context_p) {
-            return (element_p != null) && (element_p instanceof CatalogElement) && (((CatalogElement) element_p).getKind() == CatalogElementKind.REC);
+          public boolean keepElement(Object element, IQueryContext context) {
+            return (element != null) && (element instanceof CatalogElement) && (((CatalogElement) element).getKind() == CatalogElementKind.REC);
           }
         });
   }
 
   @Override
-  public Collection<Object> getAllDefinedCatalogElementPkgs(IContext context_p) {
-    Collection<Object> selection = (Collection<Object>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+  public Collection<Object> getAllDefinedCatalogElementPkgs(IContext context) {
+    Collection<Object> selection = (Collection<Object>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     //Promote is removed from now
     return QueryInterpretor.executeQuery(QueryIdentifierConstants.GET_ALL_CATALOG_PKGS, selection.iterator().next(), new QueryContext());
   }

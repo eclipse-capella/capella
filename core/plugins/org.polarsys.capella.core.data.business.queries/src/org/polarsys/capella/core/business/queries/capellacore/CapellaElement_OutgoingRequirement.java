@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,19 +48,19 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
    * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getAvailableElements(org.polarsys.capella.core.common.model.CapellaElement)
    */
   @Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element_p) {
+	public List<CapellaElement> getAvailableElements(CapellaElement element) {
     List<CapellaElement> availableElements = new ArrayList<CapellaElement>();
 
-    if ((element_p instanceof OperationalAnalysis) || EcoreUtil2.isContainedBy(element_p, OaPackage.Literals.OPERATIONAL_ANALYSIS)) {
+    if ((element instanceof OperationalAnalysis) || EcoreUtil2.isContainedBy(element, OaPackage.Literals.OPERATIONAL_ANALYSIS)) {
       OperationalAnalysis oa =
-          (OperationalAnalysis) ((element_p instanceof OperationalAnalysis) ? element_p : EcoreUtil2.getFirstContainer(element_p,
+          (OperationalAnalysis) ((element instanceof OperationalAnalysis) ? element : EcoreUtil2.getFirstContainer(element,
               OaPackage.Literals.OPERATIONAL_ANALYSIS));
       if (oa != null) {
         availableElements.addAll(getRequirements(oa));
       }
-    } else if ((element_p instanceof SystemAnalysis) || EcoreUtil2.isContainedBy(element_p, CtxPackage.Literals.SYSTEM_ANALYSIS)) {
+    } else if ((element instanceof SystemAnalysis) || EcoreUtil2.isContainedBy(element, CtxPackage.Literals.SYSTEM_ANALYSIS)) {
       SystemAnalysis ca =
-          (SystemAnalysis) ((element_p instanceof SystemAnalysis) ? element_p : EcoreUtil2.getFirstContainer(element_p, CtxPackage.Literals.SYSTEM_ANALYSIS));
+          (SystemAnalysis) ((element instanceof SystemAnalysis) ? element : EcoreUtil2.getFirstContainer(element, CtxPackage.Literals.SYSTEM_ANALYSIS));
       if (ca != null) {
         availableElements.addAll(getRequirements(ca));
         for (BlockArchitecture ba : ca.getAllocatedArchitectures()) {
@@ -68,9 +68,9 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
           availableElements.addAll(getRequirements(oa));
         }
       }
-    } else if ((element_p instanceof LogicalArchitecture) || EcoreUtil2.isContainedBy(element_p, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
+    } else if ((element instanceof LogicalArchitecture) || EcoreUtil2.isContainedBy(element, LaPackage.Literals.LOGICAL_ARCHITECTURE)) {
       LogicalArchitecture la =
-          (LogicalArchitecture) ((element_p instanceof LogicalArchitecture) ? element_p : EcoreUtil2.getFirstContainer(element_p,
+          (LogicalArchitecture) ((element instanceof LogicalArchitecture) ? element : EcoreUtil2.getFirstContainer(element,
               LaPackage.Literals.LOGICAL_ARCHITECTURE));
       if (la != null) {
         availableElements.addAll(getRequirements(la));
@@ -83,9 +83,9 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
           }
         }
       }
-    } else if ((element_p instanceof PhysicalArchitecture) || EcoreUtil2.isContainedBy(element_p, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
+    } else if ((element instanceof PhysicalArchitecture) || EcoreUtil2.isContainedBy(element, PaPackage.Literals.PHYSICAL_ARCHITECTURE)) {
       PhysicalArchitecture pa =
-          (PhysicalArchitecture) ((element_p instanceof PhysicalArchitecture) ? element_p : EcoreUtil2.getFirstContainer(element_p,
+          (PhysicalArchitecture) ((element instanceof PhysicalArchitecture) ? element : EcoreUtil2.getFirstContainer(element,
               PaPackage.Literals.PHYSICAL_ARCHITECTURE));
       if (pa != null) {
         availableElements.addAll(getRequirements(pa));
@@ -102,9 +102,9 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
           }
         }
       }
-    } else if ((element_p instanceof EPBSArchitecture) || EcoreUtil2.isContainedBy(element_p, EpbsPackage.Literals.EPBS_ARCHITECTURE)) {
+    } else if ((element instanceof EPBSArchitecture) || EcoreUtil2.isContainedBy(element, EpbsPackage.Literals.EPBS_ARCHITECTURE)) {
       EPBSArchitecture ea =
-          (EPBSArchitecture) ((element_p instanceof EPBSArchitecture) ? element_p : EcoreUtil2.getFirstContainer(element_p,
+          (EPBSArchitecture) ((element instanceof EPBSArchitecture) ? element : EcoreUtil2.getFirstContainer(element,
               EpbsPackage.Literals.EPBS_ARCHITECTURE));
       if (ea != null) {
         availableElements.addAll(getRequirements(ea));
@@ -127,10 +127,10 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
       }
     }
 
-    availableElements.removeAll(getCurrentElements(element_p, false));
+    availableElements.removeAll(getCurrentElements(element, false));
 
     availableElements = ListExt.removeDuplicates(availableElements);
-    availableElements.remove(element_p);
+    availableElements.remove(element);
 
     return availableElements;
   }
@@ -139,10 +139,10 @@ public class CapellaElement_OutgoingRequirement implements IBusinessQuery {
    * @see org.polarsys.capella.core.business.queries.ui.business.queries.IBusinessQuery#getCurrentElements(org.polarsys.capella.core.common.model.CapellaElement, boolean)
    */
   @Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
+	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
     List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
 
-    for (AbstractTrace trace : element_p.getOutgoingTraces()) {
+    for (AbstractTrace trace : element.getOutgoingTraces()) {
       if (trace instanceof RequirementsTrace) {
         currentElements.add((CapellaElement) trace.getTargetElement());
       }

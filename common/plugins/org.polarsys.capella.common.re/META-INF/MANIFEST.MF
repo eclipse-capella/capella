@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.polarsys.capella.common.re;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.polarsys.capella.common.re.Activator
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.common.libraries,
  org.eclipse.sirius,
  org.polarsys.capella.common.model.helpers
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: org.polarsys.capella.common.re,
@@ -43,6 +43,7 @@ Export-Package: org.polarsys.capella.common.re,
  org.polarsys.capella.common.re.queries,
  org.polarsys.capella.common.re.re2rpl.activities,
  org.polarsys.capella.common.re.re2rpl.create.properties,
+ org.polarsys.capella.common.re.re2rpl.detach.properties,
  org.polarsys.capella.common.re.re2rpl.filters,
  org.polarsys.capella.common.re.re2rpl.properties,
  org.polarsys.capella.common.re.re2rpl.rules,

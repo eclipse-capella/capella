@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,12 @@ import org.eclipse.core.runtime.preferences.ConfigurationScope;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.osgi.service.prefs.BackingStoreException;
 import org.osgi.service.prefs.Preferences;
 import org.polarsys.capella.common.ef.ExecutionManagerRegistry;
@@ -135,15 +134,15 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
         source.getOwnedReferences().add(result);
         result.setAccessPolicy(getDefaultNewAccess(referencedLibrary_p));
 
-        // Sirius session requires the semantic target resource to be added to the <models> reference
+        // Sirius session requires the semantic target resource to be added to the <semanticResources> reference
         // we can't use session.addSemanticResources unload the resource if already loaded.......
         // new AddSemanticResourceCommand(session, ((CapellaModel) referencedLibrary_p).uriSemanticFile, new NullProgressMonitor()).execute();
 
         Resource toAdd = target.eResource();
         Session session = SessionManager.INSTANCE.getSession(source);
         if (session instanceof DAnalysisSessionImpl) {
-            for (final DAnalysis analysis : ((DAnalysisSessionImpl)session).allAnalyses()) {
-            analysis.getModels().add(toAdd.getContents().get(0));
+          for (final DAnalysis analysis : ((DAnalysisSessionImpl) session).allAnalyses()) {
+            analysis.getSemanticResources().add(new ResourceDescriptor(toAdd.getURI()));
           }
         }
         // we ensure that sirius crossreferencer is correctly registered on it (just in case, like the AddSemanticResourceCommand did)
@@ -187,7 +186,7 @@ public class CapellaModel extends AbstractCapellaModel implements IModel.Edit {
           Session session = SessionManager.INSTANCE.getSession(source);
           if (session instanceof DAnalysisSessionImpl) {
             for (final DAnalysis analysis : ((DAnalysisSessionImpl)session).allAnalyses()) {
-              analysis.getModels().remove(EcoreUtil.getRootContainer(toDelete.getLibrary()));
+              analysis.getSemanticResources().remove(new ResourceDescriptor(toDelete.getLibrary().eResource().getURI()));
             }
           }
 

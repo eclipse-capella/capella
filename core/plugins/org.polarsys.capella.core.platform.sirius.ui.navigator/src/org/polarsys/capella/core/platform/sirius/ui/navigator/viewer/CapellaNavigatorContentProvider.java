@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -110,10 +109,10 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   class CustomizedSessionWrapperContentProvider extends SessionWrapperContentProvider {
     /**
      * Constructor.
-     * @param wrapped_p
+     * @param wrapped
      */
-    public CustomizedSessionWrapperContentProvider(ITreeContentProvider wrapped_p) {
-      super(wrapped_p);
+    public CustomizedSessionWrapperContentProvider(ITreeContentProvider wrapped) {
+      super(wrapped);
     }
 
     /**
@@ -123,10 +122,10 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
      * hasChildren is based on doGetChildren().length. Thus, after clicking on the expandable nothing is displayed, this is a weird behavior for the end-user.
      */
     @Override
-    public Object[] getChildren(Object parentElement_p) {
-      Object[] children = super.getChildren(parentElement_p);
+    public Object[] getChildren(Object parentElement) {
+      Object[] children = super.getChildren(parentElement);
       // Special behavior for ViewpointItems: don't return RepresentationDescriptionItems which contain no diagram.
-      if (parentElement_p instanceof ViewpointItem) {
+      if (parentElement instanceof ViewpointItem) {
         ArrayList<Object> selectedChildren = new ArrayList<Object>(0);
         // Only RepresentationDescriptionItem with children are considered.
         for (Object child : children) {
@@ -145,8 +144,8 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    */
   @Override
   @SuppressWarnings("rawtypes")
-  public Object getAdapter(Class clazz_p) {
-    if (SaveablesProvider.class == clazz_p) {
+  public Object getAdapter(Class clazz) {
+    if (SaveablesProvider.class == clazz) {
       return _saveablesProvider;
     }
     return null;
@@ -191,41 +190,41 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getParent(java.lang.Object)
    */
   @Override
-  public Object getParent(Object element_p) {
+  public Object getParent(Object element) {
     Object parent = null;
-    if (element_p instanceof IResource) {
+    if (element instanceof IResource) {
       // Handle Eclipse resources parenting.
-      IResource resource = (IResource) element_p;
+      IResource resource = (IResource) element;
       parent = resource.getParent();
 
-    } else if (element_p instanceof DAnalysisSession) {
+    } else if (element instanceof DAnalysisSession) {
       // Handle Session even if a session is not displayed because saveables are based on sessions.
-      parent = SessionHelper.getFirstAnalysisFile((DAnalysisSession) element_p);
+      parent = SessionHelper.getFirstAnalysisFile((DAnalysisSession) element);
 
-    } else if (element_p instanceof DSemanticDecorator) {
+    } else if (element instanceof DSemanticDecorator) {
       // Handle diagram parenting.
-      DSemanticDecorator representation = (DSemanticDecorator) element_p;
+      DSemanticDecorator representation = (DSemanticDecorator) element;
       parent = representation.getTarget();
 
-    } else if (CapellaResourceHelper.isCapellaResource(element_p)) {
+    } else if (CapellaResourceHelper.isCapellaResource(element)) {
       // Handle resource parenting.
       // Get the session for this semantic resource.
-      Session session = SessionManager.INSTANCE.getSession((Resource) element_p);
+      Session session = SessionManager.INSTANCE.getSession((Resource) element);
       // Parent for a semantic resource is the parent of its session as the session node is no longer displayed in the viewer.
       parent = getParent(session);
 
-    } else if ((element_p instanceof EObject) && (((EObject) element_p).eContainer() instanceof Component)) {
-      EObject element = (EObject) element_p;
-      Component component = (Component) element.eContainer();
+    } else if ((element instanceof EObject) && (((EObject) element).eContainer() instanceof Component)) {
+      EObject eObject = (EObject) element;
+      Component component = (Component) eObject.eContainer();
       if (isImplicitView(component)) {
         if (component.eContainingFeature().equals(CsPackage.Literals.PART__OWNED_ABSTRACT_TYPE)) {
           return getParent(component);
         }
       }
-      parent = _sessionContentProvider.getParent(element_p);
+      parent = _sessionContentProvider.getParent(element);
     } else {
       // Handle other cases.
-      parent = _sessionContentProvider.getParent(element_p);
+      parent = _sessionContentProvider.getParent(element);
     }
     return parent;
   }
@@ -234,39 +233,39 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getElements(java.lang.Object)
    */
   @Override
-  public Object[] getElements(Object inputElement_p) {
-    return getChildren(inputElement_p);
+  public Object[] getElements(Object inputElement) {
+    return getChildren(inputElement);
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#hasChildren(java.lang.Object)
    */
   @Override
-  public boolean hasChildren(Object element_p) {
-    return getChildren(element_p).length > 0;
+  public boolean hasChildren(Object element) {
+    return getChildren(element).length > 0;
   }
 
   /**
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#getChildren(java.lang.Object)
    */
   @Override
-  public Object[] getChildren(Object element_p) {
+  public Object[] getChildren(Object element) {
     Object[] result = NO_CHILD;
     try {
 
-      if (element_p instanceof IProject) {
+      if (element instanceof IProject) {
         // IProjects are top level elements in the tree.
-        result = getIProjectChildren((IProject) element_p);
+        result = getIProjectChildren((IProject) element);
 
-      } else if (element_p instanceof IFile) {
+      } else if (element instanceof IFile) {
         // Handle AIRD file case.
-        IFile file = (IFile) element_p;
+        IFile file = (IFile) element;
         if (CapellaResourceHelper.AIRD_FILE_EXTENSION.equals(file.getFileExtension())) {
           result = getAirdFileChildren(file);
         }
 
-      } else if (element_p instanceof Session) {
-        Session session = (Session) element_p;
+      } else if (element instanceof Session) {
+        Session session = (Session) element;
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
         IModel referencingModel = ILibraryManager.INSTANCE.getModel(session.getTransactionalEditingDomain());
@@ -302,7 +301,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           }
 
           // for any other children from sirius, we add it to the end
-          for (Object child : _sessionContentProvider.getChildren(element_p)) {
+          for (Object child : _sessionContentProvider.getChildren(element)) {
 
             if ((child instanceof Resource) && !resourcesDone.contains(child) && (!((Resource) child).getContents().isEmpty())) {
 
@@ -336,30 +335,30 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           return resultList.toArray(new Object[0]);
 
         }
-        return _sessionContentProvider.getChildren(element_p);
+        return _sessionContentProvider.getChildren(element);
 
-      } else if ((element_p instanceof Part) && isImplicitView(element_p) && (((Part) element_p).getOwnedAbstractType() != null)) {
+      } else if ((element instanceof Part) && isImplicitView(element) && (((Part) element).getOwnedAbstractType() != null)) {
         ArrayList<Object> merged = new ArrayList<Object>();
-        merged.addAll(Arrays.asList(_sessionContentProvider.getChildren(element_p)));
-        merged.addAll(Arrays.asList(getChildren(((Part) element_p).getOwnedAbstractType())));
-        merged.remove(((Part) element_p).getOwnedAbstractType());
+        merged.addAll(Arrays.asList(_sessionContentProvider.getChildren(element)));
+        merged.addAll(Arrays.asList(getChildren(((Part) element).getOwnedAbstractType())));
+        merged.remove(((Part) element).getOwnedAbstractType());
         return merged.toArray();
 
       } else {
         // Other cases are delegated to the session content provider.
-        result = _sessionContentProvider.getChildren(element_p);
+        result = _sessionContentProvider.getChildren(element);
       }
     } catch (Exception e) {
-      Logger.getLogger(IReportManagerDefaultComponents.UI).error("Error when retrieving children of " + element_p, e); //$NON-NLS-1$
+      Logger.getLogger(IReportManagerDefaultComponents.UI).error("Error when retrieving children of " + element, e); //$NON-NLS-1$
     }
     return result;
   }
 
   /**
-   * @param part_p
+   * @param part
    * @return
    */
-  protected boolean isImplicitView(Object part_p) {
+  protected boolean isImplicitView(Object part) {
     boolean explicit = AbstractPreferencesInitializer.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_PART_EXPLICIT_VIEW, true);
     return !explicit;
   }
@@ -374,12 +373,12 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
   }
 
   /**
-   * @param contentChild_p
+   * @param contentChild
    * @return
    */
-  private boolean isCapellaProjectDisplayed(EObject contentChild_p) {
-    if (contentChild_p instanceof Project) {
-      return AbstractPreferencesInitializer.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, contentChild_p);
+  private boolean isCapellaProjectDisplayed(EObject contentChild) {
+    if (contentChild instanceof Project) {
+      return AbstractPreferencesInitializer.getBoolean(ICapellaNavigatorPreferences.PREFERENCE_SHOW_CAPELLA_PROJECT_CONCEPT, contentChild);
 
     }
     return isCapellaProjectDisplayed();
@@ -387,12 +386,12 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
   /**
    * Get aird file children.
-   * @param file_p
+   * @param file
    * @return
    */
-  protected Object[] getAirdFileChildren(IFile file_p) {
+  protected Object[] getAirdFileChildren(IFile file) {
     Object[] result = NO_CHILD;
-    Session session = SessionHelper.getSession(file_p);
+    Session session = SessionHelper.getSession(file);
 
     // We got the session, let' get its children except the semantic resource, because we skip the Session item in the tree.
     if (null != session) {
@@ -431,20 +430,20 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
   /**
    * Get the children of given {@link IProject}.
-   * @param project_p
+   * @param project
    * @return a not <code>null</code> array is returned.
    */
-  protected Object[] getIProjectChildren(IProject project_p) {
+  protected Object[] getIProjectChildren(IProject project) {
     Object[] result = NO_CHILD;
     // Needed to make the Filter Tree operational.
     try {
-      if (project_p.isOpen()) {
-        result = project_p.members();
+      if (project.isOpen()) {
+        result = project.members();
       }
-    } catch (CoreException exception_p) {
+    } catch (CoreException exception) {
       StringBuilder loggerMessage = new StringBuilder("CapellaNavigatorContentProvider.getChildren(..) _ "); //$NON-NLS-1$
-      loggerMessage.append(exception_p.getMessage());
-      __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception_p);
+      loggerMessage.append(exception.getMessage());
+      __logger.warn(new EmbeddedMessage(loggerMessage.toString(), IReportManagerDefaultComponents.UI), exception);
     }
     return result;
   }
@@ -470,11 +469,11 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @see org.eclipse.core.resources.IResourceChangeListener#resourceChanged(org.eclipse.core.resources.IResourceChangeEvent)
    */
   @Override
-  public void resourceChanged(IResourceChangeEvent event_p) {
-    switch (event_p.getType()) {
+  public void resourceChanged(IResourceChangeEvent event) {
+    switch (event.getType()) {
       case IResourceChangeEvent.PRE_DELETE: {
-        if (null != event_p.getResource()) {
-          IProject project = (IProject) event_p.getResource();
+        if (null != event.getResource()) {
+          IProject project = (IProject) event.getResource();
           // We are not called in the UI thread. The code below handles that case.
           Object[] children = getChildren(project);
           for (Object object : children) {
@@ -498,7 +497,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
    * @see org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider#notifyChanged(org.eclipse.emf.common.notify.Notification)
    */
   @Override
-  public void notifyChanged(Notification notification_p) {
+  public void notifyChanged(Notification notification) {
     // Precondition.
     // If notifications are disabled, don't do anything here.
     if (!_allowContentNotifications) {
@@ -506,14 +505,14 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
     }
     // At the moment representation notifications are ignored to avoid massive UI refreshes.
     // Keep only representation notifications with DSemanticDiagram as notifier to correctly refresh tree items when a diagram is renamed.
-    Object notifier = notification_p.getNotifier();
+    Object notifier = notification.getNotifier();
     boolean shouldNotify = true;
     if ((notifier instanceof DRepresentation) && !(notifier instanceof DSemanticDiagram)) {
       shouldNotify = false;
     }
 
     if (shouldNotify) {
-      Notification notification = notification_p;
+      Notification localNotification = notification;
 
       if (notifier instanceof EObject) {
         TransactionalEditingDomain domain = TransactionHelper.getEditingDomain((EObject) notifier);
@@ -530,7 +529,7 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
           if (sessionResource != null) {
             IFile file = EcoreUtil2.getFile(session.getSessionResource());
             if (file != null) {
-              notification = new ViewerNotification(notification, file);
+              localNotification = new ViewerNotification(localNotification, file);
             }
           }
         }
@@ -538,17 +537,17 @@ public class CapellaNavigatorContentProvider extends GroupedAdapterFactoryConten
 
       if ((notifier instanceof Project) && !isCapellaProjectDisplayed()) {
         // Capella Project is not refresh, forward the notification on Capella Project parent.
-        notification = new ViewerNotification(notification, ((EObject) notifier).eContainer());
+        localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
       if (((notifier instanceof Component) && (((EObject) notifier).eContainer() instanceof Part)) && isImplicitView(notifier)) {
         // Capella Project is not refresh, forward the notification on parent part.
-        notification = new ViewerNotification(notification, ((EObject) notifier).eContainer());
+        localNotification = new ViewerNotification(localNotification, ((EObject) notifier).eContainer());
       }
 
-      super.notifyChanged(notification);
+      super.notifyChanged(localNotification);
 
       // Search for additional updates, indeed elements that reference an element, whose name changed, might be refreshed too.
-      if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(notification.getFeature())) {
+      if (ModellingcorePackage.Literals.ABSTRACT_NAMED_ELEMENT__NAME.equals(localNotification.getFeature())) {
         SemanticEditingDomain editingDomain = (SemanticEditingDomain) TransactionHelper.getEditingDomain((EObject) notifier);
         if (null != editingDomain) {
           // Get the cross referencer.

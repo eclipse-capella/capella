@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,11 +65,11 @@ public class BusinessQueriesProvider {
   /**
 	 * 
 	 */
-  public IBusinessQuery getContribution(EClass cls_p, EStructuralFeature feature_p) {
+  public IBusinessQuery getContribution(EClass cls, EStructuralFeature feature) {
     List<IBusinessQuery> lst = getAllContributions();
     for (IBusinessQuery contrib : lst) {
       if (contrib.getEStructuralFeatures() != null) {
-        if (cls_p.equals(contrib.getEClass()) && contrib.getEStructuralFeatures().contains(feature_p)) {
+        if (cls.equals(contrib.getEClass()) && contrib.getEStructuralFeatures().contains(feature)) {
           return contrib;
         }
       }
