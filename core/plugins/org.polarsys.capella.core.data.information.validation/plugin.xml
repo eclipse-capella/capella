@@ -415,9 +415,9 @@ If an Association is on SystemArchitecture layer. It should not associate with a
                </message>
                <description>
                   <a>Checks whether the ExchangeItemElements of an ExchangeItem are consistent with applied exchange mechanism:</a>
- - for an Exchange Item with a none Operation Exchange Mechanisme, the inner Exchange Item Element shall NOT have parameter direction set
+ - for an Exchange Item with anything but an Operation Exchange Mechanism, the inner Exchange Item Element shall NOT have a parameter direction set
   and 
- - in case of an Exchange Item Operation Exchange Mechanisme, all inner Exchanges Items Elements shall have parameter a direction set
+ - in case of an Exchange Item Operation Exchange Mechanism, all inner Exchanges Items Elements shall have a parameter direction set
  
                </description>
                <target class="ExchangeItemElement">
