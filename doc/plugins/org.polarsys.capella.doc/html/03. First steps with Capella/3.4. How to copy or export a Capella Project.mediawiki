@@ -1,0 +1,59 @@
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+{| border="1"
+|-
+| [[Image:Images/warning.png|34x34px]] 
+| Warning: The Capella User Manual is currently being refactored. This page might contain obsolete diagram look and feel / user interface screenshots / references to Melody Advance, the ancestor of Capella. 
+|}   
+
+= HOW TO COPY OR EXPORT A CAPELLA PROJECT =
+ 
+== COPYING A PROJECT ==
+ 
+It is possible to copy an existing Project. First, make sure the model(s) contained in the Project is(are) closed.
+ 
+Using the contextual menu on the Project, select &ldquo;Copy&rdquo;.
+ 
+[[Image:Images/3.4. How to copy or export a Capella Project_html_124dd150.png|336x243px]]
+ 
+Using the contextual menu on the Project Explorer, select &ldquo;Paste&rdquo;. A dialog requests a new name for the copied Project. It is possible at this stage to specify a location for the Project copy. By default, it will be copied in the current Workspace.
+ 
+[[Image:Images/3.4. How to copy or export a Capella Project_html_66c97782.png|336x176px]]
+ 
+[[Image:Images/3.4. How to copy or export a Capella Project_html_m3e0740fc.png|219x348px]]
+         
+{| border="1"
+|-
+| [[Image:Images/3.4. How to copy or export a Capella Project_html_723ed3f9.png|34x34px]] 
+| Having several copies of the same project in a given workspace or several copies of a same model in a given project is not recommended. 
+It is strongly recommended '''not''' to open simultaneously two versions the same model (through different Projects or Folders). 
+|}  
+
+== EXPORTING A Capella PROJECT ==
+ 
+Exporting a Project is the best way to package all the resources of a Model.
+ 
+Using the contextual menu from the Project Explorer, select &ldquo;Export&rdquo;.
+ 
+[[Image:Images/3.4. How to copy or export a Capella Project_html_5a54683d.png|385x447px]]
+ 
+A dialog opens. Select &ldquo;General / Archive File&rdquo;.
+ 
+[[Image:Images/3.4. How to copy or export a Capella Project_html_156e45ae.png|305x348px]]
+ 
+In the following dialog, give a name and a path to the Project archive and select all of its content.
+ 
+[[Image:Images/3.4. How to copy or export a Capella Project_html_m2db46078.png|554x481px]]
+ 
+Click on &ldquo;Finish&rdquo;. The archive is created on the file system.
+ 
+[[Image:Images/3.4. How to copy or export a Capella Project_html_m2e64895e.png|395x16px]]

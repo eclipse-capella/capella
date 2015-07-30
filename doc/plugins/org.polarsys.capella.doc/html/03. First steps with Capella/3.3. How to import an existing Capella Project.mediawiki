@@ -1,0 +1,48 @@
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+{| border="1"
+|-
+| [[Image:Images/warning.png|34x34px]] 
+| Warning: The Capella User Manual is currently being refactored. This page might contain obsolete diagram look and feel / user interface screenshots / references to Melody Advance, the ancestor of Capella.
+|}
+   
+= HOW TO IMPORT AN EXISTING PROJECT IN A WORKSPACE ? =
+ 
+From the Capella Project Explorer, select Import&hellip;
+
+[[Image:Images/3.3. How to import an existing Capella Project_html_m618030b9.png|234x218px]]
+
+In the dialog box, select &ldquo;Existing Projects into Workspace&rdquo;.
+[[Image:Images/3.3. How to import an existing Capella Project_html_m2c1e06a6.png|240x268px]]
+ 
+Then, &ldquo;select archive file&rdquo; if the project you want to import is a zip, or &ldquo;root directory&rdquo; if it is not.
+ 
+[[Image:Images/3.3. How to import an existing Capella Project_html_m43239c7f.png|286x241px]]
+ 
+When choosing &ldquo;Select archive file&rdquo;, the following dialog box opens:
+ 
+[[Image:Images/3.3. How to import an existing Capella Project_html_78863ecb.png|292x201px]]
+ 
+The archive of the Project will be extracted inside the Workspace (i.e. the physical location of the imported will be the same as the location of the Workspace).
+ 
+When choosing &ldquo;Select Root Directory&rdquo;, the following dialog box opens:
+ 
+[[Image:Images/3.3. How to import an existing Capella Project_html_1e9ba319.png|300x259px]]
+ 
+For each project in the selected directory, one can select whether the Project should be copied within the Workspace or not.
+ 
+When choosing the copy option:
+ 
+* The original Project will be duplicated in the file system
+* Modifications will be applied on the copy inside the Workspace and not on the original Project files (see documentation about relationships between Projects and Workspaces).
+ 
+Click on Finish. The selected projects are opened in the current workspace. 
