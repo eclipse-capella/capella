@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#UI">
+<topic label="Dashboard">
+	<topic href="html/04. User Interface/4.01. Capella Perspective.html" label="Capella Perspective Overview"></topic>
+	<topic href="html/04. User Interface/4.02. Tips and Tricks.html" label="Workbench Manipulation - Tips And Tricks">
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#REARRANGING_PARTS" label="Rearranging Parts"></topic>
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#MAXIMIZING_AND_MINIMIZING_PARTS" label="Maximizing And Minimizing Parts"></topic>
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#VIEW_MANIPULATIONS" label="View Manipulations"></topic>
+		<topic href="html/04. User Interface/4.02. Tips and Tricks.html#PERSPECTIVE_MANIPULATION" label="Perspective Manipulation"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.03. Activity Browser.html" label="Capella Overview / Activity Browser"></topic>
+	<topic href="html/04. User Interface/4.04. Project Explorer.html" label="Capella Project Explorer">
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#OPENING.2C_VISUALIZING_AND_CLOSING_A_MODEL" label="Opening, Visualizing And Closing A Model"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#CUSTOMIZING_THE_CONTENT_OF_THE_PROJECT_EXPLORER" label="Customizing The Content Of The Project Explorer"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#COMMANDS_OF_THE_CONTEXTUAL_MENU" label="Commands Of The Contextual Menu"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#SYNCHRONIZATION_WITH_OTHER_VIEWS" label="Synchronization With Other Views"></topic>
+		<topic href="html/04. User Interface/4.04. Project Explorer.html#SEARCH_FIELD" label="Search Field"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.05. Diagram Editor.html" label="Capella Diagram Editor">
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#INTRODUCTION" label="Introduction"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#DIAGRAM_PALETTES" label="Diagram Palettes"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#DIAGRAM_TOOLBAR" label="Diagram Toolbar"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#DIAGRAM_ELEMENT_TOOLBAR" label="Diagram Element Toolbar"></topic>
+		<topic href="html/04. User Interface/4.05. Diagram Editor.html#MATRICES" label="Matrices"></topic>
+	</topic>
+	<topic href="html/04. User Interface/4.08. Information View.html" label="Information View"></topic>
+	<topic href="html/04. User Interface/4.09. Outline.html" label="Outline View"></topic>
+</topic>
+</toc>

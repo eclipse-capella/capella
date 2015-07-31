@@ -1,0 +1,81 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+org.polarsys.capella.core.dashboard.doc/html/*/Images
+
+4.01. Capella Perspective_html_m226282b1.png
+4.02. Tips and Tricks_html_22ef5f2.png
+4.02. Tips and Tricks_html_29213549.png
+4.02. Tips and Tricks_html_3297b071.png
+4.02. Tips and Tricks_html_3c78e109.png
+4.02. Tips and Tricks_html_52c4b770.png
+4.02. Tips and Tricks_html_72049881.png
+4.02. Tips and Tricks_html_752d5868.png
+4.02. Tips and Tricks_html_m194516d0.png
+4.02. Tips and Tricks_html_m24d0f72a.png
+4.02. Tips and Tricks_html_m32c62d15.png
+4.02. Tips and Tricks_html_m4752b235.png
+4.02. Tips and Tricks_html_m4a1c7e6.png
+4.02. Tips and Tricks_html_m4abcd89a.png
+4.02. Tips and Tricks_html_m50cb0206.png
+4.02. Tips and Tricks_html_m51be7e90.png
+4.02. Tips and Tricks_html_m52904c17.png
+4.02. Tips and Tricks_html_m7ecbe661.png
+4.03. Activity Browser_html_1e4d9238.png
+4.03. Activity Browser_html_20069444.png
+4.03. Activity Browser_html_2a49622d.png
+4.03. Activity Browser_html_3c78e109.png
+4.03. Activity Browser_html_6ba230e7.png
+4.03. Activity Browser_html_m66708e1c.png
+4.03. Activity Browser_html_m773def8a.png
+4.04. Project Explorer_html_116eb088.png
+4.04. Project Explorer_html_14f2f514.png
+4.04. Project Explorer_html_29fa7af3.png
+4.04. Project Explorer_html_2a59bdef.png
+4.04. Project Explorer_html_301b63e9.png
+4.04. Project Explorer_html_3a7d651e.png
+4.04. Project Explorer_html_3c78e109.png
+4.04. Project Explorer_html_40cc432b.png
+4.04. Project Explorer_html_5ec4b59f.png
+4.04. Project Explorer_html_632d88ac.png
+4.04. Project Explorer_html_dd6dd4d.png
+4.04. Project Explorer_html_eb48749.png
+4.04. Project Explorer_html_m2437a528.png
+4.04. Project Explorer_html_m2bcc91e2.png
+4.04. Project Explorer_html_m3aa67aa3.png
+4.04. Project Explorer_html_m50c8ab23.png
+4.04. Project Explorer_html_m5da49805.png
+4.04. Project Explorer_html_m6179049.png
+4.05. Diagram Editor_html_39791356.png
+4.05. Diagram Editor_html_3c78e109.png
+4.05. Diagram Editor_html_507951c5.png
+4.05. Diagram Editor_html_723ed3f9.png
+4.05. Diagram Editor_html_a4de74b.png
+4.05. Diagram Editor_html_m1ec848c1.png
+4.05. Diagram Editor_html_m1f9f7ba3.png
+4.05. Diagram Editor_html_m2017f59a.png
+4.05. Diagram Editor_html_m35738deb.png
+4.05. Diagram Editor_html_m4ecd8e82.png
+4.05. Diagram Editor_html_m5de5d199.png
+4.05. Diagram Editor_html_m61b99006.png
+4.05. Diagram Editor_html_m77e9f963.png
+4.05. Diagram Editor_html_mac1e5e8.png
+4.05. Diagram Editor_html_3a2f0e04.jpg
+4.05. Diagram Editor_html_m7c4f8528.jpg
+
+4.08. Information View_html_219f74e.png
+4.08. Information View_html_232a7c9e.png
+4.08. Information View_html_2ca1937.png
+4.08. Information View_html_3a378b57.png
+4.08. Information View_html_3c78e109.png
+4.08. Information View_html_3f913b29.png
+4.08. Information View_html_6b21981f.png
+4.08. Information View_html_m12fc73d3.png
+4.08. Information View_html_m50e2c89c.png
+4.09. Outline_html_723ed3f9.png
+4.09. Outline_html_m69cb5c97.png
+
+warning.png

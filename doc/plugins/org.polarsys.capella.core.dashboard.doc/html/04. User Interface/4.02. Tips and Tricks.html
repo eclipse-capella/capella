@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+	href="PLUGINS_ROOT/org.polarsys.capella.doc/html/styles.css" media="all" />
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td><img height="34" width="34" border="0"
+				src="Images/warning.png" /></td>
+			<td>Warning: The Capella User Manual is currently being
+				refactored. This page might contain obsolete diagram look and feel /
+				user interface screenshots / references to Melody Advance, the
+				ancestor of Capella.</td>
+		</tr>
+	</table>
+	<h1 id="WORKBENCH_MANIPULATION_.26ndash.3B_TIPS_AND_TRICKS">WORKBENCH
+		MANIPULATION &ndash; TIPS AND TRICKS</h1>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png" /></td>
+			<td>Through the normal course of using the workbench, views will
+				be opened, moved, resized, and closed. The perspective can be
+				restored to its original state with the <b>Window &gt; Reset
+					Perspective</b> menu operation.
+				<p>These definitions are an extract from Eclipse&rsquo;s own
+					embedded documentation: Workbench User Guide / Concepts.</p>
+			</td>
+		</tr>
+	</table>
+	<h2 id="REARRANGING_PARTS">REARRANGING PARTS</h2>
+	<p>The workbench allows for the creation of two or more sets of
+		editors in the editor area. The editor area can also be resized but
+		views cannot be dragged into the editor area.</p>
+	<p>By default, editors are stacked in the editor area, but it is
+		possible to tile them side-by-side in order to view different editor
+		simultaneously.</p>
+	<p>The layout behaviour is slightly different for views: a view
+		might appear by itself, or stacked with other view in a tabbed
+		notebook. Several tabbed notebooks can be arranged around the editor
+		area. The layout of a perspective can be changed by opening and
+		closing views and by docking them in different positions in the
+		workbench window.</p>
+	<p>Drop cursors indicate where it is possible to dock views or
+		editors in the workbench window. Several drop cursors may be displayed
+		when rearranging views or tiling editors. The following array shows
+		the drop cursor and their corresponding moves for views.</p>
+	<table border="1">
+		<tr>
+			<td><b>Drop Cursor</b></td>
+			<td><b>Where the view will be moved to</b></td>
+		</tr>
+		<tr>
+			<td><img height="19" width="16" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_m52904c17.png" /></td>
+			<td>Dock above: The view is docked above the view underneath the
+				cursor.</td>
+		</tr>
+		<tr>
+			<td><img height="19" width="19" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_m194516d0.png" /></td>
+			<td>Dock below: The view is docked below the view underneath.</td>
+		</tr>
+		<tr>
+			<td><img height="20" width="20" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_m32c62d15.png" /></td>
+			<td>Dock to the right: The view is docked to the right of the
+				view underneath the cursor.</td>
+		</tr>
+		<tr>
+			<td><img height="20" width="20" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_m24d0f72a.png" /></td>
+			<td>Dock to the left: The view is docked to the left of the view
+				underneath the cursor.</td>
+		</tr>
+		<tr>
+			<td><img height="20" width="20" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_752d5868.png" /></td>
+			<td>Stack: The view is docked as a Tab in the same pane as the
+				view underneath the cursor.</td>
+		</tr>
+		<tr>
+			<td><img height="21" width="21" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_3297b071.png" /></td>
+			<td>Restricted: You cannot dock the view in this area.</td>
+		</tr>
+		<tr>
+			<td><img height="19" width="19" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_m50cb0206.png" /></td>
+			<td>Detached: The view is detached from the workbench window and
+				is shown in its own separate window. (This behaviour is only
+				available for views)</td>
+		</tr>
+	</table>
+	<p>Editors and views can be moved in the same way with a simple
+		drag and drop :</p>
+	<ul>
+		<li>Click in the title bar of a part and drag the part across the
+			Workbench window</li>
+		<li>While still dragging the part, drop cursors appear indicating
+			the possibility to dock the part</li>
+		<li>Release the mouse button to dock the part.</li>
+	</ul>
+	<p>
+		<img height="166" width="344" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_m4a1c7e6.png" />
+	</p>
+	<p>
+		<img height="188" width="426" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_m7ecbe661.png" />
+	</p>
+	<p>
+		<br />
+	</p>
+	<h2 id="MAXIMIZING_AND_MINIMIZING_PARTS">MAXIMIZING AND MINIMIZING
+		PARTS</h2>
+	<p>
+		The workbench window basically consists in an <i>Editor Area</i>
+		(containing one or more stacks showing the open editors) surrounded by
+		one or more <i>View Stacks</i> (each containing one ore more views).
+		These various parts compete for valuable screen real-estate and
+		correctly managing the amount of screen given to each can greatly
+		enhance the productivity within the workbench.
+	</p>
+	<p>The two most common mechanisms for managing this issue are
+		&lsquo;minimize&rsquo; (i.e. make me use as little space as possible)
+		and &lsquo;maximise&rsquo; (i.e. give me as much space as possible).
+		Several ways are provided to access these operations:</p>
+	<ul>
+		<li>Using the minimize and maximize buttons provided on
+			stack&rsquo;s border: <img height="14" width="32" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_m4752b235.png" />
+		</li>
+		<li>Selecting the &lsquo;Minimize&rsquo; or
+			&lsquo;Maximize&rsquo; item on the contextual menu for a stack.</li>
+		<li>Double-clicking on a stack.</li>
+		<li>Using &lsquo;CTRL+M&rsquo;: this is a key binding for a
+			command that will toggle the currently active part between its
+			&lsquo;maximized&rsquo; and &lsquo;restored&rsquo; (i.e. normal)
+			states.</li>
+	</ul>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png" /></td>
+			<td>The behaviour for managing editor maximization operates on
+				the complete Editor Area, allowing for &rsquo;compare&rsquo;
+				workflows which require the ability to see both files in a split
+				editor area at the same time.</td>
+		</tr>
+	</table>
+	<p>
+		A minimized stack will be moved into the trim area at the edges of the
+		workbench window, creating a <i>Trim Stack</i>. View Stacks get
+		minimized into a trim representation that contains the icons for each
+		view in the stack. A minimized view can be quickly opened and closed
+		by clicking on the corresponding icon.
+	</p>
+	<p>
+		<img height="172" width="689" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_52c4b770.png" />
+	</p>
+	<p>The minimize behaviour for the Editor Area is somewhat
+		different: it get minimized into a trim stack containing only a
+		placeholder icon representing the entire editor area rather than icons
+		for each open editor (since in most cases all the icons would be the
+		same, making them useless).</p>
+	<p>
+		<img height="59" width="27" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_m4abcd89a.png" />
+	</p>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png" /></td>
+			<td>There are two ways to end up with a stack in the trim area:
+				<ul>
+					<li>Directly minimizing the stack</li>
+					<li>As the result of another stack being maximized</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+	<h2 id="VIEW_MANIPULATIONS">VIEW MANIPULATIONS</h2>
+	<p>
+		A view can be displayed by selecting it from the <b>Windows &gt;
+			Show View</b> menu. A perspective determines which views may be required
+		and displays these on the <b>Show View</b> sub-menu. Additional views
+		are available by choosing <b>Other&hellip;</b> at the bottom of the
+		sub-menu.
+	</p>
+	<p>Fast views are hidden views that can be quickly opened and
+		closed. They work like other views except they do not take up space in
+		the workbench window. There are three ways to create fast views:</p>
+	<ul>
+		<li>Drag and drop the view to the Fast View bar</li>
+		<li>Click the button <img height="22" width="25" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_29213549.png" />
+			located on the left side of the Fast View bar which will present a
+			selection of views and an <b>Other&hellip; </b>menu item
+		</li>
+		<li>Right-click a view title bar and select the <b>Fast View</b>
+			menu item.
+		</li>
+	</ul>
+	<p>
+		Fast views can be restored to their original location and removed from
+		the Fast View bar by deselecting the <b>Fast View</b> menu item in the
+		view button&rsquo;s contextual menu.
+	</p>
+	<table border="1">
+		<tr>
+			<td><img height="48" width="48" border="0"
+				src="Images/4.02.%20Tips%20and%20Tricks_html_3c78e109.png" /></td>
+			<td>Fast views and minimized views have the same behaviour.</td>
+		</tr>
+	</table>
+	<p>Views can also be detached from the workbench window. Detached
+		views are shown in a separate window with a smaller trim.</p>
+	<p>
+		They work like other views except they are always shown in front of
+		the workbench window. A new detached view can be created by dragging
+		any open view outside of the workbench window or by selecting <b>Detached</b>
+		from the menu that opens when you right-click the view&rsquo;s tab.
+		Reversing the previous manipulations allows to reattach views to the
+		workbench window.
+	</p>
+	<p>
+		<img height="183" width="459" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_72049881.png" />
+	</p>
+	<h2 id="PERSPECTIVE_MANIPULATION">PERSPECTIVE MANIPULATION</h2>
+	<p>
+		Additional perspectives can be opened using the <b>Open
+			Perspective</b> button on the shortcut bar on the right side of the
+		workbench window or the <b>Window &gt; Open Perspective</b> menu on
+		the menu bar. When the perspective opens, the title bar of the current
+		window changes in order to display the name of the perspective. In
+		addition an icon is added to the shortcut bar, allowing to quickly
+		switch between opened perspective by clicking the icons.
+	</p>
+	<p>
+		<img height="42" width="358" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_m51be7e90.png" />
+	</p>
+	<p>In the diagram editor, it is possible to go from one diagram to
+		the other using the Back Next buttons.</p>
+	<p>
+		<img height="276" width="689" border="0"
+			src="Images/4.02.%20Tips%20and%20Tricks_html_22ef5f2.png" /> <br />
+	</p>
+</body>
+</html>

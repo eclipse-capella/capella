@@ -1,0 +1,32 @@
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+{| border="1"
+|-
+| [[Image:Images/warning.png|34x34px]]
+| Warning: The Capella User Manual is currently being refactored. This page might contain obsolete diagram look and feel / user interface screenshots / references to Melody Advance, the ancestor of Capella.
+|}  
+
+= OUTLINE VIEW =
+ 
+The Outline view (not displayed by default) enables to see the focus of the current diagram view compared to the entire diagram, when this one is too big to fit in the diagram view window.
+
+[[Image:Images/4.09.%20Outline_html_m69cb5c97.png|606x361px]]
+
+Moving the selected area in the Outline scrolls the diagram Editor accordingly.        
+
+{| border="1"
+|-
+| [[Image:Images/4.09.%20Outline_html_723ed3f9.png|34x34px]]
+| When experimenting performance issues with big models and big diagrams, try closing the Outline. Manipulating elements in the Diagram Editor often becomes smoother.
+|}  
+
+<br>
