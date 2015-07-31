@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="Replicable Element (REC-RPL)" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#contribution"> 
+<topic label="Replicable Element (REC-RPL)">
+	<topic href="html/08. Replicable Element (REC-RPL)/8.1. Introduction.html" label="Introduction">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.1. Introduction.html#DEFINITIONS" label="Definitions"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.1. Introduction.html#EXAMPLES" label="Examples"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html" label="Basic REC-RPL Use Case">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#CREATION_OF_A_REC" label="Creation Of A REC"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#INSTANTIATION_OF_A_REC" label="Instantiation Of A REC"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.2. Basic Use Case.html#COPY-PASTE_LAYOUT" label="Copy-Paste Layout"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html" label="Updates Between REC And RPL">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#UPDATE_OF_A_REC_FROM_ITS_SOURCE" label="Update Of A REC From Its Source"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#UPDATE_OF_A_RPL_FROM_ITS_REC" label="Update Of A RPL From Its REC"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.3. Update REC-RPL.html#UPDATE_OF_A_REC_FROM_ITS_RPL" label="Update Of A REC From Its RPL"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html" label="Deletion Of RPL">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html#DELETE_RPL_AND_RELATED_MODEL_ELEMENTS" label="Delete RPL And Related Model Elements"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.4. RPL Deletion.html#DELETE_RPL_AND_PRESERVE_RELATED_MODEL_ELEMENTS" label="Delete RPL And Preserve Related Model Elements"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.5. RPL Validation.html" label="Validation Of RPL">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.5. RPL Validation.html#COMPLIANCY_OF_RPL" label="Compliancy Of RPL"></topic>
+	</topic>
+	<topic href="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features.html" label="REC-RPL Advanced Features">
+		<topic href="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features.html#MANAGEMENT_OF_COMPOSITION_REC-RPL" label="Management Of Composition REC-RPL"></topic>
+		<topic href="html/08. Replicable Element (REC-RPL)/8.6. Advanced Features.html#Promotion_of_a_REC_to_a_library" label="Promotion of a REC to a library"></topic>
+	</topic>
+</topic>
+</toc>

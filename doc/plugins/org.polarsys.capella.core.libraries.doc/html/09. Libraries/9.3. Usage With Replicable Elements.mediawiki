@@ -1,0 +1,84 @@
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+{| border="1"
+|-
+| [[Image:Images/warning.png|34x34px]] 
+| Warning: The Capella User Manual is currently being refactored. This page might contain obsolete diagram look and feel / user interface screenshots / references to Melody Advance, the ancestor of Capella. 
+|}  
+
+= USAGE WITH REPLICABLE ELEMENTS =
+ 
+== CONCEPTS ==
+ 
+Create a library
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_mf56c06f.png|446x196px]]
+ 
+In the Logical Architecture, create some elements and create a REC from them.
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4777aa1e.png|435x149px]]
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7bfa792f.png|627x266px]]
+ 
+The dialog display the content of the REC
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_488a3e08.png|627x732px]]
+ 
+Notice the message at the end of the dialog : Functional Exchange is associated to some Exchange Items defined in the library:
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7b9ca0f3.png|215x121px]]
+ 
+After creation, the REC is available In the library.
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_2fad9421.png|235x95px]]
+ 
+Ensure your library is saved.
+ 
+<br>
+ 
+Create a new Capella Project and add reference to this library
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_53d980d6.png|627x101px]]
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_70371d33.png|627x42px]]
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_m756e5c5c.png|236x200px]]
+ 
+In a Logical Architecture Blank diagram, instantiate a new RPL
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_m5ac174b.png|627x83px]]
+ 
+<br>
+ 
+In the dialog, select the REC located in the referenced library:
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_7e54700a.png|627x41px]]
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4e22fc21.png|527x280px]]
+ 
+<br>
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_5bc6f.png|627x737px]]
+ 
+<br>
+ 
+Display all elements of the RPL in the diagram
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4c273205.png|443x139px]]
+ 
+FE1 from the RPL is linked to Exchange Items located in the library.
+ 
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_4579c80.png|857x176px]]
+ 
+<br>
+  
+[[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_m2f4cc7f5.jpg|92x92px]][[Image:Images/9.3.%20Usage%20With%20Replicable%20Elements_html_733c5d5d.jpg|92x92px]]

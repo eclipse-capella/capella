@@ -1,0 +1,69 @@
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+{| border="1"
+|-
+| [[Image:Images/warning.png|34x34px]]
+| Warning: The Capella User Manual is currently being refactored. This page might contain obsolete diagram look and feel / user interface screenshots / references to Melody Advance, the ancestor of Capella.
+|}  
+
+= CREATION OF FUNCTIONAL CHAINS AND PHYSICAL PATHS =
+ 
+== FUNCTIONAL CHAINS AND OPERATIONAL PROCESSES ==
+ 
+On an existing dataflow diagram, select all the Functional Exchanges contributing to your Functional Chain
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3267dbc1.png|1038x382px]]
+
+Using the contextual menu on this multiple selection, click on Functional Chain / Create a Functional Chain
+A new Functional Chain is created and displayed.
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_3e1821f9.png|1050x218px]]
+
+If you want to edit a Functional Chain, you have to create a Functional Chain Description diagram. You can create this diagram from a Navigate command in the contextual menu from a Functional Chain.
+
+A new diagram is created, representing your Functional Chain. What you see on this diagram are not Functions and Exchanges but Functional Chain Involvement elements. This is a essentially a &quot;working&quot; diagram.
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_cd38218.png|743x121px]]
+
+On the following diagram, the tools of the palette have been used to include a new Function and new Exchanges so that we have a branch.
+
+* The &ldquo;Involve Function&rdquo; tool simply adds a new element representing a Function. It is the responsibility of the user to add the necessary Functional Exchanges in order to form a complete Functional Chain.
+* The &ldquo;Involve Functional Exchange&rdquo; allows selecting a possible (already existing) Exchange between the selected source and target elements representing Functions.
+* The &ldquo;Involve Functional Chain&rdquo; tool adds a new element representing a Functional Chain. It is the responsibility of the user to add the necessary Functional Exchanges in order to form a complete Functional Chain.
+* The &ldquo;Involve Functional Exchange and Target Function&rdquo; is contextual to the selected source Function element: it allows creating at the same time both the elements representing an outgoing Exchange and the Target Function.
+* The &ldquo;Involve Functional Exchange and Target Functional Chain&rdquo; is contextual to the selected source Function element: it allows creating at the same time both the elements representing an outgoing Exchange and the Target Functional Chain.
+ 
+<br>
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m447a782f.png|146x259px]]
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_mdab6cc9.png|938x248px]]
+
+On the dataflow diagram, the result is the following.
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_6efdb628.png|1040x247px]]
+
+<br>
+
+== PHYSICAL PATHS ==
+ 
+The same strategy applies for Physical Paths on System Architecture Blank and Logical Architecture Blank and Physical Architecture Blank diagrams.
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_m5845eb00.png|843x392px]]
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_52c61c52.png|827x236px]]
+
+Corresponding Physical Path Description diagram.
+
+[[Image:Images/5.5.%20Creation%20of%20Functional%20Chains%20and%20Physical%20Paths_html_32613eaf.png|645x106px]]
+
+<br>  
