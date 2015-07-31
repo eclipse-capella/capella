@@ -1,0 +1,38 @@
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+
+{| border="1"
+|-
+| [[Image:Images/warning.png|34x34px]]
+| Warning: The Capella User Manual is currently being refactored. This page might contain obsolete diagram look and feel / user interface screenshots / references to Melody Advance, the ancestor of Capella.
+|}  
+
+= CHANGE RECORDER VIEW =
+         
+{| border="1"
+|-
+| [[Image:Images/4.10.%20Change%20Recorder%20View_html_723ed3f9.png|34x34px]]
+| The Change Recorder View is essentially a debug tool. The recording configuration is defined in the Capella User Preferences
+|}  
+
+By default, this view is not displayed in the Capella perspective. Its purpose is to display the log of the changes on a model, when the logger has been activated in the Preferences.
+
+To display this view, click on Window / Show View / Capella Change Recorder.
+
+[[Image:Images/4.10.%20Change%20Recorder%20View_html_m5f59ba78.png|553x238px]]
+
+To open a log file, click on the dedicated button on the right side of the view:
+
+[[Image:Images/4.10.%20Change%20Recorder%20View_html_55cbf3ec.png|149x68px]]
+
+The recorded changes are displayed in the view.
+
+[[Image:Images/4.10.%20Change%20Recorder%20View_html_7013e309.png|553x210px]]  
