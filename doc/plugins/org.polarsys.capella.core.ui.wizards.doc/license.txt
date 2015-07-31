@@ -1,0 +1,80 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+org.polarsys.capella.core.ui.wizards.doc/html/*/Images
+
+7.1. Modeling accelerators_html_1a7918c9.png
+7.1. Modeling accelerators_html_1cf7543e.png
+7.1. Modeling accelerators_html_2dcaeafb.png
+7.1. Modeling accelerators_html_3a3b835f.png
+7.1. Modeling accelerators_html_5e22a0cd.png
+7.1. Modeling accelerators_html_5f97dea6.png
+7.1. Modeling accelerators_html_67e6a41c.png
+7.1. Modeling accelerators_html_77412d6b.png
+7.1. Modeling accelerators_html_a37b1aa.png
+7.1. Modeling accelerators_html_m34764e20.png
+7.1. Modeling accelerators_html_m437e70f8.png
+7.1. Modeling accelerators_html_m4ca6bbc5.png
+7.1. Modeling accelerators_html_m52977986.png
+7.1. Modeling accelerators_html_m6212ede3.png
+7.1. Modeling accelerators_html_m652c731a.png
+7.1. Modeling accelerators_html_m662553b3.png
+7.1. Modeling accelerators_html_m665442c6.png
+7.1. Modeling accelerators_html_m7eccf2be.png
+7.1. Modeling accelerators_html_md0f733b.png
+7.2. Contextual Allocations_html_3b72ac99.png
+7.2. Contextual Allocations_html_3fa439ce.png
+7.2. Contextual Allocations_html_m189f0de5.png
+7.2. Contextual Allocations_html_m481776f5.png
+7.3. Modeling Wizards_html_1052ecae.png
+7.3. Modeling Wizards_html_20372dd4.png
+7.3. Modeling Wizards_html_2a4469c8.png
+7.3. Modeling Wizards_html_2fe6c3a7.png
+7.3. Modeling Wizards_html_34b702bc.png
+7.3. Modeling Wizards_html_371dbcf8.png
+7.3. Modeling Wizards_html_3b8ac738.png
+7.3. Modeling Wizards_html_3c16a2da.png
+7.3. Modeling Wizards_html_3c78e109.png
+7.3. Modeling Wizards_html_3e5a6208.png
+7.3. Modeling Wizards_html_4f6cb139.png
+7.3. Modeling Wizards_html_52b2765f.png
+7.3. Modeling Wizards_html_5cde59bb.png
+7.3. Modeling Wizards_html_6b0bb32.png
+7.3. Modeling Wizards_html_70097a10.png
+7.3. Modeling Wizards_html_7cc837b4.png
+7.3. Modeling Wizards_html_86ec03b.png
+7.3. Modeling Wizards_html_d1af40e.png
+7.3. Modeling Wizards_html_m1460320e.png
+7.3. Modeling Wizards_html_m1bb276f1.png
+7.3. Modeling Wizards_html_m2823bc7.png
+7.3. Modeling Wizards_html_m32233f16.png
+7.3. Modeling Wizards_html_m32ab2f86.png
+7.3. Modeling Wizards_html_m417c4c64.png
+7.3. Modeling Wizards_html_m481de745.png
+7.3. Modeling Wizards_html_m6dc3155c.png
+7.3. Modeling Wizards_html_m7817c5f8.png
+7.3. Modeling Wizards_html_m7cfae2ea.png
+7.3. Modeling Wizards_html_m7ed31874.png
+7.3. Modeling Wizards_html_m904ea44.png
+7.3. Modeling Wizards_html_m95137e6.png
+7.3. Modeling Wizards_html_md5d81bf.png
+7.3. Modeling Wizards_html_mf319315.png
+7.4 Function Port and Exchange Item Allocation Wizard_html_5cde59bb.png
+7.4 Function Port and Exchange Item Allocation Wizard_html_d1af40e.png
+7.4 Function Port and Exchange Item Allocation Wizard_html_m7817c5f8.png
+7.4 Function Port and Exchange Item Allocation Wizard_html_m7cfae2ea.png
+7.4 Function Port and Exchange Item Allocation Wizard_html_md5d81bf.png
+7.5. Categories Management_html_63b85f83.png
+7.5. Categories Management_html_m1baf1be6.png
+7.5. Categories Management_html_m3bb20f50.png
+7.5. Categories Management_html_m40dbbf55.png
+7.5. Categories Management_html_m46cfd1d4.png
+7.5. Categories Management_html_m54efebb1.png
+7.5. Categories Management_html_m70b69cf1.png
+7.5. Categories Management_html_m799e9436.png
+7.5. Categories Management_html_mb71576b.png
+7.5. Categories Management_html_me1f6095.png
+warning.png

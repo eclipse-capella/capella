@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<toc label="User Interface" link_to="PLUGINS_ROOT/org.polarsys.capella.doc/toc.xml#UI">
+	<topic href="html/04. User Interface/4.07. Semantic Browser.html" label="Semantic Browser">
+		<topic href="html/04. User Interface/4.07. Semantic Browser.html#VIEW" label="View"></topic>
+		<topic href="html/04. User Interface/4.07. Semantic Browser.html#Display_OPTIONS" label="Display Options"></topic>
+		<topic href="html/04. User Interface/4.07. Semantic Browser.html#ACTIONS" label="Actions"></topic>
+	</topic>
+</toc>

@@ -1,0 +1,31 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+org.polarsys.capella.core.validation.doc/html/*/Images
+
+12.1. Model Validation_html_2ca1937.png
+12.1. Model Validation_html_3c9a54b9.png
+12.1. Model Validation_html_48b94bdc.png
+12.1. Model Validation_html_7e7d7622.png
+12.1. Model Validation_html_f42b8bc.png
+12.1. Model Validation_html_m1179e445.png
+12.1. Model Validation_html_m12fc73d3.png
+12.1. Model Validation_html_mf186e68.png
+
+12.2. Impact Analysis_html_26fcb91a.png
+12.2. Impact Analysis_html_597b3feb.png
+12.2. Impact Analysis_html_723ed3f9.png
+12.2. Impact Analysis_html_m69ba39ad.png
+
+12.3. Metrics Computation_html_5d121ae0.png
+12.4. Progress Monitoring_html_1366c180.png
+12.4. Progress Monitoring_html_4f09dd6.png
+12.4. Progress Monitoring_html_72c054c0.png
+12.4. Progress Monitoring_html_73c7c6df.png
+12.4. Progress Monitoring_html_27a38b50.jpg
+12.4. Progress Monitoring_html_34e72a1c.jpg
+
+warning.png
