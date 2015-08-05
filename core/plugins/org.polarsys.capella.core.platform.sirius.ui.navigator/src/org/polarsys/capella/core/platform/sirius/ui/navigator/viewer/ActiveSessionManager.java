@@ -1,0 +1,79 @@
+/*******************************************************************************
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *  
+ * Contributors:
+ *    Thales - initial API and implementation
+ *******************************************************************************/
+package org.polarsys.capella.core.platform.sirius.ui.navigator.viewer;
+
+import java.util.HashMap;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.polarsys.capella.common.platform.sirius.ted.SemanticEditingDomainFactory.SemanticEditingDomain;
+
+/**
+ * This class manages active sessions, mainly used to enable/disable notification when the session is active/closed.
+ */
+public class ActiveSessionManager {
+  HashMap<TransactionalEditingDomain, Boolean> _activeSessions = new HashMap<TransactionalEditingDomain, Boolean>();
+
+  private ActiveSessionManager() {
+  }
+
+  private static class SingletonHolder {
+    private static final ActiveSessionManager INSTANCE = new ActiveSessionManager();
+  }
+
+  public static ActiveSessionManager getInstance() {
+    return SingletonHolder.INSTANCE;
+  }
+
+  /**
+   * Disable content notifications.<br>
+   * Method {@link #notifyChanged(Notification)} will no longer do anything.
+   */
+  public void disableContentNotifications(SemanticEditingDomain editingDomain) {
+    _activeSessions.put(editingDomain, Boolean.FALSE);
+  }
+
+  public void disableContentNotifications() {
+    for (TransactionalEditingDomain key : _activeSessions.keySet()) {
+      _activeSessions.put(key, Boolean.FALSE);
+    }
+
+  }
+
+  /**
+   * Re-enable content notifications.<br>
+   * Method {@link #notifyChanged(Notification)} behaves as expected.
+   */
+  public void enableContentNotifications(SemanticEditingDomain editingDomain) {
+    _activeSessions.put(editingDomain, Boolean.TRUE);
+  }
+
+  public void enableContentNotifications() {
+    for (TransactionalEditingDomain key : _activeSessions.keySet()) {
+      _activeSessions.put(key, Boolean.TRUE);
+    }
+
+  }
+
+  /**
+   * Returns whether notifications are enabled for the given domain
+   */
+  public boolean isEnabledContentNotifications(TransactionalEditingDomain editingDomain) {
+    if (!_activeSessions.containsKey(editingDomain)) {
+      _activeSessions.put(editingDomain, Boolean.TRUE);
+    }
+    return _activeSessions.get(editingDomain);
+  }
+
+  public void remove(TransactionalEditingDomain editingDomain) {
+    _activeSessions.remove(editingDomain);
+  }
+}
