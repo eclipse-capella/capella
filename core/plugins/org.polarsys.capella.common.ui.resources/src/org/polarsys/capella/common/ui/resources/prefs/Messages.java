@@ -43,6 +43,9 @@ public class Messages extends NLS {
 
   public static String interModelIntegrity_PreventInterModelDependencyViolation_Title;
 
+  public static String ModeAndState_Group_Title;
+  public static String ModeAndState_MixedHierarchy_Title;
+
   static {
     // initialize resource bundle
     NLS.initializeMessages(BUNDLE_NAME, Messages.class);

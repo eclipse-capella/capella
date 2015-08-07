@@ -8,7 +8,7 @@
  * Contributors:
  *    Thales - initial API and implementation
  *******************************************************************************/
-package org.polarsys.capella.core.model.preferences;
+package org.polarsys.capella.core.model.helpers.listeners;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import org.polarsys.capella.core.data.information.Class;
 import org.polarsys.capella.core.data.information.InformationPackage;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.DataType;
-import org.polarsys.capella.core.model.helpers.listeners.CapellaModelDataListener;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 
 /**
  */
