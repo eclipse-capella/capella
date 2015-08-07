@@ -77,7 +77,9 @@ public class CapellaModelDataListenerForExchangeItemsAndCommunicationLinks exten
 
             @Override
             public void run() {
-              ExchangeItemElementExt.changeExchangeItemElementDirection(eie, ((ExchangeItem)eie.eContainer()).getExchangeMechanism());
+              if (eie.eContainer() != null)
+                ExchangeItemElementExt.changeExchangeItemElementDirection(eie,
+                    ((ExchangeItem) eie.eContainer()).getExchangeMechanism());
             }
 
           });
