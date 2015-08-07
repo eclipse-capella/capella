@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,6 +71,7 @@ public class CreateViewTask extends AbstractCommandTask {
 
   protected DSemanticDecorator containerView;
 
+  protected String outVariable;	
   /**
    * Create a new {@link CreateViewTask}.
    * @param extPackage the extended package.
@@ -80,12 +81,12 @@ public class CreateViewTask extends AbstractCommandTask {
    * @param createViewOp the create view operation
    * @param iRegistry the interpreter registry
    */
-  public CreateViewTask(EObject context_p, DSemanticDecorator containerView_p, EObject toCreate_p, String toolId_p) {
+  public CreateViewTask(EObject context_p, DSemanticDecorator containerView_p, EObject toCreate_p, String toolId_p, String outVariable) {
     context = context_p;
     toCreate = toCreate_p;
     containerView = containerView_p;
     diagram = (DSemanticDiagram) CapellaServices.getService().getDiagramContainer(containerView_p);
-
+    this.outVariable=outVariable;
     tool = getTool(diagram, toolId_p);
   }
 
@@ -308,7 +309,8 @@ public class CreateViewTask extends AbstractCommandTask {
     for (EObject element : getScope()) {
       DiagramElementMapping mapping = getBestMapping(element, containerMapping);
       if (mapping != null) {
-        createNode(element, mapping, (DragAndDropTarget) destinationContainer);
+        DDiagramElement view = createNode(element, mapping, (DragAndDropTarget) destinationContainer);
+        InterpreterUtil.getInterpreter(element).setVariable(outVariable, view);
       }
     }
   }
@@ -317,7 +319,7 @@ public class CreateViewTask extends AbstractCommandTask {
    * @param element_p
    * @param mapping_p
    */
-  private void createNode(EObject element_p, DiagramElementMapping mapping_p, DragAndDropTarget containerView) {
+  private DDiagramElement createNode(EObject element_p, DiagramElementMapping mapping_p, DragAndDropTarget containerView) {
     DDiagramElement newView = null;
     RefreshIdsHolder refreshId= RefreshIdsHolder.getOrCreateHolder(diagram);
     AbstractDNodeCandidate candidate = new AbstractDNodeCandidate((AbstractNodeMapping) mapping_p, element_p, containerView, refreshId);
@@ -340,6 +342,7 @@ public class CreateViewTask extends AbstractCommandTask {
     DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
     newView = sync.createNewNode(mappingManager, candidate, false);
     initView(newView);
+    return newView;
   }
 
   protected boolean autoPinOnCreateEnabled() {
