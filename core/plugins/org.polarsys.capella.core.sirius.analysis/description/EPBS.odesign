@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="10.1.0.201507271600">
   <ownedViewpoints name="EPBS architecture" modelFileExtension="melodymodeller">
     <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Configuration Items - Requirements" domainClass="EPBSArchitecture">
       <ownedLineMappings name="Configuration Item 2" domainClass="ConfigurationItem" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;ConfigurationItem&quot;)[! current.eContainer().isA(&quot;EPBSArchitecture&quot;)]%>" headerLabelExpression="&lt;%computeComponentLabel()%>">
@@ -181,18 +181,18 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="PhysicalLinkInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalLink&quot;)]%>" domainClass="PhysicalLink">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="5" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="5" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalLink.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="PhysicalPortInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalPort&quot;)]%>" domainClass="PhysicalPort">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="2" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
+            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="2" arcWidth="1" arcHeight="1" workspacePath="/org.polarsys.capella.core.sirius.analysis/description/images/PhysicalPort.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%computePartLabelMultiPartMode()%>" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="&lt;%computePartLabelMultiPartMode()%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -640,22 +640,24 @@
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%current == $container%>">
-            <style xsi:type="style:SquareDescription" labelFormat="bold" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%abstract==true%>">
-            <style xsi:type="style:SquareDescription" labelFormat="italic" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+              <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_ConfigurationItem_Gray']"/>
             </style>
           </conditionnalStyles>
         </nodeMappings>
         <edgeMappings name="CIBD_ConfigurationItem_subComponents" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20subComponentLink']" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="&lt;%getLogicalParent%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetMapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" targetFinderExpression="&lt;%getLogicalParent%>" reconnections="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='changeContainer']">
-          <style sizeComputationExpression="1" routingStyle="tree" foldingStyle="TARGET">
+          <style routingStyle="tree" foldingStyle="TARGET">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -665,7 +667,7 @@
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="COTS" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/COTSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="COTS" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/COTSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -674,7 +676,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="CS" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="CS" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -683,7 +685,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="HW" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/HWCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="HW" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/HWCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -692,7 +694,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="Interface" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InterfaceCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="Interface" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InterfaceCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -701,7 +703,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="NDI" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/NDICI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="NDI" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/NDICI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -710,7 +712,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="Prime Item" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PrimeItemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="Prime Item" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PrimeItemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -719,7 +721,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind System." name="System" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind System." name="System" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

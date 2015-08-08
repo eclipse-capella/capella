@@ -57,6 +57,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.query.legacy.ecore.factories.EFactory;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -179,6 +180,11 @@ import org.polarsys.capella.core.sirius.analysis.tool.StringUtil;
  */
 public class CapellaServices {
 
+  public List<EObject> selectOnlyCreatedView(EObject eObject) {
+	  return Collections.singletonList((EObject) 
+			  InterpreterUtil.getInterpreter(eObject).getVariable("view"));
+  }
+	
   public boolean isInLib(EObject context) {
     Session session = SessionManager.INSTANCE.getSession(context);
     IModel sessionModel = ILibraryManager.INSTANCE.getModel(TransactionHelper.getEditingDomain(session));
