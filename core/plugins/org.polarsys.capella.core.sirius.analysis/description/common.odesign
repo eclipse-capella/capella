@@ -2206,7 +2206,7 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!$source.isA(&quot;Union&quot;)%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedMembers" variableName="sourceProperty">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="information.Property" referenceName="ownedMembers" variableName="sourceProperty">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$target%>"/>
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%convertToUpperFirst($target.name)%>"/>
