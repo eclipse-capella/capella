@@ -2103,7 +2103,7 @@
                   <subModelOperations xsi:type="tool_1:CreateInstance" typeName="UnionProperty" referenceName="ownedFeatures"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$container.filter(&quot;Union&quot;).nSize() == 0%>">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedFeatures"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="information.Property" referenceName="ownedFeatures"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$instance%>">
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="select Type" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.SelectElementFromListWizard">
@@ -2264,14 +2264,14 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!$source.isA(&quot;Union&quot;)%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedMembers" variableName="sourceProperty">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="information.Property" referenceName="ownedMembers" variableName="sourceProperty">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$target%>"/>
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%convertToUpperFirst($target.name)%>"/>
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="aggregationKind" valueExpression="&lt;%$sourceKind%>"/>
                         </subModelOperations>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedMembers" variableName="targetProperty">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="information.Property" referenceName="ownedMembers" variableName="targetProperty">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$source%>"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%convertToUpperFirst($source.name)%>"/>
@@ -2322,14 +2322,14 @@
                         </subModelOperations>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!$source.isA(&quot;Union&quot;)%>">
-                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedMembers" variableName="sourceProperty">
+                        <subModelOperations xsi:type="tool_1:CreateInstance" typeName="information.Property" referenceName="ownedMembers" variableName="sourceProperty">
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$target%>"/>
                           <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%convertToUpperFirst($target.name)%>"/>
                           <subModelOperations xsi:type="tool_1:SetValue" featureName="aggregationKind" valueExpression="&lt;%$sourceKind%>"/>
                         </subModelOperations>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedMembers" variableName="targetProperty">
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="information.Property" referenceName="ownedMembers" variableName="targetProperty">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="abstractType" valueExpression="&lt;%$source%>"/>
                         <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%convertToUpperFirst($source.name)%>"/>
