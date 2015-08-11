@@ -21,16 +21,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.polarsys.capella.common.data.modellingcore.AbstractTrace;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
-import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
+import org.polarsys.capella.core.data.capellacommon.impl.ModeImpl;
+import org.polarsys.capella.core.data.capellacommon.impl.StateImpl;
 import org.polarsys.capella.core.data.capellacore.ModellingArchitecture;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
@@ -350,39 +353,117 @@ public class MoveHelper {
     boolean result = true;
 
     if (targetElement.eContainer() != null) {
-      EObject container = targetElement.eContainer();
-      if (container instanceof State) {
-        if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed())
-          result = (container.eClass() == source.eClass());
-      } else if (container instanceof StateMachine) {
-        if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
-          boolean alreadyMixed = false;
-
-          // Get a list of State/Mode
-          List<State> stateModeLst = new ArrayList<State>();
-          for (AbstractState abtractState : ((Region) targetElement).getOwnedStates()) {
-            if (abtractState instanceof State)
-              stateModeLst.add((State) abtractState);
-          }
-
-          if (stateModeLst.size() > 1)
-            for (int i = 0; i < stateModeLst.size() - 1; i++) {
-              if (stateModeLst.get(i).eClass() != stateModeLst.get(i + 1).eClass())
-                alreadyMixed = true;
-            }
-          // If Mode and State are already mixed in the Default region of a State Machine, don't make it worse
-          if (alreadyMixed)
-            result = false;
-          // Otherwise, it depends on the type of the dragging element
-          else {
-            if (stateModeLst.size() == 0)
-              result = true;
-            else
-              result = stateModeLst.get(0).eClass() == source.eClass();
-          }
+      EObject targetContainer = targetElement.eContainer();
+      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
+        boolean isSameType = true;
+        // Check source/target type compatibility if target is a Mode/State
+        if (targetContainer instanceof State) {
+          isSameType = targetContainer.eClass() == source.eClass();
         }
+        // Move is allowed only when source and target are not mixed
+        return isSameType && !isDownwardModeStateHierarchyMixed(source) && !isModeStateHierarchyMixed(targetContainer);
       }
     }
     return result;
+  }
+
+  /**
+   * This method tests if the State/Mode hierarchy of a StateMachine/State/Mode is mixed or not
+   * 
+   * @param container
+   * @return
+   */
+  public static boolean isModeStateHierarchyMixed(EObject container) {
+    // Get a list of State/Mode
+    List<State> stateModeLst = getModeStateHierarchy(container);
+
+    for (State state : stateModeLst) {
+      if (state.eClass() != container.eClass()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * This method tests if the State/Mode hierarchy of a StateMachine/State/Mode is mixed or not
+   * 
+   * @param container
+   * @return
+   */
+  public static boolean isDownwardModeStateHierarchyMixed(State inputState) {
+    // Get a list of State/Mode
+    List<State> stateModeLst = getDownwardModeStateHierarchy(inputState);
+
+    for (State state : stateModeLst) {
+      if (state.eClass() != inputState.eClass()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * This method returns all modes/states in a Mode/State/StateMachine's hierarchy
+   * 
+   * @param container
+   * @return
+   */
+  public static List<State> getModeStateHierarchy(EObject container) {
+    List<State> stateModeLst = new ArrayList<State>();
+    if (container instanceof State) {
+      // Add contained modes/states
+      Iterator<EObject> iter = EcoreUtil.getAllContents(container, true);
+
+      while (iter.hasNext()) {
+        EObject eObj = iter.next();
+        if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+          stateModeLst.add((State) eObj);
+      }
+
+      // Add itself
+      stateModeLst.add((State) container);
+
+      // Add parent modes/states
+      EObject parentState = EcoreUtil2.getFirstContainer(container, CapellacommonPackage.eINSTANCE.getState());
+      while (parentState != null) {
+        stateModeLst.add((State) parentState);
+        parentState = EcoreUtil2.getFirstContainer(parentState, CapellacommonPackage.eINSTANCE.getState());
+      }
+    } else if (container instanceof StateMachine) {
+      // Add contained modes/states only
+      Iterator<EObject> iter = EcoreUtil.getAllContents(container, true);
+
+      while (iter.hasNext()) {
+        EObject eObj = iter.next();
+        if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+          stateModeLst.add((State) eObj);
+      }
+    }
+    return stateModeLst;
+  }
+
+  /**
+   * This method returns all Modes/States in a Mode/State's hierarchy
+   * 
+   * @param container
+   * @return
+   */
+  public static List<State> getDownwardModeStateHierarchy(State state) {
+    List<State> stateModeLst = new ArrayList<State>();
+    // Add contained modes/states
+    Iterator<EObject> iter = EcoreUtil.getAllContents(state, true);
+
+    while (iter.hasNext()) {
+      EObject eObj = iter.next();
+      if ((eObj.getClass() == StateImpl.class) || (eObj.getClass() == ModeImpl.class))
+        stateModeLst.add((State) eObj);
+    }
+
+    // Add itself
+    stateModeLst.add((State) state);
+    return stateModeLst;
   }
 }

@@ -39,6 +39,7 @@ import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.core.data.capellacommon.AbstractCapabilityPkg;
 import org.polarsys.capella.core.data.capellacommon.AbstractState;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonFactory;
 import org.polarsys.capella.core.data.capellacommon.DeepHistoryPseudoState;
 import org.polarsys.capella.core.data.capellacommon.EntryPointPseudoState;
 import org.polarsys.capella.core.data.capellacommon.ExitPointPseudoState;
@@ -398,7 +399,8 @@ public class StateMachineServices {
             result.add((IState) type);
           }
           if (((referenceState == null) || (referenceState.eClass() == type.eClass()))
-              && !(type instanceof Pseudostate)) {
+              && !(type instanceof Pseudostate)
+              && (type instanceof State ? MoveHelper.getInstance().canMoveModeState((State) type, currentRegion) : true)) {
             result.add((IState) type);
           }
         }
@@ -743,12 +745,7 @@ public class StateMachineServices {
   public boolean canCreateMode(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      for (IState st : getStatesOfRegion(testedRegion)) {
-        if ((st instanceof State) && !(st instanceof Mode) && !(st instanceof FinalState)) {
-          return false;
-        }
-      }
-      return true;
+      return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createMode(), testedRegion);
     }
     return false;
   }
@@ -816,12 +813,7 @@ public class StateMachineServices {
   public boolean canCreateState(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      for (IState st : getStatesOfRegion(testedRegion)) {
-        if (st instanceof Mode) {
-          return false;
-        }
-      }
-      return true;
+      return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createState(), testedRegion);
     }
     return false;
   }
