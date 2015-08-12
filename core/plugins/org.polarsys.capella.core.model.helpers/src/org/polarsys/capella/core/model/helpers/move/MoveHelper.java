@@ -359,6 +359,10 @@ public class MoveHelper {
         // Check source/target type compatibility if target is a Mode/State
         if (targetContainer instanceof State) {
           isSameType = targetContainer.eClass() == source.eClass();
+        } else if (targetContainer instanceof StateMachine) {
+          isSameType = ((StateMachine) targetContainer).getOwnedRegions().get(0).getOwnedStates().size() > 0 ? ((StateMachine) targetContainer)
+              .getOwnedRegions().get(0).getOwnedStates().get(0).eClass() == source.eClass()
+              : true;
         }
         // Move is allowed only when source and target are not mixed
         return isSameType && !isDownwardModeStateHierarchyMixed(source) && !isModeStateHierarchyMixed(targetContainer);
@@ -376,11 +380,12 @@ public class MoveHelper {
   public static boolean isModeStateHierarchyMixed(EObject container) {
     // Get a list of State/Mode
     List<State> stateModeLst = getModeStateHierarchy(container);
+    if (stateModeLst.size() <= 1)
+      return false;
 
-    for (State state : stateModeLst) {
-      if (state.eClass() != container.eClass()) {
+    for (int i = 0; i < stateModeLst.size() - 1; i++) {
+      if (stateModeLst.get(i).eClass() != stateModeLst.get(i).eClass())
         return true;
-      }
     }
 
     return false;

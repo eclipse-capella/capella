@@ -73,6 +73,7 @@ import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.StateExt;
 import org.polarsys.capella.core.model.helpers.move.MoveHelper;
+import org.polarsys.capella.core.model.preferences.CapellaModelPreferencesPlugin;
 import org.polarsys.capella.core.sirius.analysis.showhide.AbstractShowHide.DiagramContext;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMStateMode;
 import org.polarsys.capella.core.sirius.analysis.showhide.ShowHideSMTransitions;
@@ -745,7 +746,15 @@ public class StateMachineServices {
   public boolean canCreateMode(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createMode(), testedRegion);
+      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed())
+        return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createMode(), testedRegion);
+
+      for (IState st : getStatesOfRegion(testedRegion)) {
+        if ((st instanceof State) && !(st instanceof Mode) && !(st instanceof FinalState)) {
+          return false;
+        }
+      }
+      return true;
     }
     return false;
   }
@@ -813,7 +822,15 @@ public class StateMachineServices {
   public boolean canCreateState(EObject context, EObject containerView) {
     Region testedRegion = getRegionFromView(containerView);
     if (testedRegion != null) {
-      return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createState(), testedRegion);
+      if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed())
+        return MoveHelper.getInstance().canMoveModeState(CapellacommonFactory.eINSTANCE.createState(), testedRegion);
+
+      for (IState st : getStatesOfRegion(testedRegion)) {
+        if (st instanceof Mode) {
+          return false;
+        }
+      }
+      return true;
     }
     return false;
   }
