@@ -26,13 +26,13 @@ public class DWF_SM_15Resolver extends AbstractDeleteCommandResolver {
   @Override
   public Object getElementToDelete(final Object obj) {
     if (obj != null && obj instanceof State) {
-      List<IState> referencedStates = new ArrayList<IState>();
+      List<IState> mixReferencedStates = new ArrayList<IState>();
       for (IState s : ((State) obj).getReferencedStates()) {
-        if (StateMachineServices.isReferencedState(s, (State) obj))
-          referencedStates.add(s);
+        if (StateMachineServices.isReferencedState(s, (State) obj) && s.eClass() != ((State) obj).eClass())
+          mixReferencedStates.add(s);
       }
 
-      for (final IState state : referencedStates) {
+      for (final IState state : mixReferencedStates) {
         AbstractReadWriteCommand abstrctCommand = new AbstractReadWriteCommand() {
           @Override
           public void run() {

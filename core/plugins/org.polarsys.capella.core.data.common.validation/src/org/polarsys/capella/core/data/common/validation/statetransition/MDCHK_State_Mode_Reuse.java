@@ -44,7 +44,7 @@ public class MDCHK_State_Mode_Reuse extends AbstractModelConstraint {
 
     EList<IState> referencedStates = state.getReferencedStates();
     for (IState s : referencedStates) {
-      if (StateMachineServices.isReferencedState(s, state))
+      if (StateMachineServices.isReferencedState(s, state) && s.eClass() != state.eClass())
         return createFailureStatus(ctx, state);
     }
 
