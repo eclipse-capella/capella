@@ -29,6 +29,8 @@ import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacommon.FinalState;
+import org.polarsys.capella.core.data.capellacommon.Mode;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacommon.StateMachine;
@@ -352,7 +354,7 @@ public class MoveHelper {
   public boolean canMoveModeState(State source, Region targetElement) {
     boolean result = true;
 
-    if (targetElement.eContainer() != null) {
+    if (targetElement.eContainer() != null && !(source instanceof FinalState)) {
       EObject targetContainer = targetElement.eContainer();
       if (!CapellaModelPreferencesPlugin.getDefault().isMixedModeStateAllowed()) {
         boolean isSameType = true;
@@ -384,7 +386,7 @@ public class MoveHelper {
       return false;
 
     for (int i = 0; i < stateModeLst.size() - 1; i++) {
-      if (stateModeLst.get(i).eClass() != stateModeLst.get(i).eClass())
+      if (stateModeLst.get(i).eClass() != stateModeLst.get(i + 1).eClass())
         return true;
     }
 

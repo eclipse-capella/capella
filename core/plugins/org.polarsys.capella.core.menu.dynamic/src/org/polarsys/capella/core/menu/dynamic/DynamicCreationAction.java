@@ -40,6 +40,7 @@ import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.common.menu.dynamic.DynamicCreateChildAction;
 import org.polarsys.capella.common.menu.dynamic.utils.ContributionItemComparator;
 import org.polarsys.capella.common.ui.services.helper.EObjectLabelProviderHelper;
+import org.polarsys.capella.core.data.capellacommon.FinalState;
 import org.polarsys.capella.core.data.capellacommon.Region;
 import org.polarsys.capella.core.data.capellacommon.State;
 import org.polarsys.capella.core.data.capellacore.AbstractPropertyValue;
@@ -377,7 +378,7 @@ public class DynamicCreationAction extends DynamicModelElementAction {
         Object owner = collection.iterator().next();
         if (descriptor instanceof CommandParameter) {
           CommandParameter param = ((CommandParameter) descriptor);
-          if (owner instanceof Region && param.getValue() instanceof State) {
+          if (owner instanceof Region && param.getValue() instanceof State && !(param.getValue() instanceof FinalState)) {
             if (!MoveHelper.getInstance().canMoveModeState((State) param.getValue(), (Region) owner))
               return UnexecutableCommand.INSTANCE;
           }
