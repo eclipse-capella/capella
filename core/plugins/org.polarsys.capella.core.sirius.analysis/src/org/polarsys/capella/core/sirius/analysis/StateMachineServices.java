@@ -571,7 +571,7 @@ public class StateMachineServices {
     return result;
   }
 
-  public boolean isReferencedState(IState inputState, EObject container) {
+  public static boolean isReferencedState(IState inputState, EObject container) {
     Region region;
     if (container != null) {
 
