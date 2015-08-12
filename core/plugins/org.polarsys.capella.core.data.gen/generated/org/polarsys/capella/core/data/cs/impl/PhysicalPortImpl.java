@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,13 +88,13 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedProtocols() <em>Owned Protocols</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedProtocols() <em>Owned Protocols</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedProtocols()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedProtocols()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateMachine> ownedProtocols;
 
 
@@ -110,13 +110,13 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * The cached value of the '{@link #getProvidedInterfaces() <em>Provided Interfaces</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getProvidedInterfaces() <em>Provided Interfaces</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProvidedInterfaces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getProvidedInterfaces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Interface> providedInterfaces;
 
 
@@ -124,13 +124,13 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * The cached value of the '{@link #getRequiredInterfaces() <em>Required Interfaces</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRequiredInterfaces() <em>Required Interfaces</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredInterfaces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRequiredInterfaces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Interface> requiredInterfaces;
 
 
@@ -138,13 +138,13 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPortRealizations() <em>Owned Port Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPortRealizations() <em>Owned Port Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPortRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPortRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<PortRealization> ownedPortRealizations;
 
 
@@ -152,13 +152,13 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPortAllocations() <em>Owned Port Allocations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPortAllocations() <em>Owned Port Allocations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPortAllocations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPortAllocations()
+   * @generated
+   * @ordered
+   */
 	protected EList<PortAllocation> ownedPortAllocations;
 
 
@@ -186,13 +186,13 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedComponentPortAllocations() <em>Owned Component Port Allocations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedComponentPortAllocations() <em>Owned Component Port Allocations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponentPortAllocations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedComponentPortAllocations()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentPortAllocation> ownedComponentPortAllocations;
 
 
@@ -200,13 +200,13 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalPortRealizations() <em>Owned Physical Port Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalPortRealizations() <em>Owned Physical Port Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalPortRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalPortRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalPortRealization> ownedPhysicalPortRealizations;
 
 
@@ -225,35 +225,35 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalPortImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_PORT;
-	}
+    return CsPackage.Literals.PHYSICAL_PORT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortRealization> getIncomingPortRealizations() {
 
@@ -280,27 +280,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
-		return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
+    return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortRealization> getOutgoingPortRealizations() {
 
@@ -327,45 +327,45 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
-		return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
+    return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateMachine> getOwnedProtocols() {
 
-		if (ownedProtocols == null) {
-			ownedProtocols = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS);
-		}
-		return ownedProtocols;
-	}
+    if (ownedProtocols == null) {
+      ownedProtocols = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS);
+    }
+    return ownedProtocols;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortAllocation> getIncomingPortAllocations() {
 
@@ -392,27 +392,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
+    return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortAllocation> getOutgoingPortAllocations() {
 
@@ -439,99 +439,99 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
+    return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Interface> getProvidedInterfaces() {
 
-		if (providedInterfaces == null) {
-			providedInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES);
-		}
-		return providedInterfaces;
-	}
+    if (providedInterfaces == null) {
+      providedInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES);
+    }
+    return providedInterfaces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Interface> getRequiredInterfaces() {
 
-		if (requiredInterfaces == null) {
-			requiredInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES);
-		}
-		return requiredInterfaces;
-	}
+    if (requiredInterfaces == null) {
+      requiredInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES);
+    }
+    return requiredInterfaces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortRealization> getOwnedPortRealizations() {
 
-		if (ownedPortRealizations == null) {
-			ownedPortRealizations = new EObjectContainmentEList.Resolving<PortRealization>(PortRealization.class, this, CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS);
-		}
-		return ownedPortRealizations;
-	}
+    if (ownedPortRealizations == null) {
+      ownedPortRealizations = new EObjectContainmentEList.Resolving<PortRealization>(PortRealization.class, this, CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS);
+    }
+    return ownedPortRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortAllocation> getOwnedPortAllocations() {
 
-		if (ownedPortAllocations == null) {
-			ownedPortAllocations = new EObjectContainmentEList.Resolving<PortAllocation>(PortAllocation.class, this, CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS);
-		}
-		return ownedPortAllocations;
-	}
+    if (ownedPortAllocations == null) {
+      ownedPortAllocations = new EObjectContainmentEList.Resolving<PortAllocation>(PortAllocation.class, this, CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS);
+    }
+    return ownedPortAllocations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ConfigurationItem> getAllocatorConfigurationItems() {
 
@@ -558,27 +558,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ConfigurationItem> resultAsList = (Collection<ConfigurationItem>) result;
-		return new EcoreEList.UnmodifiableEList<ConfigurationItem>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ConfigurationItem> resultAsList = (Collection<ConfigurationItem>) result;
+    return new EcoreEList.UnmodifiableEList<ConfigurationItem>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractInformationFlow> getIncomingInformationFlows() {
 
@@ -605,27 +605,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractInformationFlow> getOutgoingInformationFlows() {
 
@@ -652,27 +652,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractInformationFlow> getInformationFlows() {
 
@@ -699,27 +699,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractInformationFlow> resultAsList = (Collection<AbstractInformationFlow>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractInformationFlow>(this, ModellingcorePackage.Literals.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalLink> getInvolvedLinks() {
 
@@ -746,63 +746,63 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentPortAllocation> getOwnedComponentPortAllocations() {
 
-		if (ownedComponentPortAllocations == null) {
-			ownedComponentPortAllocations = new EObjectContainmentEList.Resolving<ComponentPortAllocation>(ComponentPortAllocation.class, this, CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS);
-		}
-		return ownedComponentPortAllocations;
-	}
+    if (ownedComponentPortAllocations == null) {
+      ownedComponentPortAllocations = new EObjectContainmentEList.Resolving<ComponentPortAllocation>(ComponentPortAllocation.class, this, CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS);
+    }
+    return ownedComponentPortAllocations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPortRealization> getOwnedPhysicalPortRealizations() {
 
-		if (ownedPhysicalPortRealizations == null) {
-			ownedPhysicalPortRealizations = new EObjectContainmentEList.Resolving<PhysicalPortRealization>(PhysicalPortRealization.class, this, CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS);
-		}
-		return ownedPhysicalPortRealizations;
-	}
+    if (ownedPhysicalPortRealizations == null) {
+      ownedPhysicalPortRealizations = new EObjectContainmentEList.Resolving<PhysicalPortRealization>(PhysicalPortRealization.class, this, CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS);
+    }
+    return ownedPhysicalPortRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentPort> getAllocatedComponentPorts() {
 
@@ -829,27 +829,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, CsPackage.Literals.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
+    return new EcoreEList.UnmodifiableEList<ComponentPort>(this, CsPackage.Literals.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPort> getRealizedPhysicalPorts() {
 
@@ -876,27 +876,27 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, CsPackage.Literals.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, CsPackage.Literals.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPort> getRealizingPhysicalPorts() {
 
@@ -923,307 +923,307 @@ public class PhysicalPortImpl extends AbstractInstanceImpl implements PhysicalPo
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, CsPackage.Literals.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalPort> resultAsList = (Collection<PhysicalPort>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalPort>(this, CsPackage.Literals.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
-				return ((InternalEList<?>)getOwnedProtocols()).basicRemove(otherEnd, msgs);
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedPortRealizations()).basicRemove(otherEnd, msgs);
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
-				return ((InternalEList<?>)getOwnedPortAllocations()).basicRemove(otherEnd, msgs);
-			case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
-				return ((InternalEList<?>)getOwnedComponentPortAllocations()).basicRemove(otherEnd, msgs);
-			case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedPhysicalPortRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
+        return ((InternalEList<?>)getOwnedProtocols()).basicRemove(otherEnd, msgs);
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedPortRealizations()).basicRemove(otherEnd, msgs);
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
+        return ((InternalEList<?>)getOwnedPortAllocations()).basicRemove(otherEnd, msgs);
+      case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
+        return ((InternalEList<?>)getOwnedComponentPortAllocations()).basicRemove(otherEnd, msgs);
+      case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedPhysicalPortRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS:
-				return getIncomingPortRealizations();
-			case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS:
-				return getOutgoingPortRealizations();
-			case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
-				return getOwnedProtocols();
-			case CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS:
-				return getIncomingPortAllocations();
-			case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS:
-				return getOutgoingPortAllocations();
-			case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
-				return getProvidedInterfaces();
-			case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
-				return getRequiredInterfaces();
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
-				return getOwnedPortRealizations();
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
-				return getOwnedPortAllocations();
-			case CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS:
-				return getAllocatorConfigurationItems();
-			case CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS:
-				return getIncomingInformationFlows();
-			case CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS:
-				return getOutgoingInformationFlows();
-			case CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS:
-				return getInformationFlows();
-			case CsPackage.PHYSICAL_PORT__INVOLVED_LINKS:
-				return getInvolvedLinks();
-			case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
-				return getOwnedComponentPortAllocations();
-			case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
-				return getOwnedPhysicalPortRealizations();
-			case CsPackage.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS:
-				return getAllocatedComponentPorts();
-			case CsPackage.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS:
-				return getRealizedPhysicalPorts();
-			case CsPackage.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS:
-				return getRealizingPhysicalPorts();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS:
+        return getIncomingPortRealizations();
+      case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS:
+        return getOutgoingPortRealizations();
+      case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
+        return getOwnedProtocols();
+      case CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS:
+        return getIncomingPortAllocations();
+      case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS:
+        return getOutgoingPortAllocations();
+      case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
+        return getProvidedInterfaces();
+      case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
+        return getRequiredInterfaces();
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
+        return getOwnedPortRealizations();
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
+        return getOwnedPortAllocations();
+      case CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS:
+        return getAllocatorConfigurationItems();
+      case CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS:
+        return getIncomingInformationFlows();
+      case CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS:
+        return getOutgoingInformationFlows();
+      case CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS:
+        return getInformationFlows();
+      case CsPackage.PHYSICAL_PORT__INVOLVED_LINKS:
+        return getInvolvedLinks();
+      case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
+        return getOwnedComponentPortAllocations();
+      case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
+        return getOwnedPhysicalPortRealizations();
+      case CsPackage.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS:
+        return getAllocatedComponentPorts();
+      case CsPackage.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS:
+        return getRealizedPhysicalPorts();
+      case CsPackage.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS:
+        return getRealizingPhysicalPorts();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
-				getOwnedProtocols().clear();
-				getOwnedProtocols().addAll((Collection<? extends StateMachine>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
-				getProvidedInterfaces().clear();
-				getProvidedInterfaces().addAll((Collection<? extends Interface>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
-				getRequiredInterfaces().clear();
-				getRequiredInterfaces().addAll((Collection<? extends Interface>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
-				getOwnedPortRealizations().clear();
-				getOwnedPortRealizations().addAll((Collection<? extends PortRealization>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
-				getOwnedPortAllocations().clear();
-				getOwnedPortAllocations().addAll((Collection<? extends PortAllocation>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
-				getOwnedComponentPortAllocations().clear();
-				getOwnedComponentPortAllocations().addAll((Collection<? extends ComponentPortAllocation>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
-				getOwnedPhysicalPortRealizations().clear();
-				getOwnedPhysicalPortRealizations().addAll((Collection<? extends PhysicalPortRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
+        getOwnedProtocols().clear();
+        getOwnedProtocols().addAll((Collection<? extends StateMachine>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
+        getProvidedInterfaces().clear();
+        getProvidedInterfaces().addAll((Collection<? extends Interface>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
+        getRequiredInterfaces().clear();
+        getRequiredInterfaces().addAll((Collection<? extends Interface>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
+        getOwnedPortRealizations().clear();
+        getOwnedPortRealizations().addAll((Collection<? extends PortRealization>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
+        getOwnedPortAllocations().clear();
+        getOwnedPortAllocations().addAll((Collection<? extends PortAllocation>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
+        getOwnedComponentPortAllocations().clear();
+        getOwnedComponentPortAllocations().addAll((Collection<? extends ComponentPortAllocation>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
+        getOwnedPhysicalPortRealizations().clear();
+        getOwnedPhysicalPortRealizations().addAll((Collection<? extends PhysicalPortRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
-				getOwnedProtocols().clear();
-				return;
-			case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
-				getProvidedInterfaces().clear();
-				return;
-			case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
-				getRequiredInterfaces().clear();
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
-				getOwnedPortRealizations().clear();
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
-				getOwnedPortAllocations().clear();
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
-				getOwnedComponentPortAllocations().clear();
-				return;
-			case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
-				getOwnedPhysicalPortRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
+        getOwnedProtocols().clear();
+        return;
+      case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
+        getProvidedInterfaces().clear();
+        return;
+      case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
+        getRequiredInterfaces().clear();
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
+        getOwnedPortRealizations().clear();
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
+        getOwnedPortAllocations().clear();
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
+        getOwnedComponentPortAllocations().clear();
+        return;
+      case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
+        getOwnedPhysicalPortRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS:
-				return !getIncomingPortRealizations().isEmpty();
-			case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS:
-				return !getOutgoingPortRealizations().isEmpty();
-			case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
-				return ownedProtocols != null && !ownedProtocols.isEmpty();
-			case CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS:
-				return !getIncomingPortAllocations().isEmpty();
-			case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS:
-				return !getOutgoingPortAllocations().isEmpty();
-			case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
-				return providedInterfaces != null && !providedInterfaces.isEmpty();
-			case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
-				return requiredInterfaces != null && !requiredInterfaces.isEmpty();
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
-				return ownedPortRealizations != null && !ownedPortRealizations.isEmpty();
-			case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
-				return ownedPortAllocations != null && !ownedPortAllocations.isEmpty();
-			case CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS:
-				return !getAllocatorConfigurationItems().isEmpty();
-			case CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS:
-				return !getIncomingInformationFlows().isEmpty();
-			case CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS:
-				return !getOutgoingInformationFlows().isEmpty();
-			case CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS:
-				return !getInformationFlows().isEmpty();
-			case CsPackage.PHYSICAL_PORT__INVOLVED_LINKS:
-				return !getInvolvedLinks().isEmpty();
-			case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
-				return ownedComponentPortAllocations != null && !ownedComponentPortAllocations.isEmpty();
-			case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
-				return ownedPhysicalPortRealizations != null && !ownedPhysicalPortRealizations.isEmpty();
-			case CsPackage.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS:
-				return !getAllocatedComponentPorts().isEmpty();
-			case CsPackage.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS:
-				return !getRealizedPhysicalPorts().isEmpty();
-			case CsPackage.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS:
-				return !getRealizingPhysicalPorts().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS:
+        return !getIncomingPortRealizations().isEmpty();
+      case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS:
+        return !getOutgoingPortRealizations().isEmpty();
+      case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS:
+        return ownedProtocols != null && !ownedProtocols.isEmpty();
+      case CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS:
+        return !getIncomingPortAllocations().isEmpty();
+      case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS:
+        return !getOutgoingPortAllocations().isEmpty();
+      case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES:
+        return providedInterfaces != null && !providedInterfaces.isEmpty();
+      case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES:
+        return requiredInterfaces != null && !requiredInterfaces.isEmpty();
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS:
+        return ownedPortRealizations != null && !ownedPortRealizations.isEmpty();
+      case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS:
+        return ownedPortAllocations != null && !ownedPortAllocations.isEmpty();
+      case CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS:
+        return !getAllocatorConfigurationItems().isEmpty();
+      case CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS:
+        return !getIncomingInformationFlows().isEmpty();
+      case CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS:
+        return !getOutgoingInformationFlows().isEmpty();
+      case CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS:
+        return !getInformationFlows().isEmpty();
+      case CsPackage.PHYSICAL_PORT__INVOLVED_LINKS:
+        return !getInvolvedLinks().isEmpty();
+      case CsPackage.PHYSICAL_PORT__OWNED_COMPONENT_PORT_ALLOCATIONS:
+        return ownedComponentPortAllocations != null && !ownedComponentPortAllocations.isEmpty();
+      case CsPackage.PHYSICAL_PORT__OWNED_PHYSICAL_PORT_REALIZATIONS:
+        return ownedPhysicalPortRealizations != null && !ownedPhysicalPortRealizations.isEmpty();
+      case CsPackage.PHYSICAL_PORT__ALLOCATED_COMPONENT_PORTS:
+        return !getAllocatedComponentPorts().isEmpty();
+      case CsPackage.PHYSICAL_PORT__REALIZED_PHYSICAL_PORTS:
+        return !getRealizedPhysicalPorts().isEmpty();
+      case CsPackage.PHYSICAL_PORT__REALIZING_PHYSICAL_PORTS:
+        return !getRealizingPhysicalPorts().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Port.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS: return InformationPackage.PORT__INCOMING_PORT_REALIZATIONS;
-				case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS: return InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS;
-				case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS: return InformationPackage.PORT__OWNED_PROTOCOLS;
-				case CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS: return InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS;
-				case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS: return InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS;
-				case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES: return InformationPackage.PORT__PROVIDED_INTERFACES;
-				case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES: return InformationPackage.PORT__REQUIRED_INTERFACES;
-				case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS: return InformationPackage.PORT__OWNED_PORT_REALIZATIONS;
-				case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS: return InformationPackage.PORT__OWNED_PORT_ALLOCATIONS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractPhysicalArtifact.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS;
-				default: return -1;
-			}
-		}
-		if (baseClass == InformationsExchanger.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS;
-				case CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS;
-				case CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractPhysicalLinkEnd.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.PHYSICAL_PORT__INVOLVED_LINKS: return CsPackage.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == Port.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS: return InformationPackage.PORT__INCOMING_PORT_REALIZATIONS;
+        case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS: return InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS;
+        case CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS: return InformationPackage.PORT__OWNED_PROTOCOLS;
+        case CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS: return InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS;
+        case CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS: return InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS;
+        case CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES: return InformationPackage.PORT__PROVIDED_INTERFACES;
+        case CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES: return InformationPackage.PORT__REQUIRED_INTERFACES;
+        case CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS: return InformationPackage.PORT__OWNED_PORT_REALIZATIONS;
+        case CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS: return InformationPackage.PORT__OWNED_PORT_ALLOCATIONS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractPhysicalArtifact.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS;
+        default: return -1;
+      }
+    }
+    if (baseClass == InformationsExchanger.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS;
+        case CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS;
+        case CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS: return ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractPhysicalLinkEnd.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.PHYSICAL_PORT__INVOLVED_LINKS: return CsPackage.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Port.class) {
-			switch (baseFeatureID) {
-				case InformationPackage.PORT__INCOMING_PORT_REALIZATIONS: return CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS;
-				case InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS: return CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS;
-				case InformationPackage.PORT__OWNED_PROTOCOLS: return CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS;
-				case InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS: return CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS;
-				case InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS: return CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS;
-				case InformationPackage.PORT__PROVIDED_INTERFACES: return CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES;
-				case InformationPackage.PORT__REQUIRED_INTERFACES: return CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES;
-				case InformationPackage.PORT__OWNED_PORT_REALIZATIONS: return CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS;
-				case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS: return CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractPhysicalArtifact.class) {
-			switch (baseFeatureID) {
-				case CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS;
-				default: return -1;
-			}
-		}
-		if (baseClass == InformationsExchanger.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS: return CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS;
-				case ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS: return CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS;
-				case ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS: return CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractPhysicalLinkEnd.class) {
-			switch (baseFeatureID) {
-				case CsPackage.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS: return CsPackage.PHYSICAL_PORT__INVOLVED_LINKS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == Port.class) {
+      switch (baseFeatureID) {
+        case InformationPackage.PORT__INCOMING_PORT_REALIZATIONS: return CsPackage.PHYSICAL_PORT__INCOMING_PORT_REALIZATIONS;
+        case InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS: return CsPackage.PHYSICAL_PORT__OUTGOING_PORT_REALIZATIONS;
+        case InformationPackage.PORT__OWNED_PROTOCOLS: return CsPackage.PHYSICAL_PORT__OWNED_PROTOCOLS;
+        case InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS: return CsPackage.PHYSICAL_PORT__INCOMING_PORT_ALLOCATIONS;
+        case InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS: return CsPackage.PHYSICAL_PORT__OUTGOING_PORT_ALLOCATIONS;
+        case InformationPackage.PORT__PROVIDED_INTERFACES: return CsPackage.PHYSICAL_PORT__PROVIDED_INTERFACES;
+        case InformationPackage.PORT__REQUIRED_INTERFACES: return CsPackage.PHYSICAL_PORT__REQUIRED_INTERFACES;
+        case InformationPackage.PORT__OWNED_PORT_REALIZATIONS: return CsPackage.PHYSICAL_PORT__OWNED_PORT_REALIZATIONS;
+        case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS: return CsPackage.PHYSICAL_PORT__OWNED_PORT_ALLOCATIONS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractPhysicalArtifact.class) {
+      switch (baseFeatureID) {
+        case CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.PHYSICAL_PORT__ALLOCATOR_CONFIGURATION_ITEMS;
+        default: return -1;
+      }
+    }
+    if (baseClass == InformationsExchanger.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.INFORMATIONS_EXCHANGER__INCOMING_INFORMATION_FLOWS: return CsPackage.PHYSICAL_PORT__INCOMING_INFORMATION_FLOWS;
+        case ModellingcorePackage.INFORMATIONS_EXCHANGER__OUTGOING_INFORMATION_FLOWS: return CsPackage.PHYSICAL_PORT__OUTGOING_INFORMATION_FLOWS;
+        case ModellingcorePackage.INFORMATIONS_EXCHANGER__INFORMATION_FLOWS: return CsPackage.PHYSICAL_PORT__INFORMATION_FLOWS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractPhysicalLinkEnd.class) {
+      switch (baseFeatureID) {
+        case CsPackage.ABSTRACT_PHYSICAL_LINK_END__INVOLVED_LINKS: return CsPackage.PHYSICAL_PORT__INVOLVED_LINKS;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //PhysicalPortImpl

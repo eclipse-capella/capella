@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,13 +36,13 @@ import org.polarsys.capella.core.data.information.datavalue.StringReference;
 public class StringReferenceImpl extends AbstractStringValueImpl implements StringReference {
 
 	/**
-	 * The cached value of the '{@link #getReferencedValue() <em>Referenced Value</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReferencedValue() <em>Referenced Value</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferencedValue()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferencedValue()
+   * @generated
+   * @ordered
+   */
 	protected AbstractStringValue referencedValue;
 
 
@@ -50,90 +50,90 @@ public class StringReferenceImpl extends AbstractStringValueImpl implements Stri
 
 
 	/**
-	 * The cached value of the '{@link #getReferencedProperty() <em>Referenced Property</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReferencedProperty() <em>Referenced Property</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferencedProperty()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferencedProperty()
+   * @generated
+   * @ordered
+   */
 	protected Property referencedProperty;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StringReferenceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.STRING_REFERENCE;
-	}
+    return DatavaluePackage.Literals.STRING_REFERENCE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractStringValue getReferencedValue() {
 
-		if (referencedValue != null && referencedValue.eIsProxy()) {
-			InternalEObject oldReferencedValue = (InternalEObject)referencedValue;
-			referencedValue = (AbstractStringValue)eResolveProxy(oldReferencedValue);
-			if (referencedValue != oldReferencedValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE, oldReferencedValue, referencedValue));
-			}
-		}
-		return referencedValue;
-	}
+    if (referencedValue != null && referencedValue.eIsProxy()) {
+      InternalEObject oldReferencedValue = (InternalEObject)referencedValue;
+      referencedValue = (AbstractStringValue)eResolveProxy(oldReferencedValue);
+      if (referencedValue != oldReferencedValue) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE, oldReferencedValue, referencedValue));
+      }
+    }
+    return referencedValue;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractStringValue basicGetReferencedValue() {
 
-		return referencedValue;
-	}
+    return referencedValue;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setReferencedValue(AbstractStringValue newReferencedValue) {
 
-		AbstractStringValue oldReferencedValue = referencedValue;
-		referencedValue = newReferencedValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE, oldReferencedValue, referencedValue));
+    AbstractStringValue oldReferencedValue = referencedValue;
+    referencedValue = newReferencedValue;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE, oldReferencedValue, referencedValue));
 
-	}
+  }
 
 
 
@@ -141,140 +141,140 @@ public class StringReferenceImpl extends AbstractStringValueImpl implements Stri
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Property getReferencedProperty() {
 
-		if (referencedProperty != null && referencedProperty.eIsProxy()) {
-			InternalEObject oldReferencedProperty = (InternalEObject)referencedProperty;
-			referencedProperty = (Property)eResolveProxy(oldReferencedProperty);
-			if (referencedProperty != oldReferencedProperty) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY, oldReferencedProperty, referencedProperty));
-			}
-		}
-		return referencedProperty;
-	}
+    if (referencedProperty != null && referencedProperty.eIsProxy()) {
+      InternalEObject oldReferencedProperty = (InternalEObject)referencedProperty;
+      referencedProperty = (Property)eResolveProxy(oldReferencedProperty);
+      if (referencedProperty != oldReferencedProperty) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY, oldReferencedProperty, referencedProperty));
+      }
+    }
+    return referencedProperty;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Property basicGetReferencedProperty() {
 
-		return referencedProperty;
-	}
+    return referencedProperty;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setReferencedProperty(Property newReferencedProperty) {
 
-		Property oldReferencedProperty = referencedProperty;
-		referencedProperty = newReferencedProperty;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY, oldReferencedProperty, referencedProperty));
+    Property oldReferencedProperty = referencedProperty;
+    referencedProperty = newReferencedProperty;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY, oldReferencedProperty, referencedProperty));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
-				if (resolve) return getReferencedValue();
-				return basicGetReferencedValue();
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
-				if (resolve) return getReferencedProperty();
-				return basicGetReferencedProperty();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
+        if (resolve) return getReferencedValue();
+        return basicGetReferencedValue();
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
+        if (resolve) return getReferencedProperty();
+        return basicGetReferencedProperty();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractStringValue) {
-				// end-extension-code
-					setReferencedValue((AbstractStringValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Property) {
-				// end-extension-code
-					setReferencedProperty((Property)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractStringValue) {
+        // end-extension-code
+          setReferencedValue((AbstractStringValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Property) {
+        // end-extension-code
+          setReferencedProperty((Property)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
-				setReferencedValue((AbstractStringValue)null);
-				return;
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
-				setReferencedProperty((Property)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
+        setReferencedValue((AbstractStringValue)null);
+        return;
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
+        setReferencedProperty((Property)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
-				return referencedValue != null;
-			case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
-				return referencedProperty != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_VALUE:
+        return referencedValue != null;
+      case DatavaluePackage.STRING_REFERENCE__REFERENCED_PROPERTY:
+        return referencedProperty != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

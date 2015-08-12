@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,21 +36,21 @@ public interface RoleAssemblyUsage extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Child</b></em>' reference.
+   * Returns the value of the '<em><b>Child</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Child</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Child</em>' reference.
-	 * @see #setChild(Role)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAssemblyUsage_Child()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='child Role involved in this relationship mediator element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Child</em>' reference.
+   * @see #setChild(Role)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getRoleAssemblyUsage_Child()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='child Role involved in this relationship mediator element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	Role getChild();
 
@@ -58,14 +58,14 @@ public interface RoleAssemblyUsage extends NamedElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.RoleAssemblyUsage#getChild <em>Child</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.RoleAssemblyUsage#getChild <em>Child</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Child</em>' reference.
-	 * @see #getChild()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Child</em>' reference.
+   * @see #getChild()
+   * @generated
+   */
 
 	void setChild(Role value);
 

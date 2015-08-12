@@ -2,7 +2,7 @@
 <?eclipse version="3.4"?>
 <!--
 #
-#  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+#  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
 #  All rights reserved. This program and the accompanying materials
 #  are made available under the terms of the Eclipse Public License v1.0
 #  which accompanies this distribution, and is available at
@@ -16,54 +16,54 @@
       <factory
         class="org.polarsys.capella.core.data.capellamodeller.provider.CapellamodellerItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/capellamodeller/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/capellamodeller/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.cs.provider.CsItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/cs/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/cs/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.ctx.provider.CtxItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/ctx/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/ctx/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.fa.provider.FaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/fa/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/fa/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.information.communication.provider.CommunicationItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/information/communication/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/information/communication/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.information.provider.InformationItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/information/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/information/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.la.provider.LaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/la/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/la/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.oa.provider.OaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/oa/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/oa/1.0.0"/>
    </extension>
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
         class="org.polarsys.capella.core.data.pa.provider.PaItemProviderDecoratorAdapterFactory"
         supportedTypes="org.eclipse.emf.edit.provider.IItemLabelProvider"
-        uri="http://www.polarsys.org/capella/core/pa/0.8.0"/>
+        uri="http://www.polarsys.org/capella/core/pa/1.0.0"/>
    </extension>
 </plugin>

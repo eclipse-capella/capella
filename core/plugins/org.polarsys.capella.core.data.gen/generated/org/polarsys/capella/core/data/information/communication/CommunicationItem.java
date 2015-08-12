@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,23 +46,23 @@ public interface CommunicationItem extends Classifier, DataValueContainer {
 
 
 	/**
-	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
+   * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Visibility</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #setVisibility(VisibilityKind)
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationItem_Visibility()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to VisibilityKind description\r\n[source: Capella study]' constraints='none' type='refer to VisibilityKind definition\r\n[source: Capella study]' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #setVisibility(VisibilityKind)
+   * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationItem_Visibility()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to VisibilityKind description\r\n[source: Capella study]' constraints='none' type='refer to VisibilityKind definition\r\n[source: Capella study]' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	VisibilityKind getVisibility();
 
@@ -70,15 +70,15 @@ public interface CommunicationItem extends Classifier, DataValueContainer {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.communication.CommunicationItem#getVisibility <em>Visibility</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.communication.CommunicationItem#getVisibility <em>Visibility</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #getVisibility()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #getVisibility()
+   * @generated
+   */
 
 	void setVisibility(VisibilityKind value);
 
@@ -89,22 +89,22 @@ public interface CommunicationItem extends Classifier, DataValueContainer {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned State Machines</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
+   * Returns the value of the '<em><b>Owned State Machines</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.StateMachine}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned State Machines</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned State Machines</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationItem_OwnedStateMachines()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='state machines associated to this communication item, as a mean to specify communication protocols\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='Elements on which StateMachine stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned State Machines</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationItem_OwnedStateMachines()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='state machines associated to this communication item, as a mean to specify communication protocols\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='Elements on which StateMachine stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	EList<StateMachine> getOwnedStateMachines();
 
@@ -115,24 +115,24 @@ public interface CommunicationItem extends Classifier, DataValueContainer {
 
 
 	/**
-	 * Returns the value of the '<em><b>Properties</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.Property}.
+   * Returns the value of the '<em><b>Properties</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.Property}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Properties</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Properties</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationItem_Properties()
-	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedAttribute' featureOwner='StructuredClassifier'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='properties'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='attributes of the communication item\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='no found equivalent since the three children (Exception, Signal, Message) have different hierarchies. The specific rule should  create a package, stored the Properties in this package, and finally create a packageImport under the NamedElement reference for the element' constraints='elements inside the imported package on which a Property stereotype or any stereotype that inherits from it  is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Properties</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationItem_Properties()
+   * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='ownedAttribute' featureOwner='StructuredClassifier'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='properties'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='attributes of the communication item\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='no found equivalent since the three children (Exception, Signal, Message) have different hierarchies. The specific rule should  create a package, stored the Properties in this package, and finally create a packageImport under the NamedElement reference for the element' constraints='elements inside the imported package on which a Property stereotype or any stereotype that inherits from it  is applied'"
+   * @generated
+   */
 
 	EList<Property> getProperties();
 

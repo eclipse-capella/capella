@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,48 +47,48 @@ public class FunctionalExchangeRealizationImpl extends AllocationImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalExchangeRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION;
-	}
+    return FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalExchange getRealizedFunctionalExchange() {
 
-		FunctionalExchange realizedFunctionalExchange = basicGetRealizedFunctionalExchange();
-		return realizedFunctionalExchange != null && realizedFunctionalExchange.eIsProxy() ? (FunctionalExchange)eResolveProxy((InternalEObject)realizedFunctionalExchange) : realizedFunctionalExchange;
-	}
+    FunctionalExchange realizedFunctionalExchange = basicGetRealizedFunctionalExchange();
+    return realizedFunctionalExchange != null && realizedFunctionalExchange.eIsProxy() ? (FunctionalExchange)eResolveProxy((InternalEObject)realizedFunctionalExchange) : realizedFunctionalExchange;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalExchange basicGetRealizedFunctionalExchange() {
 
@@ -115,15 +115,15 @@ public class FunctionalExchangeRealizationImpl extends AllocationImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE, annotation);
-		
-		try {
-			return (FunctionalExchange) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (FunctionalExchange) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -131,23 +131,23 @@ public class FunctionalExchangeRealizationImpl extends AllocationImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalExchange getRealizingFunctionalExchange() {
 
-		FunctionalExchange realizingFunctionalExchange = basicGetRealizingFunctionalExchange();
-		return realizingFunctionalExchange != null && realizingFunctionalExchange.eIsProxy() ? (FunctionalExchange)eResolveProxy((InternalEObject)realizingFunctionalExchange) : realizingFunctionalExchange;
-	}
+    FunctionalExchange realizingFunctionalExchange = basicGetRealizingFunctionalExchange();
+    return realizingFunctionalExchange != null && realizingFunctionalExchange.eIsProxy() ? (FunctionalExchange)eResolveProxy((InternalEObject)realizingFunctionalExchange) : realizingFunctionalExchange;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalExchange basicGetRealizingFunctionalExchange() {
 
@@ -174,53 +174,53 @@ public class FunctionalExchangeRealizationImpl extends AllocationImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE, annotation);
-		
-		try {
-			return (FunctionalExchange) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (FunctionalExchange) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE:
-				if (resolve) return getRealizedFunctionalExchange();
-				return basicGetRealizedFunctionalExchange();
-			case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE:
-				if (resolve) return getRealizingFunctionalExchange();
-				return basicGetRealizingFunctionalExchange();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE:
+        if (resolve) return getRealizedFunctionalExchange();
+        return basicGetRealizedFunctionalExchange();
+      case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE:
+        if (resolve) return getRealizingFunctionalExchange();
+        return basicGetRealizingFunctionalExchange();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE:
-				return basicGetRealizedFunctionalExchange() != null;
-			case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE:
-				return basicGetRealizingFunctionalExchange() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZED_FUNCTIONAL_EXCHANGE:
+        return basicGetRealizedFunctionalExchange() != null;
+      case FaPackage.FUNCTIONAL_EXCHANGE_REALIZATION__REALIZING_FUNCTIONAL_EXCHANGE:
+        return basicGetRealizingFunctionalExchange() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,161 +35,161 @@ import org.polarsys.capella.core.data.oa.RoleAssemblyUsage;
 public class RoleAssemblyUsageImpl extends NamedElementImpl implements RoleAssemblyUsage {
 
 	/**
-	 * The cached value of the '{@link #getChild() <em>Child</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getChild() <em>Child</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getChild()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getChild()
+   * @generated
+   * @ordered
+   */
 	protected Role child;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RoleAssemblyUsageImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ROLE_ASSEMBLY_USAGE;
-	}
+    return OaPackage.Literals.ROLE_ASSEMBLY_USAGE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Role getChild() {
 
-		if (child != null && child.eIsProxy()) {
-			InternalEObject oldChild = (InternalEObject)child;
-			child = (Role)eResolveProxy(oldChild);
-			if (child != oldChild) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ROLE_ASSEMBLY_USAGE__CHILD, oldChild, child));
-			}
-		}
-		return child;
-	}
+    if (child != null && child.eIsProxy()) {
+      InternalEObject oldChild = (InternalEObject)child;
+      child = (Role)eResolveProxy(oldChild);
+      if (child != oldChild) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ROLE_ASSEMBLY_USAGE__CHILD, oldChild, child));
+      }
+    }
+    return child;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Role basicGetChild() {
 
-		return child;
-	}
+    return child;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setChild(Role newChild) {
 
-		Role oldChild = child;
-		child = newChild;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ROLE_ASSEMBLY_USAGE__CHILD, oldChild, child));
+    Role oldChild = child;
+    child = newChild;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ROLE_ASSEMBLY_USAGE__CHILD, oldChild, child));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
-				if (resolve) return getChild();
-				return basicGetChild();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
+        if (resolve) return getChild();
+        return basicGetChild();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Role) {
-				// end-extension-code
-					setChild((Role)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Role) {
+        // end-extension-code
+          setChild((Role)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
-				setChild((Role)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
+        setChild((Role)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
-				return child != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ROLE_ASSEMBLY_USAGE__CHILD:
+        return child != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

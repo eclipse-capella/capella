@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,23 +35,23 @@ import org.polarsys.capella.core.data.capellacore.VisibilityKind;
 public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 
 	/**
-	 * The default value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsAbstract()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_ABSTRACT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsAbstract()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsAbstract()
+   * @generated
+   * @ordered
+   */
 	protected boolean isAbstract = IS_ABSTRACT_EDEFAULT;
 
 
@@ -59,23 +59,23 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 
 
 	/**
-	 * The default value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsStatic()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsStatic()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_STATIC_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsStatic()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsStatic()
+   * @generated
+   * @ordered
+   */
 	protected boolean isStatic = IS_STATIC_EDEFAULT;
 
 
@@ -83,79 +83,79 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 
 
 	/**
-	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
 	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FeatureImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.FEATURE;
-	}
+    return CapellacorePackage.Literals.FEATURE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsAbstract() {
 
-		return isAbstract;
-	}
+    return isAbstract;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setIsAbstract(boolean newIsAbstract) {
 
-		boolean oldIsAbstract = isAbstract;
-		isAbstract = newIsAbstract;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.FEATURE__IS_ABSTRACT, oldIsAbstract, isAbstract));
+    boolean oldIsAbstract = isAbstract;
+    isAbstract = newIsAbstract;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.FEATURE__IS_ABSTRACT, oldIsAbstract, isAbstract));
 
-	}
+  }
 
 
 
@@ -163,31 +163,31 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsStatic() {
 
-		return isStatic;
-	}
+    return isStatic;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setIsStatic(boolean newIsStatic) {
 
-		boolean oldIsStatic = isStatic;
-		isStatic = newIsStatic;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.FEATURE__IS_STATIC, oldIsStatic, isStatic));
+    boolean oldIsStatic = isStatic;
+    isStatic = newIsStatic;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.FEATURE__IS_STATIC, oldIsStatic, isStatic));
 
-	}
+  }
 
 
 
@@ -195,154 +195,154 @@ public abstract class FeatureImpl extends NamedElementImpl implements Feature {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public VisibilityKind getVisibility() {
 
-		return visibility;
-	}
+    return visibility;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setVisibility(VisibilityKind newVisibility) {
 
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.FEATURE__VISIBILITY, oldVisibility, visibility));
+    VisibilityKind oldVisibility = visibility;
+    visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.FEATURE__VISIBILITY, oldVisibility, visibility));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacorePackage.FEATURE__IS_ABSTRACT:
-				return isIsAbstract();
-			case CapellacorePackage.FEATURE__IS_STATIC:
-				return isIsStatic();
-			case CapellacorePackage.FEATURE__VISIBILITY:
-				return getVisibility();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacorePackage.FEATURE__IS_ABSTRACT:
+        return isIsAbstract();
+      case CapellacorePackage.FEATURE__IS_STATIC:
+        return isIsStatic();
+      case CapellacorePackage.FEATURE__VISIBILITY:
+        return getVisibility();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacorePackage.FEATURE__IS_ABSTRACT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setIsAbstract((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CapellacorePackage.FEATURE__IS_STATIC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setIsStatic((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CapellacorePackage.FEATURE__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
-					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacorePackage.FEATURE__IS_ABSTRACT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setIsAbstract((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case CapellacorePackage.FEATURE__IS_STATIC:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setIsStatic((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case CapellacorePackage.FEATURE__VISIBILITY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof VisibilityKind) {
+        // end-extension-code
+          setVisibility((VisibilityKind)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.FEATURE__IS_ABSTRACT:
-				setIsAbstract(IS_ABSTRACT_EDEFAULT);
-				return;
-			case CapellacorePackage.FEATURE__IS_STATIC:
-				setIsStatic(IS_STATIC_EDEFAULT);
-				return;
-			case CapellacorePackage.FEATURE__VISIBILITY:
-				setVisibility(VISIBILITY_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.FEATURE__IS_ABSTRACT:
+        setIsAbstract(IS_ABSTRACT_EDEFAULT);
+        return;
+      case CapellacorePackage.FEATURE__IS_STATIC:
+        setIsStatic(IS_STATIC_EDEFAULT);
+        return;
+      case CapellacorePackage.FEATURE__VISIBILITY:
+        setVisibility(VISIBILITY_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.FEATURE__IS_ABSTRACT:
-				return isAbstract != IS_ABSTRACT_EDEFAULT;
-			case CapellacorePackage.FEATURE__IS_STATIC:
-				return isStatic != IS_STATIC_EDEFAULT;
-			case CapellacorePackage.FEATURE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.FEATURE__IS_ABSTRACT:
+        return isAbstract != IS_ABSTRACT_EDEFAULT;
+      case CapellacorePackage.FEATURE__IS_STATIC:
+        return isStatic != IS_STATIC_EDEFAULT;
+      case CapellacorePackage.FEATURE__VISIBILITY:
+        return visibility != VISIBILITY_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isAbstract: "); //$NON-NLS-1$
-		result.append(isAbstract);
-		result.append(", isStatic: "); //$NON-NLS-1$
-		result.append(isStatic);
-		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(visibility);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (isAbstract: "); //$NON-NLS-1$
+    result.append(isAbstract);
+    result.append(", isStatic: "); //$NON-NLS-1$
+    result.append(isStatic);
+    result.append(", visibility: "); //$NON-NLS-1$
+    result.append(visibility);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //FeatureImpl

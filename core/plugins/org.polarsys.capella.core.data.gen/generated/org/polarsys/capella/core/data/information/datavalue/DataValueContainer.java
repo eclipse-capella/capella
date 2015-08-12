@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,24 +40,24 @@ public interface DataValueContainer extends Structure {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Data Values</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.datavalue.DataValue}.
+   * Returns the value of the '<em><b>Owned Data Values</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.datavalue.DataValue}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Data Values</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Data Values</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getDataValueContainer_OwnedDataValues()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataValues'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='DataValue elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Data Values</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getDataValueContainer_OwnedDataValues()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='packagedElement' featureOwner='Package'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='ownedDataValues'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='DataValue elements contained in this package\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::packagedElement elements on which DataValue stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<DataValue> getOwnedDataValues();
 

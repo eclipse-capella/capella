@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,48 +47,48 @@ public class PortRealizationImpl extends AllocationImpl implements PortRealizati
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PortRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.PORT_REALIZATION;
-	}
+    return InformationPackage.Literals.PORT_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port getRealizedPort() {
 
-		Port realizedPort = basicGetRealizedPort();
-		return realizedPort != null && realizedPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)realizedPort) : realizedPort;
-	}
+    Port realizedPort = basicGetRealizedPort();
+    return realizedPort != null && realizedPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)realizedPort) : realizedPort;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port basicGetRealizedPort() {
 
@@ -115,15 +115,15 @@ public class PortRealizationImpl extends AllocationImpl implements PortRealizati
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT_REALIZATION__REALIZED_PORT, annotation);
-		
-		try {
-			return (Port) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Port) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -131,23 +131,23 @@ public class PortRealizationImpl extends AllocationImpl implements PortRealizati
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port getRealizingPort() {
 
-		Port realizingPort = basicGetRealizingPort();
-		return realizingPort != null && realizingPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)realizingPort) : realizingPort;
-	}
+    Port realizingPort = basicGetRealizingPort();
+    return realizingPort != null && realizingPort.eIsProxy() ? (Port)eResolveProxy((InternalEObject)realizingPort) : realizingPort;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Port basicGetRealizingPort() {
 
@@ -174,53 +174,53 @@ public class PortRealizationImpl extends AllocationImpl implements PortRealizati
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT_REALIZATION__REALIZING_PORT, annotation);
-		
-		try {
-			return (Port) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Port) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.PORT_REALIZATION__REALIZED_PORT:
-				if (resolve) return getRealizedPort();
-				return basicGetRealizedPort();
-			case InformationPackage.PORT_REALIZATION__REALIZING_PORT:
-				if (resolve) return getRealizingPort();
-				return basicGetRealizingPort();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT_REALIZATION__REALIZED_PORT:
+        if (resolve) return getRealizedPort();
+        return basicGetRealizedPort();
+      case InformationPackage.PORT_REALIZATION__REALIZING_PORT:
+        if (resolve) return getRealizingPort();
+        return basicGetRealizingPort();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.PORT_REALIZATION__REALIZED_PORT:
-				return basicGetRealizedPort() != null;
-			case InformationPackage.PORT_REALIZATION__REALIZING_PORT:
-				return basicGetRealizingPort() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT_REALIZATION__REALIZED_PORT:
+        return basicGetRealizedPort() != null;
+      case InformationPackage.PORT_REALIZATION__REALIZING_PORT:
+        return basicGetRealizingPort() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

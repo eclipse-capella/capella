@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,25 +42,25 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
-	 * The default value is <code>"INTEGER"</code>.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.datatype.NumericTypeKind}.
+   * Returns the value of the '<em><b>Kind</b></em>' attribute.
+   * The default value is <code>"INTEGER"</code>.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.datatype.NumericTypeKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.datatype.NumericTypeKind
-	 * @see #setKind(NumericTypeKind)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_Kind()
-	 * @model default="INTEGER"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the kind of this numeric type\r\n[source: Capella study]' constraints='none' type='refer to NumericTypeKind' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.datatype.NumericTypeKind
+   * @see #setKind(NumericTypeKind)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_Kind()
+   * @model default="INTEGER"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the kind of this numeric type\r\n[source: Capella study]' constraints='none' type='refer to NumericTypeKind' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	NumericTypeKind getKind();
 
@@ -68,15 +68,15 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getKind <em>Kind</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getKind <em>Kind</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Kind</em>' attribute.
-	 * @see org.polarsys.capella.core.data.information.datatype.NumericTypeKind
-	 * @see #getKind()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Kind</em>' attribute.
+   * @see org.polarsys.capella.core.data.information.datatype.NumericTypeKind
+   * @see #getKind()
+   * @generated
+   */
 
 	void setKind(NumericTypeKind value);
 
@@ -87,24 +87,24 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Default Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Default Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Default Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Default Value</em>' containment reference.
-	 * @see #setOwnedDefaultValue(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedDefaultValue()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='defaultValue'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Default Value</em>' containment reference.
+   * @see #setOwnedDefaultValue(NumericValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedDefaultValue()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='defaultValue'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedDefaultValue();
 
@@ -112,14 +112,14 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedDefaultValue <em>Owned Default Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedDefaultValue <em>Owned Default Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Default Value</em>' containment reference.
-	 * @see #getOwnedDefaultValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Default Value</em>' containment reference.
+   * @see #getOwnedDefaultValue()
+   * @generated
+   */
 
 	void setOwnedDefaultValue(NumericValue value);
 
@@ -130,24 +130,24 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Null Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Null Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Null Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Null Value</em>' containment reference.
-	 * @see #setOwnedNullValue(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedNullValue()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='nullValue'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the neutral value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Null Value</em>' containment reference.
+   * @see #setOwnedNullValue(NumericValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedNullValue()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='nullValue'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the neutral value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedNullValue();
 
@@ -155,14 +155,14 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedNullValue <em>Owned Null Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedNullValue <em>Owned Null Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Null Value</em>' containment reference.
-	 * @see #getOwnedNullValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Null Value</em>' containment reference.
+   * @see #getOwnedNullValue()
+   * @generated
+   */
 
 	void setOwnedNullValue(NumericValue value);
 
@@ -173,24 +173,24 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Min Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Min Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Min Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Min Value</em>' containment reference.
-	 * @see #setOwnedMinValue(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedMinValue()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='minValue'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the minimum value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Min Value</em>' containment reference.
+   * @see #setOwnedMinValue(NumericValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedMinValue()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='minValue'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the minimum value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedMinValue();
 
@@ -198,14 +198,14 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedMinValue <em>Owned Min Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedMinValue <em>Owned Min Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Min Value</em>' containment reference.
-	 * @see #getOwnedMinValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Min Value</em>' containment reference.
+   * @see #getOwnedMinValue()
+   * @generated
+   */
 
 	void setOwnedMinValue(NumericValue value);
 
@@ -216,24 +216,24 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Max Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Max Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Max Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Max Value</em>' containment reference.
-	 * @see #setOwnedMaxValue(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedMaxValue()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='maxValue'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the maximum value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Max Value</em>' containment reference.
+   * @see #setOwnedMaxValue(NumericValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getNumericType_OwnedMaxValue()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='maxValue'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the maximum value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedMaxValue();
 
@@ -241,14 +241,14 @@ public interface NumericType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedMaxValue <em>Owned Max Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.NumericType#getOwnedMaxValue <em>Owned Max Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Max Value</em>' containment reference.
-	 * @see #getOwnedMaxValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Max Value</em>' containment reference.
+   * @see #getOwnedMaxValue()
+   * @generated
+   */
 
 	void setOwnedMaxValue(NumericValue value);
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,48 +41,48 @@ public abstract class AbstractBooleanValueImpl extends DataValueImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractBooleanValueImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE;
-	}
+    return DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BooleanType getBooleanType() {
 
-		BooleanType booleanType = basicGetBooleanType();
-		return booleanType != null && booleanType.eIsProxy() ? (BooleanType)eResolveProxy((InternalEObject)booleanType) : booleanType;
-	}
+    BooleanType booleanType = basicGetBooleanType();
+    return booleanType != null && booleanType.eIsProxy() ? (BooleanType)eResolveProxy((InternalEObject)booleanType) : booleanType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BooleanType basicGetBooleanType() {
 
@@ -109,48 +109,48 @@ public abstract class AbstractBooleanValueImpl extends DataValueImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE, annotation);
-		
-		try {
-			return (BooleanType) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (BooleanType) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
-				if (resolve) return getBooleanType();
-				return basicGetBooleanType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
+        if (resolve) return getBooleanType();
+        return basicGetBooleanType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
-				return basicGetBooleanType() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatavaluePackage.ABSTRACT_BOOLEAN_VALUE__BOOLEAN_TYPE:
+        return basicGetBooleanType() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

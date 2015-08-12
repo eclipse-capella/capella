@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -79,11 +79,11 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
   protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ReEditPlugin.INSTANCE, RePackage.eNS_URI);
 
   /**
-  * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-  * <!-- begin-user-doc -->
+   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-  * @generated
-  */
+   * @generated
+   */
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   /**
@@ -311,7 +311,7 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
   public Object adapt(Object object, Object type) {
     if (isFactoryForType(type)) {
       Object adapter = super.adapt(object, type);
-      if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
+      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
         return adapter;
       }
     }
@@ -329,29 +329,29 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
   }
 
   /**
-  * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-  * @generated
-  */
+   * @generated
+   */
   public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
     return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
   }
 
   /**
-  * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-  * @generated
-  */
+   * @generated
+   */
   public ResourceLocator getResourceLocator() {
     return childCreationExtenderManager;
   }
 
   /**
-  * This adds a listener.
-  * <!-- begin-user-doc -->
+   * This adds a listener.
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-  * @generated
-  */
+   * @generated
+   */
   public void addListener(INotifyChangedListener notifyChangedListener) {
     changeNotifier.addListener(notifyChangedListener);
   }
@@ -387,35 +387,21 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
    * @generated
    */
   public void dispose() {
-    if (catalogElementPkgItemProvider != null) {
-      catalogElementPkgItemProvider.dispose();
-    }
-    if (recCatalogItemProvider != null) {
-      recCatalogItemProvider.dispose();
-    }
-    if (groupingElementPkgItemProvider != null) {
-      groupingElementPkgItemProvider.dispose();
-    }
-    if (catalogElementLinkItemProvider != null) {
-      catalogElementLinkItemProvider.dispose();
-    }
-    if (catalogElementItemProvider != null) {
-      catalogElementItemProvider.dispose();
-    }
-    if (compliancyDefinitionPkgItemProvider != null) {
-      compliancyDefinitionPkgItemProvider.dispose();
-    }
-    if (compliancyDefinitionItemProvider != null) {
-      compliancyDefinitionItemProvider.dispose();
-    }
+    if (catalogElementPkgItemProvider != null) catalogElementPkgItemProvider.dispose();
+    if (recCatalogItemProvider != null) recCatalogItemProvider.dispose();
+    if (groupingElementPkgItemProvider != null) groupingElementPkgItemProvider.dispose();
+    if (catalogElementLinkItemProvider != null) catalogElementLinkItemProvider.dispose();
+    if (catalogElementItemProvider != null) catalogElementItemProvider.dispose();
+    if (compliancyDefinitionPkgItemProvider != null) compliancyDefinitionPkgItemProvider.dispose();
+    if (compliancyDefinitionItemProvider != null) compliancyDefinitionItemProvider.dispose();
   }
 
   /**
-  * A child creation extender for the {@link EmdePackage}.
-  * <!-- begin-user-doc -->
+   * A child creation extender for the {@link EmdePackage}.
+   * <!-- begin-user-doc -->
   * <!-- end-user-doc -->
-  * @generated
-  */
+   * @generated
+   */
   public static class EmdeChildCreationExtender implements IChildCreationExtender {
     /**
      * The switch for creating child descriptors specific to each extended class.
@@ -459,30 +445,35 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
       @Override
       public Object caseExtensibleElement(ExtensibleElement object) {
         // begin-extension-code
-        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(),
-            "http://www.polarsys.org/capella/common/re/1.0.0")) { //$NON-NLS-1$
-          return null;
+        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/common/re/1.0.0")) { //$NON-NLS-1$
+          return null;				
         }
         // end-extension-code
-        // begin-extension-code
-        {
-          CommandParameter commandParameter =
-              createChildParameter(EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS, ReFactory.eINSTANCE.createRecCatalog());
-          if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-            newChildDescriptors.add(commandParameter);
-          }
-        }
-        // end-extension-code
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
+                         ReFactory.eINSTANCE.createRecCatalog());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
 
-        // begin-extension-code
-        {
-          CommandParameter commandParameter =
-              createChildParameter(EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS, ReFactory.eINSTANCE.createGroupingElementPkg());
-          if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-            newChildDescriptors.add(commandParameter);
-          }
-        }
-        // end-extension-code
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (EmdePackage.Literals.EXTENSIBLE_ELEMENT__OWNED_EXTENSIONS,
+                         ReFactory.eINSTANCE.createGroupingElementPkg());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
 
         return null;
       }
@@ -505,8 +496,8 @@ public class ReItemProviderAdapterFactory extends ReAdapterFactory implements Co
      */
     public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
       ArrayList<Object> result = new ArrayList<Object>();
-      new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
-      return result;
+       new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+       return result;
     }
 
     /**

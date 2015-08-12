@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,48 +47,48 @@ public abstract class ArchitectureAllocationImpl extends AllocationImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ArchitectureAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.ARCHITECTURE_ALLOCATION;
-	}
+    return CsPackage.Literals.ARCHITECTURE_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BlockArchitecture getAllocatedArchitecture() {
 
-		BlockArchitecture allocatedArchitecture = basicGetAllocatedArchitecture();
-		return allocatedArchitecture != null && allocatedArchitecture.eIsProxy() ? (BlockArchitecture)eResolveProxy((InternalEObject)allocatedArchitecture) : allocatedArchitecture;
-	}
+    BlockArchitecture allocatedArchitecture = basicGetAllocatedArchitecture();
+    return allocatedArchitecture != null && allocatedArchitecture.eIsProxy() ? (BlockArchitecture)eResolveProxy((InternalEObject)allocatedArchitecture) : allocatedArchitecture;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BlockArchitecture basicGetAllocatedArchitecture() {
 
@@ -115,15 +115,15 @@ public abstract class ArchitectureAllocationImpl extends AllocationImpl implemen
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE, annotation);
-		
-		try {
-			return (BlockArchitecture) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (BlockArchitecture) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -131,23 +131,23 @@ public abstract class ArchitectureAllocationImpl extends AllocationImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BlockArchitecture getAllocatingArchitecture() {
 
-		BlockArchitecture allocatingArchitecture = basicGetAllocatingArchitecture();
-		return allocatingArchitecture != null && allocatingArchitecture.eIsProxy() ? (BlockArchitecture)eResolveProxy((InternalEObject)allocatingArchitecture) : allocatingArchitecture;
-	}
+    BlockArchitecture allocatingArchitecture = basicGetAllocatingArchitecture();
+    return allocatingArchitecture != null && allocatingArchitecture.eIsProxy() ? (BlockArchitecture)eResolveProxy((InternalEObject)allocatingArchitecture) : allocatingArchitecture;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public BlockArchitecture basicGetAllocatingArchitecture() {
 
@@ -174,53 +174,53 @@ public abstract class ArchitectureAllocationImpl extends AllocationImpl implemen
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE, annotation);
-		
-		try {
-			return (BlockArchitecture) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (BlockArchitecture) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE:
-				if (resolve) return getAllocatedArchitecture();
-				return basicGetAllocatedArchitecture();
-			case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE:
-				if (resolve) return getAllocatingArchitecture();
-				return basicGetAllocatingArchitecture();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE:
+        if (resolve) return getAllocatedArchitecture();
+        return basicGetAllocatedArchitecture();
+      case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE:
+        if (resolve) return getAllocatingArchitecture();
+        return basicGetAllocatingArchitecture();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE:
-				return basicGetAllocatedArchitecture() != null;
-			case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE:
-				return basicGetAllocatingArchitecture() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATED_ARCHITECTURE:
+        return basicGetAllocatedArchitecture() != null;
+      case CsPackage.ARCHITECTURE_ALLOCATION__ALLOCATING_ARCHITECTURE:
+        return basicGetAllocatingArchitecture() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

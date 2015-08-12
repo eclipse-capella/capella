@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,20 +37,20 @@ public interface CatalogElementPkg extends ReNamedElement, ReElementContainer {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Element Pkgs</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.re.CatalogElementPkg}.
+   * Returns the value of the '<em><b>Owned Element Pkgs</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.re.CatalogElementPkg}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Element Pkgs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Element Pkgs</em>' containment reference list.
-	 * @see org.polarsys.capella.common.re.RePackage#getCatalogElementPkg_OwnedElementPkgs()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Element Pkgs</em>' containment reference list.
+   * @see org.polarsys.capella.common.re.RePackage#getCatalogElementPkg_OwnedElementPkgs()
+   * @model containment="true" resolveProxies="true"
+   * @generated
+   */
 
 	EList<CatalogElementPkg> getOwnedElementPkgs();
 

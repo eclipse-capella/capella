@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,48 +41,48 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected MessageEndImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.MESSAGE_END;
-	}
+    return InteractionPackage.Literals.MESSAGE_END;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SequenceMessage getMessage() {
 
-		SequenceMessage message = basicGetMessage();
-		return message != null && message.eIsProxy() ? (SequenceMessage)eResolveProxy((InternalEObject)message) : message;
-	}
+    SequenceMessage message = basicGetMessage();
+    return message != null && message.eIsProxy() ? (SequenceMessage)eResolveProxy((InternalEObject)message) : message;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SequenceMessage basicGetMessage() {
 
@@ -109,48 +109,48 @@ public class MessageEndImpl extends AbstractEndImpl implements MessageEnd {
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.MESSAGE_END__MESSAGE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.MESSAGE_END__MESSAGE, annotation);
-		
-		try {
-			return (SequenceMessage) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (SequenceMessage) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.MESSAGE_END__MESSAGE:
-				if (resolve) return getMessage();
-				return basicGetMessage();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.MESSAGE_END__MESSAGE:
+        if (resolve) return getMessage();
+        return basicGetMessage();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.MESSAGE_END__MESSAGE:
-				return basicGetMessage() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.MESSAGE_END__MESSAGE:
+        return basicGetMessage() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

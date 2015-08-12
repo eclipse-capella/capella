@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,24 +40,24 @@ public interface DeployableElement extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Deploying Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
+   * Returns the value of the '<em><b>Deploying Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deploying Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deploying Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getDeployableElement_DeployingLinks()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployingLinks'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of deployment specifications associated to this element, e.g. associations between this element and a physical location to which it is to be deployed\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Deploying Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getDeployableElement_DeployingLinks()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployingLinks'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of deployment specifications associated to this element, e.g. associations between this element and a physical location to which it is to be deployed\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<AbstractDeploymentLink> getDeployingLinks();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,13 +47,13 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 public class FunctionalChainAbstractCapabilityInvolvementImpl extends RelationshipImpl implements FunctionalChainAbstractCapabilityInvolvement {
 
 	/**
-	 * The cached value of the '{@link #getInvolver() <em>Involver</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolver() <em>Involver</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolver()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolver()
+   * @generated
+   * @ordered
+   */
 	protected InvolverElement involver;
 
 
@@ -61,13 +61,13 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
 
 
 	/**
-	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolved()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolved()
+   * @generated
+   * @ordered
+   */
 	protected InvolvedElement involved;
 
 
@@ -82,77 +82,77 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionalChainAbstractCapabilityInvolvementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT;
-	}
+    return InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement getInvolver() {
 
-		if (involver != null && involver.eIsProxy()) {
-			InternalEObject oldInvolver = (InternalEObject)involver;
-			involver = (InvolverElement)eResolveProxy(oldInvolver);
-			if (involver != oldInvolver) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
-			}
-		}
-		return involver;
-	}
+    if (involver != null && involver.eIsProxy()) {
+      InternalEObject oldInvolver = (InternalEObject)involver;
+      involver = (InvolverElement)eResolveProxy(oldInvolver);
+      if (involver != oldInvolver) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
+      }
+    }
+    return involver;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolverElement basicGetInvolver() {
 
-		return involver;
-	}
+    return involver;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setInvolver(InvolverElement newInvolver) {
 
-		InvolverElement oldInvolver = involver;
-		involver = newInvolver;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
+    InvolverElement oldInvolver = involver;
+    involver = newInvolver;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
 
-	}
+  }
 
 
 
@@ -160,52 +160,52 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement getInvolved() {
 
-		if (involved != null && involved.eIsProxy()) {
-			InternalEObject oldInvolved = (InternalEObject)involved;
-			involved = (InvolvedElement)eResolveProxy(oldInvolved);
-			if (involved != oldInvolved) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
-			}
-		}
-		return involved;
-	}
+    if (involved != null && involved.eIsProxy()) {
+      InternalEObject oldInvolved = (InternalEObject)involved;
+      involved = (InvolvedElement)eResolveProxy(oldInvolved);
+      if (involved != oldInvolved) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+      }
+    }
+    return involved;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InvolvedElement basicGetInvolved() {
 
-		return involved;
-	}
+    return involved;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setInvolved(InvolvedElement newInvolved) {
 
-		InvolvedElement oldInvolved = involved;
-		involved = newInvolved;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+    InvolvedElement oldInvolved = involved;
+    involved = newInvolved;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
 
-	}
+  }
 
 
 
@@ -213,23 +213,23 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability getCapability() {
 
-		AbstractCapability capability = basicGetCapability();
-		return capability != null && capability.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)capability) : capability;
-	}
+    AbstractCapability capability = basicGetCapability();
+    return capability != null && capability.eIsProxy() ? (AbstractCapability)eResolveProxy((InternalEObject)capability) : capability;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractCapability basicGetCapability() {
 
@@ -256,15 +256,15 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY, annotation);
-		
-		try {
-			return (AbstractCapability) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractCapability) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -272,23 +272,23 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalChain getFunctionalChain() {
 
-		FunctionalChain functionalChain = basicGetFunctionalChain();
-		return functionalChain != null && functionalChain.eIsProxy() ? (FunctionalChain)eResolveProxy((InternalEObject)functionalChain) : functionalChain;
-	}
+    FunctionalChain functionalChain = basicGetFunctionalChain();
+    return functionalChain != null && functionalChain.eIsProxy() ? (FunctionalChain)eResolveProxy((InternalEObject)functionalChain) : functionalChain;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalChain basicGetFunctionalChain() {
 
@@ -315,113 +315,113 @@ public class FunctionalChainAbstractCapabilityInvolvementImpl extends Relationsh
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTIONAL_CHAIN.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTIONAL_CHAIN, annotation);
-		
-		try {
-			return (FunctionalChain) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (FunctionalChain) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
-				if (resolve) return getInvolver();
-				return basicGetInvolver();
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
-				if (resolve) return getInvolved();
-				return basicGetInvolved();
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY:
-				if (resolve) return getCapability();
-				return basicGetCapability();
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTIONAL_CHAIN:
-				if (resolve) return getFunctionalChain();
-				return basicGetFunctionalChain();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
+        if (resolve) return getInvolver();
+        return basicGetInvolver();
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
+        if (resolve) return getInvolved();
+        return basicGetInvolved();
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY:
+        if (resolve) return getCapability();
+        return basicGetCapability();
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTIONAL_CHAIN:
+        if (resolve) return getFunctionalChain();
+        return basicGetFunctionalChain();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolverElement) {
-				// end-extension-code
-					setInvolver((InvolverElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InvolvedElement) {
-				// end-extension-code
-					setInvolved((InvolvedElement)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof InvolverElement) {
+        // end-extension-code
+          setInvolver((InvolverElement)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof InvolvedElement) {
+        // end-extension-code
+          setInvolved((InvolvedElement)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
-				setInvolver((InvolverElement)null);
-				return;
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
-				setInvolved((InvolvedElement)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
+        setInvolver((InvolverElement)null);
+        return;
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
+        setInvolved((InvolvedElement)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
-				return involver != null;
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
-				return involved != null;
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY:
-				return basicGetCapability() != null;
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTIONAL_CHAIN:
-				return basicGetFunctionalChain() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVER:
+        return involver != null;
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__INVOLVED:
+        return involved != null;
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__CAPABILITY:
+        return basicGetCapability() != null;
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT__FUNCTIONAL_CHAIN:
+        return basicGetFunctionalChain() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

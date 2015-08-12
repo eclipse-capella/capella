@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -58,13 +58,13 @@ import org.polarsys.capella.core.data.oa.RolePkg;
 public class OperationalAnalysisImpl extends BlockArchitectureImpl implements OperationalAnalysis {
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalContext() <em>Owned Operational Context</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalContext() <em>Owned Operational Context</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalContext()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalContext()
+   * @generated
+   * @ordered
+   */
 	protected OperationalContext ownedOperationalContext;
 
 
@@ -72,13 +72,13 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedRolePkg() <em>Owned Role Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedRolePkg() <em>Owned Role Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedRolePkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedRolePkg()
+   * @generated
+   * @ordered
+   */
 	protected RolePkg ownedRolePkg;
 
 
@@ -86,13 +86,13 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedEntityPkg() <em>Owned Entity Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedEntityPkg() <em>Owned Entity Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedEntityPkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedEntityPkg()
+   * @generated
+   * @ordered
+   */
 	protected EntityPkg ownedEntityPkg;
 
 
@@ -100,13 +100,13 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedConceptPkg() <em>Owned Concept Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedConceptPkg() <em>Owned Concept Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedConceptPkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedConceptPkg()
+   * @generated
+   * @ordered
+   */
 	protected ConceptPkg ownedConceptPkg;
 
 
@@ -125,110 +125,110 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OperationalAnalysisImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.OPERATIONAL_ANALYSIS;
-	}
+    return OaPackage.Literals.OPERATIONAL_ANALYSIS;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalContext getOwnedOperationalContext() {
 
-		if (ownedOperationalContext != null && ownedOperationalContext.eIsProxy()) {
-			InternalEObject oldOwnedOperationalContext = (InternalEObject)ownedOperationalContext;
-			ownedOperationalContext = (OperationalContext)eResolveProxy(oldOwnedOperationalContext);
-			if (ownedOperationalContext != oldOwnedOperationalContext) {
-				InternalEObject newOwnedOperationalContext = (InternalEObject)ownedOperationalContext;
-				NotificationChain msgs = oldOwnedOperationalContext.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, null);
-				if (newOwnedOperationalContext.eInternalContainer() == null) {
-					msgs = newOwnedOperationalContext.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, oldOwnedOperationalContext, ownedOperationalContext));
-			}
-		}
-		return ownedOperationalContext;
-	}
+    if (ownedOperationalContext != null && ownedOperationalContext.eIsProxy()) {
+      InternalEObject oldOwnedOperationalContext = (InternalEObject)ownedOperationalContext;
+      ownedOperationalContext = (OperationalContext)eResolveProxy(oldOwnedOperationalContext);
+      if (ownedOperationalContext != oldOwnedOperationalContext) {
+        InternalEObject newOwnedOperationalContext = (InternalEObject)ownedOperationalContext;
+        NotificationChain msgs = oldOwnedOperationalContext.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, null);
+        if (newOwnedOperationalContext.eInternalContainer() == null) {
+          msgs = newOwnedOperationalContext.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, oldOwnedOperationalContext, ownedOperationalContext));
+      }
+    }
+    return ownedOperationalContext;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalContext basicGetOwnedOperationalContext() {
 
-		return ownedOperationalContext;
-	}
+    return ownedOperationalContext;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedOperationalContext(OperationalContext newOwnedOperationalContext, NotificationChain msgs) {
 
-		OperationalContext oldOwnedOperationalContext = ownedOperationalContext;
-		ownedOperationalContext = newOwnedOperationalContext;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, oldOwnedOperationalContext, newOwnedOperationalContext);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    OperationalContext oldOwnedOperationalContext = ownedOperationalContext;
+    ownedOperationalContext = newOwnedOperationalContext;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, oldOwnedOperationalContext, newOwnedOperationalContext);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedOperationalContext(OperationalContext newOwnedOperationalContext) {
 
-		if (newOwnedOperationalContext != ownedOperationalContext) {
-			NotificationChain msgs = null;
-			if (ownedOperationalContext != null)
-				msgs = ((InternalEObject)ownedOperationalContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
-			if (newOwnedOperationalContext != null)
-				msgs = ((InternalEObject)newOwnedOperationalContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
-			msgs = basicSetOwnedOperationalContext(newOwnedOperationalContext, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, newOwnedOperationalContext, newOwnedOperationalContext));
+    if (newOwnedOperationalContext != ownedOperationalContext) {
+      NotificationChain msgs = null;
+      if (ownedOperationalContext != null)
+        msgs = ((InternalEObject)ownedOperationalContext).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
+      if (newOwnedOperationalContext != null)
+        msgs = ((InternalEObject)newOwnedOperationalContext).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, null, msgs);
+      msgs = basicSetOwnedOperationalContext(newOwnedOperationalContext, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT, newOwnedOperationalContext, newOwnedOperationalContext));
 
-	}
+  }
 
 
 
@@ -236,85 +236,85 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public RolePkg getOwnedRolePkg() {
 
-		if (ownedRolePkg != null && ownedRolePkg.eIsProxy()) {
-			InternalEObject oldOwnedRolePkg = (InternalEObject)ownedRolePkg;
-			ownedRolePkg = (RolePkg)eResolveProxy(oldOwnedRolePkg);
-			if (ownedRolePkg != oldOwnedRolePkg) {
-				InternalEObject newOwnedRolePkg = (InternalEObject)ownedRolePkg;
-				NotificationChain msgs = oldOwnedRolePkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, null);
-				if (newOwnedRolePkg.eInternalContainer() == null) {
-					msgs = newOwnedRolePkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, oldOwnedRolePkg, ownedRolePkg));
-			}
-		}
-		return ownedRolePkg;
-	}
+    if (ownedRolePkg != null && ownedRolePkg.eIsProxy()) {
+      InternalEObject oldOwnedRolePkg = (InternalEObject)ownedRolePkg;
+      ownedRolePkg = (RolePkg)eResolveProxy(oldOwnedRolePkg);
+      if (ownedRolePkg != oldOwnedRolePkg) {
+        InternalEObject newOwnedRolePkg = (InternalEObject)ownedRolePkg;
+        NotificationChain msgs = oldOwnedRolePkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, null);
+        if (newOwnedRolePkg.eInternalContainer() == null) {
+          msgs = newOwnedRolePkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, oldOwnedRolePkg, ownedRolePkg));
+      }
+    }
+    return ownedRolePkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public RolePkg basicGetOwnedRolePkg() {
 
-		return ownedRolePkg;
-	}
+    return ownedRolePkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedRolePkg(RolePkg newOwnedRolePkg, NotificationChain msgs) {
 
-		RolePkg oldOwnedRolePkg = ownedRolePkg;
-		ownedRolePkg = newOwnedRolePkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, oldOwnedRolePkg, newOwnedRolePkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    RolePkg oldOwnedRolePkg = ownedRolePkg;
+    ownedRolePkg = newOwnedRolePkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, oldOwnedRolePkg, newOwnedRolePkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedRolePkg(RolePkg newOwnedRolePkg) {
 
-		if (newOwnedRolePkg != ownedRolePkg) {
-			NotificationChain msgs = null;
-			if (ownedRolePkg != null)
-				msgs = ((InternalEObject)ownedRolePkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, msgs);
-			if (newOwnedRolePkg != null)
-				msgs = ((InternalEObject)newOwnedRolePkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, msgs);
-			msgs = basicSetOwnedRolePkg(newOwnedRolePkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, newOwnedRolePkg, newOwnedRolePkg));
+    if (newOwnedRolePkg != ownedRolePkg) {
+      NotificationChain msgs = null;
+      if (ownedRolePkg != null)
+        msgs = ((InternalEObject)ownedRolePkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, msgs);
+      if (newOwnedRolePkg != null)
+        msgs = ((InternalEObject)newOwnedRolePkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, null, msgs);
+      msgs = basicSetOwnedRolePkg(newOwnedRolePkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG, newOwnedRolePkg, newOwnedRolePkg));
 
-	}
+  }
 
 
 
@@ -322,85 +322,85 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EntityPkg getOwnedEntityPkg() {
 
-		if (ownedEntityPkg != null && ownedEntityPkg.eIsProxy()) {
-			InternalEObject oldOwnedEntityPkg = (InternalEObject)ownedEntityPkg;
-			ownedEntityPkg = (EntityPkg)eResolveProxy(oldOwnedEntityPkg);
-			if (ownedEntityPkg != oldOwnedEntityPkg) {
-				InternalEObject newOwnedEntityPkg = (InternalEObject)ownedEntityPkg;
-				NotificationChain msgs = oldOwnedEntityPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, null);
-				if (newOwnedEntityPkg.eInternalContainer() == null) {
-					msgs = newOwnedEntityPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, oldOwnedEntityPkg, ownedEntityPkg));
-			}
-		}
-		return ownedEntityPkg;
-	}
+    if (ownedEntityPkg != null && ownedEntityPkg.eIsProxy()) {
+      InternalEObject oldOwnedEntityPkg = (InternalEObject)ownedEntityPkg;
+      ownedEntityPkg = (EntityPkg)eResolveProxy(oldOwnedEntityPkg);
+      if (ownedEntityPkg != oldOwnedEntityPkg) {
+        InternalEObject newOwnedEntityPkg = (InternalEObject)ownedEntityPkg;
+        NotificationChain msgs = oldOwnedEntityPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, null);
+        if (newOwnedEntityPkg.eInternalContainer() == null) {
+          msgs = newOwnedEntityPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, oldOwnedEntityPkg, ownedEntityPkg));
+      }
+    }
+    return ownedEntityPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EntityPkg basicGetOwnedEntityPkg() {
 
-		return ownedEntityPkg;
-	}
+    return ownedEntityPkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedEntityPkg(EntityPkg newOwnedEntityPkg, NotificationChain msgs) {
 
-		EntityPkg oldOwnedEntityPkg = ownedEntityPkg;
-		ownedEntityPkg = newOwnedEntityPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, oldOwnedEntityPkg, newOwnedEntityPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    EntityPkg oldOwnedEntityPkg = ownedEntityPkg;
+    ownedEntityPkg = newOwnedEntityPkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, oldOwnedEntityPkg, newOwnedEntityPkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedEntityPkg(EntityPkg newOwnedEntityPkg) {
 
-		if (newOwnedEntityPkg != ownedEntityPkg) {
-			NotificationChain msgs = null;
-			if (ownedEntityPkg != null)
-				msgs = ((InternalEObject)ownedEntityPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, msgs);
-			if (newOwnedEntityPkg != null)
-				msgs = ((InternalEObject)newOwnedEntityPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, msgs);
-			msgs = basicSetOwnedEntityPkg(newOwnedEntityPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, newOwnedEntityPkg, newOwnedEntityPkg));
+    if (newOwnedEntityPkg != ownedEntityPkg) {
+      NotificationChain msgs = null;
+      if (ownedEntityPkg != null)
+        msgs = ((InternalEObject)ownedEntityPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, msgs);
+      if (newOwnedEntityPkg != null)
+        msgs = ((InternalEObject)newOwnedEntityPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, null, msgs);
+      msgs = basicSetOwnedEntityPkg(newOwnedEntityPkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG, newOwnedEntityPkg, newOwnedEntityPkg));
 
-	}
+  }
 
 
 
@@ -408,85 +408,85 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ConceptPkg getOwnedConceptPkg() {
 
-		if (ownedConceptPkg != null && ownedConceptPkg.eIsProxy()) {
-			InternalEObject oldOwnedConceptPkg = (InternalEObject)ownedConceptPkg;
-			ownedConceptPkg = (ConceptPkg)eResolveProxy(oldOwnedConceptPkg);
-			if (ownedConceptPkg != oldOwnedConceptPkg) {
-				InternalEObject newOwnedConceptPkg = (InternalEObject)ownedConceptPkg;
-				NotificationChain msgs = oldOwnedConceptPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, null);
-				if (newOwnedConceptPkg.eInternalContainer() == null) {
-					msgs = newOwnedConceptPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, oldOwnedConceptPkg, ownedConceptPkg));
-			}
-		}
-		return ownedConceptPkg;
-	}
+    if (ownedConceptPkg != null && ownedConceptPkg.eIsProxy()) {
+      InternalEObject oldOwnedConceptPkg = (InternalEObject)ownedConceptPkg;
+      ownedConceptPkg = (ConceptPkg)eResolveProxy(oldOwnedConceptPkg);
+      if (ownedConceptPkg != oldOwnedConceptPkg) {
+        InternalEObject newOwnedConceptPkg = (InternalEObject)ownedConceptPkg;
+        NotificationChain msgs = oldOwnedConceptPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, null);
+        if (newOwnedConceptPkg.eInternalContainer() == null) {
+          msgs = newOwnedConceptPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, oldOwnedConceptPkg, ownedConceptPkg));
+      }
+    }
+    return ownedConceptPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ConceptPkg basicGetOwnedConceptPkg() {
 
-		return ownedConceptPkg;
-	}
+    return ownedConceptPkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedConceptPkg(ConceptPkg newOwnedConceptPkg, NotificationChain msgs) {
 
-		ConceptPkg oldOwnedConceptPkg = ownedConceptPkg;
-		ownedConceptPkg = newOwnedConceptPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, oldOwnedConceptPkg, newOwnedConceptPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    ConceptPkg oldOwnedConceptPkg = ownedConceptPkg;
+    ownedConceptPkg = newOwnedConceptPkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, oldOwnedConceptPkg, newOwnedConceptPkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedConceptPkg(ConceptPkg newOwnedConceptPkg) {
 
-		if (newOwnedConceptPkg != ownedConceptPkg) {
-			NotificationChain msgs = null;
-			if (ownedConceptPkg != null)
-				msgs = ((InternalEObject)ownedConceptPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, msgs);
-			if (newOwnedConceptPkg != null)
-				msgs = ((InternalEObject)newOwnedConceptPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, msgs);
-			msgs = basicSetOwnedConceptPkg(newOwnedConceptPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, newOwnedConceptPkg, newOwnedConceptPkg));
+    if (newOwnedConceptPkg != ownedConceptPkg) {
+      NotificationChain msgs = null;
+      if (ownedConceptPkg != null)
+        msgs = ((InternalEObject)ownedConceptPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, msgs);
+      if (newOwnedConceptPkg != null)
+        msgs = ((InternalEObject)newOwnedConceptPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, null, msgs);
+      msgs = basicSetOwnedConceptPkg(newOwnedConceptPkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG, newOwnedConceptPkg, newOwnedConceptPkg));
 
-	}
+  }
 
 
 
@@ -494,23 +494,23 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalCapabilityPkg getContainedOperationalCapabilityPkg() {
 
-		OperationalCapabilityPkg containedOperationalCapabilityPkg = basicGetContainedOperationalCapabilityPkg();
-		return containedOperationalCapabilityPkg != null && containedOperationalCapabilityPkg.eIsProxy() ? (OperationalCapabilityPkg)eResolveProxy((InternalEObject)containedOperationalCapabilityPkg) : containedOperationalCapabilityPkg;
-	}
+    OperationalCapabilityPkg containedOperationalCapabilityPkg = basicGetContainedOperationalCapabilityPkg();
+    return containedOperationalCapabilityPkg != null && containedOperationalCapabilityPkg.eIsProxy() ? (OperationalCapabilityPkg)eResolveProxy((InternalEObject)containedOperationalCapabilityPkg) : containedOperationalCapabilityPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalCapabilityPkg basicGetContainedOperationalCapabilityPkg() {
 
@@ -537,15 +537,15 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG, annotation);
-		
-		try {
-			return (OperationalCapabilityPkg) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (OperationalCapabilityPkg) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -553,23 +553,23 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalActivityPkg getContainedOperationalActivityPkg() {
 
-		OperationalActivityPkg containedOperationalActivityPkg = basicGetContainedOperationalActivityPkg();
-		return containedOperationalActivityPkg != null && containedOperationalActivityPkg.eIsProxy() ? (OperationalActivityPkg)eResolveProxy((InternalEObject)containedOperationalActivityPkg) : containedOperationalActivityPkg;
-	}
+    OperationalActivityPkg containedOperationalActivityPkg = basicGetContainedOperationalActivityPkg();
+    return containedOperationalActivityPkg != null && containedOperationalActivityPkg.eIsProxy() ? (OperationalActivityPkg)eResolveProxy((InternalEObject)containedOperationalActivityPkg) : containedOperationalActivityPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalActivityPkg basicGetContainedOperationalActivityPkg() {
 
@@ -596,15 +596,15 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG, annotation);
-		
-		try {
-			return (OperationalActivityPkg) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (OperationalActivityPkg) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -612,10 +612,10 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemAnalysis> getAllocatingSystemAnalyses() {
 
@@ -642,172 +642,172 @@ public class OperationalAnalysisImpl extends BlockArchitectureImpl implements Op
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SystemAnalysis> resultAsList = (Collection<SystemAnalysis>) result;
-		return new EcoreEList.UnmodifiableEList<SystemAnalysis>(this, OaPackage.Literals.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<SystemAnalysis> resultAsList = (Collection<SystemAnalysis>) result;
+    return new EcoreEList.UnmodifiableEList<SystemAnalysis>(this, OaPackage.Literals.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				return basicSetOwnedOperationalContext(null, msgs);
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
-				return basicSetOwnedRolePkg(null, msgs);
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
-				return basicSetOwnedEntityPkg(null, msgs);
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
-				return basicSetOwnedConceptPkg(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
+        return basicSetOwnedOperationalContext(null, msgs);
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
+        return basicSetOwnedRolePkg(null, msgs);
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
+        return basicSetOwnedEntityPkg(null, msgs);
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
+        return basicSetOwnedConceptPkg(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				if (resolve) return getOwnedOperationalContext();
-				return basicGetOwnedOperationalContext();
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
-				if (resolve) return getOwnedRolePkg();
-				return basicGetOwnedRolePkg();
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
-				if (resolve) return getOwnedEntityPkg();
-				return basicGetOwnedEntityPkg();
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
-				if (resolve) return getOwnedConceptPkg();
-				return basicGetOwnedConceptPkg();
-			case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG:
-				if (resolve) return getContainedOperationalCapabilityPkg();
-				return basicGetContainedOperationalCapabilityPkg();
-			case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG:
-				if (resolve) return getContainedOperationalActivityPkg();
-				return basicGetContainedOperationalActivityPkg();
-			case OaPackage.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES:
-				return getAllocatingSystemAnalyses();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
+        if (resolve) return getOwnedOperationalContext();
+        return basicGetOwnedOperationalContext();
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
+        if (resolve) return getOwnedRolePkg();
+        return basicGetOwnedRolePkg();
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
+        if (resolve) return getOwnedEntityPkg();
+        return basicGetOwnedEntityPkg();
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
+        if (resolve) return getOwnedConceptPkg();
+        return basicGetOwnedConceptPkg();
+      case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG:
+        if (resolve) return getContainedOperationalCapabilityPkg();
+        return basicGetContainedOperationalCapabilityPkg();
+      case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG:
+        if (resolve) return getContainedOperationalActivityPkg();
+        return basicGetContainedOperationalActivityPkg();
+      case OaPackage.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES:
+        return getAllocatingSystemAnalyses();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof OperationalContext) {
-				// end-extension-code
-					setOwnedOperationalContext((OperationalContext)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof RolePkg) {
-				// end-extension-code
-					setOwnedRolePkg((RolePkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EntityPkg) {
-				// end-extension-code
-					setOwnedEntityPkg((EntityPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ConceptPkg) {
-				// end-extension-code
-					setOwnedConceptPkg((ConceptPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof OperationalContext) {
+        // end-extension-code
+          setOwnedOperationalContext((OperationalContext)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof RolePkg) {
+        // end-extension-code
+          setOwnedRolePkg((RolePkg)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof EntityPkg) {
+        // end-extension-code
+          setOwnedEntityPkg((EntityPkg)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof ConceptPkg) {
+        // end-extension-code
+          setOwnedConceptPkg((ConceptPkg)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				setOwnedOperationalContext((OperationalContext)null);
-				return;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
-				setOwnedRolePkg((RolePkg)null);
-				return;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
-				setOwnedEntityPkg((EntityPkg)null);
-				return;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
-				setOwnedConceptPkg((ConceptPkg)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
+        setOwnedOperationalContext((OperationalContext)null);
+        return;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
+        setOwnedRolePkg((RolePkg)null);
+        return;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
+        setOwnedEntityPkg((EntityPkg)null);
+        return;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
+        setOwnedConceptPkg((ConceptPkg)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
-				return ownedOperationalContext != null;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
-				return ownedRolePkg != null;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
-				return ownedEntityPkg != null;
-			case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
-				return ownedConceptPkg != null;
-			case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG:
-				return basicGetContainedOperationalCapabilityPkg() != null;
-			case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG:
-				return basicGetContainedOperationalActivityPkg() != null;
-			case OaPackage.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES:
-				return !getAllocatingSystemAnalyses().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_OPERATIONAL_CONTEXT:
+        return ownedOperationalContext != null;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ROLE_PKG:
+        return ownedRolePkg != null;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_ENTITY_PKG:
+        return ownedEntityPkg != null;
+      case OaPackage.OPERATIONAL_ANALYSIS__OWNED_CONCEPT_PKG:
+        return ownedConceptPkg != null;
+      case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_CAPABILITY_PKG:
+        return basicGetContainedOperationalCapabilityPkg() != null;
+      case OaPackage.OPERATIONAL_ANALYSIS__CONTAINED_OPERATIONAL_ACTIVITY_PKG:
+        return basicGetContainedOperationalActivityPkg() != null;
+      case OaPackage.OPERATIONAL_ANALYSIS__ALLOCATING_SYSTEM_ANALYSES:
+        return !getAllocatingSystemAnalyses().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

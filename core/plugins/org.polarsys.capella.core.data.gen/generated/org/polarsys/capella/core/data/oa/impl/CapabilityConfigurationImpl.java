@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,161 +34,161 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
 public class CapabilityConfigurationImpl extends AbstractConceptItemImpl implements CapabilityConfiguration {
 
 	/**
-	 * The cached value of the '{@link #getConfiguredCapability() <em>Configured Capability</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getConfiguredCapability() <em>Configured Capability</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConfiguredCapability()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getConfiguredCapability()
+   * @generated
+   * @ordered
+   */
 	protected OperationalCapability configuredCapability;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected CapabilityConfigurationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.CAPABILITY_CONFIGURATION;
-	}
+    return OaPackage.Literals.CAPABILITY_CONFIGURATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalCapability getConfiguredCapability() {
 
-		if (configuredCapability != null && configuredCapability.eIsProxy()) {
-			InternalEObject oldConfiguredCapability = (InternalEObject)configuredCapability;
-			configuredCapability = (OperationalCapability)eResolveProxy(oldConfiguredCapability);
-			if (configuredCapability != oldConfiguredCapability) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY, oldConfiguredCapability, configuredCapability));
-			}
-		}
-		return configuredCapability;
-	}
+    if (configuredCapability != null && configuredCapability.eIsProxy()) {
+      InternalEObject oldConfiguredCapability = (InternalEObject)configuredCapability;
+      configuredCapability = (OperationalCapability)eResolveProxy(oldConfiguredCapability);
+      if (configuredCapability != oldConfiguredCapability) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY, oldConfiguredCapability, configuredCapability));
+      }
+    }
+    return configuredCapability;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public OperationalCapability basicGetConfiguredCapability() {
 
-		return configuredCapability;
-	}
+    return configuredCapability;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setConfiguredCapability(OperationalCapability newConfiguredCapability) {
 
-		OperationalCapability oldConfiguredCapability = configuredCapability;
-		configuredCapability = newConfiguredCapability;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY, oldConfiguredCapability, configuredCapability));
+    OperationalCapability oldConfiguredCapability = configuredCapability;
+    configuredCapability = newConfiguredCapability;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY, oldConfiguredCapability, configuredCapability));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
-				if (resolve) return getConfiguredCapability();
-				return basicGetConfiguredCapability();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
+        if (resolve) return getConfiguredCapability();
+        return basicGetConfiguredCapability();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof OperationalCapability) {
-				// end-extension-code
-					setConfiguredCapability((OperationalCapability)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof OperationalCapability) {
+        // end-extension-code
+          setConfiguredCapability((OperationalCapability)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
-				setConfiguredCapability((OperationalCapability)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
+        setConfiguredCapability((OperationalCapability)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
-				return configuredCapability != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.CAPABILITY_CONFIGURATION__CONFIGURED_CAPABILITY:
+        return configuredCapability != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

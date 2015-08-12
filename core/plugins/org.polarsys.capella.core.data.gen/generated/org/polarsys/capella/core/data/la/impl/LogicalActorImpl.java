@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,13 +55,13 @@ import org.polarsys.capella.core.data.pa.PhysicalActor;
 public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor {
 
 	/**
-	 * The cached value of the '{@link #getOwnedSystemActorRealizations() <em>Owned System Actor Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedSystemActorRealizations() <em>Owned System Actor Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSystemActorRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedSystemActorRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<SystemActorRealization> ownedSystemActorRealizations;
 
 
@@ -88,53 +88,53 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalActorImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.LOGICAL_ACTOR;
-	}
+    return LaPackage.Literals.LOGICAL_ACTOR;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemActorRealization> getOwnedSystemActorRealizations() {
 
-		if (ownedSystemActorRealizations == null) {
-			ownedSystemActorRealizations = new EObjectContainmentEList.Resolving<SystemActorRealization>(SystemActorRealization.class, this, LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
-		}
-		return ownedSystemActorRealizations;
-	}
+    if (ownedSystemActorRealizations == null) {
+      ownedSystemActorRealizations = new EObjectContainmentEList.Resolving<SystemActorRealization>(SystemActorRealization.class, this, LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
+    }
+    return ownedSystemActorRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemActorRealization> getSystemActorRealizations() {
 
@@ -161,27 +161,27 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SystemActorRealization> resultAsList = (Collection<SystemActorRealization>) result;
-		return new EcoreEList.UnmodifiableEList<SystemActorRealization>(this, LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<SystemActorRealization> resultAsList = (Collection<SystemActorRealization>) result;
+    return new EcoreEList.UnmodifiableEList<SystemActorRealization>(this, LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActorCapabilityRealizationInvolvement> getParticipationsInCapabilityRealizations() {
 
@@ -208,27 +208,27 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalFunction> getAllocatedLogicalFunctions() {
 
@@ -255,27 +255,27 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Actor> getRealizedSystemActors() {
 
@@ -302,27 +302,27 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Actor> resultAsList = (Collection<Actor>) result;
-		return new EcoreEList.UnmodifiableEList<Actor>(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Actor> resultAsList = (Collection<Actor>) result;
+    return new EcoreEList.UnmodifiableEList<Actor>(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalActor> getRealizingPhysicalActors() {
 
@@ -349,116 +349,116 @@ public class LogicalActorImpl extends AbstractActorImpl implements LogicalActor 
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalActor> resultAsList = (Collection<PhysicalActor>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalActor>(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalActor> resultAsList = (Collection<PhysicalActor>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalActor>(this, LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedSystemActorRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedSystemActorRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
-				return getOwnedSystemActorRealizations();
-			case LaPackage.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS:
-				return getSystemActorRealizations();
-			case LaPackage.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
-				return getParticipationsInCapabilityRealizations();
-			case LaPackage.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS:
-				return getAllocatedLogicalFunctions();
-			case LaPackage.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS:
-				return getRealizedSystemActors();
-			case LaPackage.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS:
-				return getRealizingPhysicalActors();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
+        return getOwnedSystemActorRealizations();
+      case LaPackage.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS:
+        return getSystemActorRealizations();
+      case LaPackage.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
+        return getParticipationsInCapabilityRealizations();
+      case LaPackage.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS:
+        return getAllocatedLogicalFunctions();
+      case LaPackage.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS:
+        return getRealizedSystemActors();
+      case LaPackage.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS:
+        return getRealizingPhysicalActors();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
-				getOwnedSystemActorRealizations().clear();
-				getOwnedSystemActorRealizations().addAll((Collection<? extends SystemActorRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
+        getOwnedSystemActorRealizations().clear();
+        getOwnedSystemActorRealizations().addAll((Collection<? extends SystemActorRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
-				getOwnedSystemActorRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
+        getOwnedSystemActorRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
-				return ownedSystemActorRealizations != null && !ownedSystemActorRealizations.isEmpty();
-			case LaPackage.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS:
-				return !getSystemActorRealizations().isEmpty();
-			case LaPackage.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
-				return !getParticipationsInCapabilityRealizations().isEmpty();
-			case LaPackage.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS:
-				return !getAllocatedLogicalFunctions().isEmpty();
-			case LaPackage.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS:
-				return !getRealizedSystemActors().isEmpty();
-			case LaPackage.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS:
-				return !getRealizingPhysicalActors().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
+        return ownedSystemActorRealizations != null && !ownedSystemActorRealizations.isEmpty();
+      case LaPackage.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS:
+        return !getSystemActorRealizations().isEmpty();
+      case LaPackage.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
+        return !getParticipationsInCapabilityRealizations().isEmpty();
+      case LaPackage.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS:
+        return !getAllocatedLogicalFunctions().isEmpty();
+      case LaPackage.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS:
+        return !getRealizedSystemActors().isEmpty();
+      case LaPackage.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS:
+        return !getRealizingPhysicalActors().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

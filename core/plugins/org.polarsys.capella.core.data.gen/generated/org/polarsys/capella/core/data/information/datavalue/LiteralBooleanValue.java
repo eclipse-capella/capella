@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,22 +37,22 @@ public interface LiteralBooleanValue extends AbstractBooleanValue {
 
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(boolean)
-	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getLiteralBooleanValue_Value()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='value' featureOwner='LiteralBoolean'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the value \"true\" or \"false\"\r\n[source: Capella study]' constraints='none' type='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::LiteralBoolean::value' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(boolean)
+   * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getLiteralBooleanValue_Value()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='value' featureOwner='LiteralBoolean'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the value \"true\" or \"false\"\r\n[source: Capella study]' constraints='none' type='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::LiteralBoolean::value' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isValue();
 
@@ -60,14 +60,14 @@ public interface LiteralBooleanValue extends AbstractBooleanValue {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue#isValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue#isValue <em>Value</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' attribute.
-	 * @see #isValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #isValue()
+   * @generated
+   */
 
 	void setValue(boolean value);
 

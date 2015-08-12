@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -53,13 +53,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public class PropertyValueGroupImpl extends NamedElementImpl implements PropertyValueGroup {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 
 
@@ -75,13 +75,13 @@ public class PropertyValueGroupImpl extends NamedElementImpl implements Property
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -92,53 +92,53 @@ public class PropertyValueGroupImpl extends NamedElementImpl implements Property
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PropertyValueGroupImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacorePackage.Literals.PROPERTY_VALUE_GROUP;
-	}
+    return CapellacorePackage.Literals.PROPERTY_VALUE_GROUP;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -165,27 +165,27 @@ public class PropertyValueGroupImpl extends NamedElementImpl implements Property
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -212,45 +212,45 @@ public class PropertyValueGroupImpl extends NamedElementImpl implements Property
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<CapellaElement> getValuedElements() {
 
@@ -277,121 +277,121 @@ public class PropertyValueGroupImpl extends NamedElementImpl implements Property
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<CapellaElement> resultAsList = (Collection<CapellaElement>) result;
-		return new EcoreEList.UnmodifiableEList<CapellaElement>(this, CapellacorePackage.Literals.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<CapellaElement> resultAsList = (Collection<CapellaElement>) result;
+    return new EcoreEList.UnmodifiableEList<CapellaElement>(this, CapellacorePackage.Literals.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
-				return getOwnedTraces();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
-				return getNamingRules();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS:
-				return getValuedElements();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
+        return getOwnedTraces();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
+        return getNamingRules();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS:
+        return getValuedElements();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case CapellacorePackage.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS:
-				return !getValuedElements().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case CapellacorePackage.PROPERTY_VALUE_GROUP__VALUED_ELEMENTS:
+        return !getValuedElements().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

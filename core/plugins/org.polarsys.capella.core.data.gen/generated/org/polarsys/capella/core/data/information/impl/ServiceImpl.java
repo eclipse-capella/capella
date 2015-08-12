@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,23 +49,23 @@ import org.polarsys.capella.core.data.information.communication.MessageReference
 public class ServiceImpl extends OperationImpl implements Service {
 
 	/**
-	 * The default value of the '{@link #getSynchronismKind() <em>Synchronism Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getSynchronismKind() <em>Synchronism Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSynchronismKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSynchronismKind()
+   * @generated
+   * @ordered
+   */
 	protected static final SynchronismKind SYNCHRONISM_KIND_EDEFAULT = SynchronismKind.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getSynchronismKind() <em>Synchronism Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSynchronismKind() <em>Synchronism Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSynchronismKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSynchronismKind()
+   * @generated
+   * @ordered
+   */
 	protected SynchronismKind synchronismKind = SYNCHRONISM_KIND_EDEFAULT;
 
 
@@ -73,13 +73,13 @@ public class ServiceImpl extends OperationImpl implements Service {
 
 
 	/**
-	 * The cached value of the '{@link #getThrownExceptions() <em>Thrown Exceptions</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getThrownExceptions() <em>Thrown Exceptions</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getThrownExceptions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getThrownExceptions()
+   * @generated
+   * @ordered
+   */
 	protected EList<org.polarsys.capella.core.data.information.communication.Exception> thrownExceptions;
 
 
@@ -91,69 +91,69 @@ public class ServiceImpl extends OperationImpl implements Service {
 
 
 	/**
-	 * The cached value of the '{@link #getMessageReferences() <em>Message References</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getMessageReferences() <em>Message References</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMessageReferences()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getMessageReferences()
+   * @generated
+   * @ordered
+   */
 	protected EList<MessageReference> messageReferences;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ServiceImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.SERVICE;
-	}
+    return InformationPackage.Literals.SERVICE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SynchronismKind getSynchronismKind() {
 
-		return synchronismKind;
-	}
+    return synchronismKind;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setSynchronismKind(SynchronismKind newSynchronismKind) {
 
-		SynchronismKind oldSynchronismKind = synchronismKind;
-		synchronismKind = newSynchronismKind == null ? SYNCHRONISM_KIND_EDEFAULT : newSynchronismKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.SERVICE__SYNCHRONISM_KIND, oldSynchronismKind, synchronismKind));
+    SynchronismKind oldSynchronismKind = synchronismKind;
+    synchronismKind = newSynchronismKind == null ? SYNCHRONISM_KIND_EDEFAULT : newSynchronismKind;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.SERVICE__SYNCHRONISM_KIND, oldSynchronismKind, synchronismKind));
 
-	}
+  }
 
 
 
@@ -161,28 +161,28 @@ public class ServiceImpl extends OperationImpl implements Service {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<org.polarsys.capella.core.data.information.communication.Exception> getThrownExceptions() {
 
-		if (thrownExceptions == null) {
-			thrownExceptions = new EObjectResolvingEList<org.polarsys.capella.core.data.information.communication.Exception>(org.polarsys.capella.core.data.information.communication.Exception.class, this, InformationPackage.SERVICE__THROWN_EXCEPTIONS);
-		}
-		return thrownExceptions;
-	}
+    if (thrownExceptions == null) {
+      thrownExceptions = new EObjectResolvingEList<org.polarsys.capella.core.data.information.communication.Exception>(org.polarsys.capella.core.data.information.communication.Exception.class, this, InformationPackage.SERVICE__THROWN_EXCEPTIONS);
+    }
+    return thrownExceptions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Message> getMessages() {
 
@@ -209,148 +209,148 @@ public class ServiceImpl extends OperationImpl implements Service {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.SERVICE__MESSAGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.SERVICE__MESSAGES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Message> resultAsList = (Collection<Message>) result;
-		return new EcoreEList.UnmodifiableEList<Message>(this, InformationPackage.Literals.SERVICE__MESSAGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Message> resultAsList = (Collection<Message>) result;
+    return new EcoreEList.UnmodifiableEList<Message>(this, InformationPackage.Literals.SERVICE__MESSAGES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<MessageReference> getMessageReferences() {
 
-		if (messageReferences == null) {
-			messageReferences = new EObjectResolvingEList<MessageReference>(MessageReference.class, this, InformationPackage.SERVICE__MESSAGE_REFERENCES);
-		}
-		return messageReferences;
-	}
+    if (messageReferences == null) {
+      messageReferences = new EObjectResolvingEList<MessageReference>(MessageReference.class, this, InformationPackage.SERVICE__MESSAGE_REFERENCES);
+    }
+    return messageReferences;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.SERVICE__SYNCHRONISM_KIND:
-				return getSynchronismKind();
-			case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
-				return getThrownExceptions();
-			case InformationPackage.SERVICE__MESSAGES:
-				return getMessages();
-			case InformationPackage.SERVICE__MESSAGE_REFERENCES:
-				return getMessageReferences();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.SERVICE__SYNCHRONISM_KIND:
+        return getSynchronismKind();
+      case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
+        return getThrownExceptions();
+      case InformationPackage.SERVICE__MESSAGES:
+        return getMessages();
+      case InformationPackage.SERVICE__MESSAGE_REFERENCES:
+        return getMessageReferences();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.SERVICE__SYNCHRONISM_KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SynchronismKind) {
-				// end-extension-code
-					setSynchronismKind((SynchronismKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
-				getThrownExceptions().clear();
-				getThrownExceptions().addAll((Collection<? extends org.polarsys.capella.core.data.information.communication.Exception>)newValue);
-				return;
-			case InformationPackage.SERVICE__MESSAGE_REFERENCES:
-				getMessageReferences().clear();
-				getMessageReferences().addAll((Collection<? extends MessageReference>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.SERVICE__SYNCHRONISM_KIND:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof SynchronismKind) {
+        // end-extension-code
+          setSynchronismKind((SynchronismKind)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
+        getThrownExceptions().clear();
+        getThrownExceptions().addAll((Collection<? extends org.polarsys.capella.core.data.information.communication.Exception>)newValue);
+        return;
+      case InformationPackage.SERVICE__MESSAGE_REFERENCES:
+        getMessageReferences().clear();
+        getMessageReferences().addAll((Collection<? extends MessageReference>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.SERVICE__SYNCHRONISM_KIND:
-				setSynchronismKind(SYNCHRONISM_KIND_EDEFAULT);
-				return;
-			case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
-				getThrownExceptions().clear();
-				return;
-			case InformationPackage.SERVICE__MESSAGE_REFERENCES:
-				getMessageReferences().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.SERVICE__SYNCHRONISM_KIND:
+        setSynchronismKind(SYNCHRONISM_KIND_EDEFAULT);
+        return;
+      case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
+        getThrownExceptions().clear();
+        return;
+      case InformationPackage.SERVICE__MESSAGE_REFERENCES:
+        getMessageReferences().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.SERVICE__SYNCHRONISM_KIND:
-				return synchronismKind != SYNCHRONISM_KIND_EDEFAULT;
-			case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
-				return thrownExceptions != null && !thrownExceptions.isEmpty();
-			case InformationPackage.SERVICE__MESSAGES:
-				return !getMessages().isEmpty();
-			case InformationPackage.SERVICE__MESSAGE_REFERENCES:
-				return messageReferences != null && !messageReferences.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.SERVICE__SYNCHRONISM_KIND:
+        return synchronismKind != SYNCHRONISM_KIND_EDEFAULT;
+      case InformationPackage.SERVICE__THROWN_EXCEPTIONS:
+        return thrownExceptions != null && !thrownExceptions.isEmpty();
+      case InformationPackage.SERVICE__MESSAGES:
+        return !getMessages().isEmpty();
+      case InformationPackage.SERVICE__MESSAGE_REFERENCES:
+        return messageReferences != null && !messageReferences.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (synchronismKind: "); //$NON-NLS-1$
-		result.append(synchronismKind);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (synchronismKind: "); //$NON-NLS-1$
+    result.append(synchronismKind);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //ServiceImpl

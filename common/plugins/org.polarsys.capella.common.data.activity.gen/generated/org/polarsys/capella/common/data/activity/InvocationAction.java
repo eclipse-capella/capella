@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,22 +37,22 @@ public interface InvocationAction extends AbstractAction {
 
 
 	/**
-	 * Returns the value of the '<em><b>Arguments</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.activity.InputPin}.
+   * Returns the value of the '<em><b>Arguments</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.activity.InputPin}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Arguments</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Arguments</em>' containment reference list.
-	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getInvocationAction_Arguments()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='port(s) of the receiver object on which the behavioral feature is invoked\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InvocationAction::argument' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Arguments</em>' containment reference list.
+   * @see org.polarsys.capella.common.data.activity.ActivityPackage#getInvocationAction_Arguments()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='port(s) of the receiver object on which the behavioral feature is invoked\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::InvocationAction::argument' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EList<InputPin> getArguments();
 

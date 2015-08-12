@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,13 +52,13 @@ import org.polarsys.capella.core.data.pa.PhysicalFunction;
 public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements PhysicalActor {
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalActorRealizations() <em>Owned Logical Actor Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalActorRealizations() <em>Owned Logical Actor Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalActorRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalActorRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalActorRealization> ownedLogicalActorRealizations;
 
 
@@ -81,53 +81,53 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalActorImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.PHYSICAL_ACTOR;
-	}
+    return PaPackage.Literals.PHYSICAL_ACTOR;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalActorRealization> getOwnedLogicalActorRealizations() {
 
-		if (ownedLogicalActorRealizations == null) {
-			ownedLogicalActorRealizations = new EObjectContainmentEList.Resolving<LogicalActorRealization>(LogicalActorRealization.class, this, PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS);
-		}
-		return ownedLogicalActorRealizations;
-	}
+    if (ownedLogicalActorRealizations == null) {
+      ownedLogicalActorRealizations = new EObjectContainmentEList.Resolving<LogicalActorRealization>(LogicalActorRealization.class, this, PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS);
+    }
+    return ownedLogicalActorRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalActorRealization> getLogicalActorRealizations() {
 
@@ -154,27 +154,27 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalActorRealization> resultAsList = (Collection<LogicalActorRealization>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalActorRealization>(this, PaPackage.Literals.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalActorRealization> resultAsList = (Collection<LogicalActorRealization>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalActorRealization>(this, PaPackage.Literals.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalFunction> getAllocatedPhysicalFunctions() {
 
@@ -201,27 +201,27 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalFunction> resultAsList = (Collection<PhysicalFunction>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalFunction>(this, PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalFunction> resultAsList = (Collection<PhysicalFunction>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalFunction>(this, PaPackage.Literals.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalActor> getRealizedLogicalActors() {
 
@@ -248,27 +248,27 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalActor>(this, PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalActor>(this, PaPackage.Literals.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalComponent> getDeployedPhysicalComponents() {
 
@@ -295,112 +295,112 @@ public class PhysicalActorImpl extends AbstractPhysicalComponentImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = PaPackage.Literals.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, PaPackage.Literals.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, PaPackage.Literals.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedLogicalActorRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedLogicalActorRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
-				return getOwnedLogicalActorRealizations();
-			case PaPackage.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS:
-				return getLogicalActorRealizations();
-			case PaPackage.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS:
-				return getAllocatedPhysicalFunctions();
-			case PaPackage.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS:
-				return getRealizedLogicalActors();
-			case PaPackage.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS:
-				return getDeployedPhysicalComponents();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
+        return getOwnedLogicalActorRealizations();
+      case PaPackage.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS:
+        return getLogicalActorRealizations();
+      case PaPackage.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS:
+        return getAllocatedPhysicalFunctions();
+      case PaPackage.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS:
+        return getRealizedLogicalActors();
+      case PaPackage.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS:
+        return getDeployedPhysicalComponents();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
-				getOwnedLogicalActorRealizations().clear();
-				getOwnedLogicalActorRealizations().addAll((Collection<? extends LogicalActorRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
+        getOwnedLogicalActorRealizations().clear();
+        getOwnedLogicalActorRealizations().addAll((Collection<? extends LogicalActorRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
-				getOwnedLogicalActorRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
+        getOwnedLogicalActorRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
-				return ownedLogicalActorRealizations != null && !ownedLogicalActorRealizations.isEmpty();
-			case PaPackage.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS:
-				return !getLogicalActorRealizations().isEmpty();
-			case PaPackage.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS:
-				return !getAllocatedPhysicalFunctions().isEmpty();
-			case PaPackage.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS:
-				return !getRealizedLogicalActors().isEmpty();
-			case PaPackage.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS:
-				return !getDeployedPhysicalComponents().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.PHYSICAL_ACTOR__OWNED_LOGICAL_ACTOR_REALIZATIONS:
+        return ownedLogicalActorRealizations != null && !ownedLogicalActorRealizations.isEmpty();
+      case PaPackage.PHYSICAL_ACTOR__LOGICAL_ACTOR_REALIZATIONS:
+        return !getLogicalActorRealizations().isEmpty();
+      case PaPackage.PHYSICAL_ACTOR__ALLOCATED_PHYSICAL_FUNCTIONS:
+        return !getAllocatedPhysicalFunctions().isEmpty();
+      case PaPackage.PHYSICAL_ACTOR__REALIZED_LOGICAL_ACTORS:
+        return !getRealizedLogicalActors().isEmpty();
+      case PaPackage.PHYSICAL_ACTOR__DEPLOYED_PHYSICAL_COMPONENTS:
+        return !getDeployedPhysicalComponents().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

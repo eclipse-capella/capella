@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,80 +27,80 @@ import org.polarsys.kitalpha.emde.model.edit.provider.EmdeEditPlugin;
  */
 public final class CapellaModellerEditPlugin extends EMFPlugin {
 	/**
-	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
+   * Keep track of the singleton.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static final CapellaModellerEditPlugin INSTANCE = new CapellaModellerEditPlugin();
 
 	/**
-	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
+   * Keep track of the singleton.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	private static Implementation plugin;
 
 	/**
-	 * Create the instance.
-	 * <!-- begin-user-doc -->
+   * Create the instance.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CapellaModellerEditPlugin() {
-		super
-		  (new ResourceLocator [] {
-		     ModellingCoreEditPlugin.INSTANCE,
-		     EmdeEditPlugin.INSTANCE,
-		     ActivityEditPlugin.INSTANCE,
-		     BehaviorEditPlugin.INSTANCE,
-		   });
-	}
+    super
+      (new ResourceLocator [] {
+         ModellingCoreEditPlugin.INSTANCE,
+         EmdeEditPlugin.INSTANCE,
+         ActivityEditPlugin.INSTANCE,
+         BehaviorEditPlugin.INSTANCE,
+       });
+  }
 
 	/**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
+   * @return the singleton instance.
+   * @generated
+   */
 	@Override
 	public ResourceLocator getPluginResourceLocator() {
-		return plugin;
-	}
+    return plugin;
+  }
 
 	/**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
+   * @return the singleton instance.
+   * @generated
+   */
 	public static Implementation getPlugin() {
-		return plugin;
-	}
+    return plugin;
+  }
 
 	/**
-	 * The actual implementation of the Eclipse <b>Plugin</b>.
-	 * <!-- begin-user-doc -->
+   * The actual implementation of the Eclipse <b>Plugin</b>.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static class Implementation extends EclipsePlugin {
 		/**
-		 * Creates an instance.
-		 * <!-- begin-user-doc -->
+     * Creates an instance.
+     * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @generated
-		 */
+     * @generated
+     */
 		public Implementation() {
-			super();
+      super();
 
-			// Remember the static instance.
-			//
-			plugin = this;
-		}
+      // Remember the static instance.
+      //
+      plugin = this;
+    }
 		
 		//begin-capella-code
 		/**
@@ -112,8 +112,8 @@ public final class CapellaModellerEditPlugin extends EMFPlugin {
 		 */
 		@Override
 		public Object getImage(String key) {
-			return FileLocator.find(this.getBundle(), new Path("icons/" + key + ".gif"), null);
-		}
+      return FileLocator.find(this.getBundle(), new Path("icons/" + key + ".gif"), null);
+    }
 		//end-capella-code
 	}
 

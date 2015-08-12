@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,23 +40,23 @@ public interface ComponentAllocation extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Component</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}'.
+   * Returns the value of the '<em><b>Allocated Component</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations <em>Provisioning Component Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Component</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Component</em>' reference.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentAllocation_AllocatedComponent()
-	 * @see org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations
-	 * @model opposite="provisioningComponentAllocations" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocated component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Component</em>' reference.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentAllocation_AllocatedComponent()
+   * @see org.polarsys.capella.core.data.cs.Component#getProvisioningComponentAllocations
+   * @model opposite="provisioningComponentAllocations" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocated component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Component getAllocatedComponent();
 
@@ -67,23 +67,23 @@ public interface ComponentAllocation extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocating Component</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}'.
+   * Returns the value of the '<em><b>Allocating Component</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations <em>Provisioned Component Allocations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocating Component</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocating Component</em>' reference.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentAllocation_AllocatingComponent()
-	 * @see org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations
-	 * @model opposite="provisionedComponentAllocations" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocating component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocating Component</em>' reference.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getComponentAllocation_AllocatingComponent()
+   * @see org.polarsys.capella.core.data.cs.Component#getProvisionedComponentAllocations
+   * @model opposite="provisionedComponentAllocations" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the allocating component\r\n[source: Capella study]\r\n\r\nSpecifies the targets of the DirectedRelationship.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Component getAllocatingComponent();
 

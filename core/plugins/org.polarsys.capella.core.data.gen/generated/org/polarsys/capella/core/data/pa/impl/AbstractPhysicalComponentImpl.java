@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,13 +64,13 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * The cached value of the '{@link #getDeploymentLinks() <em>Deployment Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDeploymentLinks() <em>Deployment Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDeploymentLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDeploymentLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractDeploymentLink> deploymentLinks;
 
 
@@ -78,23 +78,23 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected static final PhysicalComponentKind KIND_EDEFAULT = PhysicalComponentKind.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected PhysicalComponentKind kind = KIND_EDEFAULT;
 
 
@@ -102,23 +102,23 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * The default value of the '{@link #getNature() <em>Nature</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getNature() <em>Nature</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNature()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNature()
+   * @generated
+   * @ordered
+   */
 	protected static final PhysicalComponentNature NATURE_EDEFAULT = PhysicalComponentNature.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getNature() <em>Nature</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNature() <em>Nature</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNature()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNature()
+   * @generated
+   * @ordered
+   */
 	protected PhysicalComponentNature nature = NATURE_EDEFAULT;
 
 
@@ -126,13 +126,13 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDeploymentLinks() <em>Owned Deployment Links</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDeploymentLinks() <em>Owned Deployment Links</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDeploymentLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDeploymentLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractDeploymentLink> ownedDeploymentLinks;
 
 
@@ -140,48 +140,48 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDeploymentAspect() <em>Owned Deployment Aspect</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDeploymentAspect() <em>Owned Deployment Aspect</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDeploymentAspect()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDeploymentAspect()
+   * @generated
+   * @ordered
+   */
 	protected DeploymentAspect ownedDeploymentAspect;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractPhysicalComponentImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT;
-	}
+    return PaPackage.Literals.ABSTRACT_PHYSICAL_COMPONENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractDeploymentLink> getDeployingLinks() {
 
@@ -208,66 +208,66 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractDeploymentLink> resultAsList = (Collection<AbstractDeploymentLink>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractDeploymentLink>(this, CsPackage.Literals.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractDeploymentLink> getDeploymentLinks() {
 
-		if (deploymentLinks == null) {
-			deploymentLinks = new EObjectWithInverseResolvingEList<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION);
-		}
-		return deploymentLinks;
-	}
+    if (deploymentLinks == null) {
+      deploymentLinks = new EObjectWithInverseResolvingEList<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS, CsPackage.ABSTRACT_DEPLOYMENT_LINK__LOCATION);
+    }
+    return deploymentLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalComponentKind getKind() {
 
-		return kind;
-	}
+    return kind;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setKind(PhysicalComponentKind newKind) {
 
-		PhysicalComponentKind oldKind = kind;
-		kind = newKind == null ? KIND_EDEFAULT : newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND, oldKind, kind));
+    PhysicalComponentKind oldKind = kind;
+    kind = newKind == null ? KIND_EDEFAULT : newKind;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND, oldKind, kind));
 
-	}
+  }
 
 
 
@@ -275,31 +275,31 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public PhysicalComponentNature getNature() {
 
-		return nature;
-	}
+    return nature;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setNature(PhysicalComponentNature newNature) {
 
-		PhysicalComponentNature oldNature = nature;
-		nature = newNature == null ? NATURE_EDEFAULT : newNature;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE, oldNature, nature));
+    PhysicalComponentNature oldNature = nature;
+    nature = newNature == null ? NATURE_EDEFAULT : newNature;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE, oldNature, nature));
 
-	}
+  }
 
 
 
@@ -307,329 +307,329 @@ public abstract class AbstractPhysicalComponentImpl extends SystemComponentImpl 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractDeploymentLink> getOwnedDeploymentLinks() {
 
-		if (ownedDeploymentLinks == null) {
-			ownedDeploymentLinks = new EObjectContainmentEList.Resolving<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS);
-		}
-		return ownedDeploymentLinks;
-	}
+    if (ownedDeploymentLinks == null) {
+      ownedDeploymentLinks = new EObjectContainmentEList.Resolving<AbstractDeploymentLink>(AbstractDeploymentLink.class, this, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS);
+    }
+    return ownedDeploymentLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DeploymentAspect getOwnedDeploymentAspect() {
 
-		if (ownedDeploymentAspect != null && ownedDeploymentAspect.eIsProxy()) {
-			InternalEObject oldOwnedDeploymentAspect = (InternalEObject)ownedDeploymentAspect;
-			ownedDeploymentAspect = (DeploymentAspect)eResolveProxy(oldOwnedDeploymentAspect);
-			if (ownedDeploymentAspect != oldOwnedDeploymentAspect) {
-				InternalEObject newOwnedDeploymentAspect = (InternalEObject)ownedDeploymentAspect;
-				NotificationChain msgs = oldOwnedDeploymentAspect.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, null);
-				if (newOwnedDeploymentAspect.eInternalContainer() == null) {
-					msgs = newOwnedDeploymentAspect.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, oldOwnedDeploymentAspect, ownedDeploymentAspect));
-			}
-		}
-		return ownedDeploymentAspect;
-	}
+    if (ownedDeploymentAspect != null && ownedDeploymentAspect.eIsProxy()) {
+      InternalEObject oldOwnedDeploymentAspect = (InternalEObject)ownedDeploymentAspect;
+      ownedDeploymentAspect = (DeploymentAspect)eResolveProxy(oldOwnedDeploymentAspect);
+      if (ownedDeploymentAspect != oldOwnedDeploymentAspect) {
+        InternalEObject newOwnedDeploymentAspect = (InternalEObject)ownedDeploymentAspect;
+        NotificationChain msgs = oldOwnedDeploymentAspect.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, null);
+        if (newOwnedDeploymentAspect.eInternalContainer() == null) {
+          msgs = newOwnedDeploymentAspect.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, oldOwnedDeploymentAspect, ownedDeploymentAspect));
+      }
+    }
+    return ownedDeploymentAspect;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DeploymentAspect basicGetOwnedDeploymentAspect() {
 
-		return ownedDeploymentAspect;
-	}
+    return ownedDeploymentAspect;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedDeploymentAspect(DeploymentAspect newOwnedDeploymentAspect, NotificationChain msgs) {
 
-		DeploymentAspect oldOwnedDeploymentAspect = ownedDeploymentAspect;
-		ownedDeploymentAspect = newOwnedDeploymentAspect;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, oldOwnedDeploymentAspect, newOwnedDeploymentAspect);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DeploymentAspect oldOwnedDeploymentAspect = ownedDeploymentAspect;
+    ownedDeploymentAspect = newOwnedDeploymentAspect;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, oldOwnedDeploymentAspect, newOwnedDeploymentAspect);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedDeploymentAspect(DeploymentAspect newOwnedDeploymentAspect) {
 
-		if (newOwnedDeploymentAspect != ownedDeploymentAspect) {
-			NotificationChain msgs = null;
-			if (ownedDeploymentAspect != null)
-				msgs = ((InternalEObject)ownedDeploymentAspect).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, msgs);
-			if (newOwnedDeploymentAspect != null)
-				msgs = ((InternalEObject)newOwnedDeploymentAspect).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, msgs);
-			msgs = basicSetOwnedDeploymentAspect(newOwnedDeploymentAspect, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, newOwnedDeploymentAspect, newOwnedDeploymentAspect));
+    if (newOwnedDeploymentAspect != ownedDeploymentAspect) {
+      NotificationChain msgs = null;
+      if (ownedDeploymentAspect != null)
+        msgs = ((InternalEObject)ownedDeploymentAspect).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, msgs);
+      if (newOwnedDeploymentAspect != null)
+        msgs = ((InternalEObject)newOwnedDeploymentAspect).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, null, msgs);
+      msgs = basicSetOwnedDeploymentAspect(newOwnedDeploymentAspect, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT, newOwnedDeploymentAspect, newOwnedDeploymentAspect));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeploymentLinks()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getDeploymentLinks()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				return ((InternalEList<?>)getDeploymentLinks()).basicRemove(otherEnd, msgs);
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
-				return ((InternalEList<?>)getOwnedDeploymentLinks()).basicRemove(otherEnd, msgs);
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
-				return basicSetOwnedDeploymentAspect(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+        return ((InternalEList<?>)getDeploymentLinks()).basicRemove(otherEnd, msgs);
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
+        return ((InternalEList<?>)getOwnedDeploymentLinks()).basicRemove(otherEnd, msgs);
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
+        return basicSetOwnedDeploymentAspect(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS:
-				return getDeployingLinks();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				return getDeploymentLinks();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
-				return getKind();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
-				return getNature();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
-				return getOwnedDeploymentLinks();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
-				if (resolve) return getOwnedDeploymentAspect();
-				return basicGetOwnedDeploymentAspect();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS:
+        return getDeployingLinks();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+        return getDeploymentLinks();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
+        return getKind();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
+        return getNature();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
+        return getOwnedDeploymentLinks();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
+        if (resolve) return getOwnedDeploymentAspect();
+        return basicGetOwnedDeploymentAspect();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				getDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalComponentKind) {
-				// end-extension-code
-					setKind((PhysicalComponentKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof PhysicalComponentNature) {
-				// end-extension-code
-					setNature((PhysicalComponentNature)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
-				getOwnedDeploymentLinks().clear();
-				getOwnedDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DeploymentAspect) {
-				// end-extension-code
-					setOwnedDeploymentAspect((DeploymentAspect)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+        getDeploymentLinks().clear();
+        getDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof PhysicalComponentKind) {
+        // end-extension-code
+          setKind((PhysicalComponentKind)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof PhysicalComponentNature) {
+        // end-extension-code
+          setNature((PhysicalComponentNature)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
+        getOwnedDeploymentLinks().clear();
+        getOwnedDeploymentLinks().addAll((Collection<? extends AbstractDeploymentLink>)newValue);
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof DeploymentAspect) {
+        // end-extension-code
+          setOwnedDeploymentAspect((DeploymentAspect)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				getDeploymentLinks().clear();
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
-				setKind(KIND_EDEFAULT);
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
-				setNature(NATURE_EDEFAULT);
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
-				getOwnedDeploymentLinks().clear();
-				return;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
-				setOwnedDeploymentAspect((DeploymentAspect)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+        getDeploymentLinks().clear();
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
+        setNature(NATURE_EDEFAULT);
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
+        getOwnedDeploymentLinks().clear();
+        return;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
+        setOwnedDeploymentAspect((DeploymentAspect)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS:
-				return !getDeployingLinks().isEmpty();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
-				return deploymentLinks != null && !deploymentLinks.isEmpty();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
-				return kind != KIND_EDEFAULT;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
-				return nature != NATURE_EDEFAULT;
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
-				return ownedDeploymentLinks != null && !ownedDeploymentLinks.isEmpty();
-			case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
-				return ownedDeploymentAspect != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS:
+        return !getDeployingLinks().isEmpty();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS:
+        return deploymentLinks != null && !deploymentLinks.isEmpty();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__KIND:
+        return kind != KIND_EDEFAULT;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__NATURE:
+        return nature != NATURE_EDEFAULT;
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_LINKS:
+        return ownedDeploymentLinks != null && !ownedDeploymentLinks.isEmpty();
+      case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__OWNED_DEPLOYMENT_ASPECT:
+        return ownedDeploymentAspect != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == DeployableElement.class) {
-			switch (derivedFeatureID) {
-				case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS: return CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS;
-				default: return -1;
-			}
-		}
-		if (baseClass == DeploymentTarget.class) {
-			switch (derivedFeatureID) {
-				case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS: return CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == DeployableElement.class) {
+      switch (derivedFeatureID) {
+        case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS: return CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS;
+        default: return -1;
+      }
+    }
+    if (baseClass == DeploymentTarget.class) {
+      switch (derivedFeatureID) {
+        case PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS: return CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == DeployableElement.class) {
-			switch (baseFeatureID) {
-				case CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS: return PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS;
-				default: return -1;
-			}
-		}
-		if (baseClass == DeploymentTarget.class) {
-			switch (baseFeatureID) {
-				case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS: return PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == DeployableElement.class) {
+      switch (baseFeatureID) {
+        case CsPackage.DEPLOYABLE_ELEMENT__DEPLOYING_LINKS: return PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYING_LINKS;
+        default: return -1;
+      }
+    }
+    if (baseClass == DeploymentTarget.class) {
+      switch (baseFeatureID) {
+        case CsPackage.DEPLOYMENT_TARGET__DEPLOYMENT_LINKS: return PaPackage.ABSTRACT_PHYSICAL_COMPONENT__DEPLOYMENT_LINKS;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(kind);
-		result.append(", nature: "); //$NON-NLS-1$
-		result.append(nature);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (kind: "); //$NON-NLS-1$
+    result.append(kind);
+    result.append(", nature: "); //$NON-NLS-1$
+    result.append(nature);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //AbstractPhysicalComponentImpl

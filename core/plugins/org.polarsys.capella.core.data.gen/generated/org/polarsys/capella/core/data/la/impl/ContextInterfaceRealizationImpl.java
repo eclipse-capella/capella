@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.la.LaPackage;
  */
 public class ContextInterfaceRealizationImpl extends InterfaceAllocationImpl implements ContextInterfaceRealization {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ContextInterfaceRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.CONTEXT_INTERFACE_REALIZATION;
-	}
+    return LaPackage.Literals.CONTEXT_INTERFACE_REALIZATION;
+  }
 
 
 

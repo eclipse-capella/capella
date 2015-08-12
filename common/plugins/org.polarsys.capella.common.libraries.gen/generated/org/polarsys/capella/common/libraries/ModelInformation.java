@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.polarsys.kitalpha.emde.model.ElementExtension;
  * </p>
  *
  * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation()
- * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='http://www.polarsys.org/capella/core/modeller/0.8.0#//Project'"
+ * @model annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraint ExtendedElement='http://www.polarsys.org/capella/core/modeller/1.0.0#//Project'"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/constraintMapping Mapping='platform:/plugin/org.polarsys.capella.core.data.gen/model/CapellaModeller.ecore#//Project'"
  * @generated
  */
@@ -41,20 +41,20 @@ public interface ModelInformation extends LibraryAbstractElement, ElementExtensi
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned References</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.libraries.LibraryReference}.
+   * Returns the value of the '<em><b>Owned References</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.libraries.LibraryReference}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned References</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned References</em>' containment reference list.
-	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_OwnedReferences()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned References</em>' containment reference list.
+   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_OwnedReferences()
+   * @model containment="true" resolveProxies="true"
+   * @generated
+   */
 
 	EList<LibraryReference> getOwnedReferences();
 
@@ -65,20 +65,20 @@ public interface ModelInformation extends LibraryAbstractElement, ElementExtensi
 
 
 	/**
-	 * Returns the value of the '<em><b>Version</b></em>' reference.
+   * Returns the value of the '<em><b>Version</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Version</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Version</em>' reference.
-	 * @see #setVersion(ModelVersion)
-	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_Version()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Version</em>' reference.
+   * @see #setVersion(ModelVersion)
+   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_Version()
+   * @model
+   * @generated
+   */
 
 	ModelVersion getVersion();
 
@@ -86,14 +86,14 @@ public interface ModelInformation extends LibraryAbstractElement, ElementExtensi
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelInformation#getVersion <em>Version</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelInformation#getVersion <em>Version</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Version</em>' reference.
-	 * @see #getVersion()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Version</em>' reference.
+   * @see #getVersion()
+   * @generated
+   */
 
 	void setVersion(ModelVersion value);
 

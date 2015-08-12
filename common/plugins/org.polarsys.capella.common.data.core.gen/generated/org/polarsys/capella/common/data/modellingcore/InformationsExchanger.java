@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,23 +39,23 @@ public interface InformationsExchanger extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Incoming Information Flows</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow}.
+   * Returns the value of the '<em><b>Incoming Information Flows</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Information Flows</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming Information Flows</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getInformationsExchanger_IncomingInformationFlows()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of information flows coming towards this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::InformationFlow::informationSource' constraints='Order must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Incoming Information Flows</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getInformationsExchanger_IncomingInformationFlows()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of information flows coming towards this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::InformationFlow::informationSource' constraints='Order must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<AbstractInformationFlow> getIncomingInformationFlows();
 
@@ -66,23 +66,23 @@ public interface InformationsExchanger extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Information Flows</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow}.
+   * Returns the value of the '<em><b>Outgoing Information Flows</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Information Flows</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Information Flows</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getInformationsExchanger_OutgoingInformationFlows()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of information flows coming out of this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::InformationFlow::informationTarget' constraints='Order must be computed'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Outgoing Information Flows</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getInformationsExchanger_OutgoingInformationFlows()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='list of information flows coming out of this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::InformationFlow::informationTarget' constraints='Order must be computed'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<AbstractInformationFlow> getOutgoingInformationFlows();
 
@@ -93,21 +93,21 @@ public interface InformationsExchanger extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Information Flows</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow}.
+   * Returns the value of the '<em><b>Information Flows</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Information Flows</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Information Flows</em>' reference list.
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getInformationsExchanger_InformationFlows()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Information Flows</em>' reference list.
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getInformationsExchanger_InformationFlows()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<AbstractInformationFlow> getInformationFlows();
 

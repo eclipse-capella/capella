@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,231 +35,231 @@ import org.polarsys.capella.core.data.information.communication.SignalInstance;
  */
 public class CommunicationFactoryImpl extends EFactoryImpl implements CommunicationFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static CommunicationFactory init() {
-		try {
-			CommunicationFactory theCommunicationFactory = (CommunicationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/communication/0.8.0"); //$NON-NLS-1$ 
-			if (theCommunicationFactory != null) {
-				return theCommunicationFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new CommunicationFactoryImpl();
-	}
+    try {
+      CommunicationFactory theCommunicationFactory = (CommunicationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/communication/1.0.0"); //$NON-NLS-1$ 
+      if (theCommunicationFactory != null) {
+        return theCommunicationFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new CommunicationFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CommunicationFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case CommunicationPackage.EXCEPTION: return createException();
-			case CommunicationPackage.MESSAGE: return createMessage();
-			case CommunicationPackage.MESSAGE_REFERENCE: return createMessageReference();
-			case CommunicationPackage.SIGNAL: return createSignal();
-			case CommunicationPackage.SIGNAL_INSTANCE: return createSignalInstance();
-			case CommunicationPackage.COMMUNICATION_LINK: return createCommunicationLink();
-			case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION: return createCommunicationLinkAllocation();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case CommunicationPackage.EXCEPTION: return createException();
+      case CommunicationPackage.MESSAGE: return createMessage();
+      case CommunicationPackage.MESSAGE_REFERENCE: return createMessageReference();
+      case CommunicationPackage.SIGNAL: return createSignal();
+      case CommunicationPackage.SIGNAL_INSTANCE: return createSignalInstance();
+      case CommunicationPackage.COMMUNICATION_LINK: return createCommunicationLink();
+      case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION: return createCommunicationLinkAllocation();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case CommunicationPackage.COMMUNICATION_LINK_KIND:
-				return createCommunicationLinkKindFromString(eDataType, initialValue);
-			case CommunicationPackage.COMMUNICATION_LINK_PROTOCOL:
-				return createCommunicationLinkProtocolFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case CommunicationPackage.COMMUNICATION_LINK_KIND:
+        return createCommunicationLinkKindFromString(eDataType, initialValue);
+      case CommunicationPackage.COMMUNICATION_LINK_PROTOCOL:
+        return createCommunicationLinkProtocolFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case CommunicationPackage.COMMUNICATION_LINK_KIND:
-				return convertCommunicationLinkKindToString(eDataType, instanceValue);
-			case CommunicationPackage.COMMUNICATION_LINK_PROTOCOL:
-				return convertCommunicationLinkProtocolToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case CommunicationPackage.COMMUNICATION_LINK_KIND:
+        return convertCommunicationLinkKindToString(eDataType, instanceValue);
+      case CommunicationPackage.COMMUNICATION_LINK_PROTOCOL:
+        return convertCommunicationLinkProtocolToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public org.polarsys.capella.core.data.information.communication.Exception createException() {
-		ExceptionImpl exception = new ExceptionImpl();
+    ExceptionImpl exception = new ExceptionImpl();
     //begin-capella-code
     //end-capella-code
-		return exception;
-	}
+    return exception;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Message createMessage() {
-		MessageImpl message = new MessageImpl();
+    MessageImpl message = new MessageImpl();
     //begin-capella-code
     //end-capella-code
-		return message;
-	}
+    return message;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public MessageReference createMessageReference() {
-		MessageReferenceImpl messageReference = new MessageReferenceImpl();
+    MessageReferenceImpl messageReference = new MessageReferenceImpl();
     //begin-capella-code
     //end-capella-code
-		return messageReference;
-	}
+    return messageReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Signal createSignal() {
-		SignalImpl signal = new SignalImpl();
+    SignalImpl signal = new SignalImpl();
     //begin-capella-code
     //end-capella-code
-		return signal;
-	}
+    return signal;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public SignalInstance createSignalInstance() {
-		SignalInstanceImpl signalInstance = new SignalInstanceImpl();
+    SignalInstanceImpl signalInstance = new SignalInstanceImpl();
     //begin-capella-code
     //end-capella-code
-		return signalInstance;
-	}
+    return signalInstance;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CommunicationLink createCommunicationLink() {
-		CommunicationLinkImpl communicationLink = new CommunicationLinkImpl();
+    CommunicationLinkImpl communicationLink = new CommunicationLinkImpl();
     //begin-capella-code
     //end-capella-code
-		return communicationLink;
-	}
+    return communicationLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CommunicationLinkAllocation createCommunicationLinkAllocation() {
-		CommunicationLinkAllocationImpl communicationLinkAllocation = new CommunicationLinkAllocationImpl();
+    CommunicationLinkAllocationImpl communicationLinkAllocation = new CommunicationLinkAllocationImpl();
     //begin-capella-code
     //end-capella-code
-		return communicationLinkAllocation;
-	}
+    return communicationLinkAllocation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CommunicationLinkKind createCommunicationLinkKindFromString(EDataType eDataType, String initialValue) {
-		CommunicationLinkKind result = CommunicationLinkKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    CommunicationLinkKind result = CommunicationLinkKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertCommunicationLinkKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CommunicationLinkProtocol createCommunicationLinkProtocolFromString(EDataType eDataType, String initialValue) {
-		CommunicationLinkProtocol result = CommunicationLinkProtocol.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    CommunicationLinkProtocol result = CommunicationLinkProtocol.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertCommunicationLinkProtocolToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CommunicationPackage getCommunicationPackage() {
-		return (CommunicationPackage)getEPackage();
-	}
+    return (CommunicationPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static CommunicationPackage getPackage() {
-		return CommunicationPackage.eINSTANCE;
-	}
+    return CommunicationPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -269,10 +269,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public org.polarsys.capella.core.data.information.communication.Exception createException(String name_p) {
-	  org.polarsys.capella.core.data.information.communication.Exception exception = createException();
-		exception.setName(name_p);	  
-		return exception;
-	}
+    org.polarsys.capella.core.data.information.communication.Exception exception = createException();
+    exception.setName(name_p);	  
+    return exception;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -282,10 +282,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public Message createMessage(String name_p) {
-	  Message message = createMessage();
-		message.setName(name_p);	  
-		return message;
-	}
+    Message message = createMessage();
+    message.setName(name_p);	  
+    return message;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -295,10 +295,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public Signal createSignal(String name_p) {
-	  Signal signal = createSignal();
-		signal.setName(name_p);	  
-		return signal;
-	}
+    Signal signal = createSignal();
+    signal.setName(name_p);	  
+    return signal;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -308,10 +308,10 @@ public class CommunicationFactoryImpl extends EFactoryImpl implements Communicat
 	 * @generated
 	 */
 	public SignalInstance createSignalInstance(String name_p) {
-	  SignalInstance signalInstance = createSignalInstance();
-		signalInstance.setName(name_p);	  
-		return signalInstance;
-	}
+    SignalInstance signalInstance = createSignalInstance();
+    signalInstance.setName(name_p);	  
+    return signalInstance;
+  }
 
 	//begin-capella-code
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,580 +62,580 @@ import org.polarsys.capella.core.data.interaction.StateFragment;
  */
 public class InteractionFactoryImpl extends EFactoryImpl implements InteractionFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static InteractionFactory init() {
-		try {
-			InteractionFactory theInteractionFactory = (InteractionFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/interaction/0.8.0"); //$NON-NLS-1$ 
-			if (theInteractionFactory != null) {
-				return theInteractionFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new InteractionFactoryImpl();
-	}
+    try {
+      InteractionFactory theInteractionFactory = (InteractionFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/interaction/1.0.0"); //$NON-NLS-1$ 
+      if (theInteractionFactory != null) {
+        return theInteractionFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new InteractionFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case InteractionPackage.SEQUENCE_MESSAGE: return createSequenceMessage();
-			case InteractionPackage.SCENARIO: return createScenario();
-			case InteractionPackage.MESSAGE_END: return createMessageEnd();
-			case InteractionPackage.EXECUTION: return createExecution();
-			case InteractionPackage.EXECUTION_END: return createExecutionEnd();
-			case InteractionPackage.CREATION_EVENT: return createCreationEvent();
-			case InteractionPackage.DESTRUCTION_EVENT: return createDestructionEvent();
-			case InteractionPackage.EXECUTION_EVENT: return createExecutionEvent();
-			case InteractionPackage.INSTANCE_ROLE: return createInstanceRole();
-			case InteractionPackage.EVENT_RECEIPT_OPERATION: return createEventReceiptOperation();
-			case InteractionPackage.EVENT_SENT_OPERATION: return createEventSentOperation();
-			case InteractionPackage.MERGE_LINK: return createMergeLink();
-			case InteractionPackage.REFINEMENT_LINK: return createRefinementLink();
-			case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION: return createAbstractCapabilityRealization();
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND: return createAbstractCapabilityExtend();
-			case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT: return createAbstractCapabilityExtensionPoint();
-			case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION: return createAbstractCapabilityGeneralization();
-			case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE: return createAbstractCapabilityInclude();
-			case InteractionPackage.INTERACTION_STATE: return createInteractionState();
-			case InteractionPackage.INTERACTION_USE: return createInteractionUse();
-			case InteractionPackage.COMBINED_FRAGMENT: return createCombinedFragment();
-			case InteractionPackage.GATE: return createGate();
-			case InteractionPackage.INTERACTION_OPERAND: return createInteractionOperand();
-			case InteractionPackage.FRAGMENT_END: return createFragmentEnd();
-			case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT: return createFunctionalChainAbstractCapabilityInvolvement();
-			case InteractionPackage.ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT: return createAbstractFunctionAbstractCapabilityInvolvement();
-			case InteractionPackage.SCENARIO_REALIZATION: return createScenarioRealization();
-			case InteractionPackage.STATE_FRAGMENT: return createStateFragment();
-			case InteractionPackage.ARM_TIMER_EVENT: return createArmTimerEvent();
-			case InteractionPackage.CANCEL_TIMER_EVENT: return createCancelTimerEvent();
-			case InteractionPackage.CONSTRAINT_DURATION: return createConstraintDuration();
-			case InteractionPackage.SEQUENCE_MESSAGE_VALUATION: return createSequenceMessageValuation();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case InteractionPackage.SEQUENCE_MESSAGE: return createSequenceMessage();
+      case InteractionPackage.SCENARIO: return createScenario();
+      case InteractionPackage.MESSAGE_END: return createMessageEnd();
+      case InteractionPackage.EXECUTION: return createExecution();
+      case InteractionPackage.EXECUTION_END: return createExecutionEnd();
+      case InteractionPackage.CREATION_EVENT: return createCreationEvent();
+      case InteractionPackage.DESTRUCTION_EVENT: return createDestructionEvent();
+      case InteractionPackage.EXECUTION_EVENT: return createExecutionEvent();
+      case InteractionPackage.INSTANCE_ROLE: return createInstanceRole();
+      case InteractionPackage.EVENT_RECEIPT_OPERATION: return createEventReceiptOperation();
+      case InteractionPackage.EVENT_SENT_OPERATION: return createEventSentOperation();
+      case InteractionPackage.MERGE_LINK: return createMergeLink();
+      case InteractionPackage.REFINEMENT_LINK: return createRefinementLink();
+      case InteractionPackage.ABSTRACT_CAPABILITY_REALIZATION: return createAbstractCapabilityRealization();
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTEND: return createAbstractCapabilityExtend();
+      case InteractionPackage.ABSTRACT_CAPABILITY_EXTENSION_POINT: return createAbstractCapabilityExtensionPoint();
+      case InteractionPackage.ABSTRACT_CAPABILITY_GENERALIZATION: return createAbstractCapabilityGeneralization();
+      case InteractionPackage.ABSTRACT_CAPABILITY_INCLUDE: return createAbstractCapabilityInclude();
+      case InteractionPackage.INTERACTION_STATE: return createInteractionState();
+      case InteractionPackage.INTERACTION_USE: return createInteractionUse();
+      case InteractionPackage.COMBINED_FRAGMENT: return createCombinedFragment();
+      case InteractionPackage.GATE: return createGate();
+      case InteractionPackage.INTERACTION_OPERAND: return createInteractionOperand();
+      case InteractionPackage.FRAGMENT_END: return createFragmentEnd();
+      case InteractionPackage.FUNCTIONAL_CHAIN_ABSTRACT_CAPABILITY_INVOLVEMENT: return createFunctionalChainAbstractCapabilityInvolvement();
+      case InteractionPackage.ABSTRACT_FUNCTION_ABSTRACT_CAPABILITY_INVOLVEMENT: return createAbstractFunctionAbstractCapabilityInvolvement();
+      case InteractionPackage.SCENARIO_REALIZATION: return createScenarioRealization();
+      case InteractionPackage.STATE_FRAGMENT: return createStateFragment();
+      case InteractionPackage.ARM_TIMER_EVENT: return createArmTimerEvent();
+      case InteractionPackage.CANCEL_TIMER_EVENT: return createCancelTimerEvent();
+      case InteractionPackage.CONSTRAINT_DURATION: return createConstraintDuration();
+      case InteractionPackage.SEQUENCE_MESSAGE_VALUATION: return createSequenceMessageValuation();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case InteractionPackage.MESSAGE_KIND:
-				return createMessageKindFromString(eDataType, initialValue);
-			case InteractionPackage.SCENARIO_KIND:
-				return createScenarioKindFromString(eDataType, initialValue);
-			case InteractionPackage.INTERACTION_OPERATOR_KIND:
-				return createInteractionOperatorKindFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case InteractionPackage.MESSAGE_KIND:
+        return createMessageKindFromString(eDataType, initialValue);
+      case InteractionPackage.SCENARIO_KIND:
+        return createScenarioKindFromString(eDataType, initialValue);
+      case InteractionPackage.INTERACTION_OPERATOR_KIND:
+        return createInteractionOperatorKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case InteractionPackage.MESSAGE_KIND:
-				return convertMessageKindToString(eDataType, instanceValue);
-			case InteractionPackage.SCENARIO_KIND:
-				return convertScenarioKindToString(eDataType, instanceValue);
-			case InteractionPackage.INTERACTION_OPERATOR_KIND:
-				return convertInteractionOperatorKindToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case InteractionPackage.MESSAGE_KIND:
+        return convertMessageKindToString(eDataType, instanceValue);
+      case InteractionPackage.SCENARIO_KIND:
+        return convertScenarioKindToString(eDataType, instanceValue);
+      case InteractionPackage.INTERACTION_OPERATOR_KIND:
+        return convertInteractionOperatorKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public SequenceMessage createSequenceMessage() {
-		SequenceMessageImpl sequenceMessage = new SequenceMessageImpl();
+    SequenceMessageImpl sequenceMessage = new SequenceMessageImpl();
     //begin-capella-code
     //end-capella-code
-		return sequenceMessage;
-	}
+    return sequenceMessage;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Scenario createScenario() {
-		ScenarioImpl scenario = new ScenarioImpl();
+    ScenarioImpl scenario = new ScenarioImpl();
     //begin-capella-code
     //end-capella-code
-		return scenario;
-	}
+    return scenario;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public MessageEnd createMessageEnd() {
-		MessageEndImpl messageEnd = new MessageEndImpl();
+    MessageEndImpl messageEnd = new MessageEndImpl();
     //begin-capella-code
     //end-capella-code
-		return messageEnd;
-	}
+    return messageEnd;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Execution createExecution() {
-		ExecutionImpl execution = new ExecutionImpl();
+    ExecutionImpl execution = new ExecutionImpl();
     //begin-capella-code
     //end-capella-code
-		return execution;
-	}
+    return execution;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ExecutionEnd createExecutionEnd() {
-		ExecutionEndImpl executionEnd = new ExecutionEndImpl();
+    ExecutionEndImpl executionEnd = new ExecutionEndImpl();
     //begin-capella-code
     //end-capella-code
-		return executionEnd;
-	}
+    return executionEnd;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CreationEvent createCreationEvent() {
-		CreationEventImpl creationEvent = new CreationEventImpl();
+    CreationEventImpl creationEvent = new CreationEventImpl();
     //begin-capella-code
     //end-capella-code
-		return creationEvent;
-	}
+    return creationEvent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DestructionEvent createDestructionEvent() {
-		DestructionEventImpl destructionEvent = new DestructionEventImpl();
+    DestructionEventImpl destructionEvent = new DestructionEventImpl();
     //begin-capella-code
     //end-capella-code
-		return destructionEvent;
-	}
+    return destructionEvent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ExecutionEvent createExecutionEvent() {
-		ExecutionEventImpl executionEvent = new ExecutionEventImpl();
+    ExecutionEventImpl executionEvent = new ExecutionEventImpl();
     //begin-capella-code
     //end-capella-code
-		return executionEvent;
-	}
+    return executionEvent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InstanceRole createInstanceRole() {
-		InstanceRoleImpl instanceRole = new InstanceRoleImpl();
+    InstanceRoleImpl instanceRole = new InstanceRoleImpl();
     //begin-capella-code
     //end-capella-code
-		return instanceRole;
-	}
+    return instanceRole;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EventReceiptOperation createEventReceiptOperation() {
-		EventReceiptOperationImpl eventReceiptOperation = new EventReceiptOperationImpl();
+    EventReceiptOperationImpl eventReceiptOperation = new EventReceiptOperationImpl();
     //begin-capella-code
     //end-capella-code
-		return eventReceiptOperation;
-	}
+    return eventReceiptOperation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EventSentOperation createEventSentOperation() {
-		EventSentOperationImpl eventSentOperation = new EventSentOperationImpl();
+    EventSentOperationImpl eventSentOperation = new EventSentOperationImpl();
     //begin-capella-code
     //end-capella-code
-		return eventSentOperation;
-	}
+    return eventSentOperation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public MergeLink createMergeLink() {
-		MergeLinkImpl mergeLink = new MergeLinkImpl();
+    MergeLinkImpl mergeLink = new MergeLinkImpl();
     //begin-capella-code
     //end-capella-code
-		return mergeLink;
-	}
+    return mergeLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public RefinementLink createRefinementLink() {
-		RefinementLinkImpl refinementLink = new RefinementLinkImpl();
+    RefinementLinkImpl refinementLink = new RefinementLinkImpl();
     //begin-capella-code
     //end-capella-code
-		return refinementLink;
-	}
+    return refinementLink;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractCapabilityRealization createAbstractCapabilityRealization() {
-		AbstractCapabilityRealizationImpl abstractCapabilityRealization = new AbstractCapabilityRealizationImpl();
+    AbstractCapabilityRealizationImpl abstractCapabilityRealization = new AbstractCapabilityRealizationImpl();
     //begin-capella-code
     //end-capella-code
-		return abstractCapabilityRealization;
-	}
+    return abstractCapabilityRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractCapabilityExtend createAbstractCapabilityExtend() {
-		AbstractCapabilityExtendImpl abstractCapabilityExtend = new AbstractCapabilityExtendImpl();
+    AbstractCapabilityExtendImpl abstractCapabilityExtend = new AbstractCapabilityExtendImpl();
     //begin-capella-code
     //end-capella-code
-		return abstractCapabilityExtend;
-	}
+    return abstractCapabilityExtend;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractCapabilityExtensionPoint createAbstractCapabilityExtensionPoint() {
-		AbstractCapabilityExtensionPointImpl abstractCapabilityExtensionPoint = new AbstractCapabilityExtensionPointImpl();
+    AbstractCapabilityExtensionPointImpl abstractCapabilityExtensionPoint = new AbstractCapabilityExtensionPointImpl();
     //begin-capella-code
     //end-capella-code
-		return abstractCapabilityExtensionPoint;
-	}
+    return abstractCapabilityExtensionPoint;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractCapabilityGeneralization createAbstractCapabilityGeneralization() {
-		AbstractCapabilityGeneralizationImpl abstractCapabilityGeneralization = new AbstractCapabilityGeneralizationImpl();
+    AbstractCapabilityGeneralizationImpl abstractCapabilityGeneralization = new AbstractCapabilityGeneralizationImpl();
     //begin-capella-code
     //end-capella-code
-		return abstractCapabilityGeneralization;
-	}
+    return abstractCapabilityGeneralization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractCapabilityInclude createAbstractCapabilityInclude() {
-		AbstractCapabilityIncludeImpl abstractCapabilityInclude = new AbstractCapabilityIncludeImpl();
+    AbstractCapabilityIncludeImpl abstractCapabilityInclude = new AbstractCapabilityIncludeImpl();
     //begin-capella-code
     //end-capella-code
-		return abstractCapabilityInclude;
-	}
+    return abstractCapabilityInclude;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionState createInteractionState() {
-		InteractionStateImpl interactionState = new InteractionStateImpl();
+    InteractionStateImpl interactionState = new InteractionStateImpl();
     //begin-capella-code
     //end-capella-code
-		return interactionState;
-	}
+    return interactionState;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionUse createInteractionUse() {
-		InteractionUseImpl interactionUse = new InteractionUseImpl();
+    InteractionUseImpl interactionUse = new InteractionUseImpl();
     //begin-capella-code
     //end-capella-code
-		return interactionUse;
-	}
+    return interactionUse;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CombinedFragment createCombinedFragment() {
-		CombinedFragmentImpl combinedFragment = new CombinedFragmentImpl();
+    CombinedFragmentImpl combinedFragment = new CombinedFragmentImpl();
     //begin-capella-code
     //end-capella-code
-		return combinedFragment;
-	}
+    return combinedFragment;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Gate createGate() {
-		GateImpl gate = new GateImpl();
+    GateImpl gate = new GateImpl();
     //begin-capella-code
     //end-capella-code
-		return gate;
-	}
+    return gate;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionOperand createInteractionOperand() {
-		InteractionOperandImpl interactionOperand = new InteractionOperandImpl();
+    InteractionOperandImpl interactionOperand = new InteractionOperandImpl();
     //begin-capella-code
     //end-capella-code
-		return interactionOperand;
-	}
+    return interactionOperand;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FragmentEnd createFragmentEnd() {
-		FragmentEndImpl fragmentEnd = new FragmentEndImpl();
+    FragmentEndImpl fragmentEnd = new FragmentEndImpl();
     //begin-capella-code
     //end-capella-code
-		return fragmentEnd;
-	}
+    return fragmentEnd;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public FunctionalChainAbstractCapabilityInvolvement createFunctionalChainAbstractCapabilityInvolvement() {
-		FunctionalChainAbstractCapabilityInvolvementImpl functionalChainAbstractCapabilityInvolvement = new FunctionalChainAbstractCapabilityInvolvementImpl();
+    FunctionalChainAbstractCapabilityInvolvementImpl functionalChainAbstractCapabilityInvolvement = new FunctionalChainAbstractCapabilityInvolvementImpl();
     //begin-capella-code
     //end-capella-code
-		return functionalChainAbstractCapabilityInvolvement;
-	}
+    return functionalChainAbstractCapabilityInvolvement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public AbstractFunctionAbstractCapabilityInvolvement createAbstractFunctionAbstractCapabilityInvolvement() {
-		AbstractFunctionAbstractCapabilityInvolvementImpl abstractFunctionAbstractCapabilityInvolvement = new AbstractFunctionAbstractCapabilityInvolvementImpl();
+    AbstractFunctionAbstractCapabilityInvolvementImpl abstractFunctionAbstractCapabilityInvolvement = new AbstractFunctionAbstractCapabilityInvolvementImpl();
     //begin-capella-code
     //end-capella-code
-		return abstractFunctionAbstractCapabilityInvolvement;
-	}
+    return abstractFunctionAbstractCapabilityInvolvement;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ScenarioRealization createScenarioRealization() {
-		ScenarioRealizationImpl scenarioRealization = new ScenarioRealizationImpl();
+    ScenarioRealizationImpl scenarioRealization = new ScenarioRealizationImpl();
     //begin-capella-code
     //end-capella-code
-		return scenarioRealization;
-	}
+    return scenarioRealization;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public StateFragment createStateFragment() {
-		StateFragmentImpl stateFragment = new StateFragmentImpl();
+    StateFragmentImpl stateFragment = new StateFragmentImpl();
     //begin-capella-code
     //end-capella-code
-		return stateFragment;
-	}
+    return stateFragment;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ArmTimerEvent createArmTimerEvent() {
-		ArmTimerEventImpl armTimerEvent = new ArmTimerEventImpl();
+    ArmTimerEventImpl armTimerEvent = new ArmTimerEventImpl();
     //begin-capella-code
     //end-capella-code
-		return armTimerEvent;
-	}
+    return armTimerEvent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public CancelTimerEvent createCancelTimerEvent() {
-		CancelTimerEventImpl cancelTimerEvent = new CancelTimerEventImpl();
+    CancelTimerEventImpl cancelTimerEvent = new CancelTimerEventImpl();
     //begin-capella-code
     //end-capella-code
-		return cancelTimerEvent;
-	}
+    return cancelTimerEvent;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ConstraintDuration createConstraintDuration() {
-		ConstraintDurationImpl constraintDuration = new ConstraintDurationImpl();
+    ConstraintDurationImpl constraintDuration = new ConstraintDurationImpl();
     //begin-capella-code
     //end-capella-code
-		return constraintDuration;
-	}
+    return constraintDuration;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public SequenceMessageValuation createSequenceMessageValuation() {
-		SequenceMessageValuationImpl sequenceMessageValuation = new SequenceMessageValuationImpl();
+    SequenceMessageValuationImpl sequenceMessageValuation = new SequenceMessageValuationImpl();
     //begin-capella-code
     //end-capella-code
-		return sequenceMessageValuation;
-	}
+    return sequenceMessageValuation;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public MessageKind createMessageKindFromString(EDataType eDataType, String initialValue) {
-		MessageKind result = MessageKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    MessageKind result = MessageKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertMessageKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ScenarioKind createScenarioKindFromString(EDataType eDataType, String initialValue) {
-		ScenarioKind result = ScenarioKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    ScenarioKind result = ScenarioKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertScenarioKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionOperatorKind createInteractionOperatorKindFromString(EDataType eDataType, String initialValue) {
-		InteractionOperatorKind result = InteractionOperatorKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    InteractionOperatorKind result = InteractionOperatorKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertInteractionOperatorKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InteractionPackage getInteractionPackage() {
-		return (InteractionPackage)getEPackage();
-	}
+    return (InteractionPackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static InteractionPackage getPackage() {
-		return InteractionPackage.eINSTANCE;
-	}
+    return InteractionPackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -645,10 +645,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public SequenceMessage createSequenceMessage(String name_p) {
-	  SequenceMessage sequenceMessage = createSequenceMessage();
-		sequenceMessage.setName(name_p);	  
-		return sequenceMessage;
-	}
+    SequenceMessage sequenceMessage = createSequenceMessage();
+    sequenceMessage.setName(name_p);	  
+    return sequenceMessage;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -658,10 +658,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public Scenario createScenario(String name_p) {
-	  Scenario scenario = createScenario();
-		scenario.setName(name_p);	  
-		return scenario;
-	}
+    Scenario scenario = createScenario();
+    scenario.setName(name_p);	  
+    return scenario;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -671,10 +671,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public MessageEnd createMessageEnd(String name_p) {
-	  MessageEnd messageEnd = createMessageEnd();
-		messageEnd.setName(name_p);	  
-		return messageEnd;
-	}
+    MessageEnd messageEnd = createMessageEnd();
+    messageEnd.setName(name_p);	  
+    return messageEnd;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -684,10 +684,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public Execution createExecution(String name_p) {
-	  Execution execution = createExecution();
-		execution.setName(name_p);	  
-		return execution;
-	}
+    Execution execution = createExecution();
+    execution.setName(name_p);	  
+    return execution;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -697,10 +697,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public ExecutionEnd createExecutionEnd(String name_p) {
-	  ExecutionEnd executionEnd = createExecutionEnd();
-		executionEnd.setName(name_p);	  
-		return executionEnd;
-	}
+    ExecutionEnd executionEnd = createExecutionEnd();
+    executionEnd.setName(name_p);	  
+    return executionEnd;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -710,10 +710,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public CreationEvent createCreationEvent(String name_p) {
-	  CreationEvent creationEvent = createCreationEvent();
-		creationEvent.setName(name_p);	  
-		return creationEvent;
-	}
+    CreationEvent creationEvent = createCreationEvent();
+    creationEvent.setName(name_p);	  
+    return creationEvent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -723,10 +723,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public DestructionEvent createDestructionEvent(String name_p) {
-	  DestructionEvent destructionEvent = createDestructionEvent();
-		destructionEvent.setName(name_p);	  
-		return destructionEvent;
-	}
+    DestructionEvent destructionEvent = createDestructionEvent();
+    destructionEvent.setName(name_p);	  
+    return destructionEvent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -736,10 +736,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public ExecutionEvent createExecutionEvent(String name_p) {
-	  ExecutionEvent executionEvent = createExecutionEvent();
-		executionEvent.setName(name_p);	  
-		return executionEvent;
-	}
+    ExecutionEvent executionEvent = createExecutionEvent();
+    executionEvent.setName(name_p);	  
+    return executionEvent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -749,10 +749,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public InstanceRole createInstanceRole(String name_p) {
-	  InstanceRole instanceRole = createInstanceRole();
-		instanceRole.setName(name_p);	  
-		return instanceRole;
-	}
+    InstanceRole instanceRole = createInstanceRole();
+    instanceRole.setName(name_p);	  
+    return instanceRole;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -762,10 +762,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public EventReceiptOperation createEventReceiptOperation(String name_p) {
-	  EventReceiptOperation eventReceiptOperation = createEventReceiptOperation();
-		eventReceiptOperation.setName(name_p);	  
-		return eventReceiptOperation;
-	}
+    EventReceiptOperation eventReceiptOperation = createEventReceiptOperation();
+    eventReceiptOperation.setName(name_p);	  
+    return eventReceiptOperation;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -775,10 +775,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public EventSentOperation createEventSentOperation(String name_p) {
-	  EventSentOperation eventSentOperation = createEventSentOperation();
-		eventSentOperation.setName(name_p);	  
-		return eventSentOperation;
-	}
+    EventSentOperation eventSentOperation = createEventSentOperation();
+    eventSentOperation.setName(name_p);	  
+    return eventSentOperation;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -788,10 +788,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public AbstractCapabilityExtensionPoint createAbstractCapabilityExtensionPoint(String name_p) {
-	  AbstractCapabilityExtensionPoint abstractCapabilityExtensionPoint = createAbstractCapabilityExtensionPoint();
-		abstractCapabilityExtensionPoint.setName(name_p);	  
-		return abstractCapabilityExtensionPoint;
-	}
+    AbstractCapabilityExtensionPoint abstractCapabilityExtensionPoint = createAbstractCapabilityExtensionPoint();
+    abstractCapabilityExtensionPoint.setName(name_p);	  
+    return abstractCapabilityExtensionPoint;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -801,10 +801,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public InteractionState createInteractionState(String name_p) {
-	  InteractionState interactionState = createInteractionState();
-		interactionState.setName(name_p);	  
-		return interactionState;
-	}
+    InteractionState interactionState = createInteractionState();
+    interactionState.setName(name_p);	  
+    return interactionState;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -814,10 +814,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public InteractionUse createInteractionUse(String name_p) {
-	  InteractionUse interactionUse = createInteractionUse();
-		interactionUse.setName(name_p);	  
-		return interactionUse;
-	}
+    InteractionUse interactionUse = createInteractionUse();
+    interactionUse.setName(name_p);	  
+    return interactionUse;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -827,10 +827,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public CombinedFragment createCombinedFragment(String name_p) {
-	  CombinedFragment combinedFragment = createCombinedFragment();
-		combinedFragment.setName(name_p);	  
-		return combinedFragment;
-	}
+    CombinedFragment combinedFragment = createCombinedFragment();
+    combinedFragment.setName(name_p);	  
+    return combinedFragment;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -840,10 +840,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public Gate createGate(String name_p) {
-	  Gate gate = createGate();
-		gate.setName(name_p);	  
-		return gate;
-	}
+    Gate gate = createGate();
+    gate.setName(name_p);	  
+    return gate;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -853,10 +853,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public InteractionOperand createInteractionOperand(String name_p) {
-	  InteractionOperand interactionOperand = createInteractionOperand();
-		interactionOperand.setName(name_p);	  
-		return interactionOperand;
-	}
+    InteractionOperand interactionOperand = createInteractionOperand();
+    interactionOperand.setName(name_p);	  
+    return interactionOperand;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -866,10 +866,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public FragmentEnd createFragmentEnd(String name_p) {
-	  FragmentEnd fragmentEnd = createFragmentEnd();
-		fragmentEnd.setName(name_p);	  
-		return fragmentEnd;
-	}
+    FragmentEnd fragmentEnd = createFragmentEnd();
+    fragmentEnd.setName(name_p);	  
+    return fragmentEnd;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -879,10 +879,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public StateFragment createStateFragment(String name_p) {
-	  StateFragment stateFragment = createStateFragment();
-		stateFragment.setName(name_p);	  
-		return stateFragment;
-	}
+    StateFragment stateFragment = createStateFragment();
+    stateFragment.setName(name_p);	  
+    return stateFragment;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -892,10 +892,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public ArmTimerEvent createArmTimerEvent(String name_p) {
-	  ArmTimerEvent armTimerEvent = createArmTimerEvent();
-		armTimerEvent.setName(name_p);	  
-		return armTimerEvent;
-	}
+    ArmTimerEvent armTimerEvent = createArmTimerEvent();
+    armTimerEvent.setName(name_p);	  
+    return armTimerEvent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -905,10 +905,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public CancelTimerEvent createCancelTimerEvent(String name_p) {
-	  CancelTimerEvent cancelTimerEvent = createCancelTimerEvent();
-		cancelTimerEvent.setName(name_p);	  
-		return cancelTimerEvent;
-	}
+    CancelTimerEvent cancelTimerEvent = createCancelTimerEvent();
+    cancelTimerEvent.setName(name_p);	  
+    return cancelTimerEvent;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -918,10 +918,10 @@ public class InteractionFactoryImpl extends EFactoryImpl implements InteractionF
 	 * @generated
 	 */
 	public ConstraintDuration createConstraintDuration(String name_p) {
-	  ConstraintDuration constraintDuration = createConstraintDuration();
-		constraintDuration.setName(name_p);	  
-		return constraintDuration;
-	}
+    ConstraintDuration constraintDuration = createConstraintDuration();
+    constraintDuration.setName(name_p);	  
+    return constraintDuration;
+  }
 
 	//begin-capella-code
 

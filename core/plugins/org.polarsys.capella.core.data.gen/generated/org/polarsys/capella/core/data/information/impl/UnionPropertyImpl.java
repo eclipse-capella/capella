@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,121 +35,121 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
 public class UnionPropertyImpl extends PropertyImpl implements UnionProperty {
 
 	/**
-	 * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getQualifier() <em>Qualifier</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getQualifier()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getQualifier()
+   * @generated
+   * @ordered
+   */
 	protected EList<DataValue> qualifier;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected UnionPropertyImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.UNION_PROPERTY;
-	}
+    return InformationPackage.Literals.UNION_PROPERTY;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DataValue> getQualifier() {
 
-		if (qualifier == null) {
-			qualifier = new EObjectResolvingEList<DataValue>(DataValue.class, this, InformationPackage.UNION_PROPERTY__QUALIFIER);
-		}
-		return qualifier;
-	}
+    if (qualifier == null) {
+      qualifier = new EObjectResolvingEList<DataValue>(DataValue.class, this, InformationPackage.UNION_PROPERTY__QUALIFIER);
+    }
+    return qualifier;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.UNION_PROPERTY__QUALIFIER:
-				return getQualifier();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION_PROPERTY__QUALIFIER:
+        return getQualifier();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.UNION_PROPERTY__QUALIFIER:
-				getQualifier().clear();
-				getQualifier().addAll((Collection<? extends DataValue>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION_PROPERTY__QUALIFIER:
+        getQualifier().clear();
+        getQualifier().addAll((Collection<? extends DataValue>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.UNION_PROPERTY__QUALIFIER:
-				getQualifier().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION_PROPERTY__QUALIFIER:
+        getQualifier().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.UNION_PROPERTY__QUALIFIER:
-				return qualifier != null && !qualifier.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.UNION_PROPERTY__QUALIFIER:
+        return qualifier != null && !qualifier.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

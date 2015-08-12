@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,48 +48,48 @@ public class ComponentExchangeFunctionalExchangeAllocationImpl extends Allocatio
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentExchangeFunctionalExchangeAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION;
-	}
+    return FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalExchange getAllocatedFunctionalExchange() {
 
-		FunctionalExchange allocatedFunctionalExchange = basicGetAllocatedFunctionalExchange();
-		return allocatedFunctionalExchange != null && allocatedFunctionalExchange.eIsProxy() ? (FunctionalExchange)eResolveProxy((InternalEObject)allocatedFunctionalExchange) : allocatedFunctionalExchange;
-	}
+    FunctionalExchange allocatedFunctionalExchange = basicGetAllocatedFunctionalExchange();
+    return allocatedFunctionalExchange != null && allocatedFunctionalExchange.eIsProxy() ? (FunctionalExchange)eResolveProxy((InternalEObject)allocatedFunctionalExchange) : allocatedFunctionalExchange;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public FunctionalExchange basicGetAllocatedFunctionalExchange() {
 
@@ -116,15 +116,15 @@ public class ComponentExchangeFunctionalExchangeAllocationImpl extends Allocatio
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE, annotation);
-		
-		try {
-			return (FunctionalExchange) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (FunctionalExchange) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -132,23 +132,23 @@ public class ComponentExchangeFunctionalExchangeAllocationImpl extends Allocatio
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentExchange getAllocatingComponentExchange() {
 
-		ComponentExchange allocatingComponentExchange = basicGetAllocatingComponentExchange();
-		return allocatingComponentExchange != null && allocatingComponentExchange.eIsProxy() ? (ComponentExchange)eResolveProxy((InternalEObject)allocatingComponentExchange) : allocatingComponentExchange;
-	}
+    ComponentExchange allocatingComponentExchange = basicGetAllocatingComponentExchange();
+    return allocatingComponentExchange != null && allocatingComponentExchange.eIsProxy() ? (ComponentExchange)eResolveProxy((InternalEObject)allocatingComponentExchange) : allocatingComponentExchange;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentExchange basicGetAllocatingComponentExchange() {
 
@@ -175,53 +175,53 @@ public class ComponentExchangeFunctionalExchangeAllocationImpl extends Allocatio
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE, annotation);
-		
-		try {
-			return (ComponentExchange) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (ComponentExchange) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE:
-				if (resolve) return getAllocatedFunctionalExchange();
-				return basicGetAllocatedFunctionalExchange();
-			case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE:
-				if (resolve) return getAllocatingComponentExchange();
-				return basicGetAllocatingComponentExchange();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE:
+        if (resolve) return getAllocatedFunctionalExchange();
+        return basicGetAllocatedFunctionalExchange();
+      case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE:
+        if (resolve) return getAllocatingComponentExchange();
+        return basicGetAllocatingComponentExchange();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE:
-				return basicGetAllocatedFunctionalExchange() != null;
-			case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE:
-				return basicGetAllocatingComponentExchange() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATED_FUNCTIONAL_EXCHANGE:
+        return basicGetAllocatedFunctionalExchange() != null;
+      case FaPackage.COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATION__ALLOCATING_COMPONENT_EXCHANGE:
+        return basicGetAllocatingComponentExchange() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

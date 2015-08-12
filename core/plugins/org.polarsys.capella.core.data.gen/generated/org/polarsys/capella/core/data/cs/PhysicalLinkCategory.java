@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,23 +36,23 @@ public interface PhysicalLinkCategory extends NamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalLink}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.PhysicalLink#getCategories <em>Categories</em>}'.
+   * Returns the value of the '<em><b>Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.cs.PhysicalLink}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.PhysicalLink#getCategories <em>Categories</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkCategory_Links()
-	 * @see org.polarsys.capella.core.data.cs.PhysicalLink#getCategories
-	 * @model opposite="categories"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.cs.CsPackage#getPhysicalLinkCategory_Links()
+   * @see org.polarsys.capella.core.data.cs.PhysicalLink#getCategories
+   * @model opposite="categories"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<PhysicalLink> getLinks();
 

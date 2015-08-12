@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,27 +23,27 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  */
 public class InformationResourceFactoryImpl extends ResourceFactoryImpl {
 	/**
-	 * Creates an instance of the resource factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public InformationResourceFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * Creates an instance of the resource.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the resource.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Resource createResource(URI uri) {
 
-		Resource result = new InformationResourceImpl(uri);
-		return result;
+    Resource result = new InformationResourceImpl(uri);
+    return result;
 
-	}
+  }
 
 } //InformationResourceFactoryImpl

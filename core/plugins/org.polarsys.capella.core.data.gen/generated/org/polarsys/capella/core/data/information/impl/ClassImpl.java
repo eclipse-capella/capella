@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,23 +57,23 @@ import org.polarsys.capella.core.data.information.datavalue.DataValue;
 public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.core.data.information.Class {
 
 	/**
-	 * The default value of the '{@link #isIsPrimitive() <em>Is Primitive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsPrimitive() <em>Is Primitive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsPrimitive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsPrimitive()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_PRIMITIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsPrimitive() <em>Is Primitive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsPrimitive() <em>Is Primitive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsPrimitive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsPrimitive()
+   * @generated
+   * @ordered
+   */
 	protected boolean isPrimitive = IS_PRIMITIVE_EDEFAULT;
 
 
@@ -81,13 +81,13 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 
 
 	/**
-	 * The cached value of the '{@link #getKeyParts() <em>Key Parts</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKeyParts() <em>Key Parts</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKeyParts()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKeyParts()
+   * @generated
+   * @ordered
+   */
 	protected EList<KeyPart> keyParts;
 
 
@@ -95,13 +95,13 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedStateMachines() <em>Owned State Machines</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedStateMachines()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedStateMachines()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateMachine> ownedStateMachines;
 
 
@@ -109,13 +109,13 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDataValues() <em>Owned Data Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDataValues() <em>Owned Data Values</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDataValues()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDataValues()
+   * @generated
+   * @ordered
+   */
 	protected EList<DataValue> ownedDataValues;
 
 
@@ -123,13 +123,13 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedInformationRealizations() <em>Owned Information Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedInformationRealizations() <em>Owned Information Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedInformationRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedInformationRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<InformationRealization> ownedInformationRealizations;
 
 
@@ -144,56 +144,56 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ClassImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.CLASS;
-	}
+    return InformationPackage.Literals.CLASS;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsPrimitive() {
 
-		return isPrimitive;
-	}
+    return isPrimitive;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setIsPrimitive(boolean newIsPrimitive) {
 
-		boolean oldIsPrimitive = isPrimitive;
-		isPrimitive = newIsPrimitive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.CLASS__IS_PRIMITIVE, oldIsPrimitive, isPrimitive));
+    boolean oldIsPrimitive = isPrimitive;
+    isPrimitive = newIsPrimitive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.CLASS__IS_PRIMITIVE, oldIsPrimitive, isPrimitive));
 
-	}
+  }
 
 
 
@@ -201,82 +201,82 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<KeyPart> getKeyParts() {
 
-		if (keyParts == null) {
-			keyParts = new EObjectResolvingEList<KeyPart>(KeyPart.class, this, InformationPackage.CLASS__KEY_PARTS);
-		}
-		return keyParts;
-	}
+    if (keyParts == null) {
+      keyParts = new EObjectResolvingEList<KeyPart>(KeyPart.class, this, InformationPackage.CLASS__KEY_PARTS);
+    }
+    return keyParts;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateMachine> getOwnedStateMachines() {
 
-		if (ownedStateMachines == null) {
-			ownedStateMachines = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, InformationPackage.CLASS__OWNED_STATE_MACHINES);
-		}
-		return ownedStateMachines;
-	}
+    if (ownedStateMachines == null) {
+      ownedStateMachines = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, InformationPackage.CLASS__OWNED_STATE_MACHINES);
+    }
+    return ownedStateMachines;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DataValue> getOwnedDataValues() {
 
-		if (ownedDataValues == null) {
-			ownedDataValues = new EObjectContainmentEList.Resolving<DataValue>(DataValue.class, this, InformationPackage.CLASS__OWNED_DATA_VALUES);
-		}
-		return ownedDataValues;
-	}
+    if (ownedDataValues == null) {
+      ownedDataValues = new EObjectContainmentEList.Resolving<DataValue>(DataValue.class, this, InformationPackage.CLASS__OWNED_DATA_VALUES);
+    }
+    return ownedDataValues;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InformationRealization> getOwnedInformationRealizations() {
 
-		if (ownedInformationRealizations == null) {
-			ownedInformationRealizations = new EObjectContainmentEList.Resolving<InformationRealization>(InformationRealization.class, this, InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS);
-		}
-		return ownedInformationRealizations;
-	}
+    if (ownedInformationRealizations == null) {
+      ownedInformationRealizations = new EObjectContainmentEList.Resolving<InformationRealization>(InformationRealization.class, this, InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS);
+    }
+    return ownedInformationRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<org.polarsys.capella.core.data.information.Class> getRealizedClasses() {
 
@@ -303,27 +303,27 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.CLASS__REALIZED_CLASSES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.CLASS__REALIZED_CLASSES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<org.polarsys.capella.core.data.information.Class> resultAsList = (Collection<org.polarsys.capella.core.data.information.Class>) result;
-		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.information.Class>(this, InformationPackage.Literals.CLASS__REALIZED_CLASSES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<org.polarsys.capella.core.data.information.Class> resultAsList = (Collection<org.polarsys.capella.core.data.information.Class>) result;
+    return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.information.Class>(this, InformationPackage.Literals.CLASS__REALIZED_CLASSES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<org.polarsys.capella.core.data.information.Class> getRealizingClasses() {
 
@@ -350,174 +350,174 @@ public class ClassImpl extends GeneralClassImpl implements org.polarsys.capella.
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.CLASS__REALIZING_CLASSES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.CLASS__REALIZING_CLASSES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<org.polarsys.capella.core.data.information.Class> resultAsList = (Collection<org.polarsys.capella.core.data.information.Class>) result;
-		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.information.Class>(this, InformationPackage.Literals.CLASS__REALIZING_CLASSES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<org.polarsys.capella.core.data.information.Class> resultAsList = (Collection<org.polarsys.capella.core.data.information.Class>) result;
+    return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.information.Class>(this, InformationPackage.Literals.CLASS__REALIZING_CLASSES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InformationPackage.CLASS__OWNED_STATE_MACHINES:
-				return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
-			case InformationPackage.CLASS__OWNED_DATA_VALUES:
-				return ((InternalEList<?>)getOwnedDataValues()).basicRemove(otherEnd, msgs);
-			case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedInformationRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InformationPackage.CLASS__OWNED_STATE_MACHINES:
+        return ((InternalEList<?>)getOwnedStateMachines()).basicRemove(otherEnd, msgs);
+      case InformationPackage.CLASS__OWNED_DATA_VALUES:
+        return ((InternalEList<?>)getOwnedDataValues()).basicRemove(otherEnd, msgs);
+      case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedInformationRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.CLASS__IS_PRIMITIVE:
-				return isIsPrimitive();
-			case InformationPackage.CLASS__KEY_PARTS:
-				return getKeyParts();
-			case InformationPackage.CLASS__OWNED_STATE_MACHINES:
-				return getOwnedStateMachines();
-			case InformationPackage.CLASS__OWNED_DATA_VALUES:
-				return getOwnedDataValues();
-			case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
-				return getOwnedInformationRealizations();
-			case InformationPackage.CLASS__REALIZED_CLASSES:
-				return getRealizedClasses();
-			case InformationPackage.CLASS__REALIZING_CLASSES:
-				return getRealizingClasses();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.CLASS__IS_PRIMITIVE:
+        return isIsPrimitive();
+      case InformationPackage.CLASS__KEY_PARTS:
+        return getKeyParts();
+      case InformationPackage.CLASS__OWNED_STATE_MACHINES:
+        return getOwnedStateMachines();
+      case InformationPackage.CLASS__OWNED_DATA_VALUES:
+        return getOwnedDataValues();
+      case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
+        return getOwnedInformationRealizations();
+      case InformationPackage.CLASS__REALIZED_CLASSES:
+        return getRealizedClasses();
+      case InformationPackage.CLASS__REALIZING_CLASSES:
+        return getRealizingClasses();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.CLASS__IS_PRIMITIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setIsPrimitive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.CLASS__KEY_PARTS:
-				getKeyParts().clear();
-				getKeyParts().addAll((Collection<? extends KeyPart>)newValue);
-				return;
-			case InformationPackage.CLASS__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
-				return;
-			case InformationPackage.CLASS__OWNED_DATA_VALUES:
-				getOwnedDataValues().clear();
-				getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
-				return;
-			case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
-				getOwnedInformationRealizations().clear();
-				getOwnedInformationRealizations().addAll((Collection<? extends InformationRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.CLASS__IS_PRIMITIVE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setIsPrimitive((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.CLASS__KEY_PARTS:
+        getKeyParts().clear();
+        getKeyParts().addAll((Collection<? extends KeyPart>)newValue);
+        return;
+      case InformationPackage.CLASS__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        getOwnedStateMachines().addAll((Collection<? extends StateMachine>)newValue);
+        return;
+      case InformationPackage.CLASS__OWNED_DATA_VALUES:
+        getOwnedDataValues().clear();
+        getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
+        return;
+      case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
+        getOwnedInformationRealizations().clear();
+        getOwnedInformationRealizations().addAll((Collection<? extends InformationRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.CLASS__IS_PRIMITIVE:
-				setIsPrimitive(IS_PRIMITIVE_EDEFAULT);
-				return;
-			case InformationPackage.CLASS__KEY_PARTS:
-				getKeyParts().clear();
-				return;
-			case InformationPackage.CLASS__OWNED_STATE_MACHINES:
-				getOwnedStateMachines().clear();
-				return;
-			case InformationPackage.CLASS__OWNED_DATA_VALUES:
-				getOwnedDataValues().clear();
-				return;
-			case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
-				getOwnedInformationRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.CLASS__IS_PRIMITIVE:
+        setIsPrimitive(IS_PRIMITIVE_EDEFAULT);
+        return;
+      case InformationPackage.CLASS__KEY_PARTS:
+        getKeyParts().clear();
+        return;
+      case InformationPackage.CLASS__OWNED_STATE_MACHINES:
+        getOwnedStateMachines().clear();
+        return;
+      case InformationPackage.CLASS__OWNED_DATA_VALUES:
+        getOwnedDataValues().clear();
+        return;
+      case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
+        getOwnedInformationRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.CLASS__IS_PRIMITIVE:
-				return isPrimitive != IS_PRIMITIVE_EDEFAULT;
-			case InformationPackage.CLASS__KEY_PARTS:
-				return keyParts != null && !keyParts.isEmpty();
-			case InformationPackage.CLASS__OWNED_STATE_MACHINES:
-				return ownedStateMachines != null && !ownedStateMachines.isEmpty();
-			case InformationPackage.CLASS__OWNED_DATA_VALUES:
-				return ownedDataValues != null && !ownedDataValues.isEmpty();
-			case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
-				return ownedInformationRealizations != null && !ownedInformationRealizations.isEmpty();
-			case InformationPackage.CLASS__REALIZED_CLASSES:
-				return !getRealizedClasses().isEmpty();
-			case InformationPackage.CLASS__REALIZING_CLASSES:
-				return !getRealizingClasses().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.CLASS__IS_PRIMITIVE:
+        return isPrimitive != IS_PRIMITIVE_EDEFAULT;
+      case InformationPackage.CLASS__KEY_PARTS:
+        return keyParts != null && !keyParts.isEmpty();
+      case InformationPackage.CLASS__OWNED_STATE_MACHINES:
+        return ownedStateMachines != null && !ownedStateMachines.isEmpty();
+      case InformationPackage.CLASS__OWNED_DATA_VALUES:
+        return ownedDataValues != null && !ownedDataValues.isEmpty();
+      case InformationPackage.CLASS__OWNED_INFORMATION_REALIZATIONS:
+        return ownedInformationRealizations != null && !ownedInformationRealizations.isEmpty();
+      case InformationPackage.CLASS__REALIZED_CLASSES:
+        return !getRealizedClasses().isEmpty();
+      case InformationPackage.CLASS__REALIZING_CLASSES:
+        return !getRealizingClasses().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isPrimitive: "); //$NON-NLS-1$
-		result.append(isPrimitive);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (isPrimitive: "); //$NON-NLS-1$
+    result.append(isPrimitive);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //ClassImpl

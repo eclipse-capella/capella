@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,21 +50,21 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Ordered</b></em>' attribute.
+   * Returns the value of the '<em><b>Ordered</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Ordered</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Ordered</em>' attribute.
-	 * @see #setOrdered(boolean)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_Ordered()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are\r\nsequentially ordered\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Ordered</em>' attribute.
+   * @see #setOrdered(boolean)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_Ordered()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='For a multivalued multiplicity, this attribute specifies whether the values in an instantiation of this element are\r\nsequentially ordered\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isOrdered();
 
@@ -72,14 +72,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isOrdered <em>Ordered</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isOrdered <em>Ordered</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ordered</em>' attribute.
-	 * @see #isOrdered()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Ordered</em>' attribute.
+   * @see #isOrdered()
+   * @generated
+   */
 
 	void setOrdered(boolean value);
 
@@ -90,21 +90,21 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Unique</b></em>' attribute.
+   * Returns the value of the '<em><b>Unique</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Unique</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Unique</em>' attribute.
-	 * @see #setUnique(boolean)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_Unique()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this element is unique\r\n[source: Capella study]' constraints='none' type='true is element is unique' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Unique</em>' attribute.
+   * @see #setUnique(boolean)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_Unique()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this element is unique\r\n[source: Capella study]' constraints='none' type='true is element is unique' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isUnique();
 
@@ -112,14 +112,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isUnique <em>Unique</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isUnique <em>Unique</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Unique</em>' attribute.
-	 * @see #isUnique()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Unique</em>' attribute.
+   * @see #isUnique()
+   * @generated
+   */
 
 	void setUnique(boolean value);
 
@@ -130,21 +130,21 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Min Inclusive</b></em>' attribute.
+   * Returns the value of the '<em><b>Min Inclusive</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Min Inclusive</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Min Inclusive</em>' attribute.
-	 * @see #setMinInclusive(boolean)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_MinInclusive()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the min value of the range is included or not\r\n[source: Capella light-light study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Min Inclusive</em>' attribute.
+   * @see #setMinInclusive(boolean)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_MinInclusive()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the min value of the range is included or not\r\n[source: Capella light-light study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isMinInclusive();
 
@@ -152,14 +152,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isMinInclusive <em>Min Inclusive</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isMinInclusive <em>Min Inclusive</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Inclusive</em>' attribute.
-	 * @see #isMinInclusive()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Min Inclusive</em>' attribute.
+   * @see #isMinInclusive()
+   * @generated
+   */
 
 	void setMinInclusive(boolean value);
 
@@ -170,21 +170,21 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Max Inclusive</b></em>' attribute.
+   * Returns the value of the '<em><b>Max Inclusive</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max Inclusive</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Max Inclusive</em>' attribute.
-	 * @see #setMaxInclusive(boolean)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_MaxInclusive()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the max value of the range is included or not\r\n[source: Capella light-light study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Max Inclusive</em>' attribute.
+   * @see #setMaxInclusive(boolean)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_MaxInclusive()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the max value of the range is included or not\r\n[source: Capella light-light study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isMaxInclusive();
 
@@ -192,14 +192,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isMaxInclusive <em>Max Inclusive</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#isMaxInclusive <em>Max Inclusive</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Inclusive</em>' attribute.
-	 * @see #isMaxInclusive()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Max Inclusive</em>' attribute.
+   * @see #isMaxInclusive()
+   * @generated
+   */
 
 	void setMaxInclusive(boolean value);
 
@@ -210,23 +210,23 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Default Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Default Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Default Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Default Value</em>' containment reference.
-	 * @see #setOwnedDefaultValue(DataValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedDefaultValue()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Default Value'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the value assigned by default to this multiplicity element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which DataValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Default Value</em>' containment reference.
+   * @see #setOwnedDefaultValue(DataValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedDefaultValue()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Default Value'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the value assigned by default to this multiplicity element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which DataValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	DataValue getOwnedDefaultValue();
 
@@ -234,14 +234,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedDefaultValue <em>Owned Default Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedDefaultValue <em>Owned Default Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Default Value</em>' containment reference.
-	 * @see #getOwnedDefaultValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Default Value</em>' containment reference.
+   * @see #getOwnedDefaultValue()
+   * @generated
+   */
 
 	void setOwnedDefaultValue(DataValue value);
 
@@ -252,24 +252,24 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Min Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Min Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Min Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Min Value</em>' containment reference.
-	 * @see #setOwnedMinValue(DataValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMinValue()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Value'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='minimum specified value for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Min Value</em>' containment reference.
+   * @see #setOwnedMinValue(DataValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMinValue()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Value'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='minimum specified value for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	DataValue getOwnedMinValue();
 
@@ -277,14 +277,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMinValue <em>Owned Min Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMinValue <em>Owned Min Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Min Value</em>' containment reference.
-	 * @see #getOwnedMinValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Min Value</em>' containment reference.
+   * @see #getOwnedMinValue()
+   * @generated
+   */
 
 	void setOwnedMinValue(DataValue value);
 
@@ -295,24 +295,24 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Max Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Max Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Max Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Max Value</em>' containment reference.
-	 * @see #setOwnedMaxValue(DataValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMaxValue()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Value'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specified max value for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Max Value</em>' containment reference.
+   * @see #setOwnedMaxValue(DataValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMaxValue()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Value'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specified max value for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	DataValue getOwnedMaxValue();
 
@@ -320,14 +320,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMaxValue <em>Owned Max Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMaxValue <em>Owned Max Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Max Value</em>' containment reference.
-	 * @see #getOwnedMaxValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Max Value</em>' containment reference.
+   * @see #getOwnedMaxValue()
+   * @generated
+   */
 
 	void setOwnedMaxValue(DataValue value);
 
@@ -338,23 +338,23 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Null Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Null Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Null Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Null Value</em>' containment reference.
-	 * @see #setOwnedNullValue(DataValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedNullValue()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Null value'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the reference to the null value among the set of values contained in this MultiplicityElement\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which DataValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Null Value</em>' containment reference.
+   * @see #setOwnedNullValue(DataValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedNullValue()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Null value'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the reference to the null value among the set of values contained in this MultiplicityElement\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which DataValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	DataValue getOwnedNullValue();
 
@@ -362,14 +362,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedNullValue <em>Owned Null Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedNullValue <em>Owned Null Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Null Value</em>' containment reference.
-	 * @see #getOwnedNullValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Null Value</em>' containment reference.
+   * @see #getOwnedNullValue()
+   * @generated
+   */
 
 	void setOwnedNullValue(DataValue value);
 
@@ -380,24 +380,24 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Min Card</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Min Card</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Min Card</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Min Card</em>' containment reference.
-	 * @see #setOwnedMinCard(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMinCard()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Card'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the lower bound of the multiplicity interval, if it is expressed as an integer\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Min Card</em>' containment reference.
+   * @see #setOwnedMinCard(NumericValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMinCard()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Card'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the lower bound of the multiplicity interval, if it is expressed as an integer\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	NumericValue getOwnedMinCard();
 
@@ -405,14 +405,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMinCard <em>Owned Min Card</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMinCard <em>Owned Min Card</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Min Card</em>' containment reference.
-	 * @see #getOwnedMinCard()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Min Card</em>' containment reference.
+   * @see #getOwnedMinCard()
+   * @generated
+   */
 
 	void setOwnedMinCard(NumericValue value);
 
@@ -423,24 +423,24 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Min Length</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Min Length</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Min Length</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Min Length</em>' containment reference.
-	 * @see #setOwnedMinLength(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMinLength()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Length'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specified minimum length for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Min Length</em>' containment reference.
+   * @see #setOwnedMinLength(NumericValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMinLength()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='lowerValue' featureOwner='MultiplicityElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Min Length'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specified minimum length for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedMinLength();
 
@@ -448,14 +448,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMinLength <em>Owned Min Length</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMinLength <em>Owned Min Length</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Min Length</em>' containment reference.
-	 * @see #getOwnedMinLength()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Min Length</em>' containment reference.
+   * @see #getOwnedMinLength()
+   * @generated
+   */
 
 	void setOwnedMinLength(NumericValue value);
 
@@ -466,24 +466,24 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Max Card</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Max Card</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Max Card</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Max Card</em>' containment reference.
-	 * @see #setOwnedMaxCard(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMaxCard()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Card'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Max Card</em>' containment reference.
+   * @see #setOwnedMaxCard(NumericValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMaxCard()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Card'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the upper bound of the multiplicity interval, if it is expressed as an unlimited natural\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	NumericValue getOwnedMaxCard();
 
@@ -491,14 +491,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMaxCard <em>Owned Max Card</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMaxCard <em>Owned Max Card</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Max Card</em>' containment reference.
-	 * @see #getOwnedMaxCard()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Max Card</em>' containment reference.
+   * @see #getOwnedMaxCard()
+   * @generated
+   */
 
 	void setOwnedMaxCard(NumericValue value);
 
@@ -509,24 +509,24 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Max Length</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Max Length</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Max Length</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Max Length</em>' containment reference.
-	 * @see #setOwnedMaxLength(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMaxLength()
-	 * @model containment="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Length'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specified max length for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Max Length</em>' containment reference.
+   * @see #setOwnedMaxLength(NumericValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getMultiplicityElement_OwnedMaxLength()
+   * @model containment="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='upperValue' featureOwner='MultiplicityElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='Max Length'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specified max length for this element\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which NumericValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedMaxLength();
 
@@ -534,14 +534,14 @@ public interface MultiplicityElement extends CapellaElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMaxLength <em>Owned Max Length</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.MultiplicityElement#getOwnedMaxLength <em>Owned Max Length</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Max Length</em>' containment reference.
-	 * @see #getOwnedMaxLength()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Max Length</em>' containment reference.
+   * @see #getOwnedMaxLength()
+   * @generated
+   */
 
 	void setOwnedMaxLength(NumericValue value);
 

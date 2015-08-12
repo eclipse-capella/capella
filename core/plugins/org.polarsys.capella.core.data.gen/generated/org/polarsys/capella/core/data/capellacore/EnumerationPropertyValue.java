@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,21 +36,21 @@ public interface EnumerationPropertyValue extends AbstractPropertyValue {
 
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
+   * Returns the value of the '<em><b>Type</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(EnumerationPropertyType)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getEnumerationPropertyValue_Type()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Type of this property\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(EnumerationPropertyType)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getEnumerationPropertyValue_Type()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Type of this property\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	EnumerationPropertyType getType();
 
@@ -58,14 +58,14 @@ public interface EnumerationPropertyValue extends AbstractPropertyValue {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue#getType <em>Type</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue#getType <em>Type</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
+   * @generated
+   */
 
 	void setType(EnumerationPropertyType value);
 
@@ -76,21 +76,21 @@ public interface EnumerationPropertyValue extends AbstractPropertyValue {
 
 
 	/**
-	 * Returns the value of the '<em><b>Value</b></em>' reference.
+   * Returns the value of the '<em><b>Value</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Value</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Value</em>' reference.
-	 * @see #setValue(EnumerationPropertyLiteral)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getEnumerationPropertyValue_Value()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Value of this property, described in string format\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='value will be stored as a stereotype-specific property, as a reference to an EnumerationPropertyLiteral' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Value</em>' reference.
+   * @see #setValue(EnumerationPropertyLiteral)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getEnumerationPropertyValue_Value()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Value of this property, described in string format\r\n[source:Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='value will be stored as a stereotype-specific property, as a reference to an EnumerationPropertyLiteral' constraints='none'"
+   * @generated
+   */
 
 	EnumerationPropertyLiteral getValue();
 
@@ -98,14 +98,14 @@ public interface EnumerationPropertyValue extends AbstractPropertyValue {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue#getValue <em>Value</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.EnumerationPropertyValue#getValue <em>Value</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Value</em>' reference.
-	 * @see #getValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Value</em>' reference.
+   * @see #getValue()
+   * @generated
+   */
 
 	void setValue(EnumerationPropertyLiteral value);
 

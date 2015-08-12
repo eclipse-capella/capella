@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.requirement.SystemFunctionalRequirement;
  */
 public class SystemFunctionalRequirementImpl extends RequirementImpl implements SystemFunctionalRequirement {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemFunctionalRequirementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RequirementPackage.Literals.SYSTEM_FUNCTIONAL_REQUIREMENT;
-	}
+    return RequirementPackage.Literals.SYSTEM_FUNCTIONAL_REQUIREMENT;
+  }
 
 
 

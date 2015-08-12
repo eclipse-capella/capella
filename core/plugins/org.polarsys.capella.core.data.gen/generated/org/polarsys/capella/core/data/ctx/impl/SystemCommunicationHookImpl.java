@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,13 +37,13 @@ import org.polarsys.capella.core.data.ctx.SystemCommunicationHook;
 public class SystemCommunicationHookImpl extends NamedElementImpl implements SystemCommunicationHook {
 
 	/**
-	 * The cached value of the '{@link #getCommunication() <em>Communication</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getCommunication() <em>Communication</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCommunication()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getCommunication()
+   * @generated
+   * @ordered
+   */
 	protected SystemCommunication communication;
 
 
@@ -51,90 +51,90 @@ public class SystemCommunicationHookImpl extends NamedElementImpl implements Sys
 
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
 	protected Component type;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SystemCommunicationHookImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK;
-	}
+    return CtxPackage.Literals.SYSTEM_COMMUNICATION_HOOK;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SystemCommunication getCommunication() {
 
-		if (communication != null && communication.eIsProxy()) {
-			InternalEObject oldCommunication = (InternalEObject)communication;
-			communication = (SystemCommunication)eResolveProxy(oldCommunication);
-			if (communication != oldCommunication) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION, oldCommunication, communication));
-			}
-		}
-		return communication;
-	}
+    if (communication != null && communication.eIsProxy()) {
+      InternalEObject oldCommunication = (InternalEObject)communication;
+      communication = (SystemCommunication)eResolveProxy(oldCommunication);
+      if (communication != oldCommunication) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION, oldCommunication, communication));
+      }
+    }
+    return communication;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SystemCommunication basicGetCommunication() {
 
-		return communication;
-	}
+    return communication;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setCommunication(SystemCommunication newCommunication) {
 
-		SystemCommunication oldCommunication = communication;
-		communication = newCommunication;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION, oldCommunication, communication));
+    SystemCommunication oldCommunication = communication;
+    communication = newCommunication;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION, oldCommunication, communication));
 
-	}
+  }
 
 
 
@@ -142,140 +142,140 @@ public class SystemCommunicationHookImpl extends NamedElementImpl implements Sys
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getType() {
 
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (Component)eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE, oldType, type));
-			}
-		}
-		return type;
-	}
+    if (type != null && type.eIsProxy()) {
+      InternalEObject oldType = (InternalEObject)type;
+      type = (Component)eResolveProxy(oldType);
+      if (type != oldType) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE, oldType, type));
+      }
+    }
+    return type;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetType() {
 
-		return type;
-	}
+    return type;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setType(Component newType) {
 
-		Component oldType = type;
-		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE, oldType, type));
+    Component oldType = type;
+    type = newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE, oldType, type));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
-				if (resolve) return getCommunication();
-				return basicGetCommunication();
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
+        if (resolve) return getCommunication();
+        return basicGetCommunication();
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SystemCommunication) {
-				// end-extension-code
-					setCommunication((SystemCommunication)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Component) {
-				// end-extension-code
-					setType((Component)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof SystemCommunication) {
+        // end-extension-code
+          setCommunication((SystemCommunication)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Component) {
+        // end-extension-code
+          setType((Component)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
-				setCommunication((SystemCommunication)null);
-				return;
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
-				setType((Component)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
+        setCommunication((SystemCommunication)null);
+        return;
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
+        setType((Component)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
-				return communication != null;
-			case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
-				return type != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__COMMUNICATION:
+        return communication != null;
+      case CtxPackage.SYSTEM_COMMUNICATION_HOOK__TYPE:
+        return type != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

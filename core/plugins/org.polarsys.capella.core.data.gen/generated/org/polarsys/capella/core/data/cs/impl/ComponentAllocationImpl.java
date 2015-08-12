@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,48 +47,48 @@ public abstract class ComponentAllocationImpl extends AllocationImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ComponentAllocationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.COMPONENT_ALLOCATION;
-	}
+    return CsPackage.Literals.COMPONENT_ALLOCATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getAllocatedComponent() {
 
-		Component allocatedComponent = basicGetAllocatedComponent();
-		return allocatedComponent != null && allocatedComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)allocatedComponent) : allocatedComponent;
-	}
+    Component allocatedComponent = basicGetAllocatedComponent();
+    return allocatedComponent != null && allocatedComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)allocatedComponent) : allocatedComponent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetAllocatedComponent() {
 
@@ -115,15 +115,15 @@ public abstract class ComponentAllocationImpl extends AllocationImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT, annotation);
-		
-		try {
-			return (Component) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Component) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -131,23 +131,23 @@ public abstract class ComponentAllocationImpl extends AllocationImpl implements 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component getAllocatingComponent() {
 
-		Component allocatingComponent = basicGetAllocatingComponent();
-		return allocatingComponent != null && allocatingComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)allocatingComponent) : allocatingComponent;
-	}
+    Component allocatingComponent = basicGetAllocatingComponent();
+    return allocatingComponent != null && allocatingComponent.eIsProxy() ? (Component)eResolveProxy((InternalEObject)allocatingComponent) : allocatingComponent;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Component basicGetAllocatingComponent() {
 
@@ -174,53 +174,53 @@ public abstract class ComponentAllocationImpl extends AllocationImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT, annotation);
-		
-		try {
-			return (Component) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Component) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT:
-				if (resolve) return getAllocatedComponent();
-				return basicGetAllocatedComponent();
-			case CsPackage.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT:
-				if (resolve) return getAllocatingComponent();
-				return basicGetAllocatingComponent();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT:
+        if (resolve) return getAllocatedComponent();
+        return basicGetAllocatedComponent();
+      case CsPackage.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT:
+        if (resolve) return getAllocatingComponent();
+        return basicGetAllocatingComponent();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT:
-				return basicGetAllocatedComponent() != null;
-			case CsPackage.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT:
-				return basicGetAllocatingComponent() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT:
+        return basicGetAllocatedComponent() != null;
+      case CsPackage.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT:
+        return basicGetAllocatingComponent() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

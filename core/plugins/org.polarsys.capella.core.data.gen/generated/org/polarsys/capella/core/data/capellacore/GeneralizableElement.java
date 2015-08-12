@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,22 +42,22 @@ public interface GeneralizableElement extends Type {
 
 
 	/**
-	 * Returns the value of the '<em><b>Abstract</b></em>' attribute.
+   * Returns the value of the '<em><b>Abstract</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Abstract</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Abstract</em>' attribute.
-	 * @see #setAbstract(boolean)
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Abstract()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isAbstract' featureOwner='Classifier'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether this classifier is abstract or concrete\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::isAbstract' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Abstract</em>' attribute.
+   * @see #setAbstract(boolean)
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Abstract()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isAbstract' featureOwner='Classifier'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether this classifier is abstract or concrete\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::isAbstract' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isAbstract();
 
@@ -65,14 +65,14 @@ public interface GeneralizableElement extends Type {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#isAbstract <em>Abstract</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#isAbstract <em>Abstract</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Abstract</em>' attribute.
-	 * @see #isAbstract()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Abstract</em>' attribute.
+   * @see #isAbstract()
+   * @generated
+   */
 
 	void setAbstract(boolean value);
 
@@ -83,24 +83,24 @@ public interface GeneralizableElement extends Type {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Generalizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Generalization}.
+   * Returns the value of the '<em><b>Owned Generalizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Generalization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Generalizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Generalizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_OwnedGeneralizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='superGeneralization'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the links to this classifier\'s parent(s)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::generalization' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Generalizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_OwnedGeneralizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='superGeneralization'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the links to this classifier\'s parent(s)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::generalization' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<Generalization> getOwnedGeneralizations();
 
@@ -111,24 +111,24 @@ public interface GeneralizableElement extends Type {
 
 
 	/**
-	 * Returns the value of the '<em><b>Super Generalizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Generalization}.
+   * Returns the value of the '<em><b>Super Generalizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Generalization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Super Generalizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super Generalizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_SuperGeneralizations()
-	 * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='superGeneralization'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to this classifier\'s parent(s)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::generalization' explanation='none' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Super Generalizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_SuperGeneralizations()
+   * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='generalization' featureOwner='Classifier'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='superGeneralization'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to this classifier\'s parent(s)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Classifier::generalization' explanation='none' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<Generalization> getSuperGeneralizations();
 
@@ -139,22 +139,22 @@ public interface GeneralizableElement extends Type {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub Generalizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Generalization}.
+   * Returns the value of the '<em><b>Sub Generalizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Generalization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub Generalizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Generalizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_SubGeneralizations()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to this classifier\'s child(ren)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Generalization::general' constraints='Order must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub Generalizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_SubGeneralizations()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the links to this classifier\'s child(ren)\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Generalization::general' constraints='Order must be computed'"
+   * @generated
+   */
 
 	EList<Generalization> getSubGeneralizations();
 
@@ -165,24 +165,24 @@ public interface GeneralizableElement extends Type {
 
 
 	/**
-	 * Returns the value of the '<em><b>Super</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.GeneralizableElement}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSub <em>Sub</em>}'.
+   * Returns the value of the '<em><b>Super</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.GeneralizableElement}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSub <em>Sub</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Super</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Super</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Super()
-	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSub
-	 * @model opposite="sub" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) parent classifiers\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Super</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Super()
+   * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSub
+   * @model opposite="sub" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) parent classifiers\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<GeneralizableElement> getSuper();
 
@@ -193,24 +193,24 @@ public interface GeneralizableElement extends Type {
 
 
 	/**
-	 * Returns the value of the '<em><b>Sub</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.GeneralizableElement}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSuper <em>Super</em>}'.
+   * Returns the value of the '<em><b>Sub</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.GeneralizableElement}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSuper <em>Super</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Sub</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub</em>' reference list.
-	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Sub()
-	 * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSuper
-	 * @model opposite="super" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) children classifiers\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Sub</em>' reference list.
+   * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getGeneralizableElement_Sub()
+   * @see org.polarsys.capella.core.data.capellacore.GeneralizableElement#getSuper
+   * @model opposite="super" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) children classifiers\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<GeneralizableElement> getSub();
 
