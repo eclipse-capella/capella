@@ -990,13 +990,13 @@
       <layout xsi:type="description_2:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="default">
         <nodeMappings name="LDFB_Node" preconditionExpression="false" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20element']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Data%20Flow%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='node']" semanticCandidatesExpression="" createElements="false" documentation="pr&#xe9;condition : &lt;%(filter(&quot;ForkFunction&quot;)+filter(&quot;JoinFunction&quot;)+filter(&quot;DecisionFunction&quot;)).nSize > 0 &amp;&amp; eContainer(&quot;LogicalFunctionPkg&quot;).eAllContents().filter(&quot;FunctionalExchange&quot;)[(source == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(target)) || (target == current(1) &amp;&amp; $viewpoint.target.eAllContents().nContains(source))].nSize() > 0%>" domainClass="AbstractFunction">
-          <style xsi:type="style:SquareDescription" sizeComputationExpression="" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%(filter(&quot;ForkFunction&quot;) + filter(&quot;JoinFunction&quot;)).nSize() > 0%>">
-            <style xsi:type="style:SquareDescription" resizeKind="NSEW" width="1" height="7">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" resizeKind="NSEW" width="1" height="7">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2170,7 +2170,7 @@
             </conditionnalStyles>
           </borderedNodeMappings>
           <borderedNodeMappings name="LAB_PhysicalPort" preconditionExpression="&lt;% isValidPhysicalPort($container)%>" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='delete%20capella%20element']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='name']" semanticCandidatesExpression="&lt;% abstractType.ownedFeatures.filter(&quot;PhysicalPort&quot;)%>" domainClass="PhysicalPort">
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;% computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% computeLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
@@ -2178,7 +2178,7 @@
           </borderedNodeMappings>
           <borderedNodeMappings name="LAB_PhysicalCategory_Pin" preconditionExpression="&lt;%isValidABPhysicalCategoryPort($containerView)%>" createElements="false" domainClass="PhysicalLinkCategory">
             <deletionDescription href="physical.odesign#//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20category']"/>
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%computePhysicalCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%computePhysicalCategoryLabel()%>" hideLabelByDefault="true" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
@@ -2209,7 +2209,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
@@ -2245,7 +2245,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%!isLeaf()%>">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
@@ -2254,13 +2254,13 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subNodeMappings name="LAB Sub Node" label="LAB_ControlNode" preconditionExpression="false" deletionDescription="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='delete%20capella%20element']" labelDirectEdit="//@ownedViewpoints[name='Logical%20Architecture']/@ownedRepresentations[name='Logical%20Architecture%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="AbstractFunction">
-            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%(filter(&quot;ForkFunction&quot;) + filter(&quot;JoinFunction&quot;)).nSize() > 0%>">
-              <style xsi:type="style:SquareDescription" resizeKind="NSEW" width="1" height="7">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" resizeKind="NSEW" width="1" height="7">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

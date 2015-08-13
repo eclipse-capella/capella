@@ -167,13 +167,13 @@
           <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
           <detailDescriptions xsi:type="description_1:TableCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interface%20Delegations']/@ownedRepresentationCreationDescriptions[name='Interface%20delegations']"/>
           <subNodeMappings name="PhysicalComponentInCI mapping" deletionDescription="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20PC%20allocation%20in%20CI']" labelDirectEdit="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='EPBS%20Architecture%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='rename%20CI']" semanticCandidatesExpression="&lt;%type.outgoingTraces.filter(&quot;PhysicalArtifactRealization&quot;).targetElement[filter(&quot;PhysicalComponent&quot;)]%>" domainClass="PhysicalComponent">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%nature == &quot;NODE&quot;%>">
-              <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%computeComponentLabel()%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Class_Border_Brown']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Node_Yellow']"/>

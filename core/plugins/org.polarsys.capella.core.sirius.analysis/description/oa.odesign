@@ -850,7 +850,7 @@
           <subNodeMappings name="OAB_Activity" preconditionExpression="&lt;% isAllocatedFunction(current, $container)%>" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='name']" semanticCandidatesExpression="" createElements="false" domainClass="OperationalActivity">
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Breakdown']"/>
             <detailDescriptions xsi:type="tool_1:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Capella%20Architecture']/@defaultLayer/@toolSections.0/@ownedTools[name='Operational%20Activity%20Interaction%20Blank']"/>
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
@@ -865,7 +865,7 @@
             </conditionnalStyles>
           </subNodeMappings>
           <subContainerMappings name="OAB_subRoles" preconditionExpression="&lt;%isAllocatedRole(current, $container)%>" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='OA%20Role']" semanticCandidatesExpression="" createElements="false" domainClass="Role" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.2/@ownedTools[name='D%26D%20OperationalActivities%20From%20Project%20Explorer%20To%20Role'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='DnD%20AB%20AbstractFunction%20Allocation']" reusedNodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Blank']/@defaultLayer/@containerMappings[name='OAB_Entity1']/@subNodeMappings[name='OAB_Activity']">
-            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -1998,7 +1998,7 @@
         </edgeMappings>
         <containerMappings name="ORB_Role1" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Rename%20Interaction']" semanticCandidatesExpression="" createElements="false" domainClass="Role" dropDescriptions="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='change%20allocation'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.1/@ownedTools[name='D%26D%20OperationalActivities%20From%20Project%20Explorer'] //@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='D%26D%20Role%20From%20Project%20Explorer']">
           <subNodeMappings name="ORB_OAAllocation" preconditionExpression="&lt;%$container.getShowableAllocatedOperationalActivities().nContains(current)%>" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']" labelDirectEdit="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Role%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Rename%20Interaction']" semanticCandidatesExpression="" createElements="false" domainClass="OperationalActivity">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
@@ -2473,7 +2473,7 @@
             <borderedNodeMappings xsi:type="description_3:ExecutionMapping" name="Execution OA" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getExecutionsFromInstanceRoleOrParentExecution () %>" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='Instancerole%20Mapping%20OA']/@borderedNodeMappings[name='default%20execution%20OA']/@borderedNodeMappings[name='Execution%20OA']" startingEndFinderExpression="&lt;% start %>" finishingEndFinderExpression="&lt;% finish %>">
               <borderedNodeMappings xsi:type="description_3:StateMapping" name="InteractionState Mapping OA" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="&lt;% start %>" finishingEndFinderExpression="&lt;% finish %>">
                 <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
-                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelPosition="node" resizeKind="NSEW" width="10" height="3">
                   <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
@@ -2493,13 +2493,13 @@
                   </style>
                 </conditionnalStyles>
               </borderedNodeMappings>
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="3">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="3">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
               </style>
               <conditionnalStyles predicateExpression="&lt;% isFunctionalExecution () %>">
-                <style xsi:type="style:SquareDescription" labelExpression="" resizeKind="NSEW" width="1" height="3">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="" resizeKind="NSEW" width="1" height="3">
                   <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
@@ -2519,33 +2519,33 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; ! isInternalLCForInstanceRole () %>">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.abstractType.filter(&quot;Component&quot;).nSize > 0 &amp;&amp; isInternalLCForInstanceRole () %>">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Entity_Gray']"/>
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%representedInstance.filter(&quot;Role&quot;).nSize > 0%>">
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="15" height="5">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_OperationalRole_Purple']"/>
@@ -4025,7 +4025,7 @@
             <borderedNodeMappings xsi:type="description_3:ExecutionMapping" name="Execution AIS" deletionDescription="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Interaction%20Scenario']/@defaultLayer/@toolSections.0/@ownedTools[name='delete%20capella%20elements']" semanticCandidatesExpression="&lt;% getExecutionsFromInstanceRoleOrParentExecution () %>" synchronizationLock="true" domainClass="interaction.Execution" reusedBorderedNodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Activity%20Interaction%20Scenario']/@defaultLayer/@nodeMappings[name='InstanceRoleMaping%20AIS']/@borderedNodeMappings[name='default%20execution%20AIS']/@borderedNodeMappings[name='Execution%20AIS']" startingEndFinderExpression="&lt;% start %>" finishingEndFinderExpression="&lt;% finish %>">
               <borderedNodeMappings xsi:type="description_3:StateMapping" name="InteractionState Mapping AIS" semanticCandidatesExpression="&lt;% getInteractionStatesOnExecution () %>" domainClass="interaction.StateFragment" startingEndFinderExpression="&lt;% start %>" finishingEndFinderExpression="&lt;% finish %>">
                 <deletionDescription href="context.odesign#//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='System%20Function%20Breakdown']/@defaultLayer/@toolSections.0/@ownedTools[name='capellaElement']"/>
-                <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelPosition="node" resizeKind="NSEW" width="10" height="3">
+                <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;% relatedAbstractFunction.name%>" labelPosition="node" resizeKind="NSEW" width="10" height="3">
                   <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
@@ -4045,7 +4045,7 @@
                   </style>
                 </conditionnalStyles>
               </borderedNodeMappings>
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="3">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="3">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
@@ -4064,13 +4064,13 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="1" height="40">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%getInstanceRoleLabel ()%>" labelPosition="node" resizeKind="EAST_WEST" width="10" height="5">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Border_Orange']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Activity_Orange']"/>

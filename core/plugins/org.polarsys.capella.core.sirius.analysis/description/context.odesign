@@ -3626,7 +3626,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </borderedNodeMappings>
-            <style xsi:type="style:SquareDescription" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
               <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_xAB_Function_Green']"/>
@@ -3662,7 +3662,7 @@
               </style>
             </conditionnalStyles>
             <conditionnalStyles predicateExpression="&lt;%!isLeaf()%>">
-              <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+              <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%$view.computeFunctionLabel%>" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
                 <labelFormat>italic</labelFormat>
                 <labelColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Function_Border_Green']"/>
@@ -4996,13 +4996,13 @@
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20Detailed%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20Detailed%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Contextual%20Component%20External%20Interfaces']/@defaultLayer/@toolSections.0/@ownedTools[name='Contextual%20Component%20External%20Interfaces']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Interfaces%20Diagram%20Blank']/@defaultLayer/@toolSections.0/@ownedTools[name='Interfaces%20Diagram%20Blank']"/>
-          <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="10" height="8">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="10" height="8">
             <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Blue']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;% abstract==true %>">
-            <style xsi:type="style:SquareDescription" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="10" height="8">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="7" labelPosition="node" resizeKind="NSEW" width="10" height="8">
               <borderColor xsi:type="description:UserFixedColor" href="common.odesign#//@userColorsPalettes[name='Migration%20Palette']/@entries[name='_CAP_Component_Border_Blue']"/>
               <labelFormat>italic</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
