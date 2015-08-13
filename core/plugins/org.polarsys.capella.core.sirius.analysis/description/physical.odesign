@@ -1537,27 +1537,31 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Node Physical Component in the target Physical Component" name="Node PC" precondition="&lt;%$container.nature == &quot;NODE&quot; || $container.nature == &quot;UNSET&quot;%>" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalComponentNode.gif" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Node Physical Component in the target Physical Component" name="Node PC" precondition="&lt;%$container.nature == &quot;NODE&quot; || $container.nature == &quot;UNSET&quot;%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PhysicalComponentNode.gif" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;ComponentPkg&quot;)%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="comp">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="NODE"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createPhysicalComponent()%>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="NODE"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Behavior Physical Component in the target Physical Component" name="Behavior PC" precondition="&lt;%$container.nature == &quot;BEHAVIOR&quot; || $container.nature == &quot;UNSET&quot;%>" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Behavior Physical Component in the target Physical Component" name="Behavior PC" precondition="&lt;%$container.nature == &quot;BEHAVIOR&quot; || $container.nature == &quot;UNSET&quot;%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']" extraMappings="//@ownedViewpoints[name='Physical%20Architecture']/@ownedRepresentations[name='Physical%20Component%20Breakdown']/@defaultLayer/@nodeMappings[name='PCB_PhysicalComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;ComponentPkg&quot;)%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="PhysicalComponent" referenceName="ownedPhysicalComponents" variableName="comp">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createPhysicalComponent()%>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool:SetValue" featureName="nature" valueExpression="BEHAVIOR"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

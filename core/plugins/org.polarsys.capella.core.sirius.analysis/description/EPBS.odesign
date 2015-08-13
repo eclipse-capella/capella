@@ -667,66 +667,94 @@
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="COTS" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/COTSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind COTS (Commercial Off The Shelf)." name="COTS" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/COTSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCOTSCI() %>">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="CS" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind CS (Computer Software) ." name="CS" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/CSCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createCSCI() %>">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="HW" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/HWCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind HW (Hardware) ." name="HW" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/HWCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createHWCI() %>">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="Interface" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InterfaceCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Interface." name="Interface" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/InterfaceCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createInterfaceCI() %>">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="NDI" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/NDICI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind NDI (Not Developed Item) ." name="NDI" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/NDICI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createNDICI() %>">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="Prime Item" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PrimeItemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind Prime Item." name="Prime Item" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/PrimeItemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createPrimeItemCI() %>">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind System." name="System" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Configuration Item with kind System." name="System" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/SystemCI.gif" extraMappings="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;% $container.createSystemCI() %>">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='EPBS%20architecture']/@ownedRepresentations[name='Configuration%20Items%20Breakdown']/@defaultLayer/@nodeMappings[name='CIBD_ConfigurationItem']" containerViewExpression="&lt;%$containerView.getDiagramContainer()%>"/>
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
