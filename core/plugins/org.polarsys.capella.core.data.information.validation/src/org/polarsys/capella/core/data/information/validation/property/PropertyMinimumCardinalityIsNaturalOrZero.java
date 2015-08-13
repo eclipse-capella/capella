@@ -14,11 +14,14 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.information.Class;
+import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.ExchangeItemElement;
 import org.polarsys.capella.core.data.information.Property;
 import org.polarsys.capella.core.data.information.datatype.NumericType;
 import org.polarsys.capella.core.data.information.datatype.NumericTypeKind;
 import org.polarsys.capella.core.data.information.datavalue.NumericValue;
+import org.polarsys.capella.core.data.oa.Role;
 import org.polarsys.capella.core.model.helpers.DataValueExt;
 import org.polarsys.capella.core.validation.rule.AbstractValidationRule;
 
@@ -34,7 +37,7 @@ public class PropertyMinimumCardinalityIsNaturalOrZero extends AbstractValidatio
     EObject eObj = ctx.getTarget();
 
     // if eObj is a Property in a named container
-    if ((eObj instanceof Property) && (eObj.eContainer() instanceof NamedElement)) {
+    if (isValidType(eObj) && (eObj.eContainer() instanceof NamedElement)) {
       NamedElement container = (NamedElement) eObj.eContainer();
       Property property = (Property) eObj;
 
@@ -55,6 +58,11 @@ public class PropertyMinimumCardinalityIsNaturalOrZero extends AbstractValidatio
     }
 
     return ctx.createSuccessStatus();
+  }
+
+  private boolean isValidType(EObject eObj) {
+    return eObj instanceof Property && eObj.eContainer() instanceof Class || eObj instanceof Role
+        || eObj instanceof ExchangeItem;
   }
 
   private boolean isNaturalOrZero(NumericValue value) {
