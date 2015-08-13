@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -499,5 +499,40 @@ public class OAServices {
     }
     List<Object> result = new ArrayList<Object>(OperationalAnalysisExt.getAllOperationalCapabilities((OperationalAnalysis) arch));
     return result;
+  }
+  
+  public Entity createEntity(EObject container) {
+	
+	Entity entity = OaFactory.eINSTANCE.createEntity();
+	if (entity != null) {
+	  if (container instanceof OperationalContext) {
+		EntityPkg entityPkg = getRootEntityPkg(container);
+		entityPkg.getOwnedEntities().add(entity);
+	  } else  if (container instanceof Entity) {
+		Entity entityContainer = (Entity) container;
+		entityContainer.getOwnedEntities().add(entity);
+	  }
+	  CapellaServices.getService().creationService(entity);
+	}
+	
+	return entity;
+  }
+  
+  
+  public OperationalActor createOperationalActor(EObject container) {
+	
+	OperationalActor actor = OaFactory.eINSTANCE.createOperationalActor();
+	if (actor != null) {
+	  if (container instanceof OperationalContext) {
+		EntityPkg entityPkg = getRootEntityPkg(container);
+		entityPkg.getOwnedEntities().add(actor);
+	  } else  if (container instanceof Entity) {
+		Entity entityContainer = (Entity) container;
+		entityContainer.getOwnedEntities().add(actor);
+	  }
+	  CapellaServices.getService().creationService(actor);
+	}
+	
+	return actor;
   }
 }

@@ -72,6 +72,7 @@ import org.polarsys.capella.core.data.helpers.cs.services.PhysicalLinkExt;
 import org.polarsys.capella.core.data.information.PartitionableElement;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.pa.AbstractPhysicalComponent;
+import org.polarsys.capella.core.data.pa.PaFactory;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.pa.PhysicalActor;
 import org.polarsys.capella.core.data.pa.PhysicalArchitecture;
@@ -1528,4 +1529,17 @@ public class PhysicalServices {
     }
   }
 
+  public PhysicalComponent createPhysicalComponent(EObject container) {
+		
+	  PhysicalComponent component = PaFactory.eINSTANCE.createPhysicalComponent();
+		if (component != null) {
+		  if (container instanceof PhysicalComponent) {
+		    PhysicalComponent componentContainer = (PhysicalComponent) container;
+		    componentContainer.getOwnedPhysicalComponents().add(component);
+		  }
+		  CapellaServices.getService().creationService(component);
+		}
+		
+		return component;
+  }
 }

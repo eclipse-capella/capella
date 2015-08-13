@@ -120,56 +120,28 @@
         <reusedMappings xsi:type="description_2:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <reusedMappings xsi:type="description_2:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <toolSections name="Entities">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Entity in the target Entity" name="Operational Entity" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/Entity.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getOEBTarget()%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%isA(&quot;Entity&quot;)%>">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%isA(&quot;EntityPkg&quot;)%>">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!isA(&quot;Entity&quot;) &amp;&amp; !isA(&quot;EntityPkg&quot;)%>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%getRootEntityPkg()%>">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="Entity" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createEntity()%>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" inverseSelectionOrder="true" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Creates a new Operational Actor in the target Entity" name="Operational Actor" precondition="&lt;%!$container.isA(&quot;OperationalActor&quot;)%>" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']" iconPath="/org.polarsys.capella.core.sirius.analysis/icons/full/obj16/OperationalActor.gif" extraMappings="//@ownedViewpoints[name='Operational%20Analysis']/@ownedRepresentations[name='Operational%20Entity%20Breakdown']/@defaultLayer/@nodeMappings[name='OEB_OperationalEntities']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.getOEBTarget()%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%isA(&quot;Entity&quot;)%>">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%isA(&quot;EntityPkg&quot;)%>">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!isA(&quot;Entity&quot;) &amp;&amp; !isA(&quot;EntityPkg&quot;)%>">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%getRootEntityPkg()%>">
-                      <subModelOperations xsi:type="tool:CreateInstance" typeName="OperationalActor" referenceName="ownedEntities" variableName="entity">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%creationService%>"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createOperationalActor()%>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
