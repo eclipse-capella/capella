@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Thales - initial API and implementation
+-->
+<plugin>
+   <extension-point id="migrationContributions" name="Migration Contributions" schema="schema/migrationContributions.exsd"/>
+   <extension-point id="migrationContributors" name="Migration Contributors" schema="schema/migrationContributors.exsd"/>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="org.polarsys.capella.core.data.migration"
+            name="%migrationMenu">
+      </category>
+      
+      <command
+            categoryId="org.polarsys.capella.core.data.migration"
+            id="org.polarsys.capella.core.data.migration.project"
+            name="%projectMigration">
+      </command>
+      
+      <command
+            categoryId="org.polarsys.capella.core.data.migration"
+            id="org.polarsys.capella.core.data.migration.model"
+            name="%semanticModelMigration">
+      </command>
+      
+      <command
+            categoryId="org.polarsys.capella.core.data.migration"
+            id="org.polarsys.capella.core.data.migration.aird"
+            name="%airdModelMigration">
+      </command>
+      
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="org.polarsys.capella.core.data.migration.handlers.ProjectMigrationHandler"
+            commandId="org.polarsys.capella.core.data.migration.project">
+      </handler>
+      <handler
+            class="org.polarsys.capella.core.data.migration.handlers.ModelMigrationHandler"
+            commandId="org.polarsys.capella.core.data.migration.model">
+      </handler>
+      <handler
+            class="org.polarsys.capella.core.data.migration.handlers.AirdMigrationHandler"
+            commandId="org.polarsys.capella.core.data.migration.aird">
+      </handler> 
+      
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:capella.project.explorer#PopupMenu?after=group.migration">
+            <menu label="%migrationMenu">
+            
+            <command
+                  commandId="org.polarsys.capella.core.data.migration.project"
+                  id="org.polarsys.capella.core.data.migration.project"
+                  icon="icons/full/etools16/capella_migrate.gif">
+                <visibleWhen checkEnabled="true">
+                <with variable="selection">
+                    <iterate>
+                            <and>
+                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
+                                   value="org.polarsys.capella.core.data.migration.project">
+                                </test>
+                            </and>
+                    </iterate>
+                </with>
+                </visibleWhen> 
+            </command>
+            <command
+                  commandId="org.polarsys.capella.core.data.migration.model"
+                  id="org.polarsys.capella.core.data.migration.model"
+                  icon="icons/full/etools16/capella_migrate.gif">
+                <visibleWhen checkEnabled="true">
+                <with variable="selection">
+                    <iterate>
+                            <and>
+                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
+                                   value="org.polarsys.capella.core.data.migration.project">
+                                </test>
+                            </and>
+                    </iterate>
+                </with>
+                </visibleWhen> 
+            </command>
+            <command
+                  commandId="org.polarsys.capella.core.data.migration.aird"
+                  id="org.polarsys.capella.core.data.migration.aird"
+                  icon="icons/full/etools16/capella_migrate.gif">
+                <visibleWhen checkEnabled="true">
+                <with variable="selection">
+                    <iterate>
+                            <and>
+                                <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
+                                   value="org.polarsys.capella.core.data.migration.project">
+                                </test>
+                            </and>
+                    </iterate>
+                </with>
+                </visibleWhen> 
+            </command>
+            
+            </menu>
+         
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.polarsys.capella.core.data.migration.MigrationEnablementTester"
+            id="org.polarsys.capella.core.data.migration.MigrationEnablementTester"
+            namespace="org.polarsys.capella.core.data.migration"
+            properties="MigrationEnablementTester"
+            type="org.eclipse.core.resources.IResource">
+      </propertyTester>
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.data.migration.migrationContributions">
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.capella.CapellaMigrationContribution">
+      </migrationContribution>
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.aird.SiriusMigrationContribution">
+      </migrationContribution>
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.contribution.BackupResourceContribution">
+      </migrationContribution>
+   </extension>
+   <extension
+         point="org.polarsys.capella.core.data.migration.migrationContributors">
+      <migrationContributor
+            class="org.polarsys.capella.core.data.migration.capella.CapellaMigrationContributor">
+      </migrationContributor>
+      <migrationContributor
+            class="org.polarsys.capella.core.data.migration.aird.AirdMigrationContributor">
+      </migrationContributor>
+      <migrationContributor
+            class="org.polarsys.capella.core.data.migration.repair.RepairSiriusMigrationContributor">
+      </migrationContributor>
+   </extension>
+</plugin>
