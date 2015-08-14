@@ -23,7 +23,9 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.ctx.Actor;
+import org.polarsys.capella.core.data.ctx.ActorPkg;
 import org.polarsys.capella.core.data.ctx.CapabilityPkg;
+import org.polarsys.capella.core.data.ctx.CtxFactory;
 import org.polarsys.capella.core.data.ctx.SystemAnalysis;
 import org.polarsys.capella.core.data.helpers.ctx.services.CapabilityPkgExt;
 import org.polarsys.capella.core.data.helpers.ctx.services.MissionPkgExt;
@@ -119,8 +121,8 @@ public class ContextServices {
    * @param visibleElementViews
    * @param showHideHandler
    */
-  public EObject showHideMCBActors2(DSemanticDecorator view, List<EObject> selectedElements, List<EObject> visibleElements,
-      List<DDiagramElement> visibleElementViews, AbstractShowHide showHideHandler) {
+  public EObject showHideMCBActors2(DSemanticDecorator view, List<EObject> selectedElements,
+      List<EObject> visibleElements, List<DDiagramElement> visibleElementViews, AbstractShowHide showHideHandler) {
 
     DiagramContext diagramContext = showHideHandler.new DiagramContext();
 
@@ -141,5 +143,19 @@ public class ContextServices {
     }
 
     return view;
+  }
+
+  public Actor createCtxActor(EObject container) {
+
+    Actor actor = CtxFactory.eINSTANCE.createActor();
+    if (actor != null) {
+      if (container instanceof ActorPkg) {
+        ActorPkg actorPkg = (ActorPkg) container;
+        actorPkg.getOwnedActors().add(actor);
+      }
+      CapellaServices.getService().creationService(actor);
+    }
+
+    return actor;
   }
 }
