@@ -5035,13 +5035,15 @@
         <reusedMappings xsi:type="description_1:NodeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@nodeMappings[name='DT_Contraint']"/>
         <reusedMappings xsi:type="description_1:EdgeMapping" href="common.odesign#//@ownedViewpoints[name='Common']/@ownedRepresentations[name='Class%20Diagram%20Blank']/@defaultLayer/@edgeMappings[name='DT_ContrainedElements']"/>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Actor" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Actor" forceRefresh="true" elementsToSelect="&lt;%selectOnlyCreatedView()%>" nodeMappings="//@ownedViewpoints[name='System%20Analysis']/@ownedRepresentations[name='Contextual%20System%20Actors']/@defaultLayer/@nodeMappings[name='SC_Actor']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;% $container.ancestor.filter(&quot;SystemAnalysis&quot;).ownedActorPkg %>">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Actor" referenceName="ownedActors" variableName="actor">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%creationService%>"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$container.ancestor.filter(&quot;SystemAnalysis&quot;).ownedActorPkg.createCtxActor()%>">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="CreateView" id="org.polarsys.capella.core.sirius.analysis.actions.extensions.CreateViewAction">
+                  <parameters name="context" value="&lt;% $container %>"/>
+                  <parameters name="scope" value="&lt;% current %>"/>
+                  <parameters name="containerViewExpression" value="&lt;%$containerView.getDiagramContainer()%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
