@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,23 +37,23 @@ public interface AbstractCapabilityRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Capability</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getIncomingCapabilityAllocation <em>Incoming Capability Allocation</em>}'.
+   * Returns the value of the '<em><b>Realized Capability</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getIncomingCapabilityAllocation <em>Incoming Capability Allocation</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Capability</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Capability</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityRealization_RealizedCapability()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getIncomingCapabilityAllocation
-	 * @model opposite="incomingCapabilityAllocation" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being realized from the other Capability' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Capability</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityRealization_RealizedCapability()
+   * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getIncomingCapabilityAllocation
+   * @model opposite="incomingCapabilityAllocation" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability being realized from the other Capability' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	AbstractCapability getRealizedCapability();
 
@@ -64,23 +64,23 @@ public interface AbstractCapabilityRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Capability</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getOutgoingCapabilityAllocation <em>Outgoing Capability Allocation</em>}'.
+   * Returns the value of the '<em><b>Realizing Capability</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getOutgoingCapabilityAllocation <em>Outgoing Capability Allocation</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Capability</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Capability</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityRealization_RealizingCapability()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getOutgoingCapabilityAllocation
-	 * @model opposite="outgoingCapabilityAllocation" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability starting the realization relationships towards the other capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Capability</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityRealization_RealizingCapability()
+   * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getOutgoingCapabilityAllocation
+   * @model opposite="outgoingCapabilityAllocation" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability starting the realization relationships towards the other capability\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	AbstractCapability getRealizingCapability();
 

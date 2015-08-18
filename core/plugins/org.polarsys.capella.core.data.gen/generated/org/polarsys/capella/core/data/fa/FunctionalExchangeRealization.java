@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,23 +38,23 @@ public interface FunctionalExchangeRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Functional Exchange</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getIncomingFunctionalExchangeRealizations <em>Incoming Functional Exchange Realizations</em>}'.
+   * Returns the value of the '<em><b>Realized Functional Exchange</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getIncomingFunctionalExchangeRealizations <em>Incoming Functional Exchange Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Functional Exchange</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Functional Exchange</em>' reference.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeRealization_RealizedFunctionalExchange()
-	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getIncomingFunctionalExchangeRealizations
-	 * @model opposite="incomingFunctionalExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchange that is being realized by the other functional exchange involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Functional Exchange</em>' reference.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeRealization_RealizedFunctionalExchange()
+   * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getIncomingFunctionalExchangeRealizations
+   * @model opposite="incomingFunctionalExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchange that is being realized by the other functional exchange involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	FunctionalExchange getRealizedFunctionalExchange();
 
@@ -65,23 +65,23 @@ public interface FunctionalExchangeRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Functional Exchange</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getOutgoingFunctionalExchangeRealizations <em>Outgoing Functional Exchange Realizations</em>}'.
+   * Returns the value of the '<em><b>Realizing Functional Exchange</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getOutgoingFunctionalExchangeRealizations <em>Outgoing Functional Exchange Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Functional Exchange</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Functional Exchange</em>' reference.
-	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeRealization_RealizingFunctionalExchange()
-	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getOutgoingFunctionalExchangeRealizations
-	 * @model opposite="outgoingFunctionalExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchange that is realising the other functional exchange involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Functional Exchange</em>' reference.
+   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalExchangeRealization_RealizingFunctionalExchange()
+   * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getOutgoingFunctionalExchangeRealizations
+   * @model opposite="outgoingFunctionalExchangeRealizations" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the functional exchange that is realising the other functional exchange involved in this relationship\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	FunctionalExchange getRealizingFunctionalExchange();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,7 +96,7 @@ public class LibrariesResourceImpl extends XMIResourceImpl {
    */
   @Override
   protected XMLHelper createXMLHelper() {
-    return new XMIExtensionHelperImpl(this);
+    return new XMIExtensionHelperImpl(this);	
   }
 
   /**
@@ -106,7 +106,7 @@ public class LibrariesResourceImpl extends XMIResourceImpl {
    */
   @Override
   protected XMLLoad createXMLLoad() {
-    return new XMIExtensionLoadImpl((XMIExtensionHelperImpl) createXMLHelper());
+    return new XMIExtensionLoadImpl((XMIExtensionHelperImpl) createXMLHelper());	
   }
 
   /**
@@ -129,13 +129,13 @@ public class LibrariesResourceImpl extends XMIResourceImpl {
     super.init();
 
     // Save Options
-    getDefaultSaveOptions().put(XMLResource.OPTION_ENCODING, "UTF-8"); //$NON-NLS-1$
+    getDefaultSaveOptions().put(XMLResource.OPTION_ENCODING, "UTF-8");  //$NON-NLS-1$
     getDefaultSaveOptions().put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
-    getDefaultSaveOptions().put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE, lookupTable);
-    getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-    getDefaultSaveOptions().put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);
+    getDefaultSaveOptions().put(XMLResource.OPTION_USE_CACHED_LOOKUP_TABLE, lookupTable);    
+    getDefaultSaveOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);    
+    getDefaultSaveOptions().put(XMLResource.OPTION_SAVE_TYPE_INFORMATION, Boolean.TRUE);    
     getDefaultSaveOptions().put(XMLResource.OPTION_LINE_WIDTH, new Integer(80));
-    getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());
+    getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl.PlatformSchemeAware());		        
     getDefaultSaveOptions().put(XMLResource.OPTION_FLUSH_THRESHOLD, Integer.valueOf(0x01000000));
     getDefaultSaveOptions().put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
 
@@ -146,8 +146,7 @@ public class LibrariesResourceImpl extends XMIResourceImpl {
     getDefaultLoadOptions().put(XMLResource.OPTION_USE_PARSER_POOL, parserPool);
     getDefaultLoadOptions().put(XMLResource.OPTION_USE_XML_NAME_TO_FEATURE_MAP, nameToFeatureMap);
     getDefaultLoadOptions().put(XMLResource.OPTION_USE_ENCODED_ATTRIBUTE_STYLE, Boolean.TRUE);
-    getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-  }
+    getDefaultLoadOptions().put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);	}
 
   //begin-capella-code
   /**
@@ -159,9 +158,8 @@ public class LibrariesResourceImpl extends XMIResourceImpl {
    */
   @Override
   protected EObject getEObjectByID(String id) {
-    if (idToEObjectMap == null) {
+    if (idToEObjectMap == null)
       return super.getEObjectByID(id);
-    }
     return getIDToEObjectMap().get(id);
   }
 

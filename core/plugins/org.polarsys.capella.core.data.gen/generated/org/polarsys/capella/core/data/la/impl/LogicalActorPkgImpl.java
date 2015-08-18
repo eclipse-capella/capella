@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,13 +40,13 @@ import org.polarsys.capella.core.data.la.LogicalActorPkg;
 public class LogicalActorPkgImpl extends AbstractFunctionalStructureImpl implements LogicalActorPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalActorPkgs() <em>Owned Logical Actor Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalActorPkgs() <em>Owned Logical Actor Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalActorPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalActorPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalActorPkg> ownedLogicalActorPkgs;
 
 
@@ -54,166 +54,166 @@ public class LogicalActorPkgImpl extends AbstractFunctionalStructureImpl impleme
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedLogicalActors() <em>Owned Logical Actors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedLogicalActors() <em>Owned Logical Actors</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedLogicalActors()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedLogicalActors()
+   * @generated
+   * @ordered
+   */
 	protected EList<LogicalActor> ownedLogicalActors;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected LogicalActorPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LaPackage.Literals.LOGICAL_ACTOR_PKG;
-	}
+    return LaPackage.Literals.LOGICAL_ACTOR_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalActorPkg> getOwnedLogicalActorPkgs() {
 
-		if (ownedLogicalActorPkgs == null) {
-			ownedLogicalActorPkgs = new EObjectContainmentEList.Resolving<LogicalActorPkg>(LogicalActorPkg.class, this, LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS);
-		}
-		return ownedLogicalActorPkgs;
-	}
+    if (ownedLogicalActorPkgs == null) {
+      ownedLogicalActorPkgs = new EObjectContainmentEList.Resolving<LogicalActorPkg>(LogicalActorPkg.class, this, LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS);
+    }
+    return ownedLogicalActorPkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalActor> getOwnedLogicalActors() {
 
-		if (ownedLogicalActors == null) {
-			ownedLogicalActors = new EObjectContainmentEList.Resolving<LogicalActor>(LogicalActor.class, this, LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS);
-		}
-		return ownedLogicalActors;
-	}
+    if (ownedLogicalActors == null) {
+      ownedLogicalActors = new EObjectContainmentEList.Resolving<LogicalActor>(LogicalActor.class, this, LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS);
+    }
+    return ownedLogicalActors;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
-				return ((InternalEList<?>)getOwnedLogicalActorPkgs()).basicRemove(otherEnd, msgs);
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
-				return ((InternalEList<?>)getOwnedLogicalActors()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
+        return ((InternalEList<?>)getOwnedLogicalActorPkgs()).basicRemove(otherEnd, msgs);
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
+        return ((InternalEList<?>)getOwnedLogicalActors()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
-				return getOwnedLogicalActorPkgs();
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
-				return getOwnedLogicalActors();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
+        return getOwnedLogicalActorPkgs();
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
+        return getOwnedLogicalActors();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
-				getOwnedLogicalActorPkgs().clear();
-				getOwnedLogicalActorPkgs().addAll((Collection<? extends LogicalActorPkg>)newValue);
-				return;
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
-				getOwnedLogicalActors().clear();
-				getOwnedLogicalActors().addAll((Collection<? extends LogicalActor>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
+        getOwnedLogicalActorPkgs().clear();
+        getOwnedLogicalActorPkgs().addAll((Collection<? extends LogicalActorPkg>)newValue);
+        return;
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
+        getOwnedLogicalActors().clear();
+        getOwnedLogicalActors().addAll((Collection<? extends LogicalActor>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
-				getOwnedLogicalActorPkgs().clear();
-				return;
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
-				getOwnedLogicalActors().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
+        getOwnedLogicalActorPkgs().clear();
+        return;
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
+        getOwnedLogicalActors().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
-				return ownedLogicalActorPkgs != null && !ownedLogicalActorPkgs.isEmpty();
-			case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
-				return ownedLogicalActors != null && !ownedLogicalActors.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTOR_PKGS:
+        return ownedLogicalActorPkgs != null && !ownedLogicalActorPkgs.isEmpty();
+      case LaPackage.LOGICAL_ACTOR_PKG__OWNED_LOGICAL_ACTORS:
+        return ownedLogicalActors != null && !ownedLogicalActors.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

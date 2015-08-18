@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,20 +38,20 @@ public interface ModelVersion extends LibraryAbstractElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Major Version Number</b></em>' attribute.
+   * Returns the value of the '<em><b>Major Version Number</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Major Version Number</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Major Version Number</em>' attribute.
-	 * @see #setMajorVersionNumber(int)
-	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelVersion_MajorVersionNumber()
-	 * @model required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Major Version Number</em>' attribute.
+   * @see #setMajorVersionNumber(int)
+   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelVersion_MajorVersionNumber()
+   * @model required="true"
+   * @generated
+   */
 
 	int getMajorVersionNumber();
 
@@ -59,14 +59,14 @@ public interface ModelVersion extends LibraryAbstractElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelVersion#getMajorVersionNumber <em>Major Version Number</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelVersion#getMajorVersionNumber <em>Major Version Number</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Major Version Number</em>' attribute.
-	 * @see #getMajorVersionNumber()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Major Version Number</em>' attribute.
+   * @see #getMajorVersionNumber()
+   * @generated
+   */
 
 	void setMajorVersionNumber(int value);
 
@@ -77,20 +77,20 @@ public interface ModelVersion extends LibraryAbstractElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Minor Version Number</b></em>' attribute.
+   * Returns the value of the '<em><b>Minor Version Number</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Minor Version Number</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Minor Version Number</em>' attribute.
-	 * @see #setMinorVersionNumber(int)
-	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelVersion_MinorVersionNumber()
-	 * @model required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Minor Version Number</em>' attribute.
+   * @see #setMinorVersionNumber(int)
+   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelVersion_MinorVersionNumber()
+   * @model required="true"
+   * @generated
+   */
 
 	int getMinorVersionNumber();
 
@@ -98,14 +98,14 @@ public interface ModelVersion extends LibraryAbstractElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelVersion#getMinorVersionNumber <em>Minor Version Number</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelVersion#getMinorVersionNumber <em>Minor Version Number</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Minor Version Number</em>' attribute.
-	 * @see #getMinorVersionNumber()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Minor Version Number</em>' attribute.
+   * @see #getMinorVersionNumber()
+   * @generated
+   */
 
 	void setMinorVersionNumber(int value);
 
@@ -116,20 +116,20 @@ public interface ModelVersion extends LibraryAbstractElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Last Modified File Stamp</b></em>' attribute.
+   * Returns the value of the '<em><b>Last Modified File Stamp</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Last Modified File Stamp</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Last Modified File Stamp</em>' attribute.
-	 * @see #setLastModifiedFileStamp(long)
-	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelVersion_LastModifiedFileStamp()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Last Modified File Stamp</em>' attribute.
+   * @see #setLastModifiedFileStamp(long)
+   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelVersion_LastModifiedFileStamp()
+   * @model
+   * @generated
+   */
 
 	long getLastModifiedFileStamp();
 
@@ -137,14 +137,14 @@ public interface ModelVersion extends LibraryAbstractElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelVersion#getLastModifiedFileStamp <em>Last Modified File Stamp</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelVersion#getLastModifiedFileStamp <em>Last Modified File Stamp</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Last Modified File Stamp</em>' attribute.
-	 * @see #getLastModifiedFileStamp()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Last Modified File Stamp</em>' attribute.
+   * @see #getLastModifiedFileStamp()
+   * @generated
+   */
 
 	void setLastModifiedFileStamp(long value);
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,22 +37,22 @@ public interface PublishableElement extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Visible In Doc</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+   * Returns the value of the '<em><b>Visible In Doc</b></em>' attribute.
+   * The default value is <code>"true"</code>.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Visible In Doc</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Visible In Doc</em>' attribute.
-	 * @see #setVisibleInDoc(boolean)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getPublishableElement_VisibleInDoc()
-	 * @model default="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Visible In Doc</em>' attribute.
+   * @see #setVisibleInDoc(boolean)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getPublishableElement_VisibleInDoc()
+   * @model default="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
+   * @generated
+   */
 
 	boolean isVisibleInDoc();
 
@@ -60,14 +60,14 @@ public interface PublishableElement extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.PublishableElement#isVisibleInDoc <em>Visible In Doc</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.PublishableElement#isVisibleInDoc <em>Visible In Doc</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Visible In Doc</em>' attribute.
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Visible In Doc</em>' attribute.
+   * @see #isVisibleInDoc()
+   * @generated
+   */
 
 	void setVisibleInDoc(boolean value);
 
@@ -78,22 +78,22 @@ public interface PublishableElement extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Visible In LM</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+   * Returns the value of the '<em><b>Visible In LM</b></em>' attribute.
+   * The default value is <code>"true"</code>.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Visible In LM</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Visible In LM</em>' attribute.
-	 * @see #setVisibleInLM(boolean)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getPublishableElement_VisibleInLM()
-	 * @model default="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Visible In LM</em>' attribute.
+   * @see #setVisibleInLM(boolean)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getPublishableElement_VisibleInLM()
+   * @model default="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
+   * @generated
+   */
 
 	boolean isVisibleInLM();
 
@@ -101,14 +101,14 @@ public interface PublishableElement extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.PublishableElement#isVisibleInLM <em>Visible In LM</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.PublishableElement#isVisibleInLM <em>Visible In LM</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Visible In LM</em>' attribute.
-	 * @see #isVisibleInLM()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Visible In LM</em>' attribute.
+   * @see #isVisibleInLM()
+   * @generated
+   */
 
 	void setVisibleInLM(boolean value);
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,23 +65,23 @@ import org.polarsys.capella.core.data.interaction.SequenceMessageValuation;
 public class SequenceMessageImpl extends NamedElementImpl implements SequenceMessage {
 
 	/**
-	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected static final MessageKind KIND_EDEFAULT = MessageKind.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getKind()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getKind()
+   * @generated
+   * @ordered
+   */
 	protected MessageKind kind = KIND_EDEFAULT;
 
 
@@ -89,13 +89,13 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * The cached value of the '{@link #getExchangeContext() <em>Exchange Context</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExchangeContext() <em>Exchange Context</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExchangeContext()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExchangeContext()
+   * @generated
+   * @ordered
+   */
 	protected Constraint exchangeContext;
 
 
@@ -103,13 +103,13 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * The cached value of the '{@link #getSendingEnd() <em>Sending End</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSendingEnd() <em>Sending End</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSendingEnd()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSendingEnd()
+   * @generated
+   * @ordered
+   */
 	protected MessageEnd sendingEnd;
 
 
@@ -117,13 +117,13 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * The cached value of the '{@link #getReceivingEnd() <em>Receiving End</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReceivingEnd() <em>Receiving End</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReceivingEnd()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReceivingEnd()
+   * @generated
+   * @ordered
+   */
 	protected MessageEnd receivingEnd;
 
 
@@ -135,13 +135,13 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * The cached value of the '{@link #getExchangedItems() <em>Exchanged Items</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExchangedItems() <em>Exchanged Items</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExchangedItems()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExchangedItems()
+   * @generated
+   * @ordered
+   */
 	protected EList<ExchangeItem> exchangedItems;
 
 
@@ -164,13 +164,13 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedSequenceMessageValuations() <em>Owned Sequence Message Valuations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedSequenceMessageValuations() <em>Owned Sequence Message Valuations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSequenceMessageValuations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedSequenceMessageValuations()
+   * @generated
+   * @ordered
+   */
 	protected EList<SequenceMessageValuation> ownedSequenceMessageValuations;
 
 
@@ -193,56 +193,56 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SequenceMessageImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.SEQUENCE_MESSAGE;
-	}
+    return InteractionPackage.Literals.SEQUENCE_MESSAGE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public MessageKind getKind() {
 
-		return kind;
-	}
+    return kind;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setKind(MessageKind newKind) {
 
-		MessageKind oldKind = kind;
-		kind = newKind == null ? KIND_EDEFAULT : newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__KIND, oldKind, kind));
+    MessageKind oldKind = kind;
+    kind = newKind == null ? KIND_EDEFAULT : newKind;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__KIND, oldKind, kind));
 
-	}
+  }
 
 
 
@@ -250,98 +250,98 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint getExchangeContext() {
 
-		if (exchangeContext != null && exchangeContext.eIsProxy()) {
-			InternalEObject oldExchangeContext = (InternalEObject)exchangeContext;
-			exchangeContext = (Constraint)eResolveProxy(oldExchangeContext);
-			if (exchangeContext != oldExchangeContext) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, oldExchangeContext, exchangeContext));
-			}
-		}
-		return exchangeContext;
-	}
+    if (exchangeContext != null && exchangeContext.eIsProxy()) {
+      InternalEObject oldExchangeContext = (InternalEObject)exchangeContext;
+      exchangeContext = (Constraint)eResolveProxy(oldExchangeContext);
+      if (exchangeContext != oldExchangeContext) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, oldExchangeContext, exchangeContext));
+      }
+    }
+    return exchangeContext;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Constraint basicGetExchangeContext() {
 
-		return exchangeContext;
-	}
+    return exchangeContext;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setExchangeContext(Constraint newExchangeContext) {
 
-		Constraint oldExchangeContext = exchangeContext;
-		exchangeContext = newExchangeContext;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, oldExchangeContext, exchangeContext));
+    Constraint oldExchangeContext = exchangeContext;
+    exchangeContext = newExchangeContext;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT, oldExchangeContext, exchangeContext));
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public MessageEnd getSendingEnd() {
 
-		if (sendingEnd != null && sendingEnd.eIsProxy()) {
-			InternalEObject oldSendingEnd = (InternalEObject)sendingEnd;
-			sendingEnd = (MessageEnd)eResolveProxy(oldSendingEnd);
-			if (sendingEnd != oldSendingEnd) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SEQUENCE_MESSAGE__SENDING_END, oldSendingEnd, sendingEnd));
-			}
-		}
-		return sendingEnd;
-	}
+    if (sendingEnd != null && sendingEnd.eIsProxy()) {
+      InternalEObject oldSendingEnd = (InternalEObject)sendingEnd;
+      sendingEnd = (MessageEnd)eResolveProxy(oldSendingEnd);
+      if (sendingEnd != oldSendingEnd) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SEQUENCE_MESSAGE__SENDING_END, oldSendingEnd, sendingEnd));
+      }
+    }
+    return sendingEnd;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public MessageEnd basicGetSendingEnd() {
 
-		return sendingEnd;
-	}
+    return sendingEnd;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setSendingEnd(MessageEnd newSendingEnd) {
 
-		MessageEnd oldSendingEnd = sendingEnd;
-		sendingEnd = newSendingEnd;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__SENDING_END, oldSendingEnd, sendingEnd));
+    MessageEnd oldSendingEnd = sendingEnd;
+    sendingEnd = newSendingEnd;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__SENDING_END, oldSendingEnd, sendingEnd));
 
-	}
+  }
 
 
 
@@ -349,52 +349,52 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public MessageEnd getReceivingEnd() {
 
-		if (receivingEnd != null && receivingEnd.eIsProxy()) {
-			InternalEObject oldReceivingEnd = (InternalEObject)receivingEnd;
-			receivingEnd = (MessageEnd)eResolveProxy(oldReceivingEnd);
-			if (receivingEnd != oldReceivingEnd) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END, oldReceivingEnd, receivingEnd));
-			}
-		}
-		return receivingEnd;
-	}
+    if (receivingEnd != null && receivingEnd.eIsProxy()) {
+      InternalEObject oldReceivingEnd = (InternalEObject)receivingEnd;
+      receivingEnd = (MessageEnd)eResolveProxy(oldReceivingEnd);
+      if (receivingEnd != oldReceivingEnd) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END, oldReceivingEnd, receivingEnd));
+      }
+    }
+    return receivingEnd;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public MessageEnd basicGetReceivingEnd() {
 
-		return receivingEnd;
-	}
+    return receivingEnd;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setReceivingEnd(MessageEnd newReceivingEnd) {
 
-		MessageEnd oldReceivingEnd = receivingEnd;
-		receivingEnd = newReceivingEnd;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END, oldReceivingEnd, receivingEnd));
+    MessageEnd oldReceivingEnd = receivingEnd;
+    receivingEnd = newReceivingEnd;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END, oldReceivingEnd, receivingEnd));
 
-	}
+  }
 
 
 
@@ -402,23 +402,23 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEventOperation getInvokedOperation() {
 
-		AbstractEventOperation invokedOperation = basicGetInvokedOperation();
-		return invokedOperation != null && invokedOperation.eIsProxy() ? (AbstractEventOperation)eResolveProxy((InternalEObject)invokedOperation) : invokedOperation;
-	}
+    AbstractEventOperation invokedOperation = basicGetInvokedOperation();
+    return invokedOperation != null && invokedOperation.eIsProxy() ? (AbstractEventOperation)eResolveProxy((InternalEObject)invokedOperation) : invokedOperation;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEventOperation basicGetInvokedOperation() {
 
@@ -445,15 +445,15 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__INVOKED_OPERATION, annotation);
-		
-		try {
-			return (AbstractEventOperation) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractEventOperation) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -461,41 +461,41 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ExchangeItem> getExchangedItems() {
 
-		if (exchangedItems == null) {
-			exchangedItems = new EObjectResolvingEList<ExchangeItem>(ExchangeItem.class, this, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS);
-		}
-		return exchangedItems;
-	}
+    if (exchangedItems == null) {
+      exchangedItems = new EObjectResolvingEList<ExchangeItem>(ExchangeItem.class, this, InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS);
+    }
+    return exchangedItems;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Part getSendingPart() {
 
-		Part sendingPart = basicGetSendingPart();
-		return sendingPart != null && sendingPart.eIsProxy() ? (Part)eResolveProxy((InternalEObject)sendingPart) : sendingPart;
-	}
+    Part sendingPart = basicGetSendingPart();
+    return sendingPart != null && sendingPart.eIsProxy() ? (Part)eResolveProxy((InternalEObject)sendingPart) : sendingPart;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Part basicGetSendingPart() {
 
@@ -522,15 +522,15 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_PART, annotation);
-		
-		try {
-			return (Part) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Part) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -538,23 +538,23 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Part getReceivingPart() {
 
-		Part receivingPart = basicGetReceivingPart();
-		return receivingPart != null && receivingPart.eIsProxy() ? (Part)eResolveProxy((InternalEObject)receivingPart) : receivingPart;
-	}
+    Part receivingPart = basicGetReceivingPart();
+    return receivingPart != null && receivingPart.eIsProxy() ? (Part)eResolveProxy((InternalEObject)receivingPart) : receivingPart;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Part basicGetReceivingPart() {
 
@@ -581,15 +581,15 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_PART, annotation);
-		
-		try {
-			return (Part) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Part) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -597,23 +597,23 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction getSendingFunction() {
 
-		AbstractFunction sendingFunction = basicGetSendingFunction();
-		return sendingFunction != null && sendingFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)sendingFunction) : sendingFunction;
-	}
+    AbstractFunction sendingFunction = basicGetSendingFunction();
+    return sendingFunction != null && sendingFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)sendingFunction) : sendingFunction;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction basicGetSendingFunction() {
 
@@ -640,15 +640,15 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__SENDING_FUNCTION, annotation);
-		
-		try {
-			return (AbstractFunction) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractFunction) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -656,23 +656,23 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction getReceivingFunction() {
 
-		AbstractFunction receivingFunction = basicGetReceivingFunction();
-		return receivingFunction != null && receivingFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)receivingFunction) : receivingFunction;
-	}
+    AbstractFunction receivingFunction = basicGetReceivingFunction();
+    return receivingFunction != null && receivingFunction.eIsProxy() ? (AbstractFunction)eResolveProxy((InternalEObject)receivingFunction) : receivingFunction;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction basicGetReceivingFunction() {
 
@@ -699,229 +699,229 @@ public class SequenceMessageImpl extends NamedElementImpl implements SequenceMes
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SEQUENCE_MESSAGE__RECEIVING_FUNCTION, annotation);
-		
-		try {
-			return (AbstractFunction) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (AbstractFunction) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SequenceMessageValuation> getOwnedSequenceMessageValuations() {
 
-		if (ownedSequenceMessageValuations == null) {
-			ownedSequenceMessageValuations = new EObjectContainmentEList.Resolving<SequenceMessageValuation>(SequenceMessageValuation.class, this, InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS);
-		}
-		return ownedSequenceMessageValuations;
-	}
+    if (ownedSequenceMessageValuations == null) {
+      ownedSequenceMessageValuations = new EObjectContainmentEList.Resolving<SequenceMessageValuation>(SequenceMessageValuation.class, this, InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS);
+    }
+    return ownedSequenceMessageValuations;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
-				return ((InternalEList<?>)getOwnedSequenceMessageValuations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+        return ((InternalEList<?>)getOwnedSequenceMessageValuations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.SEQUENCE_MESSAGE__KIND:
-				return getKind();
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				if (resolve) return getExchangeContext();
-				return basicGetExchangeContext();
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
-				if (resolve) return getSendingEnd();
-				return basicGetSendingEnd();
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
-				if (resolve) return getReceivingEnd();
-				return basicGetReceivingEnd();
-			case InteractionPackage.SEQUENCE_MESSAGE__INVOKED_OPERATION:
-				if (resolve) return getInvokedOperation();
-				return basicGetInvokedOperation();
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
-				return getExchangedItems();
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_PART:
-				if (resolve) return getSendingPart();
-				return basicGetSendingPart();
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_PART:
-				if (resolve) return getReceivingPart();
-				return basicGetReceivingPart();
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_FUNCTION:
-				if (resolve) return getSendingFunction();
-				return basicGetSendingFunction();
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_FUNCTION:
-				if (resolve) return getReceivingFunction();
-				return basicGetReceivingFunction();
-			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
-				return getOwnedSequenceMessageValuations();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.SEQUENCE_MESSAGE__KIND:
+        return getKind();
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
+        if (resolve) return getExchangeContext();
+        return basicGetExchangeContext();
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
+        if (resolve) return getSendingEnd();
+        return basicGetSendingEnd();
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
+        if (resolve) return getReceivingEnd();
+        return basicGetReceivingEnd();
+      case InteractionPackage.SEQUENCE_MESSAGE__INVOKED_OPERATION:
+        if (resolve) return getInvokedOperation();
+        return basicGetInvokedOperation();
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
+        return getExchangedItems();
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_PART:
+        if (resolve) return getSendingPart();
+        return basicGetSendingPart();
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_PART:
+        if (resolve) return getReceivingPart();
+        return basicGetReceivingPart();
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_FUNCTION:
+        if (resolve) return getSendingFunction();
+        return basicGetSendingFunction();
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_FUNCTION:
+        if (resolve) return getReceivingFunction();
+        return basicGetReceivingFunction();
+      case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+        return getOwnedSequenceMessageValuations();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.SEQUENCE_MESSAGE__KIND:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof MessageKind) {
-				// end-extension-code
-					setKind((MessageKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Constraint) {
-				// end-extension-code
-					setExchangeContext((Constraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof MessageEnd) {
-				// end-extension-code
-					setSendingEnd((MessageEnd)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof MessageEnd) {
-				// end-extension-code
-					setReceivingEnd((MessageEnd)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
-				getExchangedItems().clear();
-				getExchangedItems().addAll((Collection<? extends ExchangeItem>)newValue);
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
-				getOwnedSequenceMessageValuations().clear();
-				getOwnedSequenceMessageValuations().addAll((Collection<? extends SequenceMessageValuation>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.SEQUENCE_MESSAGE__KIND:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof MessageKind) {
+        // end-extension-code
+          setKind((MessageKind)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Constraint) {
+        // end-extension-code
+          setExchangeContext((Constraint)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof MessageEnd) {
+        // end-extension-code
+          setSendingEnd((MessageEnd)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof MessageEnd) {
+        // end-extension-code
+          setReceivingEnd((MessageEnd)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
+        getExchangedItems().clear();
+        getExchangedItems().addAll((Collection<? extends ExchangeItem>)newValue);
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+        getOwnedSequenceMessageValuations().clear();
+        getOwnedSequenceMessageValuations().addAll((Collection<? extends SequenceMessageValuation>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.SEQUENCE_MESSAGE__KIND:
-				setKind(KIND_EDEFAULT);
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				setExchangeContext((Constraint)null);
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
-				setSendingEnd((MessageEnd)null);
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
-				setReceivingEnd((MessageEnd)null);
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
-				getExchangedItems().clear();
-				return;
-			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
-				getOwnedSequenceMessageValuations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.SEQUENCE_MESSAGE__KIND:
+        setKind(KIND_EDEFAULT);
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
+        setExchangeContext((Constraint)null);
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
+        setSendingEnd((MessageEnd)null);
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
+        setReceivingEnd((MessageEnd)null);
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
+        getExchangedItems().clear();
+        return;
+      case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+        getOwnedSequenceMessageValuations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.SEQUENCE_MESSAGE__KIND:
-				return kind != KIND_EDEFAULT;
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
-				return exchangeContext != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
-				return sendingEnd != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
-				return receivingEnd != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__INVOKED_OPERATION:
-				return basicGetInvokedOperation() != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
-				return exchangedItems != null && !exchangedItems.isEmpty();
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_PART:
-				return basicGetSendingPart() != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_PART:
-				return basicGetReceivingPart() != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__SENDING_FUNCTION:
-				return basicGetSendingFunction() != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_FUNCTION:
-				return basicGetReceivingFunction() != null;
-			case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
-				return ownedSequenceMessageValuations != null && !ownedSequenceMessageValuations.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.SEQUENCE_MESSAGE__KIND:
+        return kind != KIND_EDEFAULT;
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGE_CONTEXT:
+        return exchangeContext != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_END:
+        return sendingEnd != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_END:
+        return receivingEnd != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__INVOKED_OPERATION:
+        return basicGetInvokedOperation() != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__EXCHANGED_ITEMS:
+        return exchangedItems != null && !exchangedItems.isEmpty();
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_PART:
+        return basicGetSendingPart() != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_PART:
+        return basicGetReceivingPart() != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__SENDING_FUNCTION:
+        return basicGetSendingFunction() != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__RECEIVING_FUNCTION:
+        return basicGetReceivingFunction() != null;
+      case InteractionPackage.SEQUENCE_MESSAGE__OWNED_SEQUENCE_MESSAGE_VALUATIONS:
+        return ownedSequenceMessageValuations != null && !ownedSequenceMessageValuations.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (kind: "); //$NON-NLS-1$
-		result.append(kind);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (kind: "); //$NON-NLS-1$
+    result.append(kind);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //SequenceMessageImpl

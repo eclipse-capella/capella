@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,24 +54,24 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Discrete</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+   * Returns the value of the '<em><b>Discrete</b></em>' attribute.
+   * The default value is <code>"true"</code>.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Discrete</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Discrete</em>' attribute.
-	 * @see #setDiscrete(boolean)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_Discrete()
-	 * @model default="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isDiscreet' featureOwner='eng.DataType' fromStereotype='true'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this data type characterizes a discrete value (versus continuous value)\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Discrete</em>' attribute.
+   * @see #setDiscrete(boolean)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_Discrete()
+   * @model default="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isDiscreet' featureOwner='eng.DataType' fromStereotype='true'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this data type characterizes a discrete value (versus continuous value)\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isDiscrete();
 
@@ -79,14 +79,14 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#isDiscrete <em>Discrete</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#isDiscrete <em>Discrete</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Discrete</em>' attribute.
-	 * @see #isDiscrete()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Discrete</em>' attribute.
+   * @see #isDiscrete()
+   * @generated
+   */
 
 	void setDiscrete(boolean value);
 
@@ -97,23 +97,23 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Min Inclusive</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+   * Returns the value of the '<em><b>Min Inclusive</b></em>' attribute.
+   * The default value is <code>"true"</code>.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Min Inclusive</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Min Inclusive</em>' attribute.
-	 * @see #setMinInclusive(boolean)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_MinInclusive()
-	 * @model default="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Min Inclusive</em>' attribute.
+   * @see #setMinInclusive(boolean)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_MinInclusive()
+   * @model default="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isMinInclusive();
 
@@ -121,14 +121,14 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#isMinInclusive <em>Min Inclusive</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#isMinInclusive <em>Min Inclusive</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Min Inclusive</em>' attribute.
-	 * @see #isMinInclusive()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Min Inclusive</em>' attribute.
+   * @see #isMinInclusive()
+   * @generated
+   */
 
 	void setMinInclusive(boolean value);
 
@@ -139,23 +139,23 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Max Inclusive</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+   * Returns the value of the '<em><b>Max Inclusive</b></em>' attribute.
+   * The default value is <code>"true"</code>.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Max Inclusive</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Max Inclusive</em>' attribute.
-	 * @see #setMaxInclusive(boolean)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_MaxInclusive()
-	 * @model default="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Max Inclusive</em>' attribute.
+   * @see #setMaxInclusive(boolean)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_MaxInclusive()
+   * @model default="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='none' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	boolean isMaxInclusive();
 
@@ -163,14 +163,14 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#isMaxInclusive <em>Max Inclusive</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#isMaxInclusive <em>Max Inclusive</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Max Inclusive</em>' attribute.
-	 * @see #isMaxInclusive()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Max Inclusive</em>' attribute.
+   * @see #isMaxInclusive()
+   * @generated
+   */
 
 	void setMaxInclusive(boolean value);
 
@@ -181,22 +181,22 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Pattern</b></em>' attribute.
+   * Returns the value of the '<em><b>Pattern</b></em>' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Pattern</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Pattern</em>' attribute.
-	 * @see #setPattern(String)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_Pattern()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='constraint' featureOwner='eng.DataType' fromStereotype='true'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='textual specification of a constraint associated to this data type\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Pattern</em>' attribute.
+   * @see #setPattern(String)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_Pattern()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='constraint' featureOwner='eng.DataType' fromStereotype='true'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='textual specification of a constraint associated to this data type\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	String getPattern();
 
@@ -204,14 +204,14 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#getPattern <em>Pattern</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#getPattern <em>Pattern</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Pattern</em>' attribute.
-	 * @see #getPattern()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Pattern</em>' attribute.
+   * @see #getPattern()
+   * @generated
+   */
 
 	void setPattern(String value);
 
@@ -222,23 +222,23 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Visibility</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
+   * Returns the value of the '<em><b>Visibility</b></em>' attribute.
+   * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacore.VisibilityKind}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Visibility</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #setVisibility(VisibilityKind)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_Visibility()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to VisibilityKind description\r\n[source: Capella study]' constraints='none' type='refer to VisibilityKind definition' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement:visibility' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #setVisibility(VisibilityKind)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_Visibility()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='refer to VisibilityKind description\r\n[source: Capella study]' constraints='none' type='refer to VisibilityKind definition' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement:visibility' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	VisibilityKind getVisibility();
 
@@ -246,15 +246,15 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#getVisibility <em>Visibility</em>}' attribute.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.DataType#getVisibility <em>Visibility</em>}' attribute.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Visibility</em>' attribute.
-	 * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
-	 * @see #getVisibility()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Visibility</em>' attribute.
+   * @see org.polarsys.capella.core.data.capellacore.VisibilityKind
+   * @see #getVisibility()
+   * @generated
+   */
 
 	void setVisibility(VisibilityKind value);
 
@@ -265,21 +265,21 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Default Value</b></em>' reference.
+   * Returns the value of the '<em><b>Default Value</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Default Value</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Default Value</em>' reference.
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_DefaultValue()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify a default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Default Value</em>' reference.
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_DefaultValue()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify a default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	DataValue getDefaultValue();
 
@@ -290,21 +290,21 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Null Value</b></em>' reference.
+   * Returns the value of the '<em><b>Null Value</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Null Value</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Null Value</em>' reference.
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_NullValue()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify the nature/value of the \"null\" value for this type of data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Null Value</em>' reference.
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_NullValue()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to specify the nature/value of the \"null\" value for this type of data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	DataValue getNullValue();
 
@@ -315,21 +315,21 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Information Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.InformationRealization}.
+   * Returns the value of the '<em><b>Owned Information Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.InformationRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Information Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Information Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_OwnedInformationRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Information Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_OwnedInformationRealizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints=''"
+   * @generated
+   */
 
 	EList<InformationRealization> getOwnedInformationRealizations();
 
@@ -340,23 +340,23 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Data Types</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.datatype.DataType#getRealizingDataTypes <em>Realizing Data Types</em>}'.
+   * Returns the value of the '<em><b>Realized Data Types</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.datatype.DataType#getRealizingDataTypes <em>Realizing Data Types</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Data Types</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Data Types</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_RealizedDataTypes()
-	 * @see org.polarsys.capella.core.data.information.datatype.DataType#getRealizingDataTypes
-	 * @model opposite="realizingDataTypes" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Data Types</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_RealizedDataTypes()
+   * @see org.polarsys.capella.core.data.information.datatype.DataType#getRealizingDataTypes
+   * @model opposite="realizingDataTypes" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realized by this class' constraints='none' comment/notes='none'"
+   * @generated
+   */
 
 	EList<DataType> getRealizedDataTypes();
 
@@ -367,24 +367,24 @@ public interface DataType extends GeneralizableElement, DataValueContainer, Fina
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Data Types</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.datatype.DataType#getRealizedDataTypes <em>Realized Data Types</em>}'.
+   * Returns the value of the '<em><b>Realizing Data Types</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.information.datatype.DataType}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.information.datatype.DataType#getRealizedDataTypes <em>Realized Data Types</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Data Types</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Data Types</em>' reference list.
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_RealizingDataTypes()
-	 * @see org.polarsys.capella.core.data.information.datatype.DataType#getRealizedDataTypes
-	 * @model opposite="realizedDataTypes" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realizing this class' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Data Types</em>' reference list.
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getDataType_RealizingDataTypes()
+   * @see org.polarsys.capella.core.data.information.datatype.DataType#getRealizedDataTypes
+   * @model opposite="realizedDataTypes" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='class(es) realizing this class' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<DataType> getRealizingDataTypes();
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,13 +60,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
 
 	/**
-	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedTraces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedTraces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Trace> ownedTraces;
 
 
@@ -82,13 +82,13 @@ public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getNamingRules()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getNamingRules()
+   * @generated
+   * @ordered
+   */
 	protected EList<NamingRule> namingRules;
 
 
@@ -96,13 +96,13 @@ public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -110,13 +110,13 @@ public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedActors() <em>Owned Actors</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedActors() <em>Owned Actors</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedActors()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedActors()
+   * @generated
+   * @ordered
+   */
 	protected EList<Actor> ownedActors;
 
 
@@ -124,13 +124,13 @@ public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedActorPkgs() <em>Owned Actor Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedActorPkgs() <em>Owned Actor Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedActorPkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedActorPkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActorPkg> ownedActorPkgs;
 
 
@@ -138,66 +138,66 @@ public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedSystemCommunication() <em>Owned System Communication</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedSystemCommunication() <em>Owned System Communication</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedSystemCommunication()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedSystemCommunication()
+   * @generated
+   * @ordered
+   */
 	protected EList<SystemCommunication> ownedSystemCommunication;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ActorPkgImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.ACTOR_PKG;
-	}
+    return CtxPackage.Literals.ACTOR_PKG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Trace> getOwnedTraces() {
 
-		if (ownedTraces == null) {
-			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CtxPackage.ACTOR_PKG__OWNED_TRACES);
-		}
-		return ownedTraces;
-	}
+    if (ownedTraces == null) {
+      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, CtxPackage.ACTOR_PKG__OWNED_TRACES);
+    }
+    return ownedTraces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -224,27 +224,27 @@ public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -271,259 +271,259 @@ public class ActorPkgImpl extends NamedElementImpl implements ActorPkg {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<NamingRule> getNamingRules() {
 
-		if (namingRules == null) {
-			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CtxPackage.ACTOR_PKG__NAMING_RULES);
-		}
-		return namingRules;
-	}
+    if (namingRules == null) {
+      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, CtxPackage.ACTOR_PKG__NAMING_RULES);
+    }
+    return namingRules;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Actor> getOwnedActors() {
 
-		if (ownedActors == null) {
-			ownedActors = new EObjectContainmentEList.Resolving<Actor>(Actor.class, this, CtxPackage.ACTOR_PKG__OWNED_ACTORS);
-		}
-		return ownedActors;
-	}
+    if (ownedActors == null) {
+      ownedActors = new EObjectContainmentEList.Resolving<Actor>(Actor.class, this, CtxPackage.ACTOR_PKG__OWNED_ACTORS);
+    }
+    return ownedActors;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActorPkg> getOwnedActorPkgs() {
 
-		if (ownedActorPkgs == null) {
-			ownedActorPkgs = new EObjectContainmentEList.Resolving<ActorPkg>(ActorPkg.class, this, CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS);
-		}
-		return ownedActorPkgs;
-	}
+    if (ownedActorPkgs == null) {
+      ownedActorPkgs = new EObjectContainmentEList.Resolving<ActorPkg>(ActorPkg.class, this, CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS);
+    }
+    return ownedActorPkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemCommunication> getOwnedSystemCommunication() {
 
-		if (ownedSystemCommunication == null) {
-			ownedSystemCommunication = new EObjectContainmentEList.Resolving<SystemCommunication>(SystemCommunication.class, this, CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION);
-		}
-		return ownedSystemCommunication;
-	}
+    if (ownedSystemCommunication == null) {
+      ownedSystemCommunication = new EObjectContainmentEList.Resolving<SystemCommunication>(SystemCommunication.class, this, CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION);
+    }
+    return ownedSystemCommunication;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CtxPackage.ACTOR_PKG__OWNED_TRACES:
-				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-			case CtxPackage.ACTOR_PKG__NAMING_RULES:
-				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-			case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
-				return ((InternalEList<?>)getOwnedActors()).basicRemove(otherEnd, msgs);
-			case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
-				return ((InternalEList<?>)getOwnedActorPkgs()).basicRemove(otherEnd, msgs);
-			case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
-				return ((InternalEList<?>)getOwnedSystemCommunication()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR_PKG__OWNED_TRACES:
+        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+      case CtxPackage.ACTOR_PKG__NAMING_RULES:
+        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+      case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
+        return ((InternalEList<?>)getOwnedActors()).basicRemove(otherEnd, msgs);
+      case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
+        return ((InternalEList<?>)getOwnedActorPkgs()).basicRemove(otherEnd, msgs);
+      case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
+        return ((InternalEList<?>)getOwnedSystemCommunication()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CtxPackage.ACTOR_PKG__OWNED_TRACES:
-				return getOwnedTraces();
-			case CtxPackage.ACTOR_PKG__CONTAINED_GENERIC_TRACES:
-				return getContainedGenericTraces();
-			case CtxPackage.ACTOR_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return getContainedRequirementsTraces();
-			case CtxPackage.ACTOR_PKG__NAMING_RULES:
-				return getNamingRules();
-			case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
-				return getOwnedActors();
-			case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
-				return getOwnedActorPkgs();
-			case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
-				return getOwnedSystemCommunication();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR_PKG__OWNED_TRACES:
+        return getOwnedTraces();
+      case CtxPackage.ACTOR_PKG__CONTAINED_GENERIC_TRACES:
+        return getContainedGenericTraces();
+      case CtxPackage.ACTOR_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return getContainedRequirementsTraces();
+      case CtxPackage.ACTOR_PKG__NAMING_RULES:
+        return getNamingRules();
+      case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
+        return getOwnedActors();
+      case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
+        return getOwnedActorPkgs();
+      case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
+        return getOwnedSystemCommunication();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CtxPackage.ACTOR_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-				return;
-			case CtxPackage.ACTOR_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
-				getOwnedActors().clear();
-				getOwnedActors().addAll((Collection<? extends Actor>)newValue);
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
-				getOwnedActorPkgs().clear();
-				getOwnedActorPkgs().addAll((Collection<? extends ActorPkg>)newValue);
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
-				getOwnedSystemCommunication().clear();
-				getOwnedSystemCommunication().addAll((Collection<? extends SystemCommunication>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+        return;
+      case CtxPackage.ACTOR_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
+        getOwnedActors().clear();
+        getOwnedActors().addAll((Collection<? extends Actor>)newValue);
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
+        getOwnedActorPkgs().clear();
+        getOwnedActorPkgs().addAll((Collection<? extends ActorPkg>)newValue);
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
+        getOwnedSystemCommunication().clear();
+        getOwnedSystemCommunication().addAll((Collection<? extends SystemCommunication>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CtxPackage.ACTOR_PKG__OWNED_TRACES:
-				getOwnedTraces().clear();
-				return;
-			case CtxPackage.ACTOR_PKG__NAMING_RULES:
-				getNamingRules().clear();
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
-				getOwnedActors().clear();
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
-				getOwnedActorPkgs().clear();
-				return;
-			case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
-				getOwnedSystemCommunication().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR_PKG__OWNED_TRACES:
+        getOwnedTraces().clear();
+        return;
+      case CtxPackage.ACTOR_PKG__NAMING_RULES:
+        getNamingRules().clear();
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
+        getOwnedActors().clear();
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
+        getOwnedActorPkgs().clear();
+        return;
+      case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
+        getOwnedSystemCommunication().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CtxPackage.ACTOR_PKG__OWNED_TRACES:
-				return ownedTraces != null && !ownedTraces.isEmpty();
-			case CtxPackage.ACTOR_PKG__CONTAINED_GENERIC_TRACES:
-				return !getContainedGenericTraces().isEmpty();
-			case CtxPackage.ACTOR_PKG__CONTAINED_REQUIREMENTS_TRACES:
-				return !getContainedRequirementsTraces().isEmpty();
-			case CtxPackage.ACTOR_PKG__NAMING_RULES:
-				return namingRules != null && !namingRules.isEmpty();
-			case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
-				return ownedActors != null && !ownedActors.isEmpty();
-			case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
-				return ownedActorPkgs != null && !ownedActorPkgs.isEmpty();
-			case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
-				return ownedSystemCommunication != null && !ownedSystemCommunication.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR_PKG__OWNED_TRACES:
+        return ownedTraces != null && !ownedTraces.isEmpty();
+      case CtxPackage.ACTOR_PKG__CONTAINED_GENERIC_TRACES:
+        return !getContainedGenericTraces().isEmpty();
+      case CtxPackage.ACTOR_PKG__CONTAINED_REQUIREMENTS_TRACES:
+        return !getContainedRequirementsTraces().isEmpty();
+      case CtxPackage.ACTOR_PKG__NAMING_RULES:
+        return namingRules != null && !namingRules.isEmpty();
+      case CtxPackage.ACTOR_PKG__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case CtxPackage.ACTOR_PKG__OWNED_ACTORS:
+        return ownedActors != null && !ownedActors.isEmpty();
+      case CtxPackage.ACTOR_PKG__OWNED_ACTOR_PKGS:
+        return ownedActorPkgs != null && !ownedActorPkgs.isEmpty();
+      case CtxPackage.ACTOR_PKG__OWNED_SYSTEM_COMMUNICATION:
+        return ownedSystemCommunication != null && !ownedSystemCommunication.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

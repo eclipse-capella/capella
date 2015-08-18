@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,181 +34,181 @@ import org.polarsys.capella.core.data.information.datatype.StringType;
  */
 public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static DatatypeFactory init() {
-		try {
-			DatatypeFactory theDatatypeFactory = (DatatypeFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datatype/0.8.0"); //$NON-NLS-1$ 
-			if (theDatatypeFactory != null) {
-				return theDatatypeFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new DatatypeFactoryImpl();
-	}
+    try {
+      DatatypeFactory theDatatypeFactory = (DatatypeFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datatype/1.0.0"); //$NON-NLS-1$ 
+      if (theDatatypeFactory != null) {
+        return theDatatypeFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new DatatypeFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DatatypeFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case DatatypePackage.BOOLEAN_TYPE: return createBooleanType();
-			case DatatypePackage.ENUMERATION: return createEnumeration();
-			case DatatypePackage.STRING_TYPE: return createStringType();
-			case DatatypePackage.NUMERIC_TYPE: return createNumericType();
-			case DatatypePackage.PHYSICAL_QUANTITY: return createPhysicalQuantity();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case DatatypePackage.BOOLEAN_TYPE: return createBooleanType();
+      case DatatypePackage.ENUMERATION: return createEnumeration();
+      case DatatypePackage.STRING_TYPE: return createStringType();
+      case DatatypePackage.NUMERIC_TYPE: return createNumericType();
+      case DatatypePackage.PHYSICAL_QUANTITY: return createPhysicalQuantity();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case DatatypePackage.NUMERIC_TYPE_KIND:
-				return createNumericTypeKindFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case DatatypePackage.NUMERIC_TYPE_KIND:
+        return createNumericTypeKindFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case DatatypePackage.NUMERIC_TYPE_KIND:
-				return convertNumericTypeKindToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case DatatypePackage.NUMERIC_TYPE_KIND:
+        return convertNumericTypeKindToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public BooleanType createBooleanType() {
-		BooleanTypeImpl booleanType = new BooleanTypeImpl();
+    BooleanTypeImpl booleanType = new BooleanTypeImpl();
     //begin-capella-code
     //end-capella-code
-		return booleanType;
-	}
+    return booleanType;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public Enumeration createEnumeration() {
-		EnumerationImpl enumeration = new EnumerationImpl();
+    EnumerationImpl enumeration = new EnumerationImpl();
     //begin-capella-code
     //end-capella-code
-		return enumeration;
-	}
+    return enumeration;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public StringType createStringType() {
-		StringTypeImpl stringType = new StringTypeImpl();
+    StringTypeImpl stringType = new StringTypeImpl();
     //begin-capella-code
     //end-capella-code
-		return stringType;
-	}
+    return stringType;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public NumericType createNumericType() {
-		NumericTypeImpl numericType = new NumericTypeImpl();
+    NumericTypeImpl numericType = new NumericTypeImpl();
     //begin-capella-code
     //end-capella-code
-		return numericType;
-	}
+    return numericType;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public PhysicalQuantity createPhysicalQuantity() {
-		PhysicalQuantityImpl physicalQuantity = new PhysicalQuantityImpl();
+    PhysicalQuantityImpl physicalQuantity = new PhysicalQuantityImpl();
     //begin-capella-code
     //end-capella-code
-		return physicalQuantity;
-	}
+    return physicalQuantity;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public NumericTypeKind createNumericTypeKindFromString(EDataType eDataType, String initialValue) {
-		NumericTypeKind result = NumericTypeKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    NumericTypeKind result = NumericTypeKind.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertNumericTypeKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DatatypePackage getDatatypePackage() {
-		return (DatatypePackage)getEPackage();
-	}
+    return (DatatypePackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static DatatypePackage getPackage() {
-		return DatatypePackage.eINSTANCE;
-	}
+    return DatatypePackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -218,10 +218,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public BooleanType createBooleanType(String name_p) {
-	  BooleanType booleanType = createBooleanType();
-		booleanType.setName(name_p);	  
-		return booleanType;
-	}
+    BooleanType booleanType = createBooleanType();
+    booleanType.setName(name_p);	  
+    return booleanType;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -231,10 +231,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public Enumeration createEnumeration(String name_p) {
-	  Enumeration enumeration = createEnumeration();
-		enumeration.setName(name_p);	  
-		return enumeration;
-	}
+    Enumeration enumeration = createEnumeration();
+    enumeration.setName(name_p);	  
+    return enumeration;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -244,10 +244,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public StringType createStringType(String name_p) {
-	  StringType stringType = createStringType();
-		stringType.setName(name_p);	  
-		return stringType;
-	}
+    StringType stringType = createStringType();
+    stringType.setName(name_p);	  
+    return stringType;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -257,10 +257,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public NumericType createNumericType(String name_p) {
-	  NumericType numericType = createNumericType();
-		numericType.setName(name_p);	  
-		return numericType;
-	}
+    NumericType numericType = createNumericType();
+    numericType.setName(name_p);	  
+    return numericType;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -270,10 +270,10 @@ public class DatatypeFactoryImpl extends EFactoryImpl implements DatatypeFactory
 	 * @generated
 	 */
 	public PhysicalQuantity createPhysicalQuantity(String name_p) {
-	  PhysicalQuantity physicalQuantity = createPhysicalQuantity();
-		physicalQuantity.setName(name_p);	  
-		return physicalQuantity;
-	}
+    PhysicalQuantity physicalQuantity = createPhysicalQuantity();
+    physicalQuantity.setName(name_p);	  
+    return physicalQuantity;
+  }
 
 	//begin-capella-code
 

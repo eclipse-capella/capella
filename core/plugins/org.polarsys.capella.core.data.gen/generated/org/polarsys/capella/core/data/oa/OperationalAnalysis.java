@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,22 +44,22 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Operational Context</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Operational Context</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Operational Context</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Operational Context</em>' containment reference.
-	 * @see #setOwnedOperationalContext(OperationalContext)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedOperationalContext()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"context\" for this architecture, e.g. the parts that make the environnement of the entities (actors, ...) , plus the entities itself' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::PackagedElement elements on which OperationalContext stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Operational Context</em>' containment reference.
+   * @see #setOwnedOperationalContext(OperationalContext)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedOperationalContext()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"context\" for this architecture, e.g. the parts that make the environnement of the entities (actors, ...) , plus the entities itself' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::packagedElement' explanation='none' constraints='uml::Package::PackagedElement elements on which OperationalContext stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	OperationalContext getOwnedOperationalContext();
 
@@ -67,14 +67,14 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedOperationalContext <em>Owned Operational Context</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedOperationalContext <em>Owned Operational Context</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Operational Context</em>' containment reference.
-	 * @see #getOwnedOperationalContext()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Operational Context</em>' containment reference.
+   * @see #getOwnedOperationalContext()
+   * @generated
+   */
 
 	void setOwnedOperationalContext(OperationalContext value);
 
@@ -85,22 +85,22 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Role Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Role Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Role Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Role Pkg</em>' containment reference.
-	 * @see #setOwnedRolePkg(RolePkg)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedRolePkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for Role definitions of this operational analysis\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which RolePkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Role Pkg</em>' containment reference.
+   * @see #setOwnedRolePkg(RolePkg)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedRolePkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for Role definitions of this operational analysis\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which RolePkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
+   * @generated
+   */
 
 	RolePkg getOwnedRolePkg();
 
@@ -108,14 +108,14 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedRolePkg <em>Owned Role Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedRolePkg <em>Owned Role Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Role Pkg</em>' containment reference.
-	 * @see #getOwnedRolePkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Role Pkg</em>' containment reference.
+   * @see #getOwnedRolePkg()
+   * @generated
+   */
 
 	void setOwnedRolePkg(RolePkg value);
 
@@ -126,22 +126,22 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Entity Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Entity Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Entity Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Entity Pkg</em>' containment reference.
-	 * @see #setOwnedEntityPkg(EntityPkg)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedEntityPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for the Entities defined for this operational analysis\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which EntityPkgstereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Entity Pkg</em>' containment reference.
+   * @see #setOwnedEntityPkg(EntityPkg)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedEntityPkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for the Entities defined for this operational analysis\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which EntityPkgstereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
+   * @generated
+   */
 
 	EntityPkg getOwnedEntityPkg();
 
@@ -149,14 +149,14 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedEntityPkg <em>Owned Entity Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedEntityPkg <em>Owned Entity Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Entity Pkg</em>' containment reference.
-	 * @see #getOwnedEntityPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Entity Pkg</em>' containment reference.
+   * @see #getOwnedEntityPkg()
+   * @generated
+   */
 
 	void setOwnedEntityPkg(EntityPkg value);
 
@@ -167,22 +167,22 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Concept Pkg</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Concept Pkg</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Concept Pkg</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Concept Pkg</em>' containment reference.
-	 * @see #setOwnedConceptPkg(ConceptPkg)
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedConceptPkg()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for the Concepts defined in this operational analysis\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConceptPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Concept Pkg</em>' containment reference.
+   * @see #setOwnedConceptPkg(ConceptPkg)
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_OwnedConceptPkg()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='container for the Concepts defined in this operational analysis\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Package::nestedPackage#uml::Package::packagedElement' explanation='none' constraints='uml::Package::nestedPackage elements on which ConceptPkg stereotype or any stereotype that inherits from it is applied\r\nMultiplicity must be [1..1]'"
+   * @generated
+   */
 
 	ConceptPkg getOwnedConceptPkg();
 
@@ -190,14 +190,14 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedConceptPkg <em>Owned Concept Pkg</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.oa.OperationalAnalysis#getOwnedConceptPkg <em>Owned Concept Pkg</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Concept Pkg</em>' containment reference.
-	 * @see #getOwnedConceptPkg()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Concept Pkg</em>' containment reference.
+   * @see #getOwnedConceptPkg()
+   * @generated
+   */
 
 	void setOwnedConceptPkg(ConceptPkg value);
 
@@ -208,21 +208,21 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Operational Capability Pkg</b></em>' reference.
+   * Returns the value of the '<em><b>Contained Operational Capability Pkg</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Operational Capability Pkg</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Operational Capability Pkg</em>' reference.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_ContainedOperationalCapabilityPkg()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Operational Capability Pkg</em>' reference.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_ContainedOperationalCapabilityPkg()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedAbstractCapabilityPkg'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	OperationalCapabilityPkg getContainedOperationalCapabilityPkg();
 
@@ -233,21 +233,21 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Contained Operational Activity Pkg</b></em>' reference.
+   * Returns the value of the '<em><b>Contained Operational Activity Pkg</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Contained Operational Activity Pkg</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contained Operational Activity Pkg</em>' reference.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_ContainedOperationalActivityPkg()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctionPkg'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Contained Operational Activity Pkg</em>' reference.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_ContainedOperationalActivityPkg()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/semantic feature='ownedFunctionPkg'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	OperationalActivityPkg getContainedOperationalActivityPkg();
 
@@ -258,24 +258,24 @@ public interface OperationalAnalysis extends BlockArchitecture {
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocating System Analyses</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemAnalysis}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatedOperationalAnalyses <em>Allocated Operational Analyses</em>}'.
+   * Returns the value of the '<em><b>Allocating System Analyses</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.SystemAnalysis}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatedOperationalAnalyses <em>Allocated Operational Analyses</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocating System Analyses</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocating System Analyses</em>' reference list.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_AllocatingSystemAnalyses()
-	 * @see org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatedOperationalAnalyses
-	 * @model opposite="allocatedOperationalAnalyses" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocating System Analyses</em>' reference list.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalAnalysis_AllocatingSystemAnalyses()
+   * @see org.polarsys.capella.core.data.ctx.SystemAnalysis#getAllocatedOperationalAnalyses
+   * @model opposite="allocatedOperationalAnalyses" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+   * @generated
+   */
 
 	EList<SystemAnalysis> getAllocatingSystemAnalyses();
 

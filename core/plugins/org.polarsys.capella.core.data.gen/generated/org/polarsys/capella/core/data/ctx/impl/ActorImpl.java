@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,13 +90,13 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 
 
 	/**
-	 * The cached value of the '{@link #getSystemCommunication() <em>System Communication</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSystemCommunication() <em>System Communication</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSystemCommunication()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSystemCommunication()
+   * @generated
+   * @ordered
+   */
 	protected SystemCommunicationHook systemCommunication;
 
 
@@ -104,13 +104,13 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalActorRealizations() <em>Owned Operational Actor Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalActorRealizations() <em>Owned Operational Actor Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalActorRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalActorRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationalActorRealization> ownedOperationalActorRealizations;
 
 
@@ -118,13 +118,13 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedOperationalEntityRealizations() <em>Owned Operational Entity Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedOperationalEntityRealizations() <em>Owned Operational Entity Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedOperationalEntityRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedOperationalEntityRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<OperationalEntityRealization> ownedOperationalEntityRealizations;
 
 
@@ -147,35 +147,35 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ActorImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CtxPackage.Literals.ACTOR;
-	}
+    return CtxPackage.Literals.ACTOR;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActorMissionInvolvement> getParticipationsInMissions() {
 
@@ -202,27 +202,27 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_MISSIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_MISSIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActorMissionInvolvement> resultAsList = (Collection<ActorMissionInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<ActorMissionInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_MISSIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActorMissionInvolvement> resultAsList = (Collection<ActorMissionInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<ActorMissionInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_MISSIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActorCapabilityInvolvement> getParticipationsInCapabilities() {
 
@@ -249,27 +249,27 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActorCapabilityInvolvement> resultAsList = (Collection<ActorCapabilityInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<ActorCapabilityInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActorCapabilityInvolvement> resultAsList = (Collection<ActorCapabilityInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<ActorCapabilityInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActorCapabilityRealizationInvolvement> getParticipationsInCapabilityRealizations() {
 
@@ -296,27 +296,27 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, CtxPackage.Literals.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Mission> getContributedMissions() {
 
@@ -343,27 +343,27 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__CONTRIBUTED_MISSIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_MISSIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Mission> resultAsList = (Collection<Mission>) result;
-		return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_MISSIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Mission> resultAsList = (Collection<Mission>) result;
+    return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_MISSIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Capability> getContributedCapabilities() {
 
@@ -390,69 +390,69 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__CONTRIBUTED_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_CAPABILITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Capability> resultAsList = (Collection<Capability>) result;
-		return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Capability> resultAsList = (Collection<Capability>) result;
+    return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.ACTOR__CONTRIBUTED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SystemCommunicationHook getSystemCommunication() {
 
-		if (systemCommunication != null && systemCommunication.eIsProxy()) {
-			InternalEObject oldSystemCommunication = (InternalEObject)systemCommunication;
-			systemCommunication = (SystemCommunicationHook)eResolveProxy(oldSystemCommunication);
-			if (systemCommunication != oldSystemCommunication) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.ACTOR__SYSTEM_COMMUNICATION, oldSystemCommunication, systemCommunication));
-			}
-		}
-		return systemCommunication;
-	}
+    if (systemCommunication != null && systemCommunication.eIsProxy()) {
+      InternalEObject oldSystemCommunication = (InternalEObject)systemCommunication;
+      systemCommunication = (SystemCommunicationHook)eResolveProxy(oldSystemCommunication);
+      if (systemCommunication != oldSystemCommunication) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.ACTOR__SYSTEM_COMMUNICATION, oldSystemCommunication, systemCommunication));
+      }
+    }
+    return systemCommunication;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public SystemCommunicationHook basicGetSystemCommunication() {
 
-		return systemCommunication;
-	}
+    return systemCommunication;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setSystemCommunication(SystemCommunicationHook newSystemCommunication) {
 
-		SystemCommunicationHook oldSystemCommunication = systemCommunication;
-		systemCommunication = newSystemCommunication;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.ACTOR__SYSTEM_COMMUNICATION, oldSystemCommunication, systemCommunication));
+    SystemCommunicationHook oldSystemCommunication = systemCommunication;
+    systemCommunication = newSystemCommunication;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.ACTOR__SYSTEM_COMMUNICATION, oldSystemCommunication, systemCommunication));
 
-	}
+  }
 
 
 
@@ -460,46 +460,46 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalActorRealization> getOwnedOperationalActorRealizations() {
 
-		if (ownedOperationalActorRealizations == null) {
-			ownedOperationalActorRealizations = new EObjectContainmentEList.Resolving<OperationalActorRealization>(OperationalActorRealization.class, this, CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS);
-		}
-		return ownedOperationalActorRealizations;
-	}
+    if (ownedOperationalActorRealizations == null) {
+      ownedOperationalActorRealizations = new EObjectContainmentEList.Resolving<OperationalActorRealization>(OperationalActorRealization.class, this, CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS);
+    }
+    return ownedOperationalActorRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalEntityRealization> getOwnedOperationalEntityRealizations() {
 
-		if (ownedOperationalEntityRealizations == null) {
-			ownedOperationalEntityRealizations = new EObjectContainmentEList.Resolving<OperationalEntityRealization>(OperationalEntityRealization.class, this, CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS);
-		}
-		return ownedOperationalEntityRealizations;
-	}
+    if (ownedOperationalEntityRealizations == null) {
+      ownedOperationalEntityRealizations = new EObjectContainmentEList.Resolving<OperationalEntityRealization>(OperationalEntityRealization.class, this, CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS);
+    }
+    return ownedOperationalEntityRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<SystemFunction> getAllocatedSystemFunctions() {
 
@@ -526,27 +526,27 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
-		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
+    return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Entity> getRealizedEntities() {
 
@@ -573,27 +573,27 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__REALIZED_ENTITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__REALIZED_ENTITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Entity> resultAsList = (Collection<Entity>) result;
-		return new EcoreEList.UnmodifiableEList<Entity>(this, CtxPackage.Literals.ACTOR__REALIZED_ENTITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Entity> resultAsList = (Collection<Entity>) result;
+    return new EcoreEList.UnmodifiableEList<Entity>(this, CtxPackage.Literals.ACTOR__REALIZED_ENTITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<OperationalActor> getRealizedOperationalActors() {
 
@@ -620,27 +620,27 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__REALIZED_OPERATIONAL_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__REALIZED_OPERATIONAL_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<OperationalActor> resultAsList = (Collection<OperationalActor>) result;
-		return new EcoreEList.UnmodifiableEList<OperationalActor>(this, CtxPackage.Literals.ACTOR__REALIZED_OPERATIONAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<OperationalActor> resultAsList = (Collection<OperationalActor>) result;
+    return new EcoreEList.UnmodifiableEList<OperationalActor>(this, CtxPackage.Literals.ACTOR__REALIZED_OPERATIONAL_ACTORS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LogicalActor> getRealizingLogicalActors() {
 
@@ -667,162 +667,162 @@ public class ActorImpl extends AbstractActorImpl implements Actor {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR__REALIZING_LOGICAL_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR__REALIZING_LOGICAL_ACTORS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
-		return new EcoreEList.UnmodifiableEList<LogicalActor>(this, CtxPackage.Literals.ACTOR__REALIZING_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<LogicalActor> resultAsList = (Collection<LogicalActor>) result;
+    return new EcoreEList.UnmodifiableEList<LogicalActor>(this, CtxPackage.Literals.ACTOR__REALIZING_LOGICAL_ACTORS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedOperationalActorRealizations()).basicRemove(otherEnd, msgs);
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedOperationalEntityRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedOperationalActorRealizations()).basicRemove(otherEnd, msgs);
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedOperationalEntityRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CtxPackage.ACTOR__PARTICIPATIONS_IN_MISSIONS:
-				return getParticipationsInMissions();
-			case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITIES:
-				return getParticipationsInCapabilities();
-			case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
-				return getParticipationsInCapabilityRealizations();
-			case CtxPackage.ACTOR__CONTRIBUTED_MISSIONS:
-				return getContributedMissions();
-			case CtxPackage.ACTOR__CONTRIBUTED_CAPABILITIES:
-				return getContributedCapabilities();
-			case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
-				if (resolve) return getSystemCommunication();
-				return basicGetSystemCommunication();
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
-				return getOwnedOperationalActorRealizations();
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
-				return getOwnedOperationalEntityRealizations();
-			case CtxPackage.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS:
-				return getAllocatedSystemFunctions();
-			case CtxPackage.ACTOR__REALIZED_ENTITIES:
-				return getRealizedEntities();
-			case CtxPackage.ACTOR__REALIZED_OPERATIONAL_ACTORS:
-				return getRealizedOperationalActors();
-			case CtxPackage.ACTOR__REALIZING_LOGICAL_ACTORS:
-				return getRealizingLogicalActors();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR__PARTICIPATIONS_IN_MISSIONS:
+        return getParticipationsInMissions();
+      case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITIES:
+        return getParticipationsInCapabilities();
+      case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
+        return getParticipationsInCapabilityRealizations();
+      case CtxPackage.ACTOR__CONTRIBUTED_MISSIONS:
+        return getContributedMissions();
+      case CtxPackage.ACTOR__CONTRIBUTED_CAPABILITIES:
+        return getContributedCapabilities();
+      case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
+        if (resolve) return getSystemCommunication();
+        return basicGetSystemCommunication();
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
+        return getOwnedOperationalActorRealizations();
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
+        return getOwnedOperationalEntityRealizations();
+      case CtxPackage.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS:
+        return getAllocatedSystemFunctions();
+      case CtxPackage.ACTOR__REALIZED_ENTITIES:
+        return getRealizedEntities();
+      case CtxPackage.ACTOR__REALIZED_OPERATIONAL_ACTORS:
+        return getRealizedOperationalActors();
+      case CtxPackage.ACTOR__REALIZING_LOGICAL_ACTORS:
+        return getRealizingLogicalActors();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof SystemCommunicationHook) {
-				// end-extension-code
-					setSystemCommunication((SystemCommunicationHook)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
-				getOwnedOperationalActorRealizations().clear();
-				getOwnedOperationalActorRealizations().addAll((Collection<? extends OperationalActorRealization>)newValue);
-				return;
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
-				getOwnedOperationalEntityRealizations().clear();
-				getOwnedOperationalEntityRealizations().addAll((Collection<? extends OperationalEntityRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof SystemCommunicationHook) {
+        // end-extension-code
+          setSystemCommunication((SystemCommunicationHook)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
+        getOwnedOperationalActorRealizations().clear();
+        getOwnedOperationalActorRealizations().addAll((Collection<? extends OperationalActorRealization>)newValue);
+        return;
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
+        getOwnedOperationalEntityRealizations().clear();
+        getOwnedOperationalEntityRealizations().addAll((Collection<? extends OperationalEntityRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
-				setSystemCommunication((SystemCommunicationHook)null);
-				return;
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
-				getOwnedOperationalActorRealizations().clear();
-				return;
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
-				getOwnedOperationalEntityRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
+        setSystemCommunication((SystemCommunicationHook)null);
+        return;
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
+        getOwnedOperationalActorRealizations().clear();
+        return;
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
+        getOwnedOperationalEntityRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CtxPackage.ACTOR__PARTICIPATIONS_IN_MISSIONS:
-				return !getParticipationsInMissions().isEmpty();
-			case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITIES:
-				return !getParticipationsInCapabilities().isEmpty();
-			case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
-				return !getParticipationsInCapabilityRealizations().isEmpty();
-			case CtxPackage.ACTOR__CONTRIBUTED_MISSIONS:
-				return !getContributedMissions().isEmpty();
-			case CtxPackage.ACTOR__CONTRIBUTED_CAPABILITIES:
-				return !getContributedCapabilities().isEmpty();
-			case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
-				return systemCommunication != null;
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
-				return ownedOperationalActorRealizations != null && !ownedOperationalActorRealizations.isEmpty();
-			case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
-				return ownedOperationalEntityRealizations != null && !ownedOperationalEntityRealizations.isEmpty();
-			case CtxPackage.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS:
-				return !getAllocatedSystemFunctions().isEmpty();
-			case CtxPackage.ACTOR__REALIZED_ENTITIES:
-				return !getRealizedEntities().isEmpty();
-			case CtxPackage.ACTOR__REALIZED_OPERATIONAL_ACTORS:
-				return !getRealizedOperationalActors().isEmpty();
-			case CtxPackage.ACTOR__REALIZING_LOGICAL_ACTORS:
-				return !getRealizingLogicalActors().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CtxPackage.ACTOR__PARTICIPATIONS_IN_MISSIONS:
+        return !getParticipationsInMissions().isEmpty();
+      case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITIES:
+        return !getParticipationsInCapabilities().isEmpty();
+      case CtxPackage.ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
+        return !getParticipationsInCapabilityRealizations().isEmpty();
+      case CtxPackage.ACTOR__CONTRIBUTED_MISSIONS:
+        return !getContributedMissions().isEmpty();
+      case CtxPackage.ACTOR__CONTRIBUTED_CAPABILITIES:
+        return !getContributedCapabilities().isEmpty();
+      case CtxPackage.ACTOR__SYSTEM_COMMUNICATION:
+        return systemCommunication != null;
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ACTOR_REALIZATIONS:
+        return ownedOperationalActorRealizations != null && !ownedOperationalActorRealizations.isEmpty();
+      case CtxPackage.ACTOR__OWNED_OPERATIONAL_ENTITY_REALIZATIONS:
+        return ownedOperationalEntityRealizations != null && !ownedOperationalEntityRealizations.isEmpty();
+      case CtxPackage.ACTOR__ALLOCATED_SYSTEM_FUNCTIONS:
+        return !getAllocatedSystemFunctions().isEmpty();
+      case CtxPackage.ACTOR__REALIZED_ENTITIES:
+        return !getRealizedEntities().isEmpty();
+      case CtxPackage.ACTOR__REALIZED_OPERATIONAL_ACTORS:
+        return !getRealizedOperationalActors().isEmpty();
+      case CtxPackage.ACTOR__REALIZING_LOGICAL_ACTORS:
+        return !getRealizingLogicalActors().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,65 +22,65 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface DatatypeFactory extends EFactory {
 	/**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	DatatypeFactory eINSTANCE = org.polarsys.capella.core.data.information.datatype.impl.DatatypeFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Type</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Boolean Type</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Type</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Boolean Type</em>'.
+   * @generated
+   */
 	BooleanType createBooleanType();
 
 	/**
-	 * Returns a new object of class '<em>Enumeration</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Enumeration</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Enumeration</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Enumeration</em>'.
+   * @generated
+   */
 	Enumeration createEnumeration();
 
 	/**
-	 * Returns a new object of class '<em>String Type</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>String Type</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>String Type</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>String Type</em>'.
+   * @generated
+   */
 	StringType createStringType();
 
 	/**
-	 * Returns a new object of class '<em>Numeric Type</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Numeric Type</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Numeric Type</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Numeric Type</em>'.
+   * @generated
+   */
 	NumericType createNumericType();
 
 	/**
-	 * Returns a new object of class '<em>Physical Quantity</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Physical Quantity</em>'.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Physical Quantity</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Physical Quantity</em>'.
+   * @generated
+   */
 	PhysicalQuantity createPhysicalQuantity();
 
 	/**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
 	DatatypePackage getDatatypePackage();
 
 	/**

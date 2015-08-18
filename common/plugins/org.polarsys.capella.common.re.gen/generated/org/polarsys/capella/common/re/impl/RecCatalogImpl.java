@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,208 +38,208 @@ import org.polarsys.capella.common.re.RecCatalog;
 public class RecCatalogImpl extends CatalogElementPkgImpl implements RecCatalog {
 
 	/**
-	 * The cached value of the '{@link #getOwnedCompliancyDefinitionPkg() <em>Owned Compliancy Definition Pkg</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedCompliancyDefinitionPkg() <em>Owned Compliancy Definition Pkg</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedCompliancyDefinitionPkg()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedCompliancyDefinitionPkg()
+   * @generated
+   * @ordered
+   */
 	protected CompliancyDefinitionPkg ownedCompliancyDefinitionPkg;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected RecCatalogImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return RePackage.Literals.REC_CATALOG;
-	}
+    return RePackage.Literals.REC_CATALOG;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CompliancyDefinitionPkg getOwnedCompliancyDefinitionPkg() {
 
-		if (ownedCompliancyDefinitionPkg != null && ownedCompliancyDefinitionPkg.eIsProxy()) {
-			InternalEObject oldOwnedCompliancyDefinitionPkg = (InternalEObject)ownedCompliancyDefinitionPkg;
-			ownedCompliancyDefinitionPkg = (CompliancyDefinitionPkg)eResolveProxy(oldOwnedCompliancyDefinitionPkg);
-			if (ownedCompliancyDefinitionPkg != oldOwnedCompliancyDefinitionPkg) {
-				InternalEObject newOwnedCompliancyDefinitionPkg = (InternalEObject)ownedCompliancyDefinitionPkg;
-				NotificationChain msgs = oldOwnedCompliancyDefinitionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, null);
-				if (newOwnedCompliancyDefinitionPkg.eInternalContainer() == null) {
-					msgs = newOwnedCompliancyDefinitionPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, oldOwnedCompliancyDefinitionPkg, ownedCompliancyDefinitionPkg));
-			}
-		}
-		return ownedCompliancyDefinitionPkg;
-	}
+    if (ownedCompliancyDefinitionPkg != null && ownedCompliancyDefinitionPkg.eIsProxy()) {
+      InternalEObject oldOwnedCompliancyDefinitionPkg = (InternalEObject)ownedCompliancyDefinitionPkg;
+      ownedCompliancyDefinitionPkg = (CompliancyDefinitionPkg)eResolveProxy(oldOwnedCompliancyDefinitionPkg);
+      if (ownedCompliancyDefinitionPkg != oldOwnedCompliancyDefinitionPkg) {
+        InternalEObject newOwnedCompliancyDefinitionPkg = (InternalEObject)ownedCompliancyDefinitionPkg;
+        NotificationChain msgs = oldOwnedCompliancyDefinitionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, null);
+        if (newOwnedCompliancyDefinitionPkg.eInternalContainer() == null) {
+          msgs = newOwnedCompliancyDefinitionPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, oldOwnedCompliancyDefinitionPkg, ownedCompliancyDefinitionPkg));
+      }
+    }
+    return ownedCompliancyDefinitionPkg;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public CompliancyDefinitionPkg basicGetOwnedCompliancyDefinitionPkg() {
 
-		return ownedCompliancyDefinitionPkg;
-	}
+    return ownedCompliancyDefinitionPkg;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedCompliancyDefinitionPkg(CompliancyDefinitionPkg newOwnedCompliancyDefinitionPkg, NotificationChain msgs) {
 
-		CompliancyDefinitionPkg oldOwnedCompliancyDefinitionPkg = ownedCompliancyDefinitionPkg;
-		ownedCompliancyDefinitionPkg = newOwnedCompliancyDefinitionPkg;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, oldOwnedCompliancyDefinitionPkg, newOwnedCompliancyDefinitionPkg);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    CompliancyDefinitionPkg oldOwnedCompliancyDefinitionPkg = ownedCompliancyDefinitionPkg;
+    ownedCompliancyDefinitionPkg = newOwnedCompliancyDefinitionPkg;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, oldOwnedCompliancyDefinitionPkg, newOwnedCompliancyDefinitionPkg);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedCompliancyDefinitionPkg(CompliancyDefinitionPkg newOwnedCompliancyDefinitionPkg) {
 
-		if (newOwnedCompliancyDefinitionPkg != ownedCompliancyDefinitionPkg) {
-			NotificationChain msgs = null;
-			if (ownedCompliancyDefinitionPkg != null)
-				msgs = ((InternalEObject)ownedCompliancyDefinitionPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, msgs);
-			if (newOwnedCompliancyDefinitionPkg != null)
-				msgs = ((InternalEObject)newOwnedCompliancyDefinitionPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, msgs);
-			msgs = basicSetOwnedCompliancyDefinitionPkg(newOwnedCompliancyDefinitionPkg, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, newOwnedCompliancyDefinitionPkg, newOwnedCompliancyDefinitionPkg));
+    if (newOwnedCompliancyDefinitionPkg != ownedCompliancyDefinitionPkg) {
+      NotificationChain msgs = null;
+      if (ownedCompliancyDefinitionPkg != null)
+        msgs = ((InternalEObject)ownedCompliancyDefinitionPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, msgs);
+      if (newOwnedCompliancyDefinitionPkg != null)
+        msgs = ((InternalEObject)newOwnedCompliancyDefinitionPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, null, msgs);
+      msgs = basicSetOwnedCompliancyDefinitionPkg(newOwnedCompliancyDefinitionPkg, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG, newOwnedCompliancyDefinitionPkg, newOwnedCompliancyDefinitionPkg));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
-				return basicSetOwnedCompliancyDefinitionPkg(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
+        return basicSetOwnedCompliancyDefinitionPkg(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
-				if (resolve) return getOwnedCompliancyDefinitionPkg();
-				return basicGetOwnedCompliancyDefinitionPkg();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
+        if (resolve) return getOwnedCompliancyDefinitionPkg();
+        return basicGetOwnedCompliancyDefinitionPkg();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof CompliancyDefinitionPkg) {
-				// end-extension-code
-					setOwnedCompliancyDefinitionPkg((CompliancyDefinitionPkg)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof CompliancyDefinitionPkg) {
+        // end-extension-code
+          setOwnedCompliancyDefinitionPkg((CompliancyDefinitionPkg)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
-				setOwnedCompliancyDefinitionPkg((CompliancyDefinitionPkg)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
+        setOwnedCompliancyDefinitionPkg((CompliancyDefinitionPkg)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
-				return ownedCompliancyDefinitionPkg != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case RePackage.REC_CATALOG__OWNED_COMPLIANCY_DEFINITION_PKG:
+        return ownedCompliancyDefinitionPkg != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

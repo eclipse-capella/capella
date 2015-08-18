@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,24 +42,24 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Default Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Default Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Default Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Default Value</em>' containment reference.
-	 * @see #setOwnedDefaultValue(AbstractStringValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedDefaultValue()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='defaultValue'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which StringValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Default Value</em>' containment reference.
+   * @see #setOwnedDefaultValue(AbstractStringValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedDefaultValue()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='defaultValue'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the default value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which StringValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	AbstractStringValue getOwnedDefaultValue();
 
@@ -67,14 +67,14 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedDefaultValue <em>Owned Default Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedDefaultValue <em>Owned Default Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Default Value</em>' containment reference.
-	 * @see #getOwnedDefaultValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Default Value</em>' containment reference.
+   * @see #getOwnedDefaultValue()
+   * @generated
+   */
 
 	void setOwnedDefaultValue(AbstractStringValue value);
 
@@ -85,24 +85,24 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Null Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Null Value</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Null Value</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Null Value</em>' containment reference.
-	 * @see #setOwnedNullValue(AbstractStringValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedNullValue()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='nullValue'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the neutral value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which StringValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Null Value</em>' containment reference.
+   * @see #setOwnedNullValue(AbstractStringValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedNullValue()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='nullValue'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the neutral value for this data type\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which StringValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	AbstractStringValue getOwnedNullValue();
 
@@ -110,14 +110,14 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedNullValue <em>Owned Null Value</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedNullValue <em>Owned Null Value</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Null Value</em>' containment reference.
-	 * @see #getOwnedNullValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Null Value</em>' containment reference.
+   * @see #getOwnedNullValue()
+   * @generated
+   */
 
 	void setOwnedNullValue(AbstractStringValue value);
 
@@ -128,24 +128,24 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Min Length</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Min Length</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Min Length</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Min Length</em>' containment reference.
-	 * @see #setOwnedMinLength(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedMinLength()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='minLength'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the minimum length of the string\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which FunctionRealization stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Min Length</em>' containment reference.
+   * @see #setOwnedMinLength(NumericValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedMinLength()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='minLength'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the minimum length of the string\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which FunctionRealization stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedMinLength();
 
@@ -153,14 +153,14 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedMinLength <em>Owned Min Length</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedMinLength <em>Owned Min Length</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Min Length</em>' containment reference.
-	 * @see #getOwnedMinLength()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Min Length</em>' containment reference.
+   * @see #getOwnedMinLength()
+   * @generated
+   */
 
 	void setOwnedMinLength(NumericValue value);
 
@@ -171,24 +171,24 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Max Length</b></em>' containment reference.
+   * Returns the value of the '<em><b>Owned Max Length</b></em>' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Max Length</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Max Length</em>' containment reference.
-	 * @see #setOwnedMaxLength(NumericValue)
-	 * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedMaxLength()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='maxLength'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the maximum length of the string\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which UnlimitedNaturalValue stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Max Length</em>' containment reference.
+   * @see #setOwnedMaxLength(NumericValue)
+   * @see org.polarsys.capella.core.data.information.datatype.DatatypePackage#getStringType_OwnedMaxLength()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='maxLength'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specification of the maximum length of the string\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='none' constraints='Elements on which UnlimitedNaturalValue stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	NumericValue getOwnedMaxLength();
 
@@ -196,14 +196,14 @@ public interface StringType extends DataType {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedMaxLength <em>Owned Max Length</em>}' containment reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.datatype.StringType#getOwnedMaxLength <em>Owned Max Length</em>}' containment reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Owned Max Length</em>' containment reference.
-	 * @see #getOwnedMaxLength()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Owned Max Length</em>' containment reference.
+   * @see #getOwnedMaxLength()
+   * @generated
+   */
 
 	void setOwnedMaxLength(NumericValue value);
 

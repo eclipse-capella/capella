@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,13 +67,13 @@ import org.polarsys.capella.core.data.fa.FaPackage;
 public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 
 	/**
-	 * The cached value of the '{@link #getOwnedComponentExchangeAllocations() <em>Owned Component Exchange Allocations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedComponentExchangeAllocations() <em>Owned Component Exchange Allocations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedComponentExchangeAllocations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedComponentExchangeAllocations()
+   * @generated
+   * @ordered
+   */
 	protected EList<ComponentExchangeAllocation> ownedComponentExchangeAllocations;
 
 
@@ -93,13 +93,13 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 
 
 	/**
-	 * The cached value of the '{@link #getInvolvedLinks() <em>Involved Links</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getInvolvedLinks() <em>Involved Links</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInvolvedLinks()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getInvolvedLinks()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractPhysicalPathLink> involvedLinks;
 
 
@@ -107,13 +107,13 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalPathInvolvements() <em>Owned Physical Path Involvements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalPathInvolvements() <em>Owned Physical Path Involvements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalPathInvolvements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalPathInvolvements()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalPathInvolvement> ownedPhysicalPathInvolvements;
 
 
@@ -125,13 +125,13 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPhysicalPathRealizations() <em>Owned Physical Path Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPhysicalPathRealizations() <em>Owned Physical Path Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPhysicalPathRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPhysicalPathRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<PhysicalPathRealization> ownedPhysicalPathRealizations;
 
 
@@ -146,53 +146,53 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PhysicalPathImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CsPackage.Literals.PHYSICAL_PATH;
-	}
+    return CsPackage.Literals.PHYSICAL_PATH;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentExchangeAllocation> getOwnedComponentExchangeAllocations() {
 
-		if (ownedComponentExchangeAllocations == null) {
-			ownedComponentExchangeAllocations = new EObjectContainmentEList.Resolving<ComponentExchangeAllocation>(ComponentExchangeAllocation.class, this, CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
-		}
-		return ownedComponentExchangeAllocations;
-	}
+    if (ownedComponentExchangeAllocations == null) {
+      ownedComponentExchangeAllocations = new EObjectContainmentEList.Resolving<ComponentExchangeAllocation>(ComponentExchangeAllocation.class, this, CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS);
+    }
+    return ownedComponentExchangeAllocations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentExchange> getAllocatedComponentExchanges() {
 
@@ -219,27 +219,27 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentExchange> resultAsList = (Collection<ComponentExchange>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentExchange>(this, FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ComponentExchange> resultAsList = (Collection<ComponentExchange>) result;
+    return new EcoreEList.UnmodifiableEList<ComponentExchange>(this, FaPackage.Literals.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Involvement> getInvolvingInvolvements() {
 
@@ -266,27 +266,27 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Involvement> getInvolvedInvolvements() {
 
@@ -313,63 +313,63 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractPhysicalPathLink> getInvolvedLinks() {
 
-		if (involvedLinks == null) {
-			involvedLinks = new EObjectResolvingEList<AbstractPhysicalPathLink>(AbstractPhysicalPathLink.class, this, CsPackage.PHYSICAL_PATH__INVOLVED_LINKS);
-		}
-		return involvedLinks;
-	}
+    if (involvedLinks == null) {
+      involvedLinks = new EObjectResolvingEList<AbstractPhysicalPathLink>(AbstractPhysicalPathLink.class, this, CsPackage.PHYSICAL_PATH__INVOLVED_LINKS);
+    }
+    return involvedLinks;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPathInvolvement> getOwnedPhysicalPathInvolvements() {
 
-		if (ownedPhysicalPathInvolvements == null) {
-			ownedPhysicalPathInvolvements = new EObjectContainmentEList.Resolving<PhysicalPathInvolvement>(PhysicalPathInvolvement.class, this, CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS);
-		}
-		return ownedPhysicalPathInvolvements;
-	}
+    if (ownedPhysicalPathInvolvements == null) {
+      ownedPhysicalPathInvolvements = new EObjectContainmentEList.Resolving<PhysicalPathInvolvement>(PhysicalPathInvolvement.class, this, CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS);
+    }
+    return ownedPhysicalPathInvolvements;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPathInvolvement> getFirstPhysicalPathInvolvements() {
 
@@ -396,45 +396,45 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalPathInvolvement> resultAsList = (Collection<PhysicalPathInvolvement>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalPathInvolvement>(this, CsPackage.Literals.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalPathInvolvement> resultAsList = (Collection<PhysicalPathInvolvement>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalPathInvolvement>(this, CsPackage.Literals.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPathRealization> getOwnedPhysicalPathRealizations() {
 
-		if (ownedPhysicalPathRealizations == null) {
-			ownedPhysicalPathRealizations = new EObjectContainmentEList.Resolving<PhysicalPathRealization>(PhysicalPathRealization.class, this, CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS);
-		}
-		return ownedPhysicalPathRealizations;
-	}
+    if (ownedPhysicalPathRealizations == null) {
+      ownedPhysicalPathRealizations = new EObjectContainmentEList.Resolving<PhysicalPathRealization>(PhysicalPathRealization.class, this, CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS);
+    }
+    return ownedPhysicalPathRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPath> getRealizedPhysicalPaths() {
 
@@ -461,27 +461,27 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalPath> resultAsList = (Collection<PhysicalPath>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalPath>(this, CsPackage.Literals.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalPath> resultAsList = (Collection<PhysicalPath>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalPath>(this, CsPackage.Literals.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PhysicalPath> getRealizingPhysicalPaths() {
 
@@ -508,226 +508,226 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PhysicalPath> resultAsList = (Collection<PhysicalPath>) result;
-		return new EcoreEList.UnmodifiableEList<PhysicalPath>(this, CsPackage.Literals.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PhysicalPath> resultAsList = (Collection<PhysicalPath>) result;
+    return new EcoreEList.UnmodifiableEList<PhysicalPath>(this, CsPackage.Literals.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
-				return ((InternalEList<?>)getOwnedComponentExchangeAllocations()).basicRemove(otherEnd, msgs);
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
-				return ((InternalEList<?>)getOwnedPhysicalPathInvolvements()).basicRemove(otherEnd, msgs);
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedPhysicalPathRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
+        return ((InternalEList<?>)getOwnedComponentExchangeAllocations()).basicRemove(otherEnd, msgs);
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
+        return ((InternalEList<?>)getOwnedPhysicalPathInvolvements()).basicRemove(otherEnd, msgs);
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedPhysicalPathRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
-				return getOwnedComponentExchangeAllocations();
-			case CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES:
-				return getAllocatedComponentExchanges();
-			case CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS:
-				return getInvolvingInvolvements();
-			case CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS:
-				return getInvolvedInvolvements();
-			case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
-				return getInvolvedLinks();
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
-				return getOwnedPhysicalPathInvolvements();
-			case CsPackage.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS:
-				return getFirstPhysicalPathInvolvements();
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
-				return getOwnedPhysicalPathRealizations();
-			case CsPackage.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS:
-				return getRealizedPhysicalPaths();
-			case CsPackage.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS:
-				return getRealizingPhysicalPaths();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
+        return getOwnedComponentExchangeAllocations();
+      case CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES:
+        return getAllocatedComponentExchanges();
+      case CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS:
+        return getInvolvingInvolvements();
+      case CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS:
+        return getInvolvedInvolvements();
+      case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
+        return getInvolvedLinks();
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
+        return getOwnedPhysicalPathInvolvements();
+      case CsPackage.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS:
+        return getFirstPhysicalPathInvolvements();
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
+        return getOwnedPhysicalPathRealizations();
+      case CsPackage.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS:
+        return getRealizedPhysicalPaths();
+      case CsPackage.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS:
+        return getRealizingPhysicalPaths();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
-				getOwnedComponentExchangeAllocations().clear();
-				getOwnedComponentExchangeAllocations().addAll((Collection<? extends ComponentExchangeAllocation>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
-				getInvolvedLinks().clear();
-				getInvolvedLinks().addAll((Collection<? extends AbstractPhysicalPathLink>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
-				getOwnedPhysicalPathInvolvements().clear();
-				getOwnedPhysicalPathInvolvements().addAll((Collection<? extends PhysicalPathInvolvement>)newValue);
-				return;
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
-				getOwnedPhysicalPathRealizations().clear();
-				getOwnedPhysicalPathRealizations().addAll((Collection<? extends PhysicalPathRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
+        getOwnedComponentExchangeAllocations().clear();
+        getOwnedComponentExchangeAllocations().addAll((Collection<? extends ComponentExchangeAllocation>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
+        getInvolvedLinks().clear();
+        getInvolvedLinks().addAll((Collection<? extends AbstractPhysicalPathLink>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
+        getOwnedPhysicalPathInvolvements().clear();
+        getOwnedPhysicalPathInvolvements().addAll((Collection<? extends PhysicalPathInvolvement>)newValue);
+        return;
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
+        getOwnedPhysicalPathRealizations().clear();
+        getOwnedPhysicalPathRealizations().addAll((Collection<? extends PhysicalPathRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
-				getOwnedComponentExchangeAllocations().clear();
-				return;
-			case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
-				getInvolvedLinks().clear();
-				return;
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
-				getOwnedPhysicalPathInvolvements().clear();
-				return;
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
-				getOwnedPhysicalPathRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
+        getOwnedComponentExchangeAllocations().clear();
+        return;
+      case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
+        getInvolvedLinks().clear();
+        return;
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
+        getOwnedPhysicalPathInvolvements().clear();
+        return;
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
+        getOwnedPhysicalPathRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
-				return ownedComponentExchangeAllocations != null && !ownedComponentExchangeAllocations.isEmpty();
-			case CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES:
-				return !getAllocatedComponentExchanges().isEmpty();
-			case CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS:
-				return !getInvolvingInvolvements().isEmpty();
-			case CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS:
-				return !getInvolvedInvolvements().isEmpty();
-			case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
-				return involvedLinks != null && !involvedLinks.isEmpty();
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
-				return ownedPhysicalPathInvolvements != null && !ownedPhysicalPathInvolvements.isEmpty();
-			case CsPackage.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS:
-				return !getFirstPhysicalPathInvolvements().isEmpty();
-			case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
-				return ownedPhysicalPathRealizations != null && !ownedPhysicalPathRealizations.isEmpty();
-			case CsPackage.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS:
-				return !getRealizedPhysicalPaths().isEmpty();
-			case CsPackage.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS:
-				return !getRealizingPhysicalPaths().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS:
+        return ownedComponentExchangeAllocations != null && !ownedComponentExchangeAllocations.isEmpty();
+      case CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES:
+        return !getAllocatedComponentExchanges().isEmpty();
+      case CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS:
+        return !getInvolvingInvolvements().isEmpty();
+      case CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS:
+        return !getInvolvedInvolvements().isEmpty();
+      case CsPackage.PHYSICAL_PATH__INVOLVED_LINKS:
+        return involvedLinks != null && !involvedLinks.isEmpty();
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_INVOLVEMENTS:
+        return ownedPhysicalPathInvolvements != null && !ownedPhysicalPathInvolvements.isEmpty();
+      case CsPackage.PHYSICAL_PATH__FIRST_PHYSICAL_PATH_INVOLVEMENTS:
+        return !getFirstPhysicalPathInvolvements().isEmpty();
+      case CsPackage.PHYSICAL_PATH__OWNED_PHYSICAL_PATH_REALIZATIONS:
+        return ownedPhysicalPathRealizations != null && !ownedPhysicalPathRealizations.isEmpty();
+      case CsPackage.PHYSICAL_PATH__REALIZED_PHYSICAL_PATHS:
+        return !getRealizedPhysicalPaths().isEmpty();
+      case CsPackage.PHYSICAL_PATH__REALIZING_PHYSICAL_PATHS:
+        return !getRealizingPhysicalPaths().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == ComponentExchangeAllocator.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS: return FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS;
-				case CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES: return FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES;
-				default: return -1;
-			}
-		}
-		if (baseClass == InvolvedElement.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractPathInvolvedElement.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == InvolverElement.class) {
-			switch (derivedFeatureID) {
-				case CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS: return CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == ComponentExchangeAllocator.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS: return FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS;
+        case CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES: return FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES;
+        default: return -1;
+      }
+    }
+    if (baseClass == InvolvedElement.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractPathInvolvedElement.class) {
+      switch (derivedFeatureID) {
+        default: return -1;
+      }
+    }
+    if (baseClass == InvolverElement.class) {
+      switch (derivedFeatureID) {
+        case CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS: return CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == ComponentExchangeAllocator.class) {
-			switch (baseFeatureID) {
-				case FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS: return CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS;
-				case FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES: return CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES;
-				default: return -1;
-			}
-		}
-		if (baseClass == InvolvedElement.class) {
-			switch (baseFeatureID) {
-				case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractPathInvolvedElement.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == InvolverElement.class) {
-			switch (baseFeatureID) {
-				case CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS: return CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == ComponentExchangeAllocator.class) {
+      switch (baseFeatureID) {
+        case FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS: return CsPackage.PHYSICAL_PATH__OWNED_COMPONENT_EXCHANGE_ALLOCATIONS;
+        case FaPackage.COMPONENT_EXCHANGE_ALLOCATOR__ALLOCATED_COMPONENT_EXCHANGES: return CsPackage.PHYSICAL_PATH__ALLOCATED_COMPONENT_EXCHANGES;
+        default: return -1;
+      }
+    }
+    if (baseClass == InvolvedElement.class) {
+      switch (baseFeatureID) {
+        case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CsPackage.PHYSICAL_PATH__INVOLVING_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    if (baseClass == AbstractPathInvolvedElement.class) {
+      switch (baseFeatureID) {
+        default: return -1;
+      }
+    }
+    if (baseClass == InvolverElement.class) {
+      switch (baseFeatureID) {
+        case CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS: return CsPackage.PHYSICAL_PATH__INVOLVED_INVOLVEMENTS;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //PhysicalPathImpl

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -13,7 +13,7 @@
 <plugin>
    <extension point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
-         <package namespaceUri="http://www.polarsys.org/capella/core/interaction/0.8.0">
+         <package namespaceUri="http://www.polarsys.org/capella/core/interaction/1.0.0">
          </package>
          <constraints categories="capella.category/design/well-formedness/scenarios">
             <constraint class="org.polarsys.capella.core.data.interaction.validation.interaction_use.MDCHK_InteractionUse_ReferencedScenario_1" id="DWF_DS_01" isEnabledByDefault="true" lang="Java" mode="Batch" name="DWF_DS_01 - InteractionUse referenced scenario check" severity="WARNING" statusCode="1">

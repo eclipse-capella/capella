@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,48 +47,48 @@ public class ScenarioRealizationImpl extends AllocationImpl implements ScenarioR
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ScenarioRealizationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.SCENARIO_REALIZATION;
-	}
+    return InteractionPackage.Literals.SCENARIO_REALIZATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Scenario getRealizedScenario() {
 
-		Scenario realizedScenario = basicGetRealizedScenario();
-		return realizedScenario != null && realizedScenario.eIsProxy() ? (Scenario)eResolveProxy((InternalEObject)realizedScenario) : realizedScenario;
-	}
+    Scenario realizedScenario = basicGetRealizedScenario();
+    return realizedScenario != null && realizedScenario.eIsProxy() ? (Scenario)eResolveProxy((InternalEObject)realizedScenario) : realizedScenario;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Scenario basicGetRealizedScenario() {
 
@@ -115,15 +115,15 @@ public class ScenarioRealizationImpl extends AllocationImpl implements ScenarioR
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZED_SCENARIO.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZED_SCENARIO, annotation);
-		
-		try {
-			return (Scenario) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Scenario) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -131,23 +131,23 @@ public class ScenarioRealizationImpl extends AllocationImpl implements ScenarioR
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Scenario getRealizingScenario() {
 
-		Scenario realizingScenario = basicGetRealizingScenario();
-		return realizingScenario != null && realizingScenario.eIsProxy() ? (Scenario)eResolveProxy((InternalEObject)realizingScenario) : realizingScenario;
-	}
+    Scenario realizingScenario = basicGetRealizingScenario();
+    return realizingScenario != null && realizingScenario.eIsProxy() ? (Scenario)eResolveProxy((InternalEObject)realizingScenario) : realizingScenario;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Scenario basicGetRealizingScenario() {
 
@@ -174,53 +174,53 @@ public class ScenarioRealizationImpl extends AllocationImpl implements ScenarioR
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZING_SCENARIO.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.SCENARIO_REALIZATION__REALIZING_SCENARIO, annotation);
-		
-		try {
-			return (Scenario) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Scenario) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.SCENARIO_REALIZATION__REALIZED_SCENARIO:
-				if (resolve) return getRealizedScenario();
-				return basicGetRealizedScenario();
-			case InteractionPackage.SCENARIO_REALIZATION__REALIZING_SCENARIO:
-				if (resolve) return getRealizingScenario();
-				return basicGetRealizingScenario();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.SCENARIO_REALIZATION__REALIZED_SCENARIO:
+        if (resolve) return getRealizedScenario();
+        return basicGetRealizedScenario();
+      case InteractionPackage.SCENARIO_REALIZATION__REALIZING_SCENARIO:
+        if (resolve) return getRealizingScenario();
+        return basicGetRealizingScenario();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.SCENARIO_REALIZATION__REALIZED_SCENARIO:
-				return basicGetRealizedScenario() != null;
-			case InteractionPackage.SCENARIO_REALIZATION__REALIZING_SCENARIO:
-				return basicGetRealizingScenario() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.SCENARIO_REALIZATION__REALIZED_SCENARIO:
+        return basicGetRealizedScenario() != null;
+      case InteractionPackage.SCENARIO_REALIZATION__REALIZING_SCENARIO:
+        return basicGetRealizingScenario() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

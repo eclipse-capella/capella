@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,13 +44,13 @@ import org.polarsys.capella.core.data.interaction.InteractionState;
 public class InteractionStateImpl extends InteractionFragmentImpl implements InteractionState {
 
 	/**
-	 * The cached value of the '{@link #getRelatedAbstractState() <em>Related Abstract State</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRelatedAbstractState() <em>Related Abstract State</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelatedAbstractState()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRelatedAbstractState()
+   * @generated
+   * @ordered
+   */
 	protected AbstractState relatedAbstractState;
 
 
@@ -58,13 +58,13 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * The cached value of the '{@link #getRelatedAbstractFunction() <em>Related Abstract Function</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRelatedAbstractFunction() <em>Related Abstract Function</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelatedAbstractFunction()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRelatedAbstractFunction()
+   * @generated
+   * @ordered
+   */
 	protected AbstractFunction relatedAbstractFunction;
 
 
@@ -75,77 +75,77 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected InteractionStateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InteractionPackage.Literals.INTERACTION_STATE;
-	}
+    return InteractionPackage.Literals.INTERACTION_STATE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractState getRelatedAbstractState() {
 
-		if (relatedAbstractState != null && relatedAbstractState.eIsProxy()) {
-			InternalEObject oldRelatedAbstractState = (InternalEObject)relatedAbstractState;
-			relatedAbstractState = (AbstractState)eResolveProxy(oldRelatedAbstractState);
-			if (relatedAbstractState != oldRelatedAbstractState) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
-			}
-		}
-		return relatedAbstractState;
-	}
+    if (relatedAbstractState != null && relatedAbstractState.eIsProxy()) {
+      InternalEObject oldRelatedAbstractState = (InternalEObject)relatedAbstractState;
+      relatedAbstractState = (AbstractState)eResolveProxy(oldRelatedAbstractState);
+      if (relatedAbstractState != oldRelatedAbstractState) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
+      }
+    }
+    return relatedAbstractState;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractState basicGetRelatedAbstractState() {
 
-		return relatedAbstractState;
-	}
+    return relatedAbstractState;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setRelatedAbstractState(AbstractState newRelatedAbstractState) {
 
-		AbstractState oldRelatedAbstractState = relatedAbstractState;
-		relatedAbstractState = newRelatedAbstractState;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
+    AbstractState oldRelatedAbstractState = relatedAbstractState;
+    relatedAbstractState = newRelatedAbstractState;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE, oldRelatedAbstractState, relatedAbstractState));
 
-	}
+  }
 
 
 
@@ -153,52 +153,52 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction getRelatedAbstractFunction() {
 
-		if (relatedAbstractFunction != null && relatedAbstractFunction.eIsProxy()) {
-			InternalEObject oldRelatedAbstractFunction = (InternalEObject)relatedAbstractFunction;
-			relatedAbstractFunction = (AbstractFunction)eResolveProxy(oldRelatedAbstractFunction);
-			if (relatedAbstractFunction != oldRelatedAbstractFunction) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
-			}
-		}
-		return relatedAbstractFunction;
-	}
+    if (relatedAbstractFunction != null && relatedAbstractFunction.eIsProxy()) {
+      InternalEObject oldRelatedAbstractFunction = (InternalEObject)relatedAbstractFunction;
+      relatedAbstractFunction = (AbstractFunction)eResolveProxy(oldRelatedAbstractFunction);
+      if (relatedAbstractFunction != oldRelatedAbstractFunction) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
+      }
+    }
+    return relatedAbstractFunction;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractFunction basicGetRelatedAbstractFunction() {
 
-		return relatedAbstractFunction;
-	}
+    return relatedAbstractFunction;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setRelatedAbstractFunction(AbstractFunction newRelatedAbstractFunction) {
 
-		AbstractFunction oldRelatedAbstractFunction = relatedAbstractFunction;
-		relatedAbstractFunction = newRelatedAbstractFunction;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
+    AbstractFunction oldRelatedAbstractFunction = relatedAbstractFunction;
+    relatedAbstractFunction = newRelatedAbstractFunction;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION, oldRelatedAbstractFunction, relatedAbstractFunction));
 
-	}
+  }
 
 
 
@@ -206,23 +206,23 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole getCovered() {
 
-		InstanceRole covered = basicGetCovered();
-		return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
-	}
+    InstanceRole covered = basicGetCovered();
+    return covered != null && covered.eIsProxy() ? (InstanceRole)eResolveProxy((InternalEObject)covered) : covered;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InstanceRole basicGetCovered() {
 
@@ -249,108 +249,108 @@ public class InteractionStateImpl extends InteractionFragmentImpl implements Int
     // A helper is found, let's use it. 
     EAnnotation annotation = InteractionPackage.Literals.INTERACTION_STATE__COVERED.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InteractionPackage.Literals.INTERACTION_STATE__COVERED, annotation);
-		
-		try {
-			return (InstanceRole) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (InstanceRole) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				if (resolve) return getRelatedAbstractState();
-				return basicGetRelatedAbstractState();
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				if (resolve) return getRelatedAbstractFunction();
-				return basicGetRelatedAbstractFunction();
-			case InteractionPackage.INTERACTION_STATE__COVERED:
-				if (resolve) return getCovered();
-				return basicGetCovered();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+        if (resolve) return getRelatedAbstractState();
+        return basicGetRelatedAbstractState();
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+        if (resolve) return getRelatedAbstractFunction();
+        return basicGetRelatedAbstractFunction();
+      case InteractionPackage.INTERACTION_STATE__COVERED:
+        if (resolve) return getCovered();
+        return basicGetCovered();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractState) {
-				// end-extension-code
-					setRelatedAbstractState((AbstractState)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractFunction) {
-				// end-extension-code
-					setRelatedAbstractFunction((AbstractFunction)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractState) {
+        // end-extension-code
+          setRelatedAbstractState((AbstractState)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractFunction) {
+        // end-extension-code
+          setRelatedAbstractFunction((AbstractFunction)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				setRelatedAbstractState((AbstractState)null);
-				return;
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				setRelatedAbstractFunction((AbstractFunction)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+        setRelatedAbstractState((AbstractState)null);
+        return;
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+        setRelatedAbstractFunction((AbstractFunction)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
-				return relatedAbstractState != null;
-			case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
-				return relatedAbstractFunction != null;
-			case InteractionPackage.INTERACTION_STATE__COVERED:
-				return basicGetCovered() != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_STATE:
+        return relatedAbstractState != null;
+      case InteractionPackage.INTERACTION_STATE__RELATED_ABSTRACT_FUNCTION:
+        return relatedAbstractFunction != null;
+      case InteractionPackage.INTERACTION_STATE__COVERED:
+        return basicGetCovered() != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,21 +37,21 @@ public interface AbstractStateRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Abstract State</b></em>' reference.
+   * Returns the value of the '<em><b>Realized Abstract State</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Abstract State</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Abstract State</em>' reference.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractStateRealization_RealizedAbstractState()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='destination of the realization link : the abstract state that is being realized\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Abstract State</em>' reference.
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractStateRealization_RealizedAbstractState()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='destination of the realization link : the abstract state that is being realized\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	AbstractState getRealizedAbstractState();
 
@@ -62,21 +62,21 @@ public interface AbstractStateRealization extends Allocation {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realizing Abstract State</b></em>' reference.
+   * Returns the value of the '<em><b>Realizing Abstract State</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Abstract State</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realizing Abstract State</em>' reference.
-	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractStateRealization_RealizingAbstractState()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the source of the realization link : the abstract state that is realizing another abstract state\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realizing Abstract State</em>' reference.
+   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getAbstractStateRealization_RealizingAbstractState()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the source of the realization link : the abstract state that is realizing another abstract state\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	AbstractState getRealizingAbstractState();
 

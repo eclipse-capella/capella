@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,20 +38,20 @@ public interface FunctionalChainAbstractCapabilityInvolvement extends Involvemen
 
 
 	/**
-	 * Returns the value of the '<em><b>Capability</b></em>' reference.
+   * Returns the value of the '<em><b>Capability</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Capability</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Capability</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFunctionalChainAbstractCapabilityInvolvement_Capability()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Capability</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFunctionalChainAbstractCapabilityInvolvement_Capability()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	AbstractCapability getCapability();
 
@@ -62,20 +62,20 @@ public interface FunctionalChainAbstractCapabilityInvolvement extends Involvemen
 
 
 	/**
-	 * Returns the value of the '<em><b>Functional Chain</b></em>' reference.
+   * Returns the value of the '<em><b>Functional Chain</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Functional Chain</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Functional Chain</em>' reference.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFunctionalChainAbstractCapabilityInvolvement_FunctionalChain()
-	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Functional Chain</em>' reference.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getFunctionalChainAbstractCapabilityInvolvement_FunctionalChain()
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	FunctionalChain getFunctionalChain();
 

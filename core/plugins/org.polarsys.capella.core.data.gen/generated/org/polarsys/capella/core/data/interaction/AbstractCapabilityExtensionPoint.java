@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,26 +40,26 @@ public interface AbstractCapabilityExtensionPoint extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Abstract Capability</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getAbstractCapabilityExtensionPoints <em>Abstract Capability Extension Points</em>}'.
+   * Returns the value of the '<em><b>Abstract Capability</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapability#getAbstractCapabilityExtensionPoints <em>Abstract Capability Extension Points</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Abstract Capability</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Abstract Capability</em>' container reference.
-	 * @see #setAbstractCapability(AbstractCapability)
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtensionPoint_AbstractCapability()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getAbstractCapabilityExtensionPoints
-	 * @model opposite="abstractCapabilityExtensionPoints" required="true"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='useCase' featureOwner='ExtensionPoint'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractCapability'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability to which this extension point belongs\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExtensionPoint::useCase' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Abstract Capability</em>' container reference.
+   * @see #setAbstractCapability(AbstractCapability)
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtensionPoint_AbstractCapability()
+   * @see org.polarsys.capella.core.data.interaction.AbstractCapability#getAbstractCapabilityExtensionPoints
+   * @model opposite="abstractCapabilityExtensionPoints" required="true"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='useCase' featureOwner='ExtensionPoint'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='abstractCapability'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the Capability to which this extension point belongs\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ExtensionPoint::useCase' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	AbstractCapability getAbstractCapability();
 
@@ -67,14 +67,14 @@ public interface AbstractCapabilityExtensionPoint extends NamedRelationship {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability <em>Abstract Capability</em>}' container reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtensionPoint#getAbstractCapability <em>Abstract Capability</em>}' container reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Abstract Capability</em>' container reference.
-	 * @see #getAbstractCapability()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Abstract Capability</em>' container reference.
+   * @see #getAbstractCapability()
+   * @generated
+   */
 
 	void setAbstractCapability(AbstractCapability value);
 
@@ -85,26 +85,26 @@ public interface AbstractCapabilityExtensionPoint extends NamedRelationship {
 
 
 	/**
-	 * Returns the value of the '<em><b>Extend Links</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtensionLocation <em>Extension Location</em>}'.
+   * Returns the value of the '<em><b>Extend Links</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtensionLocation <em>Extension Location</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extend Links</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Extend Links</em>' reference list.
-	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtensionPoint_ExtendLinks()
-	 * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtensionLocation
-	 * @model opposite="extensionLocation"
-	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='extensionLocation' umlOppositeReferenceOwner='Extend'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extendLinks'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the extension links starting from this extension point\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Extend::extensionLocation' constraints='uml::NamedElement::clientDependency elements on which AbstractCapabilityExtend stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Extend Links</em>' reference list.
+   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getAbstractCapabilityExtensionPoint_ExtendLinks()
+   * @see org.polarsys.capella.core.data.interaction.AbstractCapabilityExtend#getExtensionLocation
+   * @model opposite="extensionLocation"
+   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='extensionLocation' umlOppositeReferenceOwner='Extend'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='extendLinks'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the extension links starting from this extension point\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Extend::extensionLocation' constraints='uml::NamedElement::clientDependency elements on which AbstractCapabilityExtend stereotype or any stereotype that inherits from it is applied\r\nOrder must be computed'"
+   * @generated
+   */
 
 	EList<AbstractCapabilityExtend> getExtendLinks();
 

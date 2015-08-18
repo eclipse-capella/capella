@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,23 +67,23 @@ import org.polarsys.capella.common.model.helpers.IHelper;
 public abstract class AbstractActivityImpl extends AbstractNamedElementImpl implements AbstractActivity {
 
 	/**
-	 * The default value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlOperator()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_CONTROL_OPERATOR_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsControlOperator() <em>Is Control Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsControlOperator()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsControlOperator()
+   * @generated
+   * @ordered
+   */
 	protected boolean isControlOperator = IS_CONTROL_OPERATOR_EDEFAULT;
 
 
@@ -91,13 +91,13 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameterSet() <em>Owned Parameter Set</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParameterSet() <em>Owned Parameter Set</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameterSet()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParameterSet()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractParameterSet> ownedParameterSet;
 
 
@@ -105,13 +105,13 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedParameter() <em>Owned Parameter</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedParameter()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedParameter()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractParameter> ownedParameter;
 
 
@@ -127,23 +127,23 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * The default value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsReadOnly()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsReadOnly()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_READ_ONLY_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsReadOnly() <em>Is Read Only</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsReadOnly()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsReadOnly()
+   * @generated
+   * @ordered
+   */
 	protected boolean isReadOnly = IS_READ_ONLY_EDEFAULT;
 
 
@@ -151,23 +151,23 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * The default value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsSingleExecution()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsSingleExecution()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean IS_SINGLE_EXECUTION_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isIsSingleExecution() <em>Is Single Execution</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsSingleExecution()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isIsSingleExecution()
+   * @generated
+   * @ordered
+   */
 	protected boolean isSingleExecution = IS_SINGLE_EXECUTION_EDEFAULT;
 
 
@@ -175,13 +175,13 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedNodes() <em>Owned Nodes</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedNodes() <em>Owned Nodes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedNodes()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedNodes()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActivityNode> ownedNodes;
 
 
@@ -189,13 +189,13 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedEdges() <em>Owned Edges</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedEdges() <em>Owned Edges</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedEdges()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedEdges()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActivityEdge> ownedEdges;
 
 
@@ -203,13 +203,13 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedGroups() <em>Owned Groups</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedGroups() <em>Owned Groups</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedGroups()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedGroups()
+   * @generated
+   * @ordered
+   */
 	protected EList<ActivityGroup> ownedGroups;
 
 
@@ -220,56 +220,56 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected AbstractActivityImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.ABSTRACT_ACTIVITY;
-	}
+    return ActivityPackage.Literals.ABSTRACT_ACTIVITY;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsControlOperator() {
 
-		return isControlOperator;
-	}
+    return isControlOperator;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setIsControlOperator(boolean newIsControlOperator) {
 
-		boolean oldIsControlOperator = isControlOperator;
-		isControlOperator = newIsControlOperator;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR, oldIsControlOperator, isControlOperator));
+    boolean oldIsControlOperator = isControlOperator;
+    isControlOperator = newIsControlOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR, oldIsControlOperator, isControlOperator));
 
-	}
+  }
 
 
 
@@ -277,46 +277,46 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractParameterSet> getOwnedParameterSet() {
 
-		if (ownedParameterSet == null) {
-			ownedParameterSet = new EObjectResolvingEList<AbstractParameterSet>(AbstractParameterSet.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET);
-		}
-		return ownedParameterSet;
-	}
+    if (ownedParameterSet == null) {
+      ownedParameterSet = new EObjectResolvingEList<AbstractParameterSet>(AbstractParameterSet.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET);
+    }
+    return ownedParameterSet;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractParameter> getOwnedParameter() {
 
-		if (ownedParameter == null) {
-			ownedParameter = new EObjectResolvingEList<AbstractParameter>(AbstractParameter.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER);
-		}
-		return ownedParameter;
-	}
+    if (ownedParameter == null) {
+      ownedParameter = new EObjectResolvingEList<AbstractParameter>(AbstractParameter.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER);
+    }
+    return ownedParameter;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTrace> getIncomingTraces() {
 
@@ -343,27 +343,27 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTrace> getOutgoingTraces() {
 
@@ -390,48 +390,48 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsReadOnly() {
 
-		return isReadOnly;
-	}
+    return isReadOnly;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setIsReadOnly(boolean newIsReadOnly) {
 
-		boolean oldIsReadOnly = isReadOnly;
-		isReadOnly = newIsReadOnly;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
+    boolean oldIsReadOnly = isReadOnly;
+    isReadOnly = newIsReadOnly;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY, oldIsReadOnly, isReadOnly));
 
-	}
+  }
 
 
 
@@ -439,31 +439,31 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isIsSingleExecution() {
 
-		return isSingleExecution;
-	}
+    return isSingleExecution;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setIsSingleExecution(boolean newIsSingleExecution) {
 
-		boolean oldIsSingleExecution = isSingleExecution;
-		isSingleExecution = newIsSingleExecution;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION, oldIsSingleExecution, isSingleExecution));
+    boolean oldIsSingleExecution = isSingleExecution;
+    isSingleExecution = newIsSingleExecution;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION, oldIsSingleExecution, isSingleExecution));
 
-	}
+  }
 
 
 
@@ -471,64 +471,64 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityNode> getOwnedNodes() {
 
-		if (ownedNodes == null) {
-			ownedNodes = new EObjectContainmentEList.Resolving<ActivityNode>(ActivityNode.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES);
-		}
-		return ownedNodes;
-	}
+    if (ownedNodes == null) {
+      ownedNodes = new EObjectContainmentEList.Resolving<ActivityNode>(ActivityNode.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES);
+    }
+    return ownedNodes;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityEdge> getOwnedEdges() {
 
-		if (ownedEdges == null) {
-			ownedEdges = new EObjectContainmentEList.Resolving<ActivityEdge>(ActivityEdge.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES);
-		}
-		return ownedEdges;
-	}
+    if (ownedEdges == null) {
+      ownedEdges = new EObjectContainmentEList.Resolving<ActivityEdge>(ActivityEdge.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES);
+    }
+    return ownedEdges;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ActivityGroup> getOwnedGroups() {
 
-		if (ownedGroups == null) {
-			ownedGroups = new EObjectContainmentEList.Resolving<ActivityGroup>(ActivityGroup.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS);
-		}
-		return ownedGroups;
-	}
+    if (ownedGroups == null) {
+      ownedGroups = new EObjectContainmentEList.Resolving<ActivityGroup>(ActivityGroup.class, this, ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS);
+    }
+    return ownedGroups;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StructuredActivityNode> getOwnedStructuredNodes() {
 
@@ -555,259 +555,259 @@ public abstract class AbstractActivityImpl extends AbstractNamedElementImpl impl
     // A helper is found, let's use it. 
     EAnnotation annotation = ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<StructuredActivityNode> resultAsList = (Collection<StructuredActivityNode>) result;
-		return new EcoreEList.UnmodifiableEList<StructuredActivityNode>(this, ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<StructuredActivityNode> resultAsList = (Collection<StructuredActivityNode>) result;
+    return new EcoreEList.UnmodifiableEList<StructuredActivityNode>(this, ActivityPackage.Literals.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
-				return ((InternalEList<?>)getOwnedNodes()).basicRemove(otherEnd, msgs);
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
-				return ((InternalEList<?>)getOwnedEdges()).basicRemove(otherEnd, msgs);
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
-				return ((InternalEList<?>)getOwnedGroups()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
+        return ((InternalEList<?>)getOwnedNodes()).basicRemove(otherEnd, msgs);
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
+        return ((InternalEList<?>)getOwnedEdges()).basicRemove(otherEnd, msgs);
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
+        return ((InternalEList<?>)getOwnedGroups()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
-				return isIsControlOperator();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
-				return getOwnedParameterSet();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
-				return getOwnedParameter();
-			case ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES:
-				return getIncomingTraces();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES:
-				return getOutgoingTraces();
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
-				return isIsReadOnly();
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
-				return isIsSingleExecution();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
-				return getOwnedNodes();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
-				return getOwnedEdges();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
-				return getOwnedGroups();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES:
-				return getOwnedStructuredNodes();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
+        return isIsControlOperator();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
+        return getOwnedParameterSet();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
+        return getOwnedParameter();
+      case ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES:
+        return getIncomingTraces();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES:
+        return getOutgoingTraces();
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
+        return isIsReadOnly();
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
+        return isIsSingleExecution();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
+        return getOwnedNodes();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
+        return getOwnedEdges();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
+        return getOwnedGroups();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES:
+        return getOwnedStructuredNodes();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setIsControlOperator((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
-				getOwnedParameterSet().clear();
-				getOwnedParameterSet().addAll((Collection<? extends AbstractParameterSet>)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
-				getOwnedParameter().clear();
-				getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setIsReadOnly((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setIsSingleExecution((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
-				getOwnedNodes().clear();
-				getOwnedNodes().addAll((Collection<? extends ActivityNode>)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
-				getOwnedEdges().clear();
-				getOwnedEdges().addAll((Collection<? extends ActivityEdge>)newValue);
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
-				getOwnedGroups().clear();
-				getOwnedGroups().addAll((Collection<? extends ActivityGroup>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setIsControlOperator((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
+        getOwnedParameterSet().clear();
+        getOwnedParameterSet().addAll((Collection<? extends AbstractParameterSet>)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
+        getOwnedParameter().clear();
+        getOwnedParameter().addAll((Collection<? extends AbstractParameter>)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setIsReadOnly((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setIsSingleExecution((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
+        getOwnedNodes().clear();
+        getOwnedNodes().addAll((Collection<? extends ActivityNode>)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
+        getOwnedEdges().clear();
+        getOwnedEdges().addAll((Collection<? extends ActivityEdge>)newValue);
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
+        getOwnedGroups().clear();
+        getOwnedGroups().addAll((Collection<? extends ActivityGroup>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
-				setIsControlOperator(IS_CONTROL_OPERATOR_EDEFAULT);
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
-				getOwnedParameterSet().clear();
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
-				getOwnedParameter().clear();
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
-				setIsReadOnly(IS_READ_ONLY_EDEFAULT);
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
-				setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
-				getOwnedNodes().clear();
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
-				getOwnedEdges().clear();
-				return;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
-				getOwnedGroups().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
+        setIsControlOperator(IS_CONTROL_OPERATOR_EDEFAULT);
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
+        getOwnedParameterSet().clear();
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
+        getOwnedParameter().clear();
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
+        setIsReadOnly(IS_READ_ONLY_EDEFAULT);
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
+        setIsSingleExecution(IS_SINGLE_EXECUTION_EDEFAULT);
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
+        getOwnedNodes().clear();
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
+        getOwnedEdges().clear();
+        return;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
+        getOwnedGroups().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
-				return isControlOperator != IS_CONTROL_OPERATOR_EDEFAULT;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
-				return ownedParameterSet != null && !ownedParameterSet.isEmpty();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
-				return ownedParameter != null && !ownedParameter.isEmpty();
-			case ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES:
-				return !getIncomingTraces().isEmpty();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES:
-				return !getOutgoingTraces().isEmpty();
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
-				return isReadOnly != IS_READ_ONLY_EDEFAULT;
-			case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
-				return isSingleExecution != IS_SINGLE_EXECUTION_EDEFAULT;
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
-				return ownedNodes != null && !ownedNodes.isEmpty();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
-				return ownedEdges != null && !ownedEdges.isEmpty();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
-				return ownedGroups != null && !ownedGroups.isEmpty();
-			case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES:
-				return !getOwnedStructuredNodes().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_CONTROL_OPERATOR:
+        return isControlOperator != IS_CONTROL_OPERATOR_EDEFAULT;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER_SET:
+        return ownedParameterSet != null && !ownedParameterSet.isEmpty();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_PARAMETER:
+        return ownedParameter != null && !ownedParameter.isEmpty();
+      case ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES:
+        return !getIncomingTraces().isEmpty();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES:
+        return !getOutgoingTraces().isEmpty();
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_READ_ONLY:
+        return isReadOnly != IS_READ_ONLY_EDEFAULT;
+      case ActivityPackage.ABSTRACT_ACTIVITY__IS_SINGLE_EXECUTION:
+        return isSingleExecution != IS_SINGLE_EXECUTION_EDEFAULT;
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_NODES:
+        return ownedNodes != null && !ownedNodes.isEmpty();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_EDGES:
+        return ownedEdges != null && !ownedEdges.isEmpty();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_GROUPS:
+        return ownedGroups != null && !ownedGroups.isEmpty();
+      case ActivityPackage.ABSTRACT_ACTIVITY__OWNED_STRUCTURED_NODES:
+        return !getOwnedStructuredNodes().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == TraceableElement.class) {
-			switch (derivedFeatureID) {
-				case ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES: return ModellingcorePackage.TRACEABLE_ELEMENT__INCOMING_TRACES;
-				case ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES: return ModellingcorePackage.TRACEABLE_ELEMENT__OUTGOING_TRACES;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == TraceableElement.class) {
+      switch (derivedFeatureID) {
+        case ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES: return ModellingcorePackage.TRACEABLE_ELEMENT__INCOMING_TRACES;
+        case ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES: return ModellingcorePackage.TRACEABLE_ELEMENT__OUTGOING_TRACES;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == TraceableElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.TRACEABLE_ELEMENT__INCOMING_TRACES: return ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES;
-				case ModellingcorePackage.TRACEABLE_ELEMENT__OUTGOING_TRACES: return ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == TraceableElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.TRACEABLE_ELEMENT__INCOMING_TRACES: return ActivityPackage.ABSTRACT_ACTIVITY__INCOMING_TRACES;
+        case ModellingcorePackage.TRACEABLE_ELEMENT__OUTGOING_TRACES: return ActivityPackage.ABSTRACT_ACTIVITY__OUTGOING_TRACES;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isControlOperator: "); //$NON-NLS-1$
-		result.append(isControlOperator);
-		result.append(", isReadOnly: "); //$NON-NLS-1$
-		result.append(isReadOnly);
-		result.append(", isSingleExecution: "); //$NON-NLS-1$
-		result.append(isSingleExecution);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (isControlOperator: "); //$NON-NLS-1$
+    result.append(isControlOperator);
+    result.append(", isReadOnly: "); //$NON-NLS-1$
+    result.append(isReadOnly);
+    result.append(", isSingleExecution: "); //$NON-NLS-1$
+    result.append(isSingleExecution);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //AbstractActivityImpl

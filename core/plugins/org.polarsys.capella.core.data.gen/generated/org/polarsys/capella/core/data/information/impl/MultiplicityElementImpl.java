@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,23 +93,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInDoc()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean VISIBLE_IN_DOC_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isVisibleInDoc() <em>Visible In Doc</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInDoc()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInDoc()
+   * @generated
+   * @ordered
+   */
 	protected boolean visibleInDoc = VISIBLE_IN_DOC_EDEFAULT;
 
 
@@ -117,23 +117,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInLM()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean VISIBLE_IN_LM_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isVisibleInLM() <em>Visible In LM</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isVisibleInLM()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isVisibleInLM()
+   * @generated
+   * @ordered
+   */
 	protected boolean visibleInLM = VISIBLE_IN_LM_EDEFAULT;
 
 
@@ -141,23 +141,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #getSummary() <em>Summary</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSummary()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSummary()
+   * @generated
+   * @ordered
+   */
 	protected static final String SUMMARY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getSummary() <em>Summary</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSummary() <em>Summary</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSummary()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSummary()
+   * @generated
+   * @ordered
+   */
 	protected String summary = SUMMARY_EDEFAULT;
 
 
@@ -165,23 +165,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
 	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDescription()
+   * @generated
+   * @ordered
+   */
 	protected String description = DESCRIPTION_EDEFAULT;
 
 
@@ -189,23 +189,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #getReview() <em>Review</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getReview() <em>Review</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReview()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReview()
+   * @generated
+   * @ordered
+   */
 	protected static final String REVIEW_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getReview() <em>Review</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getReview() <em>Review</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReview()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReview()
+   * @generated
+   * @ordered
+   */
 	protected String review = REVIEW_EDEFAULT;
 
 
@@ -213,13 +213,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValues() <em>Owned Property Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValues() <em>Owned Property Values</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValues()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValues()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractPropertyValue> ownedPropertyValues;
 
 
@@ -227,13 +227,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedEnumerationPropertyTypes() <em>Owned Enumeration Property Types</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedEnumerationPropertyTypes() <em>Owned Enumeration Property Types</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedEnumerationPropertyTypes()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedEnumerationPropertyTypes()
+   * @generated
+   * @ordered
+   */
 	protected EList<EnumerationPropertyType> ownedEnumerationPropertyTypes;
 
 
@@ -241,13 +241,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getAppliedPropertyValues() <em>Applied Property Values</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAppliedPropertyValues() <em>Applied Property Values</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAppliedPropertyValues()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAppliedPropertyValues()
+   * @generated
+   * @ordered
+   */
 	protected EList<AbstractPropertyValue> appliedPropertyValues;
 
 
@@ -255,13 +255,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValueGroups() <em>Owned Property Value Groups</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValueGroups() <em>Owned Property Value Groups</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValueGroups()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValueGroups()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValueGroup> ownedPropertyValueGroups;
 
 
@@ -269,13 +269,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getAppliedPropertyValueGroups() <em>Applied Property Value Groups</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAppliedPropertyValueGroups() <em>Applied Property Value Groups</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAppliedPropertyValueGroups()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAppliedPropertyValueGroups()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValueGroup> appliedPropertyValueGroups;
 
 
@@ -283,13 +283,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getStatus() <em>Status</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getStatus()
+   * @generated
+   * @ordered
+   */
 	protected EnumerationPropertyLiteral status;
 
 
@@ -297,13 +297,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getFeatures() <em>Features</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getFeatures()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getFeatures()
+   * @generated
+   * @ordered
+   */
 	protected EList<EnumerationPropertyLiteral> features;
 
 
@@ -315,23 +315,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #isOrdered() <em>Ordered</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isOrdered() <em>Ordered</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isOrdered()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isOrdered()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean ORDERED_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isOrdered() <em>Ordered</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isOrdered() <em>Ordered</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isOrdered()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isOrdered()
+   * @generated
+   * @ordered
+   */
 	protected boolean ordered = ORDERED_EDEFAULT;
 
 
@@ -339,23 +339,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isUnique()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isUnique()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean UNIQUE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isUnique() <em>Unique</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isUnique()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isUnique()
+   * @generated
+   * @ordered
+   */
 	protected boolean unique = UNIQUE_EDEFAULT;
 
 
@@ -363,23 +363,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMinInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMinInclusive()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean MIN_INCLUSIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMinInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMinInclusive()
+   * @generated
+   * @ordered
+   */
 	protected boolean minInclusive = MIN_INCLUSIVE_EDEFAULT;
 
 
@@ -387,23 +387,23 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The default value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMaxInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMaxInclusive()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean MAX_INCLUSIVE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMaxInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMaxInclusive()
+   * @generated
+   * @ordered
+   */
 	protected boolean maxInclusive = MAX_INCLUSIVE_EDEFAULT;
 
 
@@ -411,13 +411,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDefaultValue() <em>Owned Default Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDefaultValue() <em>Owned Default Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDefaultValue()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDefaultValue()
+   * @generated
+   * @ordered
+   */
 	protected DataValue ownedDefaultValue;
 
 
@@ -425,13 +425,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedMinValue() <em>Owned Min Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedMinValue() <em>Owned Min Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedMinValue()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedMinValue()
+   * @generated
+   * @ordered
+   */
 	protected DataValue ownedMinValue;
 
 
@@ -439,13 +439,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedMaxValue() <em>Owned Max Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedMaxValue() <em>Owned Max Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedMaxValue()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedMaxValue()
+   * @generated
+   * @ordered
+   */
 	protected DataValue ownedMaxValue;
 
 
@@ -453,13 +453,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedNullValue() <em>Owned Null Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedNullValue() <em>Owned Null Value</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedNullValue()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedNullValue()
+   * @generated
+   * @ordered
+   */
 	protected DataValue ownedNullValue;
 
 
@@ -467,13 +467,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedMinCard() <em>Owned Min Card</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedMinCard() <em>Owned Min Card</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedMinCard()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedMinCard()
+   * @generated
+   * @ordered
+   */
 	protected NumericValue ownedMinCard;
 
 
@@ -481,13 +481,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedMinLength() <em>Owned Min Length</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedMinLength() <em>Owned Min Length</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedMinLength()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedMinLength()
+   * @generated
+   * @ordered
+   */
 	protected NumericValue ownedMinLength;
 
 
@@ -495,13 +495,13 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedMaxCard() <em>Owned Max Card</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedMaxCard() <em>Owned Max Card</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedMaxCard()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedMaxCard()
+   * @generated
+   * @ordered
+   */
 	protected NumericValue ownedMaxCard;
 
 
@@ -509,48 +509,48 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedMaxLength() <em>Owned Max Length</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedMaxLength() <em>Owned Max Length</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedMaxLength()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedMaxLength()
+   * @generated
+   * @ordered
+   */
 	protected NumericValue ownedMaxLength;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected MultiplicityElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.MULTIPLICITY_ELEMENT;
-	}
+    return InformationPackage.Literals.MULTIPLICITY_ELEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTrace> getIncomingTraces() {
 
@@ -577,27 +577,27 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__INCOMING_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractTrace> getOutgoingTraces() {
 
@@ -624,48 +624,48 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
     // A helper is found, let's use it. 
     EAnnotation annotation = ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractTrace> resultAsList = (Collection<AbstractTrace>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractTrace>(this, ModellingcorePackage.Literals.TRACEABLE_ELEMENT__OUTGOING_TRACES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isVisibleInDoc() {
 
-		return visibleInDoc;
-	}
+    return visibleInDoc;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setVisibleInDoc(boolean newVisibleInDoc) {
 
-		boolean oldVisibleInDoc = visibleInDoc;
-		visibleInDoc = newVisibleInDoc;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC, oldVisibleInDoc, visibleInDoc));
+    boolean oldVisibleInDoc = visibleInDoc;
+    visibleInDoc = newVisibleInDoc;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC, oldVisibleInDoc, visibleInDoc));
 
-	}
+  }
 
 
 
@@ -673,31 +673,31 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isVisibleInLM() {
 
-		return visibleInLM;
-	}
+    return visibleInLM;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setVisibleInLM(boolean newVisibleInLM) {
 
-		boolean oldVisibleInLM = visibleInLM;
-		visibleInLM = newVisibleInLM;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM, oldVisibleInLM, visibleInLM));
+    boolean oldVisibleInLM = visibleInLM;
+    visibleInLM = newVisibleInLM;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM, oldVisibleInLM, visibleInLM));
 
-	}
+  }
 
 
 
@@ -705,31 +705,31 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getSummary() {
 
-		return summary;
-	}
+    return summary;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setSummary(String newSummary) {
 
-		String oldSummary = summary;
-		summary = newSummary;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY, oldSummary, summary));
+    String oldSummary = summary;
+    summary = newSummary;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY, oldSummary, summary));
 
-	}
+  }
 
 
 
@@ -737,31 +737,31 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getDescription() {
 
-		return description;
-	}
+    return description;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setDescription(String newDescription) {
 
-		String oldDescription = description;
-		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION, oldDescription, description));
+    String oldDescription = description;
+    description = newDescription;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION, oldDescription, description));
 
-	}
+  }
 
 
 
@@ -769,31 +769,31 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getReview() {
 
-		return review;
-	}
+    return review;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setReview(String newReview) {
 
-		String oldReview = review;
-		review = newReview;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__REVIEW, oldReview, review));
+    String oldReview = review;
+    review = newReview;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__REVIEW, oldReview, review));
 
-	}
+  }
 
 
 
@@ -801,142 +801,142 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractPropertyValue> getOwnedPropertyValues() {
 
-		if (ownedPropertyValues == null) {
-			ownedPropertyValues = new EObjectContainmentEList.Resolving<AbstractPropertyValue>(AbstractPropertyValue.class, this, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES);
-		}
-		return ownedPropertyValues;
-	}
+    if (ownedPropertyValues == null) {
+      ownedPropertyValues = new EObjectContainmentEList.Resolving<AbstractPropertyValue>(AbstractPropertyValue.class, this, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES);
+    }
+    return ownedPropertyValues;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<EnumerationPropertyType> getOwnedEnumerationPropertyTypes() {
 
-		if (ownedEnumerationPropertyTypes == null) {
-			ownedEnumerationPropertyTypes = new EObjectContainmentEList.Resolving<EnumerationPropertyType>(EnumerationPropertyType.class, this, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES);
-		}
-		return ownedEnumerationPropertyTypes;
-	}
+    if (ownedEnumerationPropertyTypes == null) {
+      ownedEnumerationPropertyTypes = new EObjectContainmentEList.Resolving<EnumerationPropertyType>(EnumerationPropertyType.class, this, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES);
+    }
+    return ownedEnumerationPropertyTypes;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractPropertyValue> getAppliedPropertyValues() {
 
-		if (appliedPropertyValues == null) {
-			appliedPropertyValues = new EObjectResolvingEList<AbstractPropertyValue>(AbstractPropertyValue.class, this, InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES);
-		}
-		return appliedPropertyValues;
-	}
+    if (appliedPropertyValues == null) {
+      appliedPropertyValues = new EObjectResolvingEList<AbstractPropertyValue>(AbstractPropertyValue.class, this, InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES);
+    }
+    return appliedPropertyValues;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValueGroup> getOwnedPropertyValueGroups() {
 
-		if (ownedPropertyValueGroups == null) {
-			ownedPropertyValueGroups = new EObjectContainmentEList.Resolving<PropertyValueGroup>(PropertyValueGroup.class, this, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS);
-		}
-		return ownedPropertyValueGroups;
-	}
+    if (ownedPropertyValueGroups == null) {
+      ownedPropertyValueGroups = new EObjectContainmentEList.Resolving<PropertyValueGroup>(PropertyValueGroup.class, this, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS);
+    }
+    return ownedPropertyValueGroups;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValueGroup> getAppliedPropertyValueGroups() {
 
-		if (appliedPropertyValueGroups == null) {
-			appliedPropertyValueGroups = new EObjectResolvingEList<PropertyValueGroup>(PropertyValueGroup.class, this, InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS);
-		}
-		return appliedPropertyValueGroups;
-	}
+    if (appliedPropertyValueGroups == null) {
+      appliedPropertyValueGroups = new EObjectResolvingEList<PropertyValueGroup>(PropertyValueGroup.class, this, InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS);
+    }
+    return appliedPropertyValueGroups;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EnumerationPropertyLiteral getStatus() {
 
-		if (status != null && status.eIsProxy()) {
-			InternalEObject oldStatus = (InternalEObject)status;
-			status = (EnumerationPropertyLiteral)eResolveProxy(oldStatus);
-			if (status != oldStatus) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.MULTIPLICITY_ELEMENT__STATUS, oldStatus, status));
-			}
-		}
-		return status;
-	}
+    if (status != null && status.eIsProxy()) {
+      InternalEObject oldStatus = (InternalEObject)status;
+      status = (EnumerationPropertyLiteral)eResolveProxy(oldStatus);
+      if (status != oldStatus) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, InformationPackage.MULTIPLICITY_ELEMENT__STATUS, oldStatus, status));
+      }
+    }
+    return status;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EnumerationPropertyLiteral basicGetStatus() {
 
-		return status;
-	}
+    return status;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setStatus(EnumerationPropertyLiteral newStatus) {
 
-		EnumerationPropertyLiteral oldStatus = status;
-		status = newStatus;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__STATUS, oldStatus, status));
+    EnumerationPropertyLiteral oldStatus = status;
+    status = newStatus;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__STATUS, oldStatus, status));
 
-	}
+  }
 
 
 
@@ -944,28 +944,28 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<EnumerationPropertyLiteral> getFeatures() {
 
-		if (features == null) {
-			features = new EObjectResolvingEList<EnumerationPropertyLiteral>(EnumerationPropertyLiteral.class, this, InformationPackage.MULTIPLICITY_ELEMENT__FEATURES);
-		}
-		return features;
-	}
+    if (features == null) {
+      features = new EObjectResolvingEList<EnumerationPropertyLiteral>(EnumerationPropertyLiteral.class, this, InformationPackage.MULTIPLICITY_ELEMENT__FEATURES);
+    }
+    return features;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Requirement> getAppliedRequirements() {
 
@@ -992,48 +992,48 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Requirement> resultAsList = (Collection<Requirement>) result;
-		return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Requirement> resultAsList = (Collection<Requirement>) result;
+    return new EcoreEList.UnmodifiableEList<Requirement>(this, CapellacorePackage.Literals.CAPELLA_ELEMENT__APPLIED_REQUIREMENTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isOrdered() {
 
-		return ordered;
-	}
+    return ordered;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOrdered(boolean newOrdered) {
 
-		boolean oldOrdered = ordered;
-		ordered = newOrdered;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__ORDERED, oldOrdered, ordered));
+    boolean oldOrdered = ordered;
+    ordered = newOrdered;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__ORDERED, oldOrdered, ordered));
 
-	}
+  }
 
 
 
@@ -1041,31 +1041,31 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isUnique() {
 
-		return unique;
-	}
+    return unique;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setUnique(boolean newUnique) {
 
-		boolean oldUnique = unique;
-		unique = newUnique;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE, oldUnique, unique));
+    boolean oldUnique = unique;
+    unique = newUnique;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE, oldUnique, unique));
 
-	}
+  }
 
 
 
@@ -1073,31 +1073,31 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isMinInclusive() {
 
-		return minInclusive;
-	}
+    return minInclusive;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setMinInclusive(boolean newMinInclusive) {
 
-		boolean oldMinInclusive = minInclusive;
-		minInclusive = newMinInclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE, oldMinInclusive, minInclusive));
+    boolean oldMinInclusive = minInclusive;
+    minInclusive = newMinInclusive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE, oldMinInclusive, minInclusive));
 
-	}
+  }
 
 
 
@@ -1105,31 +1105,31 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isMaxInclusive() {
 
-		return maxInclusive;
-	}
+    return maxInclusive;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
-		boolean oldMaxInclusive = maxInclusive;
-		maxInclusive = newMaxInclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE, oldMaxInclusive, maxInclusive));
+    boolean oldMaxInclusive = maxInclusive;
+    maxInclusive = newMaxInclusive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE, oldMaxInclusive, maxInclusive));
 
-	}
+  }
 
 
 
@@ -1137,58 +1137,58 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getOwnedDefaultValue() {
 
-		return ownedDefaultValue;
-	}
+    return ownedDefaultValue;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedDefaultValue(DataValue newOwnedDefaultValue, NotificationChain msgs) {
 
-		DataValue oldOwnedDefaultValue = ownedDefaultValue;
-		ownedDefaultValue = newOwnedDefaultValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, oldOwnedDefaultValue, newOwnedDefaultValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DataValue oldOwnedDefaultValue = ownedDefaultValue;
+    ownedDefaultValue = newOwnedDefaultValue;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, oldOwnedDefaultValue, newOwnedDefaultValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedDefaultValue(DataValue newOwnedDefaultValue) {
 
-		if (newOwnedDefaultValue != ownedDefaultValue) {
-			NotificationChain msgs = null;
-			if (ownedDefaultValue != null)
-				msgs = ((InternalEObject)ownedDefaultValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, null, msgs);
-			if (newOwnedDefaultValue != null)
-				msgs = ((InternalEObject)newOwnedDefaultValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, null, msgs);
-			msgs = basicSetOwnedDefaultValue(newOwnedDefaultValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, newOwnedDefaultValue, newOwnedDefaultValue));
+    if (newOwnedDefaultValue != ownedDefaultValue) {
+      NotificationChain msgs = null;
+      if (ownedDefaultValue != null)
+        msgs = ((InternalEObject)ownedDefaultValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, null, msgs);
+      if (newOwnedDefaultValue != null)
+        msgs = ((InternalEObject)newOwnedDefaultValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, null, msgs);
+      msgs = basicSetOwnedDefaultValue(newOwnedDefaultValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE, newOwnedDefaultValue, newOwnedDefaultValue));
 
-	}
+  }
 
 
 
@@ -1196,58 +1196,58 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getOwnedMinValue() {
 
-		return ownedMinValue;
-	}
+    return ownedMinValue;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedMinValue(DataValue newOwnedMinValue, NotificationChain msgs) {
 
-		DataValue oldOwnedMinValue = ownedMinValue;
-		ownedMinValue = newOwnedMinValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, oldOwnedMinValue, newOwnedMinValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DataValue oldOwnedMinValue = ownedMinValue;
+    ownedMinValue = newOwnedMinValue;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, oldOwnedMinValue, newOwnedMinValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedMinValue(DataValue newOwnedMinValue) {
 
-		if (newOwnedMinValue != ownedMinValue) {
-			NotificationChain msgs = null;
-			if (ownedMinValue != null)
-				msgs = ((InternalEObject)ownedMinValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, null, msgs);
-			if (newOwnedMinValue != null)
-				msgs = ((InternalEObject)newOwnedMinValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, null, msgs);
-			msgs = basicSetOwnedMinValue(newOwnedMinValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, newOwnedMinValue, newOwnedMinValue));
+    if (newOwnedMinValue != ownedMinValue) {
+      NotificationChain msgs = null;
+      if (ownedMinValue != null)
+        msgs = ((InternalEObject)ownedMinValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, null, msgs);
+      if (newOwnedMinValue != null)
+        msgs = ((InternalEObject)newOwnedMinValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, null, msgs);
+      msgs = basicSetOwnedMinValue(newOwnedMinValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE, newOwnedMinValue, newOwnedMinValue));
 
-	}
+  }
 
 
 
@@ -1255,58 +1255,58 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getOwnedMaxValue() {
 
-		return ownedMaxValue;
-	}
+    return ownedMaxValue;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedMaxValue(DataValue newOwnedMaxValue, NotificationChain msgs) {
 
-		DataValue oldOwnedMaxValue = ownedMaxValue;
-		ownedMaxValue = newOwnedMaxValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, oldOwnedMaxValue, newOwnedMaxValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DataValue oldOwnedMaxValue = ownedMaxValue;
+    ownedMaxValue = newOwnedMaxValue;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, oldOwnedMaxValue, newOwnedMaxValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedMaxValue(DataValue newOwnedMaxValue) {
 
-		if (newOwnedMaxValue != ownedMaxValue) {
-			NotificationChain msgs = null;
-			if (ownedMaxValue != null)
-				msgs = ((InternalEObject)ownedMaxValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, null, msgs);
-			if (newOwnedMaxValue != null)
-				msgs = ((InternalEObject)newOwnedMaxValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, null, msgs);
-			msgs = basicSetOwnedMaxValue(newOwnedMaxValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, newOwnedMaxValue, newOwnedMaxValue));
+    if (newOwnedMaxValue != ownedMaxValue) {
+      NotificationChain msgs = null;
+      if (ownedMaxValue != null)
+        msgs = ((InternalEObject)ownedMaxValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, null, msgs);
+      if (newOwnedMaxValue != null)
+        msgs = ((InternalEObject)newOwnedMaxValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, null, msgs);
+      msgs = basicSetOwnedMaxValue(newOwnedMaxValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE, newOwnedMaxValue, newOwnedMaxValue));
 
-	}
+  }
 
 
 
@@ -1314,58 +1314,58 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getOwnedNullValue() {
 
-		return ownedNullValue;
-	}
+    return ownedNullValue;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedNullValue(DataValue newOwnedNullValue, NotificationChain msgs) {
 
-		DataValue oldOwnedNullValue = ownedNullValue;
-		ownedNullValue = newOwnedNullValue;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, oldOwnedNullValue, newOwnedNullValue);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    DataValue oldOwnedNullValue = ownedNullValue;
+    ownedNullValue = newOwnedNullValue;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, oldOwnedNullValue, newOwnedNullValue);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedNullValue(DataValue newOwnedNullValue) {
 
-		if (newOwnedNullValue != ownedNullValue) {
-			NotificationChain msgs = null;
-			if (ownedNullValue != null)
-				msgs = ((InternalEObject)ownedNullValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, null, msgs);
-			if (newOwnedNullValue != null)
-				msgs = ((InternalEObject)newOwnedNullValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, null, msgs);
-			msgs = basicSetOwnedNullValue(newOwnedNullValue, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, newOwnedNullValue, newOwnedNullValue));
+    if (newOwnedNullValue != ownedNullValue) {
+      NotificationChain msgs = null;
+      if (ownedNullValue != null)
+        msgs = ((InternalEObject)ownedNullValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, null, msgs);
+      if (newOwnedNullValue != null)
+        msgs = ((InternalEObject)newOwnedNullValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, null, msgs);
+      msgs = basicSetOwnedNullValue(newOwnedNullValue, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE, newOwnedNullValue, newOwnedNullValue));
 
-	}
+  }
 
 
 
@@ -1373,58 +1373,58 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NumericValue getOwnedMinCard() {
 
-		return ownedMinCard;
-	}
+    return ownedMinCard;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedMinCard(NumericValue newOwnedMinCard, NotificationChain msgs) {
 
-		NumericValue oldOwnedMinCard = ownedMinCard;
-		ownedMinCard = newOwnedMinCard;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, oldOwnedMinCard, newOwnedMinCard);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    NumericValue oldOwnedMinCard = ownedMinCard;
+    ownedMinCard = newOwnedMinCard;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, oldOwnedMinCard, newOwnedMinCard);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedMinCard(NumericValue newOwnedMinCard) {
 
-		if (newOwnedMinCard != ownedMinCard) {
-			NotificationChain msgs = null;
-			if (ownedMinCard != null)
-				msgs = ((InternalEObject)ownedMinCard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, null, msgs);
-			if (newOwnedMinCard != null)
-				msgs = ((InternalEObject)newOwnedMinCard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, null, msgs);
-			msgs = basicSetOwnedMinCard(newOwnedMinCard, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, newOwnedMinCard, newOwnedMinCard));
+    if (newOwnedMinCard != ownedMinCard) {
+      NotificationChain msgs = null;
+      if (ownedMinCard != null)
+        msgs = ((InternalEObject)ownedMinCard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, null, msgs);
+      if (newOwnedMinCard != null)
+        msgs = ((InternalEObject)newOwnedMinCard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, null, msgs);
+      msgs = basicSetOwnedMinCard(newOwnedMinCard, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD, newOwnedMinCard, newOwnedMinCard));
 
-	}
+  }
 
 
 
@@ -1432,58 +1432,58 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NumericValue getOwnedMinLength() {
 
-		return ownedMinLength;
-	}
+    return ownedMinLength;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedMinLength(NumericValue newOwnedMinLength, NotificationChain msgs) {
 
-		NumericValue oldOwnedMinLength = ownedMinLength;
-		ownedMinLength = newOwnedMinLength;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, oldOwnedMinLength, newOwnedMinLength);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    NumericValue oldOwnedMinLength = ownedMinLength;
+    ownedMinLength = newOwnedMinLength;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, oldOwnedMinLength, newOwnedMinLength);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
-		if (newOwnedMinLength != ownedMinLength) {
-			NotificationChain msgs = null;
-			if (ownedMinLength != null)
-				msgs = ((InternalEObject)ownedMinLength).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, null, msgs);
-			if (newOwnedMinLength != null)
-				msgs = ((InternalEObject)newOwnedMinLength).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, null, msgs);
-			msgs = basicSetOwnedMinLength(newOwnedMinLength, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, newOwnedMinLength, newOwnedMinLength));
+    if (newOwnedMinLength != ownedMinLength) {
+      NotificationChain msgs = null;
+      if (ownedMinLength != null)
+        msgs = ((InternalEObject)ownedMinLength).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, null, msgs);
+      if (newOwnedMinLength != null)
+        msgs = ((InternalEObject)newOwnedMinLength).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, null, msgs);
+      msgs = basicSetOwnedMinLength(newOwnedMinLength, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH, newOwnedMinLength, newOwnedMinLength));
 
-	}
+  }
 
 
 
@@ -1491,58 +1491,58 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NumericValue getOwnedMaxCard() {
 
-		return ownedMaxCard;
-	}
+    return ownedMaxCard;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedMaxCard(NumericValue newOwnedMaxCard, NotificationChain msgs) {
 
-		NumericValue oldOwnedMaxCard = ownedMaxCard;
-		ownedMaxCard = newOwnedMaxCard;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, oldOwnedMaxCard, newOwnedMaxCard);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    NumericValue oldOwnedMaxCard = ownedMaxCard;
+    ownedMaxCard = newOwnedMaxCard;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, oldOwnedMaxCard, newOwnedMaxCard);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedMaxCard(NumericValue newOwnedMaxCard) {
 
-		if (newOwnedMaxCard != ownedMaxCard) {
-			NotificationChain msgs = null;
-			if (ownedMaxCard != null)
-				msgs = ((InternalEObject)ownedMaxCard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, null, msgs);
-			if (newOwnedMaxCard != null)
-				msgs = ((InternalEObject)newOwnedMaxCard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, null, msgs);
-			msgs = basicSetOwnedMaxCard(newOwnedMaxCard, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, newOwnedMaxCard, newOwnedMaxCard));
+    if (newOwnedMaxCard != ownedMaxCard) {
+      NotificationChain msgs = null;
+      if (ownedMaxCard != null)
+        msgs = ((InternalEObject)ownedMaxCard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, null, msgs);
+      if (newOwnedMaxCard != null)
+        msgs = ((InternalEObject)newOwnedMaxCard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, null, msgs);
+      msgs = basicSetOwnedMaxCard(newOwnedMaxCard, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD, newOwnedMaxCard, newOwnedMaxCard));
 
-	}
+  }
 
 
 
@@ -1550,579 +1550,579 @@ public abstract class MultiplicityElementImpl extends ModelElementImpl implement
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NumericValue getOwnedMaxLength() {
 
-		return ownedMaxLength;
-	}
+    return ownedMaxLength;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetOwnedMaxLength(NumericValue newOwnedMaxLength, NotificationChain msgs) {
 
-		NumericValue oldOwnedMaxLength = ownedMaxLength;
-		ownedMaxLength = newOwnedMaxLength;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, oldOwnedMaxLength, newOwnedMaxLength);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    NumericValue oldOwnedMaxLength = ownedMaxLength;
+    ownedMaxLength = newOwnedMaxLength;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, oldOwnedMaxLength, newOwnedMaxLength);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
-		if (newOwnedMaxLength != ownedMaxLength) {
-			NotificationChain msgs = null;
-			if (ownedMaxLength != null)
-				msgs = ((InternalEObject)ownedMaxLength).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, null, msgs);
-			if (newOwnedMaxLength != null)
-				msgs = ((InternalEObject)newOwnedMaxLength).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, null, msgs);
-			msgs = basicSetOwnedMaxLength(newOwnedMaxLength, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, newOwnedMaxLength, newOwnedMaxLength));
+    if (newOwnedMaxLength != ownedMaxLength) {
+      NotificationChain msgs = null;
+      if (ownedMaxLength != null)
+        msgs = ((InternalEObject)ownedMaxLength).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, null, msgs);
+      if (newOwnedMaxLength != null)
+        msgs = ((InternalEObject)newOwnedMaxLength).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, null, msgs);
+      msgs = basicSetOwnedMaxLength(newOwnedMaxLength, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH, newOwnedMaxLength, newOwnedMaxLength));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
-				return ((InternalEList<?>)getOwnedPropertyValues()).basicRemove(otherEnd, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
-				return ((InternalEList<?>)getOwnedEnumerationPropertyTypes()).basicRemove(otherEnd, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
-				return ((InternalEList<?>)getOwnedPropertyValueGroups()).basicRemove(otherEnd, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
-				return basicSetOwnedDefaultValue(null, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
-				return basicSetOwnedMinValue(null, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
-				return basicSetOwnedMaxValue(null, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
-				return basicSetOwnedNullValue(null, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
-				return basicSetOwnedMinCard(null, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
-				return basicSetOwnedMinLength(null, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
-				return basicSetOwnedMaxCard(null, msgs);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
-				return basicSetOwnedMaxLength(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
+        return ((InternalEList<?>)getOwnedPropertyValues()).basicRemove(otherEnd, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
+        return ((InternalEList<?>)getOwnedEnumerationPropertyTypes()).basicRemove(otherEnd, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
+        return ((InternalEList<?>)getOwnedPropertyValueGroups()).basicRemove(otherEnd, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
+        return basicSetOwnedDefaultValue(null, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
+        return basicSetOwnedMinValue(null, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
+        return basicSetOwnedMaxValue(null, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
+        return basicSetOwnedNullValue(null, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
+        return basicSetOwnedMinCard(null, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
+        return basicSetOwnedMinLength(null, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
+        return basicSetOwnedMaxCard(null, msgs);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
+        return basicSetOwnedMaxLength(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.MULTIPLICITY_ELEMENT__INCOMING_TRACES:
-				return getIncomingTraces();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OUTGOING_TRACES:
-				return getOutgoingTraces();
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
-				return isVisibleInDoc();
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
-				return isVisibleInLM();
-			case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
-				return getSummary();
-			case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
-				return getDescription();
-			case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
-				return getReview();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
-				return getOwnedPropertyValues();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
-				return getOwnedEnumerationPropertyTypes();
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
-				return getAppliedPropertyValues();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
-				return getOwnedPropertyValueGroups();
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
-				return getAppliedPropertyValueGroups();
-			case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
-				if (resolve) return getStatus();
-				return basicGetStatus();
-			case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
-				return getFeatures();
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_REQUIREMENTS:
-				return getAppliedRequirements();
-			case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
-				return isOrdered();
-			case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
-				return isUnique();
-			case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
-				return isMinInclusive();
-			case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
-				return isMaxInclusive();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
-				return getOwnedDefaultValue();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
-				return getOwnedMinValue();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
-				return getOwnedMaxValue();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
-				return getOwnedNullValue();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
-				return getOwnedMinCard();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
-				return getOwnedMinLength();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
-				return getOwnedMaxCard();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
-				return getOwnedMaxLength();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.MULTIPLICITY_ELEMENT__INCOMING_TRACES:
+        return getIncomingTraces();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OUTGOING_TRACES:
+        return getOutgoingTraces();
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
+        return isVisibleInDoc();
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
+        return isVisibleInLM();
+      case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
+        return getSummary();
+      case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
+        return getDescription();
+      case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
+        return getReview();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
+        return getOwnedPropertyValues();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
+        return getOwnedEnumerationPropertyTypes();
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
+        return getAppliedPropertyValues();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
+        return getOwnedPropertyValueGroups();
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
+        return getAppliedPropertyValueGroups();
+      case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
+        if (resolve) return getStatus();
+        return basicGetStatus();
+      case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
+        return getFeatures();
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_REQUIREMENTS:
+        return getAppliedRequirements();
+      case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
+        return isOrdered();
+      case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
+        return isUnique();
+      case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
+        return isMinInclusive();
+      case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
+        return isMaxInclusive();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
+        return getOwnedDefaultValue();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
+        return getOwnedMinValue();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
+        return getOwnedMaxValue();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
+        return getOwnedNullValue();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
+        return getOwnedMinCard();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
+        return getOwnedMinLength();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
+        return getOwnedMaxCard();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
+        return getOwnedMaxLength();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setVisibleInDoc((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setVisibleInLM((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setSummary((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setDescription((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setReview((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
-				getOwnedPropertyValues().clear();
-				getOwnedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
-				getOwnedEnumerationPropertyTypes().clear();
-				getOwnedEnumerationPropertyTypes().addAll((Collection<? extends EnumerationPropertyType>)newValue);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
-				getAppliedPropertyValues().clear();
-				getAppliedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
-				getOwnedPropertyValueGroups().clear();
-				getOwnedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
-				getAppliedPropertyValueGroups().clear();
-				getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
-				// end-extension-code
-					setStatus((EnumerationPropertyLiteral)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
-				getFeatures().clear();
-				getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setOrdered((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setUnique((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setMinInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setMaxInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
-					setOwnedDefaultValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
-					setOwnedMinValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
-					setOwnedMaxValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof DataValue) {
-				// end-extension-code
-					setOwnedNullValue((DataValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
-					setOwnedMinCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
-					setOwnedMinLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
-					setOwnedMaxCard((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof NumericValue) {
-				// end-extension-code
-					setOwnedMaxLength((NumericValue)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setVisibleInDoc((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setVisibleInLM((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof String) {
+        // end-extension-code
+          setSummary((String)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof String) {
+        // end-extension-code
+          setDescription((String)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof String) {
+        // end-extension-code
+          setReview((String)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
+        getOwnedPropertyValues().clear();
+        getOwnedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
+        getOwnedEnumerationPropertyTypes().clear();
+        getOwnedEnumerationPropertyTypes().addAll((Collection<? extends EnumerationPropertyType>)newValue);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
+        getAppliedPropertyValues().clear();
+        getAppliedPropertyValues().addAll((Collection<? extends AbstractPropertyValue>)newValue);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
+        getOwnedPropertyValueGroups().clear();
+        getOwnedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
+        getAppliedPropertyValueGroups().clear();
+        getAppliedPropertyValueGroups().addAll((Collection<? extends PropertyValueGroup>)newValue);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof EnumerationPropertyLiteral) {
+        // end-extension-code
+          setStatus((EnumerationPropertyLiteral)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
+        getFeatures().clear();
+        getFeatures().addAll((Collection<? extends EnumerationPropertyLiteral>)newValue);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setOrdered((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setUnique((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setMinInclusive((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setMaxInclusive((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof DataValue) {
+        // end-extension-code
+          setOwnedDefaultValue((DataValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof DataValue) {
+        // end-extension-code
+          setOwnedMinValue((DataValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof DataValue) {
+        // end-extension-code
+          setOwnedMaxValue((DataValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof DataValue) {
+        // end-extension-code
+          setOwnedNullValue((DataValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof NumericValue) {
+        // end-extension-code
+          setOwnedMinCard((NumericValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof NumericValue) {
+        // end-extension-code
+          setOwnedMinLength((NumericValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof NumericValue) {
+        // end-extension-code
+          setOwnedMaxCard((NumericValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof NumericValue) {
+        // end-extension-code
+          setOwnedMaxLength((NumericValue)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
-				setVisibleInDoc(VISIBLE_IN_DOC_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
-				setVisibleInLM(VISIBLE_IN_LM_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
-				setSummary(SUMMARY_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
-				setReview(REVIEW_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
-				getOwnedPropertyValues().clear();
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
-				getOwnedEnumerationPropertyTypes().clear();
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
-				getAppliedPropertyValues().clear();
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
-				getOwnedPropertyValueGroups().clear();
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
-				getAppliedPropertyValueGroups().clear();
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
-				setStatus((EnumerationPropertyLiteral)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
-				getFeatures().clear();
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
-				setOrdered(ORDERED_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
-				setUnique(UNIQUE_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
-				setMinInclusive(MIN_INCLUSIVE_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
-				setMaxInclusive(MAX_INCLUSIVE_EDEFAULT);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
-				setOwnedDefaultValue((DataValue)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
-				setOwnedMinValue((DataValue)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
-				setOwnedMaxValue((DataValue)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
-				setOwnedNullValue((DataValue)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
-				setOwnedMinCard((NumericValue)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
-				setOwnedMinLength((NumericValue)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
-				setOwnedMaxCard((NumericValue)null);
-				return;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
-				setOwnedMaxLength((NumericValue)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
+        setVisibleInDoc(VISIBLE_IN_DOC_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
+        setVisibleInLM(VISIBLE_IN_LM_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
+        setSummary(SUMMARY_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
+        setDescription(DESCRIPTION_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
+        setReview(REVIEW_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
+        getOwnedPropertyValues().clear();
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
+        getOwnedEnumerationPropertyTypes().clear();
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
+        getAppliedPropertyValues().clear();
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
+        getOwnedPropertyValueGroups().clear();
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
+        getAppliedPropertyValueGroups().clear();
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
+        setStatus((EnumerationPropertyLiteral)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
+        getFeatures().clear();
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
+        setOrdered(ORDERED_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
+        setUnique(UNIQUE_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
+        setMinInclusive(MIN_INCLUSIVE_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
+        setMaxInclusive(MAX_INCLUSIVE_EDEFAULT);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
+        setOwnedDefaultValue((DataValue)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
+        setOwnedMinValue((DataValue)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
+        setOwnedMaxValue((DataValue)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
+        setOwnedNullValue((DataValue)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
+        setOwnedMinCard((NumericValue)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
+        setOwnedMinLength((NumericValue)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
+        setOwnedMaxCard((NumericValue)null);
+        return;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
+        setOwnedMaxLength((NumericValue)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.MULTIPLICITY_ELEMENT__INCOMING_TRACES:
-				return !getIncomingTraces().isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OUTGOING_TRACES:
-				return !getOutgoingTraces().isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
-				return visibleInDoc != VISIBLE_IN_DOC_EDEFAULT;
-			case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
-				return visibleInLM != VISIBLE_IN_LM_EDEFAULT;
-			case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
-				return SUMMARY_EDEFAULT == null ? summary != null : !SUMMARY_EDEFAULT.equals(summary);
-			case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
-				return REVIEW_EDEFAULT == null ? review != null : !REVIEW_EDEFAULT.equals(review);
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
-				return ownedPropertyValues != null && !ownedPropertyValues.isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
-				return ownedEnumerationPropertyTypes != null && !ownedEnumerationPropertyTypes.isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
-				return appliedPropertyValues != null && !appliedPropertyValues.isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
-				return ownedPropertyValueGroups != null && !ownedPropertyValueGroups.isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
-				return appliedPropertyValueGroups != null && !appliedPropertyValueGroups.isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
-				return status != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
-				return features != null && !features.isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_REQUIREMENTS:
-				return !getAppliedRequirements().isEmpty();
-			case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
-				return ordered != ORDERED_EDEFAULT;
-			case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
-				return unique != UNIQUE_EDEFAULT;
-			case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
-				return minInclusive != MIN_INCLUSIVE_EDEFAULT;
-			case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
-				return maxInclusive != MAX_INCLUSIVE_EDEFAULT;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
-				return ownedDefaultValue != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
-				return ownedMinValue != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
-				return ownedMaxValue != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
-				return ownedNullValue != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
-				return ownedMinCard != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
-				return ownedMinLength != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
-				return ownedMaxCard != null;
-			case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
-				return ownedMaxLength != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.MULTIPLICITY_ELEMENT__INCOMING_TRACES:
+        return !getIncomingTraces().isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OUTGOING_TRACES:
+        return !getOutgoingTraces().isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC:
+        return visibleInDoc != VISIBLE_IN_DOC_EDEFAULT;
+      case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM:
+        return visibleInLM != VISIBLE_IN_LM_EDEFAULT;
+      case InformationPackage.MULTIPLICITY_ELEMENT__SUMMARY:
+        return SUMMARY_EDEFAULT == null ? summary != null : !SUMMARY_EDEFAULT.equals(summary);
+      case InformationPackage.MULTIPLICITY_ELEMENT__DESCRIPTION:
+        return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+      case InformationPackage.MULTIPLICITY_ELEMENT__REVIEW:
+        return REVIEW_EDEFAULT == null ? review != null : !REVIEW_EDEFAULT.equals(review);
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUES:
+        return ownedPropertyValues != null && !ownedPropertyValues.isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_ENUMERATION_PROPERTY_TYPES:
+        return ownedEnumerationPropertyTypes != null && !ownedEnumerationPropertyTypes.isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUES:
+        return appliedPropertyValues != null && !appliedPropertyValues.isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_PROPERTY_VALUE_GROUPS:
+        return ownedPropertyValueGroups != null && !ownedPropertyValueGroups.isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_PROPERTY_VALUE_GROUPS:
+        return appliedPropertyValueGroups != null && !appliedPropertyValueGroups.isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__STATUS:
+        return status != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__FEATURES:
+        return features != null && !features.isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__APPLIED_REQUIREMENTS:
+        return !getAppliedRequirements().isEmpty();
+      case InformationPackage.MULTIPLICITY_ELEMENT__ORDERED:
+        return ordered != ORDERED_EDEFAULT;
+      case InformationPackage.MULTIPLICITY_ELEMENT__UNIQUE:
+        return unique != UNIQUE_EDEFAULT;
+      case InformationPackage.MULTIPLICITY_ELEMENT__MIN_INCLUSIVE:
+        return minInclusive != MIN_INCLUSIVE_EDEFAULT;
+      case InformationPackage.MULTIPLICITY_ELEMENT__MAX_INCLUSIVE:
+        return maxInclusive != MAX_INCLUSIVE_EDEFAULT;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_DEFAULT_VALUE:
+        return ownedDefaultValue != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_VALUE:
+        return ownedMinValue != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_VALUE:
+        return ownedMaxValue != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_NULL_VALUE:
+        return ownedNullValue != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_CARD:
+        return ownedMinCard != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MIN_LENGTH:
+        return ownedMinLength != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_CARD:
+        return ownedMaxCard != null;
+      case InformationPackage.MULTIPLICITY_ELEMENT__OWNED_MAX_LENGTH:
+        return ownedMaxLength != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == PublishableElement.class) {
-			switch (derivedFeatureID) {
-				case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC;
-				case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == PublishableElement.class) {
+      switch (derivedFeatureID) {
+        case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC;
+        case InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM: return ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == PublishableElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC: return InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC;
-				case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM: return InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == PublishableElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_DOC: return InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_DOC;
+        case ModellingcorePackage.PUBLISHABLE_ELEMENT__VISIBLE_IN_LM: return InformationPackage.MULTIPLICITY_ELEMENT__VISIBLE_IN_LM;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (visibleInDoc: "); //$NON-NLS-1$
-		result.append(visibleInDoc);
-		result.append(", visibleInLM: "); //$NON-NLS-1$
-		result.append(visibleInLM);
-		result.append(", summary: "); //$NON-NLS-1$
-		result.append(summary);
-		result.append(", review: "); //$NON-NLS-1$
-		result.append(review);
-		result.append(", ordered: "); //$NON-NLS-1$
-		result.append(ordered);
-		result.append(", unique: "); //$NON-NLS-1$
-		result.append(unique);
-		result.append(", minInclusive: "); //$NON-NLS-1$
-		result.append(minInclusive);
-		result.append(", maxInclusive: "); //$NON-NLS-1$
-		result.append(maxInclusive);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (visibleInDoc: "); //$NON-NLS-1$
+    result.append(visibleInDoc);
+    result.append(", visibleInLM: "); //$NON-NLS-1$
+    result.append(visibleInLM);
+    result.append(", summary: "); //$NON-NLS-1$
+    result.append(summary);
+    result.append(", review: "); //$NON-NLS-1$
+    result.append(review);
+    result.append(", ordered: "); //$NON-NLS-1$
+    result.append(ordered);
+    result.append(", unique: "); //$NON-NLS-1$
+    result.append(unique);
+    result.append(", minInclusive: "); //$NON-NLS-1$
+    result.append(minInclusive);
+    result.append(", maxInclusive: "); //$NON-NLS-1$
+    result.append(maxInclusive);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //MultiplicityElementImpl

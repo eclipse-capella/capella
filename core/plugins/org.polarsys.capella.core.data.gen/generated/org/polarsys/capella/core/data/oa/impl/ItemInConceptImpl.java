@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,13 +37,13 @@ import org.polarsys.capella.core.data.oa.OaPackage;
 public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept {
 
 	/**
-	 * The cached value of the '{@link #getConcept() <em>Concept</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getConcept() <em>Concept</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getConcept()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getConcept()
+   * @generated
+   * @ordered
+   */
 	protected Concept concept;
 
 
@@ -51,90 +51,90 @@ public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept
 
 
 	/**
-	 * The cached value of the '{@link #getItem() <em>Item</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getItem() <em>Item</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getItem()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getItem()
+   * @generated
+   * @ordered
+   */
 	protected AbstractConceptItem item;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ItemInConceptImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OaPackage.Literals.ITEM_IN_CONCEPT;
-	}
+    return OaPackage.Literals.ITEM_IN_CONCEPT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Concept getConcept() {
 
-		if (concept != null && concept.eIsProxy()) {
-			InternalEObject oldConcept = (InternalEObject)concept;
-			concept = (Concept)eResolveProxy(oldConcept);
-			if (concept != oldConcept) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ITEM_IN_CONCEPT__CONCEPT, oldConcept, concept));
-			}
-		}
-		return concept;
-	}
+    if (concept != null && concept.eIsProxy()) {
+      InternalEObject oldConcept = (InternalEObject)concept;
+      concept = (Concept)eResolveProxy(oldConcept);
+      if (concept != oldConcept) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ITEM_IN_CONCEPT__CONCEPT, oldConcept, concept));
+      }
+    }
+    return concept;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Concept basicGetConcept() {
 
-		return concept;
-	}
+    return concept;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setConcept(Concept newConcept) {
 
-		Concept oldConcept = concept;
-		concept = newConcept;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ITEM_IN_CONCEPT__CONCEPT, oldConcept, concept));
+    Concept oldConcept = concept;
+    concept = newConcept;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ITEM_IN_CONCEPT__CONCEPT, oldConcept, concept));
 
-	}
+  }
 
 
 
@@ -142,140 +142,140 @@ public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConceptItem getItem() {
 
-		if (item != null && item.eIsProxy()) {
-			InternalEObject oldItem = (InternalEObject)item;
-			item = (AbstractConceptItem)eResolveProxy(oldItem);
-			if (item != oldItem) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ITEM_IN_CONCEPT__ITEM, oldItem, item));
-			}
-		}
-		return item;
-	}
+    if (item != null && item.eIsProxy()) {
+      InternalEObject oldItem = (InternalEObject)item;
+      item = (AbstractConceptItem)eResolveProxy(oldItem);
+      if (item != oldItem) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OaPackage.ITEM_IN_CONCEPT__ITEM, oldItem, item));
+      }
+    }
+    return item;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConceptItem basicGetItem() {
 
-		return item;
-	}
+    return item;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setItem(AbstractConceptItem newItem) {
 
-		AbstractConceptItem oldItem = item;
-		item = newItem;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ITEM_IN_CONCEPT__ITEM, oldItem, item));
+    AbstractConceptItem oldItem = item;
+    item = newItem;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OaPackage.ITEM_IN_CONCEPT__ITEM, oldItem, item));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
-				if (resolve) return getConcept();
-				return basicGetConcept();
-			case OaPackage.ITEM_IN_CONCEPT__ITEM:
-				if (resolve) return getItem();
-				return basicGetItem();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
+        if (resolve) return getConcept();
+        return basicGetConcept();
+      case OaPackage.ITEM_IN_CONCEPT__ITEM:
+        if (resolve) return getItem();
+        return basicGetItem();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Concept) {
-				// end-extension-code
-					setConcept((Concept)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case OaPackage.ITEM_IN_CONCEPT__ITEM:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConceptItem) {
-				// end-extension-code
-					setItem((AbstractConceptItem)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Concept) {
+        // end-extension-code
+          setConcept((Concept)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case OaPackage.ITEM_IN_CONCEPT__ITEM:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractConceptItem) {
+        // end-extension-code
+          setItem((AbstractConceptItem)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
-				setConcept((Concept)null);
-				return;
-			case OaPackage.ITEM_IN_CONCEPT__ITEM:
-				setItem((AbstractConceptItem)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
+        setConcept((Concept)null);
+        return;
+      case OaPackage.ITEM_IN_CONCEPT__ITEM:
+        setItem((AbstractConceptItem)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
-				return concept != null;
-			case OaPackage.ITEM_IN_CONCEPT__ITEM:
-				return item != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case OaPackage.ITEM_IN_CONCEPT__CONCEPT:
+        return concept != null;
+      case OaPackage.ITEM_IN_CONCEPT__ITEM:
+        return item != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,145 +49,145 @@ public class ComponentAllocationItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor allocatedComponentPropertyDescriptor;
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected IItemPropertyDescriptor allocatingComponentPropertyDescriptor;
 
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ComponentAllocationItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    super(adapterFactory);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void checkChildCreationExtender(Object object) {
-		super.checkChildCreationExtender(object);
-		if (object instanceof EObject) {
-			EObject eObject = (EObject) object;
-			// Process CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT
-			if (allocatedComponentPropertyDescriptor != null) {
-				Object allocatedComponentValue = eObject.eGet(CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT, true);
-				if (allocatedComponentValue != null && allocatedComponentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedComponentValue)) {
-					itemPropertyDescriptors.remove(allocatedComponentPropertyDescriptor);
-				} else if (allocatedComponentValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT) != null) {
-					itemPropertyDescriptors.remove(allocatedComponentPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(allocatedComponentPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(allocatedComponentPropertyDescriptor);
-				}
-			}
-			// Process CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT
-			if (allocatingComponentPropertyDescriptor != null) {
-				Object allocatingComponentValue = eObject.eGet(CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT, true);
-				if (allocatingComponentValue != null && allocatingComponentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingComponentValue)) {
-					itemPropertyDescriptors.remove(allocatingComponentPropertyDescriptor);
-				} else if (allocatingComponentValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT) != null) {
-					itemPropertyDescriptors.remove(allocatingComponentPropertyDescriptor);				  					
-				} else if (itemPropertyDescriptors.contains(allocatingComponentPropertyDescriptor) == false) {
-					itemPropertyDescriptors.add(allocatingComponentPropertyDescriptor);
-				}
-			}
-		}		
-	}
+    super.checkChildCreationExtender(object);
+    if (object instanceof EObject) {
+      EObject eObject = (EObject) object;
+      // Process CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT
+      if (allocatedComponentPropertyDescriptor != null) {
+        Object allocatedComponentValue = eObject.eGet(CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT, true);
+        if (allocatedComponentValue != null && allocatedComponentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatedComponentValue)) {
+          itemPropertyDescriptors.remove(allocatedComponentPropertyDescriptor);
+        } else if (allocatedComponentValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT) != null) {
+          itemPropertyDescriptors.remove(allocatedComponentPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(allocatedComponentPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(allocatedComponentPropertyDescriptor);
+        }
+      }
+      // Process CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT
+      if (allocatingComponentPropertyDescriptor != null) {
+        Object allocatingComponentValue = eObject.eGet(CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT, true);
+        if (allocatingComponentValue != null && allocatingComponentValue instanceof EObject && ModelExtensionHelper.getInstance().isExtensionModelDisabled((EObject) allocatingComponentValue)) {
+          itemPropertyDescriptors.remove(allocatingComponentPropertyDescriptor);
+        } else if (allocatingComponentValue == null && ExtensionModelManager.getAnyType(eObject, CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT) != null) {
+          itemPropertyDescriptors.remove(allocatingComponentPropertyDescriptor);				  					
+        } else if (itemPropertyDescriptors.contains(allocatingComponentPropertyDescriptor) == false) {
+          itemPropertyDescriptors.add(allocatingComponentPropertyDescriptor);
+        }
+      }
+    }		
+  }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+    if (itemPropertyDescriptors == null) {
+      super.getPropertyDescriptors(object);
 
-			addAllocatedComponentPropertyDescriptor(object);
-			addAllocatingComponentPropertyDescriptor(object);
-		}
-		// begin-extension-code
-		checkChildCreationExtender(object);
-		// end-extension-code
-		return itemPropertyDescriptors;
-	}
+      addAllocatedComponentPropertyDescriptor(object);
+      addAllocatingComponentPropertyDescriptor(object);
+    }
+    // begin-extension-code
+    checkChildCreationExtender(object);
+    // end-extension-code
+    return itemPropertyDescriptors;
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocated Component feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocated Component feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatedComponentPropertyDescriptor(Object object) {
-		// begin-extension-code
-		allocatedComponentPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ComponentAllocation_allocatedComponent_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentAllocation_allocatedComponent_feature", "_UI_ComponentAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(allocatedComponentPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    allocatedComponentPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ComponentAllocation_allocatedComponent_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ComponentAllocation_allocatedComponent_feature", "_UI_ComponentAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATED_COMPONENT,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(allocatedComponentPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This adds a property descriptor for the Allocating Component feature.
-	 * <!-- begin-user-doc -->
+   * This adds a property descriptor for the Allocating Component feature.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected void addAllocatingComponentPropertyDescriptor(Object object) {
-		// begin-extension-code
-		allocatingComponentPropertyDescriptor = createItemPropertyDescriptor
-		// end-extension-code		
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ComponentAllocation_allocatingComponent_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ComponentAllocation_allocatingComponent_feature", "_UI_ComponentAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT,
-				 false,
-				 false,
-				 false,
-				 null,
-				 null,
-		// begin-extension-code
-				 null);
-		itemPropertyDescriptors.add(allocatingComponentPropertyDescriptor);
-		// end-extension-code
-	}
+    // begin-extension-code
+    allocatingComponentPropertyDescriptor = createItemPropertyDescriptor
+    // end-extension-code		
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_ComponentAllocation_allocatingComponent_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_ComponentAllocation_allocatingComponent_feature", "_UI_ComponentAllocation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         CsPackage.Literals.COMPONENT_ALLOCATION__ALLOCATING_COMPONENT,
+         false,
+         false,
+         false,
+         null,
+         null,
+    // begin-extension-code
+         null);
+    itemPropertyDescriptors.add(allocatingComponentPropertyDescriptor);
+    // end-extension-code
+  }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String getText(Object object) {
-	 String[] result = new String[] { null };
+   String[] result = new String[] { null };
 
     	//begin-capella-code
         String label = ""; //$NON-NLS-1$
@@ -195,64 +195,64 @@ public class ComponentAllocationItemProvider
         EObject target = null;
 
  		target = ((AbstractTrace) object).getTargetElement();
-	
-	 	if (null != target) {
-			if (target instanceof AbstractNamedElement) {
-				targetName = ((AbstractNamedElement) target).getName();
-			}
+  
+   	if (null != target) {
+      if (target instanceof AbstractNamedElement) {
+        targetName = ((AbstractNamedElement) target).getName();
+      }
 
-			if (null == targetName || "" == targetName) { //$NON-NLS-1$
-				targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-			}
-	 	}
-	 	label = "[" + getString("_UI_ComponentAllocation_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		
-		//end-capella-code
-	  
-	
-			result[0] = label == null || label.length() == 0 ?
-			//begin-capella-code
-			"[" + getString("_UI_ComponentAllocation_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-			//end-capella-code
+      if (null == targetName || "" == targetName) { //$NON-NLS-1$
+        targetName = "[" + target.eClass().getName() + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+      }
+   	}
+   	label = "[" + getString("_UI_ComponentAllocation_type") + "] to " + targetName; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    
+    //end-capella-code
+    
+  
+      result[0] = label == null || label.length() == 0 ?
+      //begin-capella-code
+      "[" + getString("_UI_ComponentAllocation_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+      //end-capella-code
 
-		return result[0];
+    return result[0];
 
-	}
+  }
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
-		super.notifyChanged(notification);
-	}
+    updateChildren(notification);
+    super.notifyChanged(notification);
+  }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+    super.collectNewChildDescriptors(newChildDescriptors, object);
+  }
 
 	// begin-capella-code
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain_p, EObject owner_p, Helper helper_p) {
-		return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
-	}
+    return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
+  }
 	// end-capella-code
 }

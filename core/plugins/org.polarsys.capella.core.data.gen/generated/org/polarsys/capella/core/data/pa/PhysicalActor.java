@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,22 +44,22 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Logical Actor Realizations</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.LogicalActorRealization}.
+   * Returns the value of the '<em><b>Owned Logical Actor Realizations</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.LogicalActorRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Logical Actor Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Logical Actor Realizations</em>' containment reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_OwnedLogicalActorRealizations()
-	 * @model containment="true" resolveProxies="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the allocation links between physical actors and the logical actor(s) that they realize, stored/owned under this physical actor\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::BehavioredClassifier::interfaceRealization' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::BehavioredClassifier::interfaceRealization elements on which LogicalActorRealization stereotype or any stereotype that inherits from it is applied'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Logical Actor Realizations</em>' containment reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_OwnedLogicalActorRealizations()
+   * @model containment="true" resolveProxies="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the allocation links between physical actors and the logical actor(s) that they realize, stored/owned under this physical actor\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::BehavioredClassifier::interfaceRealization' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::BehavioredClassifier::interfaceRealization elements on which LogicalActorRealization stereotype or any stereotype that inherits from it is applied'"
+   * @generated
+   */
 
 	EList<LogicalActorRealization> getOwnedLogicalActorRealizations();
 
@@ -70,22 +70,22 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 
 
 	/**
-	 * Returns the value of the '<em><b>Logical Actor Realizations</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.LogicalActorRealization}.
+   * Returns the value of the '<em><b>Logical Actor Realizations</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.LogicalActorRealization}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Logical Actor Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Logical Actor Realizations</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_LogicalActorRealizations()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the relationship links between this physical actor and the logical actor(s) that it realizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Logical Actor Realizations</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_LogicalActorRealizations()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the relationship links between this physical actor and the logical actor(s) that it realizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<LogicalActorRealization> getLogicalActorRealizations();
 
@@ -96,23 +96,23 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 
 
 	/**
-	 * Returns the value of the '<em><b>Allocated Physical Functions</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalActors <em>Allocator Physical Actors</em>}'.
+   * Returns the value of the '<em><b>Allocated Physical Functions</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalFunction}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalActors <em>Allocator Physical Actors</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Physical Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Allocated Physical Functions</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_AllocatedPhysicalFunctions()
-	 * @see org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalActors
-	 * @model opposite="allocatorPhysicalActors" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Allocated Physical Functions</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_AllocatedPhysicalFunctions()
+   * @see org.polarsys.capella.core.data.pa.PhysicalFunction#getAllocatorPhysicalActors
+   * @model opposite="allocatorPhysicalActors" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalFunction> getAllocatedPhysicalFunctions();
 
@@ -123,23 +123,23 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Logical Actors</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalActor}.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalActor#getRealizingPhysicalActors <em>Realizing Physical Actors</em>}'.
+   * Returns the value of the '<em><b>Realized Logical Actors</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.la.LogicalActor}.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.la.LogicalActor#getRealizingPhysicalActors <em>Realizing Physical Actors</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Logical Actors</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Logical Actors</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_RealizedLogicalActors()
-	 * @see org.polarsys.capella.core.data.la.LogicalActor#getRealizingPhysicalActors
-	 * @model opposite="realizingPhysicalActors" transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Logical Actors</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_RealizedLogicalActors()
+   * @see org.polarsys.capella.core.data.la.LogicalActor#getRealizingPhysicalActors
+   * @model opposite="realizingPhysicalActors" transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<LogicalActor> getRealizedLogicalActors();
 
@@ -150,21 +150,21 @@ public interface PhysicalActor extends AbstractPhysicalComponent, AbstractActor 
 
 
 	/**
-	 * Returns the value of the '<em><b>Deployed Physical Components</b></em>' reference list.
-	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
+   * Returns the value of the '<em><b>Deployed Physical Components</b></em>' reference list.
+   * The list contents are of type {@link org.polarsys.capella.core.data.pa.PhysicalComponent}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deployed Physical Components</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Deployed Physical Components</em>' reference list.
-	 * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_DeployedPhysicalComponents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Deployed Physical Components</em>' reference list.
+   * @see org.polarsys.capella.core.data.pa.PaPackage#getPhysicalActor_DeployedPhysicalComponents()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	EList<PhysicalComponent> getDeployedPhysicalComponents();
 

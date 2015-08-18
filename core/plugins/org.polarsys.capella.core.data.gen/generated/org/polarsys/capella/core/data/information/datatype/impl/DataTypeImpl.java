@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,13 +69,13 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 public abstract class DataTypeImpl extends GeneralizableElementImpl implements DataType {
 
 	/**
-	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPropertyValuePkgs()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPropertyValuePkgs()
+   * @generated
+   * @ordered
+   */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -83,13 +83,13 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedDataValues() <em>Owned Data Values</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedDataValues() <em>Owned Data Values</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedDataValues()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedDataValues()
+   * @generated
+   * @ordered
+   */
 	protected EList<DataValue> ownedDataValues;
 
 
@@ -97,23 +97,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isFinal()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean FINAL_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isFinal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isFinal()
+   * @generated
+   * @ordered
+   */
 	protected boolean final_ = FINAL_EDEFAULT;
 
 
@@ -121,23 +121,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The default value of the '{@link #isDiscrete() <em>Discrete</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isDiscrete() <em>Discrete</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDiscrete()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isDiscrete()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean DISCRETE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isDiscrete() <em>Discrete</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isDiscrete() <em>Discrete</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDiscrete()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isDiscrete()
+   * @generated
+   * @ordered
+   */
 	protected boolean discrete = DISCRETE_EDEFAULT;
 
 
@@ -145,23 +145,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The default value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMinInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMinInclusive()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean MIN_INCLUSIVE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isMinInclusive() <em>Min Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMinInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMinInclusive()
+   * @generated
+   * @ordered
+   */
 	protected boolean minInclusive = MIN_INCLUSIVE_EDEFAULT;
 
 
@@ -169,23 +169,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The default value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMaxInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMaxInclusive()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean MAX_INCLUSIVE_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #isMaxInclusive() <em>Max Inclusive</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMaxInclusive()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #isMaxInclusive()
+   * @generated
+   * @ordered
+   */
 	protected boolean maxInclusive = MAX_INCLUSIVE_EDEFAULT;
 
 
@@ -193,23 +193,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getPattern()
+   * @generated
+   * @ordered
+   */
 	protected static final String PATTERN_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getPattern() <em>Pattern</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPattern()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getPattern()
+   * @generated
+   * @ordered
+   */
 	protected String pattern = PATTERN_EDEFAULT;
 
 
@@ -217,23 +217,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.UNSET;
 
 	/**
-	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVisibility()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVisibility()
+   * @generated
+   * @ordered
+   */
 	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
 
 
@@ -249,13 +249,13 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedInformationRealizations() <em>Owned Information Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedInformationRealizations() <em>Owned Information Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedInformationRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedInformationRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<InformationRealization> ownedInformationRealizations;
 
 
@@ -270,92 +270,92 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected DataTypeImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return DatatypePackage.Literals.DATA_TYPE;
-	}
+    return DatatypePackage.Literals.DATA_TYPE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-		if (ownedPropertyValuePkgs == null) {
-			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS);
-		}
-		return ownedPropertyValuePkgs;
-	}
+    if (ownedPropertyValuePkgs == null) {
+      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS);
+    }
+    return ownedPropertyValuePkgs;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DataValue> getOwnedDataValues() {
 
-		if (ownedDataValues == null) {
-			ownedDataValues = new EObjectContainmentEList<DataValue>(DataValue.class, this, DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES);
-		}
-		return ownedDataValues;
-	}
+    if (ownedDataValues == null) {
+      ownedDataValues = new EObjectContainmentEList<DataValue>(DataValue.class, this, DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES);
+    }
+    return ownedDataValues;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isFinal() {
 
-		return final_;
-	}
+    return final_;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setFinal(boolean newFinal) {
 
-		boolean oldFinal = final_;
-		final_ = newFinal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__FINAL, oldFinal, final_));
+    boolean oldFinal = final_;
+    final_ = newFinal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__FINAL, oldFinal, final_));
 
-	}
+  }
 
 
 
@@ -363,31 +363,31 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isDiscrete() {
 
-		return discrete;
-	}
+    return discrete;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setDiscrete(boolean newDiscrete) {
 
-		boolean oldDiscrete = discrete;
-		discrete = newDiscrete;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__DISCRETE, oldDiscrete, discrete));
+    boolean oldDiscrete = discrete;
+    discrete = newDiscrete;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__DISCRETE, oldDiscrete, discrete));
 
-	}
+  }
 
 
 
@@ -395,31 +395,31 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isMinInclusive() {
 
-		return minInclusive;
-	}
+    return minInclusive;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setMinInclusive(boolean newMinInclusive) {
 
-		boolean oldMinInclusive = minInclusive;
-		minInclusive = newMinInclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__MIN_INCLUSIVE, oldMinInclusive, minInclusive));
+    boolean oldMinInclusive = minInclusive;
+    minInclusive = newMinInclusive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__MIN_INCLUSIVE, oldMinInclusive, minInclusive));
 
-	}
+  }
 
 
 
@@ -427,31 +427,31 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isMaxInclusive() {
 
-		return maxInclusive;
-	}
+    return maxInclusive;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setMaxInclusive(boolean newMaxInclusive) {
 
-		boolean oldMaxInclusive = maxInclusive;
-		maxInclusive = newMaxInclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__MAX_INCLUSIVE, oldMaxInclusive, maxInclusive));
+    boolean oldMaxInclusive = maxInclusive;
+    maxInclusive = newMaxInclusive;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__MAX_INCLUSIVE, oldMaxInclusive, maxInclusive));
 
-	}
+  }
 
 
 
@@ -459,31 +459,31 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public String getPattern() {
 
-		return pattern;
-	}
+    return pattern;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setPattern(String newPattern) {
 
-		String oldPattern = pattern;
-		pattern = newPattern;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__PATTERN, oldPattern, pattern));
+    String oldPattern = pattern;
+    pattern = newPattern;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__PATTERN, oldPattern, pattern));
 
-	}
+  }
 
 
 
@@ -491,31 +491,31 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public VisibilityKind getVisibility() {
 
-		return visibility;
-	}
+    return visibility;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setVisibility(VisibilityKind newVisibility) {
 
-		VisibilityKind oldVisibility = visibility;
-		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__VISIBILITY, oldVisibility, visibility));
+    VisibilityKind oldVisibility = visibility;
+    visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DatatypePackage.DATA_TYPE__VISIBILITY, oldVisibility, visibility));
 
-	}
+  }
 
 
 
@@ -523,23 +523,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getDefaultValue() {
 
-		DataValue defaultValue = basicGetDefaultValue();
-		return defaultValue != null && defaultValue.eIsProxy() ? (DataValue)eResolveProxy((InternalEObject)defaultValue) : defaultValue;
-	}
+    DataValue defaultValue = basicGetDefaultValue();
+    return defaultValue != null && defaultValue.eIsProxy() ? (DataValue)eResolveProxy((InternalEObject)defaultValue) : defaultValue;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue basicGetDefaultValue() {
 
@@ -566,15 +566,15 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
     // A helper is found, let's use it. 
     EAnnotation annotation = DatatypePackage.Literals.DATA_TYPE__DEFAULT_VALUE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatatypePackage.Literals.DATA_TYPE__DEFAULT_VALUE, annotation);
-		
-		try {
-			return (DataValue) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (DataValue) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -582,23 +582,23 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue getNullValue() {
 
-		DataValue nullValue = basicGetNullValue();
-		return nullValue != null && nullValue.eIsProxy() ? (DataValue)eResolveProxy((InternalEObject)nullValue) : nullValue;
-	}
+    DataValue nullValue = basicGetNullValue();
+    return nullValue != null && nullValue.eIsProxy() ? (DataValue)eResolveProxy((InternalEObject)nullValue) : nullValue;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public DataValue basicGetNullValue() {
 
@@ -625,15 +625,15 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
     // A helper is found, let's use it. 
     EAnnotation annotation = DatatypePackage.Literals.DATA_TYPE__NULL_VALUE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatatypePackage.Literals.DATA_TYPE__NULL_VALUE, annotation);
-		
-		try {
-			return (DataValue) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (DataValue) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -641,28 +641,28 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<InformationRealization> getOwnedInformationRealizations() {
 
-		if (ownedInformationRealizations == null) {
-			ownedInformationRealizations = new EObjectContainmentEList.Resolving<InformationRealization>(InformationRealization.class, this, DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS);
-		}
-		return ownedInformationRealizations;
-	}
+    if (ownedInformationRealizations == null) {
+      ownedInformationRealizations = new EObjectContainmentEList.Resolving<InformationRealization>(InformationRealization.class, this, DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS);
+    }
+    return ownedInformationRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DataType> getRealizedDataTypes() {
 
@@ -689,27 +689,27 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
     // A helper is found, let's use it. 
     EAnnotation annotation = DatatypePackage.Literals.DATA_TYPE__REALIZED_DATA_TYPES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatatypePackage.Literals.DATA_TYPE__REALIZED_DATA_TYPES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<DataType> resultAsList = (Collection<DataType>) result;
-		return new EcoreEList.UnmodifiableEList<DataType>(this, DatatypePackage.Literals.DATA_TYPE__REALIZED_DATA_TYPES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<DataType> resultAsList = (Collection<DataType>) result;
+    return new EcoreEList.UnmodifiableEList<DataType>(this, DatatypePackage.Literals.DATA_TYPE__REALIZED_DATA_TYPES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<DataType> getRealizingDataTypes() {
 
@@ -736,319 +736,319 @@ public abstract class DataTypeImpl extends GeneralizableElementImpl implements D
     // A helper is found, let's use it. 
     EAnnotation annotation = DatatypePackage.Literals.DATA_TYPE__REALIZING_DATA_TYPES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatatypePackage.Literals.DATA_TYPE__REALIZING_DATA_TYPES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<DataType> resultAsList = (Collection<DataType>) result;
-		return new EcoreEList.UnmodifiableEList<DataType>(this, DatatypePackage.Literals.DATA_TYPE__REALIZING_DATA_TYPES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<DataType> resultAsList = (Collection<DataType>) result;
+    return new EcoreEList.UnmodifiableEList<DataType>(this, DatatypePackage.Literals.DATA_TYPE__REALIZING_DATA_TYPES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
-				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-			case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
-				return ((InternalEList<?>)getOwnedDataValues()).basicRemove(otherEnd, msgs);
-			case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedInformationRealizations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
+        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+      case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
+        return ((InternalEList<?>)getOwnedDataValues()).basicRemove(otherEnd, msgs);
+      case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedInformationRealizations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
-				return getOwnedPropertyValuePkgs();
-			case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
-				return getOwnedDataValues();
-			case DatatypePackage.DATA_TYPE__FINAL:
-				return isFinal();
-			case DatatypePackage.DATA_TYPE__DISCRETE:
-				return isDiscrete();
-			case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
-				return isMinInclusive();
-			case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
-				return isMaxInclusive();
-			case DatatypePackage.DATA_TYPE__PATTERN:
-				return getPattern();
-			case DatatypePackage.DATA_TYPE__VISIBILITY:
-				return getVisibility();
-			case DatatypePackage.DATA_TYPE__DEFAULT_VALUE:
-				if (resolve) return getDefaultValue();
-				return basicGetDefaultValue();
-			case DatatypePackage.DATA_TYPE__NULL_VALUE:
-				if (resolve) return getNullValue();
-				return basicGetNullValue();
-			case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
-				return getOwnedInformationRealizations();
-			case DatatypePackage.DATA_TYPE__REALIZED_DATA_TYPES:
-				return getRealizedDataTypes();
-			case DatatypePackage.DATA_TYPE__REALIZING_DATA_TYPES:
-				return getRealizingDataTypes();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
+        return getOwnedPropertyValuePkgs();
+      case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
+        return getOwnedDataValues();
+      case DatatypePackage.DATA_TYPE__FINAL:
+        return isFinal();
+      case DatatypePackage.DATA_TYPE__DISCRETE:
+        return isDiscrete();
+      case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
+        return isMinInclusive();
+      case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
+        return isMaxInclusive();
+      case DatatypePackage.DATA_TYPE__PATTERN:
+        return getPattern();
+      case DatatypePackage.DATA_TYPE__VISIBILITY:
+        return getVisibility();
+      case DatatypePackage.DATA_TYPE__DEFAULT_VALUE:
+        if (resolve) return getDefaultValue();
+        return basicGetDefaultValue();
+      case DatatypePackage.DATA_TYPE__NULL_VALUE:
+        if (resolve) return getNullValue();
+        return basicGetNullValue();
+      case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
+        return getOwnedInformationRealizations();
+      case DatatypePackage.DATA_TYPE__REALIZED_DATA_TYPES:
+        return getRealizedDataTypes();
+      case DatatypePackage.DATA_TYPE__REALIZING_DATA_TYPES:
+        return getRealizingDataTypes();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-				return;
-			case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
-				getOwnedDataValues().clear();
-				getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
-				return;
-			case DatatypePackage.DATA_TYPE__FINAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setFinal((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case DatatypePackage.DATA_TYPE__DISCRETE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setDiscrete((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setMinInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof Boolean) {
-				// end-extension-code
-					setMaxInclusive((Boolean)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case DatatypePackage.DATA_TYPE__PATTERN:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof String) {
-				// end-extension-code
-					setPattern((String)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case DatatypePackage.DATA_TYPE__VISIBILITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof VisibilityKind) {
-				// end-extension-code
-					setVisibility((VisibilityKind)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
-				getOwnedInformationRealizations().clear();
-				getOwnedInformationRealizations().addAll((Collection<? extends InformationRealization>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+        return;
+      case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
+        getOwnedDataValues().clear();
+        getOwnedDataValues().addAll((Collection<? extends DataValue>)newValue);
+        return;
+      case DatatypePackage.DATA_TYPE__FINAL:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setFinal((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case DatatypePackage.DATA_TYPE__DISCRETE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setDiscrete((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setMinInclusive((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof Boolean) {
+        // end-extension-code
+          setMaxInclusive((Boolean)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case DatatypePackage.DATA_TYPE__PATTERN:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof String) {
+        // end-extension-code
+          setPattern((String)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case DatatypePackage.DATA_TYPE__VISIBILITY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof VisibilityKind) {
+        // end-extension-code
+          setVisibility((VisibilityKind)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
+        getOwnedInformationRealizations().clear();
+        getOwnedInformationRealizations().addAll((Collection<? extends InformationRealization>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
-				getOwnedPropertyValuePkgs().clear();
-				return;
-			case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
-				getOwnedDataValues().clear();
-				return;
-			case DatatypePackage.DATA_TYPE__FINAL:
-				setFinal(FINAL_EDEFAULT);
-				return;
-			case DatatypePackage.DATA_TYPE__DISCRETE:
-				setDiscrete(DISCRETE_EDEFAULT);
-				return;
-			case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
-				setMinInclusive(MIN_INCLUSIVE_EDEFAULT);
-				return;
-			case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
-				setMaxInclusive(MAX_INCLUSIVE_EDEFAULT);
-				return;
-			case DatatypePackage.DATA_TYPE__PATTERN:
-				setPattern(PATTERN_EDEFAULT);
-				return;
-			case DatatypePackage.DATA_TYPE__VISIBILITY:
-				setVisibility(VISIBILITY_EDEFAULT);
-				return;
-			case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
-				getOwnedInformationRealizations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
+        getOwnedPropertyValuePkgs().clear();
+        return;
+      case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
+        getOwnedDataValues().clear();
+        return;
+      case DatatypePackage.DATA_TYPE__FINAL:
+        setFinal(FINAL_EDEFAULT);
+        return;
+      case DatatypePackage.DATA_TYPE__DISCRETE:
+        setDiscrete(DISCRETE_EDEFAULT);
+        return;
+      case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
+        setMinInclusive(MIN_INCLUSIVE_EDEFAULT);
+        return;
+      case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
+        setMaxInclusive(MAX_INCLUSIVE_EDEFAULT);
+        return;
+      case DatatypePackage.DATA_TYPE__PATTERN:
+        setPattern(PATTERN_EDEFAULT);
+        return;
+      case DatatypePackage.DATA_TYPE__VISIBILITY:
+        setVisibility(VISIBILITY_EDEFAULT);
+        return;
+      case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
+        getOwnedInformationRealizations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
-				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-			case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
-				return ownedDataValues != null && !ownedDataValues.isEmpty();
-			case DatatypePackage.DATA_TYPE__FINAL:
-				return final_ != FINAL_EDEFAULT;
-			case DatatypePackage.DATA_TYPE__DISCRETE:
-				return discrete != DISCRETE_EDEFAULT;
-			case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
-				return minInclusive != MIN_INCLUSIVE_EDEFAULT;
-			case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
-				return maxInclusive != MAX_INCLUSIVE_EDEFAULT;
-			case DatatypePackage.DATA_TYPE__PATTERN:
-				return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
-			case DatatypePackage.DATA_TYPE__VISIBILITY:
-				return visibility != VISIBILITY_EDEFAULT;
-			case DatatypePackage.DATA_TYPE__DEFAULT_VALUE:
-				return basicGetDefaultValue() != null;
-			case DatatypePackage.DATA_TYPE__NULL_VALUE:
-				return basicGetNullValue() != null;
-			case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
-				return ownedInformationRealizations != null && !ownedInformationRealizations.isEmpty();
-			case DatatypePackage.DATA_TYPE__REALIZED_DATA_TYPES:
-				return !getRealizedDataTypes().isEmpty();
-			case DatatypePackage.DATA_TYPE__REALIZING_DATA_TYPES:
-				return !getRealizingDataTypes().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS:
+        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+      case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES:
+        return ownedDataValues != null && !ownedDataValues.isEmpty();
+      case DatatypePackage.DATA_TYPE__FINAL:
+        return final_ != FINAL_EDEFAULT;
+      case DatatypePackage.DATA_TYPE__DISCRETE:
+        return discrete != DISCRETE_EDEFAULT;
+      case DatatypePackage.DATA_TYPE__MIN_INCLUSIVE:
+        return minInclusive != MIN_INCLUSIVE_EDEFAULT;
+      case DatatypePackage.DATA_TYPE__MAX_INCLUSIVE:
+        return maxInclusive != MAX_INCLUSIVE_EDEFAULT;
+      case DatatypePackage.DATA_TYPE__PATTERN:
+        return PATTERN_EDEFAULT == null ? pattern != null : !PATTERN_EDEFAULT.equals(pattern);
+      case DatatypePackage.DATA_TYPE__VISIBILITY:
+        return visibility != VISIBILITY_EDEFAULT;
+      case DatatypePackage.DATA_TYPE__DEFAULT_VALUE:
+        return basicGetDefaultValue() != null;
+      case DatatypePackage.DATA_TYPE__NULL_VALUE:
+        return basicGetNullValue() != null;
+      case DatatypePackage.DATA_TYPE__OWNED_INFORMATION_REALIZATIONS:
+        return ownedInformationRealizations != null && !ownedInformationRealizations.isEmpty();
+      case DatatypePackage.DATA_TYPE__REALIZED_DATA_TYPES:
+        return !getRealizedDataTypes().isEmpty();
+      case DatatypePackage.DATA_TYPE__REALIZING_DATA_TYPES:
+        return !getRealizingDataTypes().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Structure.class) {
-			switch (derivedFeatureID) {
-				case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS: return CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS;
-				default: return -1;
-			}
-		}
-		if (baseClass == DataValueContainer.class) {
-			switch (derivedFeatureID) {
-				case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES: return DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES;
-				default: return -1;
-			}
-		}
-		if (baseClass == FinalizableElement.class) {
-			switch (derivedFeatureID) {
-				case DatatypePackage.DATA_TYPE__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == Structure.class) {
+      switch (derivedFeatureID) {
+        case DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS: return CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS;
+        default: return -1;
+      }
+    }
+    if (baseClass == DataValueContainer.class) {
+      switch (derivedFeatureID) {
+        case DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES: return DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES;
+        default: return -1;
+      }
+    }
+    if (baseClass == FinalizableElement.class) {
+      switch (derivedFeatureID) {
+        case DatatypePackage.DATA_TYPE__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Structure.class) {
-			switch (baseFeatureID) {
-				case CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS: return DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS;
-				default: return -1;
-			}
-		}
-		if (baseClass == DataValueContainer.class) {
-			switch (baseFeatureID) {
-				case DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES: return DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES;
-				default: return -1;
-			}
-		}
-		if (baseClass == FinalizableElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return DatatypePackage.DATA_TYPE__FINAL;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == Structure.class) {
+      switch (baseFeatureID) {
+        case CapellacorePackage.STRUCTURE__OWNED_PROPERTY_VALUE_PKGS: return DatatypePackage.DATA_TYPE__OWNED_PROPERTY_VALUE_PKGS;
+        default: return -1;
+      }
+    }
+    if (baseClass == DataValueContainer.class) {
+      switch (baseFeatureID) {
+        case DatavaluePackage.DATA_VALUE_CONTAINER__OWNED_DATA_VALUES: return DatatypePackage.DATA_TYPE__OWNED_DATA_VALUES;
+        default: return -1;
+      }
+    }
+    if (baseClass == FinalizableElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return DatatypePackage.DATA_TYPE__FINAL;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+    if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (final: "); //$NON-NLS-1$
-		result.append(final_);
-		result.append(", discrete: "); //$NON-NLS-1$
-		result.append(discrete);
-		result.append(", minInclusive: "); //$NON-NLS-1$
-		result.append(minInclusive);
-		result.append(", maxInclusive: "); //$NON-NLS-1$
-		result.append(maxInclusive);
-		result.append(", pattern: "); //$NON-NLS-1$
-		result.append(pattern);
-		result.append(", visibility: "); //$NON-NLS-1$
-		result.append(visibility);
-		result.append(')');
-		return result.toString();
-	}
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (final: "); //$NON-NLS-1$
+    result.append(final_);
+    result.append(", discrete: "); //$NON-NLS-1$
+    result.append(discrete);
+    result.append(", minInclusive: "); //$NON-NLS-1$
+    result.append(minInclusive);
+    result.append(", maxInclusive: "); //$NON-NLS-1$
+    result.append(maxInclusive);
+    result.append(", pattern: "); //$NON-NLS-1$
+    result.append(pattern);
+    result.append(", visibility: "); //$NON-NLS-1$
+    result.append(visibility);
+    result.append(')');
+    return result.toString();
+  }
 
 
 } //DataTypeImpl

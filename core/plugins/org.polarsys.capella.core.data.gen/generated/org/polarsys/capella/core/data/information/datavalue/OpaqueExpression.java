@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  *  All rights reserved. This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License v1.0
  *  which accompanies this distribution, and is available at
@@ -44,21 +44,21 @@ public interface OpaqueExpression extends CapellaElement, ValueSpecification {
 
 
 	/**
-	 * Returns the value of the '<em><b>Bodies</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Bodies</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bodies</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Bodies</em>' attribute list.
-	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getOpaqueExpression_Bodies()
-	 * @model unique="false"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The text of the expression, possibly in multiple languages.'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Bodies</em>' attribute list.
+   * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getOpaqueExpression_Bodies()
+   * @model unique="false"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The text of the expression, possibly in multiple languages.'"
+   * @generated
+   */
 
 	EList<String> getBodies();
 
@@ -69,20 +69,20 @@ public interface OpaqueExpression extends CapellaElement, ValueSpecification {
 
 
 	/**
-	 * Returns the value of the '<em><b>Languages</b></em>' attribute list.
-	 * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Languages</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Languages</em>' attribute list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Languages</em>' attribute list.
-	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getOpaqueExpression_Languages()
-	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the\r\nlanguages. If the languages are unspecified, they might be implicit from the expression body or the context.\r\nLanguages are matched to body strings by order.'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Languages</em>' attribute list.
+   * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getOpaqueExpression_Languages()
+   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the languages in which the expression is stated. The interpretation of the expression body depends on the\r\nlanguages. If the languages are unspecified, they might be implicit from the expression body or the context.\r\nLanguages are matched to body strings by order.'"
+   * @generated
+   */
 
 	EList<String> getLanguages();
 

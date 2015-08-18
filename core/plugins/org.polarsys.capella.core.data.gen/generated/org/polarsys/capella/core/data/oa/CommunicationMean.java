@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,20 +38,20 @@ public interface CommunicationMean extends NamedRelationship, ComponentExchange 
 
 
 	/**
-	 * Returns the value of the '<em><b>Source Entity</b></em>' reference.
+   * Returns the value of the '<em><b>Source Entity</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source Entity</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source Entity</em>' reference.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_SourceEntity()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Source Entity</em>' reference.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_SourceEntity()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Entity getSourceEntity();
 
@@ -62,20 +62,20 @@ public interface CommunicationMean extends NamedRelationship, ComponentExchange 
 
 
 	/**
-	 * Returns the value of the '<em><b>Target Entity</b></em>' reference.
+   * Returns the value of the '<em><b>Target Entity</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target Entity</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Entity</em>' reference.
-	 * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_TargetEntity()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Target Entity</em>' reference.
+   * @see org.polarsys.capella.core.data.oa.OaPackage#getCommunicationMean_TargetEntity()
+   * @model transient="true" changeable="false" volatile="true" derived="true"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+   * @generated
+   */
 
 	Entity getTargetEntity();
 

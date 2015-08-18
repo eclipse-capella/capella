@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,35 +50,35 @@ public abstract class PartitionableElementImpl extends ClassifierImpl implements
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PartitionableElementImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.PARTITIONABLE_ELEMENT;
-	}
+    return InformationPackage.Literals.PARTITIONABLE_ELEMENT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Partition> getOwnedPartitions() {
 
@@ -105,27 +105,27 @@ public abstract class PartitionableElementImpl extends ClassifierImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Partition> resultAsList = (Collection<Partition>) result;
-		return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Partition> resultAsList = (Collection<Partition>) result;
+    return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Partition> getRepresentingPartitions() {
 
@@ -152,65 +152,65 @@ public abstract class PartitionableElementImpl extends ClassifierImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<Partition> resultAsList = (Collection<Partition>) result;
-		return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<Partition> resultAsList = (Collection<Partition>) result;
+    return new EcoreEList.UnmodifiableEList<Partition>(this, InformationPackage.Literals.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public boolean isDecomposed() {
-		return this.getOwnedPartitions().size() > 0;
-	}
+    return this.getOwnedPartitions().size() > 0;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS:
-				return getOwnedPartitions();
-			case InformationPackage.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS:
-				return getRepresentingPartitions();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS:
+        return getOwnedPartitions();
+      case InformationPackage.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS:
+        return getRepresentingPartitions();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS:
-				return !getOwnedPartitions().isEmpty();
-			case InformationPackage.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS:
-				return !getRepresentingPartitions().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.PARTITIONABLE_ELEMENT__OWNED_PARTITIONS:
+        return !getOwnedPartitions().isEmpty();
+      case InformationPackage.PARTITIONABLE_ELEMENT__REPRESENTING_PARTITIONS:
+        return !getRepresentingPartitions().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,13 +56,13 @@ import org.polarsys.capella.core.data.information.impl.PortImpl;
 public abstract class FunctionPortImpl extends PortImpl implements FunctionPort {
 
 	/**
-	 * The cached value of the '{@link #getAbstractType() <em>Abstract Type</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getAbstractType() <em>Abstract Type</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getAbstractType()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getAbstractType()
+   * @generated
+   * @ordered
+   */
 	protected AbstractType abstractType;
 
 
@@ -74,13 +74,13 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 
 
 	/**
-	 * The cached value of the '{@link #getRepresentedComponentPort() <em>Represented Component Port</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRepresentedComponentPort() <em>Represented Component Port</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRepresentedComponentPort()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRepresentedComponentPort()
+   * @generated
+   * @ordered
+   */
 	protected ComponentPort representedComponentPort;
 
 
@@ -99,77 +99,77 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected FunctionPortImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FaPackage.Literals.FUNCTION_PORT;
-	}
+    return FaPackage.Literals.FUNCTION_PORT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType getAbstractType() {
 
-		if (abstractType != null && abstractType.eIsProxy()) {
-			InternalEObject oldAbstractType = (InternalEObject)abstractType;
-			abstractType = (AbstractType)eResolveProxy(oldAbstractType);
-			if (abstractType != oldAbstractType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_PORT__ABSTRACT_TYPE, oldAbstractType, abstractType));
-			}
-		}
-		return abstractType;
-	}
+    if (abstractType != null && abstractType.eIsProxy()) {
+      InternalEObject oldAbstractType = (InternalEObject)abstractType;
+      abstractType = (AbstractType)eResolveProxy(oldAbstractType);
+      if (abstractType != oldAbstractType) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_PORT__ABSTRACT_TYPE, oldAbstractType, abstractType));
+      }
+    }
+    return abstractType;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractType basicGetAbstractType() {
 
-		return abstractType;
-	}
+    return abstractType;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setAbstractType(AbstractType newAbstractType) {
 
-		AbstractType oldAbstractType = abstractType;
-		abstractType = newAbstractType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_PORT__ABSTRACT_TYPE, oldAbstractType, abstractType));
+    AbstractType oldAbstractType = abstractType;
+    abstractType = newAbstractType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_PORT__ABSTRACT_TYPE, oldAbstractType, abstractType));
 
-	}
+  }
 
 
 
@@ -177,23 +177,23 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Type getType() {
 
-		Type type = basicGetType();
-		return type != null && type.eIsProxy() ? (Type)eResolveProxy((InternalEObject)type) : type;
-	}
+    Type type = basicGetType();
+    return type != null && type.eIsProxy() ? (Type)eResolveProxy((InternalEObject)type) : type;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public Type basicGetType() {
 
@@ -220,15 +220,15 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.TYPED_ELEMENT__TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.TYPED_ELEMENT__TYPE, annotation);
-		
-		try {
-			return (Type) result;
-	  } catch (ClassCastException cce_p) {
-	     cce_p.printStackTrace();
-	    return null;
-	  }
-		
-	}
+    
+    try {
+      return (Type) result;
+    } catch (ClassCastException cce_p) {
+       cce_p.printStackTrace();
+      return null;
+    }
+    
+  }
 
 
 
@@ -236,52 +236,52 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentPort getRepresentedComponentPort() {
 
-		if (representedComponentPort != null && representedComponentPort.eIsProxy()) {
-			InternalEObject oldRepresentedComponentPort = (InternalEObject)representedComponentPort;
-			representedComponentPort = (ComponentPort)eResolveProxy(oldRepresentedComponentPort);
-			if (representedComponentPort != oldRepresentedComponentPort) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT, oldRepresentedComponentPort, representedComponentPort));
-			}
-		}
-		return representedComponentPort;
-	}
+    if (representedComponentPort != null && representedComponentPort.eIsProxy()) {
+      InternalEObject oldRepresentedComponentPort = (InternalEObject)representedComponentPort;
+      representedComponentPort = (ComponentPort)eResolveProxy(oldRepresentedComponentPort);
+      if (representedComponentPort != oldRepresentedComponentPort) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT, oldRepresentedComponentPort, representedComponentPort));
+      }
+    }
+    return representedComponentPort;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ComponentPort basicGetRepresentedComponentPort() {
 
-		return representedComponentPort;
-	}
+    return representedComponentPort;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setRepresentedComponentPort(ComponentPort newRepresentedComponentPort) {
 
-		ComponentPort oldRepresentedComponentPort = representedComponentPort;
-		representedComponentPort = newRepresentedComponentPort;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT, oldRepresentedComponentPort, representedComponentPort));
+    ComponentPort oldRepresentedComponentPort = representedComponentPort;
+    representedComponentPort = newRepresentedComponentPort;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT, oldRepresentedComponentPort, representedComponentPort));
 
-	}
+  }
 
 
 
@@ -289,10 +289,10 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<ComponentPort> getAllocatorComponentPorts() {
 
@@ -319,27 +319,27 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
-		return new EcoreEList.UnmodifiableEList<ComponentPort>(this, FaPackage.Literals.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<ComponentPort> resultAsList = (Collection<ComponentPort>) result;
+    return new EcoreEList.UnmodifiableEList<ComponentPort>(this, FaPackage.Literals.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionPort> getRealizedFunctionPorts() {
 
@@ -366,27 +366,27 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTION_PORT__REALIZED_FUNCTION_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTION_PORT__REALIZED_FUNCTION_PORTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionPort> resultAsList = (Collection<FunctionPort>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionPort>(this, FaPackage.Literals.FUNCTION_PORT__REALIZED_FUNCTION_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionPort> resultAsList = (Collection<FunctionPort>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionPort>(this, FaPackage.Literals.FUNCTION_PORT__REALIZED_FUNCTION_PORTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionPort> getRealizingFunctionPorts() {
 
@@ -413,166 +413,166 @@ public abstract class FunctionPortImpl extends PortImpl implements FunctionPort 
     // A helper is found, let's use it. 
     EAnnotation annotation = FaPackage.Literals.FUNCTION_PORT__REALIZING_FUNCTION_PORTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, FaPackage.Literals.FUNCTION_PORT__REALIZING_FUNCTION_PORTS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionPort> resultAsList = (Collection<FunctionPort>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionPort>(this, FaPackage.Literals.FUNCTION_PORT__REALIZING_FUNCTION_PORTS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionPort> resultAsList = (Collection<FunctionPort>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionPort>(this, FaPackage.Literals.FUNCTION_PORT__REALIZING_FUNCTION_PORTS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
-				if (resolve) return getAbstractType();
-				return basicGetAbstractType();
-			case FaPackage.FUNCTION_PORT__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
-			case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
-				if (resolve) return getRepresentedComponentPort();
-				return basicGetRepresentedComponentPort();
-			case FaPackage.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS:
-				return getAllocatorComponentPorts();
-			case FaPackage.FUNCTION_PORT__REALIZED_FUNCTION_PORTS:
-				return getRealizedFunctionPorts();
-			case FaPackage.FUNCTION_PORT__REALIZING_FUNCTION_PORTS:
-				return getRealizingFunctionPorts();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
+        if (resolve) return getAbstractType();
+        return basicGetAbstractType();
+      case FaPackage.FUNCTION_PORT__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
+      case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
+        if (resolve) return getRepresentedComponentPort();
+        return basicGetRepresentedComponentPort();
+      case FaPackage.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS:
+        return getAllocatorComponentPorts();
+      case FaPackage.FUNCTION_PORT__REALIZED_FUNCTION_PORTS:
+        return getRealizedFunctionPorts();
+      case FaPackage.FUNCTION_PORT__REALIZING_FUNCTION_PORTS:
+        return getRealizingFunctionPorts();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractType) {
-				// end-extension-code
-					setAbstractType((AbstractType)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ComponentPort) {
-				// end-extension-code
-					setRepresentedComponentPort((ComponentPort)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractType) {
+        // end-extension-code
+          setAbstractType((AbstractType)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof ComponentPort) {
+        // end-extension-code
+          setRepresentedComponentPort((ComponentPort)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
-				setAbstractType((AbstractType)null);
-				return;
-			case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
-				setRepresentedComponentPort((ComponentPort)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
+        setAbstractType((AbstractType)null);
+        return;
+      case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
+        setRepresentedComponentPort((ComponentPort)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
-				return abstractType != null;
-			case FaPackage.FUNCTION_PORT__TYPE:
-				return basicGetType() != null;
-			case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
-				return representedComponentPort != null;
-			case FaPackage.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS:
-				return !getAllocatorComponentPorts().isEmpty();
-			case FaPackage.FUNCTION_PORT__REALIZED_FUNCTION_PORTS:
-				return !getRealizedFunctionPorts().isEmpty();
-			case FaPackage.FUNCTION_PORT__REALIZING_FUNCTION_PORTS:
-				return !getRealizingFunctionPorts().isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE:
+        return abstractType != null;
+      case FaPackage.FUNCTION_PORT__TYPE:
+        return basicGetType() != null;
+      case FaPackage.FUNCTION_PORT__REPRESENTED_COMPONENT_PORT:
+        return representedComponentPort != null;
+      case FaPackage.FUNCTION_PORT__ALLOCATOR_COMPONENT_PORTS:
+        return !getAllocatorComponentPorts().isEmpty();
+      case FaPackage.FUNCTION_PORT__REALIZED_FUNCTION_PORTS:
+        return !getRealizedFunctionPorts().isEmpty();
+      case FaPackage.FUNCTION_PORT__REALIZING_FUNCTION_PORTS:
+        return !getRealizingFunctionPorts().isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractTypedElement.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE: return ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == TypedElement.class) {
-			switch (derivedFeatureID) {
-				case FaPackage.FUNCTION_PORT__TYPE: return CapellacorePackage.TYPED_ELEMENT__TYPE;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == AbstractTypedElement.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTION_PORT__ABSTRACT_TYPE: return ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == TypedElement.class) {
+      switch (derivedFeatureID) {
+        case FaPackage.FUNCTION_PORT__TYPE: return CapellacorePackage.TYPED_ELEMENT__TYPE;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractTypedElement.class) {
-			switch (baseFeatureID) {
-				case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE: return FaPackage.FUNCTION_PORT__ABSTRACT_TYPE;
-				default: return -1;
-			}
-		}
-		if (baseClass == TypedElement.class) {
-			switch (baseFeatureID) {
-				case CapellacorePackage.TYPED_ELEMENT__TYPE: return FaPackage.FUNCTION_PORT__TYPE;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == AbstractTypedElement.class) {
+      switch (baseFeatureID) {
+        case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE: return FaPackage.FUNCTION_PORT__ABSTRACT_TYPE;
+        default: return -1;
+      }
+    }
+    if (baseClass == TypedElement.class) {
+      switch (baseFeatureID) {
+        case CapellacorePackage.TYPED_ELEMENT__TYPE: return FaPackage.FUNCTION_PORT__TYPE;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 
 } //FunctionPortImpl

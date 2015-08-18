@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,13 +59,13 @@ import org.polarsys.capella.core.data.interaction.AbstractCapability;
 public class StateImpl extends AbstractStateImpl implements State {
 
 	/**
-	 * The cached value of the '{@link #getOwnedRegions() <em>Owned Regions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedRegions() <em>Owned Regions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedRegions()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedRegions()
+   * @generated
+   * @ordered
+   */
 	protected EList<Region> ownedRegions;
 
 
@@ -85,13 +85,13 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * The cached value of the '{@link #getEntry() <em>Entry</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getEntry() <em>Entry</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getEntry()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getEntry()
+   * @generated
+   * @ordered
+   */
 	protected AbstractEvent entry;
 
 
@@ -99,13 +99,13 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * The cached value of the '{@link #getDoActivity() <em>Do Activity</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getDoActivity() <em>Do Activity</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDoActivity()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getDoActivity()
+   * @generated
+   * @ordered
+   */
 	protected AbstractEvent doActivity;
 
 
@@ -113,13 +113,13 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * The cached value of the '{@link #getExit() <em>Exit</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getExit()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getExit()
+   * @generated
+   * @ordered
+   */
 	protected AbstractEvent exit;
 
 
@@ -127,66 +127,66 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * The cached value of the '{@link #getStateInvariant() <em>State Invariant</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getStateInvariant() <em>State Invariant</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStateInvariant()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getStateInvariant()
+   * @generated
+   * @ordered
+   */
 	protected AbstractConstraint stateInvariant;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected StateImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return CapellacommonPackage.Literals.STATE;
-	}
+    return CapellacommonPackage.Literals.STATE;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Region> getOwnedRegions() {
 
-		if (ownedRegions == null) {
-			ownedRegions = new EObjectContainmentEList.Resolving<Region>(Region.class, this, CapellacommonPackage.STATE__OWNED_REGIONS);
-		}
-		return ownedRegions;
-	}
+    if (ownedRegions == null) {
+      ownedRegions = new EObjectContainmentEList.Resolving<Region>(Region.class, this, CapellacommonPackage.STATE__OWNED_REGIONS);
+    }
+    return ownedRegions;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractFunction> getAvailableAbstractFunctions() {
 
@@ -213,27 +213,27 @@ public class StateImpl extends AbstractStateImpl implements State {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractFunction> resultAsList = (Collection<AbstractFunction>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractFunction>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<FunctionalChain> getAvailableFunctionalChains() {
 
@@ -260,27 +260,27 @@ public class StateImpl extends AbstractStateImpl implements State {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.STATE__AVAILABLE_FUNCTIONAL_CHAINS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE__AVAILABLE_FUNCTIONAL_CHAINS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
-		return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<FunctionalChain> resultAsList = (Collection<FunctionalChain>) result;
+    return new EcoreEList.UnmodifiableEList<FunctionalChain>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_FUNCTIONAL_CHAINS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<AbstractCapability> getAvailableAbstractCapabilities() {
 
@@ -307,69 +307,69 @@ public class StateImpl extends AbstractStateImpl implements State {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_CAPABILITIES, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
-		return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<AbstractCapability> resultAsList = (Collection<AbstractCapability>) result;
+    return new EcoreEList.UnmodifiableEList<AbstractCapability>(this, CapellacommonPackage.Literals.STATE__AVAILABLE_ABSTRACT_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEvent getEntry() {
 
-		if (entry != null && entry.eIsProxy()) {
-			InternalEObject oldEntry = (InternalEObject)entry;
-			entry = (AbstractEvent)eResolveProxy(oldEntry);
-			if (entry != oldEntry) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__ENTRY, oldEntry, entry));
-			}
-		}
-		return entry;
-	}
+    if (entry != null && entry.eIsProxy()) {
+      InternalEObject oldEntry = (InternalEObject)entry;
+      entry = (AbstractEvent)eResolveProxy(oldEntry);
+      if (entry != oldEntry) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__ENTRY, oldEntry, entry));
+      }
+    }
+    return entry;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEvent basicGetEntry() {
 
-		return entry;
-	}
+    return entry;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setEntry(AbstractEvent newEntry) {
 
-		AbstractEvent oldEntry = entry;
-		entry = newEntry;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__ENTRY, oldEntry, entry));
+    AbstractEvent oldEntry = entry;
+    entry = newEntry;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__ENTRY, oldEntry, entry));
 
-	}
+  }
 
 
 
@@ -377,52 +377,52 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEvent getDoActivity() {
 
-		if (doActivity != null && doActivity.eIsProxy()) {
-			InternalEObject oldDoActivity = (InternalEObject)doActivity;
-			doActivity = (AbstractEvent)eResolveProxy(oldDoActivity);
-			if (doActivity != oldDoActivity) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__DO_ACTIVITY, oldDoActivity, doActivity));
-			}
-		}
-		return doActivity;
-	}
+    if (doActivity != null && doActivity.eIsProxy()) {
+      InternalEObject oldDoActivity = (InternalEObject)doActivity;
+      doActivity = (AbstractEvent)eResolveProxy(oldDoActivity);
+      if (doActivity != oldDoActivity) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__DO_ACTIVITY, oldDoActivity, doActivity));
+      }
+    }
+    return doActivity;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEvent basicGetDoActivity() {
 
-		return doActivity;
-	}
+    return doActivity;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setDoActivity(AbstractEvent newDoActivity) {
 
-		AbstractEvent oldDoActivity = doActivity;
-		doActivity = newDoActivity;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__DO_ACTIVITY, oldDoActivity, doActivity));
+    AbstractEvent oldDoActivity = doActivity;
+    doActivity = newDoActivity;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__DO_ACTIVITY, oldDoActivity, doActivity));
 
-	}
+  }
 
 
 
@@ -430,52 +430,52 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEvent getExit() {
 
-		if (exit != null && exit.eIsProxy()) {
-			InternalEObject oldExit = (InternalEObject)exit;
-			exit = (AbstractEvent)eResolveProxy(oldExit);
-			if (exit != oldExit) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__EXIT, oldExit, exit));
-			}
-		}
-		return exit;
-	}
+    if (exit != null && exit.eIsProxy()) {
+      InternalEObject oldExit = (InternalEObject)exit;
+      exit = (AbstractEvent)eResolveProxy(oldExit);
+      if (exit != oldExit) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__EXIT, oldExit, exit));
+      }
+    }
+    return exit;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractEvent basicGetExit() {
 
-		return exit;
-	}
+    return exit;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setExit(AbstractEvent newExit) {
 
-		AbstractEvent oldExit = exit;
-		exit = newExit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__EXIT, oldExit, exit));
+    AbstractEvent oldExit = exit;
+    exit = newExit;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__EXIT, oldExit, exit));
 
-	}
+  }
 
 
 
@@ -483,247 +483,247 @@ public class StateImpl extends AbstractStateImpl implements State {
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConstraint getStateInvariant() {
 
-		if (stateInvariant != null && stateInvariant.eIsProxy()) {
-			InternalEObject oldStateInvariant = (InternalEObject)stateInvariant;
-			stateInvariant = (AbstractConstraint)eResolveProxy(oldStateInvariant);
-			if (stateInvariant != oldStateInvariant) {
-				InternalEObject newStateInvariant = (InternalEObject)stateInvariant;
-				NotificationChain msgs = oldStateInvariant.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, null);
-				if (newStateInvariant.eInternalContainer() == null) {
-					msgs = newStateInvariant.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__STATE_INVARIANT, oldStateInvariant, stateInvariant));
-			}
-		}
-		return stateInvariant;
-	}
+    if (stateInvariant != null && stateInvariant.eIsProxy()) {
+      InternalEObject oldStateInvariant = (InternalEObject)stateInvariant;
+      stateInvariant = (AbstractConstraint)eResolveProxy(oldStateInvariant);
+      if (stateInvariant != oldStateInvariant) {
+        InternalEObject newStateInvariant = (InternalEObject)stateInvariant;
+        NotificationChain msgs = oldStateInvariant.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, null);
+        if (newStateInvariant.eInternalContainer() == null) {
+          msgs = newStateInvariant.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CapellacommonPackage.STATE__STATE_INVARIANT, oldStateInvariant, stateInvariant));
+      }
+    }
+    return stateInvariant;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractConstraint basicGetStateInvariant() {
 
-		return stateInvariant;
-	}
+    return stateInvariant;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetStateInvariant(AbstractConstraint newStateInvariant, NotificationChain msgs) {
 
-		AbstractConstraint oldStateInvariant = stateInvariant;
-		stateInvariant = newStateInvariant;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__STATE_INVARIANT, oldStateInvariant, newStateInvariant);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    AbstractConstraint oldStateInvariant = stateInvariant;
+    stateInvariant = newStateInvariant;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__STATE_INVARIANT, oldStateInvariant, newStateInvariant);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setStateInvariant(AbstractConstraint newStateInvariant) {
 
-		if (newStateInvariant != stateInvariant) {
-			NotificationChain msgs = null;
-			if (stateInvariant != null)
-				msgs = ((InternalEObject)stateInvariant).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, msgs);
-			if (newStateInvariant != null)
-				msgs = ((InternalEObject)newStateInvariant).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, msgs);
-			msgs = basicSetStateInvariant(newStateInvariant, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__STATE_INVARIANT, newStateInvariant, newStateInvariant));
+    if (newStateInvariant != stateInvariant) {
+      NotificationChain msgs = null;
+      if (stateInvariant != null)
+        msgs = ((InternalEObject)stateInvariant).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, msgs);
+      if (newStateInvariant != null)
+        msgs = ((InternalEObject)newStateInvariant).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CapellacommonPackage.STATE__STATE_INVARIANT, null, msgs);
+      msgs = basicSetStateInvariant(newStateInvariant, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, CapellacommonPackage.STATE__STATE_INVARIANT, newStateInvariant, newStateInvariant));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE__OWNED_REGIONS:
-				return ((InternalEList<?>)getOwnedRegions()).basicRemove(otherEnd, msgs);
-			case CapellacommonPackage.STATE__STATE_INVARIANT:
-				return basicSetStateInvariant(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE__OWNED_REGIONS:
+        return ((InternalEList<?>)getOwnedRegions()).basicRemove(otherEnd, msgs);
+      case CapellacommonPackage.STATE__STATE_INVARIANT:
+        return basicSetStateInvariant(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE__OWNED_REGIONS:
-				return getOwnedRegions();
-			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_FUNCTIONS:
-				return getAvailableAbstractFunctions();
-			case CapellacommonPackage.STATE__AVAILABLE_FUNCTIONAL_CHAINS:
-				return getAvailableFunctionalChains();
-			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_CAPABILITIES:
-				return getAvailableAbstractCapabilities();
-			case CapellacommonPackage.STATE__ENTRY:
-				if (resolve) return getEntry();
-				return basicGetEntry();
-			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				if (resolve) return getDoActivity();
-				return basicGetDoActivity();
-			case CapellacommonPackage.STATE__EXIT:
-				if (resolve) return getExit();
-				return basicGetExit();
-			case CapellacommonPackage.STATE__STATE_INVARIANT:
-				if (resolve) return getStateInvariant();
-				return basicGetStateInvariant();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE__OWNED_REGIONS:
+        return getOwnedRegions();
+      case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_FUNCTIONS:
+        return getAvailableAbstractFunctions();
+      case CapellacommonPackage.STATE__AVAILABLE_FUNCTIONAL_CHAINS:
+        return getAvailableFunctionalChains();
+      case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_CAPABILITIES:
+        return getAvailableAbstractCapabilities();
+      case CapellacommonPackage.STATE__ENTRY:
+        if (resolve) return getEntry();
+        return basicGetEntry();
+      case CapellacommonPackage.STATE__DO_ACTIVITY:
+        if (resolve) return getDoActivity();
+        return basicGetDoActivity();
+      case CapellacommonPackage.STATE__EXIT:
+        if (resolve) return getExit();
+        return basicGetExit();
+      case CapellacommonPackage.STATE__STATE_INVARIANT:
+        if (resolve) return getStateInvariant();
+        return basicGetStateInvariant();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE__OWNED_REGIONS:
-				getOwnedRegions().clear();
-				getOwnedRegions().addAll((Collection<? extends Region>)newValue);
-				return;
-			case CapellacommonPackage.STATE__ENTRY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setEntry((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setDoActivity((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CapellacommonPackage.STATE__EXIT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractEvent) {
-				// end-extension-code
-					setExit((AbstractEvent)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case CapellacommonPackage.STATE__STATE_INVARIANT:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractConstraint) {
-				// end-extension-code
-					setStateInvariant((AbstractConstraint)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE__OWNED_REGIONS:
+        getOwnedRegions().clear();
+        getOwnedRegions().addAll((Collection<? extends Region>)newValue);
+        return;
+      case CapellacommonPackage.STATE__ENTRY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractEvent) {
+        // end-extension-code
+          setEntry((AbstractEvent)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case CapellacommonPackage.STATE__DO_ACTIVITY:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractEvent) {
+        // end-extension-code
+          setDoActivity((AbstractEvent)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case CapellacommonPackage.STATE__EXIT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractEvent) {
+        // end-extension-code
+          setExit((AbstractEvent)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case CapellacommonPackage.STATE__STATE_INVARIANT:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractConstraint) {
+        // end-extension-code
+          setStateInvariant((AbstractConstraint)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE__OWNED_REGIONS:
-				getOwnedRegions().clear();
-				return;
-			case CapellacommonPackage.STATE__ENTRY:
-				setEntry((AbstractEvent)null);
-				return;
-			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				setDoActivity((AbstractEvent)null);
-				return;
-			case CapellacommonPackage.STATE__EXIT:
-				setExit((AbstractEvent)null);
-				return;
-			case CapellacommonPackage.STATE__STATE_INVARIANT:
-				setStateInvariant((AbstractConstraint)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE__OWNED_REGIONS:
+        getOwnedRegions().clear();
+        return;
+      case CapellacommonPackage.STATE__ENTRY:
+        setEntry((AbstractEvent)null);
+        return;
+      case CapellacommonPackage.STATE__DO_ACTIVITY:
+        setDoActivity((AbstractEvent)null);
+        return;
+      case CapellacommonPackage.STATE__EXIT:
+        setExit((AbstractEvent)null);
+        return;
+      case CapellacommonPackage.STATE__STATE_INVARIANT:
+        setStateInvariant((AbstractConstraint)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CapellacommonPackage.STATE__OWNED_REGIONS:
-				return ownedRegions != null && !ownedRegions.isEmpty();
-			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_FUNCTIONS:
-				return !getAvailableAbstractFunctions().isEmpty();
-			case CapellacommonPackage.STATE__AVAILABLE_FUNCTIONAL_CHAINS:
-				return !getAvailableFunctionalChains().isEmpty();
-			case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_CAPABILITIES:
-				return !getAvailableAbstractCapabilities().isEmpty();
-			case CapellacommonPackage.STATE__ENTRY:
-				return entry != null;
-			case CapellacommonPackage.STATE__DO_ACTIVITY:
-				return doActivity != null;
-			case CapellacommonPackage.STATE__EXIT:
-				return exit != null;
-			case CapellacommonPackage.STATE__STATE_INVARIANT:
-				return stateInvariant != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case CapellacommonPackage.STATE__OWNED_REGIONS:
+        return ownedRegions != null && !ownedRegions.isEmpty();
+      case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_FUNCTIONS:
+        return !getAvailableAbstractFunctions().isEmpty();
+      case CapellacommonPackage.STATE__AVAILABLE_FUNCTIONAL_CHAINS:
+        return !getAvailableFunctionalChains().isEmpty();
+      case CapellacommonPackage.STATE__AVAILABLE_ABSTRACT_CAPABILITIES:
+        return !getAvailableAbstractCapabilities().isEmpty();
+      case CapellacommonPackage.STATE__ENTRY:
+        return entry != null;
+      case CapellacommonPackage.STATE__DO_ACTIVITY:
+        return doActivity != null;
+      case CapellacommonPackage.STATE__EXIT:
+        return exit != null;
+      case CapellacommonPackage.STATE__STATE_INVARIANT:
+        return stateInvariant != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

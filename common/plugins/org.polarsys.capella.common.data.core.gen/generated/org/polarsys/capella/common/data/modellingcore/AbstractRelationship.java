@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,24 +38,24 @@ public interface AbstractRelationship extends ModelElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Realized Flow</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow#getRealizations <em>Realizations</em>}'.
+   * Returns the value of the '<em><b>Realized Flow</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow#getRealizations <em>Realizations</em>}'.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Flow</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Realized Flow</em>' reference.
-	 * @see #setRealizedFlow(AbstractInformationFlow)
-	 * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractRelationship_RealizedFlow()
-	 * @see org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow#getRealizations
-	 * @model opposite="realizations"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the information flow that this relationship realizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::InformationFlow::realization' constraints='Multiplicity must be [0..1]'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Realized Flow</em>' reference.
+   * @see #setRealizedFlow(AbstractInformationFlow)
+   * @see org.polarsys.capella.common.data.modellingcore.ModellingcorePackage#getAbstractRelationship_RealizedFlow()
+   * @see org.polarsys.capella.common.data.modellingcore.AbstractInformationFlow#getRealizations
+   * @model opposite="realizations"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the information flow that this relationship realizes\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::InformationFlow::realization' constraints='Multiplicity must be [0..1]'"
+   * @generated
+   */
 
 	AbstractInformationFlow getRealizedFlow();
 
@@ -63,14 +63,14 @@ public interface AbstractRelationship extends ModelElement {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractRelationship#getRealizedFlow <em>Realized Flow</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.common.data.modellingcore.AbstractRelationship#getRealizedFlow <em>Realized Flow</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Realized Flow</em>' reference.
-	 * @see #getRealizedFlow()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Realized Flow</em>' reference.
+   * @see #getRealizedFlow()
+   * @generated
+   */
 
 	void setRealizedFlow(AbstractInformationFlow value);
 

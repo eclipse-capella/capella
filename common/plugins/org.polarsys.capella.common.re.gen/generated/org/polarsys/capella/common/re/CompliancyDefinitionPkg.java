@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,20 +37,20 @@ public interface CompliancyDefinitionPkg extends ReNamedElement {
 
 
 	/**
-	 * Returns the value of the '<em><b>Owned Definitions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.polarsys.capella.common.re.CompliancyDefinition}.
+   * Returns the value of the '<em><b>Owned Definitions</b></em>' containment reference list.
+   * The list contents are of type {@link org.polarsys.capella.common.re.CompliancyDefinition}.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Definitions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Owned Definitions</em>' containment reference list.
-	 * @see org.polarsys.capella.common.re.RePackage#getCompliancyDefinitionPkg_OwnedDefinitions()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Owned Definitions</em>' containment reference list.
+   * @see org.polarsys.capella.common.re.RePackage#getCompliancyDefinitionPkg_OwnedDefinitions()
+   * @model containment="true" resolveProxies="true"
+   * @generated
+   */
 
 	EList<CompliancyDefinition> getOwnedDefinitions();
 

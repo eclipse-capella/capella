@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,13 +66,13 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedProtocols() <em>Owned Protocols</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedProtocols() <em>Owned Protocols</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedProtocols()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedProtocols()
+   * @generated
+   * @ordered
+   */
 	protected EList<StateMachine> ownedProtocols;
 
 
@@ -88,13 +88,13 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
 
 
 	/**
-	 * The cached value of the '{@link #getProvidedInterfaces() <em>Provided Interfaces</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getProvidedInterfaces() <em>Provided Interfaces</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getProvidedInterfaces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getProvidedInterfaces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Interface> providedInterfaces;
 
 
@@ -102,13 +102,13 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
 
 
 	/**
-	 * The cached value of the '{@link #getRequiredInterfaces() <em>Required Interfaces</em>}' reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRequiredInterfaces() <em>Required Interfaces</em>}' reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredInterfaces()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getRequiredInterfaces()
+   * @generated
+   * @ordered
+   */
 	protected EList<Interface> requiredInterfaces;
 
 
@@ -116,13 +116,13 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPortRealizations() <em>Owned Port Realizations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPortRealizations() <em>Owned Port Realizations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPortRealizations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPortRealizations()
+   * @generated
+   * @ordered
+   */
 	protected EList<PortRealization> ownedPortRealizations;
 
 
@@ -130,48 +130,48 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
 
 
 	/**
-	 * The cached value of the '{@link #getOwnedPortAllocations() <em>Owned Port Allocations</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedPortAllocations() <em>Owned Port Allocations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedPortAllocations()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedPortAllocations()
+   * @generated
+   * @ordered
+   */
 	protected EList<PortAllocation> ownedPortAllocations;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected PortImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return InformationPackage.Literals.PORT;
-	}
+    return InformationPackage.Literals.PORT;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortRealization> getIncomingPortRealizations() {
 
@@ -198,27 +198,27 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
-		return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
+    return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__INCOMING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortRealization> getOutgoingPortRealizations() {
 
@@ -245,45 +245,45 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
-		return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortRealization> resultAsList = (Collection<PortRealization>) result;
+    return new EcoreEList.UnmodifiableEList<PortRealization>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<StateMachine> getOwnedProtocols() {
 
-		if (ownedProtocols == null) {
-			ownedProtocols = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, InformationPackage.PORT__OWNED_PROTOCOLS);
-		}
-		return ownedProtocols;
-	}
+    if (ownedProtocols == null) {
+      ownedProtocols = new EObjectContainmentEList.Resolving<StateMachine>(StateMachine.class, this, InformationPackage.PORT__OWNED_PROTOCOLS);
+    }
+    return ownedProtocols;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortAllocation> getIncomingPortAllocations() {
 
@@ -310,27 +310,27 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
+    return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__INCOMING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortAllocation> getOutgoingPortAllocations() {
 
@@ -357,232 +357,232 @@ public abstract class PortImpl extends NamedElementImpl implements Port {
     // A helper is found, let's use it. 
     EAnnotation annotation = InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS, annotation);
-		
-		try {
-		@SuppressWarnings("unchecked")
-		Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
-		return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
-		} catch (ClassCastException cce_p) {
-	  	cce_p.printStackTrace();
-	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
-	  }
-		
-	}
+    
+    try {
+    @SuppressWarnings("unchecked")
+    Collection<PortAllocation> resultAsList = (Collection<PortAllocation>) result;
+    return new EcoreEList.UnmodifiableEList<PortAllocation>(this, InformationPackage.Literals.PORT__OUTGOING_PORT_ALLOCATIONS, resultAsList.size(), resultAsList.toArray());
+    } catch (ClassCastException cce_p) {
+    	cce_p.printStackTrace();
+    	return org.eclipse.emf.common.util.ECollections.emptyEList();
+    }
+    
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Interface> getProvidedInterfaces() {
 
-		if (providedInterfaces == null) {
-			providedInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, InformationPackage.PORT__PROVIDED_INTERFACES);
-		}
-		return providedInterfaces;
-	}
+    if (providedInterfaces == null) {
+      providedInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, InformationPackage.PORT__PROVIDED_INTERFACES);
+    }
+    return providedInterfaces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<Interface> getRequiredInterfaces() {
 
-		if (requiredInterfaces == null) {
-			requiredInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, InformationPackage.PORT__REQUIRED_INTERFACES);
-		}
-		return requiredInterfaces;
-	}
+    if (requiredInterfaces == null) {
+      requiredInterfaces = new EObjectResolvingEList<Interface>(Interface.class, this, InformationPackage.PORT__REQUIRED_INTERFACES);
+    }
+    return requiredInterfaces;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortRealization> getOwnedPortRealizations() {
 
-		if (ownedPortRealizations == null) {
-			ownedPortRealizations = new EObjectContainmentEList.Resolving<PortRealization>(PortRealization.class, this, InformationPackage.PORT__OWNED_PORT_REALIZATIONS);
-		}
-		return ownedPortRealizations;
-	}
+    if (ownedPortRealizations == null) {
+      ownedPortRealizations = new EObjectContainmentEList.Resolving<PortRealization>(PortRealization.class, this, InformationPackage.PORT__OWNED_PORT_REALIZATIONS);
+    }
+    return ownedPortRealizations;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<PortAllocation> getOwnedPortAllocations() {
 
-		if (ownedPortAllocations == null) {
-			ownedPortAllocations = new EObjectContainmentEList.Resolving<PortAllocation>(PortAllocation.class, this, InformationPackage.PORT__OWNED_PORT_ALLOCATIONS);
-		}
-		return ownedPortAllocations;
-	}
+    if (ownedPortAllocations == null) {
+      ownedPortAllocations = new EObjectContainmentEList.Resolving<PortAllocation>(PortAllocation.class, this, InformationPackage.PORT__OWNED_PORT_ALLOCATIONS);
+    }
+    return ownedPortAllocations;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case InformationPackage.PORT__OWNED_PROTOCOLS:
-				return ((InternalEList<?>)getOwnedProtocols()).basicRemove(otherEnd, msgs);
-			case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
-				return ((InternalEList<?>)getOwnedPortRealizations()).basicRemove(otherEnd, msgs);
-			case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
-				return ((InternalEList<?>)getOwnedPortAllocations()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT__OWNED_PROTOCOLS:
+        return ((InternalEList<?>)getOwnedProtocols()).basicRemove(otherEnd, msgs);
+      case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
+        return ((InternalEList<?>)getOwnedPortRealizations()).basicRemove(otherEnd, msgs);
+      case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
+        return ((InternalEList<?>)getOwnedPortAllocations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case InformationPackage.PORT__INCOMING_PORT_REALIZATIONS:
-				return getIncomingPortRealizations();
-			case InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS:
-				return getOutgoingPortRealizations();
-			case InformationPackage.PORT__OWNED_PROTOCOLS:
-				return getOwnedProtocols();
-			case InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS:
-				return getIncomingPortAllocations();
-			case InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS:
-				return getOutgoingPortAllocations();
-			case InformationPackage.PORT__PROVIDED_INTERFACES:
-				return getProvidedInterfaces();
-			case InformationPackage.PORT__REQUIRED_INTERFACES:
-				return getRequiredInterfaces();
-			case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
-				return getOwnedPortRealizations();
-			case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
-				return getOwnedPortAllocations();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT__INCOMING_PORT_REALIZATIONS:
+        return getIncomingPortRealizations();
+      case InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS:
+        return getOutgoingPortRealizations();
+      case InformationPackage.PORT__OWNED_PROTOCOLS:
+        return getOwnedProtocols();
+      case InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS:
+        return getIncomingPortAllocations();
+      case InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS:
+        return getOutgoingPortAllocations();
+      case InformationPackage.PORT__PROVIDED_INTERFACES:
+        return getProvidedInterfaces();
+      case InformationPackage.PORT__REQUIRED_INTERFACES:
+        return getRequiredInterfaces();
+      case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
+        return getOwnedPortRealizations();
+      case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
+        return getOwnedPortAllocations();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case InformationPackage.PORT__OWNED_PROTOCOLS:
-				getOwnedProtocols().clear();
-				getOwnedProtocols().addAll((Collection<? extends StateMachine>)newValue);
-				return;
-			case InformationPackage.PORT__PROVIDED_INTERFACES:
-				getProvidedInterfaces().clear();
-				getProvidedInterfaces().addAll((Collection<? extends Interface>)newValue);
-				return;
-			case InformationPackage.PORT__REQUIRED_INTERFACES:
-				getRequiredInterfaces().clear();
-				getRequiredInterfaces().addAll((Collection<? extends Interface>)newValue);
-				return;
-			case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
-				getOwnedPortRealizations().clear();
-				getOwnedPortRealizations().addAll((Collection<? extends PortRealization>)newValue);
-				return;
-			case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
-				getOwnedPortAllocations().clear();
-				getOwnedPortAllocations().addAll((Collection<? extends PortAllocation>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT__OWNED_PROTOCOLS:
+        getOwnedProtocols().clear();
+        getOwnedProtocols().addAll((Collection<? extends StateMachine>)newValue);
+        return;
+      case InformationPackage.PORT__PROVIDED_INTERFACES:
+        getProvidedInterfaces().clear();
+        getProvidedInterfaces().addAll((Collection<? extends Interface>)newValue);
+        return;
+      case InformationPackage.PORT__REQUIRED_INTERFACES:
+        getRequiredInterfaces().clear();
+        getRequiredInterfaces().addAll((Collection<? extends Interface>)newValue);
+        return;
+      case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
+        getOwnedPortRealizations().clear();
+        getOwnedPortRealizations().addAll((Collection<? extends PortRealization>)newValue);
+        return;
+      case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
+        getOwnedPortAllocations().clear();
+        getOwnedPortAllocations().addAll((Collection<? extends PortAllocation>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case InformationPackage.PORT__OWNED_PROTOCOLS:
-				getOwnedProtocols().clear();
-				return;
-			case InformationPackage.PORT__PROVIDED_INTERFACES:
-				getProvidedInterfaces().clear();
-				return;
-			case InformationPackage.PORT__REQUIRED_INTERFACES:
-				getRequiredInterfaces().clear();
-				return;
-			case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
-				getOwnedPortRealizations().clear();
-				return;
-			case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
-				getOwnedPortAllocations().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT__OWNED_PROTOCOLS:
+        getOwnedProtocols().clear();
+        return;
+      case InformationPackage.PORT__PROVIDED_INTERFACES:
+        getProvidedInterfaces().clear();
+        return;
+      case InformationPackage.PORT__REQUIRED_INTERFACES:
+        getRequiredInterfaces().clear();
+        return;
+      case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
+        getOwnedPortRealizations().clear();
+        return;
+      case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
+        getOwnedPortAllocations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case InformationPackage.PORT__INCOMING_PORT_REALIZATIONS:
-				return !getIncomingPortRealizations().isEmpty();
-			case InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS:
-				return !getOutgoingPortRealizations().isEmpty();
-			case InformationPackage.PORT__OWNED_PROTOCOLS:
-				return ownedProtocols != null && !ownedProtocols.isEmpty();
-			case InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS:
-				return !getIncomingPortAllocations().isEmpty();
-			case InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS:
-				return !getOutgoingPortAllocations().isEmpty();
-			case InformationPackage.PORT__PROVIDED_INTERFACES:
-				return providedInterfaces != null && !providedInterfaces.isEmpty();
-			case InformationPackage.PORT__REQUIRED_INTERFACES:
-				return requiredInterfaces != null && !requiredInterfaces.isEmpty();
-			case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
-				return ownedPortRealizations != null && !ownedPortRealizations.isEmpty();
-			case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
-				return ownedPortAllocations != null && !ownedPortAllocations.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case InformationPackage.PORT__INCOMING_PORT_REALIZATIONS:
+        return !getIncomingPortRealizations().isEmpty();
+      case InformationPackage.PORT__OUTGOING_PORT_REALIZATIONS:
+        return !getOutgoingPortRealizations().isEmpty();
+      case InformationPackage.PORT__OWNED_PROTOCOLS:
+        return ownedProtocols != null && !ownedProtocols.isEmpty();
+      case InformationPackage.PORT__INCOMING_PORT_ALLOCATIONS:
+        return !getIncomingPortAllocations().isEmpty();
+      case InformationPackage.PORT__OUTGOING_PORT_ALLOCATIONS:
+        return !getOutgoingPortAllocations().isEmpty();
+      case InformationPackage.PORT__PROVIDED_INTERFACES:
+        return providedInterfaces != null && !providedInterfaces.isEmpty();
+      case InformationPackage.PORT__REQUIRED_INTERFACES:
+        return requiredInterfaces != null && !requiredInterfaces.isEmpty();
+      case InformationPackage.PORT__OWNED_PORT_REALIZATIONS:
+        return ownedPortRealizations != null && !ownedPortRealizations.isEmpty();
+      case InformationPackage.PORT__OWNED_PORT_ALLOCATIONS:
+        return ownedPortAllocations != null && !ownedPortAllocations.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

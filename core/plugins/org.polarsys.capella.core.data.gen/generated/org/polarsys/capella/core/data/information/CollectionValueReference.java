@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,23 +36,23 @@ public interface CollectionValueReference extends AbstractCollectionValue {
 
 
 	/**
-	 * Returns the value of the '<em><b>Referenced Value</b></em>' reference.
+   * Returns the value of the '<em><b>Referenced Value</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced Value</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced Value</em>' reference.
-	 * @see #setReferencedValue(AbstractCollectionValue)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollectionValueReference_ReferencedValue()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='reference'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the collection value that this reference points to\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Referenced Value</em>' reference.
+   * @see #setReferencedValue(AbstractCollectionValue)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollectionValueReference_ReferencedValue()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='reference'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the collection value that this reference points to\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	AbstractCollectionValue getReferencedValue();
 
@@ -60,14 +60,14 @@ public interface CollectionValueReference extends AbstractCollectionValue {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.CollectionValueReference#getReferencedValue <em>Referenced Value</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.CollectionValueReference#getReferencedValue <em>Referenced Value</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Referenced Value</em>' reference.
-	 * @see #getReferencedValue()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Referenced Value</em>' reference.
+   * @see #getReferencedValue()
+   * @generated
+   */
 
 	void setReferencedValue(AbstractCollectionValue value);
 
@@ -78,23 +78,23 @@ public interface CollectionValueReference extends AbstractCollectionValue {
 
 
 	/**
-	 * Returns the value of the '<em><b>Referenced Property</b></em>' reference.
+   * Returns the value of the '<em><b>Referenced Property</b></em>' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Referenced Property</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced Property</em>' reference.
-	 * @see #setReferencedProperty(Property)
-	 * @see org.polarsys.capella.core.data.information.InformationPackage#getCollectionValueReference_ReferencedProperty()
-	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
-	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='reference'"
-	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property that is using this reference\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-	 * @generated
-	 */
+   * @return the value of the '<em>Referenced Property</em>' reference.
+   * @see #setReferencedProperty(Property)
+   * @see org.polarsys.capella.core.data.information.InformationPackage#getCollectionValueReference_ReferencedProperty()
+   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='clientDependency' featureOwner='NamedElement'"
+   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='reference'"
+   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the property that is using this reference\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+   * @generated
+   */
 
 	Property getReferencedProperty();
 
@@ -102,14 +102,14 @@ public interface CollectionValueReference extends AbstractCollectionValue {
 
 
 	/**
-	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.CollectionValueReference#getReferencedProperty <em>Referenced Property</em>}' reference.
+   * Sets the value of the '{@link org.polarsys.capella.core.data.information.CollectionValueReference#getReferencedProperty <em>Referenced Property</em>}' reference.
 
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Referenced Property</em>' reference.
-	 * @see #getReferencedProperty()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Referenced Property</em>' reference.
+   * @see #getReferencedProperty()
+   * @generated
+   */
 
 	void setReferencedProperty(Property value);
 

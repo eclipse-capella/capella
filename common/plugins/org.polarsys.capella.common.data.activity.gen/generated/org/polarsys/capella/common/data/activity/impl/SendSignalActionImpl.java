@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,13 +37,13 @@ import org.polarsys.capella.common.data.behavior.AbstractSignal;
 public abstract class SendSignalActionImpl extends InvocationActionImpl implements SendSignalAction {
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTarget()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getTarget()
+   * @generated
+   * @ordered
+   */
 	protected InputPin target;
 
 
@@ -51,123 +51,123 @@ public abstract class SendSignalActionImpl extends InvocationActionImpl implemen
 
 
 	/**
-	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSignal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getSignal()
+   * @generated
+   * @ordered
+   */
 	protected AbstractSignal signal;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected SendSignalActionImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return ActivityPackage.Literals.SEND_SIGNAL_ACTION;
-	}
+    return ActivityPackage.Literals.SEND_SIGNAL_ACTION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InputPin getTarget() {
 
-		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
-			target = (InputPin)eResolveProxy(oldTarget);
-			if (target != oldTarget) {
-				InternalEObject newTarget = (InternalEObject)target;
-				NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, null);
-				if (newTarget.eInternalContainer() == null) {
-					msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.SEND_SIGNAL_ACTION__TARGET, oldTarget, target));
-			}
-		}
-		return target;
-	}
+    if (target != null && target.eIsProxy()) {
+      InternalEObject oldTarget = (InternalEObject)target;
+      target = (InputPin)eResolveProxy(oldTarget);
+      if (target != oldTarget) {
+        InternalEObject newTarget = (InternalEObject)target;
+        NotificationChain msgs = oldTarget.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, null);
+        if (newTarget.eInternalContainer() == null) {
+          msgs = newTarget.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.SEND_SIGNAL_ACTION__TARGET, oldTarget, target));
+      }
+    }
+    return target;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public InputPin basicGetTarget() {
 
-		return target;
-	}
+    return target;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public NotificationChain basicSetTarget(InputPin newTarget, NotificationChain msgs) {
 
-		InputPin oldTarget = target;
-		target = newTarget;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityPackage.SEND_SIGNAL_ACTION__TARGET, oldTarget, newTarget);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+    InputPin oldTarget = target;
+    target = newTarget;
+    if (eNotificationRequired()) {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ActivityPackage.SEND_SIGNAL_ACTION__TARGET, oldTarget, newTarget);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
 
-		return msgs;
-	}
+    return msgs;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setTarget(InputPin newTarget) {
 
-		if (newTarget != target) {
-			NotificationChain msgs = null;
-			if (target != null)
-				msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, msgs);
-			if (newTarget != null)
-				msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, msgs);
-			msgs = basicSetTarget(newTarget, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.SEND_SIGNAL_ACTION__TARGET, newTarget, newTarget));
+    if (newTarget != target) {
+      NotificationChain msgs = null;
+      if (target != null)
+        msgs = ((InternalEObject)target).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, msgs);
+      if (newTarget != null)
+        msgs = ((InternalEObject)newTarget).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ActivityPackage.SEND_SIGNAL_ACTION__TARGET, null, msgs);
+      msgs = basicSetTarget(newTarget, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.SEND_SIGNAL_ACTION__TARGET, newTarget, newTarget));
 
-	}
+  }
 
 
 
@@ -175,154 +175,154 @@ public abstract class SendSignalActionImpl extends InvocationActionImpl implemen
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractSignal getSignal() {
 
-		if (signal != null && signal.eIsProxy()) {
-			InternalEObject oldSignal = (InternalEObject)signal;
-			signal = (AbstractSignal)eResolveProxy(oldSignal);
-			if (signal != oldSignal) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
-			}
-		}
-		return signal;
-	}
+    if (signal != null && signal.eIsProxy()) {
+      InternalEObject oldSignal = (InternalEObject)signal;
+      signal = (AbstractSignal)eResolveProxy(oldSignal);
+      if (signal != oldSignal) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
+      }
+    }
+    return signal;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public AbstractSignal basicGetSignal() {
 
-		return signal;
-	}
+    return signal;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setSignal(AbstractSignal newSignal) {
 
-		AbstractSignal oldSignal = signal;
-		signal = newSignal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
+    AbstractSignal oldSignal = signal;
+    signal = newSignal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
-				return basicSetTarget(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
+        return basicSetTarget(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
-			case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
-				if (resolve) return getSignal();
-				return basicGetSignal();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
+        if (resolve) return getTarget();
+        return basicGetTarget();
+      case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
+        if (resolve) return getSignal();
+        return basicGetSignal();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof InputPin) {
-				// end-extension-code
-					setTarget((InputPin)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-			case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof AbstractSignal) {
-				// end-extension-code
-					setSignal((AbstractSignal)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof InputPin) {
+        // end-extension-code
+          setTarget((InputPin)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+      case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof AbstractSignal) {
+        // end-extension-code
+          setSignal((AbstractSignal)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
-				setTarget((InputPin)null);
-				return;
-			case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
-				setSignal((AbstractSignal)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
+        setTarget((InputPin)null);
+        return;
+      case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
+        setSignal((AbstractSignal)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
-				return target != null;
-			case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
-				return signal != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case ActivityPackage.SEND_SIGNAL_ACTION__TARGET:
+        return target != null;
+      case ActivityPackage.SEND_SIGNAL_ACTION__SIGNAL:
+        return signal != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

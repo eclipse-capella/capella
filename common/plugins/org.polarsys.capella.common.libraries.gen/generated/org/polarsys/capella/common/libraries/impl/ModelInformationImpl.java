@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,13 +47,13 @@ import org.polarsys.capella.common.libraries.ModelVersion;
 public class ModelInformationImpl extends LibraryAbstractElementImpl implements ModelInformation {
 
 	/**
-	 * The cached value of the '{@link #getOwnedReferences() <em>Owned References</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getOwnedReferences() <em>Owned References</em>}' containment reference list.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOwnedReferences()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getOwnedReferences()
+   * @generated
+   * @ordered
+   */
 	protected EList<LibraryReference> ownedReferences;
 
 
@@ -61,205 +61,205 @@ public class ModelInformationImpl extends LibraryAbstractElementImpl implements 
 
 
 	/**
-	 * The cached value of the '{@link #getVersion() <em>Version</em>}' reference.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getVersion() <em>Version</em>}' reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getVersion()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getVersion()
+   * @generated
+   * @ordered
+   */
 	protected ModelVersion version;
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected ModelInformationImpl() {
 
-		super();
+    super();
 
-	}
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return LibrariesPackage.Literals.MODEL_INFORMATION;
-	}
+    return LibrariesPackage.Literals.MODEL_INFORMATION;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public EList<LibraryReference> getOwnedReferences() {
 
-		if (ownedReferences == null) {
-			ownedReferences = new EObjectContainmentEList.Resolving<LibraryReference>(LibraryReference.class, this, LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES);
-		}
-		return ownedReferences;
-	}
+    if (ownedReferences == null) {
+      ownedReferences = new EObjectContainmentEList.Resolving<LibraryReference>(LibraryReference.class, this, LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES);
+    }
+    return ownedReferences;
+  }
 
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ModelVersion getVersion() {
 
-		if (version != null && version.eIsProxy()) {
-			InternalEObject oldVersion = (InternalEObject)version;
-			version = (ModelVersion)eResolveProxy(oldVersion);
-			if (version != oldVersion) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibrariesPackage.MODEL_INFORMATION__VERSION, oldVersion, version));
-			}
-		}
-		return version;
-	}
+    if (version != null && version.eIsProxy()) {
+      InternalEObject oldVersion = (InternalEObject)version;
+      version = (ModelVersion)eResolveProxy(oldVersion);
+      if (version != oldVersion) {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibrariesPackage.MODEL_INFORMATION__VERSION, oldVersion, version));
+      }
+    }
+    return version;
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public ModelVersion basicGetVersion() {
 
-		return version;
-	}
+    return version;
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 
 	public void setVersion(ModelVersion newVersion) {
 
-		ModelVersion oldVersion = version;
-		version = newVersion;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.MODEL_INFORMATION__VERSION, oldVersion, version));
+    ModelVersion oldVersion = version;
+    version = newVersion;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.MODEL_INFORMATION__VERSION, oldVersion, version));
 
-	}
+  }
 
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
-				return ((InternalEList<?>)getOwnedReferences()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID) {
+      case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
+        return ((InternalEList<?>)getOwnedReferences()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
-				return getOwnedReferences();
-			case LibrariesPackage.MODEL_INFORMATION__VERSION:
-				if (resolve) return getVersion();
-				return basicGetVersion();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID) {
+      case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
+        return getOwnedReferences();
+      case LibrariesPackage.MODEL_INFORMATION__VERSION:
+        if (resolve) return getVersion();
+        return basicGetVersion();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
-				getOwnedReferences().clear();
-				getOwnedReferences().addAll((Collection<? extends LibraryReference>)newValue);
-				return;
-			case LibrariesPackage.MODEL_INFORMATION__VERSION:
-				// begin-extension-code
-				if (newValue == null || newValue instanceof ModelVersion) {
-				// end-extension-code
-					setVersion((ModelVersion)newValue);
-				// begin-extension-code
-				}
-				// end-extension-code
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID) {
+      case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
+        getOwnedReferences().clear();
+        getOwnedReferences().addAll((Collection<? extends LibraryReference>)newValue);
+        return;
+      case LibrariesPackage.MODEL_INFORMATION__VERSION:
+        // begin-extension-code
+        if (newValue == null || newValue instanceof ModelVersion) {
+        // end-extension-code
+          setVersion((ModelVersion)newValue);
+        // begin-extension-code
+        }
+        // end-extension-code
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
-				getOwnedReferences().clear();
-				return;
-			case LibrariesPackage.MODEL_INFORMATION__VERSION:
-				setVersion((ModelVersion)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID) {
+      case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
+        getOwnedReferences().clear();
+        return;
+      case LibrariesPackage.MODEL_INFORMATION__VERSION:
+        setVersion((ModelVersion)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
-				return ownedReferences != null && !ownedReferences.isEmpty();
-			case LibrariesPackage.MODEL_INFORMATION__VERSION:
-				return version != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID) {
+      case LibrariesPackage.MODEL_INFORMATION__OWNED_REFERENCES:
+        return ownedReferences != null && !ownedReferences.isEmpty();
+      case LibrariesPackage.MODEL_INFORMATION__VERSION:
+        return version != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 
 

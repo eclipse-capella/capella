@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -43,322 +43,322 @@ import org.polarsys.capella.core.data.information.datavalue.ValuePart;
  */
 public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFactory {
 	/**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public static DatavalueFactory init() {
-		try {
-			DatavalueFactory theDatavalueFactory = (DatavalueFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datavalue/0.8.0"); //$NON-NLS-1$ 
-			if (theDatavalueFactory != null) {
-				return theDatavalueFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new DatavalueFactoryImpl();
-	}
+    try {
+      DatavalueFactory theDatavalueFactory = (DatavalueFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.polarsys.org/capella/core/information/datavalue/1.0.0"); //$NON-NLS-1$ 
+      if (theDatavalueFactory != null) {
+        return theDatavalueFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new DatavalueFactoryImpl();
+  }
 
 	/**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DatavalueFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case DatavaluePackage.LITERAL_BOOLEAN_VALUE: return createLiteralBooleanValue();
-			case DatavaluePackage.BOOLEAN_REFERENCE: return createBooleanReference();
-			case DatavaluePackage.ENUMERATION_LITERAL: return createEnumerationLiteral();
-			case DatavaluePackage.ENUMERATION_REFERENCE: return createEnumerationReference();
-			case DatavaluePackage.LITERAL_STRING_VALUE: return createLiteralStringValue();
-			case DatavaluePackage.STRING_REFERENCE: return createStringReference();
-			case DatavaluePackage.LITERAL_NUMERIC_VALUE: return createLiteralNumericValue();
-			case DatavaluePackage.NUMERIC_REFERENCE: return createNumericReference();
-			case DatavaluePackage.COMPLEX_VALUE: return createComplexValue();
-			case DatavaluePackage.COMPLEX_VALUE_REFERENCE: return createComplexValueReference();
-			case DatavaluePackage.VALUE_PART: return createValuePart();
-			case DatavaluePackage.BINARY_EXPRESSION: return createBinaryExpression();
-			case DatavaluePackage.UNARY_EXPRESSION: return createUnaryExpression();
-			case DatavaluePackage.OPAQUE_EXPRESSION: return createOpaqueExpression();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case DatavaluePackage.LITERAL_BOOLEAN_VALUE: return createLiteralBooleanValue();
+      case DatavaluePackage.BOOLEAN_REFERENCE: return createBooleanReference();
+      case DatavaluePackage.ENUMERATION_LITERAL: return createEnumerationLiteral();
+      case DatavaluePackage.ENUMERATION_REFERENCE: return createEnumerationReference();
+      case DatavaluePackage.LITERAL_STRING_VALUE: return createLiteralStringValue();
+      case DatavaluePackage.STRING_REFERENCE: return createStringReference();
+      case DatavaluePackage.LITERAL_NUMERIC_VALUE: return createLiteralNumericValue();
+      case DatavaluePackage.NUMERIC_REFERENCE: return createNumericReference();
+      case DatavaluePackage.COMPLEX_VALUE: return createComplexValue();
+      case DatavaluePackage.COMPLEX_VALUE_REFERENCE: return createComplexValueReference();
+      case DatavaluePackage.VALUE_PART: return createValuePart();
+      case DatavaluePackage.BINARY_EXPRESSION: return createBinaryExpression();
+      case DatavaluePackage.UNARY_EXPRESSION: return createUnaryExpression();
+      case DatavaluePackage.OPAQUE_EXPRESSION: return createOpaqueExpression();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-		switch (eDataType.getClassifierID()) {
-			case DatavaluePackage.BINARY_OPERATOR:
-				return createBinaryOperatorFromString(eDataType, initialValue);
-			case DatavaluePackage.UNARY_OPERATOR:
-				return createUnaryOperatorFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case DatavaluePackage.BINARY_OPERATOR:
+        return createBinaryOperatorFromString(eDataType, initialValue);
+      case DatavaluePackage.UNARY_OPERATOR:
+        return createUnaryOperatorFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-		switch (eDataType.getClassifierID()) {
-			case DatavaluePackage.BINARY_OPERATOR:
-				return convertBinaryOperatorToString(eDataType, instanceValue);
-			case DatavaluePackage.UNARY_OPERATOR:
-				return convertUnaryOperatorToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-		}
-	}
+    switch (eDataType.getClassifierID()) {
+      case DatavaluePackage.BINARY_OPERATOR:
+        return convertBinaryOperatorToString(eDataType, instanceValue);
+      case DatavaluePackage.UNARY_OPERATOR:
+        return convertUnaryOperatorToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public LiteralBooleanValue createLiteralBooleanValue() {
-		LiteralBooleanValueImpl literalBooleanValue = new LiteralBooleanValueImpl();
+    LiteralBooleanValueImpl literalBooleanValue = new LiteralBooleanValueImpl();
     //begin-capella-code
     //end-capella-code
-		return literalBooleanValue;
-	}
+    return literalBooleanValue;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public BooleanReference createBooleanReference() {
-		BooleanReferenceImpl booleanReference = new BooleanReferenceImpl();
+    BooleanReferenceImpl booleanReference = new BooleanReferenceImpl();
     //begin-capella-code
     //end-capella-code
-		return booleanReference;
-	}
+    return booleanReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EnumerationLiteral createEnumerationLiteral() {
-		EnumerationLiteralImpl enumerationLiteral = new EnumerationLiteralImpl();
+    EnumerationLiteralImpl enumerationLiteral = new EnumerationLiteralImpl();
     //begin-capella-code
     //end-capella-code
-		return enumerationLiteral;
-	}
+    return enumerationLiteral;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public EnumerationReference createEnumerationReference() {
-		EnumerationReferenceImpl enumerationReference = new EnumerationReferenceImpl();
+    EnumerationReferenceImpl enumerationReference = new EnumerationReferenceImpl();
     //begin-capella-code
     //end-capella-code
-		return enumerationReference;
-	}
+    return enumerationReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public LiteralStringValue createLiteralStringValue() {
-		LiteralStringValueImpl literalStringValue = new LiteralStringValueImpl();
+    LiteralStringValueImpl literalStringValue = new LiteralStringValueImpl();
     //begin-capella-code
     //end-capella-code
-		return literalStringValue;
-	}
+    return literalStringValue;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public StringReference createStringReference() {
-		StringReferenceImpl stringReference = new StringReferenceImpl();
+    StringReferenceImpl stringReference = new StringReferenceImpl();
     //begin-capella-code
     //end-capella-code
-		return stringReference;
-	}
+    return stringReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public LiteralNumericValue createLiteralNumericValue() {
-		LiteralNumericValueImpl literalNumericValue = new LiteralNumericValueImpl();
+    LiteralNumericValueImpl literalNumericValue = new LiteralNumericValueImpl();
     //begin-capella-code
     //end-capella-code
-		return literalNumericValue;
-	}
+    return literalNumericValue;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public NumericReference createNumericReference() {
-		NumericReferenceImpl numericReference = new NumericReferenceImpl();
+    NumericReferenceImpl numericReference = new NumericReferenceImpl();
     //begin-capella-code
     //end-capella-code
-		return numericReference;
-	}
+    return numericReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ComplexValue createComplexValue() {
-		ComplexValueImpl complexValue = new ComplexValueImpl();
+    ComplexValueImpl complexValue = new ComplexValueImpl();
     //begin-capella-code
     //end-capella-code
-		return complexValue;
-	}
+    return complexValue;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ComplexValueReference createComplexValueReference() {
-		ComplexValueReferenceImpl complexValueReference = new ComplexValueReferenceImpl();
+    ComplexValueReferenceImpl complexValueReference = new ComplexValueReferenceImpl();
     //begin-capella-code
     //end-capella-code
-		return complexValueReference;
-	}
+    return complexValueReference;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public ValuePart createValuePart() {
-		ValuePartImpl valuePart = new ValuePartImpl();
+    ValuePartImpl valuePart = new ValuePartImpl();
     //begin-capella-code
     //end-capella-code
-		return valuePart;
-	}
+    return valuePart;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public BinaryExpression createBinaryExpression() {
-		BinaryExpressionImpl binaryExpression = new BinaryExpressionImpl();
+    BinaryExpressionImpl binaryExpression = new BinaryExpressionImpl();
     //begin-capella-code
     //end-capella-code
-		return binaryExpression;
-	}
+    return binaryExpression;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public UnaryExpression createUnaryExpression() {
-		UnaryExpressionImpl unaryExpression = new UnaryExpressionImpl();
+    UnaryExpressionImpl unaryExpression = new UnaryExpressionImpl();
     //begin-capella-code
     //end-capella-code
-		return unaryExpression;
-	}
+    return unaryExpression;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public OpaqueExpression createOpaqueExpression() {
-		OpaqueExpressionImpl opaqueExpression = new OpaqueExpressionImpl();
+    OpaqueExpressionImpl opaqueExpression = new OpaqueExpressionImpl();
     //begin-capella-code
     //end-capella-code
-		return opaqueExpression;
-	}
+    return opaqueExpression;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public BinaryOperator createBinaryOperatorFromString(EDataType eDataType, String initialValue) {
-		BinaryOperator result = BinaryOperator.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    BinaryOperator result = BinaryOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertBinaryOperatorToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public UnaryOperator createUnaryOperatorFromString(EDataType eDataType, String initialValue) {
-		UnaryOperator result = UnaryOperator.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-		return result;
-	}
+    UnaryOperator result = UnaryOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+    return result;
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public String convertUnaryOperatorToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
+    return instanceValue == null ? null : instanceValue.toString();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	public DatavaluePackage getDatavaluePackage() {
-		return (DatavaluePackage)getEPackage();
-	}
+    return (DatavaluePackage)getEPackage();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
 	@Deprecated
 	public static DatavaluePackage getPackage() {
-		return DatavaluePackage.eINSTANCE;
-	}
+    return DatavaluePackage.eINSTANCE;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -368,10 +368,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public LiteralBooleanValue createLiteralBooleanValue(String name_p) {
-	  LiteralBooleanValue literalBooleanValue = createLiteralBooleanValue();
-		literalBooleanValue.setName(name_p);	  
-		return literalBooleanValue;
-	}
+    LiteralBooleanValue literalBooleanValue = createLiteralBooleanValue();
+    literalBooleanValue.setName(name_p);	  
+    return literalBooleanValue;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -381,10 +381,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public BooleanReference createBooleanReference(String name_p) {
-	  BooleanReference booleanReference = createBooleanReference();
-		booleanReference.setName(name_p);	  
-		return booleanReference;
-	}
+    BooleanReference booleanReference = createBooleanReference();
+    booleanReference.setName(name_p);	  
+    return booleanReference;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -394,10 +394,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public EnumerationLiteral createEnumerationLiteral(String name_p) {
-	  EnumerationLiteral enumerationLiteral = createEnumerationLiteral();
-		enumerationLiteral.setName(name_p);	  
-		return enumerationLiteral;
-	}
+    EnumerationLiteral enumerationLiteral = createEnumerationLiteral();
+    enumerationLiteral.setName(name_p);	  
+    return enumerationLiteral;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -407,10 +407,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public EnumerationReference createEnumerationReference(String name_p) {
-	  EnumerationReference enumerationReference = createEnumerationReference();
-		enumerationReference.setName(name_p);	  
-		return enumerationReference;
-	}
+    EnumerationReference enumerationReference = createEnumerationReference();
+    enumerationReference.setName(name_p);	  
+    return enumerationReference;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -420,10 +420,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public LiteralStringValue createLiteralStringValue(String name_p) {
-	  LiteralStringValue literalStringValue = createLiteralStringValue();
-		literalStringValue.setName(name_p);	  
-		return literalStringValue;
-	}
+    LiteralStringValue literalStringValue = createLiteralStringValue();
+    literalStringValue.setName(name_p);	  
+    return literalStringValue;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -433,10 +433,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public StringReference createStringReference(String name_p) {
-	  StringReference stringReference = createStringReference();
-		stringReference.setName(name_p);	  
-		return stringReference;
-	}
+    StringReference stringReference = createStringReference();
+    stringReference.setName(name_p);	  
+    return stringReference;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -446,10 +446,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public LiteralNumericValue createLiteralNumericValue(String name_p) {
-	  LiteralNumericValue literalNumericValue = createLiteralNumericValue();
-		literalNumericValue.setName(name_p);	  
-		return literalNumericValue;
-	}
+    LiteralNumericValue literalNumericValue = createLiteralNumericValue();
+    literalNumericValue.setName(name_p);	  
+    return literalNumericValue;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -459,10 +459,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public NumericReference createNumericReference(String name_p) {
-	  NumericReference numericReference = createNumericReference();
-		numericReference.setName(name_p);	  
-		return numericReference;
-	}
+    NumericReference numericReference = createNumericReference();
+    numericReference.setName(name_p);	  
+    return numericReference;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -472,10 +472,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public ComplexValue createComplexValue(String name_p) {
-	  ComplexValue complexValue = createComplexValue();
-		complexValue.setName(name_p);	  
-		return complexValue;
-	}
+    ComplexValue complexValue = createComplexValue();
+    complexValue.setName(name_p);	  
+    return complexValue;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -485,10 +485,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public ComplexValueReference createComplexValueReference(String name_p) {
-	  ComplexValueReference complexValueReference = createComplexValueReference();
-		complexValueReference.setName(name_p);	  
-		return complexValueReference;
-	}
+    ComplexValueReference complexValueReference = createComplexValueReference();
+    complexValueReference.setName(name_p);	  
+    return complexValueReference;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -498,10 +498,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public BinaryExpression createBinaryExpression(String name_p) {
-	  BinaryExpression binaryExpression = createBinaryExpression();
-		binaryExpression.setName(name_p);	  
-		return binaryExpression;
-	}
+    BinaryExpression binaryExpression = createBinaryExpression();
+    binaryExpression.setName(name_p);	  
+    return binaryExpression;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -511,10 +511,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public UnaryExpression createUnaryExpression(String name_p) {
-	  UnaryExpression unaryExpression = createUnaryExpression();
-		unaryExpression.setName(name_p);	  
-		return unaryExpression;
-	}
+    UnaryExpression unaryExpression = createUnaryExpression();
+    unaryExpression.setName(name_p);	  
+    return unaryExpression;
+  }
 
 	/**
 	 * Creates class and sets its name
@@ -524,10 +524,10 @@ public class DatavalueFactoryImpl extends EFactoryImpl implements DatavalueFacto
 	 * @generated
 	 */
 	public OpaqueExpression createOpaqueExpression(String name_p) {
-	  OpaqueExpression opaqueExpression = createOpaqueExpression();
-		opaqueExpression.setName(name_p);	  
-		return opaqueExpression;
-	}
+    OpaqueExpression opaqueExpression = createOpaqueExpression();
+    opaqueExpression.setName(name_p);	  
+    return opaqueExpression;
+  }
 
 	//begin-capella-code
 
