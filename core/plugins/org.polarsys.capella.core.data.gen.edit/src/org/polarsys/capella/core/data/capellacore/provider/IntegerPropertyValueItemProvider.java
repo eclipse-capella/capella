@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.polarsys.capella.common.model.copypaste.SharedInitializeCopyCommand;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellacore.IntegerPropertyValue;
-import org.polarsys.capella.core.data.capellacore.StringPropertyValue;
 
 /**
  * This is the item provider adapter for a {@link org.polarsys.capella.core.data.capellacore.IntegerPropertyValue} object.

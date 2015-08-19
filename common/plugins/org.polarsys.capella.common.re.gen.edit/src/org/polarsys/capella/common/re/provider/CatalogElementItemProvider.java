@@ -137,6 +137,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
       addKindPropertyDescriptor(object);
       addAuthorPropertyDescriptor(object);
       addEnvironmentPropertyDescriptor(object);
+      addSuffixPropertyDescriptor(object);
       addPurposePropertyDescriptor(object);
       addTagsPropertyDescriptor(object);
       addOriginPropertyDescriptor(object);
@@ -222,6 +223,33 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
          getString("_UI_CatalogElement_environment_feature"), //$NON-NLS-1$
          getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_environment_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
          RePackage.Literals.CATALOG_ELEMENT__ENVIRONMENT,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+    // begin-extension-code
+         null));
+    // end-extension-code
+  }
+
+  /**
+   * This adds a property descriptor for the Suffix feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addSuffixPropertyDescriptor(Object object) {
+
+    // begin-extension-code
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+    // end-extension-code
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_CatalogElement_suffix_feature"), //$NON-NLS-1$
+         getString("_UI_PropertyDescriptor_description", "_UI_CatalogElement_suffix_feature", "_UI_CatalogElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+         RePackage.Literals.CATALOG_ELEMENT__SUFFIX,
          true,
          false,
          false,
@@ -511,6 +539,7 @@ public class CatalogElementItemProvider extends ReDescriptionElementItemProvider
       case RePackage.CATALOG_ELEMENT__KIND:
       case RePackage.CATALOG_ELEMENT__AUTHOR:
       case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
+      case RePackage.CATALOG_ELEMENT__SUFFIX:
       case RePackage.CATALOG_ELEMENT__PURPOSE:
       case RePackage.CATALOG_ELEMENT__TAGS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

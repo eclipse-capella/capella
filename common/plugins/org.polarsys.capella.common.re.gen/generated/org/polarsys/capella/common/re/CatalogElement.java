@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getKind <em>Kind</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getAuthor <em>Author</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getEnvironment <em>Environment</em>}</li>
+ *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getSuffix <em>Suffix</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getPurpose <em>Purpose</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getTags <em>Tags</em>}</li>
  *   <li>{@link org.polarsys.capella.common.re.CatalogElement#getOrigin <em>Origin</em>}</li>
@@ -169,6 +170,42 @@ public interface CatalogElement extends ReDescriptionElement, ReElementContainer
 
 
 	/**
+   * Returns the value of the '<em><b>Suffix</b></em>' attribute.
+
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Suffix</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Suffix</em>' attribute.
+   * @see #setSuffix(String)
+   * @see org.polarsys.capella.common.re.RePackage#getCatalogElement_Suffix()
+   * @model
+   * @generated
+   */
+
+  String getSuffix();
+
+
+
+
+  /**
+   * Sets the value of the '{@link org.polarsys.capella.common.re.CatalogElement#getSuffix <em>Suffix</em>}' attribute.
+
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Suffix</em>' attribute.
+   * @see #getSuffix()
+   * @generated
+   */
+
+  void setSuffix(String value);
+
+
+
+
+  /**
    * Returns the value of the '<em><b>Purpose</b></em>' attribute.
 
    * <!-- begin-user-doc -->
