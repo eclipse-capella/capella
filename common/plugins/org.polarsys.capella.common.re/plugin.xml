@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <!--
-  Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -84,6 +84,21 @@
          
       <properties
             id="org.polarsys.capella.common.re.CatalogElement">
+         <property
+               class="org.polarsys.capella.common.flexibility.properties.property.EAdaptableFeatureProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.properties.replicableElement.information.name"
+               id="org.polarsys.capella.common.re.ReNamedElement_suffix"
+               name="Suffix">
+            <argument
+                  id="eclass"
+                  value="org.polarsys.capella.common.re.ReNamedElement">
+            </argument>
+            <argument
+                  id="feature"
+                  value="suffix">
+            </argument>
+         </property>
        
        
          <property
@@ -562,7 +577,7 @@
          </property>
          
          <property
-               class="org.polarsys.capella.common.re.properties.StringProperty"
+               class="org.polarsys.capella.common.re.properties.SuffixProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
                id="suffix"
@@ -656,7 +671,7 @@
          
          
          <property
-               class="org.polarsys.capella.common.re.properties.StringProperty"
+               class="org.polarsys.capella.common.re.properties.SuffixProperty"
                enabled="true"
                group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
                id="suffix"

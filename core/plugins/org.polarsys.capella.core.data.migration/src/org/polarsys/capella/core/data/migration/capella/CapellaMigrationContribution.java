@@ -16,9 +16,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.osgi.util.NLS;
 import org.osgi.framework.Version;
@@ -26,11 +29,18 @@ import org.polarsys.capella.common.bundle.FeatureHelper;
 import org.polarsys.capella.common.data.activity.ActivityPackage;
 import org.polarsys.capella.common.data.behavior.BehaviorPackage;
 import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
+import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
+import org.polarsys.capella.common.re.CatalogElement;
+import org.polarsys.capella.common.re.CatalogElementKind;
 import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.common.re.RecCatalog;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
 import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
+import org.polarsys.capella.core.data.capellamodeller.ModelRoot;
+import org.polarsys.capella.core.data.capellamodeller.Project;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
@@ -52,6 +62,7 @@ import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
 import org.polarsys.capella.core.model.handler.command.CapellaResourceHelper;
 import org.polarsys.capella.core.model.handler.helpers.CapellaFeatureHelper;
+import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 /**
  * 
@@ -223,5 +234,46 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     }
 
     return null;
+  }
+
+  @Override
+  public void preSaveResource(ExecutionManager executionManager, Resource resource, MigrationContext context) {
+
+    // find the RecCatalog of this model
+    EList<EObject> contents = resource.getContents();
+    if (!contents.isEmpty()) {
+      EObject content = contents.get(0);
+      if (content instanceof Project) {
+        Project project = (Project) content;
+        for (ModelRoot modelRoot : project.getOwnedModelRoots()) {
+          if (modelRoot instanceof SystemEngineering) {
+            SystemEngineering systemEngineering = (SystemEngineering) modelRoot;
+            for (ElementExtension elementExtension : systemEngineering.getOwnedExtensions()) {
+              RecCatalog recCatalog = (RecCatalog) elementExtension;
+
+              // for each RPL found,
+              for (CatalogElement rpl : recCatalog.getOwnedElements()) {
+                if (rpl.getKind() == CatalogElementKind.RPL || rpl.getKind() == CatalogElementKind.REC_RPL) {
+
+                  // if the RPL starts with the name of its REC,
+                  CatalogElement rec = rpl.getOrigin();
+                  if (rec != null) {
+                    String recName = rec.getName();
+                    String rplName = rpl.getName();
+                    if (rplName.startsWith(recName)) {
+
+                      // then its suffix is its name minus its REC name
+                      String suffix = rplName.substring(recName.length());
+                      rpl.setSuffix(suffix);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
   }
 }
