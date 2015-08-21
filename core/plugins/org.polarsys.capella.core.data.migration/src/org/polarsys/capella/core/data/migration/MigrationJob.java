@@ -31,10 +31,13 @@ public class MigrationJob extends WorkspaceJob {
 
   private AbstractMigrationRunnable _runnable;
 
-  public MigrationJob(AbstractMigrationRunnable runnable, MigrationContext context) {
+  private boolean _checkVersion;
+
+  public MigrationJob(AbstractMigrationRunnable runnable, MigrationContext context, boolean checkVersion) {
     super(context.getName());
     _context = context;
     _runnable = runnable;
+    _checkVersion = checkVersion;
     // Set the concurrent access to the workspace root, fragments can be hosted in several projects.
     setRule(runnable.getFile().getProject().getWorkspace().getRoot());
     // Display a progress dialog.
@@ -50,7 +53,7 @@ public class MigrationJob extends WorkspaceJob {
     monitor.beginTask(getName(), 100);
     try {
       // Migration processing (>95% of migration is here)
-      IStatus result = _runnable.run(_context);
+      IStatus result = _runnable.run(_context, _checkVersion);
 
       if (result.isOK()) {
         try { // refresh output file.

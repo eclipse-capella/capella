@@ -126,7 +126,7 @@ public class AbstractMigrationContribution implements IMigrationContribution {
    * .resources.IFile)
    */
   @Override
-  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context) {
+  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
     return Status.OK_STATUS;
   }
 

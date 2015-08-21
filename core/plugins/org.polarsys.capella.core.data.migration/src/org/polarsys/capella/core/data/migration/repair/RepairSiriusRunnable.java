@@ -25,7 +25,7 @@ public class RepairSiriusRunnable extends AbstractMigrationRunnable {
   }
 
   @Override
-  public IStatus run(final MigrationContext context) {
+  public IStatus run(final MigrationContext context, boolean checkVersion) {
     // async/sync? GMF also run async... so when many
     // repair/migrate are triggered, we will mix R/Ms and
     // GMF commands between models..

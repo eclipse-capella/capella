@@ -32,7 +32,7 @@ import org.xml.sax.Attributes;
  */
 public interface IMigrationContribution {
 
-  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context);
+  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion);
 
   public void postMigrationExecute(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context);
 
@@ -68,6 +68,7 @@ public interface IMigrationContribution {
 
   /**
    * Should return "xmlns:prefix"
+   * 
    * @param prefix
    * @param context
    * @return

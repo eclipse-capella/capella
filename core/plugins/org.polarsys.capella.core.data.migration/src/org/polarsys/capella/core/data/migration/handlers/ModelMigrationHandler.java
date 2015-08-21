@@ -33,7 +33,7 @@ public class ModelMigrationHandler extends AbstractMigrationHandler {
     IStructuredSelection selection = (IStructuredSelection) HandlerUtil.getCurrentSelection(event);
     for (Object selected : selection.toList()) {
       if (selected instanceof IResource) {
-        MigrationHelpers.getInstance().trigger((IResource) selected, HandlerUtil.getActiveShell(event), false,
+        MigrationHelpers.getInstance().trigger((IResource) selected, HandlerUtil.getActiveShell(event), false, true,
             new String[] { MigrationConstants.MIGRATION_KIND__SEMANTIC, MigrationConstants.MIGRATION_KIND__VIEWPOINT });
       }
     }

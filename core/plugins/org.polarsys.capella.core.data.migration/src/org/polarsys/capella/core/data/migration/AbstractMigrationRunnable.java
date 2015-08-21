@@ -34,7 +34,7 @@ public abstract class AbstractMigrationRunnable {
     return getClass().getName();
   }
 
-  public IStatus run(MigrationContext context) {
+  public IStatus run(MigrationContext context, boolean checkVersion) {
 
     IStatus result = Status.OK_STATUS;
 

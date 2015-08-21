@@ -142,15 +142,16 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
   }
 
   @Override
-  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context) {
+  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
     if (CapellaResourceHelper.isCapellaResource(fileToMigrate)) {
       // Check the detected version.
       // Migration can only migrate from n-1 to n versions.
 
       // Current version
-
-      Version currentVersion = Version.parseVersion(getCurrentVersion());
-      return isMigrationPossible(fileToMigrate, currentVersion, context);
+      if (checkVersion) {
+        Version currentVersion = Version.parseVersion(getCurrentVersion());
+        return isMigrationPossible(fileToMigrate, currentVersion, context);
+      }
 
       // List<String> librariesNotMigrated = getLibrariesNotMigrated(fileToMigrate, currentVersion);
       // if (!librariesNotMigrated.isEmpty()) {
@@ -196,8 +197,7 @@ public class CapellaMigrationContribution extends AbstractMigrationContribution 
     if (!isMigrationPossible && !isExceptionalCase(fileVersion, currentVersion)) {
       String formattedMessage = NLS.bind(Messages.MigrationAction_ErrorDialog_TooOldMessage, new String[] {
           fileToMigrate.getFullPath().toString(), getCurrentVersion() });
-      // TODO Enable this
-      // return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
+      return new Status(IStatus.ERROR, Activator.PLUGIN_ID, formattedMessage);
     }
 
     return Status.OK_STATUS;

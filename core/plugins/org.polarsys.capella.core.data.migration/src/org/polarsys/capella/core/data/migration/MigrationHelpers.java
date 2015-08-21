@@ -74,11 +74,12 @@ public class MigrationHelpers implements IMigrationContribution {
     }
   }
 
-  public void trigger(IResource resource, Shell shell, boolean skipConfirmation, String[] kinds) {
-    trigger(resource, shell, true, skipConfirmation, kinds);
+  public void trigger(IResource resource, Shell shell, boolean skipConfirmation, boolean checkVersion, String[] kinds) {
+    trigger(resource, shell, true, skipConfirmation, checkVersion, kinds);
   }
 
-  public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation, String[] kinds) {
+  public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation,
+      boolean checkVersion, String[] kinds) {
     LinkedHashSet<IResource> files = new LinkedHashSet<>();
     Collection<IMigrationContributor> currentContributors = new LinkedList<IMigrationContributor>();
 
@@ -113,7 +114,7 @@ public class MigrationHelpers implements IMigrationContribution {
     }
 
     // Run the commands in jobs or not
-    new MigrationJobScheduler().run(runnables, context, runInJob);
+    new MigrationJobScheduler().run(runnables, context, runInJob, checkVersion);
   }
 
   public static MigrationHelpers getInstance() {
@@ -212,9 +213,9 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context) {
+  public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
     for (IMigrationContribution migration : migrations) {
-      IStatus status = migration.preMigrationExecute(fileToMigrate, context);
+      IStatus status = migration.preMigrationExecute(fileToMigrate, context, checkVersion);
       if (!status.isOK()) {
         return status;
       }

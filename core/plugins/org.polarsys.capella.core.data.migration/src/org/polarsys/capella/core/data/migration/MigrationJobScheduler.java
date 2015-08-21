@@ -42,7 +42,7 @@ public class MigrationJobScheduler {
    * @param runInJob
    */
   public void run(LinkedList<AbstractMigrationRunnable> runnables, final MigrationContext context,
-      final boolean runInJob) {
+      final boolean runInJob, final boolean checkVersion) {
     _runnables = new LinkedList<AbstractMigrationRunnable>(runnables);
 
     IRunnableWithProgress op = new IRunnableWithProgress() {
@@ -54,14 +54,14 @@ public class MigrationJobScheduler {
         context.setProgressMonitor(_monitor);
 
         if (runInJob) {
-          executeNextJob(Status.OK_STATUS, context);
+          executeNextJob(Status.OK_STATUS, context, checkVersion);
 
         } else {
           try {
 
             for (AbstractMigrationRunnable runnable : _runnables) {
               context.setProgressMonitor(new SubProgressMonitor(_monitor, 1));
-              IStatus status = runnable.run(context);
+              IStatus status = runnable.run(context, checkVersion);
               if (!checkStatusOK(status, context)) {
                 logStatus(context, status);
                 _runnables.clear();
@@ -99,18 +99,18 @@ public class MigrationJobScheduler {
     return ((status == null) || status.isOK()) && !(context.getProgressMonitor().isCanceled());
   }
 
-  protected void executeNextJob(IStatus status, final MigrationContext context) {
+  protected void executeNextJob(IStatus status, final MigrationContext context, final boolean checkVersion) {
 
     // Avoid to run next jobs if last is not OK :)
     if (checkStatusOK(status, context)) {
       if (!_runnables.isEmpty()) {
         AbstractMigrationRunnable firstJob = _runnables.removeFirst();
 
-        Job job = new MigrationJob(firstJob, context);
+        Job job = new MigrationJob(firstJob, context, checkVersion);
         job.addJobChangeListener(new JobChangeAdapter() {
           @Override
           public void done(IJobChangeEvent event) {
-            executeNextJob(event.getResult(), context);
+            executeNextJob(event.getResult(), context, checkVersion);
           }
         });
         context.setProgressMonitor(new SubProgressMonitor(_monitor, 1));

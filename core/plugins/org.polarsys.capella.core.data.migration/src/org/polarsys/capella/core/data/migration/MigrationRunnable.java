@@ -62,11 +62,11 @@ public abstract class MigrationRunnable extends AbstractMigrationRunnable {
   }
 
   @Override
-  public IStatus run(MigrationContext context) {
+  public IStatus run(MigrationContext context, boolean checkVersion) {
 
     IStatus result = Status.OK_STATUS;
 
-    result = MigrationHelpers.getInstance().preMigrationExecute(_file, context);
+    result = MigrationHelpers.getInstance().preMigrationExecute(_file, context, checkVersion);
     if (!result.isOK()) {
       return result;
     }

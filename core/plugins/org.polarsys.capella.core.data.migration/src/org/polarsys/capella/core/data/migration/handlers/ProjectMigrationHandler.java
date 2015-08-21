@@ -36,7 +36,7 @@ public class ProjectMigrationHandler extends AbstractMigrationHandler {
     for (Object selected : getSelection((IEvaluationContext) event.getApplicationContext(), IResource.class)) {
       if (selected instanceof IResource) {
         MigrationHelpers.getInstance().trigger((IResource) selected, HandlerUtil.getActiveShell(event),
-            skipConfirmation, MigrationConstants.DEFAULT_KIND_ORDER);
+            skipConfirmation, true, MigrationConstants.DEFAULT_KIND_ORDER);
       }
     }
 
