@@ -70,7 +70,8 @@
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
                 <with variable="selection">
-                    <iterate>
+                    <iterate
+                          ifEmpty="false">
                             <and>
                                 <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
                                    value="org.polarsys.capella.core.data.migration.project">
@@ -86,7 +87,8 @@
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
                 <with variable="selection">
-                    <iterate>
+                    <iterate
+                          ifEmpty="false">
                             <and>
                                 <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
                                    value="org.polarsys.capella.core.data.migration.project">
@@ -102,7 +104,8 @@
                   icon="icons/full/etools16/capella_migrate.gif">
                 <visibleWhen checkEnabled="true">
                 <with variable="selection">
-                    <iterate>
+                    <iterate
+                          ifEmpty="false">
                             <and>
                                 <test property="org.polarsys.capella.core.data.migration.MigrationEnablementTester" forcePluginActivation="true"
                                    value="org.polarsys.capella.core.data.migration.project">
