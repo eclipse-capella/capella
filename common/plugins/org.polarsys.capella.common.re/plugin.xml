@@ -92,7 +92,7 @@
                name="Suffix">
             <argument
                   id="eclass"
-                  value="org.polarsys.capella.common.re.ReNamedElement">
+                  value="org.polarsys.capella.common.re.CatalogElement">
             </argument>
             <argument
                   id="feature"
