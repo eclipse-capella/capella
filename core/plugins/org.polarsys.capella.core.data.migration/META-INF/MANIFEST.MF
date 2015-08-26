@@ -21,9 +21,15 @@ Require-Bundle: org.eclipse.ui,
  org.polarsys.capella.core.model.handler,
  org.polarsys.capella.core.platform.sirius.ui.actions,
  org.polarsys.capella.common.re.gen,
- org.eclipse.sirius.diagram.layoutdata;bundle-version="3.1.0",
- org.eclipse.sirius.diagram.sequence;bundle-version="3.1.0",
- com.google.guava
+ org.eclipse.sirius.diagram.layoutdata,
+ org.eclipse.sirius.diagram.sequence,
+ com.google.guava,
+ org.eclipse.emf.diffmerge.patterns.templates.gen,
+ org.eclipse.emf.diffmerge.patterns.repositories.catalogs;bundle-version="0.4.2",
+ org.eclipse.emf.diffmerge.patterns.support;bundle-version="0.4.0",
+ org.eclipse.emf.diffmerge.patterns.support.gen;bundle-version="0.4.0",
+ org.polarsys.kitalpha.patterns.emde;bundle-version="0.8.0",
+ org.polarsys.kitalpha.patterns.emde.gen;bundle-version="0.8.0"
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

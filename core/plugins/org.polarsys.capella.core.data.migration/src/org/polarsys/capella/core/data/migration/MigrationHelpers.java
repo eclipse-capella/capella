@@ -39,7 +39,7 @@ import org.polarsys.capella.common.ef.ExecutionManager;
 import org.polarsys.capella.common.mdsofa.common.helper.ExtensionPointHelper;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.IMigrationContribution;
-import org.polarsys.capella.core.data.migration.contributor.IMigrationContributor;
+import org.polarsys.capella.core.data.migration.contributor.AbstractMigrationContributor;
 import org.xml.sax.Attributes;
 
 /**
@@ -49,7 +49,7 @@ public class MigrationHelpers implements IMigrationContribution {
 
   private static MigrationHelpers INSTANCE = null;
 
-  private ArrayList<IMigrationContributor> contributors = null;
+  private ArrayList<AbstractMigrationContributor> contributors = null;
 
   private ArrayList<IMigrationContribution> migrations = null;
 
@@ -65,11 +65,11 @@ public class MigrationHelpers implements IMigrationContribution {
       migrations.add(contribution);
     }
 
-    contributors = new ArrayList<IMigrationContributor>();
+    contributors = new ArrayList<AbstractMigrationContributor>();
     for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements(
         "org.polarsys.capella.core.data.migration", "migrationContributors")) {
-      IMigrationContributor contributor = (IMigrationContributor) ExtensionPointHelper.createInstance(configElement,
-          ExtensionPointHelper.ATT_CLASS);
+      AbstractMigrationContributor contributor = (AbstractMigrationContributor) ExtensionPointHelper.createInstance(
+          configElement, ExtensionPointHelper.ATT_CLASS);
       contributors.add(contributor);
     }
   }
@@ -81,10 +81,10 @@ public class MigrationHelpers implements IMigrationContribution {
   public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation,
       boolean checkVersion, String[] kinds) {
     LinkedHashSet<IResource> files = new LinkedHashSet<>();
-    Collection<IMigrationContributor> currentContributors = new LinkedList<IMigrationContributor>();
+    Collection<AbstractMigrationContributor> currentContributors = new LinkedList<AbstractMigrationContributor>();
 
     // Retrieve all extensions for the selected kind of migrations
-    for (IMigrationContributor contributor : contributors) {
+    for (AbstractMigrationContributor contributor : contributors) {
       for (String kind : kinds) {
         if (contributor.getKind().equals(kind)) {
           currentContributors.add(contributor);
@@ -93,7 +93,7 @@ public class MigrationHelpers implements IMigrationContribution {
     }
 
     // Retrieve all files that will need to be migrated
-    for (IMigrationContributor contributor : currentContributors) {
+    for (AbstractMigrationContributor contributor : currentContributors) {
       files.addAll(contributor.getMigrableFiles(resource));
     }
 
@@ -102,10 +102,11 @@ public class MigrationHelpers implements IMigrationContribution {
     context.setShell(shell);
     context.setSkipConfirmation(skipConfirmation);
 
-    // Retrieve all commands that will need to be run to perform the migration
+    // Retrieve all commands that will need to be run to perform the
+    // migration
     LinkedList<AbstractMigrationRunnable> runnables = new LinkedList<AbstractMigrationRunnable>();
     for (IResource file : files) {
-      for (IMigrationContributor contributor : currentContributors) {
+      for (AbstractMigrationContributor contributor : currentContributors) {
         if (contributor.isValidResource(file)) {
           AbstractMigrationRunnable runnable = contributor.getRunnable((IFile) file);
           runnables.add(runnable);
@@ -319,9 +320,8 @@ public class MigrationHelpers implements IMigrationContribution {
   /*
    * (non-Javadoc)
    * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#isValidResource(org.eclipse.core.resources
-   * .IResource)
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution
+   * #isValidResource(org.eclipse.core.resources .IResource)
    */
   @Override
   public boolean isValidResource(IResource uri, MigrationContext context) {
