@@ -50,9 +50,11 @@ public class AddRECSuffixActivity extends AbstractActivity {
               for (String featureName : link.getUnsynchronizedFeatures()) {
                 if ("name".equals(featureName)) {
                   EObject target = link.getTarget();
-                  EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
-                  String name = (String) target.eGet(feature);
-                  target.eSet(feature, name + suffix);
+                  if (target != null) {
+                    EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
+                    String name = (String) target.eGet(feature);
+                    target.eSet(feature, name + suffix);
+                  }
                 }
               }
             }
