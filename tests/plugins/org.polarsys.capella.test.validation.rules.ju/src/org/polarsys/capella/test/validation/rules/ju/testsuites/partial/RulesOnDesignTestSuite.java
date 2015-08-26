@@ -19,6 +19,7 @@ import junit.framework.Test;
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dcom.DCOMRulesTestSuite;
+import org.polarsys.capella.test.validation.rules.ju.testcases.dcon.DCONRulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dcov.DCOVRulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_ca.DWFCARulesTestSuite;
 import org.polarsys.capella.test.validation.rules.ju.testcases.dwf_d.DWFDRulesTestSuite;
@@ -54,6 +55,7 @@ public class RulesOnDesignTestSuite extends BasicTestSuite {
     tests.add(new DWFIRulesTestSuite());
     tests.add(new DWFSMRulesTestSuite());
     tests.add(new DWFUCRulesTestSuite());
+    tests.add(new DCONRulesTestSuite());
 		return tests;
 	}
 

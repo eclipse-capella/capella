@@ -25,6 +25,7 @@ import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.eclipse.emf.validation.service.IConstraintFilter;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.re.ReAbstractElement;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.libraries.model.ICapellaModel;
@@ -111,13 +112,13 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
     return Arrays.asList(getRequiredTestModel());
   }
 
-  protected List<CapellaElement> getTestScope(ICapellaModel model) {
-    List<CapellaElement> scope = new ArrayList<CapellaElement>();
+  protected List<EObject> getTestScope(ICapellaModel model) {
+    List<EObject> scope = new ArrayList<EObject>();
     Project project = model.getProject(getSessionForTestModel(getRequiredTestModel()).getTransactionalEditingDomain());
     if (project != null) {
       for (EObject object : EObjectExt.getAll(project, targetedEClass)) {
-        if (object instanceof CapellaElement) {
-          scope.add((CapellaElement) object);
+        if (object instanceof CapellaElement || object instanceof ReAbstractElement) {
+          scope.add(object);
         }
       }
     }
@@ -127,17 +128,17 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
   public void test() throws Exception {
     // get the objects to validate (only CapellaElement because the oracle is based on object ID)
     ICapellaModel model = getTestModel(getRequiredTestModel());
-    List<CapellaElement> objectsToValidate = getTestScope(model);
+    List<EObject> objectsToValidate = getTestScope(model);
     if (oracleDefinitions != null) {
       // prepare oracle table
       for (OracleDefinition definition : oracleDefinitions) {
         objectID2OracleDefinition.put(definition.getObjectID(), definition);
       }
       // check the validation result for each objects
-      List<CapellaElement> failedObjects = new ArrayList<CapellaElement>();
+      List<EObject> failedObjects = new ArrayList<EObject>();
       Diagnostician diagnostician = new Diagnostician();
-      for (CapellaElement object : objectsToValidate) {
-        String objectID = object.getId();
+      for (EObject object : objectsToValidate) {
+        String objectID = getId(object);
         OracleDefinition oracleDef = objectID2OracleDefinition.get(objectID);
         Diagnostic diagnostic = diagnostician.validate(object);
         if ((diagnostic.getSeverity() == Diagnostic.OK) && (oracleDef != null)) {
@@ -155,8 +156,8 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
       // check all objects to be validated before throwing a message
       if (!failedObjects.isEmpty()) {
         String message = "Validation rule " + ruleID + " has detected an error on object(s): \n"; //$NON-NLS-1$ //$NON-NLS-2$
-        for (CapellaElement elt : failedObjects) {
-          message += " - " + elt.getId() + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
+        for (EObject elt : failedObjects) {
+          message += " - " + getId(elt) + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
         }
         message += "while it must not be the case.";
         assertTrue(message, false);
@@ -174,6 +175,16 @@ public abstract class ValidationRuleTestCase extends BasicTestCase {
         }
       }
     }
+  }
+
+  protected String getId(EObject object) {
+    if(object instanceof CapellaElement){
+      return ((CapellaElement)object).getId();
+    }
+    if(object instanceof ReAbstractElement){
+      return ((ReAbstractElement)object).getId();
+    }
+    throw new IllegalArgumentException(object.eClass().getName() +"is not supported as a validation targeted EClass");
   }
 
   @Override

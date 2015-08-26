@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.core.expressions,
  org.eclipse.emf.validation;visibility:=reexport,
  org.polarsys.capella.core.model.helpers;visibility:=reexport,
  org.polarsys.capella.core.model.handler;visibility:=reexport,
- org.polarsys.capella.core.model.preferences;visibility:=reexport
+ org.polarsys.capella.core.model.preferences;visibility:=reexport,
+ org.polarsys.capella.common.re.gen
 Export-Package: org.polarsys.capella.core.validation,
  org.polarsys.capella.core.validation.export,
  org.polarsys.capella.core.validation.filter,
