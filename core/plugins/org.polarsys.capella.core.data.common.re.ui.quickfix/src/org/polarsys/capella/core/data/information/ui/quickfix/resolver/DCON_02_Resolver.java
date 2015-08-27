@@ -28,19 +28,26 @@ public class DCON_02_Resolver extends AbstractCapellaMarkerResolution{
 
   @Override
   public void run(IMarker marker) {
-    final List<EObject> modelElements = getModelElements(marker);
-    if(!modelElements.isEmpty()){
-      ExecutionManager executionManager = TransactionHelper.getExecutionManager(modelElements);
+    final EObject rpl = getRPL(marker);
+    if(rpl != null){
+      ExecutionManager executionManager = TransactionHelper.getExecutionManager(rpl);
       executionManager.execute(new AbstractReadWriteCommand() {
         
         @Override
         public void run() {
           Collection<Object> selection = new ArrayList<Object>();
-          selection.addAll(modelElements);
+          selection.add(rpl);
           UpdateReplicaUiLauncher launcher = new UpdateReplicaUiLauncher();
           launcher.run(selection, false, new NullProgressMonitor());
         }
       });
     }
+  }
+  
+  private EObject getRPL(IMarker marker) {
+    final List<EObject> modelElements = getModelElements(marker);
+    // The target shall be always the first element
+    // (see org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic#getData())
+    return modelElements.size() > 0 ? modelElements.get(0) : null;
   }
 }

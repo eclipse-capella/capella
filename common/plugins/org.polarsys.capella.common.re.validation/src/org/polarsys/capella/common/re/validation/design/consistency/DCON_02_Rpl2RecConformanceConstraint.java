@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.validation.design.consistency;
 
-import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -22,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
+import org.eclipse.emf.validation.service.ConstraintRegistry;
+import org.eclipse.emf.validation.service.IConstraintDescriptor;
 import org.polarsys.capella.common.helpers.EObjectExt;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
@@ -34,26 +35,25 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
   public IStatus validate(IValidationContext ctx) {
     CatalogElement catalogElement = (CatalogElement) ctx.getTarget();
     if (catalogElement.getKind() == CatalogElementKind.RPL) {
-      return validateRPL(catalogElement, ctx);
-    }
-    else if(catalogElement.getKind() == CatalogElementKind.REC){
-      long start = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
+      return validateRPL(ctx, catalogElement);
+    } else if (catalogElement.getKind() == CatalogElementKind.REC) {
       Collection<IStatus> statuses = new ArrayList<IStatus>();
       statuses.add(ctx.createSuccessStatus());
       // Collect all RPL from this REC and validate them
-      List<EObject> allRPLs = EObjectExt.getReferencers(catalogElement, RePackage.eINSTANCE.getCatalogElement(), RePackage.eINSTANCE.getCatalogElement_Origin());
+      List<EObject> allRPLs = EObjectExt.getReferencers(catalogElement, RePackage.eINSTANCE.getCatalogElement(),
+          RePackage.eINSTANCE.getCatalogElement_Origin());
       ctx.skipCurrentConstraintForAll(allRPLs);
-      for(EObject rpl : allRPLs){
-        statuses.add(validateRPL((CatalogElement)rpl, ctx));
+      for (EObject rpl : allRPLs) {
+        statuses.add(validateRPL(ctx, (CatalogElement) rpl));
       }
-      long stop = ManagementFactory.getThreadMXBean().getCurrentThreadCpuTime();
-      System.out.println("["+catalogElement.getName()+"] Spent time: "+(stop-start)/1000000 +" ms");
       return ConstraintStatus.createMultiStatus(ctx, statuses);
+    } else if(catalogElement.getKind() == CatalogElementKind.REC_RPL){
+      // Not supported yet
     }
     return ctx.createSuccessStatus();
   }
 
-  private IStatus validateRPL(CatalogElement rpl, IValidationContext ctx) {
+  private IStatus validateRPL(IValidationContext ctx, CatalogElement rpl) {
     Collection<Object> selection = new ArrayList<Object>();
     selection.add(rpl);
     Rpl2RecConformanceCheckLauncher launcher = new Rpl2RecConformanceCheckLauncher();
@@ -61,10 +61,18 @@ public class DCON_02_Rpl2RecConformanceConstraint extends AbstractModelConstrain
     IComparison comparison = launcher.getComparison();
     if (comparison != null) {
       if (comparison.getNbDifferences() > 0) {
-        ctx.skipCurrentConstraintFor(rpl);
-        return ctx.createFailureStatus(rpl, rpl.getOrigin());
+        // When the target is a REC, we need to set the RPL as target of the created failure status to be able to use it
+        // in the quick-fix, so create always a status with the RPL as target.
+        return createFailureStatus(ctx, rpl, new Object[] { rpl, rpl.getOrigin() });
       }
     }
     return ctx.createSuccessStatus();
+  }
+  
+  private IStatus createFailureStatus(IValidationContext ctx, EObject target, Object... messageArgs) {
+    IConstraintDescriptor constraintDescriptor = ConstraintRegistry.getInstance().getDescriptor(
+        ctx.getCurrentConstraintId());
+    return ConstraintStatus.createStatus(ctx, target, ctx.getResultLocus(), constraintDescriptor.getMessagePattern(),
+        messageArgs);
   }
 }
