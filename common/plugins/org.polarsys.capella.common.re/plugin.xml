@@ -648,7 +648,32 @@
                name="Catalog">
          </property>
          
-     </properties>    
+     </properties>
+     
+      <properties id="org.polarsys.capella.common.re.rpl2rec.conformance.check">
+          <inheritance properties="org.polarsys.capella.common.re.re2rpl" />
+          <property
+               class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicableElementProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup.child"
+               id="isource"
+               name="REC">
+         </property>
+         <property
+               class="org.polarsys.capella.common.re.re2rpl.properties.SourceElementProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description"
+               id="source.scopeElements"
+               name="Scope">
+         </property>
+         <property
+               class="org.polarsys.capella.common.re.re2rpl.update.properties.ReplicaProperty"
+               enabled="true"
+               group="org.polarsys.capella.common.re.description.replicableElementGroup"
+               id="itarget"
+               name="Name">
+         </property>
+     </properties> 
      
      <properties id="org.polarsys.capella.common.re.updateReplica">
           <inheritance properties="org.polarsys.capella.common.re.re2rpl" />
@@ -946,6 +971,19 @@
             description="A system transition"
             domainHelper="org.polarsys.capella.core.transition.common.domain.DomainHelper"
             mappingName="System Transition"
+            mappingPurpose="org.polarsys.capella.common.re">
+      </mapping>
+   </extension>
+   
+   <extension id="org.polarsys.capella.common.re.rpl2rec.conformance.check"
+         name="Check RPL to REC Conformance"
+         point="org.polarsys.kitalpha.transposer.rules.handler.mapping">
+      <mapping
+            extendedMappingExtensionID="org.polarsys.capella.common.re.re2rpl"
+            context="org.polarsys.capella.core.transition.common.context.TransitionContext"
+            description="Check RPL to REC Conformancer"
+            domainHelper="org.polarsys.capella.core.transition.common.domain.DomainHelper"
+            mappingName="RPL to REC Conformance"
             mappingPurpose="org.polarsys.capella.common.re">
       </mapping>
    </extension>

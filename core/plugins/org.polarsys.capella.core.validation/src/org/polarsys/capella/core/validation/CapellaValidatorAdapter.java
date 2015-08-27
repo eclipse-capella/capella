@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,14 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.validation.model.IConstraintStatus;
 import org.eclipse.emf.validation.service.IBatchValidator;
-
+import org.polarsys.capella.common.data.activity.ActivityPackage;
+import org.polarsys.capella.common.data.behavior.BehaviorPackage;
+import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 import org.polarsys.capella.common.helpers.validation.ConstraintStatusDiagnostic;
+import org.polarsys.capella.common.re.RePackage;
+import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
+import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
+import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.cs.CsPackage;
 import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.data.epbs.EpbsPackage;
@@ -27,16 +33,10 @@ import org.polarsys.capella.core.data.information.datatype.DatatypePackage;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.la.LaPackage;
-import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
-import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
-import org.polarsys.capella.core.data.capellamodeller.CapellamodellerPackage;
 import org.polarsys.capella.core.data.oa.OaPackage;
 import org.polarsys.capella.core.data.pa.PaPackage;
 import org.polarsys.capella.core.data.requirement.RequirementPackage;
 import org.polarsys.capella.core.data.sharedmodel.SharedmodelPackage;
-import org.polarsys.capella.common.data.activity.ActivityPackage;
-import org.polarsys.capella.common.data.behavior.BehaviorPackage;
-import org.polarsys.capella.common.data.modellingcore.ModellingcorePackage;
 
 /**
  * A specialized validator adapter that handles rule-aware constraints.
@@ -98,6 +98,8 @@ public class CapellaValidatorAdapter extends EValidatorAdapter {
     EValidator.Registry.INSTANCE.put(PaPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(RequirementPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(SharedmodelPackage.eINSTANCE, this);
+    // re meta-model
+    EValidator.Registry.INSTANCE.put(RePackage.eINSTANCE, this);
     // shared meta-models
     EValidator.Registry.INSTANCE.put(ActivityPackage.eINSTANCE, this);
     EValidator.Registry.INSTANCE.put(BehaviorPackage.eINSTANCE, this);
