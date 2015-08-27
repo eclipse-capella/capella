@@ -54,7 +54,7 @@
       <handler
             class="org.polarsys.capella.core.data.migration.handlers.AirdMigrationHandler"
             commandId="org.polarsys.capella.core.data.migration.aird">
-      </handler> 
+      </handler>
       
    </extension>
    
