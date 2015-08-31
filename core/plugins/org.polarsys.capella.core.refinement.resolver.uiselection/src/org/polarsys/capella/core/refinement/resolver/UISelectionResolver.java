@@ -156,6 +156,8 @@ public class UISelectionResolver implements IResolver {
       ScenarioRepresentation srcTree, ScenarioRepresentation tgtTree, AbstractEnd srcMsg, COMPONENT_TYPE type)
       throws ResolverException {
     List<AbstractInstance> selectedAbstractInstances = new ArrayList<AbstractInstance>();
+    Scenario scenario = null;
+    SequenceMessage sm = null;
 
     if (candidateAbstractInstances.size() == 1) {
       selectedAbstractInstances.add(candidateAbstractInstances.get(0));
@@ -172,6 +174,8 @@ public class UISelectionResolver implements IResolver {
               + getCustomizeStartMessage(type) + " \"" + getMessageStartName(msg, type) + "\" "
               + getCustomizeEndMessage(type) + " \"" + getMessageEndName(msg, type) + "\" from \""
               + CapellaElementExt.getFullPath((Scenario) msg.eContainer()) + "\".";
+          scenario = (Scenario) msg.eContainer();
+          sm = msg;
         }
       } else if (srcMsg instanceof ExecutionEnd) {
         SequenceMessage msg = ExecutionEndExt.getMessage((ExecutionEnd) srcMsg);
@@ -180,12 +184,14 @@ public class UISelectionResolver implements IResolver {
               + " \"" + getMessageStartName(msg, type) + "\" " + getCustomizeEndMessage(type) + " \""
               + getMessageEndName(msg, type) + "\" from \""
               + CapellaElementExt.getFullPath((Scenario) msg.eContainer()) + "\".";
+          scenario = (Scenario) msg.eContainer();
+          sm = msg;
         }
       }
 
-      ComponentSelectionItem rootItem = new ComponentSelectionItem(candidateAbstractInstances);
+      ComponentSelectionItem rootItem = new ComponentSelectionItem(scenario, sm, candidateAbstractInstances);
       SelectionWizard wizard = new SelectionWizard(rootItem,
-          "Capella wizard", "Refinement ambiguity resolution", message, false); //$NON-NLS-1$ //$NON-NLS-2$
+          "Capella wizard", "Refinement ambiguity resolution", message, false, true); //$NON-NLS-1$ //$NON-NLS-2$
       if (wizard.open() == 0) {
         SelectionItemNode selection = wizard.getSelection();
         if (selection != null) {

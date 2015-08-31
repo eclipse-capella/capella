@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,13 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
 import org.polarsys.capella.common.helpers.EcoreUtil2;
 import org.polarsys.capella.common.tools.report.EmbeddedMessage;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
+import org.polarsys.capella.core.data.capellacore.CapellaElement;
+import org.polarsys.capella.core.data.capellacore.NamedElement;
+import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.cs.ComponentArchitecture;
@@ -32,9 +34,6 @@ import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
-import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.capellacore.NamedElement;
-import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.model.helpers.AbstractCapabilityPkgExt;
 import org.polarsys.capella.core.model.helpers.ComponentExt;
 import org.polarsys.capella.core.model.helpers.LogicalComponentExt;
@@ -55,32 +54,35 @@ public class SubScenarioUtils {
   /**
    * Creates a new scenario and links it to the current scenario
    */
-  public static void addNewSubScenario(final Scenario currentScenario_p, IProgressMonitor progressMonitor_p) {
-    if (currentScenario_p != null) {
+  public static void addNewSubScenario(final Scenario currentScenario, IProgressMonitor progressMonitor) {
+    if (currentScenario != null) {
       Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
 
-      List<NamedElement> targets = evaluateTarget(currentScenario_p);
+      List<NamedElement> targets = evaluateTarget(currentScenario);
       if (!targets.isEmpty()) {
         String message = Messages.getString("SubScenarioUtils.0"); //$NON-NLS-1$
-        TargetSelectionItem rootItem = new TargetSelectionItem(currentScenario_p, targets);
-        SelectionWizard wizard = new SelectionWizard(rootItem,
-          Messages.getString("SubScenarioUtils.1"), Messages.getString("SubScenarioUtils.2"), message, true, false, true, Messages.getString("SubScenarioUtils.3")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-  
+        TargetSelectionItem rootItem = new TargetSelectionItem(currentScenario, targets);
+        SelectionWizard wizard = new SelectionWizard(
+            rootItem,
+            Messages.getString("SubScenarioUtils.1"), Messages.getString("SubScenarioUtils.2"), message, true, false, true, Messages.getString("SubScenarioUtils.3"), false); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+
         wizard.addValidator(new IValidator() {
           /**
            * @see IValidator#isValid()
            */
-          public boolean isValid(SelectionPage page_p) {
+          public boolean isValid(SelectionPage page) {
             boolean result = true;
-            for (SelectionItemNode item : page_p.getSelection()) {
+            for (SelectionItemNode item : page.getSelection()) {
               Object obj = item.getData();
               if (obj instanceof CapellaElement) {
-                AbstractCapability capability = (AbstractCapability) currentScenario_p.eContainer();
-                for (CapellaElement elt : RefinementLinkExt.getRefinementRelatedSourceElements(capability, InteractionPackage.Literals.ABSTRACT_CAPABILITY)) {
+                AbstractCapability capability = (AbstractCapability) currentScenario.eContainer();
+                for (CapellaElement elt : RefinementLinkExt.getRefinementRelatedSourceElements(capability,
+                    InteractionPackage.Literals.ABSTRACT_CAPABILITY)) {
                   if (EcoreUtil2.isContainedBy(elt, (CapellaElement) obj)) {
-                    String realName = ScenarioRefinement.evaluateNamingRule((NamedElement) obj, page_p.getNameValue());
-                    AbstractCapability subInteractionAspect = (AbstractCapability)elt;
-                    if (!ListExt.filterByName(new ArrayList<EObject>(subInteractionAspect.getOwnedScenarios()), realName).isEmpty()) {
+                    String realName = ScenarioRefinement.evaluateNamingRule((NamedElement) obj, page.getNameValue());
+                    AbstractCapability subInteractionAspect = (AbstractCapability) elt;
+                    if (!ListExt.filterByName(new ArrayList<EObject>(subInteractionAspect.getOwnedScenarios()),
+                        realName).isEmpty()) {
                       result = false;
                     }
                   }
@@ -89,37 +91,38 @@ public class SubScenarioUtils {
             }
             return result;
           }
-  
+
           /**
-           *  @see IValidator#getMessage()
+           * @see IValidator#getMessage()
            */
           public String getMessage() {
             return Messages.getString("SubScenarioUtils.10"); //$NON-NLS-1$
           }
         });
-  
+
         if (wizard.open() == 0) {
           String scenarioName = wizard.getNameValue();
           for (SelectionItemNode item : wizard.getSelectionList()) {
             SubScenarioRefinement ref = null;
             NamedElement target = (NamedElement) item.getData();
             if (target instanceof ComponentArchitecture) {
-              ref = new SubScenarioRefinement(currentScenario_p, (ComponentArchitecture) target, scenarioName);
+              ref = new SubScenarioRefinement(currentScenario, (ComponentArchitecture) target, scenarioName);
+            } else if (target instanceof Component) {
+              ref = new SubScenarioRefinement(currentScenario, (Component) target, scenarioName);
             }
-            else if (target instanceof Component) {
-              ref = new SubScenarioRefinement(currentScenario_p, (Component) target, scenarioName);
-            }
-  
-            if (ref != null) {
-              ref.execute(progressMonitor_p);
 
-              _logger.info(new EmbeddedMessage(MessageFormat.format(Messages.getString("SubScenarioUtils.13"), scenarioName), IReportManagerDefaultComponents.REFINEMENT, ref.getResult())); //$NON-NLS-1$
+            if (ref != null) {
+              ref.execute(progressMonitor);
+
+              _logger
+                  .info(new EmbeddedMessage(
+                      MessageFormat.format(Messages.getString("SubScenarioUtils.13"), scenarioName), IReportManagerDefaultComponents.REFINEMENT, ref.getResult())); //$NON-NLS-1$
             }
           }
         }
-      }
-      else {
-        _logger.info(new EmbeddedMessage(Messages.getString("SubScenarioUtils.11"), IReportManagerDefaultComponents.REFINEMENT, currentScenario_p)); //$NON-NLS-1$
+      } else {
+        _logger.info(new EmbeddedMessage(
+            Messages.getString("SubScenarioUtils.11"), IReportManagerDefaultComponents.REFINEMENT, currentScenario)); //$NON-NLS-1$
       }
     }
   }
@@ -127,75 +130,75 @@ public class SubScenarioUtils {
   /**
    * Links an existing scenario to the current scenario
    */
-  public static void addExistingSubScenario(Scenario currentScenario_p, IProgressMonitor progressMonitor_p) {
-    if (currentScenario_p != null) {
+  public static void addExistingSubScenario(Scenario currentScenario, IProgressMonitor progressMonitor) {
+    if (currentScenario != null) {
       Logger _logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.REFINEMENT);
 
-      Map<NamedElement, List<NamedElement>> targets = evaluateTargets(currentScenario_p);
+      Map<NamedElement, List<NamedElement>> targets = evaluateTargets(currentScenario);
       if (!targets.isEmpty()) {
         String message = Messages.getString("SubScenarioUtils.4"); //$NON-NLS-1$
         TargetSelectionItem rootItem = new TargetSelectionItem(targets);
         SelectionWizard wizard = new SelectionWizard(rootItem,
-          Messages.getString("SubScenarioUtils.1"), Messages.getString("SubScenarioUtils.6"), message, true, true); //$NON-NLS-1$ //$NON-NLS-2$
+            Messages.getString("SubScenarioUtils.1"), Messages.getString("SubScenarioUtils.6"), message, true, true); //$NON-NLS-1$ //$NON-NLS-2$
         if (wizard.open() == 0) {
           for (SelectionItemNode item : wizard.getSelectionList()) {
             Scenario sc = (Scenario) item.getData();
             if (sc != null) {
-              SubScenarioRefinement ref = new SubScenarioRefinement(currentScenario_p, sc);
-              ref.execute(progressMonitor_p);
+              SubScenarioRefinement ref = new SubScenarioRefinement(currentScenario, sc);
+              ref.execute(progressMonitor);
 
-              _logger.info(new EmbeddedMessage(MessageFormat.format(Messages.getString("SubScenarioUtils.14"), sc.getName()), IReportManagerDefaultComponents.REFINEMENT, sc)); //$NON-NLS-1$
+              _logger
+                  .info(new EmbeddedMessage(
+                      MessageFormat.format(Messages.getString("SubScenarioUtils.14"), sc.getName()), IReportManagerDefaultComponents.REFINEMENT, sc)); //$NON-NLS-1$
             }
           }
         }
-      }
-      else {
-        _logger.info(new EmbeddedMessage(Messages.getString("SubScenarioUtils.12"), IReportManagerDefaultComponents.REFINEMENT, currentScenario_p)); //$NON-NLS-1$
+      } else {
+        _logger.info(new EmbeddedMessage(
+            Messages.getString("SubScenarioUtils.12"), IReportManagerDefaultComponents.REFINEMENT, currentScenario)); //$NON-NLS-1$
       }
     }
   }
 
-  
-  private static List<NamedElement> evaluateTarget(Scenario scenario_p) {
-	  List<NamedElement> targetSet = new ArrayList<NamedElement>();
-	  CapellaElement diagramContainer = ScenarioExt.getContainer(scenario_p);
+  private static List<NamedElement> evaluateTarget(Scenario scenario) {
+    List<NamedElement> targetSet = new ArrayList<NamedElement>();
+    CapellaElement diagramContainer = ScenarioExt.getContainer(scenario);
 
-	  if (diagramContainer instanceof SystemEngineering) {
-		  for (LogicalArchitecture la : SystemEngineeringExt.getAllLogicalArchitecture(scenario_p)) {
-			  targetSet.add(la);
-		  }
-	  }
-	  else if (diagramContainer instanceof LogicalArchitecture) {
-		  // Retrieves the logical components involved in Root LC decomposition (for current LA)
-		  LogicalComponent rootLc = SystemEngineeringExt.getRootLogicalComponent((LogicalArchitecture) diagramContainer);
-		  for (LogicalComponent lc : LogicalComponentExt.getDecompositionLogicalComponentInvolved(rootLc)) {
-			  if (ComponentExt.isComposite(lc) && ScenarioExt.contains(scenario_p, lc)) {
-				  targetSet.add(lc);
-			  }
-		  }
-	  }
-	  else if (diagramContainer instanceof LogicalComponent) {
-		  // Retrieves the logical components children of the current logical component
-		  for (LogicalComponent lc : LogicalComponentExt.getDecompositionLogicalComponentInvolved((LogicalComponent) diagramContainer)) {
-			  if (ComponentExt.isComposite(lc) && ScenarioExt.contains(scenario_p, lc)) {
-				  targetSet.add(lc);
-			  }
-		  }
-	  }
-	  return targetSet;
+    if (diagramContainer instanceof SystemEngineering) {
+      for (LogicalArchitecture la : SystemEngineeringExt.getAllLogicalArchitecture(scenario)) {
+        targetSet.add(la);
+      }
+    } else if (diagramContainer instanceof LogicalArchitecture) {
+      // Retrieves the logical components involved in Root LC decomposition (for current LA)
+      LogicalComponent rootLc = SystemEngineeringExt.getRootLogicalComponent((LogicalArchitecture) diagramContainer);
+      for (LogicalComponent lc : LogicalComponentExt.getDecompositionLogicalComponentInvolved(rootLc)) {
+        if (ComponentExt.isComposite(lc) && ScenarioExt.contains(scenario, lc)) {
+          targetSet.add(lc);
+        }
+      }
+    } else if (diagramContainer instanceof LogicalComponent) {
+      // Retrieves the logical components children of the current logical component
+      for (LogicalComponent lc : LogicalComponentExt
+          .getDecompositionLogicalComponentInvolved((LogicalComponent) diagramContainer)) {
+        if (ComponentExt.isComposite(lc) && ScenarioExt.contains(scenario, lc)) {
+          targetSet.add(lc);
+        }
+      }
+    }
+    return targetSet;
   }
 
-  private static Map<NamedElement, List<NamedElement>> evaluateTargets(Scenario scenario_p) {
+  private static Map<NamedElement, List<NamedElement>> evaluateTargets(Scenario scenario) {
     Map<NamedElement, List<NamedElement>> result = new HashMap<NamedElement, List<NamedElement>>();
 
-    for (NamedElement cpnt : evaluateTarget(scenario_p)) {
+    for (NamedElement cpnt : evaluateTarget(scenario)) {
       List<NamedElement> scenariosToBeAttached = new ArrayList<NamedElement>();
       List<Scenario> scenarios = null;
       if (cpnt instanceof BlockArchitecture) {
-        scenarios = AbstractCapabilityPkgExt.getAllScenarios(((BlockArchitecture)cpnt).getOwnedAbstractCapabilityPkg());
-      }
-      else if (cpnt instanceof LogicalComponent) {
-        scenarios = AbstractCapabilityPkgExt.getAllScenarios(((LogicalComponent)cpnt).getOwnedAbstractCapabilityPkg());
+        scenarios = AbstractCapabilityPkgExt
+            .getAllScenarios(((BlockArchitecture) cpnt).getOwnedAbstractCapabilityPkg());
+      } else if (cpnt instanceof LogicalComponent) {
+        scenarios = AbstractCapabilityPkgExt.getAllScenarios(((LogicalComponent) cpnt).getOwnedAbstractCapabilityPkg());
       }
 
       if (scenarios != null) {
