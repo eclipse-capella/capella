@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,24 +24,23 @@ public class InstanceRoleHelper {
 
   /**
    * Check name...
-   * @param ir_p
+   * @param ir
    * @return
    * @throws MergeToolException
    */
-  public static boolean isIRrepresentASysyemComponent(InstanceRole ir_p) throws MergeToolException {
+  public static boolean isIRrepresentASysyemComponent(InstanceRole ir) throws MergeToolException {
     
     boolean result = false;
 
     try {
     
-      AbstractType ae = getAbstractType(ir_p);
+      AbstractType ae = getAbstractType(ir);
     
       result = ( CsPackage.Literals.SYSTEM_COMPONENT.isSuperTypeOf(ae.eClass()) );
     
     } catch (Exception exception) {
       //TODO Log an error and/or change message
-      throw new MergeToolException(MergeMessages.genericInternalError);
-      
+      throw new MergeToolException(MergeMessages.genericInternalError, exception);
     }
     
     return result;
@@ -49,24 +48,22 @@ public class InstanceRoleHelper {
   
   /**
    * return the given {@link AbstractType}.
-   * @param ir_p
-   * @param expected_p the expected EClass, 
+   * @param ir
+   * @param expected the expected EClass, 
    * @return
    * @throws MergeToolException
    */
-  static public AbstractType getAbstractType(InstanceRole ir_p) throws MergeToolException {
+  static public AbstractType getAbstractType(InstanceRole ir) throws MergeToolException {
     
     AbstractType result = null;
     
     try {
-      result = ir_p.getRepresentedInstance().getAbstractType();
+      result = ir.getRepresentedInstance().getAbstractType();
     } catch (Exception exceptionP) {
       //TODO Log an error and/or change message
-      throw new MergeToolException(MergeMessages.genericInternalError);
+      throw new MergeToolException(MergeMessages.genericInternalError, exceptionP);
     }
     
     return result;
   }
-
-  
 }

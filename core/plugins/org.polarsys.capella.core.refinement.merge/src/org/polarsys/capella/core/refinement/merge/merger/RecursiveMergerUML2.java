@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -141,7 +141,7 @@ public class RecursiveMergerUML2 implements IMerger {
       //
       op3.apply();
       
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
 
       //
       // Let's clean everything
@@ -184,7 +184,7 @@ public class RecursiveMergerUML2 implements IMerger {
         ) +
         ICommonConstants.COMMA_CHARACTER +
         ICommonConstants.WHITE_SPACE_CHARACTER +
-        exception_p.getMessage()
+        exception.getMessage()
       ;
       
       logger.error(
@@ -195,7 +195,7 @@ public class RecursiveMergerUML2 implements IMerger {
           )
       );
       
-      throw new MergeException(msg);
+      throw new MergeException(msg, exception);
     } 
     
    return ScenarioHelper.isScenarioHasDecomposedElement(_result); 

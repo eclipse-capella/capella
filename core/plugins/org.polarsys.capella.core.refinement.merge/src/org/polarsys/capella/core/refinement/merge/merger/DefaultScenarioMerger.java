@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,31 +56,31 @@ public class DefaultScenarioMerger implements IScenarioMerger {
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.merger.IScenarioMerger#doMerge(org.polarsys.capella.core.data.interaction.Scenario)
    */
-  public Scenario doMerge(final Scenario sc_p) throws MergeException {
+  public Scenario doMerge(final Scenario sc) throws MergeException {
 
     try {
 
-      Scenario previousMergeResult = MergeHelper.hasBeenAlreadyMerged(sc_p);
+      Scenario previousMergeResult = MergeHelper.hasBeenAlreadyMerged(sc);
 
-      _result = null == previousMergeResult ? performMerge(sc_p) : performUpdate(sc_p, previousMergeResult);
+      _result = null == previousMergeResult ? performMerge(sc) : performUpdate(sc, previousMergeResult);
 
-      CapabilityRealization cr = (CapabilityRealization) sc_p.eContainer();
+      CapabilityRealization cr = (CapabilityRealization) sc.eContainer();
       
       // Let's add the new scenario
       HoldingResourceHelper.ensureMoveElement(_result, cr);
       cr.getOwnedScenarios().add(_result);
 
-    } catch (MergeException exception_p) {
+    } catch (MergeException exception) {
 
-      String errDetails = exception_p.getMessage();
-      CapabilityRealization cr = (CapabilityRealization) sc_p.eContainer();
+      String errDetails = exception.getMessage();
+      CapabilityRealization cr = (CapabilityRealization) sc.eContainer();
 
       String msg = NLS.bind(
           MergeMessages.mergeErrorTopMessage,
-          new Object[] { sc_p.getName(), cr.getName(), errDetails }
+          new Object[] { sc.getName(), cr.getName(), errDetails }
       );
 
-      throw new MergeException(msg);
+      throw new MergeException(msg, exception);
     }
 
     return _result;
@@ -89,7 +89,7 @@ public class DefaultScenarioMerger implements IScenarioMerger {
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.merger.IScenarioMerger#postTreatment(org.polarsys.capella.core.data.interaction.Scenario)
    */
-  public boolean postTreatment(Scenario sc_p) throws ProcessorException {
+  public boolean postTreatment(Scenario sc) throws ProcessorException {
     // Do Nothing
     return true;
   }
@@ -97,13 +97,13 @@ public class DefaultScenarioMerger implements IScenarioMerger {
   /**
    * @see org.polarsys.capella.core.common.refinement.merge.merger.IScenarioMerger#preTreatment(org.polarsys.capella.core.data.interaction.Scenario)
    */
-  public boolean preTreatment(final Scenario sc_p) throws ProcessorException {
+  public boolean preTreatment(final Scenario sc) throws ProcessorException {
 
     boolean result = true;
 
     
     if (RefinementPrefServices.isPreValidationForMergeActivated()) {
-      int severity = validate(sc_p);
+      int severity = validate(sc);
 
       Logger logger = MergeActivator.getDefault().getLogger();
       
@@ -114,7 +114,7 @@ public class DefaultScenarioMerger implements IScenarioMerger {
           emsg = new EmbeddedMessage(
               MergeMessages.preValidationRaiseErrors,
               IReportManagerDefaultComponents.REFINEMENT, 
-              sc_p
+              sc
           );
           
           if (RefinementPrefServices.isErrorOnPreValidationStopMerge()) {
@@ -129,7 +129,7 @@ public class DefaultScenarioMerger implements IScenarioMerger {
           emsg = new EmbeddedMessage(
               MergeMessages.preValidationRaiseWarnings,
               IReportManagerDefaultComponents.REFINEMENT, 
-              sc_p
+              sc
           );
           logger.warn(emsg);
           break;
@@ -137,7 +137,7 @@ public class DefaultScenarioMerger implements IScenarioMerger {
           emsg = new EmbeddedMessage(
               MergeMessages.preValidationRaiseInfos,
               IReportManagerDefaultComponents.REFINEMENT, 
-              sc_p
+              sc
           );
           logger.info(emsg);
           break;
@@ -148,7 +148,7 @@ public class DefaultScenarioMerger implements IScenarioMerger {
     return result;
   }
 
-  private int validate(Scenario sc_p) {
+  private int validate(Scenario sc) {
     
     IBatchValidator validator = CapellaValidationActivator.getDefault().getCapellaValidatorAdapter().getValidator();
 
@@ -157,9 +157,9 @@ public class DefaultScenarioMerger implements IScenarioMerger {
     validator.addConstraintFilter(filter);
     
     int errorLevel = Diagnostic.OK;
-    for (Scenario sc: ScenarioHelper.getRefinedScenarii(sc_p,true)) {
+    for (Scenario s: ScenarioHelper.getRefinedScenarii(sc,true)) {
       Diagnostician diagnostician = new Diagnostician();
-      Diagnostic diagnostic = diagnostician.validate(sc);
+      Diagnostic diagnostic = diagnostician.validate(s);
       if ( diagnostic.getSeverity() > errorLevel ) {
         errorLevel = diagnostic.getSeverity();
       }
@@ -173,13 +173,13 @@ public class DefaultScenarioMerger implements IScenarioMerger {
   
   /**
    * Perform a merge operation from "scratch".
-   * @param sc_p the root {@link Scenario} for this merge operation
+   * @param sc the root {@link Scenario} for this merge operation
    * @return result of the merge operation.
    * @throws MergeException
    */
-  protected Scenario performMerge(Scenario sc_p) throws MergeException {
+  protected Scenario performMerge(Scenario sc) throws MergeException {
 
-    IMerger merger = new RecursiveMergerUML2(sc_p);
+    IMerger merger = new RecursiveMergerUML2(sc);
     merger.performMerge();
 
     return merger.getResult();
@@ -187,21 +187,21 @@ public class DefaultScenarioMerger implements IScenarioMerger {
 
   /**
    * Perform a merge operation with updating.
-   * @param sc_p the root {@link Scenario} for this merge operation
-   * @param scm_p the previous merge operation result
+   * @param sc the root {@link Scenario} for this merge operation
+   * @param scm the previous merge operation result
    * @return result of the merge operation.
    * @throws MergeException
    */
   @SuppressWarnings("unchecked")
-  protected Scenario performUpdate(Scenario sc_p, Scenario scm_p) throws MergeException {
+  protected Scenario performUpdate(Scenario sc, Scenario scm) throws MergeException {
 
     Scenario newMergedResult = null;
 
     // First of all, let's create a new merged scenario
-    newMergedResult = performMerge(sc_p);
+    newMergedResult = performMerge(sc);
 
     // Let's update Refinement Link from the logical layer to physical one.
-    UpdateMergedScenario update = new UpdateMergedScenario(scm_p);
+    UpdateMergedScenario update = new UpdateMergedScenario(scm);
 
     update.update(newMergedResult);
 
@@ -212,50 +212,50 @@ public class DefaultScenarioMerger implements IScenarioMerger {
     List<EObject> objectsToDelete = new ArrayList<EObject>();
 
     // the old scenario itself
-    objectsToDelete.add(scm_p);
+    objectsToDelete.add(scm);
 
     // remove its internal MergeLink
 
     List<EStructuralFeature> features = ScenarioExt.getElementOfInterestOnScenario();
 
     for (EStructuralFeature feature : features) {
-      objectsToDelete.addAll((List<? extends EObject>) scm_p.eGet(feature));
+      objectsToDelete.addAll((List<? extends EObject>) scm.eGet(feature));
     }
 
     MergeUtils.deleteElements(objectsToDelete);
 
-    CapabilityRealization cr = (CapabilityRealization) sc_p.eContainer();
-    cr.getOwnedScenarios().remove(scm_p);
+    CapabilityRealization cr = (CapabilityRealization) sc.eContainer();
+    cr.getOwnedScenarios().remove(scm);
 
     return newMergedResult;
   }
   
 
   /**
-   * @param eContainer_p
-   * @param result_p
+   * @param eContainer
+   * @param result
    */
-  public void reconnectInvolvment(CapabilityRealization capability_p, Scenario scenario_p) {
-    for (InstanceRole ir : scenario_p.getOwnedInstanceRoles()) {
+  public void reconnectInvolvment(CapabilityRealization capability, Scenario scenario) {
+    for (InstanceRole ir : scenario.getOwnedInstanceRoles()) {
       AbstractInstance ai = ir.getRepresentedInstance();
-      ensureCapabilityInvolvment (capability_p, ai);
+      ensureCapabilityInvolvment (capability, ai);
     }    
   }
   
   /**
-   * @param capability_p
-   * @param ai_p
+   * @param capability
+   * @param ai
    */
-  private void ensureCapabilityInvolvment(CapabilityRealization capability_p, AbstractInstance ai_p) {
+  private void ensureCapabilityInvolvment(CapabilityRealization capability, AbstractInstance ai) {
     boolean found  = false;
-    AbstractType type = ai_p.getAbstractType();
+    AbstractType type = ai.getAbstractType();
     
-    for ( SystemComponentCapabilityRealizationInvolvement sccr : capability_p.getInvolvedSystemComponents()) {
+    for ( SystemComponentCapabilityRealizationInvolvement sccr : capability.getInvolvedSystemComponents()) {
         if (sccr.getInvolved() == type) {
           found = true;
         }
     }
-    for ( ActorCapabilityRealizationInvolvement acri : capability_p.getInvolvedActors()) {
+    for ( ActorCapabilityRealizationInvolvement acri : capability.getInvolvedActors()) {
       if (acri.getInvolved() == type) {
         found = true;
       }
@@ -264,8 +264,8 @@ public class DefaultScenarioMerger implements IScenarioMerger {
     
     if (!found) {
       SystemComponentCapabilityRealizationInvolvement sccr = CsFactory.eINSTANCE.createSystemComponentCapabilityRealizationInvolvement();
-      capability_p.getOwnedSystemComponentCapabilityRealizations().add(sccr);
-      sccr.setInvolver(capability_p);
+      capability.getOwnedSystemComponentCapabilityRealizations().add(sccr);
+      sccr.setInvolver(capability);
       sccr.setInvolved((InvolvedElement) type);
     }    
   }

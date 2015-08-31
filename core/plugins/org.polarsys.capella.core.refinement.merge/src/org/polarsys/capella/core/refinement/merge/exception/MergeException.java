@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,18 +23,18 @@ public class MergeException extends Exception {
 
   /**
    * Constructor with message
-   * @param messageString_p The message
+   * @param messageString The message
    */
-  public MergeException(String messageString_p) {
-    super(messageString_p);
+  public MergeException(String messageString) {
+    super(messageString);
   }
   
   /**
    * Constructor with message and cause
-   * @param messageString_p The message
-   * @param causeThrowable_p The cause
+   * @param messageString The message
+   * @param causeThrowable The cause
    */
-  public MergeException(String messageString_p, Throwable causeThrowable_p) {
-    super(messageString_p, causeThrowable_p);
+  public MergeException(String messageString, Throwable causeThrowable) {
+    super(messageString, causeThrowable);
   }  
 }

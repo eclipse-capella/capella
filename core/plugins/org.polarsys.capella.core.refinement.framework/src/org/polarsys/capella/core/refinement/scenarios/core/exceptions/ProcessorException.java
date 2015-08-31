@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,19 @@ public class ProcessorException extends RefinementException {
   final static long serialVersionUID = 0;
 
   /**
-   * @param string_p
-   * @param plug_p
+   * @param string
+   * @param plug
    */
-  public ProcessorException(String string_p, IProcessor plug_p) {
-    super(string_p, plug_p);
+  public ProcessorException(String string, IProcessor plug) {
+    super(string, plug);
+  }
+
+  /**
+   * @param string
+   * @param plug
+   * @param throwable
+   */
+  public ProcessorException(String string, IProcessor plug, Throwable throwable) {
+    super(string, plug, throwable);
   }
 }
