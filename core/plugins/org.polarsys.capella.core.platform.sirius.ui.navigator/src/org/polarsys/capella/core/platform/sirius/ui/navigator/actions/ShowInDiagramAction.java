@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
@@ -72,7 +73,8 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
 
     DSemanticDecorator view = null;
 
-    boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven((EObject) selectedElement));
+    boolean allowMultiplePart = TriStateBoolean.True.equals(CapellaProjectHelper
+        .isReusableComponentsDriven((EObject) selectedElement));
     if (!allowMultiplePart) {
       if (selectedElement instanceof Component) {
         for (Part part : ComponentExt.getRepresentingParts((Component) selectedElement)) {
@@ -88,42 +90,42 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     }
 
     if (view == null) {
-      MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.ShowInDiagramAction_UnknownElement_Title,
-          Messages.ShowInDiagramAction_UnknownElement_Message);
+      MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
+          Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
     } else {
 
       if (view instanceof DDiagramElement) {
         DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement) view);
         if (query.isFolded()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.ShowInDiagramAction_UnknownElement_Title,
-              Messages.ShowInDiagramAction_FoldedElement_Message);
+          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_FoldedElement_Message);
 
         } else if (query.isHidden()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.ShowInDiagramAction_UnknownElement_Title,
-              Messages.ShowInDiagramAction_HiddenElement_Message);
+          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_HiddenElement_Message);
 
         } else if (query.isCollapsed()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.ShowInDiagramAction_UnknownElement_Title,
-              Messages.ShowInDiagramAction_CollapseElement_Message);
+          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_CollapseElement_Message);
 
         } else if (query.isFiltered()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.ShowInDiagramAction_UnknownElement_Title,
-              Messages.ShowInDiagramAction_FilteredElement_Message);
+          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+              Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_FilteredElement_Message);
 
         } else {
 
           IGraphicalEditPart selectedPart = getGraphicalPart(view);
           if (selectedPart == null) {
-            MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.ShowInDiagramAction_UnknownElement_Title,
-                Messages.ShowInDiagramAction_UnknownElement_Message);
+            MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+                Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
           } else {
             selectPart(selectedPart);
           }
         }
 
       } else if (view instanceof DDiagram) {
-        MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.ShowInDiagramAction_UnknownElement_Title,
-            Messages.ShowInDiagramAction_UnknownElement_Message);
+        MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+            Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
       }
 
     }
@@ -131,17 +133,17 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
   }
 
   /**
-   * @param part_p
+   * @param part
    * @return
    */
-  protected DSemanticDecorator getPreferedView(EObject semantic_p) {
+  protected DSemanticDecorator getPreferedView(EObject semantic) {
     IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 
     if ((null != activeEditor) && (activeEditor instanceof SiriusDiagramEditor)) {
       SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
 
       DRepresentation diagram = (DRepresentation) diagramEditor.getDiagram().getElement();
-      Collection<DSemanticDecorator> views = DiagramServices.getDiagramServices().getDiagramElements(diagram, semantic_p);
+      Collection<DSemanticDecorator> views = DiagramServices.getDiagramServices().getDiagramElements(diagram, semantic);
 
       if (views.size() == 1) {
         return views.iterator().next();
@@ -166,10 +168,11 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
   }
 
   /**
-   * @param selectedElement_p
+   * @param selectedElement
    */
-  protected IGraphicalEditPart getGraphicalPart(DSemanticDecorator view_p) {
-    //A crossReferencer should be enough to retrieve these elements, but in some buggy case, 2 GMF diagrams for one DDiagram
+  protected IGraphicalEditPart getGraphicalPart(DSemanticDecorator view) {
+    // A crossReferencer should be enough to retrieve these elements, but in some buggy case, 2 GMF diagrams for one
+    // DDiagram
 
     IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
     IGraphicalEditPart graphicalEditPart = null;
@@ -185,7 +188,8 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
         IDiagramDialectGraphicalViewer dialectViewer = (IDiagramDialectGraphicalViewer) diagramGraphicalViewer;
 
         // Search all edit parts linked to selected object.
-        List<IGraphicalEditPart> allEditParts = dialectViewer.findEditPartsForElement(view_p.getTarget(), IGraphicalEditPart.class);
+        List<IGraphicalEditPart> allEditParts = dialectViewer.findEditPartsForElement(view.getTarget(),
+            IGraphicalEditPart.class);
         // Iterate over retrieved edit parts to remove the ones related to 'label' edit part.
         for (Iterator<IGraphicalEditPart> iterator = allEditParts.iterator(); iterator.hasNext();) {
           IGraphicalEditPart editPart = iterator.next();
@@ -214,16 +218,16 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
     return graphicalEditPart;
   }
 
-  protected void selectPart(IGraphicalEditPart part_p) {
+  protected void selectPart(IGraphicalEditPart part) {
     IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
     SiriusDiagramEditor diagramEditor = (SiriusDiagramEditor) activeEditor;
 
     // Get the graphical viewer.
     IDiagramGraphicalViewer diagramGraphicalViewer = diagramEditor.getDiagramGraphicalViewer();
     // Select the found graphical edit part.
-    if (null != part_p) {
-      diagramGraphicalViewer.select(part_p);
-      diagramGraphicalViewer.reveal(part_p);
+    if (null != part) {
+      diagramGraphicalViewer.select(part);
+      diagramGraphicalViewer.reveal(part);
     }
   }
 
@@ -231,11 +235,11 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
    * @see org.eclipse.ui.actions.BaseSelectionListenerAction#updateSelection(org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
-  protected boolean updateSelection(IStructuredSelection selection_p) {
+  protected boolean updateSelection(IStructuredSelection selection) {
     boolean result = false;
 
-    if (!selection_p.isEmpty()) {
-      result = (CapellaResourceHelper.isSemanticElements(selection_p.toList())) ? true : false;
+    if (!selection.isEmpty()) {
+      result = (CapellaResourceHelper.isSemanticElements(selection.toList())) ? true : false;
     }
 
     IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -248,7 +252,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
    * @see org.eclipse.ui.IViewActionDelegate#init(org.eclipse.ui.IViewPart)
    */
   @Override
-  public void init(IViewPart view_p) {
+  public void init(IViewPart view) {
     // Do nothing.
   }
 
@@ -256,15 +260,16 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
    * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
    */
   @Override
-  public void run(IAction action_p) {
+  public void run(IAction action) {
     run();
   }
 
   /**
-   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction, org.eclipse.jface.viewers.ISelection)
+   * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
+   *      org.eclipse.jface.viewers.ISelection)
    */
   @Override
-  public void selectionChanged(IAction action_p, ISelection selection_p) {
-    selectionChanged((IStructuredSelection) selection_p);
+  public void selectionChanged(IAction action, ISelection selection) {
+    selectionChanged((IStructuredSelection) selection);
   }
 }
