@@ -22,6 +22,7 @@ import org.polarsys.capella.core.data.cs.ExchangeItemAllocation;
 import org.polarsys.capella.core.data.cs.Interface;
 import org.polarsys.capella.core.data.information.ExchangeItem;
 import org.polarsys.capella.core.data.information.communication.CommunicationLink;
+import org.polarsys.capella.core.data.information.communication.CommunicationLinkKind;
 import org.polarsys.capella.core.data.information.communication.CommunicationLinkProtocol;
 import org.polarsys.capella.core.data.la.LogicalArchitecture;
 import org.polarsys.capella.core.data.la.LogicalComponent;
@@ -48,16 +49,16 @@ public class LCDecompositionController {
   /**
    * Wraps all the interfaces wrapped into {@link DecompositionItem} in a {@link LogicalComponent}
    * 
-   * @param logicalComponent_p
+   * @param logicalComponent
    *          the logical component
    * @return list of interfaces
    */
-  public List<DecompositionItem> getWrappedInterfaces(LogicalComponent logicalComponent_p, boolean alreadyDecomposed_p) {
+  public List<DecompositionItem> getWrappedInterfaces(LogicalComponent logicalComponent, boolean alreadyDecomposed) {
     List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
-    List<Interface> usedInterfaces = ComponentExt.getAllUsedAndRequiredInterfaces(logicalComponent_p);
-    list.addAll(getDecompositionItemList(usedInterfaces, true, alreadyDecomposed_p));
-    List<Interface> implementedInterfaces = ComponentExt.getAllImplementedAndProvidedInterfaces(logicalComponent_p);
-    list.addAll(getDecompositionItemList(implementedInterfaces, false, alreadyDecomposed_p));
+    List<Interface> usedInterfaces = ComponentExt.getAllUsedAndRequiredInterfaces(logicalComponent);
+    list.addAll(getDecompositionItemList(usedInterfaces, true, alreadyDecomposed));
+    List<Interface> implementedInterfaces = ComponentExt.getAllImplementedAndProvidedInterfaces(logicalComponent);
+    list.addAll(getDecompositionItemList(implementedInterfaces, false, alreadyDecomposed));
     return list;
   }
 
@@ -65,39 +66,41 @@ public class LCDecompositionController {
    * Wraps all the interfaces and communication links wrapped into {@link DecompositionItem} in a
    * {@link LogicalComponent}
    * 
-   * @param logicalComponent_p
+   * @param logicalComponent
    *          the logical component
    * @return list of interfaces
    */
-  public List<DecompositionItem> getWrappedCommunicationLinks(LogicalComponent logicalComponent_p, boolean alreadyDecomposed_p) {
+  public List<DecompositionItem> getWrappedCommunicationLinks(LogicalComponent logicalComponent,
+      boolean alreadyDecomposed) {
     List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
-    List<CommunicationLink> communicationLinks = logicalComponent_p.getOwnedCommunicationLinks();
-    list.addAll(getDecompositionItemList(communicationLinks, true, alreadyDecomposed_p));
+    List<CommunicationLink> communicationLinks = logicalComponent.getOwnedCommunicationLinks();
+    list.addAll(getDecompositionItemList(communicationLinks, true, alreadyDecomposed));
     return list;
   }
 
   /**
    * Gets the list of {@link DecompositionItem}. Actual wrapping happens here.
    * 
-   * @param currentList_p
+   * @param currentList
    *          List of interfaces
    * @param isUsed
    *          flag to check whether the interface is used / implemented
    * @return list of DecompositionItem
    */
   @SuppressWarnings("rawtypes")
-  public List<DecompositionItem> getDecompositionItemList(List currentList_p, boolean isUsed, boolean alreadyDecomposed_p) {
+  public List<DecompositionItem> getDecompositionItemList(List currentList, boolean isUsed, boolean alreadyDecomposed) {
     List<DecompositionItem> list = new ArrayList<DecompositionItem>(1);
 
-    for (Object element : currentList_p) {
+    for (Object element : currentList) {
       String path = getElementPath(element);
       String name = null;
       if (element instanceof Interface) {
         name = ((Interface) element).getName();
       } else if (element instanceof CommunicationLink) {
         CommunicationLink link = (CommunicationLink) element;
+        CommunicationLinkKind kind = link.getKind();
         ExchangeItem exchangeItem = link.getExchangeItem();
-        name = "[link] to " + exchangeItem.getName() + " (" + exchangeItem.getExchangeMechanism() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        name = "[" + kind.getName() + "] " + exchangeItem.getName() + " (" + exchangeItem.getExchangeMechanism() + ")"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         CommunicationLinkProtocol protocol = link.getProtocol();
         if (protocol != CommunicationLinkProtocol.UNSET) {
           name += " [" + protocol + "]"; //$NON-NLS-1$ //$NON-NLS-2$
@@ -106,10 +109,11 @@ public class LCDecompositionController {
       DecompositionItem item = new DecompositionItem(name, element, DecompositionItem.UNASSIGNED, isUsed, path);
       if (element instanceof Interface) {
         // Gets the list of DecompositionItemServices from current Interface
-        List<DecompositionItemService> listItemSces = getDecompositionItemServiceList(((Interface) element).getOwnedExchangeItemAllocations(), item, isUsed);
+        List<DecompositionItemService> listItemSces = getDecompositionItemServiceList(
+            ((Interface) element).getOwnedExchangeItemAllocations(), item, isUsed);
         item.setServiceItems(listItemSces);
       }
-      item.setAlreadyDecomposed(alreadyDecomposed_p);
+      item.setAlreadyDecomposed(alreadyDecomposed);
       list.add(item);
     }
     return list;
@@ -120,12 +124,13 @@ public class LCDecompositionController {
    * 
    * @param item
    */
-  public List<DecompositionItemService> getDecompositionItemServiceList(List<ExchangeItemAllocation> listOp_p, DecompositionItem item, boolean used_p) {
+  public List<DecompositionItemService> getDecompositionItemServiceList(List<ExchangeItemAllocation> listOp,
+      DecompositionItem item, boolean used) {
     List<DecompositionItemService> list = new ArrayList<DecompositionItemService>(1);
 
-    for (ExchangeItemAllocation op : listOp_p) {
+    for (ExchangeItemAllocation op : listOp) {
       String path = getElementPath(op);
-      DecompositionItemService itemSce = new DecompositionItemService(op.getAllocatedItem().getLabel(), op, used_p, path);
+      DecompositionItemService itemSce = new DecompositionItemService(op.getAllocatedItem().getLabel(), op, used, path);
       itemSce.setParentDecompositionItem(item);
       list.add(itemSce);
     }
@@ -135,17 +140,17 @@ public class LCDecompositionController {
   /**
    * Gets the list of all decompositions in a logical component
    * 
-   * @param logicalComponent_p
+   * @param logicalComponent
    *          the logical component
    * @return list of all decompositions
    */
-  public List<Decomposition> getWrappedDecompositions(LogicalComponent logicalComponent_p) {
+  public List<Decomposition> getWrappedDecompositions(LogicalComponent logicalComponent) {
     List<Decomposition> list = new ArrayList<Decomposition>(1);
 
-    if (logicalComponent_p.getOwnedLogicalArchitectures().isEmpty()) {
-      list.add(getDecomposition(logicalComponent_p));
+    if (logicalComponent.getOwnedLogicalArchitectures().isEmpty()) {
+      list.add(getDecomposition(logicalComponent));
     } else {
-      for (LogicalArchitecture logArch : logicalComponent_p.getOwnedLogicalArchitectures()) {
+      for (LogicalArchitecture logArch : logicalComponent.getOwnedLogicalArchitectures()) {
         list.add(getDecomposition(logArch));
       }
     }
@@ -155,31 +160,31 @@ public class LCDecompositionController {
   /**
    * Wraps a logical architecture into a decomposition
    * 
-   * @param logicalArchitecture_p
+   * @param logicalArchitecture
    *          the logical architecture
    * @return the decomposition
    */
-  public Decomposition getDecomposition(LogicalArchitecture logicalArchitecture_p) {
+  public Decomposition getDecomposition(LogicalArchitecture logicalArchitecture) {
     Decomposition decomp = new Decomposition();
-    decomp.setName(logicalArchitecture_p.getName());
-    decomp.setValue(logicalArchitecture_p);
+    decomp.setName(logicalArchitecture.getName());
+    decomp.setValue(logicalArchitecture);
 
-    DecompositionComponent comp = createDecompositionComponent(logicalArchitecture_p.getOwnedLogicalComponent());
+    DecompositionComponent comp = createDecompositionComponent(logicalArchitecture.getOwnedLogicalComponent());
     comp.setParentDecomposition(decomp);
     decomp.addTargetComponent(comp);
 
     return decomp;
   }
 
-  public DecompositionComponent createDecompositionComponent(LogicalComponent component_p) {
+  public DecompositionComponent createDecompositionComponent(LogicalComponent component) {
     DecompositionComponent comp = new DecompositionComponent();
-    comp.setName(component_p.getName());
-    comp.setValue(component_p);
+    comp.setName(component.getName());
+    comp.setValue(component);
     List<DecompositionItem> items = new ArrayList<DecompositionItem>();
-    items.addAll(getWrappedInterfaces(component_p, true));
-    items.addAll(getWrappedCommunicationLinks(component_p, true));
+    items.addAll(getWrappedInterfaces(component, true));
+    items.addAll(getWrappedCommunicationLinks(component, true));
     comp.setItems(items);
-    comp.setComposite(ComponentExt.isComposite(component_p));
+    comp.setComposite(ComponentExt.isComposite(component));
 
     if (comp.isReusedComponent()) {
       comp.setPath(getElementPath(comp.getReusedTarget()));
@@ -192,15 +197,15 @@ public class LCDecompositionController {
   /**
    * Gets the decomposition from a logical component if it has a single decomposition
    * 
-   * @param logicalComponent_p
+   * @param logicalComponent
    *          the logical component
    * @return the decomposition
    */
-  public Decomposition getDecomposition(LogicalComponent logicalComponent_p) {
+  public Decomposition getDecomposition(LogicalComponent logicalComponent) {
     Decomposition decomp = new Decomposition();
     decomp.setName(""); //$NON-NLS-1$
     decomp.setValue(Decomposition.DUMMY_VALUE);
-    for (LogicalComponent component : logicalComponent_p.getSubLogicalComponents()) {
+    for (LogicalComponent component : logicalComponent.getSubLogicalComponents()) {
       DecompositionComponent comp = createDecompositionComponent(component);
 
       boolean flag = false;
@@ -221,18 +226,18 @@ public class LCDecompositionController {
   /**
    * Creates and gets the DecompositionModel
    * 
-   * @param sourceLC_p
+   * @param sourceLC
    *          the source LC
    * @return the decomposition model
    */
-  public DecompositionModel createDecompositionModel(LogicalComponent sourceLC_p) {
+  public DecompositionModel createDecompositionModel(LogicalComponent sourceLC) {
 
     DecompositionComponent sourceComp = new DecompositionComponent();
-    sourceComp.setName(sourceLC_p.getName());
-    sourceComp.setValue(sourceLC_p);
+    sourceComp.setName(sourceLC.getName());
+    sourceComp.setValue(sourceLC);
     sourceComp.setSourceComponent(true);
-    List<DecompositionItem> tmp = getWrappedInterfaces(sourceLC_p, false);
-    tmp.addAll(getWrappedCommunicationLinks(sourceLC_p, false));
+    List<DecompositionItem> tmp = getWrappedInterfaces(sourceLC, false);
+    tmp.addAll(getWrappedCommunicationLinks(sourceLC, false));
     sourceComp.setPath(getElementPath(sourceComp.getValue()));
     sourceComp.setItems(tmp);
 
@@ -241,7 +246,7 @@ public class LCDecompositionController {
     operations.setController(this);
     _model.addDecompositionModelListener(operations);
 
-    List<Decomposition> decompositions = getWrappedDecompositions(sourceLC_p);
+    List<Decomposition> decompositions = getWrappedDecompositions(sourceLC);
     for (Decomposition decomp : decompositions) {
       _model.addDecomposition(decomp, true);
       for (DecompositionComponent comp : decomp.getTargetComponents()) {
@@ -274,8 +279,8 @@ public class LCDecompositionController {
     return _userHasDeletedSubComponent;
   }
 
-  public void setUserHasDeletedSubComponent(boolean boolean_p) {
-    _userHasDeletedSubComponent = boolean_p;
+  public void setUserHasDeletedSubComponent(boolean value) {
+    _userHasDeletedSubComponent = value;
   }
 
   public boolean canFlipToNextPage() {
@@ -289,38 +294,45 @@ public class LCDecompositionController {
     _wizard.trigger();
   }
 
-  public String getElementPath(Object object_p) {
-    if (object_p instanceof NamedElement) {
-      NamedElement element = (NamedElement) object_p;
+  public String getElementPath(Object object) {
+    NamedElement element = null;
+    if (object instanceof NamedElement) {
+      element = (NamedElement) object;
+    } else if (object instanceof CommunicationLink) {
+      element = ((CommunicationLink) object).getExchangeItem();
+    }
 
+    if (element != null) {
       SystemEngineering systemEngineering = CapellaQueries.getInstance().getRootQueries().getSystemEngineering(element);
 
       return getPath(systemEngineering, element);
     }
+
     return ""; //$NON-NLS-1$
   }
 
   /**
    * Gets the path.
    * 
-   * @param sysEng_p
+   * @param sysEng
    *          tghe system engineering.
-   * @param target_p
+   * @param target
    *          The target element.
    * @return The path.
    */
-  public String getPath(SystemEngineering sysEng_p, NamedElement target_p) {
-    String name = (target_p instanceof ExchangeItemAllocation) ? ((ExchangeItemAllocation) target_p).getAllocatedItem().getName() : target_p.getName();
+  public String getPath(SystemEngineering sysEng, NamedElement target) {
+    String name = (target instanceof ExchangeItemAllocation) ? ((ExchangeItemAllocation) target).getAllocatedItem()
+        .getName() : target.getName();
     if (null == name) {
       name = Util.ZERO_LENGTH_STRING;
     }
     StringBuffer path = new StringBuffer(name);
 
-    EObject container = target_p.eContainer();
+    EObject container = target.eContainer();
     if (container instanceof NamedElement) {
-      NamedElement parent = (NamedElement) target_p.eContainer();
-      if (parent != sysEng_p) {
-        path.insert(path.indexOf(path.toString()), getPath(sysEng_p, parent) + PATH_SEPARATOR);
+      NamedElement parent = (NamedElement) target.eContainer();
+      if (parent != sysEng) {
+        path.insert(path.indexOf(path.toString()), getPath(sysEng, parent) + PATH_SEPARATOR);
       } else {
         path.insert(path.indexOf(path.toString()), parent.getName() + PATH_SEPARATOR);
       }
@@ -336,23 +348,23 @@ public class LCDecompositionController {
   }
 
   /**
-   * @param model_p
+   * @param model
    *          the model to set
    */
-  public void setModel(DecompositionModel model_p) {
-    _model = model_p;
+  public void setModel(DecompositionModel model) {
+    _model = model;
   }
 
   /**
    * Creates and shows the decomposition wizard for a logical component
    * 
-   * @param component_p
+   * @param component
    *          the logical component to be decomposed
    */
-  public void createAndShowDecompositionWizard(LogicalComponent component_p) {
+  public void createAndShowDecompositionWizard(LogicalComponent component) {
     setWizard(new LCDecompositionWizard());
     _wizard.setController(this);
-    createDecompositionModel(component_p);
+    createDecompositionModel(component);
     getModel().setImgRegistry(LCDWizardPlugin.getDefault().getImageRegistry());
 
     _wizard.setDecompositionModel(getModel());
@@ -374,11 +386,11 @@ public class LCDecompositionController {
   }
 
   /**
-   * @param wizard_p
+   * @param wizard
    *          the wizard to set
    */
-  public void setWizard(LCDecompositionWizard wizard_p) {
-    _wizard = wizard_p;
+  public void setWizard(LCDecompositionWizard wizard) {
+    _wizard = wizard;
   }
 
 }
