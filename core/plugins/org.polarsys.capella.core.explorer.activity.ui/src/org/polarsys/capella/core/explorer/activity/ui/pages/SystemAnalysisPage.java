@@ -17,7 +17,8 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 public class SystemAnalysisPage extends AbstractCapellaPage{
-	
+
+  public static final String PAGE_ID = "org.polarsys.capella.core.explorer.activity.ui.page.system.analysis";
 
 	@Override
 	public EClass getFilteringMetaClassForCommonViewpoint() {

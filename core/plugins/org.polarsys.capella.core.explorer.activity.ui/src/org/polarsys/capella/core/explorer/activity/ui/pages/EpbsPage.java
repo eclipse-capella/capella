@@ -18,6 +18,7 @@ import org.polarsys.capella.core.sirius.analysis.IViewpointNameConstants;
 
 public class EpbsPage extends AbstractCapellaPage {
 
+  public static final String PAGE_ID = "org.polarsys.capella.core.explorer.activity.ui.page.epbs";
 
 	@Override
 	public EClass getFilteringMetaClassForCommonViewpoint() {
