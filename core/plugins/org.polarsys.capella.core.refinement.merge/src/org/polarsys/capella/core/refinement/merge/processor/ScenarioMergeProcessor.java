@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.osgi.util.NLS;
 import org.polarsys.capella.common.data.modellingcore.ModelElement;
+import org.polarsys.capella.common.helpers.TransactionHelper;
 import org.polarsys.capella.core.data.capellacore.NamedElement;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
 import org.polarsys.capella.core.data.interaction.Scenario;
@@ -78,7 +79,7 @@ final public class ScenarioMergeProcessor implements IProcessor {
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#execute(org.eclipse.core.runtime.IProgressMonitor)
    */
-  public void execute(IProgressMonitor progressMonitor_p) throws ProcessorException {
+  public void execute(IProgressMonitor progressMonitor) throws ProcessorException {
 
     //
     // Pre-treatment
@@ -86,7 +87,7 @@ final public class ScenarioMergeProcessor implements IProcessor {
     boolean b = true;
     try {
       b = _merger.preTreatment(_context);
-    } catch (MergeException exception_p) {
+    } catch (MergeException exception) {
       throw new ProcessorException(
           NLS.bind(
               MergeMessages.preValidationErr,
@@ -111,7 +112,7 @@ final public class ScenarioMergeProcessor implements IProcessor {
     //
     try {
       _result = _merger.doMerge(_context);
-    } catch (Exception exception_p) {
+    } catch (Exception exception) {
       throw new ProcessorException(
           NLS.bind(
               MergeMessages.genericError,
@@ -126,7 +127,7 @@ final public class ScenarioMergeProcessor implements IProcessor {
     //
     try {
       _merger.postTreatment(_context);
-    } catch (MergeException exception_p) {
+    } catch (MergeException exception) {
       throw new ProcessorException(
           NLS.bind(
               MergeMessages.postValidationErr,
@@ -138,6 +139,8 @@ final public class ScenarioMergeProcessor implements IProcessor {
     
     HoldingResourceHelper.ensureMoveElement(_result, _target);
     _target.getOwnedScenarios().add(_result);
+
+    HoldingResourceHelper.flushHoldingResource(TransactionHelper.getEditingDomain(_target));
   }
 
   /**
@@ -150,12 +153,12 @@ final public class ScenarioMergeProcessor implements IProcessor {
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(org.polarsys.capella.common.data.modellingcore.ModelElement)
    */
-  public void setContext(ModelElement context_p) {
+  public void setContext(ModelElement context) {
     
     if (
-        context_p.eClass().isSuperTypeOf(InteractionPackage.Literals.SCENARIO)
+        context.eClass().isSuperTypeOf(InteractionPackage.Literals.SCENARIO)
     ) {
-      _context = (Scenario) context_p; 
+      _context = (Scenario) context; 
     } else {
       throw new ClassCastException();
     }
@@ -167,18 +170,18 @@ final public class ScenarioMergeProcessor implements IProcessor {
    * Not used at all
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setContext(java.util.List)
    */
-  public void setContext(List<ModelElement> context_p) {
+  public void setContext(List<ModelElement> context) {
     throw new UnsupportedOperationException();
   }
 
   /**
    * @see org.polarsys.capella.core.refinement.scenarios.core.plugs.IProcessor#setTarget(org.polarsys.capella.core.data.capellacore.NamedElement)
    */
-  public void setTarget(NamedElement target_p) {
+  public void setTarget(NamedElement target) {
     if (
-        target_p.eClass().isSuperTypeOf(LaPackage.Literals.CAPABILITY_REALIZATION)
+        target.eClass().isSuperTypeOf(LaPackage.Literals.CAPABILITY_REALIZATION)
     ) {
-      _target = (CapabilityRealization) target_p; 
+      _target = (CapabilityRealization) target; 
     } else {
       throw new ClassCastException();
     }
