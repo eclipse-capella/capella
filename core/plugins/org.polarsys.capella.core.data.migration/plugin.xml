@@ -131,6 +131,8 @@
             type="org.eclipse.core.resources.IResource">
       </propertyTester>
    </extension>
+   
+   <!-- Contributions that should not be removed between versions -->
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
       <migrationContribution
@@ -143,6 +145,8 @@
             class="org.polarsys.capella.core.data.migration.contribution.BackupResourceContribution">
       </migrationContribution>
    </extension>
+   
+   
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributors">
       <migrationContributor
@@ -155,4 +159,16 @@
             class="org.polarsys.capella.core.data.migration.repair.RepairSiriusMigrationContributor">
       </migrationContributor>
    </extension>
+   
+   
+   <!-- Contributions that should be removed between versions -->
+   <extension
+         point="org.polarsys.capella.core.data.migration.migrationContributions">
+
+      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.RPLSuffixContribution" />
+      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.HoldingResourceRemovalContribution" />
+
+   </extension>
+   
+   
 </plugin>

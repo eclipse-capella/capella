@@ -13,8 +13,6 @@ package org.polarsys.capella.core.data.migration.contribution;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -35,36 +33,22 @@ import org.xml.sax.Attributes;
 public class AbstractMigrationContribution implements IMigrationContribution {
 
   @Override
-  public boolean isValidResource(IResource uri, MigrationContext context) {
-    return false;
-  }
-
-  @Override
-  public boolean isValidURI(URI uri, MigrationContext context) {
-    return false;
-  }
-
-  @Override
-  public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource,
-      MigrationContext context) {
+  public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource, MigrationContext context) {
     return null;
   }
 
   @Override
-  public EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource,
-      MigrationContext context) {
+  public EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource, MigrationContext context) {
     return null;
   }
 
   @Override
-  public String getFeatureName(String prefix, String name, boolean isElement, EObject peekObject, String value,
-      Resource resource, MigrationContext context) {
+  public String getFeatureName(String prefix, String name, boolean isElement, EObject peekObject, String value, Resource resource, MigrationContext context) {
     return null;
   }
 
   @Override
-  public String getQName(EObject peekObject, String typeQName, EStructuralFeature feature, Resource resource,
-      XMLHelper helper, MigrationContext context) {
+  public String getQName(EObject peekObject, String typeQName, EStructuralFeature feature, Resource resource, XMLHelper helper, MigrationContext context) {
     return null;
   }
 
@@ -74,8 +58,7 @@ public class AbstractMigrationContribution implements IMigrationContribution {
   }
 
   @Override
-  public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature,
-      Resource resource, MigrationContext context) {
+  public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature, Resource resource, MigrationContext context) {
     return;
   }
 
@@ -85,13 +68,12 @@ public class AbstractMigrationContribution implements IMigrationContribution {
   }
 
   @Override
-  public void postMigrationExecuteCommands(ExecutionManager executionManager, ResourceSet resourceSet,
-      MigrationContext context) {
+  public void postMigrationExecuteCommands(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) {
     return;
   }
 
   @Override
-  public void dispose() {
+  public void dispose(MigrationContext context) {
     return;
   }
 
@@ -120,10 +102,7 @@ public class AbstractMigrationContribution implements IMigrationContribution {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#preMigrationExecute(org.eclipse.core
-   * .resources.IFile)
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#preMigrationExecute(org.eclipse.core .resources.IFile)
    */
   @Override
   public IStatus preMigrationExecute(IResource fileToMigrate, MigrationContext context, boolean checkVersion) {
@@ -132,10 +111,8 @@ public class AbstractMigrationContribution implements IMigrationContribution {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#preSaveResource(org.polarsys.capella
-   * .common.ef.ExecutionManager, org.eclipse.emf.ecore.resource.Resource, org.eclipse.core.runtime.IProgressMonitor)
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#preSaveResource(org.polarsys.capella .common.ef.ExecutionManager,
+   * org.eclipse.emf.ecore.resource.Resource, org.eclipse.core.runtime.IProgressMonitor)
    */
   @Override
   public void preSaveResource(ExecutionManager executionManager, Resource resource, MigrationContext context) {
@@ -144,94 +121,84 @@ public class AbstractMigrationContribution implements IMigrationContribution {
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#unaryPostMigrationExecute(org.eclipse
-   * .emf.common.notify.Notifier, org.polarsys.capella.core.data.migration.context.MigrationContext)
-   */
-  @Override
-  public void unaryPostMigrationExecute(Notifier currentElement, MigrationContext context) {
-
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#unaryEndPostMigrationExecute(org.polarsys
-   * .capella.common.ef.ExecutionManager, org.eclipse.emf.ecore.resource.Resource,
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#unaryPostMigrationExecute(org.eclipse .emf.common.notify.Notifier,
    * org.polarsys.capella.core.data.migration.context.MigrationContext)
    */
   @Override
-  public void unaryEndPostMigrationExecute(ExecutionManager executionManager, Resource resource,
-      MigrationContext context) {
+  public void unaryMigrationExecute(EObject currentElement, MigrationContext context) {
 
   }
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#newResource(org.eclipse.emf.ecore.
-   * resource.Resource, org.polarsys.capella.core.data.migration.context.MigrationContext)
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#unaryEndPostMigrationExecute(org.polarsys
+   * .capella.common.ef.ExecutionManager, org.eclipse.emf.ecore.resource.Resource, org.polarsys.capella.core.data.migration.context.MigrationContext)
+   */
+  @Override
+  public void unaryEndMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {
+
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#newResource(org.eclipse.emf.ecore. resource.Resource,
+   * org.polarsys.capella.core.data.migration.context.MigrationContext)
    */
   @Override
   public void newResource(Resource resource, MigrationContext context) {
-    // TODO Auto-generated method stub
 
   }
 
   public String getHandleProxy(InternalEObject proxy, String uriLiteral, Resource resource, MigrationContext context) {
-
     return null;
   }
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#handleError(org.eclipse.emf.ecore.
-   * xmi.XMIException, org.eclipse.emf.ecore.resource.Resource,
-   * org.polarsys.capella.core.data.migration.context.MigrationContext)
-   */
-  @Override
-  public IStatus handleError(XMIException e, Resource resource, MigrationContext context) {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#endElement(org.eclipse.emf.ecore.EObject
-   * , org.xml.sax.Attributes, java.lang.String, java.lang.String, java.lang.String,
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#handleError(org.eclipse.emf.ecore. xmi.XMIException,
    * org.eclipse.emf.ecore.resource.Resource, org.polarsys.capella.core.data.migration.context.MigrationContext)
    */
   @Override
-  public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name,
-      Resource resource, MigrationContext context) {
-    // TODO Auto-generated method stub
+  public IStatus handleError(XMIException e, Resource resource, MigrationContext context) {
+    return null;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#endElement(org.eclipse.emf.ecore.EObject , org.xml.sax.Attributes,
+   * java.lang.String, java.lang.String, java.lang.String, org.eclipse.emf.ecore.resource.Resource,
+   * org.polarsys.capella.core.data.migration.context.MigrationContext)
+   */
+  @Override
+  public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name, Resource resource, MigrationContext context) {
 
   }
 
   /*
    * (non-Javadoc)
-   * 
-   * @see
-   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#ignoreSetFeatureValue(org.eclipse.
-   * emf.ecore.EObject, org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, int,
-   * org.eclipse.emf.ecore.xmi.XMLResource, org.polarsys.capella.core.data.migration.context.MigrationContext)
+   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#ignoreSetFeatureValue(org.eclipse. emf.ecore.EObject,
+   * org.eclipse.emf.ecore.EStructuralFeature, java.lang.Object, int, org.eclipse.emf.ecore.xmi.XMLResource,
+   * org.polarsys.capella.core.data.migration.context.MigrationContext)
    */
   @Override
-  public boolean ignoreSetFeatureValue(EObject peekObject, EStructuralFeature feature, Object value, int position,
-      XMLResource resource, MigrationContext context) {
-    // TODO Auto-generated method stub
+  public boolean ignoreSetFeatureValue(EObject peekObject, EStructuralFeature feature, Object value, int position, XMLResource resource,
+      MigrationContext context) {
     return false;
   }
 
-  public boolean ignoreUnknownFeature(String prefix, String name, boolean isElement, EObject peekObject, String value,
-      XMLResource resource, MigrationContext context) {
+  public boolean ignoreUnknownFeature(String prefix, String name, boolean isElement, EObject peekObject, String value, XMLResource resource,
+      MigrationContext context) {
     return false;
+  }
+
+  /*
+   * (non-Javadoc)
+   * @see
+   * org.polarsys.capella.core.data.migration.contribution.IMigrationContribution#unaryStartPostMigrationExecute(org.polarsys.capella.common.ef.ExecutionManager
+   * , org.eclipse.emf.ecore.resource.Resource, org.polarsys.capella.core.data.migration.context.MigrationContext)
+   */
+  @Override
+  public void unaryStartMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {
+
   }
 }

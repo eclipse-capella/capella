@@ -112,13 +112,11 @@ public class ModelMigrationRunnable extends MigrationRunnable {
     return new CapellaXMLSaveImpl(xmiExtensionHelperImpl) {
 
       /**
-       * Unlike outside migration where we don't have any extendedMetaData loaded, while migration we use ecore2ecore to
-       * perform some migration. In some cases, where EClass are moved from one ecore to another, some
-       * EStructuralFeature are considered as Unknown while loading, whereas they are present (but migrated/moved) In
-       * that case, loading method SAXExtensionXMIHandler.validateCreateObjectFromFactory will create an AnyType for
-       * such feature filled with eProxyUri not yet resolved. At saving time, default implementation of
-       * org.polarsys.kitalpha.emde.xmi.XMIExtensionSaveImpl will save into xml: feature='AnyType.getMixed(feature)'
-       * in addition of feature='eGet(feature)' which lead to errors in the xml. intead of saving 2 time the feature, we
+       * Unlike outside migration where we don't have any extendedMetaData loaded, while migration we use ecore2ecore to perform some migration. In some cases,
+       * where EClass are moved from one ecore to another, some EStructuralFeature are considered as Unknown while loading, whereas they are present (but
+       * migrated/moved) In that case, loading method SAXExtensionXMIHandler.validateCreateObjectFromFactory will create an AnyType for such feature filled with
+       * eProxyUri not yet resolved. At saving time, default implementation of org.polarsys.kitalpha.emde.xmi.XMIExtensionSaveImpl will save into xml:
+       * feature='AnyType.getMixed(feature)' in addition of feature='eGet(feature)' which lead to errors in the xml. intead of saving 2 time the feature, we
        * merge it to one, prioritizing eGet(feature) values.
        */
       @Override
@@ -172,7 +170,6 @@ public class ModelMigrationRunnable extends MigrationRunnable {
 
   /**
    * Creates a customized handler to manage the migration of simple references to derived references
-   * 
    * @param xmlHelper
    * @return
    */
@@ -185,14 +182,10 @@ public class ModelMigrationRunnable extends MigrationRunnable {
 
           /*
            * (non-Javadoc)
-           * 
-           * @see org.eclipse.emf.ecore.xmi.impl.XMIHandler#startElement(java.lang.String, java.lang.String,
-           * java.lang.String, org.xml.sax.Attributes)
+           * @see org.eclipse.emf.ecore.xmi.impl.XMIHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
            */
           @Override
-          public void startElement(String uri, String localName, String name, Attributes attributes)
-              throws SAXException {
-            // TODO Auto-generated method stub
+          public void startElement(String uri, String localName, String name, Attributes attributes) throws SAXException {
             super.startElement(uri, localName, name, attributes);
             MigrationHelpers.getInstance().createdXMLHelper(resource, xmlHelper);
           }
@@ -201,8 +194,7 @@ public class ModelMigrationRunnable extends MigrationRunnable {
           protected void handleProxy(InternalEObject proxy, String inputUriLiteral) {
 
             String uriLiteral = inputUriLiteral;
-            String migratedURI = MigrationHelpers.getInstance().getHandleProxy(proxy, inputUriLiteral, resource,
-                context);
+            String migratedURI = MigrationHelpers.getInstance().getHandleProxy(proxy, inputUriLiteral, resource, context);
             if (migratedURI != null) {
               uriLiteral = migratedURI;
             }
@@ -225,7 +217,6 @@ public class ModelMigrationRunnable extends MigrationRunnable {
 
           /*
            * (non-Javadoc)
-           * 
            * @see org.eclipse.emf.ecore.xmi.impl.XMLHandler#handleXMLNSAttribute(java.lang.String, java.lang.String)
            */
           @Override
@@ -288,17 +279,14 @@ public class ModelMigrationRunnable extends MigrationRunnable {
           }
 
           @Override
-          protected void handleUnknownFeature(String prefix, String name, boolean isElement, EObject peekObject,
-              String value) {
+          protected void handleUnknownFeature(String prefix, String name, boolean isElement, EObject peekObject, String value) {
 
-            boolean result = MigrationHelpers.getInstance().ignoreUnknownFeature(prefix, name, isElement, peekObject,
-                value, resource, context);
+            boolean result = MigrationHelpers.getInstance().ignoreUnknownFeature(prefix, name, isElement, peekObject, value, resource, context);
             if (result) {
               return;
             }
 
-            String featureName = MigrationHelpers.getInstance().getFeatureName(prefix, name, isElement, peekObject,
-                value, resource, context);
+            String featureName = MigrationHelpers.getInstance().getFeatureName(prefix, name, isElement, peekObject, value, resource, context);
             if (featureName != null) {
               setAttribValue(peekObject, featureName, value);
             }
@@ -310,8 +298,7 @@ public class ModelMigrationRunnable extends MigrationRunnable {
           public void endElement(String uri, String localName, String name) {
 
             super.endElement(uri, localName, name);
-            MigrationHelpers.getInstance().endElement(objects.peekEObject(), attribs, uri, localName, name, resource,
-                context);
+            MigrationHelpers.getInstance().endElement(objects.peekEObject(), attribs, uri, localName, name, resource, context);
 
           }
 
@@ -320,25 +307,21 @@ public class ModelMigrationRunnable extends MigrationRunnable {
            */
           @SuppressWarnings({ "unchecked", "rawtypes" })
           @Override
-          protected void setFeatureValue(EObject peekObject, EStructuralFeature inputFeature, Object inputValue,
-              int position) {
+          protected void setFeatureValue(EObject peekObject, EStructuralFeature inputFeature, Object inputValue, int position) {
             EStructuralFeature feature = inputFeature;
 
-            boolean result = MigrationHelpers.getInstance().ignoreSetFeatureValue(peekObject, inputFeature, inputValue,
-                position, resource, context);
+            boolean result = MigrationHelpers.getInstance().ignoreSetFeatureValue(peekObject, inputFeature, inputValue, position, resource, context);
             if (result) {
               return;
             }
 
-            EStructuralFeature migratedFeature = MigrationHelpers.getInstance().getFeature(peekObject, inputFeature,
-                resource, context);
+            EStructuralFeature migratedFeature = MigrationHelpers.getInstance().getFeature(peekObject, inputFeature, resource, context);
             if (migratedFeature != null) {
               feature = migratedFeature;
             }
 
             Object value = inputValue;
-            Object migratedValue = MigrationHelpers.getInstance().getValue(peekObject, inputFeature, value, position,
-                resource, context);
+            Object migratedValue = MigrationHelpers.getInstance().getValue(peekObject, inputFeature, value, position, resource, context);
             if (migratedValue != null) {
               value = migratedValue;
             }
@@ -362,19 +345,16 @@ public class ModelMigrationRunnable extends MigrationRunnable {
 
             EStructuralFeature feature = inputFeature;
 
-            if ((reference.getPositions() != null) && (reference.getValues() != null)
-                && (reference.getPositions().length == reference.getValues().length)) {
+            if ((reference.getPositions() != null) && (reference.getValues() != null) && (reference.getPositions().length == reference.getValues().length)) {
               for (int i = 0; i < reference.getPositions().length; i++) {
 
-                EStructuralFeature migratedFeature = MigrationHelpers.getInstance().getFeature(peekObject,
-                    inputFeature, resource, context);
+                EStructuralFeature migratedFeature = MigrationHelpers.getInstance().getFeature(peekObject, inputFeature, resource, context);
                 if (migratedFeature != null) {
                   feature = migratedFeature;
                 }
 
                 Object value = reference.getValues()[i];
-                Object migratedValue = MigrationHelpers.getInstance().getValue(peekObject, inputFeature, value,
-                    reference.getPositions()[i], resource, context);
+                Object migratedValue = MigrationHelpers.getInstance().getValue(peekObject, inputFeature, value, reference.getPositions()[i], resource, context);
                 if (migratedValue != null) {
                   value = migratedValue;
                 }
@@ -387,8 +367,7 @@ public class ModelMigrationRunnable extends MigrationRunnable {
           }
 
           /**
-           * @see org.eclipse.emf.ecore.xmi.impl.XMLHandler#setValueFromId(org.eclipse.emf.ecore.EObject,
-           *      org.eclipse.emf.ecore.EReference, java.lang.String)
+           * @see org.eclipse.emf.ecore.xmi.impl.XMLHandler#setValueFromId(org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EReference, java.lang.String)
            */
           @Override
           protected void setValueFromId(EObject object, EReference eReference, String ids) {
@@ -397,9 +376,8 @@ public class ModelMigrationRunnable extends MigrationRunnable {
           }
 
           /**
-           * Use here to perform additional modifications to ecore2ecore migration. According to old type typeName and
-           * containing feature, it is possible to modify the migrated object result (for instance, set a kind in the
-           * result)
+           * Use here to perform additional modifications to ecore2ecore migration. According to old type typeName and containing feature, it is possible to
+           * modify the migrated object result (for instance, set a kind in the result)
            */
           private void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature) {
 
@@ -408,8 +386,7 @@ public class ModelMigrationRunnable extends MigrationRunnable {
           }
 
           @Override
-          protected EObject validateCreateObjectFromFactory(EObject peekObject, EFactory factory, String typeName,
-              EObject newObject, EStructuralFeature feature) {
+          protected EObject validateCreateObjectFromFactory(EObject peekObject, EFactory factory, String typeName, EObject newObject, EStructuralFeature feature) {
             EObject result = null;
 
             // On move of Eclass between two Ecore with ecore2ecore,
@@ -440,8 +417,7 @@ public class ModelMigrationRunnable extends MigrationRunnable {
 
             String qName = typeQName;
 
-            String migratedQName = MigrationHelpers.getInstance().getQName(peekObject, typeQName, feature, resource,
-                helper, context);
+            String migratedQName = MigrationHelpers.getInstance().getQName(peekObject, typeQName, feature, resource, helper, context);
             if (migratedQName != null) {
               qName = migratedQName;
             }

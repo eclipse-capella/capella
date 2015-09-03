@@ -41,8 +41,7 @@ public class MigrationJobScheduler {
    * @param runnables
    * @param runInJob
    */
-  public void run(LinkedList<AbstractMigrationRunnable> runnables, final MigrationContext context,
-      final boolean runInJob, final boolean checkVersion) {
+  public void run(LinkedList<AbstractMigrationRunnable> runnables, final MigrationContext context, final boolean runInJob, final boolean checkVersion) {
     _runnables = new LinkedList<AbstractMigrationRunnable>(runnables);
 
     IRunnableWithProgress op = new IRunnableWithProgress() {
@@ -70,7 +69,7 @@ public class MigrationJobScheduler {
             }
 
           } finally {
-            MigrationHelpers.getInstance().dispose();
+            MigrationHelpers.getInstance().dispose(context);
           }
         }
       }
@@ -126,7 +125,7 @@ public class MigrationJobScheduler {
 
     } else {
       logStatus(context, status);
-      MigrationHelpers.getInstance().dispose();
+      MigrationHelpers.getInstance().dispose(context);
       _runnables.clear();
     }
 
@@ -135,9 +134,7 @@ public class MigrationJobScheduler {
   private void logStatus(final MigrationContext context, final IStatus status) {
     /*
      * if (!context.isSkipConfirmation()) { context.getShell().getDisplay().asyncExec(new Runnable() {
-     * 
-     * @Override public void run() { MessageDialog.openError(context.getShell(), context.getName(),
-     * status.getMessage()); } }); }
+     * @Override public void run() { MessageDialog.openError(context.getShell(), context.getName(), status.getMessage()); } }); }
      */
   }
 }

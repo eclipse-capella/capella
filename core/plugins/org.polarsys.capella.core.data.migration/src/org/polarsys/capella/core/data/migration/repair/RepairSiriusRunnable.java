@@ -43,7 +43,7 @@ public class RepairSiriusRunnable extends AbstractMigrationRunnable {
       throw error;
 
     } finally {
-      MigrationHelpers.getInstance().dispose();
+      MigrationHelpers.getInstance().dispose(context);
       context.getProgressMonitor().done();
     }
 
@@ -55,8 +55,7 @@ public class RepairSiriusRunnable extends AbstractMigrationRunnable {
     return Messages.MigrationAction_RepairMigration;
   }
 
-  protected void doRepairMigrate(String actionName, final IFile file, boolean backup, final MigrationContext context)
-      throws InterruptedException {
+  protected void doRepairMigrate(String actionName, final IFile file, boolean backup, final MigrationContext context) throws InterruptedException {
     final SiriusRepairProcess process = new SiriusRepairProcess(file, backup);
     context.getProgressMonitor().setTaskName(getName());
     process.run(context.getProgressMonitor());
@@ -64,9 +63,8 @@ public class RepairSiriusRunnable extends AbstractMigrationRunnable {
 
   protected void showMessage(final String title, final String message) {
     /*
-     * final Shell shell = _activePart.getSite().getShell(); if ((shell != null) && !(shell.isDisposed())) { Display
-     * display = shell.getDisplay(); if ((display != null) && !(display.isDisposed())) { display.syncExec(new Runnable()
-     * { public void run() { MessageDialog.openError(shell, title, message); } }); } }
+     * final Shell shell = _activePart.getSite().getShell(); if ((shell != null) && !(shell.isDisposed())) { Display display = shell.getDisplay(); if ((display
+     * != null) && !(display.isDisposed())) { display.syncExec(new Runnable() { public void run() { MessageDialog.openError(shell, title, message); } }); } }
      */
   }
 }
