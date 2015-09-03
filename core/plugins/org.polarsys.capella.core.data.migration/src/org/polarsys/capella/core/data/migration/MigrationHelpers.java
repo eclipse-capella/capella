@@ -20,9 +20,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -58,18 +56,17 @@ public class MigrationHelpers implements IMigrationContribution {
 
   public MigrationHelpers() {
     migrations = new ArrayList<IMigrationContribution>();
-    for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements(
-        "org.polarsys.capella.core.data.migration", "migrationContributions")) {
-      IMigrationContribution contribution = (IMigrationContribution) ExtensionPointHelper.createInstance(configElement,
-          ExtensionPointHelper.ATT_CLASS);
+    for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.data.migration",
+        "migrationContributions")) {
+      IMigrationContribution contribution = (IMigrationContribution) ExtensionPointHelper.createInstance(configElement, ExtensionPointHelper.ATT_CLASS);
       migrations.add(contribution);
     }
 
     contributors = new ArrayList<AbstractMigrationContributor>();
-    for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements(
-        "org.polarsys.capella.core.data.migration", "migrationContributors")) {
-      AbstractMigrationContributor contributor = (AbstractMigrationContributor) ExtensionPointHelper.createInstance(
-          configElement, ExtensionPointHelper.ATT_CLASS);
+    for (IConfigurationElement configElement : ExtensionPointHelper.getConfigurationElements("org.polarsys.capella.core.data.migration",
+        "migrationContributors")) {
+      AbstractMigrationContributor contributor =
+          (AbstractMigrationContributor) ExtensionPointHelper.createInstance(configElement, ExtensionPointHelper.ATT_CLASS);
       contributors.add(contributor);
     }
   }
@@ -78,8 +75,7 @@ public class MigrationHelpers implements IMigrationContribution {
     trigger(resource, shell, true, skipConfirmation, checkVersion, kinds);
   }
 
-  public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation,
-      boolean checkVersion, String[] kinds) {
+  public void trigger(IResource resource, Shell shell, boolean runInJob, boolean skipConfirmation, boolean checkVersion, String[] kinds) {
     LinkedHashSet<IResource> files = new LinkedHashSet<>();
     Collection<AbstractMigrationContributor> currentContributors = new LinkedList<AbstractMigrationContributor>();
 
@@ -126,14 +122,6 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public boolean isValidURI(URI uri, MigrationContext context) {
-    for (IMigrationContribution migration : migrations) {
-      return migration.isValidURI(uri, context);
-    }
-    return false;
-  }
-
-  @Override
   public void dispose(ExecutionManager manager, ResourceSet resourceSet, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       try {
@@ -146,10 +134,10 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public void dispose() {
+  public void dispose(MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       try {
-        migration.dispose();
+        migration.dispose(context);
       } catch (Exception e) {
         e.printStackTrace();
         // nothing here
@@ -158,8 +146,7 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public String getFeatureName(String prefix, String name, boolean isElement, EObject peekObject, String value,
-      Resource resource, MigrationContext context) {
+  public String getFeatureName(String prefix, String name, boolean isElement, EObject peekObject, String value, Resource resource, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       String newFeatureName = migration.getFeatureName(prefix, name, isElement, peekObject, value, resource, context);
       if (newFeatureName != null) {
@@ -170,8 +157,7 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource,
-      MigrationContext context) {
+  public EStructuralFeature getFeature(EObject peekObject, EStructuralFeature feature, Resource resource, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       EStructuralFeature newFeature = migration.getFeature(peekObject, feature, resource, context);
       if (newFeature != null) {
@@ -183,8 +169,7 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public String getQName(EObject peekObject, String typeQName, EStructuralFeature feature, Resource resource,
-      XMLHelper helper, MigrationContext context) {
+  public String getQName(EObject peekObject, String typeQName, EStructuralFeature feature, Resource resource, XMLHelper helper, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       String qName = migration.getQName(peekObject, typeQName, feature, resource, helper, context);
       if (qName != null) {
@@ -206,8 +191,7 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature,
-      Resource resource, MigrationContext context) {
+  public void updateElement(EObject peekObject, String typeName, EObject result, EStructuralFeature feature, Resource resource, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       migration.updateElement(peekObject, typeName, result, feature, resource, context);
     }
@@ -229,25 +213,22 @@ public class MigrationHelpers implements IMigrationContribution {
 
     // Browse once each resources and migrate them through contributions
     for (Resource resource : resourceSet.getResources()) {
-      Collection<IMigrationContribution> enabledContributions = new LinkedHashSet<IMigrationContribution>();
 
       for (IMigrationContribution migration : migrations) {
-        if (migration.isValidURI(resource.getURI(), context)) {
-          enabledContributions.add(migration);
-        }
+        migration.unaryStartMigrationExecute(executionManager, resource, context);
       }
 
-      TreeIterator<Notifier> iterator = resourceSet.getAllContents();
+      TreeIterator<EObject> iterator = resource.getAllContents();
       while (iterator.hasNext()) {
-        Notifier currentElement = iterator.next();
+        EObject currentElement = iterator.next();
 
         for (IMigrationContribution migration : migrations) {
-          migration.unaryPostMigrationExecute(currentElement, context);
+          migration.unaryMigrationExecute(currentElement, context);
         }
       }
 
-      for (IMigrationContribution migration : enabledContributions) {
-        migration.unaryEndPostMigrationExecute(executionManager, resource, context);
+      for (IMigrationContribution migration : migrations) {
+        migration.unaryEndMigrationExecute(executionManager, resource, context);
       }
 
     }
@@ -259,8 +240,7 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public void postMigrationExecuteCommands(ExecutionManager executionManager, ResourceSet resourceSet,
-      MigrationContext context) {
+  public void postMigrationExecuteCommands(ExecutionManager executionManager, ResourceSet resourceSet, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       migration.postMigrationExecuteCommands(executionManager, resourceSet, context);
     }
@@ -295,8 +275,7 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource,
-      MigrationContext context) {
+  public Object getValue(EObject peekObject, EStructuralFeature feature, Object value, int position, Resource resource, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       Object newValue = migration.getValue(peekObject, feature, value, position, resource, context);
       if (newValue != null) {
@@ -310,23 +289,10 @@ public class MigrationHelpers implements IMigrationContribution {
    * @param packageRegistry
    */
   @Override
-  public void contributePackageRegistry(org.eclipse.emf.ecore.EPackage.Registry packageRegistry,
-      MigrationContext context) {
+  public void contributePackageRegistry(org.eclipse.emf.ecore.EPackage.Registry packageRegistry, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       migration.contributePackageRegistry(packageRegistry, context);
     }
-  }
-
-  /*
-   * (non-Javadoc)
-   * 
-   * @see org.polarsys.capella.core.data.migration.contribution.IMigrationContribution
-   * #isValidResource(org.eclipse.core.resources .IResource)
-   */
-  @Override
-  public boolean isValidResource(IResource uri, MigrationContext context) {
-    // TODO Auto-generated method stub
-    return false;
   }
 
   /**
@@ -354,8 +320,7 @@ public class MigrationHelpers implements IMigrationContribution {
         if ((display != null) && !(display.isDisposed())) {
           display.syncExec(new Runnable() {
             public void run() {
-              MessageDialog.openError(context.getShell(),
-                  Messages.ECore2ECoreMigrationAction_Migration_OutOfMemoryError_Title,
+              MessageDialog.openError(context.getShell(), Messages.ECore2ECoreMigrationAction_Migration_OutOfMemoryError_Title,
                   Messages.ECore2ECoreMigrationAction_Migration_OutOfMemoryError_Description);
             }
           });
@@ -365,14 +330,24 @@ public class MigrationHelpers implements IMigrationContribution {
   }
 
   @Override
-  public void unaryPostMigrationExecute(Notifier currentElement, MigrationContext context) {
-    // Nothing here
+  public void unaryStartMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {
+    for (IMigrationContribution migration : migrations) {
+      migration.unaryStartMigrationExecute(executionManager, resource, context);
+    }
   }
 
   @Override
-  public void unaryEndPostMigrationExecute(ExecutionManager executionManager, Resource resource,
-      MigrationContext context) {
-    // Nothing here
+  public void unaryMigrationExecute(EObject currentElement, MigrationContext context) {
+    for (IMigrationContribution migration : migrations) {
+      migration.unaryMigrationExecute(currentElement, context);
+    }
+  }
+
+  @Override
+  public void unaryEndMigrationExecute(ExecutionManager executionManager, Resource resource, MigrationContext context) {
+    for (IMigrationContribution migration : migrations) {
+      migration.unaryEndMigrationExecute(executionManager, resource, context);
+    }
   }
 
   /**
@@ -420,8 +395,7 @@ public class MigrationHelpers implements IMigrationContribution {
    * @param resource
    * @param context
    */
-  public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name,
-      Resource resource, MigrationContext context) {
+  public void endElement(EObject peekEObject, Attributes attribs, String uri, String localName, String name, Resource resource, MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       migration.endElement(peekEObject, attribs, uri, localName, name, resource, context);
     }
@@ -436,8 +410,8 @@ public class MigrationHelpers implements IMigrationContribution {
    * @param context
    * @return
    */
-  public boolean ignoreSetFeatureValue(EObject peekObject, EStructuralFeature feature, Object value, int position,
-      XMLResource resource, MigrationContext context) {
+  public boolean ignoreSetFeatureValue(EObject peekObject, EStructuralFeature feature, Object value, int position, XMLResource resource,
+      MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       if (migration.ignoreSetFeatureValue(peekObject, feature, value, position, resource, context)) {
         return true;
@@ -457,8 +431,8 @@ public class MigrationHelpers implements IMigrationContribution {
    * @param context
    * @return
    */
-  public boolean ignoreUnknownFeature(String prefix, String name, boolean isElement, EObject peekObject, String value,
-      XMLResource resource, MigrationContext context) {
+  public boolean ignoreUnknownFeature(String prefix, String name, boolean isElement, EObject peekObject, String value, XMLResource resource,
+      MigrationContext context) {
     for (IMigrationContribution migration : migrations) {
       if (migration.ignoreUnknownFeature(prefix, name, isElement, peekObject, value, resource, context)) {
         return true;

@@ -40,8 +40,8 @@ public class BackupResourceContribution extends AbstractMigrationContribution {
    * @see org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution#dispose()
    */
   @Override
-  public void dispose() {
-    super.dispose();
+  public void dispose(MigrationContext context) {
+    super.dispose(context);
     _backupModels = null;
   }
 
