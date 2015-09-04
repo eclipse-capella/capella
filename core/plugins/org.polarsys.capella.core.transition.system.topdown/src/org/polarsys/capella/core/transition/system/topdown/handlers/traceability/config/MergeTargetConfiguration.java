@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,74 +45,73 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
     /**
      * @param identifier_p
      */
-    public TopDownTargetReconciliationTraceabilityHandler(String identifier_p) {
-      super(identifier_p);
+    public TopDownTargetReconciliationTraceabilityHandler(String identifier) {
+      super(identifier);
     }
 
     @Override
-    protected void initializeDataPkg(DataPkg source_p, DataPkg target_p, IContext context_p, LevelMappingTraceability map_p) {
-      if (source_p.eClass().equals(target_p.eClass())) {
-        addMapping(map_p, source_p, target_p, context_p);
+    protected void initializeDataPkg(DataPkg source, DataPkg target, IContext context, LevelMappingTraceability map) {
+      if (source.eClass().equals(target.eClass())) {
+        addMapping(map, source, target, context);
       }
     }
 
     @Override
-    protected void initializeComponent(Component source_p, Component target_p, IContext context_p, LevelMappingTraceability map_p) {
-      super.initializeComponent(source_p, target_p, context_p, map_p);
+    protected void initializeComponent(Component source, Component target, IContext context, LevelMappingTraceability map) {
+      super.initializeComponent(source, target, context, map);
 
-      if ((source_p != null) && (target_p != null) && !source_p.eClass().equals(target_p.eClass())) {
-        addMapping(map_p, ComponentExt.getDataPkg(source_p, false), ComponentExt.getDataPkg(target_p, false), context_p);
-        addMapping(map_p, ComponentExt.getInterfacePkg(source_p, false), ComponentExt.getInterfacePkg(target_p, false), context_p);
+      if ((source != null) && (target != null) && !source.eClass().equals(target.eClass())) {
+        addMapping(map, ComponentExt.getDataPkg(source, false), ComponentExt.getDataPkg(target, false), context);
+        addMapping(map, ComponentExt.getInterfacePkg(source, false), ComponentExt.getInterfacePkg(target, false), context);
       }
 
-      //Reconciliation for InterfaceUse with no traceabilityLinks, or linked to a traced interface
-      for (InterfaceUse sLink : source_p.getUsedInterfaceLinks()) {
+      // Reconciliation for InterfaceUse with no traceabilityLinks, or linked to a traced interface
+      for (InterfaceUse sLink : source.getUsedInterfaceLinks()) {
         if (sLink.getUsedInterface() == null) {
           continue;
         }
-        for (InterfaceUse tLink : target_p.getUsedInterfaceLinks()) {
+        for (InterfaceUse tLink : target.getUsedInterfaceLinks()) {
           if (tLink.getUsedInterface() == null) {
             continue;
           }
           if (sLink.getUsedInterface().equals(tLink.getUsedInterface())
-              || TraceabilityHandlerHelper.getInstance(context_p).retrieveSourceElements(tLink.getUsedInterface(), context_p)
-                  .contains(sLink.getUsedInterface())) {
-            addMapping(map_p, sLink, tLink, context_p);
+              || TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(tLink.getUsedInterface(), context).contains(sLink.getUsedInterface())) {
+            addMapping(map, sLink, tLink, context);
             break;
           }
         }
       }
 
-      //Reconciliation for InterfaceImplementation with no traceabilityLinks, or linked to a traced interface
-      for (InterfaceImplementation sLink : source_p.getImplementedInterfaceLinks()) {
+      // Reconciliation for InterfaceImplementation with no traceabilityLinks, or linked to a traced interface
+      for (InterfaceImplementation sLink : source.getImplementedInterfaceLinks()) {
         if (sLink.getImplementedInterface() == null) {
           continue;
         }
-        for (InterfaceImplementation tLink : target_p.getImplementedInterfaceLinks()) {
+        for (InterfaceImplementation tLink : target.getImplementedInterfaceLinks()) {
           if (tLink.getImplementedInterface() == null) {
             continue;
           }
           if (sLink.getImplementedInterface().equals(tLink.getImplementedInterface())
-              || TraceabilityHandlerHelper.getInstance(context_p).retrieveSourceElements(tLink.getImplementedInterface(), context_p)
+              || TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(tLink.getImplementedInterface(), context)
                   .contains(sLink.getImplementedInterface())) {
-            addMapping(map_p, sLink, tLink, context_p);
+            addMapping(map, sLink, tLink, context);
             break;
           }
         }
       }
 
-      //Reconciliation for CommunicationLink with no traceabilityLinks, or linked to a traced interface
-      for (CommunicationLink sLink : source_p.getOwnedCommunicationLinks()) {
+      // Reconciliation for CommunicationLink with no traceabilityLinks, or linked to a traced interface
+      for (CommunicationLink sLink : source.getOwnedCommunicationLinks()) {
         if (sLink.getExchangeItem() == null) {
           continue;
         }
-        for (CommunicationLink tLink : target_p.getOwnedCommunicationLinks()) {
+        for (CommunicationLink tLink : target.getOwnedCommunicationLinks()) {
           if (tLink.getExchangeItem() == null) {
             continue;
           }
-          if (tLink.getExchangeItem().equals(tLink.getExchangeItem())
-              || retrieveSourceElements(tLink.getExchangeItem(), context_p).contains(sLink.getExchangeItem())) {
-            addMapping(map_p, sLink, tLink, context_p);
+          if (sLink.getExchangeItem().equals(tLink.getExchangeItem())
+              || retrieveSourceElements(tLink.getExchangeItem(), context).contains(sLink.getExchangeItem())) {
+            addMapping(map, sLink, tLink, context);
             break;
           }
         }
@@ -124,36 +123,36 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
      * {@inheritDoc}
      */
     @Override
-    protected void initializeSystemEngineering(SystemEngineering source_p, SystemEngineering target_p, IContext context_p, LevelMappingTraceability map_p) {
-      super.initializeSystemEngineering(source_p, target_p, context_p, map_p);
+    protected void initializeSystemEngineering(SystemEngineering source, SystemEngineering target, IContext context, LevelMappingTraceability map) {
+      super.initializeSystemEngineering(source, target, context, map);
     }
 
     @Override
-    protected void initializeBlockArchitecture(BlockArchitecture source_p, BlockArchitecture target_p, IContext context_p, LevelMappingTraceability map_p) {
-      addMapping(map_p, BlockArchitectureExt.getFunctionPkg(source_p, true), BlockArchitectureExt.getFunctionPkg(target_p, true), context_p);
-      addMapping(map_p, BlockArchitectureExt.getRootFunction(source_p, true), BlockArchitectureExt.getRootFunction(target_p, true), context_p);
-      addMapping(map_p, BlockArchitectureExt.getDataPkg(source_p, true), BlockArchitectureExt.getDataPkg(target_p, true), context_p);
-      addMapping(map_p, BlockArchitectureExt.getActorPkg(source_p, true), BlockArchitectureExt.getActorPkg(target_p, true), context_p);
-      addMapping(map_p, BlockArchitectureExt.getContext(source_p, true), BlockArchitectureExt.getContext(target_p, true), context_p);
+    protected void initializeBlockArchitecture(BlockArchitecture source, BlockArchitecture target, IContext context, LevelMappingTraceability map) {
+      addMapping(map, BlockArchitectureExt.getFunctionPkg(source, true), BlockArchitectureExt.getFunctionPkg(target, true), context);
+      addMapping(map, BlockArchitectureExt.getRootFunction(source, true), BlockArchitectureExt.getRootFunction(target, true), context);
+      addMapping(map, BlockArchitectureExt.getDataPkg(source, true), BlockArchitectureExt.getDataPkg(target, true), context);
+      addMapping(map, BlockArchitectureExt.getActorPkg(source, true), BlockArchitectureExt.getActorPkg(target, true), context);
+      addMapping(map, BlockArchitectureExt.getContext(source, true), BlockArchitectureExt.getContext(target, true), context);
 
-      if (!((target_p instanceof PhysicalArchitecture) && !(source_p instanceof PhysicalArchitecture))) {
-        addMapping(map_p, BlockArchitectureExt.getInterfacePkg(source_p, true), BlockArchitectureExt.getInterfacePkg(target_p, true), context_p);
+      if (!((target instanceof PhysicalArchitecture) && !(source instanceof PhysicalArchitecture))) {
+        addMapping(map, BlockArchitectureExt.getInterfacePkg(source, true), BlockArchitectureExt.getInterfacePkg(target, true), context);
       }
 
-      addMapping(map_p, BlockArchitectureExt.getRequirementsPkg(source_p, false), BlockArchitectureExt.getRequirementsPkg(target_p, false), context_p);
-      addMapping(map_p, BlockArchitectureExt.getAbstractCapabilityPkg(source_p, true), BlockArchitectureExt.getAbstractCapabilityPkg(target_p, true), context_p);
-      addMapping(map_p, BlockArchitectureExt.getFirstComponent(source_p, true), BlockArchitectureExt.getFirstComponent(target_p, true), context_p);
+      addMapping(map, BlockArchitectureExt.getRequirementsPkg(source, false), BlockArchitectureExt.getRequirementsPkg(target, false), context);
+      addMapping(map, BlockArchitectureExt.getAbstractCapabilityPkg(source, true), BlockArchitectureExt.getAbstractCapabilityPkg(target, true), context);
+      addMapping(map, BlockArchitectureExt.getFirstComponent(source, true), BlockArchitectureExt.getFirstComponent(target, true), context);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void initializeRootMappings(IContext context_p) {
-      super.initializeRootMappings(context_p);
-      EObject source = (EObject) context_p.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
-      EObject target = (EObject) context_p.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
-      addMappings(source, target, context_p);
+    protected void initializeRootMappings(IContext context) {
+      super.initializeRootMappings(context);
+      EObject source = (EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
+      EObject target = (EObject) context.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
+      addMappings(source, target, context);
     }
 
   }
@@ -161,63 +160,63 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
   protected class TopDownTargetSIDTraceabilityHandler extends RealizationLinkTraceabilityHandler {
 
     /**
-     * @param identifier_p
+     * @param identifier
      */
-    public TopDownTargetSIDTraceabilityHandler(String identifier_p) {
-      super(identifier_p);
+    public TopDownTargetSIDTraceabilityHandler(String identifier) {
+      super(identifier);
     }
 
     @Override
-    protected boolean initTraceabilityMapping(EObject source_p, EObject object_p, IContext context_p) {
-      BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object_p);
-      return (architecture == null) || (getTargetArchitecture(source_p, context_p) == architecture);
+    protected boolean initTraceabilityMapping(EObject source, EObject object, IContext context) {
+      BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
+      return (architecture == null) || (getTargetArchitecture(source, context) == architecture);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void initializeRootMappings(IContext context_p) {
-      super.initializeRootMappings(context_p);
-      EObject source = (EObject) context_p.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
-      EObject target = (EObject) context_p.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
-      initializeMappings(source, target, context_p);
+    protected void initializeRootMappings(IContext context) {
+      super.initializeRootMappings(context);
+      EObject source = (EObject) context.get(ITransitionConstants.TRANSITION_SOURCE_ROOT);
+      EObject target = (EObject) context.get(ITransitionConstants.TRANSITION_TARGET_ROOT);
+      initializeMappings(source, target, context);
     }
   }
 
   @Override
-  protected void initHandlers(IContext fContext_p) {
-    addHandler(fContext_p, new TopDownTargetReconciliationTraceabilityHandler(getIdentifier(fContext_p)));
-    addHandler(fContext_p, new TopDownTargetSIDTraceabilityHandler(getIdentifier(fContext_p)));
+  protected void initHandlers(IContext context) {
+    addHandler(context, new TopDownTargetReconciliationTraceabilityHandler(getIdentifier(context)));
+    addHandler(context, new TopDownTargetSIDTraceabilityHandler(getIdentifier(context)));
 
-    addHandler(fContext_p, new LibraryTraceabilityHandler());
+    addHandler(context, new LibraryTraceabilityHandler());
   }
 
-  protected BlockArchitecture getSourceArchitecture(SystemEngineering source_p, IContext context_p) {
-    BlockArchitecture architecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(source_p);
+  protected BlockArchitecture getSourceArchitecture(SystemEngineering source, IContext context_p) {
+    BlockArchitecture architecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(source);
     Collection<EObject> selection = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
     if (selection.size() > 0) {
-      EObject source = (EObject) selection.toArray()[0];
-      architecture = BlockArchitectureExt.getRootBlockArchitecture(source);
+      EObject sourceSelection = (EObject) selection.toArray()[0];
+      architecture = BlockArchitectureExt.getRootBlockArchitecture(sourceSelection);
     }
     return architecture;
   }
 
   /**
    * @param source_p
-   * @param context_p
+   * @param context
    * @return
    */
-  protected BlockArchitecture getTargetArchitecture(EObject target_p, IContext context_p) {
+  protected BlockArchitecture getTargetArchitecture(EObject target, IContext context) {
 
-    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(target_p);
-    Collection<EObject> selection = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+    BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(target);
+    Collection<EObject> selection = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     if (selection.size() > 0) {
       EObject source = (EObject) selection.toArray()[0];
       architecture = BlockArchitectureExt.getRootBlockArchitecture(source);
     }
 
-    EClass clazz = TransformationHandlerHelper.getInstance(context_p).getTargetType(architecture, context_p);
+    EClass clazz = TransformationHandlerHelper.getInstance(context).getTargetType(architecture, context);
     for (BlockArchitecture archi : architecture.getAllocatingArchitectures()) {
       if (clazz.isInstance(archi)) {
         return archi;
@@ -230,17 +229,17 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForTracedElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
+  public boolean useHandlerForTracedElements(EObject source, ITraceabilityHandler handler, IContext context) {
 
-    boolean result = super.useHandlerForTracedElements(source_p, handler_p, context_p);
+    boolean result = super.useHandlerForTracedElements(source, handler, context);
     if (result) {
-      //We disable RealizationLinks for SystemEngineering and BlockArchitecture
-      if (handler_p instanceof RealizationLinkTraceabilityHandler) {
+      // We disable RealizationLinks for SystemEngineering and BlockArchitecture
+      if (handler instanceof RealizationLinkTraceabilityHandler) {
 
-        if (source_p instanceof SystemEngineering) {
+        if (source instanceof SystemEngineering) {
           result = false;
         }
-        if (source_p instanceof BlockArchitecture) {
+        if (source instanceof BlockArchitecture) {
           result = false;
         }
 
@@ -248,8 +247,8 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
 
     }
 
-    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
-      return handler_p instanceof LibraryTraceabilityHandler;
+    if (LibraryTraceabilityHandler.isLibraryElement(source, context)) {
+      return handler instanceof LibraryTraceabilityHandler;
     }
 
     return result;
@@ -259,35 +258,35 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
    * {@inheritDoc}
    */
   @Override
-  public boolean useHandlerForSourceElements(EObject source_p, ITraceabilityHandler handler_p, IContext context_p) {
-    boolean result = super.useHandlerForSourceElements(source_p, handler_p, context_p);
+  public boolean useHandlerForSourceElements(EObject source, ITraceabilityHandler handler, IContext context) {
+    boolean result = super.useHandlerForSourceElements(source, handler, context);
 
     if (result) {
-      //We disable RealizationLinks for SystemEngineering and BlockArchitecture
-      if (handler_p instanceof RealizationLinkTraceabilityHandler) {
+      // We disable RealizationLinks for SystemEngineering and BlockArchitecture
+      if (handler instanceof RealizationLinkTraceabilityHandler) {
 
-        if (source_p instanceof SystemEngineering) {
+        if (source instanceof SystemEngineering) {
           result = false;
         }
-        if (source_p instanceof BlockArchitecture) {
+        if (source instanceof BlockArchitecture) {
           result = false;
         }
 
       }
 
-      //We disable Reconciliation for StateMachine
-      if (handler_p instanceof ReconciliationTraceabilityHandler) {
-        if (source_p instanceof StateMachine) {
+      // We disable Reconciliation for StateMachine
+      if (handler instanceof ReconciliationTraceabilityHandler) {
+        if (source instanceof StateMachine) {
           result = false;
         }
-        if (source_p instanceof Region) {
+        if (source instanceof Region) {
           result = false;
         }
       }
     }
 
-    if (LibraryTraceabilityHandler.isLibraryElement(source_p, context_p)) {
-      return handler_p instanceof LibraryTraceabilityHandler;
+    if (LibraryTraceabilityHandler.isLibraryElement(source, context)) {
+      return handler instanceof LibraryTraceabilityHandler;
     }
 
     return result;
