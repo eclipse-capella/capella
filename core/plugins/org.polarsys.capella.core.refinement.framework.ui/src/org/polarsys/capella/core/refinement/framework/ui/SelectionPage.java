@@ -217,6 +217,7 @@ public class SelectionPage extends WizardPage implements ICheckStateListener {
             return super.updateSelection(new StructuredSelection(selectedObj));
           }
         };
+        showInDiagramAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(IImageKeys.IMG_SHOW_IN_DIAGRAM));
         showInDiagramAction.selectionChanged(showInDiagramAction.getStructuredSelection());
         if (showInDiagramAction.isEnabled()) {
           contextMenuManager.add(showInDiagramAction);

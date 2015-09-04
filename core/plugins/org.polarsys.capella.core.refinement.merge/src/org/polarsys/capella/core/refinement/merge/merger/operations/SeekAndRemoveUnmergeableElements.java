@@ -228,7 +228,7 @@ public class SeekAndRemoveUnmergeableElements extends AbstractMergerOperation {
     TraceableElement sourceType = link.getSourceElement();
 
     if (sourceType != null) {
-      return scenario.equals(sourceType.eContainer());
+      return scenario.equals(sourceType.eContainer()) || scenario.equals(sourceType);
     }
     return true;
   }
