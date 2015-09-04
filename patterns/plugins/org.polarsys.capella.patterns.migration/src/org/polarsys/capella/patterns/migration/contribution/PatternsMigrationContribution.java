@@ -12,7 +12,6 @@
 package org.polarsys.capella.patterns.migration.contribution;
 
 import org.eclipse.core.resources.IResource;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.diffmerge.patterns.core.gen.corepatterns.CorepatternsPackage;
 import org.eclipse.emf.diffmerge.patterns.core.gen.corepatterns.predefined.PredefinedPackage;
@@ -21,6 +20,7 @@ import org.eclipse.emf.diffmerge.patterns.support.gen.commonpatternsupport.Commo
 import org.eclipse.emf.diffmerge.patterns.templates.gen.templatepatterns.TemplatepatternsPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
 import org.polarsys.capella.patterns.migration.PatternsMigrationConstants;
 import org.polarsys.capella.patterns.migration.PatternsMigrationHelper;
@@ -41,14 +41,12 @@ public class PatternsMigrationContribution extends AbstractMigrationContribution
   /**
    * {@inheritDoc}
    */
-  public void unaryPostMigrationExecute(Notifier notifier) {
-    if (notifier instanceof EObject) {
-      EObject element = (EObject) notifier;
-      String typeName = element.eClass().getName();
-      if (CorepatternsPackage.eINSTANCE.getPatternRepository().getName().equals(typeName)) {
-        // Pattern repository
-        PatternsMigrationHelper.getInstance().migrateCatalog(element);
-      }
+  @Override
+  public void unaryMigrationExecute(EObject object, MigrationContext context) {
+    String typeName = object.eClass().getName();
+    if (CorepatternsPackage.eINSTANCE.getPatternRepository().getName().equals(typeName)) {
+      // Pattern repository
+      PatternsMigrationHelper.getInstance().migrateCatalog(object);
     }
   }
 
@@ -65,8 +63,7 @@ public class PatternsMigrationContribution extends AbstractMigrationContribution
     // Register the new schema against the new namespace URI
     registry.put(PatternsMigrationConstants.OLD_FULL_PATTERNS_CORE_NSURI, CorepatternsPackage.eINSTANCE);
     registry.put(PatternsMigrationConstants.OLD_FULL_PATTERNS_CORE_PREDEFINED_NSURI, PredefinedPackage.eINSTANCE);
-    registry
-        .put(PatternsMigrationConstants.OLD_FULL_PATTERNS_SUPPORT_EMDE_NSURI, CommonpatternsupportPackage.eINSTANCE);
+    registry.put(PatternsMigrationConstants.OLD_FULL_PATTERNS_SUPPORT_EMDE_NSURI, CommonpatternsupportPackage.eINSTANCE);
     registry.put(PatternsMigrationConstants.OLD_FULL_PATTERNS_TEMPLATES_NSURI, TemplatepatternsPackage.eINSTANCE);
     registry.put(PatternsMigrationConstants.OLD_FULL_EMDE_NSURI, EmdePackage.eINSTANCE);
   }
