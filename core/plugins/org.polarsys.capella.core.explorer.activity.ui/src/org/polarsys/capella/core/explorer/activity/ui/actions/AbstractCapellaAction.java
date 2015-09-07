@@ -23,11 +23,11 @@ public abstract class AbstractCapellaAction extends Action {
 	/**
 	 * ModelElement project.
 	 */
-	private ModelElement _project;
+	private ModelElement project;
 	/**
 	 * Sirius session.
 	 */
-	private Session _session;
+	private Session session;
 
 	/**
 	 * Constructor.
@@ -38,8 +38,8 @@ public abstract class AbstractCapellaAction extends Action {
 	 */
 	public AbstractCapellaAction(String text, ImageDescriptor image, ModelElement modelElement, Session session) {
 		super(text, image);
-		_project = modelElement;
-		_session = session;
+		project = modelElement;
+		this.session = session;
 	}
 
 	/**
@@ -47,7 +47,7 @@ public abstract class AbstractCapellaAction extends Action {
 	 */
 	@Override
 	public void run() {
-		doRun(_project, _session);
+		doRun(project, session);
 	}
 
 	/**

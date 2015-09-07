@@ -13,6 +13,7 @@ package org.polarsys.capella.core.explorer.activity.ui.pages;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.amalgam.explorer.activity.ui.api.editor.input.ActivityExplorerEditorInput;
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.BasicSessionActivityExplorerPage;
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.pages.viewers.AbstractActivityExplorerViewer;
 import org.eclipse.emf.ecore.EClass;
@@ -26,6 +27,16 @@ public abstract class AbstractCapellaPage extends BasicSessionActivityExplorerPa
 	@Override
 	protected Class<? extends AbstractActivityExplorerViewer>[] addViewersTypeInPage() {
 		return new Class[] { CapellaDiagramViewer.class };
+	}
+	
+	@Override
+	protected String getHeaderTitle() {
+	  ActivityExplorerEditorInput editorInput = getEditorInput();
+	  String richTitle = super.getHeaderTitle();
+	  if(editorInput != null){
+	    richTitle = richTitle + " of " + editorInput.getName();	    
+	  }
+	  return richTitle;
 	}
 	
 	/**

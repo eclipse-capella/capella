@@ -12,7 +12,37 @@
 -->
 <plugin>
    <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <actionProvider
+            class="org.polarsys.capella.core.explorer.activity.ui.actions.ActivityExplorerActionProvider"
+            id="capella.project.explorer.actions.activity.explorer">
+            <enablement>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IFile">
+                  </instanceof>
+                  <test
+                        forcePluginActivation="true"
+                        property="org.eclipse.core.resources.extension"
+                        value="aird">
+                  </test>
+               </and>
+            </enablement>
+      </actionProvider>
+   </extension>
+   <extension
          point="org.eclipse.amalgam.explorer.activity.ui.pagesProvider">
+      <Page
+            class="org.polarsys.capella.core.explorer.activity.ui.pages.CapellaActivityExplorerWorkflowPage"
+            id="org.polarsys.capella.core.explorer.activity.ui.page.workflow"
+            index="0"
+            tabName="%capellaActivityExplorerWorkflowPage"
+            title="%capellaActivityExplorerWorkflowPage"
+            viewer="false">
+         <Description>
+            %capellaActivityExplorerWorkflowPageDescription
+         </Description>
+      </Page>
       <Page
             class="org.polarsys.capella.core.explorer.activity.ui.pages.OperationalAnalysisPage"
             id="org.polarsys.capella.core.explorer.activity.ui.page.operational.analysis"

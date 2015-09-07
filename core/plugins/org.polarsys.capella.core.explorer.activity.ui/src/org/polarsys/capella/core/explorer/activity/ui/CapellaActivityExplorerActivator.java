@@ -25,11 +25,11 @@ public class CapellaActivityExplorerActivator extends AbstractUIActivator {
 	/**
 	 * The shared instance
 	 */
-	private static CapellaActivityExplorerActivator __plugin;
+	private static CapellaActivityExplorerActivator plugin;
 	/**
 	 * Shared Form colors.
 	 */
-	private FormColors _formColors;
+	private FormColors formColors;
 
 
 
@@ -43,7 +43,7 @@ public class CapellaActivityExplorerActivator extends AbstractUIActivator {
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
 		CapellaActivityExplorerActivator.context = bundleContext;
-		CapellaActivityExplorerActivator.__plugin = this;
+		CapellaActivityExplorerActivator.plugin = this;
 	}
 
 	/*
@@ -52,12 +52,12 @@ public class CapellaActivityExplorerActivator extends AbstractUIActivator {
 	 */
 	public void stop(BundleContext bundleContext) throws Exception {
 		try {
-			if (null != _formColors) {
-				_formColors.dispose();
-				_formColors = null;
+			if (null != formColors) {
+				formColors.dispose();
+				formColors = null;
 			}
 		} finally {
-			__plugin = null;
+			plugin = null;
 			CapellaActivityExplorerActivator.context = null;
 		}
 	}
@@ -67,7 +67,7 @@ public class CapellaActivityExplorerActivator extends AbstractUIActivator {
 	 * @return the shared instance
 	 */
 	public static CapellaActivityExplorerActivator getDefault() {
-		return __plugin;
+		return plugin;
 	}
 
 	/**
@@ -76,11 +76,10 @@ public class CapellaActivityExplorerActivator extends AbstractUIActivator {
 	 * @return
 	 */
 	public FormColors getFormColors(Display display) {
-		if (null == _formColors) {
-			_formColors = new FormColors(display);
-			_formColors.markShared();
+		if (null == formColors) {
+			formColors = new FormColors(display);
+			formColors.markShared();
 		}
-		return _formColors;
+		return formColors;
 	}
-
 }
