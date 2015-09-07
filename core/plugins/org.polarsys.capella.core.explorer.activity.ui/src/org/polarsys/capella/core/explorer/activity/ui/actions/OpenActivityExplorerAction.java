@@ -56,7 +56,7 @@ public class OpenActivityExplorerAction extends BaseSelectionListenerAction {
   public void run() {
     Session session = getSession();
     if (null != session) {
-      OpenSessionAction.openCapellaDashboard(session);
+      OpenSessionAction.openActivityExplorer(session);
     }
   }
 

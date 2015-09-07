@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -60,17 +60,17 @@ public class NewProjectWizard extends BasicNewResourceWizard {
   protected static final int STEP_TICK_COUNT = 100;
 
   // Log4j reference logger.
-  private static final Logger __logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
+  private static final Logger logger = ReportManagerRegistry.getInstance().subscribe(IReportManagerDefaultComponents.UI);
 
   // Reuse of the new project page provided by the platform UI dialogs.
   protected WizardNewProjectCreationPage _localProjectDescriptionPage;
 
   // The New Model wizard page.
-  protected NewModelWizardPage _modelPage;
+  protected NewModelWizardPage modelPage;
 
-  private SortedMap<Viewpoint, Boolean> _viewpointsMap;
+  private SortedMap<Viewpoint, Boolean> viewpointsMap;
 
-  private WizardPage _viewpointWizardPage;
+  private WizardPage viewpointWizardPage;
 
   private ReferecedConfigurationProjectSelectionPage referencedConfigurationProjectPage;
 
@@ -78,7 +78,7 @@ public class NewProjectWizard extends BasicNewResourceWizard {
    * Constructs the wizard allowing to initialize a new Capella project.
    */
   public NewProjectWizard() {
-    _viewpointsMap = new TreeMap<Viewpoint, Boolean>(new ViewpointRegistry.ViewpointComparator());
+    viewpointsMap = new TreeMap<Viewpoint, Boolean>(new ViewpointRegistry.ViewpointComparator());
   }
 
   /**
@@ -92,8 +92,8 @@ public class NewProjectWizard extends BasicNewResourceWizard {
 
     createLogicPages();
 
-    _viewpointWizardPage = ViewpointSelection.createWizardPage(CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION, _viewpointsMap);
-    addPage(_viewpointWizardPage);
+    viewpointWizardPage = ViewpointSelection.createWizardPage(CapellaResourceHelper.CAPELLA_MODEL_FILE_EXTENSION, viewpointsMap);
+    addPage(viewpointWizardPage);
 
     createReferencedConfigurationProjectsPage();
   }
@@ -113,8 +113,8 @@ public class NewProjectWizard extends BasicNewResourceWizard {
    * Default implementation creates a model page i.e {@link NewModelWizardPage}.
    */
   protected void createLogicPages() {
-    _modelPage = createModelPage();
-    addPage(_modelPage);
+    modelPage = createModelPage();
+    addPage(modelPage);
   }
 
   /**
@@ -173,12 +173,12 @@ public class NewProjectWizard extends BasicNewResourceWizard {
    * @see org.eclipse.jface.wizard.Wizard#getNextPage(org.eclipse.jface.wizard.IWizardPage)
    */
   @Override
-  public IWizardPage getNextPage(IWizardPage page_p) {
-    IWizardPage nextPage = super.getNextPage(page_p);
+  public IWizardPage getNextPage(IWizardPage page) {
+    IWizardPage nextPage = super.getNextPage(page);
     // Set the project name as model name.
-    if ((null != _modelPage) && (_modelPage == nextPage)) {
+    if ((null != modelPage) && (modelPage == nextPage)) {
       String projectName = getEclipseProjectName();
-      _modelPage.setModelNameFieldValue(projectName);
+      modelPage.setModelNameFieldValue(projectName);
     }
     return nextPage;
   }
@@ -187,8 +187,8 @@ public class NewProjectWizard extends BasicNewResourceWizard {
    * @see org.eclipse.ui.wizards.newresource.BasicNewResourceWizard#init(org.eclipse.ui.IWorkbench, org.eclipse.jface.viewers.IStructuredSelection)
    */
   @Override
-  public void init(IWorkbench workbench_p, IStructuredSelection currentSelection_p) {
-    super.init(workbench_p, currentSelection_p);
+  public void init(IWorkbench workbench, IStructuredSelection currentSelection) {
+    super.init(workbench, currentSelection);
     setWindowTitle(Messages.getString("NewProjectWizard.window.title")); //$NON-NLS-1$
     ImageDescriptor descriptor = CapellaProjectActivator.getDefault().getImageDescriptor("projectWizard.png"); //$NON-NLS-1$
     if (null == descriptor) {
@@ -224,23 +224,23 @@ public class NewProjectWizard extends BasicNewResourceWizard {
           SessionCreationHelper helper = createSessionCreationHelper();
           Session session = helper.createFullProject(getEclipseProjectName(), newPath, referencedProjects, getSelectedViewpoints(), monitor_p);
 
-          OpenSessionAction.openCapellaDashboard(session);
+          OpenSessionAction.openActivityExplorer(session);
         }
       });
     } catch (InvocationTargetException exception_p) {
       StringBuilder loggerMessage = new StringBuilder("NewProjectWizard.performFinish(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      logger.warn(loggerMessage.toString(), exception_p);
       return false;
     } catch (InterruptedException exception_p) {
       StringBuilder loggerMessage = new StringBuilder("NewProjectWizard.performFinish(..) _ "); //$NON-NLS-1$
-      __logger.warn(loggerMessage.toString(), exception_p);
+      logger.warn(loggerMessage.toString(), exception_p);
       return false;
     }
     return true;
   }
 
   protected SessionCreationHelper createSessionCreationHelper() {
-    return new ProjectSessionCreationHelper(_modelPage.isEpbsSelected(), _modelPage.isOpaSelected(), getProjectApproach());
+    return new ProjectSessionCreationHelper(modelPage.isEpbsSelected(), modelPage.isOpaSelected(), getProjectApproach());
   }
 
   /**
@@ -251,10 +251,10 @@ public class NewProjectWizard extends BasicNewResourceWizard {
     // Check which page was used to complete the wizard.
     IWizardPage completingPage = getContainer().getCurrentPage();
     Set<Viewpoint> viewpoints = null;
-    if (completingPage == _viewpointWizardPage) {
+    if (completingPage == viewpointWizardPage) {
       // Get user selected viewpoints.
       viewpoints = new HashSet<Viewpoint>(0);
-      Iterator<Entry<Viewpoint, Boolean>> iterator = _viewpointsMap.entrySet().iterator();
+      Iterator<Entry<Viewpoint, Boolean>> iterator = viewpointsMap.entrySet().iterator();
       // Iterate over the viewpoints map to get the active ones (i.e checked in the UI).
       while (iterator.hasNext()) {
         Map.Entry<Viewpoint, Boolean> entry = iterator.next();

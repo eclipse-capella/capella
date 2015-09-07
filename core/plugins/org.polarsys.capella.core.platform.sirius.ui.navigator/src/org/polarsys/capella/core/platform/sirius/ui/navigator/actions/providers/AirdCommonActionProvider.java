@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,11 +42,11 @@ import org.polarsys.capella.core.sirius.ui.helper.SessionHelper;
  */
 public class AirdCommonActionProvider extends CommonActionProvider {
   // The action to create a new session.
-  private OpenSessionAction _openSessionAction;
+  private OpenSessionAction openSessionAction;
   // The save action is driven by CapellaSaveable.
 
-  private CloseSessionAction _closeSessionAction;
-  private IWorkbenchAction _saveAction;
+  private CloseSessionAction closeSessionAction;
+  private IWorkbenchAction saveAction;
 
   /**
    * @see org.eclipse.ui.actions.ActionGroup#dispose()
@@ -54,17 +54,17 @@ public class AirdCommonActionProvider extends CommonActionProvider {
   @Override
   public void dispose() {
     ISelectionProvider selectionProvider = getActionSite().getViewSite().getSelectionProvider();
-    if (null != _openSessionAction) {
-      selectionProvider.removeSelectionChangedListener(_openSessionAction);
-      _openSessionAction = null;
+    if (null != openSessionAction) {
+      selectionProvider.removeSelectionChangedListener(openSessionAction);
+      openSessionAction = null;
     }
-    if (null != _closeSessionAction) {
-      selectionProvider.removeSelectionChangedListener(_closeSessionAction);
-      _closeSessionAction = null;
+    if (null != closeSessionAction) {
+      selectionProvider.removeSelectionChangedListener(closeSessionAction);
+      closeSessionAction = null;
     }
-    if (null != _saveAction) {
-      _saveAction.dispose();
-      _saveAction = null;
+    if (null != saveAction) {
+      saveAction.dispose();
+      saveAction = null;
     }
     super.dispose();
   }
@@ -73,21 +73,21 @@ public class AirdCommonActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.navigator.CommonActionProvider#init(org.eclipse.ui.navigator.ICommonActionExtensionSite)
    */
   @Override
-  public void init(ICommonActionExtensionSite site_p) {
-    super.init(site_p);
-    ISelectionProvider selectionProvider = site_p.getViewSite().getSelectionProvider();
-    _openSessionAction = new OpenSessionAction();
+  public void init(ICommonActionExtensionSite site) {
+    super.init(site);
+    ISelectionProvider selectionProvider = site.getViewSite().getSelectionProvider();
+    openSessionAction = new OpenSessionAction();
     
-    SelectionHelper.registerToSelectionChanges(_openSessionAction, selectionProvider);
+    SelectionHelper.registerToSelectionChanges(openSessionAction, selectionProvider);
 
-    _closeSessionAction = new CloseSessionAction();
-    SelectionHelper.registerToSelectionChanges(_closeSessionAction, selectionProvider);
-    ICommonViewerSite commonViewSite = site_p.getViewSite();
+    closeSessionAction = new CloseSessionAction();
+    SelectionHelper.registerToSelectionChanges(closeSessionAction, selectionProvider);
+    ICommonViewerSite commonViewSite = site.getViewSite();
     if (!(commonViewSite instanceof ICommonViewerWorkbenchSite)) {
       return;
     }
     ICommonViewerWorkbenchSite commonViewerWorkbenchSite = (ICommonViewerWorkbenchSite) commonViewSite;
-    _saveAction = ActionFactory.SAVE.create(commonViewerWorkbenchSite.getWorkbenchWindow());
+    saveAction = ActionFactory.SAVE.create(commonViewerWorkbenchSite.getWorkbenchWindow());
   }
 
 
@@ -95,22 +95,22 @@ public class AirdCommonActionProvider extends CommonActionProvider {
    * @see org.eclipse.ui.actions.ActionGroup#fillActionBars(org.eclipse.ui.IActionBars)
    */
   @Override
-  public void fillActionBars(IActionBars actionBars_p) {
-    if (_openSessionAction.isEnabled()) {
-      actionBars_p.setGlobalActionHandler(ICommonActionConstants.OPEN, _openSessionAction);
+  public void fillActionBars(IActionBars actionBars) {
+    if (openSessionAction.isEnabled()) {
+      actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, openSessionAction);
     }
-    actionBars_p.setGlobalActionHandler(ActionFactory.CLOSE.getId(), _closeSessionAction);
+    actionBars.setGlobalActionHandler(ActionFactory.CLOSE.getId(), closeSessionAction);
   }
 
   /**
    * @see org.eclipse.ui.actions.ActionGroup#fillContextMenu(org.eclipse.jface.action.IMenuManager)
    */
   @Override
-  public void fillContextMenu(IMenuManager menu_p) {
+  public void fillContextMenu(IMenuManager menu) {
     updateActionBars();
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_OPEN, _openSessionAction);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_BUILD, _closeSessionAction);
-    menu_p.appendToGroup(ICommonMenuConstants.GROUP_BUILD, _saveAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_OPEN, openSessionAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_BUILD, closeSessionAction);
+    menu.appendToGroup(ICommonMenuConstants.GROUP_BUILD, saveAction);
   }
 
   /**
@@ -138,14 +138,14 @@ public class AirdCommonActionProvider extends CommonActionProvider {
         
         // if the aird selected is not inside a Capella project, we don't open the dashboard
         if(!ProjectUtils.isProjectOfType(airdFile.getProject(), Arrays.asList(CapellaNature.ID, LibraryNature.ID))){
-          _openSessionAction.setOpenCapellaDashboard(false);
+          openSessionAction.setOpenActivityExplorer(false);
         }else{
-          _openSessionAction.setOpenCapellaDashboard(true);
+          openSessionAction.setOpenActivityExplorer(true);
         }
         
       }
     }
-    _openSessionAction.setEnabled(canOpen);
-    _closeSessionAction.setEnabled(canClose);
+    openSessionAction.setEnabled(canOpen);
+    closeSessionAction.setEnabled(canClose);
   }
 }
