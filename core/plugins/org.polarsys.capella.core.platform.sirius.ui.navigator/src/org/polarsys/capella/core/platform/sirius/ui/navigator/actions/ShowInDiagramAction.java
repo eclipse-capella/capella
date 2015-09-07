@@ -97,26 +97,26 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
       if (view instanceof DDiagramElement) {
         DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement) view);
         if (query.isFolded()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
               Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_FoldedElement_Message);
 
         } else if (query.isHidden()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
               Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_HiddenElement_Message);
 
         } else if (query.isCollapsed()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
               Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_CollapseElement_Message);
 
         } else if (query.isFiltered()) {
-          MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+          MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
               Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_FilteredElement_Message);
 
         } else {
 
           IGraphicalEditPart selectedPart = getGraphicalPart(view);
           if (selectedPart == null) {
-            MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+            MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
                 Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
           } else {
             selectPart(selectedPart);
@@ -124,7 +124,7 @@ public class ShowInDiagramAction extends BaseSelectionListenerAction implements 
         }
 
       } else if (view instanceof DDiagram) {
-        MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+        MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
             Messages.ShowInDiagramAction_UnknownElement_Title, Messages.ShowInDiagramAction_UnknownElement_Message);
       }
 
