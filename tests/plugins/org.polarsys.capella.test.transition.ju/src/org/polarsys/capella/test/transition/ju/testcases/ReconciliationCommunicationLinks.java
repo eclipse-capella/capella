@@ -12,6 +12,7 @@ package org.polarsys.capella.test.transition.ju.testcases;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.osgi.util.NLS;
+import org.polarsys.capella.core.data.capellacommon.TransfoLink;
 import org.polarsys.capella.core.data.cs.Component;
 import org.polarsys.capella.core.data.helpers.information.services.CommunicationLinkExt;
 import org.polarsys.capella.core.data.information.ExchangeItem;
@@ -30,6 +31,38 @@ public class ReconciliationCommunicationLinks extends ModelReconciliationCommuni
     LCPCTransition1();
     LCPCTransition2();
     LCPCTransition3();
+    SystemActorTransition();
+    SystemActorTransition(); // retrigger a second time the transition to check same behavior with TransfoLinks between CL
+
+  }
+
+  private void SystemActorTransition() {
+
+    setPreferenceValue(ITopDownConstants.OPTIONS_TRANSITION__EXCHANGE_ITEM, Boolean.FALSE);
+
+    performActorTransition(getObjects(SA__ACTORS__A1));
+
+    Component actor = shouldExist(SA__ACTORS__A1);
+    Component logicalActor = shouldExist(LA__LOGICAL_ACTORS__LA1);
+
+    assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "actor.communicationLinks", "logicalActor.communicationLinks"),
+        (actor.getOwnedCommunicationLinks().size() + 1) == logicalActor.getOwnedCommunicationLinks().size());
+
+    for (CommunicationLink link : logicalActor.getOwnedCommunicationLinks()) {
+
+      if (link != getObjects(LA__LOGICAL_ACTORS__LA1__LINK_TO_EI4_2).iterator().next()) {
+
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "1"), link.getOutgoingTraces().size() == 1);
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "1"), link.getOutgoingTraces().get(0) instanceof TransfoLink);
+
+        TransfoLink stLink = (TransfoLink) link.getOutgoingTraces().get(0);
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.outgoingTraces", "link"), stLink.getTargetElement() instanceof CommunicationLink);
+        CommunicationLink sLink = (CommunicationLink) stLink.getTargetElement();
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.kind", "communicationLink.kind"), link.getKind() == sLink.getKind());
+        assertTrue(NLS.bind(Messages.ShouldBeEqualsTo, "communicationLink.protocol", "communicationLink.protocol"), link.getProtocol() == sLink.getProtocol());
+      }
+
+    }
   }
 
   protected void LCPCTransition1() {

@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.handlers.traceability.config;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -42,9 +44,6 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
 
   protected class TopDownTargetReconciliationTraceabilityHandler extends ReconciliationTraceabilityHandler {
 
-    /**
-     * @param identifier_p
-     */
     public TopDownTargetReconciliationTraceabilityHandler(String identifier) {
       super(identifier);
     }
@@ -65,7 +64,74 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
         addMapping(map, ComponentExt.getInterfacePkg(source, false), ComponentExt.getInterfacePkg(target, false), context);
       }
 
-      // Reconciliation for InterfaceUse with no traceabilityLinks, or linked to a traced interface
+      addInterfaceUseReconciliation(source, target, context, map);
+      addInterfaceImplementationReconciliation(source, target, context, map);
+      addCommunicationLinkReconciliation(source, target, context, map);
+    }
+
+    /**
+     * Reconciliation for CommunicationLink with no traceabilityLinks, or linked to a traced exchangeItem
+     */
+    protected void addCommunicationLinkReconciliation(Component source, Component target, IContext context, LevelMappingTraceability map) {
+
+      Collection<CommunicationLink> unmatchedLinks = new ArrayList<CommunicationLink>(1);
+
+      for (CommunicationLink sLink : source.getOwnedCommunicationLinks()) {
+        boolean match = false;
+        if (sLink.getExchangeItem() == null) {
+          continue;
+        }
+        if (!retrieveTracedElementsByRealization(sLink, context).isEmpty()) {
+          continue;
+        }
+        for (CommunicationLink tLink : target.getOwnedCommunicationLinks()) {
+          if (tLink.getExchangeItem() == null) {
+            continue;
+          }
+          if (!TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(tLink, context).isEmpty()) {
+            continue;
+          }
+          if (!(sLink.getExchangeItem().equals(tLink.getExchangeItem()) || TraceabilityHandlerHelper.getInstance(context)
+              .retrieveSourceElements(tLink.getExchangeItem(), context).contains(sLink.getExchangeItem()))) {
+            continue;
+          }
+          if (tLink.getKind() == sLink.getKind()) {
+            addMapping(map, sLink, tLink, context);
+            match = true;
+            break;
+          }
+        }
+        if (!match) {
+          unmatchedLinks.add(sLink);
+        }
+      }
+
+      for (CommunicationLink sLink : unmatchedLinks) {
+        if (sLink.getExchangeItem() == null) {
+          continue;
+        }
+
+        for (CommunicationLink tLink : target.getOwnedCommunicationLinks()) {
+          if (tLink.getExchangeItem() == null) {
+            continue;
+          }
+          if (!TraceabilityHandlerHelper.getInstance(context).retrieveSourceElements(tLink, context).isEmpty()) {
+            continue;
+          }
+          if (!(sLink.getExchangeItem().equals(tLink.getExchangeItem()) || TraceabilityHandlerHelper.getInstance(context)
+              .retrieveSourceElements(tLink.getExchangeItem(), context).contains(sLink.getExchangeItem()))) {
+            continue;
+          }
+          addMapping(map, sLink, tLink, context);
+          break;
+        }
+      }
+    }
+
+    /**
+     * Reconciliation for InterfaceUse with no traceabilityLinks, or linked to a traced interface
+     */
+    protected void addInterfaceUseReconciliation(Component source, Component target, IContext context, LevelMappingTraceability map) {
       for (InterfaceUse sLink : source.getUsedInterfaceLinks()) {
         if (sLink.getUsedInterface() == null) {
           continue;
@@ -81,8 +147,12 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
           }
         }
       }
+    }
 
-      // Reconciliation for InterfaceImplementation with no traceabilityLinks, or linked to a traced interface
+    /**
+     * Reconciliation for InterfaceImplementation with no traceabilityLinks, or linked to a traced interface
+     */
+    protected void addInterfaceImplementationReconciliation(Component source, Component target, IContext context, LevelMappingTraceability map) {
       for (InterfaceImplementation sLink : source.getImplementedInterfaceLinks()) {
         if (sLink.getImplementedInterface() == null) {
           continue;
@@ -99,29 +169,8 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
           }
         }
       }
-
-      // Reconciliation for CommunicationLink with no traceabilityLinks, or linked to a traced interface
-      for (CommunicationLink sLink : source.getOwnedCommunicationLinks()) {
-        if (sLink.getExchangeItem() == null) {
-          continue;
-        }
-        for (CommunicationLink tLink : target.getOwnedCommunicationLinks()) {
-          if (tLink.getExchangeItem() == null) {
-            continue;
-          }
-          if (sLink.getExchangeItem().equals(tLink.getExchangeItem())
-              || retrieveSourceElements(tLink.getExchangeItem(), context).contains(sLink.getExchangeItem())) {
-            addMapping(map, sLink, tLink, context);
-            break;
-          }
-        }
-      }
-
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void initializeSystemEngineering(SystemEngineering source, SystemEngineering target, IContext context, LevelMappingTraceability map) {
       super.initializeSystemEngineering(source, target, context, map);
@@ -144,9 +193,6 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
       addMapping(map, BlockArchitectureExt.getFirstComponent(source, true), BlockArchitectureExt.getFirstComponent(target, true), context);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void initializeRootMappings(IContext context) {
       super.initializeRootMappings(context);
@@ -159,9 +205,6 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
 
   protected class TopDownTargetSIDTraceabilityHandler extends RealizationLinkTraceabilityHandler {
 
-    /**
-     * @param identifier
-     */
     public TopDownTargetSIDTraceabilityHandler(String identifier) {
       super(identifier);
     }
@@ -172,9 +215,6 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
       return (architecture == null) || (getTargetArchitecture(source, context) == architecture);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void initializeRootMappings(IContext context) {
       super.initializeRootMappings(context);
@@ -188,13 +228,20 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
   protected void initHandlers(IContext context) {
     addHandler(context, new TopDownTargetReconciliationTraceabilityHandler(getIdentifier(context)));
     addHandler(context, new TopDownTargetSIDTraceabilityHandler(getIdentifier(context)));
-
     addHandler(context, new LibraryTraceabilityHandler());
   }
 
-  protected BlockArchitecture getSourceArchitecture(SystemEngineering source, IContext context_p) {
+  public Collection<EObject> retrieveTracedElementsByRealization(EObject object, IContext context) {
+    ITraceabilityHandler handler = getDefinedHandler(context, RealizationLinkTraceabilityHandler.class);
+    if (handler != null) {
+      return handler.retrieveTracedElements(object, context);
+    }
+    return Collections.emptyList();
+  }
+
+  protected BlockArchitecture getSourceArchitecture(SystemEngineering source, IContext context) {
     BlockArchitecture architecture = SystemEngineeringExt.getOwnedPhysicalArchitecture(source);
-    Collection<EObject> selection = (Collection<EObject>) context_p.get(ITransitionConstants.TRANSITION_SOURCES);
+    Collection<EObject> selection = (Collection<EObject>) context.get(ITransitionConstants.TRANSITION_SOURCES);
     if (selection.size() > 0) {
       EObject sourceSelection = (EObject) selection.toArray()[0];
       architecture = BlockArchitectureExt.getRootBlockArchitecture(sourceSelection);
@@ -202,11 +249,6 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
     return architecture;
   }
 
-  /**
-   * @param source_p
-   * @param context
-   * @return
-   */
   protected BlockArchitecture getTargetArchitecture(EObject target, IContext context) {
 
     BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(target);
@@ -225,9 +267,6 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
     return architecture;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public boolean useHandlerForTracedElements(EObject source, ITraceabilityHandler handler, IContext context) {
 
@@ -254,9 +293,6 @@ public class MergeTargetConfiguration extends org.polarsys.capella.core.transiti
     return result;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public boolean useHandlerForSourceElements(EObject source, ITraceabilityHandler handler, IContext context) {
     boolean result = super.useHandlerForSourceElements(source, handler, context);
