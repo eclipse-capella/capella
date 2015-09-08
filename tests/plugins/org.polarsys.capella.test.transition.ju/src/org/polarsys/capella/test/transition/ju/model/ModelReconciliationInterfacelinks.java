@@ -16,7 +16,7 @@ import java.util.List;
 import org.polarsys.capella.test.transition.ju.TopDownTransitionTestCase;
 
 /**
- * Generated from model/reconciliation.interfacelinks with org.polarsys.capella.core.flexibility.commands.GeneralModelConstants
+ * Generated from model/reconciliation.interfacelinks with org.polarsys.capella.core.flexibility.commands.RetrieveIDsConstants
  */
 public abstract class ModelReconciliationInterfacelinks extends TopDownTransitionTestCase {
 
