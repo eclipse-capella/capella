@@ -167,6 +167,7 @@
 
       <migrationContribution class="org.polarsys.capella.core.data.migration.capella.RPLSuffixContribution" />
       <migrationContribution class="org.polarsys.capella.core.data.migration.capella.HoldingResourceRemovalContribution" />
+      <migrationContribution class="org.polarsys.capella.core.data.migration.capella.GradientBackgroundColorContribution" />
 
    </extension>
    
