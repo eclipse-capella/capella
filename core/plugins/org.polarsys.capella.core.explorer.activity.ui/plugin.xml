@@ -48,7 +48,7 @@
             id="org.polarsys.capella.core.explorer.activity.ui.page.operational.analysis"
             imageOff="icons/full/overview/oa/operationalanalysis_overview_off.png"
             imageOn="icons/full/overview/oa/operationalanalysis_overview_on.png"
-            index="1"
+            index="2"
             tabName="%operationalAnalysisPage"
             title="%operationalAnalysisPage"
             viewer="true">
@@ -222,7 +222,7 @@
             id="org.polarsys.capella.core.explorer.activity.ui.page.system.analysis"
             imageOff="icons/full/overview/sa/systemanalysis_overview_off.png"
             imageOn="icons/full/overview/sa/systemanalysis_overview_on.png"
-            index="2"
+            index="3"
             tabName="%systemAnalysisPage"
             title="%systemAnalysisPage"
             viewer="true">
@@ -499,7 +499,7 @@
             id="org.polarsys.capella.core.explorer.activity.ui.page.logical.architecture"
             imageOff="icons/full/overview/la/logicalarchitecture_overview_off.png"
             imageOn="icons/full/overview/la/logicalarchitecture_overview_on.png"
-            index="3"
+            index="4"
             tabName="%logicalArchitecturePage"
             title="%logicalArchitecturePage"
             viewer="true">
@@ -773,7 +773,7 @@
             id="org.polarsys.capella.core.explorer.activity.ui.page.physical.architecture"
             imageOff="icons/full/overview/pa/physicalarchitecture_overview_off.png"
             imageOn="icons/full/overview/pa/physicalarchitecture_overview_on.png"
-            index="4"
+            index="5"
             tabName="%physicalArchitecturePage"
             title="%physicalArchitecturePage"
             viewer="true">
@@ -1048,7 +1048,7 @@
             id="org.polarsys.capella.core.explorer.activity.ui.page.epbs"
             imageOff="icons/full/overview/epbs/epbs_overview_off.png"
             imageOn="icons/full/overview/epbs/epbs_overview_on.png"
-            index="5"
+            index="6"
             tabName="%epbsPage"
             title="%epbsPage"
             viewer="true">
