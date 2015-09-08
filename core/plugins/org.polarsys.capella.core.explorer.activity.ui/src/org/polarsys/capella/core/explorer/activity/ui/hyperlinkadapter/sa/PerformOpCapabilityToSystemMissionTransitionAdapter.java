@@ -32,7 +32,7 @@ import org.polarsys.capella.core.transition.system.topdown.ui.actions.OC2SMTrans
 public class PerformOpCapabilityToSystemMissionTransitionAdapter extends AbstractHyperlinkAdapter {
 
 	public PerformOpCapabilityToSystemMissionTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 

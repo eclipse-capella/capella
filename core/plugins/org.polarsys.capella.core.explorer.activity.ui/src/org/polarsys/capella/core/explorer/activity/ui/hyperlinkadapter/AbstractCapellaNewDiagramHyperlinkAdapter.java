@@ -12,7 +12,6 @@ package org.polarsys.capella.core.explorer.activity.ui.hyperlinkadapter;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.hyperlinkadapter.AbstractNewDiagramHyperlinkAdapter;
 import org.eclipse.amalgam.explorer.activity.ui.api.manager.ActivityExplorerManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.ui.forms.events.HyperlinkEvent;
@@ -21,21 +20,18 @@ import org.polarsys.capella.core.data.capellamodeller.Project;
 public abstract class AbstractCapellaNewDiagramHyperlinkAdapter extends AbstractNewDiagramHyperlinkAdapter {
 
 
-	private Session _session;
-
 	public AbstractCapellaNewDiagramHyperlinkAdapter() {
-		super(getCapellaProject(), ActivityExplorerManager.INSTANCE.getSession());
-		_session = ActivityExplorerManager.INSTANCE.getSession();
+		super(getCapellaProject());
 	}
 
 	@Override
 	public void linkActivated(HyperlinkEvent event) {
 
-		RefreshEditorsPrecommitListener repl = _session.getRefreshEditorsListener();
+		RefreshEditorsPrecommitListener repl = ActivityExplorerManager.INSTANCE.getSession().getRefreshEditorsListener();
 		repl.notify(SessionListener.REPRESENTATION_CHANGE);
 		repl.notify(SessionListener.SEMANTIC_CHANGE);
 
-		linkPressed(event, getModelElement(_root), _session);
+		linkPressed(event, getModelElement(_root), ActivityExplorerManager.INSTANCE.getSession());
 	}
 
 

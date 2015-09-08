@@ -32,7 +32,7 @@ public class PerformAutomatedTransitionAdapter extends AbstractHyperlinkAdapter 
 	 * @param session
 	 */
 	public PerformAutomatedTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

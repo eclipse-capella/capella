@@ -31,7 +31,7 @@ public class PerformAutomatedTransitionOfSystemAdapter extends AbstractHyperlink
 	 * @param session
 	 */
 	public PerformAutomatedTransitionOfSystemAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

@@ -28,11 +28,9 @@ import org.polarsys.capella.core.refinement.commands.ScenarioRefinementCommand;
 public class ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter extends AbstractHyperlinkAdapter {
 	/**
 	 * Constructor.
-	 * @param rootSemanticModel
-	 * @param session
 	 */
 	public ExecuteLogicalScenarioRefinementToCapabilityScenarioAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

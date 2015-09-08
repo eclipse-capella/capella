@@ -33,7 +33,7 @@ public class PhysicalFunctionsLogicalFunctionsAction extends AbstractCapellaActi
 
 	@Override
 	protected void doRun(ModelElement modelElement, Session session) {
-		new AbstractNewDiagramHyperlinkAdapter(modelElement, session) {
+		new AbstractNewDiagramHyperlinkAdapter(modelElement) {
 
 			@Override
 			public String getRepresentationName() {

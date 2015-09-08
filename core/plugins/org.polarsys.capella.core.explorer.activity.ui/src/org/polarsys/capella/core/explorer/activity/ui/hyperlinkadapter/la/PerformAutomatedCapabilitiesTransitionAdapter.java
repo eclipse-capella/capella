@@ -38,7 +38,7 @@ public class PerformAutomatedCapabilitiesTransitionAdapter extends AbstractHyper
 	 * @param session
 	 */
 	public PerformAutomatedCapabilitiesTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 		BlockArchitecture sourceArchitecture = ModelQueryHelper.getSystemAnalysis((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 		blockType = BlockArchitectureExt.getBlockArchitectureType(sourceArchitecture);
 	}

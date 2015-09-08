@@ -32,7 +32,7 @@ public class PerformAutomatedTransitionOfLogicalComponentsAdapter extends Abstra
 	 * @param session
 	 */
 	public PerformAutomatedTransitionOfLogicalComponentsAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

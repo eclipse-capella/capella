@@ -29,7 +29,7 @@ public class PerformAutomatedTransitionAdapter extends AbstractHyperlinkAdapter 
 
 
 	public PerformAutomatedTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 

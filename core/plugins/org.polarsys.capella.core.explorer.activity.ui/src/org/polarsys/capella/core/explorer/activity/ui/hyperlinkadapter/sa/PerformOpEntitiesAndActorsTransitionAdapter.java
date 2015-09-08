@@ -33,7 +33,7 @@ public class PerformOpEntitiesAndActorsTransitionAdapter extends AbstractHyperli
 
 
 	public PerformOpEntitiesAndActorsTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

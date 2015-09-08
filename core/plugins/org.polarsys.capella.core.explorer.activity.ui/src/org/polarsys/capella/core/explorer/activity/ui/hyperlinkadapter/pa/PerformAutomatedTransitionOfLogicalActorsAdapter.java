@@ -32,7 +32,7 @@ public class PerformAutomatedTransitionOfLogicalActorsAdapter extends AbstractHy
 	 * @param session
 	 */
 	public PerformAutomatedTransitionOfLogicalActorsAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

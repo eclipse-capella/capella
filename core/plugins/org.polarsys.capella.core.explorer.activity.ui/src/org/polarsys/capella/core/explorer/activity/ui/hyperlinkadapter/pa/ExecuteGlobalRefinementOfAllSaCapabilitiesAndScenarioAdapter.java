@@ -32,7 +32,7 @@ public class ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter extend
 	 * @param session
 	 */
 	public ExecuteGlobalRefinementOfAllSaCapabilitiesAndScenarioAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

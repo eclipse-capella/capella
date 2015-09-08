@@ -33,7 +33,7 @@ public class LogicalFunctionsSystemFunctionsAction extends AbstractCapellaAction
 
 	@Override
 	protected void doRun(ModelElement modelElement, Session session) {
-		new AbstractNewDiagramHyperlinkAdapter(modelElement, session) {
+		new AbstractNewDiagramHyperlinkAdapter(modelElement) {
 
 			@Override
 			public String getRepresentationName() {

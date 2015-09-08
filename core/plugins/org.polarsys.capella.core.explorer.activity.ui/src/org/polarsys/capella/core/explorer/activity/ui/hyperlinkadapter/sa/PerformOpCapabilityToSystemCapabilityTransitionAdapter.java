@@ -32,7 +32,7 @@ import org.polarsys.capella.core.transition.system.topdown.ui.actions.Capability
 public class PerformOpCapabilityToSystemCapabilityTransitionAdapter extends AbstractHyperlinkAdapter {
 
 	public PerformOpCapabilityToSystemCapabilityTransitionAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override

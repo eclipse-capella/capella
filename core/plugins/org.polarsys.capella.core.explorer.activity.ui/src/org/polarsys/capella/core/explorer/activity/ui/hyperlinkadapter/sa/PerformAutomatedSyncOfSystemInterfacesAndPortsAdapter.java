@@ -28,7 +28,7 @@ public class PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter extends Abstr
 	
 	
 	public PerformAutomatedSyncOfSystemInterfacesAndPortsAdapter() {
-		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel(), ActivityExplorerManager.INSTANCE.getSession());
+		super((Project) ActivityExplorerManager.INSTANCE.getRootSemanticModel());
 	}
 
 	@Override
