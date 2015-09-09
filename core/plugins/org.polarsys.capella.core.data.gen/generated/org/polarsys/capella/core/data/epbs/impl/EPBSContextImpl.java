@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.epbs.EpbsPackage;
  */
 public class EPBSContextImpl extends ComponentContextImpl implements EPBSContext {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected EPBSContextImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return EpbsPackage.Literals.EPBS_CONTEXT;
-  }
+		return EpbsPackage.Literals.EPBS_CONTEXT;
+	}
 
 
 

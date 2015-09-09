@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,15 +18,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
-import org.polarsys.capella.core.data.common.properties.Messages;
 import org.polarsys.capella.core.data.common.properties.fields.TimeEventKindGroup;
 import org.polarsys.capella.core.ui.properties.fields.AbstractSemanticField;
-import org.polarsys.capella.core.ui.properties.fields.TextValueGroup;
 
 public class TimeEventSection extends StateEventSection {
 
   private TimeEventKindGroup _kindGroup;
-  private TextValueGroup _valueGroup;
 
   /**
    * {@inheritDoc}
@@ -39,7 +36,6 @@ public class TimeEventSection extends StateEventSection {
     _kindGroup = new TimeEventKindGroup(_rootParentComposite, getWidgetFactory(), true);
     _kindGroup.setDisplayedInWizard(displayedInWizard);
 
-    _valueGroup = new TextValueGroup(_rootParentComposite, Messages.getString("TimeEvent.Time"), getWidgetFactory()); //$NON-NLS-1$
   }
 
   /**
@@ -52,7 +48,6 @@ public class TimeEventSection extends StateEventSection {
     fields.addAll(super.getSemanticFields());
 
     fields.add(_kindGroup);
-    fields.add(_valueGroup);
 
     return fields;
   }
@@ -64,7 +59,6 @@ public class TimeEventSection extends StateEventSection {
   public void loadData(CapellaElement capellaElement_p) {
     super.loadData(capellaElement_p);
     _kindGroup.loadData(capellaElement_p, CapellacommonPackage.Literals.TIME_EVENT__KIND);
-    _valueGroup.loadData(capellaElement_p, CapellacommonPackage.Literals.TIME_EVENT__TIME);
   }
 
   /**

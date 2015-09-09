@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,25 +19,25 @@ import org.polarsys.capella.core.data.capellacommon.StateEvent;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 import org.polarsys.capella.core.data.capellacore.Constraint;
 
-public class GetCurrent_TimeEvent_Guard extends AbstractQuery {
+public class GetCurrent_TimeEvent_Expression extends AbstractQuery {
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public List<Object> execute(Object input, IQueryContext context) {
-		CapellaElement capellaElement = (CapellaElement) input;
-		List<CapellaElement> currentElements = getCurrentElements(capellaElement, false);
-		return (List) currentElements;
-	}
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  @Override
+  public List<Object> execute(Object input, IQueryContext context) {
+    CapellaElement capellaElement = (CapellaElement) input;
+    List<CapellaElement> currentElements = getCurrentElements(capellaElement, false);
+    return (List) currentElements;
+  }
 
-	public List<CapellaElement> getCurrentElements(CapellaElement element_p, boolean onlyGenerated_p) {
-		List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
-		if (element_p instanceof StateEvent) {
-			Constraint condition = ((StateEvent) element_p).getCondition();
-			if (condition != null) {
-				currentElements.add(condition);
-			}
-		}
-		return currentElements;
-	}
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    List<CapellaElement> currentElements = new ArrayList<CapellaElement>();
+    if (element instanceof StateEvent) {
+      Constraint condition = ((StateEvent) element).getExpression();
+      if (condition != null) {
+        currentElements.add(condition);
+      }
+    }
+    return currentElements;
+  }
 
 }

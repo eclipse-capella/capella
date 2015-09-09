@@ -46,23 +46,23 @@ public interface Part extends Partition, InformationsExchanger, DeployableElemen
 
 
 	/**
-   * Returns the value of the '<em><b>Provided Interfaces</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
+	 * Returns the value of the '<em><b>Provided Interfaces</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Provided Interfaces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Provided Interfaces</em>' reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_ProvidedInterfaces()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='providedInterfaces'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(computed) the provided interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component exposes to its environment.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Provided Interfaces</em>' reference list.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_ProvidedInterfaces()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='providedInterfaces'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(computed) the provided interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component exposes to its environment.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<Interface> getProvidedInterfaces();
 
@@ -73,23 +73,23 @@ public interface Part extends Partition, InformationsExchanger, DeployableElemen
 
 
 	/**
-   * Returns the value of the '<em><b>Required Interfaces</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
+	 * Returns the value of the '<em><b>Required Interfaces</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Interface}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Required Interfaces</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Required Interfaces</em>' reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_RequiredInterfaces()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='requiredInterfaces'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(computed) the required interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component requires from other components in its environment in order to be able to offer\r\nits full set of provided functionality\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Required Interfaces</em>' reference list.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_RequiredInterfaces()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='requiredInterfaces'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(computed) the required interfaces associated to the classifier that this part represents\r\n[source: Capella study]\r\n\r\nThe interfaces that the component requires from other components in its environment in order to be able to offer\r\nits full set of provided functionality\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<Interface> getRequiredInterfaces();
 
@@ -100,22 +100,22 @@ public interface Part extends Partition, InformationsExchanger, DeployableElemen
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
+	 * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Deployment Links</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_OwnedDeploymentLinks()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Deployment relationships that are stored/owned under this part' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_OwnedDeploymentLinks()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Deployment relationships that are stored/owned under this part' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	EList<AbstractDeploymentLink> getOwnedDeploymentLinks();
 
@@ -126,21 +126,21 @@ public interface Part extends Partition, InformationsExchanger, DeployableElemen
 
 
 	/**
-   * Returns the value of the '<em><b>Deployed Parts</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.cs.Part}.
+	 * Returns the value of the '<em><b>Deployed Parts</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Part}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deployed Parts</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Deployed Parts</em>' reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_DeployedParts()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Deployed Parts</em>' reference list.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_DeployedParts()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<Part> getDeployedParts();
 
@@ -151,22 +151,22 @@ public interface Part extends Partition, InformationsExchanger, DeployableElemen
 
 
 	/**
-   * Returns the value of the '<em><b>Deploying Parts</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.cs.Part}.
+	 * Returns the value of the '<em><b>Deploying Parts</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.Part}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deploying Parts</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Deploying Parts</em>' reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_DeployingParts()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Deploying Parts</em>' reference list.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_DeployingParts()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<Part> getDeployingParts();
 
@@ -177,20 +177,20 @@ public interface Part extends Partition, InformationsExchanger, DeployableElemen
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Abstract Type</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Owned Abstract Type</b></em>' containment reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Abstract Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Abstract Type</em>' containment reference.
-   * @see #setOwnedAbstractType(AbstractType)
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_OwnedAbstractType()
-   * @model containment="true" resolveProxies="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Abstract Type</em>' containment reference.
+	 * @see #setOwnedAbstractType(AbstractType)
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getPart_OwnedAbstractType()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
 
 	AbstractType getOwnedAbstractType();
 
@@ -198,14 +198,14 @@ public interface Part extends Partition, InformationsExchanger, DeployableElemen
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Part#getOwnedAbstractType <em>Owned Abstract Type</em>}' containment reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.Part#getOwnedAbstractType <em>Owned Abstract Type</em>}' containment reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Owned Abstract Type</em>' containment reference.
-   * @see #getOwnedAbstractType()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Owned Abstract Type</em>' containment reference.
+	 * @see #getOwnedAbstractType()
+	 * @generated
+	 */
 
 	void setOwnedAbstractType(AbstractType value);
 

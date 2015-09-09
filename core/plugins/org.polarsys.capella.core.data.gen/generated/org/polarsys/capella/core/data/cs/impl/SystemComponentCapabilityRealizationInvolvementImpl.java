@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInv
  */
 public class SystemComponentCapabilityRealizationInvolvementImpl extends CapabilityRealizationInvolvementImpl implements SystemComponentCapabilityRealizationInvolvement {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemComponentCapabilityRealizationInvolvementImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CsPackage.Literals.SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT;
-  }
+		return CsPackage.Literals.SYSTEM_COMPONENT_CAPABILITY_REALIZATION_INVOLVEMENT;
+	}
 
 
 

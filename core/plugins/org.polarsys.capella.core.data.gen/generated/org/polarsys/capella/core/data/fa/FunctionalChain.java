@@ -58,23 +58,23 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Kind</b></em>' attribute.
-   * The literals are from the enumeration {@link org.polarsys.capella.core.data.fa.FunctionalChainKind}.
+	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.fa.FunctionalChainKind}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.fa.FunctionalChainKind
-   * @see #setKind(FunctionalChainKind)
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_Kind()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Defines the kind of this FunctionalChain' constraints='none' type='refer to FunctionalChainKind definition' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainKind
+	 * @see #setKind(FunctionalChainKind)
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_Kind()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Defines the kind of this FunctionalChain' constraints='none' type='refer to FunctionalChainKind definition' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	FunctionalChainKind getKind();
 
@@ -82,15 +82,15 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getKind <em>Kind</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.FunctionalChain#getKind <em>Kind</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.fa.FunctionalChainKind
-   * @see #getKind()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.fa.FunctionalChainKind
+	 * @see #getKind()
+	 * @generated
+	 */
 
 	void setKind(FunctionalChainKind value);
 
@@ -101,22 +101,22 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Functional Chain Involvements</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
+	 * Returns the value of the '<em><b>Owned Functional Chain Involvements</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Functional Chain Involvements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Functional Chain Involvements</em>' containment reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_OwnedFunctionalChainInvolvements()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of involvement relationships owned by this functional chain' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency::keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::NamedElement::clientDependency elements on which FunctionalChain stereotype or any stereotype that inherits from it is applied'"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Functional Chain Involvements</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_OwnedFunctionalChainInvolvements()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of involvement relationships owned by this functional chain' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency::keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::NamedElement::clientDependency elements on which FunctionalChain stereotype or any stereotype that inherits from it is applied'"
+	 * @generated
+	 */
 
 	EList<FunctionalChainInvolvement> getOwnedFunctionalChainInvolvements();
 
@@ -127,22 +127,22 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Functional Chain Realizations</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainRealization}.
+	 * Returns the value of the '<em><b>Owned Functional Chain Realizations</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainRealization}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Functional Chain Realizations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Functional Chain Realizations</em>' containment reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_OwnedFunctionalChainRealizations()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of realization relationships owned by this functional chain' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency::keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::NamedElement::clientDependency elements on which FunctionalChainInvolvement stereotype or any stereotype that inherits from it is applied'"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Functional Chain Realizations</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_OwnedFunctionalChainRealizations()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of realization relationships owned by this functional chain' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::clientDependency::keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='uml::NamedElement::clientDependency elements on which FunctionalChainInvolvement stereotype or any stereotype that inherits from it is applied'"
+	 * @generated
+	 */
 
 	EList<FunctionalChainRealization> getOwnedFunctionalChainRealizations();
 
@@ -153,22 +153,22 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Involved Functional Chain Involvements</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
+	 * Returns the value of the '<em><b>Involved Functional Chain Involvements</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved Functional Chain Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Involved Functional Chain Involvements</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctionalChainInvolvements()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of involvement relationships included in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Involved Functional Chain Involvements</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctionalChainInvolvements()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of involvement relationships included in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<FunctionalChainInvolvement> getInvolvedFunctionalChainInvolvements();
 
@@ -179,24 +179,24 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Involved Functions</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
-   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunction#getInvolvingFunctionalChains <em>Involving Functional Chains</em>}'.
+	 * Returns the value of the '<em><b>Involved Functions</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.AbstractFunction#getInvolvingFunctionalChains <em>Involving Functional Chains</em>}'.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Involved Functions</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctions()
-   * @see org.polarsys.capella.core.data.fa.AbstractFunction#getInvolvingFunctionalChains
-   * @model opposite="involvingFunctionalChains" transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Involved Functions</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctions()
+	 * @see org.polarsys.capella.core.data.fa.AbstractFunction#getInvolvingFunctionalChains
+	 * @model opposite="involvingFunctionalChains" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<AbstractFunction> getInvolvedFunctions();
 
@@ -207,24 +207,24 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Involved Functional Exchanges</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
-   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getInvolvingFunctionalChains <em>Involving Functional Chains</em>}'.
+	 * Returns the value of the '<em><b>Involved Functional Exchanges</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalExchange}.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.FunctionalExchange#getInvolvingFunctionalChains <em>Involving Functional Chains</em>}'.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved Functional Exchanges</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Involved Functional Exchanges</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctionalExchanges()
-   * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getInvolvingFunctionalChains
-   * @model opposite="involvingFunctionalChains" transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functional exchanges involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Involved Functional Exchanges</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedFunctionalExchanges()
+	 * @see org.polarsys.capella.core.data.fa.FunctionalExchange#getInvolvingFunctionalChains
+	 * @model opposite="involvingFunctionalChains" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functional exchanges involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<FunctionalExchange> getInvolvedFunctionalExchanges();
 
@@ -235,22 +235,22 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Involved Elements</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.InvolvedElement}.
+	 * Returns the value of the '<em><b>Involved Elements</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.InvolvedElement}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involved Elements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Involved Elements</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedElements()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of model elements involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Involved Elements</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvedElements()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the list of model elements involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<InvolvedElement> getInvolvedElements();
 
@@ -261,22 +261,22 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Enacted Functions</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
+	 * Returns the value of the '<em><b>Enacted Functions</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunction}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Enacted Functions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Enacted Functions</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_EnactedFunctions()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Enacted Functions</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_EnactedFunctions()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functions involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<AbstractFunction> getEnactedFunctions();
 
@@ -287,22 +287,22 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Enacted Functional Blocks</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock}.
+	 * Returns the value of the '<em><b>Enacted Functional Blocks</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.AbstractFunctionalBlock}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Enacted Functional Blocks</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Enacted Functional Blocks</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_EnactedFunctionalBlocks()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functional blocks involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Enacted Functional Blocks</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_EnactedFunctionalBlocks()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the functional blocks involved in this functional chain\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<AbstractFunctionalBlock> getEnactedFunctionalBlocks();
 
@@ -313,21 +313,21 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Available In States</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.State}.
+	 * Returns the value of the '<em><b>Available In States</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacommon.State}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Available In States</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Available In States</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_AvailableInStates()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of (system) states in which this functional chain is actually available\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Available In States</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_AvailableInStates()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the list of (system) states in which this functional chain is actually available\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	EList<State> getAvailableInStates();
 
@@ -338,21 +338,21 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>First Functional Chain Involvements</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
+	 * Returns the value of the '<em><b>First Functional Chain Involvements</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChainInvolvement}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>First Functional Chain Involvements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>First Functional Chain Involvements</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_FirstFunctionalChainInvolvements()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>First Functional Chain Involvements</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_FirstFunctionalChainInvolvements()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<FunctionalChainInvolvement> getFirstFunctionalChainInvolvements();
 
@@ -363,23 +363,23 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Involving Capabilities</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
+	 * Returns the value of the '<em><b>Involving Capabilities</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Capability}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involving Capabilities</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Involving Capabilities</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvingCapabilities()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-   * @generated
-   */
+	 * @return the value of the '<em>Involving Capabilities</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvingCapabilities()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 * @generated
+	 */
 
 	EList<Capability> getInvolvingCapabilities();
 
@@ -390,23 +390,23 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Involving Capability Realizations</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
+	 * Returns the value of the '<em><b>Involving Capability Realizations</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.la.CapabilityRealization}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Involving Capability Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Involving Capability Realizations</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvingCapabilityRealizations()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-   * @generated
-   */
+	 * @return the value of the '<em>Involving Capability Realizations</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_InvolvingCapabilityRealizations()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 * @generated
+	 */
 
 	EList<CapabilityRealization> getInvolvingCapabilityRealizations();
 
@@ -417,21 +417,21 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Realized Functional Chains</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
+	 * Returns the value of the '<em><b>Realized Functional Chains</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realized Functional Chains</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Realized Functional Chains</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_RealizedFunctionalChains()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Realized Functional Chains</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_RealizedFunctionalChains()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<FunctionalChain> getRealizedFunctionalChains();
 
@@ -442,22 +442,22 @@ public interface FunctionalChain extends NamedElement, InvolverElement, Involved
 
 
 	/**
-   * Returns the value of the '<em><b>Realizing Functional Chains</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
+	 * Returns the value of the '<em><b>Realizing Functional Chains</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.FunctionalChain}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing Functional Chains</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Realizing Functional Chains</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_RealizingFunctionalChains()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Realizing Functional Chains</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getFunctionalChain_RealizingFunctionalChains()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<FunctionalChain> getRealizingFunctionalChains();
 

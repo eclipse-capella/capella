@@ -64,13 +64,13 @@ import org.polarsys.capella.common.re.RePackage;
 public class CatalogElementImpl extends ReDescriptionElementImpl implements CatalogElement {
 
 	/**
-   * The cached value of the '{@link #getOwnedElements() <em>Owned Elements</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedElements() <em>Owned Elements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedElements()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedElements()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<CatalogElement> ownedElements;
 
 
@@ -78,23 +78,23 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final CatalogElementKind KIND_EDEFAULT = CatalogElementKind.REC;
 
 	/**
-   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
 	protected CatalogElementKind kind = KIND_EDEFAULT;
 
 
@@ -102,23 +102,23 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The default value of the '{@link #getAuthor() <em>Author</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getAuthor() <em>Author</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getAuthor()
-   * @generated
-   * @ordered
-   */
+	 * @see #getAuthor()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String AUTHOR_EDEFAULT = null;
 
 	/**
-   * The cached value of the '{@link #getAuthor() <em>Author</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getAuthor() <em>Author</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getAuthor()
-   * @generated
-   * @ordered
-   */
+	 * @see #getAuthor()
+	 * @generated
+	 * @ordered
+	 */
 	protected String author = AUTHOR_EDEFAULT;
 
 
@@ -126,23 +126,23 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The default value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getEnvironment()
-   * @generated
-   * @ordered
-   */
+	 * @see #getEnvironment()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String ENVIRONMENT_EDEFAULT = null;
 
 	/**
-   * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getEnvironment()
-   * @generated
-   * @ordered
-   */
+	 * @see #getEnvironment()
+	 * @generated
+	 * @ordered
+	 */
 	protected String environment = ENVIRONMENT_EDEFAULT;
 
 
@@ -150,13 +150,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The default value of the '{@link #getSuffix() <em>Suffix</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getSuffix() <em>Suffix</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSuffix()
-   * @generated
-   * @ordered
-   */
+	 * @see #getSuffix()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String SUFFIX_EDEFAULT = null;
 
 
@@ -164,13 +164,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
   /**
-   * The cached value of the '{@link #getSuffix() <em>Suffix</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getSuffix() <em>Suffix</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSuffix()
-   * @generated
-   * @ordered
-   */
+	 * @see #getSuffix()
+	 * @generated
+	 * @ordered
+	 */
   protected String suffix = SUFFIX_EDEFAULT;
 
 
@@ -178,13 +178,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
   /**
-   * The default value of the '{@link #getPurpose() <em>Purpose</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getPurpose() <em>Purpose</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getPurpose()
-   * @generated
-   * @ordered
-   */
+	 * @see #getPurpose()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String PURPOSE_EDEFAULT = null;
 
 
@@ -192,13 +192,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The cached value of the '{@link #getPurpose() <em>Purpose</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getPurpose() <em>Purpose</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getPurpose()
-   * @generated
-   * @ordered
-   */
+	 * @see #getPurpose()
+	 * @generated
+	 * @ordered
+	 */
 	protected String purpose = PURPOSE_EDEFAULT;
 
 
@@ -206,13 +206,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The cached value of the '{@link #getTags() <em>Tags</em>}' attribute list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTags() <em>Tags</em>}' attribute list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getTags()
-   * @generated
-   * @ordered
-   */
+	 * @see #getTags()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<String> tags;
 
 
@@ -220,13 +220,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The cached value of the '{@link #getOrigin() <em>Origin</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOrigin() <em>Origin</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOrigin()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOrigin()
+	 * @generated
+	 * @ordered
+	 */
 	protected CatalogElement origin;
 
 
@@ -234,13 +234,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The cached value of the '{@link #getCurrentCompliancy() <em>Current Compliancy</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getCurrentCompliancy() <em>Current Compliancy</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getCurrentCompliancy()
-   * @generated
-   * @ordered
-   */
+	 * @see #getCurrentCompliancy()
+	 * @generated
+	 * @ordered
+	 */
 	protected CompliancyDefinition currentCompliancy;
 
 
@@ -248,13 +248,13 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The cached value of the '{@link #getDefaultReplicaCompliancy() <em>Default Replica Compliancy</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getDefaultReplicaCompliancy() <em>Default Replica Compliancy</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getDefaultReplicaCompliancy()
-   * @generated
-   * @ordered
-   */
+	 * @see #getDefaultReplicaCompliancy()
+	 * @generated
+	 * @ordered
+	 */
 	protected CompliancyDefinition defaultReplicaCompliancy;
 
 
@@ -262,87 +262,87 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * The cached value of the '{@link #getOwnedLinks() <em>Owned Links</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedLinks() <em>Owned Links</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedLinks()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedLinks()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<CatalogElementLink> ownedLinks;
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected CatalogElementImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return RePackage.Literals.CATALOG_ELEMENT;
-  }
+		return RePackage.Literals.CATALOG_ELEMENT;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CatalogElement> getOwnedElements() {
 
-    if (ownedElements == null) {
-      ownedElements = new EObjectContainmentEList.Resolving<CatalogElement>(CatalogElement.class, this, RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS);
-    }
-    return ownedElements;
-  }
+		if (ownedElements == null) {
+			ownedElements = new EObjectContainmentEList.Resolving<CatalogElement>(CatalogElement.class, this, RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS);
+		}
+		return ownedElements;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CatalogElementKind getKind() {
 
-    return kind;
-  }
+		return kind;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setKind(CatalogElementKind newKind) {
 
-    CatalogElementKind oldKind = kind;
-    kind = newKind == null ? KIND_EDEFAULT : newKind;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__KIND, oldKind, kind));
+		CatalogElementKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__KIND, oldKind, kind));
 
-  }
+	}
 
 
 
@@ -350,31 +350,31 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public String getAuthor() {
 
-    return author;
-  }
+		return author;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setAuthor(String newAuthor) {
 
-    String oldAuthor = author;
-    author = newAuthor;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__AUTHOR, oldAuthor, author));
+		String oldAuthor = author;
+		author = newAuthor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__AUTHOR, oldAuthor, author));
 
-  }
+	}
 
 
 
@@ -382,31 +382,31 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public String getEnvironment() {
 
-    return environment;
-  }
+		return environment;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setEnvironment(String newEnvironment) {
 
-    String oldEnvironment = environment;
-    environment = newEnvironment;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__ENVIRONMENT, oldEnvironment, environment));
+		String oldEnvironment = environment;
+		environment = newEnvironment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__ENVIRONMENT, oldEnvironment, environment));
 
-  }
+	}
 
 
 
@@ -414,122 +414,122 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
   public String getSuffix() {
 
-    return suffix;
-  }
+		return suffix;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
   public void setSuffix(String newSuffix) {
 
-    String oldSuffix = suffix;
-    suffix = newSuffix;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__SUFFIX, oldSuffix, suffix));
+		String oldSuffix = suffix;
+		suffix = newSuffix;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__SUFFIX, oldSuffix, suffix));
 
-  }
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public String getPurpose() {
 
-    return purpose;
-  }
+		return purpose;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setPurpose(String newPurpose) {
 
-    String oldPurpose = purpose;
-    purpose = newPurpose;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__PURPOSE, oldPurpose, purpose));
+		String oldPurpose = purpose;
+		purpose = newPurpose;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__PURPOSE, oldPurpose, purpose));
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<String> getTags() {
 
-    if (tags == null) {
-      tags = new EDataTypeUniqueEList<String>(String.class, this, RePackage.CATALOG_ELEMENT__TAGS);
-    }
-    return tags;
-  }
+		if (tags == null) {
+			tags = new EDataTypeUniqueEList<String>(String.class, this, RePackage.CATALOG_ELEMENT__TAGS);
+		}
+		return tags;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CatalogElement getOrigin() {
 
-    if (origin != null && origin.eIsProxy()) {
-      InternalEObject oldOrigin = (InternalEObject)origin;
-      origin = (CatalogElement)eResolveProxy(oldOrigin);
-      if (origin != oldOrigin) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT__ORIGIN, oldOrigin, origin));
-      }
-    }
-    return origin;
-  }
+		if (origin != null && origin.eIsProxy()) {
+			InternalEObject oldOrigin = (InternalEObject)origin;
+			origin = (CatalogElement)eResolveProxy(oldOrigin);
+			if (origin != oldOrigin) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT__ORIGIN, oldOrigin, origin));
+			}
+		}
+		return origin;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CatalogElement basicGetOrigin() {
 
-    return origin;
-  }
+		return origin;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setOrigin(CatalogElement newOrigin) {
 
-    CatalogElement oldOrigin = origin;
-    origin = newOrigin;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__ORIGIN, oldOrigin, origin));
+		CatalogElement oldOrigin = origin;
+		origin = newOrigin;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__ORIGIN, oldOrigin, origin));
 
-  }
+	}
 
 
 
@@ -537,52 +537,52 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CompliancyDefinition getCurrentCompliancy() {
 
-    if (currentCompliancy != null && currentCompliancy.eIsProxy()) {
-      InternalEObject oldCurrentCompliancy = (InternalEObject)currentCompliancy;
-      currentCompliancy = (CompliancyDefinition)eResolveProxy(oldCurrentCompliancy);
-      if (currentCompliancy != oldCurrentCompliancy) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY, oldCurrentCompliancy, currentCompliancy));
-      }
-    }
-    return currentCompliancy;
-  }
+		if (currentCompliancy != null && currentCompliancy.eIsProxy()) {
+			InternalEObject oldCurrentCompliancy = (InternalEObject)currentCompliancy;
+			currentCompliancy = (CompliancyDefinition)eResolveProxy(oldCurrentCompliancy);
+			if (currentCompliancy != oldCurrentCompliancy) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY, oldCurrentCompliancy, currentCompliancy));
+			}
+		}
+		return currentCompliancy;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CompliancyDefinition basicGetCurrentCompliancy() {
 
-    return currentCompliancy;
-  }
+		return currentCompliancy;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setCurrentCompliancy(CompliancyDefinition newCurrentCompliancy) {
 
-    CompliancyDefinition oldCurrentCompliancy = currentCompliancy;
-    currentCompliancy = newCurrentCompliancy;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY, oldCurrentCompliancy, currentCompliancy));
+		CompliancyDefinition oldCurrentCompliancy = currentCompliancy;
+		currentCompliancy = newCurrentCompliancy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY, oldCurrentCompliancy, currentCompliancy));
 
-  }
+	}
 
 
 
@@ -590,52 +590,52 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CompliancyDefinition getDefaultReplicaCompliancy() {
 
-    if (defaultReplicaCompliancy != null && defaultReplicaCompliancy.eIsProxy()) {
-      InternalEObject oldDefaultReplicaCompliancy = (InternalEObject)defaultReplicaCompliancy;
-      defaultReplicaCompliancy = (CompliancyDefinition)eResolveProxy(oldDefaultReplicaCompliancy);
-      if (defaultReplicaCompliancy != oldDefaultReplicaCompliancy) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY, oldDefaultReplicaCompliancy, defaultReplicaCompliancy));
-      }
-    }
-    return defaultReplicaCompliancy;
-  }
+		if (defaultReplicaCompliancy != null && defaultReplicaCompliancy.eIsProxy()) {
+			InternalEObject oldDefaultReplicaCompliancy = (InternalEObject)defaultReplicaCompliancy;
+			defaultReplicaCompliancy = (CompliancyDefinition)eResolveProxy(oldDefaultReplicaCompliancy);
+			if (defaultReplicaCompliancy != oldDefaultReplicaCompliancy) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY, oldDefaultReplicaCompliancy, defaultReplicaCompliancy));
+			}
+		}
+		return defaultReplicaCompliancy;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CompliancyDefinition basicGetDefaultReplicaCompliancy() {
 
-    return defaultReplicaCompliancy;
-  }
+		return defaultReplicaCompliancy;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setDefaultReplicaCompliancy(CompliancyDefinition newDefaultReplicaCompliancy) {
 
-    CompliancyDefinition oldDefaultReplicaCompliancy = defaultReplicaCompliancy;
-    defaultReplicaCompliancy = newDefaultReplicaCompliancy;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY, oldDefaultReplicaCompliancy, defaultReplicaCompliancy));
+		CompliancyDefinition oldDefaultReplicaCompliancy = defaultReplicaCompliancy;
+		defaultReplicaCompliancy = newDefaultReplicaCompliancy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY, oldDefaultReplicaCompliancy, defaultReplicaCompliancy));
 
-  }
+	}
 
 
 
@@ -643,26 +643,26 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CatalogElementLink> getOwnedLinks() {
 
-    if (ownedLinks == null) {
-      ownedLinks = new EObjectContainmentEList.Resolving<CatalogElementLink>(CatalogElementLink.class, this, RePackage.CATALOG_ELEMENT__OWNED_LINKS);
-    }
-    return ownedLinks;
-  }
+		if (ownedLinks == null) {
+			ownedLinks = new EObjectContainmentEList.Resolving<CatalogElementLink>(CatalogElementLink.class, this, RePackage.CATALOG_ELEMENT__OWNED_LINKS);
+		}
+		return ownedLinks;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<EObject> getReferencedElements() {
 
@@ -689,23 +689,23 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
     // A helper is found, let's use it. 
     EAnnotation annotation = RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<EObject> resultAsList = (Collection<EObject>) result;
-    return new EcoreEList.UnmodifiableEList<EObject>(this, RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<EObject> resultAsList = (Collection<EObject>) result;
+		return new EcoreEList.UnmodifiableEList<EObject>(this, RePackage.Literals.CATALOG_ELEMENT__REFERENCED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CatalogElement> getReplicatedElements() {
 
@@ -732,316 +732,316 @@ public class CatalogElementImpl extends ReDescriptionElementImpl implements Cata
     // A helper is found, let's use it. 
     EAnnotation annotation = RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<CatalogElement> resultAsList = (Collection<CatalogElement>) result;
-    return new EcoreEList.UnmodifiableEList<CatalogElement>(this, RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CatalogElement> resultAsList = (Collection<CatalogElement>) result;
+		return new EcoreEList.UnmodifiableEList<CatalogElement>(this, RePackage.Literals.CATALOG_ELEMENT__REPLICATED_ELEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
-        return ((InternalEList<?>)getOwnedElements()).basicRemove(otherEnd, msgs);
-      case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
-        return ((InternalEList<?>)getOwnedLinks()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
+				return ((InternalEList<?>)getOwnedElements()).basicRemove(otherEnd, msgs);
+			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
+				return ((InternalEList<?>)getOwnedLinks()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
-        return getOwnedElements();
-      case RePackage.CATALOG_ELEMENT__KIND:
-        return getKind();
-      case RePackage.CATALOG_ELEMENT__AUTHOR:
-        return getAuthor();
-      case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
-        return getEnvironment();
-      case RePackage.CATALOG_ELEMENT__SUFFIX:
-        return getSuffix();
-      case RePackage.CATALOG_ELEMENT__PURPOSE:
-        return getPurpose();
-      case RePackage.CATALOG_ELEMENT__TAGS:
-        return getTags();
-      case RePackage.CATALOG_ELEMENT__ORIGIN:
-        if (resolve) return getOrigin();
-        return basicGetOrigin();
-      case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
-        if (resolve) return getCurrentCompliancy();
-        return basicGetCurrentCompliancy();
-      case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
-        if (resolve) return getDefaultReplicaCompliancy();
-        return basicGetDefaultReplicaCompliancy();
-      case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
-        return getOwnedLinks();
-      case RePackage.CATALOG_ELEMENT__REFERENCED_ELEMENTS:
-        return getReferencedElements();
-      case RePackage.CATALOG_ELEMENT__REPLICATED_ELEMENTS:
-        return getReplicatedElements();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
+				return getOwnedElements();
+			case RePackage.CATALOG_ELEMENT__KIND:
+				return getKind();
+			case RePackage.CATALOG_ELEMENT__AUTHOR:
+				return getAuthor();
+			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
+				return getEnvironment();
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				return getSuffix();
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				return getPurpose();
+			case RePackage.CATALOG_ELEMENT__TAGS:
+				return getTags();
+			case RePackage.CATALOG_ELEMENT__ORIGIN:
+				if (resolve) return getOrigin();
+				return basicGetOrigin();
+			case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
+				if (resolve) return getCurrentCompliancy();
+				return basicGetCurrentCompliancy();
+			case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
+				if (resolve) return getDefaultReplicaCompliancy();
+				return basicGetDefaultReplicaCompliancy();
+			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
+				return getOwnedLinks();
+			case RePackage.CATALOG_ELEMENT__REFERENCED_ELEMENTS:
+				return getReferencedElements();
+			case RePackage.CATALOG_ELEMENT__REPLICATED_ELEMENTS:
+				return getReplicatedElements();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
-        getOwnedElements().clear();
-        getOwnedElements().addAll((Collection<? extends CatalogElement>)newValue);
-        return;
-      case RePackage.CATALOG_ELEMENT__KIND:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof CatalogElementKind) {
-        // end-extension-code
-          setKind((CatalogElementKind)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__AUTHOR:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof String) {
-        // end-extension-code
-          setAuthor((String)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof String) {
-        // end-extension-code
-          setEnvironment((String)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__SUFFIX:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof String) {
-        // end-extension-code
-          setSuffix((String)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__PURPOSE:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof String) {
-        // end-extension-code
-          setPurpose((String)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__TAGS:
-        getTags().clear();
-        getTags().addAll((Collection<? extends String>)newValue);
-        return;
-      case RePackage.CATALOG_ELEMENT__ORIGIN:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof CatalogElement) {
-        // end-extension-code
-          setOrigin((CatalogElement)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof CompliancyDefinition) {
-        // end-extension-code
-          setCurrentCompliancy((CompliancyDefinition)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof CompliancyDefinition) {
-        // end-extension-code
-          setDefaultReplicaCompliancy((CompliancyDefinition)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
-        getOwnedLinks().clear();
-        getOwnedLinks().addAll((Collection<? extends CatalogElementLink>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
+				getOwnedElements().clear();
+				getOwnedElements().addAll((Collection<? extends CatalogElement>)newValue);
+				return;
+			case RePackage.CATALOG_ELEMENT__KIND:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof CatalogElementKind) {
+				// end-extension-code
+					setKind((CatalogElementKind)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__AUTHOR:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setAuthor((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setEnvironment((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setSuffix((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setPurpose((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__TAGS:
+				getTags().clear();
+				getTags().addAll((Collection<? extends String>)newValue);
+				return;
+			case RePackage.CATALOG_ELEMENT__ORIGIN:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof CatalogElement) {
+				// end-extension-code
+					setOrigin((CatalogElement)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof CompliancyDefinition) {
+				// end-extension-code
+					setCurrentCompliancy((CompliancyDefinition)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof CompliancyDefinition) {
+				// end-extension-code
+					setDefaultReplicaCompliancy((CompliancyDefinition)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
+				getOwnedLinks().clear();
+				getOwnedLinks().addAll((Collection<? extends CatalogElementLink>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
-        getOwnedElements().clear();
-        return;
-      case RePackage.CATALOG_ELEMENT__KIND:
-        setKind(KIND_EDEFAULT);
-        return;
-      case RePackage.CATALOG_ELEMENT__AUTHOR:
-        setAuthor(AUTHOR_EDEFAULT);
-        return;
-      case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
-        setEnvironment(ENVIRONMENT_EDEFAULT);
-        return;
-      case RePackage.CATALOG_ELEMENT__SUFFIX:
-        setSuffix(SUFFIX_EDEFAULT);
-        return;
-      case RePackage.CATALOG_ELEMENT__PURPOSE:
-        setPurpose(PURPOSE_EDEFAULT);
-        return;
-      case RePackage.CATALOG_ELEMENT__TAGS:
-        getTags().clear();
-        return;
-      case RePackage.CATALOG_ELEMENT__ORIGIN:
-        setOrigin((CatalogElement)null);
-        return;
-      case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
-        setCurrentCompliancy((CompliancyDefinition)null);
-        return;
-      case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
-        setDefaultReplicaCompliancy((CompliancyDefinition)null);
-        return;
-      case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
-        getOwnedLinks().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
+				getOwnedElements().clear();
+				return;
+			case RePackage.CATALOG_ELEMENT__KIND:
+				setKind(KIND_EDEFAULT);
+				return;
+			case RePackage.CATALOG_ELEMENT__AUTHOR:
+				setAuthor(AUTHOR_EDEFAULT);
+				return;
+			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
+				setEnvironment(ENVIRONMENT_EDEFAULT);
+				return;
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				setSuffix(SUFFIX_EDEFAULT);
+				return;
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				setPurpose(PURPOSE_EDEFAULT);
+				return;
+			case RePackage.CATALOG_ELEMENT__TAGS:
+				getTags().clear();
+				return;
+			case RePackage.CATALOG_ELEMENT__ORIGIN:
+				setOrigin((CatalogElement)null);
+				return;
+			case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
+				setCurrentCompliancy((CompliancyDefinition)null);
+				return;
+			case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
+				setDefaultReplicaCompliancy((CompliancyDefinition)null);
+				return;
+			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
+				getOwnedLinks().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
-        return ownedElements != null && !ownedElements.isEmpty();
-      case RePackage.CATALOG_ELEMENT__KIND:
-        return kind != KIND_EDEFAULT;
-      case RePackage.CATALOG_ELEMENT__AUTHOR:
-        return AUTHOR_EDEFAULT == null ? author != null : !AUTHOR_EDEFAULT.equals(author);
-      case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
-        return ENVIRONMENT_EDEFAULT == null ? environment != null : !ENVIRONMENT_EDEFAULT.equals(environment);
-      case RePackage.CATALOG_ELEMENT__SUFFIX:
-        return SUFFIX_EDEFAULT == null ? suffix != null : !SUFFIX_EDEFAULT.equals(suffix);
-      case RePackage.CATALOG_ELEMENT__PURPOSE:
-        return PURPOSE_EDEFAULT == null ? purpose != null : !PURPOSE_EDEFAULT.equals(purpose);
-      case RePackage.CATALOG_ELEMENT__TAGS:
-        return tags != null && !tags.isEmpty();
-      case RePackage.CATALOG_ELEMENT__ORIGIN:
-        return origin != null;
-      case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
-        return currentCompliancy != null;
-      case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
-        return defaultReplicaCompliancy != null;
-      case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
-        return ownedLinks != null && !ownedLinks.isEmpty();
-      case RePackage.CATALOG_ELEMENT__REFERENCED_ELEMENTS:
-        return !getReferencedElements().isEmpty();
-      case RePackage.CATALOG_ELEMENT__REPLICATED_ELEMENTS:
-        return !getReplicatedElements().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS:
+				return ownedElements != null && !ownedElements.isEmpty();
+			case RePackage.CATALOG_ELEMENT__KIND:
+				return kind != KIND_EDEFAULT;
+			case RePackage.CATALOG_ELEMENT__AUTHOR:
+				return AUTHOR_EDEFAULT == null ? author != null : !AUTHOR_EDEFAULT.equals(author);
+			case RePackage.CATALOG_ELEMENT__ENVIRONMENT:
+				return ENVIRONMENT_EDEFAULT == null ? environment != null : !ENVIRONMENT_EDEFAULT.equals(environment);
+			case RePackage.CATALOG_ELEMENT__SUFFIX:
+				return SUFFIX_EDEFAULT == null ? suffix != null : !SUFFIX_EDEFAULT.equals(suffix);
+			case RePackage.CATALOG_ELEMENT__PURPOSE:
+				return PURPOSE_EDEFAULT == null ? purpose != null : !PURPOSE_EDEFAULT.equals(purpose);
+			case RePackage.CATALOG_ELEMENT__TAGS:
+				return tags != null && !tags.isEmpty();
+			case RePackage.CATALOG_ELEMENT__ORIGIN:
+				return origin != null;
+			case RePackage.CATALOG_ELEMENT__CURRENT_COMPLIANCY:
+				return currentCompliancy != null;
+			case RePackage.CATALOG_ELEMENT__DEFAULT_REPLICA_COMPLIANCY:
+				return defaultReplicaCompliancy != null;
+			case RePackage.CATALOG_ELEMENT__OWNED_LINKS:
+				return ownedLinks != null && !ownedLinks.isEmpty();
+			case RePackage.CATALOG_ELEMENT__REFERENCED_ELEMENTS:
+				return !getReferencedElements().isEmpty();
+			case RePackage.CATALOG_ELEMENT__REPLICATED_ELEMENTS:
+				return !getReplicatedElements().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == ReElementContainer.class) {
-      switch (derivedFeatureID) {
-        case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS: return RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == ReElementContainer.class) {
+			switch (derivedFeatureID) {
+				case RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS: return RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == ReElementContainer.class) {
-      switch (baseFeatureID) {
-        case RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS: return RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == ReElementContainer.class) {
+			switch (baseFeatureID) {
+				case RePackage.RE_ELEMENT_CONTAINER__OWNED_ELEMENTS: return RePackage.CATALOG_ELEMENT__OWNED_ELEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (kind: "); //$NON-NLS-1$
-    result.append(kind);
-    result.append(", author: "); //$NON-NLS-1$
-    result.append(author);
-    result.append(", environment: "); //$NON-NLS-1$
-    result.append(environment);
-    result.append(", suffix: "); //$NON-NLS-1$
-    result.append(suffix);
-    result.append(", purpose: "); //$NON-NLS-1$
-    result.append(purpose);
-    result.append(", tags: "); //$NON-NLS-1$
-    result.append(tags);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (kind: "); //$NON-NLS-1$
+		result.append(kind);
+		result.append(", author: "); //$NON-NLS-1$
+		result.append(author);
+		result.append(", environment: "); //$NON-NLS-1$
+		result.append(environment);
+		result.append(", suffix: "); //$NON-NLS-1$
+		result.append(suffix);
+		result.append(", purpose: "); //$NON-NLS-1$
+		result.append(purpose);
+		result.append(", tags: "); //$NON-NLS-1$
+		result.append(tags);
+		result.append(')');
+		return result.toString();
+	}
 
 
 } //CatalogElementImpl

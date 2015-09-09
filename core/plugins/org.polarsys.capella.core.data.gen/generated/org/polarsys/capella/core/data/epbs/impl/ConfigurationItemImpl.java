@@ -56,23 +56,23 @@ import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
 public class ConfigurationItemImpl extends SystemComponentImpl implements ConfigurationItem {
 
 	/**
-   * The default value of the '{@link #getItemIdentifier() <em>Item Identifier</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getItemIdentifier() <em>Item Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getItemIdentifier()
-   * @generated
-   * @ordered
-   */
+	 * @see #getItemIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String ITEM_IDENTIFIER_EDEFAULT = null;
 
 	/**
-   * The cached value of the '{@link #getItemIdentifier() <em>Item Identifier</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getItemIdentifier() <em>Item Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getItemIdentifier()
-   * @generated
-   * @ordered
-   */
+	 * @see #getItemIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected String itemIdentifier = ITEM_IDENTIFIER_EDEFAULT;
 
 
@@ -80,23 +80,23 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 
 
 	/**
-   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final ConfigurationItemKind KIND_EDEFAULT = ConfigurationItemKind.UNSET;
 
 	/**
-   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
 	protected ConfigurationItemKind kind = KIND_EDEFAULT;
 
 
@@ -104,13 +104,13 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 
 
 	/**
-   * The cached value of the '{@link #getOwnedConfigurationItems() <em>Owned Configuration Items</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedConfigurationItems() <em>Owned Configuration Items</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedConfigurationItems()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedConfigurationItems()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ConfigurationItem> ownedConfigurationItems;
 
 
@@ -118,13 +118,13 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 
 
 	/**
-   * The cached value of the '{@link #getOwnedConfigurationItemPkgs() <em>Owned Configuration Item Pkgs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedConfigurationItemPkgs() <em>Owned Configuration Item Pkgs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedConfigurationItemPkgs()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedConfigurationItemPkgs()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ConfigurationItemPkg> ownedConfigurationItemPkgs;
 
 
@@ -132,13 +132,13 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 
 
 	/**
-   * The cached value of the '{@link #getOwnedPhysicalArtifactRealizations() <em>Owned Physical Artifact Realizations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedPhysicalArtifactRealizations() <em>Owned Physical Artifact Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedPhysicalArtifactRealizations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedPhysicalArtifactRealizations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<PhysicalArtifactRealization> ownedPhysicalArtifactRealizations;
 
 
@@ -149,56 +149,56 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ConfigurationItemImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return EpbsPackage.Literals.CONFIGURATION_ITEM;
-  }
+		return EpbsPackage.Literals.CONFIGURATION_ITEM;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public String getItemIdentifier() {
 
-    return itemIdentifier;
-  }
+		return itemIdentifier;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setItemIdentifier(String newItemIdentifier) {
 
-    String oldItemIdentifier = itemIdentifier;
-    itemIdentifier = newItemIdentifier;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER, oldItemIdentifier, itemIdentifier));
+		String oldItemIdentifier = itemIdentifier;
+		itemIdentifier = newItemIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER, oldItemIdentifier, itemIdentifier));
 
-  }
+	}
 
 
 
@@ -206,31 +206,31 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ConfigurationItemKind getKind() {
 
-    return kind;
-  }
+		return kind;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setKind(ConfigurationItemKind newKind) {
 
-    ConfigurationItemKind oldKind = kind;
-    kind = newKind == null ? KIND_EDEFAULT : newKind;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__KIND, oldKind, kind));
+		ConfigurationItemKind oldKind = kind;
+		kind = newKind == null ? KIND_EDEFAULT : newKind;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EpbsPackage.CONFIGURATION_ITEM__KIND, oldKind, kind));
 
-  }
+	}
 
 
 
@@ -238,64 +238,64 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ConfigurationItem> getOwnedConfigurationItems() {
 
-    if (ownedConfigurationItems == null) {
-      ownedConfigurationItems = new EObjectContainmentEList.Resolving<ConfigurationItem>(ConfigurationItem.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS);
-    }
-    return ownedConfigurationItems;
-  }
+		if (ownedConfigurationItems == null) {
+			ownedConfigurationItems = new EObjectContainmentEList.Resolving<ConfigurationItem>(ConfigurationItem.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS);
+		}
+		return ownedConfigurationItems;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ConfigurationItemPkg> getOwnedConfigurationItemPkgs() {
 
-    if (ownedConfigurationItemPkgs == null) {
-      ownedConfigurationItemPkgs = new EObjectContainmentEList.Resolving<ConfigurationItemPkg>(ConfigurationItemPkg.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS);
-    }
-    return ownedConfigurationItemPkgs;
-  }
+		if (ownedConfigurationItemPkgs == null) {
+			ownedConfigurationItemPkgs = new EObjectContainmentEList.Resolving<ConfigurationItemPkg>(ConfigurationItemPkg.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS);
+		}
+		return ownedConfigurationItemPkgs;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalArtifactRealization> getOwnedPhysicalArtifactRealizations() {
 
-    if (ownedPhysicalArtifactRealizations == null) {
-      ownedPhysicalArtifactRealizations = new EObjectContainmentEList.Resolving<PhysicalArtifactRealization>(PhysicalArtifactRealization.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
-    }
-    return ownedPhysicalArtifactRealizations;
-  }
+		if (ownedPhysicalArtifactRealizations == null) {
+			ownedPhysicalArtifactRealizations = new EObjectContainmentEList.Resolving<PhysicalArtifactRealization>(PhysicalArtifactRealization.class, this, EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS);
+		}
+		return ownedPhysicalArtifactRealizations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<AbstractPhysicalArtifact> getAllocatedPhysicalArtifacts() {
 
@@ -322,177 +322,177 @@ public class ConfigurationItemImpl extends SystemComponentImpl implements Config
     // A helper is found, let's use it. 
     EAnnotation annotation = EpbsPackage.Literals.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, EpbsPackage.Literals.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<AbstractPhysicalArtifact> resultAsList = (Collection<AbstractPhysicalArtifact>) result;
-    return new EcoreEList.UnmodifiableEList<AbstractPhysicalArtifact>(this, EpbsPackage.Literals.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractPhysicalArtifact> resultAsList = (Collection<AbstractPhysicalArtifact>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractPhysicalArtifact>(this, EpbsPackage.Literals.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
-        return ((InternalEList<?>)getOwnedConfigurationItems()).basicRemove(otherEnd, msgs);
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
-        return ((InternalEList<?>)getOwnedConfigurationItemPkgs()).basicRemove(otherEnd, msgs);
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
-        return ((InternalEList<?>)getOwnedPhysicalArtifactRealizations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
+				return ((InternalEList<?>)getOwnedConfigurationItems()).basicRemove(otherEnd, msgs);
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
+				return ((InternalEList<?>)getOwnedConfigurationItemPkgs()).basicRemove(otherEnd, msgs);
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedPhysicalArtifactRealizations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
-        return getItemIdentifier();
-      case EpbsPackage.CONFIGURATION_ITEM__KIND:
-        return getKind();
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
-        return getOwnedConfigurationItems();
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
-        return getOwnedConfigurationItemPkgs();
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
-        return getOwnedPhysicalArtifactRealizations();
-      case EpbsPackage.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS:
-        return getAllocatedPhysicalArtifacts();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
+				return getItemIdentifier();
+			case EpbsPackage.CONFIGURATION_ITEM__KIND:
+				return getKind();
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
+				return getOwnedConfigurationItems();
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
+				return getOwnedConfigurationItemPkgs();
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				return getOwnedPhysicalArtifactRealizations();
+			case EpbsPackage.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS:
+				return getAllocatedPhysicalArtifacts();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof String) {
-        // end-extension-code
-          setItemIdentifier((String)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__KIND:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof ConfigurationItemKind) {
-        // end-extension-code
-          setKind((ConfigurationItemKind)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
-        getOwnedConfigurationItems().clear();
-        getOwnedConfigurationItems().addAll((Collection<? extends ConfigurationItem>)newValue);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
-        getOwnedConfigurationItemPkgs().clear();
-        getOwnedConfigurationItemPkgs().addAll((Collection<? extends ConfigurationItemPkg>)newValue);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
-        getOwnedPhysicalArtifactRealizations().clear();
-        getOwnedPhysicalArtifactRealizations().addAll((Collection<? extends PhysicalArtifactRealization>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof String) {
+				// end-extension-code
+					setItemIdentifier((String)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__KIND:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof ConfigurationItemKind) {
+				// end-extension-code
+					setKind((ConfigurationItemKind)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
+				getOwnedConfigurationItems().clear();
+				getOwnedConfigurationItems().addAll((Collection<? extends ConfigurationItem>)newValue);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
+				getOwnedConfigurationItemPkgs().clear();
+				getOwnedConfigurationItemPkgs().addAll((Collection<? extends ConfigurationItemPkg>)newValue);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				getOwnedPhysicalArtifactRealizations().clear();
+				getOwnedPhysicalArtifactRealizations().addAll((Collection<? extends PhysicalArtifactRealization>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
-        setItemIdentifier(ITEM_IDENTIFIER_EDEFAULT);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__KIND:
-        setKind(KIND_EDEFAULT);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
-        getOwnedConfigurationItems().clear();
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
-        getOwnedConfigurationItemPkgs().clear();
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
-        getOwnedPhysicalArtifactRealizations().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
+				setItemIdentifier(ITEM_IDENTIFIER_EDEFAULT);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__KIND:
+				setKind(KIND_EDEFAULT);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
+				getOwnedConfigurationItems().clear();
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
+				getOwnedConfigurationItemPkgs().clear();
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				getOwnedPhysicalArtifactRealizations().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
-        return ITEM_IDENTIFIER_EDEFAULT == null ? itemIdentifier != null : !ITEM_IDENTIFIER_EDEFAULT.equals(itemIdentifier);
-      case EpbsPackage.CONFIGURATION_ITEM__KIND:
-        return kind != KIND_EDEFAULT;
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
-        return ownedConfigurationItems != null && !ownedConfigurationItems.isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
-        return ownedConfigurationItemPkgs != null && !ownedConfigurationItemPkgs.isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
-        return ownedPhysicalArtifactRealizations != null && !ownedPhysicalArtifactRealizations.isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS:
-        return !getAllocatedPhysicalArtifacts().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM__ITEM_IDENTIFIER:
+				return ITEM_IDENTIFIER_EDEFAULT == null ? itemIdentifier != null : !ITEM_IDENTIFIER_EDEFAULT.equals(itemIdentifier);
+			case EpbsPackage.CONFIGURATION_ITEM__KIND:
+				return kind != KIND_EDEFAULT;
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEMS:
+				return ownedConfigurationItems != null && !ownedConfigurationItems.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_CONFIGURATION_ITEM_PKGS:
+				return ownedConfigurationItemPkgs != null && !ownedConfigurationItemPkgs.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM__OWNED_PHYSICAL_ARTIFACT_REALIZATIONS:
+				return ownedPhysicalArtifactRealizations != null && !ownedPhysicalArtifactRealizations.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM__ALLOCATED_PHYSICAL_ARTIFACTS:
+				return !getAllocatedPhysicalArtifacts().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (itemIdentifier: "); //$NON-NLS-1$
-    result.append(itemIdentifier);
-    result.append(", kind: "); //$NON-NLS-1$
-    result.append(kind);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (itemIdentifier: "); //$NON-NLS-1$
+		result.append(itemIdentifier);
+		result.append(", kind: "); //$NON-NLS-1$
+		result.append(kind);
+		result.append(')');
+		return result.toString();
+	}
 
 
 } //ConfigurationItemImpl

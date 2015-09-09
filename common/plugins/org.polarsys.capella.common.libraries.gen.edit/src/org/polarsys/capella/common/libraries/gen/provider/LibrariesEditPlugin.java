@@ -16,6 +16,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.polarsys.kitalpha.emde.model.edit.provider.EmdeEditPlugin;
 
 /**
  * This is the central singleton for the Libraries edit plugin.
@@ -49,6 +50,7 @@ public final class LibrariesEditPlugin extends EMFPlugin {
 	public LibrariesEditPlugin() {
 		super
 		  (new ResourceLocator [] {
+		     EmdeEditPlugin.INSTANCE,
 		   });
 	}
 

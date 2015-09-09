@@ -47,48 +47,48 @@ public class CommunicationLinkAllocationImpl extends AllocationImpl implements C
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected CommunicationLinkAllocationImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION;
-  }
+		return CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CommunicationLink getAllocatingLink() {
 
-    CommunicationLink allocatingLink = basicGetAllocatingLink();
-    return allocatingLink != null && allocatingLink.eIsProxy() ? (CommunicationLink)eResolveProxy((InternalEObject)allocatingLink) : allocatingLink;
-  }
+		CommunicationLink allocatingLink = basicGetAllocatingLink();
+		return allocatingLink != null && allocatingLink.eIsProxy() ? (CommunicationLink)eResolveProxy((InternalEObject)allocatingLink) : allocatingLink;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CommunicationLink basicGetAllocatingLink() {
 
@@ -115,15 +115,15 @@ public class CommunicationLinkAllocationImpl extends AllocationImpl implements C
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK, annotation);
-    
-    try {
-      return (CommunicationLink) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (CommunicationLink) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -131,23 +131,23 @@ public class CommunicationLinkAllocationImpl extends AllocationImpl implements C
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CommunicationLink getAllocatedLink() {
 
-    CommunicationLink allocatedLink = basicGetAllocatedLink();
-    return allocatedLink != null && allocatedLink.eIsProxy() ? (CommunicationLink)eResolveProxy((InternalEObject)allocatedLink) : allocatedLink;
-  }
+		CommunicationLink allocatedLink = basicGetAllocatedLink();
+		return allocatedLink != null && allocatedLink.eIsProxy() ? (CommunicationLink)eResolveProxy((InternalEObject)allocatedLink) : allocatedLink;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public CommunicationLink basicGetAllocatedLink() {
 
@@ -174,53 +174,53 @@ public class CommunicationLinkAllocationImpl extends AllocationImpl implements C
     // A helper is found, let's use it. 
     EAnnotation annotation = CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CommunicationPackage.Literals.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK, annotation);
-    
-    try {
-      return (CommunicationLink) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (CommunicationLink) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK:
-        if (resolve) return getAllocatingLink();
-        return basicGetAllocatingLink();
-      case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK:
-        if (resolve) return getAllocatedLink();
-        return basicGetAllocatedLink();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK:
+				if (resolve) return getAllocatingLink();
+				return basicGetAllocatingLink();
+			case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK:
+				if (resolve) return getAllocatedLink();
+				return basicGetAllocatedLink();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK:
-        return basicGetAllocatingLink() != null;
-      case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK:
-        return basicGetAllocatedLink() != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATING_LINK:
+				return basicGetAllocatingLink() != null;
+			case CommunicationPackage.COMMUNICATION_LINK_ALLOCATION__ALLOCATED_LINK:
+				return basicGetAllocatedLink() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

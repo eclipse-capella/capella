@@ -29,7 +29,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.diffmerge.patterns.support;bundle-version="0.4.0",
  org.eclipse.emf.diffmerge.patterns.support.gen;bundle-version="0.4.0",
  org.polarsys.kitalpha.patterns.emde;bundle-version="0.8.0",
- org.polarsys.kitalpha.patterns.emde.gen;bundle-version="0.8.0"
+ org.polarsys.kitalpha.patterns.emde.gen;bundle-version="0.8.0",
+ org.polarsys.capella.core.model.helpers
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7

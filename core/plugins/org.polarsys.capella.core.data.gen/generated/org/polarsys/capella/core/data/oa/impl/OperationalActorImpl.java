@@ -44,35 +44,35 @@ public class OperationalActorImpl extends EntityImpl implements OperationalActor
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OperationalActorImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OaPackage.Literals.OPERATIONAL_ACTOR;
-  }
+		return OaPackage.Literals.OPERATIONAL_ACTOR;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Actor> getRealizingSystemActors() {
 
@@ -99,48 +99,48 @@ public class OperationalActorImpl extends EntityImpl implements OperationalActor
     // A helper is found, let's use it. 
     EAnnotation annotation = OaPackage.Literals.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, OaPackage.Literals.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Actor> resultAsList = (Collection<Actor>) result;
-    return new EcoreEList.UnmodifiableEList<Actor>(this, OaPackage.Literals.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Actor> resultAsList = (Collection<Actor>) result;
+		return new EcoreEList.UnmodifiableEList<Actor>(this, OaPackage.Literals.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case OaPackage.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS:
-        return getRealizingSystemActors();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case OaPackage.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS:
+				return getRealizingSystemActors();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case OaPackage.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS:
-        return !getRealizingSystemActors().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case OaPackage.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS:
+				return !getRealizingSystemActors().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

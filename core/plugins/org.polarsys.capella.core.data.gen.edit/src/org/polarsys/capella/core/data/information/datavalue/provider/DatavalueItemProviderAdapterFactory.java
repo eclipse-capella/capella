@@ -63,1363 +63,571 @@ import org.polarsys.kitalpha.emde.model.edit.provider.NewChildDescriptorHelper;
  */
 public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the root adapter factory that delegates to this adapter factory.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc -->
+	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-   * This helps manage the child creation extenders.
-   * <!-- begin-user-doc -->
+	 * This helps manage the child creation extenders.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(CapellaModellerEditPlugin.INSTANCE, DatavaluePackage.eNS_URI);
 
 	/**
-   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-   * <!-- begin-user-doc -->
+	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-   * This constructs an instance.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public DatavalueItemProviderAdapterFactory() {
-    supportedTypes.add(IEditingDomainItemProvider.class);
-    supportedTypes.add(IStructuredItemContentProvider.class);
-    supportedTypes.add(ITreeItemContentProvider.class);
-    supportedTypes.add(IItemLabelProvider.class);
-    supportedTypes.add(IItemPropertySource.class);
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected LiteralBooleanValueItemProvider literalBooleanValueItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createLiteralBooleanValueAdapter() {
-    if (literalBooleanValueItemProvider == null) {
-      literalBooleanValueItemProvider = new LiteralBooleanValueItemProvider(this);
-    }
-
-    return literalBooleanValueItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected BooleanReferenceItemProvider booleanReferenceItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createBooleanReferenceAdapter() {
-    if (booleanReferenceItemProvider == null) {
-      booleanReferenceItemProvider = new BooleanReferenceItemProvider(this);
-    }
-
-    return booleanReferenceItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected EnumerationLiteralItemProvider enumerationLiteralItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createEnumerationLiteralAdapter() {
-    if (enumerationLiteralItemProvider == null) {
-      enumerationLiteralItemProvider = new EnumerationLiteralItemProvider(this);
-    }
-
-    return enumerationLiteralItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected EnumerationReferenceItemProvider enumerationReferenceItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createEnumerationReferenceAdapter() {
-    if (enumerationReferenceItemProvider == null) {
-      enumerationReferenceItemProvider = new EnumerationReferenceItemProvider(this);
-    }
-
-    return enumerationReferenceItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected LiteralStringValueItemProvider literalStringValueItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createLiteralStringValueAdapter() {
-    if (literalStringValueItemProvider == null) {
-      literalStringValueItemProvider = new LiteralStringValueItemProvider(this);
-    }
-
-    return literalStringValueItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.StringReference} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected StringReferenceItemProvider stringReferenceItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.StringReference}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createStringReferenceAdapter() {
-    if (stringReferenceItemProvider == null) {
-      stringReferenceItemProvider = new StringReferenceItemProvider(this);
-    }
-
-    return stringReferenceItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected LiteralNumericValueItemProvider literalNumericValueItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createLiteralNumericValueAdapter() {
-    if (literalNumericValueItemProvider == null) {
-      literalNumericValueItemProvider = new LiteralNumericValueItemProvider(this);
-    }
-
-    return literalNumericValueItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.NumericReference} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected NumericReferenceItemProvider numericReferenceItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.NumericReference}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createNumericReferenceAdapter() {
-    if (numericReferenceItemProvider == null) {
-      numericReferenceItemProvider = new NumericReferenceItemProvider(this);
-    }
-
-    return numericReferenceItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected ComplexValueItemProvider complexValueItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createComplexValueAdapter() {
-    if (complexValueItemProvider == null) {
-      complexValueItemProvider = new ComplexValueItemProvider(this);
-    }
-
-    return complexValueItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected ComplexValueReferenceItemProvider complexValueReferenceItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createComplexValueReferenceAdapter() {
-    if (complexValueReferenceItemProvider == null) {
-      complexValueReferenceItemProvider = new ComplexValueReferenceItemProvider(this);
-    }
-
-    return complexValueReferenceItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ValuePart} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected ValuePartItemProvider valuePartItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ValuePart}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createValuePartAdapter() {
-    if (valuePartItemProvider == null) {
-      valuePartItemProvider = new ValuePartItemProvider(this);
-    }
-
-    return valuePartItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected BinaryExpressionItemProvider binaryExpressionItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createBinaryExpressionAdapter() {
-    if (binaryExpressionItemProvider == null) {
-      binaryExpressionItemProvider = new BinaryExpressionItemProvider(this);
-    }
-
-    return binaryExpressionItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected UnaryExpressionItemProvider unaryExpressionItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createUnaryExpressionAdapter() {
-    if (unaryExpressionItemProvider == null) {
-      unaryExpressionItemProvider = new UnaryExpressionItemProvider(this);
-    }
-
-    return unaryExpressionItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected OpaqueExpressionItemProvider opaqueExpressionItemProvider;
-
-	/**
-   * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createOpaqueExpressionAdapter() {
-    if (opaqueExpressionItemProvider == null) {
-      opaqueExpressionItemProvider = new OpaqueExpressionItemProvider(this);
-    }
-
-    return opaqueExpressionItemProvider;
-  }
-
-	/**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public ComposeableAdapterFactory getRootAdapterFactory() {
-    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-  }
-
-	/**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-    this.parentAdapterFactory = parentAdapterFactory;
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public boolean isFactoryForType(Object type) {
-    return supportedTypes.contains(type) || super.isFactoryForType(type);
-  }
-
-	/**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter adapt(Notifier notifier, Object type) {
-    return super.adapt(notifier, this);
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Object adapt(Object object, Object type) {
-    if (isFactoryForType(type)) {
-      Object adapter = super.adapt(object, type);
-      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-        return adapter;
-      }
-    }
-
-    return null;
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public List<IChildCreationExtender> getChildCreationExtenders() {
-    return childCreationExtenderManager.getChildCreationExtenders();
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-    return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public ResourceLocator getResourceLocator() {
-    return childCreationExtenderManager;
-  }
-
-	/**
-   * This adds a listener.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public void addListener(INotifyChangedListener notifyChangedListener) {
-    changeNotifier.addListener(notifyChangedListener);
-  }
-
-	/**
-   * This removes a listener.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public void removeListener(INotifyChangedListener notifyChangedListener) {
-    changeNotifier.removeListener(notifyChangedListener);
-  }
-
-	/**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public void fireNotifyChanged(Notification notification) {
-    changeNotifier.fireNotifyChanged(notification);
-
-    if (parentAdapterFactory != null) {
-      parentAdapterFactory.fireNotifyChanged(notification);
-    }
-  }
-
-	/**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public void dispose() {
-    if (literalBooleanValueItemProvider != null) literalBooleanValueItemProvider.dispose();
-    if (booleanReferenceItemProvider != null) booleanReferenceItemProvider.dispose();
-    if (enumerationLiteralItemProvider != null) enumerationLiteralItemProvider.dispose();
-    if (enumerationReferenceItemProvider != null) enumerationReferenceItemProvider.dispose();
-    if (literalStringValueItemProvider != null) literalStringValueItemProvider.dispose();
-    if (stringReferenceItemProvider != null) stringReferenceItemProvider.dispose();
-    if (literalNumericValueItemProvider != null) literalNumericValueItemProvider.dispose();
-    if (numericReferenceItemProvider != null) numericReferenceItemProvider.dispose();
-    if (complexValueItemProvider != null) complexValueItemProvider.dispose();
-    if (complexValueReferenceItemProvider != null) complexValueReferenceItemProvider.dispose();
-    if (valuePartItemProvider != null) valuePartItemProvider.dispose();
-    if (binaryExpressionItemProvider != null) binaryExpressionItemProvider.dispose();
-    if (unaryExpressionItemProvider != null) unaryExpressionItemProvider.dispose();
-    if (opaqueExpressionItemProvider != null) opaqueExpressionItemProvider.dispose();
-  }
-
-	/**
-   * A child creation extender for the {@link ModellingcorePackage}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public static class ModellingcoreChildCreationExtender implements IChildCreationExtender {
-		/**
-     * The switch for creating child descriptors specific to each extended class.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected static class CreationSwitch extends ModellingcoreSwitch<Object> {
-			/**
-       * The child descriptors being populated.
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
-			protected List<Object> newChildDescriptors;
-
-			/**
-       * The domain in which to create the children.
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
-			protected EditingDomain editingDomain;
-
-			/**
-       * Creates the a switch for populating child descriptors in the given domain.
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
-			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-        this.newChildDescriptors = newChildDescriptors;
-        this.editingDomain = editingDomain;
-      }
-			/**
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
-			@Override
-			public Object caseAbstractConstraint(AbstractConstraint object) {
-        // begin-extension-code
-        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
-          return null;				
-        }
-        // end-extension-code
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createBooleanReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createEnumerationReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createStringReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createNumericReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createComplexValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createComplexValueReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createBinaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createUnaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
-                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-        return null;
-      }
-			/**
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
-			@Override
-			public Object caseAbstractParameter(AbstractParameter object) {
-        // begin-extension-code
-        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
-          return null;				
-        }
-        // end-extension-code
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createBooleanReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createEnumerationReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createStringReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createNumericReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createComplexValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createComplexValueReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createBinaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createUnaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
-                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createBooleanReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createEnumerationReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createStringReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createNumericReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createComplexValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createComplexValueReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createBinaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createUnaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-        return null;
-      }
- 
-			/**
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
-			@Override
-			public Object caseAbstractParameterSet(AbstractParameterSet object) {
-        // begin-extension-code
-        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
-          return null;				
-        }
-        // end-extension-code
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createBooleanReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createEnumerationReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createStringReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createNumericReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createComplexValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createComplexValueReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createBinaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createUnaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
-                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-        return null;
-      }
- 
-			/**
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
-			protected CommandParameter createChildParameter(Object feature, Object child) {
-        return new CommandParameter(null, feature, child);
-      }
-
-		}
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-      ArrayList<Object> result = new ArrayList<Object>();
-       new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-       return result;
-    }
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		public ResourceLocator getResourceLocator() {
-      return CapellaModellerEditPlugin.INSTANCE;
-    }
+		supportedTypes.add(IEditingDomainItemProvider.class);
+		supportedTypes.add(IStructuredItemContentProvider.class);
+		supportedTypes.add(ITreeItemContentProvider.class);
+		supportedTypes.add(IItemLabelProvider.class);
+		supportedTypes.add(IItemPropertySource.class);
 	}
 
 	/**
-   * A child creation extender for the {@link ActivityPackage}.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue} instances.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public static class ActivityChildCreationExtender implements IChildCreationExtender {
+	 * @generated
+	 */
+	protected LiteralBooleanValueItemProvider literalBooleanValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralBooleanValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralBooleanValueAdapter() {
+		if (literalBooleanValueItemProvider == null) {
+			literalBooleanValueItemProvider = new LiteralBooleanValueItemProvider(this);
+		}
+
+		return literalBooleanValueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BooleanReferenceItemProvider booleanReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BooleanReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBooleanReferenceAdapter() {
+		if (booleanReferenceItemProvider == null) {
+			booleanReferenceItemProvider = new BooleanReferenceItemProvider(this);
+		}
+
+		return booleanReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EnumerationLiteralItemProvider enumerationLiteralItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationLiteral}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEnumerationLiteralAdapter() {
+		if (enumerationLiteralItemProvider == null) {
+			enumerationLiteralItemProvider = new EnumerationLiteralItemProvider(this);
+		}
+
+		return enumerationLiteralItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EnumerationReferenceItemProvider enumerationReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.EnumerationReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEnumerationReferenceAdapter() {
+		if (enumerationReferenceItemProvider == null) {
+			enumerationReferenceItemProvider = new EnumerationReferenceItemProvider(this);
+		}
+
+		return enumerationReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralStringValueItemProvider literalStringValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralStringValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralStringValueAdapter() {
+		if (literalStringValueItemProvider == null) {
+			literalStringValueItemProvider = new LiteralStringValueItemProvider(this);
+		}
+
+		return literalStringValueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.StringReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringReferenceItemProvider stringReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.StringReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringReferenceAdapter() {
+		if (stringReferenceItemProvider == null) {
+			stringReferenceItemProvider = new StringReferenceItemProvider(this);
+		}
+
+		return stringReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LiteralNumericValueItemProvider literalNumericValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.LiteralNumericValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLiteralNumericValueAdapter() {
+		if (literalNumericValueItemProvider == null) {
+			literalNumericValueItemProvider = new LiteralNumericValueItemProvider(this);
+		}
+
+		return literalNumericValueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.NumericReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NumericReferenceItemProvider numericReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.NumericReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNumericReferenceAdapter() {
+		if (numericReferenceItemProvider == null) {
+			numericReferenceItemProvider = new NumericReferenceItemProvider(this);
+		}
+
+		return numericReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComplexValueItemProvider complexValueItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValue}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComplexValueAdapter() {
+		if (complexValueItemProvider == null) {
+			complexValueItemProvider = new ComplexValueItemProvider(this);
+		}
+
+		return complexValueItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ComplexValueReferenceItemProvider complexValueReferenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ComplexValueReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createComplexValueReferenceAdapter() {
+		if (complexValueReferenceItemProvider == null) {
+			complexValueReferenceItemProvider = new ComplexValueReferenceItemProvider(this);
+		}
+
+		return complexValueReferenceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.ValuePart} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ValuePartItemProvider valuePartItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.ValuePart}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createValuePartAdapter() {
+		if (valuePartItemProvider == null) {
+			valuePartItemProvider = new ValuePartItemProvider(this);
+		}
+
+		return valuePartItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected BinaryExpressionItemProvider binaryExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.BinaryExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createBinaryExpressionAdapter() {
+		if (binaryExpressionItemProvider == null) {
+			binaryExpressionItemProvider = new BinaryExpressionItemProvider(this);
+		}
+
+		return binaryExpressionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UnaryExpressionItemProvider unaryExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.UnaryExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUnaryExpressionAdapter() {
+		if (unaryExpressionItemProvider == null) {
+			unaryExpressionItemProvider = new UnaryExpressionItemProvider(this);
+		}
+
+		return unaryExpressionItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OpaqueExpressionItemProvider opaqueExpressionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.polarsys.capella.core.data.information.datavalue.OpaqueExpression}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOpaqueExpressionAdapter() {
+		if (opaqueExpressionItemProvider == null) {
+			opaqueExpressionItemProvider = new OpaqueExpressionItemProvider(this);
+		}
+
+		return opaqueExpressionItemProvider;
+	}
+
+	/**
+	 * This returns the root adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ComposeableAdapterFactory getRootAdapterFactory() {
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+	}
+
+	/**
+	 * This sets the composed adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
+		this.parentAdapterFactory = parentAdapterFactory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isFactoryForType(Object type) {
+		return supportedTypes.contains(type) || super.isFactoryForType(type);
+	}
+
+	/**
+	 * This implementation substitutes the factory itself as the key for the adapter.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter adapt(Notifier notifier, Object type) {
+		return super.adapt(notifier, this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object adapt(Object object, Object type) {
+		if (isFactoryForType(type)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+				return adapter;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<IChildCreationExtender> getChildCreationExtenders() {
+		return childCreationExtenderManager.getChildCreationExtenders();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourceLocator getResourceLocator() {
+		return childCreationExtenderManager;
+	}
+
+	/**
+	 * This adds a listener.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void addListener(INotifyChangedListener notifyChangedListener) {
+		changeNotifier.addListener(notifyChangedListener);
+	}
+
+	/**
+	 * This removes a listener.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void removeListener(INotifyChangedListener notifyChangedListener) {
+		changeNotifier.removeListener(notifyChangedListener);
+	}
+
+	/**
+	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void fireNotifyChanged(Notification notification) {
+		changeNotifier.fireNotifyChanged(notification);
+
+		if (parentAdapterFactory != null) {
+			parentAdapterFactory.fireNotifyChanged(notification);
+		}
+	}
+
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (literalBooleanValueItemProvider != null) literalBooleanValueItemProvider.dispose();
+		if (booleanReferenceItemProvider != null) booleanReferenceItemProvider.dispose();
+		if (enumerationLiteralItemProvider != null) enumerationLiteralItemProvider.dispose();
+		if (enumerationReferenceItemProvider != null) enumerationReferenceItemProvider.dispose();
+		if (literalStringValueItemProvider != null) literalStringValueItemProvider.dispose();
+		if (stringReferenceItemProvider != null) stringReferenceItemProvider.dispose();
+		if (literalNumericValueItemProvider != null) literalNumericValueItemProvider.dispose();
+		if (numericReferenceItemProvider != null) numericReferenceItemProvider.dispose();
+		if (complexValueItemProvider != null) complexValueItemProvider.dispose();
+		if (complexValueReferenceItemProvider != null) complexValueReferenceItemProvider.dispose();
+		if (valuePartItemProvider != null) valuePartItemProvider.dispose();
+		if (binaryExpressionItemProvider != null) binaryExpressionItemProvider.dispose();
+		if (unaryExpressionItemProvider != null) unaryExpressionItemProvider.dispose();
+		if (opaqueExpressionItemProvider != null) opaqueExpressionItemProvider.dispose();
+	}
+
+	/**
+	 * A child creation extender for the {@link ModellingcorePackage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static class ModellingcoreChildCreationExtender implements IChildCreationExtender {
 		/**
-     * The switch for creating child descriptors specific to each extended class.
-     * <!-- begin-user-doc -->
+		 * The switch for creating child descriptors specific to each extended class.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected static class CreationSwitch extends ActivitySwitch<Object> {
+		 * @generated
+		 */
+		protected static class CreationSwitch extends ModellingcoreSwitch<Object> {
 			/**
-       * The child descriptors being populated.
-       * <!-- begin-user-doc -->
+			 * The child descriptors being populated.
+			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-       * @generated
-       */
+			 * @generated
+			 */
 			protected List<Object> newChildDescriptors;
 
 			/**
-       * The domain in which to create the children.
-       * <!-- begin-user-doc -->
+			 * The domain in which to create the children.
+			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-       * @generated
-       */
+			 * @generated
+			 */
 			protected EditingDomain editingDomain;
 
 			/**
-       * Creates the a switch for populating child descriptors in the given domain.
-       * <!-- begin-user-doc -->
+			 * Creates the a switch for populating child descriptors in the given domain.
+			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-       * @generated
-       */
+			 * @generated
+			 */
 			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
-        this.newChildDescriptors = newChildDescriptors;
-        this.editingDomain = editingDomain;
-      }
+				this.newChildDescriptors = newChildDescriptors;
+				this.editingDomain = editingDomain;
+			}
 			/**
-       * <!-- begin-user-doc -->
+			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-       * @generated
-       */
+			 * @generated
+			 */
 			@Override
-			public Object caseActivityEdge(ActivityEdge object) {
-        // begin-extension-code
-        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
-          return null;				
-        }
-        // end-extension-code
+			public Object caseAbstractConstraint(AbstractConstraint object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1432,7 +640,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createBooleanReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1445,7 +653,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createEnumerationLiteral());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1458,7 +666,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createEnumerationReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1471,7 +679,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createLiteralStringValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1484,7 +692,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createStringReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1497,7 +705,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createLiteralNumericValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1510,7 +718,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createNumericReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1523,7 +731,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createComplexValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1536,7 +744,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createComplexValueReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1549,7 +757,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createBinaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1562,7 +770,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1575,7 +783,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                        (ModellingcorePackage.Literals.ABSTRACT_CONSTRAINT__OWNED_SPECIFICATION,
                          DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1585,10 +793,24 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
+				return null;
+			}
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseAbstractParameter(AbstractParameter object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1601,7 +823,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createBooleanReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1614,7 +836,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createEnumerationLiteral());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1627,7 +849,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createEnumerationReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1640,7 +862,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createLiteralStringValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1653,7 +875,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createStringReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1666,7 +888,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createLiteralNumericValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1679,7 +901,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createNumericReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1692,7 +914,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createComplexValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1705,7 +927,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createComplexValueReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1718,7 +940,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createBinaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1731,7 +953,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1744,7 +966,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__RATE,
                          DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1757,7 +979,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1770,7 +992,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createBooleanReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1783,7 +1005,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createEnumerationLiteral());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1796,7 +1018,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createEnumerationReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1809,7 +1031,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralStringValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1822,7 +1044,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createStringReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1835,7 +1057,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralNumericValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1848,7 +1070,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createNumericReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1861,7 +1083,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createComplexValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1874,7 +1096,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createComplexValueReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1887,7 +1109,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createBinaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1900,7 +1122,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1913,7 +1135,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -1923,194 +1145,25 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createBooleanReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createEnumerationReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createStringReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createNumericReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createComplexValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createComplexValueReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createBinaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createUnaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
-                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-        return null;
-      }
+				return null;
+			}
  
 			/**
-       * <!-- begin-user-doc -->
+			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-       * @generated
-       */
+			 * @generated
+			 */
 			@Override
-			public Object caseObjectNode(ObjectNode object) {
-        // begin-extension-code
-        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
-          return null;				
-        }
-        // end-extension-code
+			public Object caseAbstractParameterSet(AbstractParameterSet object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2123,7 +1176,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createBooleanReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2136,7 +1189,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createEnumerationLiteral());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2149,7 +1202,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createEnumerationReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2162,7 +1215,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralStringValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2175,7 +1228,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createStringReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2188,7 +1241,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createLiteralNumericValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2201,7 +1254,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createNumericReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2214,7 +1267,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createComplexValue());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2227,7 +1280,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createComplexValueReference());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2240,7 +1293,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createBinaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2253,7 +1306,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createUnaryExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2266,7 +1319,7 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                        (ModellingcorePackage.Literals.ABSTRACT_PARAMETER_SET__PROBABILITY,
                          DatavalueFactory.eINSTANCE.createOpaqueExpression());
                     if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
                         newChildDescriptors.add(commandParameter);      
@@ -2276,223 +1329,1170 @@ public class DatavalueItemProviderAdapterFactory extends DatavalueAdapterFactory
 
 
 
-        return null;
-      }
+				return null;
+			}
  
 			/**
-       * <!-- begin-user-doc -->
+			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->
-       * @generated
-       */
-			@Override
-			public Object caseValuePin(ValuePin object) {
-        // begin-extension-code
-        if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
-          return null;				
-        }
-        // end-extension-code
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createBooleanReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createEnumerationReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createStringReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createNumericReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createComplexValue());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createComplexValueReference());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createBinaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createUnaryExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-                // begin-extension-code
-                {
-                    CommandParameter commandParameter = createChildParameter
-                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
-                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
-                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
-                        newChildDescriptors.add(commandParameter);      
-                    }
-                }
-                // end-extension-code
-
-
-
-        return null;
-      }
- 
-			/**
-       * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-       * @generated
-       */
+			 * @generated
+			 */
 			protected CommandParameter createChildParameter(Object feature, Object child) {
-        return new CommandParameter(null, feature, child);
-      }
+				return new CommandParameter(null, feature, child);
+			}
 
 		}
 
 		/**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-      ArrayList<Object> result = new ArrayList<Object>();
-       new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-       return result;
-    }
+			ArrayList<Object> result = new ArrayList<Object>();
+		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+		   return result;
+		}
 
 		/**
-     * <!-- begin-user-doc -->
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-     * @generated
-     */
+		 * @generated
+		 */
 		public ResourceLocator getResourceLocator() {
-      return CapellaModellerEditPlugin.INSTANCE;
-    }
+			return CapellaModellerEditPlugin.INSTANCE;
+		}
+	}
+
+	/**
+	 * A child creation extender for the {@link ActivityPackage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static class ActivityChildCreationExtender implements IChildCreationExtender {
+		/**
+		 * The switch for creating child descriptors specific to each extended class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected static class CreationSwitch extends ActivitySwitch<Object> {
+			/**
+			 * The child descriptors being populated.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected List<Object> newChildDescriptors;
+
+			/**
+			 * The domain in which to create the children.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected EditingDomain editingDomain;
+
+			/**
+			 * Creates the a switch for populating child descriptors in the given domain.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+				this.newChildDescriptors = newChildDescriptors;
+				this.editingDomain = editingDomain;
+			}
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseActivityEdge(ActivityEdge object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createBooleanReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createEnumerationReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createStringReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createNumericReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createComplexValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createComplexValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createBinaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__RATE,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createBooleanReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createEnumerationReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createStringReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createNumericReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createComplexValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createComplexValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createBinaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__PROBABILITY,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createBooleanReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createEnumerationReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createStringReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createNumericReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createComplexValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createComplexValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createBinaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__GUARD,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createBooleanReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createEnumerationReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createStringReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createNumericReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createComplexValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createComplexValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createBinaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.ACTIVITY_EDGE__WEIGHT,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseObjectNode(ObjectNode object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createBooleanReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createEnumerationReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createStringReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createNumericReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createComplexValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createComplexValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createBinaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.OBJECT_NODE__UPPER_BOUND,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseValuePin(ValuePin object) {
+				// begin-extension-code
+				if (ModelExtensionHelper.getInstance().isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/information/datavalue/1.0.0")) { //$NON-NLS-1$
+					return null;				
+				}
+				// end-extension-code
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createLiteralBooleanValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createBooleanReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createEnumerationLiteral());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createEnumerationReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createLiteralStringValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createStringReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createLiteralNumericValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createNumericReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createComplexValue());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createComplexValueReference());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createBinaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createUnaryExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+                // begin-extension-code
+                {
+                    CommandParameter commandParameter = createChildParameter
+                        (ActivityPackage.Literals.VALUE_PIN__VALUE,
+                         DatavalueFactory.eINSTANCE.createOpaqueExpression());
+                    if (NewChildDescriptorHelper.isValidCommand(object, commandParameter)) {
+                        newChildDescriptors.add(commandParameter);      
+                    }
+                }
+                // end-extension-code
+
+
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected CommandParameter createChildParameter(Object feature, Object child) {
+				return new CommandParameter(null, feature, child);
+			}
+
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+			ArrayList<Object> result = new ArrayList<Object>();
+		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+		   return result;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public ResourceLocator getResourceLocator() {
+			return CapellaModellerEditPlugin.INSTANCE;
+		}
 	}
 
 }

@@ -23,7 +23,6 @@ package org.polarsys.capella.core.data.capellacommon;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getKind <em>Kind</em>}</li>
- *   <li>{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getTime <em>Time</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,23 +39,23 @@ public interface TimeEvent extends StateEvent {
 
 
 	/**
-   * Returns the value of the '<em><b>Kind</b></em>' attribute.
-   * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacommon.TimeEventKind}.
+	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.capellacommon.TimeEventKind}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
-   * @see #setKind(TimeEventKind)
-   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getTimeEvent_Kind()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state TimeEvent (see TimeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to TimeEventKind definition' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
+	 * @see #setKind(TimeEventKind)
+	 * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getTimeEvent_Kind()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of the state TimeEvent (see TimeEventKind)\r\n[source: Capella study]' constraints='none' type='refer to TimeEventKind definition' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='A relative time trigger is specified with the keyword \u2018after\u2019 followed by an expression that evaluates to a time value, such\r\nas \u201cafter (5 seconds).\u201d An absolute time trigger is specified with the keyword \u2018at\u2019 followed by an expression that\r\nevaluates to a time value, such as \u201cJan. 1, 2000, Noon.\"' constraints='none'"
+	 * @generated
+	 */
 
 	TimeEventKind getKind();
 
@@ -64,54 +63,17 @@ public interface TimeEvent extends StateEvent {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getKind <em>Kind</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getKind <em>Kind</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
-   * @see #getKind()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.capellacommon.TimeEventKind
+	 * @see #getKind()
+	 * @generated
+	 */
 
 	void setKind(TimeEventKind value);
-
-
-
-
-	/**
-   * Returns the value of the '<em><b>Time</b></em>' attribute.
-
-   * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Time</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Time</em>' attribute.
-   * @see #setTime(String)
-   * @see org.polarsys.capella.core.data.capellacommon.CapellacommonPackage#getTimeEvent_Time()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the corresponding time deadline\r\n[source: UML superstructure v2.4]\r\n' constraints='none' type='a string-based time value ' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::when' explanation='none' constraints='none'"
-   * @generated
-   */
-
-	String getTime();
-
-
-
-
-	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.capellacommon.TimeEvent#getTime <em>Time</em>}' attribute.
-
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Time</em>' attribute.
-   * @see #getTime()
-   * @generated
-   */
-
-	void setTime(String value);
 
 
 

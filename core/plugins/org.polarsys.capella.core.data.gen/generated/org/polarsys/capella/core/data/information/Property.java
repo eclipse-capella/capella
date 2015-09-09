@@ -44,26 +44,26 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Returns the value of the '<em><b>Aggregation Kind</b></em>' attribute.
-   * The default value is <code>"UNSET"</code>.
-   * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.AggregationKind}.
+	 * Returns the value of the '<em><b>Aggregation Kind</b></em>' attribute.
+	 * The default value is <code>"UNSET"</code>.
+	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.information.AggregationKind}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Aggregation Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Aggregation Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.information.AggregationKind
-   * @see #setAggregationKind(AggregationKind)
-   * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_AggregationKind()
-   * @model default="UNSET"
-   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='aggregation' featureOwner='Property'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the kind of aggregation that applies to the Property\r\n[source: UML superstructure v2.2]' constraints='none' type='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::aggregation' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Aggregation Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.information.AggregationKind
+	 * @see #setAggregationKind(AggregationKind)
+	 * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_AggregationKind()
+	 * @model default="UNSET"
+	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='aggregation' featureOwner='Property'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies the kind of aggregation that applies to the Property\r\n[source: UML superstructure v2.2]' constraints='none' type='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::aggregation' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	AggregationKind getAggregationKind();
 
@@ -71,15 +71,15 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#getAggregationKind <em>Aggregation Kind</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#getAggregationKind <em>Aggregation Kind</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Aggregation Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.information.AggregationKind
-   * @see #getAggregationKind()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Aggregation Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.information.AggregationKind
+	 * @see #getAggregationKind()
+	 * @generated
+	 */
 
 	void setAggregationKind(AggregationKind value);
 
@@ -90,21 +90,21 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
+	 * Returns the value of the '<em><b>Is Derived</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Derived</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Derived</em>' attribute.
-   * @see #setIsDerived(boolean)
-   * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_IsDerived()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::isDerived' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Is Derived</em>' attribute.
+	 * @see #setIsDerived(boolean)
+	 * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_IsDerived()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies whether the Property is derived, i.e., whether its value or values can be computed from other information\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::isDerived' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	boolean isIsDerived();
 
@@ -112,14 +112,14 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#isIsDerived <em>Is Derived</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#isIsDerived <em>Is Derived</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Derived</em>' attribute.
-   * @see #isIsDerived()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Is Derived</em>' attribute.
+	 * @see #isIsDerived()
+	 * @generated
+	 */
 
 	void setIsDerived(boolean value);
 
@@ -130,22 +130,22 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
+	 * Returns the value of the '<em><b>Is Read Only</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Read Only</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Read Only</em>' attribute.
-   * @see #setIsReadOnly(boolean)
-   * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_IsReadOnly()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isReadOnly' featureOwner='StructuralFeature'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='If true, the attribute may only be read, and not written\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::isReadOnly' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Is Read Only</em>' attribute.
+	 * @see #setIsReadOnly(boolean)
+	 * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_IsReadOnly()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isReadOnly' featureOwner='StructuralFeature'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='If true, the attribute may only be read, and not written\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::isReadOnly' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	boolean isIsReadOnly();
 
@@ -153,14 +153,14 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#isIsReadOnly <em>Is Read Only</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#isIsReadOnly <em>Is Read Only</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Read Only</em>' attribute.
-   * @see #isIsReadOnly()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Is Read Only</em>' attribute.
+	 * @see #isIsReadOnly()
+	 * @generated
+	 */
 
 	void setIsReadOnly(boolean value);
 
@@ -171,22 +171,22 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Returns the value of the '<em><b>Is Part Of Key</b></em>' attribute.
+	 * Returns the value of the '<em><b>Is Part Of Key</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Part Of Key</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Part Of Key</em>' attribute.
-   * @see #setIsPartOfKey(boolean)
-   * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_IsPartOfKey()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isPartOfKey' featureOwner='eng.Property' fromStereotype='true'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether this Property is involved as a key to a table of values\r\n[source: Capella study]' constraints='none' type='\"true\" if the Property is used as a key' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Is Part Of Key</em>' attribute.
+	 * @see #setIsPartOfKey(boolean)
+	 * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_IsPartOfKey()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='isPartOfKey' featureOwner='eng.Property' fromStereotype='true'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether this Property is involved as a key to a table of values\r\n[source: Capella study]' constraints='none' type='\"true\" if the Property is used as a key' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	boolean isIsPartOfKey();
 
@@ -194,14 +194,14 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#isIsPartOfKey <em>Is Part Of Key</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.information.Property#isIsPartOfKey <em>Is Part Of Key</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Part Of Key</em>' attribute.
-   * @see #isIsPartOfKey()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Is Part Of Key</em>' attribute.
+	 * @see #isIsPartOfKey()
+	 * @generated
+	 */
 
 	void setIsPartOfKey(boolean value);
 
@@ -212,23 +212,23 @@ public interface Property extends Feature, TypedElement, MultiplicityElement, Fi
 
 
 	/**
-   * Returns the value of the '<em><b>Association</b></em>' reference.
+	 * Returns the value of the '<em><b>Association</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Association</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Association</em>' reference.
-   * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_Association()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='association' featureOwner='Property'"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='association'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an association relationship related to this Property\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::owningAssociation, uml::Property::association' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Association</em>' reference.
+	 * @see org.polarsys.capella.core.data.information.InformationPackage#getProperty_Association()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='association' featureOwner='Property'"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='association'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='an association relationship related to this Property\r\n[source: Capella study]\r\n\r\nReferences the association of which this property is a member, if any.\r\n[source: UML superstructure v2.2]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Property::owningAssociation, uml::Property::association' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	Association getAssociation();
 

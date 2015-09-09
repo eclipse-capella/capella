@@ -76,13 +76,13 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * The cached value of the '{@link #getLinkEnds() <em>Link Ends</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLinkEnds() <em>Link Ends</em>}' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getLinkEnds()
-   * @generated
-   * @ordered
-   */
+	 * @see #getLinkEnds()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<AbstractPhysicalLinkEnd> linkEnds;
 
 
@@ -90,13 +90,13 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * The cached value of the '{@link #getOwnedComponentExchangeFunctionalExchangeAllocations() <em>Owned Component Exchange Functional Exchange Allocations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedComponentExchangeFunctionalExchangeAllocations() <em>Owned Component Exchange Functional Exchange Allocations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedComponentExchangeFunctionalExchangeAllocations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedComponentExchangeFunctionalExchangeAllocations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ComponentExchangeFunctionalExchangeAllocation> ownedComponentExchangeFunctionalExchangeAllocations;
 
 
@@ -104,13 +104,13 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * The cached value of the '{@link #getOwnedPhysicalLinkEnds() <em>Owned Physical Link Ends</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedPhysicalLinkEnds() <em>Owned Physical Link Ends</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedPhysicalLinkEnds()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedPhysicalLinkEnds()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<PhysicalLinkEnd> ownedPhysicalLinkEnds;
 
 
@@ -118,13 +118,13 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * The cached value of the '{@link #getOwnedPhysicalLinkRealizations() <em>Owned Physical Link Realizations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedPhysicalLinkRealizations() <em>Owned Physical Link Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedPhysicalLinkRealizations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedPhysicalLinkRealizations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<PhysicalLinkRealization> ownedPhysicalLinkRealizations;
 
 
@@ -132,13 +132,13 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getCategories() <em>Categories</em>}' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getCategories()
-   * @generated
-   * @ordered
-   */
+	 * @see #getCategories()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<PhysicalLinkCategory> categories;
 
 
@@ -161,35 +161,35 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected PhysicalLinkImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CsPackage.Literals.PHYSICAL_LINK;
-  }
+		return CsPackage.Literals.PHYSICAL_LINK;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ConfigurationItem> getAllocatorConfigurationItems() {
 
@@ -216,27 +216,27 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<ConfigurationItem> resultAsList = (Collection<ConfigurationItem>) result;
-    return new EcoreEList.UnmodifiableEList<ConfigurationItem>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<ConfigurationItem> resultAsList = (Collection<ConfigurationItem>) result;
+		return new EcoreEList.UnmodifiableEList<ConfigurationItem>(this, CsPackage.Literals.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Involvement> getInvolvingInvolvements() {
 
@@ -263,130 +263,130 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<AbstractPhysicalLinkEnd> getLinkEnds() {
 
-    if (linkEnds == null) {
-      linkEnds = new EObjectResolvingEList<AbstractPhysicalLinkEnd>(AbstractPhysicalLinkEnd.class, this, CsPackage.PHYSICAL_LINK__LINK_ENDS);
-    }
-    return linkEnds;
-  }
+		if (linkEnds == null) {
+			linkEnds = new EObjectResolvingEList<AbstractPhysicalLinkEnd>(AbstractPhysicalLinkEnd.class, this, CsPackage.PHYSICAL_LINK__LINK_ENDS);
+		}
+		return linkEnds;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ComponentExchangeFunctionalExchangeAllocation> getOwnedComponentExchangeFunctionalExchangeAllocations() {
 
-    if (ownedComponentExchangeFunctionalExchangeAllocations == null) {
-      ownedComponentExchangeFunctionalExchangeAllocations = new EObjectContainmentEList.Resolving<ComponentExchangeFunctionalExchangeAllocation>(ComponentExchangeFunctionalExchangeAllocation.class, this, CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS);
-    }
-    return ownedComponentExchangeFunctionalExchangeAllocations;
-  }
+		if (ownedComponentExchangeFunctionalExchangeAllocations == null) {
+			ownedComponentExchangeFunctionalExchangeAllocations = new EObjectContainmentEList.Resolving<ComponentExchangeFunctionalExchangeAllocation>(ComponentExchangeFunctionalExchangeAllocation.class, this, CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS);
+		}
+		return ownedComponentExchangeFunctionalExchangeAllocations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalLinkEnd> getOwnedPhysicalLinkEnds() {
 
-    if (ownedPhysicalLinkEnds == null) {
-      ownedPhysicalLinkEnds = new EObjectContainmentEList.Resolving<PhysicalLinkEnd>(PhysicalLinkEnd.class, this, CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS);
-    }
-    return ownedPhysicalLinkEnds;
-  }
+		if (ownedPhysicalLinkEnds == null) {
+			ownedPhysicalLinkEnds = new EObjectContainmentEList.Resolving<PhysicalLinkEnd>(PhysicalLinkEnd.class, this, CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS);
+		}
+		return ownedPhysicalLinkEnds;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalLinkRealization> getOwnedPhysicalLinkRealizations() {
 
-    if (ownedPhysicalLinkRealizations == null) {
-      ownedPhysicalLinkRealizations = new EObjectContainmentEList.Resolving<PhysicalLinkRealization>(PhysicalLinkRealization.class, this, CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS);
-    }
-    return ownedPhysicalLinkRealizations;
-  }
+		if (ownedPhysicalLinkRealizations == null) {
+			ownedPhysicalLinkRealizations = new EObjectContainmentEList.Resolving<PhysicalLinkRealization>(PhysicalLinkRealization.class, this, CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS);
+		}
+		return ownedPhysicalLinkRealizations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalLinkCategory> getCategories() {
 
-    if (categories == null) {
-      categories = new EObjectWithInverseResolvingEList.ManyInverse<PhysicalLinkCategory>(PhysicalLinkCategory.class, this, CsPackage.PHYSICAL_LINK__CATEGORIES, CsPackage.PHYSICAL_LINK_CATEGORY__LINKS);
-    }
-    return categories;
-  }
+		if (categories == null) {
+			categories = new EObjectWithInverseResolvingEList.ManyInverse<PhysicalLinkCategory>(PhysicalLinkCategory.class, this, CsPackage.PHYSICAL_LINK__CATEGORIES, CsPackage.PHYSICAL_LINK_CATEGORY__LINKS);
+		}
+		return categories;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public PhysicalPort getSourcePhysicalPort() {
 
-    PhysicalPort sourcePhysicalPort = basicGetSourcePhysicalPort();
-    return sourcePhysicalPort != null && sourcePhysicalPort.eIsProxy() ? (PhysicalPort)eResolveProxy((InternalEObject)sourcePhysicalPort) : sourcePhysicalPort;
-  }
+		PhysicalPort sourcePhysicalPort = basicGetSourcePhysicalPort();
+		return sourcePhysicalPort != null && sourcePhysicalPort.eIsProxy() ? (PhysicalPort)eResolveProxy((InternalEObject)sourcePhysicalPort) : sourcePhysicalPort;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public PhysicalPort basicGetSourcePhysicalPort() {
 
@@ -413,15 +413,15 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT, annotation);
-    
-    try {
-      return (PhysicalPort) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (PhysicalPort) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -429,23 +429,23 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public PhysicalPort getTargetPhysicalPort() {
 
-    PhysicalPort targetPhysicalPort = basicGetTargetPhysicalPort();
-    return targetPhysicalPort != null && targetPhysicalPort.eIsProxy() ? (PhysicalPort)eResolveProxy((InternalEObject)targetPhysicalPort) : targetPhysicalPort;
-  }
+		PhysicalPort targetPhysicalPort = basicGetTargetPhysicalPort();
+		return targetPhysicalPort != null && targetPhysicalPort.eIsProxy() ? (PhysicalPort)eResolveProxy((InternalEObject)targetPhysicalPort) : targetPhysicalPort;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public PhysicalPort basicGetTargetPhysicalPort() {
 
@@ -472,15 +472,15 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_LINK__TARGET_PHYSICAL_PORT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_LINK__TARGET_PHYSICAL_PORT, annotation);
-    
-    try {
-      return (PhysicalPort) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (PhysicalPort) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -488,10 +488,10 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalLink> getRealizedPhysicalLinks() {
 
@@ -518,27 +518,27 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
-    return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
+		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalLink> getRealizingPhysicalLinks() {
 
@@ -565,242 +565,242 @@ public class PhysicalLinkImpl extends AbstractPhysicalPathLinkImpl implements Ph
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
-    return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<PhysicalLink> resultAsList = (Collection<PhysicalLink>) result;
+		return new EcoreEList.UnmodifiableEList<PhysicalLink>(this, CsPackage.Literals.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CsPackage.PHYSICAL_LINK__CATEGORIES:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
-    }
-    return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CsPackage.PHYSICAL_LINK__CATEGORIES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getCategories()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
-        return ((InternalEList<?>)getOwnedComponentExchangeFunctionalExchangeAllocations()).basicRemove(otherEnd, msgs);
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
-        return ((InternalEList<?>)getOwnedPhysicalLinkEnds()).basicRemove(otherEnd, msgs);
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
-        return ((InternalEList<?>)getOwnedPhysicalLinkRealizations()).basicRemove(otherEnd, msgs);
-      case CsPackage.PHYSICAL_LINK__CATEGORIES:
-        return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
+				return ((InternalEList<?>)getOwnedComponentExchangeFunctionalExchangeAllocations()).basicRemove(otherEnd, msgs);
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
+				return ((InternalEList<?>)getOwnedPhysicalLinkEnds()).basicRemove(otherEnd, msgs);
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedPhysicalLinkRealizations()).basicRemove(otherEnd, msgs);
+			case CsPackage.PHYSICAL_LINK__CATEGORIES:
+				return ((InternalEList<?>)getCategories()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS:
-        return getAllocatorConfigurationItems();
-      case CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS:
-        return getInvolvingInvolvements();
-      case CsPackage.PHYSICAL_LINK__LINK_ENDS:
-        return getLinkEnds();
-      case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
-        return getOwnedComponentExchangeFunctionalExchangeAllocations();
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
-        return getOwnedPhysicalLinkEnds();
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
-        return getOwnedPhysicalLinkRealizations();
-      case CsPackage.PHYSICAL_LINK__CATEGORIES:
-        return getCategories();
-      case CsPackage.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT:
-        if (resolve) return getSourcePhysicalPort();
-        return basicGetSourcePhysicalPort();
-      case CsPackage.PHYSICAL_LINK__TARGET_PHYSICAL_PORT:
-        if (resolve) return getTargetPhysicalPort();
-        return basicGetTargetPhysicalPort();
-      case CsPackage.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS:
-        return getRealizedPhysicalLinks();
-      case CsPackage.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS:
-        return getRealizingPhysicalLinks();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS:
+				return getAllocatorConfigurationItems();
+			case CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS:
+				return getInvolvingInvolvements();
+			case CsPackage.PHYSICAL_LINK__LINK_ENDS:
+				return getLinkEnds();
+			case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
+				return getOwnedComponentExchangeFunctionalExchangeAllocations();
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
+				return getOwnedPhysicalLinkEnds();
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
+				return getOwnedPhysicalLinkRealizations();
+			case CsPackage.PHYSICAL_LINK__CATEGORIES:
+				return getCategories();
+			case CsPackage.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT:
+				if (resolve) return getSourcePhysicalPort();
+				return basicGetSourcePhysicalPort();
+			case CsPackage.PHYSICAL_LINK__TARGET_PHYSICAL_PORT:
+				if (resolve) return getTargetPhysicalPort();
+				return basicGetTargetPhysicalPort();
+			case CsPackage.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS:
+				return getRealizedPhysicalLinks();
+			case CsPackage.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS:
+				return getRealizingPhysicalLinks();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CsPackage.PHYSICAL_LINK__LINK_ENDS:
-        getLinkEnds().clear();
-        getLinkEnds().addAll((Collection<? extends AbstractPhysicalLinkEnd>)newValue);
-        return;
-      case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
-        getOwnedComponentExchangeFunctionalExchangeAllocations().clear();
-        getOwnedComponentExchangeFunctionalExchangeAllocations().addAll((Collection<? extends ComponentExchangeFunctionalExchangeAllocation>)newValue);
-        return;
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
-        getOwnedPhysicalLinkEnds().clear();
-        getOwnedPhysicalLinkEnds().addAll((Collection<? extends PhysicalLinkEnd>)newValue);
-        return;
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
-        getOwnedPhysicalLinkRealizations().clear();
-        getOwnedPhysicalLinkRealizations().addAll((Collection<? extends PhysicalLinkRealization>)newValue);
-        return;
-      case CsPackage.PHYSICAL_LINK__CATEGORIES:
-        getCategories().clear();
-        getCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CsPackage.PHYSICAL_LINK__LINK_ENDS:
+				getLinkEnds().clear();
+				getLinkEnds().addAll((Collection<? extends AbstractPhysicalLinkEnd>)newValue);
+				return;
+			case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
+				getOwnedComponentExchangeFunctionalExchangeAllocations().clear();
+				getOwnedComponentExchangeFunctionalExchangeAllocations().addAll((Collection<? extends ComponentExchangeFunctionalExchangeAllocation>)newValue);
+				return;
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
+				getOwnedPhysicalLinkEnds().clear();
+				getOwnedPhysicalLinkEnds().addAll((Collection<? extends PhysicalLinkEnd>)newValue);
+				return;
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
+				getOwnedPhysicalLinkRealizations().clear();
+				getOwnedPhysicalLinkRealizations().addAll((Collection<? extends PhysicalLinkRealization>)newValue);
+				return;
+			case CsPackage.PHYSICAL_LINK__CATEGORIES:
+				getCategories().clear();
+				getCategories().addAll((Collection<? extends PhysicalLinkCategory>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CsPackage.PHYSICAL_LINK__LINK_ENDS:
-        getLinkEnds().clear();
-        return;
-      case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
-        getOwnedComponentExchangeFunctionalExchangeAllocations().clear();
-        return;
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
-        getOwnedPhysicalLinkEnds().clear();
-        return;
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
-        getOwnedPhysicalLinkRealizations().clear();
-        return;
-      case CsPackage.PHYSICAL_LINK__CATEGORIES:
-        getCategories().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CsPackage.PHYSICAL_LINK__LINK_ENDS:
+				getLinkEnds().clear();
+				return;
+			case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
+				getOwnedComponentExchangeFunctionalExchangeAllocations().clear();
+				return;
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
+				getOwnedPhysicalLinkEnds().clear();
+				return;
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
+				getOwnedPhysicalLinkRealizations().clear();
+				return;
+			case CsPackage.PHYSICAL_LINK__CATEGORIES:
+				getCategories().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS:
-        return !getAllocatorConfigurationItems().isEmpty();
-      case CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS:
-        return !getInvolvingInvolvements().isEmpty();
-      case CsPackage.PHYSICAL_LINK__LINK_ENDS:
-        return linkEnds != null && !linkEnds.isEmpty();
-      case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
-        return ownedComponentExchangeFunctionalExchangeAllocations != null && !ownedComponentExchangeFunctionalExchangeAllocations.isEmpty();
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
-        return ownedPhysicalLinkEnds != null && !ownedPhysicalLinkEnds.isEmpty();
-      case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
-        return ownedPhysicalLinkRealizations != null && !ownedPhysicalLinkRealizations.isEmpty();
-      case CsPackage.PHYSICAL_LINK__CATEGORIES:
-        return categories != null && !categories.isEmpty();
-      case CsPackage.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT:
-        return basicGetSourcePhysicalPort() != null;
-      case CsPackage.PHYSICAL_LINK__TARGET_PHYSICAL_PORT:
-        return basicGetTargetPhysicalPort() != null;
-      case CsPackage.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS:
-        return !getRealizedPhysicalLinks().isEmpty();
-      case CsPackage.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS:
-        return !getRealizingPhysicalLinks().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS:
+				return !getAllocatorConfigurationItems().isEmpty();
+			case CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS:
+				return !getInvolvingInvolvements().isEmpty();
+			case CsPackage.PHYSICAL_LINK__LINK_ENDS:
+				return linkEnds != null && !linkEnds.isEmpty();
+			case CsPackage.PHYSICAL_LINK__OWNED_COMPONENT_EXCHANGE_FUNCTIONAL_EXCHANGE_ALLOCATIONS:
+				return ownedComponentExchangeFunctionalExchangeAllocations != null && !ownedComponentExchangeFunctionalExchangeAllocations.isEmpty();
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_ENDS:
+				return ownedPhysicalLinkEnds != null && !ownedPhysicalLinkEnds.isEmpty();
+			case CsPackage.PHYSICAL_LINK__OWNED_PHYSICAL_LINK_REALIZATIONS:
+				return ownedPhysicalLinkRealizations != null && !ownedPhysicalLinkRealizations.isEmpty();
+			case CsPackage.PHYSICAL_LINK__CATEGORIES:
+				return categories != null && !categories.isEmpty();
+			case CsPackage.PHYSICAL_LINK__SOURCE_PHYSICAL_PORT:
+				return basicGetSourcePhysicalPort() != null;
+			case CsPackage.PHYSICAL_LINK__TARGET_PHYSICAL_PORT:
+				return basicGetTargetPhysicalPort() != null;
+			case CsPackage.PHYSICAL_LINK__REALIZED_PHYSICAL_LINKS:
+				return !getRealizedPhysicalLinks().isEmpty();
+			case CsPackage.PHYSICAL_LINK__REALIZING_PHYSICAL_LINKS:
+				return !getRealizingPhysicalLinks().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == AbstractPhysicalArtifact.class) {
-      switch (derivedFeatureID) {
-        case CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS;
-        default: return -1;
-      }
-    }
-    if (baseClass == InvolvedElement.class) {
-      switch (derivedFeatureID) {
-        case CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    if (baseClass == AbstractPathInvolvedElement.class) {
-      switch (derivedFeatureID) {
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == AbstractPhysicalArtifact.class) {
+			switch (derivedFeatureID) {
+				case CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS;
+				default: return -1;
+			}
+		}
+		if (baseClass == InvolvedElement.class) {
+			switch (derivedFeatureID) {
+				case CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractPathInvolvedElement.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == AbstractPhysicalArtifact.class) {
-      switch (baseFeatureID) {
-        case CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS;
-        default: return -1;
-      }
-    }
-    if (baseClass == InvolvedElement.class) {
-      switch (baseFeatureID) {
-        case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    if (baseClass == AbstractPathInvolvedElement.class) {
-      switch (baseFeatureID) {
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == AbstractPhysicalArtifact.class) {
+			switch (baseFeatureID) {
+				case CsPackage.ABSTRACT_PHYSICAL_ARTIFACT__ALLOCATOR_CONFIGURATION_ITEMS: return CsPackage.PHYSICAL_LINK__ALLOCATOR_CONFIGURATION_ITEMS;
+				default: return -1;
+			}
+		}
+		if (baseClass == InvolvedElement.class) {
+			switch (baseFeatureID) {
+				case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CsPackage.PHYSICAL_LINK__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractPathInvolvedElement.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 
 } //PhysicalLinkImpl

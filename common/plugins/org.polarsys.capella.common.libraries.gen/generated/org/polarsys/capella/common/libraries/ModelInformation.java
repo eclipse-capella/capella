@@ -11,7 +11,6 @@
 package org.polarsys.capella.common.libraries;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.polarsys.kitalpha.emde.model.ElementExtension;
 
 
@@ -41,20 +40,20 @@ public interface ModelInformation extends LibraryAbstractElement, ElementExtensi
 
 
 	/**
-   * Returns the value of the '<em><b>Owned References</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.common.libraries.LibraryReference}.
+	 * Returns the value of the '<em><b>Owned References</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.libraries.LibraryReference}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned References</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned References</em>' containment reference list.
-   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_OwnedReferences()
-   * @model containment="true" resolveProxies="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned References</em>' containment reference list.
+	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_OwnedReferences()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
 
 	EList<LibraryReference> getOwnedReferences();
 
@@ -65,20 +64,20 @@ public interface ModelInformation extends LibraryAbstractElement, ElementExtensi
 
 
 	/**
-   * Returns the value of the '<em><b>Version</b></em>' reference.
+	 * Returns the value of the '<em><b>Version</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Version</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Version</em>' reference.
-   * @see #setVersion(ModelVersion)
-   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_Version()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Version</em>' reference.
+	 * @see #setVersion(ModelVersion)
+	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getModelInformation_Version()
+	 * @model
+	 * @generated
+	 */
 
 	ModelVersion getVersion();
 
@@ -86,14 +85,14 @@ public interface ModelInformation extends LibraryAbstractElement, ElementExtensi
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelInformation#getVersion <em>Version</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.ModelInformation#getVersion <em>Version</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Version</em>' reference.
-   * @see #getVersion()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Version</em>' reference.
+	 * @see #getVersion()
+	 * @generated
+	 */
 
 	void setVersion(ModelVersion value);
 

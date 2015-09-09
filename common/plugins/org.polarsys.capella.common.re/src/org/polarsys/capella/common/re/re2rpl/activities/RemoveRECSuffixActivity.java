@@ -47,15 +47,13 @@ public class RemoveRECSuffixActivity extends AbstractActivity {
           CatalogElement rec = rpl.getOrigin();
           if (rec != null) {
             for (CatalogElementLink link : rec.getOwnedLinks()) {
-              for (String featureName : link.getUnsynchronizedFeatures()) {
-                if ("name".equals(featureName)) {
-                  EObject target = link.getTarget();
-                  if (target != null) {
-                    EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
-                    String name = (String) target.eGet(feature);
-                    if (name != null && name.endsWith(suffix)) {
-                      target.eSet(feature, name.substring(0, name.length() - suffix.length()));
-                    }
+              if (link.isSuffixed()) {
+                EObject target = link.getTarget();
+                if (target != null) {
+                  EStructuralFeature feature = target.eClass().getEStructuralFeature("name");
+                  String name = (String) target.eGet(feature);
+                  if ((name != null) && name.endsWith(suffix)) {
+                    target.eSet(feature, name.substring(0, name.length() - suffix.length()));
                   }
                 }
               }

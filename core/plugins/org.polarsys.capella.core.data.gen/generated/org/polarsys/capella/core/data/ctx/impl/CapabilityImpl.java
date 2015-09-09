@@ -64,13 +64,13 @@ import org.polarsys.capella.core.data.oa.OperationalCapability;
 public class CapabilityImpl extends AbstractCapabilityImpl implements Capability {
 
 	/**
-   * The cached value of the '{@link #getOwnedActorCapabilityInvolvements() <em>Owned Actor Capability Involvements</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedActorCapabilityInvolvements() <em>Owned Actor Capability Involvements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedActorCapabilityInvolvements()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedActorCapabilityInvolvements()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ActorCapabilityInvolvement> ownedActorCapabilityInvolvements;
 
 
@@ -78,13 +78,13 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 
 	/**
-   * The cached value of the '{@link #getOwnedSystemCapabilityInvolvement() <em>Owned System Capability Involvement</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedSystemCapabilityInvolvement() <em>Owned System Capability Involvement</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedSystemCapabilityInvolvement()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedSystemCapabilityInvolvement()
+	 * @generated
+	 * @ordered
+	 */
 	protected SystemCapabilityInvolvement ownedSystemCapabilityInvolvement;
 
 
@@ -108,13 +108,13 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 
 	/**
-   * The cached value of the '{@link #getPurposes() <em>Purposes</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getPurposes() <em>Purposes</em>}' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getPurposes()
-   * @generated
-   * @ordered
-   */
+	 * @see #getPurposes()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<CapabilityExploitation> purposes;
 
 
@@ -133,101 +133,101 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected CapabilityImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.CAPABILITY;
-  }
+		return CtxPackage.Literals.CAPABILITY;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ActorCapabilityInvolvement> getOwnedActorCapabilityInvolvements() {
 
-    if (ownedActorCapabilityInvolvements == null) {
-      ownedActorCapabilityInvolvements = new EObjectContainmentEList<ActorCapabilityInvolvement>(ActorCapabilityInvolvement.class, this, CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS);
-    }
-    return ownedActorCapabilityInvolvements;
-  }
+		if (ownedActorCapabilityInvolvements == null) {
+			ownedActorCapabilityInvolvements = new EObjectContainmentEList<ActorCapabilityInvolvement>(ActorCapabilityInvolvement.class, this, CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS);
+		}
+		return ownedActorCapabilityInvolvements;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public SystemCapabilityInvolvement getOwnedSystemCapabilityInvolvement() {
 
-    return ownedSystemCapabilityInvolvement;
-  }
+		return ownedSystemCapabilityInvolvement;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public NotificationChain basicSetOwnedSystemCapabilityInvolvement(SystemCapabilityInvolvement newOwnedSystemCapabilityInvolvement, NotificationChain msgs) {
 
-    SystemCapabilityInvolvement oldOwnedSystemCapabilityInvolvement = ownedSystemCapabilityInvolvement;
-    ownedSystemCapabilityInvolvement = newOwnedSystemCapabilityInvolvement;
-    if (eNotificationRequired()) {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, oldOwnedSystemCapabilityInvolvement, newOwnedSystemCapabilityInvolvement);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
+		SystemCapabilityInvolvement oldOwnedSystemCapabilityInvolvement = ownedSystemCapabilityInvolvement;
+		ownedSystemCapabilityInvolvement = newOwnedSystemCapabilityInvolvement;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, oldOwnedSystemCapabilityInvolvement, newOwnedSystemCapabilityInvolvement);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 
-    return msgs;
-  }
+		return msgs;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setOwnedSystemCapabilityInvolvement(SystemCapabilityInvolvement newOwnedSystemCapabilityInvolvement) {
 
-    if (newOwnedSystemCapabilityInvolvement != ownedSystemCapabilityInvolvement) {
-      NotificationChain msgs = null;
-      if (ownedSystemCapabilityInvolvement != null)
-        msgs = ((InternalEObject)ownedSystemCapabilityInvolvement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, null, msgs);
-      if (newOwnedSystemCapabilityInvolvement != null)
-        msgs = ((InternalEObject)newOwnedSystemCapabilityInvolvement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, null, msgs);
-      msgs = basicSetOwnedSystemCapabilityInvolvement(newOwnedSystemCapabilityInvolvement, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, newOwnedSystemCapabilityInvolvement, newOwnedSystemCapabilityInvolvement));
+		if (newOwnedSystemCapabilityInvolvement != ownedSystemCapabilityInvolvement) {
+			NotificationChain msgs = null;
+			if (ownedSystemCapabilityInvolvement != null)
+				msgs = ((InternalEObject)ownedSystemCapabilityInvolvement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, null, msgs);
+			if (newOwnedSystemCapabilityInvolvement != null)
+				msgs = ((InternalEObject)newOwnedSystemCapabilityInvolvement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, null, msgs);
+			msgs = basicSetOwnedSystemCapabilityInvolvement(newOwnedSystemCapabilityInvolvement, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT, newOwnedSystemCapabilityInvolvement, newOwnedSystemCapabilityInvolvement));
 
-  }
+	}
 
 
 
@@ -235,10 +235,10 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ActorCapabilityInvolvement> getInvolvedActors() {
 
@@ -265,40 +265,40 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY__INVOLVED_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__INVOLVED_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<ActorCapabilityInvolvement> resultAsList = (Collection<ActorCapabilityInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<ActorCapabilityInvolvement>(this, CtxPackage.Literals.CAPABILITY__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<ActorCapabilityInvolvement> resultAsList = (Collection<ActorCapabilityInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<ActorCapabilityInvolvement>(this, CtxPackage.Literals.CAPABILITY__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public SystemCapabilityInvolvement getInvolvedSystem() {
 
-    SystemCapabilityInvolvement involvedSystem = basicGetInvolvedSystem();
-    return involvedSystem != null && involvedSystem.eIsProxy() ? (SystemCapabilityInvolvement)eResolveProxy((InternalEObject)involvedSystem) : involvedSystem;
-  }
+		SystemCapabilityInvolvement involvedSystem = basicGetInvolvedSystem();
+		return involvedSystem != null && involvedSystem.eIsProxy() ? (SystemCapabilityInvolvement)eResolveProxy((InternalEObject)involvedSystem) : involvedSystem;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public SystemCapabilityInvolvement basicGetInvolvedSystem() {
 
@@ -325,15 +325,15 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__INVOLVED_SYSTEM, annotation);
-    
-    try {
-      return (SystemCapabilityInvolvement) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (SystemCapabilityInvolvement) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -341,10 +341,10 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Actor> getParticipatingActors() {
 
@@ -371,40 +371,40 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY__PARTICIPATING_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__PARTICIPATING_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Actor> resultAsList = (Collection<Actor>) result;
-    return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.CAPABILITY__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Actor> resultAsList = (Collection<Actor>) result;
+		return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.CAPABILITY__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public org.polarsys.capella.core.data.ctx.System getParticipatingSystem() {
 
-    org.polarsys.capella.core.data.ctx.System participatingSystem = basicGetParticipatingSystem();
-    return participatingSystem != null && participatingSystem.eIsProxy() ? (org.polarsys.capella.core.data.ctx.System)eResolveProxy((InternalEObject)participatingSystem) : participatingSystem;
-  }
+		org.polarsys.capella.core.data.ctx.System participatingSystem = basicGetParticipatingSystem();
+		return participatingSystem != null && participatingSystem.eIsProxy() ? (org.polarsys.capella.core.data.ctx.System)eResolveProxy((InternalEObject)participatingSystem) : participatingSystem;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public org.polarsys.capella.core.data.ctx.System basicGetParticipatingSystem() {
 
@@ -431,15 +431,15 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY__PARTICIPATING_SYSTEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__PARTICIPATING_SYSTEM, annotation);
-    
-    try {
-      return (org.polarsys.capella.core.data.ctx.System) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (org.polarsys.capella.core.data.ctx.System) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -447,28 +447,28 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CapabilityExploitation> getPurposes() {
 
-    if (purposes == null) {
-      purposes = new EObjectWithInverseResolvingEList<CapabilityExploitation>(CapabilityExploitation.class, this, CtxPackage.CAPABILITY__PURPOSES, CtxPackage.CAPABILITY_EXPLOITATION__CAPABILITY);
-    }
-    return purposes;
-  }
+		if (purposes == null) {
+			purposes = new EObjectWithInverseResolvingEList<CapabilityExploitation>(CapabilityExploitation.class, this, CtxPackage.CAPABILITY__PURPOSES, CtxPackage.CAPABILITY_EXPLOITATION__CAPABILITY);
+		}
+		return purposes;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Mission> getPurposeMissions() {
 
@@ -495,27 +495,27 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY__PURPOSE_MISSIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__PURPOSE_MISSIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Mission> resultAsList = (Collection<Mission>) result;
-    return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.CAPABILITY__PURPOSE_MISSIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Mission> resultAsList = (Collection<Mission>) result;
+		return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.CAPABILITY__PURPOSE_MISSIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<OperationalCapability> getRealizedOperationalCapabilities() {
 
@@ -542,27 +542,27 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<OperationalCapability> resultAsList = (Collection<OperationalCapability>) result;
-    return new EcoreEList.UnmodifiableEList<OperationalCapability>(this, CtxPackage.Literals.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<OperationalCapability> resultAsList = (Collection<OperationalCapability>) result;
+		return new EcoreEList.UnmodifiableEList<OperationalCapability>(this, CtxPackage.Literals.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CapabilityRealization> getRealizingCapabilityRealizations() {
 
@@ -589,172 +589,172 @@ public class CapabilityImpl extends AbstractCapabilityImpl implements Capability
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
-    return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, CtxPackage.Literals.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, CtxPackage.Literals.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CtxPackage.CAPABILITY__PURPOSES:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getPurposes()).basicAdd(otherEnd, msgs);
-    }
-    return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CtxPackage.CAPABILITY__PURPOSES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPurposes()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
-        return ((InternalEList<?>)getOwnedActorCapabilityInvolvements()).basicRemove(otherEnd, msgs);
-      case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
-        return basicSetOwnedSystemCapabilityInvolvement(null, msgs);
-      case CtxPackage.CAPABILITY__PURPOSES:
-        return ((InternalEList<?>)getPurposes()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
+				return ((InternalEList<?>)getOwnedActorCapabilityInvolvements()).basicRemove(otherEnd, msgs);
+			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
+				return basicSetOwnedSystemCapabilityInvolvement(null, msgs);
+			case CtxPackage.CAPABILITY__PURPOSES:
+				return ((InternalEList<?>)getPurposes()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
-        return getOwnedActorCapabilityInvolvements();
-      case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
-        return getOwnedSystemCapabilityInvolvement();
-      case CtxPackage.CAPABILITY__INVOLVED_ACTORS:
-        return getInvolvedActors();
-      case CtxPackage.CAPABILITY__INVOLVED_SYSTEM:
-        if (resolve) return getInvolvedSystem();
-        return basicGetInvolvedSystem();
-      case CtxPackage.CAPABILITY__PARTICIPATING_ACTORS:
-        return getParticipatingActors();
-      case CtxPackage.CAPABILITY__PARTICIPATING_SYSTEM:
-        if (resolve) return getParticipatingSystem();
-        return basicGetParticipatingSystem();
-      case CtxPackage.CAPABILITY__PURPOSES:
-        return getPurposes();
-      case CtxPackage.CAPABILITY__PURPOSE_MISSIONS:
-        return getPurposeMissions();
-      case CtxPackage.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES:
-        return getRealizedOperationalCapabilities();
-      case CtxPackage.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS:
-        return getRealizingCapabilityRealizations();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
+				return getOwnedActorCapabilityInvolvements();
+			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
+				return getOwnedSystemCapabilityInvolvement();
+			case CtxPackage.CAPABILITY__INVOLVED_ACTORS:
+				return getInvolvedActors();
+			case CtxPackage.CAPABILITY__INVOLVED_SYSTEM:
+				if (resolve) return getInvolvedSystem();
+				return basicGetInvolvedSystem();
+			case CtxPackage.CAPABILITY__PARTICIPATING_ACTORS:
+				return getParticipatingActors();
+			case CtxPackage.CAPABILITY__PARTICIPATING_SYSTEM:
+				if (resolve) return getParticipatingSystem();
+				return basicGetParticipatingSystem();
+			case CtxPackage.CAPABILITY__PURPOSES:
+				return getPurposes();
+			case CtxPackage.CAPABILITY__PURPOSE_MISSIONS:
+				return getPurposeMissions();
+			case CtxPackage.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES:
+				return getRealizedOperationalCapabilities();
+			case CtxPackage.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS:
+				return getRealizingCapabilityRealizations();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
-        getOwnedActorCapabilityInvolvements().clear();
-        getOwnedActorCapabilityInvolvements().addAll((Collection<? extends ActorCapabilityInvolvement>)newValue);
-        return;
-      case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof SystemCapabilityInvolvement) {
-        // end-extension-code
-          setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case CtxPackage.CAPABILITY__PURPOSES:
-        getPurposes().clear();
-        getPurposes().addAll((Collection<? extends CapabilityExploitation>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
+				getOwnedActorCapabilityInvolvements().clear();
+				getOwnedActorCapabilityInvolvements().addAll((Collection<? extends ActorCapabilityInvolvement>)newValue);
+				return;
+			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof SystemCapabilityInvolvement) {
+				// end-extension-code
+					setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CtxPackage.CAPABILITY__PURPOSES:
+				getPurposes().clear();
+				getPurposes().addAll((Collection<? extends CapabilityExploitation>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
-        getOwnedActorCapabilityInvolvements().clear();
-        return;
-      case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
-        setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement)null);
-        return;
-      case CtxPackage.CAPABILITY__PURPOSES:
-        getPurposes().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
+				getOwnedActorCapabilityInvolvements().clear();
+				return;
+			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
+				setOwnedSystemCapabilityInvolvement((SystemCapabilityInvolvement)null);
+				return;
+			case CtxPackage.CAPABILITY__PURPOSES:
+				getPurposes().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
-        return ownedActorCapabilityInvolvements != null && !ownedActorCapabilityInvolvements.isEmpty();
-      case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
-        return ownedSystemCapabilityInvolvement != null;
-      case CtxPackage.CAPABILITY__INVOLVED_ACTORS:
-        return !getInvolvedActors().isEmpty();
-      case CtxPackage.CAPABILITY__INVOLVED_SYSTEM:
-        return basicGetInvolvedSystem() != null;
-      case CtxPackage.CAPABILITY__PARTICIPATING_ACTORS:
-        return !getParticipatingActors().isEmpty();
-      case CtxPackage.CAPABILITY__PARTICIPATING_SYSTEM:
-        return basicGetParticipatingSystem() != null;
-      case CtxPackage.CAPABILITY__PURPOSES:
-        return purposes != null && !purposes.isEmpty();
-      case CtxPackage.CAPABILITY__PURPOSE_MISSIONS:
-        return !getPurposeMissions().isEmpty();
-      case CtxPackage.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES:
-        return !getRealizedOperationalCapabilities().isEmpty();
-      case CtxPackage.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS:
-        return !getRealizingCapabilityRealizations().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.CAPABILITY__OWNED_ACTOR_CAPABILITY_INVOLVEMENTS:
+				return ownedActorCapabilityInvolvements != null && !ownedActorCapabilityInvolvements.isEmpty();
+			case CtxPackage.CAPABILITY__OWNED_SYSTEM_CAPABILITY_INVOLVEMENT:
+				return ownedSystemCapabilityInvolvement != null;
+			case CtxPackage.CAPABILITY__INVOLVED_ACTORS:
+				return !getInvolvedActors().isEmpty();
+			case CtxPackage.CAPABILITY__INVOLVED_SYSTEM:
+				return basicGetInvolvedSystem() != null;
+			case CtxPackage.CAPABILITY__PARTICIPATING_ACTORS:
+				return !getParticipatingActors().isEmpty();
+			case CtxPackage.CAPABILITY__PARTICIPATING_SYSTEM:
+				return basicGetParticipatingSystem() != null;
+			case CtxPackage.CAPABILITY__PURPOSES:
+				return purposes != null && !purposes.isEmpty();
+			case CtxPackage.CAPABILITY__PURPOSE_MISSIONS:
+				return !getPurposeMissions().isEmpty();
+			case CtxPackage.CAPABILITY__REALIZED_OPERATIONAL_CAPABILITIES:
+				return !getRealizedOperationalCapabilities().isEmpty();
+			case CtxPackage.CAPABILITY__REALIZING_CAPABILITY_REALIZATIONS:
+				return !getRealizingCapabilityRealizations().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

@@ -95,13 +95,13 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 
 
 	/**
-   * The cached value of the '{@link #getExternalCommunication() <em>External Communication</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getExternalCommunication() <em>External Communication</em>}' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getExternalCommunication()
-   * @generated
-   * @ordered
-   */
+	 * @see #getExternalCommunication()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<SystemCommunicationHook> externalCommunication;
 
 
@@ -109,13 +109,13 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 
 
 	/**
-   * The cached value of the '{@link #getOwnedEntityRealizations() <em>Owned Entity Realizations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedEntityRealizations() <em>Owned Entity Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedEntityRealizations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedEntityRealizations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<OperationalEntityRealization> ownedEntityRealizations;
 
 
@@ -138,35 +138,35 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.SYSTEM;
-  }
+		return CtxPackage.Literals.SYSTEM;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Involvement> getInvolvingInvolvements() {
 
@@ -193,27 +193,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CapabilityRealizationInvolvement> getInvolvingCapabilityRealizationInvolvements() {
 
@@ -240,27 +240,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<CapabilityRealizationInvolvement> resultAsList = (Collection<CapabilityRealizationInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvement>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CapabilityRealizationInvolvement> resultAsList = (Collection<CapabilityRealizationInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvement>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Capability> getContributedCapabilities() {
 
@@ -287,27 +287,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__CONTRIBUTED_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_CAPABILITIES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Capability> resultAsList = (Collection<Capability>) result;
-    return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Capability> resultAsList = (Collection<Capability>) result;
+		return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemCapabilityInvolvement> getParticipationsInCapabilities() {
 
@@ -334,27 +334,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemCapabilityInvolvement> resultAsList = (Collection<SystemCapabilityInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<SystemCapabilityInvolvement>(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemCapabilityInvolvement> resultAsList = (Collection<SystemCapabilityInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<SystemCapabilityInvolvement>(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Mission> getContributedMissions() {
 
@@ -381,27 +381,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__CONTRIBUTED_MISSIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_MISSIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Mission> resultAsList = (Collection<Mission>) result;
-    return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_MISSIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Mission> resultAsList = (Collection<Mission>) result;
+		return new EcoreEList.UnmodifiableEList<Mission>(this, CtxPackage.Literals.SYSTEM__CONTRIBUTED_MISSIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemMissionInvolvement> getParticipationsInMissions() {
 
@@ -428,63 +428,63 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_MISSIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_MISSIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemMissionInvolvement> resultAsList = (Collection<SystemMissionInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<SystemMissionInvolvement>(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_MISSIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemMissionInvolvement> resultAsList = (Collection<SystemMissionInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<SystemMissionInvolvement>(this, CtxPackage.Literals.SYSTEM__PARTICIPATIONS_IN_MISSIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemCommunicationHook> getExternalCommunication() {
 
-    if (externalCommunication == null) {
-      externalCommunication = new EObjectResolvingEList<SystemCommunicationHook>(SystemCommunicationHook.class, this, CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION);
-    }
-    return externalCommunication;
-  }
+		if (externalCommunication == null) {
+			externalCommunication = new EObjectResolvingEList<SystemCommunicationHook>(SystemCommunicationHook.class, this, CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION);
+		}
+		return externalCommunication;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<OperationalEntityRealization> getOwnedEntityRealizations() {
 
-    if (ownedEntityRealizations == null) {
-      ownedEntityRealizations = new EObjectContainmentEList.Resolving<OperationalEntityRealization>(OperationalEntityRealization.class, this, CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS);
-    }
-    return ownedEntityRealizations;
-  }
+		if (ownedEntityRealizations == null) {
+			ownedEntityRealizations = new EObjectContainmentEList.Resolving<OperationalEntityRealization>(OperationalEntityRealization.class, this, CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS);
+		}
+		return ownedEntityRealizations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<OperationalEntityRealization> getAllocatedEntityRealizations() {
 
@@ -511,27 +511,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<OperationalEntityRealization> resultAsList = (Collection<OperationalEntityRealization>) result;
-    return new EcoreEList.UnmodifiableEList<OperationalEntityRealization>(this, CtxPackage.Literals.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<OperationalEntityRealization> resultAsList = (Collection<OperationalEntityRealization>) result;
+		return new EcoreEList.UnmodifiableEList<OperationalEntityRealization>(this, CtxPackage.Literals.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemFunction> getAllocatedSystemFunctions() {
 
@@ -558,27 +558,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
-    return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
+		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Entity> getRealizedEntities() {
 
@@ -605,27 +605,27 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Entity> resultAsList = (Collection<Entity>) result;
-    return new EcoreEList.UnmodifiableEList<Entity>(this, CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Entity> resultAsList = (Collection<Entity>) result;
+		return new EcoreEList.UnmodifiableEList<Entity>(this, CtxPackage.Literals.SYSTEM__REALIZED_ENTITIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalComponent> getRealizingLogicalComponents() {
 
@@ -652,192 +652,192 @@ public class SystemImpl extends ComponentImpl implements org.polarsys.capella.co
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM__REALIZING_LOGICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM__REALIZING_LOGICAL_COMPONENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
-    return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, CtxPackage.Literals.SYSTEM__REALIZING_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
+		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, CtxPackage.Literals.SYSTEM__REALIZING_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
-        return ((InternalEList<?>)getOwnedEntityRealizations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedEntityRealizations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS:
-        return getInvolvingInvolvements();
-      case CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
-        return getInvolvingCapabilityRealizationInvolvements();
-      case CtxPackage.SYSTEM__CONTRIBUTED_CAPABILITIES:
-        return getContributedCapabilities();
-      case CtxPackage.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES:
-        return getParticipationsInCapabilities();
-      case CtxPackage.SYSTEM__CONTRIBUTED_MISSIONS:
-        return getContributedMissions();
-      case CtxPackage.SYSTEM__PARTICIPATIONS_IN_MISSIONS:
-        return getParticipationsInMissions();
-      case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
-        return getExternalCommunication();
-      case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
-        return getOwnedEntityRealizations();
-      case CtxPackage.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS:
-        return getAllocatedEntityRealizations();
-      case CtxPackage.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS:
-        return getAllocatedSystemFunctions();
-      case CtxPackage.SYSTEM__REALIZED_ENTITIES:
-        return getRealizedEntities();
-      case CtxPackage.SYSTEM__REALIZING_LOGICAL_COMPONENTS:
-        return getRealizingLogicalComponents();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS:
+				return getInvolvingInvolvements();
+			case CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return getInvolvingCapabilityRealizationInvolvements();
+			case CtxPackage.SYSTEM__CONTRIBUTED_CAPABILITIES:
+				return getContributedCapabilities();
+			case CtxPackage.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES:
+				return getParticipationsInCapabilities();
+			case CtxPackage.SYSTEM__CONTRIBUTED_MISSIONS:
+				return getContributedMissions();
+			case CtxPackage.SYSTEM__PARTICIPATIONS_IN_MISSIONS:
+				return getParticipationsInMissions();
+			case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
+				return getExternalCommunication();
+			case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
+				return getOwnedEntityRealizations();
+			case CtxPackage.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS:
+				return getAllocatedEntityRealizations();
+			case CtxPackage.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS:
+				return getAllocatedSystemFunctions();
+			case CtxPackage.SYSTEM__REALIZED_ENTITIES:
+				return getRealizedEntities();
+			case CtxPackage.SYSTEM__REALIZING_LOGICAL_COMPONENTS:
+				return getRealizingLogicalComponents();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
-        getExternalCommunication().clear();
-        getExternalCommunication().addAll((Collection<? extends SystemCommunicationHook>)newValue);
-        return;
-      case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
-        getOwnedEntityRealizations().clear();
-        getOwnedEntityRealizations().addAll((Collection<? extends OperationalEntityRealization>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
+				getExternalCommunication().clear();
+				getExternalCommunication().addAll((Collection<? extends SystemCommunicationHook>)newValue);
+				return;
+			case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
+				getOwnedEntityRealizations().clear();
+				getOwnedEntityRealizations().addAll((Collection<? extends OperationalEntityRealization>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
-        getExternalCommunication().clear();
-        return;
-      case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
-        getOwnedEntityRealizations().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
+				getExternalCommunication().clear();
+				return;
+			case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
+				getOwnedEntityRealizations().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS:
-        return !getInvolvingInvolvements().isEmpty();
-      case CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
-        return !getInvolvingCapabilityRealizationInvolvements().isEmpty();
-      case CtxPackage.SYSTEM__CONTRIBUTED_CAPABILITIES:
-        return !getContributedCapabilities().isEmpty();
-      case CtxPackage.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES:
-        return !getParticipationsInCapabilities().isEmpty();
-      case CtxPackage.SYSTEM__CONTRIBUTED_MISSIONS:
-        return !getContributedMissions().isEmpty();
-      case CtxPackage.SYSTEM__PARTICIPATIONS_IN_MISSIONS:
-        return !getParticipationsInMissions().isEmpty();
-      case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
-        return externalCommunication != null && !externalCommunication.isEmpty();
-      case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
-        return ownedEntityRealizations != null && !ownedEntityRealizations.isEmpty();
-      case CtxPackage.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS:
-        return !getAllocatedEntityRealizations().isEmpty();
-      case CtxPackage.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS:
-        return !getAllocatedSystemFunctions().isEmpty();
-      case CtxPackage.SYSTEM__REALIZED_ENTITIES:
-        return !getRealizedEntities().isEmpty();
-      case CtxPackage.SYSTEM__REALIZING_LOGICAL_COMPONENTS:
-        return !getRealizingLogicalComponents().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS:
+				return !getInvolvingInvolvements().isEmpty();
+			case CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return !getInvolvingCapabilityRealizationInvolvements().isEmpty();
+			case CtxPackage.SYSTEM__CONTRIBUTED_CAPABILITIES:
+				return !getContributedCapabilities().isEmpty();
+			case CtxPackage.SYSTEM__PARTICIPATIONS_IN_CAPABILITIES:
+				return !getParticipationsInCapabilities().isEmpty();
+			case CtxPackage.SYSTEM__CONTRIBUTED_MISSIONS:
+				return !getContributedMissions().isEmpty();
+			case CtxPackage.SYSTEM__PARTICIPATIONS_IN_MISSIONS:
+				return !getParticipationsInMissions().isEmpty();
+			case CtxPackage.SYSTEM__EXTERNAL_COMMUNICATION:
+				return externalCommunication != null && !externalCommunication.isEmpty();
+			case CtxPackage.SYSTEM__OWNED_ENTITY_REALIZATIONS:
+				return ownedEntityRealizations != null && !ownedEntityRealizations.isEmpty();
+			case CtxPackage.SYSTEM__ALLOCATED_ENTITY_REALIZATIONS:
+				return !getAllocatedEntityRealizations().isEmpty();
+			case CtxPackage.SYSTEM__ALLOCATED_SYSTEM_FUNCTIONS:
+				return !getAllocatedSystemFunctions().isEmpty();
+			case CtxPackage.SYSTEM__REALIZED_ENTITIES:
+				return !getRealizedEntities().isEmpty();
+			case CtxPackage.SYSTEM__REALIZING_LOGICAL_COMPONENTS:
+				return !getRealizingLogicalComponents().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == InvolvedElement.class) {
-      switch (derivedFeatureID) {
-        case CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    if (baseClass == CapabilityRealizationInvolvedElement.class) {
-      switch (derivedFeatureID) {
-        case CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == InvolvedElement.class) {
+			switch (derivedFeatureID) {
+				case CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityRealizationInvolvedElement.class) {
+			switch (derivedFeatureID) {
+				case CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == InvolvedElement.class) {
-      switch (baseFeatureID) {
-        case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    if (baseClass == CapabilityRealizationInvolvedElement.class) {
-      switch (baseFeatureID) {
-        case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == InvolvedElement.class) {
+			switch (baseFeatureID) {
+				case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CtxPackage.SYSTEM__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityRealizationInvolvedElement.class) {
+			switch (baseFeatureID) {
+				case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CtxPackage.SYSTEM__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 
 } //SystemImpl

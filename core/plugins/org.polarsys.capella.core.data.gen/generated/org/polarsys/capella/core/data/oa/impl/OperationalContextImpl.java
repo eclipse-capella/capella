@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.oa.OperationalContext;
  */
 public class OperationalContextImpl extends ComponentContextImpl implements OperationalContext {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OperationalContextImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OaPackage.Literals.OPERATIONAL_CONTEXT;
-  }
+		return OaPackage.Literals.OPERATIONAL_CONTEXT;
+	}
 
 
 

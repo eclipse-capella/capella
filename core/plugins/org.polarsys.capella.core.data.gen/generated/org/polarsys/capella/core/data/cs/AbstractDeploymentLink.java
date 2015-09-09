@@ -40,24 +40,24 @@ public interface AbstractDeploymentLink extends Relationship {
 
 
 	/**
-   * Returns the value of the '<em><b>Deployed Element</b></em>' reference.
+	 * Returns the value of the '<em><b>Deployed Element</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Deployed Element</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Deployed Element</em>' reference.
-   * @see #setDeployedElement(DeployableElement)
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractDeploymentLink_DeployedElement()
-   * @model required="true"
-   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployedElement'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the physical element involved in this relationship, that is to be deployed on the target\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
-   * @generated
-   */
+	 * @return the value of the '<em>Deployed Element</em>' reference.
+	 * @see #setDeployedElement(DeployableElement)
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractDeploymentLink_DeployedElement()
+	 * @model required="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='supplier' featureOwner='Dependency'"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='deployedElement'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the physical element involved in this relationship, that is to be deployed on the target\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::supplier' explanation='none' constraints='Multiplicity must be [1..1]'"
+	 * @generated
+	 */
 
 	DeployableElement getDeployedElement();
 
@@ -65,14 +65,14 @@ public interface AbstractDeploymentLink extends Relationship {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getDeployedElement <em>Deployed Element</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getDeployedElement <em>Deployed Element</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Deployed Element</em>' reference.
-   * @see #getDeployedElement()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Deployed Element</em>' reference.
+	 * @see #getDeployedElement()
+	 * @generated
+	 */
 
 	void setDeployedElement(DeployableElement value);
 
@@ -83,26 +83,26 @@ public interface AbstractDeploymentLink extends Relationship {
 
 
 	/**
-   * Returns the value of the '<em><b>Location</b></em>' reference.
-   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.DeploymentTarget#getDeploymentLinks <em>Deployment Links</em>}'.
+	 * Returns the value of the '<em><b>Location</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.cs.DeploymentTarget#getDeploymentLinks <em>Deployment Links</em>}'.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Location</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Location</em>' reference.
-   * @see #setLocation(DeploymentTarget)
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractDeploymentLink_Location()
-   * @see org.polarsys.capella.core.data.cs.DeploymentTarget#getDeploymentLinks
-   * @model opposite="deploymentLinks" required="true"
-   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='location'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the host where the source element involved in this relationship will be deployed\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='uml::Dependency::client elements on which DeploymentTarget stereotype or any stereotype that inherits from it is applied'"
-   * @generated
-   */
+	 * @return the value of the '<em>Location</em>' reference.
+	 * @see #setLocation(DeploymentTarget)
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getAbstractDeploymentLink_Location()
+	 * @see org.polarsys.capella.core.data.cs.DeploymentTarget#getDeploymentLinks
+	 * @model opposite="deploymentLinks" required="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='client' featureOwner='Dependency'"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='location'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the host where the source element involved in this relationship will be deployed\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Dependency::client' explanation='none' constraints='uml::Dependency::client elements on which DeploymentTarget stereotype or any stereotype that inherits from it is applied'"
+	 * @generated
+	 */
 
 	DeploymentTarget getLocation();
 
@@ -110,14 +110,14 @@ public interface AbstractDeploymentLink extends Relationship {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getLocation <em>Location</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink#getLocation <em>Location</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Location</em>' reference.
-   * @see #getLocation()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Location</em>' reference.
+	 * @see #getLocation()
+	 * @generated
+	 */
 
 	void setLocation(DeploymentTarget value);
 

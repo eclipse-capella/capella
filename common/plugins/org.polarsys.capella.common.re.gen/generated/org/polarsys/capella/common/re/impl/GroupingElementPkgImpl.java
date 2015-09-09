@@ -10,15 +10,7 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.impl;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.polarsys.capella.common.re.CompliancyDefinitionPkg;
 import org.polarsys.capella.common.re.GroupingElementPkg;
 import org.polarsys.capella.common.re.RePackage;
 
@@ -34,25 +26,25 @@ import org.polarsys.capella.common.re.RePackage;
 public class GroupingElementPkgImpl extends CatalogElementPkgImpl implements GroupingElementPkg {
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected GroupingElementPkgImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return RePackage.Literals.GROUPING_ELEMENT_PKG;
-  }
+		return RePackage.Literals.GROUPING_ELEMENT_PKG;
+	}
 
 
 

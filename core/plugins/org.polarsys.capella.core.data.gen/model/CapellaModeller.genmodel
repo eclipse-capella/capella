@@ -829,7 +829,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEventRealization/realizingEvent"/>
     </genClasses>
     <genClasses image="false" ecoreClass="CapellaCommon.ecore#//StateEvent">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEvent/condition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEvent/expression"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference CapellaCommon.ecore#//StateEvent/ownedStateEventRealizations"/>
     </genClasses>
     <genClasses ecoreClass="CapellaCommon.ecore#//ChangeEvent">
@@ -837,7 +837,6 @@
     </genClasses>
     <genClasses ecoreClass="CapellaCommon.ecore#//TimeEvent">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//TimeEvent/kind"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute CapellaCommon.ecore#//TimeEvent/time"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Information" basePackage="org.polarsys.capella.core.data" resource="XMI"

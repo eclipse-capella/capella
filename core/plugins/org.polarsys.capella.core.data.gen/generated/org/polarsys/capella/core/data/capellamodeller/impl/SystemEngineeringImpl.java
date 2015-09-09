@@ -75,35 +75,35 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemEngineeringImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CapellamodellerPackage.Literals.SYSTEM_ENGINEERING;
-  }
+		return CapellamodellerPackage.Literals.SYSTEM_ENGINEERING;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<OperationalAnalysis> getContainedOperationalAnalysis() {
 
@@ -130,27 +130,27 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<OperationalAnalysis> resultAsList = (Collection<OperationalAnalysis>) result;
-    return new EcoreEList.UnmodifiableEList<OperationalAnalysis>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<OperationalAnalysis> resultAsList = (Collection<OperationalAnalysis>) result;
+		return new EcoreEList.UnmodifiableEList<OperationalAnalysis>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemAnalysis> getContainedSystemAnalysis() {
 
@@ -177,27 +177,27 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemAnalysis> resultAsList = (Collection<SystemAnalysis>) result;
-    return new EcoreEList.UnmodifiableEList<SystemAnalysis>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemAnalysis> resultAsList = (Collection<SystemAnalysis>) result;
+		return new EcoreEList.UnmodifiableEList<SystemAnalysis>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalArchitecture> getContainedLogicalArchitectures() {
 
@@ -224,27 +224,27 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<LogicalArchitecture> resultAsList = (Collection<LogicalArchitecture>) result;
-    return new EcoreEList.UnmodifiableEList<LogicalArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<LogicalArchitecture> resultAsList = (Collection<LogicalArchitecture>) result;
+		return new EcoreEList.UnmodifiableEList<LogicalArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalArchitecture> getContainedPhysicalArchitectures() {
 
@@ -271,27 +271,27 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<PhysicalArchitecture> resultAsList = (Collection<PhysicalArchitecture>) result;
-    return new EcoreEList.UnmodifiableEList<PhysicalArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<PhysicalArchitecture> resultAsList = (Collection<PhysicalArchitecture>) result;
+		return new EcoreEList.UnmodifiableEList<PhysicalArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<EPBSArchitecture> getContainedEPBSArchitectures() {
 
@@ -318,27 +318,27 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<EPBSArchitecture> resultAsList = (Collection<EPBSArchitecture>) result;
-    return new EcoreEList.UnmodifiableEList<EPBSArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<EPBSArchitecture> resultAsList = (Collection<EPBSArchitecture>) result;
+		return new EcoreEList.UnmodifiableEList<EPBSArchitecture>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SharedPkg> getContainedSharedPkgs() {
 
@@ -365,68 +365,68 @@ public class SystemEngineeringImpl extends AbstractModellingStructureImpl implem
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SharedPkg> resultAsList = (Collection<SharedPkg>) result;
-    return new EcoreEList.UnmodifiableEList<SharedPkg>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SharedPkg> resultAsList = (Collection<SharedPkg>) result;
+		return new EcoreEList.UnmodifiableEList<SharedPkg>(this, CapellamodellerPackage.Literals.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS:
-        return getContainedOperationalAnalysis();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS:
-        return getContainedSystemAnalysis();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES:
-        return getContainedLogicalArchitectures();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES:
-        return getContainedPhysicalArchitectures();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES:
-        return getContainedEPBSArchitectures();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS:
-        return getContainedSharedPkgs();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS:
+				return getContainedOperationalAnalysis();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS:
+				return getContainedSystemAnalysis();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES:
+				return getContainedLogicalArchitectures();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES:
+				return getContainedPhysicalArchitectures();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES:
+				return getContainedEPBSArchitectures();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS:
+				return getContainedSharedPkgs();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS:
-        return !getContainedOperationalAnalysis().isEmpty();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS:
-        return !getContainedSystemAnalysis().isEmpty();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES:
-        return !getContainedLogicalArchitectures().isEmpty();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES:
-        return !getContainedPhysicalArchitectures().isEmpty();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES:
-        return !getContainedEPBSArchitectures().isEmpty();
-      case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS:
-        return !getContainedSharedPkgs().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_OPERATIONAL_ANALYSIS:
+				return !getContainedOperationalAnalysis().isEmpty();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SYSTEM_ANALYSIS:
+				return !getContainedSystemAnalysis().isEmpty();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_LOGICAL_ARCHITECTURES:
+				return !getContainedLogicalArchitectures().isEmpty();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_PHYSICAL_ARCHITECTURES:
+				return !getContainedPhysicalArchitectures().isEmpty();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_EPBS_ARCHITECTURES:
+				return !getContainedEPBSArchitectures().isEmpty();
+			case CapellamodellerPackage.SYSTEM_ENGINEERING__CONTAINED_SHARED_PKGS:
+				return !getContainedSharedPkgs().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.ctx.SystemContext;
  */
 public class SystemContextImpl extends ComponentContextImpl implements SystemContext {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemContextImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.SYSTEM_CONTEXT;
-  }
+		return CtxPackage.Literals.SYSTEM_CONTEXT;
+	}
 
 
 

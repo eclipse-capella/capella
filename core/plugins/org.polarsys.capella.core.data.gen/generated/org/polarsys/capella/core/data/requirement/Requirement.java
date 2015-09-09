@@ -48,21 +48,21 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Is Obsolete</b></em>' attribute.
+	 * Returns the value of the '<em><b>Is Obsolete</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Is Obsolete</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Obsolete</em>' attribute.
-   * @see #setIsObsolete(boolean)
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_IsObsolete()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='field used to flag obsolete requirement (that for some reason we want to keep in the model though)\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Is Obsolete</em>' attribute.
+	 * @see #setIsObsolete(boolean)
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_IsObsolete()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='field used to flag obsolete requirement (that for some reason we want to keep in the model though)\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	boolean isIsObsolete();
 
@@ -70,14 +70,14 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#isIsObsolete <em>Is Obsolete</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#isIsObsolete <em>Is Obsolete</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Obsolete</em>' attribute.
-   * @see #isIsObsolete()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Is Obsolete</em>' attribute.
+	 * @see #isIsObsolete()
+	 * @generated
+	 */
 
 	void setIsObsolete(boolean value);
 
@@ -88,22 +88,22 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Requirement Id</b></em>' attribute.
+	 * Returns the value of the '<em><b>Requirement Id</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Requirement Id</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Requirement Id</em>' attribute.
-   * @see #setRequirementId(String)
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_RequirementId()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='requirementId' featureOwner='eng.Requirement' fromStereotype='true'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a unique identifier for this requirement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='SysML::Requirements::Requirement::id' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Requirement Id</em>' attribute.
+	 * @see #setRequirementId(String)
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_RequirementId()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='requirementId' featureOwner='eng.Requirement' fromStereotype='true'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a unique identifier for this requirement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='SysML::Requirements::Requirement::id' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	String getRequirementId();
 
@@ -111,14 +111,14 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getRequirementId <em>Requirement Id</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getRequirementId <em>Requirement Id</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Requirement Id</em>' attribute.
-   * @see #getRequirementId()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Requirement Id</em>' attribute.
+	 * @see #getRequirementId()
+	 * @generated
+	 */
 
 	void setRequirementId(String value);
 
@@ -129,22 +129,22 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Additional Information</b></em>' attribute.
+	 * Returns the value of the '<em><b>Additional Information</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Additional Information</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Additional Information</em>' attribute.
-   * @see #setAdditionalInformation(String)
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_AdditionalInformation()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='additionalInformation' featureOwner='eng.Requirement' fromStereotype='true'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a free field to capture any additional information required to complement this requirement statement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Additional Information</em>' attribute.
+	 * @see #setAdditionalInformation(String)
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_AdditionalInformation()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='additionalInformation' featureOwner='eng.Requirement' fromStereotype='true'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a free field to capture any additional information required to complement this requirement statement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	String getAdditionalInformation();
 
@@ -152,14 +152,14 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getAdditionalInformation <em>Additional Information</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getAdditionalInformation <em>Additional Information</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Additional Information</em>' attribute.
-   * @see #getAdditionalInformation()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Additional Information</em>' attribute.
+	 * @see #getAdditionalInformation()
+	 * @generated
+	 */
 
 	void setAdditionalInformation(String value);
 
@@ -170,22 +170,22 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Verification Method</b></em>' attribute.
+	 * Returns the value of the '<em><b>Verification Method</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Verification Method</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Verification Method</em>' attribute.
-   * @see #setVerificationMethod(String)
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_VerificationMethod()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='verificationMethod' featureOwner='eng.Requirement' fromStereotype='true'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='this field receives the description of the method that will be used to verify that this requirement is fulfilled.\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Verification Method</em>' attribute.
+	 * @see #setVerificationMethod(String)
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_VerificationMethod()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='verificationMethod' featureOwner='eng.Requirement' fromStereotype='true'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='this field receives the description of the method that will be used to verify that this requirement is fulfilled.\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	String getVerificationMethod();
 
@@ -193,14 +193,14 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getVerificationMethod <em>Verification Method</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getVerificationMethod <em>Verification Method</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Verification Method</em>' attribute.
-   * @see #getVerificationMethod()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Verification Method</em>' attribute.
+	 * @see #getVerificationMethod()
+	 * @generated
+	 */
 
 	void setVerificationMethod(String value);
 
@@ -211,22 +211,22 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Verification Phase</b></em>' attribute.
+	 * Returns the value of the '<em><b>Verification Phase</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Verification Phase</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Verification Phase</em>' attribute.
-   * @see #setVerificationPhase(String)
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_VerificationPhase()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='verificationPhase' featureOwner='eng.Requirement' fromStereotype='true'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a field receiving the description of the design phase in which this requirement can/will be verified\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Verification Phase</em>' attribute.
+	 * @see #setVerificationPhase(String)
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_VerificationPhase()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='verificationPhase' featureOwner='eng.Requirement' fromStereotype='true'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a field receiving the description of the design phase in which this requirement can/will be verified\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	String getVerificationPhase();
 
@@ -234,14 +234,14 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getVerificationPhase <em>Verification Phase</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getVerificationPhase <em>Verification Phase</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Verification Phase</em>' attribute.
-   * @see #getVerificationPhase()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Verification Phase</em>' attribute.
+	 * @see #getVerificationPhase()
+	 * @generated
+	 */
 
 	void setVerificationPhase(String value);
 
@@ -252,22 +252,22 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Implementation Version</b></em>' attribute.
+	 * Returns the value of the '<em><b>Implementation Version</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Implementation Version</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Implementation Version</em>' attribute.
-   * @see #setImplementationVersion(String)
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_ImplementationVersion()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='implementationVersion' featureOwner='eng.Requirement' fromStereotype='true'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a unique identifier to keep track of the version of this requirement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Implementation Version</em>' attribute.
+	 * @see #setImplementationVersion(String)
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_ImplementationVersion()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='implementationVersion' featureOwner='eng.Requirement' fromStereotype='true'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='a unique identifier to keep track of the version of this requirement\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	String getImplementationVersion();
 
@@ -275,14 +275,14 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getImplementationVersion <em>Implementation Version</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getImplementationVersion <em>Implementation Version</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Implementation Version</em>' attribute.
-   * @see #getImplementationVersion()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Implementation Version</em>' attribute.
+	 * @see #getImplementationVersion()
+	 * @generated
+	 */
 
 	void setImplementationVersion(String value);
 
@@ -293,22 +293,22 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Feature</b></em>' attribute.
+	 * Returns the value of the '<em><b>Feature</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Feature</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Feature</em>' attribute.
-   * @see #setFeature(String)
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_Feature()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='feature' featureOwner='eng.Requirement' fromStereotype='true'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the system feature that this requirement corresponds to\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Feature</em>' attribute.
+	 * @see #setFeature(String)
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_Feature()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='feature' featureOwner='eng.Requirement' fromStereotype='true'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the system feature that this requirement corresponds to\r\n[source: Capella study]' constraints='none' type='n/a' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	String getFeature();
 
@@ -316,14 +316,14 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getFeature <em>Feature</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.requirement.Requirement#getFeature <em>Feature</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Feature</em>' attribute.
-   * @see #getFeature()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Feature</em>' attribute.
+	 * @see #getFeature()
+	 * @generated
+	 */
 
 	void setFeature(String value);
 
@@ -334,21 +334,21 @@ public interface Requirement extends Namespace {
 
 
 	/**
-   * Returns the value of the '<em><b>Related Capella Elements</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.CapellaElement}.
+	 * Returns the value of the '<em><b>Related Capella Elements</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.CapellaElement}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Related Capella Elements</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Related Capella Elements</em>' reference list.
-   * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_RelatedCapellaElements()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Related Capella Elements</em>' reference list.
+	 * @see org.polarsys.capella.core.data.requirement.RequirementPackage#getRequirement_RelatedCapellaElements()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<CapellaElement> getRelatedCapellaElements();
 

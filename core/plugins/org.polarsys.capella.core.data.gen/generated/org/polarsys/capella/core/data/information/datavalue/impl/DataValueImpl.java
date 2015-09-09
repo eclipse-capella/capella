@@ -47,13 +47,13 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 public abstract class DataValueImpl extends NamedElementImpl implements DataValue {
 
 	/**
-   * The cached value of the '{@link #getAbstractType() <em>Abstract Type</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getAbstractType() <em>Abstract Type</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getAbstractType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getAbstractType()
+	 * @generated
+	 * @ordered
+	 */
 	protected AbstractType abstractType;
 
 
@@ -61,23 +61,23 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 
 
 	/**
-   * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isAbstract()
-   * @generated
-   * @ordered
-   */
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final boolean ABSTRACT_EDEFAULT = false;
 
 	/**
-   * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isAbstract()
-   * @generated
-   * @ordered
-   */
+	 * @see #isAbstract()
+	 * @generated
+	 * @ordered
+	 */
 	protected boolean abstract_ = ABSTRACT_EDEFAULT;
 
 
@@ -88,77 +88,77 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected DataValueImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return DatavaluePackage.Literals.DATA_VALUE;
-  }
+		return DatavaluePackage.Literals.DATA_VALUE;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public AbstractType getAbstractType() {
 
-    if (abstractType != null && abstractType.eIsProxy()) {
-      InternalEObject oldAbstractType = (InternalEObject)abstractType;
-      abstractType = (AbstractType)eResolveProxy(oldAbstractType);
-      if (abstractType != oldAbstractType) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE, oldAbstractType, abstractType));
-      }
-    }
-    return abstractType;
-  }
+		if (abstractType != null && abstractType.eIsProxy()) {
+			InternalEObject oldAbstractType = (InternalEObject)abstractType;
+			abstractType = (AbstractType)eResolveProxy(oldAbstractType);
+			if (abstractType != oldAbstractType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE, oldAbstractType, abstractType));
+			}
+		}
+		return abstractType;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public AbstractType basicGetAbstractType() {
 
-    return abstractType;
-  }
+		return abstractType;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setAbstractType(AbstractType newAbstractType) {
 
-    AbstractType oldAbstractType = abstractType;
-    abstractType = newAbstractType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE, oldAbstractType, abstractType));
+		AbstractType oldAbstractType = abstractType;
+		abstractType = newAbstractType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE, oldAbstractType, abstractType));
 
-  }
+	}
 
 
 
@@ -166,31 +166,31 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public boolean isAbstract() {
 
-    return abstract_;
-  }
+		return abstract_;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setAbstract(boolean newAbstract) {
 
-    boolean oldAbstract = abstract_;
-    abstract_ = newAbstract;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.DATA_VALUE__ABSTRACT, oldAbstract, abstract_));
+		boolean oldAbstract = abstract_;
+		abstract_ = newAbstract;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.DATA_VALUE__ABSTRACT, oldAbstract, abstract_));
 
-  }
+	}
 
 
 
@@ -198,23 +198,23 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Type getType() {
 
-    Type type = basicGetType();
-    return type != null && type.eIsProxy() ? (Type)eResolveProxy((InternalEObject)type) : type;
-  }
+		Type type = basicGetType();
+		return type != null && type.eIsProxy() ? (Type)eResolveProxy((InternalEObject)type) : type;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Type basicGetType() {
 
@@ -241,166 +241,166 @@ public abstract class DataValueImpl extends NamedElementImpl implements DataValu
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.DATA_VALUE__TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.DATA_VALUE__TYPE, annotation);
-    
-    try {
-      return (Type) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (Type) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
-        if (resolve) return getAbstractType();
-        return basicGetAbstractType();
-      case DatavaluePackage.DATA_VALUE__ABSTRACT:
-        return isAbstract();
-      case DatavaluePackage.DATA_VALUE__TYPE:
-        if (resolve) return getType();
-        return basicGetType();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
+				if (resolve) return getAbstractType();
+				return basicGetAbstractType();
+			case DatavaluePackage.DATA_VALUE__ABSTRACT:
+				return isAbstract();
+			case DatavaluePackage.DATA_VALUE__TYPE:
+				if (resolve) return getType();
+				return basicGetType();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof AbstractType) {
-        // end-extension-code
-          setAbstractType((AbstractType)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case DatavaluePackage.DATA_VALUE__ABSTRACT:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof Boolean) {
-        // end-extension-code
-          setAbstract((Boolean)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof AbstractType) {
+				// end-extension-code
+					setAbstractType((AbstractType)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case DatavaluePackage.DATA_VALUE__ABSTRACT:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Boolean) {
+				// end-extension-code
+					setAbstract((Boolean)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
-        setAbstractType((AbstractType)null);
-        return;
-      case DatavaluePackage.DATA_VALUE__ABSTRACT:
-        setAbstract(ABSTRACT_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
+				setAbstractType((AbstractType)null);
+				return;
+			case DatavaluePackage.DATA_VALUE__ABSTRACT:
+				setAbstract(ABSTRACT_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
-        return abstractType != null;
-      case DatavaluePackage.DATA_VALUE__ABSTRACT:
-        return abstract_ != ABSTRACT_EDEFAULT;
-      case DatavaluePackage.DATA_VALUE__TYPE:
-        return basicGetType() != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE:
+				return abstractType != null;
+			case DatavaluePackage.DATA_VALUE__ABSTRACT:
+				return abstract_ != ABSTRACT_EDEFAULT;
+			case DatavaluePackage.DATA_VALUE__TYPE:
+				return basicGetType() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == AbstractTypedElement.class) {
-      switch (derivedFeatureID) {
-        case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE: return ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE;
-        default: return -1;
-      }
-    }
-    if (baseClass == ValueSpecification.class) {
-      switch (derivedFeatureID) {
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == AbstractTypedElement.class) {
+			switch (derivedFeatureID) {
+				case DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE: return ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE;
+				default: return -1;
+			}
+		}
+		if (baseClass == ValueSpecification.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == AbstractTypedElement.class) {
-      switch (baseFeatureID) {
-        case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE: return DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE;
-        default: return -1;
-      }
-    }
-    if (baseClass == ValueSpecification.class) {
-      switch (baseFeatureID) {
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == AbstractTypedElement.class) {
+			switch (baseFeatureID) {
+				case ModellingcorePackage.ABSTRACT_TYPED_ELEMENT__ABSTRACT_TYPE: return DatavaluePackage.DATA_VALUE__ABSTRACT_TYPE;
+				default: return -1;
+			}
+		}
+		if (baseClass == ValueSpecification.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (abstract: "); //$NON-NLS-1$
-    result.append(abstract_);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (abstract: "); //$NON-NLS-1$
+		result.append(abstract_);
+		result.append(')');
+		return result.toString();
+	}
 
 
 } //DataValueImpl

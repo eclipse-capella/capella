@@ -37,21 +37,21 @@ public interface CommunicationLinkAllocation extends Allocation {
 
 
 	/**
-   * Returns the value of the '<em><b>Allocating Link</b></em>' reference.
+	 * Returns the value of the '<em><b>Allocating Link</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocating Link</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Allocating Link</em>' reference.
-   * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkAllocation_AllocatingLink()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"source\" of the allocation link : the link that is allocating the other link' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Allocating Link</em>' reference.
+	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkAllocation_AllocatingLink()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"source\" of the allocation link : the link that is allocating the other link' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	CommunicationLink getAllocatingLink();
 
@@ -62,21 +62,21 @@ public interface CommunicationLinkAllocation extends Allocation {
 
 
 	/**
-   * Returns the value of the '<em><b>Allocated Link</b></em>' reference.
+	 * Returns the value of the '<em><b>Allocated Link</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Allocated Link</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Allocated Link</em>' reference.
-   * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkAllocation_AllocatedLink()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"destination\" of the allocation link : the link that is being allocated by another link' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Allocated Link</em>' reference.
+	 * @see org.polarsys.capella.core.data.information.communication.CommunicationPackage#getCommunicationLinkAllocation_AllocatedLink()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the \"destination\" of the allocation link : the link that is being allocated by another link' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	CommunicationLink getAllocatedLink();
 

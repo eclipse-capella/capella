@@ -47,24 +47,24 @@ public interface AbstractPhysicalComponent extends SystemComponent, DeployableEl
 
 
 	/**
-   * Returns the value of the '<em><b>Kind</b></em>' attribute.
-   * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentKind}.
+	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentKind}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Kind</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
-   * @see #setKind(PhysicalComponentKind)
-   * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_Kind()
-   * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' fromStereotype='true' featureOwner='eng.AbstractPhysicalComponent'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of physical component (refer to PhysicalComponentKind for detailed description)\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentKind definition' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
+	 * @see #setKind(PhysicalComponentKind)
+	 * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_Kind()
+	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='type' fromStereotype='true' featureOwner='eng.AbstractPhysicalComponent'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the type of physical component (refer to PhysicalComponentKind for detailed description)\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentKind definition' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	PhysicalComponentKind getKind();
 
@@ -72,15 +72,15 @@ public interface AbstractPhysicalComponent extends SystemComponent, DeployableEl
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getKind <em>Kind</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getKind <em>Kind</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Kind</em>' attribute.
-   * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
-   * @see #getKind()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Kind</em>' attribute.
+	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentKind
+	 * @see #getKind()
+	 * @generated
+	 */
 
 	void setKind(PhysicalComponentKind value);
 
@@ -91,23 +91,23 @@ public interface AbstractPhysicalComponent extends SystemComponent, DeployableEl
 
 
 	/**
-   * Returns the value of the '<em><b>Nature</b></em>' attribute.
-   * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentNature}.
+	 * Returns the value of the '<em><b>Nature</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.polarsys.capella.core.data.pa.PhysicalComponentNature}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Nature</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Nature</em>' attribute.
-   * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
-   * @see #setNature(PhysicalComponentNature)
-   * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_Nature()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the nature of this physical component, typically whether it is an actual execution node, or a behavioral component like a SW part\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentNature definition' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Nature</em>' attribute.
+	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
+	 * @see #setNature(PhysicalComponentNature)
+	 * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_Nature()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies the nature of this physical component, typically whether it is an actual execution node, or a behavioral component like a SW part\r\n[source: Capella study]' constraints='none' type='refer to PhysicalComponentNature definition' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	PhysicalComponentNature getNature();
 
@@ -115,15 +115,15 @@ public interface AbstractPhysicalComponent extends SystemComponent, DeployableEl
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getNature <em>Nature</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getNature <em>Nature</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Nature</em>' attribute.
-   * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
-   * @see #getNature()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Nature</em>' attribute.
+	 * @see org.polarsys.capella.core.data.pa.PhysicalComponentNature
+	 * @see #getNature()
+	 * @generated
+	 */
 
 	void setNature(PhysicalComponentNature value);
 
@@ -134,22 +134,22 @@ public interface AbstractPhysicalComponent extends SystemComponent, DeployableEl
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
+	 * Returns the value of the '<em><b>Owned Deployment Links</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.AbstractDeploymentLink}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Deployment Links</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
-   * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_OwnedDeploymentLinks()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the various deployments of this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='SysML::Blocks::Block cannot contain AbstractDeployment\'s equivalent, hence we find the nearest available package to store them.' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Deployment Links</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_OwnedDeploymentLinks()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the various deployments of this physical component\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::nearestpackage' explanation='SysML::Blocks::Block cannot contain AbstractDeployment\'s equivalent, hence we find the nearest available package to store them.' constraints='none'"
+	 * @generated
+	 */
 
 	EList<AbstractDeploymentLink> getOwnedDeploymentLinks();
 
@@ -160,21 +160,21 @@ public interface AbstractPhysicalComponent extends SystemComponent, DeployableEl
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Deployment Aspect</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Owned Deployment Aspect</b></em>' containment reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Deployment Aspect</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Deployment Aspect</em>' containment reference.
-   * @see #setOwnedDeploymentAspect(DeploymentAspect)
-   * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_OwnedDeploymentAspect()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Deployment Aspect</em>' containment reference.
+	 * @see #setOwnedDeploymentAspect(DeploymentAspect)
+	 * @see org.polarsys.capella.core.data.pa.PaPackage#getAbstractPhysicalComponent_OwnedDeploymentAspect()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	DeploymentAspect getOwnedDeploymentAspect();
 
@@ -182,14 +182,14 @@ public interface AbstractPhysicalComponent extends SystemComponent, DeployableEl
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getOwnedDeploymentAspect <em>Owned Deployment Aspect</em>}' containment reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.AbstractPhysicalComponent#getOwnedDeploymentAspect <em>Owned Deployment Aspect</em>}' containment reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Owned Deployment Aspect</em>' containment reference.
-   * @see #getOwnedDeploymentAspect()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Owned Deployment Aspect</em>' containment reference.
+	 * @see #getOwnedDeploymentAspect()
+	 * @generated
+	 */
 
 	void setOwnedDeploymentAspect(DeploymentAspect value);
 

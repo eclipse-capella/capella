@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.ctx.OperationalActorRealization;
  */
 public class OperationalActorRealizationImpl extends ComponentAllocationImpl implements OperationalActorRealization {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OperationalActorRealizationImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.OPERATIONAL_ACTOR_REALIZATION;
-  }
+		return CtxPackage.Literals.OPERATIONAL_ACTOR_REALIZATION;
+	}
 
 
 

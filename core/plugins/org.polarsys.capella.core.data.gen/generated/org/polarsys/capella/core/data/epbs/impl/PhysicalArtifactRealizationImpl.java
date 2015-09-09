@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization;
  */
 public class PhysicalArtifactRealizationImpl extends ComponentAllocationImpl implements PhysicalArtifactRealization {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected PhysicalArtifactRealizationImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION;
-  }
+		return EpbsPackage.Literals.PHYSICAL_ARTIFACT_REALIZATION;
+	}
 
 
 

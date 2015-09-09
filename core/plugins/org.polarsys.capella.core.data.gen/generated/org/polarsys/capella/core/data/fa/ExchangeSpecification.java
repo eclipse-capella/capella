@@ -42,22 +42,22 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 
 
 	/**
-   * Returns the value of the '<em><b>Containing Link</b></em>' reference.
+	 * Returns the value of the '<em><b>Containing Link</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Containing Link</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Containing Link</em>' reference.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_ContainingLink()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='containingLink'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange link associated with this exchange specification\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Containing Link</em>' reference.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_ContainingLink()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='containingLink'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange link associated with this exchange specification\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	ExchangeLink getContainingLink();
 
@@ -68,26 +68,26 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 
 
 	/**
-   * Returns the value of the '<em><b>Link</b></em>' reference.
-   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getExchange <em>Exchange</em>}'.
+	 * Returns the value of the '<em><b>Link</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeContainment#getExchange <em>Exchange</em>}'.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Link</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Link</em>' reference.
-   * @see #setLink(ExchangeContainment)
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_Link()
-   * @see org.polarsys.capella.core.data.fa.ExchangeContainment#getExchange
-   * @model opposite="exchange"
-   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='link'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange containment associated with this exchange specification\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Link</em>' reference.
+	 * @see #setLink(ExchangeContainment)
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_Link()
+	 * @see org.polarsys.capella.core.data.fa.ExchangeContainment#getExchange
+	 * @model opposite="exchange"
+	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='link'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the exchange containment associated with this exchange specification\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Opposite reference of uml::Dependency::supplier' constraints='none'"
+	 * @generated
+	 */
 
 	ExchangeContainment getLink();
 
@@ -95,14 +95,14 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getLink <em>Link</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.fa.ExchangeSpecification#getLink <em>Link</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Link</em>' reference.
-   * @see #getLink()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Link</em>' reference.
+	 * @see #getLink()
+	 * @generated
+	 */
 
 	void setLink(ExchangeContainment value);
 
@@ -113,24 +113,24 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 
 
 	/**
-   * Returns the value of the '<em><b>Outgoing Exchange Specification Realizations</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization}.
-   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizingExchangeSpecification <em>Realizing Exchange Specification</em>}'.
+	 * Returns the value of the '<em><b>Outgoing Exchange Specification Realizations</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization}.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizingExchangeSpecification <em>Realizing Exchange Specification</em>}'.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outgoing Exchange Specification Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Outgoing Exchange Specification Realizations</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_OutgoingExchangeSpecificationRealizations()
-   * @see org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizingExchangeSpecification
-   * @model opposite="realizingExchangeSpecification" transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the realization links between exchange specifications, for which this exchange specification is the origin of the link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Outgoing Exchange Specification Realizations</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_OutgoingExchangeSpecificationRealizations()
+	 * @see org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizingExchangeSpecification
+	 * @model opposite="realizingExchangeSpecification" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the realization links between exchange specifications, for which this exchange specification is the origin of the link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<ExchangeSpecificationRealization> getOutgoingExchangeSpecificationRealizations();
 
@@ -141,24 +141,24 @@ public interface ExchangeSpecification extends NamedElement, ActivityExchange {
 
 
 	/**
-   * Returns the value of the '<em><b>Incoming Exchange Specification Realizations</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization}.
-   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizedExchangeSpecification <em>Realized Exchange Specification</em>}'.
+	 * Returns the value of the '<em><b>Incoming Exchange Specification Realizations</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization}.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizedExchangeSpecification <em>Realized Exchange Specification</em>}'.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Incoming Exchange Specification Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Incoming Exchange Specification Realizations</em>' reference list.
-   * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_IncomingExchangeSpecificationRealizations()
-   * @see org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizedExchangeSpecification
-   * @model opposite="realizedExchangeSpecification" transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the realization links between exchange specifications, for which this exchange specification is the destination of the link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Incoming Exchange Specification Realizations</em>' reference list.
+	 * @see org.polarsys.capella.core.data.fa.FaPackage#getExchangeSpecification_IncomingExchangeSpecificationRealizations()
+	 * @see org.polarsys.capella.core.data.fa.ExchangeSpecificationRealization#getRealizedExchangeSpecification
+	 * @model opposite="realizedExchangeSpecification" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the realization links between exchange specifications, for which this exchange specification is the destination of the link\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<ExchangeSpecificationRealization> getIncomingExchangeSpecificationRealizations();
 

@@ -58,13 +58,13 @@ import org.polarsys.capella.core.data.pa.PhysicalComponent;
 public class LogicalComponentImpl extends SystemComponentImpl implements LogicalComponent {
 
 	/**
-   * The cached value of the '{@link #getOwnedLogicalComponents() <em>Owned Logical Components</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedLogicalComponents() <em>Owned Logical Components</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedLogicalComponents()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedLogicalComponents()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<LogicalComponent> ownedLogicalComponents;
 
 
@@ -72,13 +72,13 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 
 
 	/**
-   * The cached value of the '{@link #getOwnedLogicalArchitectures() <em>Owned Logical Architectures</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedLogicalArchitectures() <em>Owned Logical Architectures</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedLogicalArchitectures()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedLogicalArchitectures()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<LogicalArchitecture> ownedLogicalArchitectures;
 
 
@@ -86,13 +86,13 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 
 
 	/**
-   * The cached value of the '{@link #getOwnedLogicalComponentPkgs() <em>Owned Logical Component Pkgs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedLogicalComponentPkgs() <em>Owned Logical Component Pkgs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedLogicalComponentPkgs()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedLogicalComponentPkgs()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<LogicalComponentPkg> ownedLogicalComponentPkgs;
 
 
@@ -100,13 +100,13 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 
 
 	/**
-   * The cached value of the '{@link #getOwnedSystemRealizations() <em>Owned System Realizations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedSystemRealizations() <em>Owned System Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedSystemRealizations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedSystemRealizations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<SystemRealization> ownedSystemRealizations;
 
 
@@ -133,107 +133,107 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected LogicalComponentImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return LaPackage.Literals.LOGICAL_COMPONENT;
-  }
+		return LaPackage.Literals.LOGICAL_COMPONENT;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalComponent> getOwnedLogicalComponents() {
 
-    if (ownedLogicalComponents == null) {
-      ownedLogicalComponents = new EObjectContainmentEList.Resolving<LogicalComponent>(LogicalComponent.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS);
-    }
-    return ownedLogicalComponents;
-  }
+		if (ownedLogicalComponents == null) {
+			ownedLogicalComponents = new EObjectContainmentEList.Resolving<LogicalComponent>(LogicalComponent.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS);
+		}
+		return ownedLogicalComponents;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalArchitecture> getOwnedLogicalArchitectures() {
 
-    if (ownedLogicalArchitectures == null) {
-      ownedLogicalArchitectures = new EObjectContainmentEList.Resolving<LogicalArchitecture>(LogicalArchitecture.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES);
-    }
-    return ownedLogicalArchitectures;
-  }
+		if (ownedLogicalArchitectures == null) {
+			ownedLogicalArchitectures = new EObjectContainmentEList.Resolving<LogicalArchitecture>(LogicalArchitecture.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES);
+		}
+		return ownedLogicalArchitectures;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalComponentPkg> getOwnedLogicalComponentPkgs() {
 
-    if (ownedLogicalComponentPkgs == null) {
-      ownedLogicalComponentPkgs = new EObjectContainmentEList.Resolving<LogicalComponentPkg>(LogicalComponentPkg.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
-    }
-    return ownedLogicalComponentPkgs;
-  }
+		if (ownedLogicalComponentPkgs == null) {
+			ownedLogicalComponentPkgs = new EObjectContainmentEList.Resolving<LogicalComponentPkg>(LogicalComponentPkg.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS);
+		}
+		return ownedLogicalComponentPkgs;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemRealization> getOwnedSystemRealizations() {
 
-    if (ownedSystemRealizations == null) {
-      ownedSystemRealizations = new EObjectContainmentEList.Resolving<SystemRealization>(SystemRealization.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS);
-    }
-    return ownedSystemRealizations;
-  }
+		if (ownedSystemRealizations == null) {
+			ownedSystemRealizations = new EObjectContainmentEList.Resolving<SystemRealization>(SystemRealization.class, this, LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS);
+		}
+		return ownedSystemRealizations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemRealization> getSystemRealizations() {
 
@@ -260,27 +260,27 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemRealization> resultAsList = (Collection<SystemRealization>) result;
-    return new EcoreEList.UnmodifiableEList<SystemRealization>(this, LaPackage.Literals.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemRealization> resultAsList = (Collection<SystemRealization>) result;
+		return new EcoreEList.UnmodifiableEList<SystemRealization>(this, LaPackage.Literals.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalComponent> getSubLogicalComponents() {
 
@@ -307,27 +307,27 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
-    return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<LogicalComponent> resultAsList = (Collection<LogicalComponent>) result;
+		return new EcoreEList.UnmodifiableEList<LogicalComponent>(this, LaPackage.Literals.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalFunction> getAllocatedLogicalFunctions() {
 
@@ -354,27 +354,27 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
-    return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
+		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, LaPackage.Literals.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalComponent> getRealizingPhysicalComponents() {
 
@@ -401,27 +401,27 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
-    return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<PhysicalComponent> resultAsList = (Collection<PhysicalComponent>) result;
+		return new EcoreEList.UnmodifiableEList<PhysicalComponent>(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<org.polarsys.capella.core.data.ctx.System> getRealizedSystems() {
 
@@ -448,155 +448,155 @@ public class LogicalComponentImpl extends SystemComponentImpl implements Logical
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
-    return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
+		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, LaPackage.Literals.LOGICAL_COMPONENT__REALIZED_SYSTEMS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
-        return ((InternalEList<?>)getOwnedLogicalComponents()).basicRemove(otherEnd, msgs);
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
-        return ((InternalEList<?>)getOwnedLogicalArchitectures()).basicRemove(otherEnd, msgs);
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
-        return ((InternalEList<?>)getOwnedLogicalComponentPkgs()).basicRemove(otherEnd, msgs);
-      case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
-        return ((InternalEList<?>)getOwnedSystemRealizations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
+				return ((InternalEList<?>)getOwnedLogicalComponents()).basicRemove(otherEnd, msgs);
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
+				return ((InternalEList<?>)getOwnedLogicalArchitectures()).basicRemove(otherEnd, msgs);
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
+				return ((InternalEList<?>)getOwnedLogicalComponentPkgs()).basicRemove(otherEnd, msgs);
+			case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedSystemRealizations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
-        return getOwnedLogicalComponents();
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
-        return getOwnedLogicalArchitectures();
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
-        return getOwnedLogicalComponentPkgs();
-      case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
-        return getOwnedSystemRealizations();
-      case LaPackage.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS:
-        return getSystemRealizations();
-      case LaPackage.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS:
-        return getSubLogicalComponents();
-      case LaPackage.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS:
-        return getAllocatedLogicalFunctions();
-      case LaPackage.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS:
-        return getRealizingPhysicalComponents();
-      case LaPackage.LOGICAL_COMPONENT__REALIZED_SYSTEMS:
-        return getRealizedSystems();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
+				return getOwnedLogicalComponents();
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
+				return getOwnedLogicalArchitectures();
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
+				return getOwnedLogicalComponentPkgs();
+			case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
+				return getOwnedSystemRealizations();
+			case LaPackage.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS:
+				return getSystemRealizations();
+			case LaPackage.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS:
+				return getSubLogicalComponents();
+			case LaPackage.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS:
+				return getAllocatedLogicalFunctions();
+			case LaPackage.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS:
+				return getRealizingPhysicalComponents();
+			case LaPackage.LOGICAL_COMPONENT__REALIZED_SYSTEMS:
+				return getRealizedSystems();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
-        getOwnedLogicalComponents().clear();
-        getOwnedLogicalComponents().addAll((Collection<? extends LogicalComponent>)newValue);
-        return;
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
-        getOwnedLogicalArchitectures().clear();
-        getOwnedLogicalArchitectures().addAll((Collection<? extends LogicalArchitecture>)newValue);
-        return;
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
-        getOwnedLogicalComponentPkgs().clear();
-        getOwnedLogicalComponentPkgs().addAll((Collection<? extends LogicalComponentPkg>)newValue);
-        return;
-      case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
-        getOwnedSystemRealizations().clear();
-        getOwnedSystemRealizations().addAll((Collection<? extends SystemRealization>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
+				getOwnedLogicalComponents().clear();
+				getOwnedLogicalComponents().addAll((Collection<? extends LogicalComponent>)newValue);
+				return;
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
+				getOwnedLogicalArchitectures().clear();
+				getOwnedLogicalArchitectures().addAll((Collection<? extends LogicalArchitecture>)newValue);
+				return;
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
+				getOwnedLogicalComponentPkgs().clear();
+				getOwnedLogicalComponentPkgs().addAll((Collection<? extends LogicalComponentPkg>)newValue);
+				return;
+			case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
+				getOwnedSystemRealizations().clear();
+				getOwnedSystemRealizations().addAll((Collection<? extends SystemRealization>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
-        getOwnedLogicalComponents().clear();
-        return;
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
-        getOwnedLogicalArchitectures().clear();
-        return;
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
-        getOwnedLogicalComponentPkgs().clear();
-        return;
-      case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
-        getOwnedSystemRealizations().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
+				getOwnedLogicalComponents().clear();
+				return;
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
+				getOwnedLogicalArchitectures().clear();
+				return;
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
+				getOwnedLogicalComponentPkgs().clear();
+				return;
+			case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
+				getOwnedSystemRealizations().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
-        return ownedLogicalComponents != null && !ownedLogicalComponents.isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
-        return ownedLogicalArchitectures != null && !ownedLogicalArchitectures.isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
-        return ownedLogicalComponentPkgs != null && !ownedLogicalComponentPkgs.isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
-        return ownedSystemRealizations != null && !ownedSystemRealizations.isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS:
-        return !getSystemRealizations().isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS:
-        return !getSubLogicalComponents().isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS:
-        return !getAllocatedLogicalFunctions().isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS:
-        return !getRealizingPhysicalComponents().isEmpty();
-      case LaPackage.LOGICAL_COMPONENT__REALIZED_SYSTEMS:
-        return !getRealizedSystems().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENTS:
+				return ownedLogicalComponents != null && !ownedLogicalComponents.isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_ARCHITECTURES:
+				return ownedLogicalArchitectures != null && !ownedLogicalArchitectures.isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__OWNED_LOGICAL_COMPONENT_PKGS:
+				return ownedLogicalComponentPkgs != null && !ownedLogicalComponentPkgs.isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__OWNED_SYSTEM_REALIZATIONS:
+				return ownedSystemRealizations != null && !ownedSystemRealizations.isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__SYSTEM_REALIZATIONS:
+				return !getSystemRealizations().isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__SUB_LOGICAL_COMPONENTS:
+				return !getSubLogicalComponents().isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__ALLOCATED_LOGICAL_FUNCTIONS:
+				return !getAllocatedLogicalFunctions().isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__REALIZING_PHYSICAL_COMPONENTS:
+				return !getRealizingPhysicalComponents().isEmpty();
+			case LaPackage.LOGICAL_COMPONENT__REALIZED_SYSTEMS:
+				return !getRealizedSystems().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

@@ -38,20 +38,20 @@ public interface LibraryReference extends LibraryAbstractElement {
 
 
 	/**
-   * Returns the value of the '<em><b>Library</b></em>' reference.
+	 * Returns the value of the '<em><b>Library</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Library</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Library</em>' reference.
-   * @see #setLibrary(ModelInformation)
-   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_Library()
-   * @model required="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Library</em>' reference.
+	 * @see #setLibrary(ModelInformation)
+	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_Library()
+	 * @model required="true"
+	 * @generated
+	 */
 
 	ModelInformation getLibrary();
 
@@ -59,14 +59,14 @@ public interface LibraryReference extends LibraryAbstractElement {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.common.libraries.LibraryReference#getLibrary <em>Library</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.LibraryReference#getLibrary <em>Library</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Library</em>' reference.
-   * @see #getLibrary()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Library</em>' reference.
+	 * @see #getLibrary()
+	 * @generated
+	 */
 
 	void setLibrary(ModelInformation value);
 
@@ -77,22 +77,22 @@ public interface LibraryReference extends LibraryAbstractElement {
 
 
 	/**
-   * Returns the value of the '<em><b>Access Policy</b></em>' attribute.
-   * The literals are from the enumeration {@link org.polarsys.capella.common.libraries.AccessPolicy}.
+	 * Returns the value of the '<em><b>Access Policy</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.polarsys.capella.common.libraries.AccessPolicy}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Access Policy</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Access Policy</em>' attribute.
-   * @see org.polarsys.capella.common.libraries.AccessPolicy
-   * @see #setAccessPolicy(AccessPolicy)
-   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_AccessPolicy()
-   * @model required="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Access Policy</em>' attribute.
+	 * @see org.polarsys.capella.common.libraries.AccessPolicy
+	 * @see #setAccessPolicy(AccessPolicy)
+	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_AccessPolicy()
+	 * @model required="true"
+	 * @generated
+	 */
 
 	AccessPolicy getAccessPolicy();
 
@@ -100,15 +100,15 @@ public interface LibraryReference extends LibraryAbstractElement {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.common.libraries.LibraryReference#getAccessPolicy <em>Access Policy</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.LibraryReference#getAccessPolicy <em>Access Policy</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Access Policy</em>' attribute.
-   * @see org.polarsys.capella.common.libraries.AccessPolicy
-   * @see #getAccessPolicy()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Access Policy</em>' attribute.
+	 * @see org.polarsys.capella.common.libraries.AccessPolicy
+	 * @see #getAccessPolicy()
+	 * @generated
+	 */
 
 	void setAccessPolicy(AccessPolicy value);
 
@@ -119,20 +119,20 @@ public interface LibraryReference extends LibraryAbstractElement {
 
 
 	/**
-   * Returns the value of the '<em><b>Version</b></em>' reference.
+	 * Returns the value of the '<em><b>Version</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Version</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Version</em>' reference.
-   * @see #setVersion(ModelVersion)
-   * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_Version()
-   * @model required="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Version</em>' reference.
+	 * @see #setVersion(ModelVersion)
+	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_Version()
+	 * @model required="true"
+	 * @generated
+	 */
 
 	ModelVersion getVersion();
 
@@ -140,14 +140,14 @@ public interface LibraryReference extends LibraryAbstractElement {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.common.libraries.LibraryReference#getVersion <em>Version</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.common.libraries.LibraryReference#getVersion <em>Version</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Version</em>' reference.
-   * @see #getVersion()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Version</em>' reference.
+	 * @see #getVersion()
+	 * @generated
+	 */
 
 	void setVersion(ModelVersion value);
 

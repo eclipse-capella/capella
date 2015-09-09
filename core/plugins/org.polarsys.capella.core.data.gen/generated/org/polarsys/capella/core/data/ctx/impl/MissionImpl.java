@@ -68,13 +68,13 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 
 
 	/**
-   * The cached value of the '{@link #getOwnedActorMissionInvolvements() <em>Owned Actor Mission Involvements</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedActorMissionInvolvements() <em>Owned Actor Mission Involvements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedActorMissionInvolvements()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedActorMissionInvolvements()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ActorMissionInvolvement> ownedActorMissionInvolvements;
 
 
@@ -82,13 +82,13 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 
 
 	/**
-   * The cached value of the '{@link #getOwnedSystemMissionInvolvement() <em>Owned System Mission Involvement</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedSystemMissionInvolvement() <em>Owned System Mission Involvement</em>}' containment reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedSystemMissionInvolvement()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedSystemMissionInvolvement()
+	 * @generated
+	 * @ordered
+	 */
 	protected SystemMissionInvolvement ownedSystemMissionInvolvement;
 
 
@@ -96,13 +96,13 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 
 
 	/**
-   * The cached value of the '{@link #getOwnedCapabilityExploitations() <em>Owned Capability Exploitations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedCapabilityExploitations() <em>Owned Capability Exploitations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedCapabilityExploitations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedCapabilityExploitations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<CapabilityExploitation> ownedCapabilityExploitations;
 
 
@@ -129,35 +129,35 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected MissionImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.MISSION;
-  }
+		return CtxPackage.Literals.MISSION;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Involvement> getInvolvedInvolvements() {
 
@@ -184,93 +184,93 @@ public class MissionImpl extends NamedElementImpl implements Mission {
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ActorMissionInvolvement> getOwnedActorMissionInvolvements() {
 
-    if (ownedActorMissionInvolvements == null) {
-      ownedActorMissionInvolvements = new EObjectContainmentEList<ActorMissionInvolvement>(ActorMissionInvolvement.class, this, CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS);
-    }
-    return ownedActorMissionInvolvements;
-  }
+		if (ownedActorMissionInvolvements == null) {
+			ownedActorMissionInvolvements = new EObjectContainmentEList<ActorMissionInvolvement>(ActorMissionInvolvement.class, this, CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS);
+		}
+		return ownedActorMissionInvolvements;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public SystemMissionInvolvement getOwnedSystemMissionInvolvement() {
 
-    return ownedSystemMissionInvolvement;
-  }
+		return ownedSystemMissionInvolvement;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public NotificationChain basicSetOwnedSystemMissionInvolvement(SystemMissionInvolvement newOwnedSystemMissionInvolvement, NotificationChain msgs) {
 
-    SystemMissionInvolvement oldOwnedSystemMissionInvolvement = ownedSystemMissionInvolvement;
-    ownedSystemMissionInvolvement = newOwnedSystemMissionInvolvement;
-    if (eNotificationRequired()) {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, oldOwnedSystemMissionInvolvement, newOwnedSystemMissionInvolvement);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
+		SystemMissionInvolvement oldOwnedSystemMissionInvolvement = ownedSystemMissionInvolvement;
+		ownedSystemMissionInvolvement = newOwnedSystemMissionInvolvement;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, oldOwnedSystemMissionInvolvement, newOwnedSystemMissionInvolvement);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 
-    return msgs;
-  }
+		return msgs;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setOwnedSystemMissionInvolvement(SystemMissionInvolvement newOwnedSystemMissionInvolvement) {
 
-    if (newOwnedSystemMissionInvolvement != ownedSystemMissionInvolvement) {
-      NotificationChain msgs = null;
-      if (ownedSystemMissionInvolvement != null)
-        msgs = ((InternalEObject)ownedSystemMissionInvolvement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, null, msgs);
-      if (newOwnedSystemMissionInvolvement != null)
-        msgs = ((InternalEObject)newOwnedSystemMissionInvolvement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, null, msgs);
-      msgs = basicSetOwnedSystemMissionInvolvement(newOwnedSystemMissionInvolvement, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, newOwnedSystemMissionInvolvement, newOwnedSystemMissionInvolvement));
+		if (newOwnedSystemMissionInvolvement != ownedSystemMissionInvolvement) {
+			NotificationChain msgs = null;
+			if (ownedSystemMissionInvolvement != null)
+				msgs = ((InternalEObject)ownedSystemMissionInvolvement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, null, msgs);
+			if (newOwnedSystemMissionInvolvement != null)
+				msgs = ((InternalEObject)newOwnedSystemMissionInvolvement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, null, msgs);
+			msgs = basicSetOwnedSystemMissionInvolvement(newOwnedSystemMissionInvolvement, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT, newOwnedSystemMissionInvolvement, newOwnedSystemMissionInvolvement));
 
-  }
+	}
 
 
 
@@ -278,28 +278,28 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CapabilityExploitation> getOwnedCapabilityExploitations() {
 
-    if (ownedCapabilityExploitations == null) {
-      ownedCapabilityExploitations = new EObjectContainmentWithInverseEList<CapabilityExploitation>(CapabilityExploitation.class, this, CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS, CtxPackage.CAPABILITY_EXPLOITATION__MISSION);
-    }
-    return ownedCapabilityExploitations;
-  }
+		if (ownedCapabilityExploitations == null) {
+			ownedCapabilityExploitations = new EObjectContainmentWithInverseEList<CapabilityExploitation>(CapabilityExploitation.class, this, CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS, CtxPackage.CAPABILITY_EXPLOITATION__MISSION);
+		}
+		return ownedCapabilityExploitations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Actor> getParticipatingActors() {
 
@@ -326,40 +326,40 @@ public class MissionImpl extends NamedElementImpl implements Mission {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.MISSION__PARTICIPATING_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.MISSION__PARTICIPATING_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Actor> resultAsList = (Collection<Actor>) result;
-    return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.MISSION__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Actor> resultAsList = (Collection<Actor>) result;
+		return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.MISSION__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public org.polarsys.capella.core.data.ctx.System getParticipatingSystem() {
 
-    org.polarsys.capella.core.data.ctx.System participatingSystem = basicGetParticipatingSystem();
-    return participatingSystem != null && participatingSystem.eIsProxy() ? (org.polarsys.capella.core.data.ctx.System)eResolveProxy((InternalEObject)participatingSystem) : participatingSystem;
-  }
+		org.polarsys.capella.core.data.ctx.System participatingSystem = basicGetParticipatingSystem();
+		return participatingSystem != null && participatingSystem.eIsProxy() ? (org.polarsys.capella.core.data.ctx.System)eResolveProxy((InternalEObject)participatingSystem) : participatingSystem;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public org.polarsys.capella.core.data.ctx.System basicGetParticipatingSystem() {
 
@@ -386,15 +386,15 @@ public class MissionImpl extends NamedElementImpl implements Mission {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.MISSION__PARTICIPATING_SYSTEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.MISSION__PARTICIPATING_SYSTEM, annotation);
-    
-    try {
-      return (org.polarsys.capella.core.data.ctx.System) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (org.polarsys.capella.core.data.ctx.System) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -402,10 +402,10 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ActorMissionInvolvement> getInvolvedActors() {
 
@@ -432,40 +432,40 @@ public class MissionImpl extends NamedElementImpl implements Mission {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.MISSION__INVOLVED_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.MISSION__INVOLVED_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<ActorMissionInvolvement> resultAsList = (Collection<ActorMissionInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<ActorMissionInvolvement>(this, CtxPackage.Literals.MISSION__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<ActorMissionInvolvement> resultAsList = (Collection<ActorMissionInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<ActorMissionInvolvement>(this, CtxPackage.Literals.MISSION__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public SystemMissionInvolvement getInvolvedSystem() {
 
-    SystemMissionInvolvement involvedSystem = basicGetInvolvedSystem();
-    return involvedSystem != null && involvedSystem.eIsProxy() ? (SystemMissionInvolvement)eResolveProxy((InternalEObject)involvedSystem) : involvedSystem;
-  }
+		SystemMissionInvolvement involvedSystem = basicGetInvolvedSystem();
+		return involvedSystem != null && involvedSystem.eIsProxy() ? (SystemMissionInvolvement)eResolveProxy((InternalEObject)involvedSystem) : involvedSystem;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public SystemMissionInvolvement basicGetInvolvedSystem() {
 
@@ -492,15 +492,15 @@ public class MissionImpl extends NamedElementImpl implements Mission {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.MISSION__INVOLVED_SYSTEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.MISSION__INVOLVED_SYSTEM, annotation);
-    
-    try {
-      return (SystemMissionInvolvement) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (SystemMissionInvolvement) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -508,10 +508,10 @@ public class MissionImpl extends NamedElementImpl implements Mission {
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Capability> getExploitedCapabilities() {
 
@@ -538,201 +538,201 @@ public class MissionImpl extends NamedElementImpl implements Mission {
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.MISSION__EXPLOITED_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.MISSION__EXPLOITED_CAPABILITIES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Capability> resultAsList = (Collection<Capability>) result;
-    return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.MISSION__EXPLOITED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Capability> resultAsList = (Collection<Capability>) result;
+		return new EcoreEList.UnmodifiableEList<Capability>(this, CtxPackage.Literals.MISSION__EXPLOITED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedCapabilityExploitations()).basicAdd(otherEnd, msgs);
-    }
-    return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getOwnedCapabilityExploitations()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
-        return ((InternalEList<?>)getOwnedActorMissionInvolvements()).basicRemove(otherEnd, msgs);
-      case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
-        return basicSetOwnedSystemMissionInvolvement(null, msgs);
-      case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
-        return ((InternalEList<?>)getOwnedCapabilityExploitations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
+				return ((InternalEList<?>)getOwnedActorMissionInvolvements()).basicRemove(otherEnd, msgs);
+			case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
+				return basicSetOwnedSystemMissionInvolvement(null, msgs);
+			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
+				return ((InternalEList<?>)getOwnedCapabilityExploitations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CtxPackage.MISSION__INVOLVED_INVOLVEMENTS:
-        return getInvolvedInvolvements();
-      case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
-        return getOwnedActorMissionInvolvements();
-      case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
-        return getOwnedSystemMissionInvolvement();
-      case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
-        return getOwnedCapabilityExploitations();
-      case CtxPackage.MISSION__PARTICIPATING_ACTORS:
-        return getParticipatingActors();
-      case CtxPackage.MISSION__PARTICIPATING_SYSTEM:
-        if (resolve) return getParticipatingSystem();
-        return basicGetParticipatingSystem();
-      case CtxPackage.MISSION__INVOLVED_ACTORS:
-        return getInvolvedActors();
-      case CtxPackage.MISSION__INVOLVED_SYSTEM:
-        if (resolve) return getInvolvedSystem();
-        return basicGetInvolvedSystem();
-      case CtxPackage.MISSION__EXPLOITED_CAPABILITIES:
-        return getExploitedCapabilities();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CtxPackage.MISSION__INVOLVED_INVOLVEMENTS:
+				return getInvolvedInvolvements();
+			case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
+				return getOwnedActorMissionInvolvements();
+			case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
+				return getOwnedSystemMissionInvolvement();
+			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
+				return getOwnedCapabilityExploitations();
+			case CtxPackage.MISSION__PARTICIPATING_ACTORS:
+				return getParticipatingActors();
+			case CtxPackage.MISSION__PARTICIPATING_SYSTEM:
+				if (resolve) return getParticipatingSystem();
+				return basicGetParticipatingSystem();
+			case CtxPackage.MISSION__INVOLVED_ACTORS:
+				return getInvolvedActors();
+			case CtxPackage.MISSION__INVOLVED_SYSTEM:
+				if (resolve) return getInvolvedSystem();
+				return basicGetInvolvedSystem();
+			case CtxPackage.MISSION__EXPLOITED_CAPABILITIES:
+				return getExploitedCapabilities();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
-        getOwnedActorMissionInvolvements().clear();
-        getOwnedActorMissionInvolvements().addAll((Collection<? extends ActorMissionInvolvement>)newValue);
-        return;
-      case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof SystemMissionInvolvement) {
-        // end-extension-code
-          setOwnedSystemMissionInvolvement((SystemMissionInvolvement)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
-        getOwnedCapabilityExploitations().clear();
-        getOwnedCapabilityExploitations().addAll((Collection<? extends CapabilityExploitation>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
+				getOwnedActorMissionInvolvements().clear();
+				getOwnedActorMissionInvolvements().addAll((Collection<? extends ActorMissionInvolvement>)newValue);
+				return;
+			case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof SystemMissionInvolvement) {
+				// end-extension-code
+					setOwnedSystemMissionInvolvement((SystemMissionInvolvement)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
+				getOwnedCapabilityExploitations().clear();
+				getOwnedCapabilityExploitations().addAll((Collection<? extends CapabilityExploitation>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
-        getOwnedActorMissionInvolvements().clear();
-        return;
-      case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
-        setOwnedSystemMissionInvolvement((SystemMissionInvolvement)null);
-        return;
-      case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
-        getOwnedCapabilityExploitations().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
+				getOwnedActorMissionInvolvements().clear();
+				return;
+			case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
+				setOwnedSystemMissionInvolvement((SystemMissionInvolvement)null);
+				return;
+			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
+				getOwnedCapabilityExploitations().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CtxPackage.MISSION__INVOLVED_INVOLVEMENTS:
-        return !getInvolvedInvolvements().isEmpty();
-      case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
-        return ownedActorMissionInvolvements != null && !ownedActorMissionInvolvements.isEmpty();
-      case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
-        return ownedSystemMissionInvolvement != null;
-      case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
-        return ownedCapabilityExploitations != null && !ownedCapabilityExploitations.isEmpty();
-      case CtxPackage.MISSION__PARTICIPATING_ACTORS:
-        return !getParticipatingActors().isEmpty();
-      case CtxPackage.MISSION__PARTICIPATING_SYSTEM:
-        return basicGetParticipatingSystem() != null;
-      case CtxPackage.MISSION__INVOLVED_ACTORS:
-        return !getInvolvedActors().isEmpty();
-      case CtxPackage.MISSION__INVOLVED_SYSTEM:
-        return basicGetInvolvedSystem() != null;
-      case CtxPackage.MISSION__EXPLOITED_CAPABILITIES:
-        return !getExploitedCapabilities().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.MISSION__INVOLVED_INVOLVEMENTS:
+				return !getInvolvedInvolvements().isEmpty();
+			case CtxPackage.MISSION__OWNED_ACTOR_MISSION_INVOLVEMENTS:
+				return ownedActorMissionInvolvements != null && !ownedActorMissionInvolvements.isEmpty();
+			case CtxPackage.MISSION__OWNED_SYSTEM_MISSION_INVOLVEMENT:
+				return ownedSystemMissionInvolvement != null;
+			case CtxPackage.MISSION__OWNED_CAPABILITY_EXPLOITATIONS:
+				return ownedCapabilityExploitations != null && !ownedCapabilityExploitations.isEmpty();
+			case CtxPackage.MISSION__PARTICIPATING_ACTORS:
+				return !getParticipatingActors().isEmpty();
+			case CtxPackage.MISSION__PARTICIPATING_SYSTEM:
+				return basicGetParticipatingSystem() != null;
+			case CtxPackage.MISSION__INVOLVED_ACTORS:
+				return !getInvolvedActors().isEmpty();
+			case CtxPackage.MISSION__INVOLVED_SYSTEM:
+				return basicGetInvolvedSystem() != null;
+			case CtxPackage.MISSION__EXPLOITED_CAPABILITIES:
+				return !getExploitedCapabilities().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == InvolverElement.class) {
-      switch (derivedFeatureID) {
-        case CtxPackage.MISSION__INVOLVED_INVOLVEMENTS: return CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == InvolverElement.class) {
+			switch (derivedFeatureID) {
+				case CtxPackage.MISSION__INVOLVED_INVOLVEMENTS: return CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == InvolverElement.class) {
-      switch (baseFeatureID) {
-        case CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS: return CtxPackage.MISSION__INVOLVED_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == InvolverElement.class) {
+			switch (baseFeatureID) {
+				case CapellacorePackage.INVOLVER_ELEMENT__INVOLVED_INVOLVEMENTS: return CtxPackage.MISSION__INVOLVED_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 
 } //MissionImpl

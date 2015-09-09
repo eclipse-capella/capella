@@ -46,35 +46,35 @@ public class RequirementsTraceImpl extends TraceImpl implements RequirementsTrac
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected RequirementsTraceImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return RequirementPackage.Literals.REQUIREMENTS_TRACE;
-  }
+		return RequirementPackage.Literals.REQUIREMENTS_TRACE;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public TraceableElement getSource() {
 
@@ -101,25 +101,25 @@ public class RequirementsTraceImpl extends TraceImpl implements RequirementsTrac
     // A helper is found, let's use it. 
     EAnnotation annotation = RequirementPackage.Literals.REQUIREMENTS_TRACE__SOURCE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, RequirementPackage.Literals.REQUIREMENTS_TRACE__SOURCE, annotation);
-    
-    try {
-      return (TraceableElement) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (TraceableElement) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public TraceableElement getTarget() {
 
@@ -146,50 +146,50 @@ public class RequirementsTraceImpl extends TraceImpl implements RequirementsTrac
     // A helper is found, let's use it. 
     EAnnotation annotation = RequirementPackage.Literals.REQUIREMENTS_TRACE__TARGET.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, RequirementPackage.Literals.REQUIREMENTS_TRACE__TARGET, annotation);
-    
-    try {
-      return (TraceableElement) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (TraceableElement) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case RequirementPackage.REQUIREMENTS_TRACE__SOURCE:
-        return getSource();
-      case RequirementPackage.REQUIREMENTS_TRACE__TARGET:
-        return getTarget();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case RequirementPackage.REQUIREMENTS_TRACE__SOURCE:
+				return getSource();
+			case RequirementPackage.REQUIREMENTS_TRACE__TARGET:
+				return getTarget();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case RequirementPackage.REQUIREMENTS_TRACE__SOURCE:
-        return getSource() != null;
-      case RequirementPackage.REQUIREMENTS_TRACE__TARGET:
-        return getTarget() != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case RequirementPackage.REQUIREMENTS_TRACE__SOURCE:
+				return getSource() != null;
+			case RequirementPackage.REQUIREMENTS_TRACE__TARGET:
+				return getTarget() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

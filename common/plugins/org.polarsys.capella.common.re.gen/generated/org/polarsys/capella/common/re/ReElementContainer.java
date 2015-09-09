@@ -11,7 +11,6 @@
 package org.polarsys.capella.common.re;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 
@@ -39,20 +38,20 @@ public interface ReElementContainer extends EObject {
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Elements</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.common.re.CatalogElement}.
+	 * Returns the value of the '<em><b>Owned Elements</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.common.re.CatalogElement}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Elements</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Elements</em>' containment reference list.
-   * @see org.polarsys.capella.common.re.RePackage#getReElementContainer_OwnedElements()
-   * @model containment="true" resolveProxies="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Elements</em>' containment reference list.
+	 * @see org.polarsys.capella.common.re.RePackage#getReElementContainer_OwnedElements()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
 
 	EList<CatalogElement> getOwnedElements();
 

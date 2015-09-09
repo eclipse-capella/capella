@@ -53,23 +53,23 @@ import org.polarsys.capella.core.data.information.Operation;
 public abstract class GeneralClassImpl extends ClassifierImpl implements GeneralClass {
 
 	/**
-   * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isFinal() <em>Final</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isFinal()
-   * @generated
-   * @ordered
-   */
+	 * @see #isFinal()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final boolean FINAL_EDEFAULT = false;
 
 	/**
-   * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isFinal() <em>Final</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isFinal()
-   * @generated
-   * @ordered
-   */
+	 * @see #isFinal()
+	 * @generated
+	 * @ordered
+	 */
 	protected boolean final_ = FINAL_EDEFAULT;
 
 
@@ -77,23 +77,23 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 
 
 	/**
-   * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getVisibility()
-   * @generated
-   * @ordered
-   */
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final VisibilityKind VISIBILITY_EDEFAULT = VisibilityKind.UNSET;
 
 	/**
-   * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getVisibility() <em>Visibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getVisibility()
-   * @generated
-   * @ordered
-   */
+	 * @see #getVisibility()
+	 * @generated
+	 * @ordered
+	 */
 	protected VisibilityKind visibility = VISIBILITY_EDEFAULT;
 
 
@@ -105,69 +105,69 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 
 
 	/**
-   * The cached value of the '{@link #getNestedGeneralClasses() <em>Nested General Classes</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getNestedGeneralClasses() <em>Nested General Classes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getNestedGeneralClasses()
-   * @generated
-   * @ordered
-   */
+	 * @see #getNestedGeneralClasses()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<GeneralClass> nestedGeneralClasses;
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected GeneralClassImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CapellacorePackage.Literals.GENERAL_CLASS;
-  }
+		return CapellacorePackage.Literals.GENERAL_CLASS;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public boolean isFinal() {
 
-    return final_;
-  }
+		return final_;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setFinal(boolean newFinal) {
 
-    boolean oldFinal = final_;
-    final_ = newFinal;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.GENERAL_CLASS__FINAL, oldFinal, final_));
+		boolean oldFinal = final_;
+		final_ = newFinal;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.GENERAL_CLASS__FINAL, oldFinal, final_));
 
-  }
+	}
 
 
 
@@ -175,31 +175,31 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public VisibilityKind getVisibility() {
 
-    return visibility;
-  }
+		return visibility;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setVisibility(VisibilityKind newVisibility) {
 
-    VisibilityKind oldVisibility = visibility;
-    visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.GENERAL_CLASS__VISIBILITY, oldVisibility, visibility));
+		VisibilityKind oldVisibility = visibility;
+		visibility = newVisibility == null ? VISIBILITY_EDEFAULT : newVisibility;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CapellacorePackage.GENERAL_CLASS__VISIBILITY, oldVisibility, visibility));
 
-  }
+	}
 
 
 
@@ -207,10 +207,10 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Operation> getContainedOperations() {
 
@@ -237,201 +237,201 @@ public abstract class GeneralClassImpl extends ClassifierImpl implements General
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.GENERAL_CLASS__CONTAINED_OPERATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.GENERAL_CLASS__CONTAINED_OPERATIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Operation> resultAsList = (Collection<Operation>) result;
-    return new EcoreEList.UnmodifiableEList<Operation>(this, CapellacorePackage.Literals.GENERAL_CLASS__CONTAINED_OPERATIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Operation> resultAsList = (Collection<Operation>) result;
+		return new EcoreEList.UnmodifiableEList<Operation>(this, CapellacorePackage.Literals.GENERAL_CLASS__CONTAINED_OPERATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<GeneralClass> getNestedGeneralClasses() {
 
-    if (nestedGeneralClasses == null) {
-      nestedGeneralClasses = new EObjectContainmentEList<GeneralClass>(GeneralClass.class, this, CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES);
-    }
-    return nestedGeneralClasses;
-  }
+		if (nestedGeneralClasses == null) {
+			nestedGeneralClasses = new EObjectContainmentEList<GeneralClass>(GeneralClass.class, this, CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES);
+		}
+		return nestedGeneralClasses;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
-        return ((InternalEList<?>)getNestedGeneralClasses()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
+				return ((InternalEList<?>)getNestedGeneralClasses()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CapellacorePackage.GENERAL_CLASS__FINAL:
-        return isFinal();
-      case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
-        return getVisibility();
-      case CapellacorePackage.GENERAL_CLASS__CONTAINED_OPERATIONS:
-        return getContainedOperations();
-      case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
-        return getNestedGeneralClasses();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CapellacorePackage.GENERAL_CLASS__FINAL:
+				return isFinal();
+			case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
+				return getVisibility();
+			case CapellacorePackage.GENERAL_CLASS__CONTAINED_OPERATIONS:
+				return getContainedOperations();
+			case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
+				return getNestedGeneralClasses();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CapellacorePackage.GENERAL_CLASS__FINAL:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof Boolean) {
-        // end-extension-code
-          setFinal((Boolean)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof VisibilityKind) {
-        // end-extension-code
-          setVisibility((VisibilityKind)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
-        getNestedGeneralClasses().clear();
-        getNestedGeneralClasses().addAll((Collection<? extends GeneralClass>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CapellacorePackage.GENERAL_CLASS__FINAL:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Boolean) {
+				// end-extension-code
+					setFinal((Boolean)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof VisibilityKind) {
+				// end-extension-code
+					setVisibility((VisibilityKind)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
+				getNestedGeneralClasses().clear();
+				getNestedGeneralClasses().addAll((Collection<? extends GeneralClass>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CapellacorePackage.GENERAL_CLASS__FINAL:
-        setFinal(FINAL_EDEFAULT);
-        return;
-      case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
-        setVisibility(VISIBILITY_EDEFAULT);
-        return;
-      case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
-        getNestedGeneralClasses().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CapellacorePackage.GENERAL_CLASS__FINAL:
+				setFinal(FINAL_EDEFAULT);
+				return;
+			case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
+				setVisibility(VISIBILITY_EDEFAULT);
+				return;
+			case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
+				getNestedGeneralClasses().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CapellacorePackage.GENERAL_CLASS__FINAL:
-        return final_ != FINAL_EDEFAULT;
-      case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
-        return visibility != VISIBILITY_EDEFAULT;
-      case CapellacorePackage.GENERAL_CLASS__CONTAINED_OPERATIONS:
-        return !getContainedOperations().isEmpty();
-      case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
-        return nestedGeneralClasses != null && !nestedGeneralClasses.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CapellacorePackage.GENERAL_CLASS__FINAL:
+				return final_ != FINAL_EDEFAULT;
+			case CapellacorePackage.GENERAL_CLASS__VISIBILITY:
+				return visibility != VISIBILITY_EDEFAULT;
+			case CapellacorePackage.GENERAL_CLASS__CONTAINED_OPERATIONS:
+				return !getContainedOperations().isEmpty();
+			case CapellacorePackage.GENERAL_CLASS__NESTED_GENERAL_CLASSES:
+				return nestedGeneralClasses != null && !nestedGeneralClasses.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == FinalizableElement.class) {
-      switch (derivedFeatureID) {
-        case CapellacorePackage.GENERAL_CLASS__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == FinalizableElement.class) {
+			switch (derivedFeatureID) {
+				case CapellacorePackage.GENERAL_CLASS__FINAL: return ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == FinalizableElement.class) {
-      switch (baseFeatureID) {
-        case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return CapellacorePackage.GENERAL_CLASS__FINAL;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == FinalizableElement.class) {
+			switch (baseFeatureID) {
+				case ModellingcorePackage.FINALIZABLE_ELEMENT__FINAL: return CapellacorePackage.GENERAL_CLASS__FINAL;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (final: "); //$NON-NLS-1$
-    result.append(final_);
-    result.append(", visibility: "); //$NON-NLS-1$
-    result.append(visibility);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (final: "); //$NON-NLS-1$
+		result.append(final_);
+		result.append(", visibility: "); //$NON-NLS-1$
+		result.append(visibility);
+		result.append(')');
+		return result.toString();
+	}
 
 
 } //GeneralClassImpl

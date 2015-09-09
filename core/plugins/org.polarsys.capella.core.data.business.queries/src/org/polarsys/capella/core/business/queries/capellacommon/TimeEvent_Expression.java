@@ -22,30 +22,30 @@ import org.polarsys.capella.core.business.queries.QueryConstants;
 import org.polarsys.capella.core.data.capellacommon.CapellacommonPackage;
 import org.polarsys.capella.core.data.capellacore.CapellaElement;
 
-public class ChangeEvent_Guard implements IBusinessQuery {
+public class TimeEvent_Expression implements IBusinessQuery {
 
-	@Override
-	public EClass getEClass() {
-		return CapellacommonPackage.Literals.CHANGE_EVENT;
-	}
+  @Override
+  public EClass getEClass() {
+    return CapellacommonPackage.Literals.TIME_EVENT;
+  }
 
-	@Override
-	public List<EReference> getEStructuralFeatures() {
-		return Collections.singletonList(CapellacommonPackage.Literals.STATE_EVENT__CONDITION);
-	}
+  @Override
+  public List<EReference> getEStructuralFeatures() {
+    return Collections.singletonList(CapellacommonPackage.Literals.STATE_EVENT__EXPRESSION);
+  }
 
-	@Override
-	public List<CapellaElement> getAvailableElements(CapellaElement element) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__CHANGE_EVENT__GUARD, element, context);
-	}
+  @Override
+  public List<CapellaElement> getAvailableElements(CapellaElement element) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_AVAILABLE__TIME_EVENT__EXPRESSION, element, context);
+  }
 
-	@Override
-	public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
-		QueryContext context = new QueryContext();
-		context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
-		return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__CHANGE_EVENT__GUARD, element, context);
-	}
+  @Override
+  public List<CapellaElement> getCurrentElements(CapellaElement element, boolean onlyGenerated) {
+    QueryContext context = new QueryContext();
+    context.putValue(QueryConstants.ECLASS_PARAMETER, getEClass());
+    return QueryInterpretor.executeQuery(QueryConstants.GET_CURRENT__TIME_EVENT__EXPRESSION, element, context);
+  }
 
 }

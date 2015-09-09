@@ -11,12 +11,9 @@
 package org.polarsys.capella.common.libraries.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.polarsys.capella.common.libraries.AccessPolicy;
 import org.polarsys.capella.common.libraries.LibrariesPackage;
 import org.polarsys.capella.common.libraries.LibraryReference;
@@ -41,13 +38,13 @@ import org.polarsys.capella.common.libraries.ModelVersion;
 public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements LibraryReference {
 
 	/**
-   * The cached value of the '{@link #getLibrary() <em>Library</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getLibrary() <em>Library</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getLibrary()
-   * @generated
-   * @ordered
-   */
+	 * @see #getLibrary()
+	 * @generated
+	 * @ordered
+	 */
 	protected ModelInformation library;
 
 
@@ -55,23 +52,23 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 
 
 	/**
-   * The default value of the '{@link #getAccessPolicy() <em>Access Policy</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getAccessPolicy() <em>Access Policy</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getAccessPolicy()
-   * @generated
-   * @ordered
-   */
+	 * @see #getAccessPolicy()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final AccessPolicy ACCESS_POLICY_EDEFAULT = AccessPolicy.READ_ONLY;
 
 	/**
-   * The cached value of the '{@link #getAccessPolicy() <em>Access Policy</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getAccessPolicy() <em>Access Policy</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getAccessPolicy()
-   * @generated
-   * @ordered
-   */
+	 * @see #getAccessPolicy()
+	 * @generated
+	 * @ordered
+	 */
 	protected AccessPolicy accessPolicy = ACCESS_POLICY_EDEFAULT;
 
 
@@ -79,90 +76,90 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 
 
 	/**
-   * The cached value of the '{@link #getVersion() <em>Version</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getVersion()
-   * @generated
-   * @ordered
-   */
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
 	protected ModelVersion version;
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected LibraryReferenceImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return LibrariesPackage.Literals.LIBRARY_REFERENCE;
-  }
+		return LibrariesPackage.Literals.LIBRARY_REFERENCE;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ModelInformation getLibrary() {
 
-    if (library != null && library.eIsProxy()) {
-      InternalEObject oldLibrary = (InternalEObject)library;
-      library = (ModelInformation)eResolveProxy(oldLibrary);
-      if (library != oldLibrary) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibrariesPackage.LIBRARY_REFERENCE__LIBRARY, oldLibrary, library));
-      }
-    }
-    return library;
-  }
+		if (library != null && library.eIsProxy()) {
+			InternalEObject oldLibrary = (InternalEObject)library;
+			library = (ModelInformation)eResolveProxy(oldLibrary);
+			if (library != oldLibrary) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibrariesPackage.LIBRARY_REFERENCE__LIBRARY, oldLibrary, library));
+			}
+		}
+		return library;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ModelInformation basicGetLibrary() {
 
-    return library;
-  }
+		return library;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setLibrary(ModelInformation newLibrary) {
 
-    ModelInformation oldLibrary = library;
-    library = newLibrary;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.LIBRARY_REFERENCE__LIBRARY, oldLibrary, library));
+		ModelInformation oldLibrary = library;
+		library = newLibrary;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.LIBRARY_REFERENCE__LIBRARY, oldLibrary, library));
 
-  }
+	}
 
 
 
@@ -170,31 +167,31 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public AccessPolicy getAccessPolicy() {
 
-    return accessPolicy;
-  }
+		return accessPolicy;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setAccessPolicy(AccessPolicy newAccessPolicy) {
 
-    AccessPolicy oldAccessPolicy = accessPolicy;
-    accessPolicy = newAccessPolicy == null ? ACCESS_POLICY_EDEFAULT : newAccessPolicy;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY, oldAccessPolicy, accessPolicy));
+		AccessPolicy oldAccessPolicy = accessPolicy;
+		accessPolicy = newAccessPolicy == null ? ACCESS_POLICY_EDEFAULT : newAccessPolicy;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY, oldAccessPolicy, accessPolicy));
 
-  }
+	}
 
 
 
@@ -202,173 +199,173 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ModelVersion getVersion() {
 
-    if (version != null && version.eIsProxy()) {
-      InternalEObject oldVersion = (InternalEObject)version;
-      version = (ModelVersion)eResolveProxy(oldVersion);
-      if (version != oldVersion) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibrariesPackage.LIBRARY_REFERENCE__VERSION, oldVersion, version));
-      }
-    }
-    return version;
-  }
+		if (version != null && version.eIsProxy()) {
+			InternalEObject oldVersion = (InternalEObject)version;
+			version = (ModelVersion)eResolveProxy(oldVersion);
+			if (version != oldVersion) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, LibrariesPackage.LIBRARY_REFERENCE__VERSION, oldVersion, version));
+			}
+		}
+		return version;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ModelVersion basicGetVersion() {
 
-    return version;
-  }
+		return version;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setVersion(ModelVersion newVersion) {
 
-    ModelVersion oldVersion = version;
-    version = newVersion;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.LIBRARY_REFERENCE__VERSION, oldVersion, version));
+		ModelVersion oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, LibrariesPackage.LIBRARY_REFERENCE__VERSION, oldVersion, version));
 
-  }
+	}
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
-        if (resolve) return getLibrary();
-        return basicGetLibrary();
-      case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
-        return getAccessPolicy();
-      case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
-        if (resolve) return getVersion();
-        return basicGetVersion();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
+				if (resolve) return getLibrary();
+				return basicGetLibrary();
+			case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
+				return getAccessPolicy();
+			case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
+				if (resolve) return getVersion();
+				return basicGetVersion();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof ModelInformation) {
-        // end-extension-code
-          setLibrary((ModelInformation)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof AccessPolicy) {
-        // end-extension-code
-          setAccessPolicy((AccessPolicy)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof ModelVersion) {
-        // end-extension-code
-          setVersion((ModelVersion)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof ModelInformation) {
+				// end-extension-code
+					setLibrary((ModelInformation)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof AccessPolicy) {
+				// end-extension-code
+					setAccessPolicy((AccessPolicy)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof ModelVersion) {
+				// end-extension-code
+					setVersion((ModelVersion)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
-        setLibrary((ModelInformation)null);
-        return;
-      case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
-        setAccessPolicy(ACCESS_POLICY_EDEFAULT);
-        return;
-      case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
-        setVersion((ModelVersion)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
+				setLibrary((ModelInformation)null);
+				return;
+			case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
+				setAccessPolicy(ACCESS_POLICY_EDEFAULT);
+				return;
+			case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
+				setVersion((ModelVersion)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
-        return library != null;
-      case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
-        return accessPolicy != ACCESS_POLICY_EDEFAULT;
-      case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
-        return version != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case LibrariesPackage.LIBRARY_REFERENCE__LIBRARY:
+				return library != null;
+			case LibrariesPackage.LIBRARY_REFERENCE__ACCESS_POLICY:
+				return accessPolicy != ACCESS_POLICY_EDEFAULT;
+			case LibrariesPackage.LIBRARY_REFERENCE__VERSION:
+				return version != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (accessPolicy: "); //$NON-NLS-1$
-    result.append(accessPolicy);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (accessPolicy: "); //$NON-NLS-1$
+		result.append(accessPolicy);
+		result.append(')');
+		return result.toString();
+	}
 
 
 } //LibraryReferenceImpl

@@ -63,23 +63,23 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
 
 
 	/**
-   * The default value of the '{@link #isDataComponent() <em>Data Component</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isDataComponent() <em>Data Component</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isDataComponent()
-   * @generated
-   * @ordered
-   */
+	 * @see #isDataComponent()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final boolean DATA_COMPONENT_EDEFAULT = false;
 
 	/**
-   * The cached value of the '{@link #isDataComponent() <em>Data Component</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isDataComponent() <em>Data Component</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #isDataComponent()
-   * @generated
-   * @ordered
-   */
+	 * @see #isDataComponent()
+	 * @generated
+	 * @ordered
+	 */
 	protected boolean dataComponent = DATA_COMPONENT_EDEFAULT;
 
 
@@ -87,13 +87,13 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
 
 
 	/**
-   * The cached value of the '{@link #getDataType() <em>Data Type</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getDataType() <em>Data Type</em>}' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getDataType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getDataType()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<Classifier> dataType;
 
 
@@ -104,35 +104,35 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemComponentImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CsPackage.Literals.SYSTEM_COMPONENT;
-  }
+		return CsPackage.Literals.SYSTEM_COMPONENT;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Involvement> getInvolvingInvolvements() {
 
@@ -159,27 +159,27 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Involvement> resultAsList = (Collection<Involvement>) result;
-    return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Involvement> resultAsList = (Collection<Involvement>) result;
+		return new EcoreEList.UnmodifiableEList<Involvement>(this, CapellacorePackage.Literals.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CapabilityRealizationInvolvement> getInvolvingCapabilityRealizationInvolvements() {
 
@@ -206,48 +206,48 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<CapabilityRealizationInvolvement> resultAsList = (Collection<CapabilityRealizationInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvement>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CapabilityRealizationInvolvement> resultAsList = (Collection<CapabilityRealizationInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityRealizationInvolvement>(this, CapellacommonPackage.Literals.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public boolean isDataComponent() {
 
-    return dataComponent;
-  }
+		return dataComponent;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setDataComponent(boolean newDataComponent) {
 
-    boolean oldDataComponent = dataComponent;
-    dataComponent = newDataComponent;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT, oldDataComponent, dataComponent));
+		boolean oldDataComponent = dataComponent;
+		dataComponent = newDataComponent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT, oldDataComponent, dataComponent));
 
-  }
+	}
 
 
 
@@ -255,28 +255,28 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Classifier> getDataType() {
 
-    if (dataType == null) {
-      dataType = new EObjectResolvingEList<Classifier>(Classifier.class, this, CsPackage.SYSTEM_COMPONENT__DATA_TYPE);
-    }
-    return dataType;
-  }
+		if (dataType == null) {
+			dataType = new EObjectResolvingEList<Classifier>(Classifier.class, this, CsPackage.SYSTEM_COMPONENT__DATA_TYPE);
+		}
+		return dataType;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemComponentCapabilityRealizationInvolvement> getParticipationsInCapabilityRealizations() {
 
@@ -303,171 +303,171 @@ public abstract class SystemComponentImpl extends ComponentImpl implements Syste
     // A helper is found, let's use it. 
     EAnnotation annotation = CsPackage.Literals.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CsPackage.Literals.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemComponentCapabilityRealizationInvolvement> resultAsList = (Collection<SystemComponentCapabilityRealizationInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<SystemComponentCapabilityRealizationInvolvement>(this, CsPackage.Literals.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemComponentCapabilityRealizationInvolvement> resultAsList = (Collection<SystemComponentCapabilityRealizationInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<SystemComponentCapabilityRealizationInvolvement>(this, CsPackage.Literals.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
-        return getInvolvingInvolvements();
-      case CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
-        return getInvolvingCapabilityRealizationInvolvements();
-      case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
-        return isDataComponent();
-      case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
-        return getDataType();
-      case CsPackage.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
-        return getParticipationsInCapabilityRealizations();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
+				return getInvolvingInvolvements();
+			case CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return getInvolvingCapabilityRealizationInvolvements();
+			case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
+				return isDataComponent();
+			case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
+				return getDataType();
+			case CsPackage.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
+				return getParticipationsInCapabilityRealizations();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof Boolean) {
-        // end-extension-code
-          setDataComponent((Boolean)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
-        getDataType().clear();
-        getDataType().addAll((Collection<? extends Classifier>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Boolean) {
+				// end-extension-code
+					setDataComponent((Boolean)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
+				getDataType().clear();
+				getDataType().addAll((Collection<? extends Classifier>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
-        setDataComponent(DATA_COMPONENT_EDEFAULT);
-        return;
-      case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
-        getDataType().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
+				setDataComponent(DATA_COMPONENT_EDEFAULT);
+				return;
+			case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
+				getDataType().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
-        return !getInvolvingInvolvements().isEmpty();
-      case CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
-        return !getInvolvingCapabilityRealizationInvolvements().isEmpty();
-      case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
-        return dataComponent != DATA_COMPONENT_EDEFAULT;
-      case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
-        return dataType != null && !dataType.isEmpty();
-      case CsPackage.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
-        return !getParticipationsInCapabilityRealizations().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS:
+				return !getInvolvingInvolvements().isEmpty();
+			case CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS:
+				return !getInvolvingCapabilityRealizationInvolvements().isEmpty();
+			case CsPackage.SYSTEM_COMPONENT__DATA_COMPONENT:
+				return dataComponent != DATA_COMPONENT_EDEFAULT;
+			case CsPackage.SYSTEM_COMPONENT__DATA_TYPE:
+				return dataType != null && !dataType.isEmpty();
+			case CsPackage.SYSTEM_COMPONENT__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS:
+				return !getParticipationsInCapabilityRealizations().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == InvolvedElement.class) {
-      switch (derivedFeatureID) {
-        case CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    if (baseClass == CapabilityRealizationInvolvedElement.class) {
-      switch (derivedFeatureID) {
-        case CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == InvolvedElement.class) {
+			switch (derivedFeatureID) {
+				case CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS: return CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityRealizationInvolvedElement.class) {
+			switch (derivedFeatureID) {
+				case CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == InvolvedElement.class) {
-      switch (baseFeatureID) {
-        case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    if (baseClass == CapabilityRealizationInvolvedElement.class) {
-      switch (baseFeatureID) {
-        case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == InvolvedElement.class) {
+			switch (baseFeatureID) {
+				case CapellacorePackage.INVOLVED_ELEMENT__INVOLVING_INVOLVEMENTS: return CsPackage.SYSTEM_COMPONENT__INVOLVING_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityRealizationInvolvedElement.class) {
+			switch (baseFeatureID) {
+				case CapellacommonPackage.CAPABILITY_REALIZATION_INVOLVED_ELEMENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS: return CsPackage.SYSTEM_COMPONENT__INVOLVING_CAPABILITY_REALIZATION_INVOLVEMENTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (dataComponent: "); //$NON-NLS-1$
-    result.append(dataComponent);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (dataComponent: "); //$NON-NLS-1$
+		result.append(dataComponent);
+		result.append(')');
+		return result.toString();
+	}
 
 
 } //SystemComponentImpl

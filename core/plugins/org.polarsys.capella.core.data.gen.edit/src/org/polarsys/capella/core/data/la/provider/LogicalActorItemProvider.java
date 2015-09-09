@@ -51,267 +51,267 @@ public class LogicalActorItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public LogicalActorItemProvider(AdapterFactory adapterFactory) {
-    super(adapterFactory);
-  }
+		super(adapterFactory);
+	}
 
 	/**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-    if (itemPropertyDescriptors == null) {
-      super.getPropertyDescriptors(object);
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
 
-      addSystemActorRealizationsPropertyDescriptor(object);
-      addParticipationsInCapabilityRealizationsPropertyDescriptor(object);
-      addAllocatedLogicalFunctionsPropertyDescriptor(object);
-      addRealizedSystemActorsPropertyDescriptor(object);
-      addRealizingPhysicalActorsPropertyDescriptor(object);
-    }
-    // begin-extension-code
-    checkChildCreationExtender(object);
-    // end-extension-code
-    return itemPropertyDescriptors;
-  }
+			addSystemActorRealizationsPropertyDescriptor(object);
+			addParticipationsInCapabilityRealizationsPropertyDescriptor(object);
+			addAllocatedLogicalFunctionsPropertyDescriptor(object);
+			addRealizedSystemActorsPropertyDescriptor(object);
+			addRealizingPhysicalActorsPropertyDescriptor(object);
+		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
+		return itemPropertyDescriptors;
+	}
 
 	/**
-   * This adds a property descriptor for the System Actor Realizations feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the System Actor Realizations feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected void addSystemActorRealizationsPropertyDescriptor(Object object) {
 
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LogicalActor_systemActorRealizations_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_systemActorRealizations_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS,
-         false,
-         false,
-         false,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LogicalActor_systemActorRealizations_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_systemActorRealizations_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 LaPackage.Literals.LOGICAL_ACTOR__SYSTEM_ACTOR_REALIZATIONS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
 
 	/**
-   * This adds a property descriptor for the Participations In Capability Realizations feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Participations In Capability Realizations feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected void addParticipationsInCapabilityRealizationsPropertyDescriptor(Object object) {
 
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LogicalActor_participationsInCapabilityRealizations_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_participationsInCapabilityRealizations_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS,
-         false,
-         false,
-         false,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LogicalActor_participationsInCapabilityRealizations_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_participationsInCapabilityRealizations_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 LaPackage.Literals.LOGICAL_ACTOR__PARTICIPATIONS_IN_CAPABILITY_REALIZATIONS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
 
 	/**
-   * This adds a property descriptor for the Allocated Logical Functions feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Allocated Logical Functions feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected void addAllocatedLogicalFunctionsPropertyDescriptor(Object object) {
 
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LogicalActor_allocatedLogicalFunctions_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_allocatedLogicalFunctions_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS,
-         false,
-         false,
-         false,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LogicalActor_allocatedLogicalFunctions_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_allocatedLogicalFunctions_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 LaPackage.Literals.LOGICAL_ACTOR__ALLOCATED_LOGICAL_FUNCTIONS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
 
 	/**
-   * This adds a property descriptor for the Realized System Actors feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Realized System Actors feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected void addRealizedSystemActorsPropertyDescriptor(Object object) {
 
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LogicalActor_realizedSystemActors_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_realizedSystemActors_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS,
-         false,
-         false,
-         false,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LogicalActor_realizedSystemActors_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_realizedSystemActors_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 LaPackage.Literals.LOGICAL_ACTOR__REALIZED_SYSTEM_ACTORS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
 
 	/**
-   * This adds a property descriptor for the Realizing Physical Actors feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Realizing Physical Actors feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected void addRealizingPhysicalActorsPropertyDescriptor(Object object) {
 
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_LogicalActor_realizingPhysicalActors_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_realizingPhysicalActors_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS,
-         false,
-         false,
-         false,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LogicalActor_realizingPhysicalActors_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_LogicalActor_realizingPhysicalActors_feature", "_UI_LogicalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 LaPackage.Literals.LOGICAL_ACTOR__REALIZING_PHYSICAL_ACTORS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
 
 	/**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-   * <!-- begin-user-doc -->
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-    if (childrenFeatures == null) {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
-    }
-    return childrenFeatures;
-  }
+		if (childrenFeatures == null) {
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(LaPackage.Literals.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS);
+		}
+		return childrenFeatures;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
 
-    return super.getChildFeature(object, child);
-  }
+		return super.getChildFeature(object, child);
+	}
 
 	/**
-   * This returns LogicalActor.gif.
-   * <!-- begin-user-doc -->
+	 * This returns LogicalActor.gif.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object getImage(Object object) {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/LogicalActor")); //$NON-NLS-1$
-  }
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/LogicalActor")); //$NON-NLS-1$
+	}
 
 	/**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String getText(Object object) {
-   String[] result = new String[] { null };
+	 String[] result = new String[] { null };
 
     	//begin-capella-code
-    String label = ((LogicalActor)object).getName();
-    //end-capella-code
-    
-  
-      result[0] = label == null || label.length() == 0 ?
-      //begin-capella-code
-      "[" + getString("_UI_LogicalActor_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-      //end-capella-code
+		String label = ((LogicalActor)object).getName();
+		//end-capella-code
+	  
+	
+			result[0] = label == null || label.length() == 0 ?
+			//begin-capella-code
+			"[" + getString("_UI_LogicalActor_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			//end-capella-code
 
-    return result[0];
+		return result[0];
 
-  }
+	}
 
 	/**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void notifyChanged(Notification notification) {
-    updateChildren(notification);
+		updateChildren(notification);
 
-    switch (notification.getFeatureID(LogicalActor.class)) {
-      case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
-        fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-        return;
-    }
-    super.notifyChanged(notification);
-  }
+		switch (notification.getFeatureID(LogicalActor.class)) {
+			case LaPackage.LOGICAL_ACTOR__OWNED_SYSTEM_ACTOR_REALIZATIONS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
 	/**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-    super.collectNewChildDescriptors(newChildDescriptors, object);
+		super.collectNewChildDescriptors(newChildDescriptors, object);
                 // begin-extension-code
                 {
                     CommandParameter commandParameter = createChildParameter
@@ -324,17 +324,17 @@ public class LogicalActorItemProvider
                 // end-extension-code
 
 
-  }
+	}
 
 	// begin-capella-code
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain_p, EObject owner_p, Helper helper_p) {
-    return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
-  }
+		return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
+	}
 	// end-capella-code
 }

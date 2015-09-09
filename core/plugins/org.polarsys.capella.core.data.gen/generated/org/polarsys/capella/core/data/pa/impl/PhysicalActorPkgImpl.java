@@ -40,13 +40,13 @@ import org.polarsys.capella.core.data.pa.PhysicalActorPkg;
 public class PhysicalActorPkgImpl extends AbstractFunctionalStructureImpl implements PhysicalActorPkg {
 
 	/**
-   * The cached value of the '{@link #getOwnedPhysicalActorPkgs() <em>Owned Physical Actor Pkgs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedPhysicalActorPkgs() <em>Owned Physical Actor Pkgs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedPhysicalActorPkgs()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedPhysicalActorPkgs()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<PhysicalActorPkg> ownedPhysicalActorPkgs;
 
 
@@ -54,166 +54,166 @@ public class PhysicalActorPkgImpl extends AbstractFunctionalStructureImpl implem
 
 
 	/**
-   * The cached value of the '{@link #getOwnedPhysicalActors() <em>Owned Physical Actors</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedPhysicalActors() <em>Owned Physical Actors</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedPhysicalActors()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedPhysicalActors()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<PhysicalActor> ownedPhysicalActors;
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected PhysicalActorPkgImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return PaPackage.Literals.PHYSICAL_ACTOR_PKG;
-  }
+		return PaPackage.Literals.PHYSICAL_ACTOR_PKG;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalActorPkg> getOwnedPhysicalActorPkgs() {
 
-    if (ownedPhysicalActorPkgs == null) {
-      ownedPhysicalActorPkgs = new EObjectContainmentEList.Resolving<PhysicalActorPkg>(PhysicalActorPkg.class, this, PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS);
-    }
-    return ownedPhysicalActorPkgs;
-  }
+		if (ownedPhysicalActorPkgs == null) {
+			ownedPhysicalActorPkgs = new EObjectContainmentEList.Resolving<PhysicalActorPkg>(PhysicalActorPkg.class, this, PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS);
+		}
+		return ownedPhysicalActorPkgs;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PhysicalActor> getOwnedPhysicalActors() {
 
-    if (ownedPhysicalActors == null) {
-      ownedPhysicalActors = new EObjectContainmentEList.Resolving<PhysicalActor>(PhysicalActor.class, this, PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS);
-    }
-    return ownedPhysicalActors;
-  }
+		if (ownedPhysicalActors == null) {
+			ownedPhysicalActors = new EObjectContainmentEList.Resolving<PhysicalActor>(PhysicalActor.class, this, PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS);
+		}
+		return ownedPhysicalActors;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
-        return ((InternalEList<?>)getOwnedPhysicalActorPkgs()).basicRemove(otherEnd, msgs);
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
-        return ((InternalEList<?>)getOwnedPhysicalActors()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
+				return ((InternalEList<?>)getOwnedPhysicalActorPkgs()).basicRemove(otherEnd, msgs);
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
+				return ((InternalEList<?>)getOwnedPhysicalActors()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
-        return getOwnedPhysicalActorPkgs();
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
-        return getOwnedPhysicalActors();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
+				return getOwnedPhysicalActorPkgs();
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
+				return getOwnedPhysicalActors();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
-        getOwnedPhysicalActorPkgs().clear();
-        getOwnedPhysicalActorPkgs().addAll((Collection<? extends PhysicalActorPkg>)newValue);
-        return;
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
-        getOwnedPhysicalActors().clear();
-        getOwnedPhysicalActors().addAll((Collection<? extends PhysicalActor>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
+				getOwnedPhysicalActorPkgs().clear();
+				getOwnedPhysicalActorPkgs().addAll((Collection<? extends PhysicalActorPkg>)newValue);
+				return;
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
+				getOwnedPhysicalActors().clear();
+				getOwnedPhysicalActors().addAll((Collection<? extends PhysicalActor>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
-        getOwnedPhysicalActorPkgs().clear();
-        return;
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
-        getOwnedPhysicalActors().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
+				getOwnedPhysicalActorPkgs().clear();
+				return;
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
+				getOwnedPhysicalActors().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
-        return ownedPhysicalActorPkgs != null && !ownedPhysicalActorPkgs.isEmpty();
-      case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
-        return ownedPhysicalActors != null && !ownedPhysicalActors.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTOR_PKGS:
+				return ownedPhysicalActorPkgs != null && !ownedPhysicalActorPkgs.isEmpty();
+			case PaPackage.PHYSICAL_ACTOR_PKG__OWNED_PHYSICAL_ACTORS:
+				return ownedPhysicalActors != null && !ownedPhysicalActors.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

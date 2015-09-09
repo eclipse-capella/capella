@@ -42,21 +42,21 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 
 
 	/**
-   * Returns the value of the '<em><b>Port Instances</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.PortInstance}.
+	 * Returns the value of the '<em><b>Port Instances</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.PortInstance}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Port Instances</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Port Instances</em>' reference list.
-   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_PortInstances()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Port Instances</em>' reference list.
+	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_PortInstances()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<PortInstance> getPortInstances();
 
@@ -67,21 +67,21 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Abstract Physical Instances</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.AbstractPhysicalInstance}.
+	 * Returns the value of the '<em><b>Owned Abstract Physical Instances</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.AbstractPhysicalInstance}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Abstract Physical Instances</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Abstract Physical Instances</em>' containment reference list.
-   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_OwnedAbstractPhysicalInstances()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Abstract Physical Instances</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_OwnedAbstractPhysicalInstances()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	EList<AbstractPhysicalInstance> getOwnedAbstractPhysicalInstances();
 
@@ -92,21 +92,21 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 
 
 	/**
-   * Returns the value of the '<em><b>Owned Instance Deployment Links</b></em>' containment reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink}.
+	 * Returns the value of the '<em><b>Owned Instance Deployment Links</b></em>' containment reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.pa.deployment.InstanceDeploymentLink}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Instance Deployment Links</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Owned Instance Deployment Links</em>' containment reference list.
-   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_OwnedInstanceDeploymentLinks()
-   * @model containment="true" resolveProxies="true"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Owned Instance Deployment Links</em>' containment reference list.
+	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_OwnedInstanceDeploymentLinks()
+	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	EList<InstanceDeploymentLink> getOwnedInstanceDeploymentLinks();
 
@@ -117,20 +117,20 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 
 
 	/**
-   * Returns the value of the '<em><b>Type</b></em>' reference.
+	 * Returns the value of the '<em><b>Type</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' reference.
-   * @see #setType(AbstractPhysicalComponent)
-   * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_Type()
-   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Type</em>' reference.
+	 * @see #setType(AbstractPhysicalComponent)
+	 * @see org.polarsys.capella.core.data.pa.deployment.DeploymentPackage#getComponentInstance_Type()
+	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	AbstractPhysicalComponent getType();
 
@@ -138,14 +138,14 @@ public interface ComponentInstance extends AbstractPhysicalInstance, DeployableE
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance#getType <em>Type</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.pa.deployment.ComponentInstance#getType <em>Type</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' reference.
-   * @see #getType()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Type</em>' reference.
+	 * @see #getType()
+	 * @generated
+	 */
 
 	void setType(AbstractPhysicalComponent value);
 

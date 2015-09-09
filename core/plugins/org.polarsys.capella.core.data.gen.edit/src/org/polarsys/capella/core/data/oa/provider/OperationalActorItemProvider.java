@@ -46,153 +46,153 @@ public class OperationalActorItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public OperationalActorItemProvider(AdapterFactory adapterFactory) {
-    super(adapterFactory);
-  }
+		super(adapterFactory);
+	}
 
 	/**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-    if (itemPropertyDescriptors == null) {
-      super.getPropertyDescriptors(object);
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
 
-      addRealizingSystemActorsPropertyDescriptor(object);
-    }
-    // begin-extension-code
-    checkChildCreationExtender(object);
-    // end-extension-code
-    return itemPropertyDescriptors;
-  }
+			addRealizingSystemActorsPropertyDescriptor(object);
+		}
+		// begin-extension-code
+		checkChildCreationExtender(object);
+		// end-extension-code
+		return itemPropertyDescriptors;
+	}
 
 	/**
-   * This adds a property descriptor for the Realizing System Actors feature.
-   * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Realizing System Actors feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected void addRealizingSystemActorsPropertyDescriptor(Object object) {
 
-    // begin-extension-code
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-    // end-extension-code
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_OperationalActor_realizingSystemActors_feature"), //$NON-NLS-1$
-         getString("_UI_PropertyDescriptor_description", "_UI_OperationalActor_realizingSystemActors_feature", "_UI_OperationalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-         OaPackage.Literals.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS,
-         false,
-         false,
-         false,
-         null,
-         null,
-    // begin-extension-code
-         null));
-    // end-extension-code
-  }
+		// begin-extension-code
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+		// end-extension-code
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OperationalActor_realizingSystemActors_feature"), //$NON-NLS-1$
+				 getString("_UI_PropertyDescriptor_description", "_UI_OperationalActor_realizingSystemActors_feature", "_UI_OperationalActor_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 OaPackage.Literals.OPERATIONAL_ACTOR__REALIZING_SYSTEM_ACTORS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+		// begin-extension-code
+				 null));
+		// end-extension-code
+	}
 
 	/**
-   * This returns OperationalActor.gif.
-   * <!-- begin-user-doc -->
+	 * This returns OperationalActor.gif.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object getImage(Object object) {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationalActor")); //$NON-NLS-1$
-  }
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationalActor")); //$NON-NLS-1$
+	}
 
 	/**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String getText(Object object) {
-   String[] result = new String[] { null };
+	 String[] result = new String[] { null };
 
     	//begin-capella-code
-    String label = ((OperationalActor)object).getName();
-    //end-capella-code
-    
-  
-      result[0] = label == null || label.length() == 0 ?
-      //begin-capella-code
-      "[" + getString("_UI_OperationalActor_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-      //end-capella-code
+		String label = ((OperationalActor)object).getName();
+		//end-capella-code
+	  
+	
+			result[0] = label == null || label.length() == 0 ?
+			//begin-capella-code
+			"[" + getString("_UI_OperationalActor_type") + "]" : label; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			//end-capella-code
 
-    return result[0];
+		return result[0];
 
-  }
+	}
 
 	/**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void notifyChanged(Notification notification) {
-    updateChildren(notification);
-    super.notifyChanged(notification);
-  }
+		updateChildren(notification);
+		super.notifyChanged(notification);
+	}
 
 	/**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-    super.collectNewChildDescriptors(newChildDescriptors, object);
-  }
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
 
 	/**
-   * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-   * <!-- begin-user-doc -->
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-    Object childFeature = feature;
-    Object childObject = child;
+		Object childFeature = feature;
+		Object childObject = child;
 
-    boolean qualify =
-      childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES ||
-      childFeature == OaPackage.Literals.ENTITY__OWNED_COMMUNICATION_MEANS;
+		boolean qualify =
+			childFeature == FaPackage.Literals.ABSTRACT_FUNCTIONAL_BLOCK__OWNED_COMPONENT_EXCHANGES ||
+			childFeature == OaPackage.Literals.ENTITY__OWNED_COMMUNICATION_MEANS;
 
-    if (qualify) {
-      return getString
-        ("_UI_CreateChild_text2", //$NON-NLS-1$
-         new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-    }
-    return super.getCreateChildText(owner, feature, child, selection);
-  }
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2", //$NON-NLS-1$
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
+	}
 
 	// begin-capella-code
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected Command createInitializeCopyCommand(EditingDomain domain_p, EObject owner_p, Helper helper_p) {
-    return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
-  }
+		return new SharedInitializeCopyCommand(domain_p, owner_p, helper_p);
+	}
 	// end-capella-code
 }

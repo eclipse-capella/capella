@@ -25,25 +25,25 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  */
 public abstract class ComponentContextImpl extends ComponentImpl implements ComponentContext {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ComponentContextImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CsPackage.Literals.COMPONENT_CONTEXT;
-  }
+		return CsPackage.Literals.COMPONENT_CONTEXT;
+	}
 
 
 

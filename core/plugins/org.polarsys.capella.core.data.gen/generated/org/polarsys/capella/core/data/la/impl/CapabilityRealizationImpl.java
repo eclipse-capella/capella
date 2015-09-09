@@ -58,13 +58,13 @@ import org.polarsys.capella.core.data.la.LaPackage;
 public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements CapabilityRealization {
 
 	/**
-   * The cached value of the '{@link #getOwnedActorCapabilityRealizations() <em>Owned Actor Capability Realizations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedActorCapabilityRealizations() <em>Owned Actor Capability Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedActorCapabilityRealizations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedActorCapabilityRealizations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ActorCapabilityRealizationInvolvement> ownedActorCapabilityRealizations;
 
 
@@ -72,13 +72,13 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 
 
 	/**
-   * The cached value of the '{@link #getOwnedSystemComponentCapabilityRealizations() <em>Owned System Component Capability Realizations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedSystemComponentCapabilityRealizations() <em>Owned System Component Capability Realizations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedSystemComponentCapabilityRealizations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedSystemComponentCapabilityRealizations()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<SystemComponentCapabilityRealizationInvolvement> ownedSystemComponentCapabilityRealizations;
 
 
@@ -113,71 +113,71 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected CapabilityRealizationImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return LaPackage.Literals.CAPABILITY_REALIZATION;
-  }
+		return LaPackage.Literals.CAPABILITY_REALIZATION;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ActorCapabilityRealizationInvolvement> getOwnedActorCapabilityRealizations() {
 
-    if (ownedActorCapabilityRealizations == null) {
-      ownedActorCapabilityRealizations = new EObjectContainmentEList<ActorCapabilityRealizationInvolvement>(ActorCapabilityRealizationInvolvement.class, this, LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS);
-    }
-    return ownedActorCapabilityRealizations;
-  }
+		if (ownedActorCapabilityRealizations == null) {
+			ownedActorCapabilityRealizations = new EObjectContainmentEList<ActorCapabilityRealizationInvolvement>(ActorCapabilityRealizationInvolvement.class, this, LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS);
+		}
+		return ownedActorCapabilityRealizations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemComponentCapabilityRealizationInvolvement> getOwnedSystemComponentCapabilityRealizations() {
 
-    if (ownedSystemComponentCapabilityRealizations == null) {
-      ownedSystemComponentCapabilityRealizations = new EObjectContainmentEList<SystemComponentCapabilityRealizationInvolvement>(SystemComponentCapabilityRealizationInvolvement.class, this, LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
-    }
-    return ownedSystemComponentCapabilityRealizations;
-  }
+		if (ownedSystemComponentCapabilityRealizations == null) {
+			ownedSystemComponentCapabilityRealizations = new EObjectContainmentEList<SystemComponentCapabilityRealizationInvolvement>(SystemComponentCapabilityRealizationInvolvement.class, this, LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS);
+		}
+		return ownedSystemComponentCapabilityRealizations;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<AbstractActor> getParticipatingActors() {
 
@@ -204,27 +204,27 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<AbstractActor> resultAsList = (Collection<AbstractActor>) result;
-    return new EcoreEList.UnmodifiableEList<AbstractActor>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<AbstractActor> resultAsList = (Collection<AbstractActor>) result;
+		return new EcoreEList.UnmodifiableEList<AbstractActor>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemComponent> getParticipatingSystemComponents() {
 
@@ -251,27 +251,27 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemComponent> resultAsList = (Collection<SystemComponent>) result;
-    return new EcoreEList.UnmodifiableEList<SystemComponent>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemComponent> resultAsList = (Collection<SystemComponent>) result;
+		return new EcoreEList.UnmodifiableEList<SystemComponent>(this, LaPackage.Literals.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ActorCapabilityRealizationInvolvement> getInvolvedActors() {
 
@@ -298,27 +298,27 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<ActorCapabilityRealizationInvolvement> resultAsList = (Collection<ActorCapabilityRealizationInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<ActorCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemComponentCapabilityRealizationInvolvement> getInvolvedSystemComponents() {
 
@@ -345,27 +345,27 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemComponentCapabilityRealizationInvolvement> resultAsList = (Collection<SystemComponentCapabilityRealizationInvolvement>) result;
-    return new EcoreEList.UnmodifiableEList<SystemComponentCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemComponentCapabilityRealizationInvolvement> resultAsList = (Collection<SystemComponentCapabilityRealizationInvolvement>) result;
+		return new EcoreEList.UnmodifiableEList<SystemComponentCapabilityRealizationInvolvement>(this, LaPackage.Literals.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Capability> getRealizedCapabilities() {
 
@@ -392,27 +392,27 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Capability> resultAsList = (Collection<Capability>) result;
-    return new EcoreEList.UnmodifiableEList<Capability>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Capability> resultAsList = (Collection<Capability>) result;
+		return new EcoreEList.UnmodifiableEList<Capability>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CapabilityRealization> getRealizedCapabilityRealizations() {
 
@@ -439,27 +439,27 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
-    return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<CapabilityRealization> getRealizingCapabilityRealizations() {
 
@@ -486,137 +486,137 @@ public class CapabilityRealizationImpl extends AbstractCapabilityImpl implements
     // A helper is found, let's use it. 
     EAnnotation annotation = LaPackage.Literals.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
-    return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<CapabilityRealization> resultAsList = (Collection<CapabilityRealization>) result;
+		return new EcoreEList.UnmodifiableEList<CapabilityRealization>(this, LaPackage.Literals.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-        return ((InternalEList<?>)getOwnedActorCapabilityRealizations()).basicRemove(otherEnd, msgs);
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-        return ((InternalEList<?>)getOwnedSystemComponentCapabilityRealizations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedActorCapabilityRealizations()).basicRemove(otherEnd, msgs);
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
+				return ((InternalEList<?>)getOwnedSystemComponentCapabilityRealizations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-        return getOwnedActorCapabilityRealizations();
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-        return getOwnedSystemComponentCapabilityRealizations();
-      case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS:
-        return getParticipatingActors();
-      case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS:
-        return getParticipatingSystemComponents();
-      case LaPackage.CAPABILITY_REALIZATION__INVOLVED_ACTORS:
-        return getInvolvedActors();
-      case LaPackage.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS:
-        return getInvolvedSystemComponents();
-      case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES:
-        return getRealizedCapabilities();
-      case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS:
-        return getRealizedCapabilityRealizations();
-      case LaPackage.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS:
-        return getRealizingCapabilityRealizations();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
+				return getOwnedActorCapabilityRealizations();
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
+				return getOwnedSystemComponentCapabilityRealizations();
+			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS:
+				return getParticipatingActors();
+			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS:
+				return getParticipatingSystemComponents();
+			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_ACTORS:
+				return getInvolvedActors();
+			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS:
+				return getInvolvedSystemComponents();
+			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES:
+				return getRealizedCapabilities();
+			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS:
+				return getRealizedCapabilityRealizations();
+			case LaPackage.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS:
+				return getRealizingCapabilityRealizations();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-        getOwnedActorCapabilityRealizations().clear();
-        getOwnedActorCapabilityRealizations().addAll((Collection<? extends ActorCapabilityRealizationInvolvement>)newValue);
-        return;
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-        getOwnedSystemComponentCapabilityRealizations().clear();
-        getOwnedSystemComponentCapabilityRealizations().addAll((Collection<? extends SystemComponentCapabilityRealizationInvolvement>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
+				getOwnedActorCapabilityRealizations().clear();
+				getOwnedActorCapabilityRealizations().addAll((Collection<? extends ActorCapabilityRealizationInvolvement>)newValue);
+				return;
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
+				getOwnedSystemComponentCapabilityRealizations().clear();
+				getOwnedSystemComponentCapabilityRealizations().addAll((Collection<? extends SystemComponentCapabilityRealizationInvolvement>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-        getOwnedActorCapabilityRealizations().clear();
-        return;
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-        getOwnedSystemComponentCapabilityRealizations().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
+				getOwnedActorCapabilityRealizations().clear();
+				return;
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
+				getOwnedSystemComponentCapabilityRealizations().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
-        return ownedActorCapabilityRealizations != null && !ownedActorCapabilityRealizations.isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
-        return ownedSystemComponentCapabilityRealizations != null && !ownedSystemComponentCapabilityRealizations.isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS:
-        return !getParticipatingActors().isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS:
-        return !getParticipatingSystemComponents().isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__INVOLVED_ACTORS:
-        return !getInvolvedActors().isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS:
-        return !getInvolvedSystemComponents().isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES:
-        return !getRealizedCapabilities().isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS:
-        return !getRealizedCapabilityRealizations().isEmpty();
-      case LaPackage.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS:
-        return !getRealizingCapabilityRealizations().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_ACTOR_CAPABILITY_REALIZATIONS:
+				return ownedActorCapabilityRealizations != null && !ownedActorCapabilityRealizations.isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__OWNED_SYSTEM_COMPONENT_CAPABILITY_REALIZATIONS:
+				return ownedSystemComponentCapabilityRealizations != null && !ownedSystemComponentCapabilityRealizations.isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_ACTORS:
+				return !getParticipatingActors().isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__PARTICIPATING_SYSTEM_COMPONENTS:
+				return !getParticipatingSystemComponents().isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_ACTORS:
+				return !getInvolvedActors().isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__INVOLVED_SYSTEM_COMPONENTS:
+				return !getInvolvedSystemComponents().isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITIES:
+				return !getRealizedCapabilities().isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__REALIZED_CAPABILITY_REALIZATIONS:
+				return !getRealizedCapabilityRealizations().isEmpty();
+			case LaPackage.CAPABILITY_REALIZATION__REALIZING_CAPABILITY_REALIZATIONS:
+				return !getRealizingCapabilityRealizations().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

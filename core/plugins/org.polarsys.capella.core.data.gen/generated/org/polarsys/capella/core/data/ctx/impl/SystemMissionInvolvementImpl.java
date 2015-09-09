@@ -46,13 +46,13 @@ import org.polarsys.capella.core.data.ctx.SystemMissionInvolvement;
 public class SystemMissionInvolvementImpl extends RelationshipImpl implements SystemMissionInvolvement {
 
 	/**
-   * The cached value of the '{@link #getInvolver() <em>Involver</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getInvolver() <em>Involver</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getInvolver()
-   * @generated
-   * @ordered
-   */
+	 * @see #getInvolver()
+	 * @generated
+	 * @ordered
+	 */
 	protected InvolverElement involver;
 
 
@@ -60,13 +60,13 @@ public class SystemMissionInvolvementImpl extends RelationshipImpl implements Sy
 
 
 	/**
-   * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getInvolved()
-   * @generated
-   * @ordered
-   */
+	 * @see #getInvolved()
+	 * @generated
+	 * @ordered
+	 */
 	protected InvolvedElement involved;
 
 
@@ -81,77 +81,77 @@ public class SystemMissionInvolvementImpl extends RelationshipImpl implements Sy
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemMissionInvolvementImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.SYSTEM_MISSION_INVOLVEMENT;
-  }
+		return CtxPackage.Literals.SYSTEM_MISSION_INVOLVEMENT;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolverElement getInvolver() {
 
-    if (involver != null && involver.eIsProxy()) {
-      InternalEObject oldInvolver = (InternalEObject)involver;
-      involver = (InvolverElement)eResolveProxy(oldInvolver);
-      if (involver != oldInvolver) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER, oldInvolver, involver));
-      }
-    }
-    return involver;
-  }
+		if (involver != null && involver.eIsProxy()) {
+			InternalEObject oldInvolver = (InternalEObject)involver;
+			involver = (InvolverElement)eResolveProxy(oldInvolver);
+			if (involver != oldInvolver) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER, oldInvolver, involver));
+			}
+		}
+		return involver;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolverElement basicGetInvolver() {
 
-    return involver;
-  }
+		return involver;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setInvolver(InvolverElement newInvolver) {
 
-    InvolverElement oldInvolver = involver;
-    involver = newInvolver;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER, oldInvolver, involver));
+		InvolverElement oldInvolver = involver;
+		involver = newInvolver;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER, oldInvolver, involver));
 
-  }
+	}
 
 
 
@@ -159,52 +159,52 @@ public class SystemMissionInvolvementImpl extends RelationshipImpl implements Sy
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolvedElement getInvolved() {
 
-    if (involved != null && involved.eIsProxy()) {
-      InternalEObject oldInvolved = (InternalEObject)involved;
-      involved = (InvolvedElement)eResolveProxy(oldInvolved);
-      if (involved != oldInvolved) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED, oldInvolved, involved));
-      }
-    }
-    return involved;
-  }
+		if (involved != null && involved.eIsProxy()) {
+			InternalEObject oldInvolved = (InternalEObject)involved;
+			involved = (InvolvedElement)eResolveProxy(oldInvolved);
+			if (involved != oldInvolved) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+			}
+		}
+		return involved;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolvedElement basicGetInvolved() {
 
-    return involved;
-  }
+		return involved;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setInvolved(InvolvedElement newInvolved) {
 
-    InvolvedElement oldInvolved = involved;
-    involved = newInvolved;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+		InvolvedElement oldInvolved = involved;
+		involved = newInvolved;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED, oldInvolved, involved));
 
-  }
+	}
 
 
 
@@ -212,23 +212,23 @@ public class SystemMissionInvolvementImpl extends RelationshipImpl implements Sy
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Mission getMission() {
 
-    Mission mission = basicGetMission();
-    return mission != null && mission.eIsProxy() ? (Mission)eResolveProxy((InternalEObject)mission) : mission;
-  }
+		Mission mission = basicGetMission();
+		return mission != null && mission.eIsProxy() ? (Mission)eResolveProxy((InternalEObject)mission) : mission;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Mission basicGetMission() {
 
@@ -255,15 +255,15 @@ public class SystemMissionInvolvementImpl extends RelationshipImpl implements Sy
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_MISSION_INVOLVEMENT__MISSION.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_MISSION_INVOLVEMENT__MISSION, annotation);
-    
-    try {
-      return (Mission) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (Mission) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -271,23 +271,23 @@ public class SystemMissionInvolvementImpl extends RelationshipImpl implements Sy
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public org.polarsys.capella.core.data.ctx.System getSystem() {
 
-    org.polarsys.capella.core.data.ctx.System system = basicGetSystem();
-    return system != null && system.eIsProxy() ? (org.polarsys.capella.core.data.ctx.System)eResolveProxy((InternalEObject)system) : system;
-  }
+		org.polarsys.capella.core.data.ctx.System system = basicGetSystem();
+		return system != null && system.eIsProxy() ? (org.polarsys.capella.core.data.ctx.System)eResolveProxy((InternalEObject)system) : system;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public org.polarsys.capella.core.data.ctx.System basicGetSystem() {
 
@@ -314,113 +314,113 @@ public class SystemMissionInvolvementImpl extends RelationshipImpl implements Sy
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_MISSION_INVOLVEMENT__SYSTEM.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_MISSION_INVOLVEMENT__SYSTEM, annotation);
-    
-    try {
-      return (org.polarsys.capella.core.data.ctx.System) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (org.polarsys.capella.core.data.ctx.System) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
-        if (resolve) return getInvolver();
-        return basicGetInvolver();
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
-        if (resolve) return getInvolved();
-        return basicGetInvolved();
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__MISSION:
-        if (resolve) return getMission();
-        return basicGetMission();
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__SYSTEM:
-        if (resolve) return getSystem();
-        return basicGetSystem();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
+				if (resolve) return getInvolver();
+				return basicGetInvolver();
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
+				if (resolve) return getInvolved();
+				return basicGetInvolved();
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__MISSION:
+				if (resolve) return getMission();
+				return basicGetMission();
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__SYSTEM:
+				if (resolve) return getSystem();
+				return basicGetSystem();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof InvolverElement) {
-        // end-extension-code
-          setInvolver((InvolverElement)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof InvolvedElement) {
-        // end-extension-code
-          setInvolved((InvolvedElement)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof InvolverElement) {
+				// end-extension-code
+					setInvolver((InvolverElement)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof InvolvedElement) {
+				// end-extension-code
+					setInvolved((InvolvedElement)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
-        setInvolver((InvolverElement)null);
-        return;
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
-        setInvolved((InvolvedElement)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
+				setInvolver((InvolverElement)null);
+				return;
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
+				setInvolved((InvolvedElement)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
-        return involver != null;
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
-        return involved != null;
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__MISSION:
-        return basicGetMission() != null;
-      case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__SYSTEM:
-        return basicGetSystem() != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVER:
+				return involver != null;
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__INVOLVED:
+				return involved != null;
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__MISSION:
+				return basicGetMission() != null;
+			case CtxPackage.SYSTEM_MISSION_INVOLVEMENT__SYSTEM:
+				return basicGetSystem() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

@@ -37,24 +37,24 @@ public interface OperationalActor extends Entity {
 
 
 	/**
-   * Returns the value of the '<em><b>Realizing System Actors</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Actor}.
-   * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Actor#getRealizedOperationalActors <em>Realized Operational Actors</em>}'.
+	 * Returns the value of the '<em><b>Realizing System Actors</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.ctx.Actor}.
+	 * It is bidirectional and its opposite is '{@link org.polarsys.capella.core.data.ctx.Actor#getRealizedOperationalActors <em>Realized Operational Actors</em>}'.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Realizing System Actors</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Realizing System Actors</em>' reference list.
-   * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActor_RealizingSystemActors()
-   * @see org.polarsys.capella.core.data.ctx.Actor#getRealizedOperationalActors
-   * @model opposite="realizedOperationalActors" transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Realizing System Actors</em>' reference list.
+	 * @see org.polarsys.capella.core.data.oa.OaPackage#getOperationalActor_RealizingSystemActors()
+	 * @see org.polarsys.capella.core.data.ctx.Actor#getRealizedOperationalActors
+	 * @model opposite="realizedOperationalActors" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/semantic excludefrom='xmlpivot'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<Actor> getRealizingSystemActors();
 

@@ -55,13 +55,13 @@ import org.polarsys.capella.core.data.oa.OperationalActivity;
 public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFunction {
 
 	/**
-   * The cached value of the '{@link #getOwnedSystemFunctionPkgs() <em>Owned System Function Pkgs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedSystemFunctionPkgs() <em>Owned System Function Pkgs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedSystemFunctionPkgs()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedSystemFunctionPkgs()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<SystemFunctionPkg> ownedSystemFunctionPkgs;
 
 
@@ -92,53 +92,53 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemFunctionImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.SYSTEM_FUNCTION;
-  }
+		return CtxPackage.Literals.SYSTEM_FUNCTION;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemFunctionPkg> getOwnedSystemFunctionPkgs() {
 
-    if (ownedSystemFunctionPkgs == null) {
-      ownedSystemFunctionPkgs = new EObjectContainmentEList.Resolving<SystemFunctionPkg>(SystemFunctionPkg.class, this, CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS);
-    }
-    return ownedSystemFunctionPkgs;
-  }
+		if (ownedSystemFunctionPkgs == null) {
+			ownedSystemFunctionPkgs = new EObjectContainmentEList.Resolving<SystemFunctionPkg>(SystemFunctionPkg.class, this, CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS);
+		}
+		return ownedSystemFunctionPkgs;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Actor> getAllocatorActors() {
 
@@ -165,27 +165,27 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<Actor> resultAsList = (Collection<Actor>) result;
-    return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<Actor> resultAsList = (Collection<Actor>) result;
+		return new EcoreEList.UnmodifiableEList<Actor>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_ACTORS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<org.polarsys.capella.core.data.ctx.System> getAllocatorSystems() {
 
@@ -212,27 +212,27 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
-    return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<org.polarsys.capella.core.data.ctx.System> resultAsList = (Collection<org.polarsys.capella.core.data.ctx.System>) result;
+		return new EcoreEList.UnmodifiableEList<org.polarsys.capella.core.data.ctx.System>(this, CtxPackage.Literals.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<OperationalActivity> getRealizedOperationalActivities() {
 
@@ -259,27 +259,27 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
-    return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<OperationalActivity> resultAsList = (Collection<OperationalActivity>) result;
+		return new EcoreEList.UnmodifiableEList<OperationalActivity>(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<LogicalFunction> getRealizingLogicalFunctions() {
 
@@ -306,27 +306,27 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
-    return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<LogicalFunction> resultAsList = (Collection<LogicalFunction>) result;
+		return new EcoreEList.UnmodifiableEList<LogicalFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemFunction> getContainedSystemFunctions() {
 
@@ -353,27 +353,27 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
-    return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
+		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<SystemFunction> getChildrenSystemFunctions() {
 
@@ -400,120 +400,120 @@ public class SystemFunctionImpl extends AbstractFunctionImpl implements SystemFu
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
-    return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<SystemFunction> resultAsList = (Collection<SystemFunction>) result;
+		return new EcoreEList.UnmodifiableEList<SystemFunction>(this, CtxPackage.Literals.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
-        return ((InternalEList<?>)getOwnedSystemFunctionPkgs()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
+				return ((InternalEList<?>)getOwnedSystemFunctionPkgs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
-        return getOwnedSystemFunctionPkgs();
-      case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_ACTORS:
-        return getAllocatorActors();
-      case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS:
-        return getAllocatorSystems();
-      case CtxPackage.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES:
-        return getRealizedOperationalActivities();
-      case CtxPackage.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS:
-        return getRealizingLogicalFunctions();
-      case CtxPackage.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS:
-        return getContainedSystemFunctions();
-      case CtxPackage.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS:
-        return getChildrenSystemFunctions();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
+				return getOwnedSystemFunctionPkgs();
+			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_ACTORS:
+				return getAllocatorActors();
+			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS:
+				return getAllocatorSystems();
+			case CtxPackage.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES:
+				return getRealizedOperationalActivities();
+			case CtxPackage.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS:
+				return getRealizingLogicalFunctions();
+			case CtxPackage.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS:
+				return getContainedSystemFunctions();
+			case CtxPackage.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS:
+				return getChildrenSystemFunctions();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
-        getOwnedSystemFunctionPkgs().clear();
-        getOwnedSystemFunctionPkgs().addAll((Collection<? extends SystemFunctionPkg>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
+				getOwnedSystemFunctionPkgs().clear();
+				getOwnedSystemFunctionPkgs().addAll((Collection<? extends SystemFunctionPkg>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
-        getOwnedSystemFunctionPkgs().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
+				getOwnedSystemFunctionPkgs().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
-        return ownedSystemFunctionPkgs != null && !ownedSystemFunctionPkgs.isEmpty();
-      case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_ACTORS:
-        return !getAllocatorActors().isEmpty();
-      case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS:
-        return !getAllocatorSystems().isEmpty();
-      case CtxPackage.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES:
-        return !getRealizedOperationalActivities().isEmpty();
-      case CtxPackage.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS:
-        return !getRealizingLogicalFunctions().isEmpty();
-      case CtxPackage.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS:
-        return !getContainedSystemFunctions().isEmpty();
-      case CtxPackage.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS:
-        return !getChildrenSystemFunctions().isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.SYSTEM_FUNCTION__OWNED_SYSTEM_FUNCTION_PKGS:
+				return ownedSystemFunctionPkgs != null && !ownedSystemFunctionPkgs.isEmpty();
+			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_ACTORS:
+				return !getAllocatorActors().isEmpty();
+			case CtxPackage.SYSTEM_FUNCTION__ALLOCATOR_SYSTEMS:
+				return !getAllocatorSystems().isEmpty();
+			case CtxPackage.SYSTEM_FUNCTION__REALIZED_OPERATIONAL_ACTIVITIES:
+				return !getRealizedOperationalActivities().isEmpty();
+			case CtxPackage.SYSTEM_FUNCTION__REALIZING_LOGICAL_FUNCTIONS:
+				return !getRealizingLogicalFunctions().isEmpty();
+			case CtxPackage.SYSTEM_FUNCTION__CONTAINED_SYSTEM_FUNCTIONS:
+				return !getContainedSystemFunctions().isEmpty();
+			case CtxPackage.SYSTEM_FUNCTION__CHILDREN_SYSTEM_FUNCTIONS:
+				return !getChildrenSystemFunctions().isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.la.LogicalContext;
  */
 public class LogicalContextImpl extends ComponentContextImpl implements LogicalContext {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected LogicalContextImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return LaPackage.Literals.LOGICAL_CONTEXT;
-  }
+		return LaPackage.Literals.LOGICAL_CONTEXT;
+	}
 
 
 

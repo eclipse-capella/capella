@@ -43,21 +43,21 @@ public interface SystemComponent extends Component, CapabilityRealizationInvolve
 
 
 	/**
-   * Returns the value of the '<em><b>Data Component</b></em>' attribute.
+	 * Returns the value of the '<em><b>Data Component</b></em>' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Component</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Data Component</em>' attribute.
-   * @see #setDataComponent(boolean)
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getSystemComponent_DataComponent()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this is a data component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Data Component</em>' attribute.
+	 * @see #setDataComponent(boolean)
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getSystemComponent_DataComponent()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether or not this is a data component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	boolean isDataComponent();
 
@@ -65,14 +65,14 @@ public interface SystemComponent extends Component, CapabilityRealizationInvolve
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.cs.SystemComponent#isDataComponent <em>Data Component</em>}' attribute.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.cs.SystemComponent#isDataComponent <em>Data Component</em>}' attribute.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Data Component</em>' attribute.
-   * @see #isDataComponent()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Data Component</em>' attribute.
+	 * @see #isDataComponent()
+	 * @generated
+	 */
 
 	void setDataComponent(boolean value);
 
@@ -83,21 +83,21 @@ public interface SystemComponent extends Component, CapabilityRealizationInvolve
 
 
 	/**
-   * Returns the value of the '<em><b>Data Type</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Classifier}.
+	 * Returns the value of the '<em><b>Data Type</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.capellacore.Classifier}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Type</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Data Type</em>' reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getSystemComponent_DataType()
-   * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='data type(s) associated to this component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Data Type</em>' reference list.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getSystemComponent_DataType()
+	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='data type(s) associated to this component\r\n[source: Capella light-light study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 * @generated
+	 */
 
 	EList<Classifier> getDataType();
 
@@ -108,24 +108,24 @@ public interface SystemComponent extends Component, CapabilityRealizationInvolve
 
 
 	/**
-   * Returns the value of the '<em><b>Participations In Capability Realizations</b></em>' reference list.
-   * The list contents are of type {@link org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement}.
+	 * Returns the value of the '<em><b>Participations In Capability Realizations</b></em>' reference list.
+	 * The list contents are of type {@link org.polarsys.capella.core.data.cs.SystemComponentCapabilityRealizationInvolvement}.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Participations In Capability Realizations</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Participations In Capability Realizations</em>' reference list.
-   * @see org.polarsys.capella.core.data.cs.CsPackage#getSystemComponent_ParticipationsInCapabilityRealizations()
-   * @model transient="true" changeable="false" volatile="true" derived="true"
-   *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
-   *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participationsInCapabilityRealizations'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the involvement relationships between this SystemComponent and CapabilityRealization elements\r\n[source: Capella study]' constraints='none' comment/notes='none'"
-   *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Participations In Capability Realizations</em>' reference list.
+	 * @see org.polarsys.capella.core.data.cs.CsPackage#getSystemComponent_ParticipationsInCapabilityRealizations()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="http://www.polarsys.org/capella/2007/UML2Mapping umlOppositeReference='supplier' umlOppositeReferenceOwner='Dependency'"
+	 *        annotation="http://www.polarsys.org/capella/2007/BusinessInformation Label='participationsInCapabilityRealizations'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='(automatically computed) the involvement relationships between this SystemComponent and CapabilityRealization elements\r\n[source: Capella study]' constraints='none' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::none' explanation='Derived and transient' constraints='none'"
+	 * @generated
+	 */
 
 	EList<SystemComponentCapabilityRealizationInvolvement> getParticipationsInCapabilityRealizations();
 

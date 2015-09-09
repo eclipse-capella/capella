@@ -42,13 +42,13 @@ import org.polarsys.capella.core.data.information.datavalue.NumericValue;
 public abstract class NumericValueImpl extends DataValueImpl implements NumericValue {
 
 	/**
-   * The cached value of the '{@link #getUnit() <em>Unit</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getUnit()
-   * @generated
-   * @ordered
-   */
+	 * @see #getUnit()
+	 * @generated
+	 * @ordered
+	 */
 	protected Unit unit;
 
 
@@ -59,77 +59,77 @@ public abstract class NumericValueImpl extends DataValueImpl implements NumericV
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected NumericValueImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return DatavaluePackage.Literals.NUMERIC_VALUE;
-  }
+		return DatavaluePackage.Literals.NUMERIC_VALUE;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Unit getUnit() {
 
-    if (unit != null && unit.eIsProxy()) {
-      InternalEObject oldUnit = (InternalEObject)unit;
-      unit = (Unit)eResolveProxy(oldUnit);
-      if (unit != oldUnit) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.NUMERIC_VALUE__UNIT, oldUnit, unit));
-      }
-    }
-    return unit;
-  }
+		if (unit != null && unit.eIsProxy()) {
+			InternalEObject oldUnit = (InternalEObject)unit;
+			unit = (Unit)eResolveProxy(oldUnit);
+			if (unit != oldUnit) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DatavaluePackage.NUMERIC_VALUE__UNIT, oldUnit, unit));
+			}
+		}
+		return unit;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Unit basicGetUnit() {
 
-    return unit;
-  }
+		return unit;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setUnit(Unit newUnit) {
 
-    Unit oldUnit = unit;
-    unit = newUnit;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.NUMERIC_VALUE__UNIT, oldUnit, unit));
+		Unit oldUnit = unit;
+		unit = newUnit;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DatavaluePackage.NUMERIC_VALUE__UNIT, oldUnit, unit));
 
-  }
+	}
 
 
 
@@ -137,23 +137,23 @@ public abstract class NumericValueImpl extends DataValueImpl implements NumericV
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public NumericType getNumericType() {
 
-    NumericType numericType = basicGetNumericType();
-    return numericType != null && numericType.eIsProxy() ? (NumericType)eResolveProxy((InternalEObject)numericType) : numericType;
-  }
+		NumericType numericType = basicGetNumericType();
+		return numericType != null && numericType.eIsProxy() ? (NumericType)eResolveProxy((InternalEObject)numericType) : numericType;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public NumericType basicGetNumericType() {
 
@@ -180,91 +180,91 @@ public abstract class NumericValueImpl extends DataValueImpl implements NumericV
     // A helper is found, let's use it. 
     EAnnotation annotation = DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DatavaluePackage.Literals.NUMERIC_VALUE__NUMERIC_TYPE, annotation);
-    
-    try {
-      return (NumericType) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (NumericType) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case DatavaluePackage.NUMERIC_VALUE__UNIT:
-        if (resolve) return getUnit();
-        return basicGetUnit();
-      case DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE:
-        if (resolve) return getNumericType();
-        return basicGetNumericType();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DatavaluePackage.NUMERIC_VALUE__UNIT:
+				if (resolve) return getUnit();
+				return basicGetUnit();
+			case DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE:
+				if (resolve) return getNumericType();
+				return basicGetNumericType();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case DatavaluePackage.NUMERIC_VALUE__UNIT:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof Unit) {
-        // end-extension-code
-          setUnit((Unit)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DatavaluePackage.NUMERIC_VALUE__UNIT:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof Unit) {
+				// end-extension-code
+					setUnit((Unit)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case DatavaluePackage.NUMERIC_VALUE__UNIT:
-        setUnit((Unit)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DatavaluePackage.NUMERIC_VALUE__UNIT:
+				setUnit((Unit)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case DatavaluePackage.NUMERIC_VALUE__UNIT:
-        return unit != null;
-      case DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE:
-        return basicGetNumericType() != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DatavaluePackage.NUMERIC_VALUE__UNIT:
+				return unit != null;
+			case DatavaluePackage.NUMERIC_VALUE__NUMERIC_TYPE:
+				return basicGetNumericType() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

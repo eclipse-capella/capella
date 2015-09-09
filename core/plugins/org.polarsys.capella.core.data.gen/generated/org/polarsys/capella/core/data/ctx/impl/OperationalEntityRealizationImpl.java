@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.ctx.OperationalEntityRealization;
  */
 public class OperationalEntityRealizationImpl extends ComponentAllocationImpl implements OperationalEntityRealization {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OperationalEntityRealizationImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION;
-  }
+		return CtxPackage.Literals.OPERATIONAL_ENTITY_REALIZATION;
+	}
 
 
 

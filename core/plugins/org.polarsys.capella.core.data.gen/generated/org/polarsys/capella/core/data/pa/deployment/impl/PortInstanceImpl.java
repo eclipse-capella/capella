@@ -50,13 +50,13 @@ import org.polarsys.capella.core.data.pa.deployment.PortInstance;
 public class PortInstanceImpl extends AbstractPhysicalInstanceImpl implements PortInstance {
 
 	/**
-   * The cached value of the '{@link #getConnections() <em>Connections</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getConnections() <em>Connections</em>}' reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getConnections()
-   * @generated
-   * @ordered
-   */
+	 * @see #getConnections()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ConnectionInstance> connections;
 
 
@@ -68,79 +68,79 @@ public class PortInstanceImpl extends AbstractPhysicalInstanceImpl implements Po
 
 
 	/**
-   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
 	protected ComponentPort type;
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected PortInstanceImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return DeploymentPackage.Literals.PORT_INSTANCE;
-  }
+		return DeploymentPackage.Literals.PORT_INSTANCE;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ConnectionInstance> getConnections() {
 
-    if (connections == null) {
-      connections = new EObjectWithInverseResolvingEList.ManyInverse<ConnectionInstance>(ConnectionInstance.class, this, DeploymentPackage.PORT_INSTANCE__CONNECTIONS, DeploymentPackage.CONNECTION_INSTANCE__CONNECTION_ENDS);
-    }
-    return connections;
-  }
+		if (connections == null) {
+			connections = new EObjectWithInverseResolvingEList.ManyInverse<ConnectionInstance>(ConnectionInstance.class, this, DeploymentPackage.PORT_INSTANCE__CONNECTIONS, DeploymentPackage.CONNECTION_INSTANCE__CONNECTION_ENDS);
+		}
+		return connections;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ComponentInstance getComponent() {
 
-    ComponentInstance component = basicGetComponent();
-    return component != null && component.eIsProxy() ? (ComponentInstance)eResolveProxy((InternalEObject)component) : component;
-  }
+		ComponentInstance component = basicGetComponent();
+		return component != null && component.eIsProxy() ? (ComponentInstance)eResolveProxy((InternalEObject)component) : component;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ComponentInstance basicGetComponent() {
 
@@ -167,15 +167,15 @@ public class PortInstanceImpl extends AbstractPhysicalInstanceImpl implements Po
     // A helper is found, let's use it. 
     EAnnotation annotation = DeploymentPackage.Literals.PORT_INSTANCE__COMPONENT.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, DeploymentPackage.Literals.PORT_INSTANCE__COMPONENT, annotation);
-    
-    try {
-      return (ComponentInstance) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (ComponentInstance) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -183,169 +183,169 @@ public class PortInstanceImpl extends AbstractPhysicalInstanceImpl implements Po
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ComponentPort getType() {
 
-    if (type != null && type.eIsProxy()) {
-      InternalEObject oldType = (InternalEObject)type;
-      type = (ComponentPort)eResolveProxy(oldType);
-      if (type != oldType) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DeploymentPackage.PORT_INSTANCE__TYPE, oldType, type));
-      }
-    }
-    return type;
-  }
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (ComponentPort)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DeploymentPackage.PORT_INSTANCE__TYPE, oldType, type));
+			}
+		}
+		return type;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public ComponentPort basicGetType() {
 
-    return type;
-  }
+		return type;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setType(ComponentPort newType) {
 
-    ComponentPort oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.PORT_INSTANCE__TYPE, oldType, type));
+		ComponentPort oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeploymentPackage.PORT_INSTANCE__TYPE, oldType, type));
 
-  }
+	}
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnections()).basicAdd(otherEnd, msgs);
-    }
-    return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnections()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
-        return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
+				return ((InternalEList<?>)getConnections()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
-        return getConnections();
-      case DeploymentPackage.PORT_INSTANCE__COMPONENT:
-        if (resolve) return getComponent();
-        return basicGetComponent();
-      case DeploymentPackage.PORT_INSTANCE__TYPE:
-        if (resolve) return getType();
-        return basicGetType();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
+				return getConnections();
+			case DeploymentPackage.PORT_INSTANCE__COMPONENT:
+				if (resolve) return getComponent();
+				return basicGetComponent();
+			case DeploymentPackage.PORT_INSTANCE__TYPE:
+				if (resolve) return getType();
+				return basicGetType();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
-        getConnections().clear();
-        getConnections().addAll((Collection<? extends ConnectionInstance>)newValue);
-        return;
-      case DeploymentPackage.PORT_INSTANCE__TYPE:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof ComponentPort) {
-        // end-extension-code
-          setType((ComponentPort)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
+				getConnections().clear();
+				getConnections().addAll((Collection<? extends ConnectionInstance>)newValue);
+				return;
+			case DeploymentPackage.PORT_INSTANCE__TYPE:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof ComponentPort) {
+				// end-extension-code
+					setType((ComponentPort)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
-        getConnections().clear();
-        return;
-      case DeploymentPackage.PORT_INSTANCE__TYPE:
-        setType((ComponentPort)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
+				getConnections().clear();
+				return;
+			case DeploymentPackage.PORT_INSTANCE__TYPE:
+				setType((ComponentPort)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
-        return connections != null && !connections.isEmpty();
-      case DeploymentPackage.PORT_INSTANCE__COMPONENT:
-        return basicGetComponent() != null;
-      case DeploymentPackage.PORT_INSTANCE__TYPE:
-        return type != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DeploymentPackage.PORT_INSTANCE__CONNECTIONS:
+				return connections != null && !connections.isEmpty();
+			case DeploymentPackage.PORT_INSTANCE__COMPONENT:
+				return basicGetComponent() != null;
+			case DeploymentPackage.PORT_INSTANCE__TYPE:
+				return type != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

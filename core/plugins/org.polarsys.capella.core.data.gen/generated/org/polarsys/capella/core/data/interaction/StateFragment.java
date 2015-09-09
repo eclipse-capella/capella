@@ -38,21 +38,21 @@ public interface StateFragment extends TimeLapse {
 
 
 	/**
-   * Returns the value of the '<em><b>Related Abstract State</b></em>' reference.
+	 * Returns the value of the '<em><b>Related Abstract State</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Related Abstract State</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Related Abstract State</em>' reference.
-   * @see #setRelatedAbstractState(AbstractState)
-   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getStateFragment_RelatedAbstractState()
-   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Related Abstract State</em>' reference.
+	 * @see #setRelatedAbstractState(AbstractState)
+	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getStateFragment_RelatedAbstractState()
+	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+	 * @generated
+	 */
 
 	AbstractState getRelatedAbstractState();
 
@@ -60,14 +60,14 @@ public interface StateFragment extends TimeLapse {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.StateFragment#getRelatedAbstractState <em>Related Abstract State</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.StateFragment#getRelatedAbstractState <em>Related Abstract State</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Related Abstract State</em>' reference.
-   * @see #getRelatedAbstractState()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Related Abstract State</em>' reference.
+	 * @see #getRelatedAbstractState()
+	 * @generated
+	 */
 
 	void setRelatedAbstractState(AbstractState value);
 
@@ -78,21 +78,21 @@ public interface StateFragment extends TimeLapse {
 
 
 	/**
-   * Returns the value of the '<em><b>Related Abstract Function</b></em>' reference.
+	 * Returns the value of the '<em><b>Related Abstract Function</b></em>' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Related Abstract Function</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-   * @return the value of the '<em>Related Abstract Function</em>' reference.
-   * @see #setRelatedAbstractFunction(AbstractFunction)
-   * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getStateFragment_RelatedAbstractFunction()
-   * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
-   *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
-   * @generated
-   */
+	 * @return the value of the '<em>Related Abstract Function</em>' reference.
+	 * @see #setRelatedAbstractFunction(AbstractFunction)
+	 * @see org.polarsys.capella.core.data.interaction.InteractionPackage#getStateFragment_RelatedAbstractFunction()
+	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='n/a' usage\040guideline='n/a' used\040in\040levels='operational, system, logical, physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
+	 * @generated
+	 */
 
 	AbstractFunction getRelatedAbstractFunction();
 
@@ -100,14 +100,14 @@ public interface StateFragment extends TimeLapse {
 
 
 	/**
-   * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.StateFragment#getRelatedAbstractFunction <em>Related Abstract Function</em>}' reference.
+	 * Sets the value of the '{@link org.polarsys.capella.core.data.interaction.StateFragment#getRelatedAbstractFunction <em>Related Abstract Function</em>}' reference.
 
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Related Abstract Function</em>' reference.
-   * @see #getRelatedAbstractFunction()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Related Abstract Function</em>' reference.
+	 * @see #getRelatedAbstractFunction()
+	 * @generated
+	 */
 
 	void setRelatedAbstractFunction(AbstractFunction value);
 

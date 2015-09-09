@@ -58,13 +58,13 @@ import org.polarsys.capella.core.data.requirement.RequirementsTrace;
 public class ConfigurationItemPkgImpl extends NamedElementImpl implements ConfigurationItemPkg {
 
 	/**
-   * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedTraces() <em>Owned Traces</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedTraces()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedTraces()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<Trace> ownedTraces;
 
 
@@ -80,13 +80,13 @@ public class ConfigurationItemPkgImpl extends NamedElementImpl implements Config
 
 
 	/**
-   * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getNamingRules() <em>Naming Rules</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getNamingRules()
-   * @generated
-   * @ordered
-   */
+	 * @see #getNamingRules()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<NamingRule> namingRules;
 
 
@@ -94,13 +94,13 @@ public class ConfigurationItemPkgImpl extends NamedElementImpl implements Config
 
 
 	/**
-   * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedPropertyValuePkgs() <em>Owned Property Value Pkgs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedPropertyValuePkgs()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedPropertyValuePkgs()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<PropertyValuePkg> ownedPropertyValuePkgs;
 
 
@@ -108,13 +108,13 @@ public class ConfigurationItemPkgImpl extends NamedElementImpl implements Config
 
 
 	/**
-   * The cached value of the '{@link #getOwnedConfigurationItems() <em>Owned Configuration Items</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedConfigurationItems() <em>Owned Configuration Items</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedConfigurationItems()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedConfigurationItems()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ConfigurationItem> ownedConfigurationItems;
 
 
@@ -122,66 +122,66 @@ public class ConfigurationItemPkgImpl extends NamedElementImpl implements Config
 
 
 	/**
-   * The cached value of the '{@link #getOwnedConfigurationItemPkgs() <em>Owned Configuration Item Pkgs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOwnedConfigurationItemPkgs() <em>Owned Configuration Item Pkgs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getOwnedConfigurationItemPkgs()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOwnedConfigurationItemPkgs()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ConfigurationItemPkg> ownedConfigurationItemPkgs;
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ConfigurationItemPkgImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return EpbsPackage.Literals.CONFIGURATION_ITEM_PKG;
-  }
+		return EpbsPackage.Literals.CONFIGURATION_ITEM_PKG;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<Trace> getOwnedTraces() {
 
-    if (ownedTraces == null) {
-      ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES);
-    }
-    return ownedTraces;
-  }
+		if (ownedTraces == null) {
+			ownedTraces = new EObjectContainmentEList<Trace>(Trace.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES);
+		}
+		return ownedTraces;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<GenericTrace> getContainedGenericTraces() {
 
@@ -208,27 +208,27 @@ public class ConfigurationItemPkgImpl extends NamedElementImpl implements Config
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
-    return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<GenericTrace> resultAsList = (Collection<GenericTrace>) result;
+		return new EcoreEList.UnmodifiableEList<GenericTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_GENERIC_TRACES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<RequirementsTrace> getContainedRequirementsTraces() {
 
@@ -255,228 +255,228 @@ public class ConfigurationItemPkgImpl extends NamedElementImpl implements Config
     // A helper is found, let's use it. 
     EAnnotation annotation = CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, annotation);
-    
-    try {
-    @SuppressWarnings("unchecked")
-    Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
-    return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
-    } catch (ClassCastException cce_p) {
-    	cce_p.printStackTrace();
-    	return org.eclipse.emf.common.util.ECollections.emptyEList();
-    }
-    
-  }
+		
+		try {
+		@SuppressWarnings("unchecked")
+		Collection<RequirementsTrace> resultAsList = (Collection<RequirementsTrace>) result;
+		return new EcoreEList.UnmodifiableEList<RequirementsTrace>(this, CapellacorePackage.Literals.NAMESPACE__CONTAINED_REQUIREMENTS_TRACES, resultAsList.size(), resultAsList.toArray());
+		} catch (ClassCastException cce_p) {
+	  	cce_p.printStackTrace();
+	  	return org.eclipse.emf.common.util.ECollections.emptyEList();
+	  }
+		
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<NamingRule> getNamingRules() {
 
-    if (namingRules == null) {
-      namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES);
-    }
-    return namingRules;
-  }
+		if (namingRules == null) {
+			namingRules = new EObjectContainmentEList<NamingRule>(NamingRule.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES);
+		}
+		return namingRules;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<PropertyValuePkg> getOwnedPropertyValuePkgs() {
 
-    if (ownedPropertyValuePkgs == null) {
-      ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS);
-    }
-    return ownedPropertyValuePkgs;
-  }
+		if (ownedPropertyValuePkgs == null) {
+			ownedPropertyValuePkgs = new EObjectContainmentEList.Resolving<PropertyValuePkg>(PropertyValuePkg.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS);
+		}
+		return ownedPropertyValuePkgs;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ConfigurationItem> getOwnedConfigurationItems() {
 
-    if (ownedConfigurationItems == null) {
-      ownedConfigurationItems = new EObjectContainmentEList.Resolving<ConfigurationItem>(ConfigurationItem.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS);
-    }
-    return ownedConfigurationItems;
-  }
+		if (ownedConfigurationItems == null) {
+			ownedConfigurationItems = new EObjectContainmentEList.Resolving<ConfigurationItem>(ConfigurationItem.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS);
+		}
+		return ownedConfigurationItems;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public EList<ConfigurationItemPkg> getOwnedConfigurationItemPkgs() {
 
-    if (ownedConfigurationItemPkgs == null) {
-      ownedConfigurationItemPkgs = new EObjectContainmentEList.Resolving<ConfigurationItemPkg>(ConfigurationItemPkg.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS);
-    }
-    return ownedConfigurationItemPkgs;
-  }
+		if (ownedConfigurationItemPkgs == null) {
+			ownedConfigurationItemPkgs = new EObjectContainmentEList.Resolving<ConfigurationItemPkg>(ConfigurationItemPkg.class, this, EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS);
+		}
+		return ownedConfigurationItemPkgs;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
-        return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
-        return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
-        return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
-        return ((InternalEList<?>)getOwnedConfigurationItems()).basicRemove(otherEnd, msgs);
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
-        return ((InternalEList<?>)getOwnedConfigurationItemPkgs()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
+				return ((InternalEList<?>)getOwnedTraces()).basicRemove(otherEnd, msgs);
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
+				return ((InternalEList<?>)getNamingRules()).basicRemove(otherEnd, msgs);
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
+				return ((InternalEList<?>)getOwnedPropertyValuePkgs()).basicRemove(otherEnd, msgs);
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
+				return ((InternalEList<?>)getOwnedConfigurationItems()).basicRemove(otherEnd, msgs);
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
+				return ((InternalEList<?>)getOwnedConfigurationItemPkgs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
-        return getOwnedTraces();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_GENERIC_TRACES:
-        return getContainedGenericTraces();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_REQUIREMENTS_TRACES:
-        return getContainedRequirementsTraces();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
-        return getNamingRules();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
-        return getOwnedPropertyValuePkgs();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
-        return getOwnedConfigurationItems();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
-        return getOwnedConfigurationItemPkgs();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
+				return getOwnedTraces();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_GENERIC_TRACES:
+				return getContainedGenericTraces();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_REQUIREMENTS_TRACES:
+				return getContainedRequirementsTraces();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
+				return getNamingRules();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
+				return getOwnedPropertyValuePkgs();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
+				return getOwnedConfigurationItems();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
+				return getOwnedConfigurationItemPkgs();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
-        getOwnedTraces().clear();
-        getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
-        getNamingRules().clear();
-        getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
-        getOwnedPropertyValuePkgs().clear();
-        getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
-        getOwnedConfigurationItems().clear();
-        getOwnedConfigurationItems().addAll((Collection<? extends ConfigurationItem>)newValue);
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
-        getOwnedConfigurationItemPkgs().clear();
-        getOwnedConfigurationItemPkgs().addAll((Collection<? extends ConfigurationItemPkg>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
+				getOwnedTraces().clear();
+				getOwnedTraces().addAll((Collection<? extends Trace>)newValue);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
+				getNamingRules().clear();
+				getNamingRules().addAll((Collection<? extends NamingRule>)newValue);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
+				getOwnedPropertyValuePkgs().clear();
+				getOwnedPropertyValuePkgs().addAll((Collection<? extends PropertyValuePkg>)newValue);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
+				getOwnedConfigurationItems().clear();
+				getOwnedConfigurationItems().addAll((Collection<? extends ConfigurationItem>)newValue);
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
+				getOwnedConfigurationItemPkgs().clear();
+				getOwnedConfigurationItemPkgs().addAll((Collection<? extends ConfigurationItemPkg>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
-        getOwnedTraces().clear();
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
-        getNamingRules().clear();
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
-        getOwnedPropertyValuePkgs().clear();
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
-        getOwnedConfigurationItems().clear();
-        return;
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
-        getOwnedConfigurationItemPkgs().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
+				getOwnedTraces().clear();
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
+				getNamingRules().clear();
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
+				getOwnedPropertyValuePkgs().clear();
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
+				getOwnedConfigurationItems().clear();
+				return;
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
+				getOwnedConfigurationItemPkgs().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
-        return ownedTraces != null && !ownedTraces.isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_GENERIC_TRACES:
-        return !getContainedGenericTraces().isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_REQUIREMENTS_TRACES:
-        return !getContainedRequirementsTraces().isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
-        return namingRules != null && !namingRules.isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
-        return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
-        return ownedConfigurationItems != null && !ownedConfigurationItems.isEmpty();
-      case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
-        return ownedConfigurationItemPkgs != null && !ownedConfigurationItemPkgs.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_TRACES:
+				return ownedTraces != null && !ownedTraces.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_GENERIC_TRACES:
+				return !getContainedGenericTraces().isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__CONTAINED_REQUIREMENTS_TRACES:
+				return !getContainedRequirementsTraces().isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__NAMING_RULES:
+				return namingRules != null && !namingRules.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_PROPERTY_VALUE_PKGS:
+				return ownedPropertyValuePkgs != null && !ownedPropertyValuePkgs.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEMS:
+				return ownedConfigurationItems != null && !ownedConfigurationItems.isEmpty();
+			case EpbsPackage.CONFIGURATION_ITEM_PKG__OWNED_CONFIGURATION_ITEM_PKGS:
+				return ownedConfigurationItemPkgs != null && !ownedConfigurationItemPkgs.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

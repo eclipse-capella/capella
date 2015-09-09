@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.pa.PaPackage;
  */
 public class LogicalActorRealizationImpl extends ComponentAllocationImpl implements LogicalActorRealization {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected LogicalActorRealizationImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return PaPackage.Literals.LOGICAL_ACTOR_REALIZATION;
-  }
+		return PaPackage.Literals.LOGICAL_ACTOR_REALIZATION;
+	}
 
 
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.polarsys.capella.common.data.modellingcore.ModelElement;
 import org.polarsys.capella.common.menu.dynamic.contributions.IMDEMenuItemContribution;
 import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
 import org.polarsys.capella.core.data.information.datavalue.OpaqueExpression;
+import org.polarsys.capella.core.model.helpers.ConstraintExt;
 
 /**
  * Automatically add an empty "LinkedText" specification to newly created OpaqueExpression elements.
@@ -34,17 +35,18 @@ public class OpaqueExpressionItemContribution implements IMDEMenuItemContributio
   }
 
   @Override
-  public Command executionContribution(EditingDomain editingDomain_p, ModelElement containerElement_p, ModelElement createdElement_p,
-      EStructuralFeature feature_p) {
-      OpaqueExpression oe = (OpaqueExpression) createdElement_p;
-      CompoundCommand cc = new CompoundCommand();
-      cc.append(AddCommand.create(editingDomain_p, oe, DatavaluePackage.Literals.OPAQUE_EXPRESSION__LANGUAGES, Collections.singleton(CapellaLinkedTextConstants.OPAQUE_EXPRESSION_LINKED_TEXT)));
-      cc.append(AddCommand.create(editingDomain_p, oe, DatavaluePackage.Literals.OPAQUE_EXPRESSION__BODIES, Collections.singleton(""))); //$NON-NLS-1$
-      return cc;
+  public Command executionContribution(EditingDomain editingDomain, ModelElement containerElement, ModelElement createdElement,
+      EStructuralFeature feature) {
+    OpaqueExpression oe = (OpaqueExpression) createdElement;
+    CompoundCommand cc = new CompoundCommand();
+    cc.append(AddCommand.create(editingDomain, oe, DatavaluePackage.Literals.OPAQUE_EXPRESSION__LANGUAGES,
+        Collections.singleton(ConstraintExt.OPAQUE_EXPRESSION_LINKED_TEXT)));
+    cc.append(AddCommand.create(editingDomain, oe, DatavaluePackage.Literals.OPAQUE_EXPRESSION__BODIES, Collections.singleton(""))); //$NON-NLS-1$
+    return cc;
   }
 
   @Override
-  public boolean selectionContribution(ModelElement modelElement_p, EClass cls_p, EStructuralFeature feature_p) {
+  public boolean selectionContribution(ModelElement modelElement, EClass cls, EStructuralFeature feature) {
     return true;
   }
 

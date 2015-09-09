@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.pa.PhysicalContext;
  */
 public class PhysicalContextImpl extends ComponentContextImpl implements PhysicalContext {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected PhysicalContextImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return PaPackage.Literals.PHYSICAL_CONTEXT;
-  }
+		return PaPackage.Literals.PHYSICAL_CONTEXT;
+	}
 
 
 

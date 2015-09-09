@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.la.SystemActorRealization;
  */
 public class SystemActorRealizationImpl extends ComponentAllocationImpl implements SystemActorRealization {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected SystemActorRealizationImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return LaPackage.Literals.SYSTEM_ACTOR_REALIZATION;
-  }
+		return LaPackage.Literals.SYSTEM_ACTOR_REALIZATION;
+	}
 
 
 

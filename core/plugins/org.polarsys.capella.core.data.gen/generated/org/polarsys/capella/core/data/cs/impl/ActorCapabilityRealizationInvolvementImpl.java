@@ -26,25 +26,25 @@ import org.polarsys.capella.core.data.cs.CsPackage;
  */
 public class ActorCapabilityRealizationInvolvementImpl extends CapabilityRealizationInvolvementImpl implements ActorCapabilityRealizationInvolvement {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ActorCapabilityRealizationInvolvementImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CsPackage.Literals.ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT;
-  }
+		return CsPackage.Literals.ACTOR_CAPABILITY_REALIZATION_INVOLVEMENT;
+	}
 
 
 

@@ -47,13 +47,13 @@ import org.polarsys.capella.core.data.ctx.CtxPackage;
 public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements ActorCapabilityInvolvement {
 
 	/**
-   * The cached value of the '{@link #getInvolver() <em>Involver</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getInvolver() <em>Involver</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getInvolver()
-   * @generated
-   * @ordered
-   */
+	 * @see #getInvolver()
+	 * @generated
+	 * @ordered
+	 */
 	protected InvolverElement involver;
 
 
@@ -61,13 +61,13 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
 
 
 	/**
-   * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getInvolved() <em>Involved</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getInvolved()
-   * @generated
-   * @ordered
-   */
+	 * @see #getInvolved()
+	 * @generated
+	 * @ordered
+	 */
 	protected InvolvedElement involved;
 
 
@@ -82,77 +82,77 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ActorCapabilityInvolvementImpl() {
 
-    super();
+		super();
 
-  }
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT;
-  }
+		return CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT;
+	}
 
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolverElement getInvolver() {
 
-    if (involver != null && involver.eIsProxy()) {
-      InternalEObject oldInvolver = (InternalEObject)involver;
-      involver = (InvolverElement)eResolveProxy(oldInvolver);
-      if (involver != oldInvolver) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
-      }
-    }
-    return involver;
-  }
+		if (involver != null && involver.eIsProxy()) {
+			InternalEObject oldInvolver = (InternalEObject)involver;
+			involver = (InvolverElement)eResolveProxy(oldInvolver);
+			if (involver != oldInvolver) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
+			}
+		}
+		return involver;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolverElement basicGetInvolver() {
 
-    return involver;
-  }
+		return involver;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setInvolver(InvolverElement newInvolver) {
 
-    InvolverElement oldInvolver = involver;
-    involver = newInvolver;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
+		InvolverElement oldInvolver = involver;
+		involver = newInvolver;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER, oldInvolver, involver));
 
-  }
+	}
 
 
 
@@ -160,52 +160,52 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolvedElement getInvolved() {
 
-    if (involved != null && involved.eIsProxy()) {
-      InternalEObject oldInvolved = (InternalEObject)involved;
-      involved = (InvolvedElement)eResolveProxy(oldInvolved);
-      if (involved != oldInvolved) {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
-      }
-    }
-    return involved;
-  }
+		if (involved != null && involved.eIsProxy()) {
+			InternalEObject oldInvolved = (InternalEObject)involved;
+			involved = (InvolvedElement)eResolveProxy(oldInvolved);
+			if (involved != oldInvolved) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+			}
+		}
+		return involved;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public InvolvedElement basicGetInvolved() {
 
-    return involved;
-  }
+		return involved;
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public void setInvolved(InvolvedElement newInvolved) {
 
-    InvolvedElement oldInvolved = involved;
-    involved = newInvolved;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
+		InvolvedElement oldInvolved = involved;
+		involved = newInvolved;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED, oldInvolved, involved));
 
-  }
+	}
 
 
 
@@ -213,23 +213,23 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Actor getActor() {
 
-    Actor actor = basicGetActor();
-    return actor != null && actor.eIsProxy() ? (Actor)eResolveProxy((InternalEObject)actor) : actor;
-  }
+		Actor actor = basicGetActor();
+		return actor != null && actor.eIsProxy() ? (Actor)eResolveProxy((InternalEObject)actor) : actor;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Actor basicGetActor() {
 
@@ -256,15 +256,15 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT__ACTOR.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT__ACTOR, annotation);
-    
-    try {
-      return (Actor) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (Actor) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
@@ -272,23 +272,23 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Capability getCapability() {
 
-    Capability capability = basicGetCapability();
-    return capability != null && capability.eIsProxy() ? (Capability)eResolveProxy((InternalEObject)capability) : capability;
-  }
+		Capability capability = basicGetCapability();
+		return capability != null && capability.eIsProxy() ? (Capability)eResolveProxy((InternalEObject)capability) : capability;
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 
 	public Capability basicGetCapability() {
 
@@ -315,113 +315,113 @@ public class ActorCapabilityInvolvementImpl extends RelationshipImpl implements 
     // A helper is found, let's use it. 
     EAnnotation annotation = CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT__CAPABILITY.getEAnnotation(org.polarsys.capella.common.model.helpers.IModelConstants.HELPER_ANNOTATION_SOURCE);
     result = helper.getValue(this, CtxPackage.Literals.ACTOR_CAPABILITY_INVOLVEMENT__CAPABILITY, annotation);
-    
-    try {
-      return (Capability) result;
-    } catch (ClassCastException cce_p) {
-       cce_p.printStackTrace();
-      return null;
-    }
-    
-  }
+		
+		try {
+			return (Capability) result;
+	  } catch (ClassCastException cce_p) {
+	     cce_p.printStackTrace();
+	    return null;
+	  }
+		
+	}
 
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
-        if (resolve) return getInvolver();
-        return basicGetInvolver();
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
-        if (resolve) return getInvolved();
-        return basicGetInvolved();
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__ACTOR:
-        if (resolve) return getActor();
-        return basicGetActor();
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__CAPABILITY:
-        if (resolve) return getCapability();
-        return basicGetCapability();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
+				if (resolve) return getInvolver();
+				return basicGetInvolver();
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
+				if (resolve) return getInvolved();
+				return basicGetInvolved();
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__ACTOR:
+				if (resolve) return getActor();
+				return basicGetActor();
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__CAPABILITY:
+				if (resolve) return getCapability();
+				return basicGetCapability();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof InvolverElement) {
-        // end-extension-code
-          setInvolver((InvolverElement)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
-        // begin-extension-code
-        if (newValue == null || newValue instanceof InvolvedElement) {
-        // end-extension-code
-          setInvolved((InvolvedElement)newValue);
-        // begin-extension-code
-        }
-        // end-extension-code
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof InvolverElement) {
+				// end-extension-code
+					setInvolver((InvolverElement)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
+				// begin-extension-code
+				if (newValue == null || newValue instanceof InvolvedElement) {
+				// end-extension-code
+					setInvolved((InvolvedElement)newValue);
+				// begin-extension-code
+				}
+				// end-extension-code
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID) {
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
-        setInvolver((InvolverElement)null);
-        return;
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
-        setInvolved((InvolvedElement)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
+				setInvolver((InvolverElement)null);
+				return;
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
+				setInvolved((InvolvedElement)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
-        return involver != null;
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
-        return involved != null;
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__ACTOR:
-        return basicGetActor() != null;
-      case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__CAPABILITY:
-        return basicGetCapability() != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVER:
+				return involver != null;
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__INVOLVED:
+				return involved != null;
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__ACTOR:
+				return basicGetActor() != null;
+			case CtxPackage.ACTOR_CAPABILITY_INVOLVEMENT__CAPABILITY:
+				return basicGetCapability() != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 
 

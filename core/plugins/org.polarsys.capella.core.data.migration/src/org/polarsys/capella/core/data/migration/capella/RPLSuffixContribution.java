@@ -13,6 +13,7 @@ package org.polarsys.capella.core.data.migration.capella;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.CatalogElement;
 import org.polarsys.capella.common.re.CatalogElementKind;
+import org.polarsys.capella.common.re.CatalogElementLink;
 import org.polarsys.capella.core.data.migration.context.MigrationContext;
 import org.polarsys.capella.core.data.migration.contribution.AbstractMigrationContribution;
 
@@ -40,6 +41,13 @@ public class RPLSuffixContribution extends AbstractMigrationContribution {
             String suffix = rplName.substring(recName.length());
             rpl.setSuffix(suffix);
           }
+        }
+      }
+
+      for (CatalogElementLink link : rpl.getOwnedLinks()) {
+        if (link.getUnsynchronizedFeatures().contains("name") && !link.isSuffixed()) {
+          link.getUnsynchronizedFeatures().remove("name");
+          link.setSuffixed(true);
         }
       }
     }
