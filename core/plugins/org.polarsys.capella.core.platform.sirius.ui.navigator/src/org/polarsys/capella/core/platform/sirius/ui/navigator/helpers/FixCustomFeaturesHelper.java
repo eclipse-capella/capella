@@ -156,8 +156,14 @@ public class FixCustomFeaturesHelper {
 
   }
 
+  /**
+   * 
+   * @param expectedColor
+   * @param actualColor
+   * @return
+   */
   private static boolean isExpectedColor(RGBValues expectedColor, RGBValues actualColor) {
-    return expectedColor.getRed() == actualColor.getRed() && expectedColor.getGreen() == actualColor.getGreen()
+    return actualColor != null && expectedColor.getRed() == actualColor.getRed() && expectedColor.getGreen() == actualColor.getGreen()
         && expectedColor.getBlue() == actualColor.getBlue();
   }
 
