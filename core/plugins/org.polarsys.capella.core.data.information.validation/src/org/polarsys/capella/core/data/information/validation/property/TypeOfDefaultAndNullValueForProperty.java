@@ -74,6 +74,12 @@ public class TypeOfDefaultAndNullValueForProperty extends AbstractValidationRule
     Type valueType = value.getType();
     Type propertyType = property.getType();
 
+
+    // the value is valid if its type is undefined (implicit typing)
+    if (valueType == null) {
+      return true;
+    }
+    
     // the value is valid if its type is the same of its property's datatype
     if (valueType == propertyType) {
       return true;
